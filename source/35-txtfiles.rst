@@ -1,0 +1,64 @@
+-----------------------
+Textfiles for RhostMUSH
+-----------------------
+
+areghost.txt           - file player gets when autoregistration on registered
+                         host.
+autoreg.txt            - file player gets when autoregistration on 
+                         non-registered host.
+autoreg_include.txt    - file player receives in email when they autoregister
+                         attached to login/passwd
+badsite.txt            - file player gets when site is not allowed.
+connect.txt            - file player gets when connect
+create_reg.txt         - file player gets when their site is register and they
+                         can't create.
+doorconf.txt           - file that is searched for information regarding @door.
+                 *NOTE*  Need to mkindx doorconf.txt doorconf.indx for this file
+down.txt               - file player gets when the mush has logins disabled
+                         (@disable login)
+error.txt              - the 'Huh? (type help for help)' messages.
+                 *NOTE*  Need to mkindx error.txt error.indx for this file
+full.txt               - file player gets when the mush can't have any more
+                         players.
+guest.txt              - file player gets when they connect as a guest.
+help.txt               - your help file
+                 *NOTE*  Need to mkindx help.txt help.indx for this file
+motd.txt               - your motd file
+news.txt               - your news file
+                 *NOTE*  Need to mkindx news.txt news.indx for this file
+newuser.txt            - file newly created players get when they connect for
+                         the first time.
+noguest.txt            - file player gets when they are not allowed to connect
+                         to a guest.
+plushelp.txt           - optional +help file. (needs compile time option)
+                 *NOTE*  Need to mkindx plushelp.txt plushelp.indx for this file
+quit.txt               - file player gets when they disconnect.
+register.txt           - file player gets when the site is locked down for
+                         registration.
+wizhelp.txt            - your wizhelp file
+                 *NOTE*  Need to mkindx wizhelp.txt wizhelp.indx for this file
+wizmotd.txt            - your wiz motd file
+
+
+Textfile Frequently Asked Questions
+-----------------------------------
+
+Q:  How do I put color in these files?
+A1: Look at ansi.h and you need to put the literal ASCII codes.
+    They will look like: ^[[0m (for ANSI_NORMAL).  That's <ESC>[
+A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding
+    for ansi, however you compiled your Rhost. 
+
+Q:  I want to design my own txt files to read in the mush.
+A:  Easy.  Design them like help.txt would be set up, mkindx the file,
+    then you can access it via @dynhelp online.
+
+Q:  Do I have to mkindx these files whenever I make changes?
+A:  Only the ones that have '& ' index. (help.txt, wizhelp.txt, news.txt, etc)
+
+Q:  Do I have to @readcache in the game whenever I make a change?
+A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones
+    you use with @dynhelp.
+
+Q:  Can't I just make code in the mush that then is used for these silly txt files?
+A:  Absolutely.  Check 'wizhelp file_object'.

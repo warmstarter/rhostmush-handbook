@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D2D2D" />
+  
+  <title>RhostMUSH Handbook :: Advanced features of RhostMUSH</title>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="_static/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="_static/img/favicon-16x16.png">
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+
+  <link rel="stylesheet" href="_static/css/insegel.css"/>
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'',
+        VERSION:'',
+        LANGUAGE:'None',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+  </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+
+  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
+
+</head>
+
+<body>
+  <div id="insegel-container">
+    <header>
+      <div id="logo-container">
+          
+          <a href="index.html"><img src="_static/img/logo.svg"></a>
+          
+
+      </div>
+      <div id="project-container">
+        <h1>RhostMUSH Handbook Documentation</h1>
+      </div>
+    </header>
+
+    <div id="content-container">
+
+      <div id="main-content-container">
+        <div id="main-content-header">
+          <h1>Advanced features of RhostMUSH</h1>
+        </div>
+        <div id="main-content">
+          
+  <div class="section" id="advanced-features-of-rhostmush">
+<h1>Advanced features of RhostMUSH</h1>
+<div class="section" id="debugging-tracing">
+<h2>Debugging/Tracing</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Debugging in Rhost allows for advanced features like expressing where and
+when to do debugging via a trace() function, with toggled labels, and the
+ability to grep content from trace output.  There also exists features to
+color-match parenthesis, braces, and brackets in-game as well as pretty print
+the output of commands and functions.
+- help trace
+- help %_
+- help trace()
+- help parenmatch()
+- help parenstr()</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="zoning">
+<h2>Zoning</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Zoning in Rhost allows the same functionality of Penn and MUX, though the
+syntax is different.  It also allows the ability to belong to multiple
+zones at the same time and take advantage of mulitple zones at once.
+This allows for increased levels of complexity.
+- help zones
+- help &#64;zone
+- help zonecmd()
+- help lzone()
+- help &#64;Lock type twink
+- help &#64;lock type zone</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="reality-levels">
+<h2>Reality Levels</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Reality levels allows for the ability to have a sandboxed ‘existance’
+in each physical location across the entirity of the mush.  Each
+reality is its own sandbox and can either stand alone or work
+dependently with other realities.  A person can belong to multiple
+realities at the same time, and realities is geared to a method for
+send and receive.  Each ‘method’ requires to be in the given reality
+to affect it.
+- help reality levels
+- wizhelp chkreality
+- wizhelp reaity level
+- help &#64;Lock type user</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="function-and-command-overriding">
+<h2>Function and Command Overriding</h2>
+<blockquote>
+<div><ul>
+<li><p class="first">Functions and commands can both be overridden with softcode.  To
+override a hardcoded command you first set the command ignore.
+There are various levels of ignoring so that you could have it
+ignored from mortals but have it executed fine for non-mortals.
+This allows you to use the actual physical command within a
+softcode override.  You may also use &#64;Hook for altering how
+a command works.   Functions are overridden by setting the
+function in question ignored, then writing a softcode alternative
+that is then executed and fetched appropriately.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Commands:</dt><dd><ul class="simple">
+<li>wizhelp &#64;admin</li>
+<li>wizhelp access</li>
+<li>wizhelp permissions</li>
+<li>wizhelp &#64;Hook</li>
+<li>wizhelp hook setup</li>
+</ul>
+</dd>
+<dt>Functions:</dt><dd><ul class="simple">
+<li>wizhelp &#64;admin</li>
+<li>wizhelp function_access</li>
+<li>wizhelp &#64;function</li>
+<li>help &#64;lfunction</li>
+<li>wizhelp bypass()</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="the-recycle-bin">
+<h2>The Recycle Bin</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Rhost has a recycle bin that works a bit like a windows recycle bin.
+Whenever you destroy something within the mush, it is stacked onto
+the recycle bin and marked unavailable within the mush.  This marks
+the dbref# as garbage in any sense of the word.  However, the object
+is not able to be reused until purged.  Once purged, it is put onto
+a free list that can then be reassigned to a new object.
+- wizhelp &#64;nuke
+- wizhelp &#64;destroy
+- wizhelp &#64;toad
+- wizhelp &#64;turtle
+- wizhelp &#64;purge
+- wizhelp &#64;recover
+- wizhelp &#64;reclist</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="percent-substitution-adding-overriding">
+<h2>Percent Substitution Adding/Overriding</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Rhost allows the ability to both override percent substitutions as
+well as creating new ones.  This is done with &#64;Hook and admin
+params and issues softcode overriding.  Due to how it is evaluated
+there is no risk of recursion.
+- wizhelp &#64;hook
+- wizhelp hook_cmd
+- wizhelp sub_include
+- wizhelp sub_override</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="hooking">
+<h2>Hooking</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Hooking allows you to have advanced methods to manipulate commands
+including adding customized switches to them via softcode.
+- wizhelp &#64;hook
+- wizhelp hook_cmd
+- wizhelp hook_obj
+- wizhelp hook setup</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="command-based-uselocks">
+<h2>Command based uselocks</h2>
+<blockquote>
+<div><ul class="simple">
+<li>This allows you to have unique uselocks per $command.  This is done
+through the use of the USELOCK attribute flag, then you set up
+a matching attribute name with a prefix of a ~ to specify how
+the lock is to be evaluated.  This works in the same manner
+as an evaluation lock.  To be able to use the USELOCK attribute flag
+you must be empowered to do so with the ‘ATRUSE’ &#64;toggle.  You may
+also use the secure_atruselock config parameter to globally enable
+this and not require the toggle to be set.
+- wizhelp atruse toggle
+- help attribute uselocks</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="differentating-between-command-and-listen-locks">
+<h2>Differentating between command and listen locks</h2>
+<blockquote>
+<div><ul class="simple">
+<li>We distinguish between commands and listens with uselocks by passing
+an optional argument to all locks that are uselocks.  This optional
+argument is 0 for a default lock, 1 for a command lock and 2 for
+a listen lock.
+- help &#64;lock type uselock</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="wizard-auto-overiding-and-how-to-disable-it">
+<h2>Wizard auto-overiding and how to disable it</h2>
+<blockquote>
+<div><ul class="simple">
+<li>By default wizards override all locks, including attribute locks,
+can see all dark exits, and bypass pagelocks.  This can be
+troublesome, and even abusive, so there’s ways to disable this.
+- wizhelp &#64;depower (for those abusing it)
+- wizhelp no_override (disable overiding locks)
+- wizhelp no_uselock (disable just uselock overriding)
+- wizhelp pagelock toggle (disable pagelock overriding)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="advanced-flag-and-toggle-control">
+<h2>Advanced FLAG and TOGGLE control</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Flags and toggles can be controlled to have multiple permissions
+and enable/disable targets of how the flags are allowed to be
+set.  This is done through commands in-game or you can use
+conf file options to do so.
+- wizhelp &#64;flagdef
+- wizhelp &#64;toggledef
+——- &#64;admin &#64;flagdef alternatives
+- wizhelp flag_access_set
+- wizhelp flag_access_unset
+- wizhelp flag_access_see
+- wizhelp flag_access_type
+——- &#64;admin &#64;toggledef alternatives
+- wizhelp toggle_access_set
+- wizhelp toggle_access_unset
+- wizhelp toggle_access_see
+- wizhelp toggle_access_type</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="advanced-site-control">
+<h2>Advanced site control</h2>
+<blockquote>
+<div><ul class="simple">
+<li>We allow advanced site control by not only blocking various sites
+but we can specify how many times a player can be connected at the
+same time as well as how many times sites are able to connect at
+the same time.  This is done through normal site manipulation.
+- wizhelp forbid_host
+- wizhelp register_host
+- wizhelp noguest_host
+- wizhelp &#64;list (site option)</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="auto-registration">
+<h2>Auto-Registration</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Autoregistration is the method that a player can auto-register
+by providing their email on the connect screen.  It will email
+them a password and an optional document that the administrator
+provides.  This is well described in the wizhelp.
+- wizhelp autoregistration</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="which-bit-level-is-best">
+<h2>Which bit level is best?</h2>
+<blockquote>
+<div><ul>
+<li><p class="first">This is something that should be discussed by you and the staff
+of your game.  As a good rule of thumb, only provide the bitlevel
+that is required to do the job.  Too much power is always risky.
+In essence, each tier of bit can do everything the previous bitlevel
+can do, and then additional stuff on top of it.  The highest bitlevel
+is #1 itself, being bitlevel 7.  Then immortal, which should be
+considered the #1 character in most cases and is bitlevel 6.  Then
+the royalty character, which is equal to wizard on penn, mux, or
+other codebases.  For most things, this is the bitlevel you want
+to assign players.  The exception will likely be game owners or
+people who control the master room code.</p>
+<p>There’s a bunch of readme files and online wizhelp that goes into
+detail of the various bitlevels and what each can do.
+- XV.   Multi-tiered bitlevel systems
+- wizhelp control</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="what-are-the-limits-for-size-growth-for-rhostmush">
+<h2>What are the limits for size/growth for RhostMUSH?</h2>
+<blockquote>
+<div><ul>
+<li><p class="first">While using QDBM, there’s really no set limits for most things.
+The limits that we have are as followed:
+LBUF - 64K.  It is recommended to only use 32K as there is some</p>
+<blockquote>
+<div><blockquote>
+<div><p>issues with networking with 64K lbufs.</p>
+</div></blockquote>
+<ul class="simple">
+<li>Compile time option with the menu configurator</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>SBUF - 64 characters (if configured – it’s suggested you do).</dt><dd><ul class="simple">
+<li>Compile time option with the menu configurator</li>
+</ul>
+</dd>
+</dl>
+<p>MBUF - 200 characters.  Not able to be changed.</p>
+<dl class="docutils">
+<dt>MAX CONNECTIONS - Limited by the total number of open sockets</dt><dd><blockquote>
+<div><p>and descriptors on the account and server running on.
+There are various tools to limit connection DoS attemps
+and other such nastiness.  This is well documented in
+the netrhost.conf file.</p>
+</div></blockquote>
+<ul class="simple">
+<li>wizhelp max_players</li>
+<li>~/game/netrhost.conf</li>
+</ul>
+</dd>
+<dt>MEMORY - no limit.  Generally runs between 8-50M depending</dt><dd><p>on the size of the mush and the LBUF size specified.</p>
+</dd>
+<dt>CPU  - no limit, but has built in cpu abort in code.  The</dt><dd><blockquote>
+<div><p>netrhost.conf file documents this well for customizing.
+the default values are usually good enough.</p>
+</div></blockquote>
+<ul class="simple">
+<li>wizhelp max_cpu_cycles</li>
+<li>wizhelp cpuintervalchk</li>
+<li>wizhelp cputimechk</li>
+<li>wizhelp cpu_secure_lvl</li>
+<li>wizhelp heavy_cpu_max</li>
+<li>~/game/netrhost.conf</li>
+</ul>
+</dd>
+<dt>DISK - no limit.  Generally will be 75-200M depending on size,</dt><dd><p>number of backups and if you leave your compiled object
+files in.</p>
+</dd>
+<dt>DB Size - (20000 default) There is no limit on the number of</dt><dd><blockquote>
+<div><p>objects the db can have.  By default it’s soft limited
+to 20K objects, which can be changed by a netrhost.conf
+file change.  We have had this up past 1.5 million
+objects, and other than a second or two of lag for
+complex searches we had no real problem.</p>
+</div></blockquote>
+<ul class="simple">
+<li>wizhelp maximum_size</li>
+<li>help &#64;quota</li>
+<li>wizhelp &#64;quota</li>
+<li>wizhelp &#64;limit</li>
+</ul>
+</dd>
+<dt>Attribute Size - 10K as a hard limit.  750 as a soft limit.</dt><dd><blockquote>
+<div><p>You can increase this but it can’t exceed 10000
+attributes.  This is to avoid DoS style attacks.</p>
+</div></blockquote>
+<ul class="simple">
+<li>wizhelp vlimit</li>
+<li>wizhelp &#64;limit</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="sqlite-and-mysql-maria-setup-and-why-use-it">
+<h2>Sqlite and MySQL/Maria setup and why use it?</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Both of these can be configured separately or conjointly to
+run in parallel.  This can be done through the RhostMUSH
+configuration utility.  You generally want to use SQL for
+external data storage or accessing a central repository
+of data to share between multiple projects.  Like, for
+example between a wiki, a forum, and the mush.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="executing-outside-scripts-and-binaries-within-rhostmush">
+<h2>Executing outside scripts and binaries within RhostMUSH</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Rhost has execscript() which allows executing outside binaries
+or scripts as a native function.  All effort has been done to
+avoid any type of DoS based issue or hang by doing this, however
+the guidelines presented should be followed before doing so.
+- wizhelp execscript
+- wizhelp power execscript
+- help sidefx
+- wizhelp writing scripts</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="pulling-external-data-into-rhostmush">
+<h2>Pulling external data into RhostMUSH</h2>
+<blockquote>
+<div><ul>
+<li><p class="first">You are capable of pulling external data in to RhostMUSH using
+several methods.  These are by using:</p>
+<blockquote>
+<div><ul class="simple">
+<li>SQL (mysql or sqlite)</li>
+<li>execscript</li>
+<li>cron (wizhelp signal)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="integrating-a-unix-cron-right-into-rhostmush">
+<h2>Integrating a unix cron right into RhostMUSH</h2>
+<blockquote>
+<div><ul class="simple">
+<li>The unix cron can be used to integrate with Rhost fairly
+easilly by use of signals.  By using SIGUSR1 you can specify
+Rhost to execute code in-game, which part of that could be
+to pick up a pre-designed list of commands that the unix cron
+has set up.
+- wizhelp signal
+- wizhelp signal_cron</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="signal-handling-how-it-works-and-when-and-why-use-it">
+<h2>Signal handling, how it works, and when and why use it</h2>
+<blockquote>
+<div><ul>
+<li><p class="first">Signals are used to do different things for the mush.  By default,
+the following signals are recognized by the mush and will do
+the following as defaults.
+- SIGUSR1 - will do a reboot of the mush.  This is also customizable</p>
+<blockquote>
+<div><p>so that you can have it execute code in-mush if you want.</p>
+</div></blockquote>
+<ul class="simple">
+<li>SIGUSR2 - will do a clean shutdown of the mush.</li>
+<li><dl class="first docutils">
+<dt>SIGTERM - will immediately scram the mush as cleanly and fast</dt><dd>as possible.  It will avoid dumping anything to
+the database to speed up scramming, but write
+a TERM flat file to be loaded in if corruption.</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="setting-up-global-parents-global-parents-global-attribute-formatting-and-other-global-setups">
+<h2>Setting up global parents, global &#64;parents, global attribute formatting, and other global setups</h2>
+<blockquote>
+<div><ul>
+<li><p class="first">Global parents are useful when you want to have a global ‘parent’
+without actually having a defined <a class="reference external" href="mailto:'&#37;&#52;&#48;parent" target="_blank">‘<span>&#64;</span>parent</a>’.  It always will be the
+highest tier in a lookup.  The way lookups will go will be:</p>
+<blockquote>
+<div><p>self-&gt;&#64;parent(s)-&gt;&#64;zone(s)-&gt;GlobalParent</p>
+</div></blockquote>
+<p>The type of the parent does not have to match the target.</p>
+<p>These global parents can be defined either by using a global
+generic parent or by using the type.  If a type is specified it
+overrides the generic.  The following parameters are used:
+- global_parent_obj     - The generic global parent (if defined)
+- global_parent_room    - The room global parent
+- global_parent_exit    - The exit global parent
+- global_parent_thing   - The thing global parent
+- global_parent_player  - The player global parent</p>
+</li>
+<li><p class="first">Global &#64;parents are different than global parents in that any new
+item of similar type that is created is automatically assigned this
+physical &#64;parent.  It’s obviously more limiting since it sets
+the literal physical parent defined.</p>
+<p>The type of the parent does not have to match the target.</p>
+<p>The following parameters are used:
+- room_parent           - The target that new rooms are &#64;parented
+- exit_parent           - The target that new exits are &#64;parented
+- thing_parent          - The target that new things are &#64;parented
+- player_parent         - The target that new players are &#64;parented</p>
+</li>
+<li><p class="first">Global attribute formatting is a method define a wrapper, of sorts,
+where attributes like &#64;desc, &#64;odesc, &#64;succ, and anything similar
+can be processed through this.  All attributes will be either
+&amp;FORMAT&lt;attribute&gt; or &amp;&lt;attribute&gt;FORMAT based on the current
+configuration.  Example: &amp;FORMATDESC or &amp;DESCFORMAT localy, or
+use the following global objects for global formatting.  Local
+formatting has priority.</p>
+<p>The type of the parent does not have to match the target.</p>
+<ul class="simple">
+<li>room_attr_default     - Target for room formatting</li>
+<li>exit_attr_default     - Target for exit formatting</li>
+<li>thing_attr_default    - Target for thing formatting</li>
+<li>player_attr_default   - Target for player formatting</li>
+</ul>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="rhostmush-limitations-and-how-to-get-around-them">
+<h2>RhostMUSH limitations and how to get around them</h2>
+<blockquote>
+<div><p>While Rhost is insanely configurable and quite powerful, there are
+limitations that exist within it.</p>
+<ul>
+<li><p class="first">Function invocations.  Sometimes you will hit a ceiling on evaluation.
+You may want to tweak values to allow more functions or commands
+to execute.  The following controls that:
+- function_invocation_limit [25000 default] - specifies the total</p>
+<blockquote>
+<div><p>functions you can execute per command.</p>
+</div></blockquote>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>function_recursion_limit [50] - specifies the total times a</dt><dd>function can call itself over and over.  Rarely should this
+be increased and doing so can effect your stack depth.</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p class="first">Command queue limits.  Sometimes you want more to be queued up for
+players or wizards.
+- player_queue_limit  - Max number of entries a player can queue
+- wizard_queue_limit  - Max number of entries a wizard can queue</p>
+</li>
+<li><p class="first">&#64;limit is a wonderful way to lock down limitations per player or
+global.  Lots of power is available here.
+- &#64;limit
+- vattr_limit_checkwiz - Enable &#64;limit checks for wizards
+- wizmax_vattr_limit   - Set wizard global VATTR limits
+- wizmax_dest_limit    - Set wizard global &#64;destroy limits
+- max_vattr_limit      - Set player global VATTR limits
+- max_dest_limit       - Set player global &#64;destroy limits</p>
+</li>
+<li><p class="first">Lots of trace output can be cut off.  You can modify this with:
+- trace_output_limit   - Set lines of trace output shown</p>
+</li>
+<li><p class="first">To define how many commands a minute a player set SPAMMONITOR can use
+- spam_limit – default 120</p>
+</li>
+<li><p class="first">If you examine things and see ‘Output cut off’ messages, you may want
+to increase your output limit, funny enough, the name of this is
+similar
+- output_limit - You should set this no less than 4 times the current</p>
+<blockquote>
+<div><p>size of your LBUF.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Attributes names can not exceed 64 characters.  Sorry, it’s a hard limit</p>
+</li>
+<li><p class="first">Sometime you may find a single may not work for an escape.  You can
+in most cases use a % instead or double escape the to make it work.
+Also look at lit() as a solution.</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it">
+<h2>Things other mushes can do that Rhost can not and how to emulate it</h2>
+<div class="section" id="pennmush">
+<h3>PennMUSH</h3>
+<blockquote>
+<div><ul>
+<li><p class="first">Attribute trees.  These are emulated as a base set and can be
+duplicated enough to at least port code.</p>
+</li>
+<li><p class="first">lsearch() will have to be recoded to search()</p>
+</li>
+<li><p class="first">align() will have to be recoded to printf()</p>
+</li>
+<li><p class="first">Penn allows empty attributes.  Rhost does not.  Work will have to
+be done to take this into consideration.</p>
+</li>
+<li><p class="first">All <a href="#id1"><span class="problematic" id="id2">*</span></a>val() functions in Penn that are used will have to be
+remapped to a non-<a href="#id3"><span class="problematic" id="id4">*</span></a>val() function.  It should be as simple as
+function_alias to the non-<a href="#id5"><span class="problematic" id="id6">*</span></a>val.  Example:</p>
+<blockquote>
+<div><p>&#64;admin function_alias=hasattrval hasattr</p>
+</div></blockquote>
+</li>
+<li><p class="first">Penn’s hardcoded comsystem is emulated with the softcode comsys</p>
+</li>
+<li><p class="first">Penn’s &#64;mail system is workable with mail wrappers</p>
+</li>
+<li><p class="first">Pueblo is not supported.</p>
+</li>
+<li><p class="first">json is not supported.</p>
+</li>
+<li><p class="first">ssl is not natively supported (yet), see section XIV</p>
+</li>
+<li><p class="first">This uses &#64;shutdown/restart, Rhost uses &#64;reboot</p>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="mux">
+<h3>MUX</h3>
+<blockquote>
+<div><ul class="simple">
+<li>Mux has an async mysql database engine.  This is not possible
+with Rhost.  You’ll have to use the sync method instead.</li>
+<li>UTF8 is supported but internally passed differently.</li>
+<li>Mux’s hardcoded comsystem is emulated with the softcode comsys</li>
+<li>MUX’s &#64;mail system is workable with mail wrappers</li>
+<li>Pueblo is not supported.</li>
+<li>This uses &#64;restart, Rhost uses &#64;reboot</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="advanced-guest-setup">
+<h2>Advanced guest setup</h2>
+<blockquote>
+<div><ul class="simple">
+<li>After you set up your guests, you can set unique names to each guest
+if you so want after defining the dbref#’s your guests use.  This is
+done by defining them in the guest_namelist parameter.  You can also
+increase guests (or decrease them) between 0-31 guests.
+- wizhelp guest_namelist
+- wizhelp num_guests</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="attribute-permission-masking-and-the-joys-of-the-power-behind-it">
+<h2>Attribute permission masking and the joys of the power behind it</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Attribute contentlocks can be set up so you can lock the actual
+content that you can set (or even unset!) into an attribute.
+The beauty of this is that you can specify case sensitive
+information, lock different ways contents in attributes are set
+based on who is setting it, or even on where it’s being set.
+The sky’s the limit.
+- global_attrdefault    - Target for defining content locks</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="the-amazing-cluster-and-what-it-can-do-for-you">
+<h2>The amazing &#64;cluster and what it can do for you</h2>
+<blockquote>
+<div><ul class="simple">
+<li>Clusters is the way to virtually assign multiple objects into
+a single physical object.  It essentially chains together two
+or more objects to share attributes between them, so that any
+attribute set on any object in that cluster can be set or fetched
+as if it was a singular entity.  This allows some amazing ability
+to distribute attribute content or even have a farm of a massive
+amount of attributes without paying a hefty penalty on object bloat.</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>help cluster  – Gives a fantastic overview of how clusters work.</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="what-we-plan-for-the-future">
+<h2>What we plan for the future</h2>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li>Things to look forward to the future with RhostMUSH.
+- Full Unicode/UTF8 in Rhost 4.0
+- A fully featured tag system in Rhost 4.0
+- Built in Python API handler in Rhost 4.0
+- Hopefully a built in Ruby and Perl API in Rhost 4.0/4.1
+- Cross-Mush execution between mushes in Rhost 4.1
+- More as we think about it :)</li>
+</ul>
+</div></blockquote>
+<p>EXT: Additional features not covered otherwise
+Additional features
+- +/- 5.4 million years can be utilized with the built in time functions</p>
+<blockquote>
+<div>which includes timefmt(), secs(), convtime(), convsecs(), and moon().  Party on!</div></blockquote>
+<ul class="simple">
+<li>Changing permission levels in the middle of execution for evaluation.
+* see help on the streval and ueval function</li>
+<li>Full features in-game customization of near every aspect of the game.</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+        </div>
+      </div>
+
+      <div id="side-menu-container">
+
+        <div id="search" role="search">
+        <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+            <input type="text" name="q" placeholder="Search..." />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+        </form>
+</div>
+
+        <div id="side-menu" role="navigation">
+
+          
+  
+    
+  
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">What RhostMUSH is about and what’s so great about RhostMUSH.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-compile.html">What to type to Compile and Install RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-dbconversion.html">How to convert a database from another mush to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-configure.html">What to type to configure and get your RhostMUSH up and running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-newmush.html">What to type to get the basics running if you did not choose a pre-existing flatfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-security.html">Considerations to locking down restrictions in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-toggles.html">What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-lockdown.html">Extended lockdown of the mush and considerations.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-blocking.html">Methods to block anonymous connections and the pros and cons of doing so</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-customize.html">What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-differences.html">The differences to expect to the end user between PennMUSH, MUX, and RhostMUSH as of 08/06/2016</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced features of RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-signals.html">Signals and why you need them for control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-ssl.html">Setting up an SSL tunnel for secure connection options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-bitlevels.html">Multi-tiered bitlevel systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-modules.html">Adding hardcoded modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-shutdown.html">Shutting down gracefully</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-debug.html">Stack limit and debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-reality.html">Reality levels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-execscript.html">Execscript and external programs and scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="21-printf.html">Using printf() for advanced text output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="22-ansible.html">Installing using an ansible playbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="23-random.html">Random notes and things to know about RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="24-quickinstall.html">Quickinstall guide to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="25-godpasswd.html">How to reset the password for #1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="26-compileerror.html">Troubleshooting difficulties compiling RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="27-dbcorrupt.html">Dealing with DB Corruption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="28-maildbcorrupt.html">Dealing with a corrupt mail database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="29-setup.html">Additional simplified notes on setting up RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-cron.html">Using the built-in cron system for periodically running commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="31-comparison.html">Comparison of features between RhostMUSH, PennMUSH, and MUX2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="32-dbloading.html">Loading an existing Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="33-qdbm.html">Converting database betwen GDBM and QDBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="34-upgrade.html">Updating RhostMUSH prior to 3.9.5p2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="35-txtfiles.html">Textfiles for RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="36-scripts.html">The following scripts are used in the game directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="37-execscripts.html">Scripts to be used with execscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="38-imageformat.html">Format for image filses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="38-imageformat.html#help-key-indexes-for-the-values">HELP key indexes for the values:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="39-portdirector.html">Network Port redirector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40-autoshutdown.html">Autoshutdown script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="41-minimaldb.html">Minimal DB instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="42-ambrosiadb.html">Ambrosia’s Minimal Rhost DB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helpfile.html">RhostMUSH Internal Help Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wizhelpfile.html">RhostMUSH Internal Help Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flags.html">Comparison of Flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Comparison of powers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nda.html">Historical Non-Disclosure Agreement</a></li>
+</ul>
+
+  
+
+
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+<footer>
+    <div id="footer-info">
+        <ul id="build-details">
+            
+                <li class="footer-element">
+                    
+                        <a href="_sources/12-advanced.rst.txt" rel="nofollow"> source</a>
+                    
+                </li>
+            
+
+            
+
+            
+        </ul>
+        <div id="credit">
+            created with <a href="http://sphinx-doc.org/">Sphinx</a> and <a href="https://github.com/Autophagy/insegel">Insegel</a>
+
+        </div>
+    </div>
+
+    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
+
+    <script type="text/javascript">
+      $("#menu-toggle").click(function() {
+        $("#menu-toggle").toggleClass("toggled");
+        $("#side-menu-container").slideToggle(300);
+      });
+    </script>
+
+</footer> 
+
+</div>
+
+</body>
+</html>

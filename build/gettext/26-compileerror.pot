@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-04 10:55-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/26-compileerror.rst:3
+msgid "Troubleshooting difficulties compiling RhostMUSH"
+msgstr ""
+
+#: ../../source/26-compileerror.rst:6
+msgid "Changes to conf for high-bit CPUs"
+msgstr ""
+
+#: ../../source/26-compileerror.rst:8
+msgid "RhostMUSH automatically detects 64-bit platforms, and should compile cleanly on these."
+msgstr ""
+
+#: ../../source/26-compileerror.rst:11
+msgid "In case you are trying to compile Rhost on some other crazy-wide CPUs such as the PS2, PS3 or other 128 or 256 bit CPUs, you can easily do so by changing a few lines of code in conf.c."
+msgstr ""
+
+#: ../../source/26-compileerror.rst:15
+msgid "change: typedef unsigned int    pmath1; typedef int             pmath2; #define ALLIGN1 4"
+msgstr ""
+
+#: ../../source/26-compileerror.rst:21
+msgid "to: typedef unsigned long   pmath1; typedef long            pmath2; #define ALLIGN1 8"
+msgstr ""
+
+#: ../../source/26-compileerror.rst:26
+msgid ", replacing 8 with the size of your CPU's long integer. (4 for 32-bit, 8 for 64-bit, 16 for 128-bit, etc etc)"
+msgstr ""
+
+#: ../../source/26-compileerror.rst:29
+msgid "RhostMUSH has only been tested to work on the AMD64, but there is no reason to believe the same will not hold true for IA64."
+msgstr ""
+
+#: ../../source/26-compileerror.rst:33
+msgid "Changes to autconf for certain systems"
+msgstr ""
+
+#: ../../source/26-compileerror.rst:35
+msgid "You should not have to worry about this, but incase something really weird occurs, you may need to look into these changes..."
+msgstr ""
+
+#: ../../source/26-compileerror.rst:39
+msgid "The autoconfig.h file needs to have modifications to it by hand."
+msgstr ""
+
+#: ../../source/26-compileerror.rst:41
+msgid "There are three manual entries:"
+msgstr ""
+
+#: ../../source/26-compileerror.rst:43
+msgid "This one sets how it defines the int to character pointer.  It's safe to keep it as 'unsigned int' for 32 bit platforms.  For non 32-bit, define it to  how an int is defined on that system."
+msgstr ""
+
+#: ../../source/26-compileerror.rst:47
+msgid "typedef unsigned int    pmath1;"
+msgstr ""
+
+#: ../../source/26-compileerror.rst:49
+msgid "This one sets how it defines the signed int to character pointer.  Same restrictions apply as above for unsigned int."
+msgstr ""
+
+#: ../../source/26-compileerror.rst:52
+msgid "typedef int     pmath2;"
+msgstr ""
+
+#: ../../source/26-compileerror.rst:54
+msgid "This sets the allignment for the given platform.  4 represents a 32 bit platform.  8 would represent a 64 bit platform, etc.  Change accordingly."
+msgstr ""
+
+#: ../../source/26-compileerror.rst:57
+msgid "#define ALLIGN1 4"
+msgstr ""
+
+#: ../../source/26-compileerror.rst:60
+msgid "Make sure these three entries are defined in your autoconf.h file else the mush will not compile."
+msgstr ""

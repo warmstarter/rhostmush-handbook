@@ -1,0 +1,75 @@
+The differences to expect to the end user between PennMUSH, MUX, and RhostMUSH as of 08/06/2016
+***********************************************************************************************
+
+The largest end user experience will mostly resolve around some look
+and feel. The general look and feel of how to set attributes, work
+with commands and functions, and getting around a grid will be
+identical between the mush flavors. @nuke and @destroy will work
+somewhat differently between the three codebases and some effort
+should be looked at on how different it behaves.
+
+
+PennMUSH
+========
+
+* The way the comsystem (hardcode) works with the latest PennMUSH has
+  some compatibility now with MUX’s comsystem.
+
+* The @mail system is different to MUX and Rhost.
+
+* Debugging code uses DEBUG and has an indented format.
+
+* The parser for code doesn’t require nested escaping like other
+  codebases, but has issues with the pre-parser and nesting.
+
+* All standard movement, attribute setting, other should be similar
+
+* Penn allows empty attributes.
+
+* Penn supports attribute trees.
+
+* Penn has the standard set of bitlevel flags with on/off @powers
+
+
+MUX
+===
+
+* The comsystem (hardcode) is unique to MUX/TinyMUSH3 and is not
+  compatible with Penn.
+
+* The @mail system is unique to MUX/TinyMUSH3 and is not compatible
+  with Penn.
+
+* Debugging uses TRACE and is the old standard for debugging.
+
+* The parser requires extra escaping for nested escaping but handles
+  pre-parsing and nesting fine.
+
+* MUX does not allow empty attributes.
+
+* MUX does not support attribute trees.
+
+* MUX has the standard set of bitlevel flags with on/off @powers
+
+
+Rhost
+=====
+
+* The comsystem (softcode) is in the Mushcode directory and is
+  compatible to both PennMUSH and MUX.
+
+* The mail system is unique to Rhost but there exists mail wrappers
+  that allow MUX and Penn compatibility.
+
+* Debugging uses TRACE and is the old standard for debugging.  It
+  allows advanced features like labeling and grepping for content.
+
+* The parser requires extra escaping for nested escaping but handles
+  pre-parsing and nesting fine.
+
+* Rhost does not allow empty attributes.
+
+* Rhost marginally supports attribute trees.
+
+* Rhost has a multi-level set of bitlevel flags with multi-tier
+  @powers, @depowers, and varying other tools for permissions.

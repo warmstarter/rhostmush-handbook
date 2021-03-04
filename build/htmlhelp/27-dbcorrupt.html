@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D2D2D" />
+  
+  <title>RhostMUSH Handbook :: Dealing with DB Corruption</title>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="_static/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="_static/img/favicon-16x16.png">
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+
+  <link rel="stylesheet" href="_static/css/insegel.css"/>
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'',
+        VERSION:'',
+        LANGUAGE:'None',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+  </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+
+  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
+
+</head>
+
+<body>
+  <div id="insegel-container">
+    <header>
+      <div id="logo-container">
+          
+          <a href="index.html"><img src="_static/img/logo.svg"></a>
+          
+
+      </div>
+      <div id="project-container">
+        <h1>RhostMUSH Handbook Documentation</h1>
+      </div>
+    </header>
+
+    <div id="content-container">
+
+      <div id="main-content-container">
+        <div id="main-content-header">
+          <h1>Dealing with DB Corruption</h1>
+        </div>
+        <div id="main-content">
+          
+  <div class="section" id="dealing-with-db-corruption">
+<h1>Dealing with DB Corruption</h1>
+<p>Ok.  Your database won’t come up.</p>
+<p>If you are reading this, then likely the scenerio is one of the following:</p>
+<ol class="arabic simple">
+<li>The mush says it can’t find your database files.</li>
+<li>The mush says it can’t read or load your database files.</li>
+<li>The mush seems to load fine but I can’t log in anyone and when I do
+all the names and attributes of things seem to be gone!</li>
+<li>Bringing up your mail database</li>
+</ol>
+<p>First thing is first.  Don’t have a panic attack.</p>
+<div class="section" id="if-the-mush-says-it-can-t-find-your-database-files">
+<h2>If the mush says it can’t find your database files</h2>
+<div class="section" id="check-the-names-of-the-database-files-in-your-data-directory">
+<h3>Check the names of the database files in your ‘data’ directory</h3>
+<p>They should be named something like:
+netrhost.db
+netrhost.db.old
+netrhost.db.old.prev
+netrhost.gdbm.dir
+netrhost.gdbm.pag</p>
+<p>And you may see a netrhost.db.flat</p>
+</div>
+<div class="section" id="check-your-netrhost-conf-file">
+<h3>Check your netrhost.conf file</h3>
+<p>If you never touched the <a href="#id1"><span class="problematic" id="id2">*</span></a>database or muddb_name params, you should be good.</p>
+<p>Verify your <a href="#id3"><span class="problematic" id="id4">*</span></a>database params (and muddb_name) are still set to ‘netrhost’ as
+part of the name.  Ergo, the default values and you didn’t change them.
+These should match up with the filenames in your data directory.</p>
+<p>If these names do not match up, it can’t find the database files to load.
+So you shouldn’t have to change these names, ever. :)</p>
+</div>
+<div class="section" id="check-your-mush-config-file">
+<h3>Check your mush.config file</h3>
+<p>If you never modified this file, you should be good.</p>
+<p>The gamename should be ‘netrhost’ for this file.  This does NOT control
+the name of your game.  This controls the name of all the files
+as associated to the mush.  So changing this means the netrhost.conf
+file, all your database files, and so forth.  Please don’t change this :)</p>
+</div>
+</div>
+<div class="section" id="if-the-mush-says-it-can-t-read-or-load-your-database-files">
+<h2>If the mush says it can’t read or load your database files</h2>
+<p>Double check everything for the previous issue. Make sure everything is named properly.</p>
+<div class="section" id="verify-you-have-enough-disk-space-quota">
+<h3>Verify you have enough disk space. (quota)</h3>
+<p>Some account have a limited quota to run in.  If you reached or exceed
+your disk quota, you can have a corrupted database.  So always keep
+your eye on the size.  quota -s to see a human readable format to see
+how much quota you have left.  You want to make sure current in use is
+below the ‘grace’ and soft/hard limits shown.  If not, you’re out of
+space.</p>
+<p>You will need to remove some files before you repair and bring up your
+mush again.  Try to keep your quota at least 200 megs free to allow
+plenty of wonderful growth space for the mush.</p>
+</div>
+<div class="section" id="verify-you-have-enough-disk-space-system">
+<h3>Verify you have enough disk space.  (system)</h3>
+<p>The second way you can run out of disk space is by the filesystem itself.
+do a df -h . in your ‘game’ directory’.  That is df -h &lt;period&gt;.
+This will return how much disk space is being used and how much remains.
+If it shows 100% used, you’re out of disk space and the db is corrupt.</p>
+<p>At this point, you’re pretty screwed.  You can see if anything exists
+in your system to free up some space, but if the filesystem itself
+is filled, reach out to the owner of the server and let them know.
+It’s a much bigger deal than just your mush if that’s the case.</p>
+<p>Until this issue is resolved, you can not repair and bring up your mush.
+No disk to run the game.</p>
+</div>
+</div>
+<div class="section" id="if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone">
+<h2>If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!</h2>
+<p>Ok, at this point you likely had your mush up when the physical server
+went down hard.  Weither through an emergency shutdown or a physical
+power outage, your db likely was brought down hard during a write,
+so it left it in a corrupt state.  These things happen.  This is
+why we always strongly request you make daily flatfile dumps.</p>
+<p>So, to recover your database.</p>
+<div class="section" id="the-bad-news">
+<h3>The bad news</h3>
+<p>If you have no flatfile backup or never bothered with backups?
+I’m sorry, at this point you’re SOA.  There’s no easy way to
+recover a corrupted binary database.  If you absolutely need
+data out of it we may be able to help you to piece meal things
+out of it, but otherwise it’s a lost cause.  You’ll have to start
+over from scratch.  I’m sorry.</p>
+</div>
+<div class="section" id="the-good-news">
+<h3>The good news</h3>
+<p>If you made backups, or if the server had a normal shutdown, you
+likely have a flatfile backup.  You will see a netrhost.db.flat
+in either the ‘data’ directory or ‘prevflat’ directory.  That
+is your manual flatfile backup.</p>
+<p>If the server had a normal shutdown, you will see a file called
+netrhost.db.TERMFLAT.  This is a scram-emergency db flatfile.
+It attempts to write this at the time of server shutdown to
+hopefully keep a clean backup in the case of issues since
+it identifies the server is coming down hard.  Make sure
+if you plan to use the TERMFLAT as your recovery flatfile
+that the very last line shows something like ** END OF DUMP <a href="#id5"><span class="problematic" id="id6">**</span></a>.
+That shows you had a successful backup.</p>
+</div>
+<div class="section" id="now-to-restore-your-database">
+<h3>Now, to restore your database?</h3>
+<p>Please refer to the file ‘README.DBLOADING’.</p>
+</div>
+</div>
+<div class="section" id="bringing-up-your-mail-database">
+<h2>Bringing up your mail database</h2>
+<p>Your mail db may or may not come up at this point.</p>
+<div class="section" id="if-after-restoring-main-database-your-mail-database-works">
+<h3>If after restoring main database your mail database works</h3>
+<dl class="docutils">
+<dt>If your mail database came up and does not show</dt><dd>‘Mail: mail is currently off’ then you should be good to go.</dd>
+</dl>
+<p>Please issue:
+wmail/fix
+wmail/lfix</p>
+<p>This will put your mail system in sync with your current database and
+fix up any errors that may exist.  wmail/fix fixes the mail, wmail/lfix
+loads in the fixes.</p>
+</div>
+<div class="section" id="if-after-restoring-main-database-your-mail-database-does-not-work">
+<h3>If after restoring main database your mail database does not work</h3>
+<blockquote>
+<div><dl class="docutils">
+<dt>If your mail database is not up and shows</dt><dd>‘Mail: mail is currently off’ then your mail db is currupt.</dd>
+</dl>
+</div></blockquote>
+<p>To fix your mail db please refer to file ‘README.MAILCANNOTLOAD’</p>
+</div>
+</div>
+</div>
+
+
+        </div>
+      </div>
+
+      <div id="side-menu-container">
+
+        <div id="search" role="search">
+        <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+            <input type="text" name="q" placeholder="Search..." />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+        </form>
+</div>
+
+        <div id="side-menu" role="navigation">
+
+          
+  
+    
+  
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">What RhostMUSH is about and what’s so great about RhostMUSH.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-compile.html">What to type to Compile and Install RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-dbconversion.html">How to convert a database from another mush to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-configure.html">What to type to configure and get your RhostMUSH up and running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-newmush.html">What to type to get the basics running if you did not choose a pre-existing flatfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-security.html">Considerations to locking down restrictions in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-toggles.html">What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-lockdown.html">Extended lockdown of the mush and considerations.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-blocking.html">Methods to block anonymous connections and the pros and cons of doing so</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-customize.html">What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-differences.html">The differences to expect to the end user between PennMUSH, MUX, and RhostMUSH as of 08/06/2016</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-advanced.html">Advanced features of RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-signals.html">Signals and why you need them for control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-ssl.html">Setting up an SSL tunnel for secure connection options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-bitlevels.html">Multi-tiered bitlevel systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-modules.html">Adding hardcoded modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-shutdown.html">Shutting down gracefully</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-debug.html">Stack limit and debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-reality.html">Reality levels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-execscript.html">Execscript and external programs and scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="21-printf.html">Using printf() for advanced text output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="22-ansible.html">Installing using an ansible playbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="23-random.html">Random notes and things to know about RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="24-quickinstall.html">Quickinstall guide to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="25-godpasswd.html">How to reset the password for #1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="26-compileerror.html">Troubleshooting difficulties compiling RhostMUSH</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dealing with DB Corruption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="28-maildbcorrupt.html">Dealing with a corrupt mail database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="29-setup.html">Additional simplified notes on setting up RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-cron.html">Using the built-in cron system for periodically running commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="31-comparison.html">Comparison of features between RhostMUSH, PennMUSH, and MUX2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="32-dbloading.html">Loading an existing Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="33-qdbm.html">Converting database betwen GDBM and QDBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="34-upgrade.html">Updating RhostMUSH prior to 3.9.5p2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="35-txtfiles.html">Textfiles for RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="36-scripts.html">The following scripts are used in the game directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="37-execscripts.html">Scripts to be used with execscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="38-imageformat.html">Format for image filses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="38-imageformat.html#help-key-indexes-for-the-values">HELP key indexes for the values:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="39-portdirector.html">Network Port redirector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40-autoshutdown.html">Autoshutdown script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="41-minimaldb.html">Minimal DB instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="42-ambrosiadb.html">Ambrosia’s Minimal Rhost DB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helpfile.html">RhostMUSH Internal Help Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wizhelpfile.html">RhostMUSH Internal Help Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flags.html">Comparison of Flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Comparison of powers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nda.html">Historical Non-Disclosure Agreement</a></li>
+</ul>
+
+  
+
+
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+<footer>
+    <div id="footer-info">
+        <ul id="build-details">
+            
+                <li class="footer-element">
+                    
+                        <a href="_sources/27-dbcorrupt.rst.txt" rel="nofollow"> source</a>
+                    
+                </li>
+            
+
+            
+
+            
+        </ul>
+        <div id="credit">
+            created with <a href="http://sphinx-doc.org/">Sphinx</a> and <a href="https://github.com/Autophagy/insegel">Insegel</a>
+
+        </div>
+    </div>
+
+    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
+
+    <script type="text/javascript">
+      $("#menu-toggle").click(function() {
+        $("#menu-toggle").toggleClass("toggled");
+        $("#side-menu-container").slideToggle(300);
+      });
+    </script>
+
+</footer> 
+
+</div>
+
+</body>
+</html>

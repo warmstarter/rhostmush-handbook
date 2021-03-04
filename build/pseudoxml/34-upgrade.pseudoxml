@@ -1,0 +1,294 @@
+<document source="/home/pi/rhostmush-handbook/source/34-upgrade.rst">
+    <section ids="updating-rhostmush-prior-to-3-9-5p2" names="updating\ rhostmush\ prior\ to\ 3.9.5p2">
+        <title>
+            Updating RhostMUSH prior to 3.9.5p2
+        <paragraph>
+            Ok.
+        <paragraph>
+            So you’re running an old RhostMUSH.
+        <paragraph>
+            One prior to 3.9.5p2 and want to take advantage of the new
+            format of the Makefile and the automated mysql stuff and
+            all the other goodies that isn’t really (easilly) done
+            with just patch.sh.
+        <paragraph>
+            Well, you’re in luck.  It is actually fairly easy to do.
+        <paragraph>
+            This is what you have to do.
+        <paragraph>
+            First thing’s first.
+        <enumerated_list enumtype="arabic" prefix="" suffix=".">
+            <list_item>
+                <paragraph>
+                    Log into your existing mush.  Let’s make current backups
+                    of all your flatfiles.  Issue:
+                    A. @dump/flat
+                    B. wmail/unload
+                    C. @areg/unload
+                    D. newsdb/unload
+            <list_item>
+                <paragraph>
+                    Shutdown your game (@shutdown)
+            <list_item>
+                <paragraph>
+                    Make an image of all your current backed up files.  From
+                    The Server/game directory you would type:
+                <block_quote>
+                    <paragraph>
+                        ./backup_flat.sh -s
+                <paragraph>
+                    Please remember the ‘-s’ to the ./backup_flat.sh.
+            <list_item>
+                <paragraph>
+                    Make note of the most recently created file in the directory
+                    Server/game/oldflat.  It’s usually named something like:
+                <block_quote>
+                    <paragraph>
+                        RhostMUSH.dbflat1.tar.gz
+                <paragraph>
+                    You will need this file later.
+            <list_item>
+                <paragraph>
+                    Rename your ‘Rhost’ directory to something else.  This
+                    is the directory that you have containing the ‘Server’
+                    directory.  Name it anything you want other than ‘Rhost’.
+                    For those not used to unix you would type:
+                <block_quote>
+                    <paragraph>
+                        mv Rhost Rhost_old
+            <list_item>
+                <definition_list>
+                    <definition_list_item>
+                        <term>
+                            Pull in the latest Rhost.  You would type:
+                        <definition>
+                            <paragraph>
+                                git clone 
+                                <reference refuri="https://github.com/RhostMUSH/trunk">
+                                    https://github.com/RhostMUSH/trunk
+                                 Rhost
+                <paragraph>
+                    You would type this in the same directory you have renamed
+                    your old ‘Rhost’ directory
+            <list_item>
+                <definition_list>
+                    <definition_list_item>
+                        <term>
+                            go into the Rhost/Server directory.   Type:
+                        <definition>
+                            <paragraph>
+                                make confsource
+                <paragraph>
+                    Select what options you want (including the mysql and other goodies)
+                    then compile it (also within the menu, it’s the ‘r’ option).
+        <definition_list>
+            <definition_list_item>
+                <term>
+                    8   Once your game is compiled and ready to go you need to copy in
+                <definition>
+                    <paragraph>
+                        the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz
+                        we mentioned in step #4 to the Server/game directory of your NEW
+                        GAME DIRECTORY.  From within the ‘game’ directory of your current
+                        game you should be able to issue (if you named the old one Rhost_old):
+                        Again this needs to be done FROM YOUR Server/game directory!!!
+                        A. cp netrhost.conf netrhost.conf.orig
+                        B. cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .
+                        C. tar -zxvf RhostMUSH.dbflat1.tar.gz
+                        D. Compare your current netrhost.conf to the default one that came with
+                    <block_quote>
+                        <paragraph>
+                            the source (that you renamed to netrhost.conf.orig).  Likely the
+                            only sections you have to add to your current netrhost.conf (that
+                            came with your RhostMUSH.dbflat1.tar.gz archive), will be toward
+                            the end, with the include rhost_ingame.conf and rhost_mysql.conf.
+                            Depending on how old your game is coming from you may need to add
+                            more options.  Any config option that is the same between the
+                            netrhost.conf files do not have to be copied over, and you want to
+                            keep your custom settings (like don’t port or other stuff you
+                            have already customized).
+                    <enumerated_list enumtype="upperalpha" prefix="" start="5" suffix=".">
+                        <list_item>
+                            <paragraph>
+                                ./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
+                                This loads in your flatfile information.
+                        <list_item>
+                            <paragraph>
+                                ./Startmush
+                                Your ./Startmush should re-index all your txt files you originally made.
+                        <list_item>
+                            <paragraph>
+                                In your game type the following as an immortal or as #1.
+                    <block_quote>
+                        <enumerated_list enumtype="arabic" prefix="" suffix=".">
+                            <list_item>
+                                <paragraph>
+                                    wmail/load
+                                    This will load in your mail flatfile.
+                            <list_item>
+                                <paragraph>
+                                    @areg/load
+                                    This will load in your autoregistration flatfile (if available)
+                            <list_item>
+                                <paragraph>
+                                    newsdb/load
+                                    This will load in your hardcoded bbs flatfile (if available)
+        <enumerated_list enumtype="arabic" prefix="" start="9" suffix=".">
+            <list_item>
+                <paragraph>
+                    You should be good to go on a current directory structure for Rhost.  Enjoy!
+        <section ids="adding-mysql-to-rhostmush-older-than-3-9-5p2" names="adding\ mysql\ to\ rhostmush\ older\ than\ 3.9.5p2">
+            <title>
+                Adding MySQL to RhostMUSH older than 3.9.5p2
+            <paragraph>
+                MySQL is now native in RhostMUSH as of 3.9.5p2.
+            <section ids="important-important-important-important-important-important" names="**\ important\ **\ important\ **\ important\ **\ important\ **important\ **\ important\ **">
+                <title>
+                    ** IMPORTANT ** IMPORTANT ** IMPORTANT ** IMPORTANT 
+                    <problematic ids="id2" refid="id1">
+                        **
+                    IMPORTANT ** IMPORTANT **
+                <paragraph>
+                    To autodetect it, YOU MUST HAVE mysql_config installed and running
+                    on your server.  Without this, even if you have mysql db installed
+                    it won’t be able to recognize the parameters you will need for it
+                    and will thus fail.  Please check your linux distribution to see
+                    what packages are needed to install mysql_config.
+                    <strong>
+                        ***************************************************************************
+                    
+                    ** IMPORTANT ** IMPORTANT ** IMPORTANT ** IMPORTANT 
+                    <strong>
+                        IMPORTANT ** IMPORTANT **
+                        *****************************************************************************
+                <paragraph>
+                    Download the git repository to a seperate directory so that you can
+                    copy over the files that it requires you to.
+                <paragraph>
+                    Suggestion:  git clone 
+                    <reference refuri="http://github.com/RhostMUSH/trunk">
+                        http://github.com/RhostMUSH/trunk
+                     ~/tmprho
+                <paragraph>
+                    If you are patching UP from an older version, you need to update
+                    the following files:
+                <enumerated_list enumtype="arabic" prefix="" suffix=".">
+                    <list_item>
+                        <paragraph>
+                            update your src/Makefile to the one in the 3.9.5p2+ repo
+                            ( cp ~/tmprho/Server/src/Makefile ~/Rhost/Server/src/Makefile )
+                    <list_item>
+                        <paragraph>
+                            update your bin/asksource.* files to the one in the 3.9.5p2+ repo
+                            ( cp ~/tmprho/Server/bin/asksource.* ~/Rhost/Server/bin/ )
+                    <list_item>
+                        <paragraph>
+                            append ‘include rhost_mysql.conf’ BEFORE the rhost_ingame.conf file
+                            and before the section that says ‘define local aliases’ toward the end of
+                            your netrhost.conf file.
+                            ( edit your ~/Rhost/Server/game/netrhost.conf file )
+                    <list_item>
+                        <paragraph>
+                            copy the game/rhost_mysql.conf file from the 3.9.5p2+ repo
+                            ( cp ~/tmprho/Server/game/rhost_mysql.conf ~/Rhost/Server/game/ )
+                    <list_item>
+                        <paragraph>
+                            The following lines have to be REPLACED/CHANGED in local.c ( toward the top ):
+                            ( you may edit this or copy the one from the other distro )
+                            ( do either:  edit ~/Rhost/Server/src/local.c )
+                            (        or:  cp ~/tmprho/Server/src/local.c ~/Rhost/Server/src/local.c )
+                <definition_list>
+                    <definition_list_item>
+                        <term>
+                            //———– IF REPLACING/CHANGING local.c COPY BELOW ————————–
+                        <definition>
+                            <definition_list>
+                                <definition_list_item>
+                                    <term>
+                                        /* Called when the mush starts up, immediatly prior to the main game
+                                    <definition>
+                                        <bullet_list bullet="*">
+                                            <list_item>
+                                                <paragraph>
+                                                    loop being entered. By this point all databases are loaded and
+                                            <list_item>
+                                                <paragraph>
+                                                    all variables configured.
+                                        <paragraph>
+                                            <problematic ids="id4" refid="id3">
+                                                *
+                                            /
+                                <definition_list_item>
+                                    <term>
+                                        #ifdef MYSQL_VERSION
+                                    <definition>
+                                        <paragraph>
+                                            extern void local_mysql_init(void);
+                                            extern int sql_shutdown(dbref player);
+                            <paragraph>
+                                #endif
+                            <definition_list>
+                                <definition_list_item>
+                                    <term>
+                                        #ifdef SQLITE
+                                    <definition>
+                                        <paragraph>
+                                            extern void local_sqlite_init(void);
+                            <paragraph>
+                                #endif /* SQLITE 
+                                <problematic ids="id6" refid="id5">
+                                    *
+                                /
+                            <paragraph>
+                                void local_startup(void) {
+                                #ifdef SQLITE
+                            <block_quote>
+                                <paragraph>
+                                    local_sqlite_init();
+                            <paragraph>
+                                #endif /* SQLITE 
+                                <problematic ids="id8" refid="id7">
+                                    *
+                                /
+                                #ifdef MYSQL_VERSION
+                            <block_quote>
+                                <paragraph>
+                                    local_mysql_init();
+                            <definition_list>
+                                <definition_list_item>
+                                    <term>
+                                        #endif
+                                    <definition>
+                                        <paragraph>
+                                            load_regexp_functions();
+                            <paragraph>
+                                }
+                            <definition_list>
+                                <definition_list_item>
+                                    <term>
+                                        /* Called immediatly after the main game loop exits. At this point
+                                    <definition>
+                                        <bullet_list bullet="*">
+                                            <list_item>
+                                                <paragraph>
+                                                    all databases and variables are still configured
+                                        <paragraph>
+                                            <problematic ids="id10" refid="id9">
+                                                *
+                                            /
+                            <paragraph>
+                                void local_shutdown(void) {
+                                #ifdef MYSQL_VERSION
+                            <block_quote>
+                                <paragraph>
+                                    sql_shutdown(-1);
+                            <paragraph>
+                                #endif
+                                }
+                <paragraph>
+                    //———– IF REPLACING/CHANGING local.c COPY ABOVE ————————–
+                <enumerated_list enumtype="arabic" prefix="" start="6" suffix=".">
+                    <list_item>
+                        <paragraph>
+                            Issue ‘make clean’ then make confsource to rebuild using the latest
+                            builder script to build in the mysql changes.

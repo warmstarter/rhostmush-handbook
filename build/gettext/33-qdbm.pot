@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-04 10:55-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/33-qdbm.rst:3
+msgid "Converting database betwen GDBM and QDBM"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:5
+msgid "Ok, if you plan to recompile your game that is using GDBM to QDBM, or visa versa some bad news."
+msgstr ""
+
+#: ../../source/33-qdbm.rst:8
+msgid "The databases are NOT COMPATIBLE to each other, at least in the binary form."
+msgstr ""
+
+#: ../../source/33-qdbm.rst:11
+msgid "Downgrading QDBM to GDBM"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:13
+msgid "I would NEVER change from QDBM back to GDBM, but if you're set on it these steps:"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:15
+msgid "You would use the same steps if you plan to move QDBM to GDBM.  I however would not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously, don't do it unless you have absolutely no other recourse."
+msgstr ""
+
+#: ../../source/33-qdbm.rst:19
+msgid "However, WARNING: IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify the following: 1.  You have on a 64 bit system, no object that has more than 400 attributes on it. 2.  You have on a 32 bit system, no object that has more than 750 attributes on it. 3.  Any CONTENT of any attribute must be below 4000 characters in length. 4.  Once you have that done, you may follow the procedures below on converting (upgrade)"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:26
+msgid "from GDBM to QDBM.  This works the same as converting (downgrading) QDBM back down to GDBM"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:30
+msgid "Upgradging GDBM to QDBM"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:32
+msgid "Now, if you've kept reading and plan to convert your GDBM database to QDBM great news! It's more stable, it's faster, and lets you have far more flexibility."
+msgstr ""
+
+#: ../../source/33-qdbm.rst:35
+msgid "So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do."
+msgstr ""
+
+#: ../../source/33-qdbm.rst:38
+msgid "While logged in to your mush, issue the following commands"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:40
+msgid "@dump/flat    -- This will make a flatfile dump of your MUSH database"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:41
+msgid "wmail/unload  -- This will make a flatfile dump of your MAIL database"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:42
+msgid "@areg/unload  -- If you use the AutoRegistration engine, this dumps it"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:43
+msgid "newsdb/unload -- If you use the hardcoded news/bbs engine.  This dumps it"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:46
+msgid "Verify the files exist"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:51
+msgid "(Optional) .. Server/game/data/RhostMUSH.areg.dump"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:52
+msgid "(Optional) .. Server/game/data/RhostMUSH.news.flat"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:55
+msgid "Shutdown the MUSH"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:57
+msgid "@shutdown your mush"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:60
+msgid "From the Server directory"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:62
+msgid "make clean"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:63
+msgid "make confsource 1.  Select QDBM and if you wish at this time increase your LBUF size 2.  Select any other options you may want"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:66
+msgid "(r)un and let it compile."
+msgstr ""
+
+#: ../../source/33-qdbm.rst:67
+msgid "Main DB: Delete (rm) the following files (from Rhost/Server/game/data) netrhost.gdbm* netrhost.db netrhost.db.new netrhost.db.new.prev"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:72
+msgid "Mail DB: Delete (rm) the following files (from Rhost/Server/game/data) RhostMUSH.folder.dir RhostMUSH.folder.pag RhostMUSH.mail.dir RhostMUSH.mail.pag"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:77
+msgid "(Optional) AutoReg DB: Delete (rm) the following files (from Rhost/Server/game/data) RhostMUSH.areg.dir RhostMUSH.areg.pag"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:80
+msgid "(Optional) News/BBS DB: Delete (rm) the following files (from Rhost/Server/game/data) RhostMUSH.news.dir RhostMUSH.news.pag"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:85
+msgid "From the Server/game directory"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:87
+msgid "./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:88
+msgid "./Startmush"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:91
+msgid "While logged into the mush issue the following commands"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:93
+msgid "Load in the mail database wmail/load"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:95
+msgid "(optional) Load in the autoreg database @areg/load"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:97
+msgid "(optional) Load in the news/bbs database newsdb/load"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:101
+msgid "Verify that you have QDBM running and your valid values"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:103
+msgid "@list options system"
+msgstr ""
+
+#: ../../source/33-qdbm.rst:104
+msgid "@list options (spammy)"
+msgstr ""

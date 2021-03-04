@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What to type to configure and get your RhostMUSH up and running</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/epub.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="what-to-type-to-configure-and-get-your-rhostmush-up-and-running">
+<h1>What to type to configure and get your RhostMUSH up and running</h1>
+<p>You may configure Rhost three ways.</p>
+<div class="section" id="creating-a-new-game-with-a-blank-database">
+<h2>Creating a new game with a blank database</h2>
+<blockquote>
+<div><p>Modify your ./game/netrhost.conf file or what settings you want.
+Don’t feel overwhelmed, it’s all very well documented.</p>
+</div></blockquote>
+</div>
+<div class="section" id="creating-a-new-game-with-ambrosia-s-default-database">
+<h2>Creating a new game with Ambrosia’s default database</h2>
+<blockquote>
+<div><p>Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README</p>
+<p>The netrhost.conf file you will copy is in minimal-DBs/Amb-MinimalRhost/game
+Copy this netrhost.conf file into your ‘game’ directory.</p>
+<p>You will want the custom txt files under Amb-MinimalRhost/txt in your game/txt
+directory and to mkindx all the txt files.  You can run ./Startmush -i to index.</p>
+<p>When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit &lt;RETURN&gt;
+to have it search for flatfiles, then select netrhost.db.flat from under
+the minimal-DBs/Amb-MinimalRhost directory.</p>
+<p>The main steps to make sure you do for Ambrosia’s db:
+~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat – Ambrosia’s secure and featured minimal db.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Use the matching netrhost.conf file under the Amb-MinimalRhost/game directory</p></li>
+<li><p>Load in the settings specified in the Amb-MinimalRhost/bin directory.
+- Copy this file into your ~/Server/bin directory
+- From ‘Server’ directory type: make clean
+- From ‘Server’ directory type: make confsource and ‘l’oad option 0
+- Specify any -additional- options you want at this point.
+- Recompile your code</p></li>
+<li><p>Copy the files in Amb-MinimalRhost/game/txt into your ~/Server/game/txt directory</p></li>
+<li><p>from your ~/Server/game txt file run on each of the txt files:
+../mkindx &lt;txtfile&gt;.txt &lt;txtfile&gt;.indx
+Where &lt;txtfile&gt; is the name of the file (minus the .txt extension)</p></li>
+<li><p>If running, &#64;reboot your game.</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="creating-a-new-game-with-the-generic-default-database">
+<h2>Creating a new game with the generic default database</h2>
+<blockquote>
+<div><p>Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory.</p>
+<p>When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit &lt;RETURN&gt;
+to have it search for flatfiles, then select netrhost.db.flat from under
+the minimal-DBs/minimal_db directory.</p>
+</div></blockquote>
+</div>
+<div class="section" id="starting-your-mush">
+<h2>Starting your MUSH</h2>
+<p>Once you have used one of these three methods to obtaina database, you can start your mush up.
+At this point type from the game directory:</p>
+<blockquote>
+<div><p>./Startmush</p>
+</div></blockquote>
+</div>
+<div class="section" id="backups-for-rhostmush">
+<h2>Backups for RhostMUSH</h2>
+<blockquote>
+<div><p>Backups are already handled and integrated with a script ‘backup_flat.sh’.
+If you wish to customize this, feel free.  Again, it is well documented and
+just require changing settings at the top of this script.</p>
+<p>By default, it does 7 contiguous backups.  You may increase or decrease
+this value to any value you want.</p>
+<p>It will, by default, backup all your txt/<em>.txt files, your netrhost.conf
+file, your netrhost.db.flat (mush db) file, your RhostMUSH.dump.</em>
+(mail db) files, your RhostMUSH.news.* (internal news/bbs db – if used),
+your RhostMUSH.areg.* (the autoregistration db – if used), and any sqlite
+database you currently may be using which are OPTIONALLY backed up if you
+remove the ‘#’ from before it.</p>
+<p>The backup script also will optionally rcp/scp, ftp, or mail any backups
+you want to a remote destination.  Be forewarned, the backup files can
+potentially get rather large for larger games, even compressed.  The
+average size for these files will be 1-5MB.  It could potentially get
+over 10-20MB in size for excessively large games, so plan accordingly.</p>
+<p>Be aware that the backup system will NOT make successful backups if you
+run out of disk space.  This includes actually running out of disk space
+or running out of disk quota.  There is a mechanism inside the backup
+script to specify an email address that you wish to get alerts from
+in these instances.  I recommend using it.</p>
+<p>If you make changes to your backup_flat.sh script with an already
+active and running mush and wish to just restart the backup procedure
+just issue: ./backup_restart.sh</p>
+</div></blockquote>
+</div>
+<div class="section" id="troubleshooting-issues-with-starting-up">
+<h2>Troubleshooting issues with starting up</h2>
+<dl>
+<dt>If you run into issues:</dt><dd><dl>
+<dt>Probelm: If it says the shared ID is already in use</dt><dd><dl class="simple">
+<dt>A1: please verify that it is the right shared debug_id in your</dt><dd><p>netrhost.conf file</p>
+</dd>
+</dl>
+<p>A2: Force a start by ./Startmush -f</p>
+</dd>
+<dt>Problem: Your log file is massive and your mush is running</dt><dd><dl class="simple">
+<dt>A1: To rotate this use the &#64;logrotate command.</dt><dd><p>See wizhelp on &#64;logrotate</p>
+</dd>
+</dl>
+</dd>
+<dt>Problem: The database flatfile you’re loading can’t load because</dt><dd><blockquote>
+<div><p>a db is already defined.</p>
+</div></blockquote>
+<p>A1: remove netrhost.db* and netrhost.gdbm* from your data directory</p>
+</dd>
+<dt>Problem: The mail database won’t load and mail shows ‘offline’</dt><dd><p>A1: wmail/load</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

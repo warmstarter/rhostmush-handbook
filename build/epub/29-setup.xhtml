@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Additional simplified notes on setting up RhostMUSH</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/epub.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="additional-simplified-notes-on-setting-up-rhostmush">
+<h1>Additional simplified notes on setting up RhostMUSH</h1>
+<p>This is the readme file for RhostMUSH.</p>
+<p>The RhostMUSH source tree offers many abilities and options
+not normally found in any other flavor of mush.  This doesn’t
+make it better than other servers (though we think so <em>j/k</em>)
+but it does give you a wider selection of configurability,
+which, as you know, is the best part of setting up a mush.
+(yea, right)</p>
+<div class="section" id="rhostmush-offers-the-following-over-other-mushes">
+<h2>RhostMUSH offers the following over other mushes</h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>A high-performance duel-quota system.</p></li>
+<li><p>A complete rewrite of key areas and referbishments
+of all the other areas.</p></li>
+<li><p>An on-line recover tool for accidental db destruction.</p></li>
+<li><p>Multi-wizard architecture for better control of staff.</p></li>
+<li><p>Multi-power system to tweek abilities of players.</p></li>
+<li><p>Multi-zone system where people can belong to multiple zones.</p></li>
+<li><p>Built in error correction for db corruption or other misuse.</p></li>
+<li><p>Built in accounting for those annoying twinks who try to hack.</p></li>
+<li><p>Many new functions and commands not seen anywhere else.</p></li>
+<li><p>A lot more that could drag this document out for pages.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="bit-levels-have-various-powers-abilities-flags-etc-available-to-them">
+<h2>Bit levels have various powers, abilities, flags, etc available to them</h2>
+<div class="section" id="guildmaster-g-level-2-lowest-wizbit-level">
+<h3>Guildmaster(g) &lt;Level 2&gt; - Lowest wizbit level</h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ability to access things remotely (long_fingers)</p></li>
+<li><p>Things are FREE for them in the queue.</p></li>
+<li><p>Can see dbref#’s of things their level and lower</p></li>
+<li><p>Can examine/decompile things their level and lower.</p></li>
+<li><p>Can set &#64;quota/&#64;guild on their level and lower.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="architect-b-level-3-middle-wizbit-level">
+<h3>Architect(B) &lt;Level 3&gt; - Middle wizbit level</h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>All things of Level 2</p></li>
+<li><p>Ability to fully control and modify anything their level and
+lower (including &#64;cloning, &#64;destroying, etc)</p></li>
+<li><p>Ability to use &#64;tel on anything their level and lower.</p></li>
+<li><p>Ability to bypass jump_ok rooms on anything their level &amp; lower.</p></li>
+<li><p>Ability to set some restricted flags: SLAVE, NO_YELL</p></li>
+<li><p>Has infinite quota and money</p></li>
+<li><p>Able to give negative money (Steal)</p></li>
+<li><p>Able to &#64;toggle the MONITOR</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="councilor-a-level-4-high-wizbit-level">
+<h3>Councilor(a) &lt;Level 4&gt; - High wizbit level</h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>All things of Level 3 and lower</p></li>
+<li><p>Ability to set more flags: NOCONNECT, WANDERER, FREE</p></li>
+<li><dl class="simple">
+<dt>Ability to &#64;nuke, &#64;toad, &#64;boot, &#64;chownall, &#64;dbck, &#64;poor,</dt><dd><p>&#64;newpassword, &#64;pcreate, slay</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="royalty-w-level-5-full-wizbit-level">
+<h3>Royalty(W) &lt;Level 5&gt; - FULL wizbit level</h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>All things of Level 4 and lower</p></li>
+<li><p>Ability to set more flags: STOP, NOSTOP, FUBAR</p></li>
+<li><p>Ability to &#64;attribute,</p></li>
+<li><p>Ability to WIZCLOAK</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="immortal-i-level-6-basically-1">
+<h3>Immortal(i) &lt;Level 6&gt; - Basically #1</h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>Can do everything except set some internal flags, effect #1,
+and set/remove the immortal flag.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="compiling-the-code">
+<h2>Compiling the code</h2>
+<p>make confsource</p>
+<p>Yes, that’s all you have to do.</p>
+<p>You may also issue ‘make source’ if the Makefile is already defined how
+you want it to be.  Please remember to ‘make clean’ before ‘make source’
+whenever you alter the code or import new source code.</p>
+</div>
+<div class="section" id="configuring-the-game">
+<h2>Configuring the game</h2>
+<p>When setting up a mush for the first time, make sure you
+have all the files configured correctly.  This is with using
+the following file for configuration:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>netrhost.conf</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="starting-the-game">
+<h2>Starting the game</h2>
+<dl>
+<dt>Once done, you start up the system with the following command:</dt><dd><ul class="simple">
+<li><p>[sh/csh] ./Startmush</p></li>
+</ul>
+<p>It will prompt you to start a new db if it doesn’t find one.</p>
+<p>You may also do the commands individually:
+- [csh] netrhost -s netrhost.conf &gt;&amp; netrhost.log &amp;</p>
+<blockquote>
+<div><p>[sh]  netrhost -s netrhost.conf &gt; netrhost.log 2&gt;&amp;1 &amp;</p>
+</div></blockquote>
+</dd>
+</dl>
+</div>
+<div class="section" id="first-login-to-the-game">
+<h2>First login to the game</h2>
+<p>Once started, log in the #1 character (Wizard) with it’s appropiate
+password (no, not ‘potrzebie’, but ‘Nyctasia’).  There were private
+reasons for the password change.</p>
+<p>Once in, do a &#64;shutdown to save the database.  Then you can run Startup
+normally.   You may make a backup of your database at anytime on-line by
+utilizing the &#64;dump/flat option.  A script comes with this distribution
+that allows the ability of auto-archiving your database for a configurable
+number of backups.</p>
+</div>
+<div class="section" id="reporting-bugs-or-getting-help">
+<h2>Reporting bugs or getting help</h2>
+<p>If you find any bugs or problems, notify one of the developers of RhostMUSH and
+a patch or workaround will be made available as soon as possible.  Current
+developers are:  Seawolf, Thorin, Ashen-Shugar, Lensman, Kale, Mac, Zenty,
+Ambrosia, Amos, and Morgan.  They can be found around the net.</p>
+</div>
+<div class="section" id="this-code-is-known-to-compile-and-run-cleanly-on-the-following-platforms">
+<h2>This code is known to compile and run cleanly on the following platforms</h2>
+<p>SunOS (all platforms)
+Solaris (all platforms)
+Linux (all platforms except redhat 5.x mentioned below)
+AIX (all platforms)
+Ultrix (all platforms)
+iBSD (all platforms)
+FreeBSD (all platforms)
+OpenBSD (all platforms)
+NetBSD (all platforms)
+IRIX (all platforms)
+HPUX (32 bit systems only)</p>
+<p>If it’s not listed here, it probably still will compile clean.</p>
+<div class="section" id="systems-known-to-not-support">
+<h3>Systems known to not support</h3>
+<p>Win32/Win16
+Alpha systems.</p>
+</div>
+<div class="section" id="untested-systems">
+<h3>Untested Systems</h3>
+<p>HP-UX (64 bit systems)
+VMS (all platforms)</p>
+</div>
+<div class="section" id="known-bugs">
+<h3>Known bugs</h3>
+<p>On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with
+the built-in gcc package (up to and including 2.8.x).  Because of this some
+config options may not work fully or cause the server to crash.  This is only
+a known issue with config options and only on this platform.</p>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,612 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-04 10:55-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/12-advanced.rst:3
+msgid "Advanced features of RhostMUSH"
+msgstr ""
+
+#: ../../source/12-advanced.rst:6
+msgid "Debugging/Tracing"
+msgstr ""
+
+#: ../../source/12-advanced.rst:8
+msgid "Debugging in Rhost allows for advanced features like expressing where and when to do debugging via a trace() function, with toggled labels, and the ability to grep content from trace output.  There also exists features to color-match parenthesis, braces, and brackets in-game as well as pretty print the output of commands and functions. - help trace - help %_ - help trace() - help parenmatch() - help parenstr()"
+msgstr ""
+
+#: ../../source/12-advanced.rst:20
+msgid "Zoning"
+msgstr ""
+
+#: ../../source/12-advanced.rst:22
+msgid "Zoning in Rhost allows the same functionality of Penn and MUX, though the syntax is different.  It also allows the ability to belong to multiple zones at the same time and take advantage of mulitple zones at once. This allows for increased levels of complexity. - help zones - help @zone - help zonecmd() - help lzone() - help @Lock type twink - help @lock type zone"
+msgstr ""
+
+#: ../../source/12-advanced.rst:34
+msgid "Reality Levels"
+msgstr ""
+
+#: ../../source/12-advanced.rst:36
+msgid "Reality levels allows for the ability to have a sandboxed 'existance' in each physical location across the entirity of the mush.  Each reality is its own sandbox and can either stand alone or work dependently with other realities.  A person can belong to multiple realities at the same time, and realities is geared to a method for send and receive.  Each 'method' requires to be in the given reality to affect it. - help reality levels - wizhelp chkreality - wizhelp reaity level - help @Lock type user"
+msgstr ""
+
+#: ../../source/12-advanced.rst:49
+msgid "Function and Command Overriding"
+msgstr ""
+
+#: ../../source/12-advanced.rst:51
+msgid "Functions and commands can both be overridden with softcode.  To override a hardcoded command you first set the command ignore. There are various levels of ignoring so that you could have it ignored from mortals but have it executed fine for non-mortals. This allows you to use the actual physical command within a softcode override.  You may also use @Hook for altering how a command works.   Functions are overridden by setting the function in question ignored, then writing a softcode alternative that is then executed and fetched appropriately."
+msgstr ""
+
+#: ../../source/12-advanced.rst:64
+msgid "Commands:"
+msgstr ""
+
+#: ../../source/12-advanced.rst:61
+#: ../../source/12-advanced.rst:67
+msgid "wizhelp @admin"
+msgstr ""
+
+#: ../../source/12-advanced.rst:62
+msgid "wizhelp access"
+msgstr ""
+
+#: ../../source/12-advanced.rst:63
+msgid "wizhelp permissions"
+msgstr ""
+
+#: ../../source/12-advanced.rst:64
+msgid "wizhelp @Hook"
+msgstr ""
+
+#: ../../source/12-advanced.rst:65
+msgid "wizhelp hook setup"
+msgstr ""
+
+#: ../../source/12-advanced.rst:71
+msgid "Functions:"
+msgstr ""
+
+#: ../../source/12-advanced.rst:68
+msgid "wizhelp function_access"
+msgstr ""
+
+#: ../../source/12-advanced.rst:69
+msgid "wizhelp @function"
+msgstr ""
+
+#: ../../source/12-advanced.rst:70
+msgid "help @lfunction"
+msgstr ""
+
+#: ../../source/12-advanced.rst:71
+msgid "wizhelp bypass()"
+msgstr ""
+
+#: ../../source/12-advanced.rst:74
+msgid "The Recycle Bin"
+msgstr ""
+
+#: ../../source/12-advanced.rst:76
+msgid "Rhost has a recycle bin that works a bit like a windows recycle bin. Whenever you destroy something within the mush, it is stacked onto the recycle bin and marked unavailable within the mush.  This marks the dbref# as garbage in any sense of the word.  However, the object is not able to be reused until purged.  Once purged, it is put onto a free list that can then be reassigned to a new object. - wizhelp @nuke - wizhelp @destroy - wizhelp @toad - wizhelp @turtle - wizhelp @purge - wizhelp @recover - wizhelp @reclist"
+msgstr ""
+
+#: ../../source/12-advanced.rst:92
+msgid "Percent Substitution Adding/Overriding"
+msgstr ""
+
+#: ../../source/12-advanced.rst:94
+msgid "Rhost allows the ability to both override percent substitutions as well as creating new ones.  This is done with @Hook and admin params and issues softcode overriding.  Due to how it is evaluated there is no risk of recursion. - wizhelp @hook - wizhelp hook_cmd - wizhelp sub_include - wizhelp sub_override"
+msgstr ""
+
+#: ../../source/12-advanced.rst:104
+msgid "Hooking"
+msgstr ""
+
+#: ../../source/12-advanced.rst:106
+msgid "Hooking allows you to have advanced methods to manipulate commands including adding customized switches to them via softcode. - wizhelp @hook - wizhelp hook_cmd - wizhelp hook_obj - wizhelp hook setup"
+msgstr ""
+
+#: ../../source/12-advanced.rst:114
+msgid "Command based uselocks"
+msgstr ""
+
+#: ../../source/12-advanced.rst:116
+msgid "This allows you to have unique uselocks per $command.  This is done through the use of the USELOCK attribute flag, then you set up a matching attribute name with a prefix of a ~ to specify how the lock is to be evaluated.  This works in the same manner as an evaluation lock.  To be able to use the USELOCK attribute flag you must be empowered to do so with the 'ATRUSE' @toggle.  You may also use the secure_atruselock config parameter to globally enable this and not require the toggle to be set. - wizhelp atruse toggle - help attribute uselocks"
+msgstr ""
+
+#: ../../source/12-advanced.rst:128
+msgid "Differentating between command and listen locks"
+msgstr ""
+
+#: ../../source/12-advanced.rst:130
+msgid "We distinguish between commands and listens with uselocks by passing an optional argument to all locks that are uselocks.  This optional argument is 0 for a default lock, 1 for a command lock and 2 for a listen lock. - help @lock type uselock"
+msgstr ""
+
+#: ../../source/12-advanced.rst:137
+msgid "Wizard auto-overiding and how to disable it"
+msgstr ""
+
+#: ../../source/12-advanced.rst:139
+msgid "By default wizards override all locks, including attribute locks, can see all dark exits, and bypass pagelocks.  This can be troublesome, and even abusive, so there's ways to disable this. - wizhelp @depower (for those abusing it) - wizhelp no_override (disable overiding locks) - wizhelp no_uselock (disable just uselock overriding) - wizhelp pagelock toggle (disable pagelock overriding)"
+msgstr ""
+
+#: ../../source/12-advanced.rst:148
+msgid "Advanced FLAG and TOGGLE control"
+msgstr ""
+
+#: ../../source/12-advanced.rst:150
+msgid "Flags and toggles can be controlled to have multiple permissions and enable/disable targets of how the flags are allowed to be set.  This is done through commands in-game or you can use conf file options to do so. - wizhelp @flagdef - wizhelp @toggledef ------- @admin @flagdef alternatives - wizhelp flag_access_set - wizhelp flag_access_unset - wizhelp flag_access_see - wizhelp flag_access_type ------- @admin @toggledef alternatives - wizhelp toggle_access_set - wizhelp toggle_access_unset - wizhelp toggle_access_see - wizhelp toggle_access_type"
+msgstr ""
+
+#: ../../source/12-advanced.rst:169
+msgid "Advanced site control"
+msgstr ""
+
+#: ../../source/12-advanced.rst:171
+msgid "We allow advanced site control by not only blocking various sites but we can specify how many times a player can be connected at the same time as well as how many times sites are able to connect at the same time.  This is done through normal site manipulation. - wizhelp forbid_host - wizhelp register_host - wizhelp noguest_host - wizhelp @list (site option)"
+msgstr ""
+
+#: ../../source/12-advanced.rst:181
+msgid "Auto-Registration"
+msgstr ""
+
+#: ../../source/12-advanced.rst:183
+msgid "Autoregistration is the method that a player can auto-register by providing their email on the connect screen.  It will email them a password and an optional document that the administrator provides.  This is well described in the wizhelp. - wizhelp autoregistration"
+msgstr ""
+
+#: ../../source/12-advanced.rst:190
+msgid "Which bit level is best?"
+msgstr ""
+
+#: ../../source/12-advanced.rst:192
+msgid "This is something that should be discussed by you and the staff of your game.  As a good rule of thumb, only provide the bitlevel that is required to do the job.  Too much power is always risky. In essence, each tier of bit can do everything the previous bitlevel can do, and then additional stuff on top of it.  The highest bitlevel is #1 itself, being bitlevel 7.  Then immortal, which should be considered the #1 character in most cases and is bitlevel 6.  Then the royalty character, which is equal to wizard on penn, mux, or other codebases.  For most things, this is the bitlevel you want to assign players.  The exception will likely be game owners or people who control the master room code."
+msgstr ""
+
+#: ../../source/12-advanced.rst:204
+msgid "There's a bunch of readme files and online wizhelp that goes into detail of the various bitlevels and what each can do. - XV.   Multi-tiered bitlevel systems - wizhelp control"
+msgstr ""
+
+#: ../../source/12-advanced.rst:210
+msgid "What are the limits for size/growth for RhostMUSH?"
+msgstr ""
+
+#: ../../source/12-advanced.rst:212
+msgid "While using QDBM, there's really no set limits for most things. The limits that we have are as followed: LBUF - 64K.  It is recommended to only use 32K as there is some"
+msgstr ""
+
+#: ../../source/12-advanced.rst:215
+msgid "issues with networking with 64K lbufs."
+msgstr ""
+
+#: ../../source/12-advanced.rst:216
+#: ../../source/12-advanced.rst:219
+msgid "Compile time option with the menu configurator"
+msgstr ""
+
+#: ../../source/12-advanced.rst:219
+msgid "SBUF - 64 characters (if configured -- it's suggested you do)."
+msgstr ""
+
+#: ../../source/12-advanced.rst:221
+msgid "MBUF - 200 characters.  Not able to be changed."
+msgstr ""
+
+#: ../../source/12-advanced.rst:229
+msgid "MAX CONNECTIONS - Limited by the total number of open sockets"
+msgstr ""
+
+#: ../../source/12-advanced.rst:224
+msgid "and descriptors on the account and server running on. There are various tools to limit connection DoS attemps and other such nastiness.  This is well documented in the netrhost.conf file."
+msgstr ""
+
+#: ../../source/12-advanced.rst:228
+msgid "wizhelp max_players"
+msgstr ""
+
+#: ../../source/12-advanced.rst:229
+#: ../../source/12-advanced.rst:242
+msgid "~/game/netrhost.conf"
+msgstr ""
+
+#: ../../source/12-advanced.rst:232
+msgid "MEMORY - no limit.  Generally runs between 8-50M depending"
+msgstr ""
+
+#: ../../source/12-advanced.rst:232
+msgid "on the size of the mush and the LBUF size specified."
+msgstr ""
+
+#: ../../source/12-advanced.rst:242
+msgid "CPU  - no limit, but has built in cpu abort in code.  The"
+msgstr ""
+
+#: ../../source/12-advanced.rst:235
+msgid "netrhost.conf file documents this well for customizing. the default values are usually good enough."
+msgstr ""
+
+#: ../../source/12-advanced.rst:237
+msgid "wizhelp max_cpu_cycles"
+msgstr ""
+
+#: ../../source/12-advanced.rst:238
+msgid "wizhelp cpuintervalchk"
+msgstr ""
+
+#: ../../source/12-advanced.rst:239
+msgid "wizhelp cputimechk"
+msgstr ""
+
+#: ../../source/12-advanced.rst:240
+msgid "wizhelp cpu_secure_lvl"
+msgstr ""
+
+#: ../../source/12-advanced.rst:241
+msgid "wizhelp heavy_cpu_max"
+msgstr ""
+
+#: ../../source/12-advanced.rst:246
+msgid "DISK - no limit.  Generally will be 75-200M depending on size,"
+msgstr ""
+
+#: ../../source/12-advanced.rst:245
+msgid "number of backups and if you leave your compiled object files in."
+msgstr ""
+
+#: ../../source/12-advanced.rst:257
+msgid "DB Size - (20000 default) There is no limit on the number of"
+msgstr ""
+
+#: ../../source/12-advanced.rst:249
+msgid "objects the db can have.  By default it's soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem."
+msgstr ""
+
+#: ../../source/12-advanced.rst:254
+msgid "wizhelp maximum_size"
+msgstr ""
+
+#: ../../source/12-advanced.rst:255
+msgid "help @quota"
+msgstr ""
+
+#: ../../source/12-advanced.rst:256
+msgid "wizhelp @quota"
+msgstr ""
+
+#: ../../source/12-advanced.rst:257
+#: ../../source/12-advanced.rst:263
+msgid "wizhelp @limit"
+msgstr ""
+
+#: ../../source/12-advanced.rst:264
+msgid "Attribute Size - 10K as a hard limit.  750 as a soft limit."
+msgstr ""
+
+#: ../../source/12-advanced.rst:260
+msgid "You can increase this but it can't exceed 10000 attributes.  This is to avoid DoS style attacks."
+msgstr ""
+
+#: ../../source/12-advanced.rst:262
+msgid "wizhelp vlimit"
+msgstr ""
+
+#: ../../source/12-advanced.rst:267
+msgid "Sqlite and MySQL/Maria setup and why use it?"
+msgstr ""
+
+#: ../../source/12-advanced.rst:269
+msgid "Both of these can be configured separately or conjointly to run in parallel.  This can be done through the RhostMUSH configuration utility.  You generally want to use SQL for external data storage or accessing a central repository of data to share between multiple projects.  Like, for example between a wiki, a forum, and the mush."
+msgstr ""
+
+#: ../../source/12-advanced.rst:278
+msgid "Executing outside scripts and binaries within RhostMUSH"
+msgstr ""
+
+#: ../../source/12-advanced.rst:280
+msgid "Rhost has execscript() which allows executing outside binaries or scripts as a native function.  All effort has been done to avoid any type of DoS based issue or hang by doing this, however the guidelines presented should be followed before doing so. - wizhelp execscript - wizhelp power execscript - help sidefx - wizhelp writing scripts"
+msgstr ""
+
+#: ../../source/12-advanced.rst:290
+msgid "Pulling external data into RhostMUSH"
+msgstr ""
+
+#: ../../source/12-advanced.rst:292
+msgid "You are capable of pulling external data in to RhostMUSH using several methods.  These are by using:"
+msgstr ""
+
+#: ../../source/12-advanced.rst:294
+msgid "SQL (mysql or sqlite)"
+msgstr ""
+
+#: ../../source/12-advanced.rst:295
+msgid "execscript"
+msgstr ""
+
+#: ../../source/12-advanced.rst:296
+msgid "cron (wizhelp signal)"
+msgstr ""
+
+#: ../../source/12-advanced.rst:299
+msgid "Integrating a unix cron right into RhostMUSH"
+msgstr ""
+
+#: ../../source/12-advanced.rst:301
+msgid "The unix cron can be used to integrate with Rhost fairly easilly by use of signals.  By using SIGUSR1 you can specify Rhost to execute code in-game, which part of that could be to pick up a pre-designed list of commands that the unix cron has set up. - wizhelp signal - wizhelp signal_cron"
+msgstr ""
+
+#: ../../source/12-advanced.rst:310
+msgid "Signal handling, how it works, and when and why use it"
+msgstr ""
+
+#: ../../source/12-advanced.rst:312
+msgid "Signals are used to do different things for the mush.  By default, the following signals are recognized by the mush and will do the following as defaults. - SIGUSR1 - will do a reboot of the mush.  This is also customizable"
+msgstr ""
+
+#: ../../source/12-advanced.rst:316
+msgid "so that you can have it execute code in-mush if you want."
+msgstr ""
+
+#: ../../source/12-advanced.rst:317
+msgid "SIGUSR2 - will do a clean shutdown of the mush."
+msgstr ""
+
+#: ../../source/12-advanced.rst:321
+msgid "SIGTERM - will immediately scram the mush as cleanly and fast"
+msgstr ""
+
+#: ../../source/12-advanced.rst:319
+msgid "as possible.  It will avoid dumping anything to the database to speed up scramming, but write a TERM flat file to be loaded in if corruption."
+msgstr ""
+
+#: ../../source/12-advanced.rst:324
+msgid "Setting up global parents, global @parents, global attribute formatting, and other global setups"
+msgstr ""
+
+#: ../../source/12-advanced.rst:326
+msgid "Global parents are useful when you want to have a global 'parent' without actually having a defined '@parent'.  It always will be the highest tier in a lookup.  The way lookups will go will be:"
+msgstr ""
+
+#: ../../source/12-advanced.rst:329
+msgid "self->@parent(s)->@zone(s)->GlobalParent"
+msgstr ""
+
+#: ../../source/12-advanced.rst:331
+#: ../../source/12-advanced.rst:347
+#: ../../source/12-advanced.rst:363
+msgid "The type of the parent does not have to match the target."
+msgstr ""
+
+#: ../../source/12-advanced.rst:333
+msgid "These global parents can be defined either by using a global generic parent or by using the type.  If a type is specified it overrides the generic.  The following parameters are used: - global_parent_obj     - The generic global parent (if defined) - global_parent_room    - The room global parent - global_parent_exit    - The exit global parent - global_parent_thing   - The thing global parent - global_parent_player  - The player global parent"
+msgstr ""
+
+#: ../../source/12-advanced.rst:342
+msgid "Global @parents are different than global parents in that any new item of similar type that is created is automatically assigned this physical @parent.  It's obviously more limiting since it sets the literal physical parent defined."
+msgstr ""
+
+#: ../../source/12-advanced.rst:349
+msgid "The following parameters are used: - room_parent           - The target that new rooms are @parented - exit_parent           - The target that new exits are @parented - thing_parent          - The target that new things are @parented - player_parent         - The target that new players are @parented"
+msgstr ""
+
+#: ../../source/12-advanced.rst:355
+msgid "Global attribute formatting is a method define a wrapper, of sorts, where attributes like @desc, @odesc, @succ, and anything similar can be processed through this.  All attributes will be either &FORMAT<attribute> or &<attribute>FORMAT based on the current configuration.  Example: &FORMATDESC or &DESCFORMAT localy, or use the following global objects for global formatting.  Local formatting has priority."
+msgstr ""
+
+#: ../../source/12-advanced.rst:365
+msgid "room_attr_default     - Target for room formatting"
+msgstr ""
+
+#: ../../source/12-advanced.rst:366
+msgid "exit_attr_default     - Target for exit formatting"
+msgstr ""
+
+#: ../../source/12-advanced.rst:367
+msgid "thing_attr_default    - Target for thing formatting"
+msgstr ""
+
+#: ../../source/12-advanced.rst:368
+msgid "player_attr_default   - Target for player formatting"
+msgstr ""
+
+#: ../../source/12-advanced.rst:372
+msgid "RhostMUSH limitations and how to get around them"
+msgstr ""
+
+#: ../../source/12-advanced.rst:374
+msgid "While Rhost is insanely configurable and quite powerful, there are limitations that exist within it."
+msgstr ""
+
+#: ../../source/12-advanced.rst:377
+msgid "Function invocations.  Sometimes you will hit a ceiling on evaluation. You may want to tweak values to allow more functions or commands to execute.  The following controls that: - function_invocation_limit [25000 default] - specifies the total"
+msgstr ""
+
+#: ../../source/12-advanced.rst:381
+msgid "functions you can execute per command."
+msgstr ""
+
+#: ../../source/12-advanced.rst:384
+msgid "function_recursion_limit [50] - specifies the total times a"
+msgstr ""
+
+#: ../../source/12-advanced.rst:383
+msgid "function can call itself over and over.  Rarely should this be increased and doing so can effect your stack depth."
+msgstr ""
+
+#: ../../source/12-advanced.rst:386
+msgid "Command queue limits.  Sometimes you want more to be queued up for players or wizards. - player_queue_limit  - Max number of entries a player can queue - wizard_queue_limit  - Max number of entries a wizard can queue"
+msgstr ""
+
+#: ../../source/12-advanced.rst:391
+msgid "@limit is a wonderful way to lock down limitations per player or global.  Lots of power is available here. - @limit - vattr_limit_checkwiz - Enable @limit checks for wizards - wizmax_vattr_limit   - Set wizard global VATTR limits - wizmax_dest_limit    - Set wizard global @destroy limits - max_vattr_limit      - Set player global VATTR limits - max_dest_limit       - Set player global @destroy limits"
+msgstr ""
+
+#: ../../source/12-advanced.rst:400
+msgid "Lots of trace output can be cut off.  You can modify this with: - trace_output_limit   - Set lines of trace output shown"
+msgstr ""
+
+#: ../../source/12-advanced.rst:403
+msgid "To define how many commands a minute a player set SPAMMONITOR can use - spam_limit -- default 120"
+msgstr ""
+
+#: ../../source/12-advanced.rst:406
+msgid "If you examine things and see 'Output cut off' messages, you may want to increase your output limit, funny enough, the name of this is similar - output_limit - You should set this no less than 4 times the current"
+msgstr ""
+
+#: ../../source/12-advanced.rst:410
+msgid "size of your LBUF."
+msgstr ""
+
+#: ../../source/12-advanced.rst:412
+msgid "Attributes names can not exceed 64 characters.  Sorry, it's a hard limit"
+msgstr ""
+
+#: ../../source/12-advanced.rst:414
+msgid "Sometime you may find a single \\ may not work for an escape.  You can in most cases use a % instead or double escape the \\ to make it work. Also look at lit() as a solution."
+msgstr ""
+
+#: ../../source/12-advanced.rst:420
+msgid "Things other mushes can do that Rhost can not and how to emulate it"
+msgstr ""
+
+#: ../../source/12-advanced.rst:423
+msgid "PennMUSH"
+msgstr ""
+
+#: ../../source/12-advanced.rst:425
+msgid "Attribute trees.  These are emulated as a base set and can be duplicated enough to at least port code."
+msgstr ""
+
+#: ../../source/12-advanced.rst:427
+msgid "lsearch() will have to be recoded to search()"
+msgstr ""
+
+#: ../../source/12-advanced.rst:428
+msgid "align() will have to be recoded to printf()"
+msgstr ""
+
+#: ../../source/12-advanced.rst:429
+msgid "Penn allows empty attributes.  Rhost does not.  Work will have to be done to take this into consideration."
+msgstr ""
+
+#: ../../source/12-advanced.rst:431
+msgid "All *val() functions in Penn that are used will have to be remapped to a non-*val() function.  It should be as simple as function_alias to the non-*val.  Example:"
+msgstr ""
+
+#: ../../source/12-advanced.rst:434
+msgid "@admin function_alias=hasattrval hasattr"
+msgstr ""
+
+#: ../../source/12-advanced.rst:435
+msgid "Penn's hardcoded comsystem is emulated with the softcode comsys"
+msgstr ""
+
+#: ../../source/12-advanced.rst:436
+msgid "Penn's @mail system is workable with mail wrappers"
+msgstr ""
+
+#: ../../source/12-advanced.rst:437
+#: ../../source/12-advanced.rst:450
+msgid "Pueblo is not supported."
+msgstr ""
+
+#: ../../source/12-advanced.rst:438
+msgid "json is not supported."
+msgstr ""
+
+#: ../../source/12-advanced.rst:439
+msgid "ssl is not natively supported (yet), see section XIV"
+msgstr ""
+
+#: ../../source/12-advanced.rst:440
+msgid "This uses @shutdown/restart, Rhost uses @reboot"
+msgstr ""
+
+#: ../../source/12-advanced.rst:443
+msgid "MUX"
+msgstr ""
+
+#: ../../source/12-advanced.rst:445
+msgid "Mux has an async mysql database engine.  This is not possible with Rhost.  You'll have to use the sync method instead."
+msgstr ""
+
+#: ../../source/12-advanced.rst:447
+msgid "UTF8 is supported but internally passed differently."
+msgstr ""
+
+#: ../../source/12-advanced.rst:448
+msgid "Mux's hardcoded comsystem is emulated with the softcode comsys"
+msgstr ""
+
+#: ../../source/12-advanced.rst:449
+msgid "MUX's @mail system is workable with mail wrappers"
+msgstr ""
+
+#: ../../source/12-advanced.rst:451
+msgid "This uses @restart, Rhost uses @reboot"
+msgstr ""
+
+#: ../../source/12-advanced.rst:454
+msgid "Advanced guest setup"
+msgstr ""
+
+#: ../../source/12-advanced.rst:456
+msgid "After you set up your guests, you can set unique names to each guest if you so want after defining the dbref#'s your guests use.  This is done by defining them in the guest_namelist parameter.  You can also increase guests (or decrease them) between 0-31 guests. - wizhelp guest_namelist - wizhelp num_guests"
+msgstr ""
+
+#: ../../source/12-advanced.rst:464
+msgid "Attribute permission masking and the joys of the power behind it"
+msgstr ""
+
+#: ../../source/12-advanced.rst:466
+msgid "Attribute contentlocks can be set up so you can lock the actual content that you can set (or even unset!) into an attribute. The beauty of this is that you can specify case sensitive information, lock different ways contents in attributes are set based on who is setting it, or even on where it's being set. The sky's the limit. - global_attrdefault    - Target for defining content locks"
+msgstr ""
+
+#: ../../source/12-advanced.rst:476
+msgid "The amazing @cluster and what it can do for you"
+msgstr ""
+
+#: ../../source/12-advanced.rst:478
+msgid "Clusters is the way to virtually assign multiple objects into a single physical object.  It essentially chains together two or more objects to share attributes between them, so that any attribute set on any object in that cluster can be set or fetched as if it was a singular entity.  This allows some amazing ability to distribute attribute content or even have a farm of a massive amount of attributes without paying a hefty penalty on object bloat."
+msgstr ""
+
+#: ../../source/12-advanced.rst:485
+msgid "help cluster  -- Gives a fantastic overview of how clusters work."
+msgstr ""
+
+#: ../../source/12-advanced.rst:488
+msgid "What we plan for the future"
+msgstr ""
+
+#: ../../source/12-advanced.rst:490
+msgid "Things to look forward to the future with RhostMUSH. - Full Unicode/UTF8 in Rhost 4.0 - A fully featured tag system in Rhost 4.0 - Built in Python API handler in Rhost 4.0 - Hopefully a built in Ruby and Perl API in Rhost 4.0/4.1 - Cross-Mush execution between mushes in Rhost 4.1 - More as we think about it :)"
+msgstr ""
+
+#: ../../source/12-advanced.rst:498
+msgid "EXT: Additional features not covered otherwise Additional features - +/- 5.4 million years can be utilized with the built in time functions"
+msgstr ""
+
+#: ../../source/12-advanced.rst:501
+msgid "which includes timefmt(), secs(), convtime(), convsecs(), and moon().  Party on!"
+msgstr ""
+
+#: ../../source/12-advanced.rst:502
+msgid "Changing permission levels in the middle of execution for evaluation. * see help on the streval and ueval function"
+msgstr ""
+
+#: ../../source/12-advanced.rst:504
+msgid "Full features in-game customization of near every aspect of the game."
+msgstr ""

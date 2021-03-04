@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random notes and things to know about RhostMUSH</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/epub.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="random-notes-and-things-to-know-about-rhostmush">
+<h1>Random notes and things to know about RhostMUSH</h1>
+<p>Here are some things to know about RhostMUSH and what you may or may not
+want to do.  Things here are not covered in other documents:</p>
+<p>Admin toggles to configure the WHO, various things you’re used to, etc is in the
+‘netrhost.conf’ file.  descriptions Notes in the autoconf.h file is in the
+README.AUTOCONF file.</p>
+<div class="section" id="note-on-bits-their-levels-and-things-they-do">
+<h2>Note on bits, their levels, and things they do</h2>
+<blockquote>
+<div><p>IMMORTAL - They can do anything.  Treat this as #1 and only give to
+people you trust.  Period.   You don’t have to use this bit
+if you do not want to and just assume #1.</p>
+<p>ROYALTY - Unlike PENN/MUX, this is <em>not</em> a sub-wizard, this is a
+FULL wizard.  Plus, they can do a bit more.</p>
+<p>COUNCILOR - Like royalty on PENN/MUX but they can modify.</p>
+<p>ARCHITECT - Can’t do as much as councilor, but lot more than BUILDER.</p>
+<p>GUILDMASTER - Very limited.  Sees dbrief#’s, can ex things their
+level and lower and &#64;quota players.</p>
+</div></blockquote>
+</div>
+<div class="section" id="you-need-to-pcreate-your-guest-characters-and-set-them-guest">
+<h2>You need to &#64;pcreate your guest characters and set them GUEST</h2>
+<blockquote>
+<div><p>It doesn’t create them on the fly but we considered this better.
+You have 31 total you can have.  It defaults to 10 in the
+netrhost.conf file.  You can rename the guests anything you want,
+but before you do so, you must add the dbref#’s to the param
+guest_namelist</p>
+</div></blockquote>
+</div>
+<div class="section" id="powers-are-inherited">
+<h2>&#64;powers are INHERITED</h2>
+<blockquote>
+<div><dl class="simple">
+<dt>Therefore, you need power_objects enabled (&#64;admin)</dt><dd><p>to make this work properly for non-plauyers.
+A power is taken before a bit level ONLY if higher than that bit.
+Yes, powers are multi-level.</p>
+</dd>
+</dl>
+</div></blockquote>
+</div>
+<div class="section" id="depowers-are-automatically-checked-first-before-anything-else">
+<h2>&#64;depowers are automatically checked first before anything else</h2>
+<blockquote>
+<div><p>This is also meaningless on objects.</p>
+</div></blockquote>
+</div>
+<div class="section" id="zones-are-unique">
+<h2>Zones are unique</h2>
+<blockquote>
+<div><p>You can have things in multiple zones.</p>
+</div></blockquote>
+</div>
+<div class="section" id="the-db-auto-repares-itself-when-it-can">
+<h2>The db auto-repares itself when it can</h2>
+<blockquote>
+<div><p>It does this by purging anything
+it can’t identify.  Dataloss is better than unrecoverable data.
+Yes, any such ‘repairing’ is logged so you know if something is up.</p>
+</div></blockquote>
+</div>
+<div class="section" id="you-can-get-your-connect-txt-to-parse-ansi">
+<h2>You can get your connect.txt to parse ansi</h2>
+<blockquote>
+<div><p>See ansi_txtfiles in wizhelp.
+You can also override it with softcode if you so wanted.
+See file_object in wizhelp for more information on this.</p>
+</div></blockquote>
+</div>
+<div class="section" id="re-compiled-binaries-do-not-require-an-shutdown">
+<h2>Re-compiled binaries do not require an &#64;shutdown</h2>
+<blockquote>
+<div><p>When re-compiling the binaries, all you have to remember is when done, issue
+&#64;reboot on the game and &#64;readcache.</p>
+<p>You do not need to &#64;shutdown.</p>
+</div></blockquote>
+</div>
+<div class="section" id="softcode-emulations-of-functions-from-other-servers-are-included">
+<h2>Softcode emulations of functions from other servers are included</h2>
+<blockquote>
+<div><p>Load the file softfunctions into the mush once it’s set up.  This are
+&#64;functions that will alias the functions that PENN, MUX, and TinyMUSH have
+that is either named differently or we don’t have for one reason or another.</p>
+</div></blockquote>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

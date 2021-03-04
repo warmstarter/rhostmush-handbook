@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adding hardcoded modules</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/epub.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="adding-hardcoded-modules">
+<h1>Adding hardcoded modules</h1>
+<p>RhostMUSH does support module writing.</p>
+<div class="section" id="modifying-sourcode-to-add-a-module">
+<h2>Modifying sourcode to add a module</h2>
+<p>This requires hooking your changes into local.c, then modifying the Makefile (in the src directory)
+for any new source files that you wish to add.</p>
+<p>Something to be aware of is that all localized data is ran after the system cache subroutine.</p>
+</div>
+<div class="section" id="adding-an-startup-to-make-use-of-modules">
+<h2>Adding an &#64;startup to make use of modules</h2>
+<p>This means that if your code is depending on &#64;startups, you need to put a delay in the &#64;startup
+so that your local code can be loaded in as modules prior to the &#64;startup execution.</p>
+<p>Something that will not work:</p>
+<p>&#64;startup <a class="reference external" href="mailto:me=&#37;&#52;&#48;superhappyfuncommand">me=<span>&#64;</span>superhappyfuncommand</a> loadmeup=now</p>
+<p>A small alteration that will likely make this work fine.</p>
+<p>&#64;startup <a class="reference external" href="mailto:me=&#37;&#52;&#48;wait">me=<span>&#64;</span>wait</a> <a class="reference external" href="mailto:1=&#37;&#52;&#48;superhappyfuncommand">1=<span>&#64;</span>superhappyfuncommand</a> loadmeup=now</p>
+<p>That 1 second delay for the queue will give the game engine time to load in your module code.</p>
+</div>
+<div class="section" id="contributing-your-module-back-to-rhost">
+<h2>Contributing your module back to Rhost</h2>
+<p>If you wish your modules to be part of the main Rhost distribution you have two options:</p>
+<ol class="arabic simple">
+<li><p>Attempt to hack the bin/asksource.sh and bin/asksource.blank files.</p></li>
+<li><p>Ask one of the Rhost devs to do it for you :)</p></li>
+</ol>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

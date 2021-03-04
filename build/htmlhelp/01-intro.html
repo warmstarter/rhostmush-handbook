@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D2D2D" />
+  
+  <title>RhostMUSH Handbook :: What RhostMUSH is about and what’s so great about RhostMUSH.</title>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="_static/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="_static/img/favicon-16x16.png">
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+
+  <link rel="stylesheet" href="_static/css/insegel.css"/>
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'',
+        VERSION:'',
+        LANGUAGE:'None',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+  </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+
+  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
+
+</head>
+
+<body>
+  <div id="insegel-container">
+    <header>
+      <div id="logo-container">
+          
+          <a href="index.html"><img src="_static/img/logo.svg"></a>
+          
+
+      </div>
+      <div id="project-container">
+        <h1>RhostMUSH Handbook Documentation</h1>
+      </div>
+    </header>
+
+    <div id="content-container">
+
+      <div id="main-content-container">
+        <div id="main-content-header">
+          <h1>What RhostMUSH is about and what’s so great about RhostMUSH.</h1>
+        </div>
+        <div id="main-content">
+          
+  <div class="section" id="what-rhostmush-is-about-and-what-s-so-great-about-rhostmush">
+<h1>What RhostMUSH is about and what’s so great about RhostMUSH.</h1>
+<p>RhostMUSH was founded in 1989, originally by Natasha Davis (Nyctasia) and as
+a branch from the original release of TinyMUD code.  It was her desire to make
+a game that was flexible, with multiple levels of progression and highly
+customizeable.  She lost time and interest and passed the game to
+Steve Shivers (Seawolf), Mike McDermott (Thorin), and Jace Hoppel (Ashen-Shugar)</p>
+<p>Through their work, the stability improved, we fixed it to be multi-platform
+and as bug free as we could possibly make it.  We introduced several methods both
+in game and in source that allowed consistent memory bounds checking and
+various alerts for any mischievous naughtyness in-game or possibilities of any
+hacks, patches, or alterations in the code causing leaks or issues.</p>
+<p>While not perfect, it has allowed us to have an absolutely outstanding
+turn around for any bugs sent our way, which anyone who uses RhostMUSH will
+attest to.</p>
+<p>Over the years, others have joined the RhostMUSH team, including Ambrosia
+(who is the current dev lead), Lensman, Kage (who kindly provided the
+UTF8/unicode port), Jeff/Loki, Rook, Noltar, and Odin.</p>
+<p>We also have had hundreds of people who have offered (and provided) help,
+patches, suggestions, bug fixes, and alternations all on their own and
+every single one will have had their name mentioned in the RHOST.CHANGES
+file in the readme directory.  It’s far too large to have in the online
+help files.</p>
+<p>RhostMUSH today provides an amazing tool that allows nearly entire
+customization in-game of every single feature available in Rhost without
+having the requirement to modify the hardcode.  This includes but is
+not limited to:</p>
+<div class="section" id="recycle-bin">
+<h2>Recycle bin</h2>
+<blockquote>
+<div>Yup, you guessed it.  RhostMUSH has a windows like recycle bin.
+This means the objects you &#64;nuke and &#64;destroy become ‘destroyed’
+but not recycled until they are &#64;purged.  If you use the Myrddin
+CRON in the Mushcode directory, it by default sets up a job
+to purge anything over 30 days old, which should be more than
+sufficient for any needs.  The goodness of this?  You can recover
+nuked things from any period of time, as long as they were not
+&#64;purged first.
+Commands: &#64;purge, &#64;nuke, &#64;destroy, &#64;recover, &#64;reclist</div></blockquote>
+</div>
+<div class="section" id="snapshot">
+<h2>&#64;snapshot</h2>
+<blockquote>
+<div>Live image snapshots to unload or load to and from
+disk.  As many snapshots as you want, as often as you want.
+It essentially does a flatfile dump of a dbref#.  Great for
+backups or cross-Rhost portability.
+Command: &#64;snapshot</div></blockquote>
+</div>
+<div class="section" id="wizard-and-immortals-by-default">
+<h2>Wizard and Immortals by default</h2>
+<blockquote>
+<div><ul class="simple">
+<li>are spoofable.  Meaning all their &#64;pemits by default will not
+trigger NOSPOOF.  If you do not wish this, set the SPOOF flag
+this applies to anyone below their level.</li>
+<li>override all locks.  There’s two flags to disable this.
+NO_OVERRIDE to stop overriding all locks (including attribs)
+and NO_USELOCK to just stop overriding uselocks.
+This applies to anything their level and lower.</li>
+<li>optionally cloak from all non-immortals/God player.
+This can be highly abused if not careful and there
+is a &#64;depower to disable cloaking and/or dark that will
+disable this.</li>
+<li>immortals can optionally supercloak from even wizards.
+this can not be disabled, and you must consider that immortals
+should be treated as the God player (#1) since they are
+effectively #1 in nearly every way.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="titles-and-captions-to-a-player-s-name">
+<h2>Titles and Captions to a player’s name</h2>
+<blockquote>
+<div>&#64;caption and &#64;titlecaption</div></blockquote>
+</div>
+<div class="section" id="have-an-alternate-name-with-locks-for-npc-obfuscation">
+<h2>Have an alternate name with locks for NPC obfuscation</h2>
+<blockquote>
+<div>&#64;altname
+&#64;lock/altname</div></blockquote>
+</div>
+<div class="section" id="have-multiple-player-aliases">
+<h2>Have multiple player aliases</h2>
+<blockquote>
+<div>As well as a method
+to reserve player names per player w/o revealing who has what
+name.
+&#64;protect</div></blockquote>
+</div>
+<div class="section" id="actively-control-how-dark-works-both-game-wide-and-individually">
+<h2>Actively control how dark works both game-wide and individually</h2>
+<blockquote>
+<div><p>&#64;depower dark
+&#64;admin allow_whodark, sweep_dark, command_dark, lcon_checks_dark,</p>
+<blockquote>
+<div>secure_dark, see_owned_dark, idle_wiz_dark, player_dark</div></blockquote>
+<p>&#64;toggle snuffdark
+&#64;flagdef to redefine who and what can set the DARK flag</p>
+</div></blockquote>
+</div>
+<div class="section" id="make-config-file-changes-in-game-without-having-to-reboot-or-have-shell-access">
+<h2>Make config file changes in-game without having to reboot or have shell access</h2>
+<blockquote>
+<div>&#64;admin admin_object</div></blockquote>
+</div>
+<div class="section" id="execute-any-binary-or-script-as-a-localized-function">
+<h2>Execute any binary or script as a localized function</h2>
+<blockquote>
+<div>EXECSCRIPT (power), SIDEFX (flag)</div></blockquote>
+</div>
+<div class="section" id="customized-percent-substitutions-like-n-etc">
+<h2>Customized percent substitutions (like %n, %#, etc)</h2>
+<blockquote>
+<div>&#64;admin sub_include, &#64;hook</div></blockquote>
+</div>
+<div class="section" id="redefine-percent-substitutions-like-n-etc">
+<h2>Redefine percent substitutions (like %n, %#, etc)</h2>
+<blockquote>
+<div>&#64;admin sub_override, &#64;hook</div></blockquote>
+</div>
+<div class="section" id="localize-command-and-function-overrides-in-a-sandbox">
+<h2>Localize command and function overrides in a sandbox</h2>
+<blockquote>
+<div>&#64;icmd, &#64;lfunction, subeval(), sandbox()</div></blockquote>
+</div>
+<div class="section" id="multiple-zones">
+<h2>Multiple Zones</h2>
+<blockquote>
+<div>Have multiple zones which can optionally belong to
+multiple targets (multiple zones per target allowable!)
+&#64;zone, zones, lzone(), zonecmd()</div></blockquote>
+</div>
+<div class="section" id="optionally-control-enable-or-disable-sideeffects">
+<h2>Optionally control, enable, or disable sideeffects</h2>
+<blockquote>
+<div>&#64;admin sideeffects, SIDEFX (flag)</div></blockquote>
+</div>
+<div class="section" id="have-31-cross-interactive-realities-for-locations">
+<h2>Have 31 cross-interactive realities for locations</h2>
+<blockquote>
+<div>This works as a truly independant and self-contained environment.
+A room can have 31 ‘layers’, each ‘layer’ is a reality in
+the same physical space.  These layers can work independently
+or allow interaction with other layers for vast customization.
+This affects all methods within the game including all matching,
+looking, $commands, listens, movement, interaction, pretty
+much every single aspect of mushing.
+REALITY LEVELS</div></blockquote>
+</div>
+<div class="section" id="override-any-command-with-softcode">
+<h2>Override any command with softcode</h2>
+<blockquote>
+<div>&#64;admin access (check ignore)
+Master room $commands to then override the hardcode</div></blockquote>
+</div>
+<div class="section" id="the-abilility-to-raise-or-lower-permissions-on-the-various">
+<h2>The abilility to raise or lower permissions on the various</h2>
+<blockquote>
+<div>staff bitlevels for each player.
+&#64;power, &#64;depower, TOGGLES, FLAGS</div></blockquote>
+</div>
+<div class="section" id="customize-new-commands-on-the-connect-screen">
+<h2>Customize new commands on the connect screen</h2>
+<blockquote>
+<div>&#64;admin file_object2</div></blockquote>
+</div>
+<div class="section" id="softcode-any-txt-file-like-connect-txt">
+<h2>Softcode any txt file (like connect.txt)</h2>
+<blockquote>
+<div>and have it evaluate in-game.  It evaluates as the object
+it is on.
+&#64;admin file_object</div></blockquote>
+</div>
+<div class="section" id="advanced-tracing-methods-for-debugging-your-code-including-labels">
+<h2>Advanced tracing methods for debugging your code including labels!</h2>
+<blockquote>
+<div>Commands: &#64;label
+Functions: parenmatch(), trace()
+Toggles: CPUTIME
+Flags: TRACE
+Attributes: TRACE_GREP, TRACE, TRACE_COLOR, TRACE_COLOR_&lt;attr&gt;
+Substitutions: %_</div></blockquote>
+</div>
+<div class="section" id="built-in-pretty-printing-of-attributes-with-the-parenmatch-function">
+<h2>Built in pretty-printing of attributes with the parenmatch() function</h2>
+<blockquote>
+<div><p>Example Code Output :
+&#64;emit [add(1,sub(2,div(3,4)),5)];&#64;emit [extract(get(me/foo),3,1)</p>
+<p>Example Pretty Print:
+&#64;emit [</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>add(</dt><dd><dl class="docutils">
+<dt>1,sub(</dt><dd><dl class="docutils">
+<dt>2,div(</dt><dd>3,4</dd>
+</dl>
+<p>)</p>
+</dd>
+</dl>
+<p>),5</p>
+</dd>
+</dl>
+<p>)</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>];&#64;emit [</dt><dd><dl class="docutils">
+<dt>extract(</dt><dd><dl class="docutils">
+<dt>get(</dt><dd>me/foo</dd>
+</dl>
+<p>),3,1</p>
+</dd>
+</dl>
+<p>)</p>
+</dd>
+</dl>
+<p>]</p>
+</div></blockquote>
+</div>
+<div class="section" id="plenty-more-not-mentioned">
+<h2>Plenty more not mentioned!</h2>
+<p>The flexibility to customize RhostMUSH is what is most daunting.
+Don’t fret, you don’t need to do it to run RhostMUSH successfully.
+In fact, the default configuration is mostly compatible with
+MUSH and will work correctly out of the box for most needs.  For those
+wishing to play, of course the sky is the limit of what you want to
+do.</p>
+</div>
+</div>
+
+
+        </div>
+      </div>
+
+      <div id="side-menu-container">
+
+        <div id="search" role="search">
+        <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+            <input type="text" name="q" placeholder="Search..." />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+        </form>
+</div>
+
+        <div id="side-menu" role="navigation">
+
+          
+  
+    
+  
+  
+    <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What RhostMUSH is about and what’s so great about RhostMUSH.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-compile.html">What to type to Compile and Install RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-dbconversion.html">How to convert a database from another mush to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-configure.html">What to type to configure and get your RhostMUSH up and running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-newmush.html">What to type to get the basics running if you did not choose a pre-existing flatfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-security.html">Considerations to locking down restrictions in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-toggles.html">What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-lockdown.html">Extended lockdown of the mush and considerations.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-blocking.html">Methods to block anonymous connections and the pros and cons of doing so</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-customize.html">What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-differences.html">The differences to expect to the end user between PennMUSH, MUX, and RhostMUSH as of 08/06/2016</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-advanced.html">Advanced features of RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-signals.html">Signals and why you need them for control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-ssl.html">Setting up an SSL tunnel for secure connection options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-bitlevels.html">Multi-tiered bitlevel systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-modules.html">Adding hardcoded modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-shutdown.html">Shutting down gracefully</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-debug.html">Stack limit and debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-reality.html">Reality levels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-execscript.html">Execscript and external programs and scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="21-printf.html">Using printf() for advanced text output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="22-ansible.html">Installing using an ansible playbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="23-random.html">Random notes and things to know about RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="24-quickinstall.html">Quickinstall guide to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="25-godpasswd.html">How to reset the password for #1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="26-compileerror.html">Troubleshooting difficulties compiling RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="27-dbcorrupt.html">Dealing with DB Corruption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="28-maildbcorrupt.html">Dealing with a corrupt mail database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="29-setup.html">Additional simplified notes on setting up RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-cron.html">Using the built-in cron system for periodically running commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="31-comparison.html">Comparison of features between RhostMUSH, PennMUSH, and MUX2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="32-dbloading.html">Loading an existing Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="33-qdbm.html">Converting database betwen GDBM and QDBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="34-upgrade.html">Updating RhostMUSH prior to 3.9.5p2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="35-txtfiles.html">Textfiles for RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="36-scripts.html">The following scripts are used in the game directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="37-execscripts.html">Scripts to be used with execscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="38-imageformat.html">Format for image filses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="38-imageformat.html#help-key-indexes-for-the-values">HELP key indexes for the values:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="39-portdirector.html">Network Port redirector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40-autoshutdown.html">Autoshutdown script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="41-minimaldb.html">Minimal DB instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="42-ambrosiadb.html">Ambrosia’s Minimal Rhost DB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helpfile.html">RhostMUSH Internal Help Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wizhelpfile.html">RhostMUSH Internal Help Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flags.html">Comparison of Flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Comparison of powers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nda.html">Historical Non-Disclosure Agreement</a></li>
+</ul>
+
+  
+
+
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+<footer>
+    <div id="footer-info">
+        <ul id="build-details">
+            
+                <li class="footer-element">
+                    
+                        <a href="_sources/01-intro.rst.txt" rel="nofollow"> source</a>
+                    
+                </li>
+            
+
+            
+
+            
+        </ul>
+        <div id="credit">
+            created with <a href="http://sphinx-doc.org/">Sphinx</a> and <a href="https://github.com/Autophagy/insegel">Insegel</a>
+
+        </div>
+    </div>
+
+    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
+
+    <script type="text/javascript">
+      $("#menu-toggle").click(function() {
+        $("#menu-toggle").toggleClass("toggled");
+        $("#side-menu-container").slideToggle(300);
+      });
+    </script>
+
+</footer> 
+
+</div>
+
+</body>
+</html>

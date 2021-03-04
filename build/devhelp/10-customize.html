@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D2D2D" />
+  
+  <title>RhostMUSH Handbook :: What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</title>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="_static/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="_static/img/favicon-16x16.png">
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+
+  <link rel="stylesheet" href="_static/css/insegel.css"/>
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'',
+        VERSION:'',
+        LANGUAGE:'None',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+  </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+
+  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
+
+</head>
+
+<body>
+  <div id="insegel-container">
+    <header>
+      <div id="logo-container">
+          
+          <a href="index.html"><img src="_static/img/logo.svg"></a>
+          
+
+      </div>
+      <div id="project-container">
+        <h1>RhostMUSH Handbook Documentation</h1>
+      </div>
+    </header>
+
+    <div id="content-container">
+
+      <div id="main-content-container">
+        <div id="main-content-header">
+          <h1>What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</h1>
+        </div>
+        <div id="main-content">
+          
+  <div class="section" id="what-may-need-to-be-modified-to-get-softcode-from-pennmush-tinymush2-tinymush3-or-mux2-to-work-on-rhost">
+<h1>What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</h1>
+<p>RhostMUSH, for the most part, will work out of the box with most softcode gotten
+from other codebases.  There are, however, exceptions.  Most of these exceptions
+will be minor code differences between how ANSI is processed, the variences
+of arguments or switches to commands or functions, or required flags.</p>
+<p>Most changes will revolve around the ones listed in this document.</p>
+<div class="section" id="problematic-functions-between-codebases">
+<h2>Problematic functions between codebases</h2>
+<p>lsearch()/search(), align()/printf(), <a href="#id1"><span class="problematic" id="id2">*</span></a>attrval()</p>
+</div>
+<div class="section" id="problematic-features-between-codebases">
+<h2>Problematic features between codebases</h2>
+<p>named variables for regexp patterns in $commands are not supported.
+&#64;aliases on non-players are not supported.  Frankly I find them redundant.</p>
+</div>
+<div class="section" id="problematic-commands">
+<h2>Problematic commands</h2>
+<p>&#64;mapsql, hardcoded required comssytem commands (some are redundant)</p>
+</div>
+<div class="section" id="sidefx-flag">
+<h2>SIDEFX flag</h2>
+<blockquote>
+<div><p>Anything that uses sideeffects –DIRECTLY– requires this flag.
+Sideeffects are like set(), pemit(), and so forth.  list(), while a
+side-effect, does not require this flag as it is considered passive and safe.</p>
+</div></blockquote>
+</div>
+<div class="section" id="variable-exits">
+<h2>Variable exits</h2>
+<blockquote>
+<div><p>Rhost handles them slightly different.  You do not link
+exits to #-4.  That’s an invalid destination.  I always found it, frankly,
+stupid to save any data in the database that was literally invalid.  So,
+you link the exit as you normally would, then &#64;toggle the exit variable.
+At that point you use &#64;exitto like you would any other codebase.</p>
+</div></blockquote>
+</div>
+<div class="section" id="zones">
+<h2>Zones</h2>
+<blockquote>
+<div><p>Zones actually can work near exactly as you would expect them to
+work on TinyMUSH, MUX, or Penn.  Either at once or at different times.
+We recognize multiple zones, zone masters, zone inheritance, zone
+parenting, zone command processing, and the ability to bypass zones
+entirely.  There’s a ton of flexbility with this.  However, the syntax
+for adding/removing zones is different so the commands will have to be
+ported to Rhost.</p>
+</div></blockquote>
+</div>
+<div class="section" id="powers">
+<h2>&#64;powers</h2>
+<blockquote>
+<div><p>Powers work a bit differently in Rhost and they’re named
+differently, which should not be that big a surprise as they’re different
+between all the codebases anyway.  The big difference is our powers are
+tiered, meaning the can be limited or grown to a given bitlevel and are
+not just toggle powers like the other codebases.  We also have &#64;depower
+that is the anti-thesis of &#64;power</p>
+</div></blockquote>
+</div>
+<div class="section" id="attribute-length">
+<h2>Attribute length</h2>
+<blockquote>
+<div><p>While we have 64 character attribute capabilities like
+most other codebases, PennMUSH allows 1024 attribute length attributes.
+Why you need one that long boggles the mind, but if you do use attribs
+that long you need to make sure they are cut down to the proper length.</p>
+</div></blockquote>
+</div>
+<div class="section" id="attribute-contents">
+<h2>Attribute contents</h2>
+<blockquote>
+<div><p>You’ll be happy to know that Rhost allows upwards
+to 64,000 bytes of data to be assigned an LBUF.  We strongly recommand
+to cap at 32,000 however as the various TCP socket protocols play nicer
+with that value.</p>
+</div></blockquote>
+</div>
+<div class="section" id="color">
+<h2>256 color</h2>
+<p>Yup!  We got it.</p>
+</div>
+<div class="section" id="unicode-utf8">
+<h2>Unicode/UTF8</h2>
+<blockquote>
+<div><p>Yup!  We got this too.  Not quiet yet in the main branch,
+but download Kage’s branch, you won’t be dissapointed.  We will have
+UTF8 in Rhost 4.0 when released.</p>
+</div></blockquote>
+</div>
+<div class="section" id="attributes-per-object">
+<h2>Attributes per object</h2>
+<blockquote>
+<div><p>This is configurable with the VLIMIT &#64;admin
+command, however, it is absolutely hard-limited at 10000 maximum.
+This is to avoid any DoS type situation and because frankly there
+should never be a reason to exceed that.  If you need more, use
+&#64;clusters.</p>
+</div></blockquote>
+</div>
+<div class="section" id="destroying">
+<h2>Destroying</h2>
+<blockquote>
+<div><p>&#64;nuke only works on players.  &#64;destroy works on non-players.
+Never the two will meet.  We also have a built in recycle bin meaning
+anything destroyed will not be automatically recycled.  If you want it
+recycled, you have to &#64;purge it.  Yes, if you use  Myrddin’s CRON, it
+has a built in entry to auto-purge anything older than 30 days.  This
+also means you can on-line recover anything destroyed before that 30
+days.  Groovy, eh?</p>
+</div></blockquote>
+</div>
+<div class="section" id="object-id-s">
+<h2>object id’s</h2>
+<p>Yup, we got them.  Even in searches, and, well, everything.</p>
+</div>
+<div class="section" id="lsearch-and-search">
+<h2>lsearch() and search()</h2>
+<blockquote>
+<div><p>lsearch() in Penn is not syntacically similar to non-Penn search().
+This will have to be altered.  In addition, search() in non-penn games
+have to have special consideration for escaping out the evaled args.</p>
+</div></blockquote>
+</div>
+<div class="section" id="locks-can-be-different">
+<h2>&#64;locks can be different</h2>
+<blockquote>
+<div><p>We have many more lock capabilities and options
+so this should be a non-issue.</p>
+</div></blockquote>
+</div>
+<div class="section" id="customer-user-locks">
+<h2>Customer user-locks</h2>
+<blockquote>
+<div><p>We do not have custom user-locks like Penn.  We do, however, have the way
+to set encapsulated lock data into an attribute to fetch and compare
+against which I find more useful and far more flexible.
+See: lockencode(), lockdecode(), and lockcheck()</p>
+</div></blockquote>
+</div>
+<div class="section" id="attribute-trees">
+<h2>Attribute trees</h2>
+<blockquote>
+<div><p>Unlike Penn, we don’t really have attribute trees.  We do support the
+basic capabilities of it for compatibility if you load in softcode that
+uses it, but it doesn’t have the advanced features of attribute trees.
+Please see ‘help attribute tree’ for more information.</p>
+</div></blockquote>
+</div>
+<div class="section" id="prefix-permission-locking">
+<h2>Prefix permission locking</h2>
+<blockquote>
+<div><p>We do allow prefix permission locking, and some very advanced abilities
+of it.  Please see wizhelp on &#64;aflags for more information.
+- wizhelp &#64;aflags
+- wizhelp atrperms_max
+- wizhelp atrlock
+- wizhelp atrperms</p>
+</div></blockquote>
+</div>
+<div class="section" id="align-and-printf">
+<h2>align() and printf()</h2>
+<blockquote>
+<div><p>We do not have align().  Most of the code that uses align() will have to
+be converted to our printf() (which is compatible but has different syntax)</p>
+</div></blockquote>
+</div>
+<div class="section" id="mysql">
+<h2>MySQL</h2>
+<blockquote>
+<div><p>While we support MySQL, we do not have an async method like MUX2.  This
+is just not possible, sorry.</p>
+</div></blockquote>
+</div>
+<div class="section" id="mail-system">
+<h2>Mail System</h2>
+<blockquote>
+<div><p>There are mail wrappers to mimic MUX/TM3 and Penn mail systems.</p>
+</div></blockquote>
+</div>
+<div class="section" id="comsystem">
+<h2>Comsystem</h2>
+<blockquote>
+<div><p>The softcoded comsystem mimics MUX/TM3 and Penn’s comsystem.</p>
+</div></blockquote>
+</div>
+<div class="section" id="various-functions">
+<h2>Various Functions</h2>
+<blockquote>
+<div><p>There is a ‘softcode.minmax’ in the Mushcode directory that loads up a slew
+of &#64;function wrappers that will emulate various functions that MUX, Penn, or
+TM3 has.  We have the functionality for nearly all of them, but either our
+functions have different syntax, or we have different named functions that
+duplicate the functionality.  It would be far better to recode it to use
+the native functions, but the &#64;function wrappers are there for lazyness :)</p>
+</div></blockquote>
+</div>
+<div class="section" id="empty-attributes">
+<h2>Empty Attributes</h2>
+<blockquote>
+<div><p>Penn allows you to have empty attributes.  Non-penn codebases do not.
+Thus, hasattrval and the like are not needed and should likely just point
+to hasattr instead.</p>
+</div></blockquote>
+</div>
+<div class="section" id="player-stats">
+<h2>Player Stats</h2>
+<blockquote>
+<div><p>MUX has some built in ways for player stats.  We do as well but they’re
+either done via functions or attribute contents.  Code that requires this
+will have to be recoded.</p>
+</div></blockquote>
+</div>
+<div class="section" id="percent-substitutions">
+<h2>Percent Substitutions</h2>
+<blockquote>
+<div><p>Some percent substitutions may differ between codebases.  Luckily, Rhost
+allows the ability to remap or creaete new ones if this is a problem.</p>
+</div></blockquote>
+</div>
+<div class="section" id="switches">
+<h2>Switches</h2>
+<blockquote>
+<div><p>Some switches may not exist in Rhost that do in other codebases, in such
+a case, Rhost does allow the ability to &#64;hook a command to define your own
+softcoded switch to a hardcoded command and work around the limitation.</p>
+</div></blockquote>
+</div>
+<div class="section" id="flags">
+<h2>Flags</h2>
+<blockquote>
+<div><p>Some flags may be missing.  If it’s a dummy flag, feel free to use the
+marker flags MARKER0 to MARKER9 to set them.  If it’s an existing flag
+that does similar features, feel free to flag_alias it or just flag_name
+it to the other name if you want.</p>
+</div></blockquote>
+</div>
+<div class="section" id="aliases">
+<h2>Aliases</h2>
+<blockquote>
+<div><p>Multiple aliases are supported via &#64;protect.</p>
+</div></blockquote>
+</div>
+</div>
+
+
+        </div>
+      </div>
+
+      <div id="side-menu-container">
+
+        <div id="search" role="search">
+        <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+            <input type="text" name="q" placeholder="Search..." />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+        </form>
+</div>
+
+        <div id="side-menu" role="navigation">
+
+          
+  
+    
+  
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">What RhostMUSH is about and what’s so great about RhostMUSH.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-compile.html">What to type to Compile and Install RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-dbconversion.html">How to convert a database from another mush to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-configure.html">What to type to configure and get your RhostMUSH up and running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-newmush.html">What to type to get the basics running if you did not choose a pre-existing flatfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-security.html">Considerations to locking down restrictions in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-toggles.html">What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-lockdown.html">Extended lockdown of the mush and considerations.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-blocking.html">Methods to block anonymous connections and the pros and cons of doing so</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-differences.html">The differences to expect to the end user between PennMUSH, MUX, and RhostMUSH as of 08/06/2016</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-advanced.html">Advanced features of RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-signals.html">Signals and why you need them for control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-ssl.html">Setting up an SSL tunnel for secure connection options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-bitlevels.html">Multi-tiered bitlevel systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-modules.html">Adding hardcoded modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-shutdown.html">Shutting down gracefully</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-debug.html">Stack limit and debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="19-reality.html">Reality levels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-execscript.html">Execscript and external programs and scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="21-printf.html">Using printf() for advanced text output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="22-ansible.html">Installing using an ansible playbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="23-random.html">Random notes and things to know about RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="24-quickinstall.html">Quickinstall guide to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="25-godpasswd.html">How to reset the password for #1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="26-compileerror.html">Troubleshooting difficulties compiling RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="27-dbcorrupt.html">Dealing with DB Corruption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="28-maildbcorrupt.html">Dealing with a corrupt mail database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="29-setup.html">Additional simplified notes on setting up RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-cron.html">Using the built-in cron system for periodically running commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="31-comparison.html">Comparison of features between RhostMUSH, PennMUSH, and MUX2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="32-dbloading.html">Loading an existing Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="33-qdbm.html">Converting database betwen GDBM and QDBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="34-upgrade.html">Updating RhostMUSH prior to 3.9.5p2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="35-txtfiles.html">Textfiles for RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="36-scripts.html">The following scripts are used in the game directory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="37-execscripts.html">Scripts to be used with execscript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="38-imageformat.html">Format for image filses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="38-imageformat.html#help-key-indexes-for-the-values">HELP key indexes for the values:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="39-portdirector.html">Network Port redirector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="40-autoshutdown.html">Autoshutdown script</a></li>
+<li class="toctree-l1"><a class="reference internal" href="41-minimaldb.html">Minimal DB instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="42-ambrosiadb.html">Ambrosia’s Minimal Rhost DB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helpfile.html">RhostMUSH Internal Help Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wizhelpfile.html">RhostMUSH Internal Help Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flags.html">Comparison of Flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.html">Comparison of powers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nda.html">Historical Non-Disclosure Agreement</a></li>
+</ul>
+
+  
+
+
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+<footer>
+    <div id="footer-info">
+        <ul id="build-details">
+            
+                <li class="footer-element">
+                    
+                        <a href="_sources/10-customize.rst.txt" rel="nofollow"> source</a>
+                    
+                </li>
+            
+
+            
+
+            
+        </ul>
+        <div id="credit">
+            created with <a href="http://sphinx-doc.org/">Sphinx</a> and <a href="https://github.com/Autophagy/insegel">Insegel</a>
+
+        </div>
+    </div>
+
+    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
+
+    <script type="text/javascript">
+      $("#menu-toggle").click(function() {
+        $("#menu-toggle").toggleClass("toggled");
+        $("#side-menu-container").slideToggle(300);
+      });
+    </script>
+
+</footer> 
+
+</div>
+
+</body>
+</html>

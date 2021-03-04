@@ -1,0 +1,124 @@
+Converting database betwen GDBM and QDBM
+****************************************
+
+Ok, if you plan to recompile your game that is using GDBM to QDBM, or
+visa versa some bad news.
+
+The databases are NOT COMPATIBLE to each other, at least in the binary
+form.
+
+
+Downgrading QDBM to GDBM
+========================
+
+I would NEVER change from QDBM back to GDBM, but if you’re set on it
+these steps:
+
+You would use the same steps if you plan to move QDBM to GDBM.  I
+however would not do this.  Moving from QDBM to GDBM is a huge step
+backwards.  Seriously, don’t do it unless you have absolutely no other
+recourse.
+
+However, WARNING: IF you plan (for whatever reason) to move from QDBM
+to GDBM, you should verify the following: 1.  You have on a 64 bit
+system, no object that has more than 400 attributes on it. 2.  You
+have on a 32 bit system, no object that has more than 750 attributes
+on it. 3.  Any CONTENT of any attribute must be below 4000 characters
+in length. 4.  Once you have that done, you may follow the procedures
+below on converting (upgrade)
+
+   from GDBM to QDBM.  This works the same as converting (downgrading)
+   QDBM back down to GDBM
+
+
+Upgradging GDBM to QDBM
+=======================
+
+Now, if you’ve kept reading and plan to convert your GDBM database to
+QDBM great news! It’s more stable, it’s faster, and lets you have far
+more flexibility.
+
+So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
+
+
+While logged in to your mush, issue the following commands
+----------------------------------------------------------
+
+   1. @dump/flat    – This will make a flatfile dump of your MUSH
+      database
+
+   2. wmail/unload  – This will make a flatfile dump of your MAIL
+      database
+
+   3. @areg/unload  – If you use the AutoRegistration engine, this
+      dumps it
+
+   4. newsdb/unload – If you use the hardcoded news/bbs engine.  This
+      dumps it
+
+
+Verify the files exist
+----------------------
+
+   3. (Optional) .. Server/game/data/RhostMUSH.areg.dump
+
+   4. (Optional) .. Server/game/data/RhostMUSH.news.flat
+
+
+Shutdown the MUSH
+-----------------
+
+@shutdown your mush
+
+
+From the Server directory
+-------------------------
+
+   1. make clean
+
+   2. make confsource 1.  Select QDBM and if you wish at this time
+      increase your LBUF size 2.  Select any other options you may
+      want
+
+   3. (r)un and let it compile.
+
+   4. Main DB: Delete (rm) the following files (from
+      Rhost/Server/game/data) netrhost.gdbm* netrhost.db
+      netrhost.db.new netrhost.db.new.prev
+
+   5. Mail DB: Delete (rm) the following files (from
+      Rhost/Server/game/data) RhostMUSH.folder.dir
+      RhostMUSH.folder.pag RhostMUSH.mail.dir RhostMUSH.mail.pag
+
+   6. (Optional) AutoReg DB: Delete (rm) the following files (from
+      Rhost/Server/game/data) RhostMUSH.areg.dir RhostMUSH.areg.pag
+
+   7. (Optional) News/BBS DB: Delete (rm) the following files (from
+      Rhost/Server/game/data) RhostMUSH.news.dir RhostMUSH.news.pag
+
+
+From the Server/game directory
+------------------------------
+
+   1. ./db_load data/netrhost.gdbm data/netrhost.db.flat
+      data/netrhost.db.new
+
+   2. ./Startmush
+
+
+While logged into the mush issue the following commands
+-------------------------------------------------------
+
+   1. Load in the mail database wmail/load
+
+   2. (optional) Load in the autoreg database @areg/load
+
+   3. (optional) Load in the news/bbs database newsdb/load
+
+
+Verify that you have QDBM running and your valid values
+-------------------------------------------------------
+
+   1. @list options system
+
+   2. @list options (spammy)

@@ -1,0 +1,61 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-04 10:55-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/13-signals.rst:3
+msgid "Signals and why you need them for control"
+msgstr ""
+
+#: ../../source/13-signals.rst:5
+msgid "Rhost by default allows signals at the shell to handle various processes in-game."
+msgstr ""
+
+#: ../../source/13-signals.rst:7
+msgid "The following signals are useful."
+msgstr ""
+
+#: ../../source/13-signals.rst:10
+msgid "TERM (kill -TERM or kill -15)"
+msgstr ""
+
+#: ../../source/13-signals.rst:12
+msgid "This will immediately terminate the mush, dumping a special flatfile called netrhost.db.TERM and scramming the db in question by force-closing it without any writes.  A TERM is the effort for the mush to shut down the mush as fast as possible to avoid any db corruption if possible since a TERM signal is common during a server shutdown, so time is paramount."
+msgstr ""
+
+#: ../../source/13-signals.rst:19
+msgid "USR1 (kill -USR1)"
+msgstr ""
+
+#: ../../source/13-signals.rst:21
+msgid "This by default issues a reboot on the server.  This is a special parameter because this can actually be changed in-game to do any number of other things.  Please refer to the RhostMUSH running in question if this is the default behavior or if the method for USR1 is doing something else."
+msgstr ""
+
+#: ../../source/13-signals.rst:27
+msgid "USR2 (kill -USR2)"
+msgstr ""
+
+#: ../../source/13-signals.rst:29
+msgid "This will shutdown (cleanly) the mush.  This behaves as if you issued a @shutdown from within the game, and follows all proper procedure in bringing the game down cleanly and safely.  This shoudl be used when doing maintenance on the game or if you need to bring it down from the shell."
+msgstr ""
+
+#: ../../source/13-signals.rst:36
+msgid "KILL (kill -KILL or kill -9)"
+msgstr ""
+
+#: ../../source/13-signals.rst:38
+msgid "This signal can not be caught and will immediately terminate the game without any safty to the database at all.  Short of something horribly wrong going on, this should never be used to bring down your mush. Doing so will almost certainly corrupt your databases (ALL OF THEM) that are open, including but not limited to your main database, your mail database, your autoregistration database, and so forth.  So if you do this, plan to do some database recovery from your flat files. Also, when you bring down a mush in this manner, you need to issue Startmush -f to bring it back up."
+msgstr ""

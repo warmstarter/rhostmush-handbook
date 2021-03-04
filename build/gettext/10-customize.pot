@@ -1,0 +1,269 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-04 10:55-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/10-customize.rst:3
+msgid "What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost"
+msgstr ""
+
+#: ../../source/10-customize.rst:5
+msgid "RhostMUSH, for the most part, will work out of the box with most softcode gotten from other codebases.  There are, however, exceptions.  Most of these exceptions will be minor code differences between how ANSI is processed, the variences of arguments or switches to commands or functions, or required flags."
+msgstr ""
+
+#: ../../source/10-customize.rst:10
+msgid "Most changes will revolve around the ones listed in this document."
+msgstr ""
+
+#: ../../source/10-customize.rst:13
+msgid "Problematic functions between codebases"
+msgstr ""
+
+#: ../../source/10-customize.rst:15
+msgid "lsearch()/search(), align()/printf(), *attrval()"
+msgstr ""
+
+#: ../../source/10-customize.rst:18
+msgid "Problematic features between codebases"
+msgstr ""
+
+#: ../../source/10-customize.rst:20
+msgid "named variables for regexp patterns in $commands are not supported. @aliases on non-players are not supported.  Frankly I find them redundant."
+msgstr ""
+
+#: ../../source/10-customize.rst:24
+msgid "Problematic commands"
+msgstr ""
+
+#: ../../source/10-customize.rst:26
+msgid "@mapsql, hardcoded required comssytem commands (some are redundant)"
+msgstr ""
+
+#: ../../source/10-customize.rst:29
+msgid "SIDEFX flag"
+msgstr ""
+
+#: ../../source/10-customize.rst:31
+msgid "Anything that uses sideeffects --DIRECTLY-- requires this flag. Sideeffects are like set(), pemit(), and so forth.  list(), while a side-effect, does not require this flag as it is considered passive and safe."
+msgstr ""
+
+#: ../../source/10-customize.rst:36
+msgid "Variable exits"
+msgstr ""
+
+#: ../../source/10-customize.rst:38
+msgid "Rhost handles them slightly different.  You do not link exits to #-4.  That's an invalid destination.  I always found it, frankly, stupid to save any data in the database that was literally invalid.  So, you link the exit as you normally would, then @toggle the exit variable. At that point you use @exitto like you would any other codebase."
+msgstr ""
+
+#: ../../source/10-customize.rst:45
+msgid "Zones"
+msgstr ""
+
+#: ../../source/10-customize.rst:47
+msgid "Zones actually can work near exactly as you would expect them to work on TinyMUSH, MUX, or Penn.  Either at once or at different times. We recognize multiple zones, zone masters, zone inheritance, zone parenting, zone command processing, and the ability to bypass zones entirely.  There's a ton of flexbility with this.  However, the syntax for adding/removing zones is different so the commands will have to be ported to Rhost."
+msgstr ""
+
+#: ../../source/10-customize.rst:56
+msgid "@powers"
+msgstr ""
+
+#: ../../source/10-customize.rst:58
+msgid "Powers work a bit differently in Rhost and they're named differently, which should not be that big a surprise as they're different between all the codebases anyway.  The big difference is our powers are tiered, meaning the can be limited or grown to a given bitlevel and are not just toggle powers like the other codebases.  We also have @depower that is the anti-thesis of @power"
+msgstr ""
+
+#: ../../source/10-customize.rst:66
+msgid "Attribute length"
+msgstr ""
+
+#: ../../source/10-customize.rst:68
+msgid "While we have 64 character attribute capabilities like most other codebases, PennMUSH allows 1024 attribute length attributes. Why you need one that long boggles the mind, but if you do use attribs that long you need to make sure they are cut down to the proper length."
+msgstr ""
+
+#: ../../source/10-customize.rst:74
+msgid "Attribute contents"
+msgstr ""
+
+#: ../../source/10-customize.rst:76
+msgid "You'll be happy to know that Rhost allows upwards to 64,000 bytes of data to be assigned an LBUF.  We strongly recommand to cap at 32,000 however as the various TCP socket protocols play nicer with that value."
+msgstr ""
+
+#: ../../source/10-customize.rst:82
+msgid "256 color"
+msgstr ""
+
+#: ../../source/10-customize.rst:84
+msgid "Yup!  We got it."
+msgstr ""
+
+#: ../../source/10-customize.rst:87
+msgid "Unicode/UTF8"
+msgstr ""
+
+#: ../../source/10-customize.rst:89
+msgid "Yup!  We got this too.  Not quiet yet in the main branch, but download Kage's branch, you won't be dissapointed.  We will have UTF8 in Rhost 4.0 when released."
+msgstr ""
+
+#: ../../source/10-customize.rst:94
+msgid "Attributes per object"
+msgstr ""
+
+#: ../../source/10-customize.rst:96
+msgid "This is configurable with the VLIMIT @admin command, however, it is absolutely hard-limited at 10000 maximum. This is to avoid any DoS type situation and because frankly there should never be a reason to exceed that.  If you need more, use @clusters."
+msgstr ""
+
+#: ../../source/10-customize.rst:103
+msgid "Destroying"
+msgstr ""
+
+#: ../../source/10-customize.rst:105
+msgid "@nuke only works on players.  @destroy works on non-players. Never the two will meet.  We also have a built in recycle bin meaning anything destroyed will not be automatically recycled.  If you want it recycled, you have to @purge it.  Yes, if you use  Myrddin's CRON, it has a built in entry to auto-purge anything older than 30 days.  This also means you can on-line recover anything destroyed before that 30 days.  Groovy, eh?"
+msgstr ""
+
+#: ../../source/10-customize.rst:114
+msgid "object id's"
+msgstr ""
+
+#: ../../source/10-customize.rst:116
+msgid "Yup, we got them.  Even in searches, and, well, everything."
+msgstr ""
+
+#: ../../source/10-customize.rst:119
+msgid "lsearch() and search()"
+msgstr ""
+
+#: ../../source/10-customize.rst:121
+msgid "lsearch() in Penn is not syntacically similar to non-Penn search(). This will have to be altered.  In addition, search() in non-penn games have to have special consideration for escaping out the evaled args."
+msgstr ""
+
+#: ../../source/10-customize.rst:126
+msgid "@locks can be different"
+msgstr ""
+
+#: ../../source/10-customize.rst:128
+msgid "We have many more lock capabilities and options so this should be a non-issue."
+msgstr ""
+
+#: ../../source/10-customize.rst:132
+msgid "Customer user-locks"
+msgstr ""
+
+#: ../../source/10-customize.rst:134
+msgid "We do not have custom user-locks like Penn.  We do, however, have the way to set encapsulated lock data into an attribute to fetch and compare against which I find more useful and far more flexible. See: lockencode(), lockdecode(), and lockcheck()"
+msgstr ""
+
+#: ../../source/10-customize.rst:140
+msgid "Attribute trees"
+msgstr ""
+
+#: ../../source/10-customize.rst:142
+msgid "Unlike Penn, we don't really have attribute trees.  We do support the basic capabilities of it for compatibility if you load in softcode that uses it, but it doesn't have the advanced features of attribute trees. Please see 'help attribute tree' for more information."
+msgstr ""
+
+#: ../../source/10-customize.rst:148
+msgid "Prefix permission locking"
+msgstr ""
+
+#: ../../source/10-customize.rst:150
+msgid "We do allow prefix permission locking, and some very advanced abilities of it.  Please see wizhelp on @aflags for more information. - wizhelp @aflags - wizhelp atrperms_max - wizhelp atrlock - wizhelp atrperms"
+msgstr ""
+
+#: ../../source/10-customize.rst:158
+msgid "align() and printf()"
+msgstr ""
+
+#: ../../source/10-customize.rst:160
+msgid "We do not have align().  Most of the code that uses align() will have to be converted to our printf() (which is compatible but has different syntax)"
+msgstr ""
+
+#: ../../source/10-customize.rst:164
+msgid "MySQL"
+msgstr ""
+
+#: ../../source/10-customize.rst:166
+msgid "While we support MySQL, we do not have an async method like MUX2.  This is just not possible, sorry."
+msgstr ""
+
+#: ../../source/10-customize.rst:170
+msgid "Mail System"
+msgstr ""
+
+#: ../../source/10-customize.rst:172
+msgid "There are mail wrappers to mimic MUX/TM3 and Penn mail systems."
+msgstr ""
+
+#: ../../source/10-customize.rst:175
+msgid "Comsystem"
+msgstr ""
+
+#: ../../source/10-customize.rst:177
+msgid "The softcoded comsystem mimics MUX/TM3 and Penn's comsystem."
+msgstr ""
+
+#: ../../source/10-customize.rst:180
+msgid "Various Functions"
+msgstr ""
+
+#: ../../source/10-customize.rst:182
+msgid "There is a 'softcode.minmax' in the Mushcode directory that loads up a slew of @function wrappers that will emulate various functions that MUX, Penn, or TM3 has.  We have the functionality for nearly all of them, but either our functions have different syntax, or we have different named functions that duplicate the functionality.  It would be far better to recode it to use the native functions, but the @function wrappers are there for lazyness :)"
+msgstr ""
+
+#: ../../source/10-customize.rst:190
+msgid "Empty Attributes"
+msgstr ""
+
+#: ../../source/10-customize.rst:192
+msgid "Penn allows you to have empty attributes.  Non-penn codebases do not. Thus, hasattrval and the like are not needed and should likely just point to hasattr instead."
+msgstr ""
+
+#: ../../source/10-customize.rst:197
+msgid "Player Stats"
+msgstr ""
+
+#: ../../source/10-customize.rst:199
+msgid "MUX has some built in ways for player stats.  We do as well but they're either done via functions or attribute contents.  Code that requires this will have to be recoded."
+msgstr ""
+
+#: ../../source/10-customize.rst:204
+msgid "Percent Substitutions"
+msgstr ""
+
+#: ../../source/10-customize.rst:206
+msgid "Some percent substitutions may differ between codebases.  Luckily, Rhost allows the ability to remap or creaete new ones if this is a problem."
+msgstr ""
+
+#: ../../source/10-customize.rst:210
+msgid "Switches"
+msgstr ""
+
+#: ../../source/10-customize.rst:212
+msgid "Some switches may not exist in Rhost that do in other codebases, in such a case, Rhost does allow the ability to @hook a command to define your own softcoded switch to a hardcoded command and work around the limitation."
+msgstr ""
+
+#: ../../source/10-customize.rst:217
+msgid "Flags"
+msgstr ""
+
+#: ../../source/10-customize.rst:219
+msgid "Some flags may be missing.  If it's a dummy flag, feel free to use the marker flags MARKER0 to MARKER9 to set them.  If it's an existing flag that does similar features, feel free to flag_alias it or just flag_name it to the other name if you want."
+msgstr ""
+
+#: ../../source/10-customize.rst:225
+msgid "Aliases"
+msgstr ""
+
+#: ../../source/10-customize.rst:227
+msgid "Multiple aliases are supported via @protect."
+msgstr ""

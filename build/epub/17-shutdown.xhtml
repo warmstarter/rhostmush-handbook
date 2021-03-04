@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shutting down gracefully</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/epub.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="shutting-down-gracefully">
+<h1>Shutting down gracefully</h1>
+<div class="section" id="rhostmush-has-many-ways-to-shut-down-the-game-cleanly">
+<h2>Rhostmush has many ways to shut down the game cleanly</h2>
+<ol class="arabic simple">
+<li><p>Log into the mush and issue &#64;shutdown</p></li>
+<li><p>Issue a kill -USR2 to the mush which issues an emergency &#64;shutdown</p></li>
+<li><p>Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.</p></li>
+</ol>
+</div>
+<div class="section" id="warning-never-kill-9-rhost">
+<h2>WARNING: Never kill -9 Rhost</h2>
+<p>Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t care for the
+database.  The reason is if the mush happens to be saving, in any method, to the
+database, especially a QDBM database, you will likely have just corrupted your
+database, so pull out a flatfile to recover.</p>
+<p>Sadly, this also may occur if the server hosting you takes a nose-dive in the middle
+of a db write.  Rhost can recover corruption in-game while up, but if it bombs
+in the middle of a write, all bets are off. :)</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

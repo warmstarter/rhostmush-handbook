@@ -1,0 +1,31 @@
+Windows
+*******
+
+
+Installing on Windows 10 with BASH
+==================================
+
+Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
+This has been tested with the Preview build 14342.
+
+1. After installing Bash you will need to install the following
+packages: git make gcc openssl (optional) libpcre3 (optional)
+libpcre3-dev (optional)
+
+2. When configuring rhost (using confsource) select the Disable
+Debugmon option.
+
+3. When you issue Startmush, you must pass the -cyg option.
+
+
+Installing on Windows with Cygwin
+=================================
+
+Rhost does work under windows using the cygwin package.
+
+1.  When you do install cygwin, the following packages must be added:
+make git gcc crypt openssl (optional) gdbm bash
+
+2. The src/Makefile has to manually have the CYGWIN line uncommented.
+
+3. When you issue Startmush, you must pass it the -cyg option.

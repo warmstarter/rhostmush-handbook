@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using the built-in cron system for periodically running commands</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/epub.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-the-built-in-cron-system-for-periodically-running-commands">
+<h1>Using the built-in cron system for periodically running commands</h1>
+<div class="section" id="syntax-for-rhost-cron">
+<h2>Syntax for rhost.cron</h2>
+<p>The rhost.cron file will be in the syntax as follows:</p>
+<p>username (or dbref#)
+command1;command2;command3;…;commandN
+command
+command
+command1;command2;command3;…;commandN</p>
+<p>You can have commands strung together with a semicolon
+on the same line.  This counts as a single line of input.
+You can have at most 20 lines of commands after the target
+you wish to execute the commands as.  The target may
+be a player name OR a dbref# of any valid dbref# within
+the game.  Invalid targets will abort the cron process.
+Non-printable characters in the cron file will abort
+the process.  Any aborts or warnings will be logged
+in the netrhost.gamelog.</p>
+<p>Here is a working example of the code cron file.
+This example will perform dumps of the mush.</p>
+</div>
+<div class="section" id="example-syntaxt-for-rhost-cron">
+<h2>Example syntaxt for rhost.cron</h2>
+<p>#1
+&#64;dump/flat; &#64;&#64; dump the main game database to flatfile
+wmail/unload; &#64;&#64; dump the mail database to flatfile
+&#64;areg/unload; &#64;&#64; dump the registration database to flatfile
+newsdb/unload; &#64;&#64; dump the news bbs database to flatfile</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

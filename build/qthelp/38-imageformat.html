@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Format for image filses</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nonav.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="format-for-image-filses">
+<h1>Format for image filses</h1>
+<p>The image format goes like this:</p>
+<p>Data Type  Example  Description
+———  ——-  ———————————————————-
+INT        3        TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5
+STRING     Wizard   NAME: of the target.  Verbatum, no quotes surround it
+<a href="#id1"><span class="problematic" id="id2">*</span></a>INT       123      LOCATION: dbref# of the target.  No prepending ‘#’ used.
+<a href="#id3"><span class="problematic" id="id4">*</span></a>INT       234      CONTENTS: The first content in a linked list content table (-1 if none)
+<a href="#id5"><span class="problematic" id="id6">*</span></a>INT       345      EXITS: The first exit in a linked list exit table (-1 if none)
+<a href="#id7"><span class="problematic" id="id8">*</span></a>INT       0        LINK: This is the ‘home’ of the object or what it’s linked to (-1 for none)
+<a href="#id9"><span class="problematic" id="id10">*</span></a>INT       123      NEXT: The next thing after this item for a content holder
+STRING     #123     LOCK: The boolean string lock if it exists.  (empty if no lock)
+<a href="#id11"><span class="problematic" id="id12">*</span></a>INT       1        OWNER: The dbref# owner of the target.  For players same dbref as player.
+INT        789      PARENT: The parent of the target.  (-1 if none)
+<a href="#id13"><span class="problematic" id="id14">*</span></a>INT       99999    MONEY: The int value of the money the players has.
+INT        194592   FLAGS1: The first word of flags (&#64;set flags) on a player      (see FLAGS)
+INT        194222   FLAGS2: The second word of flags (&#64;set flags) on a player     (see FLAGS)
+INT        199999   FLAGS3: The third word of flags (&#64;set flags []) on a player   (see FLAGS)
+INT        1582958  FLAGS4: The forth word of flags (&#64;set flags []) on a player   (see FLAGS)
+INT        159955   TOGGLES1: The first word of toggles (&#64;toggle) on a player    (see TOGGLES)
+INT        159958   TOGGLES2: The second word of toggles (&#64;toggle) on a player   (see TOGGLES)
+INT        159958   POWER1: The first word of powers (&#64;power) on a player         (see POWERS)
+INT        159958   POWER2: The second word of powers (&#64;power) on a player        (see POWERS)
+INT        159958   POWER3: The third word of powers (&#64;power) on a player         (see POWERS)
+INT        159958   DEPOWER1: The first word of depowers (&#64;depower) on a player  (see DEPOWERS)
+INT        159958   DEPOWER2: The second word of depowers (&#64;depower) on a player (see DEPOWERS)
+INT        159958   DEPOWER3: The third word of depowers (&#64;depower) on a player  (see DEPOWERS)
+INT        -1       ZONE(S): The list of zones starting here and ending with ‘-1’. (see ZONES)
+&gt;STRING    &gt;VA      ATTRIBUTENAME: Attribute name to store, starts with &gt; identifier
+STRING     Wheee    ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)
+&gt;STRING    &gt;Desc    ATTRIBUTENAME: Another attribute to chain in
+STRING     Ugly     ATTRIBUTECONTENTS: Contents of the next attribute
+&gt;STRING    <a href="#id15"><span class="problematic" id="id16">*</span></a>Password PASSWORDATTRIB: Special password attribute.  Attribute name is ‘<a href="#id17"><span class="problematic" id="id18">*</span></a>Password’
+STRING     $6$xy$xy PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
+&lt;          &lt;        This is the marker to specify the end of the attribute contents.  This is always the last line</p>
+<p>NOTE:  Any Data type starting with ‘*’ is ignored when &#64;snapshot/loading.</p>
+<p>The structure above with the examples would look like this in the file:</p>
+<p>3
+Wizard
+123
+234
+345
+0
+123
+#123
+1
+789
+99999
+194592
+194222
+199999
+1582958
+159955
+159958
+159958
+159958
+159958
+159958
+159958
+159958
+-1
+&gt;VA
+Wheee
+&gt;Desc
+Ugly
+&gt;*Password
+$6$xy$xy
+&lt;</p>
+</div>
+<div class="section" id="help-key-indexes-for-the-values">
+<h1>HELP key indexes for the values:</h1>
+<dl class="simple">
+<dt>FLAGS: The following flags are to be used.  They are BITWISE masks that you</dt><dd><p>need to add together for the values tghat you apply</p>
+</dd>
+</dl>
+<p>/* First word of flags <em>/
+#define SEETHRU         0x00000008      /</em> Can see through to the other side <em>/
+#define WIZARD          0x00000010      /</em> gets automatic control <em>/
+#define LINK_OK         0x00000020      /</em> anybody can link to this room <em>/
+#define DARK            0x00000040      /</em> Don’t show contents or presence <em>/
+#define JUMP_OK         0x00000080      /</em> Others may &#64;tel here <em>/
+#define STICKY          0x00000100      /</em> Object goes home when dropped <em>/
+#define DESTROY_OK      0x00000200      /</em> Others may &#64;destroy <em>/
+#define HAVEN           0x00000400      /</em> No killing here, or no pages <em>/
+#define QUIET           0x00000800      /</em> Prevent ‘feelgood’ messages <em>/
+#define HALT            0x00001000      /</em> object cannot perform actions <em>/
+#define TRACE           0x00002000      /</em> Generate evaluation trace output <em>/
+#define GOING           0x00004000      /</em> object is available for recycling <em>/
+#define MONITOR         0x00008000      /</em> Process ^x:action listens on obj? <em>/
+#define MYOPIC          0x00010000      /</em> See things as nonowner/nonwizard <em>/
+#define PUPPET          0x00020000      /</em> Relays ALL messages to owner <em>/
+#define CHOWN_OK        0x00040000      /</em> Object may be &#64;chowned freely <em>/
+#define ENTER_OK        0x00080000      /</em> Object may be ENTERed <em>/
+#define VISUAL          0x00100000      /</em> Everyone can see properties <em>/
+#define IMMORTAL        0x00200000      /</em> Object can’t be killed <em>/
+#define HAS_STARTUP     0x00400000      /</em> Load some attrs at startup <em>/
+#define OPAQUE          0x00800000      /</em> Can’t see inside <em>/
+#define VERBOSE         0x01000000      /</em> Tells owner everything it does. <em>/
+#define INHERIT         0x02000000      /</em> Gets owner’s privs. (i.e. Wiz) <em>/
+#define NOSPOOF         0x04000000      /</em> Report originator of all actions. <em>/
+#define ROBOT           0x08000000      /</em> Player is a ROBOT <em>/
+#define SAFE            0x10000000      /</em> Need /override to &#64;destroy <em>/
+#define CONTROL_OK      0x20000000      /</em> ControlLk specifies who ctrls me <em>/
+#define HEARTHRU        0x40000000      /</em> Can hear out of this obj or exit <em>/
+#define TERSE           0x80000000      /</em> Only show room name on look <a href="#id19"><span class="problematic" id="id20">*</span></a>/</p>
+<p>/* Second word of flags <em>/
+#define KEY             0x00000001      /</em> No puppets <em>/
+#define ABODE           0x00000002      /</em> May &#64;set home here <em>/
+#define FLOATING        0x00000004      /</em> Inhibit Floating room.. msgs <em>/
+#define UNFINDABLE      0x00000008      /</em> Cant loc() from afar <em>/
+#define PARENT_OK       0x00000010      /</em> Others may &#64;parent to me <em>/
+#define LIGHT           0x00000020      /</em> Visible in dark places <em>/
+#define HAS_LISTEN      0x00000040      /</em> Internal: LISTEN attr set <em>/
+#define HAS_FWDLIST     0x00000080      /</em> Internal: FORWARDLIST attr set <em>/
+#define ADMIN           0x00000100      /</em> Player has admin privs <em>/
+#define GUILDOBJ        0x00000200
+#define GUILDMASTER     0x00000400      /</em> Player has gm privs <em>/
+#define NO_WALLS        0x00000800      /</em> So to stop normal walls <em>/
+#define REQUIRE_TREES   0x00001000      /</em> Trees are required on this target for attrib sets <em>/
+/</em> —-FREE—-         0x00002000 <em>/   /</em> #define OLD_NOROBOT  0x00002000 <em>/
+#define SCLOAK          0x00004000
+#define CLOAK           0x00008000
+#define FUBAR           0x00010000
+#define INDESTRUCTABLE  0x00020000      /</em> object can’t be nuked <em>/
+#define NO_YELL         0x00040000      /</em> player can’t &#64;wall <em>/
+#define NO_TEL          0x00080000      /</em> player can’t &#64;tel or be &#64;tel’d <em>/
+#define FREE            0x00100000      /</em> object/player has unlim money <em>/
+#define GUEST_FLAG      0x00200000
+#define RECOVER         0x00400000
+#define BYEROOM         0x00800000
+#define WANDERER        0x01000000
+#define ANSI            0x02000000
+#define ANSICOLOR       0x04000000
+#define NOFLASH         0x08000000
+#define SUSPECT         0x10000000      /</em> Report some activities to wizards <em>/
+#define BUILDER         0x20000000      /</em> Player has architect privs <em>/
+#define CONNECTED       0x40000000      /</em> Player is connected <em>/
+#define SLAVE           0x80000000      /</em> Disallow most commands <a href="#id21"><span class="problematic" id="id22">*</span></a>/</p>
+<p>/* Third word of flags - Thorin 3/95 <em>/
+#define NOCONNECT       0x00000001
+#define DPSHIFT         0x00000002
+#define NOPOSSESS       0x00000004
+#define COMBAT          0x00000008
+#define IC              0x00000010
+#define ZONEMASTER      0x00000020
+#define ALTQUOTA        0x00000040
+#define NOEXAMINE       0x00000080
+#define NOMODIFY        0x00000100
+#define CMDCHECK        0x00000200
+#define DOORRED         0x00000400
+#define PRIVATE         0x00000800      /</em> For exits only <em>/
+#define NOMOVE          0x00001000
+#define STOP            0x00002000
+#define NOSTOP          0x00004000
+#define NOCOMMAND       0x00008000
+#define AUDIT           0x00010000
+#define SEE_OEMIT       0x00020000
+#define NO_GOBJ         0x00040000
+#define NO_PESTER       0x00080000
+#define LRFLAG          0x00100000
+#define TELOK           0x00200000
+#define NO_OVERRIDE     0x00400000
+#define NO_USELOCK      0x00800000
+#define DR_PURGE        0x01000000      /</em> For rooms only…internal <em>/
+#define NO_ANSINAME     0x02000000      /</em> Remove the ability to set &#64;ansiname <em>/
+#define SPOOF           0x04000000
+#define SIDEFX          0x08000000      /</em> Allow enactor to use side-effects <em>/
+#define ZONECONTENTS    0x10000000      /</em> Search contents of zonemaster for $commands <em>/
+#define NOWHO           0x20000000      /</em> Player in WHO doesn’t show up - use with &#64;hide <em>/
+#define ANONYMOUS       0x40000000      /</em> Player set shows up as ‘Someone’ when talking <em>/
+#define BACKSTAGE       0x80000000      /</em> Immortal toggle for items on control <a href="#id23"><span class="problematic" id="id24">*</span></a>/</p>
+<p>/* Forth word of flags - Thorin 3/95 <em>/
+#define NOBACKSTAGE     0x00000001      /</em> Immortal toggle to control no-backstage <em>/
+#define LOGIN           0x00000002      /</em> Enable player to login past &#64;disable logins <em>/
+#define INPROGRAM       0x00000004      /</em> Player is inside a program <em>/
+#define COMMANDS        0x00000008      /</em> Optional define for $commands <em>/
+#define MARKER0         0x00000010      /</em> TM 3.0 marker flags <em>/
+#define MARKER1         0x00000020
+#define MARKER2         0x00000040
+#define MARKER3         0x00000080
+#define MARKER4         0x00000100
+#define MARKER5         0x00000200
+#define MARKER6         0x00000400
+#define MARKER7         0x00000800
+#define MARKER8         0x00001000
+#define MARKER9         0x00002000
+#define BOUNCE          0x00004000      /</em> That lovly TM 3.0 Bouncey thingy <em>/
+#define SHOWFAILCMD     0x00008000      /</em> Show failed $commands defauilt error <em>/
+#define NOUNDERLINE     0x00010000      /</em> Strip UNDERLINE character from ANSI <em>/
+#define NONAME          0x00020000      /</em> Target does not display name with look <em>/
+#define ZONEPARENT      0x00040000      /</em> Target zone allows inheritance of attribs <em>/
+#define SPAMMONITOR     0x00080000      /</em> Monitor the target for spam <em>/
+#define BLIND           0x00100000      /</em> Exits and locations snuff arrived/left <em>/
+#define NOCODE          0x00200000      /</em> Players may not code <em>/
+#define HAS_PROTECT     0x00400000      /</em> Player target has protect name data <em>/
+#define XTERMCOLOR      0x00800000      /</em> Extended AnSI Xterm colors <em>/
+#define HAS_ATTRPIPE    0x01000000      /</em> Attribute piping via &#64;pipe <em>/
+/</em> 0x02000000 free <em>/
+/</em> 0x04000000 free <em>/
+/</em> 0x08000000 free <em>/
+/</em> 0x10000000 free <em>/
+/</em> 0x20000000 free <em>/
+/</em> 0x40000000 free <em>/
+/</em> 0x80000000 free <a href="#id25"><span class="problematic" id="id26">*</span></a>/</p>
+<p>/* First word of toggles - Thorin 3/95 <em>/
+#define TOG_MONITOR             0x00000001      /</em> Active monitor on player <em>/
+#define TOG_MONITOR_USERID      0x00000002      /</em> show userid <em>/
+#define TOG_MONITOR_SITE        0x00000004      /</em> show site <em>/
+#define TOG_MONITOR_STATS       0x00000008      /</em> show stats <em>/
+#define TOG_MONITOR_FAIL        0x00000010      /</em> show fails <em>/
+#define TOG_MONITOR_CONN        0x00000020
+#define TOG_VANILLA_ERRORS      0x00000040      /</em> show normal error msg <em>/
+#define TOG_NO_ANSI_EX          0x00000080      /</em> supress ansi stuff in ex <em>/
+#define TOG_CPUTIME             0x00000100      /</em> show cpu time for cmds <em>/
+#define TOG_MONITOR_DISREASON   0x00000200
+#define TOG_MONITOR_VLIMIT      0x00000400
+#define TOG_NOTIFY_LINK         0x00000800
+#define TOG_MONITOR_AREG        0x00001000
+#define TOG_MONITOR_TIME        0x00002000
+#define TOG_CLUSTER             0x00004000      /</em> Object is part of a cluster <em>/
+#define TOG_SNUFFDARK           0x00008000      /</em> Snuff Dark Exit Viewing <em>/
+#define TOG_NOANSI_PLAYER       0x00010000      /</em> Do not show ansi player names <em>/
+#define TOG_NOANSI_THING        0x00020000      /</em> … things <em>/
+#define TOG_NOANSI_ROOM         0x00040000      /</em> … rooms <em>/
+#define TOG_NOANSI_EXIT         0x00080000      /</em> … exits <em>/
+#define TOG_NO_TIMESTAMP        0x00100000      /</em> Do not modify timestamps on target <em>/
+#define TOG_NO_FORMAT           0x00200000      /</em> Override &#64;conformat/&#64;exitformat <em>/
+#define TOG_ZONE_AUTOADD        0x00400000      /</em> Automatically add FIRST zone in list <em>/
+#define TOG_ZONE_AUTOADDALL     0x00800000      /</em> Automatically add ALL zones in list <em>/
+#define TOG_WIELDABLE           0x01000000      /</em> Marker to specify if object is wieldable <em>/
+#define TOG_WEARABLE            0x02000000      /</em> Marker to specify if object is wearable <em>/
+#define TOG_SEE_SUSPECT         0x04000000      /</em> Specify who sees suspect in WHO/MONITOR <em>/
+#define TOG_MONITOR_CPU         0x08000000      /</em> Specify who sees CPU overflow allerts <em>/
+#define TOG_BRANDY_MAIL         0x10000000      /</em> Define brandy like mail interface <em>/
+#define TOG_FORCEHALTED         0x20000000      /</em> The item toggled can &#64;force halted things <em>/
+#define TOG_PROG                0x40000000      /</em> Can use &#64;program on other people/things <em>/
+#define TOG_NOSHELLPROG         0x80000000      /</em> Target can not issue commands inside a prog <a href="#id27"><span class="problematic" id="id28">*</span></a>/</p>
+<p>/* Second word of toggles – Ash <em>/
+#define TOG_EXTANSI             0x00000001      /</em> Specify if target can used extended ansi naming <em>/
+#define TOG_IMMPROG             0x00000002      /</em> Only an immortal can &#64;quitprogram them <em>/
+#define TOG_MONITOR_BFAIL       0x00000004      /</em> Monitor if a failed connect on bad character <em>/
+#define TOG_PROG_ON_CONNECT     0x00000008      /</em> Reverse logic of program on connect <em>/
+#define TOG_MAIL_STRIPRETURN    0x00000010      /</em> Strip carrage return in mail combining <em>/
+#define TOG_PENN_MAIL           0x00000020      /</em> Use PENN style syntax <em>/
+#define TOG_SILENTEFFECTS       0x00000040      /</em> Silents did_it() functionality on target <em>/
+#define TOG_IGNOREZONE          0x00000080      /</em> Target is set to &#64;icmd zones <em>/
+#define TOG_VPAGE               0x00000100      /</em> Target sees alias in pages <em>/
+#define TOG_PAGELOCK            0x00000200      /</em> Target issues pagelocks as normal <em>/
+#define TOG_MAIL_NOPARSE        0x00000400      /</em> Don’t parse %t/%b/%r in mail <em>/
+#define TOG_MAIL_LOCKDOWN       0x00000800      /</em> Mortal-accessed mail/number and mail/check <em>/
+#define TOG_MUXPAGE             0x00001000      /</em> Have ‘page’ work like MUX <em>/
+#define TOG_NOZONEPARENT        0x00002000      /</em> Zone Child does NOT inherit parent attribs <em>/
+#define TOG_ATRUSE              0x00004000      /</em> Enactor can use Attribute based USELOCKS <em>/
+#define TOG_VARIABLE            0x00008000      /</em> Set exit to be variable <em>/
+#define TOG_KEEPALIVE           0x00010000      /</em> Send ‘keepalives’ to the target player <em>/
+#define TOG_CHKREALITY          0x00020000      /</em> Target checks &#64;lock/user for Reality passes <em>/
+#define TOG_NOISY               0x00040000      /</em> Always do noisy sets <em>/
+#define TOG_ZONECMDCHK          0x00080000      /</em> Zone commands checked on target like &#64;parent <em>/
+#define TOG_HIDEIDLE            0x00100000      /</em> Allow wizards/immortals to hide their idle time <em>/
+#define TOG_MORTALREALITY       0x00200000      /</em> Override the wiz_always_real setting <em>/
+#define TOG_ACCENTS             0x00400000      /</em> Accents being displayed <em>/
+#define TOG_PREMAILVALIDATE     0x00800000      /</em> Pre-Validate the mail send list before sending mail <em>/
+#define TOG_SAFELOG             0x01000000      /</em> Allow ‘clean logging’ by the player <em>/
+#define TOG_UTF8                0x02000000      /</em> UTF8 being displayed <em>/
+/</em> 0x04000000 free <em>/
+#define TOG_NODEFAULT           0x08000000      /</em> Allow target to inherit default attribs <em>/
+#define TOG_EXFULLWIZATTR       0x10000000      /</em> Examine Wiz attribs <em>/
+#ifdef ENH_LOGROOM
+#define TOG_LOGROOMENH          0x20000000      /</em> Enhanced Room Logging <em>/
+#endif
+#define TOG_LOGROOM             0x40000000      /</em> Log Room’s location/contents <em>/
+#define TOG_NOGLOBPARENT        0x80000000      /</em> Target does not inherit global attributes <a href="#id29"><span class="problematic" id="id30">*</span></a>/</p>
+<blockquote>
+<div><p>the fact.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>/* First word of power positions.  Each position is 2 bits so the</dt><dd><p>number here is how far over to shift the 2 bit pattern         <a href="#id31"><span class="problematic" id="id32">*</span></a>/</p>
+</dd>
+</dl>
+<p>#define POWER_CHANGE_QUOTAS     0
+#define POWER_CHOWN_ME          2
+#define POWER_CHOWN_ANYWHERE    4
+#define POWER_CHOWN_OTHER       6
+#define POWER_WIZ_WHO           8
+#define POWER_EX_ALL            10
+#define POWER_NOFORCE           12
+#define POWER_SEE_QUEUE_ALL     14
+#define POWER_FREE_QUOTA        16
+#define POWER_GRAB_PLAYER       18
+#define POWER_JOIN_PLAYER       20
+#define POWER_LONG_FINGERS      22
+#define POWER_NO_BOOT           24
+#define POWER_BOOT              26
+#define POWER_STEAL             28
+#define POWER_SEE_QUEUE         30</p>
+<p>/* Second word of power positions. <a href="#id33"><span class="problematic" id="id34">*</span></a>/
+#define POWER_SHUTDOWN          0
+#define POWER_TEL_ANYWHERE      2
+#define POWER_TEL_ANYTHING      4
+#define POWER_PCREATE           6
+#define POWER_STAT_ANY          8
+#define POWER_FREE_WALL         10
+#define POWER_EXECSCRIPT        12
+#define POWER_FREE_PAGE         14
+#define POWER_HALT_QUEUE        16
+#define POWER_HALT_QUEUE_ALL    18
+#define POWER_FORMATTING        20
+#define POWER_NOKILL            22
+#define POWER_SEARCH_ANY        24
+#define POWER_SECURITY          26
+#define POWER_WHO_UNFIND        28</p>
+<p>/* Third word of power positions. <em>/
+#define POWER_OPURGE            0
+#define POWER_HIDEBIT           2
+#define POWER_NOWHO             4
+#define POWER_FULLTEL_ANYWHERE  6
+#define POWER_EX_FULL           8
+#define POWER_API               10
+#define POWER_MONITORAPI        12
+#define POWER_WIZ_IDLE          14
+#define POWER_WIZ_SPOOF         16
+/</em> 18 free <em>/
+/</em> 20 free <em>/
+/</em> 22 free <em>/
+/</em> 24 free <em>/
+/</em> 26 free <em>/
+/</em> 28 free <em>/
+/</em> 30 free <a href="#id35"><span class="problematic" id="id36">*</span></a>/</p>
+<p>/* First word <a href="#id37"><span class="problematic" id="id38">*</span></a>/
+#define DP_WALL                 0
+#define DP_LONG_FINGERS         2
+#define DP_STEAL                4
+#define DP_CREATE               6
+#define DP_WIZ_WHO              8
+#define DP_CLOAK                10
+#define DP_BOOT                 12
+#define DP_PAGE                 14
+#define DP_FORCE                16
+#define DP_LOCKS                18
+#define DP_COM                  20
+#define DP_COMMAND              22
+#define DP_MASTER               24
+#define DP_EXAMINE              26
+#define DP_NUKE                 28
+#define DP_FREE                 30</p>
+<p>/* Second word <em>/
+#define DP_OVERRIDE             0
+#define DP_TEL_ANYWHERE         2
+#define DP_TEL_ANYTHING         4
+#define DP_PCREATE              6
+#define DP_POWER                8
+#define DP_QUOTA                10
+#define DP_MODIFY               12
+#define DP_CHOWN_ME             14
+#define DP_CHOWN_OTHER          16
+#define DP_ABUSE                18
+#define DP_UNL_QUOTA            20
+#define DP_SEARCH_ANY           22
+#define DP_GIVE                 24
+#define DP_RECEIVE              26
+#define DP_NOGOLD               28
+#define DP_NOSTEAL              30
+/</em> Third word…and there was much rejoicing <em>/
+#define DP_PASSWORD             0
+#define DP_MORTAL_EXAMINE       2
+#define DP_PERSONAL_COMMANDS    4
+/</em> 6  free <em>/
+#define DP_DARK                 8
+/</em> 10 free <em>/
+/</em> 12 free <em>/
+/</em> 14 free <em>/
+/</em> 16 free <em>/
+/</em> 18 free <em>/
+/</em> 20 free <em>/
+/</em> 22 free <em>/
+/</em> 24 free <em>/
+/</em> 26 free <em>/
+/</em> 28 free <em>/
+/</em> 30 free <a href="#id39"><span class="problematic" id="id40">*</span></a>/</p>
+<p>So entering zones if there are no zones:
+-1</p>
+<p>Entering zones if it has three zones (#123, #456, and #789)
+123
+456
+789
+-1</p>
+<p>As you see, the last value of the zone <em>MUST</em> be -1.  This tells it
+that there are no more zones to add.</p>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

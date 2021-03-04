@@ -1,0 +1,47 @@
+<document source="/home/pi/rhostmush-handbook/source/windows.rst">
+    <target refid="windows">
+    <section dupnames="windows" ids="windows id1" names="windows">
+        <title>
+            Windows
+        <section ids="installing-on-windows-10-with-bash" names="installing\ on\ windows\ 10\ with\ bash">
+            <title>
+                Installing on Windows 10 with BASH
+            <paragraph>
+                Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
+                This has been tested with the Preview build 14342.
+            <paragraph>
+                1. After installing Bash you will need to install the following packages:
+                git
+                make
+                gcc
+                openssl (optional)
+                libpcre3 (optional)
+                libpcre3-dev (optional)
+            <paragraph>
+                2. When configuring rhost (using confsource) select the Disable Debugmon
+                option.
+            <enumerated_list enumtype="arabic" prefix="" start="3" suffix=".">
+                <list_item>
+                    <paragraph>
+                        When you issue Startmush, you must pass the -cyg option.
+        <section ids="installing-on-windows-with-cygwin" names="installing\ on\ windows\ with\ cygwin">
+            <title>
+                Installing on Windows with Cygwin
+            <paragraph>
+                Rhost does work under windows using the cygwin package.
+            <paragraph>
+                1.  When you do install cygwin, the following packages must be added:
+                make
+                git
+                gcc
+                crypt
+                openssl (optional)
+                gdbm
+                bash
+            <enumerated_list enumtype="arabic" prefix="" start="2" suffix=".">
+                <list_item>
+                    <paragraph>
+                        The src/Makefile has to manually have the CYGWIN line uncommented.
+                <list_item>
+                    <paragraph>
+                        When you issue Startmush, you must pass it the -cyg option.

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Troubleshooting difficulties compiling RhostMUSH</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nonav.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="troubleshooting-difficulties-compiling-rhostmush">
+<h1>Troubleshooting difficulties compiling RhostMUSH</h1>
+<div class="section" id="changes-to-conf-for-high-bit-cpus">
+<h2>Changes to conf for high-bit CPUs</h2>
+<p>RhostMUSH automatically detects 64-bit platforms, and should compile
+cleanly on these.</p>
+<p>In case you are trying to compile Rhost on some other crazy-wide CPUs
+such as the PS2, PS3 or other 128 or 256 bit CPUs, you can easily do
+so by changing a few lines of code in conf.c.</p>
+<p>change:
+typedef unsigned int    pmath1;
+typedef int             pmath2;
+#define ALLIGN1 4</p>
+<p>to:
+typedef unsigned long   pmath1;
+typedef long            pmath2;
+#define ALLIGN1 8</p>
+<p>, replacing 8 with the size of your CPU’s long integer. (4 for 32-bit,
+8 for 64-bit, 16 for 128-bit, etc etc)</p>
+<p>RhostMUSH has only been tested to work on the AMD64, but there is no
+reason to believe the same will not hold true for IA64.</p>
+</div>
+<div class="section" id="changes-to-autconf-for-certain-systems">
+<h2>Changes to autconf for certain systems</h2>
+<p>You should not have to worry about this, but incase something really
+weird occurs, you may need to look into these changes…</p>
+<p>The autoconfig.h file needs to have modifications to it by hand.</p>
+<p>There are three manual entries:</p>
+<p>This one sets how it defines the int to character pointer.  It’s safe
+to keep it as ‘unsigned int’ for 32 bit platforms.  For non 32-bit,
+define it to  how an int is defined on that system.</p>
+<blockquote>
+<div><p>typedef unsigned int    pmath1;</p>
+</div></blockquote>
+<p>This one sets how it defines the signed int to character pointer.  Same
+restrictions apply as above for unsigned int.</p>
+<blockquote>
+<div><p>typedef int     pmath2;</p>
+</div></blockquote>
+<p>This sets the allignment for the given platform.  4 represents a 32 bit
+platform.  8 would represent a 64 bit platform, etc.  Change accordingly.</p>
+<blockquote>
+<div><p>#define ALLIGN1 4</p>
+</div></blockquote>
+<p>Make sure these three entries are defined in your autoconf.h file else
+the mush will not compile.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

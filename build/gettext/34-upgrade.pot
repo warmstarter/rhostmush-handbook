@@ -1,0 +1,295 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-04 10:55-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/34-upgrade.rst:3
+msgid "Updating RhostMUSH prior to 3.9.5p2"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:5
+msgid "Ok."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:7
+msgid "So you're running an old RhostMUSH."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:9
+msgid "One prior to 3.9.5p2 and want to take advantage of the new format of the Makefile and the automated mysql stuff and all the other goodies that isn't really (easilly) done with just patch.sh."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:14
+msgid "Well, you're in luck.  It is actually fairly easy to do."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:16
+msgid "This is what you have to do."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:18
+msgid "First thing's first."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:20
+msgid "Log into your existing mush.  Let's make current backups of all your flatfiles.  Issue: A. @dump/flat B. wmail/unload C. @areg/unload D. newsdb/unload"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:27
+msgid "Shutdown your game (@shutdown)"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:29
+msgid "Make an image of all your current backed up files.  From The Server/game directory you would type:"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:31
+msgid "./backup_flat.sh -s"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:33
+msgid "Please remember the '-s' to the ./backup_flat.sh."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:35
+msgid "Make note of the most recently created file in the directory Server/game/oldflat.  It's usually named something like:"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:37
+msgid "RhostMUSH.dbflat1.tar.gz"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:39
+msgid "You will need this file later."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:41
+msgid "Rename your 'Rhost' directory to something else.  This is the directory that you have containing the 'Server' directory.  Name it anything you want other than 'Rhost'. For those not used to unix you would type:"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:45
+msgid "mv Rhost Rhost_old"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:48
+msgid "Pull in the latest Rhost.  You would type:"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:48
+msgid "git clone https://github.com/RhostMUSH/trunk Rhost"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:50
+msgid "You would type this in the same directory you have renamed your old 'Rhost' directory"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:54
+msgid "go into the Rhost/Server directory.   Type:"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:54
+msgid "make confsource"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:56
+msgid "Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it's the 'r' option)."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:88
+msgid "8   Once your game is compiled and ready to go you need to copy in"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:60
+msgid "the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the 'game' directory of your current game you should be able to issue (if you named the old one Rhost_old): Again this needs to be done FROM YOUR Server/game directory!!! A. cp netrhost.conf netrhost.conf.orig B. cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz . C. tar -zxvf RhostMUSH.dbflat1.tar.gz D. Compare your current netrhost.conf to the default one that came with"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:69
+msgid "the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf. Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don't port or other stuff you have already customized)."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:78
+msgid "./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new This loads in your flatfile information."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:80
+msgid "./Startmush Your ./Startmush should re-index all your txt files you originally made."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:82
+msgid "In your game type the following as an immortal or as #1."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:83
+msgid "wmail/load This will load in your mail flatfile."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:85
+msgid "@areg/load This will load in your autoregistration flatfile (if available)"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:87
+msgid "newsdb/load This will load in your hardcoded bbs flatfile (if available)"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:90
+msgid "You should be good to go on a current directory structure for Rhost.  Enjoy!"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:94
+msgid "Adding MySQL to RhostMUSH older than 3.9.5p2"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:96
+msgid "MySQL is now native in RhostMUSH as of 3.9.5p2."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:100
+msgid "** IMPORTANT ** IMPORTANT ** IMPORTANT ** IMPORTANT **IMPORTANT ** IMPORTANT **"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:101
+msgid "To autodetect it, YOU MUST HAVE mysql_config installed and running on your server.  Without this, even if you have mysql db installed it won't be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql_config. ******************************************************************************* ** IMPORTANT ** IMPORTANT ** IMPORTANT ** IMPORTANT **IMPORTANT ** IMPORTANT ** *******************************************************************************"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:110
+msgid "Download the git repository to a seperate directory so that you can copy over the files that it requires you to."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:113
+msgid "Suggestion:  git clone http://github.com/RhostMUSH/trunk ~/tmprho"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:115
+msgid "If you are patching UP from an older version, you need to update the following files:"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:118
+msgid "update your src/Makefile to the one in the 3.9.5p2+ repo ( cp ~/tmprho/Server/src/Makefile ~/Rhost/Server/src/Makefile )"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:120
+msgid "update your bin/asksource.* files to the one in the 3.9.5p2+ repo ( cp ~/tmprho/Server/bin/asksource.* ~/Rhost/Server/bin/ )"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:122
+msgid "append 'include rhost_mysql.conf' BEFORE the rhost_ingame.conf file and before the section that says 'define local aliases' toward the end of your netrhost.conf file. ( edit your ~/Rhost/Server/game/netrhost.conf file )"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:126
+msgid "copy the game/rhost_mysql.conf file from the 3.9.5p2+ repo ( cp ~/tmprho/Server/game/rhost_mysql.conf ~/Rhost/Server/game/ )"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:128
+msgid "The following lines have to be REPLACED/CHANGED in local.c ( toward the top ): ( you may edit this or copy the one from the other distro ) ( do either:  edit ~/Rhost/Server/src/local.c ) (        or:  cp ~/tmprho/Server/src/local.c ~/Rhost/Server/src/local.c )"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:163
+msgid "//----------- IF REPLACING/CHANGING local.c COPY BELOW --------------------------"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:136
+msgid "/* Called when the mush starts up, immediatly prior to the main game"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:135
+msgid "loop being entered. By this point all databases are loaded and"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:136
+msgid "all variables configured."
+msgstr ""
+
+#: ../../source/34-upgrade.rst:137
+#: ../../source/34-upgrade.rst:159
+msgid "*/"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:139
+msgid "#ifdef MYSQL_VERSION"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:139
+msgid "extern void local_mysql_init(void); extern int sql_shutdown(dbref player);"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:141
+#: ../../source/34-upgrade.rst:153
+msgid "#endif"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:143
+msgid "#ifdef SQLITE"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:144
+msgid "extern void local_sqlite_init(void);"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:145
+msgid "#endif /* SQLITE */"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:147
+msgid "void local_startup(void) { #ifdef SQLITE"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:149
+msgid "local_sqlite_init();"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:150
+msgid "#endif /* SQLITE */ #ifdef MYSQL_VERSION"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:152
+msgid "local_mysql_init();"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:154
+msgid "load_regexp_functions();"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:155
+msgid "}"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:158
+msgid "/* Called immediatly after the main game loop exits. At this point"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:158
+msgid "all databases and variables are still configured"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:160
+msgid "void local_shutdown(void) { #ifdef MYSQL_VERSION"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:162
+msgid "sql_shutdown(-1);"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:163
+msgid "#endif }"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:165
+msgid "//----------- IF REPLACING/CHANGING local.c COPY ABOVE --------------------------"
+msgstr ""
+
+#: ../../source/34-upgrade.rst:167
+msgid "Issue 'make clean' then make confsource to rebuild using the latest builder script to build in the mysql changes."
+msgstr ""

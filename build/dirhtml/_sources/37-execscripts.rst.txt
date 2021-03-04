@@ -1,0 +1,34 @@
+----------------------------------
+Scripts to be used with execscript
+----------------------------------
+
+account/                       -- Directory for execscripts relating to account creation
+compile39.sh                   -- Script for patching and compiling RhostMUSH 3.9
+compile.sh                     -- Script for patching and compiling RhostMUSH
+config.sh                      -- Script for setting compile time options for RhostMUSH
+debug.sh                       -- Script for debugging RhostMUSH
+dict.sh                        -- Script for querying a dictionary
+diff.sh                        -- Script for querying differences between two arguments
+fortune.sh                     -- Script for querying fortune program
+fullweather.sh                 -- Script for querying a graphical weather forecast (alternative)
+git.sh                         -- Script for querying git version of RhostMUSH
+hello.sh                       -- Script for teaching execscript for 'Hello World'
+iostat.sh                      -- Script for querying server stats of RhostMUSH
+jsonvalidate.sh                -- Python Script for validating JSON
+logsearch.sh                   -- Script for searching throgh logfiles for RhostMUSH
+math_example.sh                -- Examples of math operations to be used with math.sh
+math.sh                        -- Script for mathematical operations
+memory.sh                      -- Script for querying memory usage of RhostMUSH
+mkindx.sh                      -- Script for indexing RhostMSH helpfiles
+pastebinread.sh                -- Script for reading data from a pastebin URL
+pastebinwrite.sh               -- Script for writing data to a pastebin
+qspell.sh                      -- Script for checking spelling (alternative)
+quota.sh                       -- Script for checking disk quote and usage
+random.sh                      -- Script for getting a random number
+roomlog.sh                     -- Script for viewing logs in roomlog directory
+spell.sh                       -- Script for checking spelling
+stats.sh                       -- Script for querying server and process stats for RhostMUSH
+thes.sh                        -- Script for adding a word to the dictionary for spell scripts
+tinyurl.sh                     -- Script for shortening a URL
+weather.sh                     -- Script for querying a graphical weather forecast
+web.sh                         -- Script for querying an arbitary website

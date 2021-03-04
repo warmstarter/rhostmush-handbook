@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-04 10:55-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/20-execscript.rst:3
+msgid "Execscript and external programs and scripts"
+msgstr ""
+
+#: ../../source/20-execscript.rst:6
+msgid "Mush variables"
+msgstr ""
+
+#: ../../source/20-execscript.rst:9
+msgid "Built in variables"
+msgstr ""
+
+#: ../../source/20-execscript.rst:11
+msgid "Variable                   Description MUSH_PLAYER                player dbref# MUSH_CAUSE                 cause dbref# MUSH_CALLER                caller dbref# MUSH_OWNER                 owner of player dbref# MUSH_FLAGS                 space delimited list of flags on player MUSH_TOGGLES               space delimited list of toggles on player MUSH_OFLAGS                space delimited list of flags of player owner MUSH_OTOGGLES              space delimited list of toggles of player owner MUSHL_VARS                 space delimited list of MUSH attributes from player"
+msgstr ""
+
+#: ../../source/20-execscript.rst:21
+msgid "This is passed from the mush's EXECSCRIPT_VARS attr"
+msgstr ""
+
+#: ../../source/20-execscript.rst:23
+#: ../../source/20-execscript.rst:50
+msgid "Dynamic variables"
+msgstr ""
+
+#: ../../source/20-execscript.rst:26
+msgid "MUSHV_<arg>                <arg> variable passed from MUSHL_VARS"
+msgstr ""
+
+#: ../../source/20-execscript.rst:26
+msgid "These are the attributes from EXECSCRIPT_VARS"
+msgstr ""
+
+#: ../../source/20-execscript.rst:29
+#: ../../source/20-execscript.rst:67
+msgid "Register variables"
+msgstr ""
+
+#: ../../source/20-execscript.rst:31
+msgid "MUSHQ_<arg>                setq registers 0-9 and a-z MUSHQN_<arg>               labels that are assigned the setq vars MUSHN_<arg>                The labels that were defined by any register"
+msgstr ""
+
+#: ../../source/20-execscript.rst:36
+msgid "Note: they must be ASCII-7 clean and contain no"
+msgstr ""
+
+#: ../../source/20-execscript.rst:35
+msgid "white spaces"
+msgstr ""
+
+#: ../../source/20-execscript.rst:39
+msgid "set object"
+msgstr ""
+
+#: ../../source/20-execscript.rst:41
+msgid "The script executed with execscript() will read in a file with the same name as the script ending in '.set'.  This is a loader object that will set attributes and registers back into the mush that you wish to pass from the script. The fields are SPACE SEPARATED.  The values are NOT evaluated."
+msgstr ""
+
+#: ../../source/20-execscript.rst:47
+msgid "The format of the fields are"
+msgstr ""
+
+#: ../../source/20-execscript.rst:52
+msgid "VARNAME        OWNER        CONTENTS (or leave null to clear)"
+msgstr ""
+
+#: ../../source/20-execscript.rst:55
+msgid "Examples"
+msgstr ""
+
+#: ../../source/20-execscript.rst:57
+msgid "SEX #123 Male DESC #123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind. RED #123 This is the color %ch%crred%cn. WIPETHISATTR #123 MULTILINE #123 This is a line that continues on because of the line feed (a control-M) on each line on the lines above"
+msgstr ""
+
+#: ../../source/20-execscript.rst:69
+msgid "REGISTER       Q            CONTENTS (or leave null to clear)"
+msgstr ""
+
+#: ../../source/20-execscript.rst:72
+msgid "Examples (The last example clears register 0)"
+msgstr ""
+
+#: ../../source/20-execscript.rst:74
+msgid "W Q This is stored in register W 1 Q This is stored in register 1 0 Q foo QN this sets register with label 'foo'"
+msgstr ""
+
+#: ../../source/20-execscript.rst:81
+msgid "Example bash script"
+msgstr ""
+
+#: ../../source/20-execscript.rst:83
+msgid "#!/bin/bash echo \"This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}\" echo \"Displaying Registers:\" regs=\"0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z\" for list in ${regs} do"
+msgstr ""
+
+#: ../../source/20-execscript.rst:89
+msgid "eval echo \"Register ${list}: \\${MUSHQ_${list}}\""
+msgstr ""
+
+#: ../../source/20-execscript.rst:90
+msgid "done echo \"Displaying variables:\" for vars in ${MUSHL_VARS} do"
+msgstr ""
+
+#: ../../source/20-execscript.rst:94
+msgid "eval echo \"Variable ${vars}: \\${MUSHV_${vars}}\""
+msgstr ""
+
+#: ../../source/20-execscript.rst:95
+msgid "done"
+msgstr ""
+
+#: ../../source/20-execscript.rst:99
+msgid "Notes and warnings"
+msgstr ""
+
+#: ../../source/20-execscript.rst:101
+msgid "While MUSHL_VARS are sanitized on what is allowable as a mush variable, this is not necessarilly sanitized on what the calling script can fetch as a valid variable.  Of note, you can not set environment variables that contain an equals sign.  Be aware of this limitation."
+msgstr ""
+
+#: ../../source/20-execscript.rst:106
+msgid "Remember, MUSHL_VARS is the environment variable seen by the script. This is EXECSCRIPT_VARS on the mush itself, that is the attribute set on the target that contains the execscript() that is being executed."
+msgstr ""

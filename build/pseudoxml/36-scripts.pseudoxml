@@ -1,0 +1,29 @@
+<document source="/home/pi/rhostmush-handbook/source/36-scripts.rst">
+    <section ids="the-following-scripts-are-used-in-the-game-directory" names="the\ following\ scripts\ are\ used\ in\ the\ game\ directory">
+        <title>
+            The following scripts are used in the game directory
+        <paragraph>
+            Startmush               – used to Start up the mush
+            backup_flat.sh          – Used to run backups with @dump/flat within the game
+        <block_quote>
+            <paragraph>
+                (Started with Startmush automatically)
+        <paragraph>
+            backup_restart.sh       – Restart the backup_flat.sh if changes are done
+            compress_logs.sh        – Compress logs in ‘oldlogs’.  Ran with Startmush
+            findit.sh               – Internal script used to check for flatfile validity
+            mailhide.sh             – Wrapper to hide from address using the ‘mail’ progam
+            minimal.sh              – Auto-load the minimal db into the mush
+            proxysnarf.sha          – Internal script for the tor_pull.sh tor proxy blacklist
+            tor_pullit.sh           – Internal script for the tor_pull.sh for proxy blacklist
+            recovery.sh             – If your db is corrupt, run this to auto-revert to an
+        <block_quote>
+            <paragraph>
+                earlier flatfile
+        <definition_list>
+            <definition_list_item>
+                <term>
+                    tor_pull.sh             – Create a blacklist.txt file that can be loaded via the
+                <definition>
+                    <paragraph>
+                        internal @blacklist command for proxy handling

@@ -1,0 +1,57 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-04 10:55-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/09-blocking.rst:3
+msgid "Methods to block anonymous connections and the pros and cons of doing so"
+msgstr ""
+
+#: ../../source/09-blocking.rst:4
+msgid "Now let's assume you have some troll attempting to use proxies to connect. There's multiple ways to stop this."
+msgstr ""
+
+#: ../../source/09-blocking.rst:8
+msgid "Blacklisting through external tor_pull.sh script"
+msgstr ""
+
+#: ../../source/09-blocking.rst:10
+msgid "In ~/Rhost/Server/game you will see a script called tor_pull.sh Execute this by running (from the game directory) ./tor_pull.sh This populates the blacklist with registered proxies from various sites on the internet.  If you want specified ip's added, feel free to add them at the end of this file."
+msgstr ""
+
+#: ../../source/09-blocking.rst:17
+msgid "Blacklisting through internal @blacklist command"
+msgstr ""
+
+#: ../../source/09-blocking.rst:19
+msgid "On the mush, have as part of your startup @blacklist/load This will load in the generated blacklist file for automatic forbid sites based on the ip."
+msgstr ""
+
+#: ../../source/09-blocking.rst:24
+msgid "Blacklisting through internal @tor command"
+msgstr ""
+
+#: ../../source/09-blocking.rst:26
+msgid "@tor.  Please see 'wizhelp tor' on how to set this up.  It in effect will actively block all known exit nodes for TOR's annonymous proxy service.  It self-updates and will actively block TOR connections."
+msgstr ""
+
+#: ../../source/09-blocking.rst:31
+msgid "Blacklisting through internal @admin command"
+msgstr ""
+
+#: ../../source/09-blocking.rst:33
+msgid "@admin proxy_checker (please see wizhelp) This little doodad uses MTU checking against packet size which will detect most methods of proxies.  Sadly, this also has false positives because some situations require a differentating MTU value such as briged network connect with things like cloud services, docker, or similar encapsulated network services.  However, this option has several settings from just monitoring/alerting of possible proxies to downright forbidding them.  If you're being actively attacked, it may be worth considering adding this to add additional protection."
+msgstr ""

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The differences to expect to the end user between PennMUSH, MUX, and RhostMUSH as of 08/06/2016</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nonav.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-differences-to-expect-to-the-end-user-between-pennmush-mux-and-rhostmush-as-of-08-06-2016">
+<h1>The differences to expect to the end user between PennMUSH, MUX, and RhostMUSH as of 08/06/2016</h1>
+<p>The largest end user experience will mostly resolve around some look and feel.
+The general look and feel of how to set attributes, work with commands and
+functions, and getting around a grid will be identical between the mush flavors.
+&#64;nuke and &#64;destroy will work somewhat differently between the three codebases
+and some effort should be looked at on how different it behaves.</p>
+<div class="section" id="pennmush">
+<h2>PennMUSH</h2>
+<ul class="simple">
+<li><p>The way the comsystem (hardcode) works with the latest PennMUSH has some
+compatibility now with MUX’s comsystem.</p></li>
+<li><p>The &#64;mail system is different to MUX and Rhost.</p></li>
+<li><p>Debugging code uses DEBUG and has an indented format.</p></li>
+<li><p>The parser for code doesn’t require nested escaping like other codebases, but
+has issues with the pre-parser and nesting.</p></li>
+<li><p>All standard movement, attribute setting, other should be similar</p></li>
+<li><p>Penn allows empty attributes.</p></li>
+<li><p>Penn supports attribute trees.</p></li>
+<li><p>Penn has the standard set of bitlevel flags with on/off &#64;powers</p></li>
+</ul>
+</div>
+<div class="section" id="mux">
+<h2>MUX</h2>
+<ul class="simple">
+<li><p>The comsystem (hardcode) is unique to MUX/TinyMUSH3 and is not compatible
+with Penn.</p></li>
+<li><p>The &#64;mail system is unique to MUX/TinyMUSH3 and is not compatible with Penn.</p></li>
+<li><p>Debugging uses TRACE and is the old standard for debugging.</p></li>
+<li><p>The parser requires extra escaping for nested escaping but handles pre-parsing
+and nesting fine.</p></li>
+<li><p>MUX does not allow empty attributes.</p></li>
+<li><p>MUX does not support attribute trees.</p></li>
+<li><p>MUX has the standard set of bitlevel flags with on/off &#64;powers</p></li>
+</ul>
+</div>
+<div class="section" id="rhost">
+<h2>Rhost</h2>
+<ul class="simple">
+<li><p>The comsystem (softcode) is in the Mushcode directory and is compatible
+to both PennMUSH and MUX.</p></li>
+<li><p>The mail system is unique to Rhost but there exists mail wrappers that
+allow MUX and Penn compatibility.</p></li>
+<li><p>Debugging uses TRACE and is the old standard for debugging.  It allows
+advanced features like labeling and grepping for content.</p></li>
+<li><p>The parser requires extra escaping for nested escaping but handles pre-parsing
+and nesting fine.</p></li>
+<li><p>Rhost does not allow empty attributes.</p></li>
+<li><p>Rhost marginally supports attribute trees.</p></li>
+<li><p>Rhost has a multi-level set of bitlevel flags with multi-tier &#64;powers,
+&#64;depowers, and varying other tools for permissions.</p></li>
+</ul>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

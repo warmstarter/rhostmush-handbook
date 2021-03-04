@@ -73,7 +73,7 @@
 
 
 \title{RhostMUSH Handbook}
-\date{Mar 03, 2021}
+\date{Mar 04, 2021}
 \release{}
 \author{wstarter}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -7317,6 +7317,1246 @@ builder script to build in the mysql changes.
 
 \end{enumerate}
 
+
+\chapter{Textfiles for RhostMUSH}
+\label{\detokenize{35-txtfiles:textfiles-for-rhostmush}}\label{\detokenize{35-txtfiles::doc}}\begin{description}
+\item[{areghost.txt           \sphinxhyphen{} file player gets when autoregistration on registered}] \leavevmode
+\sphinxAtStartPar
+host.
+
+\item[{autoreg.txt            \sphinxhyphen{} file player gets when autoregistration on}] \leavevmode
+\sphinxAtStartPar
+non\sphinxhyphen{}registered host.
+
+\item[{autoreg\_include.txt    \sphinxhyphen{} file player receives in email when they autoregister}] \leavevmode
+\sphinxAtStartPar
+attached to login/passwd
+
+\end{description}
+
+\sphinxAtStartPar
+badsite.txt            \sphinxhyphen{} file player gets when site is not allowed.
+connect.txt            \sphinxhyphen{} file player gets when connect
+create\_reg.txt         \sphinxhyphen{} file player gets when their site is register and they
+\begin{quote}
+
+\sphinxAtStartPar
+can’t create.
+\end{quote}
+\begin{description}
+\item[{doorconf.txt           \sphinxhyphen{} file that is searched for information regarding @door.}] \leavevmode
+\sphinxAtStartPar
+\sphinxstyleemphasis{NOTE}  Need to mkindx doorconf.txt doorconf.indx for this file
+
+\item[{down.txt               \sphinxhyphen{} file player gets when the mush has logins disabled}] \leavevmode
+\sphinxAtStartPar
+(@disable login)
+
+\item[{error.txt              \sphinxhyphen{} the ‘Huh? (type help for help)’ messages.}] \leavevmode
+\sphinxAtStartPar
+\sphinxstyleemphasis{NOTE}  Need to mkindx error.txt error.indx for this file
+
+\item[{full.txt               \sphinxhyphen{} file player gets when the mush can’t have any more}] \leavevmode
+\sphinxAtStartPar
+players.
+
+\end{description}
+
+\sphinxAtStartPar
+guest.txt              \sphinxhyphen{} file player gets when they connect as a guest.
+help.txt               \sphinxhyphen{} your help file
+\begin{quote}
+
+\sphinxAtStartPar
+\sphinxstyleemphasis{NOTE}  Need to mkindx help.txt help.indx for this file
+\end{quote}
+
+\sphinxAtStartPar
+motd.txt               \sphinxhyphen{} your motd file
+news.txt               \sphinxhyphen{} your news file
+\begin{quote}
+
+\sphinxAtStartPar
+\sphinxstyleemphasis{NOTE}  Need to mkindx news.txt news.indx for this file
+\end{quote}
+\begin{description}
+\item[{newuser.txt            \sphinxhyphen{} file newly created players get when they connect for}] \leavevmode
+\sphinxAtStartPar
+the first time.
+
+\item[{noguest.txt            \sphinxhyphen{} file player gets when they are not allowed to connect}] \leavevmode
+\sphinxAtStartPar
+to a guest.
+
+\item[{plushelp.txt           \sphinxhyphen{} optional +help file. (needs compile time option)}] \leavevmode
+\sphinxAtStartPar
+\sphinxstyleemphasis{NOTE}  Need to mkindx plushelp.txt plushelp.indx for this file
+
+\end{description}
+
+\sphinxAtStartPar
+quit.txt               \sphinxhyphen{} file player gets when they disconnect.
+register.txt           \sphinxhyphen{} file player gets when the site is locked down for
+\begin{quote}
+
+\sphinxAtStartPar
+registration.
+\end{quote}
+\begin{description}
+\item[{wizhelp.txt            \sphinxhyphen{} your wizhelp file}] \leavevmode
+\sphinxAtStartPar
+\sphinxstyleemphasis{NOTE}  Need to mkindx wizhelp.txt wizhelp.indx for this file
+
+\end{description}
+
+\sphinxAtStartPar
+wizmotd.txt            \sphinxhyphen{} your wiz motd file
+
+
+\section{Textfile Frequently Asked Questions}
+\label{\detokenize{35-txtfiles:textfile-frequently-asked-questions}}
+\sphinxAtStartPar
+Q:  How do I put color in these files?
+A1: Look at ansi.h and you need to put the literal ASCII codes.
+\begin{quote}
+
+\sphinxAtStartPar
+They will look like: \textasciicircum{}{[}{[}0m (for ANSI\_NORMAL).  That’s \textless{}ESC\textgreater{}{[}
+\end{quote}
+\begin{description}
+\item[{A2: You can enable ansi\_txtfiles then use \%c (or \%x/\%m) encoding}] \leavevmode
+\sphinxAtStartPar
+for ansi, however you compiled your Rhost.
+
+\end{description}
+
+\sphinxAtStartPar
+Q:  I want to design my own txt files to read in the mush.
+A:  Easy.  Design them like help.txt would be set up, mkindx the file,
+\begin{quote}
+
+\sphinxAtStartPar
+then you can access it via @dynhelp online.
+\end{quote}
+
+\sphinxAtStartPar
+Q:  Do I have to mkindx these files whenever I make changes?
+A:  Only the ones that have ‘\& ‘ index. (help.txt, wizhelp.txt, news.txt, etc)
+
+\sphinxAtStartPar
+Q:  Do I have to @readcache in the game whenever I make a change?
+A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones
+\begin{quote}
+
+\sphinxAtStartPar
+you use with @dynhelp.
+\end{quote}
+
+\sphinxAtStartPar
+Q:  Can’t I just make code in the mush that then is used for these silly txt files?
+A:  Absolutely.  Check ‘wizhelp file\_object’.
+
+
+\chapter{The following scripts are used in the game directory}
+\label{\detokenize{36-scripts:the-following-scripts-are-used-in-the-game-directory}}\label{\detokenize{36-scripts::doc}}
+\sphinxAtStartPar
+Startmush               \textendash{} used to Start up the mush
+backup\_flat.sh          \textendash{} Used to run backups with @dump/flat within the game
+\begin{quote}
+
+\sphinxAtStartPar
+(Started with Startmush automatically)
+\end{quote}
+
+\sphinxAtStartPar
+backup\_restart.sh       \textendash{} Restart the backup\_flat.sh if changes are done
+compress\_logs.sh        \textendash{} Compress logs in ‘oldlogs’.  Ran with Startmush
+findit.sh               \textendash{} Internal script used to check for flatfile validity
+mailhide.sh             \textendash{} Wrapper to hide from address using the ‘mail’ progam
+minimal.sh              \textendash{} Auto\sphinxhyphen{}load the minimal db into the mush
+proxysnarf.sha          \textendash{} Internal script for the tor\_pull.sh tor proxy blacklist
+tor\_pullit.sh           \textendash{} Internal script for the tor\_pull.sh for proxy blacklist
+recovery.sh             \textendash{} If your db is corrupt, run this to auto\sphinxhyphen{}revert to an
+\begin{quote}
+
+\sphinxAtStartPar
+earlier flatfile
+\end{quote}
+\begin{description}
+\item[{tor\_pull.sh             \textendash{} Create a blacklist.txt file that can be loaded via the}] \leavevmode
+\sphinxAtStartPar
+internal @blacklist command for proxy handling
+
+\end{description}
+
+
+\chapter{Scripts to be used with execscript}
+\label{\detokenize{37-execscripts:scripts-to-be-used-with-execscript}}\label{\detokenize{37-execscripts::doc}}
+\sphinxAtStartPar
+account/                       \textendash{} Directory for execscripts relating to account creation
+compile39.sh                   \textendash{} Script for patching and compiling RhostMUSH 3.9
+compile.sh                     \textendash{} Script for patching and compiling RhostMUSH
+config.sh                      \textendash{} Script for setting compile time options for RhostMUSH
+debug.sh                       \textendash{} Script for debugging RhostMUSH
+dict.sh                        \textendash{} Script for querying a dictionary
+diff.sh                        \textendash{} Script for querying differences between two arguments
+fortune.sh                     \textendash{} Script for querying fortune program
+fullweather.sh                 \textendash{} Script for querying a graphical weather forecast (alternative)
+git.sh                         \textendash{} Script for querying git version of RhostMUSH
+hello.sh                       \textendash{} Script for teaching execscript for ‘Hello World’
+iostat.sh                      \textendash{} Script for querying server stats of RhostMUSH
+jsonvalidate.sh                \textendash{} Python Script for validating JSON
+logsearch.sh                   \textendash{} Script for searching throgh logfiles for RhostMUSH
+math\_example.sh                \textendash{} Examples of math operations to be used with math.sh
+math.sh                        \textendash{} Script for mathematical operations
+memory.sh                      \textendash{} Script for querying memory usage of RhostMUSH
+mkindx.sh                      \textendash{} Script for indexing RhostMSH helpfiles
+pastebinread.sh                \textendash{} Script for reading data from a pastebin URL
+pastebinwrite.sh               \textendash{} Script for writing data to a pastebin
+qspell.sh                      \textendash{} Script for checking spelling (alternative)
+quota.sh                       \textendash{} Script for checking disk quote and usage
+random.sh                      \textendash{} Script for getting a random number
+roomlog.sh                     \textendash{} Script for viewing logs in roomlog directory
+spell.sh                       \textendash{} Script for checking spelling
+stats.sh                       \textendash{} Script for querying server and process stats for RhostMUSH
+thes.sh                        \textendash{} Script for adding a word to the dictionary for spell scripts
+tinyurl.sh                     \textendash{} Script for shortening a URL
+weather.sh                     \textendash{} Script for querying a graphical weather forecast
+web.sh                         \textendash{} Script for querying an arbitary website
+
+
+\chapter{Format for image filses}
+\label{\detokenize{38-imageformat:format-for-image-filses}}\label{\detokenize{38-imageformat::doc}}
+\sphinxAtStartPar
+The image format goes like this:
+
+\sphinxAtStartPar
+Data Type  Example  Description
+———  ——\sphinxhyphen{}  ———————————————————\sphinxhyphen{}
+INT        3        TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5
+STRING     Wizard   NAME: of the target.  Verbatum, no quotes surround it
+{\color{red}\bfseries{}*}INT       123      LOCATION: dbref\# of the target.  No prepending ‘\#’ used.
+{\color{red}\bfseries{}*}INT       234      CONTENTS: The first content in a linked list content table (\sphinxhyphen{}1 if none)
+{\color{red}\bfseries{}*}INT       345      EXITS: The first exit in a linked list exit table (\sphinxhyphen{}1 if none)
+{\color{red}\bfseries{}*}INT       0        LINK: This is the ‘home’ of the object or what it’s linked to (\sphinxhyphen{}1 for none)
+{\color{red}\bfseries{}*}INT       123      NEXT: The next thing after this item for a content holder
+STRING     \#123     LOCK: The boolean string lock if it exists.  (empty if no lock)
+{\color{red}\bfseries{}*}INT       1        OWNER: The dbref\# owner of the target.  For players same dbref as player.
+INT        789      PARENT: The parent of the target.  (\sphinxhyphen{}1 if none)
+{\color{red}\bfseries{}*}INT       99999    MONEY: The int value of the money the players has.
+INT        194592   FLAGS1: The first word of flags (@set flags) on a player      (see FLAGS)
+INT        194222   FLAGS2: The second word of flags (@set flags) on a player     (see FLAGS)
+INT        199999   FLAGS3: The third word of flags (@set flags {[}{]}) on a player   (see FLAGS)
+INT        1582958  FLAGS4: The forth word of flags (@set flags {[}{]}) on a player   (see FLAGS)
+INT        159955   TOGGLES1: The first word of toggles (@toggle) on a player    (see TOGGLES)
+INT        159958   TOGGLES2: The second word of toggles (@toggle) on a player   (see TOGGLES)
+INT        159958   POWER1: The first word of powers (@power) on a player         (see POWERS)
+INT        159958   POWER2: The second word of powers (@power) on a player        (see POWERS)
+INT        159958   POWER3: The third word of powers (@power) on a player         (see POWERS)
+INT        159958   DEPOWER1: The first word of depowers (@depower) on a player  (see DEPOWERS)
+INT        159958   DEPOWER2: The second word of depowers (@depower) on a player (see DEPOWERS)
+INT        159958   DEPOWER3: The third word of depowers (@depower) on a player  (see DEPOWERS)
+INT        \sphinxhyphen{}1       ZONE(S): The list of zones starting here and ending with ‘\sphinxhyphen{}1’. (see ZONES)
+\textgreater{}STRING    \textgreater{}VA      ATTRIBUTENAME: Attribute name to store, starts with \textgreater{} identifier
+STRING     Wheee    ATTRIBUTECONTENTS: Contents of attribute.  Multi\sphinxhyphen{}lines seperate with \textasciicircum{}M (control\sphinxhyphen{}M)
+\textgreater{}STRING    \textgreater{}Desc    ATTRIBUTENAME: Another attribute to chain in
+STRING     Ugly     ATTRIBUTECONTENTS: Contents of the next attribute
+\textgreater{}STRING    {\color{red}\bfseries{}*}Password PASSWORDATTRIB: Special password attribute.  Attribute name is ‘{\color{red}\bfseries{}*}Password’
+STRING     \$6\$xy\$xy PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
+\textless{}          \textless{}        This is the marker to specify the end of the attribute contents.  This is always the last line
+
+\sphinxAtStartPar
+NOTE:  Any Data type starting with ‘*’ is ignored when @snapshot/loading.
+
+\sphinxAtStartPar
+The structure above with the examples would look like this in the file:
+
+\sphinxAtStartPar
+3
+Wizard
+123
+234
+345
+0
+123
+\#123
+1
+789
+99999
+194592
+194222
+199999
+1582958
+159955
+159958
+159958
+159958
+159958
+159958
+159958
+159958
+\sphinxhyphen{}1
+\textgreater{}VA
+Wheee
+\textgreater{}Desc
+Ugly
+\textgreater{}*Password
+\$6\$xy\$xy
+\textless{}
+
+
+\chapter{HELP key indexes for the values:}
+\label{\detokenize{38-imageformat:help-key-indexes-for-the-values}}\begin{description}
+\item[{FLAGS: The following flags are to be used.  They are BITWISE masks that you}] \leavevmode
+\sphinxAtStartPar
+need to add together for the values tghat you apply
+
+\end{description}
+
+\sphinxAtStartPar
+/* First word of flags \sphinxstyleemphasis{/
+\#define SEETHRU         0x00000008      /} Can see through to the other side \sphinxstyleemphasis{/
+\#define WIZARD          0x00000010      /} gets automatic control \sphinxstyleemphasis{/
+\#define LINK\_OK         0x00000020      /} anybody can link to this room \sphinxstyleemphasis{/
+\#define DARK            0x00000040      /} Don’t show contents or presence \sphinxstyleemphasis{/
+\#define JUMP\_OK         0x00000080      /} Others may @tel here \sphinxstyleemphasis{/
+\#define STICKY          0x00000100      /} Object goes home when dropped \sphinxstyleemphasis{/
+\#define DESTROY\_OK      0x00000200      /} Others may @destroy \sphinxstyleemphasis{/
+\#define HAVEN           0x00000400      /} No killing here, or no pages \sphinxstyleemphasis{/
+\#define QUIET           0x00000800      /} Prevent ‘feelgood’ messages \sphinxstyleemphasis{/
+\#define HALT            0x00001000      /} object cannot perform actions \sphinxstyleemphasis{/
+\#define TRACE           0x00002000      /} Generate evaluation trace output \sphinxstyleemphasis{/
+\#define GOING           0x00004000      /} object is available for recycling \sphinxstyleemphasis{/
+\#define MONITOR         0x00008000      /} Process \textasciicircum{}x:action listens on obj? \sphinxstyleemphasis{/
+\#define MYOPIC          0x00010000      /} See things as nonowner/nonwizard \sphinxstyleemphasis{/
+\#define PUPPET          0x00020000      /} Relays ALL messages to owner \sphinxstyleemphasis{/
+\#define CHOWN\_OK        0x00040000      /} Object may be @chowned freely \sphinxstyleemphasis{/
+\#define ENTER\_OK        0x00080000      /} Object may be ENTERed \sphinxstyleemphasis{/
+\#define VISUAL          0x00100000      /} Everyone can see properties \sphinxstyleemphasis{/
+\#define IMMORTAL        0x00200000      /} Object can’t be killed \sphinxstyleemphasis{/
+\#define HAS\_STARTUP     0x00400000      /} Load some attrs at startup \sphinxstyleemphasis{/
+\#define OPAQUE          0x00800000      /} Can’t see inside \sphinxstyleemphasis{/
+\#define VERBOSE         0x01000000      /} Tells owner everything it does. \sphinxstyleemphasis{/
+\#define INHERIT         0x02000000      /} Gets owner’s privs. (i.e. Wiz) \sphinxstyleemphasis{/
+\#define NOSPOOF         0x04000000      /} Report originator of all actions. \sphinxstyleemphasis{/
+\#define ROBOT           0x08000000      /} Player is a ROBOT \sphinxstyleemphasis{/
+\#define SAFE            0x10000000      /} Need /override to @destroy \sphinxstyleemphasis{/
+\#define CONTROL\_OK      0x20000000      /} ControlLk specifies who ctrls me \sphinxstyleemphasis{/
+\#define HEARTHRU        0x40000000      /} Can hear out of this obj or exit \sphinxstyleemphasis{/
+\#define TERSE           0x80000000      /} Only show room name on look {\color{red}\bfseries{}*}/
+
+\sphinxAtStartPar
+/* Second word of flags \sphinxstyleemphasis{/
+\#define KEY             0x00000001      /} No puppets \sphinxstyleemphasis{/
+\#define ABODE           0x00000002      /} May @set home here \sphinxstyleemphasis{/
+\#define FLOATING        0x00000004      /} Inhibit Floating room.. msgs \sphinxstyleemphasis{/
+\#define UNFINDABLE      0x00000008      /} Cant loc() from afar \sphinxstyleemphasis{/
+\#define PARENT\_OK       0x00000010      /} Others may @parent to me \sphinxstyleemphasis{/
+\#define LIGHT           0x00000020      /} Visible in dark places \sphinxstyleemphasis{/
+\#define HAS\_LISTEN      0x00000040      /} Internal: LISTEN attr set \sphinxstyleemphasis{/
+\#define HAS\_FWDLIST     0x00000080      /} Internal: FORWARDLIST attr set \sphinxstyleemphasis{/
+\#define ADMIN           0x00000100      /} Player has admin privs \sphinxstyleemphasis{/
+\#define GUILDOBJ        0x00000200
+\#define GUILDMASTER     0x00000400      /} Player has gm privs \sphinxstyleemphasis{/
+\#define NO\_WALLS        0x00000800      /} So to stop normal walls \sphinxstyleemphasis{/
+\#define REQUIRE\_TREES   0x00001000      /} Trees are required on this target for attrib sets \sphinxstyleemphasis{/
+/} —\sphinxhyphen{}FREE—\sphinxhyphen{}         0x00002000 \sphinxstyleemphasis{/   /} \#define OLD\_NOROBOT  0x00002000 \sphinxstyleemphasis{/
+\#define SCLOAK          0x00004000
+\#define CLOAK           0x00008000
+\#define FUBAR           0x00010000
+\#define INDESTRUCTABLE  0x00020000      /} object can’t be nuked \sphinxstyleemphasis{/
+\#define NO\_YELL         0x00040000      /} player can’t @wall \sphinxstyleemphasis{/
+\#define NO\_TEL          0x00080000      /} player can’t @tel or be @tel’d \sphinxstyleemphasis{/
+\#define FREE            0x00100000      /} object/player has unlim money \sphinxstyleemphasis{/
+\#define GUEST\_FLAG      0x00200000
+\#define RECOVER         0x00400000
+\#define BYEROOM         0x00800000
+\#define WANDERER        0x01000000
+\#define ANSI            0x02000000
+\#define ANSICOLOR       0x04000000
+\#define NOFLASH         0x08000000
+\#define SUSPECT         0x10000000      /} Report some activities to wizards \sphinxstyleemphasis{/
+\#define BUILDER         0x20000000      /} Player has architect privs \sphinxstyleemphasis{/
+\#define CONNECTED       0x40000000      /} Player is connected \sphinxstyleemphasis{/
+\#define SLAVE           0x80000000      /} Disallow most commands {\color{red}\bfseries{}*}/
+
+\sphinxAtStartPar
+/* Third word of flags \sphinxhyphen{} Thorin 3/95 \sphinxstyleemphasis{/
+\#define NOCONNECT       0x00000001
+\#define DPSHIFT         0x00000002
+\#define NOPOSSESS       0x00000004
+\#define COMBAT          0x00000008
+\#define IC              0x00000010
+\#define ZONEMASTER      0x00000020
+\#define ALTQUOTA        0x00000040
+\#define NOEXAMINE       0x00000080
+\#define NOMODIFY        0x00000100
+\#define CMDCHECK        0x00000200
+\#define DOORRED         0x00000400
+\#define PRIVATE         0x00000800      /} For exits only \sphinxstyleemphasis{/
+\#define NOMOVE          0x00001000
+\#define STOP            0x00002000
+\#define NOSTOP          0x00004000
+\#define NOCOMMAND       0x00008000
+\#define AUDIT           0x00010000
+\#define SEE\_OEMIT       0x00020000
+\#define NO\_GOBJ         0x00040000
+\#define NO\_PESTER       0x00080000
+\#define LRFLAG          0x00100000
+\#define TELOK           0x00200000
+\#define NO\_OVERRIDE     0x00400000
+\#define NO\_USELOCK      0x00800000
+\#define DR\_PURGE        0x01000000      /} For rooms only…internal \sphinxstyleemphasis{/
+\#define NO\_ANSINAME     0x02000000      /} Remove the ability to set @ansiname \sphinxstyleemphasis{/
+\#define SPOOF           0x04000000
+\#define SIDEFX          0x08000000      /} Allow enactor to use side\sphinxhyphen{}effects \sphinxstyleemphasis{/
+\#define ZONECONTENTS    0x10000000      /} Search contents of zonemaster for \$commands \sphinxstyleemphasis{/
+\#define NOWHO           0x20000000      /} Player in WHO doesn’t show up \sphinxhyphen{} use with @hide \sphinxstyleemphasis{/
+\#define ANONYMOUS       0x40000000      /} Player set shows up as ‘Someone’ when talking \sphinxstyleemphasis{/
+\#define BACKSTAGE       0x80000000      /} Immortal toggle for items on control {\color{red}\bfseries{}*}/
+
+\sphinxAtStartPar
+/* Forth word of flags \sphinxhyphen{} Thorin 3/95 \sphinxstyleemphasis{/
+\#define NOBACKSTAGE     0x00000001      /} Immortal toggle to control no\sphinxhyphen{}backstage \sphinxstyleemphasis{/
+\#define LOGIN           0x00000002      /} Enable player to login past @disable logins \sphinxstyleemphasis{/
+\#define INPROGRAM       0x00000004      /} Player is inside a program \sphinxstyleemphasis{/
+\#define COMMANDS        0x00000008      /} Optional define for \$commands \sphinxstyleemphasis{/
+\#define MARKER0         0x00000010      /} TM 3.0 marker flags \sphinxstyleemphasis{/
+\#define MARKER1         0x00000020
+\#define MARKER2         0x00000040
+\#define MARKER3         0x00000080
+\#define MARKER4         0x00000100
+\#define MARKER5         0x00000200
+\#define MARKER6         0x00000400
+\#define MARKER7         0x00000800
+\#define MARKER8         0x00001000
+\#define MARKER9         0x00002000
+\#define BOUNCE          0x00004000      /} That lovly TM 3.0 Bouncey thingy \sphinxstyleemphasis{/
+\#define SHOWFAILCMD     0x00008000      /} Show failed \$commands defauilt error \sphinxstyleemphasis{/
+\#define NOUNDERLINE     0x00010000      /} Strip UNDERLINE character from ANSI \sphinxstyleemphasis{/
+\#define NONAME          0x00020000      /} Target does not display name with look \sphinxstyleemphasis{/
+\#define ZONEPARENT      0x00040000      /} Target zone allows inheritance of attribs \sphinxstyleemphasis{/
+\#define SPAMMONITOR     0x00080000      /} Monitor the target for spam \sphinxstyleemphasis{/
+\#define BLIND           0x00100000      /} Exits and locations snuff arrived/left \sphinxstyleemphasis{/
+\#define NOCODE          0x00200000      /} Players may not code \sphinxstyleemphasis{/
+\#define HAS\_PROTECT     0x00400000      /} Player target has protect name data \sphinxstyleemphasis{/
+\#define XTERMCOLOR      0x00800000      /} Extended AnSI Xterm colors \sphinxstyleemphasis{/
+\#define HAS\_ATTRPIPE    0x01000000      /} Attribute piping via @pipe \sphinxstyleemphasis{/
+/} 0x02000000 free \sphinxstyleemphasis{/
+/} 0x04000000 free \sphinxstyleemphasis{/
+/} 0x08000000 free \sphinxstyleemphasis{/
+/} 0x10000000 free \sphinxstyleemphasis{/
+/} 0x20000000 free \sphinxstyleemphasis{/
+/} 0x40000000 free \sphinxstyleemphasis{/
+/} 0x80000000 free {\color{red}\bfseries{}*}/
+
+\sphinxAtStartPar
+/* First word of toggles \sphinxhyphen{} Thorin 3/95 \sphinxstyleemphasis{/
+\#define TOG\_MONITOR             0x00000001      /} Active monitor on player \sphinxstyleemphasis{/
+\#define TOG\_MONITOR\_USERID      0x00000002      /} show userid \sphinxstyleemphasis{/
+\#define TOG\_MONITOR\_SITE        0x00000004      /} show site \sphinxstyleemphasis{/
+\#define TOG\_MONITOR\_STATS       0x00000008      /} show stats \sphinxstyleemphasis{/
+\#define TOG\_MONITOR\_FAIL        0x00000010      /} show fails \sphinxstyleemphasis{/
+\#define TOG\_MONITOR\_CONN        0x00000020
+\#define TOG\_VANILLA\_ERRORS      0x00000040      /} show normal error msg \sphinxstyleemphasis{/
+\#define TOG\_NO\_ANSI\_EX          0x00000080      /} supress ansi stuff in ex \sphinxstyleemphasis{/
+\#define TOG\_CPUTIME             0x00000100      /} show cpu time for cmds \sphinxstyleemphasis{/
+\#define TOG\_MONITOR\_DISREASON   0x00000200
+\#define TOG\_MONITOR\_VLIMIT      0x00000400
+\#define TOG\_NOTIFY\_LINK         0x00000800
+\#define TOG\_MONITOR\_AREG        0x00001000
+\#define TOG\_MONITOR\_TIME        0x00002000
+\#define TOG\_CLUSTER             0x00004000      /} Object is part of a cluster \sphinxstyleemphasis{/
+\#define TOG\_SNUFFDARK           0x00008000      /} Snuff Dark Exit Viewing \sphinxstyleemphasis{/
+\#define TOG\_NOANSI\_PLAYER       0x00010000      /} Do not show ansi player names \sphinxstyleemphasis{/
+\#define TOG\_NOANSI\_THING        0x00020000      /} … things \sphinxstyleemphasis{/
+\#define TOG\_NOANSI\_ROOM         0x00040000      /} … rooms \sphinxstyleemphasis{/
+\#define TOG\_NOANSI\_EXIT         0x00080000      /} … exits \sphinxstyleemphasis{/
+\#define TOG\_NO\_TIMESTAMP        0x00100000      /} Do not modify timestamps on target \sphinxstyleemphasis{/
+\#define TOG\_NO\_FORMAT           0x00200000      /} Override @conformat/@exitformat \sphinxstyleemphasis{/
+\#define TOG\_ZONE\_AUTOADD        0x00400000      /} Automatically add FIRST zone in list \sphinxstyleemphasis{/
+\#define TOG\_ZONE\_AUTOADDALL     0x00800000      /} Automatically add ALL zones in list \sphinxstyleemphasis{/
+\#define TOG\_WIELDABLE           0x01000000      /} Marker to specify if object is wieldable \sphinxstyleemphasis{/
+\#define TOG\_WEARABLE            0x02000000      /} Marker to specify if object is wearable \sphinxstyleemphasis{/
+\#define TOG\_SEE\_SUSPECT         0x04000000      /} Specify who sees suspect in WHO/MONITOR \sphinxstyleemphasis{/
+\#define TOG\_MONITOR\_CPU         0x08000000      /} Specify who sees CPU overflow allerts \sphinxstyleemphasis{/
+\#define TOG\_BRANDY\_MAIL         0x10000000      /} Define brandy like mail interface \sphinxstyleemphasis{/
+\#define TOG\_FORCEHALTED         0x20000000      /} The item toggled can @force halted things \sphinxstyleemphasis{/
+\#define TOG\_PROG                0x40000000      /} Can use @program on other people/things \sphinxstyleemphasis{/
+\#define TOG\_NOSHELLPROG         0x80000000      /} Target can not issue commands inside a prog {\color{red}\bfseries{}*}/
+
+\sphinxAtStartPar
+/* Second word of toggles \textendash{} Ash \sphinxstyleemphasis{/
+\#define TOG\_EXTANSI             0x00000001      /} Specify if target can used extended ansi naming \sphinxstyleemphasis{/
+\#define TOG\_IMMPROG             0x00000002      /} Only an immortal can @quitprogram them \sphinxstyleemphasis{/
+\#define TOG\_MONITOR\_BFAIL       0x00000004      /} Monitor if a failed connect on bad character \sphinxstyleemphasis{/
+\#define TOG\_PROG\_ON\_CONNECT     0x00000008      /} Reverse logic of program on connect \sphinxstyleemphasis{/
+\#define TOG\_MAIL\_STRIPRETURN    0x00000010      /} Strip carrage return in mail combining \sphinxstyleemphasis{/
+\#define TOG\_PENN\_MAIL           0x00000020      /} Use PENN style syntax \sphinxstyleemphasis{/
+\#define TOG\_SILENTEFFECTS       0x00000040      /} Silents did\_it() functionality on target \sphinxstyleemphasis{/
+\#define TOG\_IGNOREZONE          0x00000080      /} Target is set to @icmd zones \sphinxstyleemphasis{/
+\#define TOG\_VPAGE               0x00000100      /} Target sees alias in pages \sphinxstyleemphasis{/
+\#define TOG\_PAGELOCK            0x00000200      /} Target issues pagelocks as normal \sphinxstyleemphasis{/
+\#define TOG\_MAIL\_NOPARSE        0x00000400      /} Don’t parse \%t/\%b/\%r in mail \sphinxstyleemphasis{/
+\#define TOG\_MAIL\_LOCKDOWN       0x00000800      /} Mortal\sphinxhyphen{}accessed mail/number and mail/check \sphinxstyleemphasis{/
+\#define TOG\_MUXPAGE             0x00001000      /} Have ‘page’ work like MUX \sphinxstyleemphasis{/
+\#define TOG\_NOZONEPARENT        0x00002000      /} Zone Child does NOT inherit parent attribs \sphinxstyleemphasis{/
+\#define TOG\_ATRUSE              0x00004000      /} Enactor can use Attribute based USELOCKS \sphinxstyleemphasis{/
+\#define TOG\_VARIABLE            0x00008000      /} Set exit to be variable \sphinxstyleemphasis{/
+\#define TOG\_KEEPALIVE           0x00010000      /} Send ‘keepalives’ to the target player \sphinxstyleemphasis{/
+\#define TOG\_CHKREALITY          0x00020000      /} Target checks @lock/user for Reality passes \sphinxstyleemphasis{/
+\#define TOG\_NOISY               0x00040000      /} Always do noisy sets \sphinxstyleemphasis{/
+\#define TOG\_ZONECMDCHK          0x00080000      /} Zone commands checked on target like @parent \sphinxstyleemphasis{/
+\#define TOG\_HIDEIDLE            0x00100000      /} Allow wizards/immortals to hide their idle time \sphinxstyleemphasis{/
+\#define TOG\_MORTALREALITY       0x00200000      /} Override the wiz\_always\_real setting \sphinxstyleemphasis{/
+\#define TOG\_ACCENTS             0x00400000      /} Accents being displayed \sphinxstyleemphasis{/
+\#define TOG\_PREMAILVALIDATE     0x00800000      /} Pre\sphinxhyphen{}Validate the mail send list before sending mail \sphinxstyleemphasis{/
+\#define TOG\_SAFELOG             0x01000000      /} Allow ‘clean logging’ by the player \sphinxstyleemphasis{/
+\#define TOG\_UTF8                0x02000000      /} UTF8 being displayed \sphinxstyleemphasis{/
+/} 0x04000000 free \sphinxstyleemphasis{/
+\#define TOG\_NODEFAULT           0x08000000      /} Allow target to inherit default attribs \sphinxstyleemphasis{/
+\#define TOG\_EXFULLWIZATTR       0x10000000      /} Examine Wiz attribs \sphinxstyleemphasis{/
+\#ifdef ENH\_LOGROOM
+\#define TOG\_LOGROOMENH          0x20000000      /} Enhanced Room Logging \sphinxstyleemphasis{/
+\#endif
+\#define TOG\_LOGROOM             0x40000000      /} Log Room’s location/contents \sphinxstyleemphasis{/
+\#define TOG\_NOGLOBPARENT        0x80000000      /} Target does not inherit global attributes {\color{red}\bfseries{}*}/
+\begin{quote}
+
+\sphinxAtStartPar
+the fact.
+\end{quote}
+\begin{description}
+\item[{/* First word of power positions.  Each position is 2 bits so the}] \leavevmode
+\sphinxAtStartPar
+number here is how far over to shift the 2 bit pattern         {\color{red}\bfseries{}*}/
+
+\end{description}
+
+\sphinxAtStartPar
+\#define POWER\_CHANGE\_QUOTAS     0
+\#define POWER\_CHOWN\_ME          2
+\#define POWER\_CHOWN\_ANYWHERE    4
+\#define POWER\_CHOWN\_OTHER       6
+\#define POWER\_WIZ\_WHO           8
+\#define POWER\_EX\_ALL            10
+\#define POWER\_NOFORCE           12
+\#define POWER\_SEE\_QUEUE\_ALL     14
+\#define POWER\_FREE\_QUOTA        16
+\#define POWER\_GRAB\_PLAYER       18
+\#define POWER\_JOIN\_PLAYER       20
+\#define POWER\_LONG\_FINGERS      22
+\#define POWER\_NO\_BOOT           24
+\#define POWER\_BOOT              26
+\#define POWER\_STEAL             28
+\#define POWER\_SEE\_QUEUE         30
+
+\sphinxAtStartPar
+/* Second word of power positions. {\color{red}\bfseries{}*}/
+\#define POWER\_SHUTDOWN          0
+\#define POWER\_TEL\_ANYWHERE      2
+\#define POWER\_TEL\_ANYTHING      4
+\#define POWER\_PCREATE           6
+\#define POWER\_STAT\_ANY          8
+\#define POWER\_FREE\_WALL         10
+\#define POWER\_EXECSCRIPT        12
+\#define POWER\_FREE\_PAGE         14
+\#define POWER\_HALT\_QUEUE        16
+\#define POWER\_HALT\_QUEUE\_ALL    18
+\#define POWER\_FORMATTING        20
+\#define POWER\_NOKILL            22
+\#define POWER\_SEARCH\_ANY        24
+\#define POWER\_SECURITY          26
+\#define POWER\_WHO\_UNFIND        28
+
+\sphinxAtStartPar
+/* Third word of power positions. \sphinxstyleemphasis{/
+\#define POWER\_OPURGE            0
+\#define POWER\_HIDEBIT           2
+\#define POWER\_NOWHO             4
+\#define POWER\_FULLTEL\_ANYWHERE  6
+\#define POWER\_EX\_FULL           8
+\#define POWER\_API               10
+\#define POWER\_MONITORAPI        12
+\#define POWER\_WIZ\_IDLE          14
+\#define POWER\_WIZ\_SPOOF         16
+/} 18 free \sphinxstyleemphasis{/
+/} 20 free \sphinxstyleemphasis{/
+/} 22 free \sphinxstyleemphasis{/
+/} 24 free \sphinxstyleemphasis{/
+/} 26 free \sphinxstyleemphasis{/
+/} 28 free \sphinxstyleemphasis{/
+/} 30 free {\color{red}\bfseries{}*}/
+
+\sphinxAtStartPar
+/* First word {\color{red}\bfseries{}*}/
+\#define DP\_WALL                 0
+\#define DP\_LONG\_FINGERS         2
+\#define DP\_STEAL                4
+\#define DP\_CREATE               6
+\#define DP\_WIZ\_WHO              8
+\#define DP\_CLOAK                10
+\#define DP\_BOOT                 12
+\#define DP\_PAGE                 14
+\#define DP\_FORCE                16
+\#define DP\_LOCKS                18
+\#define DP\_COM                  20
+\#define DP\_COMMAND              22
+\#define DP\_MASTER               24
+\#define DP\_EXAMINE              26
+\#define DP\_NUKE                 28
+\#define DP\_FREE                 30
+
+\sphinxAtStartPar
+/* Second word \sphinxstyleemphasis{/
+\#define DP\_OVERRIDE             0
+\#define DP\_TEL\_ANYWHERE         2
+\#define DP\_TEL\_ANYTHING         4
+\#define DP\_PCREATE              6
+\#define DP\_POWER                8
+\#define DP\_QUOTA                10
+\#define DP\_MODIFY               12
+\#define DP\_CHOWN\_ME             14
+\#define DP\_CHOWN\_OTHER          16
+\#define DP\_ABUSE                18
+\#define DP\_UNL\_QUOTA            20
+\#define DP\_SEARCH\_ANY           22
+\#define DP\_GIVE                 24
+\#define DP\_RECEIVE              26
+\#define DP\_NOGOLD               28
+\#define DP\_NOSTEAL              30
+/} Third word…and there was much rejoicing \sphinxstyleemphasis{/
+\#define DP\_PASSWORD             0
+\#define DP\_MORTAL\_EXAMINE       2
+\#define DP\_PERSONAL\_COMMANDS    4
+/} 6  free \sphinxstyleemphasis{/
+\#define DP\_DARK                 8
+/} 10 free \sphinxstyleemphasis{/
+/} 12 free \sphinxstyleemphasis{/
+/} 14 free \sphinxstyleemphasis{/
+/} 16 free \sphinxstyleemphasis{/
+/} 18 free \sphinxstyleemphasis{/
+/} 20 free \sphinxstyleemphasis{/
+/} 22 free \sphinxstyleemphasis{/
+/} 24 free \sphinxstyleemphasis{/
+/} 26 free \sphinxstyleemphasis{/
+/} 28 free \sphinxstyleemphasis{/
+/} 30 free {\color{red}\bfseries{}*}/
+
+\sphinxAtStartPar
+So entering zones if there are no zones:
+\sphinxhyphen{}1
+
+\sphinxAtStartPar
+Entering zones if it has three zones (\#123, \#456, and \#789)
+123
+456
+789
+\sphinxhyphen{}1
+
+\sphinxAtStartPar
+As you see, the last value of the zone \sphinxstyleemphasis{MUST} be \sphinxhyphen{}1.  This tells it
+that there are no more zones to add.
+
+
+\chapter{Network Port redirector}
+\label{\detokenize{39-portdirector:network-port-redirector}}\label{\detokenize{39-portdirector::doc}}
+\sphinxAtStartPar
+This is a port redirector incase you decide to move your mush
+to a new site/port.  To use, first, compile the code.  To do
+this you would type the following:
+\begin{quote}
+
+\sphinxAtStartPar
+cc portmsg.c \sphinxhyphen{}o portmsg
+\end{quote}
+
+\sphinxAtStartPar
+if ‘cc’ is not defined, try the following:
+\begin{quote}
+
+\sphinxAtStartPar
+gcc portmsg.c \sphinxhyphen{}o portmsg
+\end{quote}
+
+\sphinxAtStartPar
+Once compiled, you would then modify the file ‘file’ to describe
+the mush, what was done, where it’s moved to, then specify the
+IP address and the PORT where specified.
+
+\sphinxAtStartPar
+To launch the application, you would then type:
+\begin{quote}
+
+\sphinxAtStartPar
+./portmsg file \textless{}port\textgreater{}
+\end{quote}
+
+\sphinxAtStartPar
+Where \textless{}port\textgreater{} is the port where the mush used to run at.
+
+
+\chapter{Autoshutdown script}
+\label{\detokenize{40-autoshutdown:autoshutdown-script}}\label{\detokenize{40-autoshutdown::doc}}
+\sphinxAtStartPar
+The makefile will ‘make’ the program that will STOP the mush.
+Please tweek ‘autolog.h’ with the proper parameters.
+
+\sphinxAtStartPar
+The ‘startup.sh’ will START the mush.
+
+\sphinxAtStartPar
+Both of these are intended to be used for automations (automated processes)
+like your rc.local file and/or startup scripts when you bring your server up.
+
+
+\chapter{Minimal DB instructions}
+\label{\detokenize{41-minimaldb:minimal-db-instructions}}\label{\detokenize{41-minimaldb::doc}}
+\sphinxAtStartPar
+The ‘retired’ directory has older image files if you’re interested
+
+\sphinxAtStartPar
+Please use the netrhost.conf file with the database as they’re linked.
+
+\sphinxAtStartPar
+The flatfile must be loaded in as a new db
+
+\sphinxAtStartPar
+This is a minimal db with basic ‘features’ built in.
+\begin{description}
+\item[{Copy the txt files into the Rhost’s txt directory off game.}] \leavevmode
+\sphinxAtStartPar
+cp txt/* \textasciitilde{}/Rhost/Server/game/txt
+
+\item[{mkindx the files (substitute FILENAME with the filename)}] \leavevmode
+\sphinxAtStartPar
+cd \textasciitilde{}/Rhost/Server/game/txt
+../mkindx FILENAME.txt FILENAME.indx
+
+\end{description}
+
+\sphinxAtStartPar
+Steps:
+1) Using the Startmush utility for the first time, select the load db method
+
+\sphinxAtStartPar
+— or —
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{)}%
+\item {} 
+\sphinxAtStartPar
+copy the netrhost.conf file into the games directory
+
+\item {} 
+\sphinxAtStartPar
+make any relevant changes you wish
+
+\item {} 
+\sphinxAtStartPar
+db\_load the flatfile
+\sphinxhyphen{} go into the game directory
+\sphinxhyphen{} type: ./db\_load data/netrhost.gdbm ../minimal\sphinxhyphen{}DBs/minimal\_db/netrhost.db.flat data/netrhost.db.new
+
+\item {} 
+\sphinxAtStartPar
+Startmush as expected
+
+\end{enumerate}
+
+
+\chapter{Ambrosia’s Minimal Rhost DB}
+\label{\detokenize{42-ambrosiadb:ambrosia-s-minimal-rhost-db}}\label{\detokenize{42-ambrosiadb::doc}}
+
+\section{Version: 1.0.5          2020\sphinxhyphen{}01\sphinxhyphen{}31}
+\label{\detokenize{42-ambrosiadb:version-1-0-5-2020-01-31}}\begin{description}
+\item[{Version history:}] \leavevmode\begin{description}
+\item[{1.0.0}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Initial database setup.
+
+\end{itemize}
+
+\item[{1.0.1}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Small fixes of objid(), isstaff() and bccheck() permissions and handling.
+
+\item {} 
+\sphinxAtStartPar
+bittype() access lowered to Architect level
+
+\item {} 
+\sphinxAtStartPar
+NO\_CODE flag made visual to Architect
+
+\end{itemize}
+
+\item[{1.0.2}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Several convenience changes and fixes: \_ Attributes moved to @aflags
+system, allowing Architects to set, Guildmasters to see them.
+
+\item {} 
+\sphinxAtStartPar
+@flagdef lowered to Royalty level. @quota/max, @quota/unlock and @convert
+moved to Architect level.
+
+\item {} 
+\sphinxAtStartPar
+NO\_CODE flag made settable/unsettable by Architects.
+
+\item {} 
+\sphinxAtStartPar
+Fixed typo in conf file: ifselse \sphinxhyphen{}\textgreater{} ifelse
+
+\item {} 
+\sphinxAtStartPar
+Switched \_Attributes to use the @aflags system
+See: Guildmaster
+Set: Architect
+
+\end{itemize}
+
+\item[{1.0.3}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Removed @flagdefs from in\sphinxhyphen{}game softcode, converted to flag\_access\_*
+config options
+
+\item {} 
+\sphinxAtStartPar
+Lowered mailstatus() access to architect.
+
+\end{itemize}
+
+\item[{1.0.4}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Changed softcoded objid() to tag(), due to Rhost’s new hardcoded
+objid() which does perform a different functionality.
+
+\item {} 
+\sphinxAtStartPar
+Added more staff recommendations to this file.
+
+\item {} 
+\sphinxAtStartPar
+Added Reality TXLevel ‘Admin’ to all objects in the db except \#1
+
+\end{itemize}
+
+\item[{1.0.5}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Replaced softcoded tag() system with Rhost’s new hardcoded @tag/tag()
+system. All previous tags are set on the database. The Tag Object
+was removed.
+
+\item {} 
+\sphinxAtStartPar
+@function startup on BC\sphinxhyphen{}Admin\sphinxhyphen{}Royalty fixed \sphinxhyphen{} @wait 1 workaround for
+Tags in place.
+
+\item {} 
+\sphinxAtStartPar
+Places System @startup integrated into BC\sphinxhyphen{}Admin\sphinxhyphen{}Royalty’s @startup
+
+\item {} 
+\sphinxAtStartPar
+Made @dump and @dump/flat available to Councilors in netrhost.conf
+
+\end{itemize}
+
+\item[{1.0.6}] \leavevmode\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+A small typo fix in netrhost.conf. float\_preciiosn \sphinxhyphen{}\textgreater{} precision and
+functions\_max \sphinxhyphen{}\textgreater{} function\_max. Thanks to \sphinxhref{mailto:Bobbi@COH}{Bobbi@COH}
+
+\end{itemize}
+
+\end{description}
+
+\end{description}
+
+\sphinxAtStartPar
+Greetings,
+This minimal Rhost DB was made with a secure setup, and as a good base to start
+a new game off in mind.
+
+\sphinxAtStartPar
+It offers the following features:
+* Limbo, Master Room and Auxiliary room.
+* BC\sphinxhyphen{}Admin\sphinxhyphen{}\textless{}bitlevel\textgreater{} characters set up for each bitlevel to own global and
+\begin{quote}
+
+\sphinxAtStartPar
+data objects, and inherit to.
+\end{quote}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+BC\sphinxhyphen{}Admin\sphinxhyphen{}Mortal is @powered EXAMINE\_ALL(Guildmaster), NOFORCE(Architect) and
+LONG\_FINGERS.
+
+\item {} 
+\sphinxAtStartPar
+@startup on BC\sphinxhyphen{}Admin\sphinxhyphen{}Immortal lowers DARK flag access to Councilor level, and
+NO\_CODE visual access to Architect level.
+
+\item {} 
+\sphinxAtStartPar
+Global Command objects inheriting from each bitlevel, with a separate staff\sphinxhyphen{}
+\sphinxhyphen{}only object for each level.
+
+\item {} 
+\sphinxAtStartPar
+Global Function objects inheriting from each bitlevel.
+
+\item {} 
+\sphinxAtStartPar
+local Function objects inheriting from each bitlevel.
+
+\item {} 
+\sphinxAtStartPar
+@function and @hook access lowered to Royalty level to remove immediate need
+for Immortals or actual Immortal code.
+
+\item {} 
+\sphinxAtStartPar
+@rxlevel, @txlevel, bittype() access lowered to Architect level to remove
+immediate need for Royalty in many cases.
+
+\item {} 
+\sphinxAtStartPar
+@startup on BC\sphinxhyphen{}Admin\sphinxhyphen{}Royalty to automatically load @hooks and @functions from
+the Global Function objects, based on attribute naming.
+
+\item {} 
+\sphinxAtStartPar
+Misc Data object to hold general data, like Staff lists etc.
+
+\item {} 
+\sphinxAtStartPar
+Reality levels ‘Real’ and ‘Admin’.
+All created items and players by default are in Recieve\sphinxhyphen{}Level ‘Real’ and
+Transmit\sphinxhyphen{}Levels ‘Real’ and ‘Admin’.
+
+\item {} 
+\sphinxAtStartPar
+All globals, Master Room, BCs\sphinxhyphen{}{\color{red}\bfseries{}*}, and other staff/code\sphinxhyphen{}related objects
+currently have only ‘Admin’ as their Transmit\sphinxhyphen{}Level. This does not prevent
+them fromi working properly. The only exception is \#1, who has empty reality
+levels.
+
+\item {} 
+\sphinxAtStartPar
+The supplied netrhost.conf offers a secure setup of options, allows Royalty
+to use @hook and @function, and also sets the function\_access of several
+functions to !no\_code, which allows NO\_CODE players to use the comsys
+properly.
+IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
+The ‘Port’ configuration parameter is XXXX’d out. Set it first before starting
+your game.
+
+\item {} 
+\sphinxAtStartPar
+All existing objects have been @set SAFE and INDESTRUCTABLE.
+
+\item {} 
+\sphinxAtStartPar
+All existing objects have a paranoid series of @locks set on themselves.
+
+\item {} 
+\sphinxAtStartPar
+The +supersafe command is provided on \#1 as an example of what was used to
+easily set this on objects.
+
+\item {} 
+\sphinxAtStartPar
+Players are @set NO\_CODE and WANDERER by default. They get 40 credits on
+creation, and a 1\sphinxhyphen{}credit\sphinxhyphen{}per\sphinxhyphen{}day paycheck.
+
+\item {} 
+\sphinxAtStartPar
+All {\color{red}\bfseries{}*}mit sideeffects, as well as set(), create() and list() are enabled. The
+latter three are necessary for the Comsystem. The rest of sideeffects are
+disabled completely.
+
+\item {} 
+\sphinxAtStartPar
+Flashing ansi is disabled.
+
+\item {} 
+\sphinxAtStartPar
+\_Attributes are settable by Architects, and seeable by Guildmasters. Read:
+Still invisible and unsettable by mortals.
+
+\item {} 
+\sphinxAtStartPar
+Architects can set up, unlock, and change alternate @quota on players.
+
+\item {} 
+\sphinxAtStartPar
+Architects can set/unset the NO\_CODE flag.
+
+\item {} 
+\sphinxAtStartPar
+Guildmasters can see \_Attributes
+
+\item {} 
+\sphinxAtStartPar
+Architects can set \_Attributes
+
+\item {} 
+\sphinxAtStartPar
+Set\sphinxhyphen{}up compatibility SoftFunctions and @hook object.
+
+\item {} 
+\sphinxAtStartPar
+Set up Comsys 1.0.9b at Architect level. (+bbhelp command)
+
+\item {} 
+\sphinxAtStartPar
+Set up Myrddin +bboard at Architect level.
+
+\item {} 
+\sphinxAtStartPar
+Set up Myrddon Cron at Architect level.
+
+\item {} 
+\sphinxAtStartPar
+Anomaly Jobs (+jhelp)
+
+\item {} 
+\sphinxAtStartPar
+SGP Places \& Mutter
+
+\item {} 
+\sphinxAtStartPar
+Set up Penn\sphinxhyphen{}style follow.
+
+\item {} 
+\sphinxAtStartPar
+Set up @scan (Up to architect\sphinxhyphen{}level items).
+
+\item {} 
+\sphinxAtStartPar
+Set up Penn\sphinxhyphen{} and Mux compatibility Mailwrappers. (phelp and mhelp commands)
+
+\item {} 
+\sphinxAtStartPar
+help .txt files and .indx files for the above.
+
+\item {} 
+\sphinxAtStartPar
+@dynhelp access lowered to architect to call above helpfiles.
+
+\item {} 
+\sphinxAtStartPar
+isstaff() \sphinxhyphen{} Softcoded function that returns ‘1’ if its argument matches
+a \#dbref in the ‘isstaff’ attribute on the Misc Data object.
+
+\item {} 
+\sphinxAtStartPar
+bccheck() \sphinxhyphen{} Softcoded function that returns ‘1’ if its argument matches
+a \#dbref in the ‘bcs’ attribute on the Misc Data object.
+
+\item {} 
+\sphinxAtStartPar
+width() \sphinxhyphen{} Softcoded function that returns 78 for now. For cross\sphinxhyphen{}MU*
+compatibility.
+
+\item {} 
+\sphinxAtStartPar
+pass() \sphinxhyphen{} Softcoded function that takes a number as its parameter, and return
+a random string of that length. Perfect for setting random passwords.
+
+\item {} 
+\sphinxAtStartPar
+cmdmessage() \sphinxhyphen{} Softcoded function that takes two strings as its parameters.
+Returns ‘\textless{}\textless{} STRING1 \textgreater{}\textgreater{} String2’. The \textless{}\textless{}\textgreater{}\textgreater{} part is highlighted red. Good for
+all kinds of messages sent by game commands.
+
+\item {} 
+\sphinxAtStartPar
+header() \sphinxhyphen{} Highly versatile, and a buffer\sphinxhyphen{}saving alternative
+to using printf() for centering with ansi borders. HIGHLY recommended to use
+instead of printf() for such things.
+header(text,width,filler,fillercolor,outerpadding,paddingcolor,
+\begin{quote}
+\begin{quote}
+
+\sphinxAtStartPar
+leftinnerpadding,leftinnercolor,rightinnerpadding,rightinnercolor)
+\end{quote}
+
+\sphinxAtStartPar
+text \sphinxhyphen{} Text to center
+width \sphinxhyphen{} Width of the header, defaults to width()
+filler \sphinxhyphen{} Character(s) to draw the line with. Default: =
+fillercolor \sphinxhyphen{} ansicode to color the line with
+outerpadding \sphinxhyphen{} Characters to frame the outer ends of the line with.
+paddingcolor \sphinxhyphen{} ansicode to color the outer characters with
+leftinnerpadding \sphinxhyphen{} characters to put at the left side of \textless{}text\textgreater{}
+leftinnercolor \sphinxhyphen{} ansicode to color the leftside characters with
+rightinnerpadding \sphinxhyphen{} characters to put at the right side of \textless{}text\textgreater{}
+rightinnercolor \sphinxhyphen{} ansicode to color the rightside characters with
+\end{quote}
+
+\sphinxAtStartPar
+ALL of header()’s parameters are optional. By default, header() simply draws
+a 78\sphinxhyphen{}char wide line of =’s. Simply leave parameters empty if you want to set
+one of the latter parameters.
+
+\end{itemize}
+
+\sphinxAtStartPar
+The whole DB is highly geared for a low\sphinxhyphen{}bitlevel setup.
+I am a strong believer in least\sphinxhyphen{}privileges\sphinxhyphen{}needed to do the job. Bittypes and
+powers are tools to do that job, not badges of friendship or trust that get
+tossed about.
+
+\sphinxAtStartPar
+Here is my suggested list of powers and bittypes for staffers:
+\begin{description}
+\item[{Storytellers  \sphinxhyphen{} @powered TEL\_ANYWHERE, JOIN\_PLAYER and GRAB\_PLAYER on}] \leavevmode
+\sphinxAtStartPar
+Guildmaster level.
+
+\item[{Builder\sphinxhyphen{}BCs   \sphinxhyphen{} Mortal, with @quota and money for their job. There should be one}] \leavevmode
+\sphinxAtStartPar
+shared BC for each area of the game, like BC\sphinxhyphen{}Houston. Special
+Rooms, items or exits that require privilegs to examine or @tel
+a player should belong to a BC\sphinxhyphen{}Houston\sphinxhyphen{}Powered that is @powered
+EXAMINE\_ALL, LONG\_FINGERS And TEL\_ANYTHING on Guildmaster level.
+If the object actually needs to modify a player directly, have
+it use a restricted staff Global, or if you absolutely must,
+make a BC\sphinxhyphen{}Houston\sphinxhyphen{}Admin and @set it Architect. Do not give
+normal builders access to it, only @chown things to it and @set
+them inherit after review.
+Both the \sphinxhyphen{}powered and \sphinxhyphen{}admin BCs can have random passwords and
+be @set NO\_CONNECT.
+
+\item[{Building Head \sphinxhyphen{} @set Guildmaster, powered TEL\_ANYWHERE, TEL\_ANYTHING and}] \leavevmode
+\sphinxAtStartPar
+optionally CHOWN\_OTHER on Guildmaster level. Mind that the
+latter technically allows them to @chown anything guildmaster\sphinxhyphen{}
+and lower\sphinxhyphen{}owned in the master and auxiliary rooms. However,
+it allows the Building Head to @chown items between BCs\sphinxhyphen{} and
+to the BC\sphinxhyphen{}\textless{}location\textgreater{}\sphinxhyphen{}powered.
+
+\item[{Enforcers     \sphinxhyphen{} As Storyteller above, plus being @powered Security at}] \leavevmode
+\sphinxAtStartPar
+Guildmaster level, in order to handle problem players.
+Optionally always given to Storytellers.
+
+\end{description}
+
+\sphinxAtStartPar
+Coders        \sphinxhyphen{} @set Architect.
+Head Coder    \sphinxhyphen{} Always trust your head coder.
+\begin{quote}
+
+\sphinxAtStartPar
+@set Architect for the everyday bit. Give access to a
+maintenance Councilor bit for special code projects. Finished
+code along those lines should get @chowned to the
+bc\sphinxhyphen{}admin\sphinxhyphen{}councilor.
+If you as the MU* Head(s) don’t know Softcode well, or want to
+leave anything Code to your Head Coder, also give them optional
+access to a maintenance Royalty bit in order to properly code
+banning/blacklisting +commands and other rare code that requires
+Royalty powers. Again, chown finished code to bc\sphinxhyphen{}admin\sphinxhyphen{}royalty.
+\end{quote}
+\begin{description}
+\item[{MU* Head(s)   \sphinxhyphen{} You’re the boss(es). But please use an Architect bit for your}] \leavevmode
+\sphinxAtStartPar
+everyday things. Keep Immortal to yourself. Keep \#1 to yourself.
+And seriously avoid using either of them except for creating
+a Royalty bit or doing intricate DB maintenance.
+
+\item[{Site Admins   \sphinxhyphen{} They already have more powers than any in\sphinxhyphen{}game bit can ever}] \leavevmode
+\sphinxAtStartPar
+have ;)
+Depending on actual involvement with your game, their abilities
+in\sphinxhyphen{}game can range from merely being @powered free\_wall for
+notifying players of downtimes and/or being @powered shutdown in
+order to shut down the game for maintenance, up to being the
+only person with actual access to \#1.
+
+\end{description}
+
+\sphinxAtStartPar
+Handle necessary functionality for adminning through the admin\sphinxhyphen{}only globals and
+softcode.
+
+\sphinxAtStartPar
+The setup I personally suggest is to have ALL staffers be AT MAX Architect\sphinxhyphen{}level
+for everyday work and communication, with special coders that \sphinxhyphen{}really\sphinxhyphen{} require
+it having Councilor\sphinxhyphen{}characters available to log into for maintenance or special
+code setup. Technically if everything is done right, the Coder(s) of the game do
+not require higher privileges than Architect for the vast majority of things.
+Royalty\sphinxhyphen{}level code should be a rare exception, if at all necessary. The MU*
+Head(s) or site\sphinxhyphen{}admin should be the only one having access to \#1, Immortals or
+perhaps even Royalty. The BC’s, Global Function objects and Function objects at
+level Royalty and higher have simply been provided as a if\sphinxhyphen{}necessary convenience.
+
+\sphinxAtStartPar
+Current objects are only @chowned to certain bitlevels if it is really required
+for them to function. Whenever possible, they have been @chowned to the mortal
+BC\sphinxhyphen{}Admin\sphinxhyphen{}Mortal. All custom global functions listed above are on the semi\sphinxhyphen{}
+\sphinxhyphen{}mortal Global Functions object. The Master Room and Auxiliary Room have been
+@chowned to BC\sphinxhyphen{}Admin\sphinxhyphen{}Architect.
+
+\sphinxAtStartPar
+The Comsystem and +bboard are owned by BC\sphinxhyphen{}Admin\sphinxhyphen{}Architect, which means that
+higher bitlevels might not be able to use those systems if they hide and set
+themselves DARK. This is intentional. The Architect bitlevel is enough to freely
+set attributes on players, so these systems did not need anything higher, and
+it prioritizes Councilor+ as mere mainenance\sphinxhyphen{}duty bitlevels. Even the MU* Head
+should log on as an Architect for everyday things.
+
+\sphinxAtStartPar
+The Comsystem and BBOARD have been modified to be configurable by Architect and
+higher. Both systems have a CANUSE attribute with the according code on them.
+Note that if you want both systems to be only configurable by Councilor+, that
+instead of @chowning them to a Councilor after changing those attribute for
+Councilor or higher, I suggest to simply @set the bboard and comsystem core
+objects NO\_MODIFY instead, keeping them at Architect\sphinxhyphen{}power but making them
+unmodifyable by Architects.
+
+\sphinxAtStartPar
+I highly recommend the use of the alternative @quota system. BC\sphinxhyphen{}Admin\sphinxhyphen{}Mortal
+and BC\sphinxhyphen{}Admin\sphinxhyphen{}Guildmaster both have this @quota system set up on themselves. Both
+of them have a high amount of money for everyday operations. You should not give
+them free quota or money.
+
+\sphinxAtStartPar
+I also recommend to setup most global functions with /Privileged even if they
+are mortal\sphinxhyphen{}powered, to make them work even when players are set NO\_CODE and
+WANDERER by default.
+
+\sphinxAtStartPar
+Enjoy!
+
+\sphinxAtStartPar
+P.S. the ‘bin/asksource.save0’ file has been supplied for loading in the
+‘make config’ or ‘make confsource’ step of Rhost installation. It provides the
+settings I have used when creating this database. Some settings, like the ANSI
+substitution, are used in the DB.
+
+\sphinxAtStartPar
+\sphinxhref{mailto:--Ambrosia@RhostMUSH}{\textendash{}Ambrosia@RhostMUSH}
+
+
+\chapter{RhostMUSH Internal Help Files}
+\label{\detokenize{helpfile:rhostmush-internal-help-files}}\label{\detokenize{helpfile::doc}}
+
+\chapter{RhostMUSH Internal Help Files}
+\label{\detokenize{wizhelpfile:rhostmush-internal-help-files}}\label{\detokenize{wizhelpfile::doc}}
 
 \chapter{Comparison of Flags}
 \label{\detokenize{flags:comparison-of-flags}}\label{\detokenize{flags::doc}}

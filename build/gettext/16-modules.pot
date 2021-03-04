@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-04 10:55-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/16-modules.rst:3
+msgid "Adding hardcoded modules"
+msgstr ""
+
+#: ../../source/16-modules.rst:5
+msgid "RhostMUSH does support module writing."
+msgstr ""
+
+#: ../../source/16-modules.rst:8
+msgid "Modifying sourcode to add a module"
+msgstr ""
+
+#: ../../source/16-modules.rst:10
+msgid "This requires hooking your changes into local.c, then modifying the Makefile (in the src directory) for any new source files that you wish to add."
+msgstr ""
+
+#: ../../source/16-modules.rst:13
+msgid "Something to be aware of is that all localized data is ran after the system cache subroutine."
+msgstr ""
+
+#: ../../source/16-modules.rst:16
+msgid "Adding an @startup to make use of modules"
+msgstr ""
+
+#: ../../source/16-modules.rst:18
+msgid "This means that if your code is depending on @startups, you need to put a delay in the @startup so that your local code can be loaded in as modules prior to the @startup execution."
+msgstr ""
+
+#: ../../source/16-modules.rst:21
+msgid "Something that will not work:"
+msgstr ""
+
+#: ../../source/16-modules.rst:23
+msgid "@startup me=@superhappyfuncommand loadmeup=now"
+msgstr ""
+
+#: ../../source/16-modules.rst:25
+msgid "A small alteration that will likely make this work fine."
+msgstr ""
+
+#: ../../source/16-modules.rst:27
+msgid "@startup me=@wait 1=@superhappyfuncommand loadmeup=now"
+msgstr ""
+
+#: ../../source/16-modules.rst:29
+msgid "That 1 second delay for the queue will give the game engine time to load in your module code."
+msgstr ""
+
+#: ../../source/16-modules.rst:32
+msgid "Contributing your module back to Rhost"
+msgstr ""
+
+#: ../../source/16-modules.rst:34
+msgid "If you wish your modules to be part of the main Rhost distribution you have two options:"
+msgstr ""
+
+#: ../../source/16-modules.rst:36
+msgid "Attempt to hack the bin/asksource.sh and bin/asksource.blank files."
+msgstr ""
+
+#: ../../source/16-modules.rst:38
+msgid "Ask one of the Rhost devs to do it for you :)"
+msgstr ""

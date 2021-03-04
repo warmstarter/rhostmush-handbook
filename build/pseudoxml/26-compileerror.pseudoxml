@@ -1,0 +1,62 @@
+<document source="/home/pi/rhostmush-handbook/source/26-compileerror.rst">
+    <section ids="troubleshooting-difficulties-compiling-rhostmush" names="troubleshooting\ difficulties\ compiling\ rhostmush">
+        <title>
+            Troubleshooting difficulties compiling RhostMUSH
+        <section ids="changes-to-conf-for-high-bit-cpus" names="changes\ to\ conf\ for\ high-bit\ cpus">
+            <title>
+                Changes to conf for high-bit CPUs
+            <paragraph>
+                RhostMUSH automatically detects 64-bit platforms, and should compile
+                cleanly on these.
+            <paragraph>
+                In case you are trying to compile Rhost on some other crazy-wide CPUs
+                such as the PS2, PS3 or other 128 or 256 bit CPUs, you can easily do
+                so by changing a few lines of code in conf.c.
+            <paragraph>
+                change:
+                typedef unsigned int    pmath1;
+                typedef int             pmath2;
+                #define ALLIGN1 4
+            <paragraph>
+                to:
+                typedef unsigned long   pmath1;
+                typedef long            pmath2;
+                #define ALLIGN1 8
+            <paragraph>
+                , replacing 8 with the size of your CPU’s long integer. (4 for 32-bit,
+                8 for 64-bit, 16 for 128-bit, etc etc)
+            <paragraph>
+                RhostMUSH has only been tested to work on the AMD64, but there is no
+                reason to believe the same will not hold true for IA64.
+        <section ids="changes-to-autconf-for-certain-systems" names="changes\ to\ autconf\ for\ certain\ systems">
+            <title>
+                Changes to autconf for certain systems
+            <paragraph>
+                You should not have to worry about this, but incase something really
+                weird occurs, you may need to look into these changes…
+            <paragraph>
+                The autoconfig.h file needs to have modifications to it by hand.
+            <paragraph>
+                There are three manual entries:
+            <paragraph>
+                This one sets how it defines the int to character pointer.  It’s safe
+                to keep it as ‘unsigned int’ for 32 bit platforms.  For non 32-bit,
+                define it to  how an int is defined on that system.
+            <block_quote>
+                <paragraph>
+                    typedef unsigned int    pmath1;
+            <paragraph>
+                This one sets how it defines the signed int to character pointer.  Same
+                restrictions apply as above for unsigned int.
+            <block_quote>
+                <paragraph>
+                    typedef int     pmath2;
+            <paragraph>
+                This sets the allignment for the given platform.  4 represents a 32 bit
+                platform.  8 would represent a 64 bit platform, etc.  Change accordingly.
+            <block_quote>
+                <paragraph>
+                    #define ALLIGN1 4
+            <paragraph>
+                Make sure these three entries are defined in your autoconf.h file else
+                the mush will not compile.
