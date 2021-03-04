@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D2D2D" />
+  
+  <title>RhostMUSH Handbook :: Signals and why you need them for control</title>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../_static/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../_static/img/favicon-16x16.png">
+        <link rel="index" title="Index"
+              href="../genindex/"/>
+
+  <link rel="stylesheet" href="../_static/css/insegel.css"/>
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'',
+        VERSION:'',
+        LANGUAGE:'None',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+  </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
+
+</head>
+
+<body>
+  <div id="insegel-container">
+    <header>
+      <div id="logo-container">
+          
+          <a href="../"><img src="../_static/img/logo.svg"></a>
+          
+
+      </div>
+      <div id="project-container">
+        <h1>RhostMUSH Handbook Documentation</h1>
+      </div>
+    </header>
+
+    <div id="content-container">
+
+      <div id="main-content-container">
+        <div id="main-content-header">
+          <h1>Signals and why you need them for control</h1>
+        </div>
+        <div id="main-content">
+          
+  <div class="section" id="signals-and-why-you-need-them-for-control">
+<h1>Signals and why you need them for control<a class="headerlink" href="#signals-and-why-you-need-them-for-control" title="Permalink to this headline">¶</a></h1>
+<p>Rhost by default allows signals at the shell to handle various processes in-game.</p>
+<p>The following signals are useful.</p>
+<div class="section" id="term-kill-term-or-kill-15">
+<h2>TERM (kill -TERM or kill -15)<a class="headerlink" href="#term-kill-term-or-kill-15" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>This will immediately terminate the mush, dumping a special flatfile called
+netrhost.db.TERM and scramming the db in question by force-closing it
+without any writes.  A TERM is the effort for the mush to shut down the
+mush as fast as possible to avoid any db corruption if possible since
+a TERM signal is common during a server shutdown, so time is paramount.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="usr1-kill-usr1">
+<h2>USR1 (kill -USR1)<a class="headerlink" href="#usr1-kill-usr1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>This by default issues a reboot on the server.  This is a special parameter
+because this can actually be changed in-game to do any number of other
+things.  Please refer to the RhostMUSH running in question if this is
+the default behavior or if the method for USR1 is doing something else.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="usr2-kill-usr2">
+<h2>USR2 (kill -USR2)<a class="headerlink" href="#usr2-kill-usr2" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>This will shutdown (cleanly) the mush.  This behaves as if you issued
+a &#64;shutdown from within the game, and follows all proper procedure
+in bringing the game down cleanly and safely.  This shoudl be used
+when doing maintenance on the game or if you need to bring it down
+from the shell.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="kill-kill-kill-or-kill-9">
+<h2>KILL (kill -KILL or kill -9)<a class="headerlink" href="#kill-kill-kill-or-kill-9" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>This signal can not be caught and will immediately terminate the game
+without any safty to the database at all.  Short of something horribly
+wrong going on, this should never be used to bring down your mush.
+Doing so will almost certainly corrupt your databases (ALL OF THEM)
+that are open, including but not limited to your main database, your
+mail database, your autoregistration database, and so forth.  So if
+you do this, plan to do some database recovery from your flat files.
+Also, when you bring down a mush in this manner, you need to issue
+Startmush -f to bring it back up.</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+        </div>
+      </div>
+
+      <div id="side-menu-container">
+
+        <div id="search" role="search">
+        <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+            <input type="text" name="q" placeholder="Search..." />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+        </form>
+</div>
+
+        <div id="side-menu" role="navigation">
+
+          
+  
+    
+  
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../01-intro/">What RhostMUSH is about and what’s so great about RhostMUSH.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-compile/">What to type to Compile and Install RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-dbconversion/">How to convert a database from another mush to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-configure/">What to type to configure and get your RhostMUSH up and running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-newmush/">What to type to get the basics running if you did not choose a pre-existing flatfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-security/">Considerations to locking down restrictions in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-toggles/">What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-lockdown/">Extended lockdown of the mush and considerations.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-blocking/">Methods to block anonymous connections and the pros and cons of doing so</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10-customize/">What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11-differences/">The differences to expect to the end user between PennMUSH, MUX, and RhostMUSH as of 08/06/2016</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12-advanced/">Advanced features of RhostMUSH</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Signals and why you need them for control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../14-ssl/">Setting up an SSL tunnel for secure connection options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../15-bitlevels/">Multi-tiered bitlevel systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../16-modules/">Adding hardcoded modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../17-shutdown/">Shutting down gracefully</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../18-debug/">Stack limit and debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../19-reality/">Reality levels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../20-execscript/">Execscript and external programs and scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../21-printf/">Using printf() for advanced text output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../22-ansible/">Installing using an ansible playbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../23-random/">Random notes and things to know about RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../24-quickinstall/">Quickinstall guide to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../25-godpasswd/">How to reset the password for #1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../26-compileerror/">Troubleshooting difficulties compiling RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../27-dbcorrupt/">Dealing with DB Corruption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../28-maildbcorrupt/">Dealing with a corrupt mail database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../29-setup/">Additional simplified notes on setting up RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../30-cron/">Using the built-in cron system for periodically running commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../31-comparison/">Comparison of features between RhostMUSH, PennMUSH, and MUX2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../32-dbloading/">Loading an existing Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../33-qdbm/">Converting database betwen GDBM and QDBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../34-upgrade/">Updating RhostMUSH prior to 3.9.5p2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flags/">Comparison of Flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../powers/">Comparison of powers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changes/">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../requirements/">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windows/">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../copyright/">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../nda/">Historical Non-Disclosure Agreement</a></li>
+</ul>
+
+  
+
+
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+<footer>
+    <div id="footer-info">
+        <ul id="build-details">
+            
+                <li class="footer-element">
+                    
+                        <a href="../_sources/13-signals.rst.txt" rel="nofollow"> source</a>
+                    
+                </li>
+            
+
+            
+
+            
+        </ul>
+        <div id="credit">
+            created with <a href="http://sphinx-doc.org/">Sphinx</a> and <a href="https://github.com/Autophagy/insegel">Insegel</a>
+
+        </div>
+    </div>
+
+    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
+
+    <script type="text/javascript">
+      $("#menu-toggle").click(function() {
+        $("#menu-toggle").toggleClass("toggled");
+        $("#side-menu-container").slideToggle(300);
+      });
+    </script>
+
+</footer> 
+
+</div>
+
+</body>
+</html>

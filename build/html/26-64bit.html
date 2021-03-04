@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compiling RhostMUSH on non 64-bit platforms &#8212; RhostMUSH Handbook  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Requirements" href="requirements.html" />
+    <link rel="prev" title="How to reset the password for #1" href="25-godpasswd.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="25-godpasswd.html" title="How to reset the password for #1"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RhostMUSH Handbook  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Compiling RhostMUSH on non 64-bit platforms</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="compiling-rhostmush-on-non-64-bit-platforms">
+<h1>Compiling RhostMUSH on non 64-bit platforms<a class="headerlink" href="#compiling-rhostmush-on-non-64-bit-platforms" title="Permalink to this headline">¶</a></h1>
+<p>RhostMUSH automatically detects 64-bit platforms, and should compile
+cleanly on these.</p>
+<p>In case you are trying to compile Rhost on some other crazy-wide CPUs
+such as the PS2, PS3 or other 128 or 256 bit CPUs, you can easily do
+so by changing a few lines of code in conf.c.</p>
+<p>change:
+typedef unsigned int    pmath1;
+typedef int             pmath2;
+#define ALLIGN1 4</p>
+<p>to:
+typedef unsigned long   pmath1;
+typedef long            pmath2;
+#define ALLIGN1 8</p>
+<p>, replacing 8 with the size of your CPU’s long integer. (4 for 32-bit,
+8 for 64-bit, 16 for 128-bit, etc etc)</p>
+<p>RhostMUSH has only been tested to work on the AMD64, but there is no
+reason to believe the same will not hold true for IA64.</p>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="25-godpasswd.html"
+                        title="previous chapter">How to reset the password for #1</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="requirements.html"
+                        title="next chapter">Requirements</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/26-64bit.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="requirements.html" title="Requirements"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="25-godpasswd.html" title="How to reset the password for #1"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RhostMUSH Handbook  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Compiling RhostMUSH on non 64-bit platforms</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2021, wstarter.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
+</html>

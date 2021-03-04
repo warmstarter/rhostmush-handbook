@@ -1,0 +1,265 @@
+-------------------------------
+Quickinstall guide to RhostMUSH
+-------------------------------
+
+Welcome to OpenSource Rhostmush!
+
+Obtaining RhostMUSH
+-------------------
+
+It is assumed that you have gotten to this point with the following command:
+
+git clone https://github.com/RhostMUSH/trunk Rhost
+
+If you did NOT get it this way, your file permissions may not be properly set
+up.  Please type:
+
+            chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
+
+This makes sure all the build scripts are properly made executable.
+This will result in 'permission denied' or similar results when running a script.
+
+Once ready to compile type: 
+
+            make confsource
+
+This will bring up a menu where you can selection options.
+
+Important before you actually start building
+--------------------------------------------
+
+The main parts of making your RhostMUSH, easy pleasy:
+0.  The stunnel directory contains TLS/SSL connectivity.  This has to be linked
+    to another port and will tunnel to the mush port.  The README file explains
+    how to set up and configure your TLS/SSL connection.
+1.  ./patch.sh -- This makes sure you have the latest code.
+    If you got this by git clone https://github.com/RhostMUSH/trunk
+    then you can ignore patching.  You can use ./patch.sh at any
+    time to update your code.  It ignores local.c incase you make
+    your own modules.
+2.  make confsource.  Yup, it's menu driven, nifty eh?
+    Options you may want to select (other than the defaults):
+    5  (%c is selected by default, but choose %x as well for MUX/TM3 compat)
+    9  (if you want $commands to require the COMMAND flag)
+    16 (if you want a wider WHO listing like older versions of MUX)
+    22 (if you're converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
+    24 (if you have issues with -lssl not being found)
+    B3 (for 64 character attribute names)
+    B6 (select 8K for Penn/MUX2/TM3 default, up to 32K.  64K is network intensive)
+    B5 (will be autoselected if you choose 8K or more.  Pick this anyway)
+    B4 (if you have sqlite libraries and wish to use this)
+3.  'r' to compile with the settings you selected.  
+4.  Modify your netrhost.conf file as specified.  Make sure to align
+    your port and debug_id as shown in the netrhost.conf file.
+5.  If you wish to port in an old flatfile, please refer to the readme directory
+    on how to port your flatfile in (README.DBLOADING).
+
+
+Using the prebuilt flatfile
+---------------------------
+
+There are pre-loaded flatfile databases you can use at this point.  The netrhost.db.flat
+and corrisponding netrhost.conf file will be located in the minimal-DBs/minimal_db directory.
+
+You may auto-load the minimal db and corresponding netrhost.conf file with the
+command:
+
+          ./minimal.sh
+
+This is ran from within the 'game' directory.  Once this is ran, you will need
+to customize the netrhost.conf file for your purposes.  The port and debug_id must
+be changed at the very least.  Keep the debug_id coordinated to the port as described.
+
+To load a prebuilt flatfile
++++++++++++++++++++++++++++
+
+To use these follow these steps:
+1.  Make a backup of your existing netrhost.conf file
+    --> cp game/netrhost.conf game/netrhost.conf.backup
+2.  Copy the netrhost.conf file into your game directory
+    --> cp -f ./minimal-DBs/minimal_db/netrhost.conf ./game/netrhost.conf
+3.  At this point you can modify your netrhost.conf file settings in your game directory.
+    Using an editor modify the 'port' and 'debug_id' respectively in your netrhost.conf as stated.
+    The 'port' will be the port the mush listens on, the debug_id is for the debug-stack and is
+    your port with a '5' at the end.  So if your port is 4444, the debug_id is 44445
+4.  Load in the flatfile into the mush (You could do this in the Startmush as well)
+    Manually:
+    --> cd game
+    --> ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
+
+    Start your mush:
+    --> ./Startmush
+
+    This will load the db that you loaded. 
+
+    ---------------OR-------
+
+    From Startmush:
+    --> ./Startmush
+
+    when prompted, hit <RETURN> for searching then select the number of the netrhost.db.flat that is
+    listed as ~/minimal-DBs/minimal_db/netrhost.db.flat
+
+Starting from scratch with a brand new database
+-----------------------------------------------
+
+1.  You can modify your netrhost.conf file settings in your game directory.
+    Using an editor modify the 'port' and 'debug_id' respectively in your netrhost.conf as stated.
+    The 'port' will be the port the mush listens on, the debug_id is for the debug-stack and is
+    your port with a '5' at the end.  So if your port is 4444, the debug_id is 44445
+2.  Start your mush:
+    --> ./Startmush
+
+You can use the 'vi' editor or 'nano' if you like a more menu driven DOS like experience.
+You can of course use any other editor you're familar with.
+
+For a more thorough understanding of how to set things up, keep reading!
+
+If you have syntax issues running 'make config', 'make confsource' 
+or 'make bugreport' please run the script: ./bin/script_setup.sh
+
+Now... things you may need to do on errors.
+
+
+Instructions for starting a new RhostMUSH
+-----------------------------------------
+
+Setup directory permissions
++++++++++++++++++++++++++++
+
+   run ./dirsetup.sh
+
+   This is a simple script that will change file permissions
+   and directory permissions to properly protect RhostMUSH.
+   These settings generally work fine out of the box so
+   you likely won't even have to set this up if you don't want to.
+    
+
+Compile the source code
++++++++++++++++++++++++
+
+   Make and run the RhostMUSH source
+   Type:  make confsource
+
+   If you get an error running the script itself, 
+   type: ./bin/script_setup.sh
+
+   Then type: make confsource
+
+   After the compile process is done, you should be good to go.
+   If it complains about missing binaries then type 'make links'
+     
+Manual configuration of source code
+"""""""""""""""""""""""""""""""""""
+
+   To do manual configuration (skip if the previous step worked for you)
+   And yes, this is a bit of a pain in the bottom, hopefully you
+   will not need this.
+
+        You need the following definitions defined to make this
+        work:  TINY_U, USE_SIDEEFFECTS, MUX_INCDEC, ATTR_HACK
+               (u()/u2() switched)
+               (sideeffects)
+               (inc()/xinc() switched)
+               (support for _/~ attribs)
+	
+	You only need to do this if you received the RhostMUSH src.
+	If you received a binary, continue on to the next part.
+
+	To compile the code, just type 'make confsource'.  It will
+	prompt you with settings on what you need to do.  If you
+	just want to quickly hand edit the Makefile, it is in the
+	directory src (full path src/Makefile).  Then you may just
+	run 'make source', if you so choose to hand-edit the Makefile.
+
+  After the compile process is done, type 'make links'!
+
+	--------------
+
+Loading a database for your MUSH
+--------------------------------
+
+You now have a choice of optionally starting at a provided database or starting from scratch.
+
+Option: Only perform these steps if using a provided database
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+   Copy an existing flatfile and corresponding netrhost.conf file
+       Default provied example:
+       1.  cp game/netrhost.conf game/netrhost.conf.backup
+       2.  cp -f minimal-DBs/minimal_db/netrhost.conf game/netrhost.conf
+       3.  cd game
+       4.  ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
+
+Configure the netrhost.conf file for your MUSH
+----------------------------------------------
+
+        Go into the game directory and modify the netrhost.conf file
+	The next step is configuring the mush to your config standards.
+	There is a file in the game subdirectory called 'netrhost.conf'.
+	You hand-edit this file and just follow what it says each 
+	one does.  It's very well documented and should give you
+	great details on what to edit.  For most things, you can
+	feel comfortable to stick with the defaults unless you wish
+	to change them.  The port and debug_id need to be changed.
+
+Start the MUSH and login
+------------------------
+
+  From the game diretory issue: ./Startmush 
+
+   To login:  co Wizard Nyctasia
+
+
+
+Option: Things to do once you have connected if you did NOT use a provided database
+-----------------------------------------------------------------------------------
+
+   a.  @dig your master room and in your netrhost.conf file define master_room
+       to this dbref (without the #.  So like master_room 2)
+   b.  Create an immortal holder charater (@pcreate then @set immortal)
+       Feel free to set up holder characters for all the bittypes which are:
+          GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL
+   c.  @chown/preserve the master room and #0 to the immortal holder character.
+   d.  Log into the immortal character
+   e.  @pcreate all your guest characters and set them up properly.  My suggestion:
+       @dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@desc *Guest##=A guest player.;@adisconnect *Guest##=home;@lock *Guest##=*Guest##}
+       
+       @list guest will show your guest characters and if they're set up properly.
+   f.  Any master room code you load in from your immholder character (or @chown/preserve to it)
+       The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.
+       All other softcode (like mail wrappers) can be found on http://code.google.com/p/rhostmush in downloads.
+
+Setup new character, staff, and take tasks that can only be accomplished by #1
+------------------------------------------------------------------------------
+       
+       Set up any other characters you want.  Anyone immortal can issue @function, @admin, or anything #1 can do.
+
+Setup daily backups for your game
+---------------------------------
+
+   Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game.
+   paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:
+
+   @dump/flat      -- This makes a flatfile dump of the main database.  You want to run this daily.
+   wmail/unload    -- This makes a flatfile dump of the mail database.  You want to run this daily.
+   @areg/unload    -- Only worry about this if you are using auto-registration emailing.  Few do.
+   newsdb/unload   -- Only worry if you use the hardcoded bbs system.  Most don't use it.
+
+   The backup_flat.sh script (that launches automatically with Startmush) will archive all the above files
+   if they exist.  It moves these flatfiles into the 'prevflat' directory, then tarballs those and dumps
+   consecutive backups in the 'oldflat' directory.  By default it keeps 7 consecutive backups.  You may
+   alter this in the backup_flat.sh script itself.
+
+Customtize the textfiles for your game
+--------------------------------------
+
+   All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a 
+   README file there that explains their purposes in more detail.  You can see more information on
+   all files and how they inter-relate with 'wizhelp file'.
+
+Make sure to read up further
+----------------------------
+
+   The wiz bits can be confusing, so 'wizhelp control' is very helpful to give a high overview
+   of what each bit does and their inter-relationship is.

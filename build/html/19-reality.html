@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D2D2D" />
+  
+  <title>RhostMUSH Handbook :: Reality levels</title>
+  
+
+  <link rel="icon" type="image/png" sizes="32x32" href="_static/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="_static/img/favicon-16x16.png">
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+
+  <link rel="stylesheet" href="_static/css/insegel.css"/>
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'',
+        VERSION:'',
+        LANGUAGE:'None',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+  </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+
+  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
+
+</head>
+
+<body>
+  <div id="insegel-container">
+    <header>
+      <div id="logo-container">
+          
+          <a href="index.html"><img src="_static/img/logo.svg"></a>
+          
+
+      </div>
+      <div id="project-container">
+        <h1>RhostMUSH Handbook Documentation</h1>
+      </div>
+    </header>
+
+    <div id="content-container">
+
+      <div id="main-content-container">
+        <div id="main-content-header">
+          <h1>Reality levels</h1>
+        </div>
+        <div id="main-content">
+          
+  <div class="section" id="reality-levels">
+<h1>Reality levels<a class="headerlink" href="#reality-levels" title="Permalink to this headline">¶</a></h1>
+<p>Reality levels are a means to forbid (or allow) interaction between objects
+in the same location.</p>
+<div class="section" id="visibility">
+<h2>Visibility<a class="headerlink" href="#visibility" title="Permalink to this headline">¶</a></h2>
+<p>Each object (player, room, exit, thing) has two lists of reality levels.
+An Rx list, which describe what it can see and a Tx list, which describe
+where it can be seen. Those are bitfields. In order for X to see Y a bitwise
+‘and’ is performed between X’s RxLevel and Y’s TxLevel. If the result is not
+0, then X sees Y. If the result is 0, as far as X is concerned, Y doesn’t
+exist. This affects contents lists, exit lists, look, say, pose, &#64;emit,
+&#64;verb, connect/disconnect, has arrived/has left messages, exit and object
+matching. ‘here’ and ‘me’ match always.
+It doesn’t affect &#64;remit, &#64;pemit, page, WHO or channels.
+By default, all new objects are created with an RxLevel of 1 and TxLevel of
+1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of
+0xFFFFFFFF. Those default levels can be changed with configuration
+parameters.
+An object is always visible to itself, even if its Rx and Tx levels don’t
+match. (See examples below)</p>
+</div>
+<div class="section" id="descriptions">
+<h2>Descriptions<a class="headerlink" href="#descriptions" title="Permalink to this headline">¶</a></h2>
+<p>For every reality level defined, you can define an attribute that serves as
+description. If you look at something and match more than one of its
+TxLevels, you’ll see all the corresponding descriptions on the target
+object. If the object doesn’t have any descriptions for the matching levels,
+you’ll see the regular &#64;desc.
+The &#64;adesc attribute on the target is only triggered if the target can see
+the looker in turn. It’s only triggered once, no matter how many descs the
+looker sees. The &#64;odesc is shown only to those people that see /both/ the
+looker and the target.
+Through extension, &#64;afail/&#64;ofail and similar pairs (&#64;adrop/&#64;odrop,
+&#64;asucc/&#64;osucc etc) work in the same way. &#64;verb commands are similary
+affected.
+Softcoded commands are only matched on the objects that can see the player.
+The player doesn’t have to see the object. This includes commands in the
+Master Room.
+Exits are treated specially. In order to be able to use an exit name (or to
+use the ‘move &lt;exit&gt;’ command) the exit must be visible to the enactor. In
+order to pass through the exit, the exit must see the enactor in turn. There
+are reasons for this, which will become evident in the examples below.</p>
+</div>
+<div class="section" id="configuration-parameters">
+<h2>Configuration parameters<a class="headerlink" href="#configuration-parameters" title="Permalink to this headline">¶</a></h2>
+<p>A few configuration parameters have been introduced to deal with the reality
+levels.</p>
+<blockquote>
+<div><p>reality_level &lt;name&gt; &lt;value&gt; [&lt;desc attribute name&gt;]</p>
+</div></blockquote>
+<p>This directive can only be used in the config file (not with the &#64;admin
+command) and should be repeated for each reality level you want to define.
+It defines a new level named &lt;name&gt; with a bitvalue of &lt;value&gt; and an
+optional desc attribute. There is a limit of 8 characters on &lt;name&gt;, a
+32-bit value on &lt;value&gt; (basically an unsigned long) and 32 characters on
+the attribute name. A maximum of 32 reality levels can be defined.</p>
+<blockquote>
+<div><p>def_exit_tx &lt;value&gt;
+def_exit_rx &lt;value&gt;
+def_room_tx &lt;value&gt;
+def_room_rx &lt;value&gt;
+def_player_rx &lt;value&gt;
+def_player_tx &lt;value&gt;
+def_thing_rx &lt;value&gt;
+def_thing_tx &lt;value&gt;</p>
+</div></blockquote>
+<p>These 8 directives define the default reality levels of newly created
+objects. They can be set in the config file or with the &#64;admin command.
+Like above, &lt;value&gt; must be a decimal number.</p>
+<blockquote>
+<div><p>wiz_always_real &lt;0|1&gt;</p>
+</div></blockquote>
+<p>If this parameter is set to 1 then wizards (and immortals on Rhost) will see
+everything and will be visible to everyone. Their effective Rx and Tx levels
+will always be 0xFFFFFFFF. Also settable in the config file and with the
+&#64;admin command.</p>
+<p>Compile with -DREALITY_LEVELS compile time option to enable ‘Real’ needs to be ‘1’
+This is an example file only to be added to the mush.conf file
+Format: reality_level &lt;8 char name&gt; &lt;hex-byte-mask&gt; &lt;optional-desc: DESC default&gt;</p>
+</div>
+<div class="section" id="example-mush-conf">
+<h2>Example mush.conf<a class="headerlink" href="#example-mush-conf" title="Permalink to this headline">¶</a></h2>
+<p>reality_level Real 1
+reality_level Obf1 2
+reality_level Obf2 4
+reality_level Obf3 8 OBFDESC
+reality_level Obf4 16 OBFDESC
+reality_level Obf5 32 OBFDESC
+reality_level Obf6 64 OBFDESC
+reality_level Obf7 128 OBFDESC
+reality_level Obf8 256 OBFDESC
+reality_level Obf9 512 OBFDESC
+reality_level Obf10 1024 OBFDESC
+reality_level Umbra 2048 UMBRADESC
+reality_level Fae 4096 FAEDESC
+reality_level Shadow 8192 SHADOWDESC
+reality_level Spy 16384
+reality_level Death 32768 DEATHDESC
+reality_level All 4294967295</p>
+</div>
+<div class="section" id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+<p>Two wiz-only commands are used to set the reality levels of an object.</p>
+<blockquote>
+<div><p>&#64;rxlevel &lt;object&gt;=&lt;list&gt;
+&#64;txlevel &lt;object&gt;=&lt;list&gt;</p>
+</div></blockquote>
+<p>&lt;list&gt; is a space-separated list of level names that have to be set on the
+object. If a level name is prefixed with an exclamation mark (!) that level
+will be cleared from the object.
+WARNING: Changing the Tx levels of an object might make it invisible to you.
+In this case, you can still manipulate it by using his #dbref (or <a href="#id1"><span class="problematic" id="id2">*</span></a>player
+for players).</p>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>There are five functions that deal with reality levels.</p>
+<blockquote>
+<div><p>hasrxlevel(&lt;object&gt;,&lt;level&gt;)
+hastxlevel(&lt;object&gt;,&lt;level&gt;)</p>
+</div></blockquote>
+<p>These two functions check if an object has the specified Rx or Tx level.
+You must control &lt;object&gt;. They return 0 or 1 and #-1 in case the object
+does not exist or you don’t have permissions.</p>
+<blockquote>
+<div><p>rxlevel(&lt;object&gt;)
+txlevel(&lt;object&gt;)</p>
+</div></blockquote>
+<p>These two functions return a space-separated list of the object’s Rx or Tx
+levels. Again, you must control the object.</p>
+<blockquote>
+<div><p>cansee(&lt;obj1&gt;,&lt;obj2&gt;)</p>
+</div></blockquote>
+<p>A wiz-only function, returns 1 of &lt;obj1&gt; can see &lt;obj2&gt; from a reality
+levels point of view. It doesn’t check if the objects are in the same
+location, the DARK/CLOAKED flags and so on. Just &lt;obj1&gt;’s Rx level against
+&lt;obj2&gt;’s Tx level.
+WARNING: If you are using it on MUX2.0 with /both/ reality levels and Wod
+Realms enabled, the function will perform both checks and the Wod Realms
+version checks against the DARK flag.</p>
+</div>
+<div class="section" id="example-1-a-simplified-witchcraft-setup">
+<h2>Example 1: A simplified Witchcraft setup<a class="headerlink" href="#example-1-a-simplified-witchcraft-setup" title="Permalink to this headline">¶</a></h2>
+<p>In Witchcraft, besides the various Gifted classes, characters can be spirits
+There are spirit realms to which the mundane can not travel. Therefore we
+will use 2 reality levels: Real and Ghost. Since some spirits can become
+solid for a limited period of time, we will also use an additional desc for
+the Ghost level, called GHOSTDESC. Therefore in the config file we will
+have:</p>
+<blockquote>
+<div><p>reality_level Real 1
+reality_level Ghost 2 GHOSTDESC</p>
+</div></blockquote>
+<p>Ghosts can pass through most mundane locks, so the exists should allows the
+ghosts to pass:</p>
+<blockquote>
+<div><p>def_exit_rx 3</p>
+</div></blockquote>
+<p>Note that def_exit_tx isn’t set. Why? Because ghosts see the mundane world
+anyway, so a spirit character will have:</p>
+<blockquote>
+<div><p>&#64;txlevel &lt;player&gt;=!Real Ghost
+&#64;rxlevel &lt;player&gt;=Real Ghost</p>
+</div></blockquote>
+<p>Let’s assume 3 players:
+John is a Mundane. He won’t see spirits.
+John’s Rx: Real
+John’s Tx: Real
+John’s &#64;desc: This is John.
+John’s &amp;GHOSTDESC: (Not important, since it’s never visible)
+Johh’s &#64;adesc: %N has looked at you.
+John’s &#64;odesc: has looked at John.</p>
+<p>Jack is a Gifted. He will sense spirits, but is still made from flesh
+and blood so visible to mundanes.
+Jack’s Rx: Real Ghost
+Jack’s Tx: Real
+Jack’s &#64;desc: This is Jack.
+Jack’s &amp;GHOSTDESC: (Not important, since it’s never visible)
+Jack’s &#64;adesc: %N has looked at you.
+Jack’s &#64;odesc: has looked at Jack.</p>
+<p>Frank is a ghost. He will see other spirits as well as mundanes, but won’t
+be visible to mundanes. He can also become visible to everybody.
+Frank’s Rx: Real Ghost
+Frank’s Tx: Ghost
+Frank’s &#64;desc: This is Frank, looking human.
+Frank’s &amp;GHOSTDESC: This is Frank’s ghostly shape.
+Frank’s &#64;adesc: %N has looked at you.
+Frank’s &#64;odesc: has looked at Frank.</p>
+<p>Following are commands that each of the players enter and what they see.
+I’ll assume the +materialize command is defined like:
+&amp;CMD_MATERIALIZE &lt;cmdobject&gt;=$+materialize:&#64;txlevel %#=Real; &#64;pemit %#=You
+are now material.</p>
+<blockquote>
+<div><dl>
+<dt>John            |         Jack          |         Frank</dt><dd><div class="line-block">
+<div class="line"><a href="#id3"><span class="problematic" id="id4">|</span></a></div>
+</div>
+</dd>
+</dl>
+</div></blockquote>
+<p>&gt; l                     |                       |
+A room                  |                       |
+This is a bare room.    |                       |
+Contents:               |                       |
+Jack                    |                       |
+Obvious exits:          |                       |
+Out &lt;O&gt;                 |                       |</p>
+<blockquote>
+<div><p><a href="#id5"><span class="problematic" id="id6">|</span></a>&gt; l                    |
+<a href="#id7"><span class="problematic" id="id8">|</span></a>A room                 |
+<a href="#id9"><span class="problematic" id="id10">|</span></a>This is a bare room.   |
+<a href="#id11"><span class="problematic" id="id12">|</span></a>Contents:              |
+<a href="#id13"><span class="problematic" id="id14">|</span></a>John Frank             |
+<a href="#id15"><span class="problematic" id="id16">|</span></a>Obvious exits:         |
+<a href="#id17"><span class="problematic" id="id18">|</span></a>Out &lt;O&gt;                |
+|                       <a href="#id19"><span class="problematic" id="id20">|</span></a>&gt; l
+|                       <a href="#id21"><span class="problematic" id="id22">|</span></a>A room
+|                       <a href="#id23"><span class="problematic" id="id24">|</span></a>This is a bare room.
+|                       <a href="#id25"><span class="problematic" id="id26">|</span></a>Contents:
+|                       <a href="#id27"><span class="problematic" id="id28">|</span></a>John Jack
+|                       <a href="#id29"><span class="problematic" id="id30">|</span></a>Obvious exits:
+|                       <a href="#id31"><span class="problematic" id="id32">|</span></a>Out &lt;O&gt;</p>
+</div></blockquote>
+<p>&gt;l Jack                 |                       |
+Jack                    <a href="#id33"><span class="problematic" id="id34">|</span></a>John has looked at you.|John has looked at Jack.
+This is Jack.           |                       |
+&gt;l Frank                |                       |
+I don’t see that here.  |                       |</p>
+<blockquote>
+<div><p><a href="#id67"><span class="problematic" id="id68">|&gt;l Frank               |
+|Frank                  |Jack has looked at you.
+|This is Frank's ghostly|</span></a>
+<a href="#id35"><span class="problematic" id="id36">|</span></a>shape.                 |
+|                       <a href="#id37"><span class="problematic" id="id38">|</span></a>&gt;l John
+<a href="#id39"><span class="problematic" id="id40">|</span></a>Frank has looked at    <a href="#id41"><span class="problematic" id="id42">|</span></a>John
+<a href="#id43"><span class="problematic" id="id44">|</span></a>John.                  <a href="#id45"><span class="problematic" id="id46">|</span></a>This is John.
+|                       <a href="#id47"><span class="problematic" id="id48">|</span></a>&gt;+materialize
+|                       <a href="#id49"><span class="problematic" id="id50">|</span></a>You are now material.</p>
+</div></blockquote>
+<p>&gt;l Frank                |                       |
+Frank                   <a href="#id51"><span class="problematic" id="id52">|</span></a>John has looked at     <a href="#id53"><span class="problematic" id="id54">|</span></a>Frank has looked at you.
+This is Frank, looking  <a href="#id55"><span class="problematic" id="id56">|</span></a>Frank.                 |
+human.                  |                       |</p>
+<blockquote>
+<div><p><a href="#id57"><span class="problematic" id="id58">|</span></a>&gt;l Frank               |</p>
+</div></blockquote>
+<p>Jack has looked at      <a href="#id59"><span class="problematic" id="id60">|</span></a>Frank                  <a href="#id61"><span class="problematic" id="id62">|</span></a>John has looked at you.
+Frank.                  <a href="#id63"><span class="problematic" id="id64">|</span></a>This is Frank, looking |</p>
+<blockquote>
+<div><p><a href="#id69"><span class="problematic" id="id70">|human.                 |
+|This is Frank's ghostly|</span></a>
+<a href="#id65"><span class="problematic" id="id66">|</span></a>shape.                 |</p>
+</div></blockquote>
+</div>
+<div class="section" id="example-2-a-wod-setup">
+<h2>Example 2: A WoD setup<a class="headerlink" href="#example-2-a-wod-setup" title="Permalink to this headline">¶</a></h2>
+<p>The reality levels will be defined like this:
+reality_level           Real 1
+reality_level           Obf1 2
+reality_level           Obf2 4
+reality_level           Obf3 8 OBFDESC
+reality_level           Obf4 16 OBFDESC
+reality_level           Obf5 32 OBFDESC
+reality_level           Umbra 64 UMBRADESC
+reality_level           Fae 128 FAEDESC
+reality_level           Shadow 256 SHADOWDESC
+reality_level           All 511</p>
+<p>5 levels of Obfuscation, Umbra, Dreaming, Wraiths. ‘All’ is a handy
+replacement for all levels, useful for wizards and wizobjects that should
+be visible on all levels. Also useful when you want to set an object’s
+levels to something without knowing what he had before.
+&#64;rxlevel #276=!All Real
+!All will clear all levels, then the object will gain the Real level.
+There is more than one Obfuscation level because of the relation between
+Auspex and Obfuscation.
+A vampire with Obfuscate 2, should not be visible by one with Auspex 1.
+However one with Auspex 3 should see another vampire with Obfuscate 1, 2
+/or/ 3.
+Obfuscated players can move if they have Obf &gt; 1. Umbral and Shadow players
+should also be able to see most of the exits. So the exits at creation
+should have default levels of Real + Obf2 + Obf3 + Obf4 + Obf5 + Umbra +
+Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381</p>
+<blockquote>
+<div><p>def_exit_rx 381
+def_exit_tx 381</p>
+</div></blockquote>
+<p>Obf1 is not included since an Obfuscated vampire should not be able to move
+if it only has Obf1. Therefore they won’t see the exits. If you want them
+to be able to see the exits, but not to use them, change the default Tx of
+the exits:</p>
+<blockquote>
+<div><p>def_exit_rx 381
+def_exit_tx 383</p>
+</div></blockquote>
+<p>Joe the Mortal will have an RxLevel: Real and a TxLevel: Real
+Jack the Malk, who likes to walk around Obfuscated and has Obfuscate 2 will
+have an RxLevel: Real (he sees what the mortals see) but a TxLevel: Obf2
+Jimmy the Nossie, who is using the Mask and has Obfuscate 4, but doesn’t
+try to make himself invisible will have an RxLevel: Real (as Jack)
+and a TxLevel: Real Obf4. He will also set his &#64;desc to what the mortals see and
+&amp;OBFDESC to his real slimy desc. Simply put, he will be visible to mortals,
+but not with his real desc.
+Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel
+will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So
+he can see Joe, Jack and Jimmy’s both descs.
+Joe, on the other hand, won’t see Jack at all. He will still see Jimmy, but
+only Jimmy’s &#64;desc, not the OBFDESC</p>
+<p>Frida the Fae… will have RxLevel: Real Fae and TxLevel: Real Fae. &#64;desc
+set to the mundane desc, &amp;FAEDESC set to the Chimerical desc.
+Emily the Enchanted will have an RxLevel: Real Fae, but the TxLevel: Real.
+No &amp;FAEDESC on her, although she’ll be able to see it the one on Frida.
+Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra
+and TxLevel: Umbra. &amp;UMBRADESC is his friend. He won’t see mortals or other
+characters who are not in the Umbra.
+Barbie the Bastet, who’s only peeking in the Umbra, without going there,
+will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she
+can’t see the things that see her.
+Deanna the Drake, who activates her spirit vision, will have
+RxLevel: Real Umbra and TxLevel: Real. She will see characters in Umbra and
+real world at the same time and perceive the desc appropiate to the realm
+the ohter character is in.
+Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her &#64;desc
+would be empty, but the &amp;SHADOWDESC should be set.
+Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</p>
+<p>Global code objects that all characters should be able to use:
+RxLevel: All, TxLevel: All</p>
+</div>
+<div class="section" id="example-3-softcode">
+<h2>Example 3: Softcode<a class="headerlink" href="#example-3-softcode" title="Permalink to this headline">¶</a></h2>
+<p>Considering the config directives from example 2 and assuming a function
+getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player’s stat from
+the sheet here are softcode examples that implement some of the WoD powers.
+In a real game you would have to use some more checks, of course.</p>
+<p>&#64;create Reality Levels Commands (RLS)
+&amp;CMD_OBFON rls=$+obf/on:&#64;switch [setr(0, getstat(%#,Obfuscate))]=0, &#64;pemit
+%#=You don’t have Obfuscate!, {&#64;txlevel %#=!All Obf%q0; &#64;pemit %#=You are
+now invisible.}
+&amp;CMD_OBFOFF rls=$+obf/off:&#64;txlevel %#=Real; &#64;pemit %#=You are now visible.
+&#64;&#64; Note: +obf/on clears all TxLevels before setting the appropiate Obf
+&#64;&#64; This is necesary, because a character might advance from Obf2 to
+&#64;&#64; Obf3 and he should be visible /only/ on the Obf3 level.
+&#64;&#64; +obf/off simply sets the Real Tx level, without clearing the Obf. The
+&#64;&#64; reason is the Mask. Players with Obf3 or higher who use the Mask should
+&#64;&#64; +obf/on, then +obf/off after approval and everything is set.
+&amp;CMD_AUSPEXON rls=$+auspex/on:&#64;switch [setr(0, getstat(%#, Auspex))]=0,
+&#64;pemit %#=You don’t have Auspex!, {&#64;rxlevel %#=[iter(lnum(1, %q0), Obf##)];
+&#64;pemit %#=Auspex enabled.}
+&amp;CMD_AUSPEXOFF rls=$+auspex/off:&#64;switch [hasrxlevel(%#, Obf1)]=0, &#64;pemit %#=
+You don’t have Auspex enabled!, {&#64;rxlevel %#=[iter(lnum(1, 5), !Obf##)];
+&#64;pemit %#=Auspex disabled.}
+&amp;CMD_UMBRAENTER rls=$+umbra/enter:&#64;rxlevel %#=!Real Umbra; &#64;txlevel %#=
+!Real Umbra; &#64;pemit %#=You are now in the Umbra.
+&amp;CMD_UMBRALEAVE rls=$+umbra/leave:&#64;rxlevel %#=Real !Umbra; &#64;txlevel %#=
+Real !Umbra; &#64;pemit %#=You left the Umbra.
+&amp;CMD_PEEKON rls=$+peek/on:&#64;switch hastxlevel(%#,Umbra)=1, {&#64;rxlevel %#=Real
+!Umbra; &#64;pemit %#=You are now peeking in the real world}, {&#64;rxlevel %#=!Real
+Umbra; &#64;pemit %#=You are now peeking into the Umbra}
+&amp;CMD_PEEKOFF rls=$+peek/off:&#64;rxlevel %#=!Real !Umbra [setinter(Real Umbra,
+txlevel(%#))]; &#64;pemit %#=You are no longer peeking.</p>
+</div>
+</div>
+
+
+        </div>
+      </div>
+
+      <div id="side-menu-container">
+
+        <div id="search" role="search">
+        <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+            <input type="text" name="q" placeholder="Search..." />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+        </form>
+</div>
+
+        <div id="side-menu" role="navigation">
+
+          
+  
+    
+  
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="01-intro.html">What RhostMUSH is about and what’s so great about RhostMUSH.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-compile.html">What to type to Compile and Install RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-dbconversion.html">How to convert a database from another mush to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-configure.html">What to type to configure and get your RhostMUSH up and running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-newmush.html">What to type to get the basics running if you did not choose a pre-existing flatfile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-security.html">Considerations to locking down restrictions in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-toggles.html">What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-lockdown.html">Extended lockdown of the mush and considerations.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-blocking.html">Methods to block anonymous connections and the pros and cons of doing so</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-customize.html">What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-differences.html">The differences to expect to the end user between PennMUSH, MUX, and RhostMUSH as of 08/06/2016</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12-advanced.html">Advanced features of RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-signals.html">Signals and why you need them for control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14-ssl.html">Setting up an SSL tunnel for secure connection options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="15-bitlevels.html">Multi-tiered bitlevel systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="16-modules.html">Adding hardcoded modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="17-shutdown.html">Shutting down gracefully</a></li>
+<li class="toctree-l1"><a class="reference internal" href="18-debug.html">Stack limit and debugging</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reality levels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="20-execscript.html">Execscript and external programs and scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="21-printf.html">Using printf() for advanced text output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="22-ansible.html">Installing using an ansible playbook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="23-random.html">Random notes and things to know about RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="24-quickinstall.html">Quickinstall guide to RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="25-godpasswd.html">How to reset the password for #1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="26-compileerror.html">Troubleshooting difficulties compiling RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="27-dbcorrupt.html">Dealing with DB Corruption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="28-maildbcorrupt.html">Dealing with a corrupt mail database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="29-setup.html">Additional simplified notes on setting up RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="30-cron.html">Using the built-in cron system for periodically running commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="31-comparison.html">Comparison of features between RhostMUSH, PennMUSH, and MUX2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="32-dbloading.html">Loading an existing Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="33-qdbm.html">Converting database betwen GDBM and QDBM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nda.html">Historical Non-Disclosure Agreement</a></li>
+</ul>
+
+  
+
+
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+<footer>
+    <div id="footer-info">
+        <ul id="build-details">
+            
+                <li class="footer-element">
+                    
+                        <a href="_sources/19-reality.rst.txt" rel="nofollow"> source</a>
+                    
+                </li>
+            
+
+            
+
+            
+        </ul>
+        <div id="credit">
+            created with <a href="http://sphinx-doc.org/">Sphinx</a> and <a href="https://github.com/Autophagy/insegel">Insegel</a>
+
+        </div>
+    </div>
+
+    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
+
+    <script type="text/javascript">
+      $("#menu-toggle").click(function() {
+        $("#menu-toggle").toggleClass("toggled");
+        $("#side-menu-container").slideToggle(300);
+      });
+    </script>
+
+</footer> 
+
+</div>
+
+</body>
+</html>

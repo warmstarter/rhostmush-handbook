@@ -1,0 +1,110 @@
+--------------------------------------------------------------------------------
+What to type to configure and get your RhostMUSH up and running
+--------------------------------------------------------------------------------
+
+You may configure Rhost three ways.   
+
+Creating a new game with a blank database
+-----------------------------------------
+
+  Modify your ./game/netrhost.conf file or what settings you want.
+  Don't feel overwhelmed, it's all very well documented.
+
+Creating a new game with Ambrosia's default database
+----------------------------------------------------
+
+  Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README
+  
+  The netrhost.conf file you will copy is in minimal-DBs/Amb-MinimalRhost/game
+  Copy this netrhost.conf file into your 'game' directory.
+
+  You will want the custom txt files under Amb-MinimalRhost/txt in your game/txt
+  directory and to mkindx all the txt files.  You can run ./Startmush -i to index.
+  
+  When ./Startmush prompts you to load a flatfile, say 'yes' and hit <RETURN>
+  to have it search for flatfiles, then select netrhost.db.flat from under
+  the minimal-DBs/Amb-MinimalRhost directory.
+  
+  The main steps to make sure you do for Ambrosia's db:
+  ~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat -- Ambrosia's secure and featured minimal db.
+    - Use the matching netrhost.conf file under the Amb-MinimalRhost/game directory
+    - Load in the settings specified in the Amb-MinimalRhost/bin directory.
+      - Copy this file into your ~/Server/bin directory
+      - From 'Server' directory type: make clean
+      - From 'Server' directory type: make confsource and 'l'oad option 0
+      - Specify any -additional- options you want at this point.
+      - Recompile your code
+    - Copy the files in Amb-MinimalRhost/game/txt into your ~/Server/game/txt directory
+    - from your ~/Server/game txt file run on each of the txt files:
+      ../mkindx <txtfile>.txt <txtfile>.indx
+      Where <txtfile> is the name of the file (minus the .txt extension)
+    - If running, @reboot your game.
+
+Creating a new game with the generic default database
+-----------------------------------------------------
+
+  Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory.
+ 
+  When ./Startmush prompts you to load a flatfile, say 'yes' and hit <RETURN>
+  to have it search for flatfiles, then select netrhost.db.flat from under
+  the minimal-DBs/minimal_db directory.
+
+Starting your MUSH
+------------------
+
+Once you have used one of these three methods to obtaina database, you can start your mush up.
+At this point type from the game directory:
+    ./Startmush
+
+Backups for RhostMUSH
+---------------------
+
+  Backups are already handled and integrated with a script 'backup_flat.sh'.  
+  If you wish to customize this, feel free.  Again, it is well documented and 
+  just require changing settings at the top of this script.
+
+  By default, it does 7 contiguous backups.  You may increase or decrease 
+  this value to any value you want.
+
+  It will, by default, backup all your txt/*.txt files, your netrhost.conf 
+  file, your netrhost.db.flat (mush db) file, your RhostMUSH.dump.* 
+  (mail db) files, your RhostMUSH.news.* (internal news/bbs db -- if used), 
+  your RhostMUSH.areg.* (the autoregistration db -- if used), and any sqlite 
+  database you currently may be using which are OPTIONALLY backed up if you 
+  remove the '#' from before it.
+
+  The backup script also will optionally rcp/scp, ftp, or mail any backups 
+  you want to a remote destination.  Be forewarned, the backup files can 
+  potentially get rather large for larger games, even compressed.  The 
+  average size for these files will be 1-5MB.  It could potentially get 
+  over 10-20MB in size for excessively large games, so plan accordingly.
+
+  Be aware that the backup system will NOT make successful backups if you 
+  run out of disk space.  This includes actually running out of disk space 
+  or running out of disk quota.  There is a mechanism inside the backup 
+  script to specify an email address that you wish to get alerts from 
+  in these instances.  I recommend using it.
+
+  If you make changes to your backup_flat.sh script with an already 
+  active and running mush and wish to just restart the backup procedure 
+  just issue: ./backup_restart.sh
+
+Troubleshooting issues with starting up
+---------------------------------------
+
+If you run into issues:
+  Probelm: If it says the shared ID is already in use 
+        A1: please verify that it is the right shared debug_id in your 
+            netrhost.conf file
+        A2: Force a start by ./Startmush -f
+
+  Problem: Your log file is massive and your mush is running
+        A1: To rotate this use the @logrotate command.  
+            See wizhelp on @logrotate
+
+  Problem: The database flatfile you're loading can't load because
+           a db is already defined.
+       A1: remove netrhost.db* and netrhost.gdbm* from your data directory
+
+  Problem: The mail database won't load and mail shows 'offline'
+       A1: wmail/load 
