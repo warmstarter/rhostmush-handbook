@@ -1,0 +1,337 @@
+<document source="/home/pi/rhostmush/rhostmush-handbook/source/maintenance.rst">
+    <section ids="maintenance" names="maintenance">
+        <title>
+            Maintenance
+        <section ids="signals-and-why-you-need-them-for-control" names="signals\ and\ why\ you\ need\ them\ for\ control">
+            <title>
+                Signals and why you need them for control
+            <paragraph>
+                Rhost by default allows signals at the shell to handle various processes in-game.
+            <paragraph>
+                The following signals are useful.
+            <section ids="term-kill-term-or-kill-15" names="term\ (kill\ -term\ or\ kill\ -15)">
+                <title>
+                    TERM (kill -TERM or kill -15)
+                <block_quote>
+                    <bullet_list bullet="-">
+                        <list_item>
+                            <paragraph>
+                                This will immediately terminate the mush, dumping a special flatfile called
+                                netrhost.db.TERM and scramming the db in question by force-closing it
+                                without any writes.  A TERM is the effort for the mush to shut down the
+                                mush as fast as possible to avoid any db corruption if possible since
+                                a TERM signal is common during a server shutdown, so time is paramount.
+            <section ids="usr1-kill-usr1" names="usr1\ (kill\ -usr1)">
+                <title>
+                    USR1 (kill -USR1)
+                <block_quote>
+                    <bullet_list bullet="-">
+                        <list_item>
+                            <paragraph>
+                                This by default issues a reboot on the server.  This is a special parameter
+                                because this can actually be changed in-game to do any number of other
+                                things.  Please refer to the RhostMUSH running in question if this is
+                                the default behavior or if the method for USR1 is doing something else.
+            <section ids="usr2-kill-usr2" names="usr2\ (kill\ -usr2)">
+                <title>
+                    USR2 (kill -USR2)
+                <block_quote>
+                    <bullet_list bullet="-">
+                        <list_item>
+                            <paragraph>
+                                This will shutdown (cleanly) the mush.  This behaves as if you issued
+                                a @shutdown from within the game, and follows all proper procedure
+                                in bringing the game down cleanly and safely.  This shoudl be used
+                                when doing maintenance on the game or if you need to bring it down
+                                from the shell.
+            <section ids="kill-kill-kill-or-kill-9" names="kill\ (kill\ -kill\ or\ kill\ -9)">
+                <title>
+                    KILL (kill -KILL or kill -9)
+                <block_quote>
+                    <bullet_list bullet="-">
+                        <list_item>
+                            <paragraph>
+                                This signal can not be caught and will immediately terminate the game
+                                without any safty to the database at all.  Short of something horribly
+                                wrong going on, this should never be used to bring down your mush.
+                                Doing so will almost certainly corrupt your databases (ALL OF THEM)
+                                that are open, including but not limited to your main database, your
+                                mail database, your autoregistration database, and so forth.  So if
+                                you do this, plan to do some database recovery from your flat files.
+                                Also, when you bring down a mush in this manner, you need to issue
+                                Startmush -f to bring it back up.
+        <section ids="shutting-down-gracefully" names="shutting\ down\ gracefully">
+            <title>
+                Shutting down gracefully
+            <section ids="rhostmush-has-many-ways-to-shut-down-the-game-cleanly" names="rhostmush\ has\ many\ ways\ to\ shut\ down\ the\ game\ cleanly">
+                <title>
+                    Rhostmush has many ways to shut down the game cleanly
+                <enumerated_list enumtype="arabic" prefix="" suffix=".">
+                    <list_item>
+                        <paragraph>
+                            Log into the mush and issue @shutdown
+                    <list_item>
+                        <paragraph>
+                            Issue a kill -USR2 to the mush which issues an emergency @shutdown
+                    <list_item>
+                        <paragraph>
+                            Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.
+            <section ids="warning-never-kill-9-rhost" names="warning:\ never\ kill\ -9\ rhost">
+                <title>
+                    WARNING: Never kill -9 Rhost
+                <paragraph>
+                    Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t care for the
+                    database.  The reason is if the mush happens to be saving, in any method, to the
+                    database, especially a QDBM database, you will likely have just corrupted your
+                    database, so pull out a flatfile to recover.
+                <paragraph>
+                    Sadly, this also may occur if the server hosting you takes a nose-dive in the middle
+                    of a db write.  Rhost can recover corruption in-game while up, but if it bombs
+                    in the middle of a write, all bets are off. :)
+        <section ids="autoshutdown-script" names="autoshutdown\ script">
+            <title>
+                Autoshutdown script
+            <paragraph>
+                The makefile will ‘make’ the program that will STOP the mush.
+                Please tweek ‘autolog.h’ with the proper parameters.
+            <paragraph>
+                The ‘startup.sh’ will START the mush.
+            <paragraph>
+                Both of these are intended to be used for automations (automated processes)
+                like your rc.local file and/or startup scripts when you bring your server up.
+        <section ids="network-port-redirector" names="network\ port\ redirector">
+            <title>
+                Network Port redirector
+            <paragraph>
+                This is a port redirector incase you decide to move your mush
+                to a new site/port.  To use, first, compile the code.  To do
+                this you would type the following:
+            <block_quote>
+                <paragraph>
+                    cc portmsg.c -o portmsg
+            <paragraph>
+                if ‘cc’ is not defined, try the following:
+            <block_quote>
+                <paragraph>
+                    gcc portmsg.c -o portmsg
+            <paragraph>
+                Once compiled, you would then modify the file ‘file’ to describe
+                the mush, what was done, where it’s moved to, then specify the
+                IP address and the PORT where specified.
+            <paragraph>
+                To launch the application, you would then type:
+            <block_quote>
+                <paragraph>
+                    ./portmsg file <port>
+            <paragraph>
+                Where <port> is the port where the mush used to run at.
+        <section ids="using-the-built-in-cron-system-for-periodically-running-commands" names="using\ the\ built-in\ cron\ system\ for\ periodically\ running\ commands">
+            <title>
+                Using the built-in cron system for periodically running commands
+            <section ids="syntax-for-rhost-cron" names="syntax\ for\ rhost.cron">
+                <title>
+                    Syntax for rhost.cron
+                <paragraph>
+                    The rhost.cron file will be in the syntax as follows:
+                <paragraph>
+                    username (or dbref#)
+                    command1;command2;command3;…;commandN
+                    command
+                    command
+                    command1;command2;command3;…;commandN
+                <paragraph>
+                    You can have commands strung together with a semicolon
+                    on the same line.  This counts as a single line of input.
+                    You can have at most 20 lines of commands after the target
+                    you wish to execute the commands as.  The target may
+                    be a player name OR a dbref# of any valid dbref# within
+                    the game.  Invalid targets will abort the cron process.
+                    Non-printable characters in the cron file will abort
+                    the process.  Any aborts or warnings will be logged
+                    in the netrhost.gamelog.
+                <paragraph>
+                    Here is a working example of the code cron file.
+                    This example will perform dumps of the mush.
+            <section ids="example-syntaxt-for-rhost-cron" names="example\ syntaxt\ for\ rhost.cron">
+                <title>
+                    Example syntaxt for rhost.cron
+                <paragraph>
+                    #1
+                    @dump/flat; @@ dump the main game database to flatfile
+                    wmail/unload; @@ dump the mail database to flatfile
+                    @areg/unload; @@ dump the registration database to flatfile
+                    newsdb/unload; @@ dump the news bbs database to flatfile
+        <section ids="the-following-scripts-are-used-in-the-game-directory" names="the\ following\ scripts\ are\ used\ in\ the\ game\ directory">
+            <title>
+                The following scripts are used in the game directory
+            <paragraph>
+                Startmush               – used to Start up the mush
+                backup_flat.sh          – Used to run backups with @dump/flat within the game
+            <block_quote>
+                <paragraph>
+                    (Started with Startmush automatically)
+            <paragraph>
+                backup_restart.sh       – Restart the backup_flat.sh if changes are done
+                compress_logs.sh        – Compress logs in ‘oldlogs’.  Ran with Startmush
+                findit.sh               – Internal script used to check for flatfile validity
+                mailhide.sh             – Wrapper to hide from address using the ‘mail’ progam
+                minimal.sh              – Auto-load the minimal db into the mush
+                proxysnarf.sha          – Internal script for the tor_pull.sh tor proxy blacklist
+                tor_pullit.sh           – Internal script for the tor_pull.sh for proxy blacklist
+                recovery.sh             – If your db is corrupt, run this to auto-revert to an
+            <block_quote>
+                <paragraph>
+                    earlier flatfile
+            <definition_list>
+                <definition_list_item>
+                    <term>
+                        tor_pull.sh             – Create a blacklist.txt file that can be loaded via the
+                    <definition>
+                        <paragraph>
+                            internal @blacklist command for proxy handling
+        <section ids="textfiles-for-rhostmush" names="textfiles\ for\ rhostmush">
+            <title>
+                Textfiles for RhostMUSH
+            <definition_list>
+                <definition_list_item>
+                    <term>
+                        areghost.txt           - file player gets when autoregistration on registered
+                    <definition>
+                        <paragraph>
+                            host.
+                <definition_list_item>
+                    <term>
+                        autoreg.txt            - file player gets when autoregistration on
+                    <definition>
+                        <paragraph>
+                            non-registered host.
+                <definition_list_item>
+                    <term>
+                        autoreg_include.txt    - file player receives in email when they autoregister
+                    <definition>
+                        <paragraph>
+                            attached to login/passwd
+            <paragraph>
+                badsite.txt            - file player gets when site is not allowed.
+                connect.txt            - file player gets when connect
+                create_reg.txt         - file player gets when their site is register and they
+            <block_quote>
+                <paragraph>
+                    can’t create.
+            <definition_list>
+                <definition_list_item>
+                    <term>
+                        doorconf.txt           - file that is searched for information regarding @door.
+                    <definition>
+                        <paragraph>
+                            <emphasis>
+                                NOTE
+                              Need to mkindx doorconf.txt doorconf.indx for this file
+                <definition_list_item>
+                    <term>
+                        down.txt               - file player gets when the mush has logins disabled
+                    <definition>
+                        <paragraph>
+                            (@disable login)
+                <definition_list_item>
+                    <term>
+                        error.txt              - the ‘Huh? (type help for help)’ messages.
+                    <definition>
+                        <paragraph>
+                            <emphasis>
+                                NOTE
+                              Need to mkindx error.txt error.indx for this file
+                <definition_list_item>
+                    <term>
+                        full.txt               - file player gets when the mush can’t have any more
+                    <definition>
+                        <paragraph>
+                            players.
+            <paragraph>
+                guest.txt              - file player gets when they connect as a guest.
+                help.txt               - your help file
+            <block_quote>
+                <paragraph>
+                    <emphasis>
+                        NOTE
+                      Need to mkindx help.txt help.indx for this file
+            <paragraph>
+                motd.txt               - your motd file
+                news.txt               - your news file
+            <block_quote>
+                <paragraph>
+                    <emphasis>
+                        NOTE
+                      Need to mkindx news.txt news.indx for this file
+            <definition_list>
+                <definition_list_item>
+                    <term>
+                        newuser.txt            - file newly created players get when they connect for
+                    <definition>
+                        <paragraph>
+                            the first time.
+                <definition_list_item>
+                    <term>
+                        noguest.txt            - file player gets when they are not allowed to connect
+                    <definition>
+                        <paragraph>
+                            to a guest.
+                <definition_list_item>
+                    <term>
+                        plushelp.txt           - optional +help file. (needs compile time option)
+                    <definition>
+                        <paragraph>
+                            <emphasis>
+                                NOTE
+                              Need to mkindx plushelp.txt plushelp.indx for this file
+            <paragraph>
+                quit.txt               - file player gets when they disconnect.
+                register.txt           - file player gets when the site is locked down for
+            <block_quote>
+                <paragraph>
+                    registration.
+            <definition_list>
+                <definition_list_item>
+                    <term>
+                        wizhelp.txt            - your wizhelp file
+                    <definition>
+                        <paragraph>
+                            <emphasis>
+                                NOTE
+                              Need to mkindx wizhelp.txt wizhelp.indx for this file
+            <paragraph>
+                wizmotd.txt            - your wiz motd file
+            <section ids="textfile-frequently-asked-questions" names="textfile\ frequently\ asked\ questions">
+                <title>
+                    Textfile Frequently Asked Questions
+                <paragraph>
+                    Q:  How do I put color in these files?
+                    A1: Look at ansi.h and you need to put the literal ASCII codes.
+                <block_quote>
+                    <paragraph>
+                        They will look like: ^[[0m (for ANSI_NORMAL).  That’s <ESC>[
+                <definition_list>
+                    <definition_list_item>
+                        <term>
+                            A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding
+                        <definition>
+                            <paragraph>
+                                for ansi, however you compiled your Rhost.
+                <paragraph>
+                    Q:  I want to design my own txt files to read in the mush.
+                    A:  Easy.  Design them like help.txt would be set up, mkindx the file,
+                <block_quote>
+                    <paragraph>
+                        then you can access it via @dynhelp online.
+                <paragraph>
+                    Q:  Do I have to mkindx these files whenever I make changes?
+                    A:  Only the ones that have ‘& ‘ index. (help.txt, wizhelp.txt, news.txt, etc)
+                <paragraph>
+                    Q:  Do I have to @readcache in the game whenever I make a change?
+                    A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones
+                <block_quote>
+                    <paragraph>
+                        you use with @dynhelp.
+                <paragraph>
+                    Q:  Can’t I just make code in the mush that then is used for these silly txt files?
+                    A:  Absolutely.  Check ‘wizhelp file_object’.

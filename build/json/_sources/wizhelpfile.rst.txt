@@ -1,6 +1,6 @@
------------------------------
-RhostMUSH Internal Help Files
------------------------------
+================================
+RhostMUSH Internal Wizhelp Files
+================================
 
 .. raw:: html
-    :file: help.html
+   :file: wizhelp.html

@@ -217,7 +217,7 @@ what packages are needed to install mysql_config.
 Download the git repository to a seperate directory so that you can
 copy over the files that it requires you to.
 
-Suggestion:  git clone http://github.com/RhostMUSH/trunk ~/tmprho
+Suggestion:  git clone https://github.com/RhostMUSH/trunk ~/tmprho
 
 If you are patching UP from an older version, you need to update
 the following files:
