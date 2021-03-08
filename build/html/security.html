@@ -298,17 +298,10 @@ a player, thing, exit, or room.  The help is quite verbose.</p>
 <h3>Offline: Blocking twinks from being abusive on your game<a class="headerlink" href="#offline-blocking-twinks-from-being-abusive-on-your-game" title="Permalink to this headline">¶</a></h3>
 <p>FLAGS                   : FUBAR, SLAVE, NO_CONNECT
 Commands:               : &#64;boot, &#64;nuke, &#64;toad, &#64;turtle
-Sitelocks: (&#64;admin)     : forbid_host, forbid_site, register_host,</p>
-<blockquote>
-<div><p>register_site, noguest_host, noguest_site</p>
-</div></blockquote>
-<p>Sitelock by player      : &#64;badsite, &#64;goodsite, NO_CONNECT (flag)
+Sitelocks: (&#64;admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
+Sitelock by player      : &#64;badsite, &#64;goodsite, NO_CONNECT (flag)
 Monitoring player       : SUSPECT (flag), &#64;snoop
-TOR/Proxy blocking:     : &#64;blacklist (see shell’s tor_pull.sh)</p>
-<blockquote>
-<div><p>&#64;admin proxy_checker (see wizhelp)
-&#64;tor (see wizhelp)</p>
-</div></blockquote>
+TOR/Proxy blocking:     : &#64;blacklist (see shell’s tor_pull.sh), &#64;admin proxy_checker (see wizhelp), &#64;tor (see wizhelp)</p>
 </div>
 </div>
 <div class="section" id="extended-lockdown-of-the-mush-and-considerations">
@@ -327,23 +320,14 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 <div class="section" id="command-restriction">
 <h3>Command Restriction<a class="headerlink" href="#command-restriction" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><dl class="simple">
-<dt>&#64;icmd    - Very useful.   Please see wizhelp on it.  It disallows commands</dt><dd><p>from executing including overriding them with softcode alternatives</p>
-</dd>
-<dt>&#64;admin access - Changes permissions, disables, or sets to be overridden a</dt><dd><p>command.  Useful when you plan to override commands with softcode.</p>
-</dd>
-</dl>
+<div><p>&#64;icmd    - Very useful.   Please see wizhelp on it.  It disallows commands from executing including overriding them with softcode alternatives
+&#64;admin access - Changes permissions, disables, or sets to be overridden a command.  Useful when you plan to override commands with softcode.</p>
 </div></blockquote>
 </div>
 <div class="section" id="flag-toggle-restriction">
 <h3>Flag/Toggle Restriction<a class="headerlink" href="#flag-toggle-restriction" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><dl class="simple">
-<dt>&#64;flagdef - Again, see wizhelp on this.  There are also netrhost.conf options</dt><dd><p>so you can have them loaded at start.  This allows tweaking flags
-and toggles to who can set/unset/see as well as what type can
-use it or wha type it can be used on.</p>
-</dd>
-</dl>
+<div><p>&#64;flagdef - Again, see wizhelp on this.  There are also netrhost.conf options so you can have them loaded at start.  This allows tweaking flags and toggles to who can set/unset/see as well as what type can use it or wha type it can be used on.</p>
 </div></blockquote>
 </div>
 <div class="section" id="config-restrictions">
@@ -355,63 +339,29 @@ use it or wha type it can be used on.</p>
 <div class="section" id="function-restrictions">
 <h3>Function Restrictions<a class="headerlink" href="#function-restrictions" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><dl class="simple">
-<dt>&#64;function/&#64;lfunction – Allows softcoded functions that you can optionally</dt><dd><p>lock down at your leasure</p>
-</dd>
-<dt>&#64;admin function_access – You can use this even on softcoded functions if</dt><dd><p>you so desired.</p>
-</dd>
-</dl>
+<div><p>&#64;function/&#64;lfunction – Allows softcoded functions that you can optionally lock down at your leasure
+&#64;admin function_access – You can use this even on softcoded functions if you so desired.</p>
 </div></blockquote>
 </div>
 <div class="section" id="flags">
 <h3>Flags<a class="headerlink" href="#flags" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>GUEST    - This is your guest flag, it should only be set on guests
-WANDERER - the WANDERER flag is default on new players.  This flag disables</p>
-<blockquote>
-<div><p>all building abilitites of the player.</p>
-</div></blockquote>
-<dl class="simple">
-<dt>NO_COMMAND - You can use this to stop a player from being able to connect</dt><dd><p>without worrying about changing their password</p>
-</dd>
-<dt>FUBAR      - As the flag states, it f*’s them up beind all recognition.</dt><dd><p>It essentially stops them from doing absolutely anything in the
-mush but pose and say.  Yes, it even disables the quit command.</p>
-</dd>
-<dt>SLAVE      - Funny enough, slave allows anything but say and pose.  To ruin</dt><dd><p>a troll’s life, set both FUBAR and SLAVE and sit back and smile.</p>
-</dd>
-</dl>
-<p>NO_TEL     - The target can’t teleport or be teleported
+WANDERER - the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.
+NO_COMMAND - You can use this to stop a player from being able to connect without worrying about changing their password
+FUBAR      - As the flag states, it f*’s them up beind all recognition.  It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command.
+SLAVE      - Funny enough, slave allows anything but say and pose.  To ruin a troll’s life, set both FUBAR and SLAVE and sit back and smile.
+NO_TEL     - The target can’t teleport or be teleported
 NO_MOVE    - The target is locked at their location unable to move at all
-NO_WALL    - They do not see any &#64;wall except a wizard &#64;wall/no_prefix.  This</p>
-<blockquote>
-<div><p>has the bonus of snuffing db save messages.</p>
-</div></blockquote>
-<dl class="simple">
-<dt>NO_POSSESS - Sometimes it’s useful to grant a builder character to multiple</dt><dd><p>players.  The NO_POSSESS flag makes it so that player can not
-be logged in more than 2 times.</p>
-</dd>
-</dl>
-<p>NO_MODIFY  - The target can not be modified (except by immortal/#1)
+NO_WALL    - They do not see any &#64;wall except a wizard &#64;wall/no_prefix.  This has the bonus of snuffing db save messages.
+NO_POSSESS - Sometimes it’s useful to grant a builder character to multiple players.  The NO_POSSESS flag makes it so that player can not be logged in more than 2 times.
+NO_MODIFY  - The target can not be modified (except by immortal/#1)
 NO_EXAMINE - The target can not be examined/decompiled (except by immortal/#1)
-STOP       - Once a matching $command is found on an object set STOP, it</p>
-<blockquote>
-<div><p>‘stops’ trying to find other $command matches.</p>
-</div></blockquote>
-<dl class="simple">
-<dt>NOSTOP     - If a target that is set STOP is also set NOSTOP, it will check</dt><dd><p>the master room for a command and execute that as well if found.</p>
-</dd>
-</dl>
-<p>NO_PESTER  - Stops target from &#64;pemit or whisper.  You may use &#64;icmd as well.
-NO_OVERRIDE - Useful for immortals.  By default they override all locks,</p>
-<blockquote>
-<div><p>including attribute locks.  This makes it so an immortal’s
-passing of locks will behave like a mortals</p>
-</div></blockquote>
-<dl class="simple">
-<dt>NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely</dt><dd><p>want to set this on your immortal and wizard.</p>
-</dd>
-</dl>
-<p>NO_ANSINAME - stops a target from having an ansified name
+STOP       - Once a matching $command is found on an object set STOP, it ‘stops’ trying to find other $command matches.
+NOSTOP     - If a target that is set STOP is also set NOSTOP, it will check the master room for a command and execute that as well if found.
+NO_PESTER  - Stops target from &#64;pemit or whisper.  You may use &#64;icmd as well.
+NO_OVERRIDE - Useful for immortals.  By default they override all locks, including attribute locks.  This makes it so an immortal’s passing of locks will behave like a mortals NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely want to set this on your immortal and wizard.
+NO_ANSINAME - stops a target from having an ansified name
 NO_CODE     - lock down advanced coding from a target
 SPAMMONITOR - stop a target from issuing more than 60 commands a minute.
 FREE        - Stop costing money for day to day processing of commands/building</p>
@@ -441,11 +391,8 @@ IMMPROG            - Disables the ability to use &#64;quitprogram from a &#64;pr
 PROG_ON_CONNECT    - Allows a &#64;program to resume if someone reconnects
 IGNOREZONE         - Enables a zone to process &#64;icmd’s
 PAGELOCK           - Enforces target to require passing pagelocks
-MAIL_LOCKDOWN      - Blocks the ability of a wizard to check another</p>
-<blockquote>
-<div><p>player’s mail</p>
-</div></blockquote>
-<p>ATRUSE             - Enables the attribute to use attribute content locking
+MAIL_LOCKDOWN      - Blocks the ability of a wizard to check another player’s mail
+ATRUSE             - Enables the attribute to use attribute content locking
 NOGLOBPARENT       - Disables the target from inheriting global parenting
 LOGROOM            - Enables system logs on the room
 EXFULLWIZATTR      - Allows target to examine all wizard attributes
@@ -542,41 +489,36 @@ allowable.</p>
 <blockquote>
 <div><p>You may use CIDR notation such as /32 instead of 255.255.255.255.
 Config file:  (see section on forbid_site as it describes and gives examples)
-Online Syntax: MASK: &#64;admin forbid_site=123.123.123.0 255.255.255.0</p>
-<blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>&#64;admin forbid_site=123.123.123.123 255.255.255.255</p>
-</div></blockquote>
-<dl class="simple">
-<dt>CIDR: &#64;admin forbid_site=123.123.123.0 /24</dt><dd><p>&#64;admin forbid_site=123.123.123.123 /32</p>
-</dd>
-</dl>
-</div></blockquote>
-<dl>
-<dt>REMOVING: MASK: &#64;site/all 123.123.123.123=255.255.255.255</dt><dd><blockquote>
-<div><p>&#64;site/forbid 123.123.123.0=254.255.255.0</p>
-</div></blockquote>
-<dl class="simple">
-<dt>CIDR: &#64;site/all 123.123.123.123=/32</dt><dd><p>&#64;site/forbid 123.123.123.0=/24</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
-<p>forbid_site      - Set the specified site forbid only
-register_site    - Set the specified site register only
-noguest_site     - Set the specified site unable to connect to guests
-suspect_site     - Set the specified site suspect on connect
-noautoreg_site   - Set the specified site to not allow autoregistration
-—
-trust_site       - Allow site to bypass suspect site restrictions
-permit_site      - Allow site to bypass sitelock restrictions
-—
-nodns_site       - Site will no longer do reverse DNS lookups
-noauth_site      - Site will no longer do AUTH ident lookups</p>
-</div></blockquote>
+Online Syntax: MASK:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                   <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span>
+                   <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.255</span>
+
+   <span class="n">CIDR</span><span class="p">::</span>
+
+                   <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span> <span class="o">/</span><span class="mi">24</span>
+                   <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span> <span class="o">/</span><span class="mi">32</span>
+
+   <span class="n">REMOVING</span><span class="p">:</span> <span class="n">MASK</span><span class="p">::</span>
+
+                   <span class="nd">@site</span><span class="o">/</span><span class="nb">all</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span><span class="o">=</span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.255</span>
+                   <span class="nd">@site</span><span class="o">/</span><span class="n">forbid</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span><span class="o">=</span><span class="mf">254.255</span><span class="o">.</span><span class="mf">255.0</span>
+
+             <span class="n">CIDR</span><span class="p">::</span>
+
+                   <span class="nd">@site</span><span class="o">/</span><span class="nb">all</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span><span class="o">=/</span><span class="mi">32</span>
+                   <span class="nd">@site</span><span class="o">/</span><span class="n">forbid</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span><span class="o">=/</span><span class="mi">24</span>
+
+<span class="n">forbid_site</span>      <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span> <span class="n">forbid</span> <span class="n">only</span>
+<span class="n">register_site</span>    <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span> <span class="n">register</span> <span class="n">only</span>
+<span class="n">noguest_site</span>     <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">guests</span>
+<span class="n">suspect_site</span>     <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span> <span class="n">suspect</span> <span class="n">on</span> <span class="n">connect</span>
+<span class="n">noautoreg_site</span>   <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span> <span class="n">to</span> <span class="ow">not</span> <span class="n">allow</span> <span class="n">autoregistration</span>
+<span class="n">trust_site</span>       <span class="o">-</span> <span class="n">Allow</span> <span class="n">site</span> <span class="n">to</span> <span class="n">bypass</span> <span class="n">suspect</span> <span class="n">site</span> <span class="n">restrictions</span>
+<span class="n">permit_site</span>      <span class="o">-</span> <span class="n">Allow</span> <span class="n">site</span> <span class="n">to</span> <span class="n">bypass</span> <span class="n">sitelock</span> <span class="n">restrictions</span>
+<span class="n">nodns_site</span>       <span class="o">-</span> <span class="n">Site</span> <span class="n">will</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">do</span> <span class="n">reverse</span> <span class="n">DNS</span> <span class="n">lookups</span>
+<span class="n">noauth_site</span>      <span class="o">-</span> <span class="n">Site</span> <span class="n">will</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">do</span> <span class="n">AUTH</span> <span class="n">ident</span> <span class="n">lookups</span>
+</pre></div>
+</div>
 </div></blockquote>
 </div>
 <div class="section" id="dns-based-restrictions">
@@ -587,25 +529,21 @@ The advanced feature is you can specify filtering on
 when the condition is matched, such as allowing 2 players from a site to
 be connected before disallowing anyone else to connect.
 Config File: (see section on forbid_host as it describes and gives examples)
-Online Syntax: ADD: &#64;admin forbid_host=*.dsl*.comcast.net <a href="#id1"><span class="problematic" id="id2">*</span></a>.aol.com <a href="#id3"><span class="problematic" id="id4">*</span></a>another.site</p>
-<blockquote>
-<div><blockquote>
-<div><blockquote>
-<div><p>DEL: &#64;admin forbid_host=!*.aol.com</p>
-</div></blockquote>
-<p>ADVANCED: &#64;admin forbid_host=mudconnect.com|3 (allow 3 at once only)</p>
-</div></blockquote>
-<p>forbid_host     - Set the specified site(s) forbid only
+Online Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        ADD:      @admin forbid_host=*.dsl*.comcast.net *.aol.com *another.site
+        DEL:      @admin forbid_host=!*.aol.com
+        ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at once only)
+
+forbid_host     - Set the specified site(s) forbid only
 register_host   - Set the specified site(s) register only
 noguest_host    - Set the specified site(s) unable to connect to guests
 suspect_host    - Set the specified site(s) suspect on connect
 noautoreg_host  - Set the specified site(s) to not allow autoregistration
-—
 validate_host   - Do not allow any autoregistration from emails matching site
 goodmail_host   - Always allow autoregistration from emails matching site
-—
-nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site</p>
-</div></blockquote>
+nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site
+</pre></div>
+</div>
 </div></blockquote>
 </div>
 </div>
@@ -662,34 +600,34 @@ it may be worth considering adding this to add additional protection.</p>
 <div class="section" id="quickstart-for-ssl-setup-with-stunnel">
 <h3>Quickstart for SSL setup with stunnel<a class="headerlink" href="#quickstart-for-ssl-setup-with-stunnel" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
-<li><p>Modify your netrhost.conf file and add/change the following parameters:
-A. stunnel_reip 1
-B. stunnel_cmd SECRET-MAGIC-COOKIE</p>
+<li><p>Modify your netrhost.conf file and add/change the following parameters:</p>
+<ol class="arabic">
+<li><p>stunnel_reip 1</p></li>
+<li><p>stunnel_cmd SECRET-MAGIC-COOKIE</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>SECRET-MAGIC-COOKIE is a case sensitive single word phrase.  Any
-printable character other than the ‘#’ character is allowable.
-You may use up to 30 characters.</p></li>
-<li><p>Make sure the secret is a hard to guess phrase.  This is used
-by stunnel to forward on the originating IP address.</p></li>
+<li><p>SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the ‘#’ character is allowable.  You may use up to 30 characters.</p></li>
+<li><p>Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address.</p></li>
 </ol>
 </div></blockquote>
-<ol class="upperalpha" start="3">
-<li><p>stunnel_host localhost 127.0.0.1 othersite.goes.here
-1.  This is optional.
-2.  If you do not specify it it defaults to ‘localhost 127.0.0.1’.</p>
+</li>
+<li><p>stunnel_host localhost 127.0.0.1 othersite.goes.here</p>
 <blockquote>
-<div><p>If your domain has a unique name like ‘localhost.localdomain’
-like some ubuntu distributions, then you should customize your
-stunnel_host.</p>
+<div><ol class="arabic simple">
+<li><p>This is optional.</p></li>
+<li><p>If you do not specify it it defaults to ‘localhost 127.0.0.1’.  If your domain has a unique name like ‘localhost.localdomain’ like some ubuntu distributions, then you should customize your stunnel_host.</p></li>
+</ol>
 </div></blockquote>
 </li>
 </ol>
 </li>
 <li><p>go into the stunnel directory</p></li>
-<li><p>./stunnel_setup.sh
-A. Choose the defaults or alter them based on preferences
-B. Make sure to choose the warpbubble conf file</p></li>
+<li><p>./stunnel_setup.sh</p>
+<ol class="arabic simple">
+<li><p>Choose the defaults or alter them based on preferences</p></li>
+<li><p>Make sure to choose the warpbubble conf file</p></li>
+</ol>
+</li>
 <li><p>./stunnel_start.sh</p></li>
 <li><p>Use ./stunnel_stop.sh to stop the SSL tunnel at any time</p></li>
 </ol>
@@ -707,25 +645,12 @@ by the game owner which would have access to the end point anyway.</p>
 <p>You would set up the stunnel from the ‘stunnel’ directory.  There the following
 files are of relevance:</p>
 <p>README                     – a readme explaining the points of stunnel
-stunnel.conf.example       – The example stunnel.conf file.  If you wish to</p>
-<blockquote>
-<div><p>create this manually you’re welcome to.  Just
-make sure the end file is stunnel.conf</p>
-</div></blockquote>
-<dl class="simple">
-<dt>stunnel_setup.sh           – the script to build a stunnel.conf file for you</dt><dd><p>which will be dropped at your specified location.</p>
-</dd>
-</dl>
-<p>stunnel_kill.sh            – Stop/terminate the stunnel process.
+stunnel.conf.example       – The example stunnel.conf file.  If you wish to create this manually you’re welcome to.  Just make sure the end file is stunnel.conf
+stunnel_setup.sh           – the script to build a stunnel.conf file for you which will be dropped at your specified location.
+stunnel_kill.sh            – Stop/terminate the stunnel process.
 stunnel_start.sh           – Start the stunnel process.
-warpbubble.pl              – the perl script that handles stunnel to mush</p>
-<blockquote>
-<div><p>connectivity.</p>
-</div></blockquote>
-<dl class="simple">
-<dt>stunnel_src                – If you do not have stunnel, this directory will</dt><dd><p>allow you to download, compile and locally install.</p>
-</dd>
-</dl>
+warpbubble.pl              – the perl script that handles stunnel to mush connectivity.
+stunnel_src                – If you do not have stunnel, this directory will allow you to download, compile and locally install.</p>
 </div>
 <div class="section" id="modifying-netrhost-conf">
 <h4>Modifying netrhost.conf<a class="headerlink" href="#modifying-netrhost-conf" title="Permalink to this headline">¶</a></h4>
@@ -733,32 +658,17 @@ warpbubble.pl              – the perl script that handles stunnel to mush</p>
 the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect_host if
 not set will default to ‘localhost 127.0.0.1’.</p>
-<dl class="simple">
-<dt>sconnect_reip 1         – This enables the SSL tunnel layer handler within</dt><dd><p>rhost.</p>
-</dd>
-<dt>sconnect_cmd XYZZY      – this will set the secret SSL command handshake</dt><dd><p>command to XYZZY.  This is case sensitive and can
-be up to 31 characters.  Please make sure to only
-use printable non-whitespace characters.
-Ergo: one word</p>
-</dd>
-<dt>sconnect_host wildcards – This allows wildcarded sites (one or more) to allow</dt><dd><p>to access the sconnect/stunnel handler.  This
-defaults to ‘localhost’ and ‘127.0.0.1’ so if you
-have ‘localhost.localdomain’ instead then you must
-set this to whatever is seen as ‘localhost’ to you.
-You can verify this by checking your /etc/hosts
-file.</p>
-</dd>
-<dt>Note: the sconnect_host is optional.  If you do not specify it, it will</dt><dd><p>default to two values:  ‘localhost’ and ‘127.0.0.1’.</p>
-</dd>
-</dl>
+<p>sconnect_reip 1         – This enables the SSL tunnel layer handler within rhost.
+sconnect_cmd XYZZY      – this will set the secret SSL command handshake command to XYZZY.  This is case sensitive and can be up to 31 characters.  Please make sure to only use printable non-whitespace characters.  Ergo: one word
+sconnect_host wildcards – This allows wildcarded sites (one or more) to allow to access the sconnect/stunnel handler.  This defaults to ‘localhost’ and ‘127.0.0.1’ so if you have ‘localhost.localdomain’ instead then you must set this to whatever is seen as ‘localhost’ to you.  You can verify this by checking your /etc/hosts file.</p>
+<p>Note: the sconnect_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.</p>
 </div>
 <div class="section" id="running-the-stunnel-setup-program">
 <h4>Running the stunnel setup program<a class="headerlink" href="#running-the-stunnel-setup-program" title="Permalink to this headline">¶</a></h4>
-<p>At this point you’re ready to run the stunnel setup program.  So at this point
-type the following:</p>
-<blockquote>
-<div><p>./stunnel_setup.sh</p>
-</div></blockquote>
+<p>At this point you’re ready to run the stunnel setup program.  So at this point type the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_setup</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
 <p>This will prompt you through settings.  Most you can select the defaults to.
 The SSL port you may need to change based on your administrative requirements.
 It will prompt you with whatever you set for your mush name.  If you have not
@@ -770,17 +680,17 @@ MUST have 127.0.0.1 as an entry for your sconnect_host file.</p>
 <div class="section" id="starting-the-stunnel-proxy">
 <h4>Starting the stunnel proxy<a class="headerlink" href="#starting-the-stunnel-proxy" title="Permalink to this headline">¶</a></h4>
 <p>When you have your stunnel.conf file to the way you want, you then
-issue the following command to run your SSL layer.</p>
-<blockquote>
-<div><p>./stunnel_start.sh</p>
-</div></blockquote>
+issue the following command to run your SSL layer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_start</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="shutting-down-the-stunnel-proxy">
 <h4>Shutting down the stunnel proxy<a class="headerlink" href="#shutting-down-the-stunnel-proxy" title="Permalink to this headline">¶</a></h4>
 <p>If ever you need to bring down the SSL layer, you may kill it with the command:</p>
-<blockquote>
-<div><p>./stunnel_stop.sh</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_stop</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="configuring-firewall-on-the-host">
 <h4>Configuring firewall on the host<a class="headerlink" href="#configuring-firewall-on-the-host" title="Permalink to this headline">¶</a></h4>

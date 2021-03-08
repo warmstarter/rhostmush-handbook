@@ -19,10 +19,10 @@ looking back at things. :)
     permitted, and that I do _NOT_ have to return said patches to the
     developers.
 
-          ---------------------------------------------------------------------
-    Note: The Rhost developers would like to see what was added, and possibly
-          look at adding them to the main distro if we see others would like
-          it (with full credits to you), but we belive once you have the code,
-          you should be allowed to play with it fully as long as the first two
-          rules are kept.
-          ---------------------------------------------------------------------
+.. note::
+
+   The Rhost developers would like to see what was added, and possibly
+   look at adding them to the main distro if we see others would like
+   it (with full credits to you), but we belive once you have the code,
+   you should be allowed to play with it fully as long as the first two
+   rules are kept.

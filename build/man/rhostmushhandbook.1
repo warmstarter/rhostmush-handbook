@@ -4305,22 +4305,10 @@ a player, thing, exit, or room.  The help is quite verbose.
 .sp
 FLAGS                   : FUBAR, SLAVE, NO_CONNECT
 Commands:               : @boot, @nuke, @toad, @turtle
-Sitelocks: (@admin)     : forbid_host, forbid_site, register_host,
-.INDENT 0.0
-.INDENT 3.5
-register_site, noguest_host, noguest_site
-.UNINDENT
-.UNINDENT
-.sp
+Sitelocks: (@admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
 Sitelock by player      : @badsite, @goodsite, NO_CONNECT (flag)
 Monitoring player       : SUSPECT (flag), @snoop
-TOR/Proxy blocking:     : @blacklist (see shell’s tor_pull.sh)
-.INDENT 0.0
-.INDENT 3.5
-@admin proxy_checker (see wizhelp)
-@tor (see wizhelp)
-.UNINDENT
-.UNINDENT
+TOR/Proxy blocking:     : @blacklist (see shell’s tor_pull.sh), @admin proxy_checker (see wizhelp), @tor (see wizhelp)
 .SS Extended lockdown of the mush and considerations
 .sp
 These are flags, powers, toggles, and various conditions for consideration
@@ -4337,26 +4325,14 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 .SS Command Restriction
 .INDENT 0.0
 .INDENT 3.5
-.INDENT 0.0
-.TP
-.B @icmd    \- Very useful.   Please see wizhelp on it.  It disallows commands
-from executing including overriding them with softcode alternatives
-.TP
-.B @admin access \- Changes permissions, disables, or sets to be overridden a
-command.  Useful when you plan to override commands with softcode.
-.UNINDENT
+@icmd    \- Very useful.   Please see wizhelp on it.  It disallows commands from executing including overriding them with softcode alternatives
+@admin access \- Changes permissions, disables, or sets to be overridden a command.  Useful when you plan to override commands with softcode.
 .UNINDENT
 .UNINDENT
 .SS Flag/Toggle Restriction
 .INDENT 0.0
 .INDENT 3.5
-.INDENT 0.0
-.TP
-.B @flagdef \- Again, see wizhelp on this.  There are also netrhost.conf options
-so you can have them loaded at start.  This allows tweaking flags
-and toggles to who can set/unset/see as well as what type can
-use it or wha type it can be used on.
-.UNINDENT
+@flagdef \- Again, see wizhelp on this.  There are also netrhost.conf options so you can have them loaded at start.  This allows tweaking flags and toggles to who can set/unset/see as well as what type can use it or wha type it can be used on.
 .UNINDENT
 .UNINDENT
 .SS Config restrictions
@@ -4368,82 +4344,28 @@ use it or wha type it can be used on.
 .SS Function Restrictions
 .INDENT 0.0
 .INDENT 3.5
-.INDENT 0.0
-.TP
-.B @function/@lfunction – Allows softcoded functions that you can optionally
-lock down at your leasure
-.TP
-.B @admin function_access – You can use this even on softcoded functions if
-you so desired.
-.UNINDENT
+@function/@lfunction – Allows softcoded functions that you can optionally lock down at your leasure
+@admin function_access – You can use this even on softcoded functions if you so desired.
 .UNINDENT
 .UNINDENT
 .SS Flags
 .INDENT 0.0
 .INDENT 3.5
 GUEST    \- This is your guest flag, it should only be set on guests
-WANDERER \- the WANDERER flag is default on new players.  This flag disables
-.INDENT 0.0
-.INDENT 3.5
-all building abilitites of the player.
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B NO_COMMAND \- You can use this to stop a player from being able to connect
-without worrying about changing their password
-.TP
-.B FUBAR      \- As the flag states, it f*’s them up beind all recognition.
-It essentially stops them from doing absolutely anything in the
-mush but pose and say.  Yes, it even disables the quit command.
-.TP
-.B SLAVE      \- Funny enough, slave allows anything but say and pose.  To ruin
-a troll’s life, set both FUBAR and SLAVE and sit back and smile.
-.UNINDENT
-.sp
+WANDERER \- the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.
+NO_COMMAND \- You can use this to stop a player from being able to connect without worrying about changing their password
+FUBAR      \- As the flag states, it f*’s them up beind all recognition.  It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command.
+SLAVE      \- Funny enough, slave allows anything but say and pose.  To ruin a troll’s life, set both FUBAR and SLAVE and sit back and smile.
 NO_TEL     \- The target can’t teleport or be teleported
 NO_MOVE    \- The target is locked at their location unable to move at all
-NO_WALL    \- They do not see any @wall except a wizard @wall/no_prefix.  This
-.INDENT 0.0
-.INDENT 3.5
-has the bonus of snuffing db save messages.
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B NO_POSSESS \- Sometimes it’s useful to grant a builder character to multiple
-players.  The NO_POSSESS flag makes it so that player can not
-be logged in more than 2 times.
-.UNINDENT
-.sp
+NO_WALL    \- They do not see any @wall except a wizard @wall/no_prefix.  This has the bonus of snuffing db save messages.
+NO_POSSESS \- Sometimes it’s useful to grant a builder character to multiple players.  The NO_POSSESS flag makes it so that player can not be logged in more than 2 times.
 NO_MODIFY  \- The target can not be modified (except by immortal/#1)
 NO_EXAMINE \- The target can not be examined/decompiled (except by immortal/#1)
-STOP       \- Once a matching $command is found on an object set STOP, it
-.INDENT 0.0
-.INDENT 3.5
-‘stops’ trying to find other $command matches.
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B NOSTOP     \- If a target that is set STOP is also set NOSTOP, it will check
-the master room for a command and execute that as well if found.
-.UNINDENT
-.sp
+STOP       \- Once a matching $command is found on an object set STOP, it ‘stops’ trying to find other $command matches.
+NOSTOP     \- If a target that is set STOP is also set NOSTOP, it will check the master room for a command and execute that as well if found.
 NO_PESTER  \- Stops target from @pemit or whisper.  You may use @icmd as well.
-NO_OVERRIDE \- Useful for immortals.  By default they override all locks,
-.INDENT 0.0
-.INDENT 3.5
-including attribute locks.  This makes it so an immortal’s
-passing of locks will behave like a mortals
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B NO_USELOCK  \- This is like NO_OVERRIDE but only effects uselocks.  You likely
-want to set this on your immortal and wizard.
-.UNINDENT
-.sp
+NO_OVERRIDE \- Useful for immortals.  By default they override all locks, including attribute locks.  This makes it so an immortal’s passing of locks will behave like a mortals NO_USELOCK  \- This is like NO_OVERRIDE but only effects uselocks.  You likely want to set this on your immortal and wizard.
 NO_ANSINAME \- stops a target from having an ansified name
 NO_CODE     \- lock down advanced coding from a target
 SPAMMONITOR \- stop a target from issuing more than 60 commands a minute.
@@ -4474,13 +4396,7 @@ IMMPROG            \- Disables the ability to use @quitprogram from a @program
 PROG_ON_CONNECT    \- Allows a @program to resume if someone reconnects
 IGNOREZONE         \- Enables a zone to process @icmd’s
 PAGELOCK           \- Enforces target to require passing pagelocks
-MAIL_LOCKDOWN      \- Blocks the ability of a wizard to check another
-.INDENT 0.0
-.INDENT 3.5
-player’s mail
-.UNINDENT
-.UNINDENT
-.sp
+MAIL_LOCKDOWN      \- Blocks the ability of a wizard to check another player’s mail
 ATRUSE             \- Enables the attribute to use attribute content locking
 NOGLOBPARENT       \- Disables the target from inheriting global parenting
 LOGROOM            \- Enables system logs on the room
@@ -4580,53 +4496,41 @@ You may see all site information at any time with: @list sites
 .INDENT 3.5
 You may use CIDR notation such as /32 instead of 255.255.255.255.
 Config file:  (see section on forbid_site as it describes and gives examples)
-Online Syntax: MASK: @admin forbid_site=123.123.123.0 255.255.255.0
+Online Syntax: MASK:
 .INDENT 0.0
 .INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-@admin forbid_site=123.123.123.123 255.255.255.255
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B CIDR: @admin forbid_site=123.123.123.0 /24
-@admin forbid_site=123.123.123.123 /32
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B REMOVING: MASK: @site/all 123.123.123.123=255.255.255.255
-.INDENT 7.0
-.INDENT 3.5
-@site/forbid 123.123.123.0=254.255.255.0
-.UNINDENT
-.UNINDENT
-.INDENT 7.0
-.TP
-.B CIDR: @site/all 123.123.123.123=/32
-@site/forbid 123.123.123.0=/24
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
 .sp
+.nf
+.ft C
+                   @admin forbid_site=123.123.123.0 255.255.255.0
+                   @admin forbid_site=123.123.123.123 255.255.255.255
+
+   CIDR::
+
+                   @admin forbid_site=123.123.123.0 /24
+                   @admin forbid_site=123.123.123.123 /32
+
+   REMOVING: MASK::
+
+                   @site/all 123.123.123.123=255.255.255.255
+                   @site/forbid 123.123.123.0=254.255.255.0
+
+             CIDR::
+
+                   @site/all 123.123.123.123=/32
+                   @site/forbid 123.123.123.0=/24
+
 forbid_site      \- Set the specified site forbid only
 register_site    \- Set the specified site register only
 noguest_site     \- Set the specified site unable to connect to guests
 suspect_site     \- Set the specified site suspect on connect
 noautoreg_site   \- Set the specified site to not allow autoregistration
-—
 trust_site       \- Allow site to bypass suspect site restrictions
 permit_site      \- Allow site to bypass sitelock restrictions
-—
 nodns_site       \- Site will no longer do reverse DNS lookups
 noauth_site      \- Site will no longer do AUTH ident lookups
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -4639,39 +4543,26 @@ The advanced feature is you can specify filtering on
 when the condition is matched, such as allowing 2 players from a site to
 be connected before disallowing anyone else to connect.
 Config File: (see section on forbid_host as it describes and gives examples)
-Online Syntax: ADD: @admin forbid_host=*.dsl*.comcast.net 
-.nf
-*
-.fi
-\&.aol.com 
-.nf
-*
-.fi
-another.site
+Online Syntax:
 .INDENT 0.0
 .INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-DEL: @admin forbid_host=!*.aol.com
-.UNINDENT
-.UNINDENT
 .sp
-ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at once only)
-.UNINDENT
-.UNINDENT
-.sp
+.nf
+.ft C
+        ADD:      @admin forbid_host=*.dsl*.comcast.net *.aol.com *another.site
+        DEL:      @admin forbid_host=!*.aol.com
+        ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at once only)
+
 forbid_host     \- Set the specified site(s) forbid only
 register_host   \- Set the specified site(s) register only
 noguest_host    \- Set the specified site(s) unable to connect to guests
 suspect_host    \- Set the specified site(s) suspect on connect
 noautoreg_host  \- Set the specified site(s) to not allow autoregistration
-—
 validate_host   \- Do not allow any autoregistration from emails matching site
 goodmail_host   \- Always allow autoregistration from emails matching site
-—
 nobroadcast_host \- Snuff online site broadcasts via MONITOR for specified site
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -4728,31 +4619,31 @@ it may be worth considering adding this to add additional protection.
 .INDENT 0.0
 .IP 1. 3
 Modify your netrhost.conf file and add/change the following parameters:
-A. stunnel_reip 1
-B. stunnel_cmd SECRET\-MAGIC\-COOKIE
+.INDENT 3.0
+.IP 1. 3
+stunnel_reip 1
+.IP 2. 3
+stunnel_cmd SECRET\-MAGIC\-COOKIE
 .INDENT 3.0
 .INDENT 3.5
 .INDENT 0.0
 .IP 1. 3
-SECRET\-MAGIC\-COOKIE is a case sensitive single word phrase.  Any
-printable character other than the ‘#’ character is allowable.
-You may use up to 30 characters.
+SECRET\-MAGIC\-COOKIE is a case sensitive single word phrase. Any printable character other than the ‘#’ character is allowable.  You may use up to 30 characters.
 .IP 2. 3
-Make sure the secret is a hard to guess phrase.  This is used
-by stunnel to forward on the originating IP address.
+Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.INDENT 3.0
-.IP C. 3
+.IP 3. 3
 stunnel_host localhost 127.0.0.1 othersite.goes.here
-1.  This is optional.
-2.  If you do not specify it it defaults to ‘localhost 127.0.0.1’.
 .INDENT 3.0
 .INDENT 3.5
-If your domain has a unique name like ‘localhost.localdomain’
-like some ubuntu distributions, then you should customize your
-stunnel_host.
+.INDENT 0.0
+.IP 1. 3
+This is optional.
+.IP 2. 3
+If you do not specify it it defaults to ‘localhost 127.0.0.1’.  If your domain has a unique name like ‘localhost.localdomain’ like some ubuntu distributions, then you should customize your stunnel_host.
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -4760,8 +4651,12 @@ stunnel_host.
 go into the stunnel directory
 .IP 3. 3
 \&./stunnel_setup.sh
-A. Choose the defaults or alter them based on preferences
-B. Make sure to choose the warpbubble conf file
+.INDENT 3.0
+.IP 1. 3
+Choose the defaults or alter them based on preferences
+.IP 2. 3
+Make sure to choose the warpbubble conf file
+.UNINDENT
 .IP 4. 3
 \&./stunnel_start.sh
 .IP 5. 3
@@ -4783,67 +4678,35 @@ You would set up the stunnel from the ‘stunnel’ directory.  There the follow
 files are of relevance:
 .sp
 README                     – a readme explaining the points of stunnel
-stunnel.conf.example       – The example stunnel.conf file.  If you wish to
-.INDENT 0.0
-.INDENT 3.5
-create this manually you’re welcome to.  Just
-make sure the end file is stunnel.conf
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B stunnel_setup.sh           – the script to build a stunnel.conf file for you
-which will be dropped at your specified location.
-.UNINDENT
-.sp
+stunnel.conf.example       – The example stunnel.conf file.  If you wish to create this manually you’re welcome to.  Just make sure the end file is stunnel.conf
+stunnel_setup.sh           – the script to build a stunnel.conf file for you which will be dropped at your specified location.
 stunnel_kill.sh            – Stop/terminate the stunnel process.
 stunnel_start.sh           – Start the stunnel process.
-warpbubble.pl              – the perl script that handles stunnel to mush
-.INDENT 0.0
-.INDENT 3.5
-connectivity.
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B stunnel_src                – If you do not have stunnel, this directory will
-allow you to download, compile and locally install.
-.UNINDENT
+warpbubble.pl              – the perl script that handles stunnel to mush connectivity.
+stunnel_src                – If you do not have stunnel, this directory will allow you to download, compile and locally install.
 .SS Modifying netrhost.conf
 .sp
 To be able to utilize SSL, you first must set your netrhost.conf file with
 the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect_host if
 not set will default to ‘localhost 127.0.0.1’.
-.INDENT 0.0
-.TP
-.B sconnect_reip 1         – This enables the SSL tunnel layer handler within
-rhost.
-.TP
-.B sconnect_cmd XYZZY      – this will set the secret SSL command handshake
-command to XYZZY.  This is case sensitive and can
-be up to 31 characters.  Please make sure to only
-use printable non\-whitespace characters.
-Ergo: one word
-.TP
-.B sconnect_host wildcards – This allows wildcarded sites (one or more) to allow
-to access the sconnect/stunnel handler.  This
-defaults to ‘localhost’ and ‘127.0.0.1’ so if you
-have ‘localhost.localdomain’ instead then you must
-set this to whatever is seen as ‘localhost’ to you.
-You can verify this by checking your /etc/hosts
-file.
-.TP
-.B Note: the sconnect_host is optional.  If you do not specify it, it will
-default to two values:  ‘localhost’ and ‘127.0.0.1’.
-.UNINDENT
+.sp
+sconnect_reip 1         – This enables the SSL tunnel layer handler within rhost.
+sconnect_cmd XYZZY      – this will set the secret SSL command handshake command to XYZZY.  This is case sensitive and can be up to 31 characters.  Please make sure to only use printable non\-whitespace characters.  Ergo: one word
+sconnect_host wildcards – This allows wildcarded sites (one or more) to allow to access the sconnect/stunnel handler.  This defaults to ‘localhost’ and ‘127.0.0.1’ so if you have ‘localhost.localdomain’ instead then you must set this to whatever is seen as ‘localhost’ to you.  You can verify this by checking your /etc/hosts file.
+.sp
+Note: the sconnect_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.
 .SS Running the stunnel setup program
 .sp
-At this point you’re ready to run the stunnel setup program.  So at this point
-type the following:
+At this point you’re ready to run the stunnel setup program.  So at this point type the following:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 \&./stunnel_setup.sh
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -4859,10 +4722,15 @@ MUST have 127.0.0.1 as an entry for your sconnect_host file.
 .SS Starting the stunnel proxy
 .sp
 When you have your stunnel.conf file to the way you want, you then
-issue the following command to run your SSL layer.
+issue the following command to run your SSL layer:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 \&./stunnel_start.sh
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .SS Shutting down the stunnel proxy
@@ -4870,7 +4738,12 @@ issue the following command to run your SSL layer.
 If ever you need to bring down the SSL layer, you may kill it with the command:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 \&./stunnel_stop.sh
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .SS Configuring firewall on the host
@@ -5031,13 +4904,7 @@ newsdb/unload; @@ dump the news bbs database to flatfile
 .SS The following scripts are used in the game directory
 .sp
 Startmush               – used to Start up the mush
-backup_flat.sh          – Used to run backups with @dump/flat within the game
-.INDENT 0.0
-.INDENT 3.5
-(Started with Startmush automatically)
-.UNINDENT
-.UNINDENT
-.sp
+backup_flat.sh          – Used to run backups with @dump/flat within the game (Started with Startmush automatically)
 backup_restart.sh       – Restart the backup_flat.sh if changes are done
 compress_logs.sh        – Compress logs in ‘oldlogs’.  Ran with Startmush
 findit.sh               – Internal script used to check for flatfile validity
@@ -5045,127 +4912,93 @@ mailhide.sh             – Wrapper to hide from address using the ‘mail’ pr
 minimal.sh              – Auto\-load the minimal db into the mush
 proxysnarf.sha          – Internal script for the tor_pull.sh tor proxy blacklist
 tor_pullit.sh           – Internal script for the tor_pull.sh for proxy blacklist
-recovery.sh             – If your db is corrupt, run this to auto\-revert to an
-.INDENT 0.0
-.INDENT 3.5
-earlier flatfile
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B tor_pull.sh             – Create a blacklist.txt file that can be loaded via the
-internal @blacklist command for proxy handling
-.UNINDENT
+recovery.sh             – If your db is corrupt, run this to auto\-revert to an earlier flatfile
+tor_pull.sh             – Create a blacklist.txt file that can be loaded via the internal @blacklist command for proxy handling
 .SS Textfiles for RhostMUSH
-.INDENT 0.0
-.TP
-.B areghost.txt           \- file player gets when autoregistration on registered
-host.
-.TP
-.B autoreg.txt            \- file player gets when autoregistration on
-non\-registered host.
-.TP
-.B autoreg_include.txt    \- file player receives in email when they autoregister
-attached to login/passwd
-.UNINDENT
 .sp
+areghost.txt           \- file player gets when autoregistration on registered host.
+autoreg.txt            \- file player gets when autoregistration on non\-registered host.
+autoreg_include.txt    \- file player receives in email when they autoregister attached to login/passwd
 badsite.txt            \- file player gets when site is not allowed.
 connect.txt            \- file player gets when connect
-create_reg.txt         \- file player gets when their site is register and they
+create_reg.txt         \- file player gets when their site is register and they can’t create.
+doorconf.txt           \- file that is searched for information regarding @door.
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-can’t create.
+Need to mkindx doorconf.txt doorconf.indx for this file
 .UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B doorconf.txt           \- file that is searched for information regarding @door.
-\fINOTE\fP  Need to mkindx doorconf.txt doorconf.indx for this file
-.TP
-.B down.txt               \- file player gets when the mush has logins disabled
-(@disable login)
-.TP
-.B error.txt              \- the ‘Huh? (type help for help)’ messages.
-\fINOTE\fP  Need to mkindx error.txt error.indx for this file
-.TP
-.B full.txt               \- file player gets when the mush can’t have any more
-players.
 .UNINDENT
 .sp
-guest.txt              \- file player gets when they connect as a guest.
-help.txt               \- your help file
+down.txt               \- file player gets when the mush has logins disabled (@disable login)
+error.txt              \- the ‘Huh? (type help for help)’ messages.
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-\fINOTE\fP  Need to mkindx help.txt help.indx for this file
+Need to mkindx error.txt error.indx for this file
+.UNINDENT
+.UNINDENT
+.sp
+full.txt               \- file player gets when the mush can’t have any more players.
+guest.txt              \- file player gets when they connect as a guest.
+help.txt               \- your help file
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Need to mkindx help.txt help.indx for this file
 .UNINDENT
 .UNINDENT
 .sp
 motd.txt               \- your motd file
 news.txt               \- your news file
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-\fINOTE\fP  Need to mkindx news.txt news.indx for this file
+Need to mkindx news.txt news.indx for this file
 .UNINDENT
 .UNINDENT
+.sp
+newuser.txt            \- file newly created players get when they connect for the first time.
+noguest.txt            \- file player gets when they are not allowed to connect to a guest.
+plushelp.txt           \- optional +help file. (needs compile time option)
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
-.TP
-.B newuser.txt            \- file newly created players get when they connect for
-the first time.
-.TP
-.B noguest.txt            \- file player gets when they are not allowed to connect
-to a guest.
-.TP
-.B plushelp.txt           \- optional +help file. (needs compile time option)
-\fINOTE\fP  Need to mkindx plushelp.txt plushelp.indx for this file
+.INDENT 3.5
+Need to mkindx plushelp.txt plushelp.indx for this file
+.UNINDENT
 .UNINDENT
 .sp
 quit.txt               \- file player gets when they disconnect.
-register.txt           \- file player gets when the site is locked down for
+register.txt           \- file player gets when the site is locked down for registration.
+wizhelp.txt            \- your wizhelp file
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-registration.
+Need to mkindx wizhelp.txt wizhelp.indx for this file
 .UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B wizhelp.txt            \- your wizhelp file
-\fINOTE\fP  Need to mkindx wizhelp.txt wizhelp.indx for this file
 .UNINDENT
 .sp
 wizmotd.txt            \- your wiz motd file
 .SS Textfile Frequently Asked Questions
 .sp
 Q:  How do I put color in these files?
-A1: Look at ansi.h and you need to put the literal ASCII codes.
-.INDENT 0.0
-.INDENT 3.5
-They will look like: ^[[0m (for ANSI_NORMAL).  That’s <ESC>[
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding
-for ansi, however you compiled your Rhost.
-.UNINDENT
+A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: ^[[0m (for ANSI_NORMAL).  That’s <ESC>[
+A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding for ansi, however you compiled your Rhost.
 .sp
 Q:  I want to design my own txt files to read in the mush.
-A:  Easy.  Design them like help.txt would be set up, mkindx the file,
-.INDENT 0.0
-.INDENT 3.5
-then you can access it via @dynhelp online.
-.UNINDENT
-.UNINDENT
+A:  Easy.  Design them like help.txt would be set up, mkindx the file, then you can access it via @dynhelp online.
 .sp
 Q:  Do I have to mkindx these files whenever I make changes?
 A:  Only the ones that have ‘& ‘ index. (help.txt, wizhelp.txt, news.txt, etc)
 .sp
 Q:  Do I have to @readcache in the game whenever I make a change?
-A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones
-.INDENT 0.0
-.INDENT 3.5
-you use with @dynhelp.
-.UNINDENT
-.UNINDENT
+A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones you use with @dynhelp.
 .sp
 Q:  Can’t I just make code in the mush that then is used for these silly txt files?
 A:  Absolutely.  Check ‘wizhelp file_object’.
@@ -7370,11 +7203,7 @@ hide                  Can set themselves DARK.
 Rhost Equiv: NOWHO (@power)
 .sp
 idle                  No idle timeout.
-Rhost Equiv: @timeout 
-.nf
-*
-.fi
-player=\-1
+Rhost Equiv: @timeout *player=\-1
 .sp
 link_variable         Can @link an exit to “variable”.
 Rhost Equiv: Anyone can do this.  VARIABLE (@toggle)
@@ -12669,20 +12498,18 @@ developers.
 I am aware that any modifications I make to the code is _FULLY_
 permitted, and that I do _NOT_ have to return said patches to the
 developers.
-.INDENT 3.0
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
 .INDENT 3.5
-.UNINDENT
-.UNINDENT
-.INDENT 3.0
-.TP
-.B Note: The Rhost developers would like to see what was added, and possibly
+The Rhost developers would like to see what was added, and possibly
 look at adding them to the main distro if we see others would like
 it (with full credits to you), but we belive once you have the code,
 you should be allowed to play with it fully as long as the first two
 rules are kept.
-———————————————————————
-.UNINDENT
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp

@@ -57,13 +57,10 @@ Offline: Blocking twinks from being abusive on your game
 
 FLAGS                   : FUBAR, SLAVE, NO_CONNECT
 Commands:               : @boot, @nuke, @toad, @turtle
-Sitelocks: (@admin)     : forbid_host, forbid_site, register_host, 
-                          register_site, noguest_host, noguest_site
+Sitelocks: (@admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
 Sitelock by player      : @badsite, @goodsite, NO_CONNECT (flag)
 Monitoring player       : SUSPECT (flag), @snoop
-TOR/Proxy blocking:     : @blacklist (see shell's tor_pull.sh)
-                          @admin proxy_checker (see wizhelp)
-                          @tor (see wizhelp)
+TOR/Proxy blocking:     : @blacklist (see shell's tor_pull.sh), @admin proxy_checker (see wizhelp), @tor (see wizhelp)
 
 Extended lockdown of the mush and considerations
 ================================================
@@ -82,18 +79,13 @@ Attribute Restriction
 Command Restriction
 -------------------
 
-  @icmd    - Very useful.   Please see wizhelp on it.  It disallows commands
-             from executing including overriding them with softcode alternatives
-  @admin access - Changes permissions, disables, or sets to be overridden a
-             command.  Useful when you plan to override commands with softcode.
+  @icmd    - Very useful.   Please see wizhelp on it.  It disallows commands from executing including overriding them with softcode alternatives
+  @admin access - Changes permissions, disables, or sets to be overridden a command.  Useful when you plan to override commands with softcode.
 
 Flag/Toggle Restriction
 -----------------------
 
-  @flagdef - Again, see wizhelp on this.  There are also netrhost.conf options
-             so you can have them loaded at start.  This allows tweaking flags
-             and toggles to who can set/unset/see as well as what type can
-             use it or wha type it can be used on.
+  @flagdef - Again, see wizhelp on this.  There are also netrhost.conf options so you can have them loaded at start.  This allows tweaking flags and toggles to who can set/unset/see as well as what type can use it or wha type it can be used on.
 
 Config restrictions
 -------------------
@@ -103,43 +95,27 @@ Config restrictions
 Function Restrictions
 ---------------------
 
-  @function/@lfunction -- Allows softcoded functions that you can optionally
-            lock down at your leasure
-  @admin function_access -- You can use this even on softcoded functions if
-            you so desired.
+  @function/@lfunction -- Allows softcoded functions that you can optionally lock down at your leasure
+  @admin function_access -- You can use this even on softcoded functions if you so desired.
 
 Flags
 -----
 
   GUEST    - This is your guest flag, it should only be set on guests
-  WANDERER - the WANDERER flag is default on new players.  This flag disables 
-             all building abilitites of the player.  
-  NO_COMMAND - You can use this to stop a player from being able to connect
-               without worrying about changing their password
-  FUBAR      - As the flag states, it f*'s them up beind all recognition.
-               It essentially stops them from doing absolutely anything in the
-               mush but pose and say.  Yes, it even disables the quit command.
-  SLAVE      - Funny enough, slave allows anything but say and pose.  To ruin
-               a troll's life, set both FUBAR and SLAVE and sit back and smile.
+  WANDERER - the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.  
+  NO_COMMAND - You can use this to stop a player from being able to connect without worrying about changing their password
+  FUBAR      - As the flag states, it f*'s them up beind all recognition.  It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command.
+  SLAVE      - Funny enough, slave allows anything but say and pose.  To ruin a troll's life, set both FUBAR and SLAVE and sit back and smile.
   NO_TEL     - The target can't teleport or be teleported
   NO_MOVE    - The target is locked at their location unable to move at all
-  NO_WALL    - They do not see any @wall except a wizard @wall/no_prefix.  This
-               has the bonus of snuffing db save messages.
-  NO_POSSESS - Sometimes it's useful to grant a builder character to multiple
-               players.  The NO_POSSESS flag makes it so that player can not
-               be logged in more than 2 times.
+  NO_WALL    - They do not see any @wall except a wizard @wall/no_prefix.  This has the bonus of snuffing db save messages.
+  NO_POSSESS - Sometimes it's useful to grant a builder character to multiple players.  The NO_POSSESS flag makes it so that player can not be logged in more than 2 times.
   NO_MODIFY  - The target can not be modified (except by immortal/#1)
   NO_EXAMINE - The target can not be examined/decompiled (except by immortal/#1)
-  STOP       - Once a matching $command is found on an object set STOP, it 
-               'stops' trying to find other $command matches.
-  NOSTOP     - If a target that is set STOP is also set NOSTOP, it will check
-               the master room for a command and execute that as well if found.
+  STOP       - Once a matching $command is found on an object set STOP, it 'stops' trying to find other $command matches.
+  NOSTOP     - If a target that is set STOP is also set NOSTOP, it will check the master room for a command and execute that as well if found.
   NO_PESTER  - Stops target from @pemit or whisper.  You may use @icmd as well.
-  NO_OVERRIDE - Useful for immortals.  By default they override all locks, 
-                including attribute locks.  This makes it so an immortal's
-                passing of locks will behave like a mortals
-  NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely
-                want to set this on your immortal and wizard.
+  NO_OVERRIDE - Useful for immortals.  By default they override all locks, including attribute locks.  This makes it so an immortal's passing of locks will behave like a mortals NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely want to set this on your immortal and wizard.
   NO_ANSINAME - stops a target from having an ansified name
   NO_CODE     - lock down advanced coding from a target
   SPAMMONITOR - stop a target from issuing more than 60 commands a minute.
@@ -169,8 +145,7 @@ Toggles
   PROG_ON_CONNECT    - Allows a @program to resume if someone reconnects
   IGNOREZONE         - Enables a zone to process @icmd's
   PAGELOCK           - Enforces target to require passing pagelocks
-  MAIL_LOCKDOWN      - Blocks the ability of a wizard to check another 
-                       player's mail
+  MAIL_LOCKDOWN      - Blocks the ability of a wizard to check another player's mail
   ATRUSE             - Enables the attribute to use attribute content locking
   NOGLOBPARENT       - Disables the target from inheriting global parenting 
   LOGROOM            - Enables system logs on the room
@@ -266,13 +241,24 @@ IP based restrictions
 
   You may use CIDR notation such as /32 instead of 255.255.255.255.
   Config file:  (see section on forbid_site as it describes and gives examples)
-  Online Syntax: MASK: @admin forbid_site=123.123.123.0 255.255.255.0
+  Online Syntax: MASK::
+
+                       @admin forbid_site=123.123.123.0 255.255.255.0
                        @admin forbid_site=123.123.123.123 255.255.255.255
-                 CIDR: @admin forbid_site=123.123.123.0 /24
+  
+       CIDR::
+
+                       @admin forbid_site=123.123.123.0 /24
                        @admin forbid_site=123.123.123.123 /32 
-       REMOVING: MASK: @site/all 123.123.123.123=255.255.255.255
+
+       REMOVING: MASK::
+
+                       @site/all 123.123.123.123=255.255.255.255
                        @site/forbid 123.123.123.0=254.255.255.0
-                 CIDR: @site/all 123.123.123.123=/32
+
+                 CIDR::
+
+                       @site/all 123.123.123.123=/32
                        @site/forbid 123.123.123.0=/24
 
     forbid_site      - Set the specified site forbid only
@@ -280,10 +266,8 @@ IP based restrictions
     noguest_site     - Set the specified site unable to connect to guests
     suspect_site     - Set the specified site suspect on connect
     noautoreg_site   - Set the specified site to not allow autoregistration
-    ---
     trust_site       - Allow site to bypass suspect site restrictions
     permit_site      - Allow site to bypass sitelock restrictions
-    ---
     nodns_site       - Site will no longer do reverse DNS lookups
     noauth_site      - Site will no longer do AUTH ident lookups
 
@@ -295,8 +279,10 @@ DNS based restrictions
   when the condition is matched, such as allowing 2 players from a site to
   be connected before disallowing anyone else to connect.
   Config File: (see section on forbid_host as it describes and gives examples)
-  Online Syntax: ADD: @admin forbid_host=*.dsl*.comcast.net *.aol.com *another.site
-                 DEL: @admin forbid_host=!*.aol.com
+  Online Syntax::
+ 
+            ADD:      @admin forbid_host=*.dsl*.comcast.net *.aol.com *another.site
+            DEL:      @admin forbid_host=!*.aol.com
             ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at once only)
 
     forbid_host     - Set the specified site(s) forbid only
@@ -304,10 +290,8 @@ DNS based restrictions
     noguest_host    - Set the specified site(s) unable to connect to guests
     suspect_host    - Set the specified site(s) suspect on connect
     noautoreg_host  - Set the specified site(s) to not allow autoregistration
-    ---
     validate_host   - Do not allow any autoregistration from emails matching site
     goodmail_host   - Always allow autoregistration from emails matching site
-    ---
     nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site
 
 Methods to block anonymous connections and the pros and cons of doing so
@@ -358,26 +342,27 @@ Setting up an SSL tunnel for secure connection options
 Quickstart for SSL setup with stunnel
 -------------------------------------
 
-1.  Modify your netrhost.conf file and add/change the following parameters:
-    A. stunnel_reip 1
-    B. stunnel_cmd SECRET-MAGIC-COOKIE
-       1.  SECRET-MAGIC-COOKIE is a case sensitive single word phrase.  Any 
-           printable character other than the '#' character is allowable. 
-           You may use up to 30 characters.
-       2.  Make sure the secret is a hard to guess phrase.  This is used
-           by stunnel to forward on the originating IP address.
-    C. stunnel_host localhost 127.0.0.1 othersite.goes.here
-       1.  This is optional.  
-       2.  If you do not specify it it defaults to 'localhost 127.0.0.1'.  
-           If your domain has a unique name like 'localhost.localdomain' 
-           like some ubuntu distributions, then you should customize your 
-           stunnel_host.
-2.  go into the stunnel directory
-3.  ./stunnel_setup.sh   
-    A. Choose the defaults or alter them based on preferences
-    B. Make sure to choose the warpbubble conf file
-4.  ./stunnel_start.sh
-5.  Use ./stunnel_stop.sh to stop the SSL tunnel at any time
+#.  Modify your netrhost.conf file and add/change the following parameters:
+
+    #. stunnel_reip 1
+    #. stunnel_cmd SECRET-MAGIC-COOKIE
+
+        #.  SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the '#' character is allowable.  You may use up to 30 characters.
+        #.  Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address.
+
+    #. stunnel_host localhost 127.0.0.1 othersite.goes.here
+
+        #.  This is optional.  
+        #.  If you do not specify it it defaults to 'localhost 127.0.0.1'.  If your domain has a unique name like 'localhost.localdomain' like some ubuntu distributions, then you should customize your stunnel_host.
+
+#.  go into the stunnel directory
+#.  ./stunnel_setup.sh   
+
+    #. Choose the defaults or alter them based on preferences
+    #. Make sure to choose the warpbubble conf file
+
+#.  ./stunnel_start.sh
+#.  Use ./stunnel_stop.sh to stop the SSL tunnel at any time
 
 You do not need to shutdown the ssl handler if you shutdown the mush.  They
 are entirely separate processes.
@@ -398,17 +383,12 @@ You would set up the stunnel from the 'stunnel' directory.  There the following
 files are of relevance:
 
 README                     -- a readme explaining the points of stunnel
-stunnel.conf.example       -- The example stunnel.conf file.  If you wish to
-                              create this manually you're welcome to.  Just
-                              make sure the end file is stunnel.conf
-stunnel_setup.sh           -- the script to build a stunnel.conf file for you
-                              which will be dropped at your specified location.
+stunnel.conf.example       -- The example stunnel.conf file.  If you wish to create this manually you're welcome to.  Just make sure the end file is stunnel.conf
+stunnel_setup.sh           -- the script to build a stunnel.conf file for you which will be dropped at your specified location.
 stunnel_kill.sh            -- Stop/terminate the stunnel process.
 stunnel_start.sh           -- Start the stunnel process.
-warpbubble.pl              -- the perl script that handles stunnel to mush 
-                              connectivity.
-stunnel_src                -- If you do not have stunnel, this directory will
-                              allow you to download, compile and locally install.
+warpbubble.pl              -- the perl script that handles stunnel to mush connectivity.
+stunnel_src                -- If you do not have stunnel, this directory will allow you to download, compile and locally install.
 
 
 Modifying netrhost.conf
@@ -419,29 +399,16 @@ the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect_host if
 not set will default to 'localhost 127.0.0.1'.
 
-sconnect_reip 1         -- This enables the SSL tunnel layer handler within 
-                           rhost.
-sconnect_cmd XYZZY      -- this will set the secret SSL command handshake 
-                           command to XYZZY.  This is case sensitive and can 
-                           be up to 31 characters.  Please make sure to only 
-                           use printable non-whitespace characters.  
-                           Ergo: one word
-sconnect_host wildcards -- This allows wildcarded sites (one or more) to allow
-                           to access the sconnect/stunnel handler.  This 
-                           defaults to 'localhost' and '127.0.0.1' so if you 
-                           have 'localhost.localdomain' instead then you must 
-                           set this to whatever is seen as 'localhost' to you.
-                           You can verify this by checking your /etc/hosts 
-                           file.
+sconnect_reip 1         -- This enables the SSL tunnel layer handler within rhost.
+sconnect_cmd XYZZY      -- this will set the secret SSL command handshake command to XYZZY.  This is case sensitive and can be up to 31 characters.  Please make sure to only use printable non-whitespace characters.  Ergo: one word
+sconnect_host wildcards -- This allows wildcarded sites (one or more) to allow to access the sconnect/stunnel handler.  This defaults to 'localhost' and '127.0.0.1' so if you have 'localhost.localdomain' instead then you must set this to whatever is seen as 'localhost' to you.  You can verify this by checking your /etc/hosts file.
 
-Note: the sconnect_host is optional.  If you do not specify it, it will
-      default to two values:  'localhost' and '127.0.0.1'.
+Note: the sconnect_host is optional.  If you do not specify it, it will default to two values:  'localhost' and '127.0.0.1'.
  
 Running the stunnel setup program
 +++++++++++++++++++++++++++++++++
 
-At this point you're ready to run the stunnel setup program.  So at this point
-type the following:
+At this point you're ready to run the stunnel setup program.  So at this point type the following::
  
                  ./stunnel_setup.sh
  
@@ -459,14 +426,14 @@ Starting the stunnel proxy
 ++++++++++++++++++++++++++
 
 When you have your stunnel.conf file to the way you want, you then
-issue the following command to run your SSL layer.
+issue the following command to run your SSL layer::
 
                 ./stunnel_start.sh
 
 Shutting down the stunnel proxy
 +++++++++++++++++++++++++++++++
 
-If ever you need to bring down the SSL layer, you may kill it with the command:
+If ever you need to bring down the SSL layer, you may kill it with the command::
  
                 ./stunnel_stop.sh
 

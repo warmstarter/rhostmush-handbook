@@ -5055,14 +5055,10 @@ File: rhostmushhandbook.info,  Node: Offline Blocking twinks from being abusive 
 
 FLAGS : FUBAR, SLAVE, NO_CONNECT Commands: : @boot, @nuke, @toad,
 @turtle Sitelocks: (@admin) : forbid_host, forbid_site, register_host,
-
-     register_site, noguest_host, noguest_site
-
-Sitelock by player : @badsite, @goodsite, NO_CONNECT (flag) Monitoring
-player : SUSPECT (flag), @snoop TOR/Proxy blocking: : @blacklist (see
-shell’s tor_pull.sh)
-
-     @admin proxy_checker (see wizhelp) @tor (see wizhelp)
+register_site, noguest_host, noguest_site Sitelock by player : @badsite,
+@goodsite, NO_CONNECT (flag) Monitoring player : SUSPECT (flag), @snoop
+TOR/Proxy blocking: : @blacklist (see shell’s tor_pull.sh), @admin
+proxy_checker (see wizhelp), @tor (see wizhelp)
 
 
 File: rhostmushhandbook.info,  Node: Extended lockdown of the mush and considerations,  Next: Methods to block anonymous connections and the pros and cons of doing so,  Prev: Considerations to locking down restrictions in RhostMUSH,  Up: Security
@@ -5104,15 +5100,11 @@ File: rhostmushhandbook.info,  Node: Command Restriction,  Next: Flag/Toggle Res
 1.8.2.2 Command Restriction
 ...........................
 
-     @icmd - Very useful. Please see wizhelp on it. It disallows commands
-
-          from executing including overriding them with softcode
-          alternatives
-
-     @admin access - Changes permissions, disables, or sets to be overridden a
-
-          command.  Useful when you plan to override commands with
-          softcode.
+     @icmd - Very useful.  Please see wizhelp on it.  It disallows
+     commands from executing including overriding them with softcode
+     alternatives @admin access - Changes permissions, disables, or sets
+     to be overridden a command.  Useful when you plan to override
+     commands with softcode.
 
 
 File: rhostmushhandbook.info,  Node: Flag/Toggle Restriction,  Next: Config restrictions,  Prev: Command Restriction,  Up: Extended lockdown of the mush and considerations
@@ -5120,11 +5112,10 @@ File: rhostmushhandbook.info,  Node: Flag/Toggle Restriction,  Next: Config rest
 1.8.2.3 Flag/Toggle Restriction
 ...............................
 
-     @flagdef - Again, see wizhelp on this. There are also netrhost.conf options
-
-          so you can have them loaded at start.  This allows tweaking
-          flags and toggles to who can set/unset/see as well as what
-          type can use it or wha type it can be used on.
+     @flagdef - Again, see wizhelp on this.  There are also
+     netrhost.conf options so you can have them loaded at start.  This
+     allows tweaking flags and toggles to who can set/unset/see as well
+     as what type can use it or wha type it can be used on.
 
 
 File: rhostmushhandbook.info,  Node: Config restrictions,  Next: Function Restrictions,  Prev: Flag/Toggle Restriction,  Up: Extended lockdown of the mush and considerations
@@ -5141,13 +5132,9 @@ File: rhostmushhandbook.info,  Node: Function Restrictions,  Next: Flags<4>,  Pr
 1.8.2.5 Function Restrictions
 .............................
 
-     @function/@lfunction – Allows softcoded functions that you can optionally
-
-          lock down at your leasure
-
-     @admin function_access – You can use this even on softcoded functions if
-
-          you so desired.
+     @function/@lfunction – Allows softcoded functions that you can
+     optionally lock down at your leasure @admin function_access – You
+     can use this even on softcoded functions if you so desired.
 
 
 File: rhostmushhandbook.info,  Node: Flags<4>,  Next: Toggles<3>,  Prev: Function Restrictions,  Up: Extended lockdown of the mush and considerations
@@ -5157,63 +5144,36 @@ File: rhostmushhandbook.info,  Node: Flags<4>,  Next: Toggles<3>,  Prev: Functio
 
      GUEST - This is your guest flag, it should only be set on guests
      WANDERER - the WANDERER flag is default on new players.  This flag
-     disables
-
-          all building abilitites of the player.
-
-     NO_COMMAND - You can use this to stop a player from being able to connect
-
-          without worrying about changing their password
-
-     FUBAR - As the flag states, it f*’s them up beind all recognition.
-
-          It essentially stops them from doing absolutely anything in
-          the mush but pose and say.  Yes, it even disables the quit
-          command.
-
-     SLAVE - Funny enough, slave allows anything but say and pose. To ruin
-
-          a troll’s life, set both FUBAR and SLAVE and sit back and
-          smile.
-
-     NO_TEL - The target can’t teleport or be teleported NO_MOVE - The
-     target is locked at their location unable to move at all NO_WALL -
-     They do not see any @wall except a wizard @wall/no_prefix.  This
-
-          has the bonus of snuffing db save messages.
-
-     NO_POSSESS - Sometimes it’s useful to grant a builder character to multiple
-
-          players.  The NO_POSSESS flag makes it so that player can not
-          be logged in more than 2 times.
-
+     disables all building abilitites of the player.  NO_COMMAND - You
+     can use this to stop a player from being able to connect without
+     worrying about changing their password FUBAR - As the flag states,
+     it f*’s them up beind all recognition.  It essentially stops them
+     from doing absolutely anything in the mush but pose and say.  Yes,
+     it even disables the quit command.  SLAVE - Funny enough, slave
+     allows anything but say and pose.  To ruin a troll’s life, set both
+     FUBAR and SLAVE and sit back and smile.  NO_TEL - The target can’t
+     teleport or be teleported NO_MOVE - The target is locked at their
+     location unable to move at all NO_WALL - They do not see any @wall
+     except a wizard @wall/no_prefix.  This has the bonus of snuffing db
+     save messages.  NO_POSSESS - Sometimes it’s useful to grant a
+     builder character to multiple players.  The NO_POSSESS flag makes
+     it so that player can not be logged in more than 2 times.
      NO_MODIFY - The target can not be modified (except by immortal/#1)
      NO_EXAMINE - The target can not be examined/decompiled (except by
      immortal/#1) STOP - Once a matching $command is found on an object
-     set STOP, it
-
-          ‘stops’ trying to find other $command matches.
-
-     NOSTOP - If a target that is set STOP is also set NOSTOP, it will check
-
-          the master room for a command and execute that as well if
-          found.
-
+     set STOP, it ‘stops’ trying to find other $command matches.  NOSTOP
+     - If a target that is set STOP is also set NOSTOP, it will check
+     the master room for a command and execute that as well if found.
      NO_PESTER - Stops target from @pemit or whisper.  You may use @icmd
      as well.  NO_OVERRIDE - Useful for immortals.  By default they
-     override all locks,
-
-          including attribute locks.  This makes it so an immortal’s
-          passing of locks will behave like a mortals
-
-     NO_USELOCK - This is like NO_OVERRIDE but only effects uselocks. You likely
-
-          want to set this on your immortal and wizard.
-
-     NO_ANSINAME - stops a target from having an ansified name NO_CODE -
-     lock down advanced coding from a target SPAMMONITOR - stop a target
-     from issuing more than 60 commands a minute.  FREE - Stop costing
-     money for day to day processing of commands/building
+     override all locks, including attribute locks.  This makes it so an
+     immortal’s passing of locks will behave like a mortals NO_USELOCK -
+     This is like NO_OVERRIDE but only effects uselocks.  You likely
+     want to set this on your immortal and wizard.  NO_ANSINAME - stops
+     a target from having an ansified name NO_CODE - lock down advanced
+     coding from a target SPAMMONITOR - stop a target from issuing more
+     than 60 commands a minute.  FREE - Stop costing money for day to
+     day processing of commands/building
 
 
 File: rhostmushhandbook.info,  Node: Toggles<3>,  Next: @powers<2>,  Prev: Flags<4>,  Up: Extended lockdown of the mush and considerations
@@ -5241,19 +5201,15 @@ File: rhostmushhandbook.info,  Node: Toggles<3>,  Next: @powers<2>,  Prev: Flags
      Allows a @program to resume if someone reconnects IGNOREZONE -
      Enables a zone to process @icmd’s PAGELOCK - Enforces target to
      require passing pagelocks MAIL_LOCKDOWN - Blocks the ability of a
-     wizard to check another
-
-          player’s mail
-
-     ATRUSE - Enables the attribute to use attribute content locking
-     NOGLOBPARENT - Disables the target from inheriting global parenting
-     LOGROOM - Enables system logs on the room EXFULLWIZATTR - Allows
-     target to examine all wizard attributes NODEFAULT - Disables
-     attribute formatting/handling on the target CHKREALITY - Enables
-     the use of reality locks on the target HIDEIDLE - Disables deidling
-     when you execute any command MORTALREALITY - Enforces a wizard to
-     pass realities as a mortal SNUFFDARK - Hides dark exits from a
-     wizard
+     wizard to check another player’s mail ATRUSE - Enables the
+     attribute to use attribute content locking NOGLOBPARENT - Disables
+     the target from inheriting global parenting LOGROOM - Enables
+     system logs on the room EXFULLWIZATTR - Allows target to examine
+     all wizard attributes NODEFAULT - Disables attribute
+     formatting/handling on the target CHKREALITY - Enables the use of
+     reality locks on the target HIDEIDLE - Disables deidling when you
+     execute any command MORTALREALITY - Enforces a wizard to pass
+     realities as a mortal SNUFFDARK - Hides dark exits from a wizard
 
 
 File: rhostmushhandbook.info,  Node: @powers<2>,  Next: @depowers,  Prev: Toggles<3>,  Up: Extended lockdown of the mush and considerations
@@ -5341,33 +5297,35 @@ File: rhostmushhandbook.info,  Node: IP based restrictions,  Next: DNS based res
 
      You may use CIDR notation such as /32 instead of 255.255.255.255.
      Config file: (see section on forbid_site as it describes and gives
-     examples) Online Syntax: MASK: @admin forbid_site=123.123.123.0
-     255.255.255.0
+     examples) Online Syntax: MASK:
 
-                         @admin forbid_site=123.123.123.123
-                         255.255.255.255
+                             @admin forbid_site=123.123.123.0 255.255.255.0
+                             @admin forbid_site=123.123.123.123 255.255.255.255
 
-                    CIDR: @admin forbid_site=123.123.123.0 /24
+             CIDR::
 
-                         @admin forbid_site=123.123.123.123 /32
+                             @admin forbid_site=123.123.123.0 /24
+                             @admin forbid_site=123.123.123.123 /32
 
-               REMOVING: MASK: @site/all 123.123.123.123=255.255.255.255
+             REMOVING: MASK::
 
-                         @site/forbid 123.123.123.0=254.255.255.0
+                             @site/all 123.123.123.123=255.255.255.255
+                             @site/forbid 123.123.123.0=254.255.255.0
 
-                    CIDR: @site/all 123.123.123.123=/32
+                       CIDR::
 
-                         @site/forbid 123.123.123.0=/24
+                             @site/all 123.123.123.123=/32
+                             @site/forbid 123.123.123.0=/24
 
-          forbid_site - Set the specified site forbid only register_site
-          - Set the specified site register only noguest_site - Set the
-          specified site unable to connect to guests suspect_site - Set
-          the specified site suspect on connect noautoreg_site - Set the
-          specified site to not allow autoregistration — trust_site -
-          Allow site to bypass suspect site restrictions permit_site -
-          Allow site to bypass sitelock restrictions — nodns_site - Site
-          will no longer do reverse DNS lookups noauth_site - Site will
-          no longer do AUTH ident lookups
+          forbid_site      - Set the specified site forbid only
+          register_site    - Set the specified site register only
+          noguest_site     - Set the specified site unable to connect to guests
+          suspect_site     - Set the specified site suspect on connect
+          noautoreg_site   - Set the specified site to not allow autoregistration
+          trust_site       - Allow site to bypass suspect site restrictions
+          permit_site      - Allow site to bypass sitelock restrictions
+          nodns_site       - Site will no longer do reverse DNS lookups
+          noauth_site      - Site will no longer do AUTH ident lookups
 
 
 File: rhostmushhandbook.info,  Node: DNS based restrictions,  Prev: IP based restrictions,  Up: Site Restrictions
@@ -5379,24 +5337,20 @@ File: rhostmushhandbook.info,  Node: DNS based restrictions,  Prev: IP based res
      can specify filtering on when the condition is matched, such as
      allowing 2 players from a site to be connected before disallowing
      anyone else to connect.  Config File: (see section on forbid_host
-     as it describes and gives examples) Online Syntax: ADD: @admin
-     forbid_host=*.dsl*.comcast.net >>*<<.aol.com >>*<<another.site
+     as it describes and gives examples) Online Syntax:
 
-                    DEL: @admin forbid_host=!*.aol.com
+                  ADD:      @admin forbid_host=*.dsl*.comcast.net *.aol.com *another.site
+                  DEL:      @admin forbid_host=!*.aol.com
+                  ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at once only)
 
-               ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at
-               once only)
-
-          forbid_host - Set the specified site(s) forbid only
-          register_host - Set the specified site(s) register only
-          noguest_host - Set the specified site(s) unable to connect to
-          guests suspect_host - Set the specified site(s) suspect on
-          connect noautoreg_host - Set the specified site(s) to not
-          allow autoregistration — validate_host - Do not allow any
-          autoregistration from emails matching site goodmail_host -
-          Always allow autoregistration from emails matching site —
-          nobroadcast_host - Snuff online site broadcasts via MONITOR
-          for specified site
+          forbid_host     - Set the specified site(s) forbid only
+          register_host   - Set the specified site(s) register only
+          noguest_host    - Set the specified site(s) unable to connect to guests
+          suspect_host    - Set the specified site(s) suspect on connect
+          noautoreg_host  - Set the specified site(s) to not allow autoregistration
+          validate_host   - Do not allow any autoregistration from emails matching site
+          goodmail_host   - Always allow autoregistration from emails matching site
+          nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site
 
 
 File: rhostmushhandbook.info,  Node: Methods to block anonymous connections and the pros and cons of doing so,  Next: Setting up an SSL tunnel for secure connection options,  Prev: Extended lockdown of the mush and considerations,  Up: Security
@@ -5481,27 +5435,38 @@ File: rhostmushhandbook.info,  Node: Quickstart for SSL setup with stunnel,  Nex
 .............................................
 
   1. Modify your netrhost.conf file and add/change the following
-     parameters: A. stunnel_reip 1 B. stunnel_cmd SECRET-MAGIC-COOKIE
+     parameters:
 
-            1. SECRET-MAGIC-COOKIE is a case sensitive single word
-               phrase.  Any printable character other than the ‘#’
-               character is allowable.  You may use up to 30 characters.
+       1. stunnel_reip 1
 
-            2. Make sure the secret is a hard to guess phrase.  This is
-               used by stunnel to forward on the originating IP address.
+       2. stunnel_cmd SECRET-MAGIC-COOKIE
 
-       3. stunnel_host localhost 127.0.0.1 othersite.goes.here 1.  This
-          is optional.  2.  If you do not specify it it defaults to
-          ‘localhost 127.0.0.1’.
+                 1. SECRET-MAGIC-COOKIE is a case sensitive single word
+                    phrase.  Any printable character other than the ‘#’
+                    character is allowable.  You may use up to 30
+                    characters.
 
-               If your domain has a unique name like
-               ‘localhost.localdomain’ like some ubuntu distributions,
-               then you should customize your stunnel_host.
+                 2. Make sure the secret is a hard to guess phrase.
+                    This is used by stunnel to forward on the
+                    originating IP address.
+
+       3. stunnel_host localhost 127.0.0.1 othersite.goes.here
+
+                 1. This is optional.
+
+                 2. If you do not specify it it defaults to ‘localhost
+                    127.0.0.1’.  If your domain has a unique name like
+                    ‘localhost.localdomain’ like some ubuntu
+                    distributions, then you should customize your
+                    stunnel_host.
 
   2. go into the stunnel directory
 
-  3. ./stunnel_setup.sh A. Choose the defaults or alter them based on
-     preferences B. Make sure to choose the warpbubble conf file
+  3. ./stunnel_setup.sh
+
+       1. Choose the defaults or alter them based on preferences
+
+       2. Make sure to choose the warpbubble conf file
 
   4. ./stunnel_start.sh
 
@@ -5543,24 +5508,14 @@ You would set up the stunnel from the ‘stunnel’ directory.  There the
 following files are of relevance:
 
 README – a readme explaining the points of stunnel stunnel.conf.example
-– The example stunnel.conf file.  If you wish to
-
-     create this manually you’re welcome to.  Just make sure the end
-     file is stunnel.conf
-
-stunnel_setup.sh – the script to build a stunnel.conf file for you
-
-     which will be dropped at your specified location.
-
-stunnel_kill.sh – Stop/terminate the stunnel process.  stunnel_start.sh
-– Start the stunnel process.  warpbubble.pl – the perl script that
-handles stunnel to mush
-
-     connectivity.
-
-stunnel_src – If you do not have stunnel, this directory will
-
-     allow you to download, compile and locally install.
+– The example stunnel.conf file.  If you wish to create this manually
+you’re welcome to.  Just make sure the end file is stunnel.conf
+stunnel_setup.sh – the script to build a stunnel.conf file for you which
+will be dropped at your specified location.  stunnel_kill.sh –
+Stop/terminate the stunnel process.  stunnel_start.sh – Start the
+stunnel process.  warpbubble.pl – the perl script that handles stunnel
+to mush connectivity.  stunnel_src – If you do not have stunnel, this
+directory will allow you to download, compile and locally install.
 
 
 File: rhostmushhandbook.info,  Node: Modifying netrhost conf,  Next: Running the stunnel setup program,  Prev: stunnel directory,  Up: Detailed SSL setup with stunnel
@@ -5574,25 +5529,18 @@ config options must be set to be able to use SSL, however, sconnect_host
 if not set will default to ‘localhost 127.0.0.1’.
 
 sconnect_reip 1 – This enables the SSL tunnel layer handler within
+rhost.  sconnect_cmd XYZZY – this will set the secret SSL command
+handshake command to XYZZY. This is case sensitive and can be up to 31
+characters.  Please make sure to only use printable non-whitespace
+characters.  Ergo: one word sconnect_host wildcards – This allows
+wildcarded sites (one or more) to allow to access the sconnect/stunnel
+handler.  This defaults to ‘localhost’ and ‘127.0.0.1’ so if you have
+‘localhost.localdomain’ instead then you must set this to whatever is
+seen as ‘localhost’ to you.  You can verify this by checking your
+/etc/hosts file.
 
-     rhost.
-
-sconnect_cmd XYZZY – this will set the secret SSL command handshake
-
-     command to XYZZY. This is case sensitive and can be up to 31
-     characters.  Please make sure to only use printable non-whitespace
-     characters.  Ergo: one word
-
-sconnect_host wildcards – This allows wildcarded sites (one or more) to allow
-
-     to access the sconnect/stunnel handler.  This defaults to
-     ‘localhost’ and ‘127.0.0.1’ so if you have ‘localhost.localdomain’
-     instead then you must set this to whatever is seen as ‘localhost’
-     to you.  You can verify this by checking your /etc/hosts file.
-
-Note: the sconnect_host is optional. If you do not specify it, it will
-
-     default to two values: ‘localhost’ and ‘127.0.0.1’.
+Note: the sconnect_host is optional.  If you do not specify it, it will
+default to two values: ‘localhost’ and ‘127.0.0.1’.
 
 
 File: rhostmushhandbook.info,  Node: Running the stunnel setup program,  Next: Starting the stunnel proxy,  Prev: Modifying netrhost conf,  Up: Detailed SSL setup with stunnel
@@ -5624,7 +5572,7 @@ File: rhostmushhandbook.info,  Node: Starting the stunnel proxy,  Next: Shutting
 ..................................
 
 When you have your stunnel.conf file to the way you want, you then issue
-the following command to run your SSL layer.
+the following command to run your SSL layer:
 
      ./stunnel_start.sh
 
@@ -5871,24 +5819,17 @@ File: rhostmushhandbook.info,  Node: The following scripts are used in the game 
 ----------------------------------------------------------
 
 Startmush – used to Start up the mush backup_flat.sh – Used to run
-backups with @dump/flat within the game
-
-     (Started with Startmush automatically)
-
-backup_restart.sh – Restart the backup_flat.sh if changes are done
-compress_logs.sh – Compress logs in ‘oldlogs’.  Ran with Startmush
-findit.sh – Internal script used to check for flatfile validity
-mailhide.sh – Wrapper to hide from address using the ‘mail’ progam
-minimal.sh – Auto-load the minimal db into the mush proxysnarf.sha –
-Internal script for the tor_pull.sh tor proxy blacklist tor_pullit.sh –
-Internal script for the tor_pull.sh for proxy blacklist recovery.sh – If
-your db is corrupt, run this to auto-revert to an
-
-     earlier flatfile
-
-tor_pull.sh – Create a blacklist.txt file that can be loaded via the
-
-     internal @blacklist command for proxy handling
+backups with @dump/flat within the game (Started with Startmush
+automatically) backup_restart.sh – Restart the backup_flat.sh if changes
+are done compress_logs.sh – Compress logs in ‘oldlogs’.  Ran with
+Startmush findit.sh – Internal script used to check for flatfile
+validity mailhide.sh – Wrapper to hide from address using the ‘mail’
+progam minimal.sh – Auto-load the minimal db into the mush
+proxysnarf.sha – Internal script for the tor_pull.sh tor proxy blacklist
+tor_pullit.sh – Internal script for the tor_pull.sh for proxy blacklist
+recovery.sh – If your db is corrupt, run this to auto-revert to an
+earlier flatfile tor_pull.sh – Create a blacklist.txt file that can be
+loaded via the internal @blacklist command for proxy handling
 
 
 File: rhostmushhandbook.info,  Node: Textfiles for RhostMUSH,  Prev: The following scripts are used in the game directory,  Up: Maintenance
@@ -5897,68 +5838,43 @@ File: rhostmushhandbook.info,  Node: Textfiles for RhostMUSH,  Prev: The followi
 -----------------------------
 
 areghost.txt - file player gets when autoregistration on registered
+host.  autoreg.txt - file player gets when autoregistration on
+non-registered host.  autoreg_include.txt - file player receives in
+email when they autoregister attached to login/passwd badsite.txt - file
+player gets when site is not allowed.  connect.txt - file player gets
+when connect create_reg.txt - file player gets when their site is
+register and they can’t create.  doorconf.txt - file that is searched
+for information regarding @door.
 
-     host.
+     Note: Need to mkindx doorconf.txt doorconf.indx for this file
 
-autoreg.txt - file player gets when autoregistration on
+down.txt - file player gets when the mush has logins disabled (@disable
+login) error.txt - the ‘Huh?  (type help for help)’ messages.
 
-     non-registered host.
+     Note: Need to mkindx error.txt error.indx for this file
 
-autoreg_include.txt - file player receives in email when they autoregister
-
-     attached to login/passwd
-
-badsite.txt - file player gets when site is not allowed.  connect.txt -
-file player gets when connect create_reg.txt - file player gets when
-their site is register and they
-
-     can’t create.
-
-doorconf.txt - file that is searched for information regarding @door.
-
-     `NOTE' Need to mkindx doorconf.txt doorconf.indx for this file
-
-down.txt - file player gets when the mush has logins disabled
-
-     (@disable login)
-
-error.txt - the ‘Huh? (type help for help)’ messages.
-
-     `NOTE' Need to mkindx error.txt error.indx for this file
-
-full.txt - file player gets when the mush can’t have any more
-
-     players.
-
+full.txt - file player gets when the mush can’t have any more players.
 guest.txt - file player gets when they connect as a guest.  help.txt -
 your help file
 
-     `NOTE' Need to mkindx help.txt help.indx for this file
+     Note: Need to mkindx help.txt help.indx for this file
 
 motd.txt - your motd file news.txt - your news file
 
-     `NOTE' Need to mkindx news.txt news.indx for this file
+     Note: Need to mkindx news.txt news.indx for this file
 
-newuser.txt - file newly created players get when they connect for
+newuser.txt - file newly created players get when they connect for the
+first time.  noguest.txt - file player gets when they are not allowed to
+connect to a guest.  plushelp.txt - optional +help file.  (needs compile
+time option)
 
-     the first time.
-
-noguest.txt - file player gets when they are not allowed to connect
-
-     to a guest.
-
-plushelp.txt - optional +help file. (needs compile time option)
-
-     `NOTE' Need to mkindx plushelp.txt plushelp.indx for this file
+     Note: Need to mkindx plushelp.txt plushelp.indx for this file
 
 quit.txt - file player gets when they disconnect.  register.txt - file
-player gets when the site is locked down for
+player gets when the site is locked down for registration.  wizhelp.txt
+- your wizhelp file
 
-     registration.
-
-wizhelp.txt - your wizhelp file
-
-     `NOTE' Need to mkindx wizhelp.txt wizhelp.indx for this file
+     Note: Need to mkindx wizhelp.txt wizhelp.indx for this file
 
 wizmotd.txt - your wiz motd file
 
@@ -5973,27 +5889,20 @@ File: rhostmushhandbook.info,  Node: Textfile Frequently Asked Questions,  Up: T
 ...........................................
 
 Q: How do I put color in these files?  A1: Look at ansi.h and you need
-to put the literal ASCII codes.
-
-     They will look like: ^[[0m (for ANSI_NORMAL). That’s <ESC>[
-
-A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding
-
-     for ansi, however you compiled your Rhost.
+to put the literal ASCII codes.  They will look like: ^[[0m (for
+ANSI_NORMAL). That’s <ESC>[ A2: You can enable ansi_txtfiles then use %c
+(or %x/%m) encoding for ansi, however you compiled your Rhost.
 
 Q: I want to design my own txt files to read in the mush.  A: Easy.
-Design them like help.txt would be set up, mkindx the file,
-
-     then you can access it via @dynhelp online.
+Design them like help.txt would be set up, mkindx the file, then you can
+access it via @dynhelp online.
 
 Q: Do I have to mkindx these files whenever I make changes?  A: Only the
 ones that have ‘& ‘ index.  (help.txt, wizhelp.txt, news.txt, etc)
 
 Q: Do I have to @readcache in the game whenever I make a change?  A:
 Only when you modify any of the files listed in README.TXTFILES. Not the
-ones
-
-     you use with @dynhelp.
+ones you use with @dynhelp.
 
 Q: Can’t I just make code in the mush that then is used for these silly
 txt files?  A: Absolutely.  Check ‘wizhelp file_object’.
@@ -7956,7 +7865,7 @@ halt Can @halt anything, and @halt/all.  Rhost Equiv: HALT_QUEUE
 
 hide Can set themselves DARK. Rhost Equiv: NOWHO (@power)
 
-idle No idle timeout.  Rhost Equiv: @timeout >>*<<player=-1
+idle No idle timeout.  Rhost Equiv: @timeout *player=-1
 
 link_variable Can @link an exit to “variable”.  Rhost Equiv: Anyone can
 do this.  VARIABLE (@toggle)
@@ -11122,13 +11031,11 @@ for looking back at things.  :) –Ambrosia
           _FULLY_ permitted, and that I do _NOT_ have to return said
           patches to the developers.
 
-          Note: The Rhost developers would like to see what was added, and possibly
-
-               look at adding them to the main distro if we see others
-               would like it (with full credits to you), but we belive
-               once you have the code, you should be allowed to play
-               with it fully as long as the first two rules are kept.
-               ———————————————————————
+     Note: The Rhost developers would like to see what was added, and
+     possibly look at adding them to the main distro if we see others
+     would like it (with full credits to you), but we belive once you
+     have the code, you should be allowed to play with it fully as long
+     as the first two rules are kept.
 
 
 File: rhostmushhandbook.info,  Node: Copyright,  Prev: RhostMUSH offers the following over other mushes,  Up: Top
@@ -11906,415 +11813,413 @@ Ref: f4214393
 Node: Offline Blocking twinks from being abusive on your game214611
 Ref: security offline-blocking-twinks-from-being-abusive-on-your-game214811
 Ref: f5214811
-Node: Extended lockdown of the mush and considerations215353
-Ref: security extended-lockdown-of-the-mush-and-considerations215603
-Ref: f6215603
-Node: Attribute Restriction216177
-Ref: security attribute-restriction216322
-Ref: f7216322
-Node: Command Restriction216582
-Ref: security command-restriction216759
-Ref: f8216759
-Node: Flag/Toggle Restriction217148
-Ref: security flag-toggle-restriction217323
-Ref: f9217323
-Node: Config restrictions217667
-Ref: security config-restrictions217844
-Ref: fa217844
-Node: Function Restrictions217984
-Ref: security function-restrictions218146
-Ref: fb218146
-Node: Flags<4>218434
-Ref: security flags218587
-Ref: fc218587
-Node: Toggles<3>220997
-Ref: security toggles221139
-Ref: fd221139
-Node: @powers<2>223181
-Ref: security powers223324
-Ref: fe223324
-Node: @depowers225117
-Ref: security depowers225267
-Ref: ff225267
-Node: Site Restrictions226809
-Ref: security site-restrictions226940
-Ref: 100226940
-Node: IP based restrictions227224
-Ref: security ip-based-restrictions227341
-Ref: 101227341
-Node: DNS based restrictions228745
-Ref: security dns-based-restrictions228862
-Ref: 102228862
-Node: Methods to block anonymous connections and the pros and cons of doing so230150
-Ref: security methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so230398
-Ref: 103230398
-Node: Blacklisting through external tor_pull sh script230945
-Ref: security blacklisting-through-external-tor-pull-sh-script231170
-Ref: 104231170
-Node: Blacklisting through internal @blacklist command231612
-Ref: security blacklisting-through-internal-blacklist-command231888
-Ref: 105231888
-Node: Blacklisting through internal @tor command232168
-Ref: security blacklisting-through-internal-tor-command232440
-Ref: 106232440
-Node: Blacklisting through internal @admin command232774
-Ref: security blacklisting-through-internal-admin-command232989
-Ref: 107232989
-Node: Setting up an SSL tunnel for secure connection options233726
-Ref: security setting-up-an-ssl-tunnel-for-secure-connection-options233917
-Ref: 108233917
-Node: Quickstart for SSL setup with stunnel234128
-Ref: security quickstart-for-ssl-setup-with-stunnel234307
-Ref: 109234307
-Node: Detailed SSL setup with stunnel235630
-Ref: security detailed-ssl-setup-with-stunnel235809
-Ref: 10a235809
-Node: stunnel directory236414
-Ref: security stunnel-directory236542
-Ref: 10b236542
-Node: Modifying netrhost conf237367
-Ref: security modifying-netrhost-conf237537
-Ref: 10c237537
-Node: Running the stunnel setup program238707
-Ref: security running-the-stunnel-setup-program238886
-Ref: 10d238886
-Node: Starting the stunnel proxy239611
-Ref: security starting-the-stunnel-proxy239798
-Ref: 10e239798
-Node: Shutting down the stunnel proxy240013
-Ref: security shutting-down-the-stunnel-proxy240199
-Ref: 10f240199
-Node: Configuring firewall on the host240385
-Ref: security configuring-firewall-on-the-host240536
-Ref: 110240536
-Node: Maintenance240837
-Ref: maintenance doc240985
-Ref: 111240985
-Ref: maintenance maintenance240985
-Ref: 112240985
-Node: Signals and why you need them for control241309
-Ref: maintenance signals-and-why-you-need-them-for-control241442
-Ref: 113241442
-Node: TERM kill -TERM or kill -15241865
-Ref: maintenance term-kill-term-or-kill-15242005
-Ref: 114242005
-Node: USR1 kill -USR1242513
-Ref: maintenance usr1-kill-usr1242677
-Ref: 115242677
-Node: USR2 kill -USR2243070
-Ref: maintenance usr2-kill-usr2243233
-Ref: 116243233
-Node: KILL kill -KILL or kill -9243623
-Ref: maintenance kill-kill-kill-or-kill-9243762
-Ref: 117243762
-Node: Shutting down gracefully244522
-Ref: maintenance shutting-down-gracefully244683
-Ref: 118244683
-Node: Rhostmush has many ways to shut down the game cleanly244875
-Ref: maintenance rhostmush-has-many-ways-to-shut-down-the-game-cleanly245036
-Ref: 119245036
-Node: WARNING Never kill -9 Rhost245372
-Ref: maintenance warning-never-kill-9-rhost245533
-Ref: 11a245533
-Node: Autoshutdown script246111
-Ref: maintenance autoshutdown-script246254
-Ref: 11b246254
-Node: Network Port redirector246630
-Ref: maintenance network-port-redirector246813
-Ref: 11c246813
-Node: Using the built-in cron system for periodically running commands247452
-Ref: maintenance using-the-built-in-cron-system-for-periodically-running-commands247668
-Ref: 11d247668
-Node: Syntax for rhost cron247935
-Ref: maintenance syntax-for-rhost-cron248107
-Ref: 11e248107
-Node: Example syntaxt for rhost cron248906
-Ref: maintenance example-syntaxt-for-rhost-cron249078
-Ref: 11f249078
-Node: The following scripts are used in the game directory249385
-Ref: maintenance the-following-scripts-are-used-in-the-game-directory249601
-Ref: 120249601
-Node: Textfiles for RhostMUSH250579
-Ref: maintenance textfiles-for-rhostmush250722
-Ref: 121250722
-Node: Textfile Frequently Asked Questions252573
-Ref: maintenance textfile-frequently-asked-questions252679
-Ref: 122252679
-Node: Troubleshooting253692
-Ref: troubleshooting doc253841
-Ref: 123253841
-Ref: troubleshooting troubleshooting253841
-Ref: 124253841
-Node: Stack limit and debugging254086
-Ref: troubleshooting stack-limit-and-debugging254215
-Ref: 125254215
-Node: How to reset the password for #1255513
-Ref: troubleshooting how-to-reset-the-password-for-1255699
-Ref: 126255699
-Node: Method 1255936
-Ref: troubleshooting method-1256041
-Ref: 127256041
-Node: Method 2256191
-Ref: troubleshooting method-2256296
-Ref: 128256296
-Node: Troubleshooting difficulties compiling RhostMUSH256446
-Ref: troubleshooting troubleshooting-difficulties-compiling-rhostmush256633
-Ref: 129256633
-Node: Changes to conf for high-bit CPUs256837
-Ref: troubleshooting changes-to-conf-for-high-bit-cpus257013
-Ref: 12a257013
-Node: Changes to autconf for certain systems257764
-Ref: troubleshooting changes-to-autconf-for-certain-systems257940
-Ref: 12b257940
-Node: Dealing with DB Corruption258909
-Ref: troubleshooting dealing-with-db-corruption259100
-Ref: 12c259100
-Node: If the mush says it can’t find your database files259931
-Ref: troubleshooting if-the-mush-says-it-can-t-find-your-database-files260126
-Ref: 12d260126
-Node: Check the names of the database files in your ‘data’ directory260454
-Ref: troubleshooting check-the-names-of-the-database-files-in-your-data-directory260658
-Ref: 12e260658
-Node: Check your netrhost conf file260966
-Ref: troubleshooting check-your-netrhost-conf-file261206
-Ref: 12f261206
-Node: Check your mush config file261720
-Ref: troubleshooting check-your-mush-config-file261885
-Ref: 130261885
-Node: If the mush says it can’t read or load your database files262300
-Ref: troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files262632
-Ref: 131262632
-Node: Verify you have enough disk space quota263047
-Ref: troubleshooting verify-you-have-enough-disk-space-quota263243
-Ref: 132263243
-Node: Verify you have enough disk space system263898
-Ref: troubleshooting verify-you-have-enough-disk-space-system264094
-Ref: 133264094
-Node: If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!264872
-Ref: troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone265182
-Ref: 134265182
-Node: The bad news265933
-Ref: troubleshooting the-bad-news266143
-Ref: 135266143
-Node: The good news266546
-Ref: troubleshooting the-good-news266794
-Ref: 136266794
-Node: Now to restore your database?267540
-Ref: troubleshooting now-to-restore-your-database267767
-Ref: 137267767
-Node: Bringing up your mail database267900
-Ref: troubleshooting bringing-up-your-mail-database268141
-Ref: 138268141
-Node: If after restoring main database your mail database works268418
-Ref: troubleshooting if-after-restoring-main-database-your-mail-database-works268627
-Ref: 139268627
-Node: If after restoring main database your mail database does not work269083
-Ref: troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work269292
-Ref: 13a269292
-Node: Dealing with a corrupt mail database269638
-Ref: troubleshooting dealing-with-a-corrupt-mail-database269772
-Ref: 13b269772
-Node: Backing up your mail database270463
-Ref: troubleshooting backing-up-your-mail-database270628
-Ref: 13c270628
-Node: Automatically recovering your mail database271084
-Ref: troubleshooting automatically-recovering-your-mail-database271296
-Ref: 13d271296
-Node: Manually recovering your mail database271948
-Ref: troubleshooting manually-recovering-your-mail-database272122
-Ref: 13e272122
-Node: Upgrading273636
-Ref: upgrade doc273791
-Ref: 13f273791
-Ref: upgrade upgrading273791
-Ref: 140273791
-Node: Converting database betwen GDBM and QDBM274047
-Ref: upgrade converting-database-betwen-gdbm-and-qdbm274188
-Ref: 141274188
-Node: Downgrading QDBM to GDBM274527
-Ref: upgrade downgrading-qdbm-to-gdbm274671
-Ref: 142274671
-Node: Upgradging GDBM to QDBM275639
-Ref: upgrade upgradging-gdbm-to-qdbm275783
-Ref: 143275783
-Node: While logged in to your mush issue the following commands276447
-Ref: upgrade while-logged-in-to-your-mush-issue-the-following-commands276606
-Ref: 144276606
-Node: Verify the files exist277110
-Ref: upgrade verify-the-files-exist277295
-Ref: 145277295
-Node: Shutdown the MUSH277620
-Ref: upgrade shutdown-the-mush277773
-Ref: 146277773
-Node: From the Server directory277849
-Ref: upgrade from-the-server-directory278010
-Ref: 147278010
-Node: From the Server/game directory278935
-Ref: upgrade from-the-server-game-directory279134
-Ref: 148279134
-Node: While logged into the mush issue the following commands279331
-Ref: upgrade while-logged-into-the-mush-issue-the-following-commands279560
-Ref: 149279560
-Node: Verify that you have QDBM running and your valid values279865
-Ref: upgrade verify-that-you-have-qdbm-running-and-your-valid-values280055
-Ref: 14a280055
-Node: Updating RhostMUSH prior to 3 9 5p2280252
-Ref: upgrade updating-rhostmush-prior-to-3-9-5p2280446
-Ref: 14b280446
-Node: Adding MySQL to RhostMUSH older than 3 9 5p2284190
-Ref: upgrade adding-mysql-to-rhostmush-older-than-3-9-5p2284335
-Ref: 14c284335
-Node: Advanced Features287092
-Ref: advanced doc287254
-Ref: 14d287254
-Ref: advanced advanced-features287254
-Ref: 14e287254
-Node: Adding hardcoded modules287547
-Ref: advanced adding-hardcoded-modules287672
-Ref: 14f287672
-Node: Modifying sourcode to add a module287915
-Ref: advanced modifying-sourcode-to-add-a-module288071
-Ref: 150288071
-Node: Adding an @startup to make use of modules288403
-Ref: advanced adding-an-startup-to-make-use-of-modules288606
-Ref: 151288606
-Node: Contributing your module back to Rhost289185
-Ref: advanced contributing-your-module-back-to-rhost289345
-Ref: 152289345
-Node: Shutting down gracefully<2>289658
-Ref: advanced shutting-down-gracefully289806
-Ref: 153289806
-Node: Rhostmush has many ways to shut down the game cleanly<2>290060
-Ref: advanced rhostmush-has-many-ways-to-shut-down-the-game-cleanly290230
-Ref: 154290230
-Node: WARNING Never kill -9 Rhost<2>290568
-Ref: advanced warning-never-kill-9-rhost290738
-Ref: 155290738
-Node: Reality levels291318
-Ref: advanced reality-levels291486
-Ref: 156291486
-Node: Visibility291958
-Ref: advanced visibility292051
-Ref: 157292051
-Node: Descriptions293072
-Ref: advanced descriptions293198
-Ref: 158293198
-Node: Configuration parameters294448
-Ref: advanced configuration-parameters294581
-Ref: 159294581
-Node: Example mush conf296110
-Ref: advanced example-mush-conf296239
-Ref: 15a296239
-Node: Commands296795
-Ref: advanced commands296912
-Ref: 15b296912
-Node: Functions<3>297434
-Ref: advanced functions297573
-Ref: 15c297573
-Node: Example 1 A simplified Witchcraft setup298552
-Ref: advanced example-1-a-simplified-witchcraft-setup298704
-Ref: 15d298704
-Node: Example 2 A WoD setup301854
-Ref: advanced example-2-a-wod-setup302012
-Ref: 15e302012
-Node: Example 3 Softcode305646
-Ref: advanced example-3-softcode305756
-Ref: 15f305756
-Node: Execscript and external programs and scripts307732
-Ref: advanced execscript-and-external-programs-and-scripts307910
-Ref: 160307910
-Node: Mush variables308145
-Ref: advanced mush-variables308270
-Ref: 161308270
-Node: Built in variables308397
-Ref: advanced built-in-variables308503
-Ref: 162308503
-Node: Dynamic variables309041
-Ref: advanced dynamic-variables309174
-Ref: 163309174
-Node: Register variables309332
-Ref: advanced register-variables309438
-Ref: 164309438
-Node: set object309722
-Ref: advanced set-object309875
-Ref: 165309875
-Node: The format of the fields are310258
-Ref: advanced the-format-of-the-fields-are310344
-Ref: 166310344
-Node: Dynamic variables<2>310519
-Ref: advanced id67310645
-Ref: 167310645
-Node: Examples310772
-Ref: advanced examples310848
-Ref: 168310848
-Node: Register variables<2>311163
-Ref: advanced id68311289
-Ref: 169311289
-Node: Examples The last example clears register 0311496
-Ref: advanced examples-the-last-example-clears-register-0311608
-Ref: 16a311608
-Node: Example bash script311839
-Ref: advanced example-bash-script311996
-Ref: 16b311996
-Node: Notes and warnings312480
-Ref: advanced notes-and-warnings312661
-Ref: 16c312661
-Node: Scripts to be used with execscript313202
-Ref: advanced scripts-to-be-used-with-execscript313355
-Ref: 16d313355
-Node: Using printf for advanced text output315219
-Ref: advanced using-printf-for-advanced-text-output315374
-Ref: 16e315374
-Node: Example one315728
-Ref: advanced example-one315844
-Ref: 16f315844
-Node: Example two316144
-Ref: advanced example-two316282
-Ref: 170316282
-Node: Example three316850
-Ref: advanced example-three316968
-Ref: 171316968
-Node: Format for image files317841
-Ref: advanced format-for-image-files318013
-Ref: 172318013
-Node: Comparison of Flags334485
-Ref: flags doc334660
-Ref: 173334660
-Ref: flags comparison-of-flags334660
-Ref: 174334660
-Node: Comparison of powers336237
-Ref: powers doc336419
-Ref: 175336419
-Ref: powers comparison-of-powers336419
-Ref: 176336419
-Node: RhostMUSH Internal Help Files339165
-Ref: helpfile doc339360
-Ref: 177339360
-Ref: helpfile rhostmush-internal-help-files339360
-Ref: 178339360
-Node: RhostMUSH Internal Wizhelp Files339431
-Ref: wizhelpfile doc339615
-Ref: 179339615
-Ref: wizhelpfile rhostmush-internal-wizhelp-files339615
-Ref: 17a339615
-Node: Changelog339692
-Ref: changelog doc339882
-Ref: 17b339882
-Ref: changelog changelog339882
-Ref: 17c339882
-Node: Historical Non-Disclosure Agreement433647
-Ref: nda doc433796
-Ref: 17d433796
-Ref: nda historical-non-disclosure-agreement433796
-Ref: 17e433796
-Node: Copyright435049
-Ref: index copyright435166
-Ref: 17f435166
-Ref: index id1435166
-Ref: 180435166
-Node: Indices and tables436174
-Ref: index indices-and-tables436249
-Ref: 181436249
+Node: Extended lockdown of the mush and considerations215342
+Ref: security extended-lockdown-of-the-mush-and-considerations215592
+Ref: f6215592
+Node: Attribute Restriction216166
+Ref: security attribute-restriction216311
+Ref: f7216311
+Node: Command Restriction216571
+Ref: security command-restriction216748
+Ref: f8216748
+Node: Flag/Toggle Restriction217111
+Ref: security flag-toggle-restriction217286
+Ref: f9217286
+Node: Config restrictions217615
+Ref: security config-restrictions217792
+Ref: fa217792
+Node: Function Restrictions217932
+Ref: security function-restrictions218094
+Ref: fb218094
+Node: Flags<4>218364
+Ref: security flags218517
+Ref: fc218517
+Node: Toggles<3>220801
+Ref: security toggles220943
+Ref: fd220943
+Node: @powers<2>222968
+Ref: security powers223111
+Ref: fe223111
+Node: @depowers224904
+Ref: security depowers225054
+Ref: ff225054
+Node: Site Restrictions226596
+Ref: security site-restrictions226727
+Ref: 100226727
+Node: IP based restrictions227011
+Ref: security ip-based-restrictions227128
+Ref: 101227128
+Node: DNS based restrictions228663
+Ref: security dns-based-restrictions228780
+Ref: 102228780
+Node: Methods to block anonymous connections and the pros and cons of doing so230057
+Ref: security methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so230305
+Ref: 103230305
+Node: Blacklisting through external tor_pull sh script230852
+Ref: security blacklisting-through-external-tor-pull-sh-script231077
+Ref: 104231077
+Node: Blacklisting through internal @blacklist command231519
+Ref: security blacklisting-through-internal-blacklist-command231795
+Ref: 105231795
+Node: Blacklisting through internal @tor command232075
+Ref: security blacklisting-through-internal-tor-command232347
+Ref: 106232347
+Node: Blacklisting through internal @admin command232681
+Ref: security blacklisting-through-internal-admin-command232896
+Ref: 107232896
+Node: Setting up an SSL tunnel for secure connection options233633
+Ref: security setting-up-an-ssl-tunnel-for-secure-connection-options233824
+Ref: 108233824
+Node: Quickstart for SSL setup with stunnel234035
+Ref: security quickstart-for-ssl-setup-with-stunnel234214
+Ref: 109234214
+Node: Detailed SSL setup with stunnel235676
+Ref: security detailed-ssl-setup-with-stunnel235855
+Ref: 10a235855
+Node: stunnel directory236460
+Ref: security stunnel-directory236588
+Ref: 10b236588
+Node: Modifying netrhost conf237383
+Ref: security modifying-netrhost-conf237553
+Ref: 10c237553
+Node: Running the stunnel setup program238674
+Ref: security running-the-stunnel-setup-program238853
+Ref: 10d238853
+Node: Starting the stunnel proxy239578
+Ref: security starting-the-stunnel-proxy239765
+Ref: 10e239765
+Node: Shutting down the stunnel proxy239980
+Ref: security shutting-down-the-stunnel-proxy240166
+Ref: 10f240166
+Node: Configuring firewall on the host240352
+Ref: security configuring-firewall-on-the-host240503
+Ref: 110240503
+Node: Maintenance240804
+Ref: maintenance doc240952
+Ref: 111240952
+Ref: maintenance maintenance240952
+Ref: 112240952
+Node: Signals and why you need them for control241276
+Ref: maintenance signals-and-why-you-need-them-for-control241409
+Ref: 113241409
+Node: TERM kill -TERM or kill -15241832
+Ref: maintenance term-kill-term-or-kill-15241972
+Ref: 114241972
+Node: USR1 kill -USR1242480
+Ref: maintenance usr1-kill-usr1242644
+Ref: 115242644
+Node: USR2 kill -USR2243037
+Ref: maintenance usr2-kill-usr2243200
+Ref: 116243200
+Node: KILL kill -KILL or kill -9243590
+Ref: maintenance kill-kill-kill-or-kill-9243729
+Ref: 117243729
+Node: Shutting down gracefully244489
+Ref: maintenance shutting-down-gracefully244650
+Ref: 118244650
+Node: Rhostmush has many ways to shut down the game cleanly244842
+Ref: maintenance rhostmush-has-many-ways-to-shut-down-the-game-cleanly245003
+Ref: 119245003
+Node: WARNING Never kill -9 Rhost245339
+Ref: maintenance warning-never-kill-9-rhost245500
+Ref: 11a245500
+Node: Autoshutdown script246078
+Ref: maintenance autoshutdown-script246221
+Ref: 11b246221
+Node: Network Port redirector246597
+Ref: maintenance network-port-redirector246780
+Ref: 11c246780
+Node: Using the built-in cron system for periodically running commands247419
+Ref: maintenance using-the-built-in-cron-system-for-periodically-running-commands247635
+Ref: 11d247635
+Node: Syntax for rhost cron247902
+Ref: maintenance syntax-for-rhost-cron248074
+Ref: 11e248074
+Node: Example syntaxt for rhost cron248873
+Ref: maintenance example-syntaxt-for-rhost-cron249045
+Ref: 11f249045
+Node: The following scripts are used in the game directory249352
+Ref: maintenance the-following-scripts-are-used-in-the-game-directory249568
+Ref: 120249568
+Node: Textfiles for RhostMUSH250526
+Ref: maintenance textfiles-for-rhostmush250669
+Ref: 121250669
+Node: Textfile Frequently Asked Questions252459
+Ref: maintenance textfile-frequently-asked-questions252565
+Ref: 122252565
+Node: Troubleshooting253554
+Ref: troubleshooting doc253703
+Ref: 123253703
+Ref: troubleshooting troubleshooting253703
+Ref: 124253703
+Node: Stack limit and debugging253948
+Ref: troubleshooting stack-limit-and-debugging254077
+Ref: 125254077
+Node: How to reset the password for #1255375
+Ref: troubleshooting how-to-reset-the-password-for-1255561
+Ref: 126255561
+Node: Method 1255798
+Ref: troubleshooting method-1255903
+Ref: 127255903
+Node: Method 2256053
+Ref: troubleshooting method-2256158
+Ref: 128256158
+Node: Troubleshooting difficulties compiling RhostMUSH256308
+Ref: troubleshooting troubleshooting-difficulties-compiling-rhostmush256495
+Ref: 129256495
+Node: Changes to conf for high-bit CPUs256699
+Ref: troubleshooting changes-to-conf-for-high-bit-cpus256875
+Ref: 12a256875
+Node: Changes to autconf for certain systems257626
+Ref: troubleshooting changes-to-autconf-for-certain-systems257802
+Ref: 12b257802
+Node: Dealing with DB Corruption258771
+Ref: troubleshooting dealing-with-db-corruption258962
+Ref: 12c258962
+Node: If the mush says it can’t find your database files259793
+Ref: troubleshooting if-the-mush-says-it-can-t-find-your-database-files259988
+Ref: 12d259988
+Node: Check the names of the database files in your ‘data’ directory260316
+Ref: troubleshooting check-the-names-of-the-database-files-in-your-data-directory260520
+Ref: 12e260520
+Node: Check your netrhost conf file260828
+Ref: troubleshooting check-your-netrhost-conf-file261068
+Ref: 12f261068
+Node: Check your mush config file261582
+Ref: troubleshooting check-your-mush-config-file261747
+Ref: 130261747
+Node: If the mush says it can’t read or load your database files262162
+Ref: troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files262494
+Ref: 131262494
+Node: Verify you have enough disk space quota262909
+Ref: troubleshooting verify-you-have-enough-disk-space-quota263105
+Ref: 132263105
+Node: Verify you have enough disk space system263760
+Ref: troubleshooting verify-you-have-enough-disk-space-system263956
+Ref: 133263956
+Node: If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!264734
+Ref: troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone265044
+Ref: 134265044
+Node: The bad news265795
+Ref: troubleshooting the-bad-news266005
+Ref: 135266005
+Node: The good news266408
+Ref: troubleshooting the-good-news266656
+Ref: 136266656
+Node: Now to restore your database?267402
+Ref: troubleshooting now-to-restore-your-database267629
+Ref: 137267629
+Node: Bringing up your mail database267762
+Ref: troubleshooting bringing-up-your-mail-database268003
+Ref: 138268003
+Node: If after restoring main database your mail database works268280
+Ref: troubleshooting if-after-restoring-main-database-your-mail-database-works268489
+Ref: 139268489
+Node: If after restoring main database your mail database does not work268945
+Ref: troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work269154
+Ref: 13a269154
+Node: Dealing with a corrupt mail database269500
+Ref: troubleshooting dealing-with-a-corrupt-mail-database269634
+Ref: 13b269634
+Node: Backing up your mail database270325
+Ref: troubleshooting backing-up-your-mail-database270490
+Ref: 13c270490
+Node: Automatically recovering your mail database270946
+Ref: troubleshooting automatically-recovering-your-mail-database271158
+Ref: 13d271158
+Node: Manually recovering your mail database271810
+Ref: troubleshooting manually-recovering-your-mail-database271984
+Ref: 13e271984
+Node: Upgrading273498
+Ref: upgrade doc273653
+Ref: 13f273653
+Ref: upgrade upgrading273653
+Ref: 140273653
+Node: Converting database betwen GDBM and QDBM273909
+Ref: upgrade converting-database-betwen-gdbm-and-qdbm274050
+Ref: 141274050
+Node: Downgrading QDBM to GDBM274389
+Ref: upgrade downgrading-qdbm-to-gdbm274533
+Ref: 142274533
+Node: Upgradging GDBM to QDBM275501
+Ref: upgrade upgradging-gdbm-to-qdbm275645
+Ref: 143275645
+Node: While logged in to your mush issue the following commands276309
+Ref: upgrade while-logged-in-to-your-mush-issue-the-following-commands276468
+Ref: 144276468
+Node: Verify the files exist276972
+Ref: upgrade verify-the-files-exist277157
+Ref: 145277157
+Node: Shutdown the MUSH277482
+Ref: upgrade shutdown-the-mush277635
+Ref: 146277635
+Node: From the Server directory277711
+Ref: upgrade from-the-server-directory277872
+Ref: 147277872
+Node: From the Server/game directory278797
+Ref: upgrade from-the-server-game-directory278996
+Ref: 148278996
+Node: While logged into the mush issue the following commands279193
+Ref: upgrade while-logged-into-the-mush-issue-the-following-commands279422
+Ref: 149279422
+Node: Verify that you have QDBM running and your valid values279727
+Ref: upgrade verify-that-you-have-qdbm-running-and-your-valid-values279917
+Ref: 14a279917
+Node: Updating RhostMUSH prior to 3 9 5p2280114
+Ref: upgrade updating-rhostmush-prior-to-3-9-5p2280308
+Ref: 14b280308
+Node: Adding MySQL to RhostMUSH older than 3 9 5p2284052
+Ref: upgrade adding-mysql-to-rhostmush-older-than-3-9-5p2284197
+Ref: 14c284197
+Node: Advanced Features286954
+Ref: advanced doc287116
+Ref: 14d287116
+Ref: advanced advanced-features287116
+Ref: 14e287116
+Node: Adding hardcoded modules287409
+Ref: advanced adding-hardcoded-modules287534
+Ref: 14f287534
+Node: Modifying sourcode to add a module287777
+Ref: advanced modifying-sourcode-to-add-a-module287933
+Ref: 150287933
+Node: Adding an @startup to make use of modules288265
+Ref: advanced adding-an-startup-to-make-use-of-modules288468
+Ref: 151288468
+Node: Contributing your module back to Rhost289047
+Ref: advanced contributing-your-module-back-to-rhost289207
+Ref: 152289207
+Node: Shutting down gracefully<2>289520
+Ref: advanced shutting-down-gracefully289668
+Ref: 153289668
+Node: Rhostmush has many ways to shut down the game cleanly<2>289922
+Ref: advanced rhostmush-has-many-ways-to-shut-down-the-game-cleanly290092
+Ref: 154290092
+Node: WARNING Never kill -9 Rhost<2>290430
+Ref: advanced warning-never-kill-9-rhost290600
+Ref: 155290600
+Node: Reality levels291180
+Ref: advanced reality-levels291348
+Ref: 156291348
+Node: Visibility291820
+Ref: advanced visibility291913
+Ref: 157291913
+Node: Descriptions292934
+Ref: advanced descriptions293060
+Ref: 158293060
+Node: Configuration parameters294310
+Ref: advanced configuration-parameters294443
+Ref: 159294443
+Node: Example mush conf295972
+Ref: advanced example-mush-conf296101
+Ref: 15a296101
+Node: Commands296657
+Ref: advanced commands296774
+Ref: 15b296774
+Node: Functions<3>297296
+Ref: advanced functions297435
+Ref: 15c297435
+Node: Example 1 A simplified Witchcraft setup298414
+Ref: advanced example-1-a-simplified-witchcraft-setup298566
+Ref: 15d298566
+Node: Example 2 A WoD setup301716
+Ref: advanced example-2-a-wod-setup301874
+Ref: 15e301874
+Node: Example 3 Softcode305508
+Ref: advanced example-3-softcode305618
+Ref: 15f305618
+Node: Execscript and external programs and scripts307594
+Ref: advanced execscript-and-external-programs-and-scripts307772
+Ref: 160307772
+Node: Mush variables308007
+Ref: advanced mush-variables308132
+Ref: 161308132
+Node: Built in variables308259
+Ref: advanced built-in-variables308365
+Ref: 162308365
+Node: Dynamic variables308903
+Ref: advanced dynamic-variables309036
+Ref: 163309036
+Node: Register variables309194
+Ref: advanced register-variables309300
+Ref: 164309300
+Node: set object309584
+Ref: advanced set-object309737
+Ref: 165309737
+Node: The format of the fields are310120
+Ref: advanced the-format-of-the-fields-are310206
+Ref: 166310206
+Node: Dynamic variables<2>310381
+Ref: advanced id67310507
+Ref: 167310507
+Node: Examples310634
+Ref: advanced examples310710
+Ref: 168310710
+Node: Register variables<2>311025
+Ref: advanced id68311151
+Ref: 169311151
+Node: Examples The last example clears register 0311358
+Ref: advanced examples-the-last-example-clears-register-0311470
+Ref: 16a311470
+Node: Example bash script311701
+Ref: advanced example-bash-script311858
+Ref: 16b311858
+Node: Notes and warnings312342
+Ref: advanced notes-and-warnings312523
+Ref: 16c312523
+Node: Scripts to be used with execscript313064
+Ref: advanced scripts-to-be-used-with-execscript313217
+Ref: 16d313217
+Node: Using printf for advanced text output315081
+Ref: advanced using-printf-for-advanced-text-output315236
+Ref: 16e315236
+Node: Example one315590
+Ref: advanced example-one315706
+Ref: 16f315706
+Node: Example two316006
+Ref: advanced example-two316144
+Ref: 170316144
+Node: Example three316712
+Ref: advanced example-three316830
+Ref: 171316830
+Node: Format for image files317703
+Ref: advanced format-for-image-files317875
+Ref: 172317875
+Node: Comparison of Flags334347
+Ref: flags doc334522
+Ref: 173334522
+Ref: flags comparison-of-flags334522
+Ref: 174334522
+Node: Comparison of powers336099
+Ref: powers doc336281
+Ref: 175336281
+Ref: powers comparison-of-powers336281
+Ref: 176336281
+Node: RhostMUSH Internal Help Files339023
+Ref: helpfile doc339218
+Ref: 177339218
+Ref: helpfile rhostmush-internal-help-files339218
+Ref: 178339218
+Node: RhostMUSH Internal Wizhelp Files339289
+Ref: wizhelpfile doc339473
+Ref: 179339473
+Ref: wizhelpfile rhostmush-internal-wizhelp-files339473
+Ref: 17a339473
+Node: Changelog339550
+Ref: changelog doc339740
+Ref: 17b339740
+Ref: changelog changelog339740
+Ref: 17c339740
+Node: Historical Non-Disclosure Agreement433505
+Ref: nda doc433654
+Ref: 17d433654
+Ref: nda historical-non-disclosure-agreement433654
+Ref: 17e433654
+Node: Copyright434776
+Ref: index copyright434893
+Ref: 17f434893
+Node: Indices and tables435901
+Ref: index indices-and-tables435976
+Ref: 180435976
 
 End Tag Table
 

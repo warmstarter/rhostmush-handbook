@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RhostMUSH Handbook \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-07 22:00-0500\n"
+"POT-Creation-Date: 2021-03-07 22:30-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,518 +77,305 @@ msgid "Offline: Blocking twinks from being abusive on your game"
 msgstr ""
 
 #: ../../source/security.rst:58
-msgid "FLAGS                   : FUBAR, SLAVE, NO_CONNECT Commands:               : @boot, @nuke, @toad, @turtle Sitelocks: (@admin)     : forbid_host, forbid_site, register_host,"
+msgid "FLAGS                   : FUBAR, SLAVE, NO_CONNECT Commands:               : @boot, @nuke, @toad, @turtle Sitelocks: (@admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site Sitelock by player      : @badsite, @goodsite, NO_CONNECT (flag) Monitoring player       : SUSPECT (flag), @snoop TOR/Proxy blocking:     : @blacklist (see shell's tor_pull.sh), @admin proxy_checker (see wizhelp), @tor (see wizhelp)"
 msgstr ""
 
-#: ../../source/security.rst:61
-msgid "register_site, noguest_host, noguest_site"
-msgstr ""
-
-#: ../../source/security.rst:62
-msgid "Sitelock by player      : @badsite, @goodsite, NO_CONNECT (flag) Monitoring player       : SUSPECT (flag), @snoop TOR/Proxy blocking:     : @blacklist (see shell's tor_pull.sh)"
-msgstr ""
-
-#: ../../source/security.rst:65
-msgid "@admin proxy_checker (see wizhelp) @tor (see wizhelp)"
-msgstr ""
-
-#: ../../source/security.rst:69
+#: ../../source/security.rst:66
 msgid "Extended lockdown of the mush and considerations"
 msgstr ""
 
-#: ../../source/security.rst:71
+#: ../../source/security.rst:68
 msgid "These are flags, powers, toggles, and various conditions for consideration when you decide to use some of the advanced features of RhostMUSH. These are not all that is availble, but tend to be the juicier ones to consider."
 msgstr ""
 
-#: ../../source/security.rst:76
+#: ../../source/security.rst:73
 msgid "Attribute Restriction"
 msgstr ""
 
-#: ../../source/security.rst:78
+#: ../../source/security.rst:75
 msgid "@attribute -- Used for user-defined attributes @admin attr_access -- used for built in attributes (like desc) @aflags -- Used to set up lovely delicious attribute permission masks"
 msgstr ""
 
-#: ../../source/security.rst:83
+#: ../../source/security.rst:80
 msgid "Command Restriction"
 msgstr ""
 
-#: ../../source/security.rst:85
-msgid "@icmd    - Very useful.   Please see wizhelp on it.  It disallows commands"
+#: ../../source/security.rst:82
+msgid "@icmd    - Very useful.   Please see wizhelp on it.  It disallows commands from executing including overriding them with softcode alternatives @admin access - Changes permissions, disables, or sets to be overridden a command.  Useful when you plan to override commands with softcode."
 msgstr ""
 
 #: ../../source/security.rst:86
-msgid "from executing including overriding them with softcode alternatives"
-msgstr ""
-
-#: ../../source/security.rst:88
-msgid "@admin access - Changes permissions, disables, or sets to be overridden a"
-msgstr ""
-
-#: ../../source/security.rst:88
-msgid "command.  Useful when you plan to override commands with softcode."
-msgstr ""
-
-#: ../../source/security.rst:91
 msgid "Flag/Toggle Restriction"
 msgstr ""
 
-#: ../../source/security.rst:96
-msgid "@flagdef - Again, see wizhelp on this.  There are also netrhost.conf options"
+#: ../../source/security.rst:88
+msgid "@flagdef - Again, see wizhelp on this.  There are also netrhost.conf options so you can have them loaded at start.  This allows tweaking flags and toggles to who can set/unset/see as well as what type can use it or wha type it can be used on."
 msgstr ""
 
-#: ../../source/security.rst:94
-msgid "so you can have them loaded at start.  This allows tweaking flags and toggles to who can set/unset/see as well as what type can use it or wha type it can be used on."
-msgstr ""
-
-#: ../../source/security.rst:99
+#: ../../source/security.rst:91
 msgid "Config restrictions"
 msgstr ""
 
-#: ../../source/security.rst:101
+#: ../../source/security.rst:93
 msgid "@admin config_access - Changes permission of who can set a config param"
 msgstr ""
 
-#: ../../source/security.rst:104
+#: ../../source/security.rst:96
 msgid "Function Restrictions"
 msgstr ""
 
-#: ../../source/security.rst:106
-msgid "@function/@lfunction -- Allows softcoded functions that you can optionally"
+#: ../../source/security.rst:98
+msgid "@function/@lfunction -- Allows softcoded functions that you can optionally lock down at your leasure @admin function_access -- You can use this even on softcoded functions if you so desired."
 msgstr ""
 
-#: ../../source/security.rst:107
-msgid "lock down at your leasure"
-msgstr ""
-
-#: ../../source/security.rst:109
-msgid "@admin function_access -- You can use this even on softcoded functions if"
-msgstr ""
-
-#: ../../source/security.rst:109
-msgid "you so desired."
-msgstr ""
-
-#: ../../source/security.rst:112
+#: ../../source/security.rst:102
 msgid "Flags"
 msgstr ""
 
-#: ../../source/security.rst:114
-msgid "GUEST    - This is your guest flag, it should only be set on guests WANDERER - the WANDERER flag is default on new players.  This flag disables"
+#: ../../source/security.rst:104
+msgid "GUEST    - This is your guest flag, it should only be set on guests WANDERER - the WANDERER flag is default on new players.  This flag disables all building abilitites of the player. NO_COMMAND - You can use this to stop a player from being able to connect without worrying about changing their password FUBAR      - As the flag states, it f*'s them up beind all recognition.  It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command. SLAVE      - Funny enough, slave allows anything but say and pose.  To ruin a troll's life, set both FUBAR and SLAVE and sit back and smile. NO_TEL     - The target can't teleport or be teleported NO_MOVE    - The target is locked at their location unable to move at all NO_WALL    - They do not see any @wall except a wizard @wall/no_prefix.  This has the bonus of snuffing db save messages. NO_POSSESS - Sometimes it's useful to grant a builder character to multiple players.  The NO_POSSESS flag makes it so that player can not be logged in more than 2 times. NO_MODIFY  - The target can not be modified (except by immortal/#1) NO_EXAMINE - The target can not be examined/decompiled (except by immortal/#1) STOP       - Once a matching $command is found on an object set STOP, it 'stops' trying to find other $command matches. NOSTOP     - If a target that is set STOP is also set NOSTOP, it will check the master room for a command and execute that as well if found. NO_PESTER  - Stops target from @pemit or whisper.  You may use @icmd as well. NO_OVERRIDE - Useful for immortals.  By default they override all locks, including attribute locks.  This makes it so an immortal's passing of locks will behave like a mortals NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely want to set this on your immortal and wizard. NO_ANSINAME - stops a target from having an ansified name NO_CODE     - lock down advanced coding from a target SPAMMONITOR - stop a target from issuing more than 60 commands a minute. FREE        - Stop costing money for day to day processing of commands/building"
 msgstr ""
 
-#: ../../source/security.rst:116
-msgid "all building abilitites of the player."
-msgstr ""
-
-#: ../../source/security.rst:117
-msgid "NO_COMMAND - You can use this to stop a player from being able to connect"
-msgstr ""
-
-#: ../../source/security.rst:118
-msgid "without worrying about changing their password"
-msgstr ""
-
-#: ../../source/security.rst:120
-msgid "FUBAR      - As the flag states, it f*'s them up beind all recognition."
-msgstr ""
-
-#: ../../source/security.rst:120
-msgid "It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command."
-msgstr ""
-
-#: ../../source/security.rst:122
-msgid "SLAVE      - Funny enough, slave allows anything but say and pose.  To ruin"
-msgstr ""
-
-#: ../../source/security.rst:123
-msgid "a troll's life, set both FUBAR and SLAVE and sit back and smile."
-msgstr ""
-
-#: ../../source/security.rst:124
-msgid "NO_TEL     - The target can't teleport or be teleported NO_MOVE    - The target is locked at their location unable to move at all NO_WALL    - They do not see any @wall except a wizard @wall/no_prefix.  This"
-msgstr ""
-
-#: ../../source/security.rst:127
-msgid "has the bonus of snuffing db save messages."
-msgstr ""
-
-#: ../../source/security.rst:129
-msgid "NO_POSSESS - Sometimes it's useful to grant a builder character to multiple"
-msgstr ""
-
-#: ../../source/security.rst:129
-msgid "players.  The NO_POSSESS flag makes it so that player can not be logged in more than 2 times."
-msgstr ""
-
-#: ../../source/security.rst:131
-msgid "NO_MODIFY  - The target can not be modified (except by immortal/#1) NO_EXAMINE - The target can not be examined/decompiled (except by immortal/#1) STOP       - Once a matching $command is found on an object set STOP, it"
-msgstr ""
-
-#: ../../source/security.rst:134
-msgid "'stops' trying to find other $command matches."
-msgstr ""
-
-#: ../../source/security.rst:135
-msgid "NOSTOP     - If a target that is set STOP is also set NOSTOP, it will check"
-msgstr ""
-
-#: ../../source/security.rst:136
-msgid "the master room for a command and execute that as well if found."
-msgstr ""
-
-#: ../../source/security.rst:137
-msgid "NO_PESTER  - Stops target from @pemit or whisper.  You may use @icmd as well. NO_OVERRIDE - Useful for immortals.  By default they override all locks,"
-msgstr ""
-
-#: ../../source/security.rst:139
-msgid "including attribute locks.  This makes it so an immortal's passing of locks will behave like a mortals"
-msgstr ""
-
-#: ../../source/security.rst:141
-msgid "NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely"
-msgstr ""
-
-#: ../../source/security.rst:142
-msgid "want to set this on your immortal and wizard."
-msgstr ""
-
-#: ../../source/security.rst:143
-msgid "NO_ANSINAME - stops a target from having an ansified name NO_CODE     - lock down advanced coding from a target SPAMMONITOR - stop a target from issuing more than 60 commands a minute. FREE        - Stop costing money for day to day processing of commands/building"
-msgstr ""
-
-#: ../../source/security.rst:149
+#: ../../source/security.rst:125
 msgid "Toggles"
 msgstr ""
 
-#: ../../source/security.rst:151
-msgid "MONITOR            - Enables site monitoring.  This is the main toggle MONITOR_SITE       - Adds site information to site monitoring MONITOR_USERID     - Adds the userid to site monitoring MONITOR_STATS      - Adds connection stats to site monitoring MONITOR_FAIL       - Adds showing failed connections to site monitoring MONITOR_CONN       - Adds connection monitoring to site monitoring MONITOR_DISREASON  - Adds disconnect reasons to site monitoring MONITOR_TIME       - Adds time stamps to site monitoring MONITOR_BAD        - Shows all bad creation attempts to site monitoring MONITOR_VLIMIT     - Shows attempts to bypass MAX ATTRIBUTES MONITOR_AREG       - Shows all auto registration attempts MONITOR_CPU        - Shows all CPU warnings and/or alerts on the mush NO_FORMAT          - Bypasses @conformat, @exitformat, and other formats SEE_SUSPECT        - Allows you to see suspect info in the WHO/DOING FORCEHALTED        - Allows you to @force/@sudo a HALTED target NOSHPROG           - Disallows using '|' to execute commands outside @program PROG               - Allows the target to use @program IMMPROG            - Disables the ability to use @quitprogram from a @program PROG_ON_CONNECT    - Allows a @program to resume if someone reconnects IGNOREZONE         - Enables a zone to process @icmd's PAGELOCK           - Enforces target to require passing pagelocks MAIL_LOCKDOWN      - Blocks the ability of a wizard to check another"
+#: ../../source/security.rst:127
+msgid "MONITOR            - Enables site monitoring.  This is the main toggle MONITOR_SITE       - Adds site information to site monitoring MONITOR_USERID     - Adds the userid to site monitoring MONITOR_STATS      - Adds connection stats to site monitoring MONITOR_FAIL       - Adds showing failed connections to site monitoring MONITOR_CONN       - Adds connection monitoring to site monitoring MONITOR_DISREASON  - Adds disconnect reasons to site monitoring MONITOR_TIME       - Adds time stamps to site monitoring MONITOR_BAD        - Shows all bad creation attempts to site monitoring MONITOR_VLIMIT     - Shows attempts to bypass MAX ATTRIBUTES MONITOR_AREG       - Shows all auto registration attempts MONITOR_CPU        - Shows all CPU warnings and/or alerts on the mush NO_FORMAT          - Bypasses @conformat, @exitformat, and other formats SEE_SUSPECT        - Allows you to see suspect info in the WHO/DOING FORCEHALTED        - Allows you to @force/@sudo a HALTED target NOSHPROG           - Disallows using '|' to execute commands outside @program PROG               - Allows the target to use @program IMMPROG            - Disables the ability to use @quitprogram from a @program PROG_ON_CONNECT    - Allows a @program to resume if someone reconnects IGNOREZONE         - Enables a zone to process @icmd's PAGELOCK           - Enforces target to require passing pagelocks MAIL_LOCKDOWN      - Blocks the ability of a wizard to check another player's mail ATRUSE             - Enables the attribute to use attribute content locking NOGLOBPARENT       - Disables the target from inheriting global parenting LOGROOM            - Enables system logs on the room EXFULLWIZATTR      - Allows target to examine all wizard attributes NODEFAULT          - Disables attribute formatting/handling on the target CHKREALITY         - Enables the use of reality locks on the target HIDEIDLE           - Disables deidling when you execute any command MORTALREALITY      - Enforces a wizard to pass realities as a mortal SNUFFDARK          - Hides dark exits from a wizard"
 msgstr ""
 
-#: ../../source/security.rst:173
-msgid "player's mail"
-msgstr ""
-
-#: ../../source/security.rst:174
-msgid "ATRUSE             - Enables the attribute to use attribute content locking NOGLOBPARENT       - Disables the target from inheriting global parenting LOGROOM            - Enables system logs on the room EXFULLWIZATTR      - Allows target to examine all wizard attributes NODEFAULT          - Disables attribute formatting/handling on the target CHKREALITY         - Enables the use of reality locks on the target HIDEIDLE           - Disables deidling when you execute any command MORTALREALITY      - Enforces a wizard to pass realities as a mortal SNUFFDARK          - Hides dark exits from a wizard"
-msgstr ""
-
-#: ../../source/security.rst:185
+#: ../../source/security.rst:160
 msgid "@powers"
 msgstr ""
 
-#: ../../source/security.rst:187
+#: ../../source/security.rst:162
 msgid "WIZ_WHO            - Allows target to see sites ala wizard who NOFORCE            - target an not be forced (except by immortal/#1) FREE_QUOTA         - Allow target to have unlimited quota JOIN_PLAYER        - Allow to 'join' a player's location NO_BOOT            - Player can not be booted except by immortal/#1 STEAL              - Player can give negative money TEL_ANYWHERE       - Player can teleport anywhere STAT_ANY           - Player can @search, @stat, or @find things HALT_QUEUE_ALL     - Player can halt the queue SEARCH_ANY         - Player can search for anything WHO_UNFIND         - Player can see hidden player on WHO SHUTDOWN           - Player can @shutdown the mush PURGE              - Player can use /purge to @destroy and @nuke EXAMINE_FULL       - Player can examine anything (not set NO_EXAMINE or cloaked) FORMATTING         - @*formats allow passing what a person sees as %0, %1, etc CHOWN_ANYWHERE     - Chown anything anywhere to yourself CHOWN_OTHER        - Chown something you don't own to yourself EXAMINE_ALL        - Examine other things (tiered) SEE_QUEUE_ALL      - Player can see the full queue GRAB_PLAYER        - Player can grab a remote player and pull them to location LONG_FINGERS       - Player is granted remote control of things they own BOOT               - Player can @boot SEE_QUEUE          - Player can see advanced queue features TEL_ANYTHING       - Player can @teleport anything PCREATE            - Player can @pcreate players NOWHO              - Allows the use of @hide HALT_QUEUE         - Allows halting queue by specified bitlevel SECURITY           - Allows setting  NOMOVE    NO_TEL   SLAVE   NO_YELL WRAITH             - Allows bypassing exit locks HIDEBIT            - Hides your admin level from lower levels FULLTEL            - Allows full immortal level teleportation EXECSCRIPT         - Allows executing external scripts in ~/game/scripts"
 msgstr ""
 
-#: ../../source/security.rst:221
+#: ../../source/security.rst:196
 msgid "@depowers"
 msgstr ""
 
-#: ../../source/security.rst:223
+#: ../../source/security.rst:198
 msgid "WALL               - Disables the ability to @wall LONG_FINGERS       - Disables remote access to things STEAL              - Can not steal money CREATE             - Can not create anything WIZ_WHO            - Can not access wizard who CLOAK              - Can not wizard cloak BOOT               - Can not boot PAGE               - Can not page FORCE              - Can not @force/@sudo LOCKS              - Can not pass locks COMMAND            - Can not execute any $command (including master room) MASTER             - Can not use any master room $command EXAMINE            - Lowers or disables the ability to examine/decompile NUKE               - Can not nuke, toad, or turtle FREE               - No longer has free money for anything OVERRIDE           - No longer can override anything TEL_ANYWHERE       - No longer can teleport anywhere TEL_ANYTHING       - No longer can teleport anything other than themselves POWER              - Can no longer use @power MODIFY             - Can not modify things CHOWN_ME           - Can not chown anything to themselves CHOWN_OTHER        - Can not chown anything to others ABUSE              - Can not use $commands on anything they do not own UNL_QUOTA          - No longer has infinite quota SEARCH_ANY         - Disables the ability to @search/@find things GIVE               - Disables ability to give things/money RECEIVE            - Disables the ability to recieve things/money NOGOLD             - Limits (or disables) how much gold someone can give NOSTEAL            - Can not give negative gold PASSWORD           - Can not change password MORTAL_EXAMINE     - drops examine and all fetching to mortal only PERSONAL_COMMAND   - Disables all $commands on anything they own"
 msgstr ""
 
-#: ../../source/security.rst:257
+#: ../../source/security.rst:232
 msgid "Site Restrictions"
 msgstr ""
 
-#: ../../source/security.rst:259
+#: ../../source/security.rst:234
 msgid "These are accessable via the @admin command, and the following options are allowable."
 msgstr ""
 
-#: ../../source/security.rst:262
+#: ../../source/security.rst:237
 msgid "You may see all site information at any time with: @list sites"
 msgstr ""
 
-#: ../../source/security.rst:265
+#: ../../source/security.rst:240
 msgid "IP based restrictions"
 msgstr ""
 
-#: ../../source/security.rst:267
-msgid "You may use CIDR notation such as /32 instead of 255.255.255.255. Config file:  (see section on forbid_site as it describes and gives examples) Online Syntax: MASK: @admin forbid_site=123.123.123.0 255.255.255.0"
+#: ../../source/security.rst:242
+msgid "You may use CIDR notation such as /32 instead of 255.255.255.255. Config file:  (see section on forbid_site as it describes and gives examples) Online Syntax: MASK::"
 msgstr ""
 
-#: ../../source/security.rst:270
-msgid "@admin forbid_site=123.123.123.123 255.255.255.255"
-msgstr ""
-
-#: ../../source/security.rst:271
-msgid "CIDR: @admin forbid_site=123.123.123.0 /24"
-msgstr ""
-
-#: ../../source/security.rst:272
-msgid "@admin forbid_site=123.123.123.123 /32"
-msgstr ""
-
-#: ../../source/security.rst:276
-msgid "REMOVING: MASK: @site/all 123.123.123.123=255.255.255.255"
-msgstr ""
-
-#: ../../source/security.rst:274
-msgid "@site/forbid 123.123.123.0=254.255.255.0"
-msgstr ""
-
-#: ../../source/security.rst:276
-msgid "CIDR: @site/all 123.123.123.123=/32"
-msgstr ""
-
-#: ../../source/security.rst:276
-msgid "@site/forbid 123.123.123.0=/24"
-msgstr ""
-
-#: ../../source/security.rst:278
-msgid "forbid_site      - Set the specified site forbid only register_site    - Set the specified site register only noguest_site     - Set the specified site unable to connect to guests suspect_site     - Set the specified site suspect on connect noautoreg_site   - Set the specified site to not allow autoregistration --- trust_site       - Allow site to bypass suspect site restrictions permit_site      - Allow site to bypass sitelock restrictions --- nodns_site       - Site will no longer do reverse DNS lookups noauth_site      - Site will no longer do AUTH ident lookups"
-msgstr ""
-
-#: ../../source/security.rst:291
+#: ../../source/security.rst:275
 msgid "DNS based restrictions"
 msgstr ""
 
-#: ../../source/security.rst:293
-msgid "These allow globbing wildcard matches. The advanced feature is you can specify filtering on when the condition is matched, such as allowing 2 players from a site to be connected before disallowing anyone else to connect. Config File: (see section on forbid_host as it describes and gives examples) Online Syntax: ADD: @admin forbid_host=*.dsl*.comcast.net *.aol.com *another.site"
+#: ../../source/security.rst:277
+msgid "These allow globbing wildcard matches. The advanced feature is you can specify filtering on when the condition is matched, such as allowing 2 players from a site to be connected before disallowing anyone else to connect. Config File: (see section on forbid_host as it describes and gives examples) Online Syntax::"
 msgstr ""
 
-#: ../../source/security.rst:299
-msgid "DEL: @admin forbid_host=!*.aol.com"
-msgstr ""
-
-#: ../../source/security.rst:300
-msgid "ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at once only)"
-msgstr ""
-
-#: ../../source/security.rst:302
-msgid "forbid_host     - Set the specified site(s) forbid only register_host   - Set the specified site(s) register only noguest_host    - Set the specified site(s) unable to connect to guests suspect_host    - Set the specified site(s) suspect on connect noautoreg_host  - Set the specified site(s) to not allow autoregistration --- validate_host   - Do not allow any autoregistration from emails matching site goodmail_host   - Always allow autoregistration from emails matching site --- nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site"
-msgstr ""
-
-#: ../../source/security.rst:314
+#: ../../source/security.rst:298
 msgid "Methods to block anonymous connections and the pros and cons of doing so"
 msgstr ""
 
-#: ../../source/security.rst:316
+#: ../../source/security.rst:300
 msgid "Now let's assume you have some troll attempting to use proxies to connect. There's multiple ways to stop this."
 msgstr ""
 
-#: ../../source/security.rst:320
+#: ../../source/security.rst:304
 msgid "Blacklisting through external tor_pull.sh script"
 msgstr ""
 
-#: ../../source/security.rst:322
+#: ../../source/security.rst:306
 msgid "In ~/Rhost/Server/game you will see a script called tor_pull.sh Execute this by running (from the game directory) ./tor_pull.sh This populates the blacklist with registered proxies from various sites on the internet.  If you want specified ip's added, feel free to add them at the end of this file."
 msgstr ""
 
-#: ../../source/security.rst:329
+#: ../../source/security.rst:313
 msgid "Blacklisting through internal @blacklist command"
 msgstr ""
 
-#: ../../source/security.rst:331
+#: ../../source/security.rst:315
 msgid "On the mush, have as part of your startup @blacklist/load This will load in the generated blacklist file for automatic forbid sites based on the ip."
 msgstr ""
 
-#: ../../source/security.rst:336
+#: ../../source/security.rst:320
 msgid "Blacklisting through internal @tor command"
 msgstr ""
 
-#: ../../source/security.rst:338
+#: ../../source/security.rst:322
 msgid "@tor.  Please see 'wizhelp tor' on how to set this up.  It in effect will actively block all known exit nodes for TOR's annonymous proxy service.  It self-updates and will actively block TOR connections."
 msgstr ""
 
-#: ../../source/security.rst:343
+#: ../../source/security.rst:327
 msgid "Blacklisting through internal @admin command"
 msgstr ""
 
-#: ../../source/security.rst:345
+#: ../../source/security.rst:329
 msgid "@admin proxy_checker (please see wizhelp) This little doodad uses MTU checking against packet size which will detect most methods of proxies.  Sadly, this also has false positives because some situations require a differentating MTU value such as briged network connect with things like cloud services, docker, or similar encapsulated network services.  However, this option has several settings from just monitoring/alerting of possible proxies to downright forbidding them.  If you're being actively attacked, it may be worth considering adding this to add additional protection."
 msgstr ""
 
-#: ../../source/security.rst:356
+#: ../../source/security.rst:340
 msgid "Setting up an SSL tunnel for secure connection options"
 msgstr ""
 
-#: ../../source/security.rst:359
+#: ../../source/security.rst:343
 msgid "Quickstart for SSL setup with stunnel"
 msgstr ""
 
-#: ../../source/security.rst:361
-msgid "Modify your netrhost.conf file and add/change the following parameters: A. stunnel_reip 1 B. stunnel_cmd SECRET-MAGIC-COOKIE"
+#: ../../source/security.rst:345
+msgid "Modify your netrhost.conf file and add/change the following parameters:"
 msgstr ""
 
-#: ../../source/security.rst:364
-msgid "SECRET-MAGIC-COOKIE is a case sensitive single word phrase.  Any printable character other than the '#' character is allowable. You may use up to 30 characters."
+#: ../../source/security.rst:347
+msgid "stunnel_reip 1"
 msgstr ""
 
-#: ../../source/security.rst:367
+#: ../../source/security.rst:348
+msgid "stunnel_cmd SECRET-MAGIC-COOKIE"
+msgstr ""
+
+#: ../../source/security.rst:350
+msgid "SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the '#' character is allowable.  You may use up to 30 characters."
+msgstr ""
+
+#: ../../source/security.rst:351
 msgid "Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address."
 msgstr ""
 
-#: ../../source/security.rst:369
-msgid "stunnel_host localhost 127.0.0.1 othersite.goes.here 1.  This is optional. 2.  If you do not specify it it defaults to 'localhost 127.0.0.1'."
+#: ../../source/security.rst:353
+msgid "stunnel_host localhost 127.0.0.1 othersite.goes.here"
 msgstr ""
 
-#: ../../source/security.rst:372
-msgid "If your domain has a unique name like 'localhost.localdomain' like some ubuntu distributions, then you should customize your stunnel_host."
+#: ../../source/security.rst:355
+msgid "This is optional."
 msgstr ""
 
-#: ../../source/security.rst:375
+#: ../../source/security.rst:356
+msgid "If you do not specify it it defaults to 'localhost 127.0.0.1'.  If your domain has a unique name like 'localhost.localdomain' like some ubuntu distributions, then you should customize your stunnel_host."
+msgstr ""
+
+#: ../../source/security.rst:358
 msgid "go into the stunnel directory"
 msgstr ""
 
-#: ../../source/security.rst:376
-msgid "./stunnel_setup.sh A. Choose the defaults or alter them based on preferences B. Make sure to choose the warpbubble conf file"
-msgstr ""
-
-#: ../../source/security.rst:379
-#: ../../source/security.rst:464
-msgid "./stunnel_start.sh"
-msgstr ""
-
-#: ../../source/security.rst:380
-msgid "Use ./stunnel_stop.sh to stop the SSL tunnel at any time"
-msgstr ""
-
-#: ../../source/security.rst:382
-msgid "You do not need to shutdown the ssl handler if you shutdown the mush.  They are entirely separate processes."
-msgstr ""
-
-#: ../../source/security.rst:386
-msgid "Detailed SSL setup with stunnel"
-msgstr ""
-
-#: ../../source/security.rst:388
-msgid "To setup SSL connectivity, we use the STUNNEL application to tunnel SSL to the mush.  This acts a bit like a man in the middle but remains controlled by the game owner which would have access to the end point anyway."
-msgstr ""
-
-#: ../../source/security.rst:392
-msgid "Note: it is assumed you will have already initially set up your netrhost.conf."
-msgstr ""
-
-#: ../../source/security.rst:395
-msgid "stunnel directory"
-msgstr ""
-
-#: ../../source/security.rst:397
-msgid "You would set up the stunnel from the 'stunnel' directory.  There the following files are of relevance:"
-msgstr ""
-
-#: ../../source/security.rst:400
-msgid "README                     -- a readme explaining the points of stunnel stunnel.conf.example       -- The example stunnel.conf file.  If you wish to"
-msgstr ""
-
-#: ../../source/security.rst:402
-msgid "create this manually you're welcome to.  Just make sure the end file is stunnel.conf"
-msgstr ""
-
-#: ../../source/security.rst:404
-msgid "stunnel_setup.sh           -- the script to build a stunnel.conf file for you"
-msgstr ""
-
-#: ../../source/security.rst:405
-msgid "which will be dropped at your specified location."
-msgstr ""
-
-#: ../../source/security.rst:406
-msgid "stunnel_kill.sh            -- Stop/terminate the stunnel process. stunnel_start.sh           -- Start the stunnel process. warpbubble.pl              -- the perl script that handles stunnel to mush"
-msgstr ""
-
-#: ../../source/security.rst:409
-msgid "connectivity."
-msgstr ""
-
-#: ../../source/security.rst:412
-msgid "stunnel_src                -- If you do not have stunnel, this directory will"
-msgstr ""
-
-#: ../../source/security.rst:411
-msgid "allow you to download, compile and locally install."
-msgstr ""
-
-#: ../../source/security.rst:415
-msgid "Modifying netrhost.conf"
-msgstr ""
-
-#: ../../source/security.rst:417
-msgid "To be able to utilize SSL, you first must set your netrhost.conf file with the relevant information to enable SSL connectiions.  These three config options must be set to be able to use SSL, however, sconnect_host if not set will default to 'localhost 127.0.0.1'."
-msgstr ""
-
-#: ../../source/security.rst:422
-msgid "sconnect_reip 1         -- This enables the SSL tunnel layer handler within"
-msgstr ""
-
-#: ../../source/security.rst:423
-msgid "rhost."
-msgstr ""
-
-#: ../../source/security.rst:427
-msgid "sconnect_cmd XYZZY      -- this will set the secret SSL command handshake"
-msgstr ""
-
-#: ../../source/security.rst:425
-msgid "command to XYZZY.  This is case sensitive and can be up to 31 characters.  Please make sure to only use printable non-whitespace characters. Ergo: one word"
-msgstr ""
-
-#: ../../source/security.rst:435
-msgid "sconnect_host wildcards -- This allows wildcarded sites (one or more) to allow"
-msgstr ""
-
-#: ../../source/security.rst:430
-msgid "to access the sconnect/stunnel handler.  This defaults to 'localhost' and '127.0.0.1' so if you have 'localhost.localdomain' instead then you must set this to whatever is seen as 'localhost' to you. You can verify this by checking your /etc/hosts file."
-msgstr ""
-
-#: ../../source/security.rst:438
-msgid "Note: the sconnect_host is optional.  If you do not specify it, it will"
-msgstr ""
-
-#: ../../source/security.rst:438
-msgid "default to two values:  'localhost' and '127.0.0.1'."
-msgstr ""
-
-#: ../../source/security.rst:441
-msgid "Running the stunnel setup program"
-msgstr ""
-
-#: ../../source/security.rst:443
-msgid "At this point you're ready to run the stunnel setup program.  So at this point type the following:"
-msgstr ""
-
-#: ../../source/security.rst:446
+#: ../../source/security.rst:359
 msgid "./stunnel_setup.sh"
 msgstr ""
 
-#: ../../source/security.rst:448
+#: ../../source/security.rst:361
+msgid "Choose the defaults or alter them based on preferences"
+msgstr ""
+
+#: ../../source/security.rst:362
+msgid "Make sure to choose the warpbubble conf file"
+msgstr ""
+
+#: ../../source/security.rst:364
+msgid "./stunnel_start.sh"
+msgstr ""
+
+#: ../../source/security.rst:365
+msgid "Use ./stunnel_stop.sh to stop the SSL tunnel at any time"
+msgstr ""
+
+#: ../../source/security.rst:367
+msgid "You do not need to shutdown the ssl handler if you shutdown the mush.  They are entirely separate processes."
+msgstr ""
+
+#: ../../source/security.rst:371
+msgid "Detailed SSL setup with stunnel"
+msgstr ""
+
+#: ../../source/security.rst:373
+msgid "To setup SSL connectivity, we use the STUNNEL application to tunnel SSL to the mush.  This acts a bit like a man in the middle but remains controlled by the game owner which would have access to the end point anyway."
+msgstr ""
+
+#: ../../source/security.rst:377
+msgid "Note: it is assumed you will have already initially set up your netrhost.conf."
+msgstr ""
+
+#: ../../source/security.rst:380
+msgid "stunnel directory"
+msgstr ""
+
+#: ../../source/security.rst:382
+msgid "You would set up the stunnel from the 'stunnel' directory.  There the following files are of relevance:"
+msgstr ""
+
+#: ../../source/security.rst:385
+msgid "README                     -- a readme explaining the points of stunnel stunnel.conf.example       -- The example stunnel.conf file.  If you wish to create this manually you're welcome to.  Just make sure the end file is stunnel.conf stunnel_setup.sh           -- the script to build a stunnel.conf file for you which will be dropped at your specified location. stunnel_kill.sh            -- Stop/terminate the stunnel process. stunnel_start.sh           -- Start the stunnel process. warpbubble.pl              -- the perl script that handles stunnel to mush connectivity. stunnel_src                -- If you do not have stunnel, this directory will allow you to download, compile and locally install."
+msgstr ""
+
+#: ../../source/security.rst:395
+msgid "Modifying netrhost.conf"
+msgstr ""
+
+#: ../../source/security.rst:397
+msgid "To be able to utilize SSL, you first must set your netrhost.conf file with the relevant information to enable SSL connectiions.  These three config options must be set to be able to use SSL, however, sconnect_host if not set will default to 'localhost 127.0.0.1'."
+msgstr ""
+
+#: ../../source/security.rst:402
+msgid "sconnect_reip 1         -- This enables the SSL tunnel layer handler within rhost. sconnect_cmd XYZZY      -- this will set the secret SSL command handshake command to XYZZY.  This is case sensitive and can be up to 31 characters.  Please make sure to only use printable non-whitespace characters.  Ergo: one word sconnect_host wildcards -- This allows wildcarded sites (one or more) to allow to access the sconnect/stunnel handler.  This defaults to 'localhost' and '127.0.0.1' so if you have 'localhost.localdomain' instead then you must set this to whatever is seen as 'localhost' to you.  You can verify this by checking your /etc/hosts file."
+msgstr ""
+
+#: ../../source/security.rst:406
+msgid "Note: the sconnect_host is optional.  If you do not specify it, it will default to two values:  'localhost' and '127.0.0.1'."
+msgstr ""
+
+#: ../../source/security.rst:409
+msgid "Running the stunnel setup program"
+msgstr ""
+
+#: ../../source/security.rst:411
+msgid "At this point you're ready to run the stunnel setup program.  So at this point type the following::"
+msgstr ""
+
+#: ../../source/security.rst:415
 msgid "This will prompt you through settings.  Most you can select the defaults to. The SSL port you may need to change based on your administrative requirements. It will prompt you with whatever you set for your mush name.  If you have not selected a mush name at this point, you can select the defaults."
 msgstr ""
 
-#: ../../source/security.rst:453
+#: ../../source/security.rst:420
 msgid "You will want to use the config file for warpbubble as this hides the secret."
 msgstr ""
 
-#: ../../source/security.rst:455
+#: ../../source/security.rst:422
 msgid "Be aware that if you have DNS host lookups disabled on your mush, you MUST have 127.0.0.1 as an entry for your sconnect_host file."
 msgstr ""
 
-#: ../../source/security.rst:459
+#: ../../source/security.rst:426
 msgid "Starting the stunnel proxy"
 msgstr ""
 
-#: ../../source/security.rst:461
-msgid "When you have your stunnel.conf file to the way you want, you then issue the following command to run your SSL layer."
+#: ../../source/security.rst:428
+msgid "When you have your stunnel.conf file to the way you want, you then issue the following command to run your SSL layer::"
 msgstr ""
 
-#: ../../source/security.rst:467
+#: ../../source/security.rst:434
 msgid "Shutting down the stunnel proxy"
 msgstr ""
 
-#: ../../source/security.rst:469
-msgid "If ever you need to bring down the SSL layer, you may kill it with the command:"
+#: ../../source/security.rst:436
+msgid "If ever you need to bring down the SSL layer, you may kill it with the command::"
 msgstr ""
 
-#: ../../source/security.rst:471
-msgid "./stunnel_stop.sh"
-msgstr ""
-
-#: ../../source/security.rst:474
+#: ../../source/security.rst:441
 msgid "Configuring firewall on the host"
 msgstr ""
 
-#: ../../source/security.rst:476
+#: ../../source/security.rst:443
 msgid "Please be aware that the port that the SSL layer is on must be opened in any firewall rule you specified to allow the connectivity.  This also must not be the port the mush is running on and requires a separate port."
 msgstr ""

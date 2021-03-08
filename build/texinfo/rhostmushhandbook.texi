@@ -6665,22 +6665,10 @@ a player, thing, exit, or room.  The help is quite verbose.
 
 FLAGS                   : FUBAR, SLAVE, NO_CONNECT
 Commands:               : @@boot, @@nuke, @@toad, @@turtle
-Sitelocks: (@@admin)     : forbid_host, forbid_site, register_host,
-
-@quotation
-
-register_site, noguest_host, noguest_site
-@end quotation
-
+Sitelocks: (@@admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
 Sitelock by player      : @@badsite, @@goodsite, NO_CONNECT (flag)
 Monitoring player       : SUSPECT (flag), @@snoop
-TOR/Proxy blocking:     : @@blacklist (see shell’s tor_pull.sh)
-
-@quotation
-
-@@admin proxy_checker (see wizhelp)
-@@tor (see wizhelp)
-@end quotation
+TOR/Proxy blocking:     : @@blacklist (see shell’s tor_pull.sh), @@admin proxy_checker (see wizhelp), @@tor (see wizhelp)
 
 @node Extended lockdown of the mush and considerations,Methods to block anonymous connections and the pros and cons of doing so,Considerations to locking down restrictions in RhostMUSH,Security
 @anchor{security extended-lockdown-of-the-mush-and-considerations}@anchor{f6}
@@ -6724,17 +6712,8 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 
 @quotation
 
-
-@table @asis
-
-@item @@icmd    - Very useful.   Please see wizhelp on it.  It disallows commands
-
-from executing including overriding them with softcode alternatives
-
-@item @@admin access - Changes permissions, disables, or sets to be overridden a
-
-command.  Useful when you plan to override commands with softcode.
-@end table
+@@icmd    - Very useful.   Please see wizhelp on it.  It disallows commands from executing including overriding them with softcode alternatives
+@@admin access - Changes permissions, disables, or sets to be overridden a command.  Useful when you plan to override commands with softcode.
 @end quotation
 
 @node Flag/Toggle Restriction,Config restrictions,Command Restriction,Extended lockdown of the mush and considerations
@@ -6744,15 +6723,7 @@ command.  Useful when you plan to override commands with softcode.
 
 @quotation
 
-
-@table @asis
-
-@item @@flagdef - Again, see wizhelp on this.  There are also netrhost.conf options
-
-so you can have them loaded at start.  This allows tweaking flags
-and toggles to who can set/unset/see as well as what type can
-use it or wha type it can be used on.
-@end table
+@@flagdef - Again, see wizhelp on this.  There are also netrhost.conf options so you can have them loaded at start.  This allows tweaking flags and toggles to who can set/unset/see as well as what type can use it or wha type it can be used on.
 @end quotation
 
 @node Config restrictions,Function Restrictions,Flag/Toggle Restriction,Extended lockdown of the mush and considerations
@@ -6772,17 +6743,8 @@ use it or wha type it can be used on.
 
 @quotation
 
-
-@table @asis
-
-@item @@function/@@lfunction – Allows softcoded functions that you can optionally
-
-lock down at your leasure
-
-@item @@admin function_access – You can use this even on softcoded functions if
-
-you so desired.
-@end table
+@@function/@@lfunction – Allows softcoded functions that you can optionally lock down at your leasure
+@@admin function_access – You can use this even on softcoded functions if you so desired.
 @end quotation
 
 @node Flags<4>,Toggles<3>,Function Restrictions,Extended lockdown of the mush and considerations
@@ -6793,82 +6755,20 @@ you so desired.
 @quotation
 
 GUEST    - This is your guest flag, it should only be set on guests
-WANDERER - the WANDERER flag is default on new players.  This flag disables
-
-@quotation
-
-all building abilitites of the player.
-@end quotation
-
-
-@table @asis
-
-@item NO_COMMAND - You can use this to stop a player from being able to connect
-
-without worrying about changing their password
-
-@item FUBAR      - As the flag states, it f*’s them up beind all recognition.
-
-It essentially stops them from doing absolutely anything in the
-mush but pose and say.  Yes, it even disables the quit command.
-
-@item SLAVE      - Funny enough, slave allows anything but say and pose.  To ruin
-
-a troll’s life, set both FUBAR and SLAVE and sit back and smile.
-@end table
-
+WANDERER - the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.
+NO_COMMAND - You can use this to stop a player from being able to connect without worrying about changing their password
+FUBAR      - As the flag states, it f*’s them up beind all recognition.  It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command.
+SLAVE      - Funny enough, slave allows anything but say and pose.  To ruin a troll’s life, set both FUBAR and SLAVE and sit back and smile.
 NO_TEL     - The target can’t teleport or be teleported
 NO_MOVE    - The target is locked at their location unable to move at all
-NO_WALL    - They do not see any @@wall except a wizard @@wall/no_prefix.  This
-
-@quotation
-
-has the bonus of snuffing db save messages.
-@end quotation
-
-
-@table @asis
-
-@item NO_POSSESS - Sometimes it’s useful to grant a builder character to multiple
-
-players.  The NO_POSSESS flag makes it so that player can not
-be logged in more than 2 times.
-@end table
-
+NO_WALL    - They do not see any @@wall except a wizard @@wall/no_prefix.  This has the bonus of snuffing db save messages.
+NO_POSSESS - Sometimes it’s useful to grant a builder character to multiple players.  The NO_POSSESS flag makes it so that player can not be logged in more than 2 times.
 NO_MODIFY  - The target can not be modified (except by immortal/#1)
 NO_EXAMINE - The target can not be examined/decompiled (except by immortal/#1)
-STOP       - Once a matching $command is found on an object set STOP, it
-
-@quotation
-
-‘stops’ trying to find other $command matches.
-@end quotation
-
-
-@table @asis
-
-@item NOSTOP     - If a target that is set STOP is also set NOSTOP, it will check
-
-the master room for a command and execute that as well if found.
-@end table
-
+STOP       - Once a matching $command is found on an object set STOP, it ‘stops’ trying to find other $command matches.
+NOSTOP     - If a target that is set STOP is also set NOSTOP, it will check the master room for a command and execute that as well if found.
 NO_PESTER  - Stops target from @@pemit or whisper.  You may use @@icmd as well.
-NO_OVERRIDE - Useful for immortals.  By default they override all locks,
-
-@quotation
-
-including attribute locks.  This makes it so an immortal’s
-passing of locks will behave like a mortals
-@end quotation
-
-
-@table @asis
-
-@item NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely
-
-want to set this on your immortal and wizard.
-@end table
-
+NO_OVERRIDE - Useful for immortals.  By default they override all locks, including attribute locks.  This makes it so an immortal’s passing of locks will behave like a mortals NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely want to set this on your immortal and wizard.
 NO_ANSINAME - stops a target from having an ansified name
 NO_CODE     - lock down advanced coding from a target
 SPAMMONITOR - stop a target from issuing more than 60 commands a minute.
@@ -6903,13 +6803,7 @@ IMMPROG            - Disables the ability to use @@quitprogram from a @@program
 PROG_ON_CONNECT    - Allows a @@program to resume if someone reconnects
 IGNOREZONE         - Enables a zone to process @@icmd’s
 PAGELOCK           - Enforces target to require passing pagelocks
-MAIL_LOCKDOWN      - Blocks the ability of a wizard to check another
-
-@quotation
-
-player’s mail
-@end quotation
-
+MAIL_LOCKDOWN      - Blocks the ability of a wizard to check another player’s mail
 ATRUSE             - Enables the attribute to use attribute content locking
 NOGLOBPARENT       - Disables the target from inheriting global parenting
 LOGROOM            - Enables system logs on the room
@@ -7031,60 +6925,37 @@ You may see all site information at any time with: @@list sites
 
 You may use CIDR notation such as /32 instead of 255.255.255.255.
 Config file:  (see section on forbid_site as it describes and gives examples)
-Online Syntax: MASK: @@admin forbid_site=123.123.123.0 255.255.255.0
+Online Syntax: MASK:
 
-@quotation
+@example
+                   @@admin forbid_site=123.123.123.0 255.255.255.0
+                   @@admin forbid_site=123.123.123.123 255.255.255.255
 
-@quotation
+   CIDR::
 
-@quotation
+                   @@admin forbid_site=123.123.123.0 /24
+                   @@admin forbid_site=123.123.123.123 /32
 
-@quotation
+   REMOVING: MASK::
 
-@@admin forbid_site=123.123.123.123 255.255.255.255
-@end quotation
+                   @@site/all 123.123.123.123=255.255.255.255
+                   @@site/forbid 123.123.123.0=254.255.255.0
 
+             CIDR::
 
-@table @asis
-
-@item CIDR: @@admin forbid_site=123.123.123.0 /24
-
-@@admin forbid_site=123.123.123.123 /32
-@end table
-@end quotation
-
-
-@table @asis
-
-@item REMOVING: MASK: @@site/all 123.123.123.123=255.255.255.255
-
-@quotation
-
-@@site/forbid 123.123.123.0=254.255.255.0
-@end quotation
-
-
-@table @asis
-
-@item CIDR: @@site/all 123.123.123.123=/32
-
-@@site/forbid 123.123.123.0=/24
-@end table
-@end table
-@end quotation
+                   @@site/all 123.123.123.123=/32
+                   @@site/forbid 123.123.123.0=/24
 
 forbid_site      - Set the specified site forbid only
 register_site    - Set the specified site register only
 noguest_site     - Set the specified site unable to connect to guests
 suspect_site     - Set the specified site suspect on connect
 noautoreg_site   - Set the specified site to not allow autoregistration
-—
 trust_site       - Allow site to bypass suspect site restrictions
 permit_site      - Allow site to bypass sitelock restrictions
-—
 nodns_site       - Site will no longer do reverse DNS lookups
 noauth_site      - Site will no longer do AUTH ident lookups
-@end quotation
+@end example
 @end quotation
 
 @node DNS based restrictions,,IP based restrictions,Site Restrictions
@@ -7099,31 +6970,22 @@ The advanced feature is you can specify filtering on
 when the condition is matched, such as allowing 2 players from a site to
 be connected before disallowing anyone else to connect.
 Config File: (see section on forbid_host as it describes and gives examples)
-Online Syntax: ADD: @@admin forbid_host=*.dsl*.comcast.net >>*<<.aol.com >>*<<another.site
+Online Syntax:
 
-@quotation
-
-@quotation
-
-@quotation
-
-DEL: @@admin forbid_host=!*.aol.com
-@end quotation
-
-ADVANCED: @@admin forbid_host=mudconnect.com|3 (allow 3 at once only)
-@end quotation
+@example
+        ADD:      @@admin forbid_host=*.dsl*.comcast.net *.aol.com *another.site
+        DEL:      @@admin forbid_host=!*.aol.com
+        ADVANCED: @@admin forbid_host=mudconnect.com|3 (allow 3 at once only)
 
 forbid_host     - Set the specified site(s) forbid only
 register_host   - Set the specified site(s) register only
 noguest_host    - Set the specified site(s) unable to connect to guests
 suspect_host    - Set the specified site(s) suspect on connect
 noautoreg_host  - Set the specified site(s) to not allow autoregistration
-—
 validate_host   - Do not allow any autoregistration from emails matching site
 goodmail_host   - Always allow autoregistration from emails matching site
-—
 nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site
-@end quotation
+@end example
 @end quotation
 
 @node Methods to block anonymous connections and the pros and cons of doing so,Setting up an SSL tunnel for secure connection options,Extended lockdown of the mush and considerations,Security
@@ -7222,8 +7084,15 @@ it may be worth considering adding this to add additional protection.
 
 @item 
 Modify your netrhost.conf file and add/change the following parameters:
-A. stunnel_reip 1
-B. stunnel_cmd SECRET-MAGIC-COOKIE
+
+
+@enumerate 
+
+@item 
+stunnel_reip 1
+
+@item 
+stunnel_cmd SECRET-MAGIC-COOKIE
 
 @quotation
 
@@ -7231,29 +7100,27 @@ B. stunnel_cmd SECRET-MAGIC-COOKIE
 @enumerate 
 
 @item 
-SECRET-MAGIC-COOKIE is a case sensitive single word phrase.  Any
-printable character other than the ‘#’ character is allowable.
-You may use up to 30 characters.
+SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the ‘#’ character is allowable.  You may use up to 30 characters.
 
 @item 
-Make sure the secret is a hard to guess phrase.  This is used
-by stunnel to forward on the originating IP address.
+Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address.
 @end enumerate
 @end quotation
 
-
-@enumerate 3
-
 @item 
 stunnel_host localhost 127.0.0.1 othersite.goes.here
-1.  This is optional.
-2.  If you do not specify it it defaults to ‘localhost 127.0.0.1’.
 
 @quotation
 
-If your domain has a unique name like ‘localhost.localdomain’
-like some ubuntu distributions, then you should customize your
-stunnel_host.
+
+@enumerate 
+
+@item 
+This is optional.
+
+@item 
+If you do not specify it it defaults to ‘localhost 127.0.0.1’.  If your domain has a unique name like ‘localhost.localdomain’ like some ubuntu distributions, then you should customize your stunnel_host.
+@end enumerate
 @end quotation
 @end enumerate
 
@@ -7262,8 +7129,16 @@ go into the stunnel directory
 
 @item 
 ./stunnel_setup.sh
-A. Choose the defaults or alter them based on preferences
-B. Make sure to choose the warpbubble conf file
+
+
+@enumerate 
+
+@item 
+Choose the defaults or alter them based on preferences
+
+@item 
+Make sure to choose the warpbubble conf file
+@end enumerate
 
 @item 
 ./stunnel_start.sh
@@ -7305,38 +7180,12 @@ You would set up the stunnel from the ‘stunnel’ directory.  There the follow
 files are of relevance:
 
 README                     – a readme explaining the points of stunnel
-stunnel.conf.example       – The example stunnel.conf file.  If you wish to
-
-@quotation
-
-create this manually you’re welcome to.  Just
-make sure the end file is stunnel.conf
-@end quotation
-
-
-@table @asis
-
-@item stunnel_setup.sh           – the script to build a stunnel.conf file for you
-
-which will be dropped at your specified location.
-@end table
-
+stunnel.conf.example       – The example stunnel.conf file.  If you wish to create this manually you’re welcome to.  Just make sure the end file is stunnel.conf
+stunnel_setup.sh           – the script to build a stunnel.conf file for you which will be dropped at your specified location.
 stunnel_kill.sh            – Stop/terminate the stunnel process.
 stunnel_start.sh           – Start the stunnel process.
-warpbubble.pl              – the perl script that handles stunnel to mush
-
-@quotation
-
-connectivity.
-@end quotation
-
-
-@table @asis
-
-@item stunnel_src                – If you do not have stunnel, this directory will
-
-allow you to download, compile and locally install.
-@end table
+warpbubble.pl              – the perl script that handles stunnel to mush connectivity.
+stunnel_src                – If you do not have stunnel, this directory will allow you to download, compile and locally install.
 
 @node Modifying netrhost conf,Running the stunnel setup program,stunnel directory,Detailed SSL setup with stunnel
 @anchor{security modifying-netrhost-conf}@anchor{10c}
@@ -7348,46 +7197,22 @@ the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect_host if
 not set will default to ‘localhost 127.0.0.1’.
 
+sconnect_reip 1         – This enables the SSL tunnel layer handler within rhost.
+sconnect_cmd XYZZY      – this will set the secret SSL command handshake command to XYZZY.  This is case sensitive and can be up to 31 characters.  Please make sure to only use printable non-whitespace characters.  Ergo: one word
+sconnect_host wildcards – This allows wildcarded sites (one or more) to allow to access the sconnect/stunnel handler.  This defaults to ‘localhost’ and ‘127.0.0.1’ so if you have ‘localhost.localdomain’ instead then you must set this to whatever is seen as ‘localhost’ to you.  You can verify this by checking your /etc/hosts file.
 
-@table @asis
-
-@item sconnect_reip 1         – This enables the SSL tunnel layer handler within
-
-rhost.
-
-@item sconnect_cmd XYZZY      – this will set the secret SSL command handshake
-
-command to XYZZY.  This is case sensitive and can
-be up to 31 characters.  Please make sure to only
-use printable non-whitespace characters.
-Ergo: one word
-
-@item sconnect_host wildcards – This allows wildcarded sites (one or more) to allow
-
-to access the sconnect/stunnel handler.  This
-defaults to ‘localhost’ and ‘127.0.0.1’ so if you
-have ‘localhost.localdomain’ instead then you must
-set this to whatever is seen as ‘localhost’ to you.
-You can verify this by checking your /etc/hosts
-file.
-
-@item Note: the sconnect_host is optional.  If you do not specify it, it will
-
-default to two values:  ‘localhost’ and ‘127.0.0.1’.
-@end table
+Note: the sconnect_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.
 
 @node Running the stunnel setup program,Starting the stunnel proxy,Modifying netrhost conf,Detailed SSL setup with stunnel
 @anchor{security running-the-stunnel-setup-program}@anchor{10d}
 @subsubsection Running the stunnel setup program
 
 
-At this point you’re ready to run the stunnel setup program.  So at this point
-type the following:
+At this point you’re ready to run the stunnel setup program.  So at this point type the following:
 
-@quotation
-
+@example
 ./stunnel_setup.sh
-@end quotation
+@end example
 
 This will prompt you through settings.  Most you can select the defaults to.
 The SSL port you may need to change based on your administrative requirements.
@@ -7405,12 +7230,11 @@ MUST have 127.0.0.1 as an entry for your sconnect_host file.
 
 
 When you have your stunnel.conf file to the way you want, you then
-issue the following command to run your SSL layer.
+issue the following command to run your SSL layer:
 
-@quotation
-
+@example
 ./stunnel_start.sh
-@end quotation
+@end example
 
 @node Shutting down the stunnel proxy,Configuring firewall on the host,Starting the stunnel proxy,Detailed SSL setup with stunnel
 @anchor{security shutting-down-the-stunnel-proxy}@anchor{10f}
@@ -7419,10 +7243,9 @@ issue the following command to run your SSL layer.
 
 If ever you need to bring down the SSL layer, you may kill it with the command:
 
-@quotation
-
+@example
 ./stunnel_stop.sh
-@end quotation
+@end example
 
 @node Configuring firewall on the host,,Shutting down the stunnel proxy,Detailed SSL setup with stunnel
 @anchor{security configuring-firewall-on-the-host}@anchor{110}
@@ -7689,13 +7512,7 @@ newsdb/unload; @@@@ dump the news bbs database to flatfile
 
 
 Startmush               – used to Start up the mush
-backup_flat.sh          – Used to run backups with @@dump/flat within the game
-
-@quotation
-
-(Started with Startmush automatically)
-@end quotation
-
+backup_flat.sh          – Used to run backups with @@dump/flat within the game (Started with Startmush automatically)
 backup_restart.sh       – Restart the backup_flat.sh if changes are done
 compress_logs.sh        – Compress logs in ‘oldlogs’.  Ran with Startmush
 findit.sh               – Internal script used to check for flatfile validity
@@ -7703,118 +7520,75 @@ mailhide.sh             – Wrapper to hide from address using the ‘mail’ pr
 minimal.sh              – Auto-load the minimal db into the mush
 proxysnarf.sha          – Internal script for the tor_pull.sh tor proxy blacklist
 tor_pullit.sh           – Internal script for the tor_pull.sh for proxy blacklist
-recovery.sh             – If your db is corrupt, run this to auto-revert to an
-
-@quotation
-
-earlier flatfile
-@end quotation
-
-
-@table @asis
-
-@item tor_pull.sh             – Create a blacklist.txt file that can be loaded via the
-
-internal @@blacklist command for proxy handling
-@end table
+recovery.sh             – If your db is corrupt, run this to auto-revert to an earlier flatfile
+tor_pull.sh             – Create a blacklist.txt file that can be loaded via the internal @@blacklist command for proxy handling
 
 @node Textfiles for RhostMUSH,,The following scripts are used in the game directory,Maintenance
 @anchor{maintenance textfiles-for-rhostmush}@anchor{121}
 @subsection Textfiles for RhostMUSH
 
 
-
-@table @asis
-
-@item areghost.txt           - file player gets when autoregistration on registered
-
-host.
-
-@item autoreg.txt            - file player gets when autoregistration on
-
-non-registered host.
-
-@item autoreg_include.txt    - file player receives in email when they autoregister
-
-attached to login/passwd
-@end table
-
+areghost.txt           - file player gets when autoregistration on registered host.
+autoreg.txt            - file player gets when autoregistration on non-registered host.
+autoreg_include.txt    - file player receives in email when they autoregister attached to login/passwd
 badsite.txt            - file player gets when site is not allowed.
 connect.txt            - file player gets when connect
-create_reg.txt         - file player gets when their site is register and they
+create_reg.txt         - file player gets when their site is register and they can’t create.
+doorconf.txt           - file that is searched for information regarding @@door.
 
-@quotation
-
-can’t create.
+@cartouche
+@quotation Note 
+Need to mkindx doorconf.txt doorconf.indx for this file
 @end quotation
+@end cartouche
 
+down.txt               - file player gets when the mush has logins disabled (@@disable login)
+error.txt              - the ‘Huh? (type help for help)’ messages.
 
-@table @asis
+@cartouche
+@quotation Note 
+Need to mkindx error.txt error.indx for this file
+@end quotation
+@end cartouche
 
-@item doorconf.txt           - file that is searched for information regarding @@door.
-
-@emph{NOTE}  Need to mkindx doorconf.txt doorconf.indx for this file
-
-@item down.txt               - file player gets when the mush has logins disabled
-
-(@@disable login)
-
-@item error.txt              - the ‘Huh? (type help for help)’ messages.
-
-@emph{NOTE}  Need to mkindx error.txt error.indx for this file
-
-@item full.txt               - file player gets when the mush can’t have any more
-
-players.
-@end table
-
+full.txt               - file player gets when the mush can’t have any more players.
 guest.txt              - file player gets when they connect as a guest.
 help.txt               - your help file
 
-@quotation
-
-@emph{NOTE}  Need to mkindx help.txt help.indx for this file
+@cartouche
+@quotation Note 
+Need to mkindx help.txt help.indx for this file
 @end quotation
+@end cartouche
 
 motd.txt               - your motd file
 news.txt               - your news file
 
-@quotation
-
-@emph{NOTE}  Need to mkindx news.txt news.indx for this file
+@cartouche
+@quotation Note 
+Need to mkindx news.txt news.indx for this file
 @end quotation
+@end cartouche
 
+newuser.txt            - file newly created players get when they connect for the first time.
+noguest.txt            - file player gets when they are not allowed to connect to a guest.
+plushelp.txt           - optional +help file. (needs compile time option)
 
-@table @asis
-
-@item newuser.txt            - file newly created players get when they connect for
-
-the first time.
-
-@item noguest.txt            - file player gets when they are not allowed to connect
-
-to a guest.
-
-@item plushelp.txt           - optional +help file. (needs compile time option)
-
-@emph{NOTE}  Need to mkindx plushelp.txt plushelp.indx for this file
-@end table
+@cartouche
+@quotation Note 
+Need to mkindx plushelp.txt plushelp.indx for this file
+@end quotation
+@end cartouche
 
 quit.txt               - file player gets when they disconnect.
-register.txt           - file player gets when the site is locked down for
+register.txt           - file player gets when the site is locked down for registration.
+wizhelp.txt            - your wizhelp file
 
-@quotation
-
-registration.
+@cartouche
+@quotation Note 
+Need to mkindx wizhelp.txt wizhelp.indx for this file
 @end quotation
-
-
-@table @asis
-
-@item wizhelp.txt            - your wizhelp file
-
-@emph{NOTE}  Need to mkindx wizhelp.txt wizhelp.indx for this file
-@end table
+@end cartouche
 
 wizmotd.txt            - your wiz motd file
 
@@ -7829,39 +7603,17 @@ wizmotd.txt            - your wiz motd file
 
 
 Q:  How do I put color in these files?
-A1: Look at ansi.h and you need to put the literal ASCII codes.
-
-@quotation
-
-They will look like: ^[[0m (for ANSI_NORMAL).  That’s <ESC>[
-@end quotation
-
-
-@table @asis
-
-@item A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding
-
-for ansi, however you compiled your Rhost.
-@end table
+A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: ^[[0m (for ANSI_NORMAL).  That’s <ESC>[
+A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding for ansi, however you compiled your Rhost.
 
 Q:  I want to design my own txt files to read in the mush.
-A:  Easy.  Design them like help.txt would be set up, mkindx the file,
-
-@quotation
-
-then you can access it via @@dynhelp online.
-@end quotation
+A:  Easy.  Design them like help.txt would be set up, mkindx the file, then you can access it via @@dynhelp online.
 
 Q:  Do I have to mkindx these files whenever I make changes?
 A:  Only the ones that have ‘& ‘ index. (help.txt, wizhelp.txt, news.txt, etc)
 
 Q:  Do I have to @@readcache in the game whenever I make a change?
-A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones
-
-@quotation
-
-you use with @@dynhelp.
-@end quotation
+A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones you use with @@dynhelp.
 
 Q:  Can’t I just make code in the mush that then is used for these silly txt files?
 A:  Absolutely.  Check ‘wizhelp file_object’.
@@ -10331,7 +10083,7 @@ hide                  Can set themselves DARK.
 Rhost Equiv: NOWHO (@@power)
 
 idle                  No idle timeout.
-Rhost Equiv: @@timeout >>*<<player=-1
+Rhost Equiv: @@timeout *player=-1
 
 link_variable         Can @@link an exit to “variable”.
 Rhost Equiv: Anyone can do this.  VARIABLE (@@toggle)
@@ -16829,26 +16581,21 @@ developers.
 I am aware that any modifications I make to the code is _FULLY_
 permitted, and that I do _NOT_ have to return said patches to the
 developers.
-
-@quotation
+@end enumerate
 @end quotation
 
-
-@table @asis
-
-@item Note: The Rhost developers would like to see what was added, and possibly
-
+@cartouche
+@quotation Note 
+The Rhost developers would like to see what was added, and possibly
 look at adding them to the main distro if we see others would like
 it (with full credits to you), but we belive once you have the code,
 you should be allowed to play with it fully as long as the first two
 rules are kept.
-———————————————————————
-@end table
-@end enumerate
 @end quotation
+@end cartouche
 
 @node Copyright,,RhostMUSH offers the following over other mushes,Top
-@anchor{index copyright}@anchor{17f}@anchor{index id1}@anchor{180}
+@anchor{index copyright}@anchor{17f}
 @unnumbered Copyright
 
 
@@ -16878,7 +16625,7 @@ This copyright information may not be changed, altered, or omitted.
 @end menu
 
 @node Indices and tables,,,Copyright
-@anchor{index indices-and-tables}@anchor{181}
+@anchor{index indices-and-tables}@anchor{180}
 @chapter Indices and tables
 
 
