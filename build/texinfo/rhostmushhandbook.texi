@@ -8100,9 +8100,9 @@ And you may see a netrhost.db.flat
 @subsubsection Check your netrhost.conf file
 
 
-If you never touched the >>*<<database or muddb_name params, you should be good.
+If you never touched the *database or muddb_name params, you should be good.
 
-Verify your >>*<<database params (and muddb_name) are still set to ‘netrhost’ as
+Verify your *database params (and muddb_name) are still set to ‘netrhost’ as
 part of the name.  Ergo, the default values and you didn’t change them.
 These should match up with the filenames in your data directory.
 
@@ -8216,7 +8216,7 @@ It attempts to write this at the time of server shutdown to
 hopefully keep a clean backup in the case of issues since
 it identifies the server is coming down hard.  Make sure
 if you plan to use the TERMFLAT as your recovery flatfile
-that the very last line shows something like ** END OF DUMP >>**<<.
+that the very last line shows something like ** END OF DUMP **.
 That shows you had a successful backup.
 
 @node Now to restore your database?,,The good news,If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!
@@ -8416,25 +8416,34 @@ The databases are NOT COMPATIBLE to each other, at least in the binary form.
 @subsubsection Downgrading QDBM to GDBM
 
 
+@cartouche
+@quotation Warning 
 I would NEVER change from QDBM back to GDBM, but if you’re set on it these steps:
 
 You would use the same steps if you plan to move QDBM to GDBM.  I however would
 not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously,
 don’t do it unless you have absolutely no other recourse.
 
-However, WARNING:
 IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify
-the following:
-1.  You have on a 64 bit system, no object that has more than 400 attributes on it.
-2.  You have on a 32 bit system, no object that has more than 750 attributes on it.
-3.  Any CONTENT of any attribute must be below 4000 characters in length.
-4.  Once you have that done, you may follow the procedures below on converting (upgrade)
-
-@quotation
-
-from GDBM to QDBM.  This works the same as converting (downgrading)
-QDBM back down to GDBM
+the following
 @end quotation
+@end cartouche
+
+
+@enumerate 
+
+@item 
+You have on a 64 bit system, no object that has more than 400 attributes on it.
+
+@item 
+You have on a 32 bit system, no object that has more than 750 attributes on it.
+
+@item 
+Any CONTENT of any attribute must be below 4000 characters in length.
+
+@item 
+Once you have that done, you may follow the procedures below on converting (upgrade) from GDBM to QDBM.  This works the same as converting (downgrading) QDBM back down to GDBM
+@end enumerate
 
 @node Upgradging GDBM to QDBM,,Downgrading QDBM to GDBM,Converting database betwen GDBM and QDBM
 @anchor{upgrade upgradging-gdbm-to-qdbm}@anchor{143}
@@ -8492,18 +8501,17 @@ newsdb/unload – If you use the hardcoded news/bbs engine.  This dumps it
 @enumerate A
 
 @item 
-@c Server/game/data/netrhost.db.flat
+Server/game/data/netrhost.db.flat
 
 @item 
-@c Server/game/data/RhostMUSH.dump.folder
-
-@c Server/game/data/RhostMUSH.dump.mail
-
-@item 
-(Optional) .. Server/game/data/RhostMUSH.areg.dump
+Server/game/data/RhostMUSH.dump.folder
+Server/game/data/RhostMUSH.dump.mail
 
 @item 
-(Optional) .. Server/game/data/RhostMUSH.news.flat
+(Optional) Server/game/data/RhostMUSH.areg.dump
+
+@item 
+(Optional) Server/game/data/RhostMUSH.news.flat
 @end enumerate
 @end quotation
 
@@ -8656,101 +8664,81 @@ D. newsdb/unload
 Shutdown your game (@@shutdown)
 
 @item 
-Make an image of all your current backed up files.  From
-The Server/game directory you would type:
+Make an image of all your current backed up files.  From The Server/game directory you would type:
 
-@quotation
-
+@example
 ./backup_flat.sh -s
-@end quotation
+@end example
 
 Please remember the ‘-s’ to the ./backup_flat.sh.
 
 @item 
-Make note of the most recently created file in the directory
-Server/game/oldflat.  It’s usually named something like:
+Make note of the most recently created file in the directory Server/game/oldflat.  It’s usually named something like:
 
-@quotation
-
+@example
 RhostMUSH.dbflat1.tar.gz
-@end quotation
+@end example
 
 You will need this file later.
 
 @item 
-Rename your ‘Rhost’ directory to something else.  This
-is the directory that you have containing the ‘Server’
-directory.  Name it anything you want other than ‘Rhost’.
-For those not used to unix you would type:
+Rename your ‘Rhost’ directory to something else.  This is the directory that you have containing the ‘Server’ directory.  Name it anything you want other than ‘Rhost’.  For those not used to unix you would type:
 
-@quotation
-
+@example
 mv Rhost Rhost_old
-@end quotation
+@end example
 
 @item 
+Pull in the latest Rhost.  You would type:
 
-@table @asis
+@example
+git clone https://github.com/RhostMUSH/trunk Rhost
+@end example
 
-@item Pull in the latest Rhost.  You would type:
-
-git clone @indicateurl{https://github.com/RhostMUSH/trunk} Rhost
-@end table
-
-You would type this in the same directory you have renamed
-your old ‘Rhost’ directory
+You would type this in the same directory you have renamed your old ‘Rhost’ directory
 
 @item 
+go into the Rhost/Server directory.   Type:
 
-@table @asis
-
-@item go into the Rhost/Server directory.   Type:
-
+@example
 make confsource
-@end table
+@end example
 
-Select what options you want (including the mysql and other goodies)
-then compile it (also within the menu, it’s the ‘r’ option).
+Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it’s the ‘r’ option).
 @end enumerate
 
-
-@table @asis
-
-@item 8   Once your game is compiled and ready to go you need to copy in
-
-the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz
-we mentioned in step #4 to the Server/game directory of your NEW
-GAME DIRECTORY.  From within the ‘game’ directory of your current
-game you should be able to issue (if you named the old one Rhost_old):
-Again this needs to be done FROM YOUR Server/game directory!!!
-A. cp netrhost.conf netrhost.conf.orig
-B. cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .
-C. tar -zxvf RhostMUSH.dbflat1.tar.gz
-D. Compare your current netrhost.conf to the default one that came with
+8   Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the ‘game’ directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!
 
 @quotation
 
-the source (that you renamed to netrhost.conf.orig).  Likely the
-only sections you have to add to your current netrhost.conf (that
-came with your RhostMUSH.dbflat1.tar.gz archive), will be toward
-the end, with the include rhost_ingame.conf and rhost_mysql.conf.
-Depending on how old your game is coming from you may need to add
-more options.  Any config option that is the same between the
-netrhost.conf files do not have to be copied over, and you want to
-keep your custom settings (like don’t port or other stuff you
-have already customized).
-@end quotation
 
-
-@enumerate 5
+@enumerate A
 
 @item 
+cp netrhost.conf netrhost.conf.orig
+
+@item 
+cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .
+
+@item 
+tar -zxvf RhostMUSH.dbflat1.tar.gz
+
+@item 
+Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don’t port or other stuff you have already customized).
+
+@item 
+Load in your flatfile information:
+
+@example
 ./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
-This loads in your flatfile information.
+@end example
 
 @item 
+Your ./Startmush should re-index all your txt files you originally made:
+
+@example
 ./Startmush
-Your ./Startmush should re-index all your txt files you originally made.
+@end example
 
 @item 
 In your game type the following as an immortal or as #1.
@@ -8762,19 +8750,28 @@ In your game type the following as an immortal or as #1.
 @enumerate 
 
 @item 
+Load in your mail flatfile:
+
+@example
 wmail/load
-This will load in your mail flatfile.
+@end example
 
 @item 
+Load in your autoregistration flatfile (if available):
+
+@example
 @@areg/load
-This will load in your autoregistration flatfile (if available)
+@end example
 
 @item 
+Load in your hardcoded bbs flatfile (if available):
+
+@example
 newsdb/load
-This will load in your hardcoded bbs flatfile (if available)
+@end example
 @end enumerate
 @end quotation
-@end table
+@end quotation
 
 
 @enumerate 9
@@ -8790,14 +8787,11 @@ You should be good to go on a current directory structure for Rhost.  Enjoy!
 
 MySQL is now native in RhostMUSH as of 3.9.5p2.
 
-To autodetect it, YOU MUST HAVE mysql_config installed and running
-on your server.  Without this, even if you have mysql db installed
-it won’t be able to recognize the parameters you will need for it
-and will thus fail.  Please check your linux distribution to see
-what packages are needed to install mysql_config.
-@strong{***************************************************************************}
-** IMPORTANT ** IMPORTANT ** IMPORTANT ** IMPORTANT @strong{IMPORTANT ** IMPORTANT **
-*****************************************************************************}
+@cartouche
+@quotation Warning 
+To autodetect it, YOU MUST HAVE mysql_config installed and running on your server.  Without this, even if you have mysql db installed it won’t be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql_config.
+@end quotation
+@end cartouche
 
 Download the git repository to a seperate directory so that you can
 copy over the files that it requires you to.
@@ -8835,100 +8829,45 @@ The following lines have to be REPLACED/CHANGED in local.c ( toward the top ):
 (        or:  cp ~/tmprho/Server/src/local.c ~/Rhost/Server/src/local.c )
 @end enumerate
 
+@cartouche
+@quotation Note 
+IF REPLACING/CHANGING local.c COPY BELOW
+@end quotation
+@end cartouche
 
-@table @asis
-
-@item //———– IF REPLACING/CHANGING local.c COPY BELOW ————————–
-
-
-@table @asis
-
-@item /* Called when the mush starts up, immediatly prior to the main game
-
-
-@itemize *
-
-@item 
-loop being entered. By this point all databases are loaded and
-
-@item 
-all variables configured.
-@end itemize
-
->>*<</
-
-@item #ifdef MYSQL_VERSION
-
-extern void local_mysql_init(void);
-extern int sql_shutdown(dbref player);
-@end table
-
+@example
+/* Called when the mush starts up, immediatly prior to the main game
+ * loop being entered. By this point all databases are loaded and
+ * all variables configured.
+ */
+#ifdef MYSQL_VERSION
+   extern void local_mysql_init(void);
+   extern int sql_shutdown(dbref player);
 #endif
 
-
-@table @asis
-
-@item #ifdef SQLITE
-
-extern void local_sqlite_init(void);
-@end table
-
-#endif /* SQLITE >>*<</
+#ifdef SQLITE
+   extern void local_sqlite_init(void);
+#endif /* SQLITE */
 
 void local_startup(void) @{
 #ifdef SQLITE
-
-@quotation
-
-local_sqlite_init();
-@end quotation
-
-#endif /* SQLITE >>*<</
+   local_sqlite_init();
+#endif /* SQLITE */
 #ifdef MYSQL_VERSION
-
-@quotation
-
-local_mysql_init();
-@end quotation
-
-
-@table @asis
-
-@item #endif
-
-load_regexp_functions();
-@end table
-
+   local_mysql_init();
+#endif
+   load_regexp_functions();
 @}
 
-
-@table @asis
-
-@item /* Called immediatly after the main game loop exits. At this point
-
-
-@itemize *
-
-@item 
-all databases and variables are still configured
-@end itemize
-
->>*<</
-@end table
-
+/* Called immediatly after the main game loop exits. At this point
+ * all databases and variables are still configured
+ */
 void local_shutdown(void) @{
 #ifdef MYSQL_VERSION
-
-@quotation
-
-sql_shutdown(-1);
-@end quotation
-
+   sql_shutdown(-1);
 #endif
 @}
-@end table
-
-//———– IF REPLACING/CHANGING local.c COPY ABOVE ————————–
+@end example
 
 
 @enumerate 6

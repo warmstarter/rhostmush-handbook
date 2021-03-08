@@ -6214,10 +6214,10 @@ File: rhostmushhandbook.info,  Node: Check your netrhost conf file,  Next: Check
 1.10.4.3 Check your netrhost.conf file
 ......................................
 
-If you never touched the >>*<<database or muddb_name params, you should
-be good.
+If you never touched the *database or muddb_name params, you should be
+good.
 
-Verify your >>*<<database params (and muddb_name) are still set to
+Verify your *database params (and muddb_name) are still set to
 ‘netrhost’ as part of the name.  Ergo, the default values and you didn’t
 change them.  These should match up with the filenames in your data
 directory.
@@ -6337,7 +6337,7 @@ attempts to write this at the time of server shutdown to hopefully keep
 a clean backup in the case of issues since it identifies the server is
 coming down hard.  Make sure if you plan to use the TERMFLAT as your
 recovery flatfile that the very last line shows something like ** END OF
-DUMP >>**<<.  That shows you had a successful backup.
+DUMP **.  That shows you had a successful backup.
 
 
 File: rhostmushhandbook.info,  Node: Now to restore your database?,  Prev: The good news,  Up: If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!
@@ -6532,23 +6532,29 @@ File: rhostmushhandbook.info,  Node: Downgrading QDBM to GDBM,  Next: Upgradging
 1.11.1.1 Downgrading QDBM to GDBM
 .................................
 
-I would NEVER change from QDBM back to GDBM, but if you’re set on it
-these steps:
+     Warning: I would NEVER change from QDBM back to GDBM, but if you’re
+     set on it these steps:
 
-You would use the same steps if you plan to move QDBM to GDBM. I however
-would not do this.  Moving from QDBM to GDBM is a huge step backwards.
-Seriously, don’t do it unless you have absolutely no other recourse.
+     You would use the same steps if you plan to move QDBM to GDBM. I
+     however would not do this.  Moving from QDBM to GDBM is a huge step
+     backwards.  Seriously, don’t do it unless you have absolutely no
+     other recourse.
 
-However, WARNING: IF you plan (for whatever reason) to move from QDBM to
-GDBM, you should verify the following: 1.  You have on a 64 bit system,
-no object that has more than 400 attributes on it.  2.  You have on a 32
-bit system, no object that has more than 750 attributes on it.  3.  Any
-CONTENT of any attribute must be below 4000 characters in length.  4.
-Once you have that done, you may follow the procedures below on
-converting (upgrade)
+     IF you plan (for whatever reason) to move from QDBM to GDBM, you
+     should verify the following
 
-     from GDBM to QDBM. This works the same as converting (downgrading)
-     QDBM back down to GDBM
+  1. You have on a 64 bit system, no object that has more than 400
+     attributes on it.
+
+  2. You have on a 32 bit system, no object that has more than 750
+     attributes on it.
+
+  3. Any CONTENT of any attribute must be below 4000 characters in
+     length.
+
+  4. Once you have that done, you may follow the procedures below on
+     converting (upgrade) from GDBM to QDBM. This works the same as
+     converting (downgrading) QDBM back down to GDBM
 
 
 File: rhostmushhandbook.info,  Node: Upgradging GDBM to QDBM,  Prev: Downgrading QDBM to GDBM,  Up: Converting database betwen GDBM and QDBM
@@ -6596,11 +6602,14 @@ File: rhostmushhandbook.info,  Node: Verify the files exist,  Next: Shutdown the
 1.11.1.4 Verify the files exist
 ...............................
 
-       A. 
-       B. 
-       C. (Optional) ..  Server/game/data/RhostMUSH.areg.dump
+       A. Server/game/data/netrhost.db.flat
 
-       D. (Optional) ..  Server/game/data/RhostMUSH.news.flat
+       B. Server/game/data/RhostMUSH.dump.folder
+          Server/game/data/RhostMUSH.dump.mail
+
+       C. (Optional) Server/game/data/RhostMUSH.areg.dump
+
+       D. (Optional) Server/game/data/RhostMUSH.news.flat
 
 
 File: rhostmushhandbook.info,  Node: Shutdown the MUSH,  Next: From the Server directory,  Prev: Verify the files exist,  Up: Upgradging GDBM to QDBM
@@ -6718,16 +6727,14 @@ First thing’s first.
 
           mv Rhost Rhost_old
 
-  6. 
-     Pull in the latest Rhost. You would type:
+  6. Pull in the latest Rhost.  You would type:
 
-          git clone ‘https://github.com/RhostMUSH/trunk’ Rhost
+          git clone https://github.com/RhostMUSH/trunk Rhost
 
      You would type this in the same directory you have renamed your old
      ‘Rhost’ directory
 
-  7. 
-     go into the Rhost/Server directory. Type:
+  7. go into the Rhost/Server directory.  Type:
 
           make confsource
 
@@ -6735,20 +6742,22 @@ First thing’s first.
      goodies) then compile it (also within the menu, it’s the ‘r’
      option).
 
-8 Once your game is compiled and ready to go you need to copy in
+8 Once your game is compiled and ready to go you need to copy in the
+data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned
+in step #4 to the Server/game directory of your NEW GAME DIRECTORY. From
+within the ‘game’ directory of your current game you should be able to
+issue (if you named the old one Rhost_old).  Again this needs to be done
+FROM YOUR Server/game directory!!!
 
-     the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we
-     mentioned in step #4 to the Server/game directory of your NEW GAME
-     DIRECTORY. From within the ‘game’ directory of your current game
-     you should be able to issue (if you named the old one Rhost_old):
-     Again this needs to be done FROM YOUR Server/game directory!!!  A.
-     cp netrhost.conf netrhost.conf.orig B. cp
-     ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .  C. tar
-     -zxvf RhostMUSH.dbflat1.tar.gz D. Compare your current
-     netrhost.conf to the default one that came with
+       A. cp netrhost.conf netrhost.conf.orig
 
-          the source (that you renamed to netrhost.conf.orig).  Likely
-          the only sections you have to add to your current
+       B. cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .
+
+       C. tar -zxvf RhostMUSH.dbflat1.tar.gz
+
+       D. Compare your current netrhost.conf to the default one that
+          came with the source (that you renamed to netrhost.conf.orig).
+          Likely the only sections you have to add to your current
           netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz
           archive), will be toward the end, with the include
           rhost_ingame.conf and rhost_mysql.conf.  Depending on how old
@@ -6758,21 +6767,28 @@ First thing’s first.
           custom settings (like don’t port or other stuff you have
           already customized).
 
-       5. ./db_load data/netrhost.gdbm data/netrhost.db.flat
-          data/netrhost.db.new This loads in your flatfile information.
+       E. Load in your flatfile information:
 
-       6. ./Startmush Your ./Startmush should re-index all your txt
-          files you originally made.
+               ./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
 
-       7. In your game type the following as an immortal or as #1.
+       F. Your ./Startmush should re-index all your txt files you
+          originally made:
 
-            1. wmail/load This will load in your mail flatfile.
+               ./Startmush
 
-            2. @areg/load This will load in your autoregistration
-               flatfile (if available)
+       G. In your game type the following as an immortal or as #1.
 
-            3. newsdb/load This will load in your hardcoded bbs flatfile
-               (if available)
+            1. Load in your mail flatfile:
+
+                    wmail/load
+
+            2. Load in your autoregistration flatfile (if available):
+
+                    @areg/load
+
+            3. Load in your hardcoded bbs flatfile (if available):
+
+                    newsdb/load
 
   9. You should be good to go on a current directory structure for
      Rhost.  Enjoy!
@@ -6785,15 +6801,12 @@ File: rhostmushhandbook.info,  Node: Adding MySQL to RhostMUSH older than 3 9 5p
 
 MySQL is now native in RhostMUSH as of 3.9.5p2.
 
-To autodetect it, YOU MUST HAVE mysql_config installed and running on
-your server.  Without this, even if you have mysql db installed it won’t
-be able to recognize the parameters you will need for it and will thus
-fail.  Please check your linux distribution to see what packages are
-needed to install mysql_config.
-`***************************************************************************'
-** IMPORTANT ** IMPORTANT ** IMPORTANT ** IMPORTANT `IMPORTANT **
-IMPORTANT **
-*****************************************************************************'
+     Warning: To autodetect it, YOU MUST HAVE mysql_config installed and
+     running on your server.  Without this, even if you have mysql db
+     installed it won’t be able to recognize the parameters you will
+     need for it and will thus fail.  Please check your linux
+     distribution to see what packages are needed to install
+     mysql_config.
 
 Download the git repository to a seperate directory so that you can copy
 over the files that it requires you to.
@@ -6822,57 +6835,39 @@ following files:
      distro ) ( do either: edit ~/Rhost/Server/src/local.c ) ( or: cp
      ~/tmprho/Server/src/local.c ~/Rhost/Server/src/local.c )
 
-//———– IF REPLACING/CHANGING local.c COPY BELOW ————————–
+     Note: IF REPLACING/CHANGING local.c COPY BELOW
 
      /* Called when the mush starts up, immediatly prior to the main game
-
-             * loop being entered.  By this point all databases are
-               loaded and
-
-             * all variables configured.
-
-          >>*<</
-
+      * loop being entered. By this point all databases are loaded and
+      * all variables configured.
+      */
      #ifdef MYSQL_VERSION
-
-          extern void local_mysql_init(void); extern int
-          sql_shutdown(dbref player);
-
+        extern void local_mysql_init(void);
+        extern int sql_shutdown(dbref player);
      #endif
 
      #ifdef SQLITE
+        extern void local_sqlite_init(void);
+     #endif /* SQLITE */
 
-          extern void local_sqlite_init(void);
-
-     #endif /* SQLITE >>*<</
-
-     void local_startup(void) { #ifdef SQLITE
-
-          local_sqlite_init();
-
-     #endif /* SQLITE >>*<</ #ifdef MYSQL_VERSION
-
-          local_mysql_init();
-
+     void local_startup(void) {
+     #ifdef SQLITE
+        local_sqlite_init();
+     #endif /* SQLITE */
+     #ifdef MYSQL_VERSION
+        local_mysql_init();
      #endif
-
-          load_regexp_functions();
-
+        load_regexp_functions();
      }
 
      /* Called immediatly after the main game loop exits. At this point
-
-             * all databases and variables are still configured
-
-          >>*<</
-
-     void local_shutdown(void) { #ifdef MYSQL_VERSION
-
-          sql_shutdown(-1);
-
-     #endif }
-
-//———– IF REPLACING/CHANGING local.c COPY ABOVE ————————–
+      * all databases and variables are still configured
+      */
+     void local_shutdown(void) {
+     #ifdef MYSQL_VERSION
+        sql_shutdown(-1);
+     #endif
+     }
 
   6. Issue ‘make clean’ then make confsource to rebuild using the latest
      builder script to build in the mysql changes.
@@ -12083,243 +12078,243 @@ Ref: 12e260658
 Node: Check your netrhost conf file260966
 Ref: troubleshooting check-your-netrhost-conf-file261206
 Ref: 12f261206
-Node: Check your mush config file261728
-Ref: troubleshooting check-your-mush-config-file261893
-Ref: 130261893
-Node: If the mush says it can’t read or load your database files262308
-Ref: troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files262640
-Ref: 131262640
-Node: Verify you have enough disk space quota263055
-Ref: troubleshooting verify-you-have-enough-disk-space-quota263251
-Ref: 132263251
-Node: Verify you have enough disk space system263906
-Ref: troubleshooting verify-you-have-enough-disk-space-system264102
-Ref: 133264102
-Node: If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!264880
-Ref: troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone265190
-Ref: 134265190
-Node: The bad news265941
-Ref: troubleshooting the-bad-news266151
-Ref: 135266151
-Node: The good news266554
-Ref: troubleshooting the-good-news266802
-Ref: 136266802
-Node: Now to restore your database?267552
-Ref: troubleshooting now-to-restore-your-database267779
-Ref: 137267779
-Node: Bringing up your mail database267912
-Ref: troubleshooting bringing-up-your-mail-database268153
-Ref: 138268153
-Node: If after restoring main database your mail database works268430
-Ref: troubleshooting if-after-restoring-main-database-your-mail-database-works268639
-Ref: 139268639
-Node: If after restoring main database your mail database does not work269095
-Ref: troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work269304
-Ref: 13a269304
-Node: Dealing with a corrupt mail database269650
-Ref: troubleshooting dealing-with-a-corrupt-mail-database269784
-Ref: 13b269784
-Node: Backing up your mail database270475
-Ref: troubleshooting backing-up-your-mail-database270640
-Ref: 13c270640
-Node: Automatically recovering your mail database271096
-Ref: troubleshooting automatically-recovering-your-mail-database271308
-Ref: 13d271308
-Node: Manually recovering your mail database271960
-Ref: troubleshooting manually-recovering-your-mail-database272134
-Ref: 13e272134
-Node: Upgrading273648
-Ref: upgrade doc273803
-Ref: 13f273803
-Ref: upgrade upgrading273803
-Ref: 140273803
-Node: Converting database betwen GDBM and QDBM274059
-Ref: upgrade converting-database-betwen-gdbm-and-qdbm274200
-Ref: 141274200
-Node: Downgrading QDBM to GDBM274539
-Ref: upgrade downgrading-qdbm-to-gdbm274683
-Ref: 142274683
-Node: Upgradging GDBM to QDBM275600
-Ref: upgrade upgradging-gdbm-to-qdbm275744
-Ref: 143275744
-Node: While logged in to your mush issue the following commands276408
-Ref: upgrade while-logged-in-to-your-mush-issue-the-following-commands276567
-Ref: 144276567
-Node: Verify the files exist277071
-Ref: upgrade verify-the-files-exist277256
-Ref: 145277256
-Node: Shutdown the MUSH277469
-Ref: upgrade shutdown-the-mush277622
-Ref: 146277622
-Node: From the Server directory277698
-Ref: upgrade from-the-server-directory277859
-Ref: 147277859
-Node: From the Server/game directory278784
-Ref: upgrade from-the-server-game-directory278983
-Ref: 148278983
-Node: While logged into the mush issue the following commands279180
-Ref: upgrade while-logged-into-the-mush-issue-the-following-commands279409
-Ref: 149279409
-Node: Verify that you have QDBM running and your valid values279714
-Ref: upgrade verify-that-you-have-qdbm-running-and-your-valid-values279904
-Ref: 14a279904
-Node: Updating RhostMUSH prior to 3 9 5p2280101
-Ref: upgrade updating-rhostmush-prior-to-3-9-5p2280295
-Ref: 14b280295
-Node: Adding MySQL to RhostMUSH older than 3 9 5p2284051
-Ref: upgrade adding-mysql-to-rhostmush-older-than-3-9-5p2284196
-Ref: 14c284196
-Node: Advanced Features287341
-Ref: advanced doc287503
-Ref: 14d287503
-Ref: advanced advanced-features287503
-Ref: 14e287503
-Node: Adding hardcoded modules287796
-Ref: advanced adding-hardcoded-modules287921
-Ref: 14f287921
-Node: Modifying sourcode to add a module288164
-Ref: advanced modifying-sourcode-to-add-a-module288320
-Ref: 150288320
-Node: Adding an @startup to make use of modules288652
-Ref: advanced adding-an-startup-to-make-use-of-modules288855
-Ref: 151288855
-Node: Contributing your module back to Rhost289434
-Ref: advanced contributing-your-module-back-to-rhost289594
-Ref: 152289594
-Node: Shutting down gracefully<2>289907
-Ref: advanced shutting-down-gracefully290055
-Ref: 153290055
-Node: Rhostmush has many ways to shut down the game cleanly<2>290309
-Ref: advanced rhostmush-has-many-ways-to-shut-down-the-game-cleanly290479
-Ref: 154290479
-Node: WARNING Never kill -9 Rhost<2>290817
-Ref: advanced warning-never-kill-9-rhost290987
-Ref: 155290987
-Node: Reality levels291567
-Ref: advanced reality-levels291735
-Ref: 156291735
-Node: Visibility292207
-Ref: advanced visibility292300
-Ref: 157292300
-Node: Descriptions293321
-Ref: advanced descriptions293447
-Ref: 158293447
-Node: Configuration parameters294697
-Ref: advanced configuration-parameters294830
-Ref: 159294830
-Node: Example mush conf296359
-Ref: advanced example-mush-conf296488
-Ref: 15a296488
-Node: Commands297044
-Ref: advanced commands297161
-Ref: 15b297161
-Node: Functions<3>297683
-Ref: advanced functions297822
-Ref: 15c297822
-Node: Example 1 A simplified Witchcraft setup298801
-Ref: advanced example-1-a-simplified-witchcraft-setup298953
-Ref: 15d298953
-Node: Example 2 A WoD setup302103
-Ref: advanced example-2-a-wod-setup302261
-Ref: 15e302261
-Node: Example 3 Softcode305895
-Ref: advanced example-3-softcode306005
-Ref: 15f306005
-Node: Execscript and external programs and scripts307981
-Ref: advanced execscript-and-external-programs-and-scripts308159
-Ref: 160308159
-Node: Mush variables308394
-Ref: advanced mush-variables308519
-Ref: 161308519
-Node: Built in variables308646
-Ref: advanced built-in-variables308752
-Ref: 162308752
-Node: Dynamic variables309290
-Ref: advanced dynamic-variables309423
-Ref: 163309423
-Node: Register variables309581
-Ref: advanced register-variables309687
-Ref: 164309687
-Node: set object309971
-Ref: advanced set-object310124
-Ref: 165310124
-Node: The format of the fields are310507
-Ref: advanced the-format-of-the-fields-are310593
-Ref: 166310593
-Node: Dynamic variables<2>310768
-Ref: advanced id67310894
-Ref: 167310894
-Node: Examples311021
-Ref: advanced examples311097
-Ref: 168311097
-Node: Register variables<2>311412
-Ref: advanced id68311538
-Ref: 169311538
-Node: Examples The last example clears register 0311745
-Ref: advanced examples-the-last-example-clears-register-0311857
-Ref: 16a311857
-Node: Example bash script312088
-Ref: advanced example-bash-script312245
-Ref: 16b312245
-Node: Notes and warnings312729
-Ref: advanced notes-and-warnings312910
-Ref: 16c312910
-Node: Scripts to be used with execscript313451
-Ref: advanced scripts-to-be-used-with-execscript313604
-Ref: 16d313604
-Node: Using printf for advanced text output315468
-Ref: advanced using-printf-for-advanced-text-output315623
-Ref: 16e315623
-Node: Example one315977
-Ref: advanced example-one316093
-Ref: 16f316093
-Node: Example two316393
-Ref: advanced example-two316531
-Ref: 170316531
-Node: Example three317099
-Ref: advanced example-three317217
-Ref: 171317217
-Node: Format for image files318090
-Ref: advanced format-for-image-files318262
-Ref: 172318262
-Node: Comparison of Flags334734
-Ref: flags doc334909
-Ref: 173334909
-Ref: flags comparison-of-flags334909
-Ref: 174334909
-Node: Comparison of powers336486
-Ref: powers doc336668
-Ref: 175336668
-Ref: powers comparison-of-powers336668
-Ref: 176336668
-Node: RhostMUSH Internal Help Files339414
-Ref: helpfile doc339609
-Ref: 177339609
-Ref: helpfile rhostmush-internal-help-files339609
-Ref: 178339609
-Node: RhostMUSH Internal Wizhelp Files339680
-Ref: wizhelpfile doc339864
-Ref: 179339864
-Ref: wizhelpfile rhostmush-internal-wizhelp-files339864
-Ref: 17a339864
-Node: Changelog339941
-Ref: changelog doc340131
-Ref: 17b340131
-Ref: changelog changelog340131
-Ref: 17c340131
-Node: Historical Non-Disclosure Agreement433896
-Ref: nda doc434045
-Ref: 17d434045
-Ref: nda historical-non-disclosure-agreement434045
-Ref: 17e434045
-Node: Copyright435298
-Ref: index copyright435415
-Ref: 17f435415
-Ref: index id1435415
-Ref: 180435415
-Node: Indices and tables436423
-Ref: index indices-and-tables436498
-Ref: 181436498
+Node: Check your mush config file261720
+Ref: troubleshooting check-your-mush-config-file261885
+Ref: 130261885
+Node: If the mush says it can’t read or load your database files262300
+Ref: troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files262632
+Ref: 131262632
+Node: Verify you have enough disk space quota263047
+Ref: troubleshooting verify-you-have-enough-disk-space-quota263243
+Ref: 132263243
+Node: Verify you have enough disk space system263898
+Ref: troubleshooting verify-you-have-enough-disk-space-system264094
+Ref: 133264094
+Node: If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!264872
+Ref: troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone265182
+Ref: 134265182
+Node: The bad news265933
+Ref: troubleshooting the-bad-news266143
+Ref: 135266143
+Node: The good news266546
+Ref: troubleshooting the-good-news266794
+Ref: 136266794
+Node: Now to restore your database?267540
+Ref: troubleshooting now-to-restore-your-database267767
+Ref: 137267767
+Node: Bringing up your mail database267900
+Ref: troubleshooting bringing-up-your-mail-database268141
+Ref: 138268141
+Node: If after restoring main database your mail database works268418
+Ref: troubleshooting if-after-restoring-main-database-your-mail-database-works268627
+Ref: 139268627
+Node: If after restoring main database your mail database does not work269083
+Ref: troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work269292
+Ref: 13a269292
+Node: Dealing with a corrupt mail database269638
+Ref: troubleshooting dealing-with-a-corrupt-mail-database269772
+Ref: 13b269772
+Node: Backing up your mail database270463
+Ref: troubleshooting backing-up-your-mail-database270628
+Ref: 13c270628
+Node: Automatically recovering your mail database271084
+Ref: troubleshooting automatically-recovering-your-mail-database271296
+Ref: 13d271296
+Node: Manually recovering your mail database271948
+Ref: troubleshooting manually-recovering-your-mail-database272122
+Ref: 13e272122
+Node: Upgrading273636
+Ref: upgrade doc273791
+Ref: 13f273791
+Ref: upgrade upgrading273791
+Ref: 140273791
+Node: Converting database betwen GDBM and QDBM274047
+Ref: upgrade converting-database-betwen-gdbm-and-qdbm274188
+Ref: 141274188
+Node: Downgrading QDBM to GDBM274527
+Ref: upgrade downgrading-qdbm-to-gdbm274671
+Ref: 142274671
+Node: Upgradging GDBM to QDBM275639
+Ref: upgrade upgradging-gdbm-to-qdbm275783
+Ref: 143275783
+Node: While logged in to your mush issue the following commands276447
+Ref: upgrade while-logged-in-to-your-mush-issue-the-following-commands276606
+Ref: 144276606
+Node: Verify the files exist277110
+Ref: upgrade verify-the-files-exist277295
+Ref: 145277295
+Node: Shutdown the MUSH277620
+Ref: upgrade shutdown-the-mush277773
+Ref: 146277773
+Node: From the Server directory277849
+Ref: upgrade from-the-server-directory278010
+Ref: 147278010
+Node: From the Server/game directory278935
+Ref: upgrade from-the-server-game-directory279134
+Ref: 148279134
+Node: While logged into the mush issue the following commands279331
+Ref: upgrade while-logged-into-the-mush-issue-the-following-commands279560
+Ref: 149279560
+Node: Verify that you have QDBM running and your valid values279865
+Ref: upgrade verify-that-you-have-qdbm-running-and-your-valid-values280055
+Ref: 14a280055
+Node: Updating RhostMUSH prior to 3 9 5p2280252
+Ref: upgrade updating-rhostmush-prior-to-3-9-5p2280446
+Ref: 14b280446
+Node: Adding MySQL to RhostMUSH older than 3 9 5p2284190
+Ref: upgrade adding-mysql-to-rhostmush-older-than-3-9-5p2284335
+Ref: 14c284335
+Node: Advanced Features287092
+Ref: advanced doc287254
+Ref: 14d287254
+Ref: advanced advanced-features287254
+Ref: 14e287254
+Node: Adding hardcoded modules287547
+Ref: advanced adding-hardcoded-modules287672
+Ref: 14f287672
+Node: Modifying sourcode to add a module287915
+Ref: advanced modifying-sourcode-to-add-a-module288071
+Ref: 150288071
+Node: Adding an @startup to make use of modules288403
+Ref: advanced adding-an-startup-to-make-use-of-modules288606
+Ref: 151288606
+Node: Contributing your module back to Rhost289185
+Ref: advanced contributing-your-module-back-to-rhost289345
+Ref: 152289345
+Node: Shutting down gracefully<2>289658
+Ref: advanced shutting-down-gracefully289806
+Ref: 153289806
+Node: Rhostmush has many ways to shut down the game cleanly<2>290060
+Ref: advanced rhostmush-has-many-ways-to-shut-down-the-game-cleanly290230
+Ref: 154290230
+Node: WARNING Never kill -9 Rhost<2>290568
+Ref: advanced warning-never-kill-9-rhost290738
+Ref: 155290738
+Node: Reality levels291318
+Ref: advanced reality-levels291486
+Ref: 156291486
+Node: Visibility291958
+Ref: advanced visibility292051
+Ref: 157292051
+Node: Descriptions293072
+Ref: advanced descriptions293198
+Ref: 158293198
+Node: Configuration parameters294448
+Ref: advanced configuration-parameters294581
+Ref: 159294581
+Node: Example mush conf296110
+Ref: advanced example-mush-conf296239
+Ref: 15a296239
+Node: Commands296795
+Ref: advanced commands296912
+Ref: 15b296912
+Node: Functions<3>297434
+Ref: advanced functions297573
+Ref: 15c297573
+Node: Example 1 A simplified Witchcraft setup298552
+Ref: advanced example-1-a-simplified-witchcraft-setup298704
+Ref: 15d298704
+Node: Example 2 A WoD setup301854
+Ref: advanced example-2-a-wod-setup302012
+Ref: 15e302012
+Node: Example 3 Softcode305646
+Ref: advanced example-3-softcode305756
+Ref: 15f305756
+Node: Execscript and external programs and scripts307732
+Ref: advanced execscript-and-external-programs-and-scripts307910
+Ref: 160307910
+Node: Mush variables308145
+Ref: advanced mush-variables308270
+Ref: 161308270
+Node: Built in variables308397
+Ref: advanced built-in-variables308503
+Ref: 162308503
+Node: Dynamic variables309041
+Ref: advanced dynamic-variables309174
+Ref: 163309174
+Node: Register variables309332
+Ref: advanced register-variables309438
+Ref: 164309438
+Node: set object309722
+Ref: advanced set-object309875
+Ref: 165309875
+Node: The format of the fields are310258
+Ref: advanced the-format-of-the-fields-are310344
+Ref: 166310344
+Node: Dynamic variables<2>310519
+Ref: advanced id67310645
+Ref: 167310645
+Node: Examples310772
+Ref: advanced examples310848
+Ref: 168310848
+Node: Register variables<2>311163
+Ref: advanced id68311289
+Ref: 169311289
+Node: Examples The last example clears register 0311496
+Ref: advanced examples-the-last-example-clears-register-0311608
+Ref: 16a311608
+Node: Example bash script311839
+Ref: advanced example-bash-script311996
+Ref: 16b311996
+Node: Notes and warnings312480
+Ref: advanced notes-and-warnings312661
+Ref: 16c312661
+Node: Scripts to be used with execscript313202
+Ref: advanced scripts-to-be-used-with-execscript313355
+Ref: 16d313355
+Node: Using printf for advanced text output315219
+Ref: advanced using-printf-for-advanced-text-output315374
+Ref: 16e315374
+Node: Example one315728
+Ref: advanced example-one315844
+Ref: 16f315844
+Node: Example two316144
+Ref: advanced example-two316282
+Ref: 170316282
+Node: Example three316850
+Ref: advanced example-three316968
+Ref: 171316968
+Node: Format for image files317841
+Ref: advanced format-for-image-files318013
+Ref: 172318013
+Node: Comparison of Flags334485
+Ref: flags doc334660
+Ref: 173334660
+Ref: flags comparison-of-flags334660
+Ref: 174334660
+Node: Comparison of powers336237
+Ref: powers doc336419
+Ref: 175336419
+Ref: powers comparison-of-powers336419
+Ref: 176336419
+Node: RhostMUSH Internal Help Files339165
+Ref: helpfile doc339360
+Ref: 177339360
+Ref: helpfile rhostmush-internal-help-files339360
+Ref: 178339360
+Node: RhostMUSH Internal Wizhelp Files339431
+Ref: wizhelpfile doc339615
+Ref: 179339615
+Ref: wizhelpfile rhostmush-internal-wizhelp-files339615
+Ref: 17a339615
+Node: Changelog339692
+Ref: changelog doc339882
+Ref: 17b339882
+Ref: changelog changelog339882
+Ref: 17c339882
+Node: Historical Non-Disclosure Agreement433647
+Ref: nda doc433796
+Ref: 17d433796
+Ref: nda historical-non-disclosure-agreement433796
+Ref: 17e433796
+Node: Copyright435049
+Ref: index copyright435166
+Ref: 17f435166
+Ref: index id1435166
+Ref: 180435166
+Node: Indices and tables436174
+Ref: index indices-and-tables436249
+Ref: 181436249
 
 End Tag Table
 

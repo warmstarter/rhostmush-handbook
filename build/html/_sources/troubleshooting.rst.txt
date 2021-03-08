@@ -157,9 +157,9 @@ And you may see a netrhost.db.flat
 Check your netrhost.conf file
 +++++++++++++++++++++++++++++
 
-If you never touched the *database or muddb_name params, you should be good.
+If you never touched the \*database or muddb_name params, you should be good.
 
-Verify your *database params (and muddb_name) are still set to 'netrhost' as 
+Verify your \*database params (and muddb_name) are still set to 'netrhost' as 
 part of the name.  Ergo, the default values and you didn't change them.  
 These should match up with the filenames in your data directory.
 
@@ -246,7 +246,7 @@ It attempts to write this at the time of server shutdown to
 hopefully keep a clean backup in the case of issues since
 it identifies the server is coming down hard.  Make sure
 if you plan to use the TERMFLAT as your recovery flatfile
-that the very last line shows something like ** END OF DUMP **.
+that the very last line shows something like \** END OF DUMP \**.
 That shows you had a successful backup.
 
 Now, to restore your database?

@@ -6622,10 +6622,10 @@ And you may see a netrhost.db.flat
 \paragraph{Check your netrhost.conf file}
 \label{\detokenize{troubleshooting:check-your-netrhost-conf-file}}
 \sphinxAtStartPar
-If you never touched the {\color{red}\bfseries{}*}database or muddb\_name params, you should be good.
+If you never touched the *database or muddb\_name params, you should be good.
 
 \sphinxAtStartPar
-Verify your {\color{red}\bfseries{}*}database params (and muddb\_name) are still set to ‘netrhost’ as
+Verify your *database params (and muddb\_name) are still set to ‘netrhost’ as
 part of the name.  Ergo, the default values and you didn’t change them.
 These should match up with the filenames in your data directory.
 
@@ -6726,7 +6726,7 @@ It attempts to write this at the time of server shutdown to
 hopefully keep a clean backup in the case of issues since
 it identifies the server is coming down hard.  Make sure
 if you plan to use the TERMFLAT as your recovery flatfile
-that the very last line shows something like ** END OF DUMP {\color{red}\bfseries{}**}.
+that the very last line shows something like ** END OF DUMP **.
 That shows you had a successful backup.
 
 
@@ -6905,6 +6905,7 @@ The databases are NOT COMPATIBLE to each other, at least in the binary form.
 
 \subsubsection{Downgrading QDBM to GDBM}
 \label{\detokenize{upgrade:downgrading-qdbm-to-gdbm}}
+\begin{sphinxadmonition}{warning}{Warning:}
 \sphinxAtStartPar
 I would NEVER change from QDBM back to GDBM, but if you’re set on it these steps:
 
@@ -6914,19 +6915,28 @@ not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously,
 don’t do it unless you have absolutely no other recourse.
 
 \sphinxAtStartPar
-However, WARNING:
 IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify
-the following:
-1.  You have on a 64 bit system, no object that has more than 400 attributes on it.
-2.  You have on a 32 bit system, no object that has more than 750 attributes on it.
-3.  Any CONTENT of any attribute must be below 4000 characters in length.
-4.  Once you have that done, you may follow the procedures below on converting (upgrade)
-\begin{quote}
-
+the following
+\end{sphinxadmonition}
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
 \sphinxAtStartPar
-from GDBM to QDBM.  This works the same as converting (downgrading)
-QDBM back down to GDBM
-\end{quote}
+You have on a 64 bit system, no object that has more than 400 attributes on it.
+
+\item {} 
+\sphinxAtStartPar
+You have on a 32 bit system, no object that has more than 750 attributes on it.
+
+\item {} 
+\sphinxAtStartPar
+Any CONTENT of any attribute must be below 4000 characters in length.
+
+\item {} 
+\sphinxAtStartPar
+Once you have that done, you may follow the procedures below on converting (upgrade) from GDBM to QDBM.  This works the same as converting (downgrading) QDBM back down to GDBM
+
+\end{enumerate}
 
 
 \subsubsection{Upgradging GDBM to QDBM}
@@ -6965,14 +6975,21 @@ newsdb/unload \textendash{} If you use the hardcoded news/bbs engine.  This dump
 \label{\detokenize{upgrade:verify-the-files-exist}}\begin{enumerate}
 \sphinxsetlistlabels{\Alph}{enumi}{enumii}{}{.}%
 \item {} 
-\item {} 
-\item {} 
 \sphinxAtStartPar
-(Optional) .. Server/game/data/RhostMUSH.areg.dump
+Server/game/data/netrhost.db.flat
 
 \item {} 
 \sphinxAtStartPar
-(Optional) .. Server/game/data/RhostMUSH.news.flat
+Server/game/data/RhostMUSH.dump.folder
+Server/game/data/RhostMUSH.dump.mail
+
+\item {} 
+\sphinxAtStartPar
+(Optional) Server/game/data/RhostMUSH.areg.dump
+
+\item {} 
+\sphinxAtStartPar
+(Optional) Server/game/data/RhostMUSH.news.flat
 
 \end{enumerate}
 
@@ -7119,102 +7136,94 @@ Shutdown your game (@shutdown)
 
 \item {} 
 \sphinxAtStartPar
-Make an image of all your current backed up files.  From
-The Server/game directory you would type:
-\begin{quote}
+Make an image of all your current backed up files.  From The Server/game directory you would type:
 
-\sphinxAtStartPar
-./backup\_flat.sh \sphinxhyphen{}s
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{.}\PYG{o}{/}\PYG{n}{backup\PYGZus{}flat}\PYG{o}{.}\PYG{n}{sh} \PYG{o}{\PYGZhy{}}\PYG{n}{s}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 Please remember the ‘\sphinxhyphen{}s’ to the ./backup\_flat.sh.
 
 \item {} 
 \sphinxAtStartPar
-Make note of the most recently created file in the directory
-Server/game/oldflat.  It’s usually named something like:
-\begin{quote}
+Make note of the most recently created file in the directory Server/game/oldflat.  It’s usually named something like:
 
-\sphinxAtStartPar
-RhostMUSH.dbflat1.tar.gz
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{RhostMUSH}\PYG{o}{.}\PYG{n}{dbflat1}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 You will need this file later.
 
 \item {} 
 \sphinxAtStartPar
-Rename your ‘Rhost’ directory to something else.  This
-is the directory that you have containing the ‘Server’
-directory.  Name it anything you want other than ‘Rhost’.
-For those not used to unix you would type:
-\begin{quote}
+Rename your ‘Rhost’ directory to something else.  This is the directory that you have containing the ‘Server’ directory.  Name it anything you want other than ‘Rhost’.  For those not used to unix you would type:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{mv} \PYG{n}{Rhost} \PYG{n}{Rhost\PYGZus{}old}
+\end{sphinxVerbatim}
+
+\item {} 
+\sphinxAtStartPar
+Pull in the latest Rhost.  You would type:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{git} \PYG{n}{clone} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{github}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{RhostMUSH}\PYG{o}{/}\PYG{n}{trunk} \PYG{n}{Rhost}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-mv Rhost Rhost\_old
-\end{quote}
+You would type this in the same directory you have renamed your old ‘Rhost’ directory
 
-\item {} \begin{description}
-\item[{Pull in the latest Rhost.  You would type:}] \leavevmode
+\item {} 
 \sphinxAtStartPar
-git clone \sphinxurl{https://github.com/RhostMUSH/trunk} Rhost
+go into the Rhost/Server directory.   Type:
 
-\end{description}
-
-\sphinxAtStartPar
-You would type this in the same directory you have renamed
-your old ‘Rhost’ directory
-
-\item {} \begin{description}
-\item[{go into the Rhost/Server directory.   Type:}] \leavevmode
-\sphinxAtStartPar
-make confsource
-
-\end{description}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{make} \PYG{n}{confsource}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Select what options you want (including the mysql and other goodies)
-then compile it (also within the menu, it’s the ‘r’ option).
+Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it’s the ‘r’ option).
 
 \end{enumerate}
-\begin{description}
-\item[{8   Once your game is compiled and ready to go you need to copy in}] \leavevmode
-\sphinxAtStartPar
-the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz
-we mentioned in step \#4 to the Server/game directory of your NEW
-GAME DIRECTORY.  From within the ‘game’ directory of your current
-game you should be able to issue (if you named the old one Rhost\_old):
-Again this needs to be done FROM YOUR Server/game directory!!!
-A. cp netrhost.conf netrhost.conf.orig
-B. cp ../../Rhost\_old/Server/game/RhostMUSH.dbflat1.tar.gz .
-C. tar \sphinxhyphen{}zxvf RhostMUSH.dbflat1.tar.gz
-D. Compare your current netrhost.conf to the default one that came with
-\begin{quote}
 
 \sphinxAtStartPar
-the source (that you renamed to netrhost.conf.orig).  Likely the
-only sections you have to add to your current netrhost.conf (that
-came with your RhostMUSH.dbflat1.tar.gz archive), will be toward
-the end, with the include rhost\_ingame.conf and rhost\_mysql.conf.
-Depending on how old your game is coming from you may need to add
-more options.  Any config option that is the same between the
-netrhost.conf files do not have to be copied over, and you want to
-keep your custom settings (like don’t port or other stuff you
-have already customized).
-\end{quote}
+8   Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step \#4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the ‘game’ directory of your current game you should be able to issue (if you named the old one Rhost\_old). Again this needs to be done FROM YOUR Server/game directory!!!
+\begin{quote}
 \begin{enumerate}
 \sphinxsetlistlabels{\Alph}{enumi}{enumii}{}{.}%
-\setcounter{enumi}{4}
 \item {} 
 \sphinxAtStartPar
-./db\_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
-This loads in your flatfile information.
+cp netrhost.conf netrhost.conf.orig
 
 \item {} 
 \sphinxAtStartPar
-./Startmush
-Your ./Startmush should re\sphinxhyphen{}index all your txt files you originally made.
+cp ../../Rhost\_old/Server/game/RhostMUSH.dbflat1.tar.gz .
+
+\item {} 
+\sphinxAtStartPar
+tar \sphinxhyphen{}zxvf RhostMUSH.dbflat1.tar.gz
+
+\item {} 
+\sphinxAtStartPar
+Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost\_ingame.conf and rhost\_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don’t port or other stuff you have already customized).
+
+\item {} 
+\sphinxAtStartPar
+Load in your flatfile information:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{.}\PYG{o}{/}\PYG{n}{db\PYGZus{}load} \PYG{n}{data}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{gdbm} \PYG{n}{data}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{db}\PYG{o}{.}\PYG{n}{flat} \PYG{n}{data}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{db}\PYG{o}{.}\PYG{n}{new}
+\end{sphinxVerbatim}
+
+\item {} 
+\sphinxAtStartPar
+Your ./Startmush should re\sphinxhyphen{}index all your txt files you originally made:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{.}\PYG{o}{/}\PYG{n}{Startmush}
+\end{sphinxVerbatim}
 
 \item {} 
 \sphinxAtStartPar
@@ -7225,22 +7234,30 @@ In your game type the following as an immortal or as \#1.
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
-wmail/load
-This will load in your mail flatfile.
+Load in your mail flatfile:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{wmail}\PYG{o}{/}\PYG{n}{load}
+\end{sphinxVerbatim}
 
 \item {} 
 \sphinxAtStartPar
-@areg/load
-This will load in your autoregistration flatfile (if available)
+Load in your autoregistration flatfile (if available):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@areg}\PYG{o}{/}\PYG{n}{load}
+\end{sphinxVerbatim}
 
 \item {} 
 \sphinxAtStartPar
-newsdb/load
-This will load in your hardcoded bbs flatfile (if available)
+Load in your hardcoded bbs flatfile (if available):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{newsdb}\PYG{o}{/}\PYG{n}{load}
+\end{sphinxVerbatim}
 
 \end{enumerate}
-
-\end{description}
+\end{quote}
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \setcounter{enumi}{8}
@@ -7256,15 +7273,10 @@ You should be good to go on a current directory structure for Rhost.  Enjoy!
 \sphinxAtStartPar
 MySQL is now native in RhostMUSH as of 3.9.5p2.
 
+\begin{sphinxadmonition}{warning}{Warning:}
 \sphinxAtStartPar
-To autodetect it, YOU MUST HAVE mysql\_config installed and running
-on your server.  Without this, even if you have mysql db installed
-it won’t be able to recognize the parameters you will need for it
-and will thus fail.  Please check your linux distribution to see
-what packages are needed to install mysql\_config.
-\sphinxstylestrong{***************************************************************************}
-** IMPORTANT ** IMPORTANT ** IMPORTANT ** IMPORTANT \sphinxstylestrong{IMPORTANT ** IMPORTANT **
-*****************************************************************************}
+To autodetect it, YOU MUST HAVE mysql\_config installed and running on your server.  Without this, even if you have mysql db installed it won’t be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql\_config.
+\end{sphinxadmonition}
 
 \sphinxAtStartPar
 Download the git repository to a seperate directory so that you can
@@ -7308,97 +7320,45 @@ The following lines have to be REPLACED/CHANGED in local.c ( toward the top ):
 (        or:  cp \textasciitilde{}/tmprho/Server/src/local.c \textasciitilde{}/Rhost/Server/src/local.c )
 
 \end{enumerate}
-\begin{description}
-\item[{//———\textendash{} IF REPLACING/CHANGING local.c COPY BELOW ————————\textendash{}}] \leavevmode\begin{description}
-\item[{/* Called when the mush starts up, immediatly prior to the main game}] \leavevmode\begin{itemize}
-\item {} 
+
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-loop being entered. By this point all databases are loaded and
+IF REPLACING/CHANGING local.c COPY BELOW
+\end{sphinxadmonition}
 
-\item {} 
-\sphinxAtStartPar
-all variables configured.
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+cm}{/* Called when the mush starts up, immediatly prior to the main game}
+\PYG{c+cm}{ * loop being entered. By this point all databases are loaded and}
+\PYG{c+cm}{ * all variables configured.}
+\PYG{c+cm}{ */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{ifdef MYSQL\PYGZus{}VERSION}
+   \PYG{k}{extern} \PYG{k+kt}{void} \PYG{n}{local\PYGZus{}mysql\PYGZus{}init}\PYG{p}{(}\PYG{k+kt}{void}\PYG{p}{)}\PYG{p}{;}
+   \PYG{k}{extern} \PYG{k+kt}{int} \PYG{n}{sql\PYGZus{}shutdown}\PYG{p}{(}\PYG{n}{dbref} \PYG{n}{player}\PYG{p}{)}\PYG{p}{;}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{endif}
 
-\end{itemize}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{ifdef SQLITE}
+   \PYG{k}{extern} \PYG{k+kt}{void} \PYG{n}{local\PYGZus{}sqlite\PYGZus{}init}\PYG{p}{(}\PYG{k+kt}{void}\PYG{p}{)}\PYG{p}{;}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{endif }\PYG{c+cm}{/* SQLITE */}
 
-\sphinxAtStartPar
-{\color{red}\bfseries{}*}/
+\PYG{k+kt}{void} \PYG{n+nf}{local\PYGZus{}startup}\PYG{p}{(}\PYG{k+kt}{void}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{ifdef SQLITE}
+   \PYG{n}{local\PYGZus{}sqlite\PYGZus{}init}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{endif }\PYG{c+cm}{/* SQLITE */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{ifdef MYSQL\PYGZus{}VERSION}
+   \PYG{n}{local\PYGZus{}mysql\PYGZus{}init}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{endif}
+   \PYG{n}{load\PYGZus{}regexp\PYGZus{}functions}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{p}{\PYGZcb{}}
 
-\item[{\#ifdef MYSQL\_VERSION}] \leavevmode
-\sphinxAtStartPar
-extern void local\_mysql\_init(void);
-extern int sql\_shutdown(dbref player);
-
-\end{description}
-
-\sphinxAtStartPar
-\#endif
-\begin{description}
-\item[{\#ifdef SQLITE}] \leavevmode
-\sphinxAtStartPar
-extern void local\_sqlite\_init(void);
-
-\end{description}
-
-\sphinxAtStartPar
-\#endif /* SQLITE {\color{red}\bfseries{}*}/
-
-\sphinxAtStartPar
-void local\_startup(void) \{
-\#ifdef SQLITE
-\begin{quote}
-
-\sphinxAtStartPar
-local\_sqlite\_init();
-\end{quote}
-
-\sphinxAtStartPar
-\#endif /* SQLITE {\color{red}\bfseries{}*}/
-\#ifdef MYSQL\_VERSION
-\begin{quote}
-
-\sphinxAtStartPar
-local\_mysql\_init();
-\end{quote}
-\begin{description}
-\item[{\#endif}] \leavevmode
-\sphinxAtStartPar
-load\_regexp\_functions();
-
-\end{description}
-
-\sphinxAtStartPar
-\}
-\begin{description}
-\item[{/* Called immediatly after the main game loop exits. At this point}] \leavevmode\begin{itemize}
-\item {} 
-\sphinxAtStartPar
-all databases and variables are still configured
-
-\end{itemize}
-
-\sphinxAtStartPar
-{\color{red}\bfseries{}*}/
-
-\end{description}
-
-\sphinxAtStartPar
-void local\_shutdown(void) \{
-\#ifdef MYSQL\_VERSION
-\begin{quote}
-
-\sphinxAtStartPar
-sql\_shutdown(\sphinxhyphen{}1);
-\end{quote}
-
-\sphinxAtStartPar
-\#endif
-\}
-
-\end{description}
-
-\sphinxAtStartPar
-//———\textendash{} IF REPLACING/CHANGING local.c COPY ABOVE ————————\textendash{}
+\PYG{c+cm}{/* Called immediatly after the main game loop exits. At this point}
+\PYG{c+cm}{ * all databases and variables are still configured}
+\PYG{c+cm}{ */}
+\PYG{k+kt}{void} \PYG{n+nf}{local\PYGZus{}shutdown}\PYG{p}{(}\PYG{k+kt}{void}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{ifdef MYSQL\PYGZus{}VERSION}
+   \PYG{n}{sql\PYGZus{}shutdown}\PYG{p}{(}\PYG{l+m+mi}{\PYGZhy{}1}\PYG{p}{)}\PYG{p}{;}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{endif}
+\PYG{p}{\PYGZcb{}}
+\end{sphinxVerbatim}
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \setcounter{enumi}{5}
