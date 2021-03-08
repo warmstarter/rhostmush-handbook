@@ -21,6 +21,40 @@ System Requirements
   you select and packages you include)
 
 
+Supported Platforms
+-------------------
+
+SunOS (all platforms) Solaris (all platforms) Linux (all platforms
+except redhat 5.x mentioned below) AIX (all platforms) Ultrix (all
+platforms) iBSD (all platforms) FreeBSD (all platforms) OpenBSD (all
+platforms) NetBSD (all platforms) IRIX (all platforms) HPUX (32 bit
+systems only)
+
+If it’s not listed here, it probably still will compile clean.
+
+
+Unsupported Platforms
+---------------------
+
+Win32/Win16 Alpha systems.
+
+
+Untested Platforms
+------------------
+
+HP-UX (64 bit systems) VMS (all platforms)
+
+
+Known Platform Issues
+---------------------
+
+On Alpha boxes running Redhat 5.0, structure pointers are slaughtered
+with the built-in gcc package (up to and including 2.8.x).  Because of
+this some config options may not work fully or cause the server to
+crash.  This is only a known issue with config options and only on
+this platform.
+
+
 Requirements
 ============
 
@@ -34,7 +68,7 @@ password encryption - this is usually standard on unix based systems)
 
 
 Optional Packages
-=================
+-----------------
 
 RhostMUSH also offers optional linking and library attachments.  For
 some of these libraries it will attempt to do auto-detection, but in a

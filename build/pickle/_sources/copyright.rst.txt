@@ -4,12 +4,13 @@
 Copyright
 =========
 
-Copyright (c) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 
-              2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011,
-              2012, 2013, 2014
-              Seawolf, Thorin, Ashen-Shugar, Kale, Lensman, Morgan, Odin, Kage,
-              Ambrosia, Rook
-              All rights, reserved.
+Copyright |copy| 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
+2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021
+
+Seawolf, Thorin, Ashen-Shugar, Kale, Lensman, Morgan, Odin, Kage, Ambrosia, Rook
+
+All rights, reserved.
 
 The copyright includes but is not limited to all changes and modifications to
 the code, the help files, and all information included in this code.
@@ -22,3 +23,5 @@ the original writers of the code in writing.
 This copyright does not include the original code that was given as GNU freeware
 
 This copyright information may not be changed, altered, or omitted.
+
+.. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN

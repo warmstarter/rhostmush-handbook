@@ -45,9 +45,14 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme_path = ['_themes']
-html_theme = 'insegel'
+html_theme = 'groundwork'
 html_theme_options = {
-    'wending_last_updated' : False
+    "sidebar_width": '220px',
+    "stickysidebar": True,
+    "stickysidebarscrollable": False,
+    "contribute": True,
+    "github_fork": "useblocks/groundwork",
+    "github_user": "useblocks",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

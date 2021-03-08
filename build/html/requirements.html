@@ -1,61 +1,45 @@
+
 <!DOCTYPE html>
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2D2D2D" />
-  
-  <title>RhostMUSH Handbook :: Requirements</title>
-  
 
-  <link rel="icon" type="image/png" sizes="32x32" href="_static/img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="_static/img/favicon-16x16.png">
-        <link rel="index" title="Index"
-              href="genindex.html"/>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Requirements &#8212; RhostMUSH Handbook  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/groundwork.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Comparison of modern MUSH servers" href="differences.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="differences.html" title="Comparison of modern MUSH servers"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RhostMUSH Handbook  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Requirements</a></li> 
+      </ul>
+    </div>  
 
-  <link rel="stylesheet" href="_static/css/insegel.css"/>
-
-  <script type="text/javascript">
-    var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:'',
-        VERSION:'',
-        LANGUAGE:'None',
-        COLLAPSE_INDEX:false,
-        FILE_SUFFIX:'.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-    };
-  </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-
-  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
-
-</head>
-
-<body>
-  <div id="insegel-container">
-    <header>
-      <div id="logo-container">
-          
-          <a href="index.html"><img src="_static/img/logo.svg"></a>
-          
-
-      </div>
-      <div id="project-container">
-        <h1>RhostMUSH Handbook Documentation</h1>
-      </div>
-    </header>
-
-    <div id="content-container">
-
-      <div id="main-content-container">
-        <div id="main-content-header">
-          <h1>Requirements</h1>
-        </div>
-        <div id="main-content">
-          
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
   <div class="section" id="requirements">
 <span id="id1"></span><h1>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="system-requirements">
@@ -67,6 +51,38 @@
 <li><p>Disk:  100 MB or more (depending on size of db and how many backups you wish to maintain)</p></li>
 <li><p>Memory: 12-100 MB (depending on size of mush and what size buffers you select and packages you include)</p></li>
 </ul>
+<div class="section" id="supported-platforms">
+<h3>Supported Platforms<a class="headerlink" href="#supported-platforms" title="Permalink to this headline">¶</a></h3>
+<p>SunOS (all platforms)
+Solaris (all platforms)
+Linux (all platforms except redhat 5.x mentioned below)
+AIX (all platforms)
+Ultrix (all platforms)
+iBSD (all platforms)
+FreeBSD (all platforms)
+OpenBSD (all platforms)
+NetBSD (all platforms)
+IRIX (all platforms)
+HPUX (32 bit systems only)</p>
+<p>If it’s not listed here, it probably still will compile clean.</p>
+</div>
+<div class="section" id="unsupported-platforms">
+<h3>Unsupported Platforms<a class="headerlink" href="#unsupported-platforms" title="Permalink to this headline">¶</a></h3>
+<p>Win32/Win16
+Alpha systems.</p>
+</div>
+<div class="section" id="untested-platforms">
+<h3>Untested Platforms<a class="headerlink" href="#untested-platforms" title="Permalink to this headline">¶</a></h3>
+<p>HP-UX (64 bit systems)
+VMS (all platforms)</p>
+</div>
+<div class="section" id="known-platform-issues">
+<h3>Known Platform Issues<a class="headerlink" href="#known-platform-issues" title="Permalink to this headline">¶</a></h3>
+<p>On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with
+the built-in gcc package (up to and including 2.8.x).  Because of this some
+config options may not work fully or cause the server to crash.  This is only
+a known issue with config options and only on this platform.</p>
+</div>
 </div>
 <div class="section" id="id2">
 <h2>Requirements<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
@@ -75,15 +91,15 @@
 * git (to clone the source and maintain patches)
 * bash/ksh/dash (or compatible shell - for use with build menu)
 * libcrypt (for password encryption - this is usually standard on unix based systems)</p>
-</div>
 <div class="section" id="optional-packages">
-<h2>Optional Packages<a class="headerlink" href="#optional-packages" title="Permalink to this headline">¶</a></h2>
+<h3>Optional Packages<a class="headerlink" href="#optional-packages" title="Permalink to this headline">¶</a></h3>
 <p>RhostMUSH also offers optional linking and library attachments.  For some of these libraries it will attempt to do auto-detection, but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.  Optional packages are as follows:
 * openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
 * mysql client &amp; mysql_config (required for mysql capabilities)
 * sqlite3 libraries (required for sqlite capabilities)
 * ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
 * libpcre (if you wish to use system pcre libraries instead of the built-in ones)</p>
+</div>
 </div>
 <div class="section" id="hosting-requirements">
 <h2>Hosting Requirements<a class="headerlink" href="#hosting-requirements" title="Permalink to this headline">¶</a></h2>
@@ -92,125 +108,77 @@
 </div>
 
 
+            <div class="clearer"></div>
+          </div>
         </div>
       </div>
-
-      <div id="side-menu-container">
-
-        <div id="search" role="search">
-        <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-            <input type="text" name="q" placeholder="Search..." />
-            <input type="hidden" name="check_keywords" value="yes" />
-            <input type="hidden" name="area" value="default" />
-        </form>
-</div>
-
-        <div id="side-menu" role="navigation">
-
-          
-  
-    
-  
-  
-    <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="01-intro.html">What RhostMUSH is about and what’s so great about RhostMUSH.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-compile.html">What to type to Compile and Install RhostMUSH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03-dbconversion.html">How to convert a database from another mush to RhostMUSH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="04-configure.html">What to type to configure and get your RhostMUSH up and running</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05-newmush.html">What to type to get the basics running if you did not choose a pre-existing flatfile</a></li>
-<li class="toctree-l1"><a class="reference internal" href="06-security.html">Considerations to locking down restrictions in RhostMUSH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="07-toggles.html">What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="08-lockdown.html">Extended lockdown of the mush and considerations.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="09-blocking.html">Methods to block anonymous connections and the pros and cons of doing so</a></li>
-<li class="toctree-l1"><a class="reference internal" href="10-customize.html">What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</a></li>
-<li class="toctree-l1"><a class="reference internal" href="11-differences.html">The differences to expect to the end user between PennMUSH, MUX, and RhostMUSH as of 08/06/2016</a></li>
-<li class="toctree-l1"><a class="reference internal" href="12-advanced.html">Advanced features of RhostMUSH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="13-signals.html">Signals and why you need them for control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="14-ssl.html">Setting up an SSL tunnel for secure connection options</a></li>
-<li class="toctree-l1"><a class="reference internal" href="15-bitlevels.html">Multi-tiered bitlevel systems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="16-modules.html">Adding hardcoded modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="17-shutdown.html">Shutting down gracefully</a></li>
-<li class="toctree-l1"><a class="reference internal" href="18-debug.html">Stack limit and debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="19-reality.html">Reality levels</a></li>
-<li class="toctree-l1"><a class="reference internal" href="20-execscript.html">Execscript and external programs and scripts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="21-printf.html">Using printf() for advanced text output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="22-ansible.html">Installing using an ansible playbook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="23-random.html">Random notes and things to know about RhostMUSH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="24-quickinstall.html">Quickinstall guide to RhostMUSH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="25-godpasswd.html">How to reset the password for #1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="26-compileerror.html">Troubleshooting difficulties compiling RhostMUSH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="27-dbcorrupt.html">Dealing with DB Corruption</a></li>
-<li class="toctree-l1"><a class="reference internal" href="28-maildbcorrupt.html">Dealing with a corrupt mail database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="29-setup.html">Additional simplified notes on setting up RhostMUSH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="30-cron.html">Using the built-in cron system for periodically running commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="31-comparison.html">Comparison of features between RhostMUSH, PennMUSH, and MUX2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="32-dbloading.html">Loading an existing Database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="33-qdbm.html">Converting database betwen GDBM and QDBM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="34-upgrade.html">Updating RhostMUSH prior to 3.9.5p2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="35-txtfiles.html">Textfiles for RhostMUSH</a></li>
-<li class="toctree-l1"><a class="reference internal" href="36-scripts.html">The following scripts are used in the game directory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="37-execscripts.html">Scripts to be used with execscript</a></li>
-<li class="toctree-l1"><a class="reference internal" href="38-imageformat.html">Format for image filses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="38-imageformat.html#help-key-indexes-for-the-values">HELP key indexes for the values:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="39-portdirector.html">Network Port redirector</a></li>
-<li class="toctree-l1"><a class="reference internal" href="40-autoshutdown.html">Autoshutdown script</a></li>
-<li class="toctree-l1"><a class="reference internal" href="41-minimaldb.html">Minimal DB instructions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="42-ambrosiadb.html">Ambrosia’s Minimal Rhost DB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="helpfile.html">RhostMUSH Internal Help Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wizhelpfile.html">RhostMUSH Internal Help Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="flags.html">Comparison of Flags</a></li>
-<li class="toctree-l1"><a class="reference internal" href="powers.html">Comparison of powers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="changes.html">Changelog</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="windows.html">Windows</a></li>
-<li class="toctree-l1"><a class="reference internal" href="copyright.html">Copyright</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nda.html">Historical Non-Disclosure Agreement</a></li>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Requirements</a><ul>
+<li><a class="reference internal" href="#system-requirements">System Requirements</a><ul>
+<li><a class="reference internal" href="#supported-platforms">Supported Platforms</a></li>
+<li><a class="reference internal" href="#unsupported-platforms">Unsupported Platforms</a></li>
+<li><a class="reference internal" href="#untested-platforms">Untested Platforms</a></li>
+<li><a class="reference internal" href="#known-platform-issues">Known Platform Issues</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">Requirements</a><ul>
+<li><a class="reference internal" href="#optional-packages">Optional Packages</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hosting-requirements">Hosting Requirements</a></li>
+</ul>
+</li>
 </ul>
 
-  
-
-
-        </div>
-
-        
-
-      </div>
-
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="differences.html"
+                        title="previous chapter">Comparison of modern MUSH servers</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="next chapter">Installation</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/requirements.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
     </div>
-
-<footer>
-    <div id="footer-info">
-        <ul id="build-details">
-            
-                <li class="footer-element">
-                    
-                        <a href="_sources/requirements.rst.txt" rel="nofollow"> source</a>
-                    
-                </li>
-            
-
-            
-
-            
-        </ul>
-        <div id="credit">
-            created with <a href="http://sphinx-doc.org/">Sphinx</a> and <a href="https://github.com/Autophagy/insegel">Insegel</a>
-
-        </div>
-    </div>
-
-    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
-
-    <script type="text/javascript">
-      $("#menu-toggle").click(function() {
-        $("#menu-toggle").toggleClass("toggled");
-        $("#side-menu-container").slideToggle(300);
-      });
-    </script>
-
-</footer> 
-
 </div>
-
-</body>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="differences.html" title="Comparison of modern MUSH servers"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RhostMUSH Handbook  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Requirements</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2021, wstarter.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
 </html>

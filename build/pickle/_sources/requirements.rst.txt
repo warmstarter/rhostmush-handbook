@@ -5,15 +5,51 @@ Requirements
 ============
 
 System Requirements
--------------------
+===================
 * Minimum 1 GB (memory and swap combined) to compile (functions.c is huge)
 * Any Unix flavor should be fine.  Linux, BSD, Mac OSX, Solaris, Tru64, AIX, etc.
 * (BETA ONLY) cygwin under Windows.  It requires the entire base development set and Requirements below.
 * Disk:  100 MB or more (depending on size of db and how many backups you wish to maintain)
 * Memory: 12-100 MB (depending on size of mush and what size buffers you select and packages you include)
 
+Supported Platforms
+-------------------
+SunOS (all platforms)
+Solaris (all platforms)
+Linux (all platforms except redhat 5.x mentioned below)
+AIX (all platforms)
+Ultrix (all platforms)
+iBSD (all platforms)
+FreeBSD (all platforms)
+OpenBSD (all platforms)
+NetBSD (all platforms)
+IRIX (all platforms)
+HPUX (32 bit systems only)
+
+If it's not listed here, it probably still will compile clean.  
+
+Unsupported Platforms
+---------------------
+
+Win32/Win16
+Alpha systems.
+
+Untested Platforms
+------------------
+
+HP-UX (64 bit systems)
+VMS (all platforms)
+
+Known Platform Issues
+----------------------
+
+On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with
+the built-in gcc package (up to and including 2.8.x).  Because of this some
+config options may not work fully or cause the server to crash.  This is only
+a known issue with config options and only on this platform.
+
 Requirements
-------------
+============
 RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.  In order to build this software, you will need the bare minimum of the ability to run 'make' commands.  Package requirements are as follows:
 * glibc and gcc/clang (compiling the code)
 * git (to clone the source and maintain patches)
@@ -30,5 +66,5 @@ RhostMUSH also offers optional linking and library attachments.  For some of the
 * libpcre (if you wish to use system pcre libraries instead of the built-in ones)
 
 Hosting Requirements
---------------------
+====================
 You will need a stable host and access to open a single port number of your choice on the firewall.  Most games choose a number between 1025 and 9999, by convention.  Please make sure your debug_id matches the port number + 5.  So if your port is 1234, your debug_id will be 12345.  The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.

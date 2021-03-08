@@ -1,0 +1,205 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=cp1252" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in RhostMUSH</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/groundwork.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Security" href="security.html" />
+    <link rel="prev" title="Gettin Started" href="gettingstarted.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="security.html" title="Security"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gettingstarted.html" title="Gettin Started"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RhostMUSH Handbook  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in RhostMUSH</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="what-flags-toggles-powers-depowers-and-bitlevels-mean-in-rhostmush">
+<h1>What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in RhostMUSH</h1>
+<div class="section" id="flags">
+<h2>Flags</h2>
+<p>Flags are pretty much exactly the same as any other mush.  It’s a flag
+that you set or unset on a target which then enables/disables or
+alters something that target can do.  There’s help on all the flags
+in help and wizhelp.</p>
+</div>
+<div class="section" id="toggles">
+<h2>Toggles</h2>
+<p>Toggles were designed as a single point flag that immediately enables
+or disables a set ability or condition, thus a ‘toggle’.  It works
+exactly like a flag and was originally designed for two reasons.  To
+distinguish from the multi-meaning of a ‘flag’, and because frankly
+we ran out of flag space :)</p>
+</div>
+<div class="section" id="power">
+<h2>&#64;power</h2>
+<p>A power is similar to a power on other mushes, but unlike them, our
+powers are multi-tier.  This means that they can be customized to
+empower something at a given bitlevel.  You may empower something
+from guildmaster up to councilor level.  There are some powers
+with a power level of N/A meaning they are a toggle power granting
+an absolute power level as specified in the help for that power.
+This requires the INHERIT flag for non-players to inherit powers,
+however, a specific object can be granted a power as well.</p>
+</div>
+<div class="section" id="depower">
+<h2>&#64;depower</h2>
+<p>This is the anti-thesis of &#64;power.  Also, depowers do not require
+inheritance.  They also have priority over flags, toggles, and
+powers.  You can use depower to remove or lower abilities and
+control from a target, even a full wizard (royalty) can be
+depowered.</p>
+</div>
+<div class="section" id="multi-tiered-bitlevel-systems">
+<h2>Multi-tiered bitlevel systems</h2>
+<p>RhostMUSH offers a multi-tier bitlevel system.  They go in order of presidence
+You do not have to use all these bits, only use what you want.</p>
+<div class="section" id="ghod-1-bitlevel-7">
+<h3>ghod (#1) &lt;bitlevel 7&gt;</h3>
+<p>This bitlevel can do everything.  Only those who you trust with absolute power should have this.  Period.</p>
+</div>
+<div class="section" id="immortal-i-level-6-basically-1">
+<h3>Immortal(i) &lt;Level 6&gt; - Basically #1</h3>
+<p>The only thing this bitlevel can not do is directly effect #1,
+set/unset some internal flags/attributes, and set/unset the
+immortal flag.  These players can do EVERYTHING else.  Treat
+this bit as you would treat #1.  Only give it to those you know
+without a doubt you can trust.</p>
+<ul class="simple">
+<li>Can do everything except set some internal flags, effect #1, and set/remove the immortal flag.</li>
+</ul>
+</div>
+<div class="section" id="royalty-w-level-5-full-wizbit-level">
+<h3>Royalty(W) &lt;Level 5&gt; - FULL wizbit level</h3>
+<p>This is your standard wizard.  They can do everything you’re
+used to on other mushes that wizards can do.  In addition, they
+also override all locks by default (this can be disabled), and
+they have an enhanced wizcloaking ability (which also can be
+disabled).  They can also set all the lower bitlevels.</p>
+<ul class="simple">
+<li>All things of Level 4 and lower</li>
+<li>Ability to set more flags: STOP, NOSTOP, FUBAR</li>
+<li>Ability to &#64;attribute,</li>
+<li>Ability to WIZCLOAK</li>
+</ul>
+</div>
+<div class="section" id="councilor-a-level-4-high-wizbit-level">
+<h3>Councilor(a) &lt;Level 4&gt; - High wizbit level</h3>
+<p>This is your almost-but-not-quite wizard.  They have access to
+about 80% of the wizard commands.  This includes &#64;nuke, &#64;toad,
+&#64;newpassword and the like.  The only things they can’t do that
+wizards can is cloak, override locks, and use some of the
+database manipulation tools in wizhelp.</p>
+<ul class="simple">
+<li>All things of Level 3 and lower</li>
+<li>Ability to set more flags: NOCONNECT, WANDERER, FREE</li>
+<li>Ability to &#64;nuke, &#64;toad, &#64;boot, &#64;chownall, &#64;dbck, &#64;poor, &#64;newpassword, &#64;pcreate, slay</li>
+</ul>
+</div>
+<div class="section" id="architect-b-level-3-middle-wizbit-level">
+<h3>Architect(B) &lt;Level 3&gt; - Middle wizbit level</h3>
+<p>This is your sub-wizard.  They still have the ability to control
+anything their bitlevel and lower (including &#64;chown, &#64;destroy, etc)
+but do not have any control of other players (like &#64;nuke, &#64;toad, etc)
+but they can set the slave flag.  Otherwise, all things their level
+and lower they can treat as if they owned it.</p>
+<ul class="simple">
+<li>All things of Level 2</li>
+<li>Ability to fully control and modify anything their level and lower (including &#64;cloning, &#64;destroying, etc)</li>
+<li>Ability to use &#64;tel on anything their level and lower.</li>
+<li>Ability to bypass jump_ok rooms on anything their level &amp; lower.</li>
+<li>Ability to set some restricted flags: SLAVE, NO_YELL</li>
+<li>Has infinite quota and money</li>
+<li>Able to give negative money (Steal)</li>
+<li>Able to &#64;toggle the MONITOR</li>
+</ul>
+</div>
+<div class="section" id="guildmaster-g-level-2-lowest-wizbit-level">
+<h3>Guildmaster(g) &lt;Level 2&gt; - Lowest wizbit level</h3>
+<p>This is the lowest wiz bit.  They only have moderate abilities.
+They can examine/decompile anything their level and lower, they can
+&#64;guild/&#64;quota people, and they have a few other minor abilities.
+They don’t have free money however.</p>
+<ul class="simple">
+<li>Ability to access things remotely (long_fingers)</li>
+<li>Things are FREE for them in the queue.</li>
+<li>Can see dbref#’s of things their level and lower</li>
+<li>Can examine/decompile things their level and lower.</li>
+<li>Can set &#64;quota/&#64;guild on their level and lower.</li>
+</ul>
+</div>
+<div class="section" id="wanderer-bitlevel-0">
+<h3>Wanderer &lt;bitlevel 0&gt;</h3>
+<p>This is a hinderance flag.  This flag is automatically set on new
+players that are created (which can be disabled).  This flag stops
+the player from creating/destroying any database information.   In
+effect it stops them from any type of building type commands.  They
+still are allowed to set/unset locks/attributes/etc though without
+hinderance.</p>
+</div>
+<div class="section" id="guest-bitlevel-0-as-well">
+<h3>Guest &lt;bitlevel 0 as well&gt;</h3>
+<p>This is a bigger hinderance flag.  By default all guests should be
+set this.  This flag stops the player from ANY database manipulation
+along with &#64;teleporting, and many other advanced commands.  It’s
+extreamly dehibilatating.</p>
+</div>
+</div>
+<div class="section" id="altering-bitlevels">
+<h2>Altering bitlevels</h2>
+<p>Please keep in mind each of these bitlevels can be tweeked with the &#64;admin
+parameters and with the &#64;powers (accessable by royalty) or &#64;depowers (only
+by immortal and higher).</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="security.html" title="Security"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gettingstarted.html" title="Gettin Started"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RhostMUSH Handbook  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in RhostMUSH</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2021, wstarter.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/epub.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="database">
+<h1>Database</h1>
+<div class="section" id="loading-an-existing-database">
+<h2>Loading an existing Database</h2>
+<p>To load in a previous database, you run the db_load script.</p>
+<p>From the game directory you would type:</p>
+<p>./db_load data/netrhost.gdbm yourflatfilehere data/netrhost.db.new</p>
+<div class="section" id="then-you-just-follow-the-prompts-to-load-in-your-flatfile-there">
+<h3>Then you just follow the prompts to load in your flatfile there.</h3>
+<p>If you wish to have #1’s password reset to ‘Nyctasia’ please add this
+to the bottom of your netrhost.conf file:</p>
+<p>newpass_god 777</p>
+<p>The caveat is that you must not have any netrhost.db* or netrhost.gdbm* files
+in your data directory prior to loading it in.  It’ll error out if previous
+files exist.  So you will need to move all files that start with netrhost.db*
+and all files that start with netrhost.gdbm* to another directory.</p>
+<p>Your flatfile tends to be named ‘netrhost.db.flat’ which is in your data
+directory.  You can, however, name your flatfile anything you want and have
+it in any directory you want.</p>
+<p>To make a flatfile in game, you just issue &#64;dump/flat.  You can specify
+a filename after it, otherwise it assumes the name ‘netrhost.db.flat’.</p>
+</div>
+</div>
+<div class="section" id="converting-a-flatfile-database-for-use-in-rhostmush">
+<h2>Converting a flatfile database for use in RhostMUSH</h2>
+<p>In the ~/Server/convert directory there is a script called ‘doconvert.sh’</p>
+<p>This script will convert most flatfiles from existing mush engines to
+RhostMUSH.  The exception is PennMUSH 1.8.0 and later.  For this there is a
+BETA converter penn18x_converter.tgz.  This is proven to work, most of the time,
+with codebases between 1.8.0 and 1.8.2.  It has not been fully vetted with
+the latest PennMUSH databases.  Our apologies.</p>
+<p>To convert a non-pennmush game (or a pennmush 1.7.4 or earlier), you first
+need a valid flatfile of the game you’re wanting to convert.  Please refer
+to the documentatation of the mush engine in question (MUX, Penn 1.7, TM2/3)
+on how to do this.  Once you have it type:</p>
+<p>./doconvert.sh FLATFILETOCONVERT FLATFILEOUTPUT</p>
+<p>In this instance, FLATFILETOCONVERT will be the filename (with full path) to
+the flatfile you are wishing to convert.</p>
+<p>The FLATFILEOUTPUT is anyfilename you wish to name the RhostMUSH converted
+flatfile.  I suggest netrhost_converted.db.flat so you know by the name
+what it is.</p>
+<p>Follow what it asks for and just let it do its thing.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

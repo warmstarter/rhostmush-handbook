@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RhostMUSH Handbook \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-04 10:55-0500\n"
+"POT-Creation-Date: 2021-03-07 19:05-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../../source/requirements.rst:5
-#: ../../source/requirements.rst:16
+#: ../../source/requirements.rst:52
 msgid "Requirements"
 msgstr ""
 
@@ -45,22 +45,58 @@ msgstr ""
 msgid "Memory: 12-100 MB (depending on size of mush and what size buffers you select and packages you include)"
 msgstr ""
 
+#: ../../source/requirements.rst:16
+msgid "Supported Platforms"
+msgstr ""
+
 #: ../../source/requirements.rst:17
-msgid "RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.  In order to build this software, you will need the bare minimum of the ability to run 'make' commands.  Package requirements are as follows: * glibc and gcc/clang (compiling the code) * git (to clone the source and maintain patches) * bash/ksh/dash (or compatible shell - for use with build menu) * libcrypt (for password encryption - this is usually standard on unix based systems)"
+msgid "SunOS (all platforms) Solaris (all platforms) Linux (all platforms except redhat 5.x mentioned below) AIX (all platforms) Ultrix (all platforms) iBSD (all platforms) FreeBSD (all platforms) OpenBSD (all platforms) NetBSD (all platforms) IRIX (all platforms) HPUX (32 bit systems only)"
 msgstr ""
 
-#: ../../source/requirements.rst:24
-msgid "Optional Packages"
+#: ../../source/requirements.rst:29
+msgid "If it's not listed here, it probably still will compile clean."
 msgstr ""
 
-#: ../../source/requirements.rst:25
-msgid "RhostMUSH also offers optional linking and library attachments.  For some of these libraries it will attempt to do auto-detection, but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.  Optional packages are as follows: * openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality. * mysql client & mysql_config (required for mysql capabilities) * sqlite3 libraries (required for sqlite capabilities) * ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature) * libpcre (if you wish to use system pcre libraries instead of the built-in ones)"
-msgstr ""
-
-#: ../../source/requirements.rst:33
-msgid "Hosting Requirements"
+#: ../../source/requirements.rst:32
+msgid "Unsupported Platforms"
 msgstr ""
 
 #: ../../source/requirements.rst:34
+msgid "Win32/Win16 Alpha systems."
+msgstr ""
+
+#: ../../source/requirements.rst:38
+msgid "Untested Platforms"
+msgstr ""
+
+#: ../../source/requirements.rst:40
+msgid "HP-UX (64 bit systems) VMS (all platforms)"
+msgstr ""
+
+#: ../../source/requirements.rst:44
+msgid "Known Platform Issues"
+msgstr ""
+
+#: ../../source/requirements.rst:46
+msgid "On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with the built-in gcc package (up to and including 2.8.x).  Because of this some config options may not work fully or cause the server to crash.  This is only a known issue with config options and only on this platform."
+msgstr ""
+
+#: ../../source/requirements.rst:53
+msgid "RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.  In order to build this software, you will need the bare minimum of the ability to run 'make' commands.  Package requirements are as follows: * glibc and gcc/clang (compiling the code) * git (to clone the source and maintain patches) * bash/ksh/dash (or compatible shell - for use with build menu) * libcrypt (for password encryption - this is usually standard on unix based systems)"
+msgstr ""
+
+#: ../../source/requirements.rst:60
+msgid "Optional Packages"
+msgstr ""
+
+#: ../../source/requirements.rst:61
+msgid "RhostMUSH also offers optional linking and library attachments.  For some of these libraries it will attempt to do auto-detection, but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.  Optional packages are as follows: * openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality. * mysql client & mysql_config (required for mysql capabilities) * sqlite3 libraries (required for sqlite capabilities) * ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature) * libpcre (if you wish to use system pcre libraries instead of the built-in ones)"
+msgstr ""
+
+#: ../../source/requirements.rst:69
+msgid "Hosting Requirements"
+msgstr ""
+
+#: ../../source/requirements.rst:70
 msgid "You will need a stable host and access to open a single port number of your choice on the firewall.  Most games choose a number between 1025 and 9999, by convention.  Please make sure your debug_id matches the port number + 5.  So if your port is 1234, your debug_id will be 12345.  The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location."
 msgstr ""

@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to RhostMUSH Handbook’s documentation!</title>
+    <title>RhostMUSH Handbook</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/epub.css" type="text/css" /> 
   </head><body>
@@ -13,485 +13,188 @@
       <div class="documentwrapper">
           <div class="body" role="main">
             
-  <div class="section" id="welcome-to-rhostmush-handbook-s-documentation">
-<h1>Welcome to RhostMUSH Handbook’s documentation!</h1>
+  <div class="section" id="rhostmush-handbook">
+<h1>RhostMUSH Handbook</h1>
+<p>The RhostMUSH source tree offers many abilities and options
+not normally found in any other flavor of mush.  This doesn’t
+make it better than other servers (though we think so <em>j/k</em>)
+but it does give you a wider selection of configurability,
+which, as you know, is the best part of setting up a mush.
+(yea, right)</p>
+<div class="section" id="rhostmush-offers-the-following-over-other-mushes">
+<h2>RhostMUSH offers the following over other mushes</h2>
+<ul class="simple">
+<li><p>A high-performance duel-quota system.</p></li>
+<li><p>A complete rewrite of key areas and referbishments of all the other areas.</p></li>
+<li><p>An on-line recover tool for accidental db destruction.</p></li>
+<li><p>Multi-wizard architecture for better control of staff.</p></li>
+<li><p>Multi-power system to tweek abilities of players.</p></li>
+<li><p>Multi-zone system where people can belong to multiple zones.</p></li>
+<li><p>Built in error correction for db corruption or other misuse.</p></li>
+<li><p>Built in accounting for those annoying twinks who try to hack.</p></li>
+<li><p>Many new functions and commands not seen anywhere else.</p></li>
+<li><p>A lot more that could drag this document out for pages.</p></li>
+</ul>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="01-intro.xhtml">What RhostMUSH is about and what’s so great about RhostMUSH.</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#recycle-bin">Recycle bin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#snapshot">&#64;snapshot</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#wizard-and-immortals-by-default">Wizard and Immortals by default</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#titles-and-captions-to-a-player-s-name">Titles and Captions to a player’s name</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#have-an-alternate-name-with-locks-for-npc-obfuscation">Have an alternate name with locks for NPC obfuscation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#have-multiple-player-aliases">Have multiple player aliases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#actively-control-how-dark-works-both-game-wide-and-individually">Actively control how dark works both game-wide and individually</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#make-config-file-changes-in-game-without-having-to-reboot-or-have-shell-access">Make config file changes in-game without having to reboot or have shell access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#execute-any-binary-or-script-as-a-localized-function">Execute any binary or script as a localized function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#customized-percent-substitutions-like-n-etc">Customized percent substitutions (like %n, %#, etc)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#redefine-percent-substitutions-like-n-etc">Redefine percent substitutions (like %n, %#, etc)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#localize-command-and-function-overrides-in-a-sandbox">Localize command and function overrides in a sandbox</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#multiple-zones">Multiple Zones</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#optionally-control-enable-or-disable-sideeffects">Optionally control, enable, or disable sideeffects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#have-31-cross-interactive-realities-for-locations">Have 31 cross-interactive realities for locations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#override-any-command-with-softcode">Override any command with softcode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#the-abilility-to-raise-or-lower-permissions-on-the-various">The abilility to raise or lower permissions on the various</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#customize-new-commands-on-the-connect-screen">Customize new commands on the connect screen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#softcode-any-txt-file-like-connect-txt">Softcode any txt file (like connect.txt)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#advanced-tracing-methods-for-debugging-your-code-including-labels">Advanced tracing methods for debugging your code including labels!</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#built-in-pretty-printing-of-attributes-with-the-parenmatch-function">Built in pretty-printing of attributes with the parenmatch() function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="01-intro.xhtml#plenty-more-not-mentioned">Plenty more not mentioned!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.xhtml">What RhostMUSH is about and what’s so great about RhostMUSH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#recycle-bin">Recycle bin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#snapshot">&#64;snapshot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#wizard-and-immortals-by-default">Wizard and Immortals by default</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#titles-and-captions-to-a-player-s-name">Titles and Captions to a player’s name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#have-an-alternate-name-with-locks-for-npc-obfuscation">Have an alternate name with locks for NPC obfuscation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#have-multiple-player-aliases">Have multiple player aliases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#actively-control-how-dark-works-both-game-wide-and-individually">Actively control how dark works both game-wide and individually</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#make-config-file-changes-in-game-without-having-to-reboot-or-have-shell-access">Make config file changes in-game without having to reboot or have shell access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#execute-any-binary-or-script-as-a-localized-function">Execute any binary or script as a localized function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#customized-percent-substitutions-like-n-etc">Customized percent substitutions (like %n, %#, etc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#redefine-percent-substitutions-like-n-etc">Redefine percent substitutions (like %n, %#, etc)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#localize-command-and-function-overrides-in-a-sandbox">Localize command and function overrides in a sandbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#multiple-zones">Multiple Zones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#optionally-control-enable-or-disable-sideeffects">Optionally control, enable, or disable sideeffects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#have-31-cross-interactive-realities-for-locations">Have 31 cross-interactive realities for locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#override-any-command-with-softcode">Override any command with softcode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#the-abilility-to-raise-or-lower-permissions-on-the-various">The abilility to raise or lower permissions on the various</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#customize-new-commands-on-the-connect-screen">Customize new commands on the connect screen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#softcode-any-txt-file-like-connect-txt">Softcode any txt file (like connect.txt)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#advanced-tracing-methods-for-debugging-your-code-including-labels">Advanced tracing methods for debugging your code including labels!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#built-in-pretty-printing-of-attributes-with-the-parenmatch-function">Built in pretty-printing of attributes with the parenmatch() function</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#plenty-more-not-mentioned">Plenty more not mentioned!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#advanced-features-of-rhostmush">Advanced features of RhostMUSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.xhtml#random-notes-and-things-to-know-about-rhostmush">Random notes and things to know about RhostMUSH</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="02-compile.xhtml">What to type to Compile and Install RhostMUSH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="02-compile.xhtml#note-about-compiling">Note about Compiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02-compile.xhtml#note-about-recompiling">Note about Recompiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02-compile.xhtml#note-about-patching">Note about Patching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="differences.xhtml">Comparison of modern MUSH servers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#differences-to-expect-to-the-end-user-between-pennmush-mux-and-rhostmush">Differences to expect to the end user between PennMUSH, MUX, and RhostMUSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#comparison-of-features-between-rhostmush-pennmush-and-mux2">Comparison of features between RhostMUSH, PennMUSH, and MUX2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#organization-of-help-and-wizhelp">Organization of help and wizhelp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#mail-comsystem-guests-master-rooms-etc">Mail, comsystem, guests, master rooms, etc..</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#comparisons-of-features">Comparisons of features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#commands-with-equivalents">&#64;commands with equivalents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#commands-unique-to-rhostmush">&#64;commands unique to RhostMUSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#lock-equivalents">&#64;lock equivalents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#locks-that-only-exist-in-rhostmush">&#64;locks that only exist in RhostMUSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#flag-and-toggle-equivalents">Flag and toggle equivalents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#flags-and-toggles-that-only-exist-in-rhostmush">Flags and toggles that only exist in RhostMUSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#power-equivalents">&#64;power equivalents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#functions-equivalents">Functions equivalents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#what-may-need-to-be-modified-to-get-softcode-from-pennmush-tinymush2-tinymush3-or-mux2-to-work-on-rhost">What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</a></li>
+<li class="toctree-l2"><a class="reference internal" href="differences.xhtml#things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it">Things other mushes can do that Rhost can not and how to emulate it</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="03-dbconversion.xhtml">How to convert a database from another mush to RhostMUSH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="03-dbconversion.xhtml#converting-a-flatfile-database-for-use-in-rhostmush">Converting a flatfile database for use in RhostMUSH</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="04-configure.xhtml">What to type to configure and get your RhostMUSH up and running</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="04-configure.xhtml#creating-a-new-game-with-a-blank-database">Creating a new game with a blank database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04-configure.xhtml#creating-a-new-game-with-ambrosia-s-default-database">Creating a new game with Ambrosia’s default database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04-configure.xhtml#creating-a-new-game-with-the-generic-default-database">Creating a new game with the generic default database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04-configure.xhtml#starting-your-mush">Starting your MUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04-configure.xhtml#backups-for-rhostmush">Backups for RhostMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04-configure.xhtml#troubleshooting-issues-with-starting-up">Troubleshooting issues with starting up</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="05-newmush.xhtml">What to type to get the basics running if you did not choose a pre-existing flatfile</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#login-to-1-from-the-connect-screen">Login to #1 from the connect screen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess">Change #1’s password to something you’ll remember but is hard to guess</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#master-room">Master Room</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#flag-and-protect-master-room">Flag and protect Master Room</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#player-holder-characters">Player Holder Characters</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="05-newmush.xhtml#immortal-holder">Immortal Holder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="05-newmush.xhtml#royalty-wizard-holder">Royalty/Wizard Holder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="05-newmush.xhtml#councilor-admin-holder">Councilor/Admin Holder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="05-newmush.xhtml#architect-staff-holder">Architect/Staff Holder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="05-newmush.xhtml#guildmaster-lead-holder">Guildmaster/Lead Holder</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#chown-0-the-starting-room-and-2-the-master-room-to-immholder">Chown #0 (The starting room) and #2 (The Master room) to immholder</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player">Create yourself your own immortal player then log off #1 and into this immortal player</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#log-out-of-1-and-log-into-your-immortal-player">Log out of #1 and log into your immortal player</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#create-your-guest-characters">Create your guest characters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#dig-a-closet-to-store-important-objects-but-non-master-room">Dig a closet to store important objects but non-master room</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#set-the-flags-on-the-closet-and-ownership-of-it">Set the flags on the closet and ownership of it</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#create-an-admin-object-for-future-ease-of-customization">Create an Admin object for future ease of customization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#set-the-flags-on-the-admin-object-and-ownership-and-location">Set the flags on the admin object and ownership and location</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#add-admin-object-to-configuration">Add admin object to configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#reboot-your-mush-to-load-up-the-change-for-the-admin-object">Reboot your mush to load up the change for the admin object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#do-admin-list-to-see-if-it-shows-the-admin-object">Do &#64;admin/list to see if it shows the admin object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-newmush.xhtml#load-in-all-the-various-softcode-that-you-want">Load in all the various softcode that you want</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="05-newmush.xhtml#myrddin-mushcron">Myrddin MushCron</a></li>
-<li class="toctree-l3"><a class="reference internal" href="05-newmush.xhtml#ashcom">AshCom</a></li>
-<li class="toctree-l3"><a class="reference internal" href="05-newmush.xhtml#mail-wrappers">Mail Wrappers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="05-newmush.xhtml#myrddin-bbs">Myrddin BBS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="05-newmush.xhtml#other-mushcode">Other Mushcode</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="06-security.xhtml">Considerations to locking down restrictions in RhostMUSH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="06-security.xhtml#online-blocking-object-abilities">Online: Blocking object abilities</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="06-security.xhtml#flags-access-with-set">FLAGS (access with &#64;set)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06-security.xhtml#toggles-toggle">TOGGLES (&#64;toggle)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="06-security.xhtml#powers-depowers-and-locks">&#64;powers, &#64;depowers, and &#64;locks</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="06-security.xhtml#offline-blocking-twinks-from-being-abusive-on-your-game">Offline: Blocking twinks from being abusive on your game</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="07-toggles.xhtml">What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="07-toggles.xhtml#flags">Flags</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-toggles.xhtml#toggles">Toggles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-toggles.xhtml#power">&#64;power</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-toggles.xhtml#depower">&#64;depower</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="08-lockdown.xhtml">Extended lockdown of the mush and considerations.</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="08-lockdown.xhtml#attribute-restriction">Attribute Restriction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-lockdown.xhtml#command-restriction">Command Restriction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-lockdown.xhtml#flag-toggle-restriction">Flag/Toggle Restriction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-lockdown.xhtml#config-restrictions">Config restrictions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-lockdown.xhtml#function-restrictions">Function Restrictions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-lockdown.xhtml#flags">Flags</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-lockdown.xhtml#toggles">Toggles</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-lockdown.xhtml#powers">&#64;powers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-lockdown.xhtml#depowers">&#64;depowers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-lockdown.xhtml#site-restrictions">Site Restrictions</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="08-lockdown.xhtml#ip-based-restrictions">IP based restrictions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="08-lockdown.xhtml#dns-based-restrictions">DNS based restrictions</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="09-blocking.xhtml">Methods to block anonymous connections and the pros and cons of doing so</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="09-blocking.xhtml#blacklisting-through-external-tor-pull-sh-script">Blacklisting through external tor_pull.sh script</a></li>
-<li class="toctree-l2"><a class="reference internal" href="09-blocking.xhtml#blacklisting-through-internal-blacklist-command">Blacklisting through internal &#64;blacklist command</a></li>
-<li class="toctree-l2"><a class="reference internal" href="09-blocking.xhtml#blacklisting-through-internal-tor-command">Blacklisting through internal &#64;tor command</a></li>
-<li class="toctree-l2"><a class="reference internal" href="09-blocking.xhtml#blacklisting-through-internal-admin-command">Blacklisting through internal &#64;admin command</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="10-customize.xhtml">What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#problematic-functions-between-codebases">Problematic functions between codebases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#problematic-features-between-codebases">Problematic features between codebases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#problematic-commands">Problematic commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#sidefx-flag">SIDEFX flag</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#variable-exits">Variable exits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#zones">Zones</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#powers">&#64;powers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#attribute-length">Attribute length</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#attribute-contents">Attribute contents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#color">256 color</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#unicode-utf8">Unicode/UTF8</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#attributes-per-object">Attributes per object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#destroying">Destroying</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#object-id-s">object id’s</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#lsearch-and-search">lsearch() and search()</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#locks-can-be-different">&#64;locks can be different</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#customer-user-locks">Customer user-locks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#attribute-trees">Attribute trees</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#prefix-permission-locking">Prefix permission locking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#align-and-printf">align() and printf()</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#mysql">MySQL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#mail-system">Mail System</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#comsystem">Comsystem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#various-functions">Various Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#empty-attributes">Empty Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#player-stats">Player Stats</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#percent-substitutions">Percent Substitutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#switches">Switches</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#flags">Flags</a></li>
-<li class="toctree-l2"><a class="reference internal" href="10-customize.xhtml#aliases">Aliases</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="11-differences.xhtml">The differences to expect to the end user between PennMUSH, MUX, and RhostMUSH as of 08/06/2016</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="11-differences.xhtml#pennmush">PennMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="11-differences.xhtml#mux">MUX</a></li>
-<li class="toctree-l2"><a class="reference internal" href="11-differences.xhtml#rhost">Rhost</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="12-advanced.xhtml">Advanced features of RhostMUSH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#debugging-tracing">Debugging/Tracing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#zoning">Zoning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#reality-levels">Reality Levels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#function-and-command-overriding">Function and Command Overriding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#the-recycle-bin">The Recycle Bin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#percent-substitution-adding-overriding">Percent Substitution Adding/Overriding</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#hooking">Hooking</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#command-based-uselocks">Command based uselocks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#differentating-between-command-and-listen-locks">Differentating between command and listen locks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#wizard-auto-overiding-and-how-to-disable-it">Wizard auto-overiding and how to disable it</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#advanced-flag-and-toggle-control">Advanced FLAG and TOGGLE control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#advanced-site-control">Advanced site control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#auto-registration">Auto-Registration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#which-bit-level-is-best">Which bit level is best?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#what-are-the-limits-for-size-growth-for-rhostmush">What are the limits for size/growth for RhostMUSH?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#sqlite-and-mysql-maria-setup-and-why-use-it">Sqlite and MySQL/Maria setup and why use it?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#executing-outside-scripts-and-binaries-within-rhostmush">Executing outside scripts and binaries within RhostMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#pulling-external-data-into-rhostmush">Pulling external data into RhostMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#integrating-a-unix-cron-right-into-rhostmush">Integrating a unix cron right into RhostMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#signal-handling-how-it-works-and-when-and-why-use-it">Signal handling, how it works, and when and why use it</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#setting-up-global-parents-global-parents-global-attribute-formatting-and-other-global-setups">Setting up global parents, global &#64;parents, global attribute formatting, and other global setups</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#rhostmush-limitations-and-how-to-get-around-them">RhostMUSH limitations and how to get around them</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it">Things other mushes can do that Rhost can not and how to emulate it</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="12-advanced.xhtml#pennmush">PennMUSH</a></li>
-<li class="toctree-l3"><a class="reference internal" href="12-advanced.xhtml#mux">MUX</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#advanced-guest-setup">Advanced guest setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#attribute-permission-masking-and-the-joys-of-the-power-behind-it">Attribute permission masking and the joys of the power behind it</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#the-amazing-cluster-and-what-it-can-do-for-you">The amazing &#64;cluster and what it can do for you</a></li>
-<li class="toctree-l2"><a class="reference internal" href="12-advanced.xhtml#what-we-plan-for-the-future">What we plan for the future</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="13-signals.xhtml">Signals and why you need them for control</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="13-signals.xhtml#term-kill-term-or-kill-15">TERM (kill -TERM or kill -15)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="13-signals.xhtml#usr1-kill-usr1">USR1 (kill -USR1)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="13-signals.xhtml#usr2-kill-usr2">USR2 (kill -USR2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="13-signals.xhtml#kill-kill-kill-or-kill-9">KILL (kill -KILL or kill -9)</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="14-ssl.xhtml">Setting up an SSL tunnel for secure connection options</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="14-ssl.xhtml#quickstart-for-ssl-setup-with-stunnel">Quickstart for SSL setup with stunnel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="14-ssl.xhtml#detailed-ssl-setup-with-stunnel">Detailed SSL setup with stunnel</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="14-ssl.xhtml#stunnel-directory">stunnel directory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="14-ssl.xhtml#modifying-netrhost-conf">Modifying netrhost.conf</a></li>
-<li class="toctree-l3"><a class="reference internal" href="14-ssl.xhtml#running-the-stunnel-setup-program">Running the stunnel setup program</a></li>
-<li class="toctree-l3"><a class="reference internal" href="14-ssl.xhtml#starting-the-stunnel-proxy">Starting the stunnel proxy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="14-ssl.xhtml#shutting-down-the-stunnel-proxy">Shutting down the stunnel proxy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="14-ssl.xhtml#configuring-firewall-on-the-host">Configuring firewall on the host</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="15-bitlevels.xhtml">Multi-tiered bitlevel systems</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="15-bitlevels.xhtml#ghod-1-bitlevel-7">ghod (#1) &lt;bitlevel 7&gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="15-bitlevels.xhtml#immortal-bitlevel-6">Immortal &lt;bitlevel 6&gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="15-bitlevels.xhtml#royalty-bitlevel-5">Royalty &lt;bitlevel 5&gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="15-bitlevels.xhtml#councilor-bitlevel-4">Councilor &lt;bitlevel 4&gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="15-bitlevels.xhtml#architect-bitlevel-3">Architect &lt;bitlevel 3&gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="15-bitlevels.xhtml#guildmaster-bitlevel-2">Guildmaster &lt;bitlevel 2&gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="15-bitlevels.xhtml#wanderer-bitlevel-0">Wanderer &lt;bitlevel 0&gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="15-bitlevels.xhtml#guest-bitlevel-0-as-well">Guest &lt;bitlevel 0 as well&gt;</a></li>
-<li class="toctree-l2"><a class="reference internal" href="15-bitlevels.xhtml#altering-bitlevels">Altering bitlevels</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="16-modules.xhtml">Adding hardcoded modules</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="16-modules.xhtml#modifying-sourcode-to-add-a-module">Modifying sourcode to add a module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="16-modules.xhtml#adding-an-startup-to-make-use-of-modules">Adding an &#64;startup to make use of modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="16-modules.xhtml#contributing-your-module-back-to-rhost">Contributing your module back to Rhost</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="17-shutdown.xhtml">Shutting down gracefully</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="17-shutdown.xhtml#rhostmush-has-many-ways-to-shut-down-the-game-cleanly">Rhostmush has many ways to shut down the game cleanly</a></li>
-<li class="toctree-l2"><a class="reference internal" href="17-shutdown.xhtml#warning-never-kill-9-rhost">WARNING: Never kill -9 Rhost</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="18-debug.xhtml">Stack limit and debugging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="19-reality.xhtml">Reality levels</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="19-reality.xhtml#visibility">Visibility</a></li>
-<li class="toctree-l2"><a class="reference internal" href="19-reality.xhtml#descriptions">Descriptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="19-reality.xhtml#configuration-parameters">Configuration parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="19-reality.xhtml#example-mush-conf">Example mush.conf</a></li>
-<li class="toctree-l2"><a class="reference internal" href="19-reality.xhtml#commands">Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="19-reality.xhtml#functions">Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="19-reality.xhtml#example-1-a-simplified-witchcraft-setup">Example 1: A simplified Witchcraft setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="19-reality.xhtml#example-2-a-wod-setup">Example 2: A WoD setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="19-reality.xhtml#example-3-softcode">Example 3: Softcode</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="20-execscript.xhtml">Execscript and external programs and scripts</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="20-execscript.xhtml#mush-variables">Mush variables</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="20-execscript.xhtml#built-in-variables">Built in variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="20-execscript.xhtml#dynamic-variables">Dynamic variables</a></li>
-<li class="toctree-l3"><a class="reference internal" href="20-execscript.xhtml#register-variables">Register variables</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="20-execscript.xhtml#set-object">set object</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="20-execscript.xhtml#the-format-of-the-fields-are">The format of the fields are</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="20-execscript.xhtml#id1">Dynamic variables</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="20-execscript.xhtml#examples">Examples</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="20-execscript.xhtml#id2">Register variables</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="20-execscript.xhtml#examples-the-last-example-clears-register-0">Examples (The last example clears register 0)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="20-execscript.xhtml#example-bash-script">Example bash script</a></li>
-<li class="toctree-l2"><a class="reference internal" href="20-execscript.xhtml#notes-and-warnings">Notes and warnings</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="21-printf.xhtml">Using printf() for advanced text output</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="21-printf.xhtml#example-one">Example one</a></li>
-<li class="toctree-l2"><a class="reference internal" href="21-printf.xhtml#example-two">Example two</a></li>
-<li class="toctree-l2"><a class="reference internal" href="21-printf.xhtml#example-three">Example three</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="22-ansible.xhtml">Installing using an ansible playbook</a></li>
-<li class="toctree-l1"><a class="reference internal" href="23-random.xhtml">Random notes and things to know about RhostMUSH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="23-random.xhtml#note-on-bits-their-levels-and-things-they-do">Note on bits, their levels, and things they do</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23-random.xhtml#you-need-to-pcreate-your-guest-characters-and-set-them-guest">You need to &#64;pcreate your guest characters and set them GUEST</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23-random.xhtml#powers-are-inherited">&#64;powers are INHERITED</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23-random.xhtml#depowers-are-automatically-checked-first-before-anything-else">&#64;depowers are automatically checked first before anything else</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23-random.xhtml#zones-are-unique">Zones are unique</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23-random.xhtml#the-db-auto-repares-itself-when-it-can">The db auto-repares itself when it can</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23-random.xhtml#you-can-get-your-connect-txt-to-parse-ansi">You can get your connect.txt to parse ansi</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23-random.xhtml#re-compiled-binaries-do-not-require-an-shutdown">Re-compiled binaries do not require an &#64;shutdown</a></li>
-<li class="toctree-l2"><a class="reference internal" href="23-random.xhtml#softcode-emulations-of-functions-from-other-servers-are-included">Softcode emulations of functions from other servers are included</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="24-quickinstall.xhtml">Quickinstall guide to RhostMUSH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#obtaining-rhostmush">Obtaining RhostMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#important-before-you-actually-start-building">Important before you actually start building</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#using-the-prebuilt-flatfile">Using the prebuilt flatfile</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="24-quickinstall.xhtml#to-load-a-prebuilt-flatfile">To load a prebuilt flatfile</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#starting-from-scratch-with-a-brand-new-database">Starting from scratch with a brand new database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#instructions-for-starting-a-new-rhostmush">Instructions for starting a new RhostMUSH</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="24-quickinstall.xhtml#setup-directory-permissions">Setup directory permissions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="24-quickinstall.xhtml#compile-the-source-code">Compile the source code</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="24-quickinstall.xhtml#manual-configuration-of-source-code">Manual configuration of source code</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#loading-a-database-for-your-mush">Loading a database for your MUSH</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="24-quickinstall.xhtml#option-only-perform-these-steps-if-using-a-provided-database">Option: Only perform these steps if using a provided database</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#configure-the-netrhost-conf-file-for-your-mush">Configure the netrhost.conf file for your MUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#start-the-mush-and-login">Start the MUSH and login</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#option-things-to-do-once-you-have-connected-if-you-did-not-use-a-provided-database">Option: Things to do once you have connected if you did NOT use a provided database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#setup-new-character-staff-and-take-tasks-that-can-only-be-accomplished-by-1">Setup new character, staff, and take tasks that can only be accomplished by #1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#setup-daily-backups-for-your-game">Setup daily backups for your game</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#customtize-the-textfiles-for-your-game">Customtize the textfiles for your game</a></li>
-<li class="toctree-l2"><a class="reference internal" href="24-quickinstall.xhtml#make-sure-to-read-up-further">Make sure to read up further</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="25-godpasswd.xhtml">How to reset the password for #1</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="25-godpasswd.xhtml#method-1">Method 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="25-godpasswd.xhtml#method-2">Method 2</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="26-compileerror.xhtml">Troubleshooting difficulties compiling RhostMUSH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="26-compileerror.xhtml#changes-to-conf-for-high-bit-cpus">Changes to conf for high-bit CPUs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="26-compileerror.xhtml#changes-to-autconf-for-certain-systems">Changes to autconf for certain systems</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="27-dbcorrupt.xhtml">Dealing with DB Corruption</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="27-dbcorrupt.xhtml#if-the-mush-says-it-can-t-find-your-database-files">If the mush says it can’t find your database files</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="27-dbcorrupt.xhtml#check-the-names-of-the-database-files-in-your-data-directory">Check the names of the database files in your ‘data’ directory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="27-dbcorrupt.xhtml#check-your-netrhost-conf-file">Check your netrhost.conf file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="27-dbcorrupt.xhtml#check-your-mush-config-file">Check your mush.config file</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="27-dbcorrupt.xhtml#if-the-mush-says-it-can-t-read-or-load-your-database-files">If the mush says it can’t read or load your database files</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="27-dbcorrupt.xhtml#verify-you-have-enough-disk-space-quota">Verify you have enough disk space. (quota)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="27-dbcorrupt.xhtml#verify-you-have-enough-disk-space-system">Verify you have enough disk space.  (system)</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="27-dbcorrupt.xhtml#if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone">If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="27-dbcorrupt.xhtml#the-bad-news">The bad news</a></li>
-<li class="toctree-l3"><a class="reference internal" href="27-dbcorrupt.xhtml#the-good-news">The good news</a></li>
-<li class="toctree-l3"><a class="reference internal" href="27-dbcorrupt.xhtml#now-to-restore-your-database">Now, to restore your database?</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="27-dbcorrupt.xhtml#bringing-up-your-mail-database">Bringing up your mail database</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="27-dbcorrupt.xhtml#if-after-restoring-main-database-your-mail-database-works">If after restoring main database your mail database works</a></li>
-<li class="toctree-l3"><a class="reference internal" href="27-dbcorrupt.xhtml#if-after-restoring-main-database-your-mail-database-does-not-work">If after restoring main database your mail database does not work</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="28-maildbcorrupt.xhtml">Dealing with a corrupt mail database</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="28-maildbcorrupt.xhtml#backing-up-your-mail-database">Backing up your mail database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="28-maildbcorrupt.xhtml#automatically-recovering-your-mail-database">Automatically recovering your mail database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="28-maildbcorrupt.xhtml#manually-recovering-your-mail-database">Manually recovering your mail database</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="29-setup.xhtml">Additional simplified notes on setting up RhostMUSH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="29-setup.xhtml#rhostmush-offers-the-following-over-other-mushes">RhostMUSH offers the following over other mushes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="29-setup.xhtml#bit-levels-have-various-powers-abilities-flags-etc-available-to-them">Bit levels have various powers, abilities, flags, etc available to them</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="29-setup.xhtml#guildmaster-g-level-2-lowest-wizbit-level">Guildmaster(g) &lt;Level 2&gt; - Lowest wizbit level</a></li>
-<li class="toctree-l3"><a class="reference internal" href="29-setup.xhtml#architect-b-level-3-middle-wizbit-level">Architect(B) &lt;Level 3&gt; - Middle wizbit level</a></li>
-<li class="toctree-l3"><a class="reference internal" href="29-setup.xhtml#councilor-a-level-4-high-wizbit-level">Councilor(a) &lt;Level 4&gt; - High wizbit level</a></li>
-<li class="toctree-l3"><a class="reference internal" href="29-setup.xhtml#royalty-w-level-5-full-wizbit-level">Royalty(W) &lt;Level 5&gt; - FULL wizbit level</a></li>
-<li class="toctree-l3"><a class="reference internal" href="29-setup.xhtml#immortal-i-level-6-basically-1">Immortal(i) &lt;Level 6&gt; - Basically #1</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="29-setup.xhtml#compiling-the-code">Compiling the code</a></li>
-<li class="toctree-l2"><a class="reference internal" href="29-setup.xhtml#configuring-the-game">Configuring the game</a></li>
-<li class="toctree-l2"><a class="reference internal" href="29-setup.xhtml#starting-the-game">Starting the game</a></li>
-<li class="toctree-l2"><a class="reference internal" href="29-setup.xhtml#first-login-to-the-game">First login to the game</a></li>
-<li class="toctree-l2"><a class="reference internal" href="29-setup.xhtml#reporting-bugs-or-getting-help">Reporting bugs or getting help</a></li>
-<li class="toctree-l2"><a class="reference internal" href="29-setup.xhtml#this-code-is-known-to-compile-and-run-cleanly-on-the-following-platforms">This code is known to compile and run cleanly on the following platforms</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="29-setup.xhtml#systems-known-to-not-support">Systems known to not support</a></li>
-<li class="toctree-l3"><a class="reference internal" href="29-setup.xhtml#untested-systems">Untested Systems</a></li>
-<li class="toctree-l3"><a class="reference internal" href="29-setup.xhtml#known-bugs">Known bugs</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="30-cron.xhtml">Using the built-in cron system for periodically running commands</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="30-cron.xhtml#syntax-for-rhost-cron">Syntax for rhost.cron</a></li>
-<li class="toctree-l2"><a class="reference internal" href="30-cron.xhtml#example-syntaxt-for-rhost-cron">Example syntaxt for rhost.cron</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="31-comparison.xhtml">Comparison of features between RhostMUSH, PennMUSH, and MUX2</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#organization-of-help-and-wizhelp">Organization of help and wizhelp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#mail-comsystem-guests-master-rooms-etc">Mail, comsystem, guests, master rooms, etc..</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#comparisons-of-features">Comparisons of features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#commands-with-equivalents">&#64;commands with equivalents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#commands-unique-to-rhostmush">&#64;commands unique to RhostMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#lock-equivalents">&#64;lock equivalents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#locks-that-only-exist-in-rhostmush">&#64;locks that only exist in RhostMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#flag-and-toggle-equivalents">Flag and toggle equivalents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#flags-and-toggles-that-only-exist-in-rhostmush">Flags and toggles that only exist in RhostMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#power-equivalents">&#64;power equivalents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#power-unique-to-rhostmush">&#64;power unique to RhostMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#functions-equivalents">Functions equivalents</a></li>
-<li class="toctree-l2"><a class="reference internal" href="31-comparison.xhtml#functions-that-only-exist-in-rhostmush">Functions that only exist in RhostMUSH</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="32-dbloading.xhtml">Loading an existing Database</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="32-dbloading.xhtml#then-you-just-follow-the-prompts-to-load-in-your-flatfile-there">Then you just follow the prompts to load in your flatfile there.</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="33-qdbm.xhtml">Converting database betwen GDBM and QDBM</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="33-qdbm.xhtml#downgrading-qdbm-to-gdbm">Downgrading QDBM to GDBM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="33-qdbm.xhtml#upgradging-gdbm-to-qdbm">Upgradging GDBM to QDBM</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="33-qdbm.xhtml#while-logged-in-to-your-mush-issue-the-following-commands">While logged in to your mush, issue the following commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="33-qdbm.xhtml#verify-the-files-exist">Verify the files exist</a></li>
-<li class="toctree-l3"><a class="reference internal" href="33-qdbm.xhtml#shutdown-the-mush">Shutdown the MUSH</a></li>
-<li class="toctree-l3"><a class="reference internal" href="33-qdbm.xhtml#from-the-server-directory">From the Server directory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="33-qdbm.xhtml#from-the-server-game-directory">From the Server/game directory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="33-qdbm.xhtml#while-logged-into-the-mush-issue-the-following-commands">While logged into the mush issue the following commands</a></li>
-<li class="toctree-l3"><a class="reference internal" href="33-qdbm.xhtml#verify-that-you-have-qdbm-running-and-your-valid-values">Verify that you have QDBM running and your valid values</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="34-upgrade.xhtml">Updating RhostMUSH prior to 3.9.5p2</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="34-upgrade.xhtml#adding-mysql-to-rhostmush-older-than-3-9-5p2">Adding MySQL to RhostMUSH older than 3.9.5p2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="34-upgrade.xhtml#important-important-important-important-important-important">** IMPORTANT ** IMPORTANT ** IMPORTANT ** IMPORTANT **IMPORTANT ** IMPORTANT **</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="35-txtfiles.xhtml">Textfiles for RhostMUSH</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="35-txtfiles.xhtml#textfile-frequently-asked-questions">Textfile Frequently Asked Questions</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="36-scripts.xhtml">The following scripts are used in the game directory</a></li>
-<li class="toctree-l1"><a class="reference internal" href="37-execscripts.xhtml">Scripts to be used with execscript</a></li>
-<li class="toctree-l1"><a class="reference internal" href="38-imageformat.xhtml">Format for image filses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="38-imageformat.xhtml#help-key-indexes-for-the-values">HELP key indexes for the values:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="39-portdirector.xhtml">Network Port redirector</a></li>
-<li class="toctree-l1"><a class="reference internal" href="40-autoshutdown.xhtml">Autoshutdown script</a></li>
-<li class="toctree-l1"><a class="reference internal" href="41-minimaldb.xhtml">Minimal DB instructions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="42-ambrosiadb.xhtml">Ambrosia’s Minimal Rhost DB</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="42-ambrosiadb.xhtml#version-1-0-5-2020-01-31">Version: 1.0.5          2020-01-31</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="helpfile.xhtml">RhostMUSH Internal Help Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wizhelpfile.xhtml">RhostMUSH Internal Help Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="flags.xhtml">Comparison of Flags</a></li>
-<li class="toctree-l1"><a class="reference internal" href="powers.xhtml">Comparison of powers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="changes.xhtml">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="requirements.xhtml">Requirements</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="requirements.xhtml#system-requirements">System Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.xhtml#id2">Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="requirements.xhtml#optional-packages">Optional Packages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="requirements.xhtml#hosting-requirements">Hosting Requirements</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="windows.xhtml">Windows</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="windows.xhtml#installing-on-windows-10-with-bash">Installing on Windows 10 with BASH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="windows.xhtml#installing-on-windows-with-cygwin">Installing on Windows with Cygwin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.xhtml">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.xhtml#compiling-the-code">Compiling the code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.xhtml#configuring-the-game">Configuring the game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.xhtml#starting-the-game">Starting the game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.xhtml#first-login-to-the-game">First login to the game</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.xhtml#reporting-bugs-or-getting-help">Reporting bugs or getting help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.xhtml#installing-using-an-ansible-playbook">Installing using an ansible playbook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.xhtml#quickinstall-guide-to-rhostmush">Quickinstall guide to RhostMUSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.xhtml#what-to-type-to-configure-and-get-your-rhostmush-up-and-running">What to type to configure and get your RhostMUSH up and running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.xhtml#windows">Windows</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="copyright.xhtml">Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.xhtml">Database</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="database.xhtml#loading-an-existing-database">Loading an existing Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.xhtml#converting-a-flatfile-database-for-use-in-rhostmush">Converting a flatfile database for use in RhostMUSH</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gettingstarted.xhtml">Gettin Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted.xhtml#what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile">What to type to get the basics running if you did not choose a pre-existing flatfile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted.xhtml#minimal-db-instructions">Minimal DB instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gettingstarted.xhtml#ambrosia-s-minimal-rhost-db">Ambrosia’s Minimal Rhost DB</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="toggles.xhtml">What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in RhostMUSH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="toggles.xhtml#flags">Flags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toggles.xhtml#toggles">Toggles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toggles.xhtml#power">&#64;power</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toggles.xhtml#depower">&#64;depower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toggles.xhtml#multi-tiered-bitlevel-systems">Multi-tiered bitlevel systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="toggles.xhtml#altering-bitlevels">Altering bitlevels</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.xhtml">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.xhtml#considerations-to-locking-down-restrictions-in-rhostmush">Considerations to locking down restrictions in RhostMUSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.xhtml#extended-lockdown-of-the-mush-and-considerations">Extended lockdown of the mush and considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.xhtml#methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so">Methods to block anonymous connections and the pros and cons of doing so</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.xhtml#setting-up-an-ssl-tunnel-for-secure-connection-options">Setting up an SSL tunnel for secure connection options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance.xhtml">Maintenance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.xhtml#signals-and-why-you-need-them-for-control">Signals and why you need them for control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.xhtml#shutting-down-gracefully">Shutting down gracefully</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.xhtml#autoshutdown-script">Autoshutdown script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.xhtml#network-port-redirector">Network Port redirector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.xhtml#using-the-built-in-cron-system-for-periodically-running-commands">Using the built-in cron system for periodically running commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.xhtml#the-following-scripts-are-used-in-the-game-directory">The following scripts are used in the game directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maintenance.xhtml#textfiles-for-rhostmush">Textfiles for RhostMUSH</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.xhtml">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.xhtml#stack-limit-and-debugging">Stack limit and debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.xhtml#how-to-reset-the-password-for-1">How to reset the password for #1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.xhtml#troubleshooting-difficulties-compiling-rhostmush">Troubleshooting difficulties compiling RhostMUSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.xhtml#dealing-with-db-corruption">Dealing with DB Corruption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.xhtml#dealing-with-a-corrupt-mail-database">Dealing with a corrupt mail database</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="upgrade.xhtml">Upgrading</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.xhtml#converting-database-betwen-gdbm-and-qdbm">Converting database betwen GDBM and QDBM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.xhtml#updating-rhostmush-prior-to-3-9-5p2">Updating RhostMUSH prior to 3.9.5p2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.xhtml#adding-mysql-to-rhostmush-older-than-3-9-5p2">Adding MySQL to RhostMUSH older than 3.9.5p2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.xhtml">Advanced Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced.xhtml#adding-hardcoded-modules">Adding hardcoded modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.xhtml#shutting-down-gracefully">Shutting down gracefully</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.xhtml#reality-levels">Reality levels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.xhtml#execscript-and-external-programs-and-scripts">Execscript and external programs and scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced.xhtml#using-printf-for-advanced-text-output">Using printf() for advanced text output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.xhtml#format-for-image-files">Format for image files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flags.xhtml">Comparison of Flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="powers.xhtml">Comparison of powers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helpfile.xhtml">RhostMUSH Internal Help Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wizhelpfile.xhtml">RhostMUSH Internal Help Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.xhtml">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nda.xhtml">Historical Non-Disclosure Agreement</a></li>
 </ul>
 </div>
 </div>
+</div>
+<div class="section" id="copyright">
+<span id="id1"></span><h1>Copyright</h1>
+<p>Copyright © 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
+2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021</p>
+<p>Seawolf, Thorin, Ashen-Shugar, Kale, Lensman, Morgan, Odin, Kage, Ambrosia, Rook</p>
+<p>All rights, reserved.</p>
+<p>The copyright includes but is not limited to all changes and modifications to
+the code, the help files, and all information included in this code.
+Copying of these changes is not permitted without prior approval.
+Borrowing of ideas require notification of where idea originated.
+Please use ‘RhostMUSH’ when identifying source. Modification of code is allowed
+as long as contact and acceptance is made prior to changes with one (or more) of
+the original writers of the code in writing.</p>
+<p>This copyright does not include the original code that was given as GNU freeware</p>
+<p>This copyright information may not be changed, altered, or omitted.</p>
 <div class="section" id="indices-and-tables">
-<h1>Indices and tables</h1>
+<h2>Indices and tables</h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.xhtml"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.xhtml"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.xhtml"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
+</div>
 </div>
 
 

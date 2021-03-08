@@ -1,70 +1,58 @@
-.. RhostMUSH Handbook documentation master file, created by
-   sphinx-quickstart on Mon Mar  1 23:21:30 2021.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. RhostMUSH Handbook documentation master file
 
-Welcome to RhostMUSH Handbook's documentation!
-==============================================
+==================
+RhostMUSH Handbook
+==================
+
+The RhostMUSH source tree offers many abilities and options
+not normally found in any other flavor of mush.  This doesn't
+make it better than other servers (though we think so *j/k*)
+but it does give you a wider selection of configurability,
+which, as you know, is the best part of setting up a mush.
+(yea, right)
+
+RhostMUSH offers the following over other mushes
+================================================
+
+*  A high-performance duel-quota system.
+*  A complete rewrite of key areas and referbishments of all the other areas.
+*  An on-line recover tool for accidental db destruction.
+*  Multi-wizard architecture for better control of staff.
+*  Multi-power system to tweek abilities of players.
+*  Multi-zone system where people can belong to multiple zones.
+*  Built in error correction for db corruption or other misuse.
+*  Built in accounting for those annoying twinks who try to hack.
+*  Many new functions and commands not seen anywhere else.
+*  A lot more that could drag this document out for pages.
+
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-  01-intro.rst
-  02-compile.rst
-  03-dbconversion.rst
-  04-configure.rst
-  05-newmush.rst
-  06-security.rst
-  07-toggles.rst
-  08-lockdown.rst
-  09-blocking.rst
-  10-customize.rst
-  11-differences.rst
-  12-advanced.rst
-  13-signals.rst
-  14-ssl.rst
-  15-bitlevels.rst
-  16-modules.rst
-  17-shutdown.rst
-  18-debug.rst
-  19-reality.rst
-  20-execscript.rst
-  21-printf.rst
-  22-ansible.rst
-  23-random.rst
-  24-quickinstall.rst
-  25-godpasswd.rst
-  26-compileerror.rst
-  27-dbcorrupt.rst
-  28-maildbcorrupt.rst
-  29-setup.rst
-  30-cron.rst
-  31-comparison.rst
-  32-dbloading.rst
-  33-qdbm.rst
-  34-upgrade.rst
-  35-txtfiles.rst
-  36-scripts.rst
-  37-execscripts.rst
-  38-imageformat.rst
-  39-portdirector.rst
-  40-autoshutdown.rst
-  41-minimaldb.rst
-  42-ambrosiadb.rst
+   features.rst
+   differences.rst
+   requirements.rst
+   installation.rst
+   database.rst
+   gettingstarted.rst
+   toggles.rst
+   security.rst
+   maintenance.rst
+   troubleshooting.rst
+   upgrade.rst
+   advanced.rst
 
-  helpfile.rst
-  wizhelpfile.rst
+   flags.rst
+   powers.rst
 
-  flags.rst
-  powers.rst
+   helpfile.rst
+   wizhelpfile.rst
 
-  changes.rst
+   changelog.rst
+   nda.rst
 
-  requirements.rst
-  windows.rst
-  copyright.rst
-  nda.rst
+.. include:: copyright.rst
 
 Indices and tables
 ==================

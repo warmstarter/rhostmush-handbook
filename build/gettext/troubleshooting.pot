@@ -1,0 +1,510 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-07 19:05-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/troubleshooting.rst:3
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:6
+msgid "Stack limit and debugging"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:8
+msgid "Rhost uses a stack limit in the debug monitor."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:10
+msgid "This stack limit is set to a reasonable amount of 1000. This is defined in the debug.h file in the hdrs directory."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:13
+msgid "This will directly impact the function_recursion_limit from being set above 100.  If, for whatever reason, you really must have a ridiculously high recursion limit, then it is a suggestion to manually modify the stack limit in debug.h to a higher number."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:18
+msgid "We have reasonably set it to 10000 without too much issue, but keep in mind, the overhead is higher for every stack you throw on the process table.  Higher stack means more memory used."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:22
+msgid "Also be aware that your shell stack limit directly is affected to this value."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:25
+msgid "Type: ulimit -a"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:27
+msgid "This will show you your shell stack limits.  Do NOT set the STACKMAX value higher than your shell's stack value."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:30
+msgid "The value in ~/Rhost/Server/hdrs/debug.h is currently set as:"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:32
+msgid "#define STACKMAX 1000"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:34
+msgid "Feel free to change this to a higher value if you wish."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:36
+msgid "The caveat.  This effects the debug stack daemon.  Meaning, the only way for this to be updated is through @shutdown and then a fresh ./Startmush."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:40
+msgid "A @reboot WILL NOT LOAD IN A NEW DEBUG MONITOR!!!!"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:42
+msgid "You can issue @list stack to see the current stack ceiling ingame."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:45
+msgid "How to reset the password for #1"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:47
+msgid "You can only use one of these options at a time. Make sure to change back your nerhost.conf after making the changes."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:50
+msgid "Method 1"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:52
+msgid "in your netrhost.conf file add: newpass_god 777"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:55
+msgid "This will reset #1's password to the default 'Nyctasia'."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:58
+msgid "Method 2"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:60
+msgid "in your netrhost.conf file add: newpass_god 1"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:63
+msgid "This will allow IMMORTAL players to @newpassword #1 upon reboot."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:66
+msgid "Troubleshooting difficulties compiling RhostMUSH"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:69
+msgid "Changes to conf for high-bit CPUs"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:71
+msgid "RhostMUSH automatically detects 64-bit platforms, and should compile cleanly on these."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:74
+msgid "In case you are trying to compile Rhost on some other crazy-wide CPUs such as the PS2, PS3 or other 128 or 256 bit CPUs, you can easily do so by changing a few lines of code in conf.c."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:78
+msgid "change: typedef unsigned int    pmath1; typedef int             pmath2; #define ALLIGN1 4"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:84
+msgid "to: typedef unsigned long   pmath1; typedef long            pmath2; #define ALLIGN1 8"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:89
+msgid ", replacing 8 with the size of your CPU's long integer. (4 for 32-bit, 8 for 64-bit, 16 for 128-bit, etc etc)"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:92
+msgid "RhostMUSH has only been tested to work on the AMD64, but there is no reason to believe the same will not hold true for IA64."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:96
+msgid "Changes to autconf for certain systems"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:98
+msgid "You should not have to worry about this, but incase something really weird occurs, you may need to look into these changes..."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:102
+msgid "The autoconfig.h file needs to have modifications to it by hand."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:104
+msgid "There are three manual entries:"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:106
+msgid "This one sets how it defines the int to character pointer.  It's safe to keep it as 'unsigned int' for 32 bit platforms.  For non 32-bit, define it to  how an int is defined on that system."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:110
+msgid "typedef unsigned int    pmath1;"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:112
+msgid "This one sets how it defines the signed int to character pointer.  Same restrictions apply as above for unsigned int."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:115
+msgid "typedef int     pmath2;"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:117
+msgid "This sets the allignment for the given platform.  4 represents a 32 bit platform.  8 would represent a 64 bit platform, etc.  Change accordingly."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:120
+msgid "#define ALLIGN1 4"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:123
+msgid "Make sure these three entries are defined in your autoconf.h file else the mush will not compile."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:127
+msgid "Dealing with DB Corruption"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:129
+msgid "Ok.  Your database won't come up."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:131
+msgid "If you are reading this, then likely the scenerio is one of the following:"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:133
+msgid "The mush says it can't find your database files."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:134
+msgid "The mush says it can't read or load your database files."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:135
+msgid "The mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:137
+#: ../../source/troubleshooting.rst:258
+msgid "Bringing up your mail database"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:140
+msgid "First thing is first.  Don't have a panic attack."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:143
+msgid "If the mush says it can't find your database files"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:146
+msgid "Check the names of the database files in your 'data' directory"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:148
+msgid "They should be named something like: netrhost.db netrhost.db.old netrhost.db.old.prev netrhost.gdbm.dir netrhost.gdbm.pag"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:155
+msgid "And you may see a netrhost.db.flat"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:158
+msgid "Check your netrhost.conf file"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:160
+msgid "If you never touched the *database or muddb_name params, you should be good."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:162
+msgid "Verify your *database params (and muddb_name) are still set to 'netrhost' as part of the name.  Ergo, the default values and you didn't change them. These should match up with the filenames in your data directory."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:166
+msgid "If these names do not match up, it can't find the database files to load. So you shouldn't have to change these names, ever. :)"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:170
+msgid "Check your mush.config file"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:172
+msgid "If you never modified this file, you should be good."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:174
+msgid "The gamename should be 'netrhost' for this file.  This does NOT control the name of your game.  This controls the name of all the files as associated to the mush.  So changing this means the netrhost.conf file, all your database files, and so forth.  Please don't change this :)"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:180
+msgid "If the mush says it can't read or load your database files"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:182
+msgid "Double check everything for the previous issue. Make sure everything is named properly."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:185
+msgid "Verify you have enough disk space. (quota)"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:187
+msgid "Some account have a limited quota to run in.  If you reached or exceed your disk quota, you can have a corrupted database.  So always keep your eye on the size.  quota -s to see a human readable format to see how much quota you have left.  You want to make sure current in use is below the 'grace' and soft/hard limits shown.  If not, you're out of space."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:194
+msgid "You will need to remove some files before you repair and bring up your mush again.  Try to keep your quota at least 200 megs free to allow plenty of wonderful growth space for the mush."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:199
+msgid "Verify you have enough disk space.  (system)"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:201
+msgid "The second way you can run out of disk space is by the filesystem itself. do a df -h . in your 'game' directory'.  That is df -h <period>. This will return how much disk space is being used and how much remains. If it shows 100% used, you're out of disk space and the db is corrupt."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:206
+msgid "At this point, you're pretty screwed.  You can see if anything exists in your system to free up some space, but if the filesystem itself is filled, reach out to the owner of the server and let them know. It's a much bigger deal than just your mush if that's the case."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:211
+msgid "Until this issue is resolved, you can not repair and bring up your mush. No disk to run the game."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:215
+msgid "If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:217
+msgid "Ok, at this point you likely had your mush up when the physical server went down hard.  Weither through an emergency shutdown or a physical power outage, your db likely was brought down hard during a write, so it left it in a corrupt state.  These things happen.  This is why we always strongly request you make daily flatfile dumps."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:223
+msgid "So, to recover your database."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:226
+msgid "The bad news"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:228
+msgid "If you have no flatfile backup or never bothered with backups? I'm sorry, at this point you're SOA.  There's no easy way to recover a corrupted binary database.  If you absolutely need data out of it we may be able to help you to piece meal things out of it, but otherwise it's a lost cause.  You'll have to start over from scratch.  I'm sorry."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:236
+msgid "The good news"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:238
+msgid "If you made backups, or if the server had a normal shutdown, you likely have a flatfile backup.  You will see a netrhost.db.flat in either the 'data' directory or 'prevflat' directory.  That is your manual flatfile backup."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:243
+msgid "If the server had a normal shutdown, you will see a file called netrhost.db.TERMFLAT.  This is a scram-emergency db flatfile. It attempts to write this at the time of server shutdown to hopefully keep a clean backup in the case of issues since it identifies the server is coming down hard.  Make sure if you plan to use the TERMFLAT as your recovery flatfile that the very last line shows something like ** END OF DUMP **. That shows you had a successful backup."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:253
+msgid "Now, to restore your database?"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:255
+msgid "Please refer to the file 'README.DBLOADING'."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:260
+msgid "Your mail db may or may not come up at this point."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:263
+msgid "If after restoring main database your mail database works"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:266
+msgid "If your mail database came up and does not show"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:266
+msgid "'Mail: mail is currently off' then you should be good to go."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:268
+msgid "Please issue: wmail/fix wmail/lfix"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:272
+msgid "This will put your mail system in sync with your current database and fix up any errors that may exist.  wmail/fix fixes the mail, wmail/lfix loads in the fixes."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:277
+msgid "If after restoring main database your mail database does not work"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:280
+msgid "If your mail database is not up and shows"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:280
+msgid "'Mail: mail is currently off' then your mail db is currupt."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:282
+msgid "To fix your mail db please refer to file 'README.MAILCANNOTLOAD'"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:285
+msgid "Dealing with a corrupt mail database"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:287
+msgid "It says when you try to access mail that mail is disabled and/or off."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:289
+msgid "Nothing you do can bring it on line.  Well, this is bad, but not horrible."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:291
+msgid "The mail db is totally separate from the main game database.  This means that it in no way damaged or corrupted your main mush database."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:294
+msgid "The bad news?  Yes.  Your mail database is corrupt.  To bring it back, is it hopes that you read ahead of time about how to backup your mush, which would include the mail database."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:299
+msgid "Backing up your mail database"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:301
+msgid "wmail/unload -- this flatfile dumps your mail db.  You should run it daily."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:303
+msgid "To recover your mail, it assumes you have a mail flatfile in either the ~/Server/game/data directory or the ~/Server/game/prevflat directory.  The latter directory is used in junction to the backup_flat.sh and will always house the latest flatfile if not one recently dumped in your data directory."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:309
+msgid "Automatically recovering your mail database"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:311
+msgid "wmail/load"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:313
+msgid "Yup, that's it.  It'll take care of everything else.  Isn't automation grand?"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:315
+msgid "Doesn't even require a reboot :)"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:319
+msgid "NOTE:  You may at this point wish to run the following:"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:318
+msgid "wmail/fix  -- this fixes the mail database and sync's it to the mush db. wmail/lfix -- this loads in the fixed mail database"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:321
+msgid "If you have a very old mail database, this is likely going to be required to sync against nuked players and other changes to the game since the flatfile."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:324
+msgid "If this is a new db that you have, you can skip the fixing."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:327
+msgid "Manually recovering your mail database"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:329
+msgid "To recover your mail manually, you need to delete your mail databases, reboot, then reload your mail flatfiles.  If you have no mail flatfiles, well, you're going to have to start over with the mail database.  Sorry."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:333
+msgid "First, go into the 'game' subdirectory.  Inside that directory is a 'data' directory."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:336
+msgid "You will be deleting all the files with the following names:"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:338
+msgid "RhostMUSH.mail.*                (like RhostMUSH.mail.dir/RhostMUSH.mail.pag) RhostMUSH.folder.*              (like RhostMUSH.folder.dir/RhostMUSH.folder.pag)"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:341
+msgid "DO NOT DELETE OTHER NAMED FILES!!!"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:343
+msgid "Once these files are deleted, you may issue a @reboot to restart the mush. This will unlock the mail system and load in a fresh db."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:346
+msgid "Now, if you have flatfiles of the old mail database, you will see in either the 'data' directory or the 'prevflat' directory files that are called:"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:349
+msgid "RhostMUSH.dump.folder RhostMUSH.dump.mail"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:352
+msgid "Make sure these two files are in the 'data' subdirectory.  Copy them in if they exist in your 'prevflat' directory."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:355
+msgid "Once they are in the 'data' directory, within the mush type: wmail/load"
+msgstr ""
+
+#: ../../source/troubleshooting.rst:357
+msgid "This loads in the flatfile and recover the mail database."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:359
+msgid "Now, at this point the mail db may not be 100% in-sync with the game db."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:361
+msgid "So let's fix it."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:363
+msgid "wmail/fix   -- this will run a fix on the mail db and repair any issues."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:365
+msgid "wmail/lfix  -- this will load the fixed flatfile back into the mush."
+msgstr ""
+
+#: ../../source/troubleshooting.rst:367
+msgid "At this point you should be good to go."
+msgstr ""

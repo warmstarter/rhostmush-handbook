@@ -25,6 +25,38 @@
 <li><p>Disk:  100 MB or more (depending on size of db and how many backups you wish to maintain)</p></li>
 <li><p>Memory: 12-100 MB (depending on size of mush and what size buffers you select and packages you include)</p></li>
 </ul>
+<div class="section" id="supported-platforms">
+<h3>Supported Platforms</h3>
+<p>SunOS (all platforms)
+Solaris (all platforms)
+Linux (all platforms except redhat 5.x mentioned below)
+AIX (all platforms)
+Ultrix (all platforms)
+iBSD (all platforms)
+FreeBSD (all platforms)
+OpenBSD (all platforms)
+NetBSD (all platforms)
+IRIX (all platforms)
+HPUX (32 bit systems only)</p>
+<p>If it’s not listed here, it probably still will compile clean.</p>
+</div>
+<div class="section" id="unsupported-platforms">
+<h3>Unsupported Platforms</h3>
+<p>Win32/Win16
+Alpha systems.</p>
+</div>
+<div class="section" id="untested-platforms">
+<h3>Untested Platforms</h3>
+<p>HP-UX (64 bit systems)
+VMS (all platforms)</p>
+</div>
+<div class="section" id="known-platform-issues">
+<h3>Known Platform Issues</h3>
+<p>On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with
+the built-in gcc package (up to and including 2.8.x).  Because of this some
+config options may not work fully or cause the server to crash.  This is only
+a known issue with config options and only on this platform.</p>
+</div>
 </div>
 <div class="section" id="id2">
 <h2>Requirements</h2>
@@ -33,15 +65,15 @@
 * git (to clone the source and maintain patches)
 * bash/ksh/dash (or compatible shell - for use with build menu)
 * libcrypt (for password encryption - this is usually standard on unix based systems)</p>
-</div>
 <div class="section" id="optional-packages">
-<h2>Optional Packages</h2>
+<h3>Optional Packages</h3>
 <p>RhostMUSH also offers optional linking and library attachments.  For some of these libraries it will attempt to do auto-detection, but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.  Optional packages are as follows:
 * openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
 * mysql client &amp; mysql_config (required for mysql capabilities)
 * sqlite3 libraries (required for sqlite capabilities)
 * ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
 * libpcre (if you wish to use system pcre libraries instead of the built-in ones)</p>
+</div>
 </div>
 <div class="section" id="hosting-requirements">
 <h2>Hosting Requirements</h2>

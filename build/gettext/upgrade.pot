@@ -1,0 +1,451 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-07 19:05-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/upgrade.rst:3
+msgid "Upgrading"
+msgstr ""
+
+#: ../../source/upgrade.rst:6
+msgid "Converting database betwen GDBM and QDBM"
+msgstr ""
+
+#: ../../source/upgrade.rst:8
+msgid "Ok, if you plan to recompile your game that is using GDBM to QDBM, or visa versa some bad news."
+msgstr ""
+
+#: ../../source/upgrade.rst:11
+msgid "The databases are NOT COMPATIBLE to each other, at least in the binary form."
+msgstr ""
+
+#: ../../source/upgrade.rst:14
+msgid "Downgrading QDBM to GDBM"
+msgstr ""
+
+#: ../../source/upgrade.rst:16
+msgid "I would NEVER change from QDBM back to GDBM, but if you're set on it these steps:"
+msgstr ""
+
+#: ../../source/upgrade.rst:18
+msgid "You would use the same steps if you plan to move QDBM to GDBM.  I however would not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously, don't do it unless you have absolutely no other recourse."
+msgstr ""
+
+#: ../../source/upgrade.rst:22
+msgid "However, WARNING: IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify the following: 1.  You have on a 64 bit system, no object that has more than 400 attributes on it. 2.  You have on a 32 bit system, no object that has more than 750 attributes on it. 3.  Any CONTENT of any attribute must be below 4000 characters in length. 4.  Once you have that done, you may follow the procedures below on converting (upgrade)"
+msgstr ""
+
+#: ../../source/upgrade.rst:29
+msgid "from GDBM to QDBM.  This works the same as converting (downgrading) QDBM back down to GDBM"
+msgstr ""
+
+#: ../../source/upgrade.rst:33
+msgid "Upgradging GDBM to QDBM"
+msgstr ""
+
+#: ../../source/upgrade.rst:35
+msgid "Now, if you've kept reading and plan to convert your GDBM database to QDBM great news! It's more stable, it's faster, and lets you have far more flexibility."
+msgstr ""
+
+#: ../../source/upgrade.rst:38
+msgid "So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do."
+msgstr ""
+
+#: ../../source/upgrade.rst:41
+msgid "While logged in to your mush, issue the following commands"
+msgstr ""
+
+#: ../../source/upgrade.rst:43
+msgid "@dump/flat    -- This will make a flatfile dump of your MUSH database"
+msgstr ""
+
+#: ../../source/upgrade.rst:44
+msgid "wmail/unload  -- This will make a flatfile dump of your MAIL database"
+msgstr ""
+
+#: ../../source/upgrade.rst:45
+msgid "@areg/unload  -- If you use the AutoRegistration engine, this dumps it"
+msgstr ""
+
+#: ../../source/upgrade.rst:46
+msgid "newsdb/unload -- If you use the hardcoded news/bbs engine.  This dumps it"
+msgstr ""
+
+#: ../../source/upgrade.rst:49
+msgid "Verify the files exist"
+msgstr ""
+
+#: ../../source/upgrade.rst:54
+msgid "(Optional) .. Server/game/data/RhostMUSH.areg.dump"
+msgstr ""
+
+#: ../../source/upgrade.rst:55
+msgid "(Optional) .. Server/game/data/RhostMUSH.news.flat"
+msgstr ""
+
+#: ../../source/upgrade.rst:58
+msgid "Shutdown the MUSH"
+msgstr ""
+
+#: ../../source/upgrade.rst:60
+msgid "@shutdown your mush"
+msgstr ""
+
+#: ../../source/upgrade.rst:63
+msgid "From the Server directory"
+msgstr ""
+
+#: ../../source/upgrade.rst:65
+msgid "make clean"
+msgstr ""
+
+#: ../../source/upgrade.rst:66
+msgid "make confsource 1.  Select QDBM and if you wish at this time increase your LBUF size 2.  Select any other options you may want"
+msgstr ""
+
+#: ../../source/upgrade.rst:69
+msgid "(r)un and let it compile."
+msgstr ""
+
+#: ../../source/upgrade.rst:70
+msgid "Main DB: Delete (rm) the following files (from Rhost/Server/game/data) netrhost.gdbm* netrhost.db netrhost.db.new netrhost.db.new.prev"
+msgstr ""
+
+#: ../../source/upgrade.rst:75
+msgid "Mail DB: Delete (rm) the following files (from Rhost/Server/game/data) RhostMUSH.folder.dir RhostMUSH.folder.pag RhostMUSH.mail.dir RhostMUSH.mail.pag"
+msgstr ""
+
+#: ../../source/upgrade.rst:80
+msgid "(Optional) AutoReg DB: Delete (rm) the following files (from Rhost/Server/game/data) RhostMUSH.areg.dir RhostMUSH.areg.pag"
+msgstr ""
+
+#: ../../source/upgrade.rst:83
+msgid "(Optional) News/BBS DB: Delete (rm) the following files (from Rhost/Server/game/data) RhostMUSH.news.dir RhostMUSH.news.pag"
+msgstr ""
+
+#: ../../source/upgrade.rst:88
+msgid "From the Server/game directory"
+msgstr ""
+
+#: ../../source/upgrade.rst:90
+msgid "./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new"
+msgstr ""
+
+#: ../../source/upgrade.rst:91
+msgid "./Startmush"
+msgstr ""
+
+#: ../../source/upgrade.rst:94
+msgid "While logged into the mush issue the following commands"
+msgstr ""
+
+#: ../../source/upgrade.rst:96
+msgid "Load in the mail database wmail/load"
+msgstr ""
+
+#: ../../source/upgrade.rst:98
+msgid "(optional) Load in the autoreg database @areg/load"
+msgstr ""
+
+#: ../../source/upgrade.rst:100
+msgid "(optional) Load in the news/bbs database newsdb/load"
+msgstr ""
+
+#: ../../source/upgrade.rst:104
+msgid "Verify that you have QDBM running and your valid values"
+msgstr ""
+
+#: ../../source/upgrade.rst:106
+msgid "@list options system"
+msgstr ""
+
+#: ../../source/upgrade.rst:107
+msgid "@list options (spammy)"
+msgstr ""
+
+#: ../../source/upgrade.rst:110
+msgid "Updating RhostMUSH prior to 3.9.5p2"
+msgstr ""
+
+#: ../../source/upgrade.rst:112
+msgid "Ok."
+msgstr ""
+
+#: ../../source/upgrade.rst:114
+msgid "So you're running an old RhostMUSH."
+msgstr ""
+
+#: ../../source/upgrade.rst:116
+msgid "One prior to 3.9.5p2 and want to take advantage of the new format of the Makefile and the automated mysql stuff and all the other goodies that isn't really (easilly) done with just patch.sh."
+msgstr ""
+
+#: ../../source/upgrade.rst:121
+msgid "Well, you're in luck.  It is actually fairly easy to do."
+msgstr ""
+
+#: ../../source/upgrade.rst:123
+msgid "This is what you have to do."
+msgstr ""
+
+#: ../../source/upgrade.rst:125
+msgid "First thing's first."
+msgstr ""
+
+#: ../../source/upgrade.rst:127
+msgid "Log into your existing mush.  Let's make current backups of all your flatfiles.  Issue: A. @dump/flat B. wmail/unload C. @areg/unload D. newsdb/unload"
+msgstr ""
+
+#: ../../source/upgrade.rst:134
+msgid "Shutdown your game (@shutdown)"
+msgstr ""
+
+#: ../../source/upgrade.rst:136
+msgid "Make an image of all your current backed up files.  From The Server/game directory you would type:"
+msgstr ""
+
+#: ../../source/upgrade.rst:138
+msgid "./backup_flat.sh -s"
+msgstr ""
+
+#: ../../source/upgrade.rst:140
+msgid "Please remember the '-s' to the ./backup_flat.sh."
+msgstr ""
+
+#: ../../source/upgrade.rst:142
+msgid "Make note of the most recently created file in the directory Server/game/oldflat.  It's usually named something like:"
+msgstr ""
+
+#: ../../source/upgrade.rst:144
+msgid "RhostMUSH.dbflat1.tar.gz"
+msgstr ""
+
+#: ../../source/upgrade.rst:146
+msgid "You will need this file later."
+msgstr ""
+
+#: ../../source/upgrade.rst:148
+msgid "Rename your 'Rhost' directory to something else.  This is the directory that you have containing the 'Server' directory.  Name it anything you want other than 'Rhost'. For those not used to unix you would type:"
+msgstr ""
+
+#: ../../source/upgrade.rst:152
+msgid "mv Rhost Rhost_old"
+msgstr ""
+
+#: ../../source/upgrade.rst:155
+msgid "Pull in the latest Rhost.  You would type:"
+msgstr ""
+
+#: ../../source/upgrade.rst:155
+msgid "git clone https://github.com/RhostMUSH/trunk Rhost"
+msgstr ""
+
+#: ../../source/upgrade.rst:157
+msgid "You would type this in the same directory you have renamed your old 'Rhost' directory"
+msgstr ""
+
+#: ../../source/upgrade.rst:161
+msgid "go into the Rhost/Server directory.   Type:"
+msgstr ""
+
+#: ../../source/upgrade.rst:161
+msgid "make confsource"
+msgstr ""
+
+#: ../../source/upgrade.rst:163
+msgid "Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it's the 'r' option)."
+msgstr ""
+
+#: ../../source/upgrade.rst:195
+msgid "8   Once your game is compiled and ready to go you need to copy in"
+msgstr ""
+
+#: ../../source/upgrade.rst:167
+msgid "the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the 'game' directory of your current game you should be able to issue (if you named the old one Rhost_old): Again this needs to be done FROM YOUR Server/game directory!!! A. cp netrhost.conf netrhost.conf.orig B. cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz . C. tar -zxvf RhostMUSH.dbflat1.tar.gz D. Compare your current netrhost.conf to the default one that came with"
+msgstr ""
+
+#: ../../source/upgrade.rst:176
+msgid "the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf. Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don't port or other stuff you have already customized)."
+msgstr ""
+
+#: ../../source/upgrade.rst:185
+msgid "./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new This loads in your flatfile information."
+msgstr ""
+
+#: ../../source/upgrade.rst:187
+msgid "./Startmush Your ./Startmush should re-index all your txt files you originally made."
+msgstr ""
+
+#: ../../source/upgrade.rst:189
+msgid "In your game type the following as an immortal or as #1."
+msgstr ""
+
+#: ../../source/upgrade.rst:190
+msgid "wmail/load This will load in your mail flatfile."
+msgstr ""
+
+#: ../../source/upgrade.rst:192
+msgid "@areg/load This will load in your autoregistration flatfile (if available)"
+msgstr ""
+
+#: ../../source/upgrade.rst:194
+msgid "newsdb/load This will load in your hardcoded bbs flatfile (if available)"
+msgstr ""
+
+#: ../../source/upgrade.rst:197
+msgid "You should be good to go on a current directory structure for Rhost.  Enjoy!"
+msgstr ""
+
+#: ../../source/upgrade.rst:201
+msgid "Adding MySQL to RhostMUSH older than 3.9.5p2"
+msgstr ""
+
+#: ../../source/upgrade.rst:203
+msgid "MySQL is now native in RhostMUSH as of 3.9.5p2."
+msgstr ""
+
+#: ../../source/upgrade.rst:208
+msgid "To autodetect it, YOU MUST HAVE mysql_config installed and running on your server.  Without this, even if you have mysql db installed it won't be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql_config. ******************************************************************************* ** IMPORTANT ** IMPORTANT ** IMPORTANT ** IMPORTANT **IMPORTANT ** IMPORTANT ** *******************************************************************************"
+msgstr ""
+
+#: ../../source/upgrade.rst:217
+msgid "Download the git repository to a seperate directory so that you can copy over the files that it requires you to."
+msgstr ""
+
+#: ../../source/upgrade.rst:220
+msgid "Suggestion:  git clone http://github.com/RhostMUSH/trunk ~/tmprho"
+msgstr ""
+
+#: ../../source/upgrade.rst:222
+msgid "If you are patching UP from an older version, you need to update the following files:"
+msgstr ""
+
+#: ../../source/upgrade.rst:225
+msgid "update your src/Makefile to the one in the 3.9.5p2+ repo ( cp ~/tmprho/Server/src/Makefile ~/Rhost/Server/src/Makefile )"
+msgstr ""
+
+#: ../../source/upgrade.rst:227
+msgid "update your bin/asksource.* files to the one in the 3.9.5p2+ repo ( cp ~/tmprho/Server/bin/asksource.* ~/Rhost/Server/bin/ )"
+msgstr ""
+
+#: ../../source/upgrade.rst:229
+msgid "append 'include rhost_mysql.conf' BEFORE the rhost_ingame.conf file and before the section that says 'define local aliases' toward the end of your netrhost.conf file. ( edit your ~/Rhost/Server/game/netrhost.conf file )"
+msgstr ""
+
+#: ../../source/upgrade.rst:233
+msgid "copy the game/rhost_mysql.conf file from the 3.9.5p2+ repo ( cp ~/tmprho/Server/game/rhost_mysql.conf ~/Rhost/Server/game/ )"
+msgstr ""
+
+#: ../../source/upgrade.rst:235
+msgid "The following lines have to be REPLACED/CHANGED in local.c ( toward the top ): ( you may edit this or copy the one from the other distro ) ( do either:  edit ~/Rhost/Server/src/local.c ) (        or:  cp ~/tmprho/Server/src/local.c ~/Rhost/Server/src/local.c )"
+msgstr ""
+
+#: ../../source/upgrade.rst:270
+msgid "//----------- IF REPLACING/CHANGING local.c COPY BELOW --------------------------"
+msgstr ""
+
+#: ../../source/upgrade.rst:243
+msgid "/* Called when the mush starts up, immediatly prior to the main game"
+msgstr ""
+
+#: ../../source/upgrade.rst:242
+msgid "loop being entered. By this point all databases are loaded and"
+msgstr ""
+
+#: ../../source/upgrade.rst:243
+msgid "all variables configured."
+msgstr ""
+
+#: ../../source/upgrade.rst:244
+#: ../../source/upgrade.rst:266
+msgid "*/"
+msgstr ""
+
+#: ../../source/upgrade.rst:246
+msgid "#ifdef MYSQL_VERSION"
+msgstr ""
+
+#: ../../source/upgrade.rst:246
+msgid "extern void local_mysql_init(void); extern int sql_shutdown(dbref player);"
+msgstr ""
+
+#: ../../source/upgrade.rst:248
+#: ../../source/upgrade.rst:260
+msgid "#endif"
+msgstr ""
+
+#: ../../source/upgrade.rst:250
+msgid "#ifdef SQLITE"
+msgstr ""
+
+#: ../../source/upgrade.rst:251
+msgid "extern void local_sqlite_init(void);"
+msgstr ""
+
+#: ../../source/upgrade.rst:252
+msgid "#endif /* SQLITE */"
+msgstr ""
+
+#: ../../source/upgrade.rst:254
+msgid "void local_startup(void) { #ifdef SQLITE"
+msgstr ""
+
+#: ../../source/upgrade.rst:256
+msgid "local_sqlite_init();"
+msgstr ""
+
+#: ../../source/upgrade.rst:257
+msgid "#endif /* SQLITE */ #ifdef MYSQL_VERSION"
+msgstr ""
+
+#: ../../source/upgrade.rst:259
+msgid "local_mysql_init();"
+msgstr ""
+
+#: ../../source/upgrade.rst:261
+msgid "load_regexp_functions();"
+msgstr ""
+
+#: ../../source/upgrade.rst:262
+msgid "}"
+msgstr ""
+
+#: ../../source/upgrade.rst:265
+msgid "/* Called immediatly after the main game loop exits. At this point"
+msgstr ""
+
+#: ../../source/upgrade.rst:265
+msgid "all databases and variables are still configured"
+msgstr ""
+
+#: ../../source/upgrade.rst:267
+msgid "void local_shutdown(void) { #ifdef MYSQL_VERSION"
+msgstr ""
+
+#: ../../source/upgrade.rst:269
+msgid "sql_shutdown(-1);"
+msgstr ""
+
+#: ../../source/upgrade.rst:270
+msgid "#endif }"
+msgstr ""
+
+#: ../../source/upgrade.rst:272
+msgid "//----------- IF REPLACING/CHANGING local.c COPY ABOVE --------------------------"
+msgstr ""
+
+#: ../../source/upgrade.rst:274
+msgid "Issue 'make clean' then make confsource to rebuild using the latest builder script to build in the mysql changes."
+msgstr ""

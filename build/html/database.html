@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database &#8212; RhostMUSH Handbook  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/groundwork.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="Gettin Started" href="gettingstarted.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="gettingstarted.html" title="Gettin Started"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RhostMUSH Handbook  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Database</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="database">
+<h1>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="loading-an-existing-database">
+<h2>Loading an existing Database<a class="headerlink" href="#loading-an-existing-database" title="Permalink to this headline">¶</a></h2>
+<p>To load in a previous database, you run the db_load script.</p>
+<p>From the game directory you would type:</p>
+<p>./db_load data/netrhost.gdbm yourflatfilehere data/netrhost.db.new</p>
+<div class="section" id="then-you-just-follow-the-prompts-to-load-in-your-flatfile-there">
+<h3>Then you just follow the prompts to load in your flatfile there.<a class="headerlink" href="#then-you-just-follow-the-prompts-to-load-in-your-flatfile-there" title="Permalink to this headline">¶</a></h3>
+<p>If you wish to have #1’s password reset to ‘Nyctasia’ please add this
+to the bottom of your netrhost.conf file:</p>
+<p>newpass_god 777</p>
+<p>The caveat is that you must not have any netrhost.db* or netrhost.gdbm* files
+in your data directory prior to loading it in.  It’ll error out if previous
+files exist.  So you will need to move all files that start with netrhost.db*
+and all files that start with netrhost.gdbm* to another directory.</p>
+<p>Your flatfile tends to be named ‘netrhost.db.flat’ which is in your data
+directory.  You can, however, name your flatfile anything you want and have
+it in any directory you want.</p>
+<p>To make a flatfile in game, you just issue &#64;dump/flat.  You can specify
+a filename after it, otherwise it assumes the name ‘netrhost.db.flat’.</p>
+</div>
+</div>
+<div class="section" id="converting-a-flatfile-database-for-use-in-rhostmush">
+<h2>Converting a flatfile database for use in RhostMUSH<a class="headerlink" href="#converting-a-flatfile-database-for-use-in-rhostmush" title="Permalink to this headline">¶</a></h2>
+<p>In the ~/Server/convert directory there is a script called ‘doconvert.sh’</p>
+<p>This script will convert most flatfiles from existing mush engines to
+RhostMUSH.  The exception is PennMUSH 1.8.0 and later.  For this there is a
+BETA converter penn18x_converter.tgz.  This is proven to work, most of the time,
+with codebases between 1.8.0 and 1.8.2.  It has not been fully vetted with
+the latest PennMUSH databases.  Our apologies.</p>
+<p>To convert a non-pennmush game (or a pennmush 1.7.4 or earlier), you first
+need a valid flatfile of the game you’re wanting to convert.  Please refer
+to the documentatation of the mush engine in question (MUX, Penn 1.7, TM2/3)
+on how to do this.  Once you have it type:</p>
+<p>./doconvert.sh FLATFILETOCONVERT FLATFILEOUTPUT</p>
+<p>In this instance, FLATFILETOCONVERT will be the filename (with full path) to
+the flatfile you are wishing to convert.</p>
+<p>The FLATFILEOUTPUT is anyfilename you wish to name the RhostMUSH converted
+flatfile.  I suggest netrhost_converted.db.flat so you know by the name
+what it is.</p>
+<p>Follow what it asks for and just let it do its thing.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Database</a><ul>
+<li><a class="reference internal" href="#loading-an-existing-database">Loading an existing Database</a><ul>
+<li><a class="reference internal" href="#then-you-just-follow-the-prompts-to-load-in-your-flatfile-there">Then you just follow the prompts to load in your flatfile there.</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#converting-a-flatfile-database-for-use-in-rhostmush">Converting a flatfile database for use in RhostMUSH</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gettingstarted.html"
+                        title="next chapter">Gettin Started</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/database.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="gettingstarted.html" title="Gettin Started"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">RhostMUSH Handbook  documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Database</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2021, wstarter.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
+</html>
