@@ -74,7 +74,7 @@
 
 
 \title{RhostMUSH Handbook}
-\date{Mar 07, 2021}
+\date{Mar 11, 2021}
 \release{}
 \author{wstarter}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -3375,36 +3375,27 @@ Once that’s done, all you do from within the game is two commands:
 When setting up a mush for the first time, make sure you
 have all the files configured correctly.  This is with using
 the following file for configuration:
-\begin{itemize}
-\item {} 
-\sphinxAtStartPar
-netrhost.conf
 
-\end{itemize}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZhy{}} \PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{conf}
+\end{sphinxVerbatim}
 
 
 \subsection{Starting the game}
-\label{\detokenize{installation:starting-the-game}}\begin{description}
-\item[{Once done, you start up the system with the following command:}] \leavevmode\begin{itemize}
-\item {} 
+\label{\detokenize{installation:starting-the-game}}
 \sphinxAtStartPar
-{[}sh/csh{]} ./Startmush
+Once done, you start up the system with the following command:
 
-\end{itemize}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+ \PYG{o}{\PYGZhy{}} \PYG{p}{[}\PYG{n}{sh}\PYG{o}{/}\PYG{n}{csh}\PYG{p}{]} \PYG{o}{.}\PYG{o}{/}\PYG{n}{Startmush}
 
-\sphinxAtStartPar
-It will prompt you to start a new db if it doesn’t find one.
+\PYG{n}{It} \PYG{n}{will} \PYG{n}{prompt} \PYG{n}{you} \PYG{n}{to} \PYG{n}{start} \PYG{n}{a} \PYG{n}{new} \PYG{n}{db} \PYG{k}{if} \PYG{n}{it} \PYG{n}{doesn}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{t find one.}
 
-\sphinxAtStartPar
-You may also do the commands individually:
-\sphinxhyphen{} {[}csh{]} netrhost \sphinxhyphen{}s netrhost.conf \textgreater{}\& netrhost.log \&
-\begin{quote}
+\PYG{n}{You} \PYG{n}{may} \PYG{n}{also} \PYG{n}{do} \PYG{n}{the} \PYG{n}{commands} \PYG{n}{individually}\PYG{p}{:}\PYG{p}{:}
 
-\sphinxAtStartPar
-{[}sh{]}  netrhost \sphinxhyphen{}s netrhost.conf \textgreater{} netrhost.log 2\textgreater{}\&1 \&
-\end{quote}
-
-\end{description}
+   \PYG{p}{[}\PYG{n}{csh}\PYG{p}{]} \PYG{n}{netrhost} \PYG{o}{\PYGZhy{}}\PYG{n}{s} \PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{conf} \PYG{o}{\PYGZgt{}}\PYG{o}{\PYGZam{}} \PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{log} \PYG{o}{\PYGZam{}}
+   \PYG{p}{[}\PYG{n}{sh}\PYG{p}{]}  \PYG{n}{netrhost} \PYG{o}{\PYGZhy{}}\PYG{n}{s} \PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{conf} \PYG{o}{\PYGZgt{}} \PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{log} \PYG{l+m+mi}{2}\PYG{o}{\PYGZgt{}}\PYG{o}{\PYGZam{}}\PYG{l+m+mi}{1} \PYG{o}{\PYGZam{}}
+\end{sphinxVerbatim}
 
 
 \subsection{First login to the game}
@@ -3435,20 +3426,18 @@ Ambrosia, Amos, and Morgan.  They can be found around the net.
 \label{\detokenize{installation:installing-using-an-ansible-playbook}}
 \sphinxAtStartPar
 To begin, you will run the following command in a directory that will house your game:
-\begin{quote}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{git} \PYG{n}{clone} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{github}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{RhostMUSH}\PYG{o}{/}\PYG{n}{trunk} \PYG{n}{Rhost}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-\textgreater{} \sphinxstylestrong{git clone https://github.com/RhostMUSH/trunk Rhost}
-\end{quote}
-\begin{description}
-\item[{You may also just run the yml file and ansible (ansible\sphinxhyphen{}playbook) to install your RhostMUSH engine}] \leavevmode
-\sphinxAtStartPar
-\textgreater{} \sphinxstylestrong{wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml}
+You may also just run the yml file and ansible (ansible\sphinxhyphen{}playbook) to install your RhostMUSH engine:
 
-\sphinxAtStartPar
-\textgreater{} \sphinxstylestrong{ansible\sphinxhyphen{}playbook rhostinstall.yml}
-
-\end{description}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{wget} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{raw}\PYG{o}{.}\PYG{n}{githubusercontent}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{RhostMUSH}\PYG{o}{/}\PYG{n}{trunk}\PYG{o}{/}\PYG{n}{master}\PYG{o}{/}\PYG{n}{rhostinstall}\PYG{o}{.}\PYG{n}{yml}
+\PYG{n}{ansible}\PYG{o}{\PYGZhy{}}\PYG{n}{playbook} \PYG{n}{rhostinstall}\PYG{o}{.}\PYG{n}{yml}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 This downloads the latest stable version of the code, bringing with it all patches and scripts, documentation and support tools that you will need.
@@ -3462,17 +3451,16 @@ This downloads the latest stable version of the code, bringing with it all patch
 \sphinxAtStartPar
 It is assumed that you have gotten to this point with the following command:
 
-\sphinxAtStartPar
-git clone \sphinxurl{https://github.com/RhostMUSH/trunk} Rhost
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{git} \PYG{n}{clone} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{github}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{RhostMUSH}\PYG{o}{/}\PYG{n}{trunk} \PYG{n}{Rhost}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-If you did NOT get it this way, your file permissions may not be properly set
-up.  Please type:
-\begin{quote}
+If you did NOT get it this way, your file permissions may not be properly set up.  Please type:
 
-\sphinxAtStartPar
-chmod +rx bin/\sphinxstyleemphasis{.sh src/}.sh game/\sphinxstyleemphasis{.sh game/Startmush game/db\_}
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{chmod} \PYG{o}{+}\PYG{n}{rx} \PYG{n+nb}{bin}\PYG{o}{/}\PYG{o}{*}\PYG{o}{.}\PYG{n}{sh} \PYG{n}{src}\PYG{o}{/}\PYG{o}{*}\PYG{o}{.}\PYG{n}{sh} \PYG{n}{game}\PYG{o}{/}\PYG{o}{*}\PYG{o}{.}\PYG{n}{sh} \PYG{n}{game}\PYG{o}{/}\PYG{n}{Startmush} \PYG{n}{game}\PYG{o}{/}\PYG{n}{db\PYGZus{}}\PYG{o}{*}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 This makes sure all the build scripts are properly made executable.
@@ -3480,11 +3468,10 @@ This will result in ‘permission denied’ or similar results when running a sc
 
 \sphinxAtStartPar
 Once ready to compile type:
-\begin{quote}
 
-\sphinxAtStartPar
-make confsource
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{make} \PYG{n}{confsource}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 This will bring up a menu where you can selection options.
@@ -3494,50 +3481,65 @@ This will bring up a menu where you can selection options.
 \label{\detokenize{installation:important-before-you-actually-start-building}}
 \sphinxAtStartPar
 The main parts of making your RhostMUSH, easy pleasy:
-0.  The stunnel directory contains TLS/SSL connectivity.  This has to be linked
-\begin{quote}
-
-\sphinxAtStartPar
-to another port and will tunnel to the mush port.  The README file explains
-how to set up and configure your TLS/SSL connection.
-\end{quote}
+\#.  The stunnel directory contains TLS/SSL connectivity.  This has to be linked to another port and will tunnel to the mush port.  The README file explains how to set up and configure your TLS/SSL connection.
+\#.  ./patch.sh \textendash{} This makes sure you have the latest code.  If you got this by git clone \sphinxurl{https://github.com/RhostMUSH/trunk} then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.
+\#.  make confsource.  Yup, it’s menu driven, nifty eh?
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
-./patch.sh \textendash{} This makes sure you have the latest code.
-If you got this by git clone \sphinxurl{https://github.com/RhostMUSH/trunk}
-then you can ignore patching.  You can use ./patch.sh at any
-time to update your code.  It ignores local.c incase you make
-your own modules.
+Options you may want to select (other than the defaults):
 
 \item {} 
 \sphinxAtStartPar
-make confsource.  Yup, it’s menu driven, nifty eh?
-Options you may want to select (other than the defaults):
 5  (\%c is selected by default, but choose \%x as well for MUX/TM3 compat)
+
+\item {} 
+\sphinxAtStartPar
 9  (if you want \$commands to require the COMMAND flag)
+
+\item {} 
+\sphinxAtStartPar
 16 (if you want a wider WHO listing like older versions of MUX)
+
+\item {} 
+\sphinxAtStartPar
 22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
+
+\item {} 
+\sphinxAtStartPar
 24 (if you have issues with \sphinxhyphen{}lssl not being found)
+
+\item {} 
+\sphinxAtStartPar
 B3 (for 64 character attribute names)
+
+\item {} 
+\sphinxAtStartPar
 B6 (select 8K for Penn/MUX2/TM3 default, up to 32K.  64K is network intensive)
+
+\item {} 
+\sphinxAtStartPar
 B5 (will be autoselected if you choose 8K or more.  Pick this anyway)
+
+\item {} 
+\sphinxAtStartPar
 B4 (if you have sqlite libraries and wish to use this)
 
+\end{enumerate}
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
 ‘r’ to compile with the settings you selected.
 
 \item {} 
 \sphinxAtStartPar
-Modify your netrhost.conf file as specified.  Make sure to align
-your port and debug\_id as shown in the netrhost.conf file.
+Modify your netrhost.conf file as specified.  Make sure to align your port and debug\_id as shown in the netrhost.conf file.
 
 \item {} 
 \sphinxAtStartPar
-If you wish to port in an old flatfile, please refer to the readme directory
-on how to port your flatfile in (README.DBLOADING).
+If you wish to port in an old flatfile, please refer to the readme directory on how to port your flatfile in (README.DBLOADING).
 
 \end{enumerate}
 
@@ -3549,13 +3551,11 @@ There are pre\sphinxhyphen{}loaded flatfile databases you can use at this point.
 and corrisponding netrhost.conf file will be located in the minimal\sphinxhyphen{}DBs/minimal\_db directory.
 
 \sphinxAtStartPar
-You may auto\sphinxhyphen{}load the minimal db and corresponding netrhost.conf file with the
-command:
-\begin{quote}
+You may auto\sphinxhyphen{}load the minimal db and corresponding netrhost.conf file with the command:
 
-\sphinxAtStartPar
-./minimal.sh
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{.}\PYG{o}{/}\PYG{n}{minimal}\PYG{o}{.}\PYG{n}{sh}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 This is ran from within the ‘game’ directory.  Once this is ran, you will need
@@ -3567,24 +3567,26 @@ be changed at the very least.  Keep the debug\_id coordinated to the port as des
 \label{\detokenize{installation:to-load-a-prebuilt-flatfile}}
 \sphinxAtStartPar
 To use these follow these steps:
-1.  Make a backup of your existing netrhost.conf file
-\begin{quote}
+1.  Make a backup of your existing netrhost.conf file:
 
-\sphinxAtStartPar
-\textendash{}\textgreater{} cp game/netrhost.conf game/netrhost.conf.backup
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cp} \PYG{n}{game}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{conf} \PYG{n}{game}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{conf}\PYG{o}{.}\PYG{n}{backup}
+\end{sphinxVerbatim}
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \setcounter{enumi}{1}
 \item {} 
 \sphinxAtStartPar
-Copy the netrhost.conf file into your game directory
-\textendash{}\textgreater{} cp \sphinxhyphen{}f ./minimal\sphinxhyphen{}DBs/minimal\_db/netrhost.conf ./game/netrhost.conf
+Copy the netrhost.conf file into your game directory:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cp} \PYG{o}{\PYGZhy{}}\PYG{n}{f} \PYG{o}{.}\PYG{o}{/}\PYG{n}{minimal}\PYG{o}{\PYGZhy{}}\PYG{n}{DBs}\PYG{o}{/}\PYG{n}{minimal\PYGZus{}db}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{conf} \PYG{o}{.}\PYG{o}{/}\PYG{n}{game}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{conf}
+\end{sphinxVerbatim}
 
 \item {} 
 \sphinxAtStartPar
 At this point you can modify your netrhost.conf file settings in your game directory.
-Using an editor modify the ‘port’ and ‘debug\_id’ respectively in your netrhost.conf as stated.
+Using an editor modify the ‘port’ and ‘debug\_id’ respectively in your netrhost.conf as state.
 The ‘port’ will be the port the mush listens on, the debug\_id is for the debug\sphinxhyphen{}stack and is
 your port with a ‘5’ at the end.  So if your port is 4444, the debug\_id is 44445
 
@@ -3592,12 +3594,20 @@ your port with a ‘5’ at the end.  So if your port is 4444, the debug\_id is 
 \sphinxAtStartPar
 Load in the flatfile into the mush (You could do this in the Startmush as well)
 Manually:
-\textendash{}\textgreater{} cd game
-\textendash{}\textgreater{} ./db\_load data/netrhost.gdbm ../minimal\sphinxhyphen{}DBs/minimal\_db/netrhost.db.flat data/netrhost.db.new
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cd} \PYG{n}{game}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+./db\_load data/netrhost.gdbm ../minimal\sphinxhyphen{}DBs/minimal\_db/netrhost.db.flat data/netrhost.db.new dwF
 
 \sphinxAtStartPar
 Start your mush:
-\textendash{}\textgreater{} ./Startmush
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{.}\PYG{o}{/}\PYG{n}{Startmush}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 This will load the db that you loaded.
@@ -3607,13 +3617,15 @@ This will load the db that you loaded.
 
 \sphinxAtStartPar
 From Startmush:
-\textendash{}\textgreater{} ./Startmush
 
-\sphinxAtStartPar
-when prompted, hit \textless{}RETURN\textgreater{} for searching then select the number of the netrhost.db.flat that is
-listed as \textasciitilde{}/minimal\sphinxhyphen{}DBs/minimal\_db/netrhost.db.flat
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}} \PYG{o}{.}\PYG{o}{/}\PYG{n}{Startmush}
+\end{sphinxVerbatim}
 
 \end{enumerate}
+
+\sphinxAtStartPar
+when prompted, hit \textless{}RETURN\textgreater{} for searching then select the number of the netrhost.db.flat that is listed as \textasciitilde{}/minimal\sphinxhyphen{}DBs/minimal\_db/netrhost.db.flat
 
 
 \subsubsection{Starting from scratch with a brand new database}
@@ -3629,7 +3641,10 @@ your port with a ‘5’ at the end.  So if your port is 4444, the debug\_id is 
 \item {} 
 \sphinxAtStartPar
 Start your mush:
-\textendash{}\textgreater{} ./Startmush
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}} \PYG{o}{.}\PYG{o}{/}\PYG{n}{Startmush}
+\end{sphinxVerbatim}
 
 \end{enumerate}
 
@@ -3666,65 +3681,66 @@ you likely won’t even have to set this up if you don’t want to.
 
 
 \paragraph{Compile the source code}
-\label{\detokenize{installation:compile-the-source-code}}\begin{quote}
+\label{\detokenize{installation:compile-the-source-code}}
+\sphinxAtStartPar
+Make and run the RhostMUSH source:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Type}\PYG{p}{:}  \PYG{n}{make} \PYG{n}{confsource}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Make and run the RhostMUSH source
-Type:  make confsource
+If you get an error running the script itself:
 
-\sphinxAtStartPar
-If you get an error running the script itself,
-type: ./bin/script\_setup.sh
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nb}{type}\PYG{p}{:} \PYG{o}{.}\PYG{o}{/}\PYG{n+nb}{bin}\PYG{o}{/}\PYG{n}{script\PYGZus{}setup}\PYG{o}{.}\PYG{n}{sh}
 
-\sphinxAtStartPar
-Then type: make confsource
+\PYG{n}{Then} \PYG{n+nb}{type}\PYG{p}{:} \PYG{n}{make} \PYG{n}{confsource}
 
-\sphinxAtStartPar
-After the compile process is done, you should be good to go.
-If it complains about missing binaries then type ‘make links’
-\end{quote}
+\PYG{n}{After} \PYG{n}{the} \PYG{n+nb}{compile} \PYG{n}{process} \PYG{o+ow}{is} \PYG{n}{done}\PYG{p}{,} \PYG{n}{you} \PYG{n}{should} \PYG{n}{be} \PYG{n}{good} \PYG{n}{to} \PYG{n}{go}\PYG{o}{.}
+\PYG{n}{If} \PYG{n}{it} \PYG{n}{complains} \PYG{n}{about} \PYG{n}{missing} \PYG{n}{binaries} \PYG{n}{then} \PYG{n+nb}{type} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{make links}\PYG{l+s+s1}{\PYGZsq{}}
+\end{sphinxVerbatim}
 
 
 \subparagraph{Manual configuration of source code}
-\label{\detokenize{installation:manual-configuration-of-source-code}}\begin{quote}
-\begin{quote}
+\label{\detokenize{installation:manual-configuration-of-source-code}}
+\sphinxAtStartPar
+To do manual configuration (skip if the previous step worked for you) And yes, this is a bit of a pain in the bottom, hopefully you will not need this.
 
 \sphinxAtStartPar
-To do manual configuration (skip if the previous step worked for you)
-And yes, this is a bit of a pain in the bottom, hopefully you
-will not need this.
-\begin{quote}
-
+You need the following definitions defined to make this work:
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
 \sphinxAtStartPar
-You need the following definitions defined to make this
-work:  TINY\_U, USE\_SIDEEFFECTS, MUX\_INCDEC, ATTR\_HACK
-\begin{quote}
+TINY\_U, USE\_SIDEEFFECTS, MUX\_INCDEC, ATTR\_HACK
 
+\item {} 
 \sphinxAtStartPar
 (u()/u2() switched)
+
+\item {} 
+\sphinxAtStartPar
 (sideeffects)
+
+\item {} 
+\sphinxAtStartPar
 (inc()/xinc() switched)
+
+\item {} 
+\sphinxAtStartPar
 (support for \_/\textasciitilde{} attribs)
-\end{quote}
+
+\end{enumerate}
 
 \sphinxAtStartPar
-You only need to do this if you received the RhostMUSH src.
-If you received a binary, continue on to the next part.
+You only need to do this if you received the RhostMUSH src.  If you received a binary, continue on to the next part.
 
 \sphinxAtStartPar
-To compile the code, just type ‘make confsource’.  It will
-prompt you with settings on what you need to do.  If you
-just want to quickly hand edit the Makefile, it is in the
-directory src (full path src/Makefile).  Then you may just
-run ‘make source’, if you so choose to hand\sphinxhyphen{}edit the Makefile.
-\end{quote}
-\end{quote}
+To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand\sphinxhyphen{}edit the Makefile.
 
 \sphinxAtStartPar
 After the compile process is done, type ‘make links’!
-\begin{quote}
-\end{quote}
-\end{quote}
 
 
 \subsubsection{Loading a database for your MUSH}
@@ -3739,10 +3755,13 @@ You now have a choice of optionally starting at a provided database or starting 
 \item[{Copy an existing flatfile and corresponding netrhost.conf file}] \leavevmode
 \sphinxAtStartPar
 Default provied example:
-1.  cp game/netrhost.conf game/netrhost.conf.backup
-2.  cp \sphinxhyphen{}f minimal\sphinxhyphen{}DBs/minimal\_db/netrhost.conf game/netrhost.conf
-3.  cd game
-4.  ./db\_load data/netrhost.gdbm ../minimal\sphinxhyphen{}DBs/minimal\_db/netrhost.db.flat data/netrhost.db.new
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{l+m+mf}{1.}  \PYG{n}{cp} \PYG{n}{game}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{conf} \PYG{n}{game}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{conf}\PYG{o}{.}\PYG{n}{backup}
+\PYG{l+m+mf}{2.}  \PYG{n}{cp} \PYG{o}{\PYGZhy{}}\PYG{n}{f} \PYG{n}{minimal}\PYG{o}{\PYGZhy{}}\PYG{n}{DBs}\PYG{o}{/}\PYG{n}{minimal\PYGZus{}db}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{conf} \PYG{n}{game}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{conf}
+\PYG{l+m+mf}{3.}  \PYG{n}{cd} \PYG{n}{game}
+\PYG{l+m+mf}{4.}  \PYG{o}{.}\PYG{o}{/}\PYG{n}{db\PYGZus{}load} \PYG{n}{data}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{gdbm} \PYG{o}{.}\PYG{o}{.}\PYG{o}{/}\PYG{n}{minimal}\PYG{o}{\PYGZhy{}}\PYG{n}{DBs}\PYG{o}{/}\PYG{n}{minimal\PYGZus{}db}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{db}\PYG{o}{.}\PYG{n}{flat} \PYG{n}{data}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{db}\PYG{o}{.}\PYG{n}{new}
+\end{sphinxVerbatim}
 
 \end{description}
 \end{quote}
@@ -3764,35 +3783,32 @@ to change them.  The port and debug\_id need to be changed.
 
 
 \subsubsection{Start the MUSH and login}
-\label{\detokenize{installation:start-the-mush-and-login}}\begin{quote}
+\label{\detokenize{installation:start-the-mush-and-login}}
+\sphinxAtStartPar
+From the game diretory issue:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{.}\PYG{o}{/}\PYG{n}{Startmush}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-From the game diretory issue: ./Startmush
-\begin{quote}
+To login:
 
-\sphinxAtStartPar
-To login:  co Wizard Nyctasia
-\end{quote}
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{co} \PYG{n}{Wizard} \PYG{n}{Nyctasia}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Option: Things to do once you have connected if you did NOT use a provided database}
 \label{\detokenize{installation:option-things-to-do-once-you-have-connected-if-you-did-not-use-a-provided-database}}\begin{enumerate}
-\sphinxsetlistlabels{\alph}{enumi}{enumii}{}{.}%
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
-@dig your master room and in your netrhost.conf file define master\_room
-to this dbref (without the \#.  So like master\_room 2)
+@dig your master room and in your netrhost.conf file define master\_room to this dbref (without the \#.  So like master\_room 2)
 
 \item {} 
 \sphinxAtStartPar
-Create an immortal holder charater (@pcreate then @set immortal)
-Feel free to set up holder characters for all the bittypes which are:
-\begin{quote}
-
-\sphinxAtStartPar
-GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL
-\end{quote}
+Create an immortal holder charater (@pcreate then @set immortal) Feel free to set up holder characters for all the bittypes which are: GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL
 
 \item {} 
 \sphinxAtStartPar
@@ -3805,47 +3821,40 @@ Log into the immortal character
 \item {} 
 \sphinxAtStartPar
 @pcreate all your guest characters and set them up properly.  My suggestion:
-@dolist lnum(1,10)=\{@pcreate Guest\#\#=guest;@set {\color{red}\bfseries{}*}Guest\#\#=guest;@desc {\color{red}\bfseries{}*}Guest\#\#=A guest player.;@adisconnect {\color{red}\bfseries{}*}Guest\#\#=home;@lock {\color{red}\bfseries{}*}Guest\#\#=*Guest\#\#\}
 
-\sphinxAtStartPar
-@list guest will show your guest characters and if they’re set up properly.
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@dolist} \PYG{n}{lnum}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n+nd}{@pcreate} \PYG{n}{Guest}\PYG{c+c1}{\PYGZsh{}\PYGZsh{}=guest;@set *Guest\PYGZsh{}\PYGZsh{}=guest;@desc *Guest\PYGZsh{}\PYGZsh{}=A guest player.;@adisconnect *Guest\PYGZsh{}\PYGZsh{}=home;@lock *Guest\PYGZsh{}\PYGZsh{}=*Guest\PYGZsh{}\PYGZsh{}\PYGZcb{}}
+
+\PYG{n+nd}{@list} \PYG{n}{guest} \PYG{n}{will} \PYG{n}{show} \PYG{n}{your} \PYG{n}{guest} \PYG{n}{characters} \PYG{o+ow}{and} \PYG{k}{if} \PYG{n}{they}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{re set up properly.}
+\end{sphinxVerbatim}
 
 \item {} 
 \sphinxAtStartPar
-Any master room code you load in from your immholder character (or @chown/preserve to it)
-The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.
-All other softcode (like mail wrappers) can be found on \sphinxurl{https://github.com/RhostMUSH/trunk} in Mushcode.
+Any master room code you load in from your immholder character (or @chown/preserve to it) The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.  All other softcode (like mail wrappers) can be found on \sphinxurl{https://github.com/RhostMUSH/trunk} in Mushcode.
 
 \end{enumerate}
 
 
 \subsubsection{Setup new character, staff, and take tasks that can only be accomplished by \#1}
-\label{\detokenize{installation:setup-new-character-staff-and-take-tasks-that-can-only-be-accomplished-by-1}}\begin{quote}
-
+\label{\detokenize{installation:setup-new-character-staff-and-take-tasks-that-can-only-be-accomplished-by-1}}
 \sphinxAtStartPar
 Set up any other characters you want.  Anyone immortal can issue @function, @admin, or anything \#1 can do.
-\end{quote}
 
 
 \subsubsection{Setup daily backups for your game}
-\label{\detokenize{installation:setup-daily-backups-for-your-game}}\begin{quote}
+\label{\detokenize{installation:setup-daily-backups-for-your-game}}
+\sphinxAtStartPar
+Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game. paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@dump}\PYG{o}{/}\PYG{n}{flat}      \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{This} \PYG{n}{makes} \PYG{n}{a} \PYG{n}{flatfile} \PYG{n}{dump} \PYG{n}{of} \PYG{n}{the} \PYG{n}{main} \PYG{n}{database}\PYG{o}{.}  \PYG{n}{You} \PYG{n}{want} \PYG{n}{to} \PYG{n}{run} \PYG{n}{this} \PYG{n}{daily}\PYG{o}{.}
+\PYG{n}{wmail}\PYG{o}{/}\PYG{n}{unload}    \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{This} \PYG{n}{makes} \PYG{n}{a} \PYG{n}{flatfile} \PYG{n}{dump} \PYG{n}{of} \PYG{n}{the} \PYG{n}{mail} \PYG{n}{database}\PYG{o}{.}  \PYG{n}{You} \PYG{n}{want} \PYG{n}{to} \PYG{n}{run} \PYG{n}{this} \PYG{n}{daily}\PYG{o}{.}
+\PYG{n+nd}{@areg}\PYG{o}{/}\PYG{n}{unload}    \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Only} \PYG{n}{worry} \PYG{n}{about} \PYG{n}{this} \PYG{k}{if} \PYG{n}{you} \PYG{n}{are} \PYG{n}{using} \PYG{n}{auto}\PYG{o}{\PYGZhy{}}\PYG{n}{registration} \PYG{n}{emailing}\PYG{o}{.}  \PYG{n}{Few} \PYG{n}{do}\PYG{o}{.}
+\PYG{n}{newsdb}\PYG{o}{/}\PYG{n}{unload}   \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Only} \PYG{n}{worry} \PYG{k}{if} \PYG{n}{you} \PYG{n}{use} \PYG{n}{the} \PYG{n}{hardcoded} \PYG{n}{bbs} \PYG{n}{system}\PYG{o}{.}  \PYG{n}{Most} \PYG{n}{don}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{t use it.}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game.
-paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:
-
-\sphinxAtStartPar
-@dump/flat      \textendash{} This makes a flatfile dump of the main database.  You want to run this daily.
-wmail/unload    \textendash{} This makes a flatfile dump of the mail database.  You want to run this daily.
-@areg/unload    \textendash{} Only worry about this if you are using auto\sphinxhyphen{}registration emailing.  Few do.
-newsdb/unload   \textendash{} Only worry if you use the hardcoded bbs system.  Most don’t use it.
-
-\sphinxAtStartPar
-The backup\_flat.sh script (that launches automatically with Startmush) will archive all the above files
-if they exist.  It moves these flatfiles into the ‘prevflat’ directory, then tarballs those and dumps
-consecutive backups in the ‘oldflat’ directory.  By default it keeps 7 consecutive backups.  You may
-alter this in the backup\_flat.sh script itself.
-\end{quote}
+The backup\_flat.sh script (that launches automatically with Startmush) will archive all the above files if they exist.  It moves these flatfiles into the ‘prevflat’ directory, then tarballs those and dumps consecutive backups in the ‘oldflat’ directory.  By default it keeps 7 consecutive backups.  You may alter this in the backup\_flat.sh script itself.
 
 
 \subsubsection{Customtize the textfiles for your game}
@@ -3883,8 +3892,7 @@ Don’t feel overwhelmed, it’s all very well documented.
 
 
 \subsubsection{Creating a new game with Ambrosia’s default database}
-\label{\detokenize{installation:creating-a-new-game-with-ambrosia-s-default-database}}\begin{quote}
-
+\label{\detokenize{installation:creating-a-new-game-with-ambrosia-s-default-database}}
 \sphinxAtStartPar
 Follow minimal\sphinxhyphen{}DBs/Amb\sphinxhyphen{}MinimalRhost/IMPORTANT\_README
 
@@ -3893,18 +3901,15 @@ The netrhost.conf file you will copy is in minimal\sphinxhyphen{}DBs/Amb\sphinxh
 Copy this netrhost.conf file into your ‘game’ directory.
 
 \sphinxAtStartPar
-You will want the custom txt files under Amb\sphinxhyphen{}MinimalRhost/txt in your game/txt
-directory and to mkindx all the txt files.  You can run ./Startmush \sphinxhyphen{}i to index.
+You will want the custom txt files under Amb\sphinxhyphen{}MinimalRhost/txt in your game/txt directory and to mkindx all the txt files.  You can run ./Startmush \sphinxhyphen{}i to index.
 
 \sphinxAtStartPar
-When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit \textless{}RETURN\textgreater{}
-to have it search for flatfiles, then select netrhost.db.flat from under
-the minimal\sphinxhyphen{}DBs/Amb\sphinxhyphen{}MinimalRhost directory.
+When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit \textless{}RETURN\textgreater{} to have it search for flatfiles, then select netrhost.db.flat from under the minimal\sphinxhyphen{}DBs/Amb\sphinxhyphen{}MinimalRhost directory.
 
 \sphinxAtStartPar
-The main steps to make sure you do for Ambrosia’s db:
-\textasciitilde{}/Server/minimal\sphinxhyphen{}DBs/Amb\sphinxhyphen{}MinimalRhost/netrhost.db.flat \textendash{} Ambrosia’s secure and featured minimal db.
-\begin{itemize}
+The main steps to make sure you do for \textasciitilde{}/Server/minimal\sphinxhyphen{}DBs/Amb\sphinxhyphen{}MinimalRhost/netrhost.db.flat \textendash{} Ambrosia’s secure and featured minimal db
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
 Use the matching netrhost.conf file under the Amb\sphinxhyphen{}MinimalRhost/game directory
@@ -3912,11 +3917,29 @@ Use the matching netrhost.conf file under the Amb\sphinxhyphen{}MinimalRhost/gam
 \item {} 
 \sphinxAtStartPar
 Load in the settings specified in the Amb\sphinxhyphen{}MinimalRhost/bin directory.
-\sphinxhyphen{} Copy this file into your \textasciitilde{}/Server/bin directory
-\sphinxhyphen{} From ‘Server’ directory type: make clean
-\sphinxhyphen{} From ‘Server’ directory type: make confsource and ‘l’oad option 0
-\sphinxhyphen{} Specify any \sphinxhyphen{}additional\sphinxhyphen{} options you want at this point.
-\sphinxhyphen{} Recompile your code
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumii}{enumiii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+Copy this file into your \textasciitilde{}/Server/bin directory
+
+\item {} 
+\sphinxAtStartPar
+From ‘Server’ directory type: make clean
+
+\item {} 
+\sphinxAtStartPar
+From ‘Server’ directory type: make confsource and ‘l’oad option 0
+
+\item {} 
+\sphinxAtStartPar
+Specify any \sphinxhyphen{}additional\sphinxhyphen{} options you want at this point.
+
+\item {} 
+\sphinxAtStartPar
+Recompile your code
+
+\end{enumerate}
 
 \item {} 
 \sphinxAtStartPar
@@ -3925,15 +3948,17 @@ Copy the files in Amb\sphinxhyphen{}MinimalRhost/game/txt into your \textasciiti
 \item {} 
 \sphinxAtStartPar
 from your \textasciitilde{}/Server/game txt file run on each of the txt files:
-../mkindx \textless{}txtfile\textgreater{}.txt \textless{}txtfile\textgreater{}.indx
-Where \textless{}txtfile\textgreater{} is the name of the file (minus the .txt extension)
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{.}\PYG{o}{.}\PYG{o}{/}\PYG{n}{mkindx} \PYG{o}{\PYGZlt{}}\PYG{n}{txtfile}\PYG{o}{\PYGZgt{}}\PYG{o}{.}\PYG{n}{txt} \PYG{o}{\PYGZlt{}}\PYG{n}{txtfile}\PYG{o}{\PYGZgt{}}\PYG{o}{.}\PYG{n}{indx}
+\PYG{n}{Where} \PYG{o}{\PYGZlt{}}\PYG{n}{txtfile}\PYG{o}{\PYGZgt{}} \PYG{o+ow}{is} \PYG{n}{the} \PYG{n}{name} \PYG{n}{of} \PYG{n}{the} \PYG{n}{file} \PYG{p}{(}\PYG{n}{minus} \PYG{n}{the} \PYG{o}{.}\PYG{n}{txt} \PYG{n}{extension}\PYG{p}{)}
+\end{sphinxVerbatim}
 
 \item {} 
 \sphinxAtStartPar
 If running, @reboot your game.
 
-\end{itemize}
-\end{quote}
+\end{enumerate}
 
 
 \subsubsection{Creating a new game with the generic default database}
@@ -3954,11 +3979,10 @@ the minimal\sphinxhyphen{}DBs/minimal\_db directory.
 \sphinxAtStartPar
 Once you have used one of these three methods to obtaina database, you can start your mush up.
 At this point type from the game directory:
-\begin{quote}
 
-\sphinxAtStartPar
-./Startmush
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{.}\PYG{o}{/}\PYG{n}{Startmush}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Backups for RhostMUSH}
@@ -4003,41 +4027,33 @@ just issue: ./backup\_restart.sh
 
 
 \subsubsection{Troubleshooting issues with starting up}
-\label{\detokenize{installation:troubleshooting-issues-with-starting-up}}\begin{description}
-\item[{If you run into issues:}] \leavevmode\begin{description}
-\item[{Probelm: If it says the shared ID is already in use}] \leavevmode\begin{description}
-\item[{A1: please verify that it is the right shared debug\_id in your}] \leavevmode
-\sphinxAtStartPar
-netrhost.conf file
+\label{\detokenize{installation:troubleshooting-issues-with-starting-up}}
 
-\end{description}
+\paragraph{Problem: If it says the shared ID is already in use}
+\label{\detokenize{installation:problem-if-it-says-the-shared-id-is-already-in-use}}
+\sphinxAtStartPar
+A1: please verify that it is the right shared debug\_id in your netrhost.conf file
 
 \sphinxAtStartPar
 A2: Force a start by ./Startmush \sphinxhyphen{}f
 
-\item[{Problem: Your log file is massive and your mush is running}] \leavevmode\begin{description}
-\item[{A1: To rotate this use the @logrotate command.}] \leavevmode
+
+\paragraph{Problem: Your log file is massive and your mush is running}
+\label{\detokenize{installation:problem-your-log-file-is-massive-and-your-mush-is-running}}
 \sphinxAtStartPar
-See wizhelp on @logrotate
+A1: To rotate this use the @logrotate command. See wizhelp on @logrotate
 
-\end{description}
 
-\item[{Problem: The database flatfile you’re loading can’t load because}] \leavevmode\begin{quote}
-
-\sphinxAtStartPar
-a db is already defined.
-\end{quote}
-
+\paragraph{Problem: The database flatfile you’re loading can’t load because a db is already defined}
+\label{\detokenize{installation:problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined}}
 \sphinxAtStartPar
 A1: remove netrhost.db* and netrhost.gdbm* from your data directory
 
-\item[{Problem: The mail database won’t load and mail shows ‘offline’}] \leavevmode
+
+\paragraph{Problem: The mail database won’t load and mail shows ‘offline’}
+\label{\detokenize{installation:problem-the-mail-database-won-t-load-and-mail-shows-offline}}
 \sphinxAtStartPar
 A1: wmail/load
-
-\end{description}
-
-\end{description}
 
 
 \subsection{Windows}
@@ -4179,71 +4195,65 @@ Follow what it asks for and just let it do its thing.
 \subsection{What to type to get the basics running if you did not choose a pre\sphinxhyphen{}existing flatfile}
 \label{\detokenize{gettingstarted:what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile}}
 \sphinxAtStartPar
-If you decided to get a bare\sphinxhyphen{}bone configuration, you will find your mush
-has just two things.  The \#1 (God) player and the starting room \#0.  That’s it.
+If you decided to get a bare\sphinxhyphen{}bone configuration, you will find your mush has just two things.  The \#1 (God) player and the starting room \#0.  That’s it.
 
 
 \subsubsection{Login to \#1 from the connect screen}
 \label{\detokenize{gettingstarted:login-to-1-from-the-connect-screen}}
 \sphinxAtStartPar
-Nyctasia is the default password
-co \#1 Nyctasia
+Nyctasia is the default password:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{co} \PYG{c+c1}{\PYGZsh{}1 Nyctasia}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Change \#1’s password to something you’ll remember but is hard to guess}
-\label{\detokenize{gettingstarted:change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess}}\begin{quote}
-
+\label{\detokenize{gettingstarted:change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess}}
 \sphinxAtStartPar
-Note: yourpasswordgoeshere can be any password you choose.  Choose well.
-\end{quote}
+Note: yourpasswordgoeshere can be any password you choose.  Choose well:
 
-\sphinxAtStartPar
-@password Nyctasia=YOURPASSWORDGOESHERE
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@password} \PYG{n}{Nyctasia}\PYG{o}{=}\PYG{n}{YOURPASSWORDGOESHERE}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Master Room}
-\label{\detokenize{gettingstarted:master-room}}\begin{quote}
-
+\label{\detokenize{gettingstarted:master-room}}
 \sphinxAtStartPar
 At this point you should create your master room:
-Reason: You need a master room to contain global \$commands for players.
-Note: \textasciicircum{}listens are not global for intentional reasons.  It’s far too much
-\begin{quote}
 
-\sphinxAtStartPar
-overhead for far too minimal gains that few people need or use.
-\end{quote}
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@dig} \PYG{n}{Master} \PYG{n}{Room}
+\end{sphinxVerbatim}
 
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-@dig Master Room
+Reason: You need a master room to contain global \$commands for players
+\textasciicircum{}listens are not global for intentional reasons.  It’s far too much overhead for far too minimal gains that few people need or use.
+\end{sphinxadmonition}
 
 
 \subsubsection{Flag and protect Master Room}
-\label{\detokenize{gettingstarted:flag-and-protect-master-room}}\begin{quote}
-
+\label{\detokenize{gettingstarted:flag-and-protect-master-room}}
 \sphinxAtStartPar
-It will return a dbref\#, it should be \#2 if you’ve not created anything else.
-\end{quote}
+It will return a dbref\#, it should be \#2 if you’ve not created anything else:
 
-\sphinxAtStartPar
-@set \#2=safe ind halt float
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@set} \PYG{c+c1}{\PYGZsh{}2=safe ind halt float}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Player Holder Characters}
-\label{\detokenize{gettingstarted:player-holder-characters}}\begin{description}
-\item[{(feel free to change the password to what you want)}] \leavevmode\begin{description}
-\item[{Reason: You will want to chown global room or global areas to a given}] \leavevmode
+\label{\detokenize{gettingstarted:player-holder-characters}}
 \sphinxAtStartPar
-bitlevel and a method to keep organized.
+Feel free to change the password to what you want
 
-\item[{Note: wizhelp control will give you a complete breakdown of what each bit}] \leavevmode
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-can do.
-
-\end{description}
-
-\end{description}
+Reason: You will want to chown global room or global areas to a given bitlevel and a method to keep organized.
+Note: wizhelp control will give you a complete breakdown of what each bit can do.
+\end{sphinxadmonition}
 
 
 \paragraph{Immortal Holder}
@@ -4287,14 +4297,13 @@ can do.
 
 
 \subsubsection{Chown \#0 (The starting room) and \#2 (The Master room) to immholder}
-\label{\detokenize{gettingstarted:chown-0-the-starting-room-and-2-the-master-room-to-immholder}}\begin{quote}
-\begin{description}
-\item[{Note: \#0 you can chown to a different bitlevel if you want, but the}] \leavevmode
+\label{\detokenize{gettingstarted:chown-0-the-starting-room-and-2-the-master-room-to-immholder}}
 \sphinxAtStartPar
-master room should always be owned by an immortal
+..note:
 
-\end{description}
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 @chown/preserve \#0=*immholder
@@ -4302,11 +4311,11 @@ master room should always be owned by an immortal
 
 
 \subsubsection{Create yourself your own immortal player then log off \#1 and into this immortal player}
-\label{\detokenize{gettingstarted:create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player}}\begin{quote}
-
+\label{\detokenize{gettingstarted:create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player}}
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Note: Pick what you want for playername and playerpassword
-\end{quote}
+Pick what you want for playername and playerpassword
+\end{sphinxadmonition}
 
 \sphinxAtStartPar
 @pcreate PLAYERNAME=PLAYERPASSWORD
@@ -4314,13 +4323,9 @@ Note: Pick what you want for playername and playerpassword
 
 
 \subsubsection{Log out of \#1 and log into your immortal player}
-\label{\detokenize{gettingstarted:log-out-of-1-and-log-into-your-immortal-player}}\begin{quote}
-
+\label{\detokenize{gettingstarted:log-out-of-1-and-log-into-your-immortal-player}}
 \sphinxAtStartPar
 Note: use the playername and password you created in the step before
-\end{quote}
-
-\sphinxAtStartPar
 LOGOUT
 co PLAYERNAME PLAYERPASSWORD
 

@@ -1,7 +1,7 @@
 This is rhostmushhandbook.info, produced by makeinfo version 6.5 from
 rhostmushhandbook.texi.
 
-     RhostMUSH Handbook , Mar 07, 2021
+     RhostMUSH Handbook , Mar 11, 2021
 
      wstarter
 
@@ -21,7 +21,7 @@ File: rhostmushhandbook.info,  Node: Top,  Next: RhostMUSH offers the following 
 RhostMUSH Handbook
 ******************
 
-     RhostMUSH Handbook , Mar 07, 2021
+     RhostMUSH Handbook , Mar 11, 2021
 
      wstarter
 
@@ -287,6 +287,13 @@ What to type to configure and get your RhostMUSH up and running
 * Starting your MUSH::
 * Backups for RhostMUSH::
 * Troubleshooting issues with starting up::
+
+Troubleshooting issues with starting up
+
+* Problem; If it says the shared ID is already in use: Problem If it says the shared ID is already in use.
+* Problem; Your log file is massive and your mush is running: Problem Your log file is massive and your mush is running.
+* Problem; The database flatfile you’re loading can’t load because a db is already defined: Problem The database flatfile you’re loading can’t load because a db is already defined.
+* Problem; The mail database won’t load and mail shows ‘offline’: Problem The mail database won’t load and mail shows ‘offline’.
 
 Windows
 
@@ -3143,7 +3150,7 @@ When setting up a mush for the first time, make sure you have all the
 files configured correctly.  This is with using the following file for
 configuration:
 
-        - netrhost.conf
+     - netrhost.conf
 
 
 File: rhostmushhandbook.info,  Node: Starting the game,  Next: First login to the game,  Prev: Configuring the game,  Up: Installation
@@ -3153,14 +3160,14 @@ File: rhostmushhandbook.info,  Node: Starting the game,  Next: First login to th
 
 Once done, you start up the system with the following command:
 
-        - [sh/csh] ./Startmush
+      - [sh/csh] ./Startmush
 
-     It will prompt you to start a new db if it doesn’t find one.
+     It will prompt you to start a new db if it doesn't find one.
 
-     You may also do the commands individually: - [csh] netrhost -s
-     netrhost.conf >& netrhost.log &
+     You may also do the commands individually::
 
-          [sh] netrhost -s netrhost.conf > netrhost.log 2>&1 &
+        [csh] netrhost -s netrhost.conf >& netrhost.log &
+        [sh]  netrhost -s netrhost.conf > netrhost.log 2>&1 &
 
 
 File: rhostmushhandbook.info,  Node: First login to the game,  Next: Reporting bugs or getting help,  Prev: Starting the game,  Up: Installation
@@ -3199,14 +3206,13 @@ File: rhostmushhandbook.info,  Node: Installing using an ansible playbook,  Next
 To begin, you will run the following command in a directory that will
 house your game:
 
-     > `git clone https://github.com/RhostMUSH/trunk Rhost'
+     git clone https://github.com/RhostMUSH/trunk Rhost
 
-You may also just run the yml file and ansible (ansible-playbook) to install your RhostMUSH engine
+You may also just run the yml file and ansible (ansible-playbook) to
+install your RhostMUSH engine:
 
-     > `wget
-     https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml'
-
-     > `ansible-playbook rhostinstall.yml'
+     wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml
+     ansible-playbook rhostinstall.yml
 
 This downloads the latest stable version of the code, bringing with it
 all patches and scripts, documentation and support tools that you will
@@ -3243,12 +3249,12 @@ File: rhostmushhandbook.info,  Node: Obtaining RhostMUSH,  Next: Important befor
 It is assumed that you have gotten to this point with the following
 command:
 
-git clone ‘https://github.com/RhostMUSH/trunk’ Rhost
+     git clone https://github.com/RhostMUSH/trunk Rhost
 
 If you did NOT get it this way, your file permissions may not be
 properly set up.  Please type:
 
-     chmod +rx bin/`.sh src/'.sh game/`.sh game/Startmush game/db_'
+     chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
 
 This makes sure all the build scripts are properly made executable.
 This will result in ‘permission denied’ or similar results when running
@@ -3266,34 +3272,46 @@ File: rhostmushhandbook.info,  Node: Important before you actually start buildin
 1.4.7.2 Important before you actually start building
 ....................................................
 
-The main parts of making your RhostMUSH, easy pleasy: 0.  The stunnel
-directory contains TLS/SSL connectivity.  This has to be linked
+The main parts of making your RhostMUSH, easy pleasy: #.  The stunnel
+directory contains TLS/SSL connectivity.  This has to be linked to
+another port and will tunnel to the mush port.  The README file explains
+how to set up and configure your TLS/SSL connection.  #.  ./patch.sh –
+This makes sure you have the latest code.  If you got this by git clone
+‘https://github.com/RhostMUSH/trunk’ then you can ignore patching.  You
+can use ./patch.sh at any time to update your code.  It ignores local.c
+incase you make your own modules.  #.  make confsource.  Yup, it’s menu
+driven, nifty eh?
 
-     to another port and will tunnel to the mush port.  The README file
-     explains how to set up and configure your TLS/SSL connection.
+       1. Options you may want to select (other than the defaults):
 
-  1. ./patch.sh – This makes sure you have the latest code.  If you got
-     this by git clone ‘https://github.com/RhostMUSH/trunk’ then you can
-     ignore patching.  You can use ./patch.sh at any time to update your
-     code.  It ignores local.c incase you make your own modules.
+       2. 5 (%c is selected by default, but choose %x as well for
+          MUX/TM3 compat)
 
-  2. make confsource.  Yup, it’s menu driven, nifty eh?  Options you may
-     want to select (other than the defaults): 5 (%c is selected by
-     default, but choose %x as well for MUX/TM3 compat) 9 (if you want
-     $commands to require the COMMAND flag) 16 (if you want a wider WHO
-     listing like older versions of MUX) 22 (if you’re converting a
-     TinyMUSH3 or TinyMUX/MUX2 flatfile) 24 (if you have issues with
-     -lssl not being found) B3 (for 64 character attribute names) B6
-     (select 8K for Penn/MUX2/TM3 default, up to 32K. 64K is network
-     intensive) B5 (will be autoselected if you choose 8K or more.  Pick
-     this anyway) B4 (if you have sqlite libraries and wish to use this)
+       3. 9 (if you want $commands to require the COMMAND flag)
 
-  3. ‘r’ to compile with the settings you selected.
+       4. 16 (if you want a wider WHO listing like older versions of
+          MUX)
 
-  4. Modify your netrhost.conf file as specified.  Make sure to align
+       5. 22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
+
+       6. 24 (if you have issues with -lssl not being found)
+
+       7. B3 (for 64 character attribute names)
+
+       8. B6 (select 8K for Penn/MUX2/TM3 default, up to 32K. 64K is
+          network intensive)
+
+       9. B5 (will be autoselected if you choose 8K or more.  Pick this
+          anyway)
+
+       10. B4 (if you have sqlite libraries and wish to use this)
+
+  1. ‘r’ to compile with the settings you selected.
+
+  2. Modify your netrhost.conf file as specified.  Make sure to align
      your port and debug_id as shown in the netrhost.conf file.
 
-  5. If you wish to port in an old flatfile, please refer to the readme
+  3. If you wish to port in an old flatfile, please refer to the readme
      directory on how to port your flatfile in (README.DBLOADING).
 
 
@@ -3327,36 +3345,44 @@ File: rhostmushhandbook.info,  Node: To load a prebuilt flatfile,  Up: Using the
 ...................................
 
 To use these follow these steps: 1.  Make a backup of your existing
-netrhost.conf file
+netrhost.conf file:
 
-     –> cp game/netrhost.conf game/netrhost.conf.backup
+     cp game/netrhost.conf game/netrhost.conf.backup
 
-  2. Copy the netrhost.conf file into your game directory –> cp -f
-     ./minimal-DBs/minimal_db/netrhost.conf ./game/netrhost.conf
+  2. Copy the netrhost.conf file into your game directory:
+
+          cp -f ./minimal-DBs/minimal_db/netrhost.conf ./game/netrhost.conf
 
   3. At this point you can modify your netrhost.conf file settings in
      your game directory.  Using an editor modify the ‘port’ and
-     ‘debug_id’ respectively in your netrhost.conf as stated.  The
-     ‘port’ will be the port the mush listens on, the debug_id is for
-     the debug-stack and is your port with a ‘5’ at the end.  So if your
+     ‘debug_id’ respectively in your netrhost.conf as state.  The ‘port’
+     will be the port the mush listens on, the debug_id is for the
+     debug-stack and is your port with a ‘5’ at the end.  So if your
      port is 4444, the debug_id is 44445
 
   4. Load in the flatfile into the mush (You could do this in the
-     Startmush as well) Manually: –> cd game –> ./db_load
-     data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat
-     data/netrhost.db.new
+     Startmush as well) Manually:
 
-     Start your mush: –> ./Startmush
+          cd game
+
+     ./db_load data/netrhost.gdbm
+     ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF
+
+     Start your mush:
+
+          ./Startmush
 
      This will load the db that you loaded.
 
      —————OR——-
 
-     From Startmush: –> ./Startmush
+     From Startmush:
 
-     when prompted, hit <RETURN> for searching then select the number of
-     the netrhost.db.flat that is listed as
-     ~/minimal-DBs/minimal_db/netrhost.db.flat
+          --> ./Startmush
+
+when prompted, hit <RETURN> for searching then select the number of the
+netrhost.db.flat that is listed as
+~/minimal-DBs/minimal_db/netrhost.db.flat
 
 
 File: rhostmushhandbook.info,  Node: Starting from scratch with a brand new database,  Next: Instructions for starting a new RhostMUSH,  Prev: Using the prebuilt flatfile,  Up: Quickinstall guide to RhostMUSH
@@ -3371,7 +3397,9 @@ File: rhostmushhandbook.info,  Node: Starting from scratch with a brand new data
      and is your port with a ‘5’ at the end.  So if your port is 4444,
      the debug_id is 44445
 
-  2. Start your mush: –> ./Startmush
+  2. Start your mush:
+
+          --> ./Startmush
 
 You can use the ‘vi’ editor or ‘nano’ if you like a more menu driven DOS
 like experience.  You can of course use any other editor you’re familar
@@ -3414,15 +3442,18 @@ File: rhostmushhandbook.info,  Node: Compile the source code,  Prev: Setup direc
 1.4.7.8 Compile the source code
 ...............................
 
-     Make and run the RhostMUSH source Type: make confsource
+Make and run the RhostMUSH source:
 
-     If you get an error running the script itself, type:
-     ./bin/script_setup.sh
+     Type:  make confsource
+
+If you get an error running the script itself:
+
+     type: ./bin/script_setup.sh
 
      Then type: make confsource
 
-     After the compile process is done, you should be good to go.  If it
-     complains about missing binaries then type ‘make links’
+     After the compile process is done, you should be good to go.
+     If it complains about missing binaries then type 'make links'
 
 * Menu:
 
@@ -3434,28 +3465,32 @@ File: rhostmushhandbook.info,  Node: Manual configuration of source code,  Up: C
 1.4.7.9 Manual configuration of source code
 ...........................................
 
-          To do manual configuration (skip if the previous step worked
-          for you) And yes, this is a bit of a pain in the bottom,
-          hopefully you will not need this.
+To do manual configuration (skip if the previous step worked for you)
+And yes, this is a bit of a pain in the bottom, hopefully you will not
+need this.
 
-               You need the following definitions defined to make this
-               work: TINY_U, USE_SIDEEFFECTS, MUX_INCDEC, ATTR_HACK
+You need the following definitions defined to make this work:
 
-                    (u()/u2() switched) (sideeffects) (inc()/xinc()
-                    switched) (support for _/~ attribs)
+  1. TINY_U, USE_SIDEEFFECTS, MUX_INCDEC, ATTR_HACK
 
-               You only need to do this if you received the RhostMUSH
-               src.  If you received a binary, continue on to the next
-               part.
+  2. (u()/u2() switched)
 
-               To compile the code, just type ‘make confsource’.  It
-               will prompt you with settings on what you need to do.  If
-               you just want to quickly hand edit the Makefile, it is in
-               the directory src (full path src/Makefile).  Then you may
-               just run ‘make source’, if you so choose to hand-edit the
-               Makefile.
+  3. (sideeffects)
 
-     After the compile process is done, type ‘make links’!
+  4. (inc()/xinc() switched)
+
+  5. (support for _/~ attribs)
+
+You only need to do this if you received the RhostMUSH src.  If you
+received a binary, continue on to the next part.
+
+To compile the code, just type ‘make confsource’.  It will prompt you
+with settings on what you need to do.  If you just want to quickly hand
+edit the Makefile, it is in the directory src (full path src/Makefile).
+Then you may just run ‘make source’, if you so choose to hand-edit the
+Makefile.
+
+After the compile process is done, type ‘make links’!
 
 
 File: rhostmushhandbook.info,  Node: Loading a database for your MUSH,  Next: Configure the netrhost conf file for your MUSH,  Prev: Instructions for starting a new RhostMUSH,  Up: Quickinstall guide to RhostMUSH
@@ -3478,12 +3513,12 @@ File: rhostmushhandbook.info,  Node: Option Only perform these steps if using a 
 
      Copy an existing flatfile and corresponding netrhost.conf file
 
-          Default provied example: 1.  cp game/netrhost.conf
-          game/netrhost.conf.backup 2.  cp -f
-          minimal-DBs/minimal_db/netrhost.conf game/netrhost.conf 3.  cd
-          game 4.  ./db_load data/netrhost.gdbm
-          ../minimal-DBs/minimal_db/netrhost.db.flat
-          data/netrhost.db.new
+          Default provied example:
+
+               1.  cp game/netrhost.conf game/netrhost.conf.backup
+               2.  cp -f minimal-DBs/minimal_db/netrhost.conf game/netrhost.conf
+               3.  cd game
+               4.  ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
 
 
 File: rhostmushhandbook.info,  Node: Configure the netrhost conf file for your MUSH,  Next: Start the MUSH and login,  Prev: Loading a database for your MUSH,  Up: Quickinstall guide to RhostMUSH
@@ -3506,9 +3541,13 @@ File: rhostmushhandbook.info,  Node: Start the MUSH and login,  Next: Option Thi
 1.4.7.13 Start the MUSH and login
 .................................
 
-     From the game diretory issue: ./Startmush
+From the game diretory issue:
 
-          To login: co Wizard Nyctasia
+     ./Startmush
+
+To login:
+
+     co Wizard Nyctasia
 
 
 File: rhostmushhandbook.info,  Node: Option Things to do once you have connected if you did NOT use a provided database,  Next: Setup new character staff and take tasks that can only be accomplished by #1,  Prev: Start the MUSH and login,  Up: Quickinstall guide to RhostMUSH
@@ -3516,35 +3555,30 @@ File: rhostmushhandbook.info,  Node: Option Things to do once you have connected
 1.4.7.14 Option: Things to do once you have connected if you did NOT use a provided database
 ............................................................................................
 
-       a. @dig your master room and in your netrhost.conf file define
-          master_room to this dbref (without the #.  So like master_room
-          2)
+  1. @dig your master room and in your netrhost.conf file define
+     master_room to this dbref (without the #.  So like master_room 2)
 
-       b. Create an immortal holder charater (@pcreate then @set
-          immortal) Feel free to set up holder characters for all the
-          bittypes which are:
+  2. Create an immortal holder charater (@pcreate then @set immortal)
+     Feel free to set up holder characters for all the bittypes which
+     are: GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL
 
-               GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL
+  3. @chown/preserve the master room and #0 to the immortal holder
+     character.
 
-       c. @chown/preserve the master room and #0 to the immortal holder
-          character.
+  4. Log into the immortal character
 
-       d. Log into the immortal character
+  5. @pcreate all your guest characters and set them up properly.  My
+     suggestion:
 
-       e. @pcreate all your guest characters and set them up properly.
-          My suggestion: @dolist lnum(1,10)={@pcreate Guest##=guest;@set
-          >>*<<Guest##=guest;@desc >>*<<Guest##=A guest
-          player.;@adisconnect >>*<<Guest##=home;@lock
-          >>*<<Guest##=*Guest##}
+          @dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@desc *Guest##=A guest player.;@adisconnect *Guest##=home;@lock *Guest##=*Guest##}
 
-          @list guest will show your guest characters and if they’re set
-          up properly.
+          @list guest will show your guest characters and if they're set up properly.
 
-       f. Any master room code you load in from your immholder character
-          (or @chown/preserve to it) The readme directory has
-          softfunctions.minmax that has MUX/Penn compatability functions
-          and comsys.  All other softcode (like mail wrappers) can be
-          found on ‘https://github.com/RhostMUSH/trunk’ in Mushcode.
+  6. Any master room code you load in from your immholder character (or
+     @chown/preserve to it) The readme directory has
+     softfunctions.minmax that has MUX/Penn compatability functions and
+     comsys.  All other softcode (like mail wrappers) can be found on
+     ‘https://github.com/RhostMUSH/trunk’ in Mushcode.
 
 
 File: rhostmushhandbook.info,  Node: Setup new character staff and take tasks that can only be accomplished by #1,  Next: Setup daily backups for your game,  Prev: Option Things to do once you have connected if you did NOT use a provided database,  Up: Quickinstall guide to RhostMUSH
@@ -3552,8 +3586,8 @@ File: rhostmushhandbook.info,  Node: Setup new character staff and take tasks th
 1.4.7.15 Setup new character, staff, and take tasks that can only be accomplished by #1
 .......................................................................................
 
-     Set up any other characters you want.  Anyone immortal can issue
-     @function, @admin, or anything #1 can do.
+Set up any other characters you want.  Anyone immortal can issue
+@function, @admin, or anything #1 can do.
 
 
 File: rhostmushhandbook.info,  Node: Setup daily backups for your game,  Next: Customtize the textfiles for your game,  Prev: Setup new character staff and take tasks that can only be accomplished by #1,  Up: Quickinstall guide to RhostMUSH
@@ -3561,24 +3595,21 @@ File: rhostmushhandbook.info,  Node: Setup daily backups for your game,  Next: C
 1.4.7.16 Setup daily backups for your game
 ..........................................
 
-     Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things
-     outside the mush can damage the game.  paranoia is fine, especially
-     when they really are out to get you.  TO make the backups, do the
-     following:
+Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things
+outside the mush can damage the game.  paranoia is fine, especially when
+they really are out to get you.  TO make the backups, do the following:
 
-     @dump/flat – This makes a flatfile dump of the main database.  You
-     want to run this daily.  wmail/unload – This makes a flatfile dump
-     of the mail database.  You want to run this daily.  @areg/unload –
-     Only worry about this if you are using auto-registration emailing.
-     Few do.  newsdb/unload – Only worry if you use the hardcoded bbs
-     system.  Most don’t use it.
+     @dump/flat      -- This makes a flatfile dump of the main database.  You want to run this daily.
+     wmail/unload    -- This makes a flatfile dump of the mail database.  You want to run this daily.
+     @areg/unload    -- Only worry about this if you are using auto-registration emailing.  Few do.
+     newsdb/unload   -- Only worry if you use the hardcoded bbs system.  Most don't use it.
 
-     The backup_flat.sh script (that launches automatically with
-     Startmush) will archive all the above files if they exist.  It
-     moves these flatfiles into the ‘prevflat’ directory, then tarballs
-     those and dumps consecutive backups in the ‘oldflat’ directory.  By
-     default it keeps 7 consecutive backups.  You may alter this in the
-     backup_flat.sh script itself.
+The backup_flat.sh script (that launches automatically with Startmush)
+will archive all the above files if they exist.  It moves these
+flatfiles into the ‘prevflat’ directory, then tarballs those and dumps
+consecutive backups in the ‘oldflat’ directory.  By default it keeps 7
+consecutive backups.  You may alter this in the backup_flat.sh script
+itself.
 
 
 File: rhostmushhandbook.info,  Node: Customtize the textfiles for your game,  Next: Make sure to read up further,  Prev: Setup daily backups for your game,  Up: Quickinstall guide to RhostMUSH
@@ -3634,44 +3665,50 @@ File: rhostmushhandbook.info,  Node: Creating a new game with Ambrosia’s defau
 1.4.8.2 Creating a new game with Ambrosia’s default database
 ............................................................
 
-     Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README
+Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README
 
-     The netrhost.conf file you will copy is in
-     minimal-DBs/Amb-MinimalRhost/game Copy this netrhost.conf file into
-     your ‘game’ directory.
+The netrhost.conf file you will copy is in
+minimal-DBs/Amb-MinimalRhost/game Copy this netrhost.conf file into your
+‘game’ directory.
 
-     You will want the custom txt files under Amb-MinimalRhost/txt in
-     your game/txt directory and to mkindx all the txt files.  You can
-     run ./Startmush -i to index.
+You will want the custom txt files under Amb-MinimalRhost/txt in your
+game/txt directory and to mkindx all the txt files.  You can run
+./Startmush -i to index.
 
-     When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit
-     <RETURN> to have it search for flatfiles, then select
-     netrhost.db.flat from under the minimal-DBs/Amb-MinimalRhost
+When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit
+<RETURN> to have it search for flatfiles, then select netrhost.db.flat
+from under the minimal-DBs/Amb-MinimalRhost directory.
+
+The main steps to make sure you do for
+~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat – Ambrosia’s
+secure and featured minimal db
+
+  1. Use the matching netrhost.conf file under the Amb-MinimalRhost/game
+     directory
+
+  2. Load in the settings specified in the Amb-MinimalRhost/bin
      directory.
 
-     The main steps to make sure you do for Ambrosia’s db:
-     ~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat – Ambrosia’s
-     secure and featured minimal db.
+       1. Copy this file into your ~/Server/bin directory
 
-             - Use the matching netrhost.conf file under the
-               Amb-MinimalRhost/game directory
+       2. From ‘Server’ directory type: make clean
 
-             - Load in the settings specified in the
-               Amb-MinimalRhost/bin directory.  - Copy this file into
-               your ~/Server/bin directory - From ‘Server’ directory
-               type: make clean - From ‘Server’ directory type: make
-               confsource and ‘l’oad option 0 - Specify any -additional-
-               options you want at this point.  - Recompile your code
+       3. From ‘Server’ directory type: make confsource and ‘l’oad
+          option 0
 
-             - Copy the files in Amb-MinimalRhost/game/txt into your
-               ~/Server/game/txt directory
+       4. Specify any -additional- options you want at this point.
 
-             - from your ~/Server/game txt file run on each of the txt
-               files: ../mkindx <txtfile>.txt <txtfile>.indx Where
-               <txtfile> is the name of the file (minus the .txt
-               extension)
+       5. Recompile your code
 
-             - If running, @reboot your game.
+  3. Copy the files in Amb-MinimalRhost/game/txt into your
+     ~/Server/game/txt directory
+
+  4. from your ~/Server/game txt file run on each of the txt files:
+
+          ../mkindx <txtfile>.txt <txtfile>.indx
+          Where <txtfile> is the name of the file (minus the .txt extension)
+
+  5. If running, @reboot your game.
 
 
 File: rhostmushhandbook.info,  Node: Creating a new game with the generic default database,  Next: Starting your MUSH,  Prev: Creating a new game with Ambrosia’s default database,  Up: What to type to configure and get your RhostMUSH up and running
@@ -3742,32 +3779,48 @@ File: rhostmushhandbook.info,  Node: Troubleshooting issues with starting up,  P
 1.4.8.6 Troubleshooting issues with starting up
 ...............................................
 
-If you run into issues:
+* Menu:
 
-     Probelm: If it says the shared ID is already in use
+* Problem; If it says the shared ID is already in use: Problem If it says the shared ID is already in use.
+* Problem; Your log file is massive and your mush is running: Problem Your log file is massive and your mush is running.
+* Problem; The database flatfile you’re loading can’t load because a db is already defined: Problem The database flatfile you’re loading can’t load because a db is already defined.
+* Problem; The mail database won’t load and mail shows ‘offline’: Problem The mail database won’t load and mail shows ‘offline’.
 
-          A1: please verify that it is the right shared debug_id in your
+
+File: rhostmushhandbook.info,  Node: Problem If it says the shared ID is already in use,  Next: Problem Your log file is massive and your mush is running,  Up: Troubleshooting issues with starting up
 
-               netrhost.conf file
+1.4.8.7 Problem: If it says the shared ID is already in use
+...........................................................
 
-          A2: Force a start by ./Startmush -f
+A1: please verify that it is the right shared debug_id in your
+netrhost.conf file
 
-     Problem: Your log file is massive and your mush is running
+A2: Force a start by ./Startmush -f
 
-          A1: To rotate this use the @logrotate command.
+
+File: rhostmushhandbook.info,  Node: Problem Your log file is massive and your mush is running,  Next: Problem The database flatfile you’re loading can’t load because a db is already defined,  Prev: Problem If it says the shared ID is already in use,  Up: Troubleshooting issues with starting up
 
-               See wizhelp on @logrotate
+1.4.8.8 Problem: Your log file is massive and your mush is running
+..................................................................
 
-     Problem: The database flatfile you’re loading can’t load because
+A1: To rotate this use the @logrotate command.  See wizhelp on
+@logrotate
 
-               a db is already defined.
+
+File: rhostmushhandbook.info,  Node: Problem The database flatfile you’re loading can’t load because a db is already defined,  Next: Problem The mail database won’t load and mail shows ‘offline’,  Prev: Problem Your log file is massive and your mush is running,  Up: Troubleshooting issues with starting up
 
-          A1: remove netrhost.db* and netrhost.gdbm* from your data
-          directory
+1.4.8.9 Problem: The database flatfile you’re loading can’t load because a db is already defined
+................................................................................................
 
-     Problem: The mail database won’t load and mail shows ‘offline’
+A1: remove netrhost.db* and netrhost.gdbm* from your data directory
 
-          A1: wmail/load
+
+File: rhostmushhandbook.info,  Node: Problem The mail database won’t load and mail shows ‘offline’,  Prev: Problem The database flatfile you’re loading can’t load because a db is already defined,  Up: Troubleshooting issues with starting up
+
+1.4.8.10 Problem: The mail database won’t load and mail shows ‘offline’
+.......................................................................
+
+A1: wmail/load
 
 
 File: rhostmushhandbook.info,  Node: Windows,  Prev: What to type to configure and get your RhostMUSH up and running,  Up: Installation
@@ -3943,7 +3996,9 @@ File: rhostmushhandbook.info,  Node: Login to #1 from the connect screen,  Next:
 1.6.1.1 Login to #1 from the connect screen
 ...........................................
 
-Nyctasia is the default password co #1 Nyctasia
+Nyctasia is the default password:
+
+     co #1 Nyctasia
 
 
 File: rhostmushhandbook.info,  Node: Change #1’s password to something you’ll remember but is hard to guess,  Next: Master Room,  Prev: Login to #1 from the connect screen,  Up: What to type to get the basics running if you did not choose a pre-existing flatfile
@@ -3951,10 +4006,9 @@ File: rhostmushhandbook.info,  Node: Change #1’s password to something you’l
 1.6.1.2 Change #1’s password to something you’ll remember but is hard to guess
 ..............................................................................
 
-     Note: yourpasswordgoeshere can be any password you choose.  Choose
-     well.
+Note: yourpasswordgoeshere can be any password you choose.  Choose well:
 
-@password Nyctasia=YOURPASSWORDGOESHERE
+     @password Nyctasia=YOURPASSWORDGOESHERE
 
 
 File: rhostmushhandbook.info,  Node: Master Room,  Next: Flag and protect Master Room,  Prev: Change #1’s password to something you’ll remember but is hard to guess,  Up: What to type to get the basics running if you did not choose a pre-existing flatfile
@@ -3962,14 +4016,14 @@ File: rhostmushhandbook.info,  Node: Master Room,  Next: Flag and protect Master
 1.6.1.3 Master Room
 ...................
 
-     At this point you should create your master room: Reason: You need
-     a master room to contain global $commands for players.  Note:
-     ^listens are not global for intentional reasons.  It’s far too much
+At this point you should create your master room:
 
-          overhead for far too minimal gains that few people need or
-          use.
+     @dig Master Room
 
-@dig Master Room
+     Note: Reason: You need a master room to contain global $commands
+     for players ^listens are not global for intentional reasons.  It’s
+     far too much overhead for far too minimal gains that few people
+     need or use.
 
 
 File: rhostmushhandbook.info,  Node: Flag and protect Master Room,  Next: Player Holder Characters,  Prev: Master Room,  Up: What to type to get the basics running if you did not choose a pre-existing flatfile
@@ -3977,10 +4031,10 @@ File: rhostmushhandbook.info,  Node: Flag and protect Master Room,  Next: Player
 1.6.1.4 Flag and protect Master Room
 ....................................
 
-     It will return a dbref#, it should be #2 if you’ve not created
-     anything else.
+It will return a dbref#, it should be #2 if you’ve not created anything
+else:
 
-@set #2=safe ind halt float
+     @set #2=safe ind halt float
 
 
 File: rhostmushhandbook.info,  Node: Player Holder Characters,  Next: Chown #0 The starting room and #2 The Master room to immholder,  Prev: Flag and protect Master Room,  Up: What to type to get the basics running if you did not choose a pre-existing flatfile
@@ -3988,15 +4042,11 @@ File: rhostmushhandbook.info,  Node: Player Holder Characters,  Next: Chown #0 T
 1.6.1.5 Player Holder Characters
 ................................
 
-(feel free to change the password to what you want)
+Feel free to change the password to what you want
 
-     Reason: You will want to chown global room or global areas to a given
-
-          bitlevel and a method to keep organized.
-
-     Note: wizhelp control will give you a complete breakdown of what each bit
-
-          can do.
+     Note: Reason: You will want to chown global room or global areas to
+     a given bitlevel and a method to keep organized.  Note: wizhelp
+     control will give you a complete breakdown of what each bit can do.
 
 * Menu:
 
@@ -4057,9 +4107,9 @@ File: rhostmushhandbook.info,  Node: Chown #0 The starting room and #2 The Maste
 1.6.1.11 Chown #0 (The starting room) and #2 (The Master room) to immholder
 ...........................................................................
 
-     Note: #0 you can chown to a different bitlevel if you want, but the
+..note:
 
-          master room should always be owned by an immortal
+     #0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal
 
 @chown/preserve #0=*immholder @chown/preserve #2=*immholder
 
@@ -4080,9 +4130,7 @@ File: rhostmushhandbook.info,  Node: Log out of #1 and log into your immortal pl
 1.6.1.13 Log out of #1 and log into your immortal player
 ........................................................
 
-     Note: use the playername and password you created in the step
-     before
-
+Note: use the playername and password you created in the step before
 LOGOUT co PLAYERNAME PLAYERPASSWORD
 
 
@@ -11088,1138 +11136,1150 @@ Tag Table:
 Node: Top367
 Ref: index doc608
 Ref: 0608
-Node: RhostMUSH offers the following over other mushes19346
-Ref: index rhostmush-handbook19475
-Ref: 119475
-Ref: index rhostmush-offers-the-following-over-other-mushes19475
-Ref: 219475
-Node: What RhostMUSH is about and what’s so great about RhostMUSH20821
-Ref: features doc21020
-Ref: 321020
-Ref: features what-rhostmush-is-about-and-what-s-so-great-about-rhostmush21020
-Ref: 421020
-Node: Recycle bin24222
-Ref: features recycle-bin24360
-Ref: 524360
-Node: @snapshot24962
-Ref: features snapshot25140
-Ref: 625140
-Node: Wizard and Immortals by default25422
-Ref: features wizard-and-immortals-by-default25629
-Ref: 725629
-Node: Titles and Captions to a player’s name26617
-Ref: features titles-and-captions-to-a-player-s-name26868
-Ref: 826868
-Node: Have an alternate name with locks for NPC obfuscation26994
-Ref: features have-an-alternate-name-with-locks-for-npc-obfuscation27242
-Ref: 927242
-Node: Have multiple player aliases27392
-Ref: features have-multiple-player-aliases27663
-Ref: a27663
-Node: Actively control how dark works both game-wide and individually27843
-Ref: features actively-control-how-dark-works-both-game-wide-and-individually28139
-Ref: b28139
-Node: Make config file changes in-game without having to reboot or have shell access28523
-Ref: features make-config-file-changes-in-game-without-having-to-reboot-or-have-shell-access28843
-Ref: c28843
-Node: Execute any binary or script as a localized function29040
-Ref: features execute-any-binary-or-script-as-a-localized-function29344
-Ref: d29344
-Node: Customized percent substitutions like %n %# etc29503
-Ref: features customized-percent-substitutions-like-n-etc29774
-Ref: e29774
-Node: Redefine percent substitutions like %n %# etc29925
-Ref: features redefine-percent-substitutions-like-n-etc30196
-Ref: f30196
-Node: Localize command and function overrides in a sandbox30344
-Ref: features localize-command-and-function-overrides-in-a-sandbox30582
-Ref: 1030582
-Node: Multiple Zones30749
-Ref: features multiple-zones30990
-Ref: 1130990
-Node: Optionally control enable or disable sideeffects31192
-Ref: features optionally-control-enable-or-disable-sideeffects31430
-Ref: 1231430
-Node: Have 31 cross-interactive realities for locations31587
-Ref: features have-31-cross-interactive-realities-for-locations31845
-Ref: 1331845
-Node: Override any command with softcode32431
-Ref: features override-any-command-with-softcode32699
-Ref: 1432699
-Node: The abilility to raise or lower permissions on the various32876
-Ref: features the-abilility-to-raise-or-lower-permissions-on-the-various33139
-Ref: 1533139
-Node: Customize new commands on the connect screen33345
-Ref: features customize-new-commands-on-the-connect-screen33612
-Ref: 1633612
-Node: Softcode any txt file like connect txt33743
-Ref: features softcode-any-txt-file-like-connect-txt34018
-Ref: 1734018
-Node: Advanced tracing methods for debugging your code including labels!34213
-Ref: features advanced-tracing-methods-for-debugging-your-code-including-labels34511
-Ref: 1834511
-Node: Built in pretty-printing of attributes with the parenmatch function34837
-Ref: features built-in-pretty-printing-of-attributes-with-the-parenmatch-function35123
-Ref: 1935123
-Node: Plenty more not mentioned!35693
-Ref: features plenty-more-not-mentioned35943
-Ref: 1a35943
-Node: Advanced features of RhostMUSH36355
-Ref: features advanced-features-of-rhostmush36585
-Ref: 1b36585
-Node: Debugging/Tracing37940
-Ref: features debugging-tracing38050
-Ref: 1c38050
-Node: Zoning38591
-Ref: features zoning38724
-Ref: 1d38724
-Node: Reality Levels39187
-Ref: features reality-levels39334
-Ref: 1e39334
-Node: Function and Command Overriding39987
-Ref: features function-and-command-overriding40143
-Ref: 1f40143
-Node: The Recycle Bin41362
-Ref: features the-recycle-bin41542
-Ref: 2041542
-Node: Percent Substitution Adding/Overriding42208
-Ref: features percent-substitution-adding-overriding42364
-Ref: 2142364
-Node: Hooking42830
-Ref: features hooking42993
-Ref: 2242993
-Node: Command based uselocks43271
-Ref: features command-based-uselocks43443
-Ref: 2343443
-Node: Differentating between command and listen locks44163
-Ref: features differentating-between-command-and-listen-locks44371
-Ref: 2444371
-Node: Wizard auto-overiding and how to disable it44780
-Ref: features wizard-auto-overiding-and-how-to-disable-it44998
-Ref: 2544998
-Node: Advanced FLAG and TOGGLE control45571
-Ref: features advanced-flag-and-toggle-control45763
-Ref: 2645763
-Node: Advanced site control46504
-Ref: features advanced-site-control46670
-Ref: 2746670
-Node: Auto-Registration47167
-Ref: features auto-registration47325
-Ref: 2847325
-Node: Which bit level is best?47701
-Ref: features which-bit-level-is-best47888
-Ref: 2947888
-Node: What are the limits for size/growth for RhostMUSH?48987
-Ref: features what-are-the-limits-for-size-growth-for-rhostmush49201
-Ref: 2a49201
-Node: Sqlite and MySQL/Maria setup and why use it?51936
-Ref: features sqlite-and-mysql-maria-setup-and-why-use-it52181
-Ref: 2b52181
-Node: Executing outside scripts and binaries within RhostMUSH52686
-Ref: features executing-outside-scripts-and-binaries-within-rhostmush52917
-Ref: 2c52917
-Node: Pulling external data into RhostMUSH53451
-Ref: features pulling-external-data-into-rhostmush53682
-Ref: 2d53682
-Node: Integrating a unix cron right into RhostMUSH54017
-Ref: features integrating-a-unix-cron-right-into-rhostmush54245
-Ref: 2e54245
-Node: Signal handling how it works and when and why use it54698
-Ref: features signal-handling-how-it-works-and-when-and-why-use-it54983
-Ref: 2f54983
-Node: Setting up global parents global @parents global attribute formatting and other global setups55815
-Ref: features setting-up-global-parents-global-parents-global-attribute-formatting-and-other-global-setups56104
-Ref: 3056104
-Node: RhostMUSH limitations and how to get around them58690
-Ref: features rhostmush-limitations-and-how-to-get-around-them58994
-Ref: 3158994
-Node: Things other mushes can do that Rhost can not and how to emulate it61411
-Ref: features things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it61642
-Ref: 3261642
-Node: PennMUSH61830
-Ref: features pennmush61965
-Ref: 3361965
-Node: MUX62975
-Ref: features mux63110
-Ref: 3463110
-Node: Advanced guest setup63570
-Ref: features advanced-guest-setup63817
-Ref: 3563817
-Node: Attribute permission masking and the joys of the power behind it64253
-Ref: features attribute-permission-masking-and-the-joys-of-the-power-behind-it64480
-Ref: 3664480
-Node: The amazing @cluster and what it can do for you65096
-Ref: features the-amazing-cluster-and-what-it-can-do-for-you65330
-Ref: 3765330
-Node: What we plan for the future66077
-Ref: features what-we-plan-for-the-future66238
-Ref: 3866238
-Node: Random notes and things to know about RhostMUSH67204
-Ref: features random-notes-and-things-to-know-about-rhostmush67399
-Ref: 3967399
-Node: Note on bits their levels and things they do68371
-Ref: features note-on-bits-their-levels-and-things-they-do68580
-Ref: 3a68580
-Node: You need to @pcreate your guest characters and set them GUEST69261
-Ref: features you-need-to-pcreate-your-guest-characters-and-set-them-guest69500
-Ref: 3b69500
-Node: @powers are INHERITED69938
-Ref: features powers-are-inherited70195
-Ref: 3c70195
-Node: @depowers are automatically checked first before anything else70488
-Ref: features depowers-are-automatically-checked-first-before-anything-else70700
-Ref: 3d70700
-Node: Zones are unique70888
-Ref: features zones-are-unique71117
-Ref: 3e71117
-Node: The db auto-repares itself when it can71215
-Ref: features the-db-auto-repares-itself-when-it-can71424
-Ref: 3f71424
-Node: You can get your connect txt to parse ansi71709
-Ref: features you-can-get-your-connect-txt-to-parse-ansi71950
-Ref: 4071950
-Node: Re-compiled binaries do not require an @shutdown72217
-Ref: features re-compiled-binaries-do-not-require-an-shutdown72484
-Ref: 4172484
-Node: Softcode emulations of functions from other servers are included72761
-Ref: features softcode-emulations-of-functions-from-other-servers-are-included72977
-Ref: 4272977
-Node: Comparison of modern MUSH servers73373
-Ref: differences doc73593
-Ref: 4373593
-Ref: differences comparison-of-modern-mush-servers73593
-Ref: 4473593
-Node: Differences to expect to the end user between PennMUSH MUX and RhostMUSH74726
-Ref: differences differences-to-expect-to-the-end-user-between-pennmush-mux-and-rhostmush74946
-Ref: 4574946
-Node: PennMUSH<2>75554
-Ref: differences pennmush75700
-Ref: 4675700
-Node: MUX<2>76325
-Ref: differences mux76489
-Ref: 4776489
-Node: RhostMUSH77028
-Ref: differences rhostmush77172
-Ref: 4877172
-Node: Comparison of features between RhostMUSH PennMUSH and MUX277910
-Ref: differences comparison-of-features-between-rhostmush-pennmush-and-mux278171
-Ref: 4978171
-Node: Organization of help and wizhelp78835
-Ref: differences organization-of-help-and-wizhelp79062
-Ref: 4a79062
-Node: Mail comsystem guests master rooms etc79824
-Ref: differences mail-comsystem-guests-master-rooms-etc80016
-Ref: 4b80016
-Node: Comparisons of features80410
-Ref: differences comparisons-of-features80596
-Ref: 4c80596
-Node: @commands with equivalents80752
-Ref: differences commands-with-equivalents80929
-Ref: 4d80929
-Node: @commands unique to RhostMUSH86393
-Ref: differences commands-unique-to-rhostmush86564
-Ref: 4e86564
-Node: @lock equivalents87179
-Ref: differences lock-equivalents87359
-Ref: 4f87359
-Node: @locks that only exist in RhostMUSH88489
-Ref: differences locks-that-only-exist-in-rhostmush88667
-Ref: 5088667
-Node: Flag and toggle equivalents88858
-Ref: differences flag-and-toggle-equivalents89065
-Ref: 5189065
-Node: Flags and toggles that only exist in RhostMUSH91255
-Ref: differences flags-and-toggles-that-only-exist-in-rhostmush91445
-Ref: 5291445
-Node: Flags91586
-Ref: differences flags91701
-Ref: 5391701
-Node: Toggles92139
-Ref: differences toggles92254
-Ref: 5492254
-Node: @power equivalents92834
-Ref: differences power-equivalents93018
-Ref: 5593018
-Node: @power unique to RhostMUSH94684
-Ref: differences power-unique-to-rhostmush94776
-Ref: 5694776
-Node: Functions equivalents95129
-Ref: differences functions-equivalents95370
-Ref: 5795370
-Node: Functions that only exist in RhostMUSH108392
-Ref: differences functions-that-only-exist-in-rhostmush108499
-Ref: 58108499
-Node: What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost110187
-Ref: differences what-may-need-to-be-modified-to-get-softcode-from-pennmush-tinymush2-tinymush3-or-mux2-to-work-on-rhost110480
-Ref: 59110480
-Node: Problematic functions between codebases111758
-Ref: differences problematic-functions-between-codebases111995
-Ref: 5a111995
-Node: Problematic features between codebases112148
-Ref: differences problematic-features-between-codebases112414
-Ref: 5b112414
-Node: Problematic commands112655
-Ref: differences problematic-commands112893
-Ref: 5c112893
-Node: SIDEFX flag113023
-Ref: differences sidefx-flag113237
-Ref: 5d113237
-Node: Variable exits113513
-Ref: differences variable-exits113712
-Ref: 5e113712
-Node: Zones114136
-Ref: differences zones114331
-Ref: 5f114331
-Node: @powers114830
-Ref: differences powers115027
-Ref: 60115027
-Node: Attribute length115478
-Ref: differences attribute-length115688
-Ref: 61115688
-Node: Attribute contents116038
-Ref: differences attribute-contents116250
-Ref: 62116250
-Node: 256 color116539
-Ref: differences color116747
-Ref: 63116747
-Node: Unicode/UTF8116806
-Ref: differences unicode-utf8117017
-Ref: 64117017
-Node: Attributes per object117244
-Ref: differences attributes-per-object117456
-Ref: 65117456
-Node: Destroying117794
-Ref: differences destroying118007
-Ref: 66118007
-Node: object id’s118518
-Ref: differences object-id-s118728
-Ref: 67118728
-Node: lsearch and search118836
-Ref: differences lsearch-and-search119059
-Ref: 68119059
-Node: @locks can be different119355
-Ref: differences locks-can-be-different119584
-Ref: 69119584
-Node: Customer user-locks119743
-Ref: differences customer-user-locks119969
-Ref: 6a119969
-Node: Attribute trees120299
-Ref: differences attribute-trees120527
-Ref: 6b120527
-Node: Prefix permission locking120883
-Ref: differences prefix-permission-locking121108
-Ref: 6c121108
-Node: align and printf121413
-Ref: differences align-and-printf121628
-Ref: 6d121628
-Node: MySQL121856
-Ref: differences mysql122057
-Ref: 6e122057
-Node: Mail System122201
-Ref: differences mail-system122395
-Ref: 6f122395
-Node: Comsystem122510
-Ref: differences comsystem122716
-Ref: 70122716
-Node: Various Functions122826
-Ref: differences various-functions123037
-Ref: 71123037
-Node: Empty Attributes123584
-Ref: differences empty-attributes123798
-Ref: 72123798
-Node: Player Stats124034
-Ref: differences player-stats124252
-Ref: 73124252
-Node: Percent Substitutions124488
-Ref: differences percent-substitutions124698
-Ref: 74124698
-Node: Switches124922
-Ref: differences switches125128
-Ref: 75125128
-Node: Flags<2>125408
-Ref: differences id3125600
-Ref: 76125600
-Node: Aliases125907
-Ref: differences aliases126082
-Ref: 77126082
-Node: Things other mushes can do that Rhost can not and how to emulate it<2>126170
-Ref: differences things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it126433
-Ref: 78126433
-Node: PennMUSH<3>126634
-Ref: differences id4126778
-Ref: 79126778
-Node: MUX<3>127676
-Ref: differences id11127820
-Ref: 7a127820
-Node: Requirements128243
-Ref: requirements doc128414
-Ref: 7b128414
-Ref: requirements id1128414
-Ref: 7c128414
-Ref: requirements requirements128414
-Ref: 7d128414
-Node: System Requirements128541
-Ref: requirements system-requirements128644
-Ref: 7e128644
-Node: Supported Platforms129310
-Ref: requirements supported-platforms129426
-Ref: 7f129426
-Node: Unsupported Platforms129835
-Ref: requirements unsupported-platforms129978
-Ref: 80129978
-Node: Untested Platforms130067
-Ref: requirements untested-platforms130212
-Ref: 81130212
-Node: Known Platform Issues130311
-Ref: requirements known-platform-issues130426
-Ref: 82130426
-Node: Requirements<2>130778
-Ref: requirements id2130910
-Ref: 83130910
-Node: Optional Packages131456
-Ref: requirements optional-packages131536
-Ref: 84131536
-Node: Hosting Requirements132297
-Ref: requirements hosting-requirements132401
-Ref: 85132401
-Node: Installation132866
-Ref: installation doc133012
-Ref: 86133012
-Ref: installation installation133012
-Ref: 87133012
-Node: Compiling the code133347
-Ref: installation compiling-the-code133454
-Ref: 88133454
-Node: Note about Compiling133856
-Ref: installation note-about-compiling133973
-Ref: 89133973
-Node: Note about Recompiling135332
-Ref: installation note-about-recompiling135477
-Ref: 8a135477
-Node: Note about Patching136087
-Ref: installation note-about-patching136203
-Ref: 8b136203
-Node: Configuring the game137289
-Ref: installation configuring-the-game137422
-Ref: 8c137422
-Node: Starting the game137659
-Ref: installation starting-the-game137797
-Ref: 8d137797
-Node: First login to the game138181
-Ref: installation first-login-to-the-game138329
-Ref: 8e138329
-Node: Reporting bugs or getting help138881
-Ref: installation reporting-bugs-or-getting-help139048
-Ref: 8f139048
-Node: Installing using an ansible playbook139416
-Ref: installation installing-using-an-ansible-playbook139591
-Ref: 90139591
-Node: Quickinstall guide to RhostMUSH140214
-Ref: installation quickinstall-guide-to-rhostmush140422
-Ref: 91140422
-Node: Obtaining RhostMUSH141321
-Ref: installation obtaining-rhostmush141472
-Ref: 92141472
-Node: Important before you actually start building142097
-Ref: installation important-before-you-actually-start-building142284
-Ref: 93142284
-Node: Using the prebuilt flatfile143998
-Ref: installation using-the-prebuilt-flatfile144213
-Ref: 94144213
-Node: To load a prebuilt flatfile144874
-Ref: installation to-load-a-prebuilt-flatfile144976
-Ref: 95144976
-Node: Starting from scratch with a brand new database146276
-Ref: installation starting-from-scratch-with-a-brand-new-database146488
-Ref: 96146488
-Node: Instructions for starting a new RhostMUSH147456
-Ref: installation instructions-for-starting-a-new-rhostmush147673
-Ref: 97147673
-Node: Setup directory permissions147844
-Ref: installation setup-directory-permissions147992
-Ref: 98147992
-Node: Compile the source code148346
-Ref: installation compile-the-source-code148494
-Ref: 99148494
-Node: Manual configuration of source code148929
-Ref: installation manual-configuration-of-source-code149035
-Ref: 9a149035
-Node: Loading a database for your MUSH150194
-Ref: installation loading-a-database-for-your-mush150410
-Ref: 9b150410
-Node: Option Only perform these steps if using a provided database150727
-Ref: installation option-only-perform-these-steps-if-using-a-provided-database150867
-Ref: 9c150867
-Node: Configure the netrhost conf file for your MUSH151392
-Ref: installation configure-the-netrhost-conf-file-for-your-mush151591
-Ref: 9d151591
-Node: Start the MUSH and login152233
-Ref: installation start-the-mush-and-login152482
-Ref: 9e152482
-Node: Option Things to do once you have connected if you did NOT use a provided database152639
-Ref: installation option-things-to-do-once-you-have-connected-if-you-did-not-use-a-provided-database152918
-Ref: 9f152918
-Node: Setup new character staff and take tasks that can only be accomplished by #1154373
-Ref: installation setup-new-character-staff-and-take-tasks-that-can-only-be-accomplished-by-1154661
-Ref: a0154661
-Node: Setup daily backups for your game154956
-Ref: installation setup-daily-backups-for-your-game155200
-Ref: a1155200
-Node: Customtize the textfiles for your game156316
-Ref: installation customtize-the-textfiles-for-your-game156512
-Ref: a2156512
-Node: Make sure to read up further156890
-Ref: installation make-sure-to-read-up-further157044
-Ref: a3157044
-Node: What to type to configure and get your RhostMUSH up and running157288
-Ref: installation what-to-type-to-configure-and-get-your-rhostmush-up-and-running157467
-Ref: a4157467
-Node: Creating a new game with a blank database157911
-Ref: installation creating-a-new-game-with-a-blank-database158126
-Ref: a5158126
-Node: Creating a new game with Ambrosia’s default database158362
-Ref: installation creating-a-new-game-with-ambrosia-s-default-database158639
-Ref: a6158639
-Node: Creating a new game with the generic default database160463
-Ref: installation creating-a-new-game-with-the-generic-default-database160717
-Ref: a7160717
-Node: Starting your MUSH161135
-Ref: installation starting-your-mush161356
-Ref: a8161356
-Node: Backups for RhostMUSH161570
-Ref: installation backups-for-rhostmush161777
-Ref: a9161777
-Node: Troubleshooting issues with starting up163545
-Ref: installation troubleshooting-issues-with-starting-up163725
-Ref: aa163725
-Node: Windows164532
-Ref: installation windows164671
-Ref: ab164671
-Node: Installing on Windows 10 with BASH164787
-Ref: installation installing-on-windows-10-with-bash164918
-Ref: ac164918
-Node: Installing on Windows with Cygwin165426
-Ref: installation installing-on-windows-with-cygwin165557
-Ref: ad165557
-Node: Database165957
-Ref: database doc166105
-Ref: ae166105
-Ref: database database166105
-Ref: af166105
-Node: Loading an existing Database166231
-Ref: database loading-an-existing-database166375
-Ref: b0166375
-Node: Then you just follow the prompts to load in your flatfile there166759
-Ref: database then-you-just-follow-the-prompts-to-load-in-your-flatfile-there166898
-Ref: b1166898
-Node: Converting a flatfile database for use in RhostMUSH167815
-Ref: database converting-a-flatfile-database-for-use-in-rhostmush167959
-Ref: b2167959
-Node: Gettin Started169159
-Ref: gettingstarted doc169361
-Ref: b3169361
-Ref: gettingstarted gettin-started169361
-Ref: b4169361
-Node: What to type to get the basics running if you did not choose a pre-existing flatfile169561
-Ref: gettingstarted what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile169739
-Ref: b5169739
-Node: Login to #1 from the connect screen171043
-Ref: gettingstarted login-to-1-from-the-connect-screen171293
-Ref: b6171293
-Node: Change #1’s password to something you’ll remember but is hard to guess171431
-Ref: gettingstarted change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess171701
-Ref: b7171701
-Node: Master Room171989
-Ref: gettingstarted master-room172252
-Ref: b8172252
-Node: Flag and protect Master Room172611
-Ref: gettingstarted flag-and-protect-master-room172824
-Ref: b9172824
-Node: Player Holder Characters173019
-Ref: gettingstarted player-holder-characters173283
-Ref: ba173283
-Node: Immortal Holder173768
-Ref: gettingstarted immortal-holder173885
-Ref: bb173885
-Node: Royalty/Wizard Holder174029
-Ref: gettingstarted royalty-wizard-holder174177
-Ref: bc174177
-Node: Councilor/Admin Holder174332
-Ref: gettingstarted councilor-admin-holder174487
-Ref: bd174487
-Node: Architect/Staff Holder174652
-Ref: gettingstarted architect-staff-holder174809
-Ref: be174809
-Node: Guildmaster/Lead Holder174974
-Ref: gettingstarted guildmaster-lead-holder175100
-Ref: bf175100
-Node: Chown #0 The starting room and #2 The Master room to immholder175271
-Ref: gettingstarted chown-0-the-starting-room-and-2-the-master-room-to-immholder175593
-Ref: c0175593
-Node: Create yourself your own immortal player then log off #1 and into this immortal player175942
-Ref: gettingstarted create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player176287
-Ref: c1176287
-Node: Log out of #1 and log into your immortal player176621
-Ref: gettingstarted log-out-of-1-and-log-into-your-immortal-player176932
-Ref: c2176932
-Node: Create your guest characters177164
-Ref: gettingstarted create-your-guest-characters177448
-Ref: c3177448
-Node: Dig a closet to store important objects but non-master room177762
-Ref: gettingstarted dig-a-closet-to-store-important-objects-but-non-master-room178046
-Ref: c4178046
-Node: Set the flags on the closet and ownership of it178255
-Ref: gettingstarted set-the-flags-on-the-closet-and-ownership-of-it178566
-Ref: c5178566
-Node: Create an Admin object for future ease of customization178825
-Ref: gettingstarted create-an-admin-object-for-future-ease-of-customization179137
-Ref: c6179137
-Node: Set the flags on the admin object and ownership and location179289
-Ref: gettingstarted set-the-flags-on-the-admin-object-and-ownership-and-location179587
-Ref: c7179587
-Node: Add admin object to configuration179971
-Ref: gettingstarted add-admin-object-to-configuration180273
-Ref: c8180273
-Node: Reboot your mush to load up the change for the admin object180579
-Ref: gettingstarted reboot-your-mush-to-load-up-the-change-for-the-admin-object180871
-Ref: c9180871
-Node: Do @admin/list to see if it shows the admin object181019
-Ref: gettingstarted do-admin-list-to-see-if-it-shows-the-admin-object181324
-Ref: ca181324
-Node: Load in all the various softcode that you want181528
-Ref: gettingstarted load-in-all-the-various-softcode-that-you-want181765
-Ref: cb181765
-Node: Myrddin MushCron182050
-Ref: gettingstarted myrddin-mushcron182175
-Ref: cc182175
-Node: AshCom182734
-Ref: gettingstarted ashcom182881
-Ref: cd182881
-Node: Mail Wrappers183199
-Ref: gettingstarted mail-wrappers183341
-Ref: ce183341
-Node: Myrddin BBS183700
-Ref: gettingstarted myrddin-bbs183850
-Ref: cf183850
-Node: Other Mushcode184120
-Ref: gettingstarted other-mushcode184248
-Ref: d0184248
-Node: Minimal DB instructions184674
-Ref: gettingstarted minimal-db-instructions184890
-Ref: d1184890
-Node: Ambrosia’s Minimal Rhost DB185823
-Ref: gettingstarted ambrosia-s-minimal-rhost-db185946
-Ref: d2185946
-Node: Version 1 0 5 2020-01-31186140
-Ref: gettingstarted version-1-0-5-2020-01-31186262
-Ref: d3186262
-Node: Introduction188422
-Ref: gettingstarted introduction188561
-Ref: d4188561
-Node: Features188753
-Ref: gettingstarted features188877
-Ref: d5188877
-Node: Configuration188967
-Ref: gettingstarted configuration189053
-Ref: d6189053
-Node: Softcode192028
-Ref: gettingstarted softcode192132
-Ref: d7192132
-Node: Functions192732
-Ref: gettingstarted functions192814
-Ref: d8192814
-Node: Bitlevels194852
-Ref: gettingstarted bitlevels194973
-Ref: d9194973
-Node: Globals198040
-Ref: gettingstarted globals198118
-Ref: da198118
-Node: Quota200253
-Ref: gettingstarted quota200352
-Ref: db200352
-Node: Functions<2>200649
-Ref: gettingstarted id15200732
-Ref: dc200732
-Node: Compiling200955
-Ref: gettingstarted compiling201059
-Ref: dd201059
-Node: What FLAGS TOGGLES POWERS DEPOWERS and BITLEVELS mean in RhostMUSH201424
-Ref: toggles doc201626
-Ref: de201626
-Ref: toggles what-flags-toggles-powers-depowers-and-bitlevels-mean-in-rhostmush201626
-Ref: df201626
-Node: Flags<3>201910
-Ref: toggles flags202051
-Ref: e0202051
-Node: Toggles<2>202306
-Ref: toggles toggles202462
-Ref: e1202462
-Node: @power202802
-Ref: toggles power202958
-Ref: e2202958
-Node: @depower203507
-Ref: toggles depower203682
-Ref: e3203682
-Node: Multi-tiered bitlevel systems203974
-Ref: toggles multi-tiered-bitlevel-systems204161
-Ref: e4204161
-Node: ghod #1 <bitlevel 7>204933
-Ref: toggles ghod-1-bitlevel-7205074
-Ref: e5205074
-Node: Immortal i <Level 6> - Basically #1205244
-Ref: toggles immortal-i-level-6-basically-1205433
-Ref: e6205433
-Node: Royalty W <Level 5> - FULL wizbit level205909
-Ref: toggles royalty-w-level-5-full-wizbit-level206119
-Ref: e7206119
-Node: Councilor a <Level 4> - High wizbit level206671
-Ref: toggles councilor-a-level-4-high-wizbit-level206889
-Ref: e8206889
-Node: Architect B <Level 3> - Middle wizbit level207476
-Ref: toggles architect-b-level-3-middle-wizbit-level207700
-Ref: e9207700
-Node: Guildmaster g <Level 2> - Lowest wizbit level208572
-Ref: toggles guildmaster-g-level-2-lowest-wizbit-level208776
-Ref: ea208776
-Node: Wanderer <bitlevel 0>209394
-Ref: toggles wanderer-bitlevel-0209581
-Ref: eb209581
-Node: Guest <bitlevel 0 as well>209989
-Ref: toggles guest-bitlevel-0-as-well210122
-Ref: ec210122
-Node: Altering bitlevels210423
-Ref: toggles altering-bitlevels210593
-Ref: ed210593
-Node: Security210820
-Ref: security doc211019
-Ref: ee211019
-Ref: security security211019
-Ref: ef211019
-Node: Considerations to locking down restrictions in RhostMUSH211306
-Ref: security considerations-to-locking-down-restrictions-in-rhostmush211475
-Ref: f0211475
-Node: Online Blocking object abilities212584
-Ref: security online-blocking-object-abilities212784
-Ref: f1212784
-Node: FLAGS access with @set213295
-Ref: security flags-access-with-set213421
-Ref: f2213421
-Node: TOGGLES @toggle213883
-Ref: security toggles-toggle214046
-Ref: f3214046
-Node: @powers @depowers and @locks214261
-Ref: security powers-depowers-and-locks214393
-Ref: f4214393
-Node: Offline Blocking twinks from being abusive on your game214611
-Ref: security offline-blocking-twinks-from-being-abusive-on-your-game214811
-Ref: f5214811
-Node: Extended lockdown of the mush and considerations215342
-Ref: security extended-lockdown-of-the-mush-and-considerations215592
-Ref: f6215592
-Node: Attribute Restriction216166
-Ref: security attribute-restriction216311
-Ref: f7216311
-Node: Command Restriction216571
-Ref: security command-restriction216748
-Ref: f8216748
-Node: Flag/Toggle Restriction217111
-Ref: security flag-toggle-restriction217286
-Ref: f9217286
-Node: Config restrictions217615
-Ref: security config-restrictions217792
-Ref: fa217792
-Node: Function Restrictions217932
-Ref: security function-restrictions218094
-Ref: fb218094
-Node: Flags<4>218364
-Ref: security flags218517
-Ref: fc218517
-Node: Toggles<3>220801
-Ref: security toggles220943
-Ref: fd220943
-Node: @powers<2>222968
-Ref: security powers223111
-Ref: fe223111
-Node: @depowers224904
-Ref: security depowers225054
-Ref: ff225054
-Node: Site Restrictions226596
-Ref: security site-restrictions226727
-Ref: 100226727
-Node: IP based restrictions227011
-Ref: security ip-based-restrictions227128
-Ref: 101227128
-Node: DNS based restrictions228663
-Ref: security dns-based-restrictions228780
-Ref: 102228780
-Node: Methods to block anonymous connections and the pros and cons of doing so230057
-Ref: security methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so230305
-Ref: 103230305
-Node: Blacklisting through external tor_pull sh script230852
-Ref: security blacklisting-through-external-tor-pull-sh-script231077
-Ref: 104231077
-Node: Blacklisting through internal @blacklist command231519
-Ref: security blacklisting-through-internal-blacklist-command231795
-Ref: 105231795
-Node: Blacklisting through internal @tor command232075
-Ref: security blacklisting-through-internal-tor-command232347
-Ref: 106232347
-Node: Blacklisting through internal @admin command232681
-Ref: security blacklisting-through-internal-admin-command232896
-Ref: 107232896
-Node: Setting up an SSL tunnel for secure connection options233633
-Ref: security setting-up-an-ssl-tunnel-for-secure-connection-options233824
-Ref: 108233824
-Node: Quickstart for SSL setup with stunnel234035
-Ref: security quickstart-for-ssl-setup-with-stunnel234214
-Ref: 109234214
-Node: Detailed SSL setup with stunnel235676
-Ref: security detailed-ssl-setup-with-stunnel235855
-Ref: 10a235855
-Node: stunnel directory236460
-Ref: security stunnel-directory236588
-Ref: 10b236588
-Node: Modifying netrhost conf237383
-Ref: security modifying-netrhost-conf237553
-Ref: 10c237553
-Node: Running the stunnel setup program238674
-Ref: security running-the-stunnel-setup-program238853
-Ref: 10d238853
-Node: Starting the stunnel proxy239578
-Ref: security starting-the-stunnel-proxy239765
-Ref: 10e239765
-Node: Shutting down the stunnel proxy239980
-Ref: security shutting-down-the-stunnel-proxy240166
-Ref: 10f240166
-Node: Configuring firewall on the host240352
-Ref: security configuring-firewall-on-the-host240503
-Ref: 110240503
-Node: Maintenance240804
-Ref: maintenance doc240952
-Ref: 111240952
-Ref: maintenance maintenance240952
-Ref: 112240952
-Node: Signals and why you need them for control241276
-Ref: maintenance signals-and-why-you-need-them-for-control241409
-Ref: 113241409
-Node: TERM kill -TERM or kill -15241832
-Ref: maintenance term-kill-term-or-kill-15241972
-Ref: 114241972
-Node: USR1 kill -USR1242480
-Ref: maintenance usr1-kill-usr1242644
-Ref: 115242644
-Node: USR2 kill -USR2243037
-Ref: maintenance usr2-kill-usr2243200
-Ref: 116243200
-Node: KILL kill -KILL or kill -9243590
-Ref: maintenance kill-kill-kill-or-kill-9243729
-Ref: 117243729
-Node: Shutting down gracefully244489
-Ref: maintenance shutting-down-gracefully244650
-Ref: 118244650
-Node: Rhostmush has many ways to shut down the game cleanly244842
-Ref: maintenance rhostmush-has-many-ways-to-shut-down-the-game-cleanly245003
-Ref: 119245003
-Node: WARNING Never kill -9 Rhost245339
-Ref: maintenance warning-never-kill-9-rhost245500
-Ref: 11a245500
-Node: Autoshutdown script246078
-Ref: maintenance autoshutdown-script246221
-Ref: 11b246221
-Node: Network Port redirector246597
-Ref: maintenance network-port-redirector246780
-Ref: 11c246780
-Node: Using the built-in cron system for periodically running commands247419
-Ref: maintenance using-the-built-in-cron-system-for-periodically-running-commands247635
-Ref: 11d247635
-Node: Syntax for rhost cron247902
-Ref: maintenance syntax-for-rhost-cron248074
-Ref: 11e248074
-Node: Example syntaxt for rhost cron248873
-Ref: maintenance example-syntaxt-for-rhost-cron249045
-Ref: 11f249045
-Node: The following scripts are used in the game directory249352
-Ref: maintenance the-following-scripts-are-used-in-the-game-directory249568
-Ref: 120249568
-Node: Textfiles for RhostMUSH250526
-Ref: maintenance textfiles-for-rhostmush250669
-Ref: 121250669
-Node: Textfile Frequently Asked Questions252459
-Ref: maintenance textfile-frequently-asked-questions252565
-Ref: 122252565
-Node: Troubleshooting253554
-Ref: troubleshooting doc253703
-Ref: 123253703
-Ref: troubleshooting troubleshooting253703
-Ref: 124253703
-Node: Stack limit and debugging253948
-Ref: troubleshooting stack-limit-and-debugging254077
-Ref: 125254077
-Node: How to reset the password for #1255375
-Ref: troubleshooting how-to-reset-the-password-for-1255561
-Ref: 126255561
-Node: Method 1255798
-Ref: troubleshooting method-1255903
-Ref: 127255903
-Node: Method 2256053
-Ref: troubleshooting method-2256158
-Ref: 128256158
-Node: Troubleshooting difficulties compiling RhostMUSH256308
-Ref: troubleshooting troubleshooting-difficulties-compiling-rhostmush256495
-Ref: 129256495
-Node: Changes to conf for high-bit CPUs256699
-Ref: troubleshooting changes-to-conf-for-high-bit-cpus256875
-Ref: 12a256875
-Node: Changes to autconf for certain systems257626
-Ref: troubleshooting changes-to-autconf-for-certain-systems257802
-Ref: 12b257802
-Node: Dealing with DB Corruption258771
-Ref: troubleshooting dealing-with-db-corruption258962
-Ref: 12c258962
-Node: If the mush says it can’t find your database files259793
-Ref: troubleshooting if-the-mush-says-it-can-t-find-your-database-files259988
-Ref: 12d259988
-Node: Check the names of the database files in your ‘data’ directory260316
-Ref: troubleshooting check-the-names-of-the-database-files-in-your-data-directory260520
-Ref: 12e260520
-Node: Check your netrhost conf file260828
-Ref: troubleshooting check-your-netrhost-conf-file261068
-Ref: 12f261068
-Node: Check your mush config file261582
-Ref: troubleshooting check-your-mush-config-file261747
-Ref: 130261747
-Node: If the mush says it can’t read or load your database files262162
-Ref: troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files262494
-Ref: 131262494
-Node: Verify you have enough disk space quota262909
-Ref: troubleshooting verify-you-have-enough-disk-space-quota263105
-Ref: 132263105
-Node: Verify you have enough disk space system263760
-Ref: troubleshooting verify-you-have-enough-disk-space-system263956
-Ref: 133263956
-Node: If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!264734
-Ref: troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone265044
-Ref: 134265044
-Node: The bad news265795
-Ref: troubleshooting the-bad-news266005
-Ref: 135266005
-Node: The good news266408
-Ref: troubleshooting the-good-news266656
-Ref: 136266656
-Node: Now to restore your database?267402
-Ref: troubleshooting now-to-restore-your-database267629
-Ref: 137267629
-Node: Bringing up your mail database267762
-Ref: troubleshooting bringing-up-your-mail-database268003
-Ref: 138268003
-Node: If after restoring main database your mail database works268280
-Ref: troubleshooting if-after-restoring-main-database-your-mail-database-works268489
-Ref: 139268489
-Node: If after restoring main database your mail database does not work268945
-Ref: troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work269154
-Ref: 13a269154
-Node: Dealing with a corrupt mail database269500
-Ref: troubleshooting dealing-with-a-corrupt-mail-database269634
-Ref: 13b269634
-Node: Backing up your mail database270325
-Ref: troubleshooting backing-up-your-mail-database270490
-Ref: 13c270490
-Node: Automatically recovering your mail database270946
-Ref: troubleshooting automatically-recovering-your-mail-database271158
-Ref: 13d271158
-Node: Manually recovering your mail database271810
-Ref: troubleshooting manually-recovering-your-mail-database271984
-Ref: 13e271984
-Node: Upgrading273498
-Ref: upgrade doc273653
-Ref: 13f273653
-Ref: upgrade upgrading273653
-Ref: 140273653
-Node: Converting database betwen GDBM and QDBM273909
-Ref: upgrade converting-database-betwen-gdbm-and-qdbm274050
-Ref: 141274050
-Node: Downgrading QDBM to GDBM274389
-Ref: upgrade downgrading-qdbm-to-gdbm274533
-Ref: 142274533
-Node: Upgradging GDBM to QDBM275501
-Ref: upgrade upgradging-gdbm-to-qdbm275645
-Ref: 143275645
-Node: While logged in to your mush issue the following commands276309
-Ref: upgrade while-logged-in-to-your-mush-issue-the-following-commands276468
-Ref: 144276468
-Node: Verify the files exist276972
-Ref: upgrade verify-the-files-exist277157
-Ref: 145277157
-Node: Shutdown the MUSH277482
-Ref: upgrade shutdown-the-mush277635
-Ref: 146277635
-Node: From the Server directory277711
-Ref: upgrade from-the-server-directory277872
-Ref: 147277872
-Node: From the Server/game directory278797
-Ref: upgrade from-the-server-game-directory278996
-Ref: 148278996
-Node: While logged into the mush issue the following commands279193
-Ref: upgrade while-logged-into-the-mush-issue-the-following-commands279422
-Ref: 149279422
-Node: Verify that you have QDBM running and your valid values279727
-Ref: upgrade verify-that-you-have-qdbm-running-and-your-valid-values279917
-Ref: 14a279917
-Node: Updating RhostMUSH prior to 3 9 5p2280114
-Ref: upgrade updating-rhostmush-prior-to-3-9-5p2280308
-Ref: 14b280308
-Node: Adding MySQL to RhostMUSH older than 3 9 5p2284052
-Ref: upgrade adding-mysql-to-rhostmush-older-than-3-9-5p2284197
-Ref: 14c284197
-Node: Advanced Features286954
-Ref: advanced doc287116
-Ref: 14d287116
-Ref: advanced advanced-features287116
-Ref: 14e287116
-Node: Adding hardcoded modules287409
-Ref: advanced adding-hardcoded-modules287534
-Ref: 14f287534
-Node: Modifying sourcode to add a module287777
-Ref: advanced modifying-sourcode-to-add-a-module287933
-Ref: 150287933
-Node: Adding an @startup to make use of modules288265
-Ref: advanced adding-an-startup-to-make-use-of-modules288468
-Ref: 151288468
-Node: Contributing your module back to Rhost289047
-Ref: advanced contributing-your-module-back-to-rhost289207
-Ref: 152289207
-Node: Shutting down gracefully<2>289520
-Ref: advanced shutting-down-gracefully289668
-Ref: 153289668
-Node: Rhostmush has many ways to shut down the game cleanly<2>289922
-Ref: advanced rhostmush-has-many-ways-to-shut-down-the-game-cleanly290092
-Ref: 154290092
-Node: WARNING Never kill -9 Rhost<2>290430
-Ref: advanced warning-never-kill-9-rhost290600
-Ref: 155290600
-Node: Reality levels291180
-Ref: advanced reality-levels291348
-Ref: 156291348
-Node: Visibility291820
-Ref: advanced visibility291913
-Ref: 157291913
-Node: Descriptions292934
-Ref: advanced descriptions293060
-Ref: 158293060
-Node: Configuration parameters294310
-Ref: advanced configuration-parameters294443
-Ref: 159294443
-Node: Example mush conf295972
-Ref: advanced example-mush-conf296101
-Ref: 15a296101
-Node: Commands296657
-Ref: advanced commands296774
-Ref: 15b296774
-Node: Functions<3>297296
-Ref: advanced functions297435
-Ref: 15c297435
-Node: Example 1 A simplified Witchcraft setup298414
-Ref: advanced example-1-a-simplified-witchcraft-setup298566
-Ref: 15d298566
-Node: Example 2 A WoD setup301716
-Ref: advanced example-2-a-wod-setup301874
-Ref: 15e301874
-Node: Example 3 Softcode305508
-Ref: advanced example-3-softcode305618
-Ref: 15f305618
-Node: Execscript and external programs and scripts307594
-Ref: advanced execscript-and-external-programs-and-scripts307772
-Ref: 160307772
-Node: Mush variables308007
-Ref: advanced mush-variables308132
-Ref: 161308132
-Node: Built in variables308259
-Ref: advanced built-in-variables308365
-Ref: 162308365
-Node: Dynamic variables308903
-Ref: advanced dynamic-variables309036
-Ref: 163309036
-Node: Register variables309194
-Ref: advanced register-variables309300
-Ref: 164309300
-Node: set object309584
-Ref: advanced set-object309737
-Ref: 165309737
-Node: The format of the fields are310120
-Ref: advanced the-format-of-the-fields-are310206
-Ref: 166310206
-Node: Dynamic variables<2>310381
-Ref: advanced id67310507
-Ref: 167310507
-Node: Examples310634
-Ref: advanced examples310710
-Ref: 168310710
-Node: Register variables<2>311025
-Ref: advanced id68311151
-Ref: 169311151
-Node: Examples The last example clears register 0311358
-Ref: advanced examples-the-last-example-clears-register-0311470
-Ref: 16a311470
-Node: Example bash script311701
-Ref: advanced example-bash-script311858
-Ref: 16b311858
-Node: Notes and warnings312342
-Ref: advanced notes-and-warnings312523
-Ref: 16c312523
-Node: Scripts to be used with execscript313064
-Ref: advanced scripts-to-be-used-with-execscript313217
-Ref: 16d313217
-Node: Using printf for advanced text output315081
-Ref: advanced using-printf-for-advanced-text-output315236
-Ref: 16e315236
-Node: Example one315590
-Ref: advanced example-one315706
-Ref: 16f315706
-Node: Example two316006
-Ref: advanced example-two316144
-Ref: 170316144
-Node: Example three316712
-Ref: advanced example-three316830
-Ref: 171316830
-Node: Format for image files317703
-Ref: advanced format-for-image-files317875
-Ref: 172317875
-Node: Comparison of Flags334347
-Ref: flags doc334522
-Ref: 173334522
-Ref: flags comparison-of-flags334522
-Ref: 174334522
-Node: Comparison of powers336099
-Ref: powers doc336281
-Ref: 175336281
-Ref: powers comparison-of-powers336281
-Ref: 176336281
-Node: RhostMUSH Internal Help Files339023
-Ref: helpfile doc339218
-Ref: 177339218
-Ref: helpfile rhostmush-internal-help-files339218
-Ref: 178339218
-Node: RhostMUSH Internal Wizhelp Files339289
-Ref: wizhelpfile doc339473
-Ref: 179339473
-Ref: wizhelpfile rhostmush-internal-wizhelp-files339473
-Ref: 17a339473
-Node: Changelog339550
-Ref: changelog doc339740
-Ref: 17b339740
-Ref: changelog changelog339740
-Ref: 17c339740
-Node: Historical Non-Disclosure Agreement433505
-Ref: nda doc433654
-Ref: 17d433654
-Ref: nda historical-non-disclosure-agreement433654
-Ref: 17e433654
-Node: Copyright434776
-Ref: index copyright434893
-Ref: 17f434893
-Node: Indices and tables435901
-Ref: index indices-and-tables435976
-Ref: 180435976
+Node: RhostMUSH offers the following over other mushes19946
+Ref: index rhostmush-handbook20075
+Ref: 120075
+Ref: index rhostmush-offers-the-following-over-other-mushes20075
+Ref: 220075
+Node: What RhostMUSH is about and what’s so great about RhostMUSH21421
+Ref: features doc21620
+Ref: 321620
+Ref: features what-rhostmush-is-about-and-what-s-so-great-about-rhostmush21620
+Ref: 421620
+Node: Recycle bin24822
+Ref: features recycle-bin24960
+Ref: 524960
+Node: @snapshot25562
+Ref: features snapshot25740
+Ref: 625740
+Node: Wizard and Immortals by default26022
+Ref: features wizard-and-immortals-by-default26229
+Ref: 726229
+Node: Titles and Captions to a player’s name27217
+Ref: features titles-and-captions-to-a-player-s-name27468
+Ref: 827468
+Node: Have an alternate name with locks for NPC obfuscation27594
+Ref: features have-an-alternate-name-with-locks-for-npc-obfuscation27842
+Ref: 927842
+Node: Have multiple player aliases27992
+Ref: features have-multiple-player-aliases28263
+Ref: a28263
+Node: Actively control how dark works both game-wide and individually28443
+Ref: features actively-control-how-dark-works-both-game-wide-and-individually28739
+Ref: b28739
+Node: Make config file changes in-game without having to reboot or have shell access29123
+Ref: features make-config-file-changes-in-game-without-having-to-reboot-or-have-shell-access29443
+Ref: c29443
+Node: Execute any binary or script as a localized function29640
+Ref: features execute-any-binary-or-script-as-a-localized-function29944
+Ref: d29944
+Node: Customized percent substitutions like %n %# etc30103
+Ref: features customized-percent-substitutions-like-n-etc30374
+Ref: e30374
+Node: Redefine percent substitutions like %n %# etc30525
+Ref: features redefine-percent-substitutions-like-n-etc30796
+Ref: f30796
+Node: Localize command and function overrides in a sandbox30944
+Ref: features localize-command-and-function-overrides-in-a-sandbox31182
+Ref: 1031182
+Node: Multiple Zones31349
+Ref: features multiple-zones31590
+Ref: 1131590
+Node: Optionally control enable or disable sideeffects31792
+Ref: features optionally-control-enable-or-disable-sideeffects32030
+Ref: 1232030
+Node: Have 31 cross-interactive realities for locations32187
+Ref: features have-31-cross-interactive-realities-for-locations32445
+Ref: 1332445
+Node: Override any command with softcode33031
+Ref: features override-any-command-with-softcode33299
+Ref: 1433299
+Node: The abilility to raise or lower permissions on the various33476
+Ref: features the-abilility-to-raise-or-lower-permissions-on-the-various33739
+Ref: 1533739
+Node: Customize new commands on the connect screen33945
+Ref: features customize-new-commands-on-the-connect-screen34212
+Ref: 1634212
+Node: Softcode any txt file like connect txt34343
+Ref: features softcode-any-txt-file-like-connect-txt34618
+Ref: 1734618
+Node: Advanced tracing methods for debugging your code including labels!34813
+Ref: features advanced-tracing-methods-for-debugging-your-code-including-labels35111
+Ref: 1835111
+Node: Built in pretty-printing of attributes with the parenmatch function35437
+Ref: features built-in-pretty-printing-of-attributes-with-the-parenmatch-function35723
+Ref: 1935723
+Node: Plenty more not mentioned!36293
+Ref: features plenty-more-not-mentioned36543
+Ref: 1a36543
+Node: Advanced features of RhostMUSH36955
+Ref: features advanced-features-of-rhostmush37185
+Ref: 1b37185
+Node: Debugging/Tracing38540
+Ref: features debugging-tracing38650
+Ref: 1c38650
+Node: Zoning39191
+Ref: features zoning39324
+Ref: 1d39324
+Node: Reality Levels39787
+Ref: features reality-levels39934
+Ref: 1e39934
+Node: Function and Command Overriding40587
+Ref: features function-and-command-overriding40743
+Ref: 1f40743
+Node: The Recycle Bin41962
+Ref: features the-recycle-bin42142
+Ref: 2042142
+Node: Percent Substitution Adding/Overriding42808
+Ref: features percent-substitution-adding-overriding42964
+Ref: 2142964
+Node: Hooking43430
+Ref: features hooking43593
+Ref: 2243593
+Node: Command based uselocks43871
+Ref: features command-based-uselocks44043
+Ref: 2344043
+Node: Differentating between command and listen locks44763
+Ref: features differentating-between-command-and-listen-locks44971
+Ref: 2444971
+Node: Wizard auto-overiding and how to disable it45380
+Ref: features wizard-auto-overiding-and-how-to-disable-it45598
+Ref: 2545598
+Node: Advanced FLAG and TOGGLE control46171
+Ref: features advanced-flag-and-toggle-control46363
+Ref: 2646363
+Node: Advanced site control47104
+Ref: features advanced-site-control47270
+Ref: 2747270
+Node: Auto-Registration47767
+Ref: features auto-registration47925
+Ref: 2847925
+Node: Which bit level is best?48301
+Ref: features which-bit-level-is-best48488
+Ref: 2948488
+Node: What are the limits for size/growth for RhostMUSH?49587
+Ref: features what-are-the-limits-for-size-growth-for-rhostmush49801
+Ref: 2a49801
+Node: Sqlite and MySQL/Maria setup and why use it?52536
+Ref: features sqlite-and-mysql-maria-setup-and-why-use-it52781
+Ref: 2b52781
+Node: Executing outside scripts and binaries within RhostMUSH53286
+Ref: features executing-outside-scripts-and-binaries-within-rhostmush53517
+Ref: 2c53517
+Node: Pulling external data into RhostMUSH54051
+Ref: features pulling-external-data-into-rhostmush54282
+Ref: 2d54282
+Node: Integrating a unix cron right into RhostMUSH54617
+Ref: features integrating-a-unix-cron-right-into-rhostmush54845
+Ref: 2e54845
+Node: Signal handling how it works and when and why use it55298
+Ref: features signal-handling-how-it-works-and-when-and-why-use-it55583
+Ref: 2f55583
+Node: Setting up global parents global @parents global attribute formatting and other global setups56415
+Ref: features setting-up-global-parents-global-parents-global-attribute-formatting-and-other-global-setups56704
+Ref: 3056704
+Node: RhostMUSH limitations and how to get around them59290
+Ref: features rhostmush-limitations-and-how-to-get-around-them59594
+Ref: 3159594
+Node: Things other mushes can do that Rhost can not and how to emulate it62011
+Ref: features things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it62242
+Ref: 3262242
+Node: PennMUSH62430
+Ref: features pennmush62565
+Ref: 3362565
+Node: MUX63575
+Ref: features mux63710
+Ref: 3463710
+Node: Advanced guest setup64170
+Ref: features advanced-guest-setup64417
+Ref: 3564417
+Node: Attribute permission masking and the joys of the power behind it64853
+Ref: features attribute-permission-masking-and-the-joys-of-the-power-behind-it65080
+Ref: 3665080
+Node: The amazing @cluster and what it can do for you65696
+Ref: features the-amazing-cluster-and-what-it-can-do-for-you65930
+Ref: 3765930
+Node: What we plan for the future66677
+Ref: features what-we-plan-for-the-future66838
+Ref: 3866838
+Node: Random notes and things to know about RhostMUSH67804
+Ref: features random-notes-and-things-to-know-about-rhostmush67999
+Ref: 3967999
+Node: Note on bits their levels and things they do68971
+Ref: features note-on-bits-their-levels-and-things-they-do69180
+Ref: 3a69180
+Node: You need to @pcreate your guest characters and set them GUEST69861
+Ref: features you-need-to-pcreate-your-guest-characters-and-set-them-guest70100
+Ref: 3b70100
+Node: @powers are INHERITED70538
+Ref: features powers-are-inherited70795
+Ref: 3c70795
+Node: @depowers are automatically checked first before anything else71088
+Ref: features depowers-are-automatically-checked-first-before-anything-else71300
+Ref: 3d71300
+Node: Zones are unique71488
+Ref: features zones-are-unique71717
+Ref: 3e71717
+Node: The db auto-repares itself when it can71815
+Ref: features the-db-auto-repares-itself-when-it-can72024
+Ref: 3f72024
+Node: You can get your connect txt to parse ansi72309
+Ref: features you-can-get-your-connect-txt-to-parse-ansi72550
+Ref: 4072550
+Node: Re-compiled binaries do not require an @shutdown72817
+Ref: features re-compiled-binaries-do-not-require-an-shutdown73084
+Ref: 4173084
+Node: Softcode emulations of functions from other servers are included73361
+Ref: features softcode-emulations-of-functions-from-other-servers-are-included73577
+Ref: 4273577
+Node: Comparison of modern MUSH servers73973
+Ref: differences doc74193
+Ref: 4374193
+Ref: differences comparison-of-modern-mush-servers74193
+Ref: 4474193
+Node: Differences to expect to the end user between PennMUSH MUX and RhostMUSH75326
+Ref: differences differences-to-expect-to-the-end-user-between-pennmush-mux-and-rhostmush75546
+Ref: 4575546
+Node: PennMUSH<2>76154
+Ref: differences pennmush76300
+Ref: 4676300
+Node: MUX<2>76925
+Ref: differences mux77089
+Ref: 4777089
+Node: RhostMUSH77628
+Ref: differences rhostmush77772
+Ref: 4877772
+Node: Comparison of features between RhostMUSH PennMUSH and MUX278510
+Ref: differences comparison-of-features-between-rhostmush-pennmush-and-mux278771
+Ref: 4978771
+Node: Organization of help and wizhelp79435
+Ref: differences organization-of-help-and-wizhelp79662
+Ref: 4a79662
+Node: Mail comsystem guests master rooms etc80424
+Ref: differences mail-comsystem-guests-master-rooms-etc80616
+Ref: 4b80616
+Node: Comparisons of features81010
+Ref: differences comparisons-of-features81196
+Ref: 4c81196
+Node: @commands with equivalents81352
+Ref: differences commands-with-equivalents81529
+Ref: 4d81529
+Node: @commands unique to RhostMUSH86993
+Ref: differences commands-unique-to-rhostmush87164
+Ref: 4e87164
+Node: @lock equivalents87779
+Ref: differences lock-equivalents87959
+Ref: 4f87959
+Node: @locks that only exist in RhostMUSH89089
+Ref: differences locks-that-only-exist-in-rhostmush89267
+Ref: 5089267
+Node: Flag and toggle equivalents89458
+Ref: differences flag-and-toggle-equivalents89665
+Ref: 5189665
+Node: Flags and toggles that only exist in RhostMUSH91855
+Ref: differences flags-and-toggles-that-only-exist-in-rhostmush92045
+Ref: 5292045
+Node: Flags92186
+Ref: differences flags92301
+Ref: 5392301
+Node: Toggles92739
+Ref: differences toggles92854
+Ref: 5492854
+Node: @power equivalents93434
+Ref: differences power-equivalents93618
+Ref: 5593618
+Node: @power unique to RhostMUSH95284
+Ref: differences power-unique-to-rhostmush95376
+Ref: 5695376
+Node: Functions equivalents95729
+Ref: differences functions-equivalents95970
+Ref: 5795970
+Node: Functions that only exist in RhostMUSH108992
+Ref: differences functions-that-only-exist-in-rhostmush109099
+Ref: 58109099
+Node: What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost110787
+Ref: differences what-may-need-to-be-modified-to-get-softcode-from-pennmush-tinymush2-tinymush3-or-mux2-to-work-on-rhost111080
+Ref: 59111080
+Node: Problematic functions between codebases112358
+Ref: differences problematic-functions-between-codebases112595
+Ref: 5a112595
+Node: Problematic features between codebases112748
+Ref: differences problematic-features-between-codebases113014
+Ref: 5b113014
+Node: Problematic commands113255
+Ref: differences problematic-commands113493
+Ref: 5c113493
+Node: SIDEFX flag113623
+Ref: differences sidefx-flag113837
+Ref: 5d113837
+Node: Variable exits114113
+Ref: differences variable-exits114312
+Ref: 5e114312
+Node: Zones114736
+Ref: differences zones114931
+Ref: 5f114931
+Node: @powers115430
+Ref: differences powers115627
+Ref: 60115627
+Node: Attribute length116078
+Ref: differences attribute-length116288
+Ref: 61116288
+Node: Attribute contents116638
+Ref: differences attribute-contents116850
+Ref: 62116850
+Node: 256 color117139
+Ref: differences color117347
+Ref: 63117347
+Node: Unicode/UTF8117406
+Ref: differences unicode-utf8117617
+Ref: 64117617
+Node: Attributes per object117844
+Ref: differences attributes-per-object118056
+Ref: 65118056
+Node: Destroying118394
+Ref: differences destroying118607
+Ref: 66118607
+Node: object id’s119118
+Ref: differences object-id-s119328
+Ref: 67119328
+Node: lsearch and search119436
+Ref: differences lsearch-and-search119659
+Ref: 68119659
+Node: @locks can be different119955
+Ref: differences locks-can-be-different120184
+Ref: 69120184
+Node: Customer user-locks120343
+Ref: differences customer-user-locks120569
+Ref: 6a120569
+Node: Attribute trees120899
+Ref: differences attribute-trees121127
+Ref: 6b121127
+Node: Prefix permission locking121483
+Ref: differences prefix-permission-locking121708
+Ref: 6c121708
+Node: align and printf122013
+Ref: differences align-and-printf122228
+Ref: 6d122228
+Node: MySQL122456
+Ref: differences mysql122657
+Ref: 6e122657
+Node: Mail System122801
+Ref: differences mail-system122995
+Ref: 6f122995
+Node: Comsystem123110
+Ref: differences comsystem123316
+Ref: 70123316
+Node: Various Functions123426
+Ref: differences various-functions123637
+Ref: 71123637
+Node: Empty Attributes124184
+Ref: differences empty-attributes124398
+Ref: 72124398
+Node: Player Stats124634
+Ref: differences player-stats124852
+Ref: 73124852
+Node: Percent Substitutions125088
+Ref: differences percent-substitutions125298
+Ref: 74125298
+Node: Switches125522
+Ref: differences switches125728
+Ref: 75125728
+Node: Flags<2>126008
+Ref: differences id3126200
+Ref: 76126200
+Node: Aliases126507
+Ref: differences aliases126682
+Ref: 77126682
+Node: Things other mushes can do that Rhost can not and how to emulate it<2>126770
+Ref: differences things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it127033
+Ref: 78127033
+Node: PennMUSH<3>127234
+Ref: differences id4127378
+Ref: 79127378
+Node: MUX<3>128276
+Ref: differences id11128420
+Ref: 7a128420
+Node: Requirements128843
+Ref: requirements doc129014
+Ref: 7b129014
+Ref: requirements id1129014
+Ref: 7c129014
+Ref: requirements requirements129014
+Ref: 7d129014
+Node: System Requirements129141
+Ref: requirements system-requirements129244
+Ref: 7e129244
+Node: Supported Platforms129910
+Ref: requirements supported-platforms130026
+Ref: 7f130026
+Node: Unsupported Platforms130435
+Ref: requirements unsupported-platforms130578
+Ref: 80130578
+Node: Untested Platforms130667
+Ref: requirements untested-platforms130812
+Ref: 81130812
+Node: Known Platform Issues130911
+Ref: requirements known-platform-issues131026
+Ref: 82131026
+Node: Requirements<2>131378
+Ref: requirements id2131510
+Ref: 83131510
+Node: Optional Packages132056
+Ref: requirements optional-packages132136
+Ref: 84132136
+Node: Hosting Requirements132897
+Ref: requirements hosting-requirements133001
+Ref: 85133001
+Node: Installation133466
+Ref: installation doc133612
+Ref: 86133612
+Ref: installation installation133612
+Ref: 87133612
+Node: Compiling the code133947
+Ref: installation compiling-the-code134054
+Ref: 88134054
+Node: Note about Compiling134456
+Ref: installation note-about-compiling134573
+Ref: 89134573
+Node: Note about Recompiling135932
+Ref: installation note-about-recompiling136077
+Ref: 8a136077
+Node: Note about Patching136687
+Ref: installation note-about-patching136803
+Ref: 8b136803
+Node: Configuring the game137889
+Ref: installation configuring-the-game138022
+Ref: 8c138022
+Node: Starting the game138256
+Ref: installation starting-the-game138394
+Ref: 8d138394
+Node: First login to the game138775
+Ref: installation first-login-to-the-game138923
+Ref: 8e138923
+Node: Reporting bugs or getting help139475
+Ref: installation reporting-bugs-or-getting-help139642
+Ref: 8f139642
+Node: Installing using an ansible playbook140010
+Ref: installation installing-using-an-ansible-playbook140185
+Ref: 90140185
+Node: Quickinstall guide to RhostMUSH140791
+Ref: installation quickinstall-guide-to-rhostmush140999
+Ref: 91140999
+Node: Obtaining RhostMUSH141898
+Ref: installation obtaining-rhostmush142049
+Ref: 92142049
+Node: Important before you actually start building142673
+Ref: installation important-before-you-actually-start-building142860
+Ref: 93142860
+Node: Using the prebuilt flatfile144651
+Ref: installation using-the-prebuilt-flatfile144866
+Ref: 94144866
+Node: To load a prebuilt flatfile145527
+Ref: installation to-load-a-prebuilt-flatfile145629
+Ref: 95145629
+Node: Starting from scratch with a brand new database146933
+Ref: installation starting-from-scratch-with-a-brand-new-database147145
+Ref: 96147145
+Node: Instructions for starting a new RhostMUSH148123
+Ref: installation instructions-for-starting-a-new-rhostmush148340
+Ref: 97148340
+Node: Setup directory permissions148511
+Ref: installation setup-directory-permissions148659
+Ref: 98148659
+Node: Compile the source code149013
+Ref: installation compile-the-source-code149161
+Ref: 99149161
+Node: Manual configuration of source code149590
+Ref: installation manual-configuration-of-source-code149696
+Ref: 9a149696
+Node: Loading a database for your MUSH150643
+Ref: installation loading-a-database-for-your-mush150859
+Ref: 9b150859
+Node: Option Only perform these steps if using a provided database151176
+Ref: installation option-only-perform-these-steps-if-using-a-provided-database151316
+Ref: 9c151316
+Node: Configure the netrhost conf file for your MUSH151852
+Ref: installation configure-the-netrhost-conf-file-for-your-mush152051
+Ref: 9d152051
+Node: Start the MUSH and login152693
+Ref: installation start-the-mush-and-login152942
+Ref: 9e152942
+Node: Option Things to do once you have connected if you did NOT use a provided database153096
+Ref: installation option-things-to-do-once-you-have-connected-if-you-did-not-use-a-provided-database153375
+Ref: 9f153375
+Node: Setup new character staff and take tasks that can only be accomplished by #1154683
+Ref: installation setup-new-character-staff-and-take-tasks-that-can-only-be-accomplished-by-1154971
+Ref: a0154971
+Node: Setup daily backups for your game155256
+Ref: installation setup-daily-backups-for-your-game155500
+Ref: a1155500
+Node: Customtize the textfiles for your game156561
+Ref: installation customtize-the-textfiles-for-your-game156757
+Ref: a2156757
+Node: Make sure to read up further157135
+Ref: installation make-sure-to-read-up-further157289
+Ref: a3157289
+Node: What to type to configure and get your RhostMUSH up and running157533
+Ref: installation what-to-type-to-configure-and-get-your-rhostmush-up-and-running157712
+Ref: a4157712
+Node: Creating a new game with a blank database158156
+Ref: installation creating-a-new-game-with-a-blank-database158371
+Ref: a5158371
+Node: Creating a new game with Ambrosia’s default database158607
+Ref: installation creating-a-new-game-with-ambrosia-s-default-database158884
+Ref: a6158884
+Node: Creating a new game with the generic default database160509
+Ref: installation creating-a-new-game-with-the-generic-default-database160763
+Ref: a7160763
+Node: Starting your MUSH161181
+Ref: installation starting-your-mush161402
+Ref: a8161402
+Node: Backups for RhostMUSH161616
+Ref: installation backups-for-rhostmush161823
+Ref: a9161823
+Node: Troubleshooting issues with starting up163591
+Ref: installation troubleshooting-issues-with-starting-up163771
+Ref: aa163771
+Node: Problem If it says the shared ID is already in use164436
+Ref: installation problem-if-it-says-the-shared-id-is-already-in-use164639
+Ref: ab164639
+Node: Problem Your log file is massive and your mush is running164880
+Ref: installation problem-your-log-file-is-massive-and-your-mush-is-running165183
+Ref: ac165183
+Node: Problem The database flatfile you’re loading can’t load because a db is already defined165393
+Ref: installation problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined165713
+Ref: ad165713
+Node: Problem The mail database won’t load and mail shows ‘offline’165981
+Ref: installation problem-the-mail-database-won-t-load-and-mail-shows-offline166235
+Ref: ae166235
+Node: Windows166402
+Ref: installation windows166541
+Ref: af166541
+Node: Installing on Windows 10 with BASH166657
+Ref: installation installing-on-windows-10-with-bash166788
+Ref: b0166788
+Node: Installing on Windows with Cygwin167296
+Ref: installation installing-on-windows-with-cygwin167427
+Ref: b1167427
+Node: Database167827
+Ref: database doc167975
+Ref: b2167975
+Ref: database database167975
+Ref: b3167975
+Node: Loading an existing Database168101
+Ref: database loading-an-existing-database168245
+Ref: b4168245
+Node: Then you just follow the prompts to load in your flatfile there168629
+Ref: database then-you-just-follow-the-prompts-to-load-in-your-flatfile-there168768
+Ref: b5168768
+Node: Converting a flatfile database for use in RhostMUSH169685
+Ref: database converting-a-flatfile-database-for-use-in-rhostmush169829
+Ref: b6169829
+Node: Gettin Started171029
+Ref: gettingstarted doc171231
+Ref: b7171231
+Ref: gettingstarted gettin-started171231
+Ref: b8171231
+Node: What to type to get the basics running if you did not choose a pre-existing flatfile171431
+Ref: gettingstarted what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile171609
+Ref: b9171609
+Node: Login to #1 from the connect screen172913
+Ref: gettingstarted login-to-1-from-the-connect-screen173163
+Ref: ba173163
+Node: Change #1’s password to something you’ll remember but is hard to guess173308
+Ref: gettingstarted change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess173578
+Ref: bb173578
+Node: Master Room173861
+Ref: gettingstarted master-room174124
+Ref: bc174124
+Node: Flag and protect Master Room174471
+Ref: gettingstarted flag-and-protect-master-room174684
+Ref: bd174684
+Node: Player Holder Characters174874
+Ref: gettingstarted player-holder-characters175138
+Ref: be175138
+Node: Immortal Holder175610
+Ref: gettingstarted immortal-holder175727
+Ref: bf175727
+Node: Royalty/Wizard Holder175871
+Ref: gettingstarted royalty-wizard-holder176019
+Ref: c0176019
+Node: Councilor/Admin Holder176174
+Ref: gettingstarted councilor-admin-holder176329
+Ref: c1176329
+Node: Architect/Staff Holder176494
+Ref: gettingstarted architect-staff-holder176651
+Ref: c2176651
+Node: Guildmaster/Lead Holder176816
+Ref: gettingstarted guildmaster-lead-holder176942
+Ref: c3176942
+Node: Chown #0 The starting room and #2 The Master room to immholder177113
+Ref: gettingstarted chown-0-the-starting-room-and-2-the-master-room-to-immholder177435
+Ref: c4177435
+Node: Create yourself your own immortal player then log off #1 and into this immortal player177776
+Ref: gettingstarted create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player178121
+Ref: c5178121
+Node: Log out of #1 and log into your immortal player178455
+Ref: gettingstarted log-out-of-1-and-log-into-your-immortal-player178766
+Ref: c6178766
+Node: Create your guest characters178987
+Ref: gettingstarted create-your-guest-characters179271
+Ref: c7179271
+Node: Dig a closet to store important objects but non-master room179585
+Ref: gettingstarted dig-a-closet-to-store-important-objects-but-non-master-room179869
+Ref: c8179869
+Node: Set the flags on the closet and ownership of it180078
+Ref: gettingstarted set-the-flags-on-the-closet-and-ownership-of-it180389
+Ref: c9180389
+Node: Create an Admin object for future ease of customization180648
+Ref: gettingstarted create-an-admin-object-for-future-ease-of-customization180960
+Ref: ca180960
+Node: Set the flags on the admin object and ownership and location181112
+Ref: gettingstarted set-the-flags-on-the-admin-object-and-ownership-and-location181410
+Ref: cb181410
+Node: Add admin object to configuration181794
+Ref: gettingstarted add-admin-object-to-configuration182096
+Ref: cc182096
+Node: Reboot your mush to load up the change for the admin object182402
+Ref: gettingstarted reboot-your-mush-to-load-up-the-change-for-the-admin-object182694
+Ref: cd182694
+Node: Do @admin/list to see if it shows the admin object182842
+Ref: gettingstarted do-admin-list-to-see-if-it-shows-the-admin-object183147
+Ref: ce183147
+Node: Load in all the various softcode that you want183351
+Ref: gettingstarted load-in-all-the-various-softcode-that-you-want183588
+Ref: cf183588
+Node: Myrddin MushCron183873
+Ref: gettingstarted myrddin-mushcron183998
+Ref: d0183998
+Node: AshCom184557
+Ref: gettingstarted ashcom184704
+Ref: d1184704
+Node: Mail Wrappers185022
+Ref: gettingstarted mail-wrappers185164
+Ref: d2185164
+Node: Myrddin BBS185523
+Ref: gettingstarted myrddin-bbs185673
+Ref: d3185673
+Node: Other Mushcode185943
+Ref: gettingstarted other-mushcode186071
+Ref: d4186071
+Node: Minimal DB instructions186497
+Ref: gettingstarted minimal-db-instructions186713
+Ref: d5186713
+Node: Ambrosia’s Minimal Rhost DB187646
+Ref: gettingstarted ambrosia-s-minimal-rhost-db187769
+Ref: d6187769
+Node: Version 1 0 5 2020-01-31187963
+Ref: gettingstarted version-1-0-5-2020-01-31188085
+Ref: d7188085
+Node: Introduction190245
+Ref: gettingstarted introduction190384
+Ref: d8190384
+Node: Features190576
+Ref: gettingstarted features190700
+Ref: d9190700
+Node: Configuration190790
+Ref: gettingstarted configuration190876
+Ref: da190876
+Node: Softcode193851
+Ref: gettingstarted softcode193955
+Ref: db193955
+Node: Functions194555
+Ref: gettingstarted functions194637
+Ref: dc194637
+Node: Bitlevels196675
+Ref: gettingstarted bitlevels196796
+Ref: dd196796
+Node: Globals199863
+Ref: gettingstarted globals199941
+Ref: de199941
+Node: Quota202076
+Ref: gettingstarted quota202175
+Ref: df202175
+Node: Functions<2>202472
+Ref: gettingstarted id15202555
+Ref: e0202555
+Node: Compiling202778
+Ref: gettingstarted compiling202882
+Ref: e1202882
+Node: What FLAGS TOGGLES POWERS DEPOWERS and BITLEVELS mean in RhostMUSH203247
+Ref: toggles doc203449
+Ref: e2203449
+Ref: toggles what-flags-toggles-powers-depowers-and-bitlevels-mean-in-rhostmush203449
+Ref: e3203449
+Node: Flags<3>203733
+Ref: toggles flags203874
+Ref: e4203874
+Node: Toggles<2>204129
+Ref: toggles toggles204285
+Ref: e5204285
+Node: @power204625
+Ref: toggles power204781
+Ref: e6204781
+Node: @depower205330
+Ref: toggles depower205505
+Ref: e7205505
+Node: Multi-tiered bitlevel systems205797
+Ref: toggles multi-tiered-bitlevel-systems205984
+Ref: e8205984
+Node: ghod #1 <bitlevel 7>206756
+Ref: toggles ghod-1-bitlevel-7206897
+Ref: e9206897
+Node: Immortal i <Level 6> - Basically #1207067
+Ref: toggles immortal-i-level-6-basically-1207256
+Ref: ea207256
+Node: Royalty W <Level 5> - FULL wizbit level207732
+Ref: toggles royalty-w-level-5-full-wizbit-level207942
+Ref: eb207942
+Node: Councilor a <Level 4> - High wizbit level208494
+Ref: toggles councilor-a-level-4-high-wizbit-level208712
+Ref: ec208712
+Node: Architect B <Level 3> - Middle wizbit level209299
+Ref: toggles architect-b-level-3-middle-wizbit-level209523
+Ref: ed209523
+Node: Guildmaster g <Level 2> - Lowest wizbit level210395
+Ref: toggles guildmaster-g-level-2-lowest-wizbit-level210599
+Ref: ee210599
+Node: Wanderer <bitlevel 0>211217
+Ref: toggles wanderer-bitlevel-0211404
+Ref: ef211404
+Node: Guest <bitlevel 0 as well>211812
+Ref: toggles guest-bitlevel-0-as-well211945
+Ref: f0211945
+Node: Altering bitlevels212246
+Ref: toggles altering-bitlevels212416
+Ref: f1212416
+Node: Security212643
+Ref: security doc212842
+Ref: f2212842
+Ref: security security212842
+Ref: f3212842
+Node: Considerations to locking down restrictions in RhostMUSH213129
+Ref: security considerations-to-locking-down-restrictions-in-rhostmush213298
+Ref: f4213298
+Node: Online Blocking object abilities214407
+Ref: security online-blocking-object-abilities214607
+Ref: f5214607
+Node: FLAGS access with @set215118
+Ref: security flags-access-with-set215244
+Ref: f6215244
+Node: TOGGLES @toggle215706
+Ref: security toggles-toggle215869
+Ref: f7215869
+Node: @powers @depowers and @locks216084
+Ref: security powers-depowers-and-locks216216
+Ref: f8216216
+Node: Offline Blocking twinks from being abusive on your game216434
+Ref: security offline-blocking-twinks-from-being-abusive-on-your-game216634
+Ref: f9216634
+Node: Extended lockdown of the mush and considerations217165
+Ref: security extended-lockdown-of-the-mush-and-considerations217415
+Ref: fa217415
+Node: Attribute Restriction217989
+Ref: security attribute-restriction218134
+Ref: fb218134
+Node: Command Restriction218394
+Ref: security command-restriction218571
+Ref: fc218571
+Node: Flag/Toggle Restriction218934
+Ref: security flag-toggle-restriction219109
+Ref: fd219109
+Node: Config restrictions219438
+Ref: security config-restrictions219615
+Ref: fe219615
+Node: Function Restrictions219755
+Ref: security function-restrictions219917
+Ref: ff219917
+Node: Flags<4>220187
+Ref: security flags220340
+Ref: 100220340
+Node: Toggles<3>222624
+Ref: security toggles222766
+Ref: 101222766
+Node: @powers<2>224791
+Ref: security powers224934
+Ref: 102224934
+Node: @depowers226727
+Ref: security depowers226877
+Ref: 103226877
+Node: Site Restrictions228419
+Ref: security site-restrictions228550
+Ref: 104228550
+Node: IP based restrictions228834
+Ref: security ip-based-restrictions228951
+Ref: 105228951
+Node: DNS based restrictions230486
+Ref: security dns-based-restrictions230603
+Ref: 106230603
+Node: Methods to block anonymous connections and the pros and cons of doing so231880
+Ref: security methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so232128
+Ref: 107232128
+Node: Blacklisting through external tor_pull sh script232675
+Ref: security blacklisting-through-external-tor-pull-sh-script232900
+Ref: 108232900
+Node: Blacklisting through internal @blacklist command233342
+Ref: security blacklisting-through-internal-blacklist-command233618
+Ref: 109233618
+Node: Blacklisting through internal @tor command233898
+Ref: security blacklisting-through-internal-tor-command234170
+Ref: 10a234170
+Node: Blacklisting through internal @admin command234504
+Ref: security blacklisting-through-internal-admin-command234719
+Ref: 10b234719
+Node: Setting up an SSL tunnel for secure connection options235456
+Ref: security setting-up-an-ssl-tunnel-for-secure-connection-options235647
+Ref: 10c235647
+Node: Quickstart for SSL setup with stunnel235858
+Ref: security quickstart-for-ssl-setup-with-stunnel236037
+Ref: 10d236037
+Node: Detailed SSL setup with stunnel237499
+Ref: security detailed-ssl-setup-with-stunnel237678
+Ref: 10e237678
+Node: stunnel directory238283
+Ref: security stunnel-directory238411
+Ref: 10f238411
+Node: Modifying netrhost conf239206
+Ref: security modifying-netrhost-conf239376
+Ref: 110239376
+Node: Running the stunnel setup program240497
+Ref: security running-the-stunnel-setup-program240676
+Ref: 111240676
+Node: Starting the stunnel proxy241401
+Ref: security starting-the-stunnel-proxy241588
+Ref: 112241588
+Node: Shutting down the stunnel proxy241803
+Ref: security shutting-down-the-stunnel-proxy241989
+Ref: 113241989
+Node: Configuring firewall on the host242175
+Ref: security configuring-firewall-on-the-host242326
+Ref: 114242326
+Node: Maintenance242627
+Ref: maintenance doc242775
+Ref: 115242775
+Ref: maintenance maintenance242775
+Ref: 116242775
+Node: Signals and why you need them for control243099
+Ref: maintenance signals-and-why-you-need-them-for-control243232
+Ref: 117243232
+Node: TERM kill -TERM or kill -15243655
+Ref: maintenance term-kill-term-or-kill-15243795
+Ref: 118243795
+Node: USR1 kill -USR1244303
+Ref: maintenance usr1-kill-usr1244467
+Ref: 119244467
+Node: USR2 kill -USR2244860
+Ref: maintenance usr2-kill-usr2245023
+Ref: 11a245023
+Node: KILL kill -KILL or kill -9245413
+Ref: maintenance kill-kill-kill-or-kill-9245552
+Ref: 11b245552
+Node: Shutting down gracefully246312
+Ref: maintenance shutting-down-gracefully246473
+Ref: 11c246473
+Node: Rhostmush has many ways to shut down the game cleanly246665
+Ref: maintenance rhostmush-has-many-ways-to-shut-down-the-game-cleanly246826
+Ref: 11d246826
+Node: WARNING Never kill -9 Rhost247162
+Ref: maintenance warning-never-kill-9-rhost247323
+Ref: 11e247323
+Node: Autoshutdown script247901
+Ref: maintenance autoshutdown-script248044
+Ref: 11f248044
+Node: Network Port redirector248420
+Ref: maintenance network-port-redirector248603
+Ref: 120248603
+Node: Using the built-in cron system for periodically running commands249242
+Ref: maintenance using-the-built-in-cron-system-for-periodically-running-commands249458
+Ref: 121249458
+Node: Syntax for rhost cron249725
+Ref: maintenance syntax-for-rhost-cron249897
+Ref: 122249897
+Node: Example syntaxt for rhost cron250696
+Ref: maintenance example-syntaxt-for-rhost-cron250868
+Ref: 123250868
+Node: The following scripts are used in the game directory251175
+Ref: maintenance the-following-scripts-are-used-in-the-game-directory251391
+Ref: 124251391
+Node: Textfiles for RhostMUSH252349
+Ref: maintenance textfiles-for-rhostmush252492
+Ref: 125252492
+Node: Textfile Frequently Asked Questions254282
+Ref: maintenance textfile-frequently-asked-questions254388
+Ref: 126254388
+Node: Troubleshooting255377
+Ref: troubleshooting doc255526
+Ref: 127255526
+Ref: troubleshooting troubleshooting255526
+Ref: 128255526
+Node: Stack limit and debugging255771
+Ref: troubleshooting stack-limit-and-debugging255900
+Ref: 129255900
+Node: How to reset the password for #1257198
+Ref: troubleshooting how-to-reset-the-password-for-1257384
+Ref: 12a257384
+Node: Method 1257621
+Ref: troubleshooting method-1257726
+Ref: 12b257726
+Node: Method 2257876
+Ref: troubleshooting method-2257981
+Ref: 12c257981
+Node: Troubleshooting difficulties compiling RhostMUSH258131
+Ref: troubleshooting troubleshooting-difficulties-compiling-rhostmush258318
+Ref: 12d258318
+Node: Changes to conf for high-bit CPUs258522
+Ref: troubleshooting changes-to-conf-for-high-bit-cpus258698
+Ref: 12e258698
+Node: Changes to autconf for certain systems259449
+Ref: troubleshooting changes-to-autconf-for-certain-systems259625
+Ref: 12f259625
+Node: Dealing with DB Corruption260594
+Ref: troubleshooting dealing-with-db-corruption260785
+Ref: 130260785
+Node: If the mush says it can’t find your database files261616
+Ref: troubleshooting if-the-mush-says-it-can-t-find-your-database-files261811
+Ref: 131261811
+Node: Check the names of the database files in your ‘data’ directory262139
+Ref: troubleshooting check-the-names-of-the-database-files-in-your-data-directory262343
+Ref: 132262343
+Node: Check your netrhost conf file262651
+Ref: troubleshooting check-your-netrhost-conf-file262891
+Ref: 133262891
+Node: Check your mush config file263405
+Ref: troubleshooting check-your-mush-config-file263570
+Ref: 134263570
+Node: If the mush says it can’t read or load your database files263985
+Ref: troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files264317
+Ref: 135264317
+Node: Verify you have enough disk space quota264732
+Ref: troubleshooting verify-you-have-enough-disk-space-quota264928
+Ref: 136264928
+Node: Verify you have enough disk space system265583
+Ref: troubleshooting verify-you-have-enough-disk-space-system265779
+Ref: 137265779
+Node: If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!266557
+Ref: troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone266867
+Ref: 138266867
+Node: The bad news267618
+Ref: troubleshooting the-bad-news267828
+Ref: 139267828
+Node: The good news268231
+Ref: troubleshooting the-good-news268479
+Ref: 13a268479
+Node: Now to restore your database?269225
+Ref: troubleshooting now-to-restore-your-database269452
+Ref: 13b269452
+Node: Bringing up your mail database269585
+Ref: troubleshooting bringing-up-your-mail-database269826
+Ref: 13c269826
+Node: If after restoring main database your mail database works270103
+Ref: troubleshooting if-after-restoring-main-database-your-mail-database-works270312
+Ref: 13d270312
+Node: If after restoring main database your mail database does not work270768
+Ref: troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work270977
+Ref: 13e270977
+Node: Dealing with a corrupt mail database271323
+Ref: troubleshooting dealing-with-a-corrupt-mail-database271457
+Ref: 13f271457
+Node: Backing up your mail database272148
+Ref: troubleshooting backing-up-your-mail-database272313
+Ref: 140272313
+Node: Automatically recovering your mail database272769
+Ref: troubleshooting automatically-recovering-your-mail-database272981
+Ref: 141272981
+Node: Manually recovering your mail database273633
+Ref: troubleshooting manually-recovering-your-mail-database273807
+Ref: 142273807
+Node: Upgrading275321
+Ref: upgrade doc275476
+Ref: 143275476
+Ref: upgrade upgrading275476
+Ref: 144275476
+Node: Converting database betwen GDBM and QDBM275732
+Ref: upgrade converting-database-betwen-gdbm-and-qdbm275873
+Ref: 145275873
+Node: Downgrading QDBM to GDBM276212
+Ref: upgrade downgrading-qdbm-to-gdbm276356
+Ref: 146276356
+Node: Upgradging GDBM to QDBM277324
+Ref: upgrade upgradging-gdbm-to-qdbm277468
+Ref: 147277468
+Node: While logged in to your mush issue the following commands278132
+Ref: upgrade while-logged-in-to-your-mush-issue-the-following-commands278291
+Ref: 148278291
+Node: Verify the files exist278795
+Ref: upgrade verify-the-files-exist278980
+Ref: 149278980
+Node: Shutdown the MUSH279305
+Ref: upgrade shutdown-the-mush279458
+Ref: 14a279458
+Node: From the Server directory279534
+Ref: upgrade from-the-server-directory279695
+Ref: 14b279695
+Node: From the Server/game directory280620
+Ref: upgrade from-the-server-game-directory280819
+Ref: 14c280819
+Node: While logged into the mush issue the following commands281016
+Ref: upgrade while-logged-into-the-mush-issue-the-following-commands281245
+Ref: 14d281245
+Node: Verify that you have QDBM running and your valid values281550
+Ref: upgrade verify-that-you-have-qdbm-running-and-your-valid-values281740
+Ref: 14e281740
+Node: Updating RhostMUSH prior to 3 9 5p2281937
+Ref: upgrade updating-rhostmush-prior-to-3-9-5p2282131
+Ref: 14f282131
+Node: Adding MySQL to RhostMUSH older than 3 9 5p2285875
+Ref: upgrade adding-mysql-to-rhostmush-older-than-3-9-5p2286020
+Ref: 150286020
+Node: Advanced Features288777
+Ref: advanced doc288939
+Ref: 151288939
+Ref: advanced advanced-features288939
+Ref: 152288939
+Node: Adding hardcoded modules289232
+Ref: advanced adding-hardcoded-modules289357
+Ref: 153289357
+Node: Modifying sourcode to add a module289600
+Ref: advanced modifying-sourcode-to-add-a-module289756
+Ref: 154289756
+Node: Adding an @startup to make use of modules290088
+Ref: advanced adding-an-startup-to-make-use-of-modules290291
+Ref: 155290291
+Node: Contributing your module back to Rhost290870
+Ref: advanced contributing-your-module-back-to-rhost291030
+Ref: 156291030
+Node: Shutting down gracefully<2>291343
+Ref: advanced shutting-down-gracefully291491
+Ref: 157291491
+Node: Rhostmush has many ways to shut down the game cleanly<2>291745
+Ref: advanced rhostmush-has-many-ways-to-shut-down-the-game-cleanly291915
+Ref: 158291915
+Node: WARNING Never kill -9 Rhost<2>292253
+Ref: advanced warning-never-kill-9-rhost292423
+Ref: 159292423
+Node: Reality levels293003
+Ref: advanced reality-levels293171
+Ref: 15a293171
+Node: Visibility293643
+Ref: advanced visibility293736
+Ref: 15b293736
+Node: Descriptions294757
+Ref: advanced descriptions294883
+Ref: 15c294883
+Node: Configuration parameters296133
+Ref: advanced configuration-parameters296266
+Ref: 15d296266
+Node: Example mush conf297795
+Ref: advanced example-mush-conf297924
+Ref: 15e297924
+Node: Commands298480
+Ref: advanced commands298597
+Ref: 15f298597
+Node: Functions<3>299119
+Ref: advanced functions299258
+Ref: 160299258
+Node: Example 1 A simplified Witchcraft setup300237
+Ref: advanced example-1-a-simplified-witchcraft-setup300389
+Ref: 161300389
+Node: Example 2 A WoD setup303539
+Ref: advanced example-2-a-wod-setup303697
+Ref: 162303697
+Node: Example 3 Softcode307331
+Ref: advanced example-3-softcode307441
+Ref: 163307441
+Node: Execscript and external programs and scripts309417
+Ref: advanced execscript-and-external-programs-and-scripts309595
+Ref: 164309595
+Node: Mush variables309830
+Ref: advanced mush-variables309955
+Ref: 165309955
+Node: Built in variables310082
+Ref: advanced built-in-variables310188
+Ref: 166310188
+Node: Dynamic variables310726
+Ref: advanced dynamic-variables310859
+Ref: 167310859
+Node: Register variables311017
+Ref: advanced register-variables311123
+Ref: 168311123
+Node: set object311407
+Ref: advanced set-object311560
+Ref: 169311560
+Node: The format of the fields are311943
+Ref: advanced the-format-of-the-fields-are312029
+Ref: 16a312029
+Node: Dynamic variables<2>312204
+Ref: advanced id67312330
+Ref: 16b312330
+Node: Examples312457
+Ref: advanced examples312533
+Ref: 16c312533
+Node: Register variables<2>312848
+Ref: advanced id68312974
+Ref: 16d312974
+Node: Examples The last example clears register 0313181
+Ref: advanced examples-the-last-example-clears-register-0313293
+Ref: 16e313293
+Node: Example bash script313524
+Ref: advanced example-bash-script313681
+Ref: 16f313681
+Node: Notes and warnings314165
+Ref: advanced notes-and-warnings314346
+Ref: 170314346
+Node: Scripts to be used with execscript314887
+Ref: advanced scripts-to-be-used-with-execscript315040
+Ref: 171315040
+Node: Using printf for advanced text output316904
+Ref: advanced using-printf-for-advanced-text-output317059
+Ref: 172317059
+Node: Example one317413
+Ref: advanced example-one317529
+Ref: 173317529
+Node: Example two317829
+Ref: advanced example-two317967
+Ref: 174317967
+Node: Example three318535
+Ref: advanced example-three318653
+Ref: 175318653
+Node: Format for image files319526
+Ref: advanced format-for-image-files319698
+Ref: 176319698
+Node: Comparison of Flags336170
+Ref: flags doc336345
+Ref: 177336345
+Ref: flags comparison-of-flags336345
+Ref: 178336345
+Node: Comparison of powers337922
+Ref: powers doc338104
+Ref: 179338104
+Ref: powers comparison-of-powers338104
+Ref: 17a338104
+Node: RhostMUSH Internal Help Files340846
+Ref: helpfile doc341041
+Ref: 17b341041
+Ref: helpfile rhostmush-internal-help-files341041
+Ref: 17c341041
+Node: RhostMUSH Internal Wizhelp Files341112
+Ref: wizhelpfile doc341296
+Ref: 17d341296
+Ref: wizhelpfile rhostmush-internal-wizhelp-files341296
+Ref: 17e341296
+Node: Changelog341373
+Ref: changelog doc341563
+Ref: 17f341563
+Ref: changelog changelog341563
+Ref: 180341563
+Node: Historical Non-Disclosure Agreement435328
+Ref: nda doc435477
+Ref: 181435477
+Ref: nda historical-non-disclosure-agreement435477
+Ref: 182435477
+Node: Copyright436599
+Ref: index copyright436716
+Ref: 183436716
+Node: Indices and tables437724
+Ref: index indices-and-tables437799
+Ref: 184437799
 
 End Tag Table
 

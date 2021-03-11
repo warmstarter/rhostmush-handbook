@@ -75,34 +75,19 @@
             <paragraph>When setting up a mush for the first time, make sure you
                 have all the files configured correctly.  This is with using
                 the following file for configuration:</paragraph>
-            <block_quote>
-                <bullet_list bullet="-">
-                    <list_item>
-                        <paragraph>netrhost.conf</paragraph>
-                    </list_item>
-                </bullet_list>
-            </block_quote>
+            <literal_block force="False" language="default" linenos="False" xml:space="preserve">- netrhost.conf</literal_block>
         </section>
         <section ids="starting-the-game" names="starting\ the\ game">
             <title>Starting the game</title>
-            <definition_list>
-                <definition_list_item>
-                    <term>Once done, you start up the system with the following command:</term>
-                    <definition>
-                        <bullet_list bullet="-">
-                            <list_item>
-                                <paragraph>[sh/csh] ./Startmush</paragraph>
-                            </list_item>
-                        </bullet_list>
-                        <paragraph>It will prompt you to start a new db if it doesn’t find one.</paragraph>
-                        <paragraph>You may also do the commands individually:
-                            - [csh] netrhost -s netrhost.conf &gt;&amp; netrhost.log &amp;</paragraph>
-                        <block_quote>
-                            <paragraph>[sh]  netrhost -s netrhost.conf &gt; netrhost.log 2&gt;&amp;1 &amp;</paragraph>
-                        </block_quote>
-                    </definition>
-                </definition_list_item>
-            </definition_list>
+            <paragraph>Once done, you start up the system with the following command:</paragraph>
+            <literal_block force="False" language="default" linenos="False" xml:space="preserve"> - [sh/csh] ./Startmush
+
+It will prompt you to start a new db if it doesn't find one.
+
+You may also do the commands individually::
+
+   [csh] netrhost -s netrhost.conf &gt;&amp; netrhost.log &amp;
+   [sh]  netrhost -s netrhost.conf &gt; netrhost.log 2&gt;&amp;1 &amp;</literal_block>
         </section>
         <section ids="first-login-to-the-game" names="first\ login\ to\ the\ game">
             <title>First login to the game</title>
@@ -125,18 +110,10 @@
         <section ids="installing-using-an-ansible-playbook" names="installing\ using\ an\ ansible\ playbook">
             <title>Installing using an ansible playbook</title>
             <paragraph>To begin, you will run the following command in a directory that will house your game:</paragraph>
-            <block_quote>
-                <paragraph>&gt; <strong>git clone https://github.com/RhostMUSH/trunk Rhost</strong></paragraph>
-            </block_quote>
-            <definition_list>
-                <definition_list_item>
-                    <term>You may also just run the yml file and ansible (ansible-playbook) to install your RhostMUSH engine</term>
-                    <definition>
-                        <paragraph>&gt; <strong>wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml</strong></paragraph>
-                        <paragraph>&gt; <strong>ansible-playbook rhostinstall.yml</strong></paragraph>
-                    </definition>
-                </definition_list_item>
-            </definition_list>
+            <literal_block force="False" language="default" linenos="False" xml:space="preserve">git clone https://github.com/RhostMUSH/trunk Rhost</literal_block>
+            <paragraph>You may also just run the yml file and ansible (ansible-playbook) to install your RhostMUSH engine:</paragraph>
+            <literal_block force="False" language="default" linenos="False" xml:space="preserve">wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml
+ansible-playbook rhostinstall.yml</literal_block>
             <paragraph>This downloads the latest stable version of the code, bringing with it all patches and scripts, documentation and support tools that you will need.</paragraph>
         </section>
         <section ids="quickinstall-guide-to-rhostmush" names="quickinstall\ guide\ to\ rhostmush">
@@ -144,59 +121,64 @@
             <section ids="obtaining-rhostmush" names="obtaining\ rhostmush">
                 <title>Obtaining RhostMUSH</title>
                 <paragraph>It is assumed that you have gotten to this point with the following command:</paragraph>
-                <paragraph>git clone <reference refuri="https://github.com/RhostMUSH/trunk">https://github.com/RhostMUSH/trunk</reference> Rhost</paragraph>
-                <paragraph>If you did NOT get it this way, your file permissions may not be properly set
-                    up.  Please type:</paragraph>
-                <block_quote>
-                    <paragraph>chmod +rx bin/<emphasis>.sh src/</emphasis>.sh game/<emphasis>.sh game/Startmush game/db_</emphasis></paragraph>
-                </block_quote>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">git clone https://github.com/RhostMUSH/trunk Rhost</literal_block>
+                <paragraph>If you did NOT get it this way, your file permissions may not be properly set up.  Please type:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*</literal_block>
                 <paragraph>This makes sure all the build scripts are properly made executable.
                     This will result in ‘permission denied’ or similar results when running a script.</paragraph>
                 <paragraph>Once ready to compile type:</paragraph>
-                <block_quote>
-                    <paragraph>make confsource</paragraph>
-                </block_quote>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">make confsource</literal_block>
                 <paragraph>This will bring up a menu where you can selection options.</paragraph>
             </section>
             <section ids="important-before-you-actually-start-building" names="important\ before\ you\ actually\ start\ building">
                 <title>Important before you actually start building</title>
                 <paragraph>The main parts of making your RhostMUSH, easy pleasy:
-                    0.  The stunnel directory contains TLS/SSL connectivity.  This has to be linked</paragraph>
+                    #.  The stunnel directory contains TLS/SSL connectivity.  This has to be linked to another port and will tunnel to the mush port.  The README file explains how to set up and configure your TLS/SSL connection.
+                    #.  ./patch.sh – This makes sure you have the latest code.  If you got this by git clone <reference refuri="https://github.com/RhostMUSH/trunk">https://github.com/RhostMUSH/trunk</reference> then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.
+                    #.  make confsource.  Yup, it’s menu driven, nifty eh?</paragraph>
                 <block_quote>
-                    <paragraph>to another port and will tunnel to the mush port.  The README file explains
-                        how to set up and configure your TLS/SSL connection.</paragraph>
+                    <enumerated_list enumtype="arabic" prefix="" suffix=".">
+                        <list_item>
+                            <paragraph>Options you may want to select (other than the defaults):</paragraph>
+                        </list_item>
+                        <list_item>
+                            <paragraph>5  (%c is selected by default, but choose %x as well for MUX/TM3 compat)</paragraph>
+                        </list_item>
+                        <list_item>
+                            <paragraph>9  (if you want $commands to require the COMMAND flag)</paragraph>
+                        </list_item>
+                        <list_item>
+                            <paragraph>16 (if you want a wider WHO listing like older versions of MUX)</paragraph>
+                        </list_item>
+                        <list_item>
+                            <paragraph>22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)</paragraph>
+                        </list_item>
+                        <list_item>
+                            <paragraph>24 (if you have issues with -lssl not being found)</paragraph>
+                        </list_item>
+                        <list_item>
+                            <paragraph>B3 (for 64 character attribute names)</paragraph>
+                        </list_item>
+                        <list_item>
+                            <paragraph>B6 (select 8K for Penn/MUX2/TM3 default, up to 32K.  64K is network intensive)</paragraph>
+                        </list_item>
+                        <list_item>
+                            <paragraph>B5 (will be autoselected if you choose 8K or more.  Pick this anyway)</paragraph>
+                        </list_item>
+                        <list_item>
+                            <paragraph>B4 (if you have sqlite libraries and wish to use this)</paragraph>
+                        </list_item>
+                    </enumerated_list>
                 </block_quote>
                 <enumerated_list enumtype="arabic" prefix="" suffix=".">
-                    <list_item>
-                        <paragraph>./patch.sh – This makes sure you have the latest code.
-                            If you got this by git clone <reference refuri="https://github.com/RhostMUSH/trunk">https://github.com/RhostMUSH/trunk</reference>
-                            then you can ignore patching.  You can use ./patch.sh at any
-                            time to update your code.  It ignores local.c incase you make
-                            your own modules.</paragraph>
-                    </list_item>
-                    <list_item>
-                        <paragraph>make confsource.  Yup, it’s menu driven, nifty eh?
-                            Options you may want to select (other than the defaults):
-                            5  (%c is selected by default, but choose %x as well for MUX/TM3 compat)
-                            9  (if you want $commands to require the COMMAND flag)
-                            16 (if you want a wider WHO listing like older versions of MUX)
-                            22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
-                            24 (if you have issues with -lssl not being found)
-                            B3 (for 64 character attribute names)
-                            B6 (select 8K for Penn/MUX2/TM3 default, up to 32K.  64K is network intensive)
-                            B5 (will be autoselected if you choose 8K or more.  Pick this anyway)
-                            B4 (if you have sqlite libraries and wish to use this)</paragraph>
-                    </list_item>
                     <list_item>
                         <paragraph>‘r’ to compile with the settings you selected.</paragraph>
                     </list_item>
                     <list_item>
-                        <paragraph>Modify your netrhost.conf file as specified.  Make sure to align
-                            your port and debug_id as shown in the netrhost.conf file.</paragraph>
+                        <paragraph>Modify your netrhost.conf file as specified.  Make sure to align your port and debug_id as shown in the netrhost.conf file.</paragraph>
                     </list_item>
                     <list_item>
-                        <paragraph>If you wish to port in an old flatfile, please refer to the readme directory
-                            on how to port your flatfile in (README.DBLOADING).</paragraph>
+                        <paragraph>If you wish to port in an old flatfile, please refer to the readme directory on how to port your flatfile in (README.DBLOADING).</paragraph>
                     </list_item>
                 </enumerated_list>
             </section>
@@ -204,47 +186,41 @@
                 <title>Using the prebuilt flatfile</title>
                 <paragraph>There are pre-loaded flatfile databases you can use at this point.  The netrhost.db.flat
                     and corrisponding netrhost.conf file will be located in the minimal-DBs/minimal_db directory.</paragraph>
-                <paragraph>You may auto-load the minimal db and corresponding netrhost.conf file with the
-                    command:</paragraph>
-                <block_quote>
-                    <paragraph>./minimal.sh</paragraph>
-                </block_quote>
+                <paragraph>You may auto-load the minimal db and corresponding netrhost.conf file with the command:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">./minimal.sh</literal_block>
                 <paragraph>This is ran from within the ‘game’ directory.  Once this is ran, you will need
                     to customize the netrhost.conf file for your purposes.  The port and debug_id must
                     be changed at the very least.  Keep the debug_id coordinated to the port as described.</paragraph>
                 <section ids="to-load-a-prebuilt-flatfile" names="to\ load\ a\ prebuilt\ flatfile">
                     <title>To load a prebuilt flatfile</title>
                     <paragraph>To use these follow these steps:
-                        1.  Make a backup of your existing netrhost.conf file</paragraph>
-                    <block_quote>
-                        <paragraph>–&gt; cp game/netrhost.conf game/netrhost.conf.backup</paragraph>
-                    </block_quote>
+                        1.  Make a backup of your existing netrhost.conf file:</paragraph>
+                    <literal_block force="False" language="default" linenos="False" xml:space="preserve">cp game/netrhost.conf game/netrhost.conf.backup</literal_block>
                     <enumerated_list enumtype="arabic" prefix="" start="2" suffix=".">
                         <list_item>
-                            <paragraph>Copy the netrhost.conf file into your game directory
-                                –&gt; cp -f ./minimal-DBs/minimal_db/netrhost.conf ./game/netrhost.conf</paragraph>
+                            <paragraph>Copy the netrhost.conf file into your game directory:</paragraph>
+                            <literal_block force="False" language="default" linenos="False" xml:space="preserve">cp -f ./minimal-DBs/minimal_db/netrhost.conf ./game/netrhost.conf</literal_block>
                         </list_item>
                         <list_item>
                             <paragraph>At this point you can modify your netrhost.conf file settings in your game directory.
-                                Using an editor modify the ‘port’ and ‘debug_id’ respectively in your netrhost.conf as stated.
+                                Using an editor modify the ‘port’ and ‘debug_id’ respectively in your netrhost.conf as state.
                                 The ‘port’ will be the port the mush listens on, the debug_id is for the debug-stack and is
                                 your port with a ‘5’ at the end.  So if your port is 4444, the debug_id is 44445</paragraph>
                         </list_item>
                         <list_item>
                             <paragraph>Load in the flatfile into the mush (You could do this in the Startmush as well)
-                                Manually:
-                                –&gt; cd game
-                                –&gt; ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new</paragraph>
-                            <paragraph>Start your mush:
-                                –&gt; ./Startmush</paragraph>
+                                Manually:</paragraph>
+                            <literal_block force="False" language="default" linenos="False" xml:space="preserve">cd game</literal_block>
+                            <paragraph>./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF</paragraph>
+                            <paragraph>Start your mush:</paragraph>
+                            <literal_block force="False" language="default" linenos="False" xml:space="preserve">./Startmush</literal_block>
                             <paragraph>This will load the db that you loaded.</paragraph>
                             <paragraph>—————OR——-</paragraph>
-                            <paragraph>From Startmush:
-                                –&gt; ./Startmush</paragraph>
-                            <paragraph>when prompted, hit &lt;RETURN&gt; for searching then select the number of the netrhost.db.flat that is
-                                listed as ~/minimal-DBs/minimal_db/netrhost.db.flat</paragraph>
+                            <paragraph>From Startmush:</paragraph>
+                            <literal_block force="False" language="default" linenos="False" xml:space="preserve">--&gt; ./Startmush</literal_block>
                         </list_item>
                     </enumerated_list>
+                    <paragraph>when prompted, hit &lt;RETURN&gt; for searching then select the number of the netrhost.db.flat that is listed as ~/minimal-DBs/minimal_db/netrhost.db.flat</paragraph>
                 </section>
             </section>
             <section ids="starting-from-scratch-with-a-brand-new-database" names="starting\ from\ scratch\ with\ a\ brand\ new\ database">
@@ -257,8 +233,8 @@
                             your port with a ‘5’ at the end.  So if your port is 4444, the debug_id is 44445</paragraph>
                     </list_item>
                     <list_item>
-                        <paragraph>Start your mush:
-                            –&gt; ./Startmush</paragraph>
+                        <paragraph>Start your mush:</paragraph>
+                        <literal_block force="False" language="default" linenos="False" xml:space="preserve">--&gt; ./Startmush</literal_block>
                     </list_item>
                 </enumerated_list>
                 <paragraph>You can use the ‘vi’ editor or ‘nano’ if you like a more menu driven DOS like experience.
@@ -282,44 +258,39 @@
                 </section>
                 <section ids="compile-the-source-code" names="compile\ the\ source\ code">
                     <title>Compile the source code</title>
-                    <block_quote>
-                        <paragraph>Make and run the RhostMUSH source
-                            Type:  make confsource</paragraph>
-                        <paragraph>If you get an error running the script itself,
-                            type: ./bin/script_setup.sh</paragraph>
-                        <paragraph>Then type: make confsource</paragraph>
-                        <paragraph>After the compile process is done, you should be good to go.
-                            If it complains about missing binaries then type ‘make links’</paragraph>
-                    </block_quote>
+                    <paragraph>Make and run the RhostMUSH source:</paragraph>
+                    <literal_block force="False" language="default" linenos="False" xml:space="preserve">Type:  make confsource</literal_block>
+                    <paragraph>If you get an error running the script itself:</paragraph>
+                    <literal_block force="False" language="default" linenos="False" xml:space="preserve">type: ./bin/script_setup.sh
+
+Then type: make confsource
+
+After the compile process is done, you should be good to go.
+If it complains about missing binaries then type 'make links'</literal_block>
                     <section ids="manual-configuration-of-source-code" names="manual\ configuration\ of\ source\ code">
                         <title>Manual configuration of source code</title>
-                        <block_quote>
-                            <block_quote>
-                                <paragraph>To do manual configuration (skip if the previous step worked for you)
-                                    And yes, this is a bit of a pain in the bottom, hopefully you
-                                    will not need this.</paragraph>
-                                <block_quote>
-                                    <paragraph>You need the following definitions defined to make this
-                                        work:  TINY_U, USE_SIDEEFFECTS, MUX_INCDEC, ATTR_HACK</paragraph>
-                                    <block_quote>
-                                        <paragraph>(u()/u2() switched)
-                                            (sideeffects)
-                                            (inc()/xinc() switched)
-                                            (support for _/~ attribs)</paragraph>
-                                    </block_quote>
-                                    <paragraph>You only need to do this if you received the RhostMUSH src.
-                                        If you received a binary, continue on to the next part.</paragraph>
-                                    <paragraph>To compile the code, just type ‘make confsource’.  It will
-                                        prompt you with settings on what you need to do.  If you
-                                        just want to quickly hand edit the Makefile, it is in the
-                                        directory src (full path src/Makefile).  Then you may just
-                                        run ‘make source’, if you so choose to hand-edit the Makefile.</paragraph>
-                                </block_quote>
-                            </block_quote>
-                            <paragraph>After the compile process is done, type ‘make links’!</paragraph>
-                            <block_quote>
-                            </block_quote>
-                        </block_quote>
+                        <paragraph>To do manual configuration (skip if the previous step worked for you) And yes, this is a bit of a pain in the bottom, hopefully you will not need this.</paragraph>
+                        <paragraph>You need the following definitions defined to make this work:</paragraph>
+                        <enumerated_list enumtype="arabic" prefix="" suffix=".">
+                            <list_item>
+                                <paragraph>TINY_U, USE_SIDEEFFECTS, MUX_INCDEC, ATTR_HACK</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>(u()/u2() switched)</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>(sideeffects)</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>(inc()/xinc() switched)</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>(support for _/~ attribs)</paragraph>
+                            </list_item>
+                        </enumerated_list>
+                        <paragraph>You only need to do this if you received the RhostMUSH src.  If you received a binary, continue on to the next part.</paragraph>
+                        <paragraph>To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand-edit the Makefile.</paragraph>
+                        <paragraph>After the compile process is done, type ‘make links’!</paragraph>
                     </section>
                 </section>
             </section>
@@ -333,11 +304,11 @@
                             <definition_list_item>
                                 <term>Copy an existing flatfile and corresponding netrhost.conf file</term>
                                 <definition>
-                                    <paragraph>Default provied example:
-                                        1.  cp game/netrhost.conf game/netrhost.conf.backup
-                                        2.  cp -f minimal-DBs/minimal_db/netrhost.conf game/netrhost.conf
-                                        3.  cd game
-                                        4.  ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new</paragraph>
+                                    <paragraph>Default provied example:</paragraph>
+                                    <literal_block force="False" language="default" linenos="False" xml:space="preserve">1.  cp game/netrhost.conf game/netrhost.conf.backup
+2.  cp -f minimal-DBs/minimal_db/netrhost.conf game/netrhost.conf
+3.  cd game
+4.  ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new</literal_block>
                                 </definition>
                             </definition_list_item>
                         </definition_list>
@@ -359,67 +330,49 @@
             </section>
             <section ids="start-the-mush-and-login" names="start\ the\ mush\ and\ login">
                 <title>Start the MUSH and login</title>
-                <block_quote>
-                    <paragraph>From the game diretory issue: ./Startmush</paragraph>
-                    <block_quote>
-                        <paragraph>To login:  co Wizard Nyctasia</paragraph>
-                    </block_quote>
-                </block_quote>
+                <paragraph>From the game diretory issue:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">./Startmush</literal_block>
+                <paragraph>To login:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">co Wizard Nyctasia</literal_block>
             </section>
             <section ids="option-things-to-do-once-you-have-connected-if-you-did-not-use-a-provided-database" names="option:\ things\ to\ do\ once\ you\ have\ connected\ if\ you\ did\ not\ use\ a\ provided\ database">
                 <title>Option: Things to do once you have connected if you did NOT use a provided database</title>
-                <block_quote>
-                    <enumerated_list enumtype="loweralpha" prefix="" suffix=".">
-                        <list_item>
-                            <paragraph>@dig your master room and in your netrhost.conf file define master_room
-                                to this dbref (without the #.  So like master_room 2)</paragraph>
-                        </list_item>
-                        <list_item>
-                            <paragraph>Create an immortal holder charater (@pcreate then @set immortal)
-                                Feel free to set up holder characters for all the bittypes which are:</paragraph>
-                            <block_quote>
-                                <paragraph>GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL</paragraph>
-                            </block_quote>
-                        </list_item>
-                        <list_item>
-                            <paragraph>@chown/preserve the master room and #0 to the immortal holder character.</paragraph>
-                        </list_item>
-                        <list_item>
-                            <paragraph>Log into the immortal character</paragraph>
-                        </list_item>
-                        <list_item>
-                            <paragraph>@pcreate all your guest characters and set them up properly.  My suggestion:
-                                @dolist lnum(1,10)={@pcreate Guest##=guest;@set <problematic ids="id2" refid="id1">*</problematic>Guest##=guest;@desc <problematic ids="id4" refid="id3">*</problematic>Guest##=A guest player.;@adisconnect <problematic ids="id6" refid="id5">*</problematic>Guest##=home;@lock <problematic ids="id8" refid="id7">*</problematic>Guest##=*Guest##}</paragraph>
-                            <paragraph>@list guest will show your guest characters and if they’re set up properly.</paragraph>
-                        </list_item>
-                        <list_item>
-                            <paragraph>Any master room code you load in from your immholder character (or @chown/preserve to it)
-                                The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.
-                                All other softcode (like mail wrappers) can be found on <reference refuri="https://github.com/RhostMUSH/trunk">https://github.com/RhostMUSH/trunk</reference> in Mushcode.</paragraph>
-                        </list_item>
-                    </enumerated_list>
-                </block_quote>
+                <enumerated_list enumtype="arabic" prefix="" suffix=".">
+                    <list_item>
+                        <paragraph>@dig your master room and in your netrhost.conf file define master_room to this dbref (without the #.  So like master_room 2)</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Create an immortal holder charater (@pcreate then @set immortal) Feel free to set up holder characters for all the bittypes which are: GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>@chown/preserve the master room and #0 to the immortal holder character.</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Log into the immortal character</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>@pcreate all your guest characters and set them up properly.  My suggestion:</paragraph>
+                        <literal_block force="False" language="default" linenos="False" xml:space="preserve">@dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@desc *Guest##=A guest player.;@adisconnect *Guest##=home;@lock *Guest##=*Guest##}
+
+@list guest will show your guest characters and if they're set up properly.</literal_block>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Any master room code you load in from your immholder character (or @chown/preserve to it) The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.  All other softcode (like mail wrappers) can be found on <reference refuri="https://github.com/RhostMUSH/trunk">https://github.com/RhostMUSH/trunk</reference> in Mushcode.</paragraph>
+                    </list_item>
+                </enumerated_list>
             </section>
             <section ids="setup-new-character-staff-and-take-tasks-that-can-only-be-accomplished-by-1" names="setup\ new\ character,\ staff,\ and\ take\ tasks\ that\ can\ only\ be\ accomplished\ by\ #1">
                 <title>Setup new character, staff, and take tasks that can only be accomplished by #1</title>
-                <block_quote>
-                    <paragraph>Set up any other characters you want.  Anyone immortal can issue @function, @admin, or anything #1 can do.</paragraph>
-                </block_quote>
+                <paragraph>Set up any other characters you want.  Anyone immortal can issue @function, @admin, or anything #1 can do.</paragraph>
             </section>
             <section ids="setup-daily-backups-for-your-game" names="setup\ daily\ backups\ for\ your\ game">
                 <title>Setup daily backups for your game</title>
-                <block_quote>
-                    <paragraph>Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game.
-                        paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:</paragraph>
-                    <paragraph>@dump/flat      – This makes a flatfile dump of the main database.  You want to run this daily.
-                        wmail/unload    – This makes a flatfile dump of the mail database.  You want to run this daily.
-                        @areg/unload    – Only worry about this if you are using auto-registration emailing.  Few do.
-                        newsdb/unload   – Only worry if you use the hardcoded bbs system.  Most don’t use it.</paragraph>
-                    <paragraph>The backup_flat.sh script (that launches automatically with Startmush) will archive all the above files
-                        if they exist.  It moves these flatfiles into the ‘prevflat’ directory, then tarballs those and dumps
-                        consecutive backups in the ‘oldflat’ directory.  By default it keeps 7 consecutive backups.  You may
-                        alter this in the backup_flat.sh script itself.</paragraph>
-                </block_quote>
+                <paragraph>Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game. paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@dump/flat      -- This makes a flatfile dump of the main database.  You want to run this daily.
+wmail/unload    -- This makes a flatfile dump of the mail database.  You want to run this daily.
+@areg/unload    -- Only worry about this if you are using auto-registration emailing.  Few do.
+newsdb/unload   -- Only worry if you use the hardcoded bbs system.  Most don't use it.</literal_block>
+                <paragraph>The backup_flat.sh script (that launches automatically with Startmush) will archive all the above files if they exist.  It moves these flatfiles into the ‘prevflat’ directory, then tarballs those and dumps consecutive backups in the ‘oldflat’ directory.  By default it keeps 7 consecutive backups.  You may alter this in the backup_flat.sh script itself.</paragraph>
             </section>
             <section ids="customtize-the-textfiles-for-your-game" names="customtize\ the\ textfiles\ for\ your\ game">
                 <title>Customtize the textfiles for your game</title>
@@ -449,44 +402,48 @@
             </section>
             <section ids="creating-a-new-game-with-ambrosia-s-default-database" names="creating\ a\ new\ game\ with\ ambrosia's\ default\ database">
                 <title>Creating a new game with Ambrosia’s default database</title>
-                <block_quote>
-                    <paragraph>Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README</paragraph>
-                    <paragraph>The netrhost.conf file you will copy is in minimal-DBs/Amb-MinimalRhost/game
-                        Copy this netrhost.conf file into your ‘game’ directory.</paragraph>
-                    <paragraph>You will want the custom txt files under Amb-MinimalRhost/txt in your game/txt
-                        directory and to mkindx all the txt files.  You can run ./Startmush -i to index.</paragraph>
-                    <paragraph>When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit &lt;RETURN&gt;
-                        to have it search for flatfiles, then select netrhost.db.flat from under
-                        the minimal-DBs/Amb-MinimalRhost directory.</paragraph>
-                    <paragraph>The main steps to make sure you do for Ambrosia’s db:
-                        ~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat – Ambrosia’s secure and featured minimal db.</paragraph>
-                    <block_quote>
-                        <bullet_list bullet="-">
+                <paragraph>Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README</paragraph>
+                <paragraph>The netrhost.conf file you will copy is in minimal-DBs/Amb-MinimalRhost/game
+                    Copy this netrhost.conf file into your ‘game’ directory.</paragraph>
+                <paragraph>You will want the custom txt files under Amb-MinimalRhost/txt in your game/txt directory and to mkindx all the txt files.  You can run ./Startmush -i to index.</paragraph>
+                <paragraph>When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit &lt;RETURN&gt; to have it search for flatfiles, then select netrhost.db.flat from under the minimal-DBs/Amb-MinimalRhost directory.</paragraph>
+                <paragraph>The main steps to make sure you do for ~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat – Ambrosia’s secure and featured minimal db</paragraph>
+                <enumerated_list enumtype="arabic" prefix="" suffix=".">
+                    <list_item>
+                        <paragraph>Use the matching netrhost.conf file under the Amb-MinimalRhost/game directory</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Load in the settings specified in the Amb-MinimalRhost/bin directory.</paragraph>
+                        <enumerated_list enumtype="arabic" prefix="" suffix=".">
                             <list_item>
-                                <paragraph>Use the matching netrhost.conf file under the Amb-MinimalRhost/game directory</paragraph>
+                                <paragraph>Copy this file into your ~/Server/bin directory</paragraph>
                             </list_item>
                             <list_item>
-                                <paragraph>Load in the settings specified in the Amb-MinimalRhost/bin directory.
-                                    - Copy this file into your ~/Server/bin directory
-                                    - From ‘Server’ directory type: make clean
-                                    - From ‘Server’ directory type: make confsource and ‘l’oad option 0
-                                    - Specify any -additional- options you want at this point.
-                                    - Recompile your code</paragraph>
+                                <paragraph>From ‘Server’ directory type: make clean</paragraph>
                             </list_item>
                             <list_item>
-                                <paragraph>Copy the files in Amb-MinimalRhost/game/txt into your ~/Server/game/txt directory</paragraph>
+                                <paragraph>From ‘Server’ directory type: make confsource and ‘l’oad option 0</paragraph>
                             </list_item>
                             <list_item>
-                                <paragraph>from your ~/Server/game txt file run on each of the txt files:
-                                    ../mkindx &lt;txtfile&gt;.txt &lt;txtfile&gt;.indx
-                                    Where &lt;txtfile&gt; is the name of the file (minus the .txt extension)</paragraph>
+                                <paragraph>Specify any -additional- options you want at this point.</paragraph>
                             </list_item>
                             <list_item>
-                                <paragraph>If running, @reboot your game.</paragraph>
+                                <paragraph>Recompile your code</paragraph>
                             </list_item>
-                        </bullet_list>
-                    </block_quote>
-                </block_quote>
+                        </enumerated_list>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Copy the files in Amb-MinimalRhost/game/txt into your ~/Server/game/txt directory</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>from your ~/Server/game txt file run on each of the txt files:</paragraph>
+                        <literal_block force="False" language="default" linenos="False" xml:space="preserve">../mkindx &lt;txtfile&gt;.txt &lt;txtfile&gt;.indx
+Where &lt;txtfile&gt; is the name of the file (minus the .txt extension)</literal_block>
+                    </list_item>
+                    <list_item>
+                        <paragraph>If running, @reboot your game.</paragraph>
+                    </list_item>
+                </enumerated_list>
             </section>
             <section ids="creating-a-new-game-with-the-generic-default-database" names="creating\ a\ new\ game\ with\ the\ generic\ default\ database">
                 <title>Creating a new game with the generic default database</title>
@@ -501,9 +458,7 @@
                 <title>Starting your MUSH</title>
                 <paragraph>Once you have used one of these three methods to obtaina database, you can start your mush up.
                     At this point type from the game directory:</paragraph>
-                <block_quote>
-                    <paragraph>./Startmush</paragraph>
-                </block_quote>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">./Startmush</literal_block>
             </section>
             <section ids="backups-for-rhostmush" names="backups\ for\ rhostmush">
                 <title>Backups for RhostMUSH</title>
@@ -536,57 +491,23 @@
             </section>
             <section ids="troubleshooting-issues-with-starting-up" names="troubleshooting\ issues\ with\ starting\ up">
                 <title>Troubleshooting issues with starting up</title>
-                <definition_list>
-                    <definition_list_item>
-                        <term>If you run into issues:</term>
-                        <definition>
-                            <definition_list>
-                                <definition_list_item>
-                                    <term>Probelm: If it says the shared ID is already in use</term>
-                                    <definition>
-                                        <definition_list>
-                                            <definition_list_item>
-                                                <term>A1: please verify that it is the right shared debug_id in your</term>
-                                                <definition>
-                                                    <paragraph>netrhost.conf file</paragraph>
-                                                </definition>
-                                            </definition_list_item>
-                                        </definition_list>
-                                        <paragraph>A2: Force a start by ./Startmush -f</paragraph>
-                                    </definition>
-                                </definition_list_item>
-                                <definition_list_item>
-                                    <term>Problem: Your log file is massive and your mush is running</term>
-                                    <definition>
-                                        <definition_list>
-                                            <definition_list_item>
-                                                <term>A1: To rotate this use the @logrotate command.</term>
-                                                <definition>
-                                                    <paragraph>See wizhelp on @logrotate</paragraph>
-                                                </definition>
-                                            </definition_list_item>
-                                        </definition_list>
-                                    </definition>
-                                </definition_list_item>
-                                <definition_list_item>
-                                    <term>Problem: The database flatfile you’re loading can’t load because</term>
-                                    <definition>
-                                        <block_quote>
-                                            <paragraph>a db is already defined.</paragraph>
-                                        </block_quote>
-                                        <paragraph>A1: remove netrhost.db* and netrhost.gdbm* from your data directory</paragraph>
-                                    </definition>
-                                </definition_list_item>
-                                <definition_list_item>
-                                    <term>Problem: The mail database won’t load and mail shows ‘offline’</term>
-                                    <definition>
-                                        <paragraph>A1: wmail/load</paragraph>
-                                    </definition>
-                                </definition_list_item>
-                            </definition_list>
-                        </definition>
-                    </definition_list_item>
-                </definition_list>
+                <section ids="problem-if-it-says-the-shared-id-is-already-in-use" names="problem:\ if\ it\ says\ the\ shared\ id\ is\ already\ in\ use">
+                    <title>Problem: If it says the shared ID is already in use</title>
+                    <paragraph>A1: please verify that it is the right shared debug_id in your netrhost.conf file</paragraph>
+                    <paragraph>A2: Force a start by ./Startmush -f</paragraph>
+                </section>
+                <section ids="problem-your-log-file-is-massive-and-your-mush-is-running" names="problem:\ your\ log\ file\ is\ massive\ and\ your\ mush\ is\ running">
+                    <title>Problem: Your log file is massive and your mush is running</title>
+                    <paragraph>A1: To rotate this use the @logrotate command. See wizhelp on @logrotate</paragraph>
+                </section>
+                <section ids="problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined" names="problem:\ the\ database\ flatfile\ you're\ loading\ can't\ load\ because\ a\ db\ is\ already\ defined">
+                    <title>Problem: The database flatfile you’re loading can’t load because a db is already defined</title>
+                    <paragraph>A1: remove netrhost.db* and netrhost.gdbm* from your data directory</paragraph>
+                </section>
+                <section ids="problem-the-mail-database-won-t-load-and-mail-shows-offline" names="problem:\ the\ mail\ database\ won't\ load\ and\ mail\ shows\ 'offline'">
+                    <title>Problem: The mail database won’t load and mail shows ‘offline’</title>
+                    <paragraph>A1: wmail/load</paragraph>
+                </section>
             </section>
         </section>
         <section ids="windows" names="windows">

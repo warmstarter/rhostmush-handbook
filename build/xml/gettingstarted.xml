@@ -6,62 +6,38 @@
         <title>Gettin Started</title>
         <section ids="what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile" names="what\ to\ type\ to\ get\ the\ basics\ running\ if\ you\ did\ not\ choose\ a\ pre-existing\ flatfile">
             <title>What to type to get the basics running if you did not choose a pre-existing flatfile</title>
-            <paragraph>If you decided to get a bare-bone configuration, you will find your mush
-                has just two things.  The #1 (God) player and the starting room #0.  That’s it.</paragraph>
+            <paragraph>If you decided to get a bare-bone configuration, you will find your mush has just two things.  The #1 (God) player and the starting room #0.  That’s it.</paragraph>
             <section ids="login-to-1-from-the-connect-screen" names="login\ to\ #1\ from\ the\ connect\ screen">
                 <title>Login to #1 from the connect screen</title>
-                <paragraph>Nyctasia is the default password
-                    co #1 Nyctasia</paragraph>
+                <paragraph>Nyctasia is the default password:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">co #1 Nyctasia</literal_block>
             </section>
             <section ids="change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess" names="change\ #1's\ password\ to\ something\ you'll\ remember\ but\ is\ hard\ to\ guess">
                 <title>Change #1’s password to something you’ll remember but is hard to guess</title>
-                <block_quote>
-                    <paragraph>Note: yourpasswordgoeshere can be any password you choose.  Choose well.</paragraph>
-                </block_quote>
-                <paragraph>@password Nyctasia=YOURPASSWORDGOESHERE</paragraph>
+                <paragraph>Note: yourpasswordgoeshere can be any password you choose.  Choose well:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@password Nyctasia=YOURPASSWORDGOESHERE</literal_block>
             </section>
             <section ids="master-room" names="master\ room">
                 <title>Master Room</title>
-                <block_quote>
-                    <paragraph>At this point you should create your master room:
-                        Reason: You need a master room to contain global $commands for players.
-                        Note: ^listens are not global for intentional reasons.  It’s far too much</paragraph>
-                    <block_quote>
-                        <paragraph>overhead for far too minimal gains that few people need or use.</paragraph>
-                    </block_quote>
-                </block_quote>
-                <paragraph>@dig Master Room</paragraph>
+                <paragraph>At this point you should create your master room:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@dig Master Room</literal_block>
+                <note>
+                    <paragraph>Reason: You need a master room to contain global $commands for players
+                        ^listens are not global for intentional reasons.  It’s far too much overhead for far too minimal gains that few people need or use.</paragraph>
+                </note>
             </section>
             <section ids="flag-and-protect-master-room" names="flag\ and\ protect\ master\ room">
                 <title>Flag and protect Master Room</title>
-                <block_quote>
-                    <paragraph>It will return a dbref#, it should be #2 if you’ve not created anything else.</paragraph>
-                </block_quote>
-                <paragraph>@set #2=safe ind halt float</paragraph>
+                <paragraph>It will return a dbref#, it should be #2 if you’ve not created anything else:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@set #2=safe ind halt float</literal_block>
             </section>
             <section ids="player-holder-characters" names="player\ holder\ characters">
                 <title>Player Holder Characters</title>
-                <definition_list>
-                    <definition_list_item>
-                        <term>(feel free to change the password to what you want)</term>
-                        <definition>
-                            <definition_list>
-                                <definition_list_item>
-                                    <term>Reason: You will want to chown global room or global areas to a given</term>
-                                    <definition>
-                                        <paragraph>bitlevel and a method to keep organized.</paragraph>
-                                    </definition>
-                                </definition_list_item>
-                                <definition_list_item>
-                                    <term>Note: wizhelp control will give you a complete breakdown of what each bit</term>
-                                    <definition>
-                                        <paragraph>can do.</paragraph>
-                                    </definition>
-                                </definition_list_item>
-                            </definition_list>
-                        </definition>
-                    </definition_list_item>
-                </definition_list>
+                <paragraph>Feel free to change the password to what you want</paragraph>
+                <note>
+                    <paragraph>Reason: You will want to chown global room or global areas to a given bitlevel and a method to keep organized.
+                        Note: wizhelp control will give you a complete breakdown of what each bit can do.</paragraph>
+                </note>
                 <section ids="immortal-holder" names="immortal\ holder">
                     <title>Immortal Holder</title>
                     <paragraph>@pcreate ImmHolder=abc123
@@ -95,33 +71,23 @@
             </section>
             <section ids="chown-0-the-starting-room-and-2-the-master-room-to-immholder" names="chown\ #0\ (the\ starting\ room)\ and\ #2\ (the\ master\ room)\ to\ immholder">
                 <title>Chown #0 (The starting room) and #2 (The Master room) to immholder</title>
-                <block_quote>
-                    <definition_list>
-                        <definition_list_item>
-                            <term>Note: #0 you can chown to a different bitlevel if you want, but the</term>
-                            <definition>
-                                <paragraph>master room should always be owned by an immortal</paragraph>
-                            </definition>
-                        </definition_list_item>
-                    </definition_list>
-                </block_quote>
+                <paragraph>..note:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">#0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal</literal_block>
                 <paragraph>@chown/preserve #0=*immholder
                     @chown/preserve #2=*immholder</paragraph>
             </section>
             <section ids="create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player" names="create\ yourself\ your\ own\ immortal\ player\ then\ log\ off\ #1\ and\ into\ this\ immortal\ player">
                 <title>Create yourself your own immortal player then log off #1 and into this immortal player</title>
-                <block_quote>
-                    <paragraph>Note: Pick what you want for playername and playerpassword</paragraph>
-                </block_quote>
+                <note>
+                    <paragraph>Pick what you want for playername and playerpassword</paragraph>
+                </note>
                 <paragraph>@pcreate PLAYERNAME=PLAYERPASSWORD
                     @set <problematic ids="id2" refid="id1">*</problematic>playername=!wanderer immortal</paragraph>
             </section>
             <section ids="log-out-of-1-and-log-into-your-immortal-player" names="log\ out\ of\ #1\ and\ log\ into\ your\ immortal\ player">
                 <title>Log out of #1 and log into your immortal player</title>
-                <block_quote>
-                    <paragraph>Note: use the playername and password you created in the step before</paragraph>
-                </block_quote>
-                <paragraph>LOGOUT
+                <paragraph>Note: use the playername and password you created in the step before
+                    LOGOUT
                     co PLAYERNAME PLAYERPASSWORD</paragraph>
             </section>
             <section ids="create-your-guest-characters" names="create\ your\ guest\ characters">

@@ -21,7 +21,7 @@
 
 @copying
 @quotation
-RhostMUSH Handbook , Mar 07, 2021
+RhostMUSH Handbook , Mar 11, 2021
 
 wstarter
 
@@ -311,6 +311,13 @@ What to type to configure and get your RhostMUSH up and running
 * Starting your MUSH:: 
 * Backups for RhostMUSH:: 
 * Troubleshooting issues with starting up:: 
+
+Troubleshooting issues with starting up
+
+* Problem; If it says the shared ID is already in use: Problem If it says the shared ID is already in use. 
+* Problem; Your log file is massive and your mush is running: Problem Your log file is massive and your mush is running. 
+* Problem; The database flatfile you’re loading can’t load because a db is already defined: Problem The database flatfile you’re loading can’t load because a db is already defined. 
+* Problem; The mail database won’t load and mail shows ‘offline’: Problem The mail database won’t load and mail shows ‘offline’. 
 
 Windows
 
@@ -4427,43 +4434,27 @@ When setting up a mush for the first time, make sure you
 have all the files configured correctly.  This is with using
 the following file for configuration:
 
-@quotation
-
-
-@itemize -
-
-@item 
-netrhost.conf
-@end itemize
-@end quotation
+@example
+- netrhost.conf
+@end example
 
 @node Starting the game,First login to the game,Configuring the game,Installation
 @anchor{installation starting-the-game}@anchor{8d}
 @subsection Starting the game
 
 
+Once done, you start up the system with the following command:
 
-@table @asis
+@example
+ - [sh/csh] ./Startmush
 
-@item Once done, you start up the system with the following command:
+It will prompt you to start a new db if it doesn't find one.
 
+You may also do the commands individually::
 
-@itemize -
-
-@item 
-[sh/csh] ./Startmush
-@end itemize
-
-It will prompt you to start a new db if it doesn’t find one.
-
-You may also do the commands individually:
-- [csh] netrhost -s netrhost.conf >& netrhost.log &
-
-@quotation
-
-[sh]  netrhost -s netrhost.conf > netrhost.log 2>&1 &
-@end quotation
-@end table
+   [csh] netrhost -s netrhost.conf >& netrhost.log &
+   [sh]  netrhost -s netrhost.conf > netrhost.log 2>&1 &
+@end example
 
 @node First login to the game,Reporting bugs or getting help,Starting the game,Installation
 @anchor{installation first-login-to-the-game}@anchor{8e}
@@ -4497,20 +4488,16 @@ Ambrosia, Amos, and Morgan.  They can be found around the net.
 
 To begin, you will run the following command in a directory that will house your game:
 
-@quotation
+@example
+git clone https://github.com/RhostMUSH/trunk Rhost
+@end example
 
-> @strong{git clone https://github.com/RhostMUSH/trunk Rhost}
-@end quotation
+You may also just run the yml file and ansible (ansible-playbook) to install your RhostMUSH engine:
 
-
-@table @asis
-
-@item You may also just run the yml file and ansible (ansible-playbook) to install your RhostMUSH engine
-
-> @strong{wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml}
-
-> @strong{ansible-playbook rhostinstall.yml}
-@end table
+@example
+wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml
+ansible-playbook rhostinstall.yml
+@end example
 
 This downloads the latest stable version of the code, bringing with it all patches and scripts, documentation and support tools that you will need.
 
@@ -4543,25 +4530,24 @@ This downloads the latest stable version of the code, bringing with it all patch
 
 It is assumed that you have gotten to this point with the following command:
 
-git clone @indicateurl{https://github.com/RhostMUSH/trunk} Rhost
+@example
+git clone https://github.com/RhostMUSH/trunk Rhost
+@end example
 
-If you did NOT get it this way, your file permissions may not be properly set
-up.  Please type:
+If you did NOT get it this way, your file permissions may not be properly set up.  Please type:
 
-@quotation
-
-chmod +rx bin/@emph{.sh src/}.sh game/@emph{.sh game/Startmush game/db_}
-@end quotation
+@example
+chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
+@end example
 
 This makes sure all the build scripts are properly made executable.
 This will result in ‘permission denied’ or similar results when running a script.
 
 Once ready to compile type:
 
-@quotation
-
+@example
 make confsource
-@end quotation
+@end example
 
 This will bring up a menu where you can selection options.
 
@@ -4571,47 +4557,58 @@ This will bring up a menu where you can selection options.
 
 
 The main parts of making your RhostMUSH, easy pleasy:
-0.  The stunnel directory contains TLS/SSL connectivity.  This has to be linked
+#.  The stunnel directory contains TLS/SSL connectivity.  This has to be linked to another port and will tunnel to the mush port.  The README file explains how to set up and configure your TLS/SSL connection.
+#.  ./patch.sh – This makes sure you have the latest code.  If you got this by git clone @indicateurl{https://github.com/RhostMUSH/trunk} then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.
+#.  make confsource.  Yup, it’s menu driven, nifty eh?
 
 @quotation
 
-to another port and will tunnel to the mush port.  The README file explains
-how to set up and configure your TLS/SSL connection.
+
+@enumerate 
+
+@item 
+Options you may want to select (other than the defaults):
+
+@item 
+5  (%c is selected by default, but choose %x as well for MUX/TM3 compat)
+
+@item 
+9  (if you want $commands to require the COMMAND flag)
+
+@item 
+16 (if you want a wider WHO listing like older versions of MUX)
+
+@item 
+22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
+
+@item 
+24 (if you have issues with -lssl not being found)
+
+@item 
+B3 (for 64 character attribute names)
+
+@item 
+B6 (select 8K for Penn/MUX2/TM3 default, up to 32K.  64K is network intensive)
+
+@item 
+B5 (will be autoselected if you choose 8K or more.  Pick this anyway)
+
+@item 
+B4 (if you have sqlite libraries and wish to use this)
+@end enumerate
 @end quotation
 
 
 @enumerate 
 
 @item 
-./patch.sh – This makes sure you have the latest code.
-If you got this by git clone @indicateurl{https://github.com/RhostMUSH/trunk}
-then you can ignore patching.  You can use ./patch.sh at any
-time to update your code.  It ignores local.c incase you make
-your own modules.
-
-@item 
-make confsource.  Yup, it’s menu driven, nifty eh?
-Options you may want to select (other than the defaults):
-5  (%c is selected by default, but choose %x as well for MUX/TM3 compat)
-9  (if you want $commands to require the COMMAND flag)
-16 (if you want a wider WHO listing like older versions of MUX)
-22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
-24 (if you have issues with -lssl not being found)
-B3 (for 64 character attribute names)
-B6 (select 8K for Penn/MUX2/TM3 default, up to 32K.  64K is network intensive)
-B5 (will be autoselected if you choose 8K or more.  Pick this anyway)
-B4 (if you have sqlite libraries and wish to use this)
-
-@item 
 ‘r’ to compile with the settings you selected.
 
 @item 
-Modify your netrhost.conf file as specified.  Make sure to align
-your port and debug_id as shown in the netrhost.conf file.
+Modify your netrhost.conf file as specified.  Make sure to align your port and debug_id as shown in the netrhost.conf file.
 
 @item 
-If you wish to port in an old flatfile, please refer to the readme directory
-on how to port your flatfile in (README.DBLOADING).
+If you wish to port in an old flatfile, please refer to the readme directory on how to port your flatfile in (README.DBLOADING).
 @end enumerate
 
 @node Using the prebuilt flatfile,Starting from scratch with a brand new database,Important before you actually start building,Quickinstall guide to RhostMUSH
@@ -4622,13 +4619,11 @@ on how to port your flatfile in (README.DBLOADING).
 There are pre-loaded flatfile databases you can use at this point.  The netrhost.db.flat
 and corrisponding netrhost.conf file will be located in the minimal-DBs/minimal_db directory.
 
-You may auto-load the minimal db and corresponding netrhost.conf file with the
-command:
+You may auto-load the minimal db and corresponding netrhost.conf file with the command:
 
-@quotation
-
+@example
 ./minimal.sh
-@end quotation
+@end example
 
 This is ran from within the ‘game’ directory.  Once this is ran, you will need
 to customize the netrhost.conf file for your purposes.  The port and debug_id must
@@ -4645,45 +4640,56 @@ be changed at the very least.  Keep the debug_id coordinated to the port as desc
 
 
 To use these follow these steps:
-1.  Make a backup of your existing netrhost.conf file
+1.  Make a backup of your existing netrhost.conf file:
 
-@quotation
-
-–> cp game/netrhost.conf game/netrhost.conf.backup
-@end quotation
+@example
+cp game/netrhost.conf game/netrhost.conf.backup
+@end example
 
 
 @enumerate 2
 
 @item 
-Copy the netrhost.conf file into your game directory
-–> cp -f ./minimal-DBs/minimal_db/netrhost.conf ./game/netrhost.conf
+Copy the netrhost.conf file into your game directory:
+
+@example
+cp -f ./minimal-DBs/minimal_db/netrhost.conf ./game/netrhost.conf
+@end example
 
 @item 
 At this point you can modify your netrhost.conf file settings in your game directory.
-Using an editor modify the ‘port’ and ‘debug_id’ respectively in your netrhost.conf as stated.
+Using an editor modify the ‘port’ and ‘debug_id’ respectively in your netrhost.conf as state.
 The ‘port’ will be the port the mush listens on, the debug_id is for the debug-stack and is
 your port with a ‘5’ at the end.  So if your port is 4444, the debug_id is 44445
 
 @item 
 Load in the flatfile into the mush (You could do this in the Startmush as well)
 Manually:
-–> cd game
-–> ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
+
+@example
+cd game
+@end example
+
+./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF
 
 Start your mush:
-–> ./Startmush
+
+@example
+./Startmush
+@end example
 
 This will load the db that you loaded.
 
 —————OR——-
 
 From Startmush:
-–> ./Startmush
 
-when prompted, hit <RETURN> for searching then select the number of the netrhost.db.flat that is
-listed as ~/minimal-DBs/minimal_db/netrhost.db.flat
+@example
+--> ./Startmush
+@end example
 @end enumerate
+
+when prompted, hit <RETURN> for searching then select the number of the netrhost.db.flat that is listed as ~/minimal-DBs/minimal_db/netrhost.db.flat
 
 @node Starting from scratch with a brand new database,Instructions for starting a new RhostMUSH,Using the prebuilt flatfile,Quickinstall guide to RhostMUSH
 @anchor{installation starting-from-scratch-with-a-brand-new-database}@anchor{96}
@@ -4701,7 +4707,10 @@ your port with a ‘5’ at the end.  So if your port is 4444, the debug_id is 4
 
 @item 
 Start your mush:
-–> ./Startmush
+
+@example
+--> ./Startmush
+@end example
 @end enumerate
 
 You can use the ‘vi’ editor or ‘nano’ if you like a more menu driven DOS like experience.
@@ -4745,19 +4754,22 @@ you likely won’t even have to set this up if you don’t want to.
 @subsubsection Compile the source code
 
 
-@quotation
+Make and run the RhostMUSH source:
 
-Make and run the RhostMUSH source
+@example
 Type:  make confsource
+@end example
 
-If you get an error running the script itself,
+If you get an error running the script itself:
+
+@example
 type: ./bin/script_setup.sh
 
 Then type: make confsource
 
 After the compile process is done, you should be good to go.
-If it complains about missing binaries then type ‘make links’
-@end quotation
+If it complains about missing binaries then type 'make links'
+@end example
 
 @menu
 * Manual configuration of source code:: 
@@ -4769,43 +4781,34 @@ If it complains about missing binaries then type ‘make links’
 @subsubsection Manual configuration of source code
 
 
-@quotation
+To do manual configuration (skip if the previous step worked for you) And yes, this is a bit of a pain in the bottom, hopefully you will not need this.
 
-@quotation
+You need the following definitions defined to make this work:
 
-To do manual configuration (skip if the previous step worked for you)
-And yes, this is a bit of a pain in the bottom, hopefully you
-will not need this.
 
-@quotation
+@enumerate 
 
-You need the following definitions defined to make this
-work:  TINY_U, USE_SIDEEFFECTS, MUX_INCDEC, ATTR_HACK
+@item 
+TINY_U, USE_SIDEEFFECTS, MUX_INCDEC, ATTR_HACK
 
-@quotation
-
+@item 
 (u()/u2() switched)
+
+@item 
 (sideeffects)
+
+@item 
 (inc()/xinc() switched)
+
+@item 
 (support for _/~ attribs)
-@end quotation
+@end enumerate
 
-You only need to do this if you received the RhostMUSH src.
-If you received a binary, continue on to the next part.
+You only need to do this if you received the RhostMUSH src.  If you received a binary, continue on to the next part.
 
-To compile the code, just type ‘make confsource’.  It will
-prompt you with settings on what you need to do.  If you
-just want to quickly hand edit the Makefile, it is in the
-directory src (full path src/Makefile).  Then you may just
-run ‘make source’, if you so choose to hand-edit the Makefile.
-@end quotation
-@end quotation
+To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand-edit the Makefile.
 
 After the compile process is done, type ‘make links’!
-
-@quotation
-@end quotation
-@end quotation
 
 @node Loading a database for your MUSH,Configure the netrhost conf file for your MUSH,Instructions for starting a new RhostMUSH,Quickinstall guide to RhostMUSH
 @anchor{installation loading-a-database-for-your-mush}@anchor{9b}
@@ -4832,10 +4835,13 @@ You now have a choice of optionally starting at a provided database or starting 
 @item Copy an existing flatfile and corresponding netrhost.conf file
 
 Default provied example:
+
+@example
 1.  cp game/netrhost.conf game/netrhost.conf.backup
 2.  cp -f minimal-DBs/minimal_db/netrhost.conf game/netrhost.conf
 3.  cd game
 4.  ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
+@end example
 @end table
 @end quotation
 
@@ -4861,38 +4867,31 @@ to change them.  The port and debug_id need to be changed.
 @subsubsection Start the MUSH and login
 
 
-@quotation
+From the game diretory issue:
 
-From the game diretory issue: ./Startmush
+@example
+./Startmush
+@end example
 
-@quotation
+To login:
 
-To login:  co Wizard Nyctasia
-@end quotation
-@end quotation
+@example
+co Wizard Nyctasia
+@end example
 
 @node Option Things to do once you have connected if you did NOT use a provided database,Setup new character staff and take tasks that can only be accomplished by #1,Start the MUSH and login,Quickinstall guide to RhostMUSH
 @anchor{installation option-things-to-do-once-you-have-connected-if-you-did-not-use-a-provided-database}@anchor{9f}
 @subsubsection Option: Things to do once you have connected if you did NOT use a provided database
 
 
-@quotation
 
-
-@enumerate a
+@enumerate 
 
 @item 
-@@dig your master room and in your netrhost.conf file define master_room
-to this dbref (without the #.  So like master_room 2)
+@@dig your master room and in your netrhost.conf file define master_room to this dbref (without the #.  So like master_room 2)
 
 @item 
-Create an immortal holder charater (@@pcreate then @@set immortal)
-Feel free to set up holder characters for all the bittypes which are:
-
-@quotation
-
-GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL
-@end quotation
+Create an immortal holder charater (@@pcreate then @@set immortal) Feel free to set up holder characters for all the bittypes which are: GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL
 
 @item 
 @@chown/preserve the master room and #0 to the immortal holder character.
@@ -4902,47 +4901,39 @@ Log into the immortal character
 
 @item 
 @@pcreate all your guest characters and set them up properly.  My suggestion:
-@@dolist lnum(1,10)=@{@@pcreate Guest##=guest;@@set >>*<<Guest##=guest;@@desc >>*<<Guest##=A guest player.;@@adisconnect >>*<<Guest##=home;@@lock >>*<<Guest##=*Guest##@}
 
-@@list guest will show your guest characters and if they’re set up properly.
+@example
+@@dolist lnum(1,10)=@{@@pcreate Guest##=guest;@@set *Guest##=guest;@@desc *Guest##=A guest player.;@@adisconnect *Guest##=home;@@lock *Guest##=*Guest##@}
+
+@@list guest will show your guest characters and if they're set up properly.
+@end example
 
 @item 
-Any master room code you load in from your immholder character (or @@chown/preserve to it)
-The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.
-All other softcode (like mail wrappers) can be found on @indicateurl{https://github.com/RhostMUSH/trunk} in Mushcode.
+Any master room code you load in from your immholder character (or @@chown/preserve to it) The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.  All other softcode (like mail wrappers) can be found on @indicateurl{https://github.com/RhostMUSH/trunk} in Mushcode.
 @end enumerate
-@end quotation
 
 @node Setup new character staff and take tasks that can only be accomplished by #1,Setup daily backups for your game,Option Things to do once you have connected if you did NOT use a provided database,Quickinstall guide to RhostMUSH
 @anchor{installation setup-new-character-staff-and-take-tasks-that-can-only-be-accomplished-by-1}@anchor{a0}
 @subsubsection Setup new character, staff, and take tasks that can only be accomplished by #1
 
 
-@quotation
-
 Set up any other characters you want.  Anyone immortal can issue @@function, @@admin, or anything #1 can do.
-@end quotation
 
 @node Setup daily backups for your game,Customtize the textfiles for your game,Setup new character staff and take tasks that can only be accomplished by #1,Quickinstall guide to RhostMUSH
 @anchor{installation setup-daily-backups-for-your-game}@anchor{a1}
 @subsubsection Setup daily backups for your game
 
 
-@quotation
+Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game. paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:
 
-Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game.
-paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:
+@example
+@@dump/flat      -- This makes a flatfile dump of the main database.  You want to run this daily.
+wmail/unload    -- This makes a flatfile dump of the mail database.  You want to run this daily.
+@@areg/unload    -- Only worry about this if you are using auto-registration emailing.  Few do.
+newsdb/unload   -- Only worry if you use the hardcoded bbs system.  Most don't use it.
+@end example
 
-@@dump/flat      – This makes a flatfile dump of the main database.  You want to run this daily.
-wmail/unload    – This makes a flatfile dump of the mail database.  You want to run this daily.
-@@areg/unload    – Only worry about this if you are using auto-registration emailing.  Few do.
-newsdb/unload   – Only worry if you use the hardcoded bbs system.  Most don’t use it.
-
-The backup_flat.sh script (that launches automatically with Startmush) will archive all the above files
-if they exist.  It moves these flatfiles into the ‘prevflat’ directory, then tarballs those and dumps
-consecutive backups in the ‘oldflat’ directory.  By default it keeps 7 consecutive backups.  You may
-alter this in the backup_flat.sh script itself.
-@end quotation
+The backup_flat.sh script (that launches automatically with Startmush) will archive all the above files if they exist.  It moves these flatfiles into the ‘prevflat’ directory, then tarballs those and dumps consecutive backups in the ‘oldflat’ directory.  By default it keeps 7 consecutive backups.  You may alter this in the backup_flat.sh script itself.
 
 @node Customtize the textfiles for your game,Make sure to read up further,Setup daily backups for your game,Quickinstall guide to RhostMUSH
 @anchor{installation customtize-the-textfiles-for-your-game}@anchor{a2}
@@ -5000,52 +4991,59 @@ Don’t feel overwhelmed, it’s all very well documented.
 @subsubsection Creating a new game with Ambrosia’s default database
 
 
-@quotation
-
 Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README
 
 The netrhost.conf file you will copy is in minimal-DBs/Amb-MinimalRhost/game
 Copy this netrhost.conf file into your ‘game’ directory.
 
-You will want the custom txt files under Amb-MinimalRhost/txt in your game/txt
-directory and to mkindx all the txt files.  You can run ./Startmush -i to index.
+You will want the custom txt files under Amb-MinimalRhost/txt in your game/txt directory and to mkindx all the txt files.  You can run ./Startmush -i to index.
 
-When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit <RETURN>
-to have it search for flatfiles, then select netrhost.db.flat from under
-the minimal-DBs/Amb-MinimalRhost directory.
+When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit <RETURN> to have it search for flatfiles, then select netrhost.db.flat from under the minimal-DBs/Amb-MinimalRhost directory.
 
-The main steps to make sure you do for Ambrosia’s db:
-~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat – Ambrosia’s secure and featured minimal db.
-
-@quotation
+The main steps to make sure you do for ~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat – Ambrosia’s secure and featured minimal db
 
 
-@itemize -
+@enumerate 
 
 @item 
 Use the matching netrhost.conf file under the Amb-MinimalRhost/game directory
 
 @item 
 Load in the settings specified in the Amb-MinimalRhost/bin directory.
-- Copy this file into your ~/Server/bin directory
-- From ‘Server’ directory type: make clean
-- From ‘Server’ directory type: make confsource and ‘l’oad option 0
-- Specify any -additional- options you want at this point.
-- Recompile your code
+
+
+@enumerate 
+
+@item 
+Copy this file into your ~/Server/bin directory
+
+@item 
+From ‘Server’ directory type: make clean
+
+@item 
+From ‘Server’ directory type: make confsource and ‘l’oad option 0
+
+@item 
+Specify any -additional- options you want at this point.
+
+@item 
+Recompile your code
+@end enumerate
 
 @item 
 Copy the files in Amb-MinimalRhost/game/txt into your ~/Server/game/txt directory
 
 @item 
 from your ~/Server/game txt file run on each of the txt files:
+
+@example
 ../mkindx <txtfile>.txt <txtfile>.indx
 Where <txtfile> is the name of the file (minus the .txt extension)
+@end example
 
 @item 
 If running, @@reboot your game.
-@end itemize
-@end quotation
-@end quotation
+@end enumerate
 
 @node Creating a new game with the generic default database,Starting your MUSH,Creating a new game with Ambrosia’s default database,What to type to configure and get your RhostMUSH up and running
 @anchor{installation creating-a-new-game-with-the-generic-default-database}@anchor{a7}
@@ -5069,10 +5067,9 @@ the minimal-DBs/minimal_db directory.
 Once you have used one of these three methods to obtaina database, you can start your mush up.
 At this point type from the game directory:
 
-@quotation
-
+@example
 ./Startmush
-@end quotation
+@end example
 
 @node Backups for RhostMUSH,Troubleshooting issues with starting up,Starting your MUSH,What to type to configure and get your RhostMUSH up and running
 @anchor{installation backups-for-rhostmush}@anchor{a9}
@@ -5117,53 +5114,46 @@ just issue: ./backup_restart.sh
 @subsubsection Troubleshooting issues with starting up
 
 
+@menu
+* Problem; If it says the shared ID is already in use: Problem If it says the shared ID is already in use. 
+* Problem; Your log file is massive and your mush is running: Problem Your log file is massive and your mush is running. 
+* Problem; The database flatfile you’re loading can’t load because a db is already defined: Problem The database flatfile you’re loading can’t load because a db is already defined. 
+* Problem; The mail database won’t load and mail shows ‘offline’: Problem The mail database won’t load and mail shows ‘offline’. 
 
-@table @asis
+@end menu
 
-@item If you run into issues:
-
-
-@table @asis
-
-@item Probelm: If it says the shared ID is already in use
+@node Problem If it says the shared ID is already in use,Problem Your log file is massive and your mush is running,,Troubleshooting issues with starting up
+@anchor{installation problem-if-it-says-the-shared-id-is-already-in-use}@anchor{ab}
+@subsubsection Problem: If it says the shared ID is already in use
 
 
-@table @asis
-
-@item A1: please verify that it is the right shared debug_id in your
-
-netrhost.conf file
-@end table
+A1: please verify that it is the right shared debug_id in your netrhost.conf file
 
 A2: Force a start by ./Startmush -f
 
-@item Problem: Your log file is massive and your mush is running
+@node Problem Your log file is massive and your mush is running,Problem The database flatfile you’re loading can’t load because a db is already defined,Problem If it says the shared ID is already in use,Troubleshooting issues with starting up
+@anchor{installation problem-your-log-file-is-massive-and-your-mush-is-running}@anchor{ac}
+@subsubsection Problem: Your log file is massive and your mush is running
 
 
-@table @asis
+A1: To rotate this use the @@logrotate command. See wizhelp on @@logrotate
 
-@item A1: To rotate this use the @@logrotate command.
+@node Problem The database flatfile you’re loading can’t load because a db is already defined,Problem The mail database won’t load and mail shows ‘offline’,Problem Your log file is massive and your mush is running,Troubleshooting issues with starting up
+@anchor{installation problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined}@anchor{ad}
+@subsubsection Problem: The database flatfile you’re loading can’t load because a db is already defined
 
-See wizhelp on @@logrotate
-@end table
-
-@item Problem: The database flatfile you’re loading can’t load because
-
-@quotation
-
-a db is already defined.
-@end quotation
 
 A1: remove netrhost.db* and netrhost.gdbm* from your data directory
 
-@item Problem: The mail database won’t load and mail shows ‘offline’
+@node Problem The mail database won’t load and mail shows ‘offline’,,Problem The database flatfile you’re loading can’t load because a db is already defined,Troubleshooting issues with starting up
+@anchor{installation problem-the-mail-database-won-t-load-and-mail-shows-offline}@anchor{ae}
+@subsubsection Problem: The mail database won’t load and mail shows ‘offline’
+
 
 A1: wmail/load
-@end table
-@end table
 
 @node Windows,,What to type to configure and get your RhostMUSH up and running,Installation
-@anchor{installation windows}@anchor{ab}
+@anchor{installation windows}@anchor{af}
 @subsection Windows
 
 
@@ -5174,7 +5164,7 @@ A1: wmail/load
 @end menu
 
 @node Installing on Windows 10 with BASH,Installing on Windows with Cygwin,,Windows
-@anchor{installation installing-on-windows-10-with-bash}@anchor{ac}
+@anchor{installation installing-on-windows-10-with-bash}@anchor{b0}
 @subsubsection Installing on Windows 10 with BASH
 
 
@@ -5200,7 +5190,7 @@ When you issue Startmush, you must pass the -cyg option.
 @end enumerate
 
 @node Installing on Windows with Cygwin,,Installing on Windows 10 with BASH,Windows
-@anchor{installation installing-on-windows-with-cygwin}@anchor{ad}
+@anchor{installation installing-on-windows-with-cygwin}@anchor{b1}
 @subsubsection Installing on Windows with Cygwin
 
 
@@ -5226,7 +5216,7 @@ When you issue Startmush, you must pass it the -cyg option.
 @end enumerate
 
 @node Database,Gettin Started,Installation,RhostMUSH offers the following over other mushes
-@anchor{database doc}@anchor{ae}@anchor{database database}@anchor{af}
+@anchor{database doc}@anchor{b2}@anchor{database database}@anchor{b3}
 @section Database
 
 
@@ -5237,7 +5227,7 @@ When you issue Startmush, you must pass it the -cyg option.
 @end menu
 
 @node Loading an existing Database,Converting a flatfile database for use in RhostMUSH,,Database
-@anchor{database loading-an-existing-database}@anchor{b0}
+@anchor{database loading-an-existing-database}@anchor{b4}
 @subsection Loading an existing Database
 
 
@@ -5253,7 +5243,7 @@ From the game directory you would type:
 @end menu
 
 @node Then you just follow the prompts to load in your flatfile there,,,Loading an existing Database
-@anchor{database then-you-just-follow-the-prompts-to-load-in-your-flatfile-there}@anchor{b1}
+@anchor{database then-you-just-follow-the-prompts-to-load-in-your-flatfile-there}@anchor{b5}
 @subsubsection Then you just follow the prompts to load in your flatfile there.
 
 
@@ -5275,7 +5265,7 @@ To make a flatfile in game, you just issue @@dump/flat.  You can specify
 a filename after it, otherwise it assumes the name ‘netrhost.db.flat’.
 
 @node Converting a flatfile database for use in RhostMUSH,,Loading an existing Database,Database
-@anchor{database converting-a-flatfile-database-for-use-in-rhostmush}@anchor{b2}
+@anchor{database converting-a-flatfile-database-for-use-in-rhostmush}@anchor{b6}
 @subsection Converting a flatfile database for use in RhostMUSH
 
 
@@ -5304,7 +5294,7 @@ what it is.
 Follow what it asks for and just let it do its thing.
 
 @node Gettin Started,What FLAGS TOGGLES POWERS DEPOWERS and BITLEVELS mean in RhostMUSH,Database,RhostMUSH offers the following over other mushes
-@anchor{gettingstarted doc}@anchor{b3}@anchor{gettingstarted gettin-started}@anchor{b4}
+@anchor{gettingstarted doc}@anchor{b7}@anchor{gettingstarted gettin-started}@anchor{b8}
 @section Gettin Started
 
 
@@ -5316,12 +5306,11 @@ Follow what it asks for and just let it do its thing.
 @end menu
 
 @node What to type to get the basics running if you did not choose a pre-existing flatfile,Minimal DB instructions,,Gettin Started
-@anchor{gettingstarted what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile}@anchor{b5}
+@anchor{gettingstarted what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile}@anchor{b9}
 @subsection What to type to get the basics running if you did not choose a pre-existing flatfile
 
 
-If you decided to get a bare-bone configuration, you will find your mush
-has just two things.  The #1 (God) player and the starting room #0.  That’s it.
+If you decided to get a bare-bone configuration, you will find your mush has just two things.  The #1 (God) player and the starting room #0.  That’s it.
 
 @menu
 * Login to #1 from the connect screen:: 
@@ -5345,78 +5334,69 @@ has just two things.  The #1 (God) player and the starting room #0.  That’s it
 @end menu
 
 @node Login to #1 from the connect screen,Change #1’s password to something you’ll remember but is hard to guess,,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted login-to-1-from-the-connect-screen}@anchor{b6}
+@anchor{gettingstarted login-to-1-from-the-connect-screen}@anchor{ba}
 @subsubsection Login to #1 from the connect screen
 
 
-Nyctasia is the default password
+Nyctasia is the default password:
+
+@example
 co #1 Nyctasia
+@end example
 
 @node Change #1’s password to something you’ll remember but is hard to guess,Master Room,Login to #1 from the connect screen,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess}@anchor{b7}
+@anchor{gettingstarted change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess}@anchor{bb}
 @subsubsection Change #1’s password to something you’ll remember but is hard to guess
 
 
-@quotation
+Note: yourpasswordgoeshere can be any password you choose.  Choose well:
 
-Note: yourpasswordgoeshere can be any password you choose.  Choose well.
-@end quotation
-
+@example
 @@password Nyctasia=YOURPASSWORDGOESHERE
+@end example
 
 @node Master Room,Flag and protect Master Room,Change #1’s password to something you’ll remember but is hard to guess,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted master-room}@anchor{b8}
+@anchor{gettingstarted master-room}@anchor{bc}
 @subsubsection Master Room
 
 
-@quotation
-
 At this point you should create your master room:
-Reason: You need a master room to contain global $commands for players.
-Note: ^listens are not global for intentional reasons.  It’s far too much
 
-@quotation
-
-overhead for far too minimal gains that few people need or use.
-@end quotation
-@end quotation
-
+@example
 @@dig Master Room
+@end example
+
+@cartouche
+@quotation Note 
+Reason: You need a master room to contain global $commands for players
+^listens are not global for intentional reasons.  It’s far too much overhead for far too minimal gains that few people need or use.
+@end quotation
+@end cartouche
 
 @node Flag and protect Master Room,Player Holder Characters,Master Room,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted flag-and-protect-master-room}@anchor{b9}
+@anchor{gettingstarted flag-and-protect-master-room}@anchor{bd}
 @subsubsection Flag and protect Master Room
 
 
-@quotation
+It will return a dbref#, it should be #2 if you’ve not created anything else:
 
-It will return a dbref#, it should be #2 if you’ve not created anything else.
-@end quotation
-
+@example
 @@set #2=safe ind halt float
+@end example
 
 @node Player Holder Characters,Chown #0 The starting room and #2 The Master room to immholder,Flag and protect Master Room,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted player-holder-characters}@anchor{ba}
+@anchor{gettingstarted player-holder-characters}@anchor{be}
 @subsubsection Player Holder Characters
 
 
+Feel free to change the password to what you want
 
-@table @asis
-
-@item (feel free to change the password to what you want)
-
-
-@table @asis
-
-@item Reason: You will want to chown global room or global areas to a given
-
-bitlevel and a method to keep organized.
-
-@item Note: wizhelp control will give you a complete breakdown of what each bit
-
-can do.
-@end table
-@end table
+@cartouche
+@quotation Note 
+Reason: You will want to chown global room or global areas to a given bitlevel and a method to keep organized.
+Note: wizhelp control will give you a complete breakdown of what each bit can do.
+@end quotation
+@end cartouche
 
 @menu
 * Immortal Holder:: 
@@ -5428,7 +5408,7 @@ can do.
 @end menu
 
 @node Immortal Holder,Royalty/Wizard Holder,,Player Holder Characters
-@anchor{gettingstarted immortal-holder}@anchor{bb}
+@anchor{gettingstarted immortal-holder}@anchor{bf}
 @subsubsection Immortal Holder
 
 
@@ -5437,7 +5417,7 @@ can do.
 @@badsite *immholder=}
 
 @node Royalty/Wizard Holder,Councilor/Admin Holder,Immortal Holder,Player Holder Characters
-@anchor{gettingstarted royalty-wizard-holder}@anchor{bc}
+@anchor{gettingstarted royalty-wizard-holder}@anchor{c0}
 @subsubsection Royalty/Wizard Holder
 
 
@@ -5446,7 +5426,7 @@ can do.
 @@badsite *wizholder=}
 
 @node Councilor/Admin Holder,Architect/Staff Holder,Royalty/Wizard Holder,Player Holder Characters
-@anchor{gettingstarted councilor-admin-holder}@anchor{bd}
+@anchor{gettingstarted councilor-admin-holder}@anchor{c1}
 @subsubsection Councilor/Admin Holder
 
 
@@ -5455,7 +5435,7 @@ can do.
 @@badsite *adminholder=}
 
 @node Architect/Staff Holder,Guildmaster/Lead Holder,Councilor/Admin Holder,Player Holder Characters
-@anchor{gettingstarted architect-staff-holder}@anchor{be}
+@anchor{gettingstarted architect-staff-holder}@anchor{c2}
 @subsubsection Architect/Staff Holder
 
 
@@ -5464,7 +5444,7 @@ can do.
 @@badsite *staffholder=}
 
 @node Guildmaster/Lead Holder,,Architect/Staff Holder,Player Holder Characters
-@anchor{gettingstarted guildmaster-lead-holder}@anchor{bf}
+@anchor{gettingstarted guildmaster-lead-holder}@anchor{c3}
 @subsubsection Guildmaster/Lead Holder
 
 
@@ -5473,52 +5453,44 @@ can do.
 @@badsite *guildholder=}
 
 @node Chown #0 The starting room and #2 The Master room to immholder,Create yourself your own immortal player then log off #1 and into this immortal player,Player Holder Characters,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted chown-0-the-starting-room-and-2-the-master-room-to-immholder}@anchor{c0}
+@anchor{gettingstarted chown-0-the-starting-room-and-2-the-master-room-to-immholder}@anchor{c4}
 @subsubsection Chown #0 (The starting room) and #2 (The Master room) to immholder
 
 
-@quotation
+..note:
 
-
-@table @asis
-
-@item Note: #0 you can chown to a different bitlevel if you want, but the
-
-master room should always be owned by an immortal
-@end table
-@end quotation
+@example
+#0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal
+@end example
 
 @@chown/preserve #0=*immholder
 @@chown/preserve #2=*immholder
 
 @node Create yourself your own immortal player then log off #1 and into this immortal player,Log out of #1 and log into your immortal player,Chown #0 The starting room and #2 The Master room to immholder,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player}@anchor{c1}
+@anchor{gettingstarted create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player}@anchor{c5}
 @subsubsection Create yourself your own immortal player then log off #1 and into this immortal player
 
 
-@quotation
-
-Note: Pick what you want for playername and playerpassword
+@cartouche
+@quotation Note 
+Pick what you want for playername and playerpassword
 @end quotation
+@end cartouche
 
 @@pcreate PLAYERNAME=PLAYERPASSWORD
 @@set >>*<<playername=!wanderer immortal
 
 @node Log out of #1 and log into your immortal player,Create your guest characters,Create yourself your own immortal player then log off #1 and into this immortal player,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted log-out-of-1-and-log-into-your-immortal-player}@anchor{c2}
+@anchor{gettingstarted log-out-of-1-and-log-into-your-immortal-player}@anchor{c6}
 @subsubsection Log out of #1 and log into your immortal player
 
 
-@quotation
-
 Note: use the playername and password you created in the step before
-@end quotation
-
 LOGOUT
 co PLAYERNAME PLAYERPASSWORD
 
 @node Create your guest characters,Dig a closet to store important objects but non-master room,Log out of #1 and log into your immortal player,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted create-your-guest-characters}@anchor{c3}
+@anchor{gettingstarted create-your-guest-characters}@anchor{c7}
 @subsubsection Create your guest characters
 
 
@@ -5530,7 +5502,7 @@ Note: Feel free to change the description if you want
 @@dolist lnum(1,10)=@{@@pcreate Guest##=guest;@@set >>*<<Guest##=guest;@@adisconnect >>*<<Guest##=home;@@lock >>*<<Guest##=*Guest##;@@desc >>*<<Guest##=A Stranger in a strange land.@}
 
 @node Dig a closet to store important objects but non-master room,Set the flags on the closet and ownership of it,Create your guest characters,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted dig-a-closet-to-store-important-objects-but-non-master-room}@anchor{c4}
+@anchor{gettingstarted dig-a-closet-to-store-important-objects-but-non-master-room}@anchor{c8}
 @subsubsection Dig a closet to store important objects but non-master room
 
 
@@ -5542,7 +5514,7 @@ Note: name it anything you want, just remember it.
 @@dig Closet
 
 @node Set the flags on the closet and ownership of it,Create an Admin object for future ease of customization,Dig a closet to store important objects but non-master room,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted set-the-flags-on-the-closet-and-ownership-of-it}@anchor{c5}
+@anchor{gettingstarted set-the-flags-on-the-closet-and-ownership-of-it}@anchor{c9}
 @subsubsection Set the flags on the closet and ownership of it
 
 
@@ -5555,14 +5527,14 @@ Note: use the dbref# that it returned when digging the closet and not #123
 @@chown/pres #123=*immholder
 
 @node Create an Admin object for future ease of customization,Set the flags on the admin object and ownership and location,Set the flags on the closet and ownership of it,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted create-an-admin-object-for-future-ease-of-customization}@anchor{c6}
+@anchor{gettingstarted create-an-admin-object-for-future-ease-of-customization}@anchor{ca}
 @subsubsection Create an Admin object for future ease of customization
 
 
 @@create AdminObject
 
 @node Set the flags on the admin object and ownership and location,Add admin object to configuration,Create an Admin object for future ease of customization,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted set-the-flags-on-the-admin-object-and-ownership-and-location}@anchor{c7}
+@anchor{gettingstarted set-the-flags-on-the-admin-object-and-ownership-and-location}@anchor{cb}
 @subsubsection Set the flags on the admin object and ownership and location
 
 
@@ -5584,7 +5556,7 @@ Note2: Use the closet dbref# instead of #234
 @@tel adminobject=#234
 
 @node Add admin object to configuration,Reboot your mush to load up the change for the admin object,Set the flags on the admin object and ownership and location,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted add-admin-object-to-configuration}@anchor{c8}
+@anchor{gettingstarted add-admin-object-to-configuration}@anchor{cc}
 @subsubsection Add admin object to configuration
 
 
@@ -5600,14 +5572,14 @@ dbref# of the admin object that you made:
 admin_object 123
 
 @node Reboot your mush to load up the change for the admin object,Do @@admin/list to see if it shows the admin object,Add admin object to configuration,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted reboot-your-mush-to-load-up-the-change-for-the-admin-object}@anchor{c9}
+@anchor{gettingstarted reboot-your-mush-to-load-up-the-change-for-the-admin-object}@anchor{cd}
 @subsubsection Reboot your mush to load up the change for the admin object
 
 
 @@reboot
 
 @node Do @@admin/list to see if it shows the admin object,Load in all the various softcode that you want,Reboot your mush to load up the change for the admin object,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted do-admin-list-to-see-if-it-shows-the-admin-object}@anchor{ca}
+@anchor{gettingstarted do-admin-list-to-see-if-it-shows-the-admin-object}@anchor{ce}
 @subsubsection Do @@admin/list to see if it shows the admin object
 
 
@@ -5619,7 +5591,7 @@ Note: do wizhelp @@admin for more information on how to use this
 @@admin/list
 
 @node Load in all the various softcode that you want,,Do @@admin/list to see if it shows the admin object,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted load-in-all-the-various-softcode-that-you-want}@anchor{cb}
+@anchor{gettingstarted load-in-all-the-various-softcode-that-you-want}@anchor{cf}
 @subsubsection Load in all the various softcode that you want
 
 
@@ -5635,7 +5607,7 @@ This is client dependant based on whatever method it uses to load softcode.
 @end menu
 
 @node Myrddin MushCron,AshCom,,Load in all the various softcode that you want
-@anchor{gettingstarted myrddin-mushcron}@anchor{cc}
+@anchor{gettingstarted myrddin-mushcron}@anchor{d0}
 @subsubsection Myrddin MushCron
 
 
@@ -5661,7 +5633,7 @@ Note: the globalroom() function returns the dbref# of the master room.  Handy!
 @@tel Myrddin=#234 (where #234 is the dbref# of your code closet)
 
 @node AshCom,Mail Wrappers,Myrddin MushCron,Load in all the various softcode that you want
-@anchor{gettingstarted ashcom}@anchor{cd}
+@anchor{gettingstarted ashcom}@anchor{d1}
 @subsubsection AshCom
 
 
@@ -5679,7 +5651,7 @@ Chown the Comsystem and everything inside it to immholder.
 @@tel Chansys=globalroom()
 
 @node Mail Wrappers,Myrddin BBS,AshCom,Load in all the various softcode that you want
-@anchor{gettingstarted mail-wrappers}@anchor{ce}
+@anchor{gettingstarted mail-wrappers}@anchor{d2}
 @subsubsection Mail Wrappers
 
 
@@ -5698,7 +5670,7 @@ Chown to immholder
 @@tel/list mux penn=globalroom()
 
 @node Myrddin BBS,Other Mushcode,Mail Wrappers,Load in all the various softcode that you want
-@anchor{gettingstarted myrddin-bbs}@anchor{cf}
+@anchor{gettingstarted myrddin-bbs}@anchor{d3}
 @subsubsection Myrddin BBS
 
 
@@ -5716,7 +5688,7 @@ Chown to immholder and the contents of it as well.
 @@tel myrddin=globalroom()
 
 @node Other Mushcode,,Myrddin BBS,Load in all the various softcode that you want
-@anchor{gettingstarted other-mushcode}@anchor{d0}
+@anchor{gettingstarted other-mushcode}@anchor{d4}
 @subsubsection Other Mushcode
 
 
@@ -5727,7 +5699,7 @@ Likewise, any softcode you find on the internet or on other mushes should be por
 no changes depending on the complexity of the code in question.
 
 @node Minimal DB instructions,Ambrosia’s Minimal Rhost DB,What to type to get the basics running if you did not choose a pre-existing flatfile,Gettin Started
-@anchor{gettingstarted minimal-db-instructions}@anchor{d1}
+@anchor{gettingstarted minimal-db-instructions}@anchor{d5}
 @subsection Minimal DB instructions
 
 
@@ -5776,7 +5748,7 @@ Startmush as expected
 @end enumerate
 
 @node Ambrosia’s Minimal Rhost DB,,Minimal DB instructions,Gettin Started
-@anchor{gettingstarted ambrosia-s-minimal-rhost-db}@anchor{d2}
+@anchor{gettingstarted ambrosia-s-minimal-rhost-db}@anchor{d6}
 @subsection Ambrosia’s Minimal Rhost DB
 
 
@@ -5790,7 +5762,7 @@ Startmush as expected
 @end menu
 
 @node Version 1 0 5 2020-01-31,Introduction,,Ambrosia’s Minimal Rhost DB
-@anchor{gettingstarted version-1-0-5-2020-01-31}@anchor{d3}
+@anchor{gettingstarted version-1-0-5-2020-01-31}@anchor{d7}
 @subsubsection Version: 1.0.5          2020-01-31
 
 
@@ -5914,7 +5886,7 @@ functions_max -> function_max. Thanks to @email{Bobbi@@COH}
 @end table
 
 @node Introduction,Features,Version 1 0 5 2020-01-31,Ambrosia’s Minimal Rhost DB
-@anchor{gettingstarted introduction}@anchor{d4}
+@anchor{gettingstarted introduction}@anchor{d8}
 @subsubsection Introduction
 
 
@@ -5925,7 +5897,7 @@ This minimal Rhost DB was made with a secure setup, and as a good base to start
 a new game off in mind.
 
 @node Features,Bitlevels,Introduction,Ambrosia’s Minimal Rhost DB
-@anchor{gettingstarted features}@anchor{d5}
+@anchor{gettingstarted features}@anchor{d9}
 @subsubsection Features
 
 
@@ -5937,7 +5909,7 @@ a new game off in mind.
 @end menu
 
 @node Configuration,Softcode,,Features
-@anchor{gettingstarted configuration}@anchor{d6}
+@anchor{gettingstarted configuration}@anchor{da}
 @subsubsection Configuration
 
 
@@ -6044,7 +6016,7 @@ Architects can set _Attributes
 @end itemize
 
 @node Softcode,Functions,Configuration,Features
-@anchor{gettingstarted softcode}@anchor{d7}
+@anchor{gettingstarted softcode}@anchor{db}
 @subsubsection Softcode
 
 
@@ -6086,7 +6058,7 @@ help .txt files and .indx files for the above.
 @end itemize
 
 @node Functions,,Softcode,Features
-@anchor{gettingstarted functions}@anchor{d8}
+@anchor{gettingstarted functions}@anchor{dc}
 @subsubsection Functions
 
 
@@ -6145,7 +6117,7 @@ one of the latter parameters.
 @end itemize
 
 @node Bitlevels,Compiling,Features,Ambrosia’s Minimal Rhost DB
-@anchor{gettingstarted bitlevels}@anchor{d9}
+@anchor{gettingstarted bitlevels}@anchor{dd}
 @subsubsection Bitlevels
 
 
@@ -6234,7 +6206,7 @@ only person with actual access to #1.
 @end menu
 
 @node Globals,Quota,,Bitlevels
-@anchor{gettingstarted globals}@anchor{da}
+@anchor{gettingstarted globals}@anchor{de}
 @subsubsection Globals
 
 
@@ -6273,7 +6245,7 @@ objects NO_MODIFY instead, keeping them at Architect-power but making them
 unmodifyable by Architects.
 
 @node Quota,Functions<2>,Globals,Bitlevels
-@anchor{gettingstarted quota}@anchor{db}
+@anchor{gettingstarted quota}@anchor{df}
 @subsubsection Quota
 
 
@@ -6283,7 +6255,7 @@ of them have a high amount of money for everyday operations. You should not give
 them free quota or money.
 
 @node Functions<2>,,Quota,Bitlevels
-@anchor{gettingstarted id15}@anchor{dc}
+@anchor{gettingstarted id15}@anchor{e0}
 @subsubsection Functions
 
 
@@ -6294,7 +6266,7 @@ WANDERER by default.
 Enjoy!
 
 @node Compiling,,Bitlevels,Ambrosia’s Minimal Rhost DB
-@anchor{gettingstarted compiling}@anchor{dd}
+@anchor{gettingstarted compiling}@anchor{e1}
 @subsubsection Compiling
 
 
@@ -6306,7 +6278,7 @@ substitution, are used in the DB.
 @email{--Ambrosia@@RhostMUSH,–Ambrosia@@RhostMUSH}
 
 @node What FLAGS TOGGLES POWERS DEPOWERS and BITLEVELS mean in RhostMUSH,Security,Gettin Started,RhostMUSH offers the following over other mushes
-@anchor{toggles doc}@anchor{de}@anchor{toggles what-flags-toggles-powers-depowers-and-bitlevels-mean-in-rhostmush}@anchor{df}
+@anchor{toggles doc}@anchor{e2}@anchor{toggles what-flags-toggles-powers-depowers-and-bitlevels-mean-in-rhostmush}@anchor{e3}
 @section What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in RhostMUSH
 
 
@@ -6321,7 +6293,7 @@ substitution, are used in the DB.
 @end menu
 
 @node Flags<3>,Toggles<2>,,What FLAGS TOGGLES POWERS DEPOWERS and BITLEVELS mean in RhostMUSH
-@anchor{toggles flags}@anchor{e0}
+@anchor{toggles flags}@anchor{e4}
 @subsection Flags
 
 
@@ -6331,7 +6303,7 @@ alters something that target can do.  There’s help on all the flags
 in help and wizhelp.
 
 @node Toggles<2>,@@power,Flags<3>,What FLAGS TOGGLES POWERS DEPOWERS and BITLEVELS mean in RhostMUSH
-@anchor{toggles toggles}@anchor{e1}
+@anchor{toggles toggles}@anchor{e5}
 @subsection Toggles
 
 
@@ -6342,7 +6314,7 @@ distinguish from the multi-meaning of a ‘flag’, and because frankly
 we ran out of flag space :)
 
 @node @@power,@@depower,Toggles<2>,What FLAGS TOGGLES POWERS DEPOWERS and BITLEVELS mean in RhostMUSH
-@anchor{toggles power}@anchor{e2}
+@anchor{toggles power}@anchor{e6}
 @subsection @@power
 
 
@@ -6356,7 +6328,7 @@ This requires the INHERIT flag for non-players to inherit powers,
 however, a specific object can be granted a power as well.
 
 @node @@depower,Multi-tiered bitlevel systems,@@power,What FLAGS TOGGLES POWERS DEPOWERS and BITLEVELS mean in RhostMUSH
-@anchor{toggles depower}@anchor{e3}
+@anchor{toggles depower}@anchor{e7}
 @subsection @@depower
 
 
@@ -6367,7 +6339,7 @@ control from a target, even a full wizard (royalty) can be
 depowered.
 
 @node Multi-tiered bitlevel systems,Altering bitlevels,@@depower,What FLAGS TOGGLES POWERS DEPOWERS and BITLEVELS mean in RhostMUSH
-@anchor{toggles multi-tiered-bitlevel-systems}@anchor{e4}
+@anchor{toggles multi-tiered-bitlevel-systems}@anchor{e8}
 @subsection Multi-tiered bitlevel systems
 
 
@@ -6387,14 +6359,14 @@ You do not have to use all these bits, only use what you want.
 @end menu
 
 @node ghod #1 <bitlevel 7>,Immortal i <Level 6> - Basically #1,,Multi-tiered bitlevel systems
-@anchor{toggles ghod-1-bitlevel-7}@anchor{e5}
+@anchor{toggles ghod-1-bitlevel-7}@anchor{e9}
 @subsubsection ghod (#1) <bitlevel 7>
 
 
 This bitlevel can do everything.  Only those who you trust with absolute power should have this.  Period.
 
 @node Immortal i <Level 6> - Basically #1,Royalty W <Level 5> - FULL wizbit level,ghod #1 <bitlevel 7>,Multi-tiered bitlevel systems
-@anchor{toggles immortal-i-level-6-basically-1}@anchor{e6}
+@anchor{toggles immortal-i-level-6-basically-1}@anchor{ea}
 @subsubsection Immortal(i) <Level 6> - Basically #1
 
 
@@ -6412,7 +6384,7 @@ Can do everything except set some internal flags, effect #1, and set/remove the 
 @end itemize
 
 @node Royalty W <Level 5> - FULL wizbit level,Councilor a <Level 4> - High wizbit level,Immortal i <Level 6> - Basically #1,Multi-tiered bitlevel systems
-@anchor{toggles royalty-w-level-5-full-wizbit-level}@anchor{e7}
+@anchor{toggles royalty-w-level-5-full-wizbit-level}@anchor{eb}
 @subsubsection Royalty(W) <Level 5> - FULL wizbit level
 
 
@@ -6439,7 +6411,7 @@ Ability to WIZCLOAK
 @end itemize
 
 @node Councilor a <Level 4> - High wizbit level,Architect B <Level 3> - Middle wizbit level,Royalty W <Level 5> - FULL wizbit level,Multi-tiered bitlevel systems
-@anchor{toggles councilor-a-level-4-high-wizbit-level}@anchor{e8}
+@anchor{toggles councilor-a-level-4-high-wizbit-level}@anchor{ec}
 @subsubsection Councilor(a) <Level 4> - High wizbit level
 
 
@@ -6463,7 +6435,7 @@ Ability to @@nuke, @@toad, @@boot, @@chownall, @@dbck, @@poor, @@newpassword, @@
 @end itemize
 
 @node Architect B <Level 3> - Middle wizbit level,Guildmaster g <Level 2> - Lowest wizbit level,Councilor a <Level 4> - High wizbit level,Multi-tiered bitlevel systems
-@anchor{toggles architect-b-level-3-middle-wizbit-level}@anchor{e9}
+@anchor{toggles architect-b-level-3-middle-wizbit-level}@anchor{ed}
 @subsubsection Architect(B) <Level 3> - Middle wizbit level
 
 
@@ -6502,7 +6474,7 @@ Able to @@toggle the MONITOR
 @end itemize
 
 @node Guildmaster g <Level 2> - Lowest wizbit level,Wanderer <bitlevel 0>,Architect B <Level 3> - Middle wizbit level,Multi-tiered bitlevel systems
-@anchor{toggles guildmaster-g-level-2-lowest-wizbit-level}@anchor{ea}
+@anchor{toggles guildmaster-g-level-2-lowest-wizbit-level}@anchor{ee}
 @subsubsection Guildmaster(g) <Level 2> - Lowest wizbit level
 
 
@@ -6531,7 +6503,7 @@ Can set @@quota/@@guild on their level and lower.
 @end itemize
 
 @node Wanderer <bitlevel 0>,Guest <bitlevel 0 as well>,Guildmaster g <Level 2> - Lowest wizbit level,Multi-tiered bitlevel systems
-@anchor{toggles wanderer-bitlevel-0}@anchor{eb}
+@anchor{toggles wanderer-bitlevel-0}@anchor{ef}
 @subsubsection Wanderer <bitlevel 0>
 
 
@@ -6543,7 +6515,7 @@ still are allowed to set/unset locks/attributes/etc though without
 hinderance.
 
 @node Guest <bitlevel 0 as well>,,Wanderer <bitlevel 0>,Multi-tiered bitlevel systems
-@anchor{toggles guest-bitlevel-0-as-well}@anchor{ec}
+@anchor{toggles guest-bitlevel-0-as-well}@anchor{f0}
 @subsubsection Guest <bitlevel 0 as well>
 
 
@@ -6553,7 +6525,7 @@ along with @@teleporting, and many other advanced commands.  It’s
 extreamly dehibilatating.
 
 @node Altering bitlevels,,Multi-tiered bitlevel systems,What FLAGS TOGGLES POWERS DEPOWERS and BITLEVELS mean in RhostMUSH
-@anchor{toggles altering-bitlevels}@anchor{ed}
+@anchor{toggles altering-bitlevels}@anchor{f1}
 @subsection Altering bitlevels
 
 
@@ -6562,7 +6534,7 @@ parameters and with the @@powers (accessable by royalty) or @@depowers (only
 by immortal and higher).
 
 @node Security,Maintenance,What FLAGS TOGGLES POWERS DEPOWERS and BITLEVELS mean in RhostMUSH,RhostMUSH offers the following over other mushes
-@anchor{security doc}@anchor{ee}@anchor{security security}@anchor{ef}
+@anchor{security doc}@anchor{f2}@anchor{security security}@anchor{f3}
 @section Security
 
 
@@ -6575,7 +6547,7 @@ by immortal and higher).
 @end menu
 
 @node Considerations to locking down restrictions in RhostMUSH,Extended lockdown of the mush and considerations,,Security
-@anchor{security considerations-to-locking-down-restrictions-in-rhostmush}@anchor{f0}
+@anchor{security considerations-to-locking-down-restrictions-in-rhostmush}@anchor{f4}
 @subsection Considerations to locking down restrictions in RhostMUSH
 
 
@@ -6605,7 +6577,7 @@ toggles.  The only thing that is inherited automatically is depowers.
 @end menu
 
 @node Online Blocking object abilities,Offline Blocking twinks from being abusive on your game,,Considerations to locking down restrictions in RhostMUSH
-@anchor{security online-blocking-object-abilities}@anchor{f1}
+@anchor{security online-blocking-object-abilities}@anchor{f5}
 @subsubsection Online: Blocking object abilities
 
 
@@ -6622,7 +6594,7 @@ on players and objects:
 @end menu
 
 @node FLAGS access with @@set,TOGGLES @@toggle,,Online Blocking object abilities
-@anchor{security flags-access-with-set}@anchor{f2}
+@anchor{security flags-access-with-set}@anchor{f6}
 @subsubsection FLAGS (access with @@set)
 
 
@@ -6639,7 +6611,7 @@ SPAMMONITOR
 @end quotation
 
 @node TOGGLES @@toggle,@@powers @@depowers and @@locks,FLAGS access with @@set,Online Blocking object abilities
-@anchor{security toggles-toggle}@anchor{f3}
+@anchor{security toggles-toggle}@anchor{f7}
 @subsubsection TOGGLES (@@toggle)
 
 
@@ -6651,7 +6623,7 @@ NODEFAULT, NO_FORMAT, PAGELOCK, SNUFFDARK, VARIABLE
 @end quotation
 
 @node @@powers @@depowers and @@locks,,TOGGLES @@toggle,Online Blocking object abilities
-@anchor{security powers-depowers-and-locks}@anchor{f4}
+@anchor{security powers-depowers-and-locks}@anchor{f8}
 @subsubsection @@powers, @@depowers, and @@locks
 
 
@@ -6659,7 +6631,7 @@ Please review help (and wizhelp) for each of these items on how it can affect
 a player, thing, exit, or room.  The help is quite verbose.
 
 @node Offline Blocking twinks from being abusive on your game,,Online Blocking object abilities,Considerations to locking down restrictions in RhostMUSH
-@anchor{security offline-blocking-twinks-from-being-abusive-on-your-game}@anchor{f5}
+@anchor{security offline-blocking-twinks-from-being-abusive-on-your-game}@anchor{f9}
 @subsubsection Offline: Blocking twinks from being abusive on your game
 
 
@@ -6671,7 +6643,7 @@ Monitoring player       : SUSPECT (flag), @@snoop
 TOR/Proxy blocking:     : @@blacklist (see shell’s tor_pull.sh), @@admin proxy_checker (see wizhelp), @@tor (see wizhelp)
 
 @node Extended lockdown of the mush and considerations,Methods to block anonymous connections and the pros and cons of doing so,Considerations to locking down restrictions in RhostMUSH,Security
-@anchor{security extended-lockdown-of-the-mush-and-considerations}@anchor{f6}
+@anchor{security extended-lockdown-of-the-mush-and-considerations}@anchor{fa}
 @subsection Extended lockdown of the mush and considerations
 
 
@@ -6694,7 +6666,7 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 @end menu
 
 @node Attribute Restriction,Command Restriction,,Extended lockdown of the mush and considerations
-@anchor{security attribute-restriction}@anchor{f7}
+@anchor{security attribute-restriction}@anchor{fb}
 @subsubsection Attribute Restriction
 
 
@@ -6706,7 +6678,7 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 @end quotation
 
 @node Command Restriction,Flag/Toggle Restriction,Attribute Restriction,Extended lockdown of the mush and considerations
-@anchor{security command-restriction}@anchor{f8}
+@anchor{security command-restriction}@anchor{fc}
 @subsubsection Command Restriction
 
 
@@ -6717,7 +6689,7 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 @end quotation
 
 @node Flag/Toggle Restriction,Config restrictions,Command Restriction,Extended lockdown of the mush and considerations
-@anchor{security flag-toggle-restriction}@anchor{f9}
+@anchor{security flag-toggle-restriction}@anchor{fd}
 @subsubsection Flag/Toggle Restriction
 
 
@@ -6727,7 +6699,7 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 @end quotation
 
 @node Config restrictions,Function Restrictions,Flag/Toggle Restriction,Extended lockdown of the mush and considerations
-@anchor{security config-restrictions}@anchor{fa}
+@anchor{security config-restrictions}@anchor{fe}
 @subsubsection Config restrictions
 
 
@@ -6737,7 +6709,7 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 @end quotation
 
 @node Function Restrictions,Flags<4>,Config restrictions,Extended lockdown of the mush and considerations
-@anchor{security function-restrictions}@anchor{fb}
+@anchor{security function-restrictions}@anchor{ff}
 @subsubsection Function Restrictions
 
 
@@ -6748,7 +6720,7 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 @end quotation
 
 @node Flags<4>,Toggles<3>,Function Restrictions,Extended lockdown of the mush and considerations
-@anchor{security flags}@anchor{fc}
+@anchor{security flags}@anchor{100}
 @subsubsection Flags
 
 
@@ -6776,7 +6748,7 @@ FREE        - Stop costing money for day to day processing of commands/building
 @end quotation
 
 @node Toggles<3>,@@powers<2>,Flags<4>,Extended lockdown of the mush and considerations
-@anchor{security toggles}@anchor{fd}
+@anchor{security toggles}@anchor{101}
 @subsubsection Toggles
 
 
@@ -6816,7 +6788,7 @@ SNUFFDARK          - Hides dark exits from a wizard
 @end quotation
 
 @node @@powers<2>,@@depowers,Toggles<3>,Extended lockdown of the mush and considerations
-@anchor{security powers}@anchor{fe}
+@anchor{security powers}@anchor{102}
 @subsubsection @@powers
 
 
@@ -6857,7 +6829,7 @@ EXECSCRIPT         - Allows executing external scripts in ~/game/scripts
 @end quotation
 
 @node @@depowers,Site Restrictions,@@powers<2>,Extended lockdown of the mush and considerations
-@anchor{security depowers}@anchor{ff}
+@anchor{security depowers}@anchor{103}
 @subsubsection @@depowers
 
 
@@ -6898,7 +6870,7 @@ PERSONAL_COMMAND   - Disables all $commands on anything they own
 @end quotation
 
 @node Site Restrictions,,@@depowers,Extended lockdown of the mush and considerations
-@anchor{security site-restrictions}@anchor{100}
+@anchor{security site-restrictions}@anchor{104}
 @subsubsection Site Restrictions
 
 
@@ -6917,7 +6889,7 @@ You may see all site information at any time with: @@list sites
 @end menu
 
 @node IP based restrictions,DNS based restrictions,,Site Restrictions
-@anchor{security ip-based-restrictions}@anchor{101}
+@anchor{security ip-based-restrictions}@anchor{105}
 @subsubsection IP based restrictions
 
 
@@ -6959,7 +6931,7 @@ noauth_site      - Site will no longer do AUTH ident lookups
 @end quotation
 
 @node DNS based restrictions,,IP based restrictions,Site Restrictions
-@anchor{security dns-based-restrictions}@anchor{102}
+@anchor{security dns-based-restrictions}@anchor{106}
 @subsubsection DNS based restrictions
 
 
@@ -6989,7 +6961,7 @@ nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site
 @end quotation
 
 @node Methods to block anonymous connections and the pros and cons of doing so,Setting up an SSL tunnel for secure connection options,Extended lockdown of the mush and considerations,Security
-@anchor{security methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so}@anchor{103}
+@anchor{security methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so}@anchor{107}
 @subsection Methods to block anonymous connections and the pros and cons of doing so
 
 
@@ -7008,7 +6980,7 @@ There’s multiple ways to stop this.
 @end menu
 
 @node Blacklisting through external tor_pull sh script,Blacklisting through internal @@blacklist command,,Methods to block anonymous connections and the pros and cons of doing so
-@anchor{security blacklisting-through-external-tor-pull-sh-script}@anchor{104}
+@anchor{security blacklisting-through-external-tor-pull-sh-script}@anchor{108}
 @subsubsection Blacklisting through external tor_pull.sh script
 
 
@@ -7022,7 +6994,7 @@ them at the end of this file.
 @end quotation
 
 @node Blacklisting through internal @@blacklist command,Blacklisting through internal @@tor command,Blacklisting through external tor_pull sh script,Methods to block anonymous connections and the pros and cons of doing so
-@anchor{security blacklisting-through-internal-blacklist-command}@anchor{105}
+@anchor{security blacklisting-through-internal-blacklist-command}@anchor{109}
 @subsubsection Blacklisting through internal @@blacklist command
 
 
@@ -7034,7 +7006,7 @@ sites based on the ip.
 @end quotation
 
 @node Blacklisting through internal @@tor command,Blacklisting through internal @@admin command,Blacklisting through internal @@blacklist command,Methods to block anonymous connections and the pros and cons of doing so
-@anchor{security blacklisting-through-internal-tor-command}@anchor{106}
+@anchor{security blacklisting-through-internal-tor-command}@anchor{10a}
 @subsubsection Blacklisting through internal @@tor command
 
 
@@ -7046,7 +7018,7 @@ service.  It self-updates and will actively block TOR connections.
 @end quotation
 
 @node Blacklisting through internal @@admin command,,Blacklisting through internal @@tor command,Methods to block anonymous connections and the pros and cons of doing so
-@anchor{security blacklisting-through-internal-admin-command}@anchor{107}
+@anchor{security blacklisting-through-internal-admin-command}@anchor{10b}
 @subsubsection Blacklisting through internal @@admin command
 
 
@@ -7064,7 +7036,7 @@ it may be worth considering adding this to add additional protection.
 @end quotation
 
 @node Setting up an SSL tunnel for secure connection options,,Methods to block anonymous connections and the pros and cons of doing so,Security
-@anchor{security setting-up-an-ssl-tunnel-for-secure-connection-options}@anchor{108}
+@anchor{security setting-up-an-ssl-tunnel-for-secure-connection-options}@anchor{10c}
 @subsection Setting up an SSL tunnel for secure connection options
 
 
@@ -7075,7 +7047,7 @@ it may be worth considering adding this to add additional protection.
 @end menu
 
 @node Quickstart for SSL setup with stunnel,Detailed SSL setup with stunnel,,Setting up an SSL tunnel for secure connection options
-@anchor{security quickstart-for-ssl-setup-with-stunnel}@anchor{109}
+@anchor{security quickstart-for-ssl-setup-with-stunnel}@anchor{10d}
 @subsubsection Quickstart for SSL setup with stunnel
 
 
@@ -7151,7 +7123,7 @@ You do not need to shutdown the ssl handler if you shutdown the mush.  They
 are entirely separate processes.
 
 @node Detailed SSL setup with stunnel,,Quickstart for SSL setup with stunnel,Setting up an SSL tunnel for secure connection options
-@anchor{security detailed-ssl-setup-with-stunnel}@anchor{10a}
+@anchor{security detailed-ssl-setup-with-stunnel}@anchor{10e}
 @subsubsection Detailed SSL setup with stunnel
 
 
@@ -7172,7 +7144,7 @@ Note: it is assumed you will have already initially set up your netrhost.conf.
 @end menu
 
 @node stunnel directory,Modifying netrhost conf,,Detailed SSL setup with stunnel
-@anchor{security stunnel-directory}@anchor{10b}
+@anchor{security stunnel-directory}@anchor{10f}
 @subsubsection stunnel directory
 
 
@@ -7188,7 +7160,7 @@ warpbubble.pl              – the perl script that handles stunnel to mush conn
 stunnel_src                – If you do not have stunnel, this directory will allow you to download, compile and locally install.
 
 @node Modifying netrhost conf,Running the stunnel setup program,stunnel directory,Detailed SSL setup with stunnel
-@anchor{security modifying-netrhost-conf}@anchor{10c}
+@anchor{security modifying-netrhost-conf}@anchor{110}
 @subsubsection Modifying netrhost.conf
 
 
@@ -7204,7 +7176,7 @@ sconnect_host wildcards – This allows wildcarded sites (one or more) to allow 
 Note: the sconnect_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.
 
 @node Running the stunnel setup program,Starting the stunnel proxy,Modifying netrhost conf,Detailed SSL setup with stunnel
-@anchor{security running-the-stunnel-setup-program}@anchor{10d}
+@anchor{security running-the-stunnel-setup-program}@anchor{111}
 @subsubsection Running the stunnel setup program
 
 
@@ -7225,7 +7197,7 @@ Be aware that if you have DNS host lookups disabled on your mush, you
 MUST have 127.0.0.1 as an entry for your sconnect_host file.
 
 @node Starting the stunnel proxy,Shutting down the stunnel proxy,Running the stunnel setup program,Detailed SSL setup with stunnel
-@anchor{security starting-the-stunnel-proxy}@anchor{10e}
+@anchor{security starting-the-stunnel-proxy}@anchor{112}
 @subsubsection Starting the stunnel proxy
 
 
@@ -7237,7 +7209,7 @@ issue the following command to run your SSL layer:
 @end example
 
 @node Shutting down the stunnel proxy,Configuring firewall on the host,Starting the stunnel proxy,Detailed SSL setup with stunnel
-@anchor{security shutting-down-the-stunnel-proxy}@anchor{10f}
+@anchor{security shutting-down-the-stunnel-proxy}@anchor{113}
 @subsubsection Shutting down the stunnel proxy
 
 
@@ -7248,7 +7220,7 @@ If ever you need to bring down the SSL layer, you may kill it with the command:
 @end example
 
 @node Configuring firewall on the host,,Shutting down the stunnel proxy,Detailed SSL setup with stunnel
-@anchor{security configuring-firewall-on-the-host}@anchor{110}
+@anchor{security configuring-firewall-on-the-host}@anchor{114}
 @subsubsection Configuring firewall on the host
 
 
@@ -7257,7 +7229,7 @@ in any firewall rule you specified to allow the connectivity.  This also must
 not be the port the mush is running on and requires a separate port.
 
 @node Maintenance,Troubleshooting,Security,RhostMUSH offers the following over other mushes
-@anchor{maintenance doc}@anchor{111}@anchor{maintenance maintenance}@anchor{112}
+@anchor{maintenance doc}@anchor{115}@anchor{maintenance maintenance}@anchor{116}
 @section Maintenance
 
 
@@ -7273,7 +7245,7 @@ not be the port the mush is running on and requires a separate port.
 @end menu
 
 @node Signals and why you need them for control,Shutting down gracefully,,Maintenance
-@anchor{maintenance signals-and-why-you-need-them-for-control}@anchor{113}
+@anchor{maintenance signals-and-why-you-need-them-for-control}@anchor{117}
 @subsection Signals and why you need them for control
 
 
@@ -7290,7 +7262,7 @@ The following signals are useful.
 @end menu
 
 @node TERM kill -TERM or kill -15,USR1 kill -USR1,,Signals and why you need them for control
-@anchor{maintenance term-kill-term-or-kill-15}@anchor{114}
+@anchor{maintenance term-kill-term-or-kill-15}@anchor{118}
 @subsubsection TERM (kill -TERM or kill -15)
 
 
@@ -7309,7 +7281,7 @@ a TERM signal is common during a server shutdown, so time is paramount.
 @end quotation
 
 @node USR1 kill -USR1,USR2 kill -USR2,TERM kill -TERM or kill -15,Signals and why you need them for control
-@anchor{maintenance usr1-kill-usr1}@anchor{115}
+@anchor{maintenance usr1-kill-usr1}@anchor{119}
 @subsubsection USR1 (kill -USR1)
 
 
@@ -7327,7 +7299,7 @@ the default behavior or if the method for USR1 is doing something else.
 @end quotation
 
 @node USR2 kill -USR2,KILL kill -KILL or kill -9,USR1 kill -USR1,Signals and why you need them for control
-@anchor{maintenance usr2-kill-usr2}@anchor{116}
+@anchor{maintenance usr2-kill-usr2}@anchor{11a}
 @subsubsection USR2 (kill -USR2)
 
 
@@ -7346,7 +7318,7 @@ from the shell.
 @end quotation
 
 @node KILL kill -KILL or kill -9,,USR2 kill -USR2,Signals and why you need them for control
-@anchor{maintenance kill-kill-kill-or-kill-9}@anchor{117}
+@anchor{maintenance kill-kill-kill-or-kill-9}@anchor{11b}
 @subsubsection KILL (kill -KILL or kill -9)
 
 
@@ -7369,7 +7341,7 @@ Startmush -f to bring it back up.
 @end quotation
 
 @node Shutting down gracefully,Autoshutdown script,Signals and why you need them for control,Maintenance
-@anchor{maintenance shutting-down-gracefully}@anchor{118}
+@anchor{maintenance shutting-down-gracefully}@anchor{11c}
 @subsection Shutting down gracefully
 
 
@@ -7380,7 +7352,7 @@ Startmush -f to bring it back up.
 @end menu
 
 @node Rhostmush has many ways to shut down the game cleanly,WARNING Never kill -9 Rhost,,Shutting down gracefully
-@anchor{maintenance rhostmush-has-many-ways-to-shut-down-the-game-cleanly}@anchor{119}
+@anchor{maintenance rhostmush-has-many-ways-to-shut-down-the-game-cleanly}@anchor{11d}
 @subsubsection Rhostmush has many ways to shut down the game cleanly
 
 
@@ -7398,7 +7370,7 @@ Issue a kill -TERM to the mush which issues an emergency abort and clean shutdow
 @end enumerate
 
 @node WARNING Never kill -9 Rhost,,Rhostmush has many ways to shut down the game cleanly,Shutting down gracefully
-@anchor{maintenance warning-never-kill-9-rhost}@anchor{11a}
+@anchor{maintenance warning-never-kill-9-rhost}@anchor{11e}
 @subsubsection WARNING: Never kill -9 Rhost
 
 
@@ -7412,7 +7384,7 @@ of a db write.  Rhost can recover corruption in-game while up, but if it bombs
 in the middle of a write, all bets are off. :)
 
 @node Autoshutdown script,Network Port redirector,Shutting down gracefully,Maintenance
-@anchor{maintenance autoshutdown-script}@anchor{11b}
+@anchor{maintenance autoshutdown-script}@anchor{11f}
 @subsection Autoshutdown script
 
 
@@ -7425,7 +7397,7 @@ Both of these are intended to be used for automations (automated processes)
 like your rc.local file and/or startup scripts when you bring your server up.
 
 @node Network Port redirector,Using the built-in cron system for periodically running commands,Autoshutdown script,Maintenance
-@anchor{maintenance network-port-redirector}@anchor{11c}
+@anchor{maintenance network-port-redirector}@anchor{120}
 @subsection Network Port redirector
 
 
@@ -7459,7 +7431,7 @@ To launch the application, you would then type:
 Where <port> is the port where the mush used to run at.
 
 @node Using the built-in cron system for periodically running commands,The following scripts are used in the game directory,Network Port redirector,Maintenance
-@anchor{maintenance using-the-built-in-cron-system-for-periodically-running-commands}@anchor{11d}
+@anchor{maintenance using-the-built-in-cron-system-for-periodically-running-commands}@anchor{121}
 @subsection Using the built-in cron system for periodically running commands
 
 
@@ -7470,7 +7442,7 @@ Where <port> is the port where the mush used to run at.
 @end menu
 
 @node Syntax for rhost cron,Example syntaxt for rhost cron,,Using the built-in cron system for periodically running commands
-@anchor{maintenance syntax-for-rhost-cron}@anchor{11e}
+@anchor{maintenance syntax-for-rhost-cron}@anchor{122}
 @subsubsection Syntax for rhost.cron
 
 
@@ -7496,7 +7468,7 @@ Here is a working example of the code cron file.
 This example will perform dumps of the mush.
 
 @node Example syntaxt for rhost cron,,Syntax for rhost cron,Using the built-in cron system for periodically running commands
-@anchor{maintenance example-syntaxt-for-rhost-cron}@anchor{11f}
+@anchor{maintenance example-syntaxt-for-rhost-cron}@anchor{123}
 @subsubsection Example syntaxt for rhost.cron
 
 
@@ -7507,7 +7479,7 @@ wmail/unload; @@@@ dump the mail database to flatfile
 newsdb/unload; @@@@ dump the news bbs database to flatfile
 
 @node The following scripts are used in the game directory,Textfiles for RhostMUSH,Using the built-in cron system for periodically running commands,Maintenance
-@anchor{maintenance the-following-scripts-are-used-in-the-game-directory}@anchor{120}
+@anchor{maintenance the-following-scripts-are-used-in-the-game-directory}@anchor{124}
 @subsection The following scripts are used in the game directory
 
 
@@ -7524,7 +7496,7 @@ recovery.sh             – If your db is corrupt, run this to auto-revert to an
 tor_pull.sh             – Create a blacklist.txt file that can be loaded via the internal @@blacklist command for proxy handling
 
 @node Textfiles for RhostMUSH,,The following scripts are used in the game directory,Maintenance
-@anchor{maintenance textfiles-for-rhostmush}@anchor{121}
+@anchor{maintenance textfiles-for-rhostmush}@anchor{125}
 @subsection Textfiles for RhostMUSH
 
 
@@ -7598,7 +7570,7 @@ wizmotd.txt            - your wiz motd file
 @end menu
 
 @node Textfile Frequently Asked Questions,,,Textfiles for RhostMUSH
-@anchor{maintenance textfile-frequently-asked-questions}@anchor{122}
+@anchor{maintenance textfile-frequently-asked-questions}@anchor{126}
 @subsubsection Textfile Frequently Asked Questions
 
 
@@ -7619,7 +7591,7 @@ Q:  Can’t I just make code in the mush that then is used for these silly txt f
 A:  Absolutely.  Check ‘wizhelp file_object’.
 
 @node Troubleshooting,Upgrading,Maintenance,RhostMUSH offers the following over other mushes
-@anchor{troubleshooting doc}@anchor{123}@anchor{troubleshooting troubleshooting}@anchor{124}
+@anchor{troubleshooting doc}@anchor{127}@anchor{troubleshooting troubleshooting}@anchor{128}
 @section Troubleshooting
 
 
@@ -7633,7 +7605,7 @@ A:  Absolutely.  Check ‘wizhelp file_object’.
 @end menu
 
 @node Stack limit and debugging,How to reset the password for #1,,Troubleshooting
-@anchor{troubleshooting stack-limit-and-debugging}@anchor{125}
+@anchor{troubleshooting stack-limit-and-debugging}@anchor{129}
 @subsection Stack limit and debugging
 
 
@@ -7674,7 +7646,7 @@ A @@reboot WILL NOT LOAD IN A NEW DEBUG MONITOR!!!!
 You can issue @@list stack to see the current stack ceiling ingame.
 
 @node How to reset the password for #1,Troubleshooting difficulties compiling RhostMUSH,Stack limit and debugging,Troubleshooting
-@anchor{troubleshooting how-to-reset-the-password-for-1}@anchor{126}
+@anchor{troubleshooting how-to-reset-the-password-for-1}@anchor{12a}
 @subsection How to reset the password for #1
 
 
@@ -7687,7 +7659,7 @@ You can only use one of these options at a time. Make sure to change back your n
 @end menu
 
 @node Method 1,Method 2,,How to reset the password for #1
-@anchor{troubleshooting method-1}@anchor{127}
+@anchor{troubleshooting method-1}@anchor{12b}
 @subsubsection Method 1
 
 
@@ -7697,7 +7669,7 @@ newpass_god 777
 This will reset #1’s password to the default ‘Nyctasia’.
 
 @node Method 2,,Method 1,How to reset the password for #1
-@anchor{troubleshooting method-2}@anchor{128}
+@anchor{troubleshooting method-2}@anchor{12c}
 @subsubsection Method 2
 
 
@@ -7707,7 +7679,7 @@ newpass_god 1
 This will allow IMMORTAL players to @@newpassword #1 upon reboot.
 
 @node Troubleshooting difficulties compiling RhostMUSH,Dealing with DB Corruption,How to reset the password for #1,Troubleshooting
-@anchor{troubleshooting troubleshooting-difficulties-compiling-rhostmush}@anchor{129}
+@anchor{troubleshooting troubleshooting-difficulties-compiling-rhostmush}@anchor{12d}
 @subsection Troubleshooting difficulties compiling RhostMUSH
 
 
@@ -7718,7 +7690,7 @@ This will allow IMMORTAL players to @@newpassword #1 upon reboot.
 @end menu
 
 @node Changes to conf for high-bit CPUs,Changes to autconf for certain systems,,Troubleshooting difficulties compiling RhostMUSH
-@anchor{troubleshooting changes-to-conf-for-high-bit-cpus}@anchor{12a}
+@anchor{troubleshooting changes-to-conf-for-high-bit-cpus}@anchor{12e}
 @subsubsection Changes to conf for high-bit CPUs
 
 
@@ -7746,7 +7718,7 @@ RhostMUSH has only been tested to work on the AMD64, but there is no
 reason to believe the same will not hold true for IA64.
 
 @node Changes to autconf for certain systems,,Changes to conf for high-bit CPUs,Troubleshooting difficulties compiling RhostMUSH
-@anchor{troubleshooting changes-to-autconf-for-certain-systems}@anchor{12b}
+@anchor{troubleshooting changes-to-autconf-for-certain-systems}@anchor{12f}
 @subsubsection Changes to autconf for certain systems
 
 
@@ -7786,7 +7758,7 @@ Make sure these three entries are defined in your autoconf.h file else
 the mush will not compile.
 
 @node Dealing with DB Corruption,Dealing with a corrupt mail database,Troubleshooting difficulties compiling RhostMUSH,Troubleshooting
-@anchor{troubleshooting dealing-with-db-corruption}@anchor{12c}
+@anchor{troubleshooting dealing-with-db-corruption}@anchor{130}
 @subsection Dealing with DB Corruption
 
 
@@ -7822,7 +7794,7 @@ First thing is first.  Don’t have a panic attack.
 @end menu
 
 @node If the mush says it can’t find your database files,If the mush says it can’t read or load your database files,,Dealing with DB Corruption
-@anchor{troubleshooting if-the-mush-says-it-can-t-find-your-database-files}@anchor{12d}
+@anchor{troubleshooting if-the-mush-says-it-can-t-find-your-database-files}@anchor{131}
 @subsubsection If the mush says it can’t find your database files
 
 
@@ -7834,7 +7806,7 @@ First thing is first.  Don’t have a panic attack.
 @end menu
 
 @node Check the names of the database files in your ‘data’ directory,Check your netrhost conf file,,If the mush says it can’t find your database files
-@anchor{troubleshooting check-the-names-of-the-database-files-in-your-data-directory}@anchor{12e}
+@anchor{troubleshooting check-the-names-of-the-database-files-in-your-data-directory}@anchor{132}
 @subsubsection Check the names of the database files in your ‘data’ directory
 
 
@@ -7848,7 +7820,7 @@ netrhost.gdbm.pag
 And you may see a netrhost.db.flat
 
 @node Check your netrhost conf file,Check your mush config file,Check the names of the database files in your ‘data’ directory,If the mush says it can’t find your database files
-@anchor{troubleshooting check-your-netrhost-conf-file}@anchor{12f}
+@anchor{troubleshooting check-your-netrhost-conf-file}@anchor{133}
 @subsubsection Check your netrhost.conf file
 
 
@@ -7862,7 +7834,7 @@ If these names do not match up, it can’t find the database files to load.
 So you shouldn’t have to change these names, ever. :)
 
 @node Check your mush config file,,Check your netrhost conf file,If the mush says it can’t find your database files
-@anchor{troubleshooting check-your-mush-config-file}@anchor{130}
+@anchor{troubleshooting check-your-mush-config-file}@anchor{134}
 @subsubsection Check your mush.config file
 
 
@@ -7874,7 +7846,7 @@ as associated to the mush.  So changing this means the netrhost.conf
 file, all your database files, and so forth.  Please don’t change this :)
 
 @node If the mush says it can’t read or load your database files,If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!,If the mush says it can’t find your database files,Dealing with DB Corruption
-@anchor{troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files}@anchor{131}
+@anchor{troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files}@anchor{135}
 @subsubsection If the mush says it can’t read or load your database files
 
 
@@ -7887,7 +7859,7 @@ Double check everything for the previous issue. Make sure everything is named pr
 @end menu
 
 @node Verify you have enough disk space quota,Verify you have enough disk space system,,If the mush says it can’t read or load your database files
-@anchor{troubleshooting verify-you-have-enough-disk-space-quota}@anchor{132}
+@anchor{troubleshooting verify-you-have-enough-disk-space-quota}@anchor{136}
 @subsubsection Verify you have enough disk space. (quota)
 
 
@@ -7903,7 +7875,7 @@ mush again.  Try to keep your quota at least 200 megs free to allow
 plenty of wonderful growth space for the mush.
 
 @node Verify you have enough disk space system,,Verify you have enough disk space quota,If the mush says it can’t read or load your database files
-@anchor{troubleshooting verify-you-have-enough-disk-space-system}@anchor{133}
+@anchor{troubleshooting verify-you-have-enough-disk-space-system}@anchor{137}
 @subsubsection Verify you have enough disk space.  (system)
 
 
@@ -7921,7 +7893,7 @@ Until this issue is resolved, you can not repair and bring up your mush.
 No disk to run the game.
 
 @node If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!,Bringing up your mail database,If the mush says it can’t read or load your database files,Dealing with DB Corruption
-@anchor{troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone}@anchor{134}
+@anchor{troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone}@anchor{138}
 @subsubsection If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!
 
 
@@ -7941,7 +7913,7 @@ So, to recover your database.
 @end menu
 
 @node The bad news,The good news,,If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!
-@anchor{troubleshooting the-bad-news}@anchor{135}
+@anchor{troubleshooting the-bad-news}@anchor{139}
 @subsubsection The bad news
 
 
@@ -7953,7 +7925,7 @@ out of it, but otherwise it’s a lost cause.  You’ll have to start
 over from scratch.  I’m sorry.
 
 @node The good news,Now to restore your database?,The bad news,If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!
-@anchor{troubleshooting the-good-news}@anchor{136}
+@anchor{troubleshooting the-good-news}@anchor{13a}
 @subsubsection The good news
 
 
@@ -7972,14 +7944,14 @@ that the very last line shows something like ** END OF DUMP **.
 That shows you had a successful backup.
 
 @node Now to restore your database?,,The good news,If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!
-@anchor{troubleshooting now-to-restore-your-database}@anchor{137}
+@anchor{troubleshooting now-to-restore-your-database}@anchor{13b}
 @subsubsection Now, to restore your database?
 
 
 Please refer to the file ‘README.DBLOADING’.
 
 @node Bringing up your mail database,,If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!,Dealing with DB Corruption
-@anchor{troubleshooting bringing-up-your-mail-database}@anchor{138}
+@anchor{troubleshooting bringing-up-your-mail-database}@anchor{13c}
 @subsubsection Bringing up your mail database
 
 
@@ -7992,7 +7964,7 @@ Your mail db may or may not come up at this point.
 @end menu
 
 @node If after restoring main database your mail database works,If after restoring main database your mail database does not work,,Bringing up your mail database
-@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-works}@anchor{139}
+@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-works}@anchor{13d}
 @subsubsection If after restoring main database your mail database works
 
 
@@ -8013,7 +7985,7 @@ fix up any errors that may exist.  wmail/fix fixes the mail, wmail/lfix
 loads in the fixes.
 
 @node If after restoring main database your mail database does not work,,If after restoring main database your mail database works,Bringing up your mail database
-@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work}@anchor{13a}
+@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work}@anchor{13e}
 @subsubsection If after restoring main database your mail database does not work
 
 
@@ -8031,7 +8003,7 @@ loads in the fixes.
 To fix your mail db please refer to file ‘README.MAILCANNOTLOAD’
 
 @node Dealing with a corrupt mail database,,Dealing with DB Corruption,Troubleshooting
-@anchor{troubleshooting dealing-with-a-corrupt-mail-database}@anchor{13b}
+@anchor{troubleshooting dealing-with-a-corrupt-mail-database}@anchor{13f}
 @subsection Dealing with a corrupt mail database
 
 
@@ -8054,7 +8026,7 @@ which would include the mail database.
 @end menu
 
 @node Backing up your mail database,Automatically recovering your mail database,,Dealing with a corrupt mail database
-@anchor{troubleshooting backing-up-your-mail-database}@anchor{13c}
+@anchor{troubleshooting backing-up-your-mail-database}@anchor{140}
 @subsubsection Backing up your mail database
 
 
@@ -8066,7 +8038,7 @@ latter directory is used in junction to the backup_flat.sh and will always
 house the latest flatfile if not one recently dumped in your data directory.
 
 @node Automatically recovering your mail database,Manually recovering your mail database,Backing up your mail database,Dealing with a corrupt mail database
-@anchor{troubleshooting automatically-recovering-your-mail-database}@anchor{13d}
+@anchor{troubleshooting automatically-recovering-your-mail-database}@anchor{141}
 @subsubsection Automatically recovering your mail database
 
 
@@ -8091,7 +8063,7 @@ to sync against nuked players and other changes to the game since the flatfile.
 If this is a new db that you have, you can skip the fixing.
 
 @node Manually recovering your mail database,,Automatically recovering your mail database,Dealing with a corrupt mail database
-@anchor{troubleshooting manually-recovering-your-mail-database}@anchor{13e}
+@anchor{troubleshooting manually-recovering-your-mail-database}@anchor{142}
 @subsubsection Manually recovering your mail database
 
 
@@ -8136,7 +8108,7 @@ wmail/lfix  – this will load the fixed flatfile back into the mush.
 At this point you should be good to go.
 
 @node Upgrading,Advanced Features,Troubleshooting,RhostMUSH offers the following over other mushes
-@anchor{upgrade doc}@anchor{13f}@anchor{upgrade upgrading}@anchor{140}
+@anchor{upgrade doc}@anchor{143}@anchor{upgrade upgrading}@anchor{144}
 @section Upgrading
 
 
@@ -8148,7 +8120,7 @@ At this point you should be good to go.
 @end menu
 
 @node Converting database betwen GDBM and QDBM,Updating RhostMUSH prior to 3 9 5p2,,Upgrading
-@anchor{upgrade converting-database-betwen-gdbm-and-qdbm}@anchor{141}
+@anchor{upgrade converting-database-betwen-gdbm-and-qdbm}@anchor{145}
 @subsection Converting database betwen GDBM and QDBM
 
 
@@ -8164,7 +8136,7 @@ The databases are NOT COMPATIBLE to each other, at least in the binary form.
 @end menu
 
 @node Downgrading QDBM to GDBM,Upgradging GDBM to QDBM,,Converting database betwen GDBM and QDBM
-@anchor{upgrade downgrading-qdbm-to-gdbm}@anchor{142}
+@anchor{upgrade downgrading-qdbm-to-gdbm}@anchor{146}
 @subsubsection Downgrading QDBM to GDBM
 
 
@@ -8198,7 +8170,7 @@ Once you have that done, you may follow the procedures below on converting (upgr
 @end enumerate
 
 @node Upgradging GDBM to QDBM,,Downgrading QDBM to GDBM,Converting database betwen GDBM and QDBM
-@anchor{upgrade upgradging-gdbm-to-qdbm}@anchor{143}
+@anchor{upgrade upgradging-gdbm-to-qdbm}@anchor{147}
 @subsubsection Upgradging GDBM to QDBM
 
 
@@ -8219,7 +8191,7 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 @end menu
 
 @node While logged in to your mush issue the following commands,Verify the files exist,,Upgradging GDBM to QDBM
-@anchor{upgrade while-logged-in-to-your-mush-issue-the-following-commands}@anchor{144}
+@anchor{upgrade while-logged-in-to-your-mush-issue-the-following-commands}@anchor{148}
 @subsubsection While logged in to your mush, issue the following commands
 
 
@@ -8243,7 +8215,7 @@ newsdb/unload – If you use the hardcoded news/bbs engine.  This dumps it
 @end quotation
 
 @node Verify the files exist,Shutdown the MUSH,While logged in to your mush issue the following commands,Upgradging GDBM to QDBM
-@anchor{upgrade verify-the-files-exist}@anchor{145}
+@anchor{upgrade verify-the-files-exist}@anchor{149}
 @subsubsection Verify the files exist
 
 
@@ -8268,14 +8240,14 @@ Server/game/data/RhostMUSH.dump.mail
 @end quotation
 
 @node Shutdown the MUSH,From the Server directory,Verify the files exist,Upgradging GDBM to QDBM
-@anchor{upgrade shutdown-the-mush}@anchor{146}
+@anchor{upgrade shutdown-the-mush}@anchor{14a}
 @subsubsection Shutdown the MUSH
 
 
 @@shutdown your mush
 
 @node From the Server directory,From the Server/game directory,Shutdown the MUSH,Upgradging GDBM to QDBM
-@anchor{upgrade from-the-server-directory}@anchor{147}
+@anchor{upgrade from-the-server-directory}@anchor{14b}
 @subsubsection From the Server directory
 
 
@@ -8322,7 +8294,7 @@ RhostMUSH.news.pag
 @end quotation
 
 @node From the Server/game directory,While logged into the mush issue the following commands,From the Server directory,Upgradging GDBM to QDBM
-@anchor{upgrade from-the-server-game-directory}@anchor{148}
+@anchor{upgrade from-the-server-game-directory}@anchor{14c}
 @subsubsection From the Server/game directory
 
 
@@ -8340,7 +8312,7 @@ RhostMUSH.news.pag
 @end quotation
 
 @node While logged into the mush issue the following commands,Verify that you have QDBM running and your valid values,From the Server/game directory,Upgradging GDBM to QDBM
-@anchor{upgrade while-logged-into-the-mush-issue-the-following-commands}@anchor{149}
+@anchor{upgrade while-logged-into-the-mush-issue-the-following-commands}@anchor{14d}
 @subsubsection While logged into the mush issue the following commands
 
 
@@ -8364,7 +8336,7 @@ newsdb/load
 @end quotation
 
 @node Verify that you have QDBM running and your valid values,,While logged into the mush issue the following commands,Upgradging GDBM to QDBM
-@anchor{upgrade verify-that-you-have-qdbm-running-and-your-valid-values}@anchor{14a}
+@anchor{upgrade verify-that-you-have-qdbm-running-and-your-valid-values}@anchor{14e}
 @subsubsection Verify that you have QDBM running and your valid values
 
 
@@ -8382,7 +8354,7 @@ newsdb/load
 @end quotation
 
 @node Updating RhostMUSH prior to 3 9 5p2,Adding MySQL to RhostMUSH older than 3 9 5p2,Converting database betwen GDBM and QDBM,Upgrading
-@anchor{upgrade updating-rhostmush-prior-to-3-9-5p2}@anchor{14b}
+@anchor{upgrade updating-rhostmush-prior-to-3-9-5p2}@anchor{14f}
 @subsection Updating RhostMUSH prior to 3.9.5p2
 
 
@@ -8533,7 +8505,7 @@ You should be good to go on a current directory structure for Rhost.  Enjoy!
 @end enumerate
 
 @node Adding MySQL to RhostMUSH older than 3 9 5p2,,Updating RhostMUSH prior to 3 9 5p2,Upgrading
-@anchor{upgrade adding-mysql-to-rhostmush-older-than-3-9-5p2}@anchor{14c}
+@anchor{upgrade adding-mysql-to-rhostmush-older-than-3-9-5p2}@anchor{150}
 @subsection Adding MySQL to RhostMUSH older than 3.9.5p2
 
 
@@ -8630,7 +8602,7 @@ builder script to build in the mysql changes.
 @end enumerate
 
 @node Advanced Features,Format for image files,Upgrading,RhostMUSH offers the following over other mushes
-@anchor{advanced doc}@anchor{14d}@anchor{advanced advanced-features}@anchor{14e}
+@anchor{advanced doc}@anchor{151}@anchor{advanced advanced-features}@anchor{152}
 @section Advanced Features
 
 
@@ -8644,7 +8616,7 @@ builder script to build in the mysql changes.
 @end menu
 
 @node Adding hardcoded modules,Shutting down gracefully<2>,,Advanced Features
-@anchor{advanced adding-hardcoded-modules}@anchor{14f}
+@anchor{advanced adding-hardcoded-modules}@anchor{153}
 @subsection Adding hardcoded modules
 
 
@@ -8658,7 +8630,7 @@ RhostMUSH does support module writing.
 @end menu
 
 @node Modifying sourcode to add a module,Adding an @@startup to make use of modules,,Adding hardcoded modules
-@anchor{advanced modifying-sourcode-to-add-a-module}@anchor{150}
+@anchor{advanced modifying-sourcode-to-add-a-module}@anchor{154}
 @subsubsection Modifying sourcode to add a module
 
 
@@ -8668,7 +8640,7 @@ for any new source files that you wish to add.
 Something to be aware of is that all localized data is ran after the system cache subroutine.
 
 @node Adding an @@startup to make use of modules,Contributing your module back to Rhost,Modifying sourcode to add a module,Adding hardcoded modules
-@anchor{advanced adding-an-startup-to-make-use-of-modules}@anchor{151}
+@anchor{advanced adding-an-startup-to-make-use-of-modules}@anchor{155}
 @subsubsection Adding an @@startup to make use of modules
 
 
@@ -8686,7 +8658,7 @@ A small alteration that will likely make this work fine.
 That 1 second delay for the queue will give the game engine time to load in your module code.
 
 @node Contributing your module back to Rhost,,Adding an @@startup to make use of modules,Adding hardcoded modules
-@anchor{advanced contributing-your-module-back-to-rhost}@anchor{152}
+@anchor{advanced contributing-your-module-back-to-rhost}@anchor{156}
 @subsubsection Contributing your module back to Rhost
 
 
@@ -8703,7 +8675,7 @@ Ask one of the Rhost devs to do it for you :)
 @end enumerate
 
 @node Shutting down gracefully<2>,Reality levels,Adding hardcoded modules,Advanced Features
-@anchor{advanced shutting-down-gracefully}@anchor{153}
+@anchor{advanced shutting-down-gracefully}@anchor{157}
 @subsection Shutting down gracefully
 
 
@@ -8714,7 +8686,7 @@ Ask one of the Rhost devs to do it for you :)
 @end menu
 
 @node Rhostmush has many ways to shut down the game cleanly<2>,WARNING Never kill -9 Rhost<2>,,Shutting down gracefully<2>
-@anchor{advanced rhostmush-has-many-ways-to-shut-down-the-game-cleanly}@anchor{154}
+@anchor{advanced rhostmush-has-many-ways-to-shut-down-the-game-cleanly}@anchor{158}
 @subsubsection Rhostmush has many ways to shut down the game cleanly
 
 
@@ -8732,7 +8704,7 @@ Issue a kill -TERM to the mush which issues an emergency abort and clean shutdow
 @end enumerate
 
 @node WARNING Never kill -9 Rhost<2>,,Rhostmush has many ways to shut down the game cleanly<2>,Shutting down gracefully<2>
-@anchor{advanced warning-never-kill-9-rhost}@anchor{155}
+@anchor{advanced warning-never-kill-9-rhost}@anchor{159}
 @subsubsection WARNING: Never kill -9 Rhost
 
 
@@ -8746,7 +8718,7 @@ of a db write.  Rhost can recover corruption in-game while up, but if it bombs
 in the middle of a write, all bets are off. :)
 
 @node Reality levels,Execscript and external programs and scripts,Shutting down gracefully<2>,Advanced Features
-@anchor{advanced reality-levels}@anchor{156}
+@anchor{advanced reality-levels}@anchor{15a}
 @subsection Reality levels
 
 
@@ -8767,7 +8739,7 @@ in the same location.
 @end menu
 
 @node Visibility,Descriptions,,Reality levels
-@anchor{advanced visibility}@anchor{157}
+@anchor{advanced visibility}@anchor{15b}
 @subsubsection Visibility
 
 
@@ -8788,7 +8760,7 @@ An object is always visible to itself, even if its Rx and Tx levels don’t
 match. (See examples below)
 
 @node Descriptions,Configuration parameters,Visibility,Reality levels
-@anchor{advanced descriptions}@anchor{158}
+@anchor{advanced descriptions}@anchor{15c}
 @subsubsection Descriptions
 
 
@@ -8813,7 +8785,7 @@ order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.
 
 @node Configuration parameters,Example mush conf,Descriptions,Reality levels
-@anchor{advanced configuration-parameters}@anchor{159}
+@anchor{advanced configuration-parameters}@anchor{15d}
 @subsubsection Configuration parameters
 
 
@@ -8863,7 +8835,7 @@ This is an example file only to be added to the mush.conf file
 Format: reality_level <8 char name> <hex-byte-mask> <optional-desc: DESC default>
 
 @node Example mush conf,Commands,Configuration parameters,Reality levels
-@anchor{advanced example-mush-conf}@anchor{15a}
+@anchor{advanced example-mush-conf}@anchor{15e}
 @subsubsection Example mush.conf
 
 
@@ -8886,7 +8858,7 @@ reality_level Death 32768 DEATHDESC
 reality_level All 4294967295
 
 @node Commands,Functions<3>,Example mush conf,Reality levels
-@anchor{advanced commands}@anchor{15b}
+@anchor{advanced commands}@anchor{15f}
 @subsubsection Commands
 
 
@@ -8906,7 +8878,7 @@ In this case, you can still manipulate it by using his #dbref (or >>*<<player
 for players).
 
 @node Functions<3>,Example 1 A simplified Witchcraft setup,Commands,Reality levels
-@anchor{advanced functions}@anchor{15c}
+@anchor{advanced functions}@anchor{160}
 @subsubsection Functions
 
 
@@ -8945,7 +8917,7 @@ Realms enabled, the function will perform both checks and the Wod Realms
 version checks against the DARK flag.
 
 @node Example 1 A simplified Witchcraft setup,Example 2 A WoD setup,Functions<3>,Reality levels
-@anchor{advanced example-1-a-simplified-witchcraft-setup}@anchor{15d}
+@anchor{advanced example-1-a-simplified-witchcraft-setup}@anchor{161}
 @subsubsection Example 1: A simplified Witchcraft setup
 
 
@@ -9093,7 +9065,7 @@ Frank.                  >>|<<This is Frank, looking |
 @end quotation
 
 @node Example 2 A WoD setup,Example 3 Softcode,Example 1 A simplified Witchcraft setup,Reality levels
-@anchor{advanced example-2-a-wod-setup}@anchor{15e}
+@anchor{advanced example-2-a-wod-setup}@anchor{162}
 @subsubsection Example 2: A WoD setup
 
 
@@ -9178,7 +9150,7 @@ Global code objects that all characters should be able to use:
 RxLevel: All, TxLevel: All
 
 @node Example 3 Softcode,,Example 2 A WoD setup,Reality levels
-@anchor{advanced example-3-softcode}@anchor{15f}
+@anchor{advanced example-3-softcode}@anchor{163}
 @subsubsection Example 3: Softcode
 
 
@@ -9215,7 +9187,7 @@ Umbra; @@pemit %#=You are now peeking into the Umbra@}
 txlevel(%#))]; @@pemit %#=You are no longer peeking.
 
 @node Execscript and external programs and scripts,Using printf for advanced text output,Reality levels,Advanced Features
-@anchor{advanced execscript-and-external-programs-and-scripts}@anchor{160}
+@anchor{advanced execscript-and-external-programs-and-scripts}@anchor{164}
 @subsection Execscript and external programs and scripts
 
 
@@ -9229,7 +9201,7 @@ txlevel(%#))]; @@pemit %#=You are no longer peeking.
 @end menu
 
 @node Mush variables,set object,,Execscript and external programs and scripts
-@anchor{advanced mush-variables}@anchor{161}
+@anchor{advanced mush-variables}@anchor{165}
 @subsubsection Mush variables
 
 
@@ -9241,7 +9213,7 @@ txlevel(%#))]; @@pemit %#=You are no longer peeking.
 @end menu
 
 @node Built in variables,Dynamic variables,,Mush variables
-@anchor{advanced built-in-variables}@anchor{162}
+@anchor{advanced built-in-variables}@anchor{166}
 @subsubsection Built in variables
 
 
@@ -9262,7 +9234,7 @@ This is passed from the mush’s EXECSCRIPT_VARS attr
 @end quotation
 
 @node Dynamic variables,Register variables,Built in variables,Mush variables
-@anchor{advanced dynamic-variables}@anchor{163}
+@anchor{advanced dynamic-variables}@anchor{167}
 @subsubsection Dynamic variables
 
 
@@ -9275,7 +9247,7 @@ These are the attributes from EXECSCRIPT_VARS
 @end table
 
 @node Register variables,,Dynamic variables,Mush variables
-@anchor{advanced register-variables}@anchor{164}
+@anchor{advanced register-variables}@anchor{168}
 @subsubsection Register variables
 
 
@@ -9295,7 +9267,7 @@ white spaces
 @end quotation
 
 @node set object,Example bash script,Mush variables,Execscript and external programs and scripts
-@anchor{advanced set-object}@anchor{165}
+@anchor{advanced set-object}@anchor{169}
 @subsubsection set object
 
 
@@ -9310,7 +9282,7 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.
 @end menu
 
 @node The format of the fields are,,,set object
-@anchor{advanced the-format-of-the-fields-are}@anchor{166}
+@anchor{advanced the-format-of-the-fields-are}@anchor{16a}
 @subsubsection The format of the fields are
 
 
@@ -9321,7 +9293,7 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.
 @end menu
 
 @node Dynamic variables<2>,Register variables<2>,,The format of the fields are
-@anchor{advanced id67}@anchor{167}
+@anchor{advanced id67}@anchor{16b}
 @subsubsection Dynamic variables
 
 
@@ -9333,7 +9305,7 @@ VARNAME        OWNER        CONTENTS (or leave null to clear)
 @end menu
 
 @node Examples,,,Dynamic variables<2>
-@anchor{advanced examples}@anchor{168}
+@anchor{advanced examples}@anchor{16c}
 @subsubsection Examples
 
 
@@ -9347,7 +9319,7 @@ because of the line feed (a control-M) on each line
 on the lines above
 
 @node Register variables<2>,,Dynamic variables<2>,The format of the fields are
-@anchor{advanced id68}@anchor{169}
+@anchor{advanced id68}@anchor{16d}
 @subsubsection Register variables
 
 
@@ -9359,7 +9331,7 @@ REGISTER       Q            CONTENTS (or leave null to clear)
 @end menu
 
 @node Examples The last example clears register 0,,,Register variables<2>
-@anchor{advanced examples-the-last-example-clears-register-0}@anchor{16a}
+@anchor{advanced examples-the-last-example-clears-register-0}@anchor{16e}
 @subsubsection Examples (The last example clears register 0)
 
 
@@ -9369,7 +9341,7 @@ W Q This is stored in register W
 foo QN this sets register with label ‘foo’
 
 @node Example bash script,Notes and warnings,set object,Execscript and external programs and scripts
-@anchor{advanced example-bash-script}@anchor{16b}
+@anchor{advanced example-bash-script}@anchor{16f}
 @subsubsection Example bash script
 
 
@@ -9398,7 +9370,7 @@ eval echo “Variable $@{vars@}: $@{MUSHV_$@{vars@}@}”
 done
 
 @node Notes and warnings,Scripts to be used with execscript,Example bash script,Execscript and external programs and scripts
-@anchor{advanced notes-and-warnings}@anchor{16c}
+@anchor{advanced notes-and-warnings}@anchor{170}
 @subsubsection Notes and warnings
 
 
@@ -9412,7 +9384,7 @@ This is EXECSCRIPT_VARS on the mush itself, that is the attribute set
 on the target that contains the execscript() that is being executed.
 
 @node Scripts to be used with execscript,,Notes and warnings,Execscript and external programs and scripts
-@anchor{advanced scripts-to-be-used-with-execscript}@anchor{16d}
+@anchor{advanced scripts-to-be-used-with-execscript}@anchor{171}
 @subsubsection Scripts to be used with execscript
 
 
@@ -9448,7 +9420,7 @@ weather.sh                     – Script for querying a graphical weather forec
 web.sh                         – Script for querying an arbitary website
 
 @node Using printf for advanced text output,,Execscript and external programs and scripts,Advanced Features
-@anchor{advanced using-printf-for-advanced-text-output}@anchor{16e}
+@anchor{advanced using-printf-for-advanced-text-output}@anchor{172}
 @subsection Using printf() for advanced text output
 
 
@@ -9463,7 +9435,7 @@ screens and data display.  It can automatically center, justify and wrap the tex
 @end menu
 
 @node Example one,Example two,,Using printf for advanced text output
-@anchor{advanced example-one}@anchor{16f}
+@anchor{advanced example-one}@anchor{173}
 @subsubsection Example one
 
 
@@ -9484,7 +9456,7 @@ screens and data display.  It can automatically center, justify and wrap the tex
 @end quotation
 
 @node Example two,Example three,Example one,Using printf for advanced text output
-@anchor{advanced example-two}@anchor{170}
+@anchor{advanced example-two}@anchor{174}
 @subsubsection Example two
 
 
@@ -9528,7 +9500,7 @@ Incapacitated      [ ]
 @end table
 
 @node Example three,,Example two,Using printf for advanced text output
-@anchor{advanced example-three}@anchor{171}
+@anchor{advanced example-three}@anchor{175}
 @subsubsection Example three
 
 
@@ -9554,7 +9526,7 @@ blah blah blah blah blah blah blah                                    END!
 @end table
 
 @node Format for image files,Comparison of Flags,Advanced Features,RhostMUSH offers the following over other mushes
-@anchor{advanced format-for-image-files}@anchor{172}
+@anchor{advanced format-for-image-files}@anchor{176}
 @section Format for image files
 
 
@@ -9972,7 +9944,7 @@ As you see, the last value of the zone @emph{MUST} be -1.  This tells it
 that there are no more zones to add.
 
 @node Comparison of Flags,Comparison of powers,Format for image files,RhostMUSH offers the following over other mushes
-@anchor{flags doc}@anchor{173}@anchor{flags comparison-of-flags}@anchor{174}
+@anchor{flags doc}@anchor{177}@anchor{flags comparison-of-flags}@anchor{178}
 @section Comparison of Flags
 
 
@@ -10038,7 +10010,7 @@ SPEECHMOD       - Not Available - Rhost doesn’t support @@speechmod - use @@ic
 MARKER0-MARKER9 - MARKER0-MARKER9
 
 @node Comparison of powers,RhostMUSH Internal Help Files,Comparison of Flags,RhostMUSH offers the following over other mushes
-@anchor{powers doc}@anchor{175}@anchor{powers comparison-of-powers}@anchor{176}
+@anchor{powers doc}@anchor{179}@anchor{powers comparison-of-powers}@anchor{17a}
 @section Comparison of powers
 
 
@@ -10137,17 +10109,17 @@ watch_logins          Can set or reset the WATCHER flag on themselves.
 Rhost Equiv: MONITOR (@@toggle)
 
 @node RhostMUSH Internal Help Files,RhostMUSH Internal Wizhelp Files,Comparison of powers,RhostMUSH offers the following over other mushes
-@anchor{helpfile doc}@anchor{177}@anchor{helpfile rhostmush-internal-help-files}@anchor{178}
+@anchor{helpfile doc}@anchor{17b}@anchor{helpfile rhostmush-internal-help-files}@anchor{17c}
 @section RhostMUSH Internal Help Files
 
 
 @node RhostMUSH Internal Wizhelp Files,Changelog,RhostMUSH Internal Help Files,RhostMUSH offers the following over other mushes
-@anchor{wizhelpfile doc}@anchor{179}@anchor{wizhelpfile rhostmush-internal-wizhelp-files}@anchor{17a}
+@anchor{wizhelpfile doc}@anchor{17d}@anchor{wizhelpfile rhostmush-internal-wizhelp-files}@anchor{17e}
 @section RhostMUSH Internal Wizhelp Files
 
 
 @node Changelog,Historical Non-Disclosure Agreement,RhostMUSH Internal Wizhelp Files,RhostMUSH offers the following over other mushes
-@anchor{changelog doc}@anchor{17b}@anchor{changelog changelog}@anchor{17c}
+@anchor{changelog doc}@anchor{17f}@anchor{changelog changelog}@anchor{180}
 @section Changelog
 
 
@@ -16554,7 +16526,7 @@ how tprintf() buffers. -fixed.
 andflags() and orflags() didn’t escape out ‘2’ or ‘1’ right. - fixed
 
 @node Historical Non-Disclosure Agreement,,Changelog,RhostMUSH offers the following over other mushes
-@anchor{nda doc}@anchor{17d}@anchor{nda historical-non-disclosure-agreement}@anchor{17e}
+@anchor{nda doc}@anchor{181}@anchor{nda historical-non-disclosure-agreement}@anchor{182}
 @section Historical Non-Disclosure Agreement
 
 
@@ -16595,7 +16567,7 @@ rules are kept.
 @end cartouche
 
 @node Copyright,,RhostMUSH offers the following over other mushes,Top
-@anchor{index copyright}@anchor{17f}
+@anchor{index copyright}@anchor{183}
 @unnumbered Copyright
 
 
@@ -16625,7 +16597,7 @@ This copyright information may not be changed, altered, or omitted.
 @end menu
 
 @node Indices and tables,,,Copyright
-@anchor{index indices-and-tables}@anchor{180}
+@anchor{index indices-and-tables}@anchor{184}
 @chapter Indices and tables
 
 

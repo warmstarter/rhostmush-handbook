@@ -5,44 +5,51 @@ Gettin Started
 What to type to get the basics running if you did not choose a pre-existing flatfile
 ====================================================================================
 
-If you decided to get a bare-bone configuration, you will find your mush
-has just two things.  The #1 (God) player and the starting room #0.  That's it.
+If you decided to get a bare-bone configuration, you will find your mush has just two things.  The #1 (God) player and the starting room #0.  That's it.
 
 Login to #1 from the connect screen
 -----------------------------------
 
-Nyctasia is the default password
-co #1 Nyctasia
+Nyctasia is the default password::
+
+    co #1 Nyctasia
 
 Change #1's password to something you'll remember but is hard to guess
 ----------------------------------------------------------------------
 
-    Note: yourpasswordgoeshere can be any password you choose.  Choose well.
-@password Nyctasia=YOURPASSWORDGOESHERE
+Note: yourpasswordgoeshere can be any password you choose.  Choose well::
+
+    @password Nyctasia=YOURPASSWORDGOESHERE
 
 Master Room
 -----------
 
-    At this point you should create your master room:
-    Reason: You need a master room to contain global $commands for players.
-    Note: ^listens are not global for intentional reasons.  It's far too much
-          overhead for far too minimal gains that few people need or use.
-@dig Master Room
+At this point you should create your master room::
+
+   @dig Master Room
+
+.. note::
+
+   Reason: You need a master room to contain global $commands for players
+   ^listens are not global for intentional reasons.  It's far too much overhead for far too minimal gains that few people need or use.
+   
 
 Flag and protect Master Room
 ----------------------------
 
-    It will return a dbref#, it should be #2 if you've not created anything else.
-@set #2=safe ind halt float
+It will return a dbref#, it should be #2 if you've not created anything else::
+
+    @set #2=safe ind halt float
 
 Player Holder Characters
 ------------------------
 
-(feel free to change the password to what you want)
-    Reason: You will want to chown global room or global areas to a given
-            bitlevel and a method to keep organized.
-    Note: wizhelp control will give you a complete breakdown of what each bit
-          can do.
+Feel free to change the password to what you want
+
+.. note::
+
+    Reason: You will want to chown global room or global areas to a given bitlevel and a method to keep organized.
+    Note: wizhelp control will give you a complete breakdown of what each bit can do.
 
 Immortal Holder
 +++++++++++++++
@@ -82,22 +89,27 @@ Guildmaster/Lead Holder
 Chown #0 (The starting room) and #2 (The Master room) to immholder
 ------------------------------------------------------------------
 
-    Note: #0 you can chown to a different bitlevel if you want, but the
-          master room should always be owned by an immortal
+..note::
+
+    #0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal
+
 @chown/preserve #0=*immholder
 @chown/preserve #2=*immholder
 
 Create yourself your own immortal player then log off #1 and into this immortal player
 --------------------------------------------------------------------------------------
 
-    Note: Pick what you want for playername and playerpassword
+.. note::
+
+    Pick what you want for playername and playerpassword
+
 @pcreate PLAYERNAME=PLAYERPASSWORD
 @set *playername=!wanderer immortal
 
 Log out of #1 and log into your immortal player
 -----------------------------------------------
 
-    Note: use the playername and password you created in the step before
+Note: use the playername and password you created in the step before
 LOGOUT 
 co PLAYERNAME PLAYERPASSWORD
 

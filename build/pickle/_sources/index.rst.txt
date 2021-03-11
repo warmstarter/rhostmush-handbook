@@ -50,6 +50,7 @@ RhostMUSH offers the following over other mushes
    wizhelpfile.rst
 
    changelog.rst
+
    nda.rst
 
 .. include:: copyright.rst

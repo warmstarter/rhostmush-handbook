@@ -245,50 +245,48 @@
 <h1>Gettin Started</h1>
 <div class="section" id="what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile">
 <h2>What to type to get the basics running if you did not choose a pre-existing flatfile</h2>
-<p>If you decided to get a bare-bone configuration, you will find your mush
-has just two things.  The #1 (God) player and the starting room #0.  That’s it.</p>
+<p>If you decided to get a bare-bone configuration, you will find your mush has just two things.  The #1 (God) player and the starting room #0.  That’s it.</p>
 <div class="section" id="login-to-1-from-the-connect-screen">
 <h3>Login to #1 from the connect screen</h3>
-<p>Nyctasia is the default password
-co #1 Nyctasia</p>
+<p>Nyctasia is the default password:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">co</span> <span class="c1">#1 Nyctasia</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess">
 <h3>Change #1’s password to something you’ll remember but is hard to guess</h3>
-<blockquote>
-<div><p>Note: yourpasswordgoeshere can be any password you choose.  Choose well.</p>
-</div></blockquote>
-<p>&#64;password Nyctasia=YOURPASSWORDGOESHERE</p>
+<p>Note: yourpasswordgoeshere can be any password you choose.  Choose well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@password</span> <span class="n">Nyctasia</span><span class="o">=</span><span class="n">YOURPASSWORDGOESHERE</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="master-room">
 <h3>Master Room</h3>
-<blockquote>
-<div><p>At this point you should create your master room:
-Reason: You need a master room to contain global $commands for players.
-Note: ^listens are not global for intentional reasons.  It’s far too much</p>
-<blockquote>
-<div><p>overhead for far too minimal gains that few people need or use.</p>
-</div></blockquote>
-</div></blockquote>
-<p>&#64;dig Master Room</p>
+<p>At this point you should create your master room:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@dig</span> <span class="n">Master</span> <span class="n">Room</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reason: You need a master room to contain global $commands for players
+^listens are not global for intentional reasons.  It’s far too much overhead for far too minimal gains that few people need or use.</p>
+</div>
 </div>
 <div class="section" id="flag-and-protect-master-room">
 <h3>Flag and protect Master Room</h3>
-<blockquote>
-<div><p>It will return a dbref#, it should be #2 if you’ve not created anything else.</p>
-</div></blockquote>
-<p>&#64;set #2=safe ind halt float</p>
+<p>It will return a dbref#, it should be #2 if you’ve not created anything else:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@set</span> <span class="c1">#2=safe ind halt float</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="player-holder-characters">
 <h3>Player Holder Characters</h3>
-<dl class="simple">
-<dt>(feel free to change the password to what you want)</dt><dd><dl class="simple">
-<dt>Reason: You will want to chown global room or global areas to a given</dt><dd><p>bitlevel and a method to keep organized.</p>
-</dd>
-<dt>Note: wizhelp control will give you a complete breakdown of what each bit</dt><dd><p>can do.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p>Feel free to change the password to what you want</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Reason: You will want to chown global room or global areas to a given bitlevel and a method to keep organized.
+Note: wizhelp control will give you a complete breakdown of what each bit can do.</p>
+</div>
 <div class="section" id="immortal-holder">
 <h4>Immortal Holder</h4>
 <p>&#64;pcreate ImmHolder=abc123
@@ -322,29 +320,26 @@ Note: ^listens are not global for intentional reasons.  It’s far too much</p>
 </div>
 <div class="section" id="chown-0-the-starting-room-and-2-the-master-room-to-immholder">
 <h3>Chown #0 (The starting room) and #2 (The Master room) to immholder</h3>
-<blockquote>
-<div><dl class="simple">
-<dt>Note: #0 you can chown to a different bitlevel if you want, but the</dt><dd><p>master room should always be owned by an immortal</p>
-</dd>
-</dl>
-</div></blockquote>
+<p>..note:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal</span>
+</pre></div>
+</div>
 <p>&#64;chown/preserve #0=*immholder
 &#64;chown/preserve #2=*immholder</p>
 </div>
 <div class="section" id="create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player">
 <h3>Create yourself your own immortal player then log off #1 and into this immortal player</h3>
-<blockquote>
-<div><p>Note: Pick what you want for playername and playerpassword</p>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pick what you want for playername and playerpassword</p>
+</div>
 <p>&#64;pcreate PLAYERNAME=PLAYERPASSWORD
 &#64;set <a href="#id1"><span class="problematic" id="id2">*</span></a>playername=!wanderer immortal</p>
 </div>
 <div class="section" id="log-out-of-1-and-log-into-your-immortal-player">
 <h3>Log out of #1 and log into your immortal player</h3>
-<blockquote>
-<div><p>Note: use the playername and password you created in the step before</p>
-</div></blockquote>
-<p>LOGOUT
+<p>Note: use the playername and password you created in the step before
+LOGOUT
 co PLAYERNAME PLAYERPASSWORD</p>
 </div>
 <div class="section" id="create-your-guest-characters">
