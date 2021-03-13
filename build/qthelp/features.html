@@ -51,8 +51,8 @@ CRON in the Mushcode directory, it by default sets up a job
 to purge anything over 30 days old, which should be more than
 sufficient for any needs.  The goodness of this?  You can recover
 nuked things from any period of time, as long as they were not
-&#64;purged first.
-Commands: &#64;purge, &#64;nuke, &#64;destroy, &#64;recover, &#64;reclist</p>
+&#64;purged first.</p>
+<p>Commands: &#64;purge, &#64;nuke, &#64;destroy, &#64;recover, &#64;reclist</p>
 </div></blockquote>
 </div>
 <div class="section" id="snapshot">
@@ -61,8 +61,8 @@ Commands: &#64;purge, &#64;nuke, &#64;destroy, &#64;recover, &#64;reclist</p>
 <div><p>Live image snapshots to unload or load to and from
 disk.  As many snapshots as you want, as often as you want.
 It essentially does a flatfile dump of a dbref#.  Great for
-backups or cross-Rhost portability.
-Command: &#64;snapshot</p>
+backups or cross-Rhost portability.</p>
+<p>Command: &#64;snapshot</p>
 </div></blockquote>
 </div>
 <div class="section" id="wizard-and-immortals-by-default">
@@ -103,22 +103,18 @@ effectively #1 in nearly every way.</p></li>
 <div class="section" id="have-multiple-player-aliases">
 <h2>Have multiple player aliases</h2>
 <blockquote>
-<div><p>As well as a method
-to reserve player names per player w/o revealing who has what
-name.
-&#64;protect</p>
+<div><p>As well as a method to reserve player names per player w/o revealing who has what name.</p>
+<p>&#64;protect</p>
 </div></blockquote>
 </div>
 <div class="section" id="actively-control-how-dark-works-both-game-wide-and-individually">
 <h2>Actively control how dark works both game-wide and individually</h2>
 <blockquote>
-<div><p>&#64;depower dark
-&#64;admin allow_whodark, sweep_dark, command_dark, lcon_checks_dark,</p>
-<blockquote>
-<div><p>secure_dark, see_owned_dark, idle_wiz_dark, player_dark</p>
-</div></blockquote>
-<p>&#64;toggle snuffdark
-&#64;flagdef to redefine who and what can set the DARK flag</p>
+<div><p>&#64;depower dark</p>
+<p>&#64;admin allow_whodark, sweep_dark, command_dark, lcon_checks_dark,
+secure_dark, see_owned_dark, idle_wiz_dark, player_dark</p>
+<p>&#64;toggle snuffdark</p>
+<p>&#64;flagdef to redefine who and what can set the DARK flag</p>
 </div></blockquote>
 </div>
 <div class="section" id="make-config-file-changes-in-game-without-having-to-reboot-or-have-shell-access">
@@ -154,9 +150,8 @@ name.
 <div class="section" id="multiple-zones">
 <h2>Multiple Zones</h2>
 <blockquote>
-<div><p>Have multiple zones which can optionally belong to
-multiple targets (multiple zones per target allowable!)
-&#64;zone, zones, lzone(), zonecmd()</p>
+<div><p>Have multiple zones which can optionally belong to multiple targets (multiple zones per target allowable!)</p>
+<p>&#64;zone, zones, lzone(), zonecmd()</p>
 </div></blockquote>
 </div>
 <div class="section" id="optionally-control-enable-or-disable-sideeffects">
@@ -174,22 +169,22 @@ the same physical space.  These layers can work independently
 or allow interaction with other layers for vast customization.
 This affects all methods within the game including all matching,
 looking, $commands, listens, movement, interaction, pretty
-much every single aspect of mushing.
-REALITY LEVELS</p>
+much every single aspect of mushing.</p>
+<p>REALITY LEVELS</p>
 </div></blockquote>
 </div>
 <div class="section" id="override-any-command-with-softcode">
 <h2>Override any command with softcode</h2>
 <blockquote>
-<div><p>&#64;admin access (check ignore)
-Master room $commands to then override the hardcode</p>
+<div><p>&#64;admin access (check ignore)</p>
+<p>Master room $commands to then override the hardcode</p>
 </div></blockquote>
 </div>
 <div class="section" id="the-abilility-to-raise-or-lower-permissions-on-the-various">
 <h2>The abilility to raise or lower permissions on the various</h2>
 <blockquote>
-<div><p>staff bitlevels for each player.
-&#64;power, &#64;depower, TOGGLES, FLAGS</p>
+<div><p>staff bitlevels for each player.</p>
+<p>&#64;power, &#64;depower, TOGGLES, FLAGS</p>
 </div></blockquote>
 </div>
 <div class="section" id="customize-new-commands-on-the-connect-screen">
@@ -201,58 +196,44 @@ Master room $commands to then override the hardcode</p>
 <div class="section" id="softcode-any-txt-file-like-connect-txt">
 <h2>Softcode any txt file (like connect.txt)</h2>
 <blockquote>
-<div><p>and have it evaluate in-game.  It evaluates as the object
-it is on.
-&#64;admin file_object</p>
+<div><p>and have it evaluate in-game.  It evaluates as the object it is on.</p>
+<p>&#64;admin file_object</p>
 </div></blockquote>
 </div>
 <div class="section" id="advanced-tracing-methods-for-debugging-your-code-including-labels">
 <h2>Advanced tracing methods for debugging your code including labels!</h2>
 <blockquote>
-<div><p>Commands: &#64;label
-Functions: parenmatch(), trace()
-Toggles: CPUTIME
-Flags: TRACE
-Attributes: TRACE_GREP, TRACE, TRACE_COLOR, TRACE_COLOR_&lt;attr&gt;
-Substitutions: %_</p>
+<div><p>Commands: &#64;label</p>
+<p>Functions: parenmatch(), trace()</p>
+<p>Toggles: CPUTIME</p>
+<p>Flags: TRACE</p>
+<p>Attributes: TRACE_GREP, TRACE, TRACE_COLOR, TRACE_COLOR_&lt;attr&gt;</p>
+<p>Substitutions: %_</p>
 </div></blockquote>
 </div>
 <div class="section" id="built-in-pretty-printing-of-attributes-with-the-parenmatch-function">
 <h2>Built in pretty-printing of attributes with the parenmatch() function</h2>
-<blockquote>
-<div><p>Example Code Output :
-&#64;emit [add(1,sub(2,div(3,4)),5)];&#64;emit [extract(get(me/foo),3,1)</p>
-<p>Example Pretty Print:
-&#64;emit [</p>
-<blockquote>
-<div><dl>
-<dt>add(</dt><dd><dl>
-<dt>1,sub(</dt><dd><dl class="simple">
-<dt>2,div(</dt><dd><p>3,4</p>
-</dd>
-</dl>
-<p>)</p>
-</dd>
-</dl>
-<p>),5</p>
-</dd>
-</dl>
-<p>)</p>
-</div></blockquote>
-<dl>
-<dt>];&#64;emit [</dt><dd><dl>
-<dt>extract(</dt><dd><dl class="simple">
-<dt>get(</dt><dd><p>me/foo</p>
-</dd>
-</dl>
-<p>),3,1</p>
-</dd>
-</dl>
-<p>)</p>
-</dd>
-</dl>
-<p>]</p>
-</div></blockquote>
+<p>Example Code Output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@emit</span> <span class="p">[</span><span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">sub</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">div</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)),</span><span class="mi">5</span><span class="p">)];</span><span class="nd">@emit</span> <span class="p">[</span><span class="n">extract</span><span class="p">(</span><span class="n">get</span><span class="p">(</span><span class="n">me</span><span class="o">/</span><span class="n">foo</span><span class="p">),</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">Example</span> <span class="n">Pretty</span> <span class="n">Print</span><span class="p">:</span>
+<span class="nd">@emit</span> <span class="p">[</span>
+   <span class="n">add</span><span class="p">(</span>
+      <span class="mi">1</span><span class="p">,</span><span class="n">sub</span><span class="p">(</span>
+         <span class="mi">2</span><span class="p">,</span><span class="n">div</span><span class="p">(</span>
+            <span class="mi">3</span><span class="p">,</span><span class="mi">4</span>
+         <span class="p">)</span>
+      <span class="p">),</span><span class="mi">5</span>
+   <span class="p">)</span>
+<span class="p">];</span><span class="nd">@emit</span> <span class="p">[</span>
+   <span class="n">extract</span><span class="p">(</span>
+      <span class="n">get</span><span class="p">(</span>
+         <span class="n">me</span><span class="o">/</span><span class="n">foo</span>
+      <span class="p">),</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span>
+   <span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="plenty-more-not-mentioned">
 <h2>Plenty more not mentioned!</h2>
@@ -273,12 +254,15 @@ do.</p>
 when to do debugging via a trace() function, with toggled labels, and the
 ability to grep content from trace output.  There also exists features to
 color-match parenthesis, braces, and brackets in-game as well as pretty print
-the output of commands and functions.
-- help trace
-- help %_
-- help trace()
-- help parenmatch()
-- help parenstr()</p></li>
+the output of commands and functions.</p>
+<ul>
+<li><p>help trace</p></li>
+<li><p>help %_</p></li>
+<li><p>help trace()</p></li>
+<li><p>help parenmatch()</p></li>
+<li><p>help parenstr()</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -289,13 +273,16 @@ the output of commands and functions.
 <li><p>Zoning in Rhost allows the same functionality of Penn and MUX, though the
 syntax is different.  It also allows the ability to belong to multiple
 zones at the same time and take advantage of mulitple zones at once.
-This allows for increased levels of complexity.
-- help zones
-- help &#64;zone
-- help zonecmd()
-- help lzone()
-- help &#64;Lock type twink
-- help &#64;lock type zone</p></li>
+This allows for increased levels of complexity.</p>
+<ul>
+<li><p>help zones</p></li>
+<li><p>help &#64;zone</p></li>
+<li><p>help zonecmd()</p></li>
+<li><p>help lzone()</p></li>
+<li><p>help &#64;Lock type twink</p></li>
+<li><p>help &#64;lock type zone</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -309,11 +296,14 @@ reality is its own sandbox and can either stand alone or work
 dependently with other realities.  A person can belong to multiple
 realities at the same time, and realities is geared to a method for
 send and receive.  Each ‘method’ requires to be in the given reality
-to affect it.
-- help reality levels
-- wizhelp chkreality
-- wizhelp reaity level
-- help &#64;Lock type user</p></li>
+to affect it.</p>
+<ul>
+<li><p>help reality levels</p></li>
+<li><p>wizhelp chkreality</p></li>
+<li><p>wizhelp reaity level</p></li>
+<li><p>help &#64;Lock type user</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -330,25 +320,25 @@ softcode override.  You may also use &#64;Hook for altering how
 a command works.   Functions are overridden by setting the
 function in question ignored, then writing a softcode alternative
 that is then executed and fetched appropriately.</p>
+<p>Commands:</p>
 <blockquote>
-<div><dl class="simple">
-<dt>Commands:</dt><dd><ul class="simple">
+<div><ul class="simple">
 <li><p>wizhelp &#64;admin</p></li>
 <li><p>wizhelp access</p></li>
 <li><p>wizhelp permissions</p></li>
 <li><p>wizhelp &#64;Hook</p></li>
 <li><p>wizhelp hook setup</p></li>
 </ul>
-</dd>
-<dt>Functions:</dt><dd><ul class="simple">
+</div></blockquote>
+<p>Functions:</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>wizhelp &#64;admin</p></li>
 <li><p>wizhelp function_access</p></li>
 <li><p>wizhelp &#64;function</p></li>
 <li><p>help &#64;lfunction</p></li>
 <li><p>wizhelp bypass()</p></li>
 </ul>
-</dd>
-</dl>
 </div></blockquote>
 </li>
 </ul>
@@ -363,14 +353,17 @@ Whenever you destroy something within the mush, it is stacked onto
 the recycle bin and marked unavailable within the mush.  This marks
 the dbref# as garbage in any sense of the word.  However, the object
 is not able to be reused until purged.  Once purged, it is put onto
-a free list that can then be reassigned to a new object.
-- wizhelp &#64;nuke
-- wizhelp &#64;destroy
-- wizhelp &#64;toad
-- wizhelp &#64;turtle
-- wizhelp &#64;purge
-- wizhelp &#64;recover
-- wizhelp &#64;reclist</p></li>
+a free list that can then be reassigned to a new object.</p>
+<ul>
+<li><p>wizhelp &#64;nuke</p></li>
+<li><p>wizhelp &#64;destroy</p></li>
+<li><p>wizhelp &#64;toad</p></li>
+<li><p>wizhelp &#64;turtle</p></li>
+<li><p>wizhelp &#64;purge</p></li>
+<li><p>wizhelp &#64;recover</p></li>
+<li><p>wizhelp &#64;reclist</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -381,11 +374,14 @@ a free list that can then be reassigned to a new object.
 <li><p>Rhost allows the ability to both override percent substitutions as
 well as creating new ones.  This is done with &#64;Hook and admin
 params and issues softcode overriding.  Due to how it is evaluated
-there is no risk of recursion.
-- wizhelp &#64;hook
-- wizhelp hook_cmd
-- wizhelp sub_include
-- wizhelp sub_override</p></li>
+there is no risk of recursion.</p>
+<ul>
+<li><p>wizhelp &#64;hook</p></li>
+<li><p>wizhelp hook_cmd</p></li>
+<li><p>wizhelp sub_include</p></li>
+<li><p>wizhelp sub_override</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -394,11 +390,14 @@ there is no risk of recursion.
 <blockquote>
 <div><ul class="simple">
 <li><p>Hooking allows you to have advanced methods to manipulate commands
-including adding customized switches to them via softcode.
-- wizhelp &#64;hook
-- wizhelp hook_cmd
-- wizhelp hook_obj
-- wizhelp hook setup</p></li>
+including adding customized switches to them via softcode.</p>
+<ul>
+<li><p>wizhelp &#64;hook</p></li>
+<li><p>wizhelp hook_cmd</p></li>
+<li><p>wizhelp hook_obj</p></li>
+<li><p>wizhelp hook setup</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -413,9 +412,12 @@ the lock is to be evaluated.  This works in the same manner
 as an evaluation lock.  To be able to use the USELOCK attribute flag
 you must be empowered to do so with the ‘ATRUSE’ &#64;toggle.  You may
 also use the secure_atruselock config parameter to globally enable
-this and not require the toggle to be set.
-- wizhelp atruse toggle
-- help attribute uselocks</p></li>
+this and not require the toggle to be set.</p>
+<ul>
+<li><p>wizhelp atruse toggle</p></li>
+<li><p>help attribute uselocks</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -426,8 +428,11 @@ this and not require the toggle to be set.
 <li><p>We distinguish between commands and listens with uselocks by passing
 an optional argument to all locks that are uselocks.  This optional
 argument is 0 for a default lock, 1 for a command lock and 2 for
-a listen lock.
-- help &#64;lock type uselock</p></li>
+a listen lock.</p>
+<ul>
+<li><p>help &#64;lock type uselock</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -437,11 +442,14 @@ a listen lock.
 <div><ul class="simple">
 <li><p>By default wizards override all locks, including attribute locks,
 can see all dark exits, and bypass pagelocks.  This can be
-troublesome, and even abusive, so there’s ways to disable this.
-- wizhelp &#64;depower (for those abusing it)
-- wizhelp no_override (disable overiding locks)
-- wizhelp no_uselock (disable just uselock overriding)
-- wizhelp pagelock toggle (disable pagelock overriding)</p></li>
+troublesome, and even abusive, so there’s ways to disable this.</p>
+<ul>
+<li><p>wizhelp &#64;depower (for those abusing it)</p></li>
+<li><p>wizhelp no_override (disable overiding locks)</p></li>
+<li><p>wizhelp no_uselock (disable just uselock overriding)</p></li>
+<li><p>wizhelp pagelock toggle (disable pagelock overriding)</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -452,19 +460,28 @@ troublesome, and even abusive, so there’s ways to disable this.
 <li><p>Flags and toggles can be controlled to have multiple permissions
 and enable/disable targets of how the flags are allowed to be
 set.  This is done through commands in-game or you can use
-conf file options to do so.
-- wizhelp &#64;flagdef
-- wizhelp &#64;toggledef
-——- &#64;admin &#64;flagdef alternatives
-- wizhelp flag_access_set
-- wizhelp flag_access_unset
-- wizhelp flag_access_see
-- wizhelp flag_access_type
-——- &#64;admin &#64;toggledef alternatives
-- wizhelp toggle_access_set
-- wizhelp toggle_access_unset
-- wizhelp toggle_access_see
-- wizhelp toggle_access_type</p></li>
+conf file options to do so.</p>
+<ul>
+<li><p>wizhelp &#64;flagdef</p></li>
+<li><p>wizhelp &#64;toggledef</p></li>
+<li><p>&#64;admin &#64;flagdef alternatives</p>
+<ul>
+<li><p>wizhelp flag_access_set</p></li>
+<li><p>wizhelp flag_access_unset</p></li>
+<li><p>wizhelp flag_access_see</p></li>
+<li><p>wizhelp flag_access_type</p></li>
+</ul>
+</li>
+<li><p>&#64;admin &#64;toggledef alternatives</p>
+<ul>
+<li><p>wizhelp toggle_access_set</p></li>
+<li><p>wizhelp toggle_access_unset</p></li>
+<li><p>wizhelp toggle_access_see</p></li>
+<li><p>wizhelp toggle_access_type</p></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -475,11 +492,14 @@ conf file options to do so.
 <li><p>We allow advanced site control by not only blocking various sites
 but we can specify how many times a player can be connected at the
 same time as well as how many times sites are able to connect at
-the same time.  This is done through normal site manipulation.
-- wizhelp forbid_host
-- wizhelp register_host
-- wizhelp noguest_host
-- wizhelp &#64;list (site option)</p></li>
+the same time.  This is done through normal site manipulation.</p>
+<ul>
+<li><p>wizhelp forbid_host</p></li>
+<li><p>wizhelp register_host</p></li>
+<li><p>wizhelp noguest_host</p></li>
+<li><p>wizhelp &#64;list (site option)</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -490,8 +510,11 @@ the same time.  This is done through normal site manipulation.
 <li><p>Autoregistration is the method that a player can auto-register
 by providing their email on the connect screen.  It will email
 them a password and an optional document that the administrator
-provides.  This is well described in the wizhelp.
-- wizhelp autoregistration</p></li>
+provides.  This is well described in the wizhelp.</p>
+<ul>
+<li><p>wizhelp autoregistration</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -511,9 +534,10 @@ other codebases.  For most things, this is the bitlevel you want
 to assign players.  The exception will likely be game owners or
 people who control the master room code.</p>
 <p>There’s a bunch of readme files and online wizhelp that goes into
-detail of the various bitlevels and what each can do.
-- XV.   Multi-tiered bitlevel systems
-- wizhelp control</p>
+detail of the various bitlevels and what each can do.</p>
+<ul class="simple">
+<li><p>wizhelp control</p></li>
+</ul>
 </li>
 </ul>
 </div></blockquote>
@@ -521,44 +545,36 @@ detail of the various bitlevels and what each can do.
 <div class="section" id="what-are-the-limits-for-size-growth-for-rhostmush">
 <h3>What are the limits for size/growth for RhostMUSH?</h3>
 <blockquote>
-<div><ul>
+<div><ul class="simple">
 <li><p>While using QDBM, there’s really no set limits for most things.
-The limits that we have are as followed:
-LBUF - 64K.  It is recommended to only use 32K as there is some</p>
+The limits that we have are as followed:</p></li>
+</ul>
+<blockquote>
+<div><p>LBUF - 64K.  It is recommended to only use 32K as there is some issues with networking with 64K lbufs.</p>
 <blockquote>
 <div><blockquote>
-<div><p>issues with networking with 64K lbufs.</p>
-</div></blockquote>
-<ul class="simple">
+<div><ul class="simple">
 <li><p>Compile time option with the menu configurator</p></li>
 </ul>
 </div></blockquote>
-<dl class="simple">
-<dt>SBUF - 64 characters (if configured – it’s suggested you do).</dt><dd><ul class="simple">
+<p>SBUF - 64 characters (if configured – it’s suggested you do).</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>Compile time option with the menu configurator</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 <p>MBUF - 200 characters.  Not able to be changed.</p>
-<dl>
-<dt>MAX CONNECTIONS - Limited by the total number of open sockets</dt><dd><blockquote>
-<div><p>and descriptors on the account and server running on.
-There are various tools to limit connection DoS attemps
-and other such nastiness.  This is well documented in
-the netrhost.conf file.</p>
-</div></blockquote>
-<ul class="simple">
+<p>MAX CONNECTIONS - Limited by the total number of open sockets and descriptors on the account and server running on.  There are various tools to limit connection DoS attemps and other such nastiness.  This is well documented in the netrhost.conf file.</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>wizhelp max_players</p></li>
 <li><p>~/game/netrhost.conf</p></li>
 </ul>
-</dd>
-<dt>MEMORY - no limit.  Generally runs between 8-50M depending</dt><dd><p>on the size of the mush and the LBUF size specified.</p>
-</dd>
-<dt>CPU  - no limit, but has built in cpu abort in code.  The</dt><dd><blockquote>
-<div><p>netrhost.conf file documents this well for customizing.
-the default values are usually good enough.</p>
 </div></blockquote>
-<ul class="simple">
+<p>MEMORY - no limit.  Generally runs between 8-50M depending on the size of the mush and the LBUF size specified.</p>
+<p>CPU  - no limit, but has built in cpu abort in code.  The netrhost.conf file documents this well for customizing.  the default values are usually good enough.</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>wizhelp max_cpu_cycles</p></li>
 <li><p>wizhelp cpuintervalchk</p></li>
 <li><p>wizhelp cputimechk</p></li>
@@ -566,36 +582,26 @@ the default values are usually good enough.</p>
 <li><p>wizhelp heavy_cpu_max</p></li>
 <li><p>~/game/netrhost.conf</p></li>
 </ul>
-</dd>
-<dt>DISK - no limit.  Generally will be 75-200M depending on size,</dt><dd><p>number of backups and if you leave your compiled object
-files in.</p>
-</dd>
-<dt>DB Size - (20000 default) There is no limit on the number of</dt><dd><blockquote>
-<div><p>objects the db can have.  By default it’s soft limited
-to 20K objects, which can be changed by a netrhost.conf
-file change.  We have had this up past 1.5 million
-objects, and other than a second or two of lag for
-complex searches we had no real problem.</p>
 </div></blockquote>
-<ul class="simple">
+<p>DISK - no limit.  Generally will be 75-200M depending on size, number of backups and if you leave your compiled object files in.</p>
+<p>DB Size - (20000 default) There is no limit on the number of objects the db can have.  By default it’s soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem.</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>wizhelp maximum_size</p></li>
 <li><p>help &#64;quota</p></li>
 <li><p>wizhelp &#64;quota</p></li>
 <li><p>wizhelp &#64;limit</p></li>
 </ul>
-</dd>
-<dt>Attribute Size - 10K as a hard limit.  750 as a soft limit.</dt><dd><blockquote>
-<div><p>You can increase this but it can’t exceed 10000
-attributes.  This is to avoid DoS style attacks.</p>
 </div></blockquote>
-<ul class="simple">
+<p>Attribute Size - 10K as a hard limit.  750 as a soft limit.  You can increase this but it can’t exceed 10000 attributes.  This is to avoid DoS style attacks.</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>wizhelp vlimit</p></li>
 <li><p>wizhelp &#64;limit</p></li>
 </ul>
-</dd>
-</dl>
-</li>
-</ul>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 </div></blockquote>
 </div>
 <div class="section" id="sqlite-and-mysql-maria-setup-and-why-use-it">
@@ -618,11 +624,14 @@ example between a wiki, a forum, and the mush.</p></li>
 <li><p>Rhost has execscript() which allows executing outside binaries
 or scripts as a native function.  All effort has been done to
 avoid any type of DoS based issue or hang by doing this, however
-the guidelines presented should be followed before doing so.
-- wizhelp execscript
-- wizhelp power execscript
-- help sidefx
-- wizhelp writing scripts</p></li>
+the guidelines presented should be followed before doing so.</p>
+<ul>
+<li><p>wizhelp execscript</p></li>
+<li><p>wizhelp power execscript</p></li>
+<li><p>help sidefx</p></li>
+<li><p>wizhelp writing scripts</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
@@ -630,8 +639,7 @@ the guidelines presented should be followed before doing so.
 <h3>Pulling external data into RhostMUSH</h3>
 <blockquote>
 <div><ul>
-<li><p>You are capable of pulling external data in to RhostMUSH using
-several methods.  These are by using:</p>
+<li><p>You are capable of pulling external data in to RhostMUSH using several methods.  These are by using:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>SQL (mysql or sqlite)</p></li>
@@ -651,32 +659,26 @@ several methods.  These are by using:</p>
 easilly by use of signals.  By using SIGUSR1 you can specify
 Rhost to execute code in-game, which part of that could be
 to pick up a pre-designed list of commands that the unix cron
-has set up.
-- wizhelp signal
-- wizhelp signal_cron</p></li>
+has set up.</p>
+<ul>
+<li><p>wizhelp signal</p></li>
+<li><p>wizhelp signal_cron</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="signal-handling-how-it-works-and-when-and-why-use-it">
 <h3>Signal handling, how it works, and when and why use it</h3>
 <blockquote>
-<div><ul>
+<div><ul class="simple">
 <li><p>Signals are used to do different things for the mush.  By default,
 the following signals are recognized by the mush and will do
-the following as defaults.
-- SIGUSR1 - will do a reboot of the mush.  This is also customizable</p>
-<blockquote>
-<div><p>so that you can have it execute code in-mush if you want.</p>
-</div></blockquote>
-<ul class="simple">
+the following as defaults.</p>
+<ul>
+<li><p>SIGUSR1 - will do a reboot of the mush.  This is also customizable so that you can have it execute code in-mush if you want.</p></li>
 <li><p>SIGUSR2 - will do a clean shutdown of the mush.</p></li>
-<li><dl class="simple">
-<dt>SIGTERM - will immediately scram the mush as cleanly and fast</dt><dd><p>as possible.  It will avoid dumping anything to
-the database to speed up scramming, but write
-a TERM flat file to be loaded in if corruption.</p>
-</dd>
-</dl>
-</li>
+<li><p>SIGTERM - will immediately scram the mush as cleanly and fast as possible.  It will avoid dumping anything to the database to speed up scramming, but write a TERM flat file to be loaded in if corruption.</p></li>
 </ul>
 </li>
 </ul>
@@ -689,29 +691,37 @@ a TERM flat file to be loaded in if corruption.</p>
 <li><p>Global parents are useful when you want to have a global ‘parent’
 without actually having a defined <a class="reference external" href="mailto:'&#37;&#52;&#48;parent">‘<span>&#64;</span>parent</a>’.  It always will be the
 highest tier in a lookup.  The way lookups will go will be:</p>
-<blockquote>
-<div><p>self-&gt;&#64;parent(s)-&gt;&#64;zone(s)-&gt;GlobalParent</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">-&gt;</span><span class="nd">@parent</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">-&gt;</span><span class="nd">@zone</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">GlobalParent</span>
+</pre></div>
+</div>
 <p>The type of the parent does not have to match the target.</p>
 <p>These global parents can be defined either by using a global
 generic parent or by using the type.  If a type is specified it
-overrides the generic.  The following parameters are used:
-- global_parent_obj     - The generic global parent (if defined)
-- global_parent_room    - The room global parent
-- global_parent_exit    - The exit global parent
-- global_parent_thing   - The thing global parent
-- global_parent_player  - The player global parent</p>
+overrides the generic.  The following parameters are used:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>global_parent_obj     - The generic global parent (if defined)</p></li>
+<li><p>global_parent_room    - The room global parent</p></li>
+<li><p>global_parent_exit    - The exit global parent</p></li>
+<li><p>global_parent_thing   - The thing global parent</p></li>
+<li><p>global_parent_player  - The player global parent</p></li>
+</ul>
+</div></blockquote>
 </li>
 <li><p>Global &#64;parents are different than global parents in that any new
 item of similar type that is created is automatically assigned this
 physical &#64;parent.  It’s obviously more limiting since it sets
 the literal physical parent defined.</p>
 <p>The type of the parent does not have to match the target.</p>
-<p>The following parameters are used:
-- room_parent           - The target that new rooms are &#64;parented
-- exit_parent           - The target that new exits are &#64;parented
-- thing_parent          - The target that new things are &#64;parented
-- player_parent         - The target that new players are &#64;parented</p>
+<p>The following parameters are used:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>room_parent           - The target that new rooms are &#64;parented</p></li>
+<li><p>exit_parent           - The target that new exits are &#64;parented</p></li>
+<li><p>thing_parent          - The target that new things are &#64;parented</p></li>
+<li><p>player_parent         - The target that new players are &#64;parented</p></li>
+</ul>
+</div></blockquote>
 </li>
 <li><p>Global attribute formatting is a method define a wrapper, of sorts,
 where attributes like &#64;desc, &#64;odesc, &#64;succ, and anything similar
@@ -721,12 +731,14 @@ configuration.  Example: &amp;FORMATDESC or &amp;DESCFORMAT localy, or
 use the following global objects for global formatting.  Local
 formatting has priority.</p>
 <p>The type of the parent does not have to match the target.</p>
-<ul class="simple">
+<blockquote>
+<div><ul class="simple">
 <li><p>room_attr_default     - Target for room formatting</p></li>
 <li><p>exit_attr_default     - Target for exit formatting</p></li>
 <li><p>thing_attr_default    - Target for thing formatting</p></li>
 <li><p>player_attr_default   - Target for player formatting</p></li>
 </ul>
+</div></blockquote>
 </li>
 </ul>
 </div></blockquote>
@@ -739,42 +751,54 @@ limitations that exist within it.</p>
 <ul>
 <li><p>Function invocations.  Sometimes you will hit a ceiling on evaluation.
 You may want to tweak values to allow more functions or commands
-to execute.  The following controls that:
-- function_invocation_limit [25000 default] - specifies the total</p>
+to execute.  The following controls that:</p>
 <blockquote>
-<div><p>functions you can execute per command.</p>
-</div></blockquote>
-<ul class="simple">
-<li><dl class="simple">
-<dt>function_recursion_limit [50] - specifies the total times a</dt><dd><p>function can call itself over and over.  Rarely should this
-be increased and doing so can effect your stack depth.</p>
-</dd>
-</dl>
-</li>
+<div><ul class="simple">
+<li><p>function_invocation_limit [25000 default] - specifies the total functions you can execute per command.</p></li>
+<li><p>function_recursion_limit [50] - specifies the total times a function can call itself over and over.  Rarely should this be increased and doing so can effect your stack depth.</p></li>
 </ul>
+</div></blockquote>
 </li>
 <li><p>Command queue limits.  Sometimes you want more to be queued up for
-players or wizards.
-- player_queue_limit  - Max number of entries a player can queue
-- wizard_queue_limit  - Max number of entries a wizard can queue</p></li>
-<li><p>&#64;limit is a wonderful way to lock down limitations per player or
-global.  Lots of power is available here.
-- &#64;limit
-- vattr_limit_checkwiz - Enable &#64;limit checks for wizards
-- wizmax_vattr_limit   - Set wizard global VATTR limits
-- wizmax_dest_limit    - Set wizard global &#64;destroy limits
-- max_vattr_limit      - Set player global VATTR limits
-- max_dest_limit       - Set player global &#64;destroy limits</p></li>
-<li><p>Lots of trace output can be cut off.  You can modify this with:
-- trace_output_limit   - Set lines of trace output shown</p></li>
-<li><p>To define how many commands a minute a player set SPAMMONITOR can use
-- spam_limit – default 120</p></li>
+players or wizards.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>player_queue_limit  - Max number of entries a player can queue</p></li>
+<li><p>wizard_queue_limit  - Max number of entries a wizard can queue</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>&#64;limit is a wonderful way to lock down limitations per player or global.  Lots of power is available here.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>&#64;limit</p></li>
+<li><p>vattr_limit_checkwiz - Enable &#64;limit checks for wizards</p></li>
+<li><p>wizmax_vattr_limit   - Set wizard global VATTR limits</p></li>
+<li><p>wizmax_dest_limit    - Set wizard global &#64;destroy limits</p></li>
+<li><p>max_vattr_limit      - Set player global VATTR limits</p></li>
+<li><p>max_dest_limit       - Set player global &#64;destroy limits</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Lots of trace output can be cut off.  You can modify this with:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>trace_output_limit   - Set lines of trace output shown</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>To define how many commands a minute a player set SPAMMONITOR can use</p>
+<ul class="simple">
+<li><p>spam_limit – default 120</p></li>
+</ul>
+</li>
 <li><p>If you examine things and see ‘Output cut off’ messages, you may want
 to increase your output limit, funny enough, the name of this is
-similar
-- output_limit - You should set this no less than 4 times the current</p>
+similar</p>
 <blockquote>
-<div><p>size of your LBUF.</p>
+<div><ul class="simple">
+<li><p>output_limit - You should set this no less than 4 times the current size of your LBUF.</p></li>
+</ul>
 </div></blockquote>
 </li>
 <li><p>Attributes names can not exceed 64 characters.  Sorry, it’s a hard limit</p></li>
@@ -790,18 +814,15 @@ Also look at lit() as a solution.</p></li>
 <h4>PennMUSH</h4>
 <blockquote>
 <div><ul>
-<li><p>Attribute trees.  These are emulated as a base set and can be
-duplicated enough to at least port code.</p></li>
+<li><p>Attribute trees.  These are emulated as a base set and can be duplicated enough to at least port code.</p></li>
 <li><p>lsearch() will have to be recoded to search()</p></li>
 <li><p>align() will have to be recoded to printf()</p></li>
 <li><p>Penn allows empty attributes.  Rhost does not.  Work will have to
 be done to take this into consideration.</p></li>
-<li><p>All <a href="#id1"><span class="problematic" id="id2">*</span></a>val() functions in Penn that are used will have to be
-remapped to a non-<a href="#id3"><span class="problematic" id="id4">*</span></a>val() function.  It should be as simple as
-function_alias to the non-<a href="#id5"><span class="problematic" id="id6">*</span></a>val.  Example:</p>
-<blockquote>
-<div><p>&#64;admin function_alias=hasattrval hasattr</p>
-</div></blockquote>
+<li><p>All *val() functions in Penn that are used will have to be remapped to a non-*val() function.  It should be as simple as function_alias to the non-*val.  Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span> <span class="n">function_alias</span><span class="o">=</span><span class="n">hasattrval</span> <span class="nb">hasattr</span>
+</pre></div>
+</div>
 </li>
 <li><p>Penn’s hardcoded comsystem is emulated with the softcode comsys</p></li>
 <li><p>Penn’s &#64;mail system is workable with mail wrappers</p></li>
@@ -816,8 +837,7 @@ function_alias to the non-<a href="#id5"><span class="problematic" id="id6">*</s
 <h4>MUX</h4>
 <blockquote>
 <div><ul class="simple">
-<li><p>Mux has an async mysql database engine.  This is not possible
-with Rhost.  You’ll have to use the sync method instead.</p></li>
+<li><p>Mux has an async mysql database engine.  This is not possible with Rhost.  You’ll have to use the sync method instead.</p></li>
 <li><p>UTF8 is supported but internally passed differently.</p></li>
 <li><p>Mux’s hardcoded comsystem is emulated with the softcode comsys</p></li>
 <li><p>MUX’s &#64;mail system is workable with mail wrappers</p></li>
@@ -830,72 +850,90 @@ with Rhost.  You’ll have to use the sync method instead.</p></li>
 <div class="section" id="advanced-guest-setup">
 <h3>Advanced guest setup</h3>
 <blockquote>
-<div><ul class="simple">
+<div><ul>
 <li><p>After you set up your guests, you can set unique names to each guest
 if you so want after defining the dbref#’s your guests use.  This is
 done by defining them in the guest_namelist parameter.  You can also
-increase guests (or decrease them) between 0-31 guests.
-- wizhelp guest_namelist
-- wizhelp num_guests</p></li>
+increase guests (or decrease them) between 0-31 guests.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>wizhelp guest_namelist</p></li>
+<li><p>wizhelp num_guests</p></li>
+</ul>
+</div></blockquote>
+</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="attribute-permission-masking-and-the-joys-of-the-power-behind-it">
 <h3>Attribute permission masking and the joys of the power behind it</h3>
 <blockquote>
-<div><ul class="simple">
+<div><ul>
 <li><p>Attribute contentlocks can be set up so you can lock the actual
 content that you can set (or even unset!) into an attribute.
 The beauty of this is that you can specify case sensitive
 information, lock different ways contents in attributes are set
 based on who is setting it, or even on where it’s being set.
-The sky’s the limit.
-- global_attrdefault    - Target for defining content locks</p></li>
+The sky’s the limit.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>global_attrdefault    - Target for defining content locks</p></li>
+</ul>
+</div></blockquote>
+</li>
 </ul>
 </div></blockquote>
 </div>
 <div class="section" id="the-amazing-cluster-and-what-it-can-do-for-you">
 <h3>The amazing &#64;cluster and what it can do for you</h3>
 <blockquote>
-<div><ul class="simple">
+<div><ul>
 <li><p>Clusters is the way to virtually assign multiple objects into
 a single physical object.  It essentially chains together two
 or more objects to share attributes between them, so that any
 attribute set on any object in that cluster can be set or fetched
 as if it was a singular entity.  This allows some amazing ability
 to distribute attribute content or even have a farm of a massive
-amount of attributes without paying a hefty penalty on object bloat.</p></li>
-</ul>
+amount of attributes without paying a hefty penalty on object bloat.</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>help cluster  – Gives a fantastic overview of how clusters work.</p></li>
 </ul>
 </div></blockquote>
+</li>
+</ul>
 </div></blockquote>
 </div>
 <div class="section" id="what-we-plan-for-the-future">
 <h3>What we plan for the future</h3>
 <blockquote>
-<div><blockquote>
 <div><ul class="simple">
-<li><p>Things to look forward to the future with RhostMUSH.
-- Full Unicode/UTF8 in Rhost 4.0
-- A fully featured tag system in Rhost 4.0
-- Built in Python API handler in Rhost 4.0
-- Hopefully a built in Ruby and Perl API in Rhost 4.0/4.1
-- Cross-Mush execution between mushes in Rhost 4.1
-- More as we think about it :)</p></li>
+<li><p>Things to look forward to the future with RhostMUSH.</p>
+<ul>
+<li><p>Full Unicode/UTF8 in Rhost 4.0</p></li>
+<li><p>A fully featured tag system in Rhost 4.0</p></li>
+<li><p>Built in Python API handler in Rhost 4.0</p></li>
+<li><p>Hopefully a built in Ruby and Perl API in Rhost 4.0/4.1</p></li>
+<li><p>Cross-Mush execution between mushes in Rhost 4.1</p></li>
+<li><p>More as we think about it :)</p></li>
+</ul>
+</li>
 </ul>
 </div></blockquote>
-<p>EXT: Additional features not covered otherwise
-Additional features
-- +/- 5.4 million years can be utilized with the built in time functions</p>
+</div>
+<div class="section" id="additional-features-not-covered-otherwise">
+<h3>Additional features not covered otherwise</h3>
 <blockquote>
-<div><p>which includes timefmt(), secs(), convtime(), convsecs(), and moon().  Party on!</p>
+<div><ul>
+<li><p>+/- 5.4 million years can be utilized with the built in time functions
+which includes timefmt(), secs(), convtime(), convsecs(), and moon().  Party on!</p></li>
+<li><p>Changing permission levels in the middle of execution for evaluation.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>see help on the streval and ueval function’</p></li>
+</ul>
 </div></blockquote>
-<ul class="simple">
-<li><p>Changing permission levels in the middle of execution for evaluation.
-* see help on the streval and ueval function</p></li>
+</li>
 <li><p>Full features in-game customization of near every aspect of the game.</p></li>
 </ul>
 </div></blockquote>
@@ -935,12 +973,10 @@ guest_namelist</p>
 <div class="section" id="powers-are-inherited">
 <h3>&#64;powers are INHERITED</h3>
 <blockquote>
-<div><dl class="simple">
-<dt>Therefore, you need power_objects enabled (&#64;admin)</dt><dd><p>to make this work properly for non-plauyers.
+<div><p>Therefore, you need power_objects enabled (&#64;admin)
+to make this work properly for non-plauyers.
 A power is taken before a bit level ONLY if higher than that bit.
 Yes, powers are multi-level.</p>
-</dd>
-</dl>
 </div></blockquote>
 </div>
 <div class="section" id="depowers-are-automatically-checked-first-before-anything-else">
@@ -966,16 +1002,16 @@ Yes, any such ‘repairing’ is logged so you know if something is up.</p>
 <div class="section" id="you-can-get-your-connect-txt-to-parse-ansi">
 <h3>You can get your connect.txt to parse ansi</h3>
 <blockquote>
-<div><p>See ansi_txtfiles in wizhelp.
-You can also override it with softcode if you so wanted.
-See file_object in wizhelp for more information on this.</p>
+<div><p>See ansi_txtfiles in wizhelp.</p>
+<p>You can also override it with softcode if you so wanted.</p>
+<p>See file_object in wizhelp for more information on this.</p>
 </div></blockquote>
 </div>
 <div class="section" id="re-compiled-binaries-do-not-require-an-shutdown">
 <h3>Re-compiled binaries do not require an &#64;shutdown</h3>
 <blockquote>
-<div><p>When re-compiling the binaries, all you have to remember is when done, issue
-&#64;reboot on the game and &#64;readcache.</p>
+<div><p>When re-compiling the binaries, all you have to remember is when done, issue</p>
+<p>&#64;reboot on the game and &#64;readcache.</p>
 <p>You do not need to &#64;shutdown.</p>
 </div></blockquote>
 </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RhostMUSH Handbook \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-12 19:09-0500\n"
+"POT-Creation-Date: 2021-03-13 07:57-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,41 +16,81 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../source/requirements.rst:5
+#: ../../source/requirements.rst:3
 #: ../../source/requirements.rst:52
 msgid "Requirements"
 msgstr ""
 
-#: ../../source/requirements.rst:8
+#: ../../source/requirements.rst:6
 msgid "System Requirements"
 msgstr ""
 
-#: ../../source/requirements.rst:9
+#: ../../source/requirements.rst:8
 msgid "Minimum 1 GB (memory and swap combined) to compile (functions.c is huge)"
 msgstr ""
 
-#: ../../source/requirements.rst:10
+#: ../../source/requirements.rst:9
 msgid "Any Unix flavor should be fine.  Linux, BSD, Mac OSX, Solaris, Tru64, AIX, etc."
 msgstr ""
 
-#: ../../source/requirements.rst:11
+#: ../../source/requirements.rst:10
 msgid "(BETA ONLY) cygwin under Windows.  It requires the entire base development set and Requirements below."
 msgstr ""
 
-#: ../../source/requirements.rst:12
+#: ../../source/requirements.rst:11
 msgid "Disk:  100 MB or more (depending on size of db and how many backups you wish to maintain)"
 msgstr ""
 
-#: ../../source/requirements.rst:13
+#: ../../source/requirements.rst:12
 msgid "Memory: 12-100 MB (depending on size of mush and what size buffers you select and packages you include)"
 msgstr ""
 
-#: ../../source/requirements.rst:16
+#: ../../source/requirements.rst:15
 msgid "Supported Platforms"
 msgstr ""
 
 #: ../../source/requirements.rst:17
-msgid "SunOS (all platforms) Solaris (all platforms) Linux (all platforms except redhat 5.x mentioned below) AIX (all platforms) Ultrix (all platforms) iBSD (all platforms) FreeBSD (all platforms) OpenBSD (all platforms) NetBSD (all platforms) IRIX (all platforms) HPUX (32 bit systems only)"
+msgid "SunOS (all platforms)"
+msgstr ""
+
+#: ../../source/requirements.rst:18
+msgid "Solaris (all platforms)"
+msgstr ""
+
+#: ../../source/requirements.rst:19
+msgid "Linux (all platforms except redhat 5.x mentioned below)"
+msgstr ""
+
+#: ../../source/requirements.rst:20
+msgid "AIX (all platforms)"
+msgstr ""
+
+#: ../../source/requirements.rst:21
+msgid "Ultrix (all platforms)"
+msgstr ""
+
+#: ../../source/requirements.rst:22
+msgid "iBSD (all platforms)"
+msgstr ""
+
+#: ../../source/requirements.rst:23
+msgid "FreeBSD (all platforms)"
+msgstr ""
+
+#: ../../source/requirements.rst:24
+msgid "OpenBSD (all platforms)"
+msgstr ""
+
+#: ../../source/requirements.rst:25
+msgid "NetBSD (all platforms)"
+msgstr ""
+
+#: ../../source/requirements.rst:26
+msgid "IRIX (all platforms)"
+msgstr ""
+
+#: ../../source/requirements.rst:27
+msgid "HPUX (32 bit systems only)"
 msgstr ""
 
 #: ../../source/requirements.rst:29
@@ -62,7 +102,11 @@ msgid "Unsupported Platforms"
 msgstr ""
 
 #: ../../source/requirements.rst:34
-msgid "Win32/Win16 Alpha systems."
+msgid "Win32/Win16"
+msgstr ""
+
+#: ../../source/requirements.rst:35
+msgid "Alpha systems."
 msgstr ""
 
 #: ../../source/requirements.rst:38
@@ -70,7 +114,11 @@ msgid "Untested Platforms"
 msgstr ""
 
 #: ../../source/requirements.rst:40
-msgid "HP-UX (64 bit systems) VMS (all platforms)"
+msgid "HP-UX (64 bit systems)"
+msgstr ""
+
+#: ../../source/requirements.rst:41
+msgid "VMS (all platforms)"
 msgstr ""
 
 #: ../../source/requirements.rst:44
@@ -81,22 +129,58 @@ msgstr ""
 msgid "On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with the built-in gcc package (up to and including 2.8.x).  Because of this some config options may not work fully or cause the server to crash.  This is only a known issue with config options and only on this platform."
 msgstr ""
 
-#: ../../source/requirements.rst:53
-msgid "RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.  In order to build this software, you will need the bare minimum of the ability to run 'make' commands.  Package requirements are as follows: * glibc and gcc/clang (compiling the code) * git (to clone the source and maintain patches) * bash/ksh/dash (or compatible shell - for use with build menu) * libcrypt (for password encryption - this is usually standard on unix based systems)"
+#: ../../source/requirements.rst:54
+msgid "RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.  In order to build this software, you will need the bare minimum of the ability to run 'make' commands.  Package requirements are as follows:"
 msgstr ""
 
-#: ../../source/requirements.rst:60
+#: ../../source/requirements.rst:56
+msgid "glibc and gcc/clang (compiling the code)"
+msgstr ""
+
+#: ../../source/requirements.rst:57
+msgid "git (to clone the source and maintain patches)"
+msgstr ""
+
+#: ../../source/requirements.rst:58
+msgid "bash/ksh/dash (or compatible shell - for use with build menu)"
+msgstr ""
+
+#: ../../source/requirements.rst:59
+msgid "libcrypt (for password encryption - this is usually standard on unix based systems)"
+msgstr ""
+
+#: ../../source/requirements.rst:62
 msgid "Optional Packages"
 msgstr ""
 
-#: ../../source/requirements.rst:61
-msgid "RhostMUSH also offers optional linking and library attachments.  For some of these libraries it will attempt to do auto-detection, but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.  Optional packages are as follows: * openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality. * mysql client & mysql_config (required for mysql capabilities) * sqlite3 libraries (required for sqlite capabilities) * ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature) * libpcre (if you wish to use system pcre libraries instead of the built-in ones)"
+#: ../../source/requirements.rst:64
+msgid "RhostMUSH also offers optional linking and library attachments.  For some of these libraries it will attempt to do auto-detection, but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.  Optional packages are as follows:"
+msgstr ""
+
+#: ../../source/requirements.rst:66
+msgid "openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality."
+msgstr ""
+
+#: ../../source/requirements.rst:67
+msgid "mysql client & mysql_config (required for mysql capabilities)"
+msgstr ""
+
+#: ../../source/requirements.rst:68
+msgid "sqlite3 libraries (required for sqlite capabilities)"
 msgstr ""
 
 #: ../../source/requirements.rst:69
-msgid "Hosting Requirements"
+msgid "ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)"
 msgstr ""
 
 #: ../../source/requirements.rst:70
+msgid "libpcre (if you wish to use system pcre libraries instead of the built-in ones)"
+msgstr ""
+
+#: ../../source/requirements.rst:73
+msgid "Hosting Requirements"
+msgstr ""
+
+#: ../../source/requirements.rst:75
 msgid "You will need a stable host and access to open a single port number of your choice on the firewall.  Most games choose a number between 1025 and 9999, by convention.  Please make sure your debug_id matches the port number + 5.  So if your port is 1234, your debug_id will be 12345.  The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location."
 msgstr ""

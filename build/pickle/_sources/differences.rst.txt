@@ -1199,7 +1199,7 @@ Most changes will revolve around the ones listed in this document.
 Problematic functions between codebases
 ---------------------------------------
 
-lsearch()/search(), align()/printf(), *attrval()
+lsearch()/search(), align()/printf(), \*attrval()
 
 Problematic features between codebases
 --------------------------------------
@@ -1422,7 +1422,11 @@ PennMUSH
 - Attribute trees.  These are emulated as a base set and can be duplicated enough to at least port code.
 - lsearch() will have to be recoded to search()
 - align() will have to be recoded to printf()
-- Penn allows empty attributes.  Rhost does not.  Work will have to be done to take this into consideration.  - All *val() functions in Penn that are used will have to be remapped to a non-*val() function.  It should be as simple as function_alias to the non-*val.  Example: @admin function_alias=hasattrval hasattr
+- Penn allows empty attributes.  Rhost does not.  Work will have to be done to take this into consideration.
+- All \*val() functions in Penn that are used will have to be remapped to a non-\*val() function.  It should be as simple as function_alias to the non-\*val.  Example::
+
+     @admin function_alias=hasattrval hasattr
+
 - Penn's hardcoded comsystem is emulated with the softcode comsys
 - Penn's @mail system is workable with mail wrappers
 - Pueblo is not supported.

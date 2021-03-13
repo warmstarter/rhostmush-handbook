@@ -1,6 +1,6 @@
 .\" Man page generated from reStructuredText.
 .
-.TH "RHOSTMUSHHANDBOOK" "1" "Mar 12, 2021" "" "RhostMUSH Handbook"
+.TH "RHOSTMUSHHANDBOOK" "1" "Mar 13, 2021" "" "RhostMUSH Handbook"
 .SH NAME
 rhostmushhandbook \- RhostMUSH Handbook 
 .
@@ -103,6 +103,7 @@ to purge anything over 30 days old, which should be more than
 sufficient for any needs.  The goodness of this?  You can recover
 nuked things from any period of time, as long as they were not
 @purged first.
+.sp
 Commands: @purge, @nuke, @destroy, @recover, @reclist
 .UNINDENT
 .UNINDENT
@@ -113,6 +114,7 @@ Live image snapshots to unload or load to and from
 disk.  As many snapshots as you want, as often as you want.
 It essentially does a flatfile dump of a dbref#.  Great for
 backups or cross\-Rhost portability.
+.sp
 Command: @snapshot
 .UNINDENT
 .UNINDENT
@@ -158,9 +160,8 @@ effectively #1 in nearly every way.
 .SS Have multiple player aliases
 .INDENT 0.0
 .INDENT 3.5
-As well as a method
-to reserve player names per player w/o revealing who has what
-name.
+As well as a method to reserve player names per player w/o revealing who has what name.
+.sp
 @protect
 .UNINDENT
 .UNINDENT
@@ -168,14 +169,12 @@ name.
 .INDENT 0.0
 .INDENT 3.5
 @depower dark
+.sp
 @admin allow_whodark, sweep_dark, command_dark, lcon_checks_dark,
-.INDENT 0.0
-.INDENT 3.5
 secure_dark, see_owned_dark, idle_wiz_dark, player_dark
-.UNINDENT
-.UNINDENT
 .sp
 @toggle snuffdark
+.sp
 @flagdef to redefine who and what can set the DARK flag
 .UNINDENT
 .UNINDENT
@@ -212,8 +211,8 @@ EXECSCRIPT (power), SIDEFX (flag)
 .SS Multiple Zones
 .INDENT 0.0
 .INDENT 3.5
-Have multiple zones which can optionally belong to
-multiple targets (multiple zones per target allowable!)
+Have multiple zones which can optionally belong to multiple targets (multiple zones per target allowable!)
+.sp
 @zone, zones, lzone(), zonecmd()
 .UNINDENT
 .UNINDENT
@@ -233,6 +232,7 @@ or allow interaction with other layers for vast customization.
 This affects all methods within the game including all matching,
 looking, $commands, listens, movement, interaction, pretty
 much every single aspect of mushing.
+.sp
 REALITY LEVELS
 .UNINDENT
 .UNINDENT
@@ -240,6 +240,7 @@ REALITY LEVELS
 .INDENT 0.0
 .INDENT 3.5
 @admin access (check ignore)
+.sp
 Master room $commands to then override the hardcode
 .UNINDENT
 .UNINDENT
@@ -247,6 +248,7 @@ Master room $commands to then override the hardcode
 .INDENT 0.0
 .INDENT 3.5
 staff bitlevels for each player.
+.sp
 @power, @depower, TOGGLES, FLAGS
 .UNINDENT
 .UNINDENT
@@ -259,8 +261,8 @@ staff bitlevels for each player.
 .SS Softcode any txt file (like connect.txt)
 .INDENT 0.0
 .INDENT 3.5
-and have it evaluate in\-game.  It evaluates as the object
-it is on.
+and have it evaluate in\-game.  It evaluates as the object it is on.
+.sp
 @admin file_object
 .UNINDENT
 .UNINDENT
@@ -268,63 +270,46 @@ it is on.
 .INDENT 0.0
 .INDENT 3.5
 Commands: @label
+.sp
 Functions: parenmatch(), trace()
+.sp
 Toggles: CPUTIME
+.sp
 Flags: TRACE
+.sp
 Attributes: TRACE_GREP, TRACE, TRACE_COLOR, TRACE_COLOR_<attr>
+.sp
 Substitutions: %_
 .UNINDENT
 .UNINDENT
 .SS Built in pretty\-printing of attributes with the parenmatch() function
+.sp
+Example Code Output:
 .INDENT 0.0
 .INDENT 3.5
-Example Code Output :
-@emit [add(1,sub(2,div(3,4)),5)];@emit [extract(get(me/foo),3,1)
 .sp
+.nf
+.ft C
+@emit [add(1,sub(2,div(3,4)),5)];@emit [extract(get(me/foo),3,1)
+
 Example Pretty Print:
 @emit [
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.TP
-.B add(
-.INDENT 7.0
-.TP
-.B 1,sub(
-.INDENT 7.0
-.TP
-.B 2,div(
-3,4
-.UNINDENT
-.sp
-)
-.UNINDENT
-.sp
-),5
-.UNINDENT
-.sp
-)
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B ];@emit [
-.INDENT 7.0
-.TP
-.B extract(
-.INDENT 7.0
-.TP
-.B get(
-me/foo
-.UNINDENT
-.sp
-),3,1
-.UNINDENT
-.sp
-)
-.UNINDENT
-.sp
+   add(
+      1,sub(
+         2,div(
+            3,4
+         )
+      ),5
+   )
+];@emit [
+   extract(
+      get(
+         me/foo
+      ),3,1
+   )
 ]
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .SS Plenty more not mentioned!
@@ -346,11 +331,18 @@ when to do debugging via a trace() function, with toggled labels, and the
 ability to grep content from trace output.  There also exists features to
 color\-match parenthesis, braces, and brackets in\-game as well as pretty print
 the output of commands and functions.
-\- help trace
-\- help %_
-\- help trace()
-\- help parenmatch()
-\- help parenstr()
+.INDENT 2.0
+.IP \(bu 2
+help trace
+.IP \(bu 2
+help %_
+.IP \(bu 2
+help trace()
+.IP \(bu 2
+help parenmatch()
+.IP \(bu 2
+help parenstr()
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -363,12 +355,20 @@ Zoning in Rhost allows the same functionality of Penn and MUX, though the
 syntax is different.  It also allows the ability to belong to multiple
 zones at the same time and take advantage of mulitple zones at once.
 This allows for increased levels of complexity.
-\- help zones
-\- help @zone
-\- help zonecmd()
-\- help lzone()
-\- help @Lock type twink
-\- help @lock type zone
+.INDENT 2.0
+.IP \(bu 2
+help zones
+.IP \(bu 2
+help @zone
+.IP \(bu 2
+help zonecmd()
+.IP \(bu 2
+help lzone()
+.IP \(bu 2
+help @Lock type twink
+.IP \(bu 2
+help @lock type zone
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -384,10 +384,16 @@ dependently with other realities.  A person can belong to multiple
 realities at the same time, and realities is geared to a method for
 send and receive.  Each ‘method’ requires to be in the given reality
 to affect it.
-\- help reality levels
-\- wizhelp chkreality
-\- wizhelp reaity level
-\- help @Lock type user
+.INDENT 2.0
+.IP \(bu 2
+help reality levels
+.IP \(bu 2
+wizhelp chkreality
+.IP \(bu 2
+wizhelp reaity level
+.IP \(bu 2
+help @Lock type user
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -405,12 +411,11 @@ softcode override.  You may also use @Hook for altering how
 a command works.   Functions are overridden by setting the
 function in question ignored, then writing a softcode alternative
 that is then executed and fetched appropriately.
+.sp
+Commands:
 .INDENT 2.0
 .INDENT 3.5
 .INDENT 0.0
-.TP
-.B Commands:
-.INDENT 7.0
 .IP \(bu 2
 wizhelp @admin
 .IP \(bu 2
@@ -422,9 +427,13 @@ wizhelp @Hook
 .IP \(bu 2
 wizhelp hook setup
 .UNINDENT
-.TP
-.B Functions:
-.INDENT 7.0
+.UNINDENT
+.UNINDENT
+.sp
+Functions:
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
 .IP \(bu 2
 wizhelp @admin
 .IP \(bu 2
@@ -435,7 +444,6 @@ wizhelp @function
 help @lfunction
 .IP \(bu 2
 wizhelp bypass()
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -453,13 +461,22 @@ the recycle bin and marked unavailable within the mush.  This marks
 the dbref# as garbage in any sense of the word.  However, the object
 is not able to be reused until purged.  Once purged, it is put onto
 a free list that can then be reassigned to a new object.
-\- wizhelp @nuke
-\- wizhelp @destroy
-\- wizhelp @toad
-\- wizhelp @turtle
-\- wizhelp @purge
-\- wizhelp @recover
-\- wizhelp @reclist
+.INDENT 2.0
+.IP \(bu 2
+wizhelp @nuke
+.IP \(bu 2
+wizhelp @destroy
+.IP \(bu 2
+wizhelp @toad
+.IP \(bu 2
+wizhelp @turtle
+.IP \(bu 2
+wizhelp @purge
+.IP \(bu 2
+wizhelp @recover
+.IP \(bu 2
+wizhelp @reclist
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -472,10 +489,16 @@ Rhost allows the ability to both override percent substitutions as
 well as creating new ones.  This is done with @Hook and admin
 params and issues softcode overriding.  Due to how it is evaluated
 there is no risk of recursion.
-\- wizhelp @hook
-\- wizhelp hook_cmd
-\- wizhelp sub_include
-\- wizhelp sub_override
+.INDENT 2.0
+.IP \(bu 2
+wizhelp @hook
+.IP \(bu 2
+wizhelp hook_cmd
+.IP \(bu 2
+wizhelp sub_include
+.IP \(bu 2
+wizhelp sub_override
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -486,10 +509,16 @@ there is no risk of recursion.
 .IP \(bu 2
 Hooking allows you to have advanced methods to manipulate commands
 including adding customized switches to them via softcode.
-\- wizhelp @hook
-\- wizhelp hook_cmd
-\- wizhelp hook_obj
-\- wizhelp hook setup
+.INDENT 2.0
+.IP \(bu 2
+wizhelp @hook
+.IP \(bu 2
+wizhelp hook_cmd
+.IP \(bu 2
+wizhelp hook_obj
+.IP \(bu 2
+wizhelp hook setup
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -506,8 +535,12 @@ as an evaluation lock.  To be able to use the USELOCK attribute flag
 you must be empowered to do so with the ‘ATRUSE’ @toggle.  You may
 also use the secure_atruselock config parameter to globally enable
 this and not require the toggle to be set.
-\- wizhelp atruse toggle
-\- help attribute uselocks
+.INDENT 2.0
+.IP \(bu 2
+wizhelp atruse toggle
+.IP \(bu 2
+help attribute uselocks
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -520,7 +553,10 @@ We distinguish between commands and listens with uselocks by passing
 an optional argument to all locks that are uselocks.  This optional
 argument is 0 for a default lock, 1 for a command lock and 2 for
 a listen lock.
-\- help @lock type uselock
+.INDENT 2.0
+.IP \(bu 2
+help @lock type uselock
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -532,10 +568,16 @@ a listen lock.
 By default wizards override all locks, including attribute locks,
 can see all dark exits, and bypass pagelocks.  This can be
 troublesome, and even abusive, so there’s ways to disable this.
-\- wizhelp @depower (for those abusing it)
-\- wizhelp no_override (disable overiding locks)
-\- wizhelp no_uselock (disable just uselock overriding)
-\- wizhelp pagelock toggle (disable pagelock overriding)
+.INDENT 2.0
+.IP \(bu 2
+wizhelp @depower (for those abusing it)
+.IP \(bu 2
+wizhelp no_override (disable overiding locks)
+.IP \(bu 2
+wizhelp no_uselock (disable just uselock overriding)
+.IP \(bu 2
+wizhelp pagelock toggle (disable pagelock overriding)
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -548,18 +590,36 @@ Flags and toggles can be controlled to have multiple permissions
 and enable/disable targets of how the flags are allowed to be
 set.  This is done through commands in\-game or you can use
 conf file options to do so.
-\- wizhelp @flagdef
-\- wizhelp @toggledef
-——\- @admin @flagdef alternatives
-\- wizhelp flag_access_set
-\- wizhelp flag_access_unset
-\- wizhelp flag_access_see
-\- wizhelp flag_access_type
-——\- @admin @toggledef alternatives
-\- wizhelp toggle_access_set
-\- wizhelp toggle_access_unset
-\- wizhelp toggle_access_see
-\- wizhelp toggle_access_type
+.INDENT 2.0
+.IP \(bu 2
+wizhelp @flagdef
+.IP \(bu 2
+wizhelp @toggledef
+.IP \(bu 2
+@admin @flagdef alternatives
+.INDENT 2.0
+.IP \(bu 2
+wizhelp flag_access_set
+.IP \(bu 2
+wizhelp flag_access_unset
+.IP \(bu 2
+wizhelp flag_access_see
+.IP \(bu 2
+wizhelp flag_access_type
+.UNINDENT
+.IP \(bu 2
+@admin @toggledef alternatives
+.INDENT 2.0
+.IP \(bu 2
+wizhelp toggle_access_set
+.IP \(bu 2
+wizhelp toggle_access_unset
+.IP \(bu 2
+wizhelp toggle_access_see
+.IP \(bu 2
+wizhelp toggle_access_type
+.UNINDENT
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -572,10 +632,16 @@ We allow advanced site control by not only blocking various sites
 but we can specify how many times a player can be connected at the
 same time as well as how many times sites are able to connect at
 the same time.  This is done through normal site manipulation.
-\- wizhelp forbid_host
-\- wizhelp register_host
-\- wizhelp noguest_host
-\- wizhelp @list (site option)
+.INDENT 2.0
+.IP \(bu 2
+wizhelp forbid_host
+.IP \(bu 2
+wizhelp register_host
+.IP \(bu 2
+wizhelp noguest_host
+.IP \(bu 2
+wizhelp @list (site option)
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -588,7 +654,10 @@ Autoregistration is the method that a player can auto\-register
 by providing their email on the connect screen.  It will email
 them a password and an optional document that the administrator
 provides.  This is well described in the wizhelp.
-\- wizhelp autoregistration
+.INDENT 2.0
+.IP \(bu 2
+wizhelp autoregistration
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -611,8 +680,10 @@ people who control the master room code.
 .sp
 There’s a bunch of readme files and online wizhelp that goes into
 detail of the various bitlevels and what each can do.
-\- XV.   Multi\-tiered bitlevel systems
-\- wizhelp control
+.INDENT 2.0
+.IP \(bu 2
+wizhelp control
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -623,59 +694,51 @@ detail of the various bitlevels and what each can do.
 .IP \(bu 2
 While using QDBM, there’s really no set limits for most things.
 The limits that we have are as followed:
-LBUF \- 64K.  It is recommended to only use 32K as there is some
-.INDENT 2.0
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+LBUF \- 64K.  It is recommended to only use 32K as there is some issues with networking with 64K lbufs.
+.INDENT 0.0
 .INDENT 3.5
 .INDENT 0.0
 .INDENT 3.5
-issues with networking with 64K lbufs.
-.UNINDENT
-.UNINDENT
 .INDENT 0.0
 .IP \(bu 2
 Compile time option with the menu configurator
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.INDENT 2.0
-.TP
-.B SBUF \- 64 characters (if configured – it’s suggested you do).
-.INDENT 7.0
+.sp
+SBUF \- 64 characters (if configured – it’s suggested you do).
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
 .IP \(bu 2
 Compile time option with the menu configurator
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
 MBUF \- 200 characters.  Not able to be changed.
-.INDENT 2.0
-.TP
-.B MAX CONNECTIONS \- Limited by the total number of open sockets
-.INDENT 7.0
+.sp
+MAX CONNECTIONS \- Limited by the total number of open sockets and descriptors on the account and server running on.  There are various tools to limit connection DoS attemps and other such nastiness.  This is well documented in the netrhost.conf file.
+.INDENT 0.0
 .INDENT 3.5
-and descriptors on the account and server running on.
-There are various tools to limit connection DoS attemps
-and other such nastiness.  This is well documented in
-the netrhost.conf file.
-.UNINDENT
-.UNINDENT
-.INDENT 7.0
+.INDENT 0.0
 .IP \(bu 2
 wizhelp max_players
 .IP \(bu 2
 ~/game/netrhost.conf
 .UNINDENT
-.TP
-.B MEMORY \- no limit.  Generally runs between 8\-50M depending
-on the size of the mush and the LBUF size specified.
-.TP
-.B CPU  \- no limit, but has built in cpu abort in code.  The
-.INDENT 7.0
+.UNINDENT
+.UNINDENT
+.sp
+MEMORY \- no limit.  Generally runs between 8\-50M depending on the size of the mush and the LBUF size specified.
+.sp
+CPU  \- no limit, but has built in cpu abort in code.  The netrhost.conf file documents this well for customizing.  the default values are usually good enough.
+.INDENT 0.0
 .INDENT 3.5
-netrhost.conf file documents this well for customizing.
-the default values are usually good enough.
-.UNINDENT
-.UNINDENT
-.INDENT 7.0
+.INDENT 0.0
 .IP \(bu 2
 wizhelp max_cpu_cycles
 .IP \(bu 2
@@ -689,22 +752,15 @@ wizhelp heavy_cpu_max
 .IP \(bu 2
 ~/game/netrhost.conf
 .UNINDENT
-.TP
-.B DISK \- no limit.  Generally will be 75\-200M depending on size,
-number of backups and if you leave your compiled object
-files in.
-.TP
-.B DB Size \- (20000 default) There is no limit on the number of
-.INDENT 7.0
+.UNINDENT
+.UNINDENT
+.sp
+DISK \- no limit.  Generally will be 75\-200M depending on size, number of backups and if you leave your compiled object files in.
+.sp
+DB Size \- (20000 default) There is no limit on the number of objects the db can have.  By default it’s soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem.
+.INDENT 0.0
 .INDENT 3.5
-objects the db can have.  By default it’s soft limited
-to 20K objects, which can be changed by a netrhost.conf
-file change.  We have had this up past 1.5 million
-objects, and other than a second or two of lag for
-complex searches we had no real problem.
-.UNINDENT
-.UNINDENT
-.INDENT 7.0
+.INDENT 0.0
 .IP \(bu 2
 wizhelp maximum_size
 .IP \(bu 2
@@ -714,19 +770,21 @@ wizhelp @quota
 .IP \(bu 2
 wizhelp @limit
 .UNINDENT
-.TP
-.B Attribute Size \- 10K as a hard limit.  750 as a soft limit.
-.INDENT 7.0
+.UNINDENT
+.UNINDENT
+.sp
+Attribute Size \- 10K as a hard limit.  750 as a soft limit.  You can increase this but it can’t exceed 10000 attributes.  This is to avoid DoS style attacks.
+.INDENT 0.0
 .INDENT 3.5
-You can increase this but it can’t exceed 10000
-attributes.  This is to avoid DoS style attacks.
-.UNINDENT
-.UNINDENT
-.INDENT 7.0
+.INDENT 0.0
 .IP \(bu 2
 wizhelp vlimit
 .IP \(bu 2
 wizhelp @limit
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -755,10 +813,16 @@ Rhost has execscript() which allows executing outside binaries
 or scripts as a native function.  All effort has been done to
 avoid any type of DoS based issue or hang by doing this, however
 the guidelines presented should be followed before doing so.
-\- wizhelp execscript
-\- wizhelp power execscript
-\- help sidefx
-\- wizhelp writing scripts
+.INDENT 2.0
+.IP \(bu 2
+wizhelp execscript
+.IP \(bu 2
+wizhelp power execscript
+.IP \(bu 2
+help sidefx
+.IP \(bu 2
+wizhelp writing scripts
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -767,8 +831,7 @@ the guidelines presented should be followed before doing so.
 .INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
-You are capable of pulling external data in to RhostMUSH using
-several methods.  These are by using:
+You are capable of pulling external data in to RhostMUSH using several methods.  These are by using:
 .INDENT 2.0
 .INDENT 3.5
 .INDENT 0.0
@@ -794,8 +857,12 @@ easilly by use of signals.  By using SIGUSR1 you can specify
 Rhost to execute code in\-game, which part of that could be
 to pick up a pre\-designed list of commands that the unix cron
 has set up.
-\- wizhelp signal
-\- wizhelp signal_cron
+.INDENT 2.0
+.IP \(bu 2
+wizhelp signal
+.IP \(bu 2
+wizhelp signal_cron
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -807,23 +874,13 @@ has set up.
 Signals are used to do different things for the mush.  By default,
 the following signals are recognized by the mush and will do
 the following as defaults.
-\- SIGUSR1 \- will do a reboot of the mush.  This is also customizable
 .INDENT 2.0
-.INDENT 3.5
-so that you can have it execute code in\-mush if you want.
-.UNINDENT
-.UNINDENT
-.INDENT 2.0
+.IP \(bu 2
+SIGUSR1 \- will do a reboot of the mush.  This is also customizable so that you can have it execute code in\-mush if you want.
 .IP \(bu 2
 SIGUSR2 \- will do a clean shutdown of the mush.
 .IP \(bu 2
-.INDENT 2.0
-.TP
-.B SIGTERM \- will immediately scram the mush as cleanly and fast
-as possible.  It will avoid dumping anything to
-the database to speed up scramming, but write
-a TERM flat file to be loaded in if corruption.
-.UNINDENT
+SIGTERM \- will immediately scram the mush as cleanly and fast as possible.  It will avoid dumping anything to the database to speed up scramming, but write a TERM flat file to be loaded in if corruption.
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -838,7 +895,12 @@ without actually having a defined \fI\%‘@parent\fP’.  It always will be the
 highest tier in a lookup.  The way lookups will go will be:
 .INDENT 2.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 self\->@parent(s)\->@zone(s)\->GlobalParent
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -847,11 +909,22 @@ The type of the parent does not have to match the target.
 These global parents can be defined either by using a global
 generic parent or by using the type.  If a type is specified it
 overrides the generic.  The following parameters are used:
-\- global_parent_obj     \- The generic global parent (if defined)
-\- global_parent_room    \- The room global parent
-\- global_parent_exit    \- The exit global parent
-\- global_parent_thing   \- The thing global parent
-\- global_parent_player  \- The player global parent
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+global_parent_obj     \- The generic global parent (if defined)
+.IP \(bu 2
+global_parent_room    \- The room global parent
+.IP \(bu 2
+global_parent_exit    \- The exit global parent
+.IP \(bu 2
+global_parent_thing   \- The thing global parent
+.IP \(bu 2
+global_parent_player  \- The player global parent
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .IP \(bu 2
 Global @parents are different than global parents in that any new
 item of similar type that is created is automatically assigned this
@@ -861,10 +934,20 @@ the literal physical parent defined.
 The type of the parent does not have to match the target.
 .sp
 The following parameters are used:
-\- room_parent           \- The target that new rooms are @parented
-\- exit_parent           \- The target that new exits are @parented
-\- thing_parent          \- The target that new things are @parented
-\- player_parent         \- The target that new players are @parented
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+room_parent           \- The target that new rooms are @parented
+.IP \(bu 2
+exit_parent           \- The target that new exits are @parented
+.IP \(bu 2
+thing_parent          \- The target that new things are @parented
+.IP \(bu 2
+player_parent         \- The target that new players are @parented
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .IP \(bu 2
 Global attribute formatting is a method define a wrapper, of sorts,
 where attributes like @desc, @odesc, @succ, and anything similar
@@ -876,6 +959,8 @@ formatting has priority.
 .sp
 The type of the parent does not have to match the target.
 .INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
 .IP \(bu 2
 room_attr_default     \- Target for room formatting
 .IP \(bu 2
@@ -884,6 +969,8 @@ exit_attr_default     \- Target for exit formatting
 thing_attr_default    \- Target for thing formatting
 .IP \(bu 2
 player_attr_default   \- Target for player formatting
+.UNINDENT
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -898,49 +985,75 @@ limitations that exist within it.
 Function invocations.  Sometimes you will hit a ceiling on evaluation.
 You may want to tweak values to allow more functions or commands
 to execute.  The following controls that:
-\- function_invocation_limit [25000 default] \- specifies the total
 .INDENT 2.0
 .INDENT 3.5
-functions you can execute per command.
-.UNINDENT
-.UNINDENT
-.INDENT 2.0
+.INDENT 0.0
 .IP \(bu 2
-.INDENT 2.0
-.TP
-.B function_recursion_limit [50] \- specifies the total times a
-function can call itself over and over.  Rarely should this
-be increased and doing so can effect your stack depth.
+function_invocation_limit [25000 default] \- specifies the total functions you can execute per command.
+.IP \(bu 2
+function_recursion_limit [50] \- specifies the total times a function can call itself over and over.  Rarely should this be increased and doing so can effect your stack depth.
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .IP \(bu 2
 Command queue limits.  Sometimes you want more to be queued up for
 players or wizards.
-\- player_queue_limit  \- Max number of entries a player can queue
-\- wizard_queue_limit  \- Max number of entries a wizard can queue
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
 .IP \(bu 2
-@limit is a wonderful way to lock down limitations per player or
-global.  Lots of power is available here.
-\- @limit
-\- vattr_limit_checkwiz \- Enable @limit checks for wizards
-\- wizmax_vattr_limit   \- Set wizard global VATTR limits
-\- wizmax_dest_limit    \- Set wizard global @destroy limits
-\- max_vattr_limit      \- Set player global VATTR limits
-\- max_dest_limit       \- Set player global @destroy limits
+player_queue_limit  \- Max number of entries a player can queue
+.IP \(bu 2
+wizard_queue_limit  \- Max number of entries a wizard can queue
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.IP \(bu 2
+@limit is a wonderful way to lock down limitations per player or global.  Lots of power is available here.
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+@limit
+.IP \(bu 2
+vattr_limit_checkwiz \- Enable @limit checks for wizards
+.IP \(bu 2
+wizmax_vattr_limit   \- Set wizard global VATTR limits
+.IP \(bu 2
+wizmax_dest_limit    \- Set wizard global @destroy limits
+.IP \(bu 2
+max_vattr_limit      \- Set player global VATTR limits
+.IP \(bu 2
+max_dest_limit       \- Set player global @destroy limits
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .IP \(bu 2
 Lots of trace output can be cut off.  You can modify this with:
-\- trace_output_limit   \- Set lines of trace output shown
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+trace_output_limit   \- Set lines of trace output shown
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .IP \(bu 2
 To define how many commands a minute a player set SPAMMONITOR can use
-\- spam_limit – default 120
+.INDENT 2.0
+.IP \(bu 2
+spam_limit – default 120
+.UNINDENT
 .IP \(bu 2
 If you examine things and see ‘Output cut off’ messages, you may want
 to increase your output limit, funny enough, the name of this is
 similar
-\- output_limit \- You should set this no less than 4 times the current
 .INDENT 2.0
 .INDENT 3.5
-size of your LBUF.
+.INDENT 0.0
+.IP \(bu 2
+output_limit \- You should set this no less than 4 times the current size of your LBUF.
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .IP \(bu 2
@@ -958,8 +1071,7 @@ Also look at lit() as a solution.
 .INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
-Attribute trees.  These are emulated as a base set and can be
-duplicated enough to at least port code.
+Attribute trees.  These are emulated as a base set and can be duplicated enough to at least port code.
 .IP \(bu 2
 lsearch() will have to be recoded to search()
 .IP \(bu 2
@@ -968,24 +1080,15 @@ align() will have to be recoded to printf()
 Penn allows empty attributes.  Rhost does not.  Work will have to
 be done to take this into consideration.
 .IP \(bu 2
-All 
-.nf
-*
-.fi
-val() functions in Penn that are used will have to be
-remapped to a non\-
-.nf
-*
-.fi
-val() function.  It should be as simple as
-function_alias to the non\-
-.nf
-*
-.fi
-val.  Example:
+All *val() functions in Penn that are used will have to be remapped to a non\-*val() function.  It should be as simple as function_alias to the non\-*val.  Example:
 .INDENT 2.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 @admin function_alias=hasattrval hasattr
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .IP \(bu 2
@@ -1008,8 +1111,7 @@ This uses @shutdown/restart, Rhost uses @reboot
 .INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
-Mux has an async mysql database engine.  This is not possible
-with Rhost.  You’ll have to use the sync method instead.
+Mux has an async mysql database engine.  This is not possible with Rhost.  You’ll have to use the sync method instead.
 .IP \(bu 2
 UTF8 is supported but internally passed differently.
 .IP \(bu 2
@@ -1032,8 +1134,16 @@ After you set up your guests, you can set unique names to each guest
 if you so want after defining the dbref#’s your guests use.  This is
 done by defining them in the guest_namelist parameter.  You can also
 increase guests (or decrease them) between 0\-31 guests.
-\- wizhelp guest_namelist
-\- wizhelp num_guests
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+wizhelp guest_namelist
+.IP \(bu 2
+wizhelp num_guests
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -1048,7 +1158,14 @@ The beauty of this is that you can specify case sensitive
 information, lock different ways contents in attributes are set
 based on who is setting it, or even on where it’s being set.
 The sky’s the limit.
-\- global_attrdefault    \- Target for defining content locks
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+global_attrdefault    \- Target for defining content locks
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -1064,8 +1181,7 @@ attribute set on any object in that cluster can be set or fetched
 as if it was a singular entity.  This allows some amazing ability
 to distribute attribute content or even have a farm of a massive
 amount of attributes without paying a hefty penalty on object bloat.
-.UNINDENT
-.INDENT 0.0
+.INDENT 2.0
 .INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
@@ -1075,36 +1191,47 @@ help cluster  – Gives a fantastic overview of how clusters work.
 .UNINDENT
 .UNINDENT
 .UNINDENT
+.UNINDENT
 .SS What we plan for the future
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Things to look forward to the future with RhostMUSH.
-\- Full Unicode/UTF8 in Rhost 4.0
-\- A fully featured tag system in Rhost 4.0
-\- Built in Python API handler in Rhost 4.0
-\- Hopefully a built in Ruby and Perl API in Rhost 4.0/4.1
-\- Cross\-Mush execution between mushes in Rhost 4.1
-\- More as we think about it :)
+.INDENT 2.0
+.IP \(bu 2
+Full Unicode/UTF8 in Rhost 4.0
+.IP \(bu 2
+A fully featured tag system in Rhost 4.0
+.IP \(bu 2
+Built in Python API handler in Rhost 4.0
+.IP \(bu 2
+Hopefully a built in Ruby and Perl API in Rhost 4.0/4.1
+.IP \(bu 2
+Cross\-Mush execution between mushes in Rhost 4.1
+.IP \(bu 2
+More as we think about it :)
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.sp
-EXT: Additional features not covered otherwise
-Additional features
-\- +/\- 5.4 million years can be utilized with the built in time functions
+.UNINDENT
+.SS Additional features not covered otherwise
 .INDENT 0.0
 .INDENT 3.5
-which includes timefmt(), secs(), convtime(), convsecs(), and moon().  Party on!
-.UNINDENT
-.UNINDENT
 .INDENT 0.0
 .IP \(bu 2
++/\- 5.4 million years can be utilized with the built in time functions
+which includes timefmt(), secs(), convtime(), convsecs(), and moon().  Party on!
+.IP \(bu 2
 Changing permission levels in the middle of execution for evaluation.
-* see help on the streval and ueval function
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+see help on the streval and ueval function’
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .IP \(bu 2
 Full features in\-game customization of near every aspect of the game.
 .UNINDENT
@@ -1149,13 +1276,10 @@ guest_namelist
 .SS @powers are INHERITED
 .INDENT 0.0
 .INDENT 3.5
-.INDENT 0.0
-.TP
-.B Therefore, you need power_objects enabled (@admin)
+Therefore, you need power_objects enabled (@admin)
 to make this work properly for non\-plauyers.
 A power is taken before a bit level ONLY if higher than that bit.
 Yes, powers are multi\-level.
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .SS @depowers are automatically checked first before anything else
@@ -1182,7 +1306,9 @@ Yes, any such ‘repairing’ is logged so you know if something is up.
 .INDENT 0.0
 .INDENT 3.5
 See ansi_txtfiles in wizhelp.
+.sp
 You can also override it with softcode if you so wanted.
+.sp
 See file_object in wizhelp for more information on this.
 .UNINDENT
 .UNINDENT
@@ -1190,6 +1316,7 @@ See file_object in wizhelp for more information on this.
 .INDENT 0.0
 .INDENT 3.5
 When re\-compiling the binaries, all you have to remember is when done, issue
+.sp
 @reboot on the game and @readcache.
 .sp
 You do not need to @shutdown.
@@ -2398,11 +2525,7 @@ of arguments or switches to commands or functions, or required flags.
 Most changes will revolve around the ones listed in this document.
 .SS Problematic functions between codebases
 .sp
-lsearch()/search(), align()/printf(), 
-.nf
-*
-.fi
-attrval()
+lsearch()/search(), align()/printf(), *attrval()
 .SS Problematic features between codebases
 .sp
 named variables for regexp patterns in $commands are not supported.
@@ -2642,19 +2765,19 @@ lsearch() will have to be recoded to search()
 .IP \(bu 2
 align() will have to be recoded to printf()
 .IP \(bu 2
-Penn allows empty attributes.  Rhost does not.  Work will have to be done to take this into consideration.  \- All 
+Penn allows empty attributes.  Rhost does not.  Work will have to be done to take this into consideration.
+.IP \(bu 2
+All *val() functions in Penn that are used will have to be remapped to a non\-*val() function.  It should be as simple as function_alias to the non\-*val.  Example:
+.INDENT 2.0
+.INDENT 3.5
+.sp
 .nf
-*
+.ft C
+@admin function_alias=hasattrval hasattr
+.ft P
 .fi
-val() functions in Penn that are used will have to be remapped to a non\-
-.nf
-*
-.fi
-val() function.  It should be as simple as function_alias to the non\-
-.nf
-*
-.fi
-val.  Example: @admin function_alias=hasattrval hasattr
+.UNINDENT
+.UNINDENT
 .IP \(bu 2
 Penn’s hardcoded comsystem is emulated with the softcode comsys
 .IP \(bu 2
@@ -2698,28 +2821,46 @@ Disk:  100 MB or more (depending on size of db and how many backups you wish to 
 Memory: 12\-100 MB (depending on size of mush and what size buffers you select and packages you include)
 .UNINDENT
 .SS Supported Platforms
-.sp
+.INDENT 0.0
+.IP \(bu 2
 SunOS (all platforms)
+.IP \(bu 2
 Solaris (all platforms)
+.IP \(bu 2
 Linux (all platforms except redhat 5.x mentioned below)
+.IP \(bu 2
 AIX (all platforms)
+.IP \(bu 2
 Ultrix (all platforms)
+.IP \(bu 2
 iBSD (all platforms)
+.IP \(bu 2
 FreeBSD (all platforms)
+.IP \(bu 2
 OpenBSD (all platforms)
+.IP \(bu 2
 NetBSD (all platforms)
+.IP \(bu 2
 IRIX (all platforms)
+.IP \(bu 2
 HPUX (32 bit systems only)
+.UNINDENT
 .sp
 If it’s not listed here, it probably still will compile clean.
 .SS Unsupported Platforms
-.sp
+.INDENT 0.0
+.IP \(bu 2
 Win32/Win16
+.IP \(bu 2
 Alpha systems.
+.UNINDENT
 .SS Untested Platforms
-.sp
+.INDENT 0.0
+.IP \(bu 2
 HP\-UX (64 bit systems)
+.IP \(bu 2
 VMS (all platforms)
+.UNINDENT
 .SS Known Platform Issues
 .sp
 On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with
@@ -2729,18 +2870,31 @@ a known issue with config options and only on this platform.
 .SS Requirements
 .sp
 RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.  In order to build this software, you will need the bare minimum of the ability to run ‘make’ commands.  Package requirements are as follows:
-* glibc and gcc/clang (compiling the code)
-* git (to clone the source and maintain patches)
-* bash/ksh/dash (or compatible shell \- for use with build menu)
-* libcrypt (for password encryption \- this is usually standard on unix based systems)
+.INDENT 0.0
+.IP \(bu 2
+glibc and gcc/clang (compiling the code)
+.IP \(bu 2
+git (to clone the source and maintain patches)
+.IP \(bu 2
+bash/ksh/dash (or compatible shell \- for use with build menu)
+.IP \(bu 2
+libcrypt (for password encryption \- this is usually standard on unix based systems)
+.UNINDENT
 .SS Optional Packages
 .sp
 RhostMUSH also offers optional linking and library attachments.  For some of these libraries it will attempt to do auto\-detection, but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.  Optional packages are as follows:
-* openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
-* mysql client & mysql_config (required for mysql capabilities)
-* sqlite3 libraries (required for sqlite capabilities)
-* ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
-* libpcre (if you wish to use system pcre libraries instead of the built\-in ones)
+.INDENT 0.0
+.IP \(bu 2
+openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
+.IP \(bu 2
+mysql client & mysql_config (required for mysql capabilities)
+.IP \(bu 2
+sqlite3 libraries (required for sqlite capabilities)
+.IP \(bu 2
+ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
+.IP \(bu 2
+libpcre (if you wish to use system pcre libraries instead of the built\-in ones)
+.UNINDENT
 .SS Hosting Requirements
 .sp
 You will need a stable host and access to open a single port number of your choice on the firewall.  Most games choose a number between 1025 and 9999, by convention.  Please make sure your debug_id matches the port number + 5.  So if your port is 1234, your debug_id will be 12345.  The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
@@ -3477,7 +3631,14 @@ To load in a previous database, you run the db_load script.
 From the game directory you would type:
 .sp
 \&./db_load data/netrhost.gdbm yourflatfilehere data/netrhost.db.new
-.SS Then you just follow the prompts to load in your flatfile there.
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+You may also do: ./Startmush
+Then you just follow the prompts to load in your flatfile there.
+.UNINDENT
+.UNINDENT
 .sp
 If you wish to have #1’s password reset to ‘Nyctasia’ please add this
 to the bottom of your netrhost.conf file:
@@ -7594,18 +7755,14 @@ Rhost Equiv: MONITOR (@toggle)
 .SS RhostMUSH Internal Help Files
 .SS RhostMUSH Internal Wizhelp Files
 .SS Changelog
-.sp
-RhostMUSH 4.0 Update File
-MUX passwords didn’t work properly because of a memcmp() bug.
+.SS RhostMUSH 4.0 Update
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B MUX passwords didn’t work properly because of a memcmp() bug.
+.INDENT 7.0
 .IP \(bu 2
 Thanks Locke
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B @nuke didn’t properly wipe mail if issued from a non\-player.
 .INDENT 7.0
@@ -7655,14 +7812,10 @@ Thanks \fI\%Gallifrey@BrazilMUX\fP
 Thanks qa’toq
 .UNINDENT
 .TP
-.B Due to an insanely old bug in singleuser mode with attribute caps, flatfiles
-.INDENT 7.0
-.TP
-.B would cut off attributes at 750 on dbloading.
+.B Due to an insanely old bug in singleuser mode with attribute caps, flatfiles would cut off attributes at 750 on dbloading.
 .INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Aqua@MuxNexus\fP
-.UNINDENT
 .UNINDENT
 .TP
 .B @recover/detail to show attributes and details of recoverable item
@@ -7805,15 +7958,12 @@ Thanks jan6
 .TP
 .B #lambda wasn’t case insensitive
 .INDENT 7.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Thanks Alley
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.sp
-RhostMUSH 3.9.5 Update File
+.SS RhostMUSH 3.9.5 Update File
+.INDENT 0.0
 .TP
 .B Softcode overrides for connect files
 .INDENT 7.0
@@ -8111,15 +8261,12 @@ Thanks MuSoapBox (Auspice, Sparks, Seamus, faraday, Thenomain, and others)
 .TP
 .B ] for @hook/ignore and @hook/permit was broken.
 .INDENT 7.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Thanks Ixokai
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.sp
-RhostMUSH 3.9.4 Update File
+.SS RhostMUSH 3.9.4 Update File
+.INDENT 0.0
 .TP
 .B REALITY_LEVELS wouldn’t compile because of undeclared function.
 .INDENT 7.0
@@ -8195,15 +8342,12 @@ Thanks Volund
 .TP
 .B Compiletime bug in speech.c with REALITY_LEVELS not defined.
 .INDENT 7.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Thanks psc943
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.sp
-RhostMUSH 3.9.3 Update File
+.SS RhostMUSH 3.9.3 Update File
+.INDENT 0.0
 .TP
 .B @include – Idea Copied from Penn
 .INDENT 7.0
@@ -8213,15 +8357,12 @@ Thanks Jules (and PennMUSH)
 .TP
 .B Fix for $Z in timefmt()
 .INDENT 7.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Thanks Chime/Loki (Haunted)
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.sp
-RhostMUSH 3.9.2 Update File
+.SS RhostMUSH 3.9.2 Update File
+.INDENT 0.0
 .TP
 .B @assert/@break didn’t handle {} correctly.
 .INDENT 7.0
@@ -8249,16 +8390,13 @@ Thanks Montague
 .UNINDENT
 .sp
 glibc for MAX_INT/MIN_INT had issues with math functions \- wrapper fixes this.
-parser issue with regexp, parenthesis, and backslashes – Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B parser issue with regexp, parenthesis, and backslashes – Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Chime
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Idea for @titlecaption
 .INDENT 7.0
@@ -8274,28 +8412,18 @@ Thanks \fI\%Mike@M*U*S*H\fP
 .TP
 .B Discussion/Ideas for strdistance() function.
 .INDENT 7.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Thanks \fI\%Sketch@M*U*S*H\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.sp
-RhostMUSH 3.9.1 Update File
-.UNINDENT
-.sp
-Credits for any features should go here.  All changes should go into the main help.txt file
-cluster_hasattr() bug for #\-1 that should be 0 for non\-existant attribs.
+.SS RhostMUSH 3.9.1 Update
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B cluster_hasattr() bug for #\-1 that should be 0 for non\-existant attribs.
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Ol’Sarge@Cajun\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B cluster_flags()/cluster_hasflag() added for cluster support
 .INDENT 7.0
@@ -8417,50 +8545,62 @@ Thanks Matrix
 Thanks \fI\%Mike@M*U*S*H\fP
 .UNINDENT
 .UNINDENT
-
+.SS RhostMUSH 3.9.0 p00 Update
 .sp
-.ce
-----
-
-.ce 0
-.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-.INDENT 0.0
-.TP
-.B RhostMUSH 3.9.0 p00 Update File
-—\-  Notes  —\-
+v3.9 is the development branch leading to RhostMUSH v4.0
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B v3.9 is the development branch leading to RhostMUSH v4.0
-—\- Changes —\-
-.UNINDENT
+.SS Changes
 .sp
 Fixed some mishandled signals which should not cause Rhost to panic shutdown.
+.sp
 Added a Makefile define IGNORE_SIGNALS to turn off signal handling entirely.
+.sp
 Changed Makefile to use RFC date (date \-R) instead of local datestring.
+.sp
 Updated version() to allow showing build number by supplying an argument.
+.sp
 Added signal handling of SIGUSR1, SIGTERM, SIGUSR2.
+.sp
 Added user configurable SIGUSR1 handling through signal_object.
-Added zones_like_parents for zones to search like @parents.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Added zones_like_parents for zones to search like @parents.
+.INDENT 7.0
 .IP \(bu 2
 this does require the ZONECMDCHK @toggle set on each item/player.
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 Modify snooplog to show site information.
-Added %@ support to parser (caller) \- Penn/MUX/TM3
-Added %+ support to parser (args sent to functions) \- Penn
-Added %? support to parser (invocations) \- Penn
+.INDENT 0.0
+.TP
+.B Added %@ support to parser (caller)
+.INDENT 7.0
+.IP \(bu 2
+Penn/MUX/TM3
+.UNINDENT
+.TP
+.B Added %+ support to parser (args sent to functions)
+.INDENT 7.0
+.IP \(bu 2
+Penn
+.UNINDENT
+.TP
+.B Added %? support to parser (invocations)
+.INDENT 7.0
+.IP \(bu 2
+Penn
+.UNINDENT
+.UNINDENT
+.sp
 Added NO_CODE flag for easier control of coding tool avaiability
+.sp
 Added full REGEXP support (based on Penn’s PCRE implementation)
+.sp
 Added some extra bounds checking to internal varabiables (non\-issue)
 .INDENT 0.0
 .TP
@@ -8478,20 +8618,21 @@ Leona @ Faetopia
 .UNINDENT
 .sp
 [18\-9] Modify snooplog to show site information.
+.sp
 [18\-10] lattr() modification to handle lock() shows.
+.sp
 [18\-11] lattr() modification to handle attribute flag checks.
+.sp
 [18\-11] examine/parent now shows dbref#’s of the targetted items
+.sp
 [18\-16] 7th argument to wrap() to allow last line to ‘left justify’
-[18\-18] Added %@ support (for Penn, TM3, and MUX compatibility)
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B [18\-18] Added %@ support (for Penn, TM3, and MUX compatibility)
+.INDENT 7.0
 .IP \(bu 2
 Lots and Lots and Lots of people.
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Merged all 3.2.4 code to 3.9.0
 .INDENT 7.0
@@ -8501,169 +8642,289 @@ Ashen\-Shugar
 .UNINDENT
 .sp
 Added MUX, TM3, Penn, Rhost default options to asksource.sh
+.sp
 Modified valid ‘good characters’ for starting attribs for MUX compat.
-Tprintf handler for buffering rewritten to be ‘safe’ \- Lensman
+.INDENT 0.0
+.TP
+.B Tprintf handler for buffering rewritten to be ‘safe’
+.INDENT 7.0
+.IP \(bu 2
+Lensman
+.UNINDENT
+.UNINDENT
+.sp
 lnum/lnum2 added to allow ‘stepping’ argument.
+.sp
 Reality locktypes 2&3 could be too restrictive, so some lax was given.
+.sp
 Added reality locktypes 4 & 5 to duplicate 2 & 3 but with ‘lock\-pass\-nonexit’
+.sp
 @log allows writing to subdirectories.  5 depth maximum.
-@edit has /check argument to run a ‘simulation’ of an @edit. (Penn)
+.INDENT 0.0
+.TP
+.B @edit has /check argument to run a ‘simulation’ of an @edit.
+.INDENT 7.0
+.IP \(bu 2
+Penn
+.UNINDENT
+.UNINDENT
+.sp
 @search has a /nogarbage switch to check against GOING/RECOVER items.
+.sp
 moon() takes optional second argument (boolean) to show only percentage of phase
+.sp
 @grep takes /regexp switch for regexp matching.
+.sp
 Added ] pre\-parser command
+.sp
 Rewrite of permission handler to allow a second permission structure (32 more permissions)
+.sp
 @edit has /single argument to allow editing first match only.
+.sp
 edit() has 4th optional argument to specify an edit of single match only.
+.sp
 Change in WANDERER and GUEST to check owner as well as target.
+.sp
 Added Good_chk() macro to include Good_obj() && !Going() && !Recover()
+.sp
 Added eval/no_eval @admin permissions for function evaluation/non\-evaluation.
+.sp
 list() given 4th argument to handle optional header.
+.sp
 Added /toreality switch to @pemit. (works only with contents)
+.sp
 Vastly improved TinyMUSH3 converter.
+.sp
 @hook modified to show sub\-overrides and sub\-includes
+.sp
 Added the ability to pass delim and params to self\-made %\-subs.
-Added a new @admin boolean parameter round_kludge. \- Loki
+.INDENT 0.0
+.TP
+.B Added a new @admin boolean parameter round_kludge.
+.INDENT 7.0
+.IP \(bu 2
+Loki
+.UNINDENT
+.UNINDENT
+.sp
 Added support of labels for setq(), setr(), r(). (SVN 84, fix in SVN 87)
+.sp
 Added extra protection to garble() on exec() call for CPU (SVN 84)
+.sp
 Added templates (ala SETQ_TEMPLATE) for setq labels. (SVN 89)
+.sp
 Enhancement to idle timeout to take into account lagging servers (SVN 93)
+.sp
 Center allows NON\-ANSI multi\-character filler [SVN 94]
+.sp
 Lexits() and Lcon() take optional output seperators [SVN 95\->96]
+.sp
 Lexits and Lcon() take arguments to turn #dbrefs into names [SVN 101\->102]
+.sp
 Added /notify switch to @switch [SVN 108]
+.sp
 Added additional arguments to dice() [SVN 110]
+.sp
 Made v() allow registers 11 through MAX\-ARGS [SVN 111]
+.sp
 Made strfunc() aware of bypass() [SVN 112]
+.sp
 Mail now displays a ‘m’ by any message set for auto\-deletion [SVN 117]
+.sp
 map() now allows ArgN arguments to be passed to it as %1\-%?? [SVN 118]
+.sp
 Added time skew detection and protection to readjust mush time [SVN 123]
+.sp
 Added some addition protection for network flooding [SVN 123]
+.sp
 Added optional arguments to dig() and open() for location/returns [SVN 123]
+.sp
 Enhanced door code to be useable [SVN 125]
+.sp
 Modified asksource.sh script to handle all new options [SVN 125]
+.sp
 Added MUX2 password compatibility for reading converted databases [SVN 125]
+.sp
 Added beta option support for MySQL, Doors, and 64bit SBUF/attribs [SVN 125]
+.sp
 Added auto\-detection of 64 bit platforms [SVN 125]
+.sp
 Added MAILFILTER attribute to change destination of incoming mail [SVN 127]
-Fixed some uninitialized variables in view_atr [SVN 129] \- Loki
-Altered case() and caseall() to support #$ substitution like switch() [SVN 130] \- Loki
-Slight mistake in the case()/caseall() fix in 130. Fixed [SVN 136] \- Loki
-QDBM support added as an optional database layer [SVN 131\-135] \- Ambrosia
-Error() accepts an optional player argument to base error messages on.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Fixed some uninitialized variables in view_atr [SVN 129]
+.INDENT 7.0
+.IP \(bu 2
+Loki
+.UNINDENT
+.TP
+.B Altered case() and caseall() to support #$ substitution like switch() [SVN 130]
+.INDENT 7.0
+.IP \(bu 2
+Loki
+.UNINDENT
+.TP
+.B Slight mistake in the case()/caseall() fix in 130. Fixed [SVN 136]
+.INDENT 7.0
+.IP \(bu 2
+Loki
+.UNINDENT
+.TP
+.B QDBM support added as an optional database layer [SVN 131\-135]
+.INDENT 7.0
+.IP \(bu 2
+Ambrosia
+.UNINDENT
+.TP
+.B Error() accepts an optional player argument to base error messages on.
+.INDENT 7.0
 .IP \(bu 2
 Thanks Ratio (and many others)
 .UNINDENT
+.TP
+.B FIX_AIX obsoleted by a small mail.c/mailfix.c rewrute
+.INDENT 7.0
+.IP \(bu 2
+Ashen [SVN 162]
 .UNINDENT
 .UNINDENT
 .sp
-FIX_AIX obsoleted by a small mail.c/mailfix.c rewrute \- Ashen [SVN 162]
-modified sub_include so that the CHR_<str> value if fed an integer specifies how many
+modified sub_include so that the CHR_<str> value if fed an integer specifies how many values to take.
 .INDENT 0.0
-.INDENT 3.5
-values to take.
+.TP
+.B Copy/paste error lead to @break behaving like @assert. [SVN 168]
+.INDENT 7.0
+.IP \(bu 2
+Loki
+.UNINDENT
+.TP
+.B Removed minimal_db from the distro. It can be found on the download site under Contrib. [SVN 171]
+.INDENT 7.0
+.IP \(bu 2
+LOKI
 .UNINDENT
 .UNINDENT
 .sp
-Copy/paste error lead to @break behaving like @assert. [SVN 168] \- Loki
-Removed minimal_db from the distro. It can be found on the download site under Contrib. [SVN 171] \- LOKI
 timefmt(), convsecs(), convtime() and moon() now handle 64 bit time. [SVN 172]
+.sp
 list() has an optional target player for output (must control target) [SVN 177]
+.sp
 garble() has new optional type value to return character count instead of string [SVN 177]
+.sp
 remit() has optional key value to specify if it’s a to\-reality output or normal remit() [SVN 177]
+.sp
 /DISPLAY switch for @function to display details on target function. [SVN 177]
+.sp
 /LIST switch for @function allows wildcarding. [SVN 177]
+.sp
 @list buffers no longer spams the living crap out of you. [SVN 177]
-Sideeffects: Tidied up the wizhelp entries and added example page
 .INDENT 0.0
-.INDENT 3.5
-Allowed for keyword negation (i.e. sideeffects = PENN !OPEN MOVE). [SVN 178\-179] \- Lensman
+.TP
+.B Sideeffects: Tidied up the wizhelp entries and added example page Allowed for keyword negation (i.e. sideeffects = PENN !OPEN MOVE). [SVN 178\-179]
+.INDENT 7.0
+.IP \(bu 2
+Lensman
 .UNINDENT
 .UNINDENT
 .sp
 strip() takes optional 3rd argument to specify allowing only specified characters [SVN 180]
+.sp
 accents are now allowed as a markup language via the %f substitution.  Requires ZENTY_ANSI [SVN 180]
+.sp
 printf() modified with ‘&’ identifier for carrage return alignment processing [SVN 181]
+.sp
 filter() can now take multiple arguments. [SVN 190]
+.sp
 /STOP and /CONT switches added to @halt.  [SVN 192]
+.sp
 @wait/pid modified to be much nicer on the queue [SVN 192]
+.sp
 chr() allows characters 160 to 255 to be done via markups (%<3digit>)
+.sp
 Cleaned up extension characters by integrating into the accent parser [SVN 201]
-On rooms @toggled LOGROOM, if there is a LOGNAME attribute on the room, it uses that instead [SVN 204]
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .TP
-.B NOTE
-Name must be alphanumeric and be under 70 characters in length.
-\- Thanks Ixokai
+.B On rooms @toggled LOGROOM, if there is a LOGNAME attribute on the room, it uses that instead [SVN 204]
+.INDENT 7.0
+.IP \(bu 2
+Thanks Ixokai
 .UNINDENT
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Name must be alphanumeric and be under 70 characters in length.
 .UNINDENT
 .UNINDENT
 .sp
 %q<variable> added for TM3 compatability with named labels [SVN 205]
+.sp
 setq/setr family now allow ! to asign next available register or re\-assign existing register [SVN 208]
+.sp
 nameq optionally displays register asigned to label [SVN 208]
+.sp
 the PID of the running process now stored to netrhost.pid [SVN 208]
+.sp
 Signal handling improved for USR1 and USR2 [SVN 212]
+.sp
 /oneeval switch to @pemit for single evaluation of a @pemit/list [SVN 213]
+.sp
 lexits() allow page listings [SVN 233]
+.sp
 lrooms() \- fix for specific room identification [SVN 233]
+.sp
 @function/display now shows flags of functions [SVN 233]
+.sp
 rework lattr() and lattrp() as well as cluster_lattr() to use centralized core functionality [SVN 233]
+.sp
 rework of ueval() to handle cluster or non\-cluster [SVN 233]
+.sp
 lock() allows optional third argument to set/clear attribute locks [SVN 233]
+.sp
 merging of all cluster_Defaults into single handler [SVN 233]
+.sp
 action lists attached to >, @cluster/set, and cluster_set() [SVN 233]
-@wait with +/\- values [SVN 233]
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B @wait with +/\- values [SVN 233]
+.INDENT 7.0
 .IP \(bu 2
 Thanks Raevnos
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 BOUNCEFORWARD attribute parser for BOUNCE flag [SVN 233]
+.sp
 VATTRCNT() has optional 2nd argument to reset the vlimit on the dbref# [SVN 244]
-pgrep()/cluster_grep() has additional arguments for outputting matches [SVN 244]
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B pgrep()/cluster_grep() has additional arguments for outputting matches [SVN 244]
+.INDENT 7.0
 .IP \(bu 2
 Thanks Cary
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 Updated help for printf() [SVN 253]
-Fix for OSX 10.5.2 with regards to more restrictive header include files [SVN 254]
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Fix for OSX 10.5.2 with regards to more restrictive header include files [SVN 254]
+.INDENT 7.0
 .IP \(bu 2
 Thanks Lyoc
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
 TO BE DONE: add python interpreter
 TO BE DONE: @plugin
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
 .UNINDENT
 .UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
+.SS Additions
+.SS Functions
 .sp
 [18\-13] Add isint() for MUX/Penn compatability
 [18\-17] Added fmod() for Penn compatability.
@@ -8728,17 +8989,7 @@ cluster_edefault        \- cluster edefault() [SVN 233]
 cluster_stats()         \- specifies statistics on cluster [SVN 233]
 cluster_get_eval()      \- cluster get_eval() [SVN 233]
 cluster_ueval()         \- cluster ueval() [SVN 233]
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.UNINDENT
-.UNINDENT
+.SS Commands
 .sp
 @assert \- Works like @break but reverse logic [18\-9]
 idle \- a ‘nothing’ command that won’t effect idle time.  Wizzes can optionally add command.
@@ -8757,94 +9008,39 @@ idle \- a ‘nothing’ command that won’t effect idle time.  Wizzes can optio
 @cluster/reaction                       – edit for actions [SVN 233]
 @cluster/cut                            – physically cuts the item from a cluster \- only use as last resort [SVN 233]
 @cluster/trigger                        – trigger action on cluster [SVN 233]
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.UNINDENT
-.UNINDENT
+.SS Flags
 .sp
 NO_CODE  \- Controls usage of code\-commandss/functions.  Uses new second permission table.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-— De\-Powers —
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
+.SS Powers
+.SS De\-Powers
+.SS Toggles
 .sp
 HIDEIDLE \- Stops the ‘idle’ from being updated as well as command count.  Wiz+ only.
 MORTALREALITY \- disables the inherit ability of wizards for wiz_always_real [SVN 126]
-MAILVALIDATE \- validate the user list and abort mail without sending to anyone if invalid.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B MAILVALIDATE \- validate the user list and abort mail without sending to anyone if invalid.
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Charlotte@Cajun\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 CLUSTER \- (internal toggle to handle cluster objects)
-.INDENT 0.0
-.INDENT 3.5
-— Admin params —
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B [18\-9] Added zones_like_parents for zones to search like @parents.
-.INDENT 7.0
-.IP \(bu 2
-this does require the ZONECMDCHK @toggle set on each item/player.
-.UNINDENT
-.UNINDENT
+.SS Admin Params
 .sp
+[18\-9] Added zones_like_parents for zones to search like @parents.  \- this does require the ZONECMDCHK @toggle set on each item/player.
 log_maximum \- specify the number of logtofile() calls allowed per command.
 power_objects \- enable @power/@depower checks on non\-players
 rooms_can_open \- allow rooms to be able to @open exits inside itself
 sub_override \- specify what %\-subs can be overridden
-sub_include \- specify what %\-subs you want added
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B sub_include \- specify what %\-subs you want added
+.INDENT 7.0
 .IP \(bu 2
 Ambrosia
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B signal_object \- Object containing signal handling attribute for SIGUSR1.
 .INDENT 7.0
@@ -8856,11 +9052,7 @@ Odin
 break_compatibility \- @break/@assert allowed/disallowed double\-evaluation (disabled by default)
 signal_object_type \- Type of execution to do.  Default is ‘0’ (function only)’.  1 is a @trigger effect. [SVN 212]
 log_network_errors      \- enables (or disables) logging of network errors on sockets
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .INDENT 0.0
 .TP
 .B SORTBY was mangling the enactor.
@@ -8877,13 +9069,12 @@ Thanks Ixokai
 .UNINDENT
 .sp
 [18\-8] Fixes a vprintf allocation issue.
-[18\-9] Fixed a logical error with unfindable and the connect flag.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B [18\-9] Fixed a logical error with unfindable and the connect flag.
+.INDENT 7.0
 .IP \(bu 2
 Thanks Xandar
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -8893,9 +9084,11 @@ Thanks Xandar
 [18\-15] Fix for permission issue with regards to no_examine and attrib fetches
 [18\-15] Fix for possible array out\-of\-bounds with regards to backstage
 [18\-16] Fix in wrap() for wrap_out code with possible overrun (non\-crash)
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-Note: this effected both wrap() and wrapcolumns()
+this effected both wrap() and wrapcolumns()
 .UNINDENT
 .UNINDENT
 .INDENT 0.0
@@ -8908,16 +9101,13 @@ Thanks Jeff
 .UNINDENT
 .sp
 [18\-17] asksource.sh (make config/make confsource) fixed with (l)oad issue.
-[18\-17] Fix for news/verbose switch that broke previous workings \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B [18\-17] Fix for news/verbose switch that broke previous workings \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Ambrosia
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B [18\-18] Fix for soundex() with a buffering issue (non\-crashing) \- Fixed
 .INDENT 7.0
@@ -8927,16 +9117,13 @@ Thanks Jeff
 .UNINDENT
 .sp
 Bug in (d)elete option in asksource script \- Fixed
-Bug in ‘home’ with reality level following \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Bug in ‘home’ with reality level following \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Ol’Sarge @ Cajun
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Bug in \fI\%‘@idesc\fP’ with reality level if ‘Real’ level not using \fI\%‘@desc\fP’ \- Fixed
 .INDENT 7.0
@@ -8964,16 +9151,13 @@ Thanks Odin
 .UNINDENT
 .sp
 Small issue in mail code where if max\-index is reached mail won’t send \- Fixed
-Bug in do_dbck with db loading/startup/reboot \- small chance of crash. \-Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Bug in do_dbck with db loading/startup/reboot \- small chance of crash. \-Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Odin
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Feature bug in read_remote_name.  Didn’t check examinable \- Fixed
 .INDENT 7.0
@@ -9004,19 +9188,12 @@ Odin
 .IP \(bu 2
 Ambrosia/Ashen
 .UNINDENT
-.UNINDENT
-.sp
-Issue with page/port and the MUXPAGE toggle. Resolved, page/port now cannot be
-used in combination with MUXPAGE
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Issue with page/port and the MUXPAGE toggle. Resolved, page/port now cannot be used in combination with MUXPAGE
+.INDENT 7.0
 .IP \(bu 2
 Lensman
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Several missing helpfile entries added: isupper/islower, brace_compatibility, format_compatibility
 \-Ambrosia
@@ -9053,38 +9230,35 @@ Fixed buffer clobber issue in lloc() (introduce 3.9)
 Fixed logic error of command pathing with ignore on ‘goto’ command.
 Fixed ‘N’ command from showing up. (for ] alias)
 Fixed display for percent subs with regards to @hook.
-Fixed wrapcolumns() where it could crash on unique strings.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Fixed wrapcolumns() where it could crash on unique strings.
+.INDENT 7.0
 .IP \(bu 2
 Thanks melkir
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
 Fixed a bug with flag_name and possible duplicated entries
 Fixed chomp() to handle %r conditions cleaner.
-sub_include had a possible unitialized condition for %0\-%9 on rare occurances. (SVN\-87)
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B sub_include had a possible unitialized condition for %0\-%9 on rare occurances. (SVN\-87)
+.INDENT 7.0
 .IP \(bu 2
 Thanks Loki
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
 crash bug in lcon/lexit additions \- fixed (SVN\-105)
 Finally believe the output snuffing issue is fixed (SVN\-105)
 SIGSYS and some other signals were mistakenly handled as panic shutdown.
-setq()/setr() didn’t evaluate first argument.  Introduced SVN 87 [SVN 113]
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B setq()/setr() didn’t evaluate first argument.  Introduced SVN 87 [SVN 113]
+.INDENT 7.0
 .IP \(bu 2
 Thanks Melkir
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -9099,42 +9273,26 @@ Fix for QDBM compiles on aborting on the ‘rm’ section.  Introduced SVN 136 [
 Critical fix for time skew on AMD’s.  Infinite loop.  Introduced SVN 123 [SVN 139]
 Fix for sha1.c and mushcrypt.c for compiling issues.  MUX2 provided code.  [SVN 140]
 Forgot to update this bloody file [SVN 141]
-Fix for null entries deidling a player.  It was intended behavior, but this could
-.INDENT 0.0
-.INDENT 3.5
-be confusing so was fixed.  It still will de\-cloak an idle\-cloaked wiz. [SVN 142]
-.UNINDENT
-.UNINDENT
-.sp
+Fix for null entries deidling a player.  It was intended behavior, but this could be confusing so was fixed.  It still will de\-cloak an idle\-cloaked wiz. [SVN 142]
 Fix for timeskew affecting internal timers, such as database dumping. [SVN 143]
 Fixed a bad define for 64\-bit autodetection. [SVN 143]
-Fix for timeskew affecting global timers. Introduced SVN 140. [SVN 144] (Rehash: SVN 151)
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Fix for timeskew affecting global timers. Introduced SVN 140. [SVN 144] (Rehash: SVN 151)
+.INDENT 7.0
 .IP \(bu 2
 Thanks Ratio
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
 Clean up code a bit with implicit declarations [SVN 145]
-Bug in signal handling.  If during a dump, it happened during an alarm() state,
 .INDENT 0.0
-.INDENT 3.5
-alarms would be ignored and as such the timer would be broke from that point on.
-Fix causes signal restore to re\-set the alarm state.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Bug in signal handling.  If during a dump, it happened during an alarm() state, alarms would be ignored and as such the timer would be broke from that point on.  Fix causes signal restore to re\-set the alarm state.
+.INDENT 7.0
 .IP \(bu 2
 Thanks Ratio
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B spellnum() had a comparision bug with ‘tens’ digit.  [SVN 152]
 .INDENT 7.0
@@ -9152,42 +9310,23 @@ Thanks Ratio
 Crashbug in RANDMATCH() (Introduced 3.9) [SVN 157]
 Missing free_lbuf() in caseall() (Introduced SVN 136) [SVN 157]
 Fix for QDBM and mail if the mail db can’t load correctly. [SVN 161]
-Fix for @break/@assert to stop double\-eval of first argument [SVN 164]
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Fix for @break/@assert to stop double\-eval of first argument [SVN 164]
+.INDENT 7.0
 .IP \(bu 2
 Thanks Brazil
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
-.B Fix for all of the 
-.nf
-*
-.fi
-default() functions evaluating default behavior all the time.
-.INDENT 7.0
-.TP
-.B It really probably shouldn’t have done that.  [SVN 166]
+.B Fix for all of the *default() functions evaluating default behavior all the time.  It really probably shouldn’t have done that.  [SVN 166]
 .INDENT 7.0
 .IP \(bu 2
 Thanks Orion
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
-Wouldn’t you know it, the 
-.nf
-*
-.fi
-default() fix broke some backward compatability (introduced SVN 166).  Fixed [SVN 167]
-Yet another fix but this time to evaluate arguments to all the 
-.nf
-*
-.fi
-u*default() functions (intro SVN 166) Fixed [SVN 168]
+Wouldn’t you know it, the *default() fix broke some backward compatability (introduced SVN 166).  Fixed [SVN 167]
+Yet another fix but this time to evaluate arguments to all the *u*default() functions (intro SVN 166) Fixed [SVN 168]
 Fix for ptimefmt as the structure declaration was missing an argument.  Bad mojo. \- Fixed [SVN 174]
 Rhost’s hardcoded news system failed to free an lbuf on subscribe checks \- Fixed [SVN 177]
 creplace didn’t evaluate its second arguments and some syntax issues. \- Fixed [SVN 183]
@@ -9196,27 +9335,23 @@ mail/reply with the the all option wouldn’t work if targets had spaces in name
 vsprintf didn’t like the double %% for statically stating % in certain libraries [SVN 195]
 translate() didn’t take %0\-%9 arguments [SVN 196]
 citer() had a double lbuf free on replace_tokens [SVN 198]
-@whereis/@whereall didn’t hide the location if user was hidden/dark correctly [SVN 202]
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B @whereis/@whereall didn’t hide the location if user was hidden/dark correctly [SVN 202]
+.INDENT 7.0
 .IP \(bu 2
 thanks Planet X
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 @mvattr/@cpattr should handle SBUF sized attribute names cleaner. \- Fixed [SVN 207]
-Help topic for @assert reversered \- Fixed [SVN 209]
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Help topic for @assert reversered \- Fixed [SVN 209]
+.INDENT 7.0
 .IP \(bu 2
 Bug ID 0000004 (BlackRook)
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B %q<label> broke with trace conditions.  Introduced SVN 108 \- Fixed [SVN 209]
 .INDENT 7.0
@@ -9233,16 +9368,13 @@ Thanks Melpomine
 .sp
 SIGUSR1 would ignore the signal after use at times.  Fixed [SVN 212]
 Possible SIGSEGV with argument preprocessing on certain commands.  Fixed [SVN 213]
-Fix for SIGALRM being ignored when IGNORE_SIGNALS compile time option enabled. fixed [SVN 225]
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Fix for SIGALRM being ignored when IGNORE_SIGNALS compile time option enabled. fixed [SVN 225]
+.INDENT 7.0
 .IP \(bu 2
 Thanks grump
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Fix for map()/filter() for argument list passed.  Fixed [SVN 227]
 .INDENT 7.0
@@ -9270,37 +9402,26 @@ Thanks Cary
 .UNINDENT
 .sp
 Logging network errors could cause heavy logging on really bad networks \- Fixed [SVN 245]
-Connect honors @hide/unfindable/dark [SVN 320]
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Connect honors @hide/unfindable/dark [SVN 320]
+.INDENT 7.0
 .IP \(bu 2
 Thanks Planet X
 .UNINDENT
 .UNINDENT
-.UNINDENT
+.SS RhostMUSH 3.2.4 p18 Update
 .sp
-XXXXX
+[06/28/2004]
+.SS Changes
+.sp
+@aflags takes /full switch to give count on how many objects have the attribute.  useful incase you have concerns of attributes dissapearing.
 .INDENT 0.0
 .TP
-.B [06/28/2004]
-.INDENT 7.0
-.TP
-.B RhostMUSH 3.2.4 p18 Update File
-—\- Changes —\-
-.UNINDENT
-.TP
-.B @aflags takes /full switch to give count on how many objects have the attribute.
-useful incase you have concerns of attributes dissapearing.
-.TP
-.B Added queue_compatible config option to allow negative decremental of the
-.INDENT 7.0
-.TP
-.B semaphore attribute for elsemush compatibility
+.B Added queue_compatible config option to allow negative decremental of the semaphore attribute for elsemush compatibility
 .INDENT 7.0
 .IP \(bu 2
 Lyle, Saffron, Dragon @ Paris
-.UNINDENT
 .UNINDENT
 .TP
 .B Added \-DPARIS compile time option for older Penn/MUSH format compatibility
@@ -9330,13 +9451,12 @@ Lots of people
 .sp
 Added percent substitution ceiling for uniquely created DoS attacks.  Heh.
 FUBAR flag no longer allows you to execute any functions.
-Added config param ‘lcon_checks_dark’ that will enforce dark/unfindable.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Added config param ‘lcon_checks_dark’ that will enforce dark/unfindable.
+.INDENT 7.0
 .IP \(bu 2
 Thanks Xandar
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -9346,40 +9466,33 @@ mail/anon optionally hides sender
 KEEPALIVE @toggle added. \- (AuroraMUX/Soruk)
 chkreality() function to check if victom sees target’s reality.
 CHKREALITY toggle that allows @Lock/user to become a reality lock
-@admin param ‘reality_locks’ to globally enable reality level lock checks.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B @admin param ‘reality_locks’ to globally enable reality level lock checks.
+.INDENT 7.0
 .IP \(bu 2
 Thanks lots of people.
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Added /fail switch to @Hook.
 .INDENT 7.0
 .IP \(bu 2
 Originally Amborsia, modified. (MUX2 compat)
 .UNINDENT
-.TP
-.B Added @admin param reality_locktype that optionally chooses how reality locks
-are issued.  This should allow much more flexability.
-.TP
-.B Sideeffects could double eval.  This was intended for some backward compatability
-with muse, but does allow a security risk.  Now have an optional compile
-time option of SECURE_SIDEEFFECT that disables this.
-.INDENT 7.0
-.INDENT 3.5
+.UNINDENT
+.sp
+Added @admin param reality_locktype that optionally chooses how reality locks are issued.  This should allow much more flexability.
 .INDENT 0.0
+.TP
+.B Sideeffects could double eval.  This was intended for some backward compatability with muse, but does allow a security risk.  Now have an optional compile time option of SECURE_SIDEEFFECT that disables this.
+.INDENT 7.0
 .IP \(bu 2
 Ambrosia
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.TP
-.B Added LOGGED attribute flag that will log anytime that attribute is changed,
-modified, set, or cleared.
+.sp
+Added LOGGED attribute flag that will log anytime that attribute is changed, modified, set, or cleared.
+.INDENT 0.0
 .TP
 .B NOISY toggle to allow consistant noisy sets
 .INDENT 7.0
@@ -9389,23 +9502,13 @@ Thanks Tam
 .UNINDENT
 .sp
 backup_flat.sh now accept a ‘\-s’ option for single\-mode for cron entry.
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .INDENT 0.0
 .TP
-.B WHO/DOING on the connect screen had a broken conditional where if you were
-NOT unfindable you still wouldn’t show up on WHO/DOING on the connect
-screen.  \- Fixed
+.B WHO/DOING on the connect screen had a broken conditional where if you were NOT unfindable you still wouldn’t show up on WHO/DOING on the connect screen.  \- Fixed
 .INDENT 7.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Ambrosia & \fI\%Tam@Stargate\fP: Alpha Site
-.UNINDENT
-.UNINDENT
 .UNINDENT
 .TP
 .B help files wouldn’t process escape characters right with ZENTY_ANSI \- Fixed
@@ -9417,25 +9520,24 @@ Thanks Zivilyn/Xandar
 .sp
 mail/recall couldn’t do lookups based by\-player on multi\-sent messages \- Fixed
 Wizard objects not inherit hit attr @limits \- Fixed
-Possible crash bug with mail dynamic aliases via ‘$’.  \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Possible crash bug with mail dynamic aliases via ‘$’.  \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Xandar
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 @dynhelp/parse wouldn’t display ansi correctly (from previous fix) \- Fixed
+.sp
 CPU Protection not as robust on certain cases \- Fixed
-Month was off by one in mail/recall (introduced p18)
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Month was off by one in mail/recall (introduced p18)
+.INDENT 7.0
 .IP \(bu 2
 Thanks Mortalis @ Cajun
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -9456,16 +9558,13 @@ player cache had possible dereferenced pointer call \- Fixed
 autoreg_include.txt didn’t check txt subdirectory. \- Fixed
 reality locks overwrote match state data (introduced p18) \- Fixed
 [18\-1] Fix for IGSWITCH @hook and multiple switches \- Fixed
-[18\-2] Fix for unfindable and loc() and other functions \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B [18\-2] Fix for unfindable and loc() and other functions \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Spatterlight
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B [18\-3] Fix for %l in trace output (same issue as loc() had) \- Fixed
 .INDENT 7.0
@@ -9475,17 +9574,17 @@ Thanks Spatterlight
 .UNINDENT
 .sp
 [18\-4] Fix for global attribute formatting where ‘what’ should have been ‘owhat’
-[18\-4] Modification to allow localized formatting with &format<attr>
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B [18\-4] Modification to allow localized formatting with &format<attr>
+.INDENT 7.0
 .IP \(bu 2
 Thanks Kevin
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 [18\-5] Added content searches for all forms of help.
+.sp
 [18\-6] Fix LBUF free issue (introduced 18\-4)
 .INDENT 0.0
 .INDENT 3.5
@@ -9501,28 +9600,20 @@ Thanks Kevin
 Enhanced @break to accept optional argument to ‘branch’
 .UNINDENT
 .UNINDENT
-.INDENT 0.0
-.INDENT 3.5
-—\- Changes —\-
-.UNINDENT
-.UNINDENT
+.SS RhostMUSH 3.2.4 p17 Update
+.sp
+[ 06/04/2004]
+.SS Changes
+.sp
+Rhost 3.2.4 is a locked version.  only bug fixes from this point on.  The next release will be 3.9 which will be alpha/beta leading to the 4.0 release.
+Added sub\-patchlevel versioning for pre\-release patchlevel testing.
 .INDENT 0.0
 .TP
-.B Rhost 3.2.4 is a locked version.  only bug fixes from this point on.  The next
-release will be 3.9 which will be alpha/beta leading to the 4.0 release.
-.UNINDENT
-.sp
-Added sub\-patchlevel versioning for pre\-release patchlevel testing.
-Sanitizing of help files to correct missing/misdefined config parameters.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.B Sanitizing of help files to correct missing/misdefined config parameters.
+.INDENT 7.0
 .IP \(bu 2
 Ambrosia
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B An optional .conf file now has all available options to choose from.
 .INDENT 7.0
@@ -9540,24 +9631,17 @@ Thanks Xandar
 new admin param ‘roomlog_path’ specifies path of above LOGROOM path.
 attrcnt() modified to help rebuild wonked attribute tables
 @aflags modified to help list attribute information
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .sp
 malloc.h wasn’t properly identified in the configure tool \- Fixed
 ZENTY_ANSI didn’t handle ansi correctly if TINY_SUB was also defined \- Fixed
-@admin param garbage_chunk wasn’t used \- Removed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B @admin param garbage_chunk wasn’t used \- Removed
+.INDENT 7.0
 .IP \(bu 2
 Ambrosia
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B @admin param precmd_obj wasn’t used \- Removed
 .INDENT 7.0
@@ -9567,13 +9651,12 @@ Ambrosia
 .UNINDENT
 .sp
 sortby() imported for backward compatibility.
-updated Rhost minimal_db to handle new conf file parameters.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B updated Rhost minimal_db to handle new conf file parameters.
+.INDENT 7.0
 .IP \(bu 2
 Thanks Cloud
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -9581,20 +9664,18 @@ You could alias over hardcoded functionality \- Fixed
 Improved attribute handling for corrupting attributes.
 @attribute/delete now does sanity checking for attribute existing first
 @aflag shows the numerical unique identifer of the attribute
-@pcreate/reg would crash if issued by a non\-player \- fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B @pcreate/reg would crash if issued by a non\-player \- fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Xandar
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.INDENT 0.0
-.INDENT 3.5
-—\- Changes —\-
-.UNINDENT
-.UNINDENT
+.SS RhostMUSH 3.2.4 p16 Update
+.sp
+[02/24/2004]
+.SS Changes
 .INDENT 0.0
 .TP
 .B +proof in mail now displays text for forwarding/replied messages.
@@ -9607,16 +9688,13 @@ Many Many People
 @cpattr, @mvattr, and @edit now take attribute content locking into effect.
 inc() and dec() now take strings as ‘0’ values.
 @door rewrite to handle mangled port openings/closings.
-@decompile now has /attribs, /flags, and /all switches
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B @decompile now has /attribs, /flags, and /all switches
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Tam@Stargate\fP: Alpha Site
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B @set with the /noisy switch notifies if attributes (cleared)
 .INDENT 7.0
@@ -9626,16 +9704,13 @@ Thanks \fI\%Tam@Stargate\fP: Alpha Site
 .UNINDENT
 .sp
 @dynhelp (dynhelp()/textfile()) now does partial\-matching.
-\- for mail writing will now allow you to insert ‘=’ without escaping.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B \- for mail writing will now allow you to insert ‘=’ without escaping.
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Alibi@Cajun\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B New bugreport script to handle bug report mailing.
 .INDENT 7.0
@@ -9645,21 +9720,9 @@ Lensman & Ashen\-Shugar
 .UNINDENT
 .sp
 New auto configurator scripts for make options.
-ZoneWizLock now allows you to examine any area in the zone as well
-.INDENT 0.0
-.INDENT 3.5
-as modify it.  Royalty and higher ownership overrides this lock.
-.UNINDENT
-.UNINDENT
-.sp
+ZoneWizLock now allows you to examine any area in the zone as well as modify it.  Royalty and higher ownership overrides this lock.
 Help and Wizhelp have improved topics.
-Third party work on PHP and SQL support \- Still in pre\-beta, not included.
-.INDENT 0.0
-.INDENT 3.5
-contact \fI\%lensman@rhostmush.org\fP for SQL
-.UNINDENT
-.UNINDENT
-.sp
+Third party work on PHP and SQL support \- Still in pre\-beta, not included.  contact \fI\%lensman@rhostmush.org\fP for SQL
 @hook for security related commands shored up.
 Modified credits for MUXPAGE toggle.  Penn had the feature first :)
 Wizards now optionally checked for @limits
@@ -9667,146 +9730,65 @@ The non\-command alias functionalty has been given a well\-needed overhall
 Better error handling was added to the functions in htab.c
 Unified some of the Makefile defines for OsX, Cygwin, BSD.
 Added funceval to @list
-@doing and @doing/header expanded in length to full\-use.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B @doing and @doing/header expanded in length to full\-use.
+.INDENT 7.0
 .IP \(bu 2
-Thanks Falor
-.UNINDENT
+Thanksla Falor
 .UNINDENT
 .UNINDENT
 .sp
 switch(), switchall(), and @switch now optionally take #$ substitutions.
 GREATLY updated auto\-makefile configurator to handle most common library checks.
-lattr() takes multiple page values
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B lattr() takes multiple page values
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Sirona@Cajun\fP
-.INDENT 2.0
-.INDENT 3.5
-Additions
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
+.SS Additions
+.SS Functions
 .sp
 aiindex() \- works like iindex() except will append to a null list.
 sortby() \- Added for MUX2 compatibility
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-— De\-Powers —
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-\(em Admin params —
-.UNINDENT
-.UNINDENT
+.SS Commands
+.SS Flags
+.SS Powers
+.SS De\-Powers
+.SS Toggles
+.SS Admin Params
 .sp
 wizmax_vattr_limit   \- Attribute limiter for wizards
 wizmax_dest_limit    \- Destroy limiter for wizards
 vattr_limit_checkwiz \- Enable/Disable wiz limiters
-guild_attrname       \- Make the GUILD column in WHO read a different
 .INDENT 0.0
-.INDENT 3.5
-attribute. (new players also have this attr
-set with the default value)
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B guild_attrname       \- Make the GUILD column in WHO read a different attribute. (new players also have this attr set with the default value)
+.INDENT 7.0
 .IP \(bu 2
 Suggested by \fI\%Leona@Faetopia\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B exits_connect_rooms  \- This parameter defines if rooms with exits will never
-be floating.  This parameter will disregard the need
-for exits to always be indirectly linked to the
-starting room.
-.UNINDENT
 .sp
+exits_connect_rooms  \- This parameter defines if rooms with exits will never be floating.  This parameter will disregard the need for exits to always be indirectly linked to the starting room.
 switch_substitutions \- If enabled, allows #$ substitutions in switches.
 examine_restrictive  \- Settable 1\-5 (0 disables) to restrict examine based on ‘level’
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .sp
 Double free issue with caseall() \- Fixed
 Possible SIGSEGV condition with nobroadcast_host (introduced p15)  \- Fixed
 If memory/system corrupted, could corrupt room check in command.c \- Fixed
 Possible SIGSEGV with +proofing mail (introduced p15) \- Fixed
-Exit movement backward compatibility broke with unlinked exits (introduced p15) \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Exit movement backward compatibility broke with unlinked exits (introduced p15) \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Ol’Sarge@Cajun\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Possible SIGSEGV legacy bug with flag handling \- Fixed
 .INDENT 7.0
@@ -9836,16 +9818,13 @@ Thanks \fI\%Jamie@M*U*S*H\fP
 .sp
 NDBM in make confsource assumed ndbm.h on server sane.  It’s usually not. \- Fixed
 Wizard limits wern’t verified on ownership if not set INHERIT \- Fixed
-help/wizhelp didn’t show that you could do topic wildcard searches \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B help/wizhelp didn’t show that you could do topic wildcard searches \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Falor
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B help syntax error with regards to null() and @@() \- Fixed
 .INDENT 7.0
@@ -9864,40 +9843,31 @@ Thanks Ambrosia
 .IP \(bu 2
 Thanks Xandar
 .UNINDENT
-.TP
-.B The hash tables could appear to loose information where aliases were used.
-(introduced p15) \- Fixed
 .UNINDENT
 .sp
+The hash tables could appear to loose information where aliases were used.  (introduced p15) \- Fixed
 The Hash tables are sized too small and don’t reflect ‘todays Rhost’.  \- Fixed
 @flag/remove wouldn’t return an error message if no alias existed \- Fixed
 hash with an off\-by\-one count. (Introduced p16 beta) \- Fixed
-Typo with help.txt with regards to terse flag \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Typo with help.txt with regards to terse flag \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Sasaki \fI\%Chie@Fantasy\fP Moon
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.INDENT 0.0
-.INDENT 3.5
-—\- Changes —\-
-.UNINDENT
-.UNINDENT
+.SS RhostMUSH 3.2.4 p15 Update
 .sp
-MASSIVE internal rewrite of internal flag/command/function structure
-to prepare for loadable/unloadable module support.
+[09/09/2003]
+.SS Changes
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B MASSIVE internal rewrite of internal flag/command/function structure to prepare for loadable/unloadable module support.
+.INDENT 7.0
 .IP \(bu 2
 Lensman
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B New Directory Structure for data, txt, src, hdrs.
 .INDENT 7.0
@@ -9942,11 +9912,12 @@ Lensman & Ash
 .UNINDENT
 .UNINDENT
 .sp
-minimal database provided that includes SGP, myrddin bbs, global code
-Add method for global (master room) exits to be shown with ‘look’
+minimal database provided that includes SGP, myrddin bbs, global code Add method for global (master room) exits to be shown with ‘look’
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-NOTE: PRIVATE and/or FLOATING flags remove this if set on exit.
+PRIVATE and/or FLOATING flags remove this if set on exit.
 .UNINDENT
 .UNINDENT
 .INDENT 0.0
@@ -9971,20 +9942,13 @@ Thanks \fI\%Ivory@Mednights\fP
 .UNINDENT
 .sp
 lit() can accept commas as part of it’s input string
-+bcc in mail/write now gives mail BLINDLY to get target. They won’t see
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .TP
-.B the To: list(s).
+.B +bcc in mail/write now gives mail BLINDLY to get target. They won’t see the To: list(s).
 .INDENT 7.0
 .IP \(bu 2
 Thanks Saffron & Lyle @ Paris
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B modified hastype() to have same permissions as type()
 .INDENT 7.0
@@ -10030,16 +9994,13 @@ Lensman
 .UNINDENT
 .sp
 @list stack now shows filenames instead of file pointers.
-/pid added to @notify to handle PID processes
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B /pid added to @notify to handle PID processes
+.INDENT 7.0
 .IP \(bu 2
 Thanks Storm
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B /recpid added to @wait to record PID process to setq\-registers specified.
 .INDENT 7.0
@@ -10052,25 +10013,18 @@ Thanks Storm
 lzones() now take optional arguments for large zone lists.
 Improved CPU protection (yes, even more).
 @doors are no longer preserved between reboots.
-13th argument to columns() to allow padding of short columns
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B 13th argument to columns() to allow padding of short columns
+.INDENT 7.0
 .IP \(bu 2
 Thanks Patrick Bogen
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
-.B inc()/dec() (the hardcoded xinc/xdec) now, like other servers, handle
-.INDENT 7.0
-.TP
-.B non\-numericals for arguments.
+.B inc()/dec() (the hardcoded xinc/xdec) now, like other servers, handle non\-numericals for arguments.
 .INDENT 7.0
 .IP \(bu 2
 Thanks Xandar
-.UNINDENT
 .UNINDENT
 .TP
 .B @pcreate now allows you the /register switch so wizards can email the pwds.
@@ -10087,20 +10041,13 @@ Thanks \fI\%Dervish@Cajun\fP
 .TP
 .B @admin alias allows re\-aliasing existing aliases or deleting aliases.
 .INDENT 7.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Lensman
-.INDENT 2.0
-.INDENT 3.5
-Additions
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
+.SS Additions
+.SS Functions
+.INDENT 0.0
 .TP
 .B elementsmux() \- for MUX elements() compatibility.
 .INDENT 7.0
@@ -10110,40 +10057,20 @@ Thanks \fI\%Rook@EnnerSeas\fP
 .UNINDENT
 .sp
 parsestr() \-  helps with speech formatting.
-chomp() \- used to strip returns before, after, or both sides of string.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B chomp() \- used to strip returns before, after, or both sides of string.
+.INDENT 7.0
 .IP \(bu 2
 Thanks Storm
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 escapex() \- just like escape() but you can choose what chars to _not_ escape
+.sp
 securex() \- just like escapex() but for secure()’s counterpart
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
+.SS Commands
+.SS Flags
 .INDENT 0.0
 .TP
 .B BLIND \- flag for exits and rooms to make target arrival/leaving ‘snuffed’.
@@ -10156,39 +10083,9 @@ Idea from many people (and TM3)
 DEFAULT \- Attribute flag for handling default global attrib (TM3)
 SINGLETHREAD \- Attribute flag to handle single\-threading $commands
 ATRLOCK \- Attribute flag to handle global attribute locking
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-— De\-Powers —
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
+.SS Powers
+.SS De\-Powers
+.SS Toggles
 .INDENT 0.0
 .TP
 .B MUXPAGE \- Toggle to allow mux\-like paging for Penn/MUX/TM3 compatibility.
@@ -10200,11 +10097,7 @@ Thanks PennMUSH
 .sp
 NOGLOBPARENT \- Toggle to disable inheritance of global inheret parents.
 NODEFAULT \- Toggle to disable global default handling (TM3)
-.INDENT 0.0
-.INDENT 3.5
-— Admin params —
-.UNINDENT
-.UNINDENT
+.SS Admin Params
 .INDENT 0.0
 .TP
 .B mail_verbosity \- Add Subj: to sent mail as well as to disconnected players.
@@ -10217,16 +10110,13 @@ Thanks Saffron & Lyle @ Paris
 mail_anonymous \- Default name for anonymous mail (Default: \fIAnonymous\fP)
 sidefx_maxcalls \- (1000 default) for max sideffects allowed/command.
 oattr_enable_altname \- to enable/disable alt name usage in odrop/ofail/osucc.
-oattr_uses_altname \- for alt names sent to odrop/ofail/osucc.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B oattr_uses_altname \- for alt names sent to odrop/ofail/osucc.
+.INDENT 7.0
 .IP \(bu 2
 Thanks Rook @ Ennerseas (default _NPC)
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B empower_fulltel \- Offer two methods for FULLTEL (‘self’ & anything not cloaked)
 .INDENT 7.0
@@ -10270,11 +10160,7 @@ global_clone_room \- Sets default debref# for cloning attributes (TM3)
 global_clone_exit \- Sets default debref# for cloning attributes (TM3)
 global_attrdefault \- Sets global locker for attribute sets/clears
 nobroadcast_host \- Define what sites will be ‘snuffed’ from MONITOR
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .INDENT 0.0
 .TP
 .B Bug in wizhelp with ‘mail_lockdown’ toggle.  \- Fixed
@@ -10299,16 +10185,13 @@ Thanks Xandar
 Objects could use the brandy toggle to send mail.  \- Fixed
 Security issue with autoregistration \- Fixed
 goto didn’t have hooks before/after right \- Fixed
-SIGSEGV on autozone add if player didn’t belong to zone \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B SIGSEGV on autozone add if player didn’t belong to zone \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Rook & Sylph @ Ennerseas
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Bug with teleporting and permissions \- Fixed
 .INDENT 7.0
@@ -10349,25 +10232,18 @@ Thinks Rosalind & Vulcan @ Nevermore
 .sp
 Fix for @hooks to now successfully work on goto \- Fixed
 Fix for @uptime to show time up longer than a year \- Fixed
-Fix for @hook on goto.  Did not handle /permit or /ignore right \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Fix for @hook on goto.  Did not handle /permit or /ignore right \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Rook
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
-.B Fix for legacy bug in @list functions for blowing a buffer if too many user
-.INDENT 7.0
-.TP
-.B defined functions have been defined.  Wow, talk about old.
+.B Fix for legacy bug in @list functions for blowing a buffer if too many user defined functions have been defined.  Wow, talk about old.
 .INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Aalita@Ennersea\fP
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -10375,16 +10251,13 @@ Fix for ZENTY_ANSI compiletime with a possible buffer overrun. \- Fixed
 Fix for ZENTY_ANSI with handling safebuff() \- Fixed.
 Fix for two rhosts running same debugmon debug_id \- Fixed.
 Fix for mis\-matched DPUSH/RETURN for DPOP in door.c \- Fixed
-Fix for pemit()/npemit() with argument evaluation \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Fix for pemit()/npemit() with argument evaluation \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Matthew@Draconis\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Fix for legacy bug with vattr initialization \- Fixed
 .INDENT 7.0
@@ -10403,9 +10276,10 @@ Thanks Shari
 .IP \(bu 2
 Thanks Matthew
 .UNINDENT
-.TP
-.B lock(), rxlevel(), txlevel(), and parent() didn’t increment the sidefx counter
-the correct way.  \- Fixed
+.UNINDENT
+.sp
+lock(), rxlevel(), txlevel(), and parent() didn’t increment the sidefx counter the correct way.  \- Fixed
+.INDENT 0.0
 .TP
 .B wizhelp entry with no_move had grammer mistakes. \- Fixed
 .INDENT 7.0
@@ -10419,53 +10293,32 @@ Matthew
 Thanks \fI\%Illithid@Ennersea\fP
 .UNINDENT
 .UNINDENT
-
+.SS RhostMUSH 3.2.4 p14 Update File
 .sp
-.ce
-----
-
-.ce 0
-.sp
+[07/10/2002]
+.SS Changes
 .INDENT 0.0
 .TP
-.B [07/10/2002]             RhostMUSH 3.2.4 p14 Update File
-—\- Changes —\-
-.UNINDENT
-.sp
-round() excepts negative args (60) for rounding values to whole numbers. (MUX2)
-The SPOOF flag is now inheritable.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.B round() excepts negative args (60) for rounding values to whole numbers. (MUX2) The SPOOF flag is now inheritable.
+.INDENT 7.0
 .IP \(bu 2
 Thanks Milk & Nyssa
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 Added /nosub switch to @pemit so ## and #@ arn’t subbed.
-Add /preserve to @wipe that wipes all _but_ the match
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Add /preserve to @wipe that wipes all _but_ the match
+.INDENT 7.0
 .IP \(bu 2
 Thanks Mikhail Mikhailov
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-Force an ANSI_NORMAL at the end of @extansi calls
-@oxtport/@o<blah> messages don’t show if a null string.  This is handy
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
 .TP
-.B if you want to process sideeffects but don’t want a result to show.
+.B Force an ANSI_NORMAL at the end of @extansi calls @oxtport/@o<blah> messages don’t show if a null string.  This is handy if you want to process sideeffects but don’t want a result to show.
 .INDENT 7.0
 .IP \(bu 2
 Thanks Nyssa
-.UNINDENT
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -10474,16 +10327,13 @@ set() now handles ansi.
 setq()/setr()/r() now handles ansi.
 If owner set FLOATING, floating messages not returned.
 Improved chksum methods on @freeze/@thaw
-Added /basic switch to @lock for PENN compatibility.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Added /basic switch to @lock for PENN compatibility.
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Trispis@M*U*S*H\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Attributes starting with a ‘~’ are now supported if ATTR_HACK enabled.
 .INDENT 7.0
@@ -10506,16 +10356,13 @@ lwho() takes argument of ‘2’ to list JUST the ports.
 Add internal attribute SpamMonitor to store history of command(s).
 Modified MONITOR sitecons so it shows the remote port they’re connecting from.
 Modify sin(), tan(), etc (ala MUX) for conversions.  Backward compatible (MUX2)
-Zenty’s ANSI modifications.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Zenty’s ANSI modifications.
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Zenty@RhostMUSH\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Added way to convert PENN 1.7.5 flatfiles to RhostMUSH native.
 .INDENT 7.0
@@ -10525,20 +10372,13 @@ Thanks Mac
 .TP
 .B Added SHS password encryption and plantext to crypt/SHS conversion on the fly.
 .INDENT 7.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Thanks \fI\%Azhdeen@RhostMUSH\fP
-.INDENT 2.0
-.INDENT 3.5
-Additions
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
+.SS Additions
+.SS Functions
+.INDENT 0.0
 .TP
 .B txlevel() \- sideeffect that sets @txlevel (or displays)
 .INDENT 7.0
@@ -10560,17 +10400,15 @@ Thanks \fI\%Trispis@M*U*S*H\fP
 .UNINDENT
 .sp
 pedit() \- used to mimic Penn’s edit() functionality (Penn)
+.sp
 ptimefmt() \- used to mimic Penn/Mux’s timefmt() functionality (Penn/MUX2)
-textfile() \- works like dynhelp() but pushes onto buffer (Penn)
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B textfile() \- works like dynhelp() but pushes onto buffer (Penn)
+.INDENT 7.0
 .IP \(bu 2
 Thanks Raevnos & PennMUSH
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B lattrp() \- lattr() for parent checks
 .INDENT 7.0
@@ -10581,115 +10419,36 @@ Idea from Jake & MUX2
 .sp
 ctu() \- function that does deg/rad/grad conversion
 visiblemux() \- works like mux’s visible()
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
+.SS Commands
 .sp
-— Commands —
-.UNINDENT
-.UNINDENT
+@hook to show/display/change individual hooks.  Switches are:
 .INDENT 0.0
-.TP
-.B @hook to show/display/change individual hooks.  Switches are:
-.INDENT 7.0
-.TP
-.B /permit
-.INDENT 7.0
-.IP \(bu 2
-Return ‘Permission denied.’ if fail lock (1/0 boolean)
-.UNINDENT
-.TP
-.B /ignore
-.INDENT 7.0
-.IP \(bu 2
-Fall through command check if fail lock (1/0 boolean)
-.UNINDENT
-.TP
-.B /before
-.INDENT 7.0
-.IP \(bu 2
-Process functionality before command execution.
-.UNINDENT
-.TP
-.B /after
-.INDENT 7.0
-.IP \(bu 2
-Process functionality after command execution.
-.UNINDENT
-.TP
-.B /igswitch
-.INDENT 7.0
-.IP \(bu 2
-Mark command to ignore failed /switch matches.
-.IP \(bu 2
-Thanks \fI\%Moe@BrazilMUX\fP (/igswitch idea)
-.INDENT 2.0
 .INDENT 3.5
-Additions:
+.sp
+.nf
+.ft C
+         /permit    \- Return \(aqPermission denied.\(aq if fail lock (1/0 boolean)
+         /ignore    \- Fall through command check if fail lock (1/0 boolean)
+         /before    \- Process functionality before command execution.
+         /after     \- Process functionality after command execution.
+         /igswitch  \- Mark command to ignore failed /switch matches.
+
+\- Thanks Moe@BrazilMUX (/igswitch idea)
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.INDENT 7.0
-.INDENT 3.5
-— Flags —
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.TP
-.B ATTRIBUTE FLAG: uselock \- when set on an attribute with a $command, will look
-for a matching ~<attribute> to eval the lock.
-This does BOOLEAN evaluation.  1 pass, 0 fail.
-.UNINDENT
+.SS Flags
+.sp
+ATTRIBUTE FLAG: uselock \- when set on an attribute with a $command, will look for a matching ~<attribute> to eval the lock.  This does BOOLEAN evaluation.  1 pass, 0 fail.
 .sp
 SPAMMONITOR \- mark if player and/or target item check for spam (60 cmds/sec)
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— De\-Powers —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.UNINDENT
-.UNINDENT
+.SS Powers
+.SS De\-Powers
+.SS Toggles
 .sp
 ZONEINHERIT \- Allows zonemasters to have attributes inherited to children.
-.INDENT 0.0
-.INDENT 3.5
-— Admin params —
-.UNINDENT
-.UNINDENT
+.SS Admin Params
 .INDENT 0.0
 .TP
 .B muddb_name \- admin param for db names to seperate from ‘mud_name’
@@ -10698,14 +10457,10 @@ ZONEINHERIT \- Allows zonemasters to have attributes inherited to children.
 Thanks \fI\%Milk@MattRhost\fP
 .UNINDENT
 .TP
-.B global_error_obj \- evaluate the VA attribute on the object if defined.
-.INDENT 7.0
-.TP
-.B this will evaluate the ‘huh?’ message(s).
+.B global_error_obj \- evaluate the VA attribute on the object if defined.  this will evaluate the ‘huh?’ message(s).
 .INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Zenty@RhostMUSH\fP
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -10715,32 +10470,27 @@ global_parent_thing \- globally inherit attributes to thing w/o @parent
 global_parent_player \- globally inherit attributes to player w/o @parent
 global_parent_exit \- globally inherit attributes to exit w/o @parent
 hook_obj \- globally define the ‘hook’ object.
-hook_cmd \- process ‘hooks’ on specified commands.
+hook_cmd \- process ‘hooks’ on specified commands:
 .INDENT 0.0
 .INDENT 3.5
-PERMIT   \- to pass who can use/etc (bitmask 1)
-IGNORE   \- to IGNORE who can use/etc (bitmask 2)
-BEFORE   \- to pass what is done before command (bitmask 4)
-AFTER    \- to pass what is done after command (bitmask 8)
-IGSWITCH \- bypass error control on non\-existant switches.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP \(bu 2
-Thanks \fI\%Moe@BrazilMUX\fP (igswitch idea)
-.UNINDENT
-.UNINDENT
-.UNINDENT
+.sp
+.nf
+.ft C
+         PERMIT   \- to pass who can use/etc (bitmask 1)
+         IGNORE   \- to IGNORE who can use/etc (bitmask 2)
+         BEFORE   \- to pass what is done before command (bitmask 4)
+         AFTER    \- to pass what is done after command (bitmask 8)
+         IGSWITCH \- bypass error control on non\-existant switches.
+
+\- Thanks Moe@BrazilMUX (igswitch idea)
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
 look_moreflags \- if enabled, will show global flags on things with examine.
 stack_limit \- nest check for ‘stack’ to throttle back a given amount. (Penn)
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .INDENT 0.0
 .TP
 .B HELPFILE \- trigger() was not a command but was shown in help. \-Fixed
@@ -10789,12 +10539,7 @@ Thanks Lyle
 Option incorrectly shown in @list options mail. \- Fixed
 SESSION didn’t cut the name off at 16 chars (formatting issue) \- Fixed
 mailquick()’s arg didn’t totally mirror MUX’s mail()  \- Fixed
-Fix for if who_unfindable disabled, player_dark disabled, and allow_whodark enabled
-.INDENT 0.0
-.INDENT 3.5
-you’d never get the connect flag of a wizard. \- Fixed
-.UNINDENT
-.UNINDENT
+Fix for if who_unfindable disabled, player_dark disabled, and allow_whodark enabled you’d never get the connect flag of a wizard. \- Fixed
 .INDENT 0.0
 .TP
 .B Linux and other weird unix systems tended to hang on AUTH lookups still. \- Fixed
@@ -10813,16 +10558,13 @@ Thanks \fI\%Trispis@M*U*S*H\fP
 parent() when used to set a new parent did not return the dbref# \- Fixed
 Fixed legacy bug in QUEUE which effected a\-z setq() regs. \- Fixed
 ‘home’ check was broke if set disabled and ignore at the same time \- Fixed
-@thaw didn’t handle semaphores properly. \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B @thaw didn’t handle semaphores properly. \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks Dervish
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Zone\-ignores didn’t work for QUIT, LOGOUT, and it’s ilk. \- Fixed
 .INDENT 7.0
@@ -10854,16 +10596,19 @@ Thanks Ronan
 Thanks \fI\%Sketch@M*U*S*H\fP & Javelin
 .UNINDENT
 .UNINDENT
+.SS RhostMUSH 3.2.4 p13 Update File
+.sp
+[02/01/2002]
+.SS Changes
 .sp
 Help was missing for @admin parameter areg_lim.  \- Added
 Help was inconsistant for die() and dice().  \- Changed
-/quiet switch to @notify.  Also added /quiet switch to @drain.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B /quiet switch to @notify.  Also added /quiet switch to @drain.
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Hellspawn@MUX2\fP
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -10881,13 +10626,12 @@ Name field increased from 16 to 22 characters (MUX2/TM3/PENN)
 Immortals/#1 can use mail/recall to see mail sent by others.
 3rd argument to lrooms()’s to show level you’re in (MUX2)
 LOGGING option to @flagdef.  Logs all setting/removing (configurable)
-Allow specifying filename to @dump/flat (filename restricted and ends in .flat)
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Allow specifying filename to @dump/flat (filename restricted and ends in .flat)
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Reptile@CotM\fP
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -10897,39 +10641,23 @@ Ports listing added to lwho() (boolean 1/0 \- 0 (null) default)
 Ports added to idle() (boolean 1/0 and optional specified port)
 Ports added to conn() (boolean 1/0 and optional specified port)
 cmds() modified to handle target port
-lattr() handles optional target of 
-.nf
-*
-.fi
-player and player now.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions
-.UNINDENT
-.UNINDENT
+lattr() handles optional target of *player and player now.
+.SS Additions
+.SS Functions
 .sp
-— Functions —
-.UNINDENT
-.UNINDENT
+safebuff() \- function to go back in the function until the first matched delimiter if strlen() is equal to or greater than the maximum.  (3998 characters)
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
-.TP
-.B safebuff() \- function to go back in the function until the first matched
-delimiter if strlen() is equal to or greater than the maximum.
-(3998 characters) \- Note: this _WILL_ strip ansi.
+.INDENT 3.5
+this _WILL_ strip ansi.
+.UNINDENT
 .UNINDENT
 .sp
 floordiv() \- return the ‘floor’ (rounded down) of result of division. (MUX2)
 last() \- return last word specified by delimiter (MUX2)
 singletime() \- return time rounded to lowest element (s, m, h, d, etc) (MUX2)
-parenmatch() \- (2 args, 1 just for error) (Idea from ChaoticMUX)
-.INDENT 0.0
-.INDENT 3.5
-ansifies all bracket/paren/brace matches and RED’s nonmatch.
-.UNINDENT
-.UNINDENT
-.sp
+parenmatch() \- (2 args, 1 just for error) (Idea from ChaoticMUX) ansifies all bracket/paren/brace matches and RED’s nonmatch.
 lrand() \- (4 arguments) \- returns random numbers between two points (MUX2)
 keeptype() \- does reverse of remtype()
 lcmds() \- List all commands ‘$’ or listens ‘^’ on object (MUX2)
@@ -10938,82 +10666,26 @@ unpack() \- convert a pack()’d number back to base 10 (MUX2)
 crc32() \- return a crc32 code for the specified string. (MUX2)
 toggle() \- works like the @toggle command.  Follows SIDEFX restrictions.
 moneyname() \- returns the singular/plural name based on argument (Discordia)
-config() \- if no argument, displays all parameters (you have access to),
-.INDENT 0.0
-.INDENT 3.5
-otherwise display the value of the specified parameter.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
+config() \- if no argument, displays all parameters (you have access to), otherwise display the value of the specified parameter.
+.SS Commands
 .sp
 @eval \- force evaluation of functionality (TM3)
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-— De\-Powers —
-.UNINDENT
-.UNINDENT
+.SS Flags
+.SS Powers
+.SS De\-Powers
 .INDENT 0.0
 .TP
 .B mortal_examine \- if set, target always examines like a mortal. (@decompile/etc)
 .INDENT 7.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Thanks \fI\%Belial@Armageddon\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.sp
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.UNINDENT
+.SS Toggles
 .sp
 mail_lockdown \- target is restricted in mail ‘monitoring’ like a mortal.
 muxpage \- allows ‘p <blah>’ to work like in MUX/TM3
-.INDENT 0.0
-.INDENT 3.5
-— Admin params —
-.UNINDENT
-.UNINDENT
+.SS Admin Params
 .sp
 log (parameter) god \- log all activity of #1
 heavy_cpu_max \- ceilings heavilly used cpu\-intensive functions.
@@ -11022,23 +10694,13 @@ max_lastsite_cnt \- specify # of connects in period of time to allow from site.
 min_con_attempt \- specify the wait between ‘first’ connect and subquent cons.
 lattr_default_oldstyle \- (default 0) snuffs the ‘#\-1 NO MATCH’ (TM3)
 formats_are_local \- localize @nameformat, @conformat, @exitformat
-mail_def_object \- default object for global aliases.
-.INDENT 0.0
-.INDENT 3.5
-Handle ‘alias.name’ and ‘comment.name’.
-.UNINDENT
-.UNINDENT
-.sp
+mail_def_object \- default object for global aliases. Handle ‘alias.name’ and ‘comment.name’.
 wizard_queue_limit \- distinguish between wizard and mortals for queues.
 max_pcreate_time \- time range allowed before max_pcreates reached.
 max_pcreate_lim \- number of pcreates allowed in given timeframe
 pcreate_paranoia \- level of action you want to take against infidels (0\-2)
 global_parent_obj \- global parent that attributes are inherited off of.
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .sp
 convtime() used daylight savings \- no longer uses daylight savings \- Fixed
 IDESC wouldn’t work with Reality Levels \- Fixed
@@ -11049,16 +10711,13 @@ home, if @icmd’d, wouldn’t allow the command to be overridden \- Fixed
 The CLOAK flag would give ‘has left’ messages \- Fixed
 The lookup_player() code now handles ‘*’ as well as not. \- Fixed
 If recycling was not enabled, you could still @destroy \- Fixed
-Trace output was broke with how it displayed enactor/target \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Trace output was broke with how it displayed enactor/target \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Raevnos@M*U*S*H\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B NOSTOP flag on objects in the master room could cause an infinite loop \- Fixed
 .INDENT 7.0
@@ -11068,16 +10727,13 @@ Thanks \fI\%Selene@TaintedEarth\fP
 .UNINDENT
 .sp
 QueueMax attribute would not work unless owned by the target. \- Fixed
-DNS/AUTH lookups could have unforseen behavior with non\-printable chars \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B DNS/AUTH lookups could have unforseen behavior with non\-printable chars \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Morgan@RhostMUSH\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B setqmatch() does not work like the help dictated it should. \- Fixed
 .INDENT 7.0
@@ -11123,30 +10779,27 @@ Thanks \fI\%Ian@Everywhere\fP
 .UNINDENT
 .sp
 mid() didn’t work like it did in MUX2/PENN.  It’s now an alias \- Fixed
-type() could bypass cloaked targets \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B type() could bypass cloaked targets \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Brazil@BrazilMUX\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 quick_wild() could cause some SIGSEGV’s if not accurately verified \- Fixed
-inventory doesn’t handle Reality Levles corrected \- Fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B inventory doesn’t handle Reality Levles corrected \- Fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Zenty@BrazilMUX\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
+.sp
+lcon(), next(), con(), lexits(), lcon(), xcon(), and sees() with reguards to handling Reality Levles were broke. \- Fixed
 .INDENT 0.0
-.TP
-.B lcon(), next(), con(), lexits(), lcon(), xcon(), and sees() with
-reguards to handling Reality Levles were broke. \- Fixed
 .TP
 .B Help for trim() had examples with it’s 2nd and 3rds arguments reversed \- Fixed
 .INDENT 7.0
@@ -11154,6 +10807,10 @@ reguards to handling Reality Levles were broke. \- Fixed
 Thanks \fI\%accela@AniMUSH\fP
 .UNINDENT
 .UNINDENT
+.SS RhostMUSH 3.2.4 p12 Update
+.sp
+[06/15/2001]
+.SS Changes
 .INDENT 0.0
 .TP
 .B Introduction of REALMS/Reality Levels
@@ -11167,13 +10824,12 @@ randextract() handles 5th arg for output and can handle ‘1’ arg passed
 Cleaned up handling of ndbm.h
 Improved validation for autoregistration
 Improved logging
-Added total commands on @conncheck
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Added total commands on @conncheck
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Meglos@MyrkaMUX\fP (Zenty’s concept)
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -11188,16 +10844,13 @@ mail/status shows ‘\-‘ on current message read.
 Added ‘+proof’ to mail/write command
 Cleaned up help with the mail system for easier understanding
 Added protection to functions that could be abused with poor coding practices
-Added HILIGHT’ing to puppets when displaying messages.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Added HILIGHT’ing to puppets when displaying messages.
+.INDENT 7.0
 .IP \(bu 2
 Thanks to \fI\%Rynos@Armageddon\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Added LastIP attribute to house the IP address the person last connected from.
 .INDENT 7.0
@@ -11215,17 +10868,8 @@ Thanks \fI\%Jeff@Sandbox\fP
 Help fixes for help with regards to arbitrary commands.
 Improved DoS protection vers. race conditions on connect screen.
 switch() and switchall() now recognize > and < as math\-args (config param)
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
+.SS Additions
+.SS Functions
 .sp
 rxlevel() \- return RX reality level for source check
 txlevel() \- return TX reality level for target check
@@ -11233,83 +10877,19 @@ listrlevels() \- list all levels
 hasrxlevel() \- return ‘1’ if target has rxlevel()
 hastxlevel() \- return ‘1’ if target has txlevel()
 cansee() \- return ‘1’ if target can see source (reality level based only)
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.UNINDENT
-.UNINDENT
+.SS Commands
 .sp
 @rxlevel \- set/remove reality level source check
 @txlevel \- set/remove reality level target check
-mrpage (mrp) \- respond to the player list that you received in a page.
-.INDENT 0.0
-.INDENT 3.5
-like rpage, this is seperate from lpage
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
+mrpage (mrp) \- respond to the player list that you received in a page.  like rpage, this is seperate from lpage
+.SS Flags
 .sp
 NONAME \- if set on a target, the name is not displayed.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
+.SS Powers
 .sp
-— Powers —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— De\-Powers —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-— Admin params —
-.UNINDENT
-.UNINDENT
+De\-Powers
+.SS Toggles
+.SS Admin Params
 .sp
 reality_level     \- define new reality level(s).  32 max.
 wiz_always_real   \- a wizard is defined as always seeing everything as ‘real’
@@ -11321,38 +10901,23 @@ def_player_rx     \- default room RX value (1 default)
 def_player_tx     \- default room TX value (1 default)
 def_thing_rx      \- default thing RX value (1 default)
 def_thing_tx      \- default thing TX value (1 default)
-validate_host     \- Specify invalid site\-masks for autoregistration emails
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B validate_host     \- Specify invalid site\-masks for autoregistration emails
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Zara@UnderGround\fP Labyrinth
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
 log_command_list  \- Specify commands to individually log
 partial_conn      \- Enable/disable @aconnect on partial connects
 partial_deconn    \- Enable/disable @adisconnects on partial disconnects
-secure_functions  \- Enable/disable security on listed functions
+secure_functions  \- Enable/disable security on listed functions FOREACH, WHILE, FOLD, FILTER, MAP, STEP, and MIX
+max_logins_allowed (mudstate) \- absolute ceiling of connections allowed to avoid any type of DoS based attack.  This will always be 10 less than the OS can handle.
+penn_switches     \- if enabled, switch() and switchall() will work like PENN and accept < and > as mathmatical operands.
+.SS Bug Fixes
 .INDENT 0.0
-.INDENT 3.5
-FOREACH, WHILE, FOLD, FILTER, MAP, STEP, and MIX
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B max_logins_allowed (mudstate) \- absolute ceiling of connections allowed
-to avoid any type of DoS based attack.  This will always
-be 10 less than the OS can handle.
-.TP
-.B penn_switches     \- if enabled, switch() and switchall() will work like PENN
-and accept < and > as mathmatical operands.
-.INDENT 7.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
 .TP
 .B filter() would accept ‘1<blah>’ as well as ‘1’.  \- Fixed.
 .INDENT 7.0
@@ -11373,6 +10938,10 @@ LBUF not freed in mail/quota \- Fixed
 Some side effects had wrong security/permission checks \- Fixed
 Side effects did not check inheritance for permission \- Fixed
 Iter()/list() and suite did not handle ansi properly \- Fixed
+.SS RhostMUSH 3.2.4 p11 Update
+.sp
+[03/15/2001]
+.SS Changes
 .INDENT 0.0
 .TP
 .B elist() has 5th argument (for string seperator)
@@ -11380,29 +10949,35 @@ Iter()/list() and suite did not handle ansi properly \- Fixed
 .IP \(bu 2
 Thanks \fI\%Talek@M*U*S*H\fP
 .UNINDENT
-.TP
-.B @icmd has new switches to handle location/zone overriding:
+.UNINDENT
+.sp
+@icmd has new switches to handle location/zone overriding:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 /droom \- disable commands on room
 /iroom \- ignore commands on room
 /croom \- clear commands on room
 /lroom \- list commands on room
 /lallroom \- list all commands at current location
+.ft P
+.fi
+.UNINDENT
 .UNINDENT
 .sp
 DoS Protection increased for vattr’s and object creation/destruction
 @wait giving new /until switch to specify exact static time
 strmath() has two new args.  First handles start location, second count
 Mail uses ~ to evaluate attributes for player targets
-Enhanced email authorization for autoregistration.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Enhanced email authorization for autoregistration.
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Jeff@SandBox\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B Enhanced page to handle alias displaying
 .INDENT 7.0
@@ -11412,117 +10987,50 @@ Thanks \fI\%Wolfie@CotM\fP
 .UNINDENT
 .sp
 Pagelock to follow normal methodology when wizard\-overrides in effect
-Improved mail/write +list (proof) interface for mail with BRANDY_MAIL toggle.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Improved mail/write +list (proof) interface for mail with BRANDY_MAIL toggle.
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Belial@Armegeddon\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 @pemit has /silent switch for PENN compatibility
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
+.SS Additions
+.SS Functions
 .sp
 foreach() \- (MUX) added for compatibility
 ilev() \- Returns nest level of an iter()
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.UNINDENT
-.UNINDENT
+.SS Commands
 .sp
 @limit [/vmod /dmod /list /reset] \- to limit max @destroy/vattr creation
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— De\-Powers —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.UNINDENT
-.UNINDENT
+.SS Flags
+.SS Powers
+.SS De\-Powers
+.SS Toggles
 .sp
 IGNOREZONE \- toggles zone/location to enable zone/location command disable/ignore
 VPAGE \- toggles aliases to show/not show in pages you receive.
-PAGELOCK \- toggles pages to normal methodologies when wizard lock overriding
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B PAGELOCK \- toggles pages to normal methodologies when wizard lock overriding
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Jeff@Sandbox\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 MAIL_NOPARSE \- seperate toggle to break up translating %r’s and %t’s in mail viewing.
+.SS Admin Params
+.sp
+ignore_zone \- globally specify zone ignoring for a command
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-— Admin params —
+ignore_zone allows all other ignore_* params for level specifiers.)
 .UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B ignore_zone \- globally specify zone ignoring for a command
-(Note: ignore_zone allows all other ignore_* params for level specifiers.)
 .UNINDENT
 .sp
 disable_zone \- globally specify zone disabling for a command
@@ -11530,32 +11038,24 @@ global_ansimask \- globally define what ansi codes to allow/deny
 expand_goto \- force exit movement to use a ‘goto’.
 max_dest_limit \- specify maximum @destroys allowed per player
 max_vattr_limit \- specify maximum _NEW_ vattrs allowed per player
-hide_nospoof \- if ‘1’ you have to control target to see NOSPOOF flag
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B hide_nospoof \- if ‘1’ you have to control target to see NOSPOOF flag
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Jeff@SandBox\fP
-.INDENT 2.0
-.INDENT 3.5
-— BUG FIXES —
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .sp
 buffer issue with @decompile \- fixed
-remove lmath() from help. \- fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B remove lmath() from help. \- fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Raevnos@M*U*S*H\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B mail showed cloaked wizzes being connected \- fixed
 .INDENT 7.0
@@ -11589,24 +11089,20 @@ Thanks \fI\%Sorien@Delphi\fP
 .UNINDENT
 .sp
 Attempted to free mbufs in @disable login area twice.  \- fixed
-Parenting fix with possible recursion \- fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B Parenting fix with possible recursion \- fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Brazil@MUX2\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 @lock/chown not documented in help \- fixed
-@lock/chown required on CHOWN_OK object.  Shouldn’t be.  \- Fixed
 .INDENT 0.0
-.INDENT 3.5
+.TP
+.B @lock/chown required on CHOWN_OK object.  Shouldn’t be.  \- Fixed
 \-Thanks \fI\%Rynos@Armageddon\fP
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B @icmd for players broke with room/location addition \- fixed.
 \-Thanks \fI\%Jeff@SandBox\fP
@@ -11614,132 +11110,60 @@ Thanks \fI\%Brazil@MUX2\fP
 .B Cloaked items didn’t trigger @startup \- fixed.
 \-Thanks \fI\%Rynos@Armageddon\fP
 .UNINDENT
+.SS RhostMUSH 3.2.4 p10 Update
+.sp
+[02/15/2001]
+.SS Changes
 .sp
 improved CPU handler for DoS protection
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
+.SS Additions
+.SS Functions
 .sp
 strfunc(<function>,<string of args>[,<optional seperator for args>) \- for lists
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— De\-Powers —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-— Admin params —
-.UNINDENT
-.UNINDENT
+.SS Commands
+.SS Flags
+.SS Powers
+.SS De\-Powers
+.SS Admin Params
 .sp
 max_cpu_cycles admin param (default 3)
 cpu_secure_lvl admin param (default 0)
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .sp
 you could still get into a garbage object \- fixed (MINOR)
 forwardlists were not cleared on @wipe \- fixed
+.SS RhostMUSH 3.2.4 p9 Update
+.sp
+[12/15/2000]
+.SS Changes
 .sp
 mail/write +acc added to allow extending player lists and not replacing.
-mail/recall[/all] <playerlist> to list messages by player\-name you sent to
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B mail/recall[/all] <playerlist> to list messages by player\-name you sent to
+.INDENT 7.0
 .IP \(bu 2
 Suggested by \fI\%Julius@Bermuda\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
-functionality for @flagdef for flagname filtering on display and paging.
-Cleaned up some functionality
-more cases to valid() (name, attrname, playername)
-filler to columns() (new argument)
+functionality for @flagdef for flagname filtering on display and paging.  Cleaned up some functionality more cases to valid() (name, attrname, playername)
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B filler to columns() (new argument)
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Morgan@BrazilMUX\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B ‘save’ to helpfile showing that you do not need to save
 .INDENT 7.0
 .IP \(bu 2
 Suggested by \fI\%Jamie@AdminMUSH\fP
-.INDENT 2.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions
 .UNINDENT
 .UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
+.SS Additions
+.SS Functions
 .sp
 caseall() \- works like switchall() but for case (Taken from PENN)
 cand() \- works like and() but stops processing on first ‘FALSE’ (from PENN)
@@ -11749,81 +11173,24 @@ isword() \- returns ‘TRUE’ if entire string is all alpha (or has a hyphon)
 itext() \- returns nth arg (text ‘##’) of an iter() (from PENN)
 inum() \- returns nth arg (num ‘#@’) of an iter() (from PENN)
 modulo() \- returns the modulus of the numbers (from PENN)
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.UNINDENT
-.UNINDENT
+.SS Commands
+.SS Flags
 .sp
 NO_PARSE \- attribute flag that stops processing/evaluation of %0\-%9 in $commands.
 SAFE \- attribute flag that stops modification of attribute it’s set on (TM 3.0)
 SHOWFAILCMD \- when set on object any matching failed $cmd uses the @ufail suite.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.UNINDENT
-.UNINDENT
-.sp
-None
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.UNINDENT
-.UNINDENT
+.SS Powers
+.SS Toggles
 .sp
 MAIL_STRIPRETURN \- when combining lines uses spaces instead of carrage returns
 PENN_MAIL \- when sending mail, use PENN like style
-.INDENT 0.0
-.INDENT 3.5
-— Admin params —
-.UNINDENT
-.UNINDENT
+.SS Admin Params
 .sp
 guest_namelist \- specifies a dynamic namelist for guests (with protection)
 hackattr_nowiz \- defines if ‘_attr’ is wiz only or follows normal rules
 hackattr_see \- defines if ‘_attr’ is viewable by wizard only.
-penn_playercmds \- $commands on player work only for that player
-.INDENT 0.0
-.INDENT 3.5
-or inventory (from PENN)
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
+penn_playercmds \- $commands on player work only for that player or inventory (from PENN)
+.SS Bug Fixes
 .INDENT 0.0
 .TP
 .B Bug with dynhelp().  Player (3rd arg) never resolved correctly \- fixed
@@ -11837,13 +11204,12 @@ Possible (and very rare) overflow conditions with certain wiz commands \- fixed
 SIGSEGV bug with recursive @functions \- fixed
 When @toggled MONITOR_BAD, MONITOR_FAIL doubled up failed connections \- fixed
 Malaligned pointer in command.c.  Non\-crash issue.  \- fixed
-setq() registers wern’t cleared for extreamly fast command input \- fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B setq() registers wern’t cleared for extreamly fast command input \- fixed
+.INDENT 7.0
 .IP \(bu 2
 Thanks \fI\%Brazil@BrazilMUX\fP
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -11851,65 +11217,28 @@ ex thing/\fIsta\fP returns ‘no attribs found’ if tstamps enabled \- fixed
 enhanced security for .txt file reading/verification (possible DoS) \- fixed
 attrib flag DARK could not be unset by non\-god.  Only #1 can set it now \- fixed
 encrypt/decrypt really mangled with how it passed key \- fixed
-——————————————————————————–
-[10/12/2000]             RhostMUSH 3.2.4 p8 Update File
-.INDENT 0.0
-.INDENT 3.5
-—\- Changes —\-
-.UNINDENT
-.UNINDENT
+.SS RhostMUSH 3.2.4 p8 Update
+.sp
+[10/12/2000]
+.SS Changes
 .sp
 lnum() and lnum2() now can handle negative numbers.
 @list options shows if the COMMAND flag is used.
 NOMODIFY can be configured to be settable/unsettable/modifiable by imm only.
 vector functions (vadd, etc) that return a list now recognize output seps.
-MAX_ARGS in ‘externs.h’ may be changed to increase the total number of arguments
-.INDENT 0.0
-.INDENT 3.5
-functions like switch() may take.  MAX_ARGS is currently defaulted to
-‘30’ though MUX 2.0 has it set to ‘100’.  This HAS to be a compile
-time change else possible SIGSEGV’s could happen.
-.UNINDENT
-.UNINDENT
-.sp
+MAX_ARGS in ‘externs.h’ may be changed to increase the total number of arguments functions like switch() may take.  MAX_ARGS is currently defaulted to ‘30’ though MUX 2.0 has it set to ‘100’.  This HAS to be a compile time change else possible SIGSEGV’s could happen.
 mail/write +editall=old,new \- argument to mail/write added. Modifies ALL lines.
 mail/write +feditall=old,new \- modify ALL matches on ALL lines.
 mail/write +fedit #=old,new \- modify ALL matches on given line.
-mail/write +cc/+bcc=new \- if FORWARDING or SENDING (not reply!) will allow the
-.INDENT 0.0
-.INDENT 3.5
-user to redefine who the message is being sent out to.
-.UNINDENT
-.UNINDENT
-.sp
+mail/write +cc/+bcc=new \- if FORWARDING or SENDING (not reply!) will allow the user to redefine who the message is being sent out to.
 _ATTR can be compile\-time added to be wiz\-only settable/modifiable attributes.
 Modified mail/write +justify, +insert, +edit, +editall to rehandle line count
 Made option to make harder password guessing.
-dice() takes ‘1’ for expanded, ‘2’ for expanded w/o totals, and optional output
-.INDENT 0.0
-.INDENT 3.5
-seperator.  Also has optional argument for low\-limit
-Can mimic TM 3.0’s lrand() function.
-.UNINDENT
-.UNINDENT
-.sp
+dice() takes ‘1’ for expanded, ‘2’ for expanded w/o totals, and optional output seperator.  Also has optional argument for low\-limit Can mimic TM 3.0’s lrand() function.
 modified connecting to @program based on toggle.
-added modified/created with ‘examine’ and ‘examine/brief’ and ‘examine thing/
-.nf
-*
-.fi
-’
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
+added modified/created with ‘examine’ and ‘examine/brief’ and ‘examine thing/*’
+.SS Additions
+.SS Functions
 .INDENT 0.0
 .TP
 .B mailalias() \- returns the dbref# list of players in the given global mail alias
@@ -11924,183 +11253,90 @@ vcross() \- taken from TinyMUX 2.0 (with permission)
 switchall() \- idea taken from TinyMUSH 3.0 (coded from scratch)
 brackets() \- idea taken from PENN 1.7.3
 @@() \- works like null() but does not evaluate (idea from PENN 1.7.3)
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.UNINDENT
-.UNINDENT
+.SS Commands
 .sp
 @flagdef \- define flag permission levels (/set, /unset, /see)
 @dynhelp \- dynamically read a specified <file>.txt file (needs matching .indx!)
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.UNINDENT
-.UNINDENT
+.SS Flags
 .INDENT 0.0
 .TP
-.B COMMANDS \- optional #ifdef to define what uses commands or not (TinyMUSH compat)
-.INDENT 7.0
-.TP
-.B uses \-DENABLE_COMMAND_FLAG
+.B COMMANDS \- optional #ifdef to define what uses commands or not (TinyMUSH compat) uses \-DENABLE_COMMAND_FLAG
 .INDENT 7.0
 .IP \(bu 2
 Idea from TinyMUSH 2.2.4
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
 NO_CLONE \- attribute flag to stop attributes from copying over when @cloned
-MARKER0 through MARKER9         \- idea from TinyMUSH 3.0
-BOUNCE \- allows players to pass what they hear to their contents w/o effecting
-.INDENT 0.0
-.INDENT 3.5
-@ahear/@amhear/etc.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
 .INDENT 0.0
 .TP
-.B None.
+.B MARKER0 through MARKER9
 .INDENT 7.0
-.INDENT 3.5
-Additions:
+.IP \(bu 2
+idea from TinyMUSH 3.0
 .UNINDENT
 .UNINDENT
 .sp
-— Toggles —
-.UNINDENT
+BOUNCE \- allows players to pass what they hear to their contents w/o effecting @ahear/@amhear/etc.
+.SS Powers
+.SS Toggles
 .sp
 MONITOR_BAD \- monitor failed connections/creations to non\-existant players
 PROG_ON_CONNECT \- reverses the current global logic of program and connecting.
+.SS Admin Params
+.sp
+imm_nomod \- when enabled (default disabled) specifies that only immortal can set/unset the NOMODIFY flag and only immortals can modify things set NOMODIFY.  This will allow NOMODIFY to mimic CONSTANT ala TM 3.0
+paranoid_exit_linking \- when enabled, you MUST control exit to link.  This includes UNLINKED exits.  Also, exits won’t be @chowned to you automatically. (Default disabled)
+notonerr_return \- when DISABLED (default enabled) not() returns a ‘0’ for any function returning #\-1.
 .INDENT 0.0
-.INDENT 3.5
-— Admin params —
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
-.B imm_nomod \- when enabled (default disabled) specifies that only immortal can
-set/unset the NOMODIFY flag and only immortals can modify things
-set NOMODIFY.  This will allow NOMODIFY to mimic CONSTANT ala TM 3.0
-.TP
-.B paranoid_exit_linking \- when enabled, you MUST control exit to link.  This
-includes UNLINKED exits.  Also, exits won’t be @chowned to you
-automatically. (Default disabled)
-.TP
-.B notonerr_return \- when DISABLED (default enabled) not() returns a ‘0’ for
-any function returning #\-1.
-.TP
-.B safer_passwords \- requires passwords be 5+ chars long and have one upper,
-.INDENT 7.0
-.TP
-.B one lower, and one special character.
+.B safer_passwords \- requires passwords be 5+ chars long and have one upper, one lower, and one special character.
 .INDENT 7.0
 .IP \(bu 2
 Idea from TinyMUSH 2.2.4
 .UNINDENT
 .UNINDENT
-.TP
-.B max_sitecons \- (default 50) specifies the maximum # of port connections to site
-of that given site.
-.INDENT 7.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
-.UNINDENT
+.sp
+max_sitecons \- (default 50) specifies the maximum # of port connections to site of that given site.
+.SS Bug Fixes
 .sp
 NOMODIFY wasn’t strict enough \- fixed
 BACKSTAGE/NOBACKSTAGE didn’t handle @zones \- fixed
 create() didn’t check command permissions first for @dig, @open, and @pcreate
 put a temp fix for a possible SIGSEGV bug.
+.SS RhostMUSH 3.2.4 p7 Update
+.sp
+[07/15/2000]
+.SS Changes
+.sp
+@set now recognizes the following attribute flags:
 .INDENT 0.0
-.TP
-.B @set now recognizes the following attribute flags:
+.INDENT 3.5
+.sp
+.nf
+.ft C
 GOD
 IMMORTAL
-WIZARD (suggested by \fI\%Stormwolf@CotF\fP)
+WIZARD (suggested by Stormwolf@CotF)
 ROYALTY (alias for WIZARD)
 COUNCILOR
 ARCHITECT
 GUILDMASTER
 HIDDEN
 DARK
-.INDENT 7.0
-.INDENT 3.5
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Additions
+.SS Functions
+.SS Commands
+.SS Flags
+.SS Powers
+.SS Toggles
+.SS Admin Params
+.SS Bug Fixes
 .INDENT 0.0
-.INDENT 3.5
-Additions
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.TP
-.B None.
-— Admin params —
-.TP
-.B None.
-— BUG FIXES —
 .TP
 .B @list options did not show RESTRICT_HOME config setting.  Fixed
 .INDENT 7.0
@@ -12108,67 +11344,26 @@ Additions:
 Reported by \fI\%Mercutio@ShatteredCathedrals\fP
 .UNINDENT
 .UNINDENT
-.INDENT 0.0
-.TP
-.B @list site_information now shows DNS blocking
-.INDENT 7.0
-.INDENT 3.5
-Additions
-.UNINDENT
-.UNINDENT
+.SS RhostMUSH 3.2.4 p6 Update
 .sp
-— Functions —
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
+[06/16/2000]
+.SS Changes
 .sp
-— Commands —
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.TP
-.B None.
-— Admin params —
-.UNINDENT
+@list site_information now shows DNS blocking
+.SS Additions
+.SS Functions
+.SS Commands
+.SS Flags
+.SS Powers
+.SS Toggles
+.SS Admins Params
 .sp
 forbid_host \- allows DNS entry/modify for forbidding hosts
 register_host \- allows DNS entry/modify for registered hosts
 autoreg_host \- allows DNS entry/modify for disallowing autoreg to hosts
 noguest_host \- allows DNS entry/modify for disallowing guests to hosts
 suspect_host \- allows DNS entry/modify for suspect hosts
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .INDENT 0.0
 .TP
 .B ansi() didn’t recognize ‘u’ for underline.  Fixed.
@@ -12179,135 +11374,77 @@ Reported by \fI\%LadyDraconis@BermudaByNight\fP
 .UNINDENT
 .sp
 @program had small issue with prompt storage.  Fixed.
-autoreg file inclusion didn’t count total lines right.  Fixed.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B autoreg file inclusion didn’t count total lines right.  Fixed.
+.INDENT 7.0
 .IP \(bu 2
 Reported by \fI\%Rachel@AdminMUSH\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 hastoggles(), haspowers(), and hasdepowers() didn’t work.  Fixed.
+.SS RhostMUSH 3.2.4 p5 Update
+.sp
+[06/01/2000]
+.SS Changes
 .sp
 New /noauth and /nodns switches to @site
 Better timeout conditions for AUTH lookups.
 @list site_information now shows additional information
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.TP
-.B None.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.TP
-.B None.
-— Admin params —
-.UNINDENT
+.SS Additions
+.SS Functions
+.SS Commands
+.SS Flags
+.SS Powers
+.SS Toggles
+.SS Admin Params
 .sp
 noauth_site – specifies site and mask that AUTH lookups are not to be performed
 nodns_site  – specifies site and mask that DNS lookups are not to be performed
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .sp
 AUTH hung if remote server was configured wrong.  Fix put in around the OS
 limitation to handle this.
 Command substitution (%c/%x) could cause a SIGSEGV at random times.  Fixed.
-——————————————————————————–
-[04/15/2000]             RhostMUSH 3.2.4 p4 Update File
-.INDENT 0.0
-.INDENT 3.5
-—\- Changes —\-
-.UNINDENT
-.UNINDENT
+.SS RhostMUSH 3.2.4 p4 Update
+.sp
+[04/15/2000]
+.SS Changes
 .sp
 wizhelp has new topic for setting up guests (GUEST SETUP)
-help has help for differences/useful (DIFFERENCE/USEFUL)
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B help has help for differences/useful (DIFFERENCE/USEFUL)
+.INDENT 7.0
 .IP \(bu 2
 Suggested by \fI\%Sycorax@ShatteredCathedrals\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 filter() now supports an output seperator
-lnum() and lnum2() optionally return NULL if given a ‘0’.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B lnum() and lnum2() optionally return NULL if given a ‘0’.
+.INDENT 7.0
 .IP \(bu 2
 Suggested by \fI\%Gorath@Rhostshyl\fP
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
 mask() now takes ‘~’ for adding 1’s comp, ‘1’ for 1’s and ‘2’ for 2’s.
 mailquick() takes 3rd argument for MUX mail() compatibility.
 news/articlelife takes ‘forever’ as a valid argument.
-mail/status takes /subject, (U)nread, (N)ew, (B)oth new/unread, (S)aved,
-.INDENT 0.0
-.INDENT 3.5
-(M)arked, and (O)ld mail as optional search params.
-.UNINDENT
-.UNINDENT
-.sp
+mail/status takes /subject, (U)nread, (N)ew, (B)oth new/unread, (S)aved, (M)arked, and (O)ld mail as optional search params.
 mail/number takes same new args as mail/status
 news/read now marks messages as ‘read’.
 @ansiname now allows raw ansi (under controlled circumstances)
-dig(), create(), open(), clone() all optionally return dbref#’s.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B dig(), create(), open(), clone() all optionally return dbref#’s.
+.INDENT 7.0
 .IP \(bu 2
 Suggested by \fI\%Corum@Underground\fP
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
@@ -12316,181 +11453,86 @@ Suggested by \fI\%Corum@Underground\fP
 mail/status and mail/read now show connected players.
 mail/write and \- now show how many characters you have written.
 mail/forward and mail/reply now recognize the BRANDY_MAIL @toggle.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
+.SS Additions
+.SS Functions
 .sp
 listmatch(<string>,<wildcard>[,<delimiter>])
 setqmatch(<string>,<wildcard>[,<delimiter>])
 listnewsgroups([<player>])
 inprogram(player)
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.UNINDENT
-.UNINDENT
+.SS Commands
 .sp
 @program (idea from MUX)
 @quitprogram (idea from MUX)
-@progprompt
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B @progprompt
+.INDENT 7.0
 .IP \(bu 2
 Suggested by \fI\%Zara@Underground\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 @extansi
-train
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B train
+.INDENT 7.0
 .IP \(bu 2
 Suggested by \fI\%Trey@GameHendge\fP
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
 @function/preserve (idea from MUX)
 +help (hardcode) (idea from MUX)
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B None added.
-.INDENT 7.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.UNINDENT
-.sp
-None added.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.UNINDENT
-.UNINDENT
+.SS Flags
+.SS Powers
+.SS Toggles
 .sp
 PROG (idea from MUX)
 NOSHPROG
 IMMPROG
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Alias Additions
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
-.sp
-None added.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Alias Additions
-.UNINDENT
-.UNINDENT
-.sp
-—  Commands —
-.UNINDENT
-.UNINDENT
+.SS Alias Additions
+.SS Functions
+.SS Commands
 .sp
 @prog aliased to @program
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.TP
-.B Alias Additions
-— Flags —
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-None added.
-.INDENT 0.0
-.INDENT 3.5
-— Admin params —
-.UNINDENT
-.UNINDENT
+.SS Flags
+.SS Admin Params
 .sp
 login_to_prog
-noshell_prog
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B noshell_prog
+.INDENT 7.0
 .IP \(bu 2
 Suggested by \fI\%Draken\-Korin@Underground\fP
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
 sidefx_returnval
 nospam_connect (idea from PENN)
-noregist_onwho
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B noregist_onwho
+.INDENT 7.0
 .IP \(bu 2
 Suggested by \fI\%Rachel@AdminMUSH\fP
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
 lnum_compat
-mailinclude_file
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B mailinclude_file
+.INDENT 7.0
 .IP \(bu 2
 Suggested by \fI\%Rachel@AdminMUSH\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 must_unlquota
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .INDENT 0.0
 .TP
 .B news/articlelife not in wizhelp
@@ -12519,24 +11561,27 @@ Reported by \fI\%Cerebus@Bermuda\fP
 .UNINDENT
 .sp
 mail/reply didn’t function right when BRANDY_MAIL toggled – fixed
-setunion() would not parse 3rd/4th args correctly on rare occurances –fixed
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B setunion() would not parse 3rd/4th args correctly on rare occurances –fixed
+.INDENT 7.0
 .IP \(bu 2
 Reported by \fI\%Tyr@Forgotten\fP (Thanks for the patch)
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 news/articlelife wouldn’t reset articlelife with ‘\-1’.  – fixed
+.SS RhostMUSH 3.2.4 p3 Update File
+.sp
+[11/15/1999]
+.SS Changes
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-—\- Changes —\-
+Make sure to make the appropiate aliases
 .UNINDENT
 .UNINDENT
-.sp
-Make sure to make the appropiate aliases:
 .INDENT 0.0
 .TP
 .B @flag is not listed in ‘wizhelp commands’
@@ -12554,20 +11599,21 @@ suggested by \fI\%Stormwolf@Children\fP
 .sp
 name(<target>[,<newname>])
 examine/quick \- Previous /brief functionality
-examine/brief \- Modified for MUX/PENN compatibility
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B examine/brief \- Modified for MUX/PENN compatibility
+.INDENT 7.0
 .IP \(bu 2
 suggested by \fI\%Rachel@AdminMUSH\fP
 .UNINDENT
 .UNINDENT
-.UNINDENT
 .sp
 @function[/list] \- for PENN compatibility
-@pemit/zone[/list] <zone(s)> \- if zonemaster \- all rooms in zone.
+.sp
+@pemit/zone[/list] <zone(s)>
 .INDENT 0.0
 .INDENT 3.5
+if zonemaster \- all rooms in zone.
 if !zonemaster \- specified zone.
 .UNINDENT
 .UNINDENT
@@ -12575,17 +11621,8 @@ if !zonemaster \- specified zone.
 @dolist/notify
 ‘mail/next \-‘ \- reads previous mail
 ‘mail/zap \-‘ \- marks current message and reads previous mail
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
+.SS Additions
+.SS Functions
 .sp
 mailquick(<player>[,<folder>]) (wiz only)
 eval(<object>,<attr>) or eval(<string>)
@@ -12631,31 +11668,11 @@ zfun2default([<zone>/]<attr>,<default>[,<args>])
 zfuneval([<zone>/]<attr>/<level>[,<args>])
 zfunldefault([<zone>/]<attr>,<default>[,<args>])
 zfunl2default([<zone>/]<attr>,<default>[,<args>])
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Commands —
-.UNINDENT
-.UNINDENT
+.SS Commands
 .sp
 @hide[/on/off] \- For PENN compatibility
 @saystring \- define what is substituted instead of ‘says’
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Flags —
-.UNINDENT
-.UNINDENT
+.SS Flags
 .sp
 NOWHO (internal) \- mark who is @hidden
 LOGIN \- bypass @disable logins
@@ -12663,46 +11680,17 @@ ZONECONTENTS \- makes zonemaster behave like master room
 BACKSTAGE \- check to see if auto\-inherited to ownership
 NOBACKSTAGE \- marker for backstage checks
 ANONYMOUS \- return ‘Someone’ when cloaked when talk/say
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Powers —
-.UNINDENT
-.UNINDENT
+.SS Powers
 .sp
 NOWHO \- specify who can @hide
 EXAMINE_FULL \- examine anything but #1, cloaked, and noexamine things
 FULLTEL \- teleport anywhere but #1 and cloaked locations.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Additions:
-.UNINDENT
-.UNINDENT
-.sp
-— Toggles —
-.UNINDENT
-.UNINDENT
+.SS Toggles
 .sp
 BRANDY_MAIL \- send mail with ‘mail user\-list=3Dsubject’ methodology
 FORCEHALTED \- force someone who is halted
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Alias Additions
-.UNINDENT
-.UNINDENT
-.sp
-— Functions —
-.UNINDENT
-.UNINDENT
+.SS Alias Additions
+.SS Functions
 .sp
 subeval() aliased to eval()
 grepi() aliased to grep()
@@ -12721,74 +11709,43 @@ xorbool() aliased to xor()
 loop() aliased to list()
 enumerate() aliased to elist()
 mean() aliased to avg()
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-Alias Additions
-.UNINDENT
-.UNINDENT
-.sp
-—  Commands —
-.UNINDENT
-.UNINDENT
+.SS Commands
 .sp
 @brief aliased to examine/brief
 @lemit aliased to @emit/room
 @remit aliased to @pemit/contents/list
 @zemit aliased to @pemit/zone/list
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.TP
-.B Alias Additions
-— Flags —
-.UNINDENT
-.UNINDENT
-.UNINDENT
+.SS Flags
 .sp
 NO_COMMAND alias to NOCOMMAND
-.INDENT 0.0
-.INDENT 3.5
-— Admin params —
-.UNINDENT
-.UNINDENT
+.SS Admin Params
 .sp
-mail_tolist (default 0) \- enable/disable To: <players> in mail =
-automatically
+mail_tolist (default 0) \- enable/disable To: <players> in mail = automatically
 mail_default (default 0) \- change ‘mail’ from mail/quick to mail/status
-.INDENT 0.0
-.INDENT 3.5
-— BUG FIXES —
-.UNINDENT
-.UNINDENT
+.SS Bug Fixes
 .sp
 depower \- tel_anywhere (broke \- fixed)
 look \- could see cloaked things if given long\-finger ability (fixed)
 recover objects \- could be examined to find names of them and owner (fixed)
 grab() \- crashed server if given only one argument \- fixed
-go \- couldn’t use ‘go’ through parent exits before
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B go \- couldn’t use ‘go’ through parent exits before
+.INDENT 7.0
 .IP \(bu 2
 Reported by \fI\%Medwyn@Underground\fP
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .sp
 ueval() \- fixed missing LBUF free
 mail/write +list \- gave erraneous results \- fixed
-lexits() \- won’t show exits set PRIVATE at the ‘home’ of those exits.
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.TP
+.B lexits() \- won’t show exits set PRIVATE at the ‘home’ of those exits.
+.INDENT 7.0
 .IP \(bu 2
 Reported by \fI\%Medwyn@Underground\fP
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B min() \- value shoved a double in an int
 .INDENT 7.0
@@ -12809,10 +11766,8 @@ Reported by \fI\%Mercutio@Shattered\fP
 .UNINDENT
 .UNINDENT
 .sp
-host sites over 50 characters would cause the host parameter to not
-properly null terminate.  \- fixed.
-@open would, under rare circumstances, clobber the return exit from
-how tprintf() buffers. \-fixed.
+host sites over 50 characters would cause the host parameter to not properly null terminate.  \- fixed.
+@open would, under rare circumstances, clobber the return exit from how tprintf() buffers. \-fixed.
 andflags() and orflags() didn’t escape out ‘2’ or ‘1’ right. \- fixed
 .SS Historical Non\-Disclosure Agreement
 .sp

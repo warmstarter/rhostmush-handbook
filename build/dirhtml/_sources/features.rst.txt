@@ -44,6 +44,7 @@ Recycle bin
   sufficient for any needs.  The goodness of this?  You can recover
   nuked things from any period of time, as long as they were not
   @purged first.
+
   Commands: @purge, @nuke, @destroy, @recover, @reclist
 
 @snapshot
@@ -53,6 +54,7 @@ Recycle bin
   disk.  As many snapshots as you want, as often as you want.  
   It essentially does a flatfile dump of a dbref#.  Great for
   backups or cross-Rhost portability.
+
   Command: @snapshot
 
 Wizard and Immortals by default
@@ -88,18 +90,20 @@ Have an alternate name with locks for NPC obfuscation
 Have multiple player aliases
 ============================
 
-  As well as a method
-  to reserve player names per player w/o revealing who has what
-  name.
+  As well as a method to reserve player names per player w/o revealing who has what name.
+
   @protect
 
 Actively control how dark works both game-wide and individually
 ===============================================================
 
   @depower dark
+  
   @admin allow_whodark, sweep_dark, command_dark, lcon_checks_dark,
-         secure_dark, see_owned_dark, idle_wiz_dark, player_dark
+  secure_dark, see_owned_dark, idle_wiz_dark, player_dark
+
   @toggle snuffdark
+
   @flagdef to redefine who and what can set the DARK flag
 
 Make config file changes in-game without having to reboot or have shell access
@@ -130,8 +134,8 @@ Localize command and function overrides in a sandbox
 Multiple Zones
 ==============
 
-  Have multiple zones which can optionally belong to
-  multiple targets (multiple zones per target allowable!)
+  Have multiple zones which can optionally belong to multiple targets (multiple zones per target allowable!)
+
   @zone, zones, lzone(), zonecmd()
 
 Optionally control, enable, or disable sideeffects
@@ -149,18 +153,21 @@ Have 31 cross-interactive realities for locations
   This affects all methods within the game including all matching, 
   looking, $commands, listens, movement, interaction, pretty 
   much every single aspect of mushing.
+
   REALITY LEVELS
 
 Override any command with softcode
 ==================================
 
   @admin access (check ignore)
+
   Master room $commands to then override the hardcode
 
 The abilility to raise or lower permissions on the various
 ==========================================================
 
   staff bitlevels for each player.
+
   @power, @depower, TOGGLES, FLAGS
 
 Customize new commands on the connect screen
@@ -171,24 +178,30 @@ Customize new commands on the connect screen
 Softcode any txt file (like connect.txt)
 ========================================
 
-  and have it evaluate in-game.  It evaluates as the object
-  it is on.
+  and have it evaluate in-game.  It evaluates as the object it is on.
+
   @admin file_object
 
 Advanced tracing methods for debugging your code including labels!
 ==================================================================
 
   Commands: @label
+
   Functions: parenmatch(), trace()
+
   Toggles: CPUTIME
+
   Flags: TRACE
+
   Attributes: TRACE_GREP, TRACE, TRACE_COLOR, TRACE_COLOR_<attr>
+
   Substitutions: %_
 
 Built in pretty-printing of attributes with the parenmatch() function
 =====================================================================
 
-  Example Code Output : 
+Example Code Output:: 
+
   @emit [add(1,sub(2,div(3,4)),5)];@emit [extract(get(me/foo),3,1)
 
   Example Pretty Print: 
@@ -230,6 +243,7 @@ Debugging/Tracing
     ability to grep content from trace output.  There also exists features to
     color-match parenthesis, braces, and brackets in-game as well as pretty print
     the output of commands and functions.
+
     - help trace
     - help %_
     - help trace()
@@ -243,6 +257,7 @@ Zoning
     syntax is different.  It also allows the ability to belong to multiple
     zones at the same time and take advantage of mulitple zones at once.
     This allows for increased levels of complexity.
+
     - help zones
     - help @zone
     - help zonecmd()
@@ -260,6 +275,7 @@ Reality Levels
     realities at the same time, and realities is geared to a method for
     send and receive.  Each 'method' requires to be in the given reality
     to affect it.
+
     - help reality levels
     - wizhelp chkreality
     - wizhelp reaity level
@@ -277,13 +293,17 @@ Function and Command Overriding
     a command works.   Functions are overridden by setting the 
     function in question ignored, then writing a softcode alternative
     that is then executed and fetched appropriately.
-      Commands:
+
+    Commands:
+
         - wizhelp @admin
         - wizhelp access
         - wizhelp permissions
         - wizhelp @Hook
         - wizhelp hook setup
-      Functions:
+
+    Functions:
+
         - wizhelp @admin
         - wizhelp function_access
         - wizhelp @function
@@ -299,6 +319,7 @@ The Recycle Bin
     the dbref# as garbage in any sense of the word.  However, the object
     is not able to be reused until purged.  Once purged, it is put onto
     a free list that can then be reassigned to a new object.
+
     - wizhelp @nuke
     - wizhelp @destroy
     - wizhelp @toad
@@ -315,6 +336,7 @@ Percent Substitution Adding/Overriding
     well as creating new ones.  This is done with @Hook and admin 
     params and issues softcode overriding.  Due to how it is evaluated
     there is no risk of recursion.
+
     - wizhelp @hook
     - wizhelp hook_cmd
     - wizhelp sub_include
@@ -325,6 +347,7 @@ Hooking
 
   * Hooking allows you to have advanced methods to manipulate commands
     including adding customized switches to them via softcode.  
+
     - wizhelp @hook
     - wizhelp hook_cmd
     - wizhelp hook_obj
@@ -341,6 +364,7 @@ Command based uselocks
     you must be empowered to do so with the 'ATRUSE' @toggle.  You may
     also use the secure_atruselock config parameter to globally enable
     this and not require the toggle to be set.
+
     - wizhelp atruse toggle
     - help attribute uselocks 
 
@@ -351,6 +375,7 @@ Differentating between command and listen locks
     an optional argument to all locks that are uselocks.  This optional
     argument is 0 for a default lock, 1 for a command lock and 2 for
     a listen lock.
+
     - help @lock type uselock
 
 Wizard auto-overiding and how to disable it
@@ -359,6 +384,7 @@ Wizard auto-overiding and how to disable it
   * By default wizards override all locks, including attribute locks, 
     can see all dark exits, and bypass pagelocks.  This can be 
     troublesome, and even abusive, so there's ways to disable this.
+
     - wizhelp @depower (for those abusing it)
     - wizhelp no_override (disable overiding locks)
     - wizhelp no_uselock (disable just uselock overriding)
@@ -371,18 +397,22 @@ Advanced FLAG and TOGGLE control
     and enable/disable targets of how the flags are allowed to be
     set.  This is done through commands in-game or you can use
     conf file options to do so.
+
     - wizhelp @flagdef
     - wizhelp @toggledef
-    ------- @admin @flagdef alternatives
-    - wizhelp flag_access_set   
-    - wizhelp flag_access_unset 
-    - wizhelp flag_access_see   
-    - wizhelp flag_access_type  
-    ------- @admin @toggledef alternatives
-    - wizhelp toggle_access_set  
-    - wizhelp toggle_access_unset
-    - wizhelp toggle_access_see  
-    - wizhelp toggle_access_type 
+    - @admin @flagdef alternatives
+
+      - wizhelp flag_access_set   
+      - wizhelp flag_access_unset 
+      - wizhelp flag_access_see   
+      - wizhelp flag_access_type
+
+    - @admin @toggledef alternatives
+
+      - wizhelp toggle_access_set  
+      - wizhelp toggle_access_unset
+      - wizhelp toggle_access_see  
+      - wizhelp toggle_access_type 
 
 
 Advanced site control
@@ -392,6 +422,7 @@ Advanced site control
     but we can specify how many times a player can be connected at the
     same time as well as how many times sites are able to connect at
     the same time.  This is done through normal site manipulation.
+    
     - wizhelp forbid_host
     - wizhelp register_host
     - wizhelp noguest_host
@@ -404,6 +435,7 @@ Auto-Registration
     by providing their email on the connect screen.  It will email
     them a password and an optional document that the administrator
     provides.  This is well described in the wizhelp.
+
     - wizhelp autoregistration
 
 Which bit level is best?
@@ -423,7 +455,7 @@ Which bit level is best?
 
     There's a bunch of readme files and online wizhelp that goes into
     detail of the various bitlevels and what each can do.  
-    - XV.   Multi-tiered bitlevel systems
+
     - wizhelp control
 
 What are the limits for size/growth for RhostMUSH?
@@ -431,29 +463,26 @@ What are the limits for size/growth for RhostMUSH?
 
   * While using QDBM, there's really no set limits for most things.
     The limits that we have are as followed:
-    LBUF - 64K.  It is recommended to only use 32K as there is some
-           issues with networking with 64K lbufs.
+
+   LBUF - 64K.  It is recommended to only use 32K as there is some issues with networking with 64K lbufs.
+
       - Compile time option with the menu configurator
 
     SBUF - 64 characters (if configured -- it's suggested you do).  
+
       - Compile time option with the menu configurator
 
     MBUF - 200 characters.  Not able to be changed.
 
-    MAX CONNECTIONS - Limited by the total number of open sockets
-           and descriptors on the account and server running on.
-           There are various tools to limit connection DoS attemps
-           and other such nastiness.  This is well documented in
-           the netrhost.conf file.
+    MAX CONNECTIONS - Limited by the total number of open sockets and descriptors on the account and server running on.  There are various tools to limit connection DoS attemps and other such nastiness.  This is well documented in the netrhost.conf file.
+
       - wizhelp max_players
       - ~/game/netrhost.conf
 
-    MEMORY - no limit.  Generally runs between 8-50M depending
-           on the size of the mush and the LBUF size specified.
+    MEMORY - no limit.  Generally runs between 8-50M depending on the size of the mush and the LBUF size specified.
 
-    CPU  - no limit, but has built in cpu abort in code.  The
-           netrhost.conf file documents this well for customizing.
-           the default values are usually good enough.
+    CPU  - no limit, but has built in cpu abort in code.  The netrhost.conf file documents this well for customizing.  the default values are usually good enough.
+
       - wizhelp max_cpu_cycles
       - wizhelp cpuintervalchk
       - wizhelp cputimechk
@@ -461,24 +490,17 @@ What are the limits for size/growth for RhostMUSH?
       - wizhelp heavy_cpu_max
       - ~/game/netrhost.conf
  
-    DISK - no limit.  Generally will be 75-200M depending on size,
-           number of backups and if you leave your compiled object
-           files in.
+    DISK - no limit.  Generally will be 75-200M depending on size, number of backups and if you leave your compiled object files in.
 
-    DB Size - (20000 default) There is no limit on the number of
-           objects the db can have.  By default it's soft limited
-           to 20K objects, which can be changed by a netrhost.conf
-           file change.  We have had this up past 1.5 million 
-           objects, and other than a second or two of lag for
-           complex searches we had no real problem.
+    DB Size - (20000 default) There is no limit on the number of objects the db can have.  By default it's soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem.
+
       - wizhelp maximum_size
       - help @quota
       - wizhelp @quota
       - wizhelp @limit
 
-    Attribute Size - 10K as a hard limit.  750 as a soft limit.
-           You can increase this but it can't exceed 10000 
-           attributes.  This is to avoid DoS style attacks.
+    Attribute Size - 10K as a hard limit.  750 as a soft limit.  You can increase this but it can't exceed 10000 attributes.  This is to avoid DoS style attacks.
+
       - wizhelp vlimit
       - wizhelp @limit
 
@@ -501,6 +523,7 @@ Executing outside scripts and binaries within RhostMUSH
     or scripts as a native function.  All effort has been done to
     avoid any type of DoS based issue or hang by doing this, however
     the guidelines presented should be followed before doing so.
+
     - wizhelp execscript
     - wizhelp power execscript
     - help sidefx
@@ -509,8 +532,8 @@ Executing outside scripts and binaries within RhostMUSH
 Pulling external data into RhostMUSH
 ------------------------------------
 
-  * You are capable of pulling external data in to RhostMUSH using
-    several methods.  These are by using:
+  * You are capable of pulling external data in to RhostMUSH using several methods.  These are by using:
+
       - SQL (mysql or sqlite)
       - execscript
       - cron (wizhelp signal)
@@ -523,6 +546,7 @@ Integrating a unix cron right into RhostMUSH
     Rhost to execute code in-game, which part of that could be
     to pick up a pre-designed list of commands that the unix cron
     has set up.
+
     - wizhelp signal
     - wizhelp signal_cron
 
@@ -532,20 +556,18 @@ Signal handling, how it works, and when and why use it
   * Signals are used to do different things for the mush.  By default,
     the following signals are recognized by the mush and will do
     the following as defaults.
-    - SIGUSR1 - will do a reboot of the mush.  This is also customizable
-                so that you can have it execute code in-mush if you want.
+
+    - SIGUSR1 - will do a reboot of the mush.  This is also customizable so that you can have it execute code in-mush if you want.
     - SIGUSR2 - will do a clean shutdown of the mush.
-    - SIGTERM - will immediately scram the mush as cleanly and fast
-                as possible.  It will avoid dumping anything to
-                the database to speed up scramming, but write
-                a TERM flat file to be loaded in if corruption.
+    - SIGTERM - will immediately scram the mush as cleanly and fast as possible.  It will avoid dumping anything to the database to speed up scramming, but write a TERM flat file to be loaded in if corruption.
 
 Setting up global parents, global @parents, global attribute formatting, and other global setups
 ------------------------------------------------------------------------------------------------
 
   * Global parents are useful when you want to have a global 'parent' 
     without actually having a defined '@parent'.  It always will be the
-    highest tier in a lookup.  The way lookups will go will be:
+    highest tier in a lookup.  The way lookups will go will be::
+
        self->@parent(s)->@zone(s)->GlobalParent
 
     The type of the parent does not have to match the target.
@@ -553,11 +575,12 @@ Setting up global parents, global @parents, global attribute formatting, and oth
     These global parents can be defined either by using a global
     generic parent or by using the type.  If a type is specified it
     overrides the generic.  The following parameters are used:
-    - global_parent_obj     - The generic global parent (if defined)
-    - global_parent_room    - The room global parent
-    - global_parent_exit    - The exit global parent
-    - global_parent_thing   - The thing global parent
-    - global_parent_player  - The player global parent
+
+      - global_parent_obj     - The generic global parent (if defined)
+      - global_parent_room    - The room global parent
+      - global_parent_exit    - The exit global parent
+      - global_parent_thing   - The thing global parent
+      - global_parent_player  - The player global parent
   
   * Global @parents are different than global parents in that any new
     item of similar type that is created is automatically assigned this
@@ -567,10 +590,11 @@ Setting up global parents, global @parents, global attribute formatting, and oth
     The type of the parent does not have to match the target.
 
     The following parameters are used:
-    - room_parent           - The target that new rooms are @parented
-    - exit_parent           - The target that new exits are @parented
-    - thing_parent          - The target that new things are @parented
-    - player_parent         - The target that new players are @parented
+
+      - room_parent           - The target that new rooms are @parented
+      - exit_parent           - The target that new exits are @parented
+      - thing_parent          - The target that new things are @parented
+      - player_parent         - The target that new players are @parented
 
   * Global attribute formatting is a method define a wrapper, of sorts,
     where attributes like @desc, @odesc, @succ, and anything similar
@@ -582,10 +606,10 @@ Setting up global parents, global @parents, global attribute formatting, and oth
 
     The type of the parent does not have to match the target.
 
-    - room_attr_default     - Target for room formatting
-    - exit_attr_default     - Target for exit formatting
-    - thing_attr_default    - Target for thing formatting
-    - player_attr_default   - Target for player formatting
+      - room_attr_default     - Target for room formatting
+      - exit_attr_default     - Target for exit formatting
+      - thing_attr_default    - Target for thing formatting
+      - player_attr_default   - Target for player formatting
 
 
 RhostMUSH limitations and how to get around them
@@ -597,37 +621,38 @@ RhostMUSH limitations and how to get around them
     * Function invocations.  Sometimes you will hit a ceiling on evaluation.
       You may want to tweak values to allow more functions or commands
       to execute.  The following controls that:
-      - function_invocation_limit [25000 default] - specifies the total 
-            functions you can execute per command.
-      - function_recursion_limit [50] - specifies the total times a 
-            function can call itself over and over.  Rarely should this
-            be increased and doing so can effect your stack depth.
+
+        - function_invocation_limit [25000 default] - specifies the total functions you can execute per command.
+        - function_recursion_limit [50] - specifies the total times a function can call itself over and over.  Rarely should this be increased and doing so can effect your stack depth.
 
     * Command queue limits.  Sometimes you want more to be queued up for
       players or wizards.
-      - player_queue_limit  - Max number of entries a player can queue
-      - wizard_queue_limit  - Max number of entries a wizard can queue
+
+        - player_queue_limit  - Max number of entries a player can queue
+        - wizard_queue_limit  - Max number of entries a wizard can queue
     
-    * @limit is a wonderful way to lock down limitations per player or
-      global.  Lots of power is available here.
-      - @limit
-      - vattr_limit_checkwiz - Enable @limit checks for wizards
-      - wizmax_vattr_limit   - Set wizard global VATTR limits
-      - wizmax_dest_limit    - Set wizard global @destroy limits
-      - max_vattr_limit      - Set player global VATTR limits
-      - max_dest_limit       - Set player global @destroy limits
+    * @limit is a wonderful way to lock down limitations per player or global.  Lots of power is available here.
+
+        - @limit
+        - vattr_limit_checkwiz - Enable @limit checks for wizards
+        - wizmax_vattr_limit   - Set wizard global VATTR limits
+        - wizmax_dest_limit    - Set wizard global @destroy limits
+        - max_vattr_limit      - Set player global VATTR limits
+        - max_dest_limit       - Set player global @destroy limits
 
     * Lots of trace output can be cut off.  You can modify this with:
-      - trace_output_limit   - Set lines of trace output shown
+
+        - trace_output_limit   - Set lines of trace output shown
 
     * To define how many commands a minute a player set SPAMMONITOR can use
+
       - spam_limit -- default 120
 
     * If you examine things and see 'Output cut off' messages, you may want
       to increase your output limit, funny enough, the name of this is
       similar
-      - output_limit - You should set this no less than 4 times the current
-            size of your LBUF.
+
+        - output_limit - You should set this no less than 4 times the current size of your LBUF.
   
     * Attributes names can not exceed 64 characters.  Sorry, it's a hard limit
 
@@ -642,16 +667,15 @@ Things other mushes can do that Rhost can not and how to emulate it
 PennMUSH
 ++++++++
 
-      - Attribute trees.  These are emulated as a base set and can be
-        duplicated enough to at least port code.
+      - Attribute trees.  These are emulated as a base set and can be duplicated enough to at least port code.
       - lsearch() will have to be recoded to search()
       - align() will have to be recoded to printf()
       - Penn allows empty attributes.  Rhost does not.  Work will have to
         be done to take this into consideration. 
-      - All *val() functions in Penn that are used will have to be 
-        remapped to a non-*val() function.  It should be as simple as 
-        function_alias to the non-*val.  Example:
+      - All \*val() functions in Penn that are used will have to be remapped to a non-\*val() function.  It should be as simple as function_alias to the non-\*val.  Example::
+
             @admin function_alias=hasattrval hasattr
+
       - Penn's hardcoded comsystem is emulated with the softcode comsys
       - Penn's @mail system is workable with mail wrappers
       - Pueblo is not supported.
@@ -662,8 +686,7 @@ PennMUSH
 MUX
 +++
 
-      - Mux has an async mysql database engine.  This is not possible
-        with Rhost.  You'll have to use the sync method instead.
+      - Mux has an async mysql database engine.  This is not possible with Rhost.  You'll have to use the sync method instead.
       - UTF8 is supported but internally passed differently.
       - Mux's hardcoded comsystem is emulated with the softcode comsys
       - MUX's @mail system is workable with mail wrappers
@@ -677,8 +700,9 @@ Advanced guest setup
       if you so want after defining the dbref#'s your guests use.  This is
       done by defining them in the guest_namelist parameter.  You can also
       increase guests (or decrease them) between 0-31 guests.
-      - wizhelp guest_namelist
-      - wizhelp num_guests
+
+        - wizhelp guest_namelist
+        - wizhelp num_guests
 
 Attribute permission masking and the joys of the power behind it
 ----------------------------------------------------------------
@@ -689,7 +713,8 @@ Attribute permission masking and the joys of the power behind it
        information, lock different ways contents in attributes are set
        based on who is setting it, or even on where it's being set.
        The sky's the limit.
-       - global_attrdefault    - Target for defining content locks
+
+         - global_attrdefault    - Target for defining content locks
   
 
 The amazing @cluster and what it can do for you
@@ -702,12 +727,14 @@ The amazing @cluster and what it can do for you
        as if it was a singular entity.  This allows some amazing ability
        to distribute attribute content or even have a farm of a massive
        amount of attributes without paying a hefty penalty on object bloat.
-      - help cluster  -- Gives a fantastic overview of how clusters work.
+
+        - help cluster  -- Gives a fantastic overview of how clusters work.
 
 What we plan for the future
 ---------------------------
 
      * Things to look forward to the future with RhostMUSH.
+
        - Full Unicode/UTF8 in Rhost 4.0
        - A fully featured tag system in Rhost 4.0
        - Built in Python API handler in Rhost 4.0
@@ -715,13 +742,15 @@ What we plan for the future
        - Cross-Mush execution between mushes in Rhost 4.1
        - More as we think about it :)
   
-  EXT: Additional features not covered otherwise
-  Additional features
-  - +/- 5.4 million years can be utilized with the built in time functions 
+Additional features not covered otherwise
+-----------------------------------------
+
+  * +/- 5.4 million years can be utilized with the built in time functions 
     which includes timefmt(), secs(), convtime(), convsecs(), and moon().  Party on!
-  - Changing permission levels in the middle of execution for evaluation.
-    * see help on the streval and ueval function
-  - Full features in-game customization of near every aspect of the game.
+  * Changing permission levels in the middle of execution for evaluation.
+
+      - see help on the streval and ueval function'
+  * Full features in-game customization of near every aspect of the game.
 
 Random notes and things to know about RhostMUSH
 ===============================================
@@ -764,7 +793,7 @@ You need to @pcreate your guest characters and set them GUEST
 @powers are INHERITED
 ---------------------
 
-       Therefore, you need power_objects enabled (@admin)
+        Therefore, you need power_objects enabled (@admin)
         to make this work properly for non-plauyers.
         A power is taken before a bit level ONLY if higher than that bit.
         Yes, powers are multi-level.  
@@ -790,13 +819,16 @@ You can get your connect.txt to parse ansi
 ------------------------------------------
 
         See ansi_txtfiles in wizhelp.
+
         You can also override it with softcode if you so wanted.  
+
         See file_object in wizhelp for more information on this.  
 
 Re-compiled binaries do not require an @shutdown
 ------------------------------------------------
 
         When re-compiling the binaries, all you have to remember is when done, issue
+
         @reboot on the game and @readcache.
    
         You do not need to @shutdown.

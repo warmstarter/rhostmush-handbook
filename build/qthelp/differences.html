@@ -1201,7 +1201,7 @@ of arguments or switches to commands or functions, or required flags.</p>
 <p>Most changes will revolve around the ones listed in this document.</p>
 <div class="section" id="problematic-functions-between-codebases">
 <h3>Problematic functions between codebases</h3>
-<p>lsearch()/search(), align()/printf(), <a href="#id1"><span class="problematic" id="id2">*</span></a>attrval()</p>
+<p>lsearch()/search(), align()/printf(), *attrval()</p>
 </div>
 <div class="section" id="problematic-features-between-codebases">
 <h3>Problematic features between codebases</h3>
@@ -1421,7 +1421,7 @@ a case, Rhost does allow the ability to &#64;hook a command to define your own
 softcoded switch to a hardcoded command and work around the limitation.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id3">
+<div class="section" id="id1">
 <h3>Flags</h3>
 <blockquote>
 <div><p>Some flags may be missing.  If it’s a dummy flag, feel free to use the
@@ -1439,13 +1439,18 @@ it to the other name if you want.</p>
 </div>
 <div class="section" id="things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it">
 <h2>Things other mushes can do that Rhost can not and how to emulate it</h2>
-<div class="section" id="id4">
+<div class="section" id="id2">
 <h3>PennMUSH</h3>
-<ul class="simple">
+<ul>
 <li><p>Attribute trees.  These are emulated as a base set and can be duplicated enough to at least port code.</p></li>
 <li><p>lsearch() will have to be recoded to search()</p></li>
 <li><p>align() will have to be recoded to printf()</p></li>
-<li><p>Penn allows empty attributes.  Rhost does not.  Work will have to be done to take this into consideration.  - All <a href="#id5"><span class="problematic" id="id6">*</span></a>val() functions in Penn that are used will have to be remapped to a non-<a href="#id7"><span class="problematic" id="id8">*</span></a>val() function.  It should be as simple as function_alias to the non-<a href="#id9"><span class="problematic" id="id10">*</span></a>val.  Example: &#64;admin function_alias=hasattrval hasattr</p></li>
+<li><p>Penn allows empty attributes.  Rhost does not.  Work will have to be done to take this into consideration.</p></li>
+<li><p>All *val() functions in Penn that are used will have to be remapped to a non-*val() function.  It should be as simple as function_alias to the non-*val.  Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span> <span class="n">function_alias</span><span class="o">=</span><span class="n">hasattrval</span> <span class="nb">hasattr</span>
+</pre></div>
+</div>
+</li>
 <li><p>Penn’s hardcoded comsystem is emulated with the softcode comsys</p></li>
 <li><p>Penn’s &#64;mail system is workable with mail wrappers</p></li>
 <li><p>Pueblo is not supported.</p></li>
@@ -1454,7 +1459,7 @@ it to the other name if you want.</p>
 <li><p>This uses &#64;shutdown/restart, Rhost uses &#64;reboot</p></li>
 </ul>
 </div>
-<div class="section" id="id11">
+<div class="section" id="id3">
 <h3>MUX</h3>
 <ul class="simple">
 <li><p>Mux has an async mysql database engine.  This is not possible with Rhost.  You’ll have to use the sync method instead.</p></li>

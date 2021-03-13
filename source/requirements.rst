@@ -1,11 +1,10 @@
-.. _requirements:
-
 ============
 Requirements
 ============
 
 System Requirements
 ===================
+
 * Minimum 1 GB (memory and swap combined) to compile (functions.c is huge)
 * Any Unix flavor should be fine.  Linux, BSD, Mac OSX, Solaris, Tru64, AIX, etc.
 * (BETA ONLY) cygwin under Windows.  It requires the entire base development set and Requirements below.
@@ -14,31 +13,32 @@ System Requirements
 
 Supported Platforms
 -------------------
-SunOS (all platforms)
-Solaris (all platforms)
-Linux (all platforms except redhat 5.x mentioned below)
-AIX (all platforms)
-Ultrix (all platforms)
-iBSD (all platforms)
-FreeBSD (all platforms)
-OpenBSD (all platforms)
-NetBSD (all platforms)
-IRIX (all platforms)
-HPUX (32 bit systems only)
+
+* SunOS (all platforms)
+* Solaris (all platforms)
+* Linux (all platforms except redhat 5.x mentioned below)
+* AIX (all platforms)
+* Ultrix (all platforms)
+* iBSD (all platforms)
+* FreeBSD (all platforms)
+* OpenBSD (all platforms)
+* NetBSD (all platforms)
+* IRIX (all platforms)
+* HPUX (32 bit systems only)
 
 If it's not listed here, it probably still will compile clean.  
 
 Unsupported Platforms
 ---------------------
 
-Win32/Win16
-Alpha systems.
+* Win32/Win16
+* Alpha systems.
 
 Untested Platforms
 ------------------
 
-HP-UX (64 bit systems)
-VMS (all platforms)
+* HP-UX (64 bit systems)
+* VMS (all platforms)
 
 Known Platform Issues
 ----------------------
@@ -50,7 +50,9 @@ a known issue with config options and only on this platform.
 
 Requirements
 ============
+
 RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.  In order to build this software, you will need the bare minimum of the ability to run 'make' commands.  Package requirements are as follows:
+
 * glibc and gcc/clang (compiling the code)
 * git (to clone the source and maintain patches)
 * bash/ksh/dash (or compatible shell - for use with build menu)
@@ -58,7 +60,9 @@ RhostMUSH is a Linux or Unix based server software that runs as a daemon on the 
 
 Optional Packages
 -----------------
+
 RhostMUSH also offers optional linking and library attachments.  For some of these libraries it will attempt to do auto-detection, but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.  Optional packages are as follows:
+
 * openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
 * mysql client & mysql_config (required for mysql capabilities)
 * sqlite3 libraries (required for sqlite capabilities)
@@ -67,4 +71,5 @@ RhostMUSH also offers optional linking and library attachments.  For some of the
 
 Hosting Requirements
 ====================
+
 You will need a stable host and access to open a single port number of your choice on the firewall.  Most games choose a number between 1025 and 9999, by convention.  Please make sure your debug_id matches the port number + 5.  So if your port is 1234, your debug_id will be 12345.  The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.

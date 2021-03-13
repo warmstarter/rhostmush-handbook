@@ -1261,7 +1261,7 @@
             <paragraph>Most changes will revolve around the ones listed in this document.</paragraph>
             <section ids="problematic-functions-between-codebases" names="problematic\ functions\ between\ codebases">
                 <title>Problematic functions between codebases</title>
-                <paragraph>lsearch()/search(), align()/printf(), <problematic ids="id2" refid="id1">*</problematic>attrval()</paragraph>
+                <paragraph>lsearch()/search(), align()/printf(), *attrval()</paragraph>
             </section>
             <section ids="problematic-features-between-codebases" names="problematic\ features\ between\ codebases">
                 <title>Problematic features between codebases</title>
@@ -1481,7 +1481,7 @@
                         softcoded switch to a hardcoded command and work around the limitation.</paragraph>
                 </block_quote>
             </section>
-            <section dupnames="flags" ids="id3">
+            <section dupnames="flags" ids="id1">
                 <title>Flags</title>
                 <block_quote>
                     <paragraph>Some flags may be missing.  If it’s a dummy flag, feel free to use the
@@ -1499,7 +1499,7 @@
         </section>
         <section ids="things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it" names="things\ other\ mushes\ can\ do\ that\ rhost\ can\ not\ and\ how\ to\ emulate\ it">
             <title>Things other mushes can do that Rhost can not and how to emulate it</title>
-            <section dupnames="pennmush" ids="id4">
+            <section dupnames="pennmush" ids="id2">
                 <title>PennMUSH</title>
                 <bullet_list bullet="-">
                     <list_item>
@@ -1512,7 +1512,11 @@
                         <paragraph>align() will have to be recoded to printf()</paragraph>
                     </list_item>
                     <list_item>
-                        <paragraph>Penn allows empty attributes.  Rhost does not.  Work will have to be done to take this into consideration.  - All <problematic ids="id6" refid="id5">*</problematic>val() functions in Penn that are used will have to be remapped to a non-<problematic ids="id8" refid="id7">*</problematic>val() function.  It should be as simple as function_alias to the non-<problematic ids="id10" refid="id9">*</problematic>val.  Example: @admin function_alias=hasattrval hasattr</paragraph>
+                        <paragraph>Penn allows empty attributes.  Rhost does not.  Work will have to be done to take this into consideration.</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>All *val() functions in Penn that are used will have to be remapped to a non-*val() function.  It should be as simple as function_alias to the non-*val.  Example:</paragraph>
+                        <literal_block force="False" language="default" linenos="False" xml:space="preserve">@admin function_alias=hasattrval hasattr</literal_block>
                     </list_item>
                     <list_item>
                         <paragraph>Penn’s hardcoded comsystem is emulated with the softcode comsys</paragraph>
@@ -1534,7 +1538,7 @@
                     </list_item>
                 </bullet_list>
             </section>
-            <section dupnames="mux" ids="id11">
+            <section dupnames="mux" ids="id3">
                 <title>MUX</title>
                 <bullet_list bullet="-">
                     <list_item>

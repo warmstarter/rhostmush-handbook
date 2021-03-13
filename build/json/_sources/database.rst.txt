@@ -12,11 +12,10 @@ From the game directory you would type:
 ./db_load data/netrhost.gdbm yourflatfilehere data/netrhost.db.new
 
 
-******************************************************************************
-Please note, you may also do: ./Startmush 
+.. note::
 
-Then you just follow the prompts to load in your flatfile there.
-******************************************************************************
+   You may also do: ./Startmush 
+   Then you just follow the prompts to load in your flatfile there.
 
 If you wish to have #1's password reset to 'Nyctasia' please add this
 to the bottom of your netrhost.conf file:
