@@ -19,48 +19,23 @@ RhostMUSH Requirements
 System Requirements
 ===================
 
-* Minimum 1 GB (memory and swap combined) to compile (functions.c is huge)
-* Any Unix flavor should be fine.  Linux, BSD, Mac OSX, Solaris, Tru64, AIX, etc.
-* (BETA ONLY) cygwin under Windows.  It requires the entire base development set and Requirements below.
-* Disk:  100 MB or more (depending on size of db and how many backups you wish to maintain)
-* Memory: 12-100 MB (depending on size of mush and what size buffers you select and packages you include)
+* Operating System: Unix-like
 
-Supported Platforms
--------------------
+  - Almost any variant of Unix or Linux should compile cleanly and run
+  - Preliminary support for Windows with an equivalent development environment
 
-* SunOS (all platforms)
-* Solaris (all platforms)
-* Linux (all platforms except redhat 5.x mentioned below)
-* AIX (all platforms)
-* Ultrix (all platforms)
-* iBSD (all platforms)
-* FreeBSD (all platforms)
-* OpenBSD (all platforms)
-* NetBSD (all platforms)
-* IRIX (all platforms)
-* HPUX (32 bit systems only)
+* Memory: 12-100 MB
 
-If it's not listed here, it probably still will compile clean.  
+  - Depending on size of database and buffers, as well as selected options
+  - 1 GB (memory and swap combined) is the minimum required to compile
 
-Unsupported Platforms
----------------------
+* Storage: 100 MB and up
 
-* Win32/Win16
-* Alpha systems.
+  - Depending on size of database and backup retention policy
 
-Untested Platforms
-------------------
+.. note::
 
-* HP-UX (64 bit systems)
-* VMS (all platforms)
-
-Known Platform Issues
-----------------------
-
-On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with
-the built-in gcc package (up to and including 2.8.x).  Because of this some
-config options may not work fully or cause the server to crash.  This is only
-a known issue with config options and only on this platform.
+  Third-party applications can use considerably more resources
 
 .. _software-requirements:
 
@@ -72,9 +47,9 @@ In order to build this software, you will need the bare minimum of the ability t
 
 Package requirements are as follows:
 
+* bash/ksh/dash (or compatible shell - for use with build menu)
 * glibc and gcc/clang (compiling the code)
 * git (to clone the source and maintain patches)
-* bash/ksh/dash (or compatible shell - for use with build menu)
 * libcrypt (for password encryption - this is usually standard on unix based systems)
 
 Optional Packages
@@ -86,87 +61,156 @@ but in a worse case scenario, there exists override hashes in the menu to disabl
 
 Optional packages are as follows:
 
-* openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
-* mysql client & mysql_config (required for mysql capabilities)
-* sqlite3 libraries (required for sqlite capabilities)
-* ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
 * libpcre (if you wish to use system pcre libraries instead of the built-in ones)
+* mysql client & mysql_config (required for mysql capabilities)
+* openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
+* ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
+* sqlite3 libraries (required for sqlite capabilities)
 
 .. _hosting-requirements:
 
 Hosting Requirements
 ====================
 
-You will need a stable host and access to open a single port number of your choice on the firewall.
-Most games choose a number between 1025 and 9999, by convention.
-Please make sure your debug_id matches the port number + 5.
-So if your port is 1234, your debug_id will be 12345.
-The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
+* You will need a stable host and access to open a single port number of your choice on the firewall.
+* Most games choose a number between 1025 and 9999, by convention.
+* Please make sure your debug_id matches the port number + 5.
 
-.. _windows-requirements:
-
-Requirements if Using Windows
-=============================
-
-Installing on Windows 10 with BASH
-----------------------------------
-
-Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
-This has been tested with the Preview build 14342.
-
-1. After installing Bash you will need to install the following packages:
-
-   - gcc
-   - git
-   - make
-   - libpcre3 (optional)
-   - libpcre3-dev (optional)
-   - openssl (optional)
-
-2. When configuring rhost (using confsource) select the Disable Debugmon 
-option.
-
-3. When you issue Startmush, you must pass the -cyg option.
-
-Installing on Windows with Cygwin
----------------------------------
-
-Rhost does work under windows using the cygwin package.
-
-1. When you do install cygwin, the following packages must be added:
-
-   - bash
-   - crypt
-   - gcc
-   - gdbm
-   - git
-   - make
-   - openssl (optional)
-
-2.  The src/Makefile has to manually have the CYGWIN line uncommented.
-
-Startig RhostMUSH on Windows
-----------------------------
-
-When you issue Startmush, you must pass it the -cyg option.
+  - So if your port is 1234, your debug_id will be 12345.
+  - The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
 
 .. _obtaining-rhostmush:
 
--------------------
-Obtaining RhostMUSH
--------------------
+-------------------------------
+Obtaining RhostMUSH Source Code
+-------------------------------
 
-It is assumed that you have gotten to this point with the following command::
+The only official source for obtaining RhostMUSH is through the 'RhostMUSH'
+github account. If the source code was obtained in some other manner, there
+are potentially any number of unintentional or intentional issues that you
+might run into.
 
-   git clone https://github.com/RhostMUSH/trunk Rhost
+The recommended method of obtaing RhostMUSH is to clone it's git reposistory::
 
-If you did NOT get it this way, your file permissions may not be properly set up.  Please type::
+  git clone https://github.com/RhostMUSH/trunk Rhost
 
-    chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
+It is possible, but not recommended to download RhostMUSH via a web browser::
 
-This makes sure all the build scripts are properly made executable.
-This will result in 'permission denied' or similar results when running a script.
+  https://github.com/RhostMUSH/trunk/archive/master.zip
 
+.. note::
+
+  This documentation generally assumes that you obtained the RhostMUSH source
+  code by cloning it's git repository or at the very least downloading an
+  archive of the source code from the GitHub website. It also assumes that
+  all commands on the server are being run from within the main directory of
+  that cloned git repo or equivalent.
+
+-------------------------
+Options for making a MUSH
+-------------------------
+
+There is a *lot* of options once your start making your MUSH, but there are
+also a few big choices right as you get started making a MUSH. No matter which
+choices you ultimately make, there are certain things you will need to know how
+to do. This chapter is going to walk you through making the simplest possible
+version of RhostMUSH. It's going to show you the things you would have to do
+no matter which choices you were making.
+
+In the process of making that simplest possible RhostMUSH you'll also learn
+what the basics of those choices are and when and how you would make them.
+Later chapters will get much more into all of those choices, but they will also
+assume you know everything in this chapter already, or at least have it as a
+handy point of reference.
+
+While there are lots of little options, there are three big areas where you
+make those choices.
+
+Compile time options
+====================
+
+One of the first steps of making a MUSH or really any computer program is
+to compile the source code. This takes what's basically text files full of code
+and turns them into a program you can run. Within that source code are a
+number of options to choose from, but any time you want to change one of them,
+you have to recompile the source code and then restart the MUSH.
+
+These choices are typically made through the ``confsource`` menu which you'll
+be seeing momentarily. There are some pretty big choices here from whether or
+not you want hardcoded +help and comsys, deciding between a more secure server
+and certtain powerful but potentially dangerous MUSHcode options, and then
+whether or not you want to be able to connect to a variety of external programs
+like databases, webservers, and even other programming languages.
+
+Configuration file options
+==========================
+
+While there are some options in RhostMUSH that can only be changed through
+recompiling the source code, there are way more options that can be changed
+without having to recompile. These choices are mostly made through the
+``netrhost.conf`` file. Whenever a MUSH starts up or gets rebooted, it's
+going to look to what's in that file. A few of those choices relate to
+further configuring the choices you made with ``confsource``
+
+The ``netrhost.conf`` file has some aesthetic options like what if anything
+it says when the database is being saved or whether or not your MUSH will
+allow ANSI color, both in general, but also in things like people's names.
+It has a lot of very esoteric options for tuning the performance and safety
+of your MUSH. It also is where you define things that connect to your database
+like your master room and guests. It let's you determine which powers your
+staff does or does not have, and it's also where you have an option to change
+the password for #1 should you forget it. There are ways to change some of
+these options from within the MUSH and even have those changes become new
+defaults that survive a reboot. One thing you set there that you definitely
+can't change from within the MUSH, is which port it runs on.
+
+Starting database options
+=========================
+
+This last big choice is one that you probably are well aware of at least some
+of the things it allows for, mostly because the database is basically where
+everyone on a MUSH lives. Most of the choices you ever make about your MUSH
+will happen in the database and it's something that's basically always going
+to be changing in more ways than any one person could follow. No matter how
+vast the database of a MUSH gets, they all started somewhere, and that's the
+last big choice you have to make.
+
+Depending on how you look at it, there's somewhere between thousands of choices
+and two choices for a starting database. What I mean is that you have the
+choice of starting with a brand new database to populate, only a room (#0) and
+you (#1), even the Master Room is something you'd have to add to it. The other
+option is to import an existing database, though to choose that option you'd
+also have to have access to an existing database.
+
+Besides the brand new database that can be made on-demand, RhostMUSH comes with
+two databases that you can use to get your start. One is called 'Minimal' and
+the other is called 'Ambrosia' after the lead RhostMUSH developed that made it.
+Despite the name, they're both fairly minimal, there's no grid in either, but
+what you get is a lot of pre-installed softcode and security, as well as a
+``netrhost.conf``` file that has been tuned to work well with it. Even if you
+don't use those databases you can take ideas for the ``netrhost.conf`` file for
+tuning your MUSH or even use some RhostMUSH commands to import that softcode
+into your database.
+
+The Choices We Make
+===================
+
+Well, not you're aware of those three big choices, what they are, and where
+you'll run across them. Later in this Handbook we'll be going through those
+choices in-depth. In this chapter, what we'll be doing is using the default
+options for for ``confsource`` and ``netrhost.conf`` and a brand new database.
+Those options and that blank slate are necessary so that you have in front of
+you a working MUSH with only #0 and #1 and get shown the way of building it
+into whatever is your dream MUSH, and I know we all have one.
+
+There will be a chance to make all those other choices later, in fact that
+will be happening very soon. There's a lot of very interesting choices that
+you can make with RhostMUSH, too many for anyone to ever be able to use them
+all. If you don't start with mastering the basics, you'll never end up knowing
+what are the most RhostMUSH options. I can't tell you what they are, it's truly
+something you have to discover on your own. Remember, you want to build your
+dream MUSH, not mine.
+  
 .. _compiling-rhostmush:
 
 -------------------
@@ -176,53 +220,74 @@ Compiling RhostMush
 Setup directory permissions
 ===========================
 
-Run the supplied directory permission script::
- 
-   ./dirsetup.sh
+In order to both compile and run, all of the RhostMUSH files and directories
+need to have the proper permissions set. If you obtained the source code
+directly from GitHub, it is likely that this step is not required, but there
+is no harm in running it anyway::
 
-This is a simple script that will change file permissions
-and directory permissions to properly protect RhostMUSH.
-These settings generally work fine out of the box so
-you likely won't even have to set this up if you don't want to.
-    
+ ./dirsetup.sh
+ 
+If you did NOT obtain the source code directly from GitHub, it is possible that
+even the above script will fail to run with 'permission denied' or similar
+errors. It is recommended that you obtain the source code from there, but if
+for whatever reason this is not an option, manually adjust your permissions
+and then re-run the automated permission script::
+
+  chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
+  ./dirsetup.sh
+
 
 Compile the source code
 =======================
 
-Make and run the RhostMUSH source::
+Once the source code has been obtained and the proper file and directory
+permissions have been set, the RhostMUSH source code is ready to be compiled.
+This is typically done through an interactive program where you configure the
+options you want to have available to your installation::
 
-   make confsource
-
-If you get an error running the script itself::
-
-   ./bin/script_setup.sh
-   make confsource
+  make confsource
 
 The confsource Menu
 -------------------
 
-This will bring up a menu where you can selection options.
+Troubleshooting compile errors
+------------------------------
 
-You may also issue 'make source' if the Makefile is already defined how
-you want it to be.  Please remember to 'make clean' before 'make source'
-whenever you alter the code or import new source code.
+Should this result in an error, a script has been included to correct the most
+common errors, after which you can once more try to compile::
 
-After the compile process is done, you should be good to go.
-If it complains about missing binaries make sure they are linked::
+  ./bin/script_setup.sh
+  make confsource
+
+Once the compile process successfully complete, you should be able to start-up
+your new RhostMUSH server. If it complains about missing binaries make sure
+they are linked. The provided script will fix this issue, and is not harmful
+to run in any situation::
 
    make links
 
+Recompiling the source code
+---------------------------
+
+If you plan to use ``make confsource`` to recompile your source, you should first
+issue a 'make clean' before re-issuing a ``make confsource``.  ``make confsource``
+remembers the last options you used.
+
+A failure to issue ``make clean`` prior to re-compiling with ``make confsource`` or
+re-compiling with ``make source`` can potentially leave stale object files which
+may cause unforseen issues when running code, including but not limited to 
+random crashes.  Generally whenever recompiling it's good to always make clean
+first.
+
+.. note::
+
+  You may also issue ``make source`` if the ``Makefile`` is already defined how
+  you want it to be.  Please remember to ``make clean`` before ``make source```
+  whenever you alter the code or import new source code.
+
+
 Note about Compiling
 ====================
-
-If your binaries do not work or you get an error type::
-
-  ./bin/script_setup.sh
-
-  
-Then type::
-
-  make confsource
 
 If you are importing a MUX2 flatfile, make ABSOLUTELY SURE that you select
 mux passwords as a compatibility option, or you will NOT BE ABLE to log in
@@ -246,19 +311,6 @@ for attribute names.  It's handy to have.
 
 If you wish at this point to set up mysql and/or sqlite, you  may do so.
 Yes, you can use them in parallel without any issue.
-
-Note about Recompiling
-======================
-
-If you plan to use 'make confsource' to recompile your source, you should first
-issue a 'make clean' before re-issuing a 'make confsource'.  'make confsource'
-remembers the last options you used.
-
-A failure to issue 'make clean' prior to re-compiling with 'make confsource' or
-re-compiling with 'make source' can potentially leave stale object files which
-may cause unforseen issues when running code, including but not limited to 
-random crashes.  Generally whenever recompiling it's good to always make clean
-first.
 
 .. _ansible-install:
 

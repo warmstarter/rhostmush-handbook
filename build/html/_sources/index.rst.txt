@@ -38,6 +38,7 @@ which, as you know, is the best part of setting up a mush.
    maintenance.rst
    troubleshooting.rst
    advanced.rst
+   windows.rst
    legacy.rst
 
    flags.rst

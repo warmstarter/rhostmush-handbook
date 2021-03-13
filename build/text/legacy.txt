@@ -1,8 +1,8 @@
-12. Upgrading a Legacy RhostMUSH Installation
+13. Upgrading a Legacy RhostMUSH Installation
 *********************************************
 
 
-12.1. Converting database betwen GDBM and QDBM
+13.1. Converting database betwen GDBM and QDBM
 ==============================================
 
 Ok, if you plan to recompile your game that is using GDBM to QDBM, or
@@ -12,7 +12,7 @@ The databases are NOT COMPATIBLE to each other, at least in the binary
 form.
 
 
-12.1.1. Downgrading QDBM to GDBM
+13.1.1. Downgrading QDBM to GDBM
 --------------------------------
 
 Warning:
@@ -38,7 +38,7 @@ Warning:
    converting (downgrading) QDBM back down to GDBM
 
 
-12.1.2. Upgradging GDBM to QDBM
+13.1.2. Upgradging GDBM to QDBM
 -------------------------------
 
 Now, if you’ve kept reading and plan to convert your GDBM database to
@@ -48,7 +48,7 @@ more flexibility.
 So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 
 
-12.1.2.1. While logged in to your mush, issue the following commands
+13.1.2.1. While logged in to your mush, issue the following commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    1. @dump/flat    – This will make a flatfile dump of your MUSH
@@ -64,7 +64,7 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
       dumps it
 
 
-12.1.2.2. Verify the files exist
+13.1.2.2. Verify the files exist
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    1. Server/game/data/netrhost.db.flat
@@ -78,13 +78,13 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
    5. (Optional) Server/game/data/RhostMUSH.news.flat
 
 
-12.1.2.3. Shutdown the MUSH
+13.1.2.3. Shutdown the MUSH
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 @shutdown your mush
 
 
-12.1.2.4. From the Server directory
+13.1.2.4. From the Server directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    1. make clean
@@ -124,7 +124,7 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
          RhostMUSH.news.pag
 
 
-12.1.2.5. From the Server/game directory
+13.1.2.5. From the Server/game directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    1. Load the database:
@@ -136,7 +136,7 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
          ./Startmush
 
 
-12.1.2.6. While logged into the mush issue the following commands
+13.1.2.6. While logged into the mush issue the following commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    1. Load in the mail database:
@@ -152,7 +152,7 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
          newsdb/load
 
 
-12.1.2.7. Verify that you have QDBM running and your valid values
+13.1.2.7. Verify that you have QDBM running and your valid values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    1. @list options system
@@ -160,7 +160,7 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
    2. @list options (spammy)
 
 
-12.2. Updating RhostMUSH prior to 3.9.5p2
+13.2. Updating RhostMUSH prior to 3.9.5p2
 =========================================
 
 Ok.
@@ -283,7 +283,7 @@ Note:
    Rhost.  Enjoy!
 
 
-12.3. Adding MySQL to RhostMUSH older than 3.9.5p2
+13.3. Adding MySQL to RhostMUSH older than 3.9.5p2
 ==================================================
 
 MySQL is now native in RhostMUSH as of 3.9.5p2.
