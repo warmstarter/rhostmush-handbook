@@ -74,7 +74,7 @@
 
 
 \title{RhostMUSH Handbook}
-\date{Mar 11, 2021}
+\date{Mar 12, 2021}
 \release{}
 \author{wstarter}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -4192,8 +4192,8 @@ Follow what it asks for and just let it do its thing.
 \section{Gettin Started}
 \label{\detokenize{gettingstarted:gettin-started}}\label{\detokenize{gettingstarted::doc}}
 
-\subsection{What to type to get the basics running if you did not choose a pre\sphinxhyphen{}existing flatfile}
-\label{\detokenize{gettingstarted:what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile}}
+\subsection{What to ype to get the basics running if you did not choose a pre\sphinxhyphen{}existing flatfile}
+\label{\detokenize{gettingstarted:what-to-ype-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile}}
 \sphinxAtStartPar
 If you decided to get a bare\sphinxhyphen{}bone configuration, you will find your mush has just two things.  The \#1 (God) player and the starting room \#0.  That’s it.
 
@@ -4258,56 +4258,60 @@ Note: wizhelp control will give you a complete breakdown of what each bit can do
 
 \paragraph{Immortal Holder}
 \label{\detokenize{gettingstarted:immortal-holder}}
-\sphinxAtStartPar
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 @pcreate ImmHolder=abc123
-@set \sphinxstyleemphasis{Immholder=no\_connect !wanderer immortal
-@badsite *immholder=}
+@set *Immholder=no\PYGZus{}connect !wanderer immortal
+@badsite *immholder=*
+\end{sphinxVerbatim}
 
 
 \paragraph{Royalty/Wizard Holder}
 \label{\detokenize{gettingstarted:royalty-wizard-holder}}
-\sphinxAtStartPar
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 @pcreate WizHolder=abc123
-@set \sphinxstyleemphasis{wizholder=no\_connect !wanderer royalty
-@badsite *wizholder=}
+@set *wizholder=no\PYGZus{}connect !wanderer royalty
+@badsite *wizholder=*
+\end{sphinxVerbatim}
 
 
 \paragraph{Councilor/Admin Holder}
 \label{\detokenize{gettingstarted:councilor-admin-holder}}
-\sphinxAtStartPar
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 @pcreate AdminHolder=abc123
-@set \sphinxstyleemphasis{adminholder=no\_connect !wanderer councilor
-@badsite *adminholder=}
+@set *adminholder=no\PYGZus{}connect !wanderer councilor
+@badsite *adminholder=*
+\end{sphinxVerbatim}
 
 
 \paragraph{Architect/Staff Holder}
 \label{\detokenize{gettingstarted:architect-staff-holder}}
-\sphinxAtStartPar
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 @pcreate StaffHolder=abc123
-@set \sphinxstyleemphasis{staffholder=no\_connect !wanderer architect
-@badsite *staffholder=}
+@set *staffholder=no\PYGZus{}connect !wanderer architect
+@badsite *staffholder=*
+\end{sphinxVerbatim}
 
 
 \paragraph{Guildmaster/Lead Holder}
 \label{\detokenize{gettingstarted:guildmaster-lead-holder}}
-\sphinxAtStartPar
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 @pcreate GuildHolder=abc123
-@set \sphinxstyleemphasis{guildholder=no\_connect !wanderer guildmaster
-@badsite *guildholder=}
+@set *guildholder=no\PYGZus{}connect !wanderer guildmaster
+@badsite *guildholder=*
+\end{sphinxVerbatim}
 
 
 \subsubsection{Chown \#0 (The starting room) and \#2 (The Master room) to immholder}
 \label{\detokenize{gettingstarted:chown-0-the-starting-room-and-2-the-master-room-to-immholder}}
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-..note:
+\#0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal
+\end{sphinxadmonition}
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{\PYGZsh{}0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal}
+\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{preserve} \PYG{c+c1}{\PYGZsh{}0=*immholder}
+\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{preserve} \PYG{c+c1}{\PYGZsh{}2=*immholder}
 \end{sphinxVerbatim}
-
-\sphinxAtStartPar
-@chown/preserve \#0=*immholder
-@chown/preserve \#2=*immholder
 
 
 \subsubsection{Create yourself your own immortal player then log off \#1 and into this immortal player}
@@ -4317,106 +4321,115 @@ Note: wizhelp control will give you a complete breakdown of what each bit can do
 Pick what you want for playername and playerpassword
 \end{sphinxadmonition}
 
-\sphinxAtStartPar
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 @pcreate PLAYERNAME=PLAYERPASSWORD
-@set {\color{red}\bfseries{}*}playername=!wanderer immortal
+@set *playername=!wanderer immortal
+\end{sphinxVerbatim}
 
 
 \subsubsection{Log out of \#1 and log into your immortal player}
 \label{\detokenize{gettingstarted:log-out-of-1-and-log-into-your-immortal-player}}
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Note: use the playername and password you created in the step before
-LOGOUT
-co PLAYERNAME PLAYERPASSWORD
+Use the playername and password you created in the step before
+\end{sphinxadmonition}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{LOGOUT}
+\PYG{n}{co} \PYG{n}{PLAYERNAME} \PYG{n}{PLAYERPASSWORD}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Create your guest characters}
-\label{\detokenize{gettingstarted:create-your-guest-characters}}\begin{quote}
-
+\label{\detokenize{gettingstarted:create-your-guest-characters}}
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Note: Feel free to change the description if you want
-\end{quote}
+Feel free to change the description if you want
+\end{sphinxadmonition}
 
-\sphinxAtStartPar
-@dolist lnum(1,10)=\{@pcreate Guest\#\#=guest;@set {\color{red}\bfseries{}*}Guest\#\#=guest;@adisconnect {\color{red}\bfseries{}*}Guest\#\#=home;@lock {\color{red}\bfseries{}*}Guest\#\#=*Guest\#\#;@desc {\color{red}\bfseries{}*}Guest\#\#=A Stranger in a strange land.\}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@dolist} \PYG{n}{lnum}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{)}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n+nd}{@pcreate} \PYG{n}{Guest}\PYG{c+c1}{\PYGZsh{}\PYGZsh{}=guest;@set *Guest\PYGZsh{}\PYGZsh{}=guest;@adisconnect *Guest\PYGZsh{}\PYGZsh{}=home;@lock *Guest\PYGZsh{}\PYGZsh{}=*Guest\PYGZsh{}\PYGZsh{};@desc *Guest\PYGZsh{}\PYGZsh{}=A Stranger in a strange land.\PYGZcb{}}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Dig a closet to store important objects but non\sphinxhyphen{}master room}
-\label{\detokenize{gettingstarted:dig-a-closet-to-store-important-objects-but-non-master-room}}\begin{quote}
-
+\label{\detokenize{gettingstarted:dig-a-closet-to-store-important-objects-but-non-master-room}}
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Note: name it anything you want, just remember it.
-\end{quote}
+name it anything you want, just remember it.
+\end{sphinxadmonition}
 
-\sphinxAtStartPar
-@dig Closet
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@dig} \PYG{n}{Closet}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Set the flags on the closet and ownership of it}
-\label{\detokenize{gettingstarted:set-the-flags-on-the-closet-and-ownership-of-it}}\begin{quote}
-
+\label{\detokenize{gettingstarted:set-the-flags-on-the-closet-and-ownership-of-it}}
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Note: use the dbref\# that it returned when digging the closet and not \#123
-\end{quote}
+Use the dbref\# that it returned when digging the closet and not \#123
+\end{sphinxadmonition}
 
-\sphinxAtStartPar
-@set \#123=inh safe ind float
-@chown/pres \#123=*immholder
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@set} \PYG{c+c1}{\PYGZsh{}123=inh safe ind float}
+\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{pres} \PYG{c+c1}{\PYGZsh{}123=*immholder}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Create an Admin object for future ease of customization}
 \label{\detokenize{gettingstarted:create-an-admin-object-for-future-ease-of-customization}}
-\sphinxAtStartPar
-@create AdminObject
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@create} \PYG{n}{AdminObject}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Set the flags on the admin object and ownership and location}
-\label{\detokenize{gettingstarted:set-the-flags-on-the-admin-object-and-ownership-and-location}}\begin{quote}
-\begin{description}
-\item[{Note: this object must be immortal owned.  Use the dbref\# returned previously}] \leavevmode
+\label{\detokenize{gettingstarted:set-the-flags-on-the-admin-object-and-ownership-and-location}}
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-instead of \#123
+this object must be immortal owned.  Use the dbref\# returned previously instead of \#123
+\end{sphinxadmonition}
 
-\end{description}
-
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Note2: Use the closet dbref\# instead of \#234
-\end{quote}
+Use the closet dbref\# instead of \#234
+\end{sphinxadmonition}
 
-\sphinxAtStartPar
-@set AdminObject=halt safe ind
-@chown/pres \#123=*immholder
-@tel adminobject=\#234
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@set} \PYG{n}{AdminObject}\PYG{o}{=}\PYG{n}{halt} \PYG{n}{safe} \PYG{n}{ind}
+\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{pres} \PYG{c+c1}{\PYGZsh{}123=*immholder}
+\PYG{n+nd}{@tel} \PYG{n}{adminobject}\PYG{o}{=}\PYG{c+c1}{\PYGZsh{}234}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Add admin object to configuration}
-\label{\detokenize{gettingstarted:add-admin-object-to-configuration}}\begin{description}
-\item[{Modify the netrhost.conf file with the following line at the bottom after}] \leavevmode
+\label{\detokenize{gettingstarted:add-admin-object-to-configuration}}
 \sphinxAtStartPar
-the line ‘\# define local alises here’ where you replace 123 with the
-dbref\# of the admin object that you made:
+Modify the netrhost.conf file with the following line at the bottom after the line ‘\# define local alises here’ where you replace 123 with the dbref\# of the admin object that you made:
 
-\end{description}
-
-\sphinxAtStartPar
-admin\_object 123
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{admin\PYGZus{}object} \PYG{l+m+mi}{123}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Reboot your mush to load up the change for the admin object}
 \label{\detokenize{gettingstarted:reboot-your-mush-to-load-up-the-change-for-the-admin-object}}
-\sphinxAtStartPar
-@reboot
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@reboot}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Do @admin/list to see if it shows the admin object}
-\label{\detokenize{gettingstarted:do-admin-list-to-see-if-it-shows-the-admin-object}}\begin{quote}
-
+\label{\detokenize{gettingstarted:do-admin-list-to-see-if-it-shows-the-admin-object}}
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Note: do wizhelp @admin for more information on how to use this
-\end{quote}
+do wizhelp @admin for more information on how to use this
+\end{sphinxadmonition}
 
-\sphinxAtStartPar
-@admin/list
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@admin}\PYG{o}{/}\PYG{n+nb}{list}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Load in all the various softcode that you want}
@@ -4429,70 +4442,90 @@ This is client dependant based on whatever method it uses to load softcode.
 \label{\detokenize{gettingstarted:myrddin-mushcron}}
 \sphinxAtStartPar
 Load in the Myrddin Mush Cron.
-It’s a very handy piece of software and
-\begin{quote}
+It’s a very handy piece of software and strongly suggested to do so.  You can find this in the ‘Mushcode’ directory off the main Rhost directory.
+Filename:
 
-\sphinxAtStartPar
-strongly suggested to do so.  You can find this in the ‘Mushcode’ directory
-off the main Rhost directory.
-Filename: \textasciitilde{}/Rhost/Mushcode/MyrddinCRON
-\end{quote}
-\begin{description}
-\item[{@chown/preserve the myrddin mush cron to immholder, then move to maste room.}] \leavevmode
-\sphinxAtStartPar
-Note: the globalroom() function returns the dbref\# of the master room.  Handy!
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n}{Rhost}\PYG{o}{/}\PYG{n}{Mushcode}\PYG{o}{/}\PYG{n}{MyrddinCRON}
+\end{sphinxVerbatim}
 
-\end{description}
-
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-@chown/pres Myrddin=*Immholder
-@tel Myrddin=\#234 (where \#234 is the dbref\# of your code closet)
+The globalroom() function returns the dbref\# of the master room.  Handy!
+\end{sphinxadmonition}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{preserve} \PYG{n}{the} \PYG{n}{myrddin} \PYG{n}{mush} \PYG{n}{cron} \PYG{n}{to} \PYG{n}{immholder}\PYG{p}{,} \PYG{n}{then} \PYG{n}{move} \PYG{n}{to} \PYG{n}{maste} \PYG{n}{room}\PYG{o}{.}
+\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{pres} \PYG{n}{Myrddin}\PYG{o}{=}\PYG{o}{*}\PYG{n}{Immholder}
+\PYG{n+nd}{@tel} \PYG{n}{Myrddin}\PYG{o}{=}\PYG{c+c1}{\PYGZsh{}234 (where \PYGZsh{}234 is the dbref\PYGZsh{} of your code closet)}
+\end{sphinxVerbatim}
 
 
 \paragraph{AshCom}
-\label{\detokenize{gettingstarted:ashcom}}\begin{description}
-\item[{Load in default softcoded comsystem.  This is PennMUSH and MUX/TM3 compatible.}] \leavevmode
+\label{\detokenize{gettingstarted:ashcom}}
 \sphinxAtStartPar
-Filename: \textasciitilde{}/Rhost/Mushcode/comsys
+Load in default softcoded comsystem.  This is PennMUSH and MUX/TM3 compatible.
+Filename:
 
-\end{description}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n}{Rhost}\PYG{o}{/}\PYG{n}{Mushcode}\PYG{o}{/}\PYG{n}{comsys}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Chown the Comsystem and everything inside it to immholder.
-@chown/pres ChanSys=*Immholder
-@dolist lcon(chansys)=@chown/pres \#\#=*immholder
-@tel Chansys=globalroom()
+Chown the Comsystem and everything inside it to immholder:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{pres} \PYG{n}{ChanSys}\PYG{o}{=}\PYG{o}{*}\PYG{n}{Immholder}
+\PYG{n+nd}{@dolist} \PYG{n}{lcon}\PYG{p}{(}\PYG{n}{chansys}\PYG{p}{)}\PYG{o}{=}\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{pres} \PYG{c+c1}{\PYGZsh{}\PYGZsh{}=*immholder}
+\PYG{n+nd}{@tel} \PYG{n}{Chansys}\PYG{o}{=}\PYG{n}{globalroom}\PYG{p}{(}\PYG{p}{)}
+\end{sphinxVerbatim}
 
 
 \paragraph{Mail Wrappers}
-\label{\detokenize{gettingstarted:mail-wrappers}}\begin{description}
-\item[{Load in mail wrappers if you want MUX/TM3 and/or Penn mail wrapping.}] \leavevmode
+\label{\detokenize{gettingstarted:mail-wrappers}}
 \sphinxAtStartPar
-Filename: (MUX/TM3) \textasciitilde{}/Rhost/Mushcode/mailwrappers/muxmail.wrap
-Filename: (Penn)    \textasciitilde{}/Rhost/Mushcode/mailwrappers/pennmail.wrap
+Load in mail wrappers if you want MUX/TM3 and/or Penn mail wrapping.
+Filename (MUX/TM3):
 
-\end{description}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n}{Rhost}\PYG{o}{/}\PYG{n}{Mushcode}\PYG{o}{/}\PYG{n}{mailwrappers}\PYG{o}{/}\PYG{n}{muxmail}\PYG{o}{.}\PYG{n}{wrap}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Chown to immholder
-@chown/pres MUX=*Immholder
-@chown/pres Penn=*Immholder
-@tel/list mux penn=globalroom()
+Filename (Penn):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n}{Rhost}\PYG{o}{/}\PYG{n}{Mushcode}\PYG{o}{/}\PYG{n}{mailwrappers}\PYG{o}{/}\PYG{n}{pennmail}\PYG{o}{.}\PYG{n}{wrap}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+Chown to immholder:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{pres} \PYG{n}{MUX}\PYG{o}{=}\PYG{o}{*}\PYG{n}{Immholder}
+\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{pres} \PYG{n}{Penn}\PYG{o}{=}\PYG{o}{*}\PYG{n}{Immholder}
+\PYG{n+nd}{@tel}\PYG{o}{/}\PYG{n+nb}{list} \PYG{n}{mux} \PYG{n}{penn}\PYG{o}{=}\PYG{n}{globalroom}\PYG{p}{(}\PYG{p}{)}
+\end{sphinxVerbatim}
 
 
 \paragraph{Myrddin BBS}
-\label{\detokenize{gettingstarted:myrddin-bbs}}\begin{description}
-\item[{Load in Myrddin’s BBS}] \leavevmode
+\label{\detokenize{gettingstarted:myrddin-bbs}}
 \sphinxAtStartPar
-Filename: \textasciitilde{}/Rhost/Mushcode/MyrddinBBS
+Load in Myrddin’s BBS
+Filename:
 
-\end{description}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n}{Rhost}\PYG{o}{/}\PYG{n}{Mushcode}\PYG{o}{/}\PYG{n}{MyrddinBBS}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Chown to immholder and the contents of it as well.
-@chown/pres Myrddin=*Immholder
-@dolist lcon(myrddin)=@chown/pres \#\#=*immholder
-@tel myrddin=globalroom()
+Chown to immholder and the contents of it as well:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{pres} \PYG{n}{Myrddin}\PYG{o}{=}\PYG{o}{*}\PYG{n}{Immholder}
+\PYG{n+nd}{@dolist} \PYG{n}{lcon}\PYG{p}{(}\PYG{n}{myrddin}\PYG{p}{)}\PYG{o}{=}\PYG{n+nd}{@chown}\PYG{o}{/}\PYG{n}{pres} \PYG{c+c1}{\PYGZsh{}\PYGZsh{}=*immholder}
+\PYG{n+nd}{@tel} \PYG{n}{myrddin}\PYG{o}{=}\PYG{n}{globalroom}\PYG{p}{(}\PYG{p}{)}
+\end{sphinxVerbatim}
 
 
 \paragraph{Other Mushcode}
@@ -4519,26 +4552,36 @@ The flatfile must be loaded in as a new db
 
 \sphinxAtStartPar
 This is a minimal db with basic ‘features’ built in.
-\begin{description}
-\item[{Copy the txt files into the Rhost’s txt directory off game.}] \leavevmode
-\sphinxAtStartPar
-cp txt/* \textasciitilde{}/Rhost/Server/game/txt
-
-\item[{mkindx the files (substitute FILENAME with the filename)}] \leavevmode
-\sphinxAtStartPar
-cd \textasciitilde{}/Rhost/Server/game/txt
-../mkindx FILENAME.txt FILENAME.indx
-
-\end{description}
 
 \sphinxAtStartPar
-Steps:
-1) Using the Startmush utility for the first time, select the load db method
+Copy the txt files into the Rhost’s txt directory off game:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cp} \PYG{n}{txt}\PYG{o}{/}\PYG{o}{*} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n}{Rhost}\PYG{o}{/}\PYG{n}{Server}\PYG{o}{/}\PYG{n}{game}\PYG{o}{/}\PYG{n}{txt}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+mkindx the files (substitute FILENAME with the filename):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cd} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n}{Rhost}\PYG{o}{/}\PYG{n}{Server}\PYG{o}{/}\PYG{n}{game}\PYG{o}{/}\PYG{n}{txt}
+\PYG{o}{.}\PYG{o}{.}\PYG{o}{/}\PYG{n}{mkindx} \PYG{n}{FILENAME}\PYG{o}{.}\PYG{n}{txt} \PYG{n}{FILENAME}\PYG{o}{.}\PYG{n}{indx}
+\end{sphinxVerbatim}
+
+
+\subsubsection{Startup Steps}
+\label{\detokenize{gettingstarted:startup-steps}}\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+Using the Startmush utility for the first time, select the load db method
+
+\end{enumerate}
 
 \sphinxAtStartPar
 — or —
 \begin{enumerate}
-\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{)}%
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
 copy the netrhost.conf file into the games directory
@@ -4550,8 +4593,21 @@ make any relevant changes you wish
 \item {} 
 \sphinxAtStartPar
 db\_load the flatfile
-\sphinxhyphen{} go into the game directory
-\sphinxhyphen{} type: ./db\_load data/netrhost.gdbm ../minimal\sphinxhyphen{}DBs/minimal\_db/netrhost.db.flat data/netrhost.db.new
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumii}{enumiii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+go into the game directory
+
+\item {} 
+\sphinxAtStartPar
+type:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{.}\PYG{o}{/}\PYG{n}{db\PYGZus{}load} \PYG{n}{data}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{gdbm} \PYG{o}{.}\PYG{o}{.}\PYG{o}{/}\PYG{n}{minimal}\PYG{o}{\PYGZhy{}}\PYG{n}{DBs}\PYG{o}{/}\PYG{n}{minimal\PYGZus{}db}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{db}\PYG{o}{.}\PYG{n}{flat} \PYG{n}{data}\PYG{o}{/}\PYG{n}{netrhost}\PYG{o}{.}\PYG{n}{db}\PYG{o}{.}\PYG{n}{new}
+\end{sphinxVerbatim}
+
+\end{enumerate}
 
 \item {} 
 \sphinxAtStartPar
@@ -4680,11 +4736,15 @@ functions\_max \sphinxhyphen{}\textgreater{} function\_max. Thanks to \sphinxhre
 
 \subsubsection{Introduction}
 \label{\detokenize{gettingstarted:introduction}}
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-\textless{}READ THIS DOCUMENT CAREFULLY!\textgreater{}
+READ THIS DOCUMENT CAREFULLY!
+\end{sphinxadmonition}
 
 \sphinxAtStartPar
 Greetings,
+
+\sphinxAtStartPar
 This minimal Rhost DB was made with a secure setup, and as a good base to start
 a new game off in mind.
 
@@ -4715,8 +4775,7 @@ NO\_CODE visual access to Architect level.
 
 \item {} 
 \sphinxAtStartPar
-Global Command objects inheriting from each bitlevel, with a separate staff\sphinxhyphen{}
-\sphinxhyphen{}only object for each level.
+Global Command objects inheriting from each bitlevel, with a separate staff\sphinxhyphen{}only object for each level.
 
 \item {} 
 \sphinxAtStartPar
@@ -4748,12 +4807,14 @@ Misc Data object to hold general data, like Staff lists etc.
 \item {} 
 \sphinxAtStartPar
 Reality levels ‘Real’ and ‘Admin’.
+
+\sphinxAtStartPar
 All created items and players by default are in Recieve\sphinxhyphen{}Level ‘Real’ and
 Transmit\sphinxhyphen{}Levels ‘Real’ and ‘Admin’.
 
 \item {} 
 \sphinxAtStartPar
-All globals, Master Room, BCs\sphinxhyphen{}{\color{red}\bfseries{}*}, and other staff/code\sphinxhyphen{}related objects
+All globals, Master Room, BCs\sphinxhyphen{}*, and other staff/code\sphinxhyphen{}related objects
 currently have only ‘Admin’ as their Transmit\sphinxhyphen{}Level. This does not prevent
 them fromi working properly. The only exception is \#1, who has empty reality
 levels.
@@ -4764,6 +4825,8 @@ The supplied netrhost.conf offers a secure setup of options, allows Royalty
 to use @hook and @function, and also sets the function\_access of several
 functions to !no\_code, which allows NO\_CODE players to use the comsys
 properly.
+
+\sphinxAtStartPar
 IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
 The ‘Port’ configuration parameter is XXXX’d out. Set it first before starting
 your game.
@@ -4788,7 +4851,7 @@ creation, and a 1\sphinxhyphen{}credit\sphinxhyphen{}per\sphinxhyphen{}day paych
 
 \item {} 
 \sphinxAtStartPar
-All {\color{red}\bfseries{}*}mit sideeffects, as well as set(), create() and list() are enabled. The
+All *mit sideeffects, as well as set(), create() and list() are enabled. The
 latter three are necessary for the Comsystem. The rest of sideeffects are
 disabled completely.
 
@@ -4902,33 +4965,30 @@ all kinds of messages sent by game commands.
 header() \sphinxhyphen{} Highly versatile, and a buffer\sphinxhyphen{}saving alternative
 to using printf() for centering with ansi borders. HIGHLY recommended to use
 instead of printf() for such things.
-header(text,width,filler,fillercolor,outerpadding,paddingcolor,
-\begin{quote}
-\begin{quote}
 
-\sphinxAtStartPar
-leftinnerpadding,leftinnercolor,rightinnerpadding,rightinnercolor)
-\end{quote}
+\end{itemize}
 
-\sphinxAtStartPar
-text \sphinxhyphen{} Text to center
-width \sphinxhyphen{} Width of the header, defaults to width()
-filler \sphinxhyphen{} Character(s) to draw the line with. Default: =
-fillercolor \sphinxhyphen{} ansicode to color the line with
-outerpadding \sphinxhyphen{} Characters to frame the outer ends of the line with.
-paddingcolor \sphinxhyphen{} ansicode to color the outer characters with
-leftinnerpadding \sphinxhyphen{} characters to put at the left side of \textless{}text\textgreater{}
-leftinnercolor \sphinxhyphen{} ansicode to color the leftside characters with
-rightinnerpadding \sphinxhyphen{} characters to put at the right side of \textless{}text\textgreater{}
-rightinnercolor \sphinxhyphen{} ansicode to color the rightside characters with
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{header}\PYG{p}{(}\PYG{n}{text}\PYG{p}{,}\PYG{n}{width}\PYG{p}{,}\PYG{n}{filler}\PYG{p}{,}\PYG{n}{fillercolor}\PYG{p}{,}\PYG{n}{outerpadding}\PYG{p}{,}\PYG{n}{paddingcolor}\PYG{p}{,}
+       \PYG{n}{leftinnerpadding}\PYG{p}{,}\PYG{n}{leftinnercolor}\PYG{p}{,}\PYG{n}{rightinnerpadding}\PYG{p}{,}\PYG{n}{rightinnercolor}\PYG{p}{)}
+  \PYG{n}{text} \PYG{o}{\PYGZhy{}} \PYG{n}{Text} \PYG{n}{to} \PYG{n}{center}
+  \PYG{n}{width} \PYG{o}{\PYGZhy{}} \PYG{n}{Width} \PYG{n}{of} \PYG{n}{the} \PYG{n}{header}\PYG{p}{,} \PYG{n}{defaults} \PYG{n}{to} \PYG{n}{width}\PYG{p}{(}\PYG{p}{)}
+  \PYG{n}{filler} \PYG{o}{\PYGZhy{}} \PYG{n}{Character}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)} \PYG{n}{to} \PYG{n}{draw} \PYG{n}{the} \PYG{n}{line} \PYG{k}{with}\PYG{o}{.} \PYG{n}{Default}\PYG{p}{:} \PYG{o}{=}
+  \PYG{n}{fillercolor} \PYG{o}{\PYGZhy{}} \PYG{n}{ansicode} \PYG{n}{to} \PYG{n}{color} \PYG{n}{the} \PYG{n}{line} \PYG{k}{with}
+  \PYG{n}{outerpadding} \PYG{o}{\PYGZhy{}} \PYG{n}{Characters} \PYG{n}{to} \PYG{n}{frame} \PYG{n}{the} \PYG{n}{outer} \PYG{n}{ends} \PYG{n}{of} \PYG{n}{the} \PYG{n}{line} \PYG{k}{with}\PYG{o}{.}
+  \PYG{n}{paddingcolor} \PYG{o}{\PYGZhy{}} \PYG{n}{ansicode} \PYG{n}{to} \PYG{n}{color} \PYG{n}{the} \PYG{n}{outer} \PYG{n}{characters} \PYG{k}{with}
+  \PYG{n}{leftinnerpadding} \PYG{o}{\PYGZhy{}} \PYG{n}{characters} \PYG{n}{to} \PYG{n}{put} \PYG{n}{at} \PYG{n}{the} \PYG{n}{left} \PYG{n}{side} \PYG{n}{of} \PYG{o}{\PYGZlt{}}\PYG{n}{text}\PYG{o}{\PYGZgt{}}
+  \PYG{n}{leftinnercolor} \PYG{o}{\PYGZhy{}} \PYG{n}{ansicode} \PYG{n}{to} \PYG{n}{color} \PYG{n}{the} \PYG{n}{leftside} \PYG{n}{characters} \PYG{k}{with}
+  \PYG{n}{rightinnerpadding} \PYG{o}{\PYGZhy{}} \PYG{n}{characters} \PYG{n}{to} \PYG{n}{put} \PYG{n}{at} \PYG{n}{the} \PYG{n}{right} \PYG{n}{side} \PYG{n}{of} \PYG{o}{\PYGZlt{}}\PYG{n}{text}\PYG{o}{\PYGZgt{}}
+  \PYG{n}{rightinnercolor} \PYG{o}{\PYGZhy{}} \PYG{n}{ansicode} \PYG{n}{to} \PYG{n}{color} \PYG{n}{the} \PYG{n}{rightside} \PYG{n}{characters} \PYG{k}{with}
+\end{sphinxVerbatim}
 
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
 ALL of header()’s parameters are optional. By default, header() simply draws
 a 78\sphinxhyphen{}char wide line of =’s. Simply leave parameters empty if you want to set
 one of the latter parameters.
-
-\end{itemize}
+\end{sphinxadmonition}
 
 
 \subsubsection{Bitlevels}
@@ -4939,15 +4999,22 @@ I am a strong believer in least\sphinxhyphen{}privileges\sphinxhyphen{}needed to
 powers are tools to do that job, not badges of friendship or trust that get
 tossed about.
 
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Here is my suggested list of powers and bittypes for staffers:
-\begin{description}
-\item[{Storytellers  \sphinxhyphen{} @powered TEL\_ANYWHERE, JOIN\_PLAYER and GRAB\_PLAYER on}] \leavevmode
-\sphinxAtStartPar
-Guildmaster level.
+Here is my suggested list of powers and bittypes for staffers.
+\end{sphinxadmonition}
 
-\item[{Builder\sphinxhyphen{}BCs   \sphinxhyphen{} Mortal, with @quota and money for their job. There should be one}] \leavevmode
+
+\paragraph{Storytellers}
+\label{\detokenize{gettingstarted:storytellers}}
 \sphinxAtStartPar
+@powered TEL\_ANYWHERE, JOIN\_PLAYER and GRAB\_PLAYER on Guildmaster level.
+
+
+\paragraph{Builder\sphinxhyphen{}BCs}
+\label{\detokenize{gettingstarted:builder-bcs}}
+\sphinxAtStartPar
+Mortal, with @quota and money for their job. There should be one
 shared BC for each area of the game, like BC\sphinxhyphen{}Houston. Special
 Rooms, items or exits that require privilegs to examine or @tel
 a player should belong to a BC\sphinxhyphen{}Houston\sphinxhyphen{}Powered that is @powered
@@ -4957,57 +5024,77 @@ it use a restricted staff Global, or if you absolutely must,
 make a BC\sphinxhyphen{}Houston\sphinxhyphen{}Admin and @set it Architect. Do not give
 normal builders access to it, only @chown things to it and @set
 them inherit after review.
+
+\sphinxAtStartPar
 Both the \sphinxhyphen{}powered and \sphinxhyphen{}admin BCs can have random passwords and
 be @set NO\_CONNECT.
 
-\item[{Building Head \sphinxhyphen{} @set Guildmaster, powered TEL\_ANYWHERE, TEL\_ANYTHING and}] \leavevmode
+
+\paragraph{Building Head}
+\label{\detokenize{gettingstarted:building-head}}
 \sphinxAtStartPar
+@set Guildmaster, powered TEL\_ANYWHERE, TEL\_ANYTHING and
 optionally CHOWN\_OTHER on Guildmaster level. Mind that the
 latter technically allows them to @chown anything guildmaster\sphinxhyphen{}
 and lower\sphinxhyphen{}owned in the master and auxiliary rooms. However,
 it allows the Building Head to @chown items between BCs\sphinxhyphen{} and
 to the BC\sphinxhyphen{}\textless{}location\textgreater{}\sphinxhyphen{}powered.
 
-\item[{Enforcers     \sphinxhyphen{} As Storyteller above, plus being @powered Security at}] \leavevmode
+
+\paragraph{Enforcers}
+\label{\detokenize{gettingstarted:enforcers}}
 \sphinxAtStartPar
+As Storyteller above, plus being @powered Security at
 Guildmaster level, in order to handle problem players.
+
+\sphinxAtStartPar
 Optionally always given to Storytellers.
 
-\end{description}
 
+\paragraph{Coders}
+\label{\detokenize{gettingstarted:coders}}
 \sphinxAtStartPar
-Coders        \sphinxhyphen{} @set Architect.
-Head Coder    \sphinxhyphen{} Always trust your head coder.
-\begin{quote}
+@set Architect
 
+
+\paragraph{Head Coder}
+\label{\detokenize{gettingstarted:head-coder}}
 \sphinxAtStartPar
+Always trust your head coder.
 @set Architect for the everyday bit. Give access to a
 maintenance Councilor bit for special code projects. Finished
 code along those lines should get @chowned to the
 bc\sphinxhyphen{}admin\sphinxhyphen{}councilor.
+
+\sphinxAtStartPar
 If you as the MU* Head(s) don’t know Softcode well, or want to
 leave anything Code to your Head Coder, also give them optional
 access to a maintenance Royalty bit in order to properly code
 banning/blacklisting +commands and other rare code that requires
 Royalty powers. Again, chown finished code to bc\sphinxhyphen{}admin\sphinxhyphen{}royalty.
-\end{quote}
-\begin{description}
-\item[{MU* Head(s)   \sphinxhyphen{} You’re the boss(es). But please use an Architect bit for your}] \leavevmode
+
+
+\paragraph{MU* Head(s)}
+\label{\detokenize{gettingstarted:mu-head-s}}
 \sphinxAtStartPar
+You’re the boss(es). But please use an Architect bit for your
 everyday things. Keep Immortal to yourself. Keep \#1 to yourself.
 And seriously avoid using either of them except for creating
 a Royalty bit or doing intricate DB maintenance.
 
-\item[{Site Admins   \sphinxhyphen{} They already have more powers than any in\sphinxhyphen{}game bit can ever}] \leavevmode
+
+\paragraph{Site Admins}
+\label{\detokenize{gettingstarted:site-admins}}
 \sphinxAtStartPar
+They already have more powers than any in\sphinxhyphen{}game bit can ever
 have ;)
+
+\sphinxAtStartPar
 Depending on actual involvement with your game, their abilities
 in\sphinxhyphen{}game can range from merely being @powered free\_wall for
 notifying players of downtimes and/or being @powered shutdown in
 order to shut down the game for maintenance, up to being the
 only person with actual access to \#1.
-
-\end{description}
 
 
 \paragraph{Globals}
@@ -5052,7 +5139,7 @@ objects NO\_MODIFY instead, keeping them at Architect\sphinxhyphen{}power but ma
 unmodifyable by Architects.
 
 
-\paragraph{Quota}
+\subsubsection{Quota}
 \label{\detokenize{gettingstarted:quota}}
 \sphinxAtStartPar
 I highly recommend the use of the alternative @quota system. BC\sphinxhyphen{}Admin\sphinxhyphen{}Mortal
@@ -5061,8 +5148,8 @@ of them have a high amount of money for everyday operations. You should not give
 them free quota or money.
 
 
-\paragraph{Functions}
-\label{\detokenize{gettingstarted:id15}}
+\subsubsection{Functions}
+\label{\detokenize{gettingstarted:id1}}
 \sphinxAtStartPar
 I also recommend to setup most global functions with /Privileged even if they
 are mortal\sphinxhyphen{}powered, to make them work even when players are set NO\_CODE and

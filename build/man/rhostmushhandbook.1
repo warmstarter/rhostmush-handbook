@@ -1,6 +1,6 @@
 .\" Man page generated from reStructuredText.
 .
-.TH "RHOSTMUSHHANDBOOK" "1" "Mar 11, 2021" "" "RhostMUSH Handbook"
+.TH "RHOSTMUSHHANDBOOK" "1" "Mar 12, 2021" "" "RhostMUSH Handbook"
 .SH NAME
 rhostmushhandbook \- RhostMUSH Handbook 
 .
@@ -3521,7 +3521,7 @@ what it is.
 .sp
 Follow what it asks for and just let it do its thing.
 .SS Gettin Started
-.SS What to type to get the basics running if you did not choose a pre\-existing flatfile
+.SS What to ype to get the basics running if you did not choose a pre\-existing flatfile
 .sp
 If you decided to get a bare\-bone configuration, you will find your mush has just two things.  The #1 (God) player and the starting room #0.  That’s it.
 .SS Login to #1 from the connect screen
@@ -3596,46 +3596,89 @@ Note: wizhelp control will give you a complete breakdown of what each bit can do
 .UNINDENT
 .UNINDENT
 .SS Immortal Holder
-.sp
-@pcreate ImmHolder=abc123
-@set \fIImmholder=no_connect !wanderer immortal
-@badsite *immholder=\fP
-.SS Royalty/Wizard Holder
-.sp
-@pcreate WizHolder=abc123
-@set \fIwizholder=no_connect !wanderer royalty
-@badsite *wizholder=\fP
-.SS Councilor/Admin Holder
-.sp
-@pcreate AdminHolder=abc123
-@set \fIadminholder=no_connect !wanderer councilor
-@badsite *adminholder=\fP
-.SS Architect/Staff Holder
-.sp
-@pcreate StaffHolder=abc123
-@set \fIstaffholder=no_connect !wanderer architect
-@badsite *staffholder=\fP
-.SS Guildmaster/Lead Holder
-.sp
-@pcreate GuildHolder=abc123
-@set \fIguildholder=no_connect !wanderer guildmaster
-@badsite *guildholder=\fP
-.SS Chown #0 (The starting room) and #2 (The Master room) to immholder
-.sp
-\&..note:
 .INDENT 0.0
 .INDENT 3.5
 .sp
 .nf
 .ft C
-#0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal
+@pcreate ImmHolder=abc123
+@set *Immholder=no_connect !wanderer immortal
+@badsite *immholder=*
 .ft P
 .fi
 .UNINDENT
 .UNINDENT
+.SS Royalty/Wizard Holder
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
+@pcreate WizHolder=abc123
+@set *wizholder=no_connect !wanderer royalty
+@badsite *wizholder=*
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Councilor/Admin Holder
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@pcreate AdminHolder=abc123
+@set *adminholder=no_connect !wanderer councilor
+@badsite *adminholder=*
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Architect/Staff Holder
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@pcreate StaffHolder=abc123
+@set *staffholder=no_connect !wanderer architect
+@badsite *staffholder=*
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Guildmaster/Lead Holder
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@pcreate GuildHolder=abc123
+@set *guildholder=no_connect !wanderer guildmaster
+@badsite *guildholder=*
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Chown #0 (The starting room) and #2 (The Master room) to immholder
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+#0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 @chown/preserve #0=*immholder
 @chown/preserve #2=*immholder
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Create yourself your own immortal player then log off #1 and into this immortal player
 .sp
 \fBNOTE:\fP
@@ -3644,154 +3687,304 @@ Note: wizhelp control will give you a complete breakdown of what each bit can do
 Pick what you want for playername and playerpassword
 .UNINDENT
 .UNINDENT
+.INDENT 0.0
+.INDENT 3.5
 .sp
-@pcreate PLAYERNAME=PLAYERPASSWORD
-@set 
 .nf
-*
+.ft C
+@pcreate PLAYERNAME=PLAYERPASSWORD
+@set *playername=!wanderer immortal
+.ft P
 .fi
-playername=!wanderer immortal
+.UNINDENT
+.UNINDENT
 .SS Log out of #1 and log into your immortal player
 .sp
-Note: use the playername and password you created in the step before
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Use the playername and password you created in the step before
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 LOGOUT
 co PLAYERNAME PLAYERPASSWORD
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Create your guest characters
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-Note: Feel free to change the description if you want
+Feel free to change the description if you want
 .UNINDENT
 .UNINDENT
+.INDENT 0.0
+.INDENT 3.5
 .sp
-@dolist lnum(1,10)={@pcreate Guest##=guest;@set 
 .nf
-*
+.ft C
+@dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@adisconnect *Guest##=home;@lock *Guest##=*Guest##;@desc *Guest##=A Stranger in a strange land.}
+.ft P
 .fi
-Guest##=guest;@adisconnect 
-.nf
-*
-.fi
-Guest##=home;@lock 
-.nf
-*
-.fi
-Guest##=*Guest##;@desc 
-.nf
-*
-.fi
-Guest##=A Stranger in a strange land.}
+.UNINDENT
+.UNINDENT
 .SS Dig a closet to store important objects but non\-master room
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-Note: name it anything you want, just remember it.
+name it anything you want, just remember it.
 .UNINDENT
 .UNINDENT
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 @dig Closet
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Set the flags on the closet and ownership of it
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-Note: use the dbref# that it returned when digging the closet and not #123
+Use the dbref# that it returned when digging the closet and not #123
 .UNINDENT
 .UNINDENT
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 @set #123=inh safe ind float
 @chown/pres #123=*immholder
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Create an Admin object for future ease of customization
-.sp
-@create AdminObject
-.SS Set the flags on the admin object and ownership and location
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
+@create AdminObject
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Set the flags on the admin object and ownership and location
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
-.TP
-.B Note: this object must be immortal owned.  Use the dbref# returned previously
-instead of #123
-.UNINDENT
-.sp
-Note2: Use the closet dbref# instead of #234
+.INDENT 3.5
+this object must be immortal owned.  Use the dbref# returned previously instead of #123
 .UNINDENT
 .UNINDENT
 .sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Use the closet dbref# instead of #234
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 @set AdminObject=halt safe ind
 @chown/pres #123=*immholder
 @tel adminobject=#234
-.SS Add admin object to configuration
-.INDENT 0.0
-.TP
-.B Modify the netrhost.conf file with the following line at the bottom after
-the line ‘# define local alises here’ where you replace 123 with the
-dbref# of the admin object that you made:
+.ft P
+.fi
 .UNINDENT
+.UNINDENT
+.SS Add admin object to configuration
 .sp
-admin_object 123
-.SS Reboot your mush to load up the change for the admin object
-.sp
-@reboot
-.SS Do @admin/list to see if it shows the admin object
+Modify the netrhost.conf file with the following line at the bottom after the line ‘# define local alises here’ where you replace 123 with the dbref# of the admin object that you made:
 .INDENT 0.0
 .INDENT 3.5
-Note: do wizhelp @admin for more information on how to use this
-.UNINDENT
-.UNINDENT
 .sp
+.nf
+.ft C
+admin_object 123
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Reboot your mush to load up the change for the admin object
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@reboot
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Do @admin/list to see if it shows the admin object
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+do wizhelp @admin for more information on how to use this
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 @admin/list
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Load in all the various softcode that you want
 .sp
 This is client dependant based on whatever method it uses to load softcode.
 .SS Myrddin MushCron
 .sp
 Load in the Myrddin Mush Cron.
-It’s a very handy piece of software and
+It’s a very handy piece of software and strongly suggested to do so.  You can find this in the ‘Mushcode’ directory off the main Rhost directory.
+Filename:
 .INDENT 0.0
 .INDENT 3.5
-strongly suggested to do so.  You can find this in the ‘Mushcode’ directory
-off the main Rhost directory.
-Filename: ~/Rhost/Mushcode/MyrddinCRON
+.sp
+.nf
+.ft C
+~/Rhost/Mushcode/MyrddinCRON
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+The globalroom() function returns the dbref# of the master room.  Handy!
 .UNINDENT
 .UNINDENT
 .INDENT 0.0
-.TP
-.B @chown/preserve the myrddin mush cron to immholder, then move to maste room.
-Note: the globalroom() function returns the dbref# of the master room.  Handy!
-.UNINDENT
+.INDENT 3.5
 .sp
+.nf
+.ft C
+@chown/preserve the myrddin mush cron to immholder, then move to maste room.
 @chown/pres Myrddin=*Immholder
 @tel Myrddin=#234 (where #234 is the dbref# of your code closet)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS AshCom
+.sp
+Load in default softcoded comsystem.  This is PennMUSH and MUX/TM3 compatible.
+Filename:
 .INDENT 0.0
-.TP
-.B Load in default softcoded comsystem.  This is PennMUSH and MUX/TM3 compatible.
-Filename: ~/Rhost/Mushcode/comsys
+.INDENT 3.5
+.sp
+.nf
+.ft C
+~/Rhost/Mushcode/comsys
+.ft P
+.fi
+.UNINDENT
 .UNINDENT
 .sp
-Chown the Comsystem and everything inside it to immholder.
+Chown the Comsystem and everything inside it to immholder:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 @chown/pres ChanSys=*Immholder
 @dolist lcon(chansys)=@chown/pres ##=*immholder
 @tel Chansys=globalroom()
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Mail Wrappers
+.sp
+Load in mail wrappers if you want MUX/TM3 and/or Penn mail wrapping.
+Filename (MUX/TM3):
 .INDENT 0.0
-.TP
-.B Load in mail wrappers if you want MUX/TM3 and/or Penn mail wrapping.
-Filename: (MUX/TM3) ~/Rhost/Mushcode/mailwrappers/muxmail.wrap
-Filename: (Penn)    ~/Rhost/Mushcode/mailwrappers/pennmail.wrap
+.INDENT 3.5
+.sp
+.nf
+.ft C
+~/Rhost/Mushcode/mailwrappers/muxmail.wrap
+.ft P
+.fi
+.UNINDENT
 .UNINDENT
 .sp
-Chown to immholder
+Filename (Penn):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+~/Rhost/Mushcode/mailwrappers/pennmail.wrap
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Chown to immholder:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 @chown/pres MUX=*Immholder
 @chown/pres Penn=*Immholder
 @tel/list mux penn=globalroom()
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Myrddin BBS
+.sp
+Load in Myrddin’s BBS
+Filename:
 .INDENT 0.0
-.TP
-.B Load in Myrddin’s BBS
-Filename: ~/Rhost/Mushcode/MyrddinBBS
+.INDENT 3.5
+.sp
+.nf
+.ft C
+~/Rhost/Mushcode/MyrddinBBS
+.ft P
+.fi
+.UNINDENT
 .UNINDENT
 .sp
-Chown to immholder and the contents of it as well.
+Chown to immholder and the contents of it as well:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 @chown/pres Myrddin=*Immholder
 @dolist lcon(myrddin)=@chown/pres ##=*immholder
 @tel myrddin=globalroom()
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Other Mushcode
 .sp
 There’s other code in the Mushcode directory that you are welcome to install.  You would follow similar procedures
@@ -3808,18 +4001,36 @@ Please use the netrhost.conf file with the database as they’re linked.
 The flatfile must be loaded in as a new db
 .sp
 This is a minimal db with basic ‘features’ built in.
+.sp
+Copy the txt files into the Rhost’s txt directory off game:
 .INDENT 0.0
-.TP
-.B Copy the txt files into the Rhost’s txt directory off game.
+.INDENT 3.5
+.sp
+.nf
+.ft C
 cp txt/* ~/Rhost/Server/game/txt
-.TP
-.B mkindx the files (substitute FILENAME with the filename)
-cd ~/Rhost/Server/game/txt
-\&../mkindx FILENAME.txt FILENAME.indx
+.ft P
+.fi
+.UNINDENT
 .UNINDENT
 .sp
-Steps:
-1) Using the Startmush utility for the first time, select the load db method
+mkindx the files (substitute FILENAME with the filename):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+cd ~/Rhost/Server/game/txt
+\&../mkindx FILENAME.txt FILENAME.indx
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Startup Steps
+.INDENT 0.0
+.IP 1. 3
+Using the Startmush utility for the first time, select the load db method
+.UNINDENT
 .sp
 — or —
 .INDENT 0.0
@@ -3829,8 +4040,22 @@ copy the netrhost.conf file into the games directory
 make any relevant changes you wish
 .IP 3. 3
 db_load the flatfile
-\- go into the game directory
-\- type: ./db_load data/netrhost.gdbm ../minimal\-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
+.INDENT 3.0
+.IP 1. 3
+go into the game directory
+.IP 2. 3
+type:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./db_load data/netrhost.gdbm ../minimal\-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .IP 4. 3
 Startmush as expected
 .UNINDENT
@@ -3920,9 +4145,15 @@ functions_max \-> function_max. Thanks to \fI\%Bobbi@COH\fP
 .UNINDENT
 .SS Introduction
 .sp
-<READ THIS DOCUMENT CAREFULLY!>
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+READ THIS DOCUMENT CAREFULLY!
+.UNINDENT
+.UNINDENT
 .sp
 Greetings,
+.sp
 This minimal Rhost DB was made with a secure setup, and as a good base to start
 a new game off in mind.
 .SS Features
@@ -3940,8 +4171,7 @@ LONG_FINGERS.
 @startup on BC\-Admin\-Immortal lowers DARK flag access to Councilor level, and
 NO_CODE visual access to Architect level.
 .IP \(bu 2
-Global Command objects inheriting from each bitlevel, with a separate staff\-
-\-only object for each level.
+Global Command objects inheriting from each bitlevel, with a separate staff\-only object for each level.
 .IP \(bu 2
 Global Function objects inheriting from each bitlevel.
 .IP \(bu 2
@@ -3959,14 +4189,11 @@ the Global Function objects, based on attribute naming.
 Misc Data object to hold general data, like Staff lists etc.
 .IP \(bu 2
 Reality levels ‘Real’ and ‘Admin’.
+.sp
 All created items and players by default are in Recieve\-Level ‘Real’ and
 Transmit\-Levels ‘Real’ and ‘Admin’.
 .IP \(bu 2
-All globals, Master Room, BCs\-
-.nf
-*
-.fi
-, and other staff/code\-related objects
+All globals, Master Room, BCs\-*, and other staff/code\-related objects
 currently have only ‘Admin’ as their Transmit\-Level. This does not prevent
 them fromi working properly. The only exception is #1, who has empty reality
 levels.
@@ -3975,6 +4202,7 @@ The supplied netrhost.conf offers a secure setup of options, allows Royalty
 to use @hook and @function, and also sets the function_access of several
 functions to !no_code, which allows NO_CODE players to use the comsys
 properly.
+.sp
 IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
 The ‘Port’ configuration parameter is XXXX’d out. Set it first before starting
 your game.
@@ -3989,11 +4217,7 @@ easily set this on objects.
 Players are @set NO_CODE and WANDERER by default. They get 40 credits on
 creation, and a 1\-credit\-per\-day paycheck.
 .IP \(bu 2
-All 
-.nf
-*
-.fi
-mit sideeffects, as well as set(), create() and list() are enabled. The
+All *mit sideeffects, as well as set(), create() and list() are enabled. The
 latter three are necessary for the Comsystem. The rest of sideeffects are
 disabled completely.
 .IP \(bu 2
@@ -4057,31 +4281,36 @@ all kinds of messages sent by game commands.
 header() \- Highly versatile, and a buffer\-saving alternative
 to using printf() for centering with ansi borders. HIGHLY recommended to use
 instead of printf() for such things.
-header(text,width,filler,fillercolor,outerpadding,paddingcolor,
-.INDENT 2.0
-.INDENT 3.5
+.UNINDENT
 .INDENT 0.0
 .INDENT 3.5
-leftinnerpadding,leftinnercolor,rightinnerpadding,rightinnercolor)
+.sp
+.nf
+.ft C
+header(text,width,filler,fillercolor,outerpadding,paddingcolor,
+       leftinnerpadding,leftinnercolor,rightinnerpadding,rightinnercolor)
+  text \- Text to center
+  width \- Width of the header, defaults to width()
+  filler \- Character(s) to draw the line with. Default: =
+  fillercolor \- ansicode to color the line with
+  outerpadding \- Characters to frame the outer ends of the line with.
+  paddingcolor \- ansicode to color the outer characters with
+  leftinnerpadding \- characters to put at the left side of <text>
+  leftinnercolor \- ansicode to color the leftside characters with
+  rightinnerpadding \- characters to put at the right side of <text>
+  rightinnercolor \- ansicode to color the rightside characters with
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
-text \- Text to center
-width \- Width of the header, defaults to width()
-filler \- Character(s) to draw the line with. Default: =
-fillercolor \- ansicode to color the line with
-outerpadding \- Characters to frame the outer ends of the line with.
-paddingcolor \- ansicode to color the outer characters with
-leftinnerpadding \- characters to put at the left side of <text>
-leftinnercolor \- ansicode to color the leftside characters with
-rightinnerpadding \- characters to put at the right side of <text>
-rightinnercolor \- ansicode to color the rightside characters with
-.UNINDENT
-.UNINDENT
-.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
 ALL of header()’s parameters are optional. By default, header() simply draws
 a 78\-char wide line of =’s. Simply leave parameters empty if you want to set
 one of the latter parameters.
+.UNINDENT
 .UNINDENT
 .SS Bitlevels
 .sp
@@ -4090,13 +4319,18 @@ I am a strong believer in least\-privileges\-needed to do the job. Bittypes and
 powers are tools to do that job, not badges of friendship or trust that get
 tossed about.
 .sp
-Here is my suggested list of powers and bittypes for staffers:
+\fBNOTE:\fP
 .INDENT 0.0
-.TP
-.B Storytellers  \- @powered TEL_ANYWHERE, JOIN_PLAYER and GRAB_PLAYER on
-Guildmaster level.
-.TP
-.B Builder\-BCs   \- Mortal, with @quota and money for their job. There should be one
+.INDENT 3.5
+Here is my suggested list of powers and bittypes for staffers.
+.UNINDENT
+.UNINDENT
+.SS Storytellers
+.sp
+@powered TEL_ANYWHERE, JOIN_PLAYER and GRAB_PLAYER on Guildmaster level.
+.SS Builder\-BCs
+.sp
+Mortal, with @quota and money for their job. There should be one
 shared BC for each area of the game, like BC\-Houston. Special
 Rooms, items or exits that require privilegs to examine or @tel
 a player should belong to a BC\-Houston\-Powered that is @powered
@@ -4106,51 +4340,55 @@ it use a restricted staff Global, or if you absolutely must,
 make a BC\-Houston\-Admin and @set it Architect. Do not give
 normal builders access to it, only @chown things to it and @set
 them inherit after review.
+.sp
 Both the \-powered and \-admin BCs can have random passwords and
 be @set NO_CONNECT.
-.TP
-.B Building Head \- @set Guildmaster, powered TEL_ANYWHERE, TEL_ANYTHING and
+.SS Building Head
+.sp
+@set Guildmaster, powered TEL_ANYWHERE, TEL_ANYTHING and
 optionally CHOWN_OTHER on Guildmaster level. Mind that the
 latter technically allows them to @chown anything guildmaster\-
 and lower\-owned in the master and auxiliary rooms. However,
 it allows the Building Head to @chown items between BCs\- and
 to the BC\-<location>\-powered.
-.TP
-.B Enforcers     \- As Storyteller above, plus being @powered Security at
-Guildmaster level, in order to handle problem players.
-Optionally always given to Storytellers.
-.UNINDENT
+.SS Enforcers
 .sp
-Coders        \- @set Architect.
-Head Coder    \- Always trust your head coder.
-.INDENT 0.0
-.INDENT 3.5
+As Storyteller above, plus being @powered Security at
+Guildmaster level, in order to handle problem players.
+.sp
+Optionally always given to Storytellers.
+.SS Coders
+.sp
+@set Architect
+.SS Head Coder
+.sp
+Always trust your head coder.
 @set Architect for the everyday bit. Give access to a
 maintenance Councilor bit for special code projects. Finished
 code along those lines should get @chowned to the
 bc\-admin\-councilor.
+.sp
 If you as the MU* Head(s) don’t know Softcode well, or want to
 leave anything Code to your Head Coder, also give them optional
 access to a maintenance Royalty bit in order to properly code
 banning/blacklisting +commands and other rare code that requires
 Royalty powers. Again, chown finished code to bc\-admin\-royalty.
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.TP
-.B MU* Head(s)   \- You’re the boss(es). But please use an Architect bit for your
+.SS MU* Head(s)
+.sp
+You’re the boss(es). But please use an Architect bit for your
 everyday things. Keep Immortal to yourself. Keep #1 to yourself.
 And seriously avoid using either of them except for creating
 a Royalty bit or doing intricate DB maintenance.
-.TP
-.B Site Admins   \- They already have more powers than any in\-game bit can ever
+.SS Site Admins
+.sp
+They already have more powers than any in\-game bit can ever
 have ;)
+.sp
 Depending on actual involvement with your game, their abilities
 in\-game can range from merely being @powered free_wall for
 notifying players of downtimes and/or being @powered shutdown in
 order to shut down the game for maintenance, up to being the
 only person with actual access to #1.
-.UNINDENT
 .SS Globals
 .sp
 Handle necessary functionality for adminning through the admin\-only globals and

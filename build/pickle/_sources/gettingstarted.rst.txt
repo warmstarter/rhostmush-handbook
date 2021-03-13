@@ -2,7 +2,7 @@
 Gettin Started
 ==============
 
-What to type to get the basics running if you did not choose a pre-existing flatfile
+What to ype to get the basics running if you did not choose a pre-existing flatfile
 ====================================================================================
 
 If you decided to get a bare-bone configuration, you will find your mush has just two things.  The #1 (God) player and the starting room #0.  That's it.
@@ -54,47 +54,59 @@ Feel free to change the password to what you want
 Immortal Holder
 +++++++++++++++
 
-@pcreate ImmHolder=abc123
-@set *Immholder=no_connect !wanderer immortal
-@badsite *immholder=*
+::
+
+  @pcreate ImmHolder=abc123
+  @set *Immholder=no_connect !wanderer immortal
+  @badsite *immholder=*
 
 Royalty/Wizard Holder
 +++++++++++++++++++++
 
-@pcreate WizHolder=abc123
-@set *wizholder=no_connect !wanderer royalty
-@badsite *wizholder=*
+::
+
+  @pcreate WizHolder=abc123
+  @set *wizholder=no_connect !wanderer royalty
+  @badsite *wizholder=*
 
 Councilor/Admin Holder
 ++++++++++++++++++++++
 
-@pcreate AdminHolder=abc123
-@set *adminholder=no_connect !wanderer councilor
-@badsite *adminholder=*
+::
+
+  @pcreate AdminHolder=abc123
+  @set *adminholder=no_connect !wanderer councilor
+  @badsite *adminholder=*
 
 Architect/Staff Holder
 ++++++++++++++++++++++
 
-@pcreate StaffHolder=abc123
-@set *staffholder=no_connect !wanderer architect
-@badsite *staffholder=*
+::
+
+  @pcreate StaffHolder=abc123
+  @set *staffholder=no_connect !wanderer architect
+  @badsite *staffholder=*
 
 Guildmaster/Lead Holder
 +++++++++++++++++++++++
 
-@pcreate GuildHolder=abc123
-@set *guildholder=no_connect !wanderer guildmaster
-@badsite *guildholder=*
+::
+
+  @pcreate GuildHolder=abc123
+  @set *guildholder=no_connect !wanderer guildmaster
+  @badsite *guildholder=*
 
 Chown #0 (The starting room) and #2 (The Master room) to immholder
 ------------------------------------------------------------------
 
-..note::
+.. note::
 
     #0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal
 
-@chown/preserve #0=*immholder
-@chown/preserve #2=*immholder
+::
+
+  @chown/preserve #0=*immholder
+  @chown/preserve #2=*immholder
 
 Create yourself your own immortal player then log off #1 and into this immortal player
 --------------------------------------------------------------------------------------
@@ -103,68 +115,105 @@ Create yourself your own immortal player then log off #1 and into this immortal 
 
     Pick what you want for playername and playerpassword
 
-@pcreate PLAYERNAME=PLAYERPASSWORD
-@set *playername=!wanderer immortal
+::
+
+  @pcreate PLAYERNAME=PLAYERPASSWORD
+  @set *playername=!wanderer immortal
 
 Log out of #1 and log into your immortal player
 -----------------------------------------------
 
-Note: use the playername and password you created in the step before
-LOGOUT 
-co PLAYERNAME PLAYERPASSWORD
+.. note::
+
+    Use the playername and password you created in the step before
+
+::
+
+  LOGOUT 
+  co PLAYERNAME PLAYERPASSWORD
 
 Create your guest characters
 ----------------------------
 
-    Note: Feel free to change the description if you want
-@dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@adisconnect *Guest##=home;@lock *Guest##=*Guest##;@desc *Guest##=A Stranger in a strange land.}
+.. note::
+
+    Feel free to change the description if you want
+
+::
+
+  @dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@adisconnect *Guest##=home;@lock *Guest##=*Guest##;@desc *Guest##=A Stranger in a strange land.}
 
 Dig a closet to store important objects but non-master room
 -----------------------------------------------------------
 
-    Note: name it anything you want, just remember it.
-@dig Closet
+.. note::
+
+    name it anything you want, just remember it.
+
+::
+
+  @dig Closet
 
 Set the flags on the closet and ownership of it
 -----------------------------------------------
 
-    Note: use the dbref# that it returned when digging the closet and not #123
-@set #123=inh safe ind float
-@chown/pres #123=*immholder
+.. note::
+
+    Use the dbref# that it returned when digging the closet and not #123
+
+::
+
+  @set #123=inh safe ind float
+  @chown/pres #123=*immholder
 
 Create an Admin object for future ease of customization
 -------------------------------------------------------
 
-@create AdminObject
+::
+
+  @create AdminObject
 
 Set the flags on the admin object and ownership and location
 ------------------------------------------------------------
 
-    Note: this object must be immortal owned.  Use the dbref# returned previously
-          instead of #123
-    Note2: Use the closet dbref# instead of #234
-@set AdminObject=halt safe ind
-@chown/pres #123=*immholder
-@tel adminobject=#234
+.. note::
+
+    this object must be immortal owned.  Use the dbref# returned previously instead of #123
+
+.. note::
+
+    Use the closet dbref# instead of #234
+
+::
+
+  @set AdminObject=halt safe ind
+  @chown/pres #123=*immholder
+  @tel adminobject=#234
 
 Add admin object to configuration
 ---------------------------------
 
-Modify the netrhost.conf file with the following line at the bottom after
-    the line '# define local alises here' where you replace 123 with the
-    dbref# of the admin object that you made:
-admin_object 123
+Modify the netrhost.conf file with the following line at the bottom after the line '# define local alises here' where you replace 123 with the dbref# of the admin object that you made::
+
+    admin_object 123
 
 Reboot your mush to load up the change for the admin object
 -----------------------------------------------------------
 
-@reboot
+::
+
+  @reboot
 
 Do @admin/list to see if it shows the admin object
 --------------------------------------------------
 
-    Note: do wizhelp @admin for more information on how to use this
-@admin/list
+.. note::
+
+    do wizhelp @admin for more information on how to use this
+
+::
+
+  @admin/list
 
 Load in all the various softcode that you want
 ----------------------------------------------
@@ -175,49 +224,66 @@ Myrddin MushCron
 ++++++++++++++++
 
 Load in the Myrddin Mush Cron.
-It's a very handy piece of software and
-    strongly suggested to do so.  You can find this in the 'Mushcode' directory
-    off the main Rhost directory.
-    Filename: ~/Rhost/Mushcode/MyrddinCRON
+It's a very handy piece of software and strongly suggested to do so.  You can find this in the 'Mushcode' directory off the main Rhost directory.
+Filename::
 
-@chown/preserve the myrddin mush cron to immholder, then move to maste room.
-    Note: the globalroom() function returns the dbref# of the master room.  Handy!
-@chown/pres Myrddin=*Immholder
-@tel Myrddin=#234 (where #234 is the dbref# of your code closet)
+    ~/Rhost/Mushcode/MyrddinCRON
+
+.. note::
+
+    The globalroom() function returns the dbref# of the master room.  Handy!
+
+::
+
+  @chown/preserve the myrddin mush cron to immholder, then move to maste room.
+  @chown/pres Myrddin=*Immholder
+  @tel Myrddin=#234 (where #234 is the dbref# of your code closet)
 
 AshCom
 ++++++
 
 Load in default softcoded comsystem.  This is PennMUSH and MUX/TM3 compatible.
-    Filename: ~/Rhost/Mushcode/comsys
+Filename::
 
-Chown the Comsystem and everything inside it to immholder.
-@chown/pres ChanSys=*Immholder
-@dolist lcon(chansys)=@chown/pres ##=*immholder
-@tel Chansys=globalroom()
+    ~/Rhost/Mushcode/comsys
+
+Chown the Comsystem and everything inside it to immholder::
+
+    @chown/pres ChanSys=*Immholder
+    @dolist lcon(chansys)=@chown/pres ##=*immholder
+    @tel Chansys=globalroom()
 
 Mail Wrappers
 +++++++++++++
 
 Load in mail wrappers if you want MUX/TM3 and/or Penn mail wrapping.
-    Filename: (MUX/TM3) ~/Rhost/Mushcode/mailwrappers/muxmail.wrap
-    Filename: (Penn)    ~/Rhost/Mushcode/mailwrappers/pennmail.wrap
+Filename (MUX/TM3)::
 
-Chown to immholder
-@chown/pres MUX=*Immholder
-@chown/pres Penn=*Immholder
-@tel/list mux penn=globalroom()
+    ~/Rhost/Mushcode/mailwrappers/muxmail.wrap
+
+Filename (Penn)::
+
+    ~/Rhost/Mushcode/mailwrappers/pennmail.wrap
+
+Chown to immholder::
+
+    @chown/pres MUX=*Immholder
+    @chown/pres Penn=*Immholder
+    @tel/list mux penn=globalroom()
 
 Myrddin BBS
 +++++++++++
 
 Load in Myrddin's BBS
-    Filename: ~/Rhost/Mushcode/MyrddinBBS
+Filename::
 
-Chown to immholder and the contents of it as well.
-@chown/pres Myrddin=*Immholder
-@dolist lcon(myrddin)=@chown/pres ##=*immholder
-@tel myrddin=globalroom()
+     ~/Rhost/Mushcode/MyrddinBBS
+
+Chown to immholder and the contents of it as well::
+
+     @chown/pres Myrddin=*Immholder
+     @dolist lcon(myrddin)=@chown/pres ##=*immholder
+     @tel myrddin=globalroom()
 
 Other Mushcode
 ++++++++++++++
@@ -239,24 +305,32 @@ The flatfile must be loaded in as a new db
 
 This is a minimal db with basic 'features' built in.
 
-Copy the txt files into the Rhost's txt directory off game.
+Copy the txt files into the Rhost's txt directory off game::
+
     cp txt/* ~/Rhost/Server/game/txt
 
-mkindx the files (substitute FILENAME with the filename)
+mkindx the files (substitute FILENAME with the filename)::
+
     cd ~/Rhost/Server/game/txt
     ../mkindx FILENAME.txt FILENAME.indx
 
-Steps:
-1) Using the Startmush utility for the first time, select the load db method
+Startup Steps
+-------------
+
+1. Using the Startmush utility for the first time, select the load db method
 
 --- or ---
 
-1) copy the netrhost.conf file into the games directory
-2) make any relevant changes you wish
-3) db_load the flatfile
-   - go into the game directory
-   - type: ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new                                                  
-4) Startmush as expected
+#. copy the netrhost.conf file into the games directory
+#. make any relevant changes you wish
+#. db_load the flatfile
+
+   #. go into the game directory
+   #. type::
+        
+       ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new                                                  
+
+#. Startmush as expected
 
 Ambrosia's Minimal Rhost DB
 ===========================
@@ -305,9 +379,12 @@ Version history:
 Introduction
 ------------
 
-<READ THIS DOCUMENT CAREFULLY!>
+.. note::
+
+    READ THIS DOCUMENT CAREFULLY!
 
 Greetings,
+
 This minimal Rhost DB was made with a secure setup, and as a good base to start
 a new game off in mind.
 
@@ -324,8 +401,7 @@ Configuration
   LONG_FINGERS.
 * @startup on BC-Admin-Immortal lowers DARK flag access to Councilor level, and
   NO_CODE visual access to Architect level.
-* Global Command objects inheriting from each bitlevel, with a separate staff-
-  -only object for each level.
+* Global Command objects inheriting from each bitlevel, with a separate staff-only object for each level.
 * Global Function objects inheriting from each bitlevel.
 * local Function objects inheriting from each bitlevel.
 * @function and @hook access lowered to Royalty level to remove immediate need
@@ -336,9 +412,11 @@ Configuration
   the Global Function objects, based on attribute naming.
 * Misc Data object to hold general data, like Staff lists etc.
 * Reality levels 'Real' and 'Admin'.
+
   All created items and players by default are in Recieve-Level 'Real' and
   Transmit-Levels 'Real' and 'Admin'.
-* All globals, Master Room, BCs-*, and other staff/code-related objects
+
+* All globals, Master Room, BCs-\*, and other staff/code-related objects
   currently have only 'Admin' as their Transmit-Level. This does not prevent
   them fromi working properly. The only exception is #1, who has empty reality
   levels.
@@ -346,16 +424,18 @@ Configuration
   to use @hook and @function, and also sets the function_access of several
   functions to !no_code, which allows NO_CODE players to use the comsys
   properly.
+
   IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
   The 'Port' configuration parameter is XXXX'd out. Set it first before starting
   your game.
+
 * All existing objects have been @set SAFE and INDESTRUCTABLE.
 * All existing objects have a paranoid series of @locks set on themselves.
 * The +supersafe command is provided on #1 as an example of what was used to
   easily set this on objects.
 * Players are @set NO_CODE and WANDERER by default. They get 40 credits on
   creation, and a 1-credit-per-day paycheck.
-* All *mit sideeffects, as well as set(), create() and list() are enabled. The
+* All \*mit sideeffects, as well as set(), create() and list() are enabled. The
   latter three are necessary for the Comsystem. The rest of sideeffects are
   disabled completely.
 * Flashing ansi is disabled.
@@ -398,6 +478,9 @@ Functions
 * header() - Highly versatile, and a buffer-saving alternative
   to using printf() for centering with ansi borders. HIGHLY recommended to use
   instead of printf() for such things.
+
+::
+
   header(text,width,filler,fillercolor,outerpadding,paddingcolor,
          leftinnerpadding,leftinnercolor,rightinnerpadding,rightinnercolor)
     text - Text to center
@@ -410,9 +493,13 @@ Functions
     leftinnercolor - ansicode to color the leftside characters with
     rightinnerpadding - characters to put at the right side of <text>
     rightinnercolor - ansicode to color the rightside characters with
-  ALL of header()'s parameters are optional. By default, header() simply draws
-  a 78-char wide line of ='s. Simply leave parameters empty if you want to set
-  one of the latter parameters.
+
+
+.. note::
+
+    ALL of header()'s parameters are optional. By default, header() simply draws
+    a 78-char wide line of ='s. Simply leave parameters empty if you want to set
+    one of the latter parameters.
 
 Bitlevels
 ---------
@@ -423,53 +510,88 @@ powers are tools to do that job, not badges of friendship or trust that get
 tossed about.
 
 
-Here is my suggested list of powers and bittypes for staffers:
+.. note::
 
-Storytellers  - @powered TEL_ANYWHERE, JOIN_PLAYER and GRAB_PLAYER on
-                Guildmaster level.
-Builder-BCs   - Mortal, with @quota and money for their job. There should be one
-                shared BC for each area of the game, like BC-Houston. Special
-                Rooms, items or exits that require privilegs to examine or @tel
-                a player should belong to a BC-Houston-Powered that is @powered
-                EXAMINE_ALL, LONG_FINGERS And TEL_ANYTHING on Guildmaster level.
-                If the object actually needs to modify a player directly, have
-                it use a restricted staff Global, or if you absolutely must,
-                make a BC-Houston-Admin and @set it Architect. Do not give
-                normal builders access to it, only @chown things to it and @set
-                them inherit after review.
-                Both the -powered and -admin BCs can have random passwords and
-                be @set NO_CONNECT.
-Building Head - @set Guildmaster, powered TEL_ANYWHERE, TEL_ANYTHING and
-                optionally CHOWN_OTHER on Guildmaster level. Mind that the
-                latter technically allows them to @chown anything guildmaster-
-                and lower-owned in the master and auxiliary rooms. However,
-                it allows the Building Head to @chown items between BCs- and
-                to the BC-<location>-powered.
-Enforcers     - As Storyteller above, plus being @powered Security at
-                Guildmaster level, in order to handle problem players.
-                Optionally always given to Storytellers.
-Coders        - @set Architect.
-Head Coder    - Always trust your head coder.
-                @set Architect for the everyday bit. Give access to a
-                maintenance Councilor bit for special code projects. Finished
-                code along those lines should get @chowned to the
-                bc-admin-councilor.
-                If you as the MU* Head(s) don't know Softcode well, or want to
-                leave anything Code to your Head Coder, also give them optional
-                access to a maintenance Royalty bit in order to properly code
-                banning/blacklisting +commands and other rare code that requires
-                Royalty powers. Again, chown finished code to bc-admin-royalty.
-MU* Head(s)   - You're the boss(es). But please use an Architect bit for your
-                everyday things. Keep Immortal to yourself. Keep #1 to yourself.
-                And seriously avoid using either of them except for creating
-                a Royalty bit or doing intricate DB maintenance.
-Site Admins   - They already have more powers than any in-game bit can ever
-                have ;)
-                Depending on actual involvement with your game, their abilities
-                in-game can range from merely being @powered free_wall for 
-                notifying players of downtimes and/or being @powered shutdown in
-                order to shut down the game for maintenance, up to being the
-                only person with actual access to #1.
+   Here is my suggested list of powers and bittypes for staffers.
+
+Storytellers
+++++++++++++
+
+@powered TEL_ANYWHERE, JOIN_PLAYER and GRAB_PLAYER on Guildmaster level.
+
+Builder-BCs
++++++++++++
+
+Mortal, with @quota and money for their job. There should be one
+shared BC for each area of the game, like BC-Houston. Special
+Rooms, items or exits that require privilegs to examine or @tel
+a player should belong to a BC-Houston-Powered that is @powered
+EXAMINE_ALL, LONG_FINGERS And TEL_ANYTHING on Guildmaster level.
+If the object actually needs to modify a player directly, have
+it use a restricted staff Global, or if you absolutely must,
+make a BC-Houston-Admin and @set it Architect. Do not give
+normal builders access to it, only @chown things to it and @set
+them inherit after review.
+
+Both the -powered and -admin BCs can have random passwords and
+be @set NO_CONNECT.
+
+Building Head
++++++++++++++
+
+@set Guildmaster, powered TEL_ANYWHERE, TEL_ANYTHING and
+optionally CHOWN_OTHER on Guildmaster level. Mind that the
+latter technically allows them to @chown anything guildmaster-
+and lower-owned in the master and auxiliary rooms. However,
+it allows the Building Head to @chown items between BCs- and
+to the BC-<location>-powered.
+
+Enforcers
++++++++++
+
+As Storyteller above, plus being @powered Security at
+Guildmaster level, in order to handle problem players.
+
+Optionally always given to Storytellers.
+
+Coders
+++++++
+@set Architect
+
+Head Coder
+++++++++++
+
+Always trust your head coder.
+@set Architect for the everyday bit. Give access to a
+maintenance Councilor bit for special code projects. Finished
+code along those lines should get @chowned to the
+bc-admin-councilor.
+
+If you as the MU* Head(s) don't know Softcode well, or want to
+leave anything Code to your Head Coder, also give them optional
+access to a maintenance Royalty bit in order to properly code
+banning/blacklisting +commands and other rare code that requires
+Royalty powers. Again, chown finished code to bc-admin-royalty.
+
+MU* Head(s)
++++++++++++
+
+You're the boss(es). But please use an Architect bit for your
+everyday things. Keep Immortal to yourself. Keep #1 to yourself.
+And seriously avoid using either of them except for creating
+a Royalty bit or doing intricate DB maintenance.
+
+Site Admins
++++++++++++
+
+They already have more powers than any in-game bit can ever
+have ;)
+
+Depending on actual involvement with your game, their abilities
+in-game can range from merely being @powered free_wall for 
+notifying players of downtimes and/or being @powered shutdown in
+order to shut down the game for maintenance, up to being the
+only person with actual access to #1.
 
 Globals
 +++++++
@@ -509,7 +631,7 @@ objects NO_MODIFY instead, keeping them at Architect-power but making them
 unmodifyable by Architects.
 
 Quota
-+++++
+-----
 
 I highly recommend the use of the alternative @quota system. BC-Admin-Mortal
 and BC-Admin-Guildmaster both have this @quota system set up on themselves. Both
@@ -517,7 +639,7 @@ of them have a high amount of money for everyday operations. You should not give
 them free quota or money.
 
 Functions
-+++++++++
+---------
 
 I also recommend to setup most global functions with /Privileged even if they
 are mortal-powered, to make them work even when players are set NO_CODE and
