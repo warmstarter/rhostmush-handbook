@@ -413,8 +413,10 @@ Configuration
 * Misc Data object to hold general data, like Staff lists etc.
 * Reality levels 'Real' and 'Admin'.
 
-  All created items and players by default are in Recieve-Level 'Real' and
-  Transmit-Levels 'Real' and 'Admin'.
+.. note::
+
+    All created items and players by default are in Recieve-Level 'Real' and
+    Transmit-Levels 'Real' and 'Admin'.
 
 * All globals, Master Room, BCs-\*, and other staff/code-related objects
   currently have only 'Admin' as their Transmit-Level. This does not prevent
@@ -425,9 +427,11 @@ Configuration
   functions to !no_code, which allows NO_CODE players to use the comsys
   properly.
 
-  IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
-  The 'Port' configuration parameter is XXXX'd out. Set it first before starting
-  your game.
+.. note::
+
+    IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
+    The 'Port' configuration parameter is XXXX'd out. Set it first before starting
+    your game.
 
 * All existing objects have been @set SAFE and INDESTRUCTABLE.
 * All existing objects have a paranoid series of @locks set on themselves.
@@ -509,7 +513,6 @@ I am a strong believer in least-privileges-needed to do the job. Bittypes and
 powers are tools to do that job, not badges of friendship or trust that get
 tossed about.
 
-
 .. note::
 
    Here is my suggested list of powers and bittypes for staffers.
@@ -556,6 +559,7 @@ Optionally always given to Storytellers.
 
 Coders
 ++++++
+
 @set Architect
 
 Head Coder

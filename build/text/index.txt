@@ -7,10 +7,6 @@ better than other servers (though we think so *j/k*) but it does give
 you a wider selection of configurability, which, as you know, is the
 best part of setting up a mush. (yea, right)
 
-
-RhostMUSH offers the following over other mushes
-================================================
-
 * A high-performance duel-quota system.
 
 * A complete rewrite of key areas and referbishments of all the other
@@ -39,6 +35,27 @@ Table of Contents
   * 1.1. RhostMUSH Requirements
 
   * 1.2. Obtaining RhostMUSH
+
+  * 1.3. Compiling RhostMush
+
+  * 1.4. Installing using an ansible playbook
+
+  * 1.5. Starting a Newly Compiled MUSH
+
+  * 1.6. Creating RHostMUSH with a Provided DB
+
+  * 1.7. Almost Backwards Instructions for Compiling and Starting a
+    MUSH
+
+  * 1.8. Basic Instructions for starting a new RhostMUSH
+
+  * 1.9. Start a  MUSH and logging on for the first time
+
+  * 1.10. Customtize the textfiles for your game
+
+  * 1.11. Three Options for Starting a MUSH
+
+  * 1.12. Starting your MUSH
 
 * 2. What RhostMUSH is about and what’s so great about RhostMUSH
 
@@ -129,182 +146,167 @@ Table of Contents
   * 3.15. Things other mushes can do that Rhost can not and how to
     emulate it
 
-* 4. Installation
+* 4. Database
 
-  * 4.1. Compiling the code
+  * 4.1. Loading an existing Database
 
-  * 4.2. Configuring the game
+  * 4.2. Converting a flatfile database for use in RhostMUSH
 
-  * 4.3. Starting the game
+* 5. Gettin Started
 
-  * 4.4. First login to the game
-
-  * 4.5. Reporting bugs or getting help
-
-  * 4.6. Installing using an ansible playbook
-
-  * 4.7. Quickinstall guide to RhostMUSH
-
-  * 4.8. What to type to configure and get your RhostMUSH up and
-    running
-
-  * 4.9. Windows
-
-* 5. Database
-
-  * 5.1. Loading an existing Database
-
-  * 5.2. Converting a flatfile database for use in RhostMUSH
-
-* 6. Gettin Started
-
-  * 6.1. What to ype to get the basics running if you did not choose a
+  * 5.1. What to ype to get the basics running if you did not choose a
     pre-existing flatfile
 
-  * 6.2. Minimal DB instructions
+  * 5.2. Minimal DB instructions
 
-  * 6.3. Ambrosia’s Minimal Rhost DB
+  * 5.3. Ambrosia’s Minimal Rhost DB
 
-* 7. What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in
+* 6. What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in
   RhostMUSH
 
-  * 7.1. Flags
+  * 6.1. Flags
 
-  * 7.2. Toggles
+  * 6.2. Toggles
 
-  * 7.3. @power
+  * 6.3. @power
 
-  * 7.4. @depower
+  * 6.4. @depower
 
-  * 7.5. Multi-tiered bitlevel systems
+  * 6.5. Multi-tiered bitlevel systems
 
-  * 7.6. Altering bitlevels
+  * 6.6. Altering bitlevels
 
-* 8. Security
+* 7. Security
 
-  * 8.1. Considerations to locking down restrictions in RhostMUSH
+  * 7.1. Considerations to locking down restrictions in RhostMUSH
 
-  * 8.2. Extended lockdown of the mush and considerations
+  * 7.2. Extended lockdown of the mush and considerations
 
-  * 8.3. Methods to block anonymous connections and the pros and cons
+  * 7.3. Methods to block anonymous connections and the pros and cons
     of doing so
 
-  * 8.4. Setting up an SSL tunnel for secure connection options
+  * 7.4. Setting up an SSL tunnel for secure connection options
 
-* 9. Maintenance
+* 8. Maintenance
 
-  * 9.1. Signals and why you need them for control
+  * 8.1. Note about Patching
 
-  * 9.2. Shutting down gracefully
+  * 8.2. Daily Backups for RhostMUSH
 
-  * 9.3. Autoshutdown script
+  * 8.3. Signals and why you need them for control
 
-  * 9.4. Network Port redirector
+  * 8.4. Shutting down gracefully
 
-  * 9.5. Using the built-in cron system for periodically running
+  * 8.5. Autoshutdown script
+
+  * 8.6. Network Port redirector
+
+  * 8.7. Using the built-in cron system for periodically running
     commands
 
-  * 9.6. The following scripts are used in the game directory
+  * 8.8. The following scripts are used in the game directory
 
-  * 9.7. Textfiles for RhostMUSH
+  * 8.9. Textfiles for RhostMUSH
 
-* 10. Troubleshooting
+* 9. Troubleshooting
 
-  * 10.1. Stack limit and debugging
+  * 9.1. Reporting bugs or getting help
 
-  * 10.2. How to reset the password for #1
+  * 9.2. Stack limit and debugging
 
-  * 10.3. Troubleshooting difficulties compiling RhostMUSH
+  * 9.3. How to reset the password for #1
 
-  * 10.4. Dealing with DB Corruption
+  * 9.4. Troubleshooting difficulties compiling RhostMUSH
 
-  * 10.5. Dealing with a corrupt mail database
+  * 9.5. Dealing with DB Corruption
 
-* 11. Upgrading
+  * 9.6. Dealing with a corrupt mail database
 
-  * 11.1. Converting database betwen GDBM and QDBM
+* 10. Advanced Features
 
-  * 11.2. Updating RhostMUSH prior to 3.9.5p2
+  * 10.1. Adding hardcoded modules
 
-  * 11.3. Adding MySQL to RhostMUSH older than 3.9.5p2
+  * 10.2. Shutting down gracefully
 
-* 12. Advanced Features
+  * 10.3. Reality levels
 
-  * 12.1. Adding hardcoded modules
+  * 10.4. Execscript and external programs and scripts
 
-  * 12.2. Shutting down gracefully
+  * 10.5. Using printf() for advanced text output
 
-  * 12.3. Reality levels
+* 11. Format for image files
 
-  * 12.4. Execscript and external programs and scripts
+  * 11.1. HELP key indexes for the values:
 
-  * 12.5. Using printf() for advanced text output
+* 12. Upgrading a Legacy RhostMUSH Installation
 
-* 13. Format for image files
+  * 12.1. Converting database betwen GDBM and QDBM
 
-  * 13.1. HELP key indexes for the values:
+  * 12.2. Updating RhostMUSH prior to 3.9.5p2
 
-* 14. Comparison of Flags
+  * 12.3. Adding MySQL to RhostMUSH older than 3.9.5p2
 
-* 15. Comparison of powers
+* 13. Comparison of Flags
 
-* 16. RhostMUSH Internal Help Files
+* 14. Comparison of powers
 
-* 17. RhostMUSH Internal Wizhelp Files
+* 15. RhostMUSH Internal Help Files
 
-* 18. Changelog
+* 16. RhostMUSH Internal Wizhelp Files
 
-  * 18.1. RhostMUSH 4.0 Update
+* 17. Changelog
 
-  * 18.2. RhostMUSH 3.9.5 Update
+  * 17.1. RhostMUSH 4.0
 
-  * 18.3. RhostMUSH 3.9.4 Update
+  * 17.2. RhostMUSH 3.9.5
 
-  * 18.4. RhostMUSH 3.9.3 Update
+  * 17.3. RhostMUSH 3.9.4
 
-  * 18.5. RhostMUSH 3.9.2 Update
+  * 17.4. RhostMUSH 3.9.3
 
-  * 18.6. RhostMUSH 3.9.1 Update
+  * 17.5. RhostMUSH 3.9.2
 
-  * 18.7. RhostMUSH 3.9.0 p00 Update
+  * 17.6. RhostMUSH 3.9.1
 
-  * 18.8. RhostMUSH 3.2.4 p18 Update
+  * 17.7. RhostMUSH 3.9.0 p00
 
-  * 18.9. RhostMUSH 3.2.4 p17 Update
+  * 17.8. RhostMUSH 3.2.4 p18
 
-  * 18.10. RhostMUSH 3.2.4 p16 Update
+  * 17.9. RhostMUSH 3.2.4 p17
 
-  * 18.11. RhostMUSH 3.2.4 p15 Update
+  * 17.10. RhostMUSH 3.2.4 p16
 
-  * 18.12. RhostMUSH 3.2.4 p14 Update
+  * 17.11. RhostMUSH 3.2.4 p15
 
-  * 18.13. RhostMUSH 3.2.4 p13 Update
+  * 17.12. RhostMUSH 3.2.4 p14
 
-  * 18.14. RhostMUSH 3.2.4 p12 Update
+  * 17.13. RhostMUSH 3.2.4 p13
 
-  * 18.15. RhostMUSH 3.2.4 p11 Update
+  * 17.14. RhostMUSH 3.2.4 p12
 
-  * 18.16. RhostMUSH 3.2.4 p10 Update
+  * 17.15. RhostMUSH 3.2.4 p11
 
-  * 18.17. RhostMUSH 3.2.4 p9 Update
+  * 17.16. RhostMUSH 3.2.4 p10
 
-  * 18.18. RhostMUSH 3.2.4 p8 Update
+  * 17.17. RhostMUSH 3.2.4 p9
 
-  * 18.19. RhostMUSH 3.2.4 p7 Update
+  * 17.18. RhostMUSH 3.2.4 p8
 
-  * 18.20. RhostMUSH 3.2.4 p6 Update
+  * 17.19. RhostMUSH 3.2.4 p7
 
-  * 18.21. RhostMUSH 3.2.4 p5 Update
+  * 17.20. RhostMUSH 3.2.4 p6
 
-  * 18.22. RhostMUSH 3.2.4 p4 Update
+  * 17.21. RhostMUSH 3.2.4 p5
 
-  * 18.23. RhostMUSH 3.2.4 p3 Update
+  * 17.22. RhostMUSH 3.2.4 p4
 
-* 19. Historical Non-Disclosure Agreement
+  * 17.23. RhostMUSH 3.2.4 p3
+
+* 18. Historical Non-Disclosure Agreement
 
 
 Copyright
-*********
+=========
 
 Copyright © 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998,
 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
@@ -331,10 +333,8 @@ This copyright information may not be changed, altered, or omitted.
 
 
 Indices and tables
-==================
+******************
 
 * Index
-
-* Module Index
 
 * Search Page

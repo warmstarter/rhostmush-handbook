@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8. Security</title>
+    <title>7. Security</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/epub.css" type="text/css" /> 
   </head><body>
@@ -14,9 +14,9 @@
           <div class="body" role="main">
             
   <div class="section" id="security">
-<h1><span class="section-number">8. </span>Security</h1>
+<h1><span class="section-number">7. </span>Security</h1>
 <div class="section" id="considerations-to-locking-down-restrictions-in-rhostmush">
-<h2><span class="section-number">8.1. </span>Considerations to locking down restrictions in RhostMUSH</h2>
+<h2><span class="section-number">7.1. </span>Considerations to locking down restrictions in RhostMUSH</h2>
 <p>Sometimes, you want to have things run at various privilage levels and do not
 want to have things with too much access.  Weither that is online objects or
 players you want to block from connecting to your mush.  Here’s things you can
@@ -31,13 +31,13 @@ Then the object must be set inherit to actually inherit the wizard.</p>
 </dd>
 </dl>
 <div class="section" id="online-blocking-object-abilities">
-<h3><span class="section-number">8.1.1. </span>Online: Blocking object abilities</h3>
+<h3><span class="section-number">7.1.1. </span>Online: Blocking object abilities</h3>
 <p>We have various flag levels.  It is strongly recommanded you check wizhelp
 on ‘control’ for a detailed overview of what each bitlevel can or can not do
 prior to giving the ownership to the object.  Things useful for tweaking control
 on players and objects:</p>
 <div class="section" id="flags-access-with-set">
-<h4><span class="section-number">8.1.1.1. </span>FLAGS (access with &#64;set)</h4>
+<h4><span class="section-number">7.1.1.1. </span>FLAGS (access with &#64;set)</h4>
 <blockquote>
 <div><p>IMMORTAL, ROYALTY, COUNCILOR, ARCHITECT, GUILDMASTER,
 FUBAR, SLAVE, SIDEFX, NO_CONNECT, WANDERER, SAFE,
@@ -50,7 +50,7 @@ SPAMMONITOR</p>
 </div></blockquote>
 </div>
 <div class="section" id="toggles-toggle">
-<h4><span class="section-number">8.1.1.2. </span>TOGGLES (&#64;toggle)</h4>
+<h4><span class="section-number">7.1.1.2. </span>TOGGLES (&#64;toggle)</h4>
 <blockquote>
 <div><p>BRANDY_MAIL, PENN_MAIL, MUXPAGE, VPAGE, NOISY,
 MONITOR* (all monitor toggles), MORTALREALITY,
@@ -58,13 +58,13 @@ NODEFAULT, NO_FORMAT, PAGELOCK, SNUFFDARK, VARIABLE</p>
 </div></blockquote>
 </div>
 <div class="section" id="powers-depowers-and-locks">
-<h4><span class="section-number">8.1.1.3. </span>&#64;powers, &#64;depowers, and &#64;locks</h4>
+<h4><span class="section-number">7.1.1.3. </span>&#64;powers, &#64;depowers, and &#64;locks</h4>
 <p>Please review help (and wizhelp) for each of these items on how it can affect
 a player, thing, exit, or room.  The help is quite verbose.</p>
 </div>
 </div>
 <div class="section" id="offline-blocking-twinks-from-being-abusive-on-your-game">
-<h3><span class="section-number">8.1.2. </span>Offline: Blocking twinks from being abusive on your game</h3>
+<h3><span class="section-number">7.1.2. </span>Offline: Blocking twinks from being abusive on your game</h3>
 <p>FLAGS                   : FUBAR, SLAVE, NO_CONNECT
 Commands:               : &#64;boot, &#64;nuke, &#64;toad, &#64;turtle
 Sitelocks: (&#64;admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
@@ -74,12 +74,12 @@ TOR/Proxy blocking:     : &#64;blacklist (see shell’s tor_pull.sh), &#64;admin
 </div>
 </div>
 <div class="section" id="extended-lockdown-of-the-mush-and-considerations">
-<h2><span class="section-number">8.2. </span>Extended lockdown of the mush and considerations</h2>
+<h2><span class="section-number">7.2. </span>Extended lockdown of the mush and considerations</h2>
 <p>These are flags, powers, toggles, and various conditions for consideration
 when you decide to use some of the advanced features of RhostMUSH.
 These are not all that is availble, but tend to be the juicier ones to consider.</p>
 <div class="section" id="attribute-restriction">
-<h3><span class="section-number">8.2.1. </span>Attribute Restriction</h3>
+<h3><span class="section-number">7.2.1. </span>Attribute Restriction</h3>
 <blockquote>
 <div><p>&#64;attribute – Used for user-defined attributes
 &#64;admin attr_access – used for built in attributes (like desc)
@@ -87,33 +87,33 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 </div></blockquote>
 </div>
 <div class="section" id="command-restriction">
-<h3><span class="section-number">8.2.2. </span>Command Restriction</h3>
+<h3><span class="section-number">7.2.2. </span>Command Restriction</h3>
 <blockquote>
 <div><p>&#64;icmd    - Very useful.   Please see wizhelp on it.  It disallows commands from executing including overriding them with softcode alternatives
 &#64;admin access - Changes permissions, disables, or sets to be overridden a command.  Useful when you plan to override commands with softcode.</p>
 </div></blockquote>
 </div>
 <div class="section" id="flag-toggle-restriction">
-<h3><span class="section-number">8.2.3. </span>Flag/Toggle Restriction</h3>
+<h3><span class="section-number">7.2.3. </span>Flag/Toggle Restriction</h3>
 <blockquote>
 <div><p>&#64;flagdef - Again, see wizhelp on this.  There are also netrhost.conf options so you can have them loaded at start.  This allows tweaking flags and toggles to who can set/unset/see as well as what type can use it or wha type it can be used on.</p>
 </div></blockquote>
 </div>
 <div class="section" id="config-restrictions">
-<h3><span class="section-number">8.2.4. </span>Config restrictions</h3>
+<h3><span class="section-number">7.2.4. </span>Config restrictions</h3>
 <blockquote>
 <div><p>&#64;admin config_access - Changes permission of who can set a config param</p>
 </div></blockquote>
 </div>
 <div class="section" id="function-restrictions">
-<h3><span class="section-number">8.2.5. </span>Function Restrictions</h3>
+<h3><span class="section-number">7.2.5. </span>Function Restrictions</h3>
 <blockquote>
 <div><p>&#64;function/&#64;lfunction – Allows softcoded functions that you can optionally lock down at your leasure
 &#64;admin function_access – You can use this even on softcoded functions if you so desired.</p>
 </div></blockquote>
 </div>
 <div class="section" id="flags">
-<h3><span class="section-number">8.2.6. </span>Flags</h3>
+<h3><span class="section-number">7.2.6. </span>Flags</h3>
 <blockquote>
 <div><p>GUEST    - This is your guest flag, it should only be set on guests
 WANDERER - the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.
@@ -137,7 +137,7 @@ FREE        - Stop costing money for day to day processing of commands/building<
 </div></blockquote>
 </div>
 <div class="section" id="toggles">
-<h3><span class="section-number">8.2.7. </span>Toggles</h3>
+<h3><span class="section-number">7.2.7. </span>Toggles</h3>
 <blockquote>
 <div><p>MONITOR            - Enables site monitoring.  This is the main toggle
 MONITOR_SITE       - Adds site information to site monitoring
@@ -173,7 +173,7 @@ SNUFFDARK          - Hides dark exits from a wizard</p>
 </div></blockquote>
 </div>
 <div class="section" id="powers">
-<h3><span class="section-number">8.2.8. </span>&#64;powers</h3>
+<h3><span class="section-number">7.2.8. </span>&#64;powers</h3>
 <blockquote>
 <div><p>WIZ_WHO            - Allows target to see sites ala wizard who
 NOFORCE            - target an not be forced (except by immortal/#1)
@@ -210,7 +210,7 @@ EXECSCRIPT         - Allows executing external scripts in ~/game/scripts</p>
 </div></blockquote>
 </div>
 <div class="section" id="depowers">
-<h3><span class="section-number">8.2.9. </span>&#64;depowers</h3>
+<h3><span class="section-number">7.2.9. </span>&#64;depowers</h3>
 <blockquote>
 <div><p>WALL               - Disables the ability to &#64;wall
 LONG_FINGERS       - Disables remote access to things
@@ -247,14 +247,14 @@ PERSONAL_COMMAND   - Disables all $commands on anything they own</p>
 </div></blockquote>
 </div>
 <div class="section" id="site-restrictions">
-<h3><span class="section-number">8.2.10. </span>Site Restrictions</h3>
+<h3><span class="section-number">7.2.10. </span>Site Restrictions</h3>
 <blockquote>
 <div><p>These are accessable via the &#64;admin command, and the following options are
 allowable.</p>
 <p>You may see all site information at any time with: &#64;list sites</p>
 </div></blockquote>
 <div class="section" id="ip-based-restrictions">
-<h4><span class="section-number">8.2.10.1. </span>IP based restrictions</h4>
+<h4><span class="section-number">7.2.10.1. </span>IP based restrictions</h4>
 <blockquote>
 <div><p>You may use CIDR notation such as /32 instead of 255.255.255.255.
 Config file:  (see section on forbid_site as it describes and gives examples)
@@ -291,7 +291,7 @@ Online Syntax: MASK:</p>
 </div></blockquote>
 </div>
 <div class="section" id="dns-based-restrictions">
-<h4><span class="section-number">8.2.10.2. </span>DNS based restrictions</h4>
+<h4><span class="section-number">7.2.10.2. </span>DNS based restrictions</h4>
 <blockquote>
 <div><p>These allow globbing wildcard matches.
 The advanced feature is you can specify filtering on
@@ -318,13 +318,13 @@ nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site
 </div>
 </div>
 <div class="section" id="methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so">
-<h2><span class="section-number">8.3. </span>Methods to block anonymous connections and the pros and cons of doing so</h2>
+<h2><span class="section-number">7.3. </span>Methods to block anonymous connections and the pros and cons of doing so</h2>
 <blockquote>
 <div><p>Now let’s assume you have some troll attempting to use proxies to connect.
 There’s multiple ways to stop this.</p>
 </div></blockquote>
 <div class="section" id="blacklisting-through-external-tor-pull-sh-script">
-<h3><span class="section-number">8.3.1. </span>Blacklisting through external tor_pull.sh script</h3>
+<h3><span class="section-number">7.3.1. </span>Blacklisting through external tor_pull.sh script</h3>
 <blockquote>
 <div><p>In ~/Rhost/Server/game you will see a script called tor_pull.sh
 Execute this by running (from the game directory) ./tor_pull.sh
@@ -334,7 +334,7 @@ them at the end of this file.</p>
 </div></blockquote>
 </div>
 <div class="section" id="blacklisting-through-internal-blacklist-command">
-<h3><span class="section-number">8.3.2. </span>Blacklisting through internal &#64;blacklist command</h3>
+<h3><span class="section-number">7.3.2. </span>Blacklisting through internal &#64;blacklist command</h3>
 <blockquote>
 <div><p>On the mush, have as part of your startup &#64;blacklist/load
 This will load in the generated blacklist file for automatic forbid
@@ -342,7 +342,7 @@ sites based on the ip.</p>
 </div></blockquote>
 </div>
 <div class="section" id="blacklisting-through-internal-tor-command">
-<h3><span class="section-number">8.3.3. </span>Blacklisting through internal &#64;tor command</h3>
+<h3><span class="section-number">7.3.3. </span>Blacklisting through internal &#64;tor command</h3>
 <blockquote>
 <div><p>&#64;tor.  Please see ‘wizhelp tor’ on how to set this up.  It in effect
 will actively block all known exit nodes for TOR’s annonymous proxy
@@ -350,7 +350,7 @@ service.  It self-updates and will actively block TOR connections.</p>
 </div></blockquote>
 </div>
 <div class="section" id="blacklisting-through-internal-admin-command">
-<h3><span class="section-number">8.3.4. </span>Blacklisting through internal &#64;admin command</h3>
+<h3><span class="section-number">7.3.4. </span>Blacklisting through internal &#64;admin command</h3>
 <blockquote>
 <div><p>&#64;admin proxy_checker (please see wizhelp)
 This little doodad uses MTU checking against packet size which will
@@ -365,9 +365,9 @@ it may be worth considering adding this to add additional protection.</p>
 </div>
 </div>
 <div class="section" id="setting-up-an-ssl-tunnel-for-secure-connection-options">
-<h2><span class="section-number">8.4. </span>Setting up an SSL tunnel for secure connection options</h2>
+<h2><span class="section-number">7.4. </span>Setting up an SSL tunnel for secure connection options</h2>
 <div class="section" id="quickstart-for-ssl-setup-with-stunnel">
-<h3><span class="section-number">8.4.1. </span>Quickstart for SSL setup with stunnel</h3>
+<h3><span class="section-number">7.4.1. </span>Quickstart for SSL setup with stunnel</h3>
 <ol class="arabic">
 <li><p>Modify your netrhost.conf file and add/change the following parameters:</p>
 <ol class="arabic">
@@ -404,13 +404,13 @@ it may be worth considering adding this to add additional protection.</p>
 are entirely separate processes.</p>
 </div>
 <div class="section" id="detailed-ssl-setup-with-stunnel">
-<h3><span class="section-number">8.4.2. </span>Detailed SSL setup with stunnel</h3>
+<h3><span class="section-number">7.4.2. </span>Detailed SSL setup with stunnel</h3>
 <p>To setup SSL connectivity, we use the STUNNEL application to tunnel SSL to
 the mush.  This acts a bit like a man in the middle but remains controlled
 by the game owner which would have access to the end point anyway.</p>
 <p>Note: it is assumed you will have already initially set up your netrhost.conf.</p>
 <div class="section" id="stunnel-directory">
-<h4><span class="section-number">8.4.2.1. </span>stunnel directory</h4>
+<h4><span class="section-number">7.4.2.1. </span>stunnel directory</h4>
 <p>You would set up the stunnel from the ‘stunnel’ directory.  There the following
 files are of relevance:</p>
 <p>README                     – a readme explaining the points of stunnel
@@ -422,7 +422,7 @@ warpbubble.pl              – the perl script that handles stunnel to mush conn
 stunnel_src                – If you do not have stunnel, this directory will allow you to download, compile and locally install.</p>
 </div>
 <div class="section" id="modifying-netrhost-conf">
-<h4><span class="section-number">8.4.2.2. </span>Modifying netrhost.conf</h4>
+<h4><span class="section-number">7.4.2.2. </span>Modifying netrhost.conf</h4>
 <p>To be able to utilize SSL, you first must set your netrhost.conf file with
 the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect_host if
@@ -433,7 +433,7 @@ sconnect_host wildcards – This allows wildcarded sites (one or more) to allow 
 <p>Note: the sconnect_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.</p>
 </div>
 <div class="section" id="running-the-stunnel-setup-program">
-<h4><span class="section-number">8.4.2.3. </span>Running the stunnel setup program</h4>
+<h4><span class="section-number">7.4.2.3. </span>Running the stunnel setup program</h4>
 <p>At this point you’re ready to run the stunnel setup program.  So at this point type the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_setup</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
@@ -447,7 +447,7 @@ selected a mush name at this point, you can select the defaults.</p>
 MUST have 127.0.0.1 as an entry for your sconnect_host file.</p>
 </div>
 <div class="section" id="starting-the-stunnel-proxy">
-<h4><span class="section-number">8.4.2.4. </span>Starting the stunnel proxy</h4>
+<h4><span class="section-number">7.4.2.4. </span>Starting the stunnel proxy</h4>
 <p>When you have your stunnel.conf file to the way you want, you then
 issue the following command to run your SSL layer:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_start</span><span class="o">.</span><span class="n">sh</span>
@@ -455,14 +455,14 @@ issue the following command to run your SSL layer:</p>
 </div>
 </div>
 <div class="section" id="shutting-down-the-stunnel-proxy">
-<h4><span class="section-number">8.4.2.5. </span>Shutting down the stunnel proxy</h4>
+<h4><span class="section-number">7.4.2.5. </span>Shutting down the stunnel proxy</h4>
 <p>If ever you need to bring down the SSL layer, you may kill it with the command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_stop</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="configuring-firewall-on-the-host">
-<h4><span class="section-number">8.4.2.6. </span>Configuring firewall on the host</h4>
+<h4><span class="section-number">7.4.2.6. </span>Configuring firewall on the host</h4>
 <p>Please be aware that the port that the SSL layer is on must be opened
 in any firewall rule you specified to allow the connectivity.  This also must
 not be the port the mush is running on and requires a separate port.</p>

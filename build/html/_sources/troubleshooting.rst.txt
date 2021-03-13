@@ -1,9 +1,48 @@
-===============
-Troubleshooting
-===============
+=================
+ Troubleshooting
+=================
 
+------------------------------
+Reporting bugs or getting help
+------------------------------
+
+If you find any bugs or problems, notify one of the developers of RhostMUSH and
+a patch or workaround will be made available as soon as possible.  Current
+developers are:  Seawolf, Thorin, Ashen-Shugar, Lensman, Kale, Mac, Zenty,
+Ambrosia, Amos, and Morgan.  They can be found around the net.
+
+Troubleshooting issues with starting up
+=======================================
+
+Problem: If it says the shared ID is already in use 
+---------------------------------------------------
+
+A1: please verify that it is the right shared debug_id in your netrhost.conf file
+
+A2: Force a start by running::
+
+  ./Startmush -f
+
+Problem: Your log file is massive and your mush is running
+----------------------------------------------------------
+
+A1: To rotate this use the @logrotate command. See wizhelp on @logrotate
+
+Problem: The database flatfile you're loading can't load because a db is already defined
+----------------------------------------------------------------------------------------
+
+A1: remove netrhost.db* and netrhost.gdbm* from your data directory
+
+Problem: The mail database won't load and mail shows 'offline'
+--------------------------------------------------------------
+
+A1: from within the MUSH run::
+
+  wmail/load 
+
+-------------------------
 Stack limit and debugging
-=========================
+-------------------------
 
 Rhost uses a stack limit in the debug monitor.
 
@@ -22,14 +61,16 @@ process table.  Higher stack means more memory used.
 Also be aware that your shell stack limit directly is affected
 to this value.  
 
-Type: ulimit -a  
+Type::
+
+   ulimit -a  
 
 This will show you your shell stack limits.  Do NOT set the
 STACKMAX value higher than your shell's stack value.
 
-The value in ~/Rhost/Server/hdrs/debug.h is currently set as:
+The value in ~/Rhost/Server/hdrs/debug.h is currently set as::
 
-#define STACKMAX 1000
+  #define STACKMAX 1000
 
 Feel free to change this to a higher value if you wish.
 
@@ -41,32 +82,38 @@ A @reboot WILL NOT LOAD IN A NEW DEBUG MONITOR!!!!
 
 You can issue @list stack to see the current stack ceiling ingame.
 
+--------------------------------
 How to reset the password for #1
-================================
+--------------------------------
 
-You can only use one of these options at a time. Make sure to change back your nerhost.conf after making the changes.
+.. warning::
 
-Method 1
---------
+   You can only use one of these options at a time. Make sure to change back your nerhost.conf and then reboot after making the changes.
 
-in your netrhost.conf file add:
-newpass_god 777
+Method 1: Reset to Default Password
+===================================
+
+in your netrhost.conf file add::
+
+  newpass_god 777
 
 This will reset #1's password to the default 'Nyctasia'.
 
-Method 2
---------
+Method 2: Increase Permissions of Immortals
+===========================================
 
-in your netrhost.conf file add:
-newpass_god 1
+in your netrhost.conf file add::
+
+  newpass_god 1
 
 This will allow IMMORTAL players to @newpassword #1 upon reboot.
 
+------------------------------------------------
 Troubleshooting difficulties compiling RhostMUSH
-================================================
+------------------------------------------------
 
 Changes to conf for high-bit CPUs
----------------------------------
+=================================
 
 RhostMUSH automatically detects 64-bit platforms, and should compile
 cleanly on these.
@@ -75,25 +122,28 @@ In case you are trying to compile Rhost on some other crazy-wide CPUs
 such as the PS2, PS3 or other 128 or 256 bit CPUs, you can easily do
 so by changing a few lines of code in conf.c.
 
-change:
-typedef unsigned int    pmath1;
-typedef int             pmath2;
-#define ALLIGN1 4
+change::
 
+  typedef unsigned int    pmath1;
+  typedef int             pmath2;
+  #define ALLIGN1 4
 
-to:
-typedef unsigned long   pmath1;
-typedef long            pmath2;
-#define ALLIGN1 8
+to::
 
-, replacing 8 with the size of your CPU's long integer. (4 for 32-bit,
-8 for 64-bit, 16 for 128-bit, etc etc)
+  typedef unsigned long   pmath1;
+  typedef long            pmath2;
+  #define ALLIGN1 8
+
+.. note::
+
+  Replace 8 with the size of your CPU's long integer. (4 for 32-bit,
+  8 for 64-bit, 16 for 128-bit, etc etc)
 
 RhostMUSH has only been tested to work on the AMD64, but there is no
 reason to believe the same will not hold true for IA64.
 
 Changes to autconf for certain systems
---------------------------------------
+======================================
 
 You should not have to worry about this, but incase something really
 weird occurs, you may need to look into these changes...
@@ -105,57 +155,61 @@ There are three manual entries:
 
 This one sets how it defines the int to character pointer.  It's safe
 to keep it as 'unsigned int' for 32 bit platforms.  For non 32-bit, 
-define it to  how an int is defined on that system.
+define it to  how an int is defined on that system::
 
         typedef unsigned int    pmath1;
 
 This one sets how it defines the signed int to character pointer.  Same
-restrictions apply as above for unsigned int.
+restrictions apply as above for unsigned int::
 
         typedef int     pmath2;
 
 This sets the allignment for the given platform.  4 represents a 32 bit
-platform.  8 would represent a 64 bit platform, etc.  Change accordingly.
+platform.  8 would represent a 64 bit platform, etc.  Change accordingly::
 
         #define ALLIGN1 4
 
 
-Make sure these three entries are defined in your autoconf.h file else
-the mush will not compile.
+.. warning::
 
+   Make sure these three entries are defined in your autoconf.h file else
+   the mush will not compile.
+
+--------------------------
 Dealing with DB Corruption
-==========================
+--------------------------
 
 Ok.  Your database won't come up.
 
 If you are reading this, then likely the scenerio is one of the following:
 
-1.  The mush says it can't find your database files.
-2.  The mush says it can't read or load your database files.
-3.  The mush seems to load fine but I can't log in anyone and when I do
+#.  The mush says it can't find your database files.
+#.  The mush says it can't read or load your database files.
+#.  The mush seems to load fine but I can't log in anyone and when I do
     all the names and attributes of things seem to be gone!
-4.  Bringing up your mail database
+#.  Bringing up your mail database
 
 
 First thing is first.  Don't have a panic attack.
 
 If the mush says it can't find your database files
---------------------------------------------------
+==================================================
 
 Check the names of the database files in your 'data' directory
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+--------------------------------------------------------------
 
-They should be named something like:
-netrhost.db
-netrhost.db.old
-netrhost.db.old.prev
-netrhost.gdbm.dir
-netrhost.gdbm.pag
+They should be named something like::
+
+  netrhost.db
+  netrhost.db.old
+  netrhost.db.old.prev
+  netrhost.gdbm.dir
+  netrhost.gdbm.pag
 
 And you may see a netrhost.db.flat
 
 Check your netrhost.conf file
-+++++++++++++++++++++++++++++
+-----------------------------
 
 If you never touched the \*database or muddb_name params, you should be good.
 
@@ -167,7 +221,7 @@ If these names do not match up, it can't find the database files to load.
 So you shouldn't have to change these names, ever. :)
 
 Check your mush.config file
-+++++++++++++++++++++++++++
+---------------------------
 
 If you never modified this file, you should be good.
 
@@ -177,12 +231,12 @@ as associated to the mush.  So changing this means the netrhost.conf
 file, all your database files, and so forth.  Please don't change this :)
 
 If the mush says it can't read or load your database files
-----------------------------------------------------------
+==========================================================
 
 Double check everything for the previous issue. Make sure everything is named properly.
 
 Verify you have enough disk space. (quota)
-++++++++++++++++++++++++++++++++++++++++++
+------------------------------------------
 
 Some account have a limited quota to run in.  If you reached or exceed
 your disk quota, you can have a corrupted database.  So always keep
@@ -196,7 +250,7 @@ mush again.  Try to keep your quota at least 200 megs free to allow
 plenty of wonderful growth space for the mush.
 
 Verify you have enough disk space.  (system)
-++++++++++++++++++++++++++++++++++++++++++++
+--------------------------------------------
 
 The second way you can run out of disk space is by the filesystem itself.
 do a df -h . in your 'game' directory'.  That is df -h <period>.
@@ -212,7 +266,7 @@ Until this issue is resolved, you can not repair and bring up your mush.
 No disk to run the game.
 
 If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!
-------------------------------------------------------------------------------------------------------------------------------
+==============================================================================================================================
 
 Ok, at this point you likely had your mush up when the physical server
 went down hard.  Weither through an emergency shutdown or a physical
@@ -223,7 +277,7 @@ why we always strongly request you make daily flatfile dumps.
 So, to recover your database.
 
 The bad news
-++++++++++++
+------------
 
 If you have no flatfile backup or never bothered with backups?
 I'm sorry, at this point you're SOA.  There's no easy way to
@@ -233,7 +287,7 @@ out of it, but otherwise it's a lost cause.  You'll have to start
 over from scratch.  I'm sorry.
 
 The good news
-+++++++++++++
+-------------
 
 If you made backups, or if the server had a normal shutdown, you
 likely have a flatfile backup.  You will see a netrhost.db.flat
@@ -250,39 +304,41 @@ that the very last line shows something like \** END OF DUMP \**.
 That shows you had a successful backup.
 
 Now, to restore your database?
-++++++++++++++++++++++++++++++
+------------------------------
  
 Please refer to the file 'README.DBLOADING'.
 
 Bringing up your mail database
-------------------------------
+==============================
 
 Your mail db may or may not come up at this point.  
 
 If after restoring main database your mail database works
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+---------------------------------------------------------
 
 If your mail database came up and does not show
-    'Mail: mail is currently off' then you should be good to go.
+'Mail: mail is currently off' then you should be good to go.
 
-Please issue: 
-wmail/fix
-wmail/lfix
+Please issue on the MUSH::
+
+  wmail/fix
+  wmail/lfix
 
 This will put your mail system in sync with your current database and
-fix up any errors that may exist.  wmail/fix fixes the mail, wmail/lfix
-loads in the fixes.
+fix up any errors that may exist.
+
+wmail/fix fixes the mail.
+
+wmail/lfix loads in the fixes.
 
 If after restoring main database your mail database does not work
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-----------------------------------------------------------------
 
- If your mail database is not up and shows
-    'Mail: mail is currently off' then your mail db is currupt.
+If your mail database is not up and shows 'Mail: mail is currently off' then your mail db is currupt.
 
-To fix your mail db please refer to file 'README.MAILCANNOTLOAD'
-
+------------------------------------
 Dealing with a corrupt mail database
-====================================
+------------------------------------
 
 It says when you try to access mail that mail is disabled and/or off.
 
@@ -296,9 +352,11 @@ is it hopes that you read ahead of time about how to backup your mush,
 which would include the mail database.
 
 Backing up your mail database
------------------------------
+=============================
 
-wmail/unload -- this flatfile dumps your mail db.  You should run it daily.
+You should be making a flatifile dump of mail db daily by running on the MUSH::
+
+  wmail/unload
 
 To recover your mail, it assumes you have a mail flatfile in either the
 ~/Server/game/data directory or the ~/Server/game/prevflat directory.  The
@@ -306,17 +364,21 @@ latter directory is used in junction to the backup_flat.sh and will always
 house the latest flatfile if not one recently dumped in your data directory.
 
 Automatically recovering your mail database
--------------------------------------------
+===========================================
 
-wmail/load
+If you have a flatfile dump of your mail db, run this command on the MUSH::
+
+  wmail/load
 
 Yup, that's it.  It'll take care of everything else.  Isn't automation grand?
 
 Doesn't even require a reboot :)
 
-NOTE:  You may at this point wish to run the following:
-       wmail/fix  -- this fixes the mail database and sync's it to the mush db.
-       wmail/lfix -- this loads in the fixed mail database
+.. note::
+
+     You may at this point wish to run the following:
+     wmail/fix  -- this fixes the mail database and sync's it to the mush db.
+     wmail/lfix -- this loads in the fixed mail database
 
 If you have a very old mail database, this is likely going to be required
 to sync against nuked players and other changes to the game since the flatfile.
@@ -324,7 +386,7 @@ to sync against nuked players and other changes to the game since the flatfile.
 If this is a new db that you have, you can skip the fixing.
 
 Manually recovering your mail database
---------------------------------------
+======================================
 
 To recover your mail manually, you need to delete your mail databases, 
 reboot, then reload your mail flatfiles.  If you have no mail flatfiles, 
@@ -333,21 +395,23 @@ well, you're going to have to start over with the mail database.  Sorry.
 First, go into the 'game' subdirectory.  Inside that directory is a 'data'
 directory.
 
-You will be deleting all the files with the following names:
+You will be deleting all the files with the following names::
 
-RhostMUSH.mail.*                (like RhostMUSH.mail.dir/RhostMUSH.mail.pag)
-RhostMUSH.folder.*              (like RhostMUSH.folder.dir/RhostMUSH.folder.pag)
+   RhostMUSH.mail.*                (like RhostMUSH.mail.dir/RhostMUSH.mail.pag)
+   RhostMUSH.folder.*              (like RhostMUSH.folder.dir/RhostMUSH.folder.pag)
 
-DO NOT DELETE OTHER NAMED FILES!!!
+.. warning::
 
+   DO NOT DELETE OTHER NAMED FILES!!!
+  
 Once these files are deleted, you may issue a @reboot to restart the mush.
 This will unlock the mail system and load in a fresh db.
 
 Now, if you have flatfiles of the old mail database, you will see in either
-the 'data' directory or the 'prevflat' directory files that are called:
+the 'data' directory or the 'prevflat' directory files that are called::
 
-RhostMUSH.dump.folder
-RhostMUSH.dump.mail
+  RhostMUSH.dump.folder
+  RhostMUSH.dump.mail
 
 Make sure these two files are in the 'data' subdirectory.  Copy them in
 if they exist in your 'prevflat' directory.

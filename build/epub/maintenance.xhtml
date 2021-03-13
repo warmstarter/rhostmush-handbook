@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9. Maintenance</title>
+    <title>8. Maintenance</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/epub.css" type="text/css" /> 
   </head><body>
@@ -14,13 +14,79 @@
           <div class="body" role="main">
             
   <div class="section" id="maintenance">
-<h1><span class="section-number">9. </span>Maintenance</h1>
+<h1><span class="section-number">8. </span>Maintenance</h1>
+<div class="section" id="note-about-patching">
+<h2><span class="section-number">8.1. </span>Note about Patching</h2>
+<p>There’s two ways you can look to patch the source.  If you plan to run the
+RhostMUSH source from a git repository, then please use the git repo to
+constantly update your code.  If you knew enough to want to set up a git repo
+then we expect knowledge on how to keep source trees updated in the git repo
+to be used the same as any other source distribution.</p>
+<p>If, however, you have no idea what a git repo even is, or have no inclination
+of using git to manage your RhostMUSH source, or just don’t care one way
+or another, then you can use the included patch.sh routine (from under the
+Server directory) to patch your source at any time.</p>
+<p>From the server directory just type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">patch</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>That will auto-compile your source, auto make all your header files and
+essentially keep everything up to date to the latest source.
+Once that’s done, all you do from within the game is two commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@reboot</span> <span class="p">(</span><span class="ow">or</span> <span class="nd">@reboot</span><span class="o">/</span><span class="n">silent</span><span class="p">)</span>  <span class="o">--</span> <span class="n">This</span> <span class="n">will</span> <span class="n">load</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">new</span> <span class="n">binary</span>
+<span class="nd">@readcache</span>  <span class="o">--</span> <span class="n">This</span> <span class="n">will</span> <span class="n">read</span> <span class="ow">in</span> <span class="nb">all</span> <span class="n">the</span> <span class="o">.</span><span class="n">txt</span> <span class="n">file</span> <span class="n">changes</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="daily-backups-for-rhostmush">
+<h2><span class="section-number">8.2. </span>Daily Backups for RhostMUSH</h2>
+<p>Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game. paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="nd">@dump</span><span class="o">/</span><span class="n">flat</span>      <span class="o">--</span> <span class="n">This</span> <span class="n">makes</span> <span class="n">a</span> <span class="n">flatfile</span> <span class="n">dump</span> <span class="n">of</span> <span class="n">the</span> <span class="n">main</span> <span class="n">database</span><span class="o">.</span>  <span class="n">You</span> <span class="n">want</span> <span class="n">to</span> <span class="n">run</span> <span class="n">this</span> <span class="n">daily</span><span class="o">.</span>
+ <span class="n">wmail</span><span class="o">/</span><span class="n">unload</span>    <span class="o">--</span> <span class="n">This</span> <span class="n">makes</span> <span class="n">a</span> <span class="n">flatfile</span> <span class="n">dump</span> <span class="n">of</span> <span class="n">the</span> <span class="n">mail</span> <span class="n">database</span><span class="o">.</span>  <span class="n">You</span> <span class="n">want</span> <span class="n">to</span> <span class="n">run</span> <span class="n">this</span> <span class="n">daily</span><span class="o">.</span>
+ <span class="nd">@areg</span><span class="o">/</span><span class="n">unload</span>    <span class="o">--</span> <span class="n">Only</span> <span class="n">worry</span> <span class="n">about</span> <span class="n">this</span> <span class="k">if</span> <span class="n">you</span> <span class="n">are</span> <span class="n">using</span> <span class="n">auto</span><span class="o">-</span><span class="n">registration</span> <span class="n">emailing</span><span class="o">.</span>  <span class="n">Few</span> <span class="n">do</span><span class="o">.</span>
+ <span class="n">newsdb</span><span class="o">/</span><span class="n">unload</span>   <span class="o">--</span> <span class="n">Only</span> <span class="n">worry</span> <span class="k">if</span> <span class="n">you</span> <span class="n">use</span> <span class="n">the</span> <span class="n">hardcoded</span> <span class="n">bbs</span> <span class="n">system</span><span class="o">.</span>  <span class="n">Most</span> <span class="n">don</span><span class="s1">&#39;t use it.</span>
+
+
+<span class="n">Backups</span> <span class="n">are</span> <span class="n">already</span> <span class="n">handled</span> <span class="ow">and</span> <span class="n">integrated</span> <span class="k">with</span> <span class="n">a</span> <span class="n">script</span> <span class="s1">&#39;backup_flat.sh&#39;</span><span class="o">.</span>
+<span class="n">If</span> <span class="n">you</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">customize</span> <span class="n">this</span><span class="p">,</span> <span class="n">feel</span> <span class="n">free</span><span class="o">.</span>  <span class="n">Again</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">well</span> <span class="n">documented</span> <span class="ow">and</span>
+<span class="n">just</span> <span class="n">require</span> <span class="n">changing</span> <span class="n">settings</span> <span class="n">at</span> <span class="n">the</span> <span class="n">top</span> <span class="n">of</span> <span class="n">this</span> <span class="n">script</span><span class="o">.</span>
+
+<span class="n">By</span> <span class="n">default</span><span class="p">,</span> <span class="n">it</span> <span class="n">does</span> <span class="mi">7</span> <span class="n">contiguous</span> <span class="n">backups</span><span class="o">.</span>  <span class="n">You</span> <span class="n">may</span> <span class="n">increase</span> <span class="ow">or</span> <span class="n">decrease</span>
+<span class="n">this</span> <span class="n">value</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">value</span> <span class="n">you</span> <span class="n">want</span><span class="o">.</span>
+
+<span class="n">It</span> <span class="n">will</span><span class="p">,</span> <span class="n">by</span> <span class="n">default</span><span class="p">,</span> <span class="n">backup</span> <span class="nb">all</span> <span class="n">your</span> <span class="n">txt</span><span class="o">/</span>\<span class="o">*.</span><span class="n">txt</span> <span class="n">files</span><span class="p">,</span> <span class="n">your</span> <span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span>
+<span class="n">file</span><span class="p">,</span> <span class="n">your</span> <span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">flat</span> <span class="p">(</span><span class="n">mush</span> <span class="n">db</span><span class="p">)</span> <span class="n">file</span><span class="p">,</span> <span class="n">your</span> <span class="n">RhostMUSH</span><span class="o">.</span><span class="n">dump</span><span class="o">.</span>\<span class="o">*</span>
+<span class="p">(</span><span class="n">mail</span> <span class="n">db</span><span class="p">)</span> <span class="n">files</span><span class="p">,</span> <span class="n">your</span> <span class="n">RhostMUSH</span><span class="o">.</span><span class="n">news</span><span class="o">.</span>\<span class="o">*</span> <span class="p">(</span><span class="n">internal</span> <span class="n">news</span><span class="o">/</span><span class="n">bbs</span> <span class="n">db</span> <span class="o">--</span> <span class="k">if</span> <span class="n">used</span><span class="p">),</span>
+<span class="n">your</span> <span class="n">RhostMUSH</span><span class="o">.</span><span class="n">areg</span><span class="o">.</span>\<span class="o">*</span> <span class="p">(</span><span class="n">the</span> <span class="n">autoregistration</span> <span class="n">db</span> <span class="o">--</span> <span class="k">if</span> <span class="n">used</span><span class="p">),</span> <span class="ow">and</span> <span class="nb">any</span> <span class="n">sqlite</span>
+<span class="n">database</span> <span class="n">you</span> <span class="n">currently</span> <span class="n">may</span> <span class="n">be</span> <span class="n">using</span> <span class="n">which</span> <span class="n">are</span> <span class="n">OPTIONALLY</span> <span class="n">backed</span> <span class="n">up</span> <span class="k">if</span> <span class="n">you</span>
+<span class="n">remove</span> <span class="n">the</span> <span class="s1">&#39;#&#39;</span> <span class="kn">from</span> <span class="nn">before</span> <span class="n">it</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">backup</span> <span class="n">script</span> <span class="n">also</span> <span class="n">will</span> <span class="n">optionally</span> <span class="n">rcp</span><span class="o">/</span><span class="n">scp</span><span class="p">,</span> <span class="n">ftp</span><span class="p">,</span> <span class="ow">or</span> <span class="n">mail</span> <span class="nb">any</span> <span class="n">backups</span>
+<span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">a</span> <span class="n">remote</span> <span class="n">destination</span><span class="o">.</span>  <span class="n">Be</span> <span class="n">forewarned</span><span class="p">,</span> <span class="n">the</span> <span class="n">backup</span> <span class="n">files</span> <span class="n">can</span>
+<span class="n">potentially</span> <span class="n">get</span> <span class="n">rather</span> <span class="n">large</span> <span class="k">for</span> <span class="n">larger</span> <span class="n">games</span><span class="p">,</span> <span class="n">even</span> <span class="n">compressed</span><span class="o">.</span>  <span class="n">The</span>
+<span class="n">average</span> <span class="n">size</span> <span class="k">for</span> <span class="n">these</span> <span class="n">files</span> <span class="n">will</span> <span class="n">be</span> <span class="mi">1</span><span class="o">-</span><span class="mi">5</span><span class="n">MB</span><span class="o">.</span>  <span class="n">It</span> <span class="n">could</span> <span class="n">potentially</span> <span class="n">get</span>
+<span class="n">over</span> <span class="mi">10</span><span class="o">-</span><span class="mi">20</span><span class="n">MB</span> <span class="ow">in</span> <span class="n">size</span> <span class="k">for</span> <span class="n">excessively</span> <span class="n">large</span> <span class="n">games</span><span class="p">,</span> <span class="n">so</span> <span class="n">plan</span> <span class="n">accordingly</span><span class="o">.</span>
+
+<span class="n">Be</span> <span class="n">aware</span> <span class="n">that</span> <span class="n">the</span> <span class="n">backup</span> <span class="n">system</span> <span class="n">will</span> <span class="n">NOT</span> <span class="n">make</span> <span class="n">successful</span> <span class="n">backups</span> <span class="k">if</span> <span class="n">you</span>
+<span class="n">run</span> <span class="n">out</span> <span class="n">of</span> <span class="n">disk</span> <span class="n">space</span><span class="o">.</span>  <span class="n">This</span> <span class="n">includes</span> <span class="n">actually</span> <span class="n">running</span> <span class="n">out</span> <span class="n">of</span> <span class="n">disk</span> <span class="n">space</span>
+<span class="ow">or</span> <span class="n">running</span> <span class="n">out</span> <span class="n">of</span> <span class="n">disk</span> <span class="n">quota</span><span class="o">.</span>  <span class="n">There</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">mechanism</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">backup</span>
+<span class="n">script</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">an</span> <span class="n">email</span> <span class="n">address</span> <span class="n">that</span> <span class="n">you</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">get</span> <span class="n">alerts</span> <span class="kn">from</span>
+<span class="nn">in</span> <span class="n">these</span> <span class="n">instances</span><span class="o">.</span>  <span class="n">I</span> <span class="n">recommend</span> <span class="n">using</span> <span class="n">it</span><span class="o">.</span>
+
+<span class="n">If</span> <span class="n">you</span> <span class="n">make</span> <span class="n">changes</span> <span class="n">to</span> <span class="n">your</span> <span class="n">backup_flat</span><span class="o">.</span><span class="n">sh</span> <span class="n">script</span> <span class="k">with</span> <span class="n">an</span> <span class="n">already</span>
+<span class="n">active</span> <span class="ow">and</span> <span class="n">running</span> <span class="n">mush</span> <span class="ow">and</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">just</span> <span class="n">restart</span> <span class="n">the</span> <span class="n">backup</span> <span class="n">procedure</span>
+<span class="n">just</span> <span class="n">issue</span><span class="p">::</span>
+
+   <span class="o">./</span><span class="n">backup_restart</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="signals-and-why-you-need-them-for-control">
-<h2><span class="section-number">9.1. </span>Signals and why you need them for control</h2>
+<h2><span class="section-number">8.3. </span>Signals and why you need them for control</h2>
 <p>Rhost by default allows signals at the shell to handle various processes in-game.</p>
 <p>The following signals are useful.</p>
 <div class="section" id="term-kill-term-or-kill-15">
-<h3><span class="section-number">9.1.1. </span>TERM (kill -TERM or kill -15)</h3>
+<h3><span class="section-number">8.3.1. </span>TERM (kill -TERM or kill -15)</h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>This will immediately terminate the mush, dumping a special flatfile called
@@ -32,7 +98,7 @@ a TERM signal is common during a server shutdown, so time is paramount.</p></li>
 </div></blockquote>
 </div>
 <div class="section" id="usr1-kill-usr1">
-<h3><span class="section-number">9.1.2. </span>USR1 (kill -USR1)</h3>
+<h3><span class="section-number">8.3.2. </span>USR1 (kill -USR1)</h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>This by default issues a reboot on the server.  This is a special parameter
@@ -43,7 +109,7 @@ the default behavior or if the method for USR1 is doing something else.</p></li>
 </div></blockquote>
 </div>
 <div class="section" id="usr2-kill-usr2">
-<h3><span class="section-number">9.1.3. </span>USR2 (kill -USR2)</h3>
+<h3><span class="section-number">8.3.3. </span>USR2 (kill -USR2)</h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>This will shutdown (cleanly) the mush.  This behaves as if you issued
@@ -55,7 +121,7 @@ from the shell.</p></li>
 </div></blockquote>
 </div>
 <div class="section" id="kill-kill-kill-or-kill-9">
-<h3><span class="section-number">9.1.4. </span>KILL (kill -KILL or kill -9)</h3>
+<h3><span class="section-number">8.3.4. </span>KILL (kill -KILL or kill -9)</h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>This signal can not be caught and will immediately terminate the game
@@ -72,9 +138,9 @@ Startmush -f to bring it back up.</p></li>
 </div>
 </div>
 <div class="section" id="shutting-down-gracefully">
-<h2><span class="section-number">9.2. </span>Shutting down gracefully</h2>
+<h2><span class="section-number">8.4. </span>Shutting down gracefully</h2>
 <div class="section" id="rhostmush-has-many-ways-to-shut-down-the-game-cleanly">
-<h3><span class="section-number">9.2.1. </span>Rhostmush has many ways to shut down the game cleanly</h3>
+<h3><span class="section-number">8.4.1. </span>Rhostmush has many ways to shut down the game cleanly</h3>
 <ol class="arabic simple">
 <li><p>Log into the mush and issue &#64;shutdown</p></li>
 <li><p>Issue a kill -USR2 to the mush which issues an emergency &#64;shutdown</p></li>
@@ -82,7 +148,7 @@ Startmush -f to bring it back up.</p></li>
 </ol>
 </div>
 <div class="section" id="warning-never-kill-9-rhost">
-<h3><span class="section-number">9.2.2. </span>WARNING: Never kill -9 Rhost</h3>
+<h3><span class="section-number">8.4.2. </span>WARNING: Never kill -9 Rhost</h3>
 <p>Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t care for the
 database.  The reason is if the mush happens to be saving, in any method, to the
 database, especially a QDBM database, you will likely have just corrupted your
@@ -93,7 +159,7 @@ in the middle of a write, all bets are off. :)</p>
 </div>
 </div>
 <div class="section" id="autoshutdown-script">
-<h2><span class="section-number">9.3. </span>Autoshutdown script</h2>
+<h2><span class="section-number">8.5. </span>Autoshutdown script</h2>
 <p>The makefile will ‘make’ the program that will STOP the mush.
 Please tweek ‘autolog.h’ with the proper parameters.</p>
 <p>The ‘startup.sh’ will START the mush.</p>
@@ -101,36 +167,38 @@ Please tweek ‘autolog.h’ with the proper parameters.</p>
 like your rc.local file and/or startup scripts when you bring your server up.</p>
 </div>
 <div class="section" id="network-port-redirector">
-<h2><span class="section-number">9.4. </span>Network Port redirector</h2>
+<h2><span class="section-number">8.6. </span>Network Port redirector</h2>
 <p>This is a port redirector incase you decide to move your mush
 to a new site/port.  To use, first, compile the code.  To do
 this you would type the following:</p>
-<blockquote>
-<div><p>cc portmsg.c -o portmsg</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cc</span> <span class="n">portmsg</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">portmsg</span>
+</pre></div>
+</div>
 <p>if ‘cc’ is not defined, try the following:</p>
-<blockquote>
-<div><p>gcc portmsg.c -o portmsg</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gcc</span> <span class="n">portmsg</span><span class="o">.</span><span class="n">c</span> <span class="o">-</span><span class="n">o</span> <span class="n">portmsg</span>
+</pre></div>
+</div>
 <p>Once compiled, you would then modify the file ‘file’ to describe
 the mush, what was done, where it’s moved to, then specify the
 IP address and the PORT where specified.</p>
 <p>To launch the application, you would then type:</p>
-<blockquote>
-<div><p>./portmsg file &lt;port&gt;</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">portmsg</span> <span class="n">file</span> <span class="o">&lt;</span><span class="n">port</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 <p>Where &lt;port&gt; is the port where the mush used to run at.</p>
 </div>
 <div class="section" id="using-the-built-in-cron-system-for-periodically-running-commands">
-<h2><span class="section-number">9.5. </span>Using the built-in cron system for periodically running commands</h2>
+<h2><span class="section-number">8.7. </span>Using the built-in cron system for periodically running commands</h2>
 <div class="section" id="syntax-for-rhost-cron">
-<h3><span class="section-number">9.5.1. </span>Syntax for rhost.cron</h3>
+<h3><span class="section-number">8.7.1. </span>Syntax for rhost.cron</h3>
 <p>The rhost.cron file will be in the syntax as follows:</p>
-<p>username (or dbref#)
-command1;command2;command3;…;commandN
-command
-command
-command1;command2;command3;…;commandN</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span> <span class="p">(</span><span class="ow">or</span> <span class="n">dbref</span><span class="c1">#)</span>
+<span class="n">command1</span><span class="p">;</span><span class="n">command2</span><span class="p">;</span><span class="n">command3</span><span class="p">;</span><span class="o">...</span><span class="p">;</span><span class="n">commandN</span>
+<span class="n">command</span>
+<span class="n">command</span>
+<span class="n">command1</span><span class="p">;</span><span class="n">command2</span><span class="p">;</span><span class="n">command3</span><span class="p">;</span><span class="o">...</span><span class="p">;</span><span class="n">commandN</span>
+</pre></div>
+</div>
 <p>You can have commands strung together with a semicolon
 on the same line.  This counts as a single line of input.
 You can have at most 20 lines of commands after the target
@@ -142,18 +210,20 @@ the process.  Any aborts or warnings will be logged
 in the netrhost.gamelog.</p>
 <p>Here is a working example of the code cron file.
 This example will perform dumps of the mush.</p>
-</div>
 <div class="section" id="example-syntaxt-for-rhost-cron">
-<h3><span class="section-number">9.5.2. </span>Example syntaxt for rhost.cron</h3>
-<p>#1
-&#64;dump/flat; &#64;&#64; dump the main game database to flatfile
-wmail/unload; &#64;&#64; dump the mail database to flatfile
-&#64;areg/unload; &#64;&#64; dump the registration database to flatfile
-newsdb/unload; &#64;&#64; dump the news bbs database to flatfile</p>
+<h4><span class="section-number">8.7.1.1. </span>Example syntaxt for rhost.cron</h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#1</span>
+<span class="nd">@dump</span><span class="o">/</span><span class="n">flat</span><span class="p">;</span> <span class="o">@@</span> <span class="n">dump</span> <span class="n">the</span> <span class="n">main</span> <span class="n">game</span> <span class="n">database</span> <span class="n">to</span> <span class="n">flatfile</span>
+<span class="n">wmail</span><span class="o">/</span><span class="n">unload</span><span class="p">;</span> <span class="o">@@</span> <span class="n">dump</span> <span class="n">the</span> <span class="n">mail</span> <span class="n">database</span> <span class="n">to</span> <span class="n">flatfile</span>
+<span class="nd">@areg</span><span class="o">/</span><span class="n">unload</span><span class="p">;</span> <span class="o">@@</span> <span class="n">dump</span> <span class="n">the</span> <span class="n">registration</span> <span class="n">database</span> <span class="n">to</span> <span class="n">flatfile</span>
+<span class="n">newsdb</span><span class="o">/</span><span class="n">unload</span><span class="p">;</span> <span class="o">@@</span> <span class="n">dump</span> <span class="n">the</span> <span class="n">news</span> <span class="n">bbs</span> <span class="n">database</span> <span class="n">to</span> <span class="n">flatfile</span>
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="the-following-scripts-are-used-in-the-game-directory">
-<h2><span class="section-number">9.6. </span>The following scripts are used in the game directory</h2>
+<h2><span class="section-number">8.8. </span>The following scripts are used in the game directory</h2>
 <p>Startmush               – used to Start up the mush
 backup_flat.sh          – Used to run backups with &#64;dump/flat within the game (Started with Startmush automatically)
 backup_restart.sh       – Restart the backup_flat.sh if changes are done
@@ -167,7 +237,7 @@ recovery.sh             – If your db is corrupt, run this to auto-revert to an
 tor_pull.sh             – Create a blacklist.txt file that can be loaded via the internal &#64;blacklist command for proxy handling</p>
 </div>
 <div class="section" id="textfiles-for-rhostmush">
-<h2><span class="section-number">9.7. </span>Textfiles for RhostMUSH</h2>
+<h2><span class="section-number">8.9. </span>Textfiles for RhostMUSH</h2>
 <p>areghost.txt           - file player gets when autoregistration on registered host.
 autoreg.txt            - file player gets when autoregistration on non-registered host.
 autoreg_include.txt    - file player receives in email when they autoregister attached to login/passwd
@@ -214,7 +284,7 @@ wizhelp.txt            - your wizhelp file</p>
 </div>
 <p>wizmotd.txt            - your wiz motd file</p>
 <div class="section" id="textfile-frequently-asked-questions">
-<h3><span class="section-number">9.7.1. </span>Textfile Frequently Asked Questions</h3>
+<h3><span class="section-number">8.9.1. </span>Textfile Frequently Asked Questions</h3>
 <p>Q:  How do I put color in these files?
 A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: ^[[0m (for ANSI_NORMAL).  That’s &lt;ESC&gt;[
 A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding for ansi, however you compiled your Rhost.</p>

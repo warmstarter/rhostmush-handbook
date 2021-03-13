@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RhostMUSH Handbook 0.01a\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 10:13-0500\n"
+"POT-Creation-Date: 2021-03-13 13:08-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,249 +21,257 @@ msgid "Maintenance"
 msgstr ""
 
 #: ../../source/maintenance.rst:6
-msgid "Signals and why you need them for control"
+msgid "Note about Patching"
 msgstr ""
 
 #: ../../source/maintenance.rst:8
-msgid "Rhost by default allows signals at the shell to handle various processes in-game."
+msgid "There's two ways you can look to patch the source.  If you plan to run the RhostMUSH source from a git repository, then please use the git repo to constantly update your code.  If you knew enough to want to set up a git repo then we expect knowledge on how to keep source trees updated in the git repo to be used the same as any other source distribution."
 msgstr ""
 
-#: ../../source/maintenance.rst:10
-msgid "The following signals are useful."
+#: ../../source/maintenance.rst:14
+msgid "If, however, you have no idea what a git repo even is, or have no inclination of using git to manage your RhostMUSH source, or just don't care one way or another, then you can use the included patch.sh routine (from under the Server directory) to patch your source at any time."
 msgstr ""
 
-#: ../../source/maintenance.rst:13
-msgid "TERM (kill -TERM or kill -15)"
+#: ../../source/maintenance.rst:19
+msgid "From the server directory just type::"
 msgstr ""
 
-#: ../../source/maintenance.rst:15
-msgid "This will immediately terminate the mush, dumping a special flatfile called netrhost.db.TERM and scramming the db in question by force-closing it without any writes.  A TERM is the effort for the mush to shut down the mush as fast as possible to avoid any db corruption if possible since a TERM signal is common during a server shutdown, so time is paramount."
+#: ../../source/maintenance.rst:23
+msgid "That will auto-compile your source, auto make all your header files and essentially keep everything up to date to the latest source. Once that's done, all you do from within the game is two commands::"
 msgstr ""
 
-#: ../../source/maintenance.rst:22
-msgid "USR1 (kill -USR1)"
+#: ../../source/maintenance.rst:31
+msgid "Daily Backups for RhostMUSH"
 msgstr ""
 
-#: ../../source/maintenance.rst:24
-msgid "This by default issues a reboot on the server.  This is a special parameter because this can actually be changed in-game to do any number of other things.  Please refer to the RhostMUSH running in question if this is the default behavior or if the method for USR1 is doing something else."
-msgstr ""
-
-#: ../../source/maintenance.rst:30
-msgid "USR2 (kill -USR2)"
-msgstr ""
-
-#: ../../source/maintenance.rst:32
-msgid "This will shutdown (cleanly) the mush.  This behaves as if you issued a @shutdown from within the game, and follows all proper procedure in bringing the game down cleanly and safely.  This shoudl be used when doing maintenance on the game or if you need to bring it down from the shell."
-msgstr ""
-
-#: ../../source/maintenance.rst:39
-msgid "KILL (kill -KILL or kill -9)"
-msgstr ""
-
-#: ../../source/maintenance.rst:41
-msgid "This signal can not be caught and will immediately terminate the game without any safty to the database at all.  Short of something horribly wrong going on, this should never be used to bring down your mush. Doing so will almost certainly corrupt your databases (ALL OF THEM) that are open, including but not limited to your main database, your mail database, your autoregistration database, and so forth.  So if you do this, plan to do some database recovery from your flat files. Also, when you bring down a mush in this manner, you need to issue Startmush -f to bring it back up."
-msgstr ""
-
-#: ../../source/maintenance.rst:52
-msgid "Shutting down gracefully"
-msgstr ""
-
-#: ../../source/maintenance.rst:55
-msgid "Rhostmush has many ways to shut down the game cleanly"
-msgstr ""
-
-#: ../../source/maintenance.rst:57
-msgid "Log into the mush and issue @shutdown"
-msgstr ""
-
-#: ../../source/maintenance.rst:58
-msgid "Issue a kill -USR2 to the mush which issues an emergency @shutdown"
-msgstr ""
-
-#: ../../source/maintenance.rst:59
-msgid "Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown."
-msgstr ""
-
-#: ../../source/maintenance.rst:62
-msgid "WARNING: Never kill -9 Rhost"
-msgstr ""
-
-#: ../../source/maintenance.rst:64
-msgid "Under NO CIRCUMSTANCES should you kill -9 your mush unless you don't care for the database.  The reason is if the mush happens to be saving, in any method, to the database, especially a QDBM database, you will likely have just corrupted your database, so pull out a flatfile to recover."
-msgstr ""
-
-#: ../../source/maintenance.rst:69
-msgid "Sadly, this also may occur if the server hosting you takes a nose-dive in the middle of a db write.  Rhost can recover corruption in-game while up, but if it bombs in the middle of a write, all bets are off. :)"
+#: ../../source/maintenance.rst:33
+msgid "Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game. paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following::"
 msgstr ""
 
 #: ../../source/maintenance.rst:74
-msgid "Autoshutdown script"
+msgid "Signals and why you need them for control"
 msgstr ""
 
 #: ../../source/maintenance.rst:76
-msgid "The makefile will 'make' the program that will STOP the mush. Please tweek 'autolog.h' with the proper parameters."
+msgid "Rhost by default allows signals at the shell to handle various processes in-game."
 msgstr ""
 
-#: ../../source/maintenance.rst:80
-msgid "The 'startup.sh' will START the mush."
+#: ../../source/maintenance.rst:78
+msgid "The following signals are useful."
+msgstr ""
+
+#: ../../source/maintenance.rst:81
+msgid "TERM (kill -TERM or kill -15)"
 msgstr ""
 
 #: ../../source/maintenance.rst:83
-msgid "Both of these are intended to be used for automations (automated processes) like your rc.local file and/or startup scripts when you bring your server up."
+msgid "This will immediately terminate the mush, dumping a special flatfile called netrhost.db.TERM and scramming the db in question by force-closing it without any writes.  A TERM is the effort for the mush to shut down the mush as fast as possible to avoid any db corruption if possible since a TERM signal is common during a server shutdown, so time is paramount."
 msgstr ""
 
-#: ../../source/maintenance.rst:87
-msgid "Network Port redirector"
+#: ../../source/maintenance.rst:90
+msgid "USR1 (kill -USR1)"
 msgstr ""
 
-#: ../../source/maintenance.rst:89
-msgid "This is a port redirector incase you decide to move your mush to a new site/port.  To use, first, compile the code.  To do this you would type the following:"
+#: ../../source/maintenance.rst:92
+msgid "This by default issues a reboot on the server.  This is a special parameter because this can actually be changed in-game to do any number of other things.  Please refer to the RhostMUSH running in question if this is the default behavior or if the method for USR1 is doing something else."
 msgstr ""
 
-#: ../../source/maintenance.rst:93
-msgid "cc portmsg.c -o portmsg"
+#: ../../source/maintenance.rst:98
+msgid "USR2 (kill -USR2)"
 msgstr ""
 
-#: ../../source/maintenance.rst:95
-msgid "if 'cc' is not defined, try the following:"
-msgstr ""
-
-#: ../../source/maintenance.rst:97
-msgid "gcc portmsg.c -o portmsg"
-msgstr ""
-
-#: ../../source/maintenance.rst:99
-msgid "Once compiled, you would then modify the file 'file' to describe the mush, what was done, where it's moved to, then specify the IP address and the PORT where specified."
-msgstr ""
-
-#: ../../source/maintenance.rst:103
-msgid "To launch the application, you would then type:"
-msgstr ""
-
-#: ../../source/maintenance.rst:105
-msgid "./portmsg file <port>"
+#: ../../source/maintenance.rst:100
+msgid "This will shutdown (cleanly) the mush.  This behaves as if you issued a @shutdown from within the game, and follows all proper procedure in bringing the game down cleanly and safely.  This shoudl be used when doing maintenance on the game or if you need to bring it down from the shell."
 msgstr ""
 
 #: ../../source/maintenance.rst:107
+msgid "KILL (kill -KILL or kill -9)"
+msgstr ""
+
+#: ../../source/maintenance.rst:109
+msgid "This signal can not be caught and will immediately terminate the game without any safty to the database at all.  Short of something horribly wrong going on, this should never be used to bring down your mush. Doing so will almost certainly corrupt your databases (ALL OF THEM) that are open, including but not limited to your main database, your mail database, your autoregistration database, and so forth.  So if you do this, plan to do some database recovery from your flat files. Also, when you bring down a mush in this manner, you need to issue Startmush -f to bring it back up."
+msgstr ""
+
+#: ../../source/maintenance.rst:120
+msgid "Shutting down gracefully"
+msgstr ""
+
+#: ../../source/maintenance.rst:123
+msgid "Rhostmush has many ways to shut down the game cleanly"
+msgstr ""
+
+#: ../../source/maintenance.rst:125
+msgid "Log into the mush and issue @shutdown"
+msgstr ""
+
+#: ../../source/maintenance.rst:126
+msgid "Issue a kill -USR2 to the mush which issues an emergency @shutdown"
+msgstr ""
+
+#: ../../source/maintenance.rst:127
+msgid "Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown."
+msgstr ""
+
+#: ../../source/maintenance.rst:130
+msgid "WARNING: Never kill -9 Rhost"
+msgstr ""
+
+#: ../../source/maintenance.rst:132
+msgid "Under NO CIRCUMSTANCES should you kill -9 your mush unless you don't care for the database.  The reason is if the mush happens to be saving, in any method, to the database, especially a QDBM database, you will likely have just corrupted your database, so pull out a flatfile to recover."
+msgstr ""
+
+#: ../../source/maintenance.rst:137
+msgid "Sadly, this also may occur if the server hosting you takes a nose-dive in the middle of a db write.  Rhost can recover corruption in-game while up, but if it bombs in the middle of a write, all bets are off. :)"
+msgstr ""
+
+#: ../../source/maintenance.rst:142
+msgid "Autoshutdown script"
+msgstr ""
+
+#: ../../source/maintenance.rst:144
+msgid "The makefile will 'make' the program that will STOP the mush. Please tweek 'autolog.h' with the proper parameters."
+msgstr ""
+
+#: ../../source/maintenance.rst:148
+msgid "The 'startup.sh' will START the mush."
+msgstr ""
+
+#: ../../source/maintenance.rst:151
+msgid "Both of these are intended to be used for automations (automated processes) like your rc.local file and/or startup scripts when you bring your server up."
+msgstr ""
+
+#: ../../source/maintenance.rst:155
+msgid "Network Port redirector"
+msgstr ""
+
+#: ../../source/maintenance.rst:157
+msgid "This is a port redirector incase you decide to move your mush to a new site/port.  To use, first, compile the code.  To do this you would type the following::"
+msgstr ""
+
+#: ../../source/maintenance.rst:163
+msgid "if 'cc' is not defined, try the following::"
+msgstr ""
+
+#: ../../source/maintenance.rst:167
+msgid "Once compiled, you would then modify the file 'file' to describe the mush, what was done, where it's moved to, then specify the IP address and the PORT where specified."
+msgstr ""
+
+#: ../../source/maintenance.rst:171
+msgid "To launch the application, you would then type::"
+msgstr ""
+
+#: ../../source/maintenance.rst:175
 msgid "Where <port> is the port where the mush used to run at."
 msgstr ""
 
-#: ../../source/maintenance.rst:110
+#: ../../source/maintenance.rst:178
 msgid "Using the built-in cron system for periodically running commands"
 msgstr ""
 
-#: ../../source/maintenance.rst:113
+#: ../../source/maintenance.rst:181
 msgid "Syntax for rhost.cron"
 msgstr ""
 
-#: ../../source/maintenance.rst:115
-msgid "The rhost.cron file will be in the syntax as follows:"
-msgstr ""
-
-#: ../../source/maintenance.rst:117
-msgid "username (or dbref#) command1;command2;command3;...;commandN command command command1;command2;command3;...;commandN"
-msgstr ""
-
-#: ../../source/maintenance.rst:124
-msgid "You can have commands strung together with a semicolon on the same line.  This counts as a single line of input. You can have at most 20 lines of commands after the target you wish to execute the commands as.  The target may be a player name OR a dbref# of any valid dbref# within the game.  Invalid targets will abort the cron process. Non-printable characters in the cron file will abort the process.  Any aborts or warnings will be logged in the netrhost.gamelog."
-msgstr ""
-
-#: ../../source/maintenance.rst:134
-msgid "Here is a working example of the code cron file. This example will perform dumps of the mush."
-msgstr ""
-
-#: ../../source/maintenance.rst:138
-msgid "Example syntaxt for rhost.cron"
-msgstr ""
-
-#: ../../source/maintenance.rst:140
-msgid "#1 @dump/flat; @@ dump the main game database to flatfile wmail/unload; @@ dump the mail database to flatfile @areg/unload; @@ dump the registration database to flatfile newsdb/unload; @@ dump the news bbs database to flatfile"
-msgstr ""
-
-#: ../../source/maintenance.rst:147
-msgid "The following scripts are used in the game directory"
-msgstr ""
-
-#: ../../source/maintenance.rst:149
-msgid "Startmush               -- used to Start up the mush backup_flat.sh          -- Used to run backups with @dump/flat within the game (Started with Startmush automatically) backup_restart.sh       -- Restart the backup_flat.sh if changes are done compress_logs.sh        -- Compress logs in 'oldlogs'.  Ran with Startmush findit.sh               -- Internal script used to check for flatfile validity mailhide.sh             -- Wrapper to hide from address using the 'mail' progam minimal.sh              -- Auto-load the minimal db into the mush proxysnarf.sha          -- Internal script for the tor_pull.sh tor proxy blacklist tor_pullit.sh           -- Internal script for the tor_pull.sh for proxy blacklist recovery.sh             -- If your db is corrupt, run this to auto-revert to an earlier flatfile tor_pull.sh             -- Create a blacklist.txt file that can be loaded via the internal @blacklist command for proxy handling"
-msgstr ""
-
-#: ../../source/maintenance.rst:162
-msgid "Textfiles for RhostMUSH"
-msgstr ""
-
-#: ../../source/maintenance.rst:164
-msgid "areghost.txt           - file player gets when autoregistration on registered host. autoreg.txt            - file player gets when autoregistration on non-registered host. autoreg_include.txt    - file player receives in email when they autoregister attached to login/passwd badsite.txt            - file player gets when site is not allowed. connect.txt            - file player gets when connect create_reg.txt         - file player gets when their site is register and they can't create. doorconf.txt           - file that is searched for information regarding @door."
-msgstr ""
-
-#: ../../source/maintenance.rst:174
-msgid "Need to mkindx doorconf.txt doorconf.indx for this file"
-msgstr ""
-
-#: ../../source/maintenance.rst:176
-msgid "down.txt               - file player gets when the mush has logins disabled (@disable login) error.txt              - the 'Huh? (type help for help)' messages."
-msgstr ""
-
-#: ../../source/maintenance.rst:181
-msgid "Need to mkindx error.txt error.indx for this file"
-msgstr ""
-
 #: ../../source/maintenance.rst:183
-msgid "full.txt               - file player gets when the mush can't have any more players. guest.txt              - file player gets when they connect as a guest. help.txt               - your help file"
-msgstr ""
-
-#: ../../source/maintenance.rst:189
-msgid "Need to mkindx help.txt help.indx for this file"
+msgid "The rhost.cron file will be in the syntax as follows::"
 msgstr ""
 
 #: ../../source/maintenance.rst:191
-msgid "motd.txt               - your motd file news.txt               - your news file"
+msgid "You can have commands strung together with a semicolon on the same line.  This counts as a single line of input. You can have at most 20 lines of commands after the target you wish to execute the commands as.  The target may be a player name OR a dbref# of any valid dbref# within the game.  Invalid targets will abort the cron process. Non-printable characters in the cron file will abort the process.  Any aborts or warnings will be logged in the netrhost.gamelog."
 msgstr ""
 
-#: ../../source/maintenance.rst:196
-msgid "Need to mkindx news.txt news.indx for this file"
+#: ../../source/maintenance.rst:201
+msgid "Here is a working example of the code cron file. This example will perform dumps of the mush."
 msgstr ""
 
-#: ../../source/maintenance.rst:198
-msgid "newuser.txt            - file newly created players get when they connect for the first time. noguest.txt            - file player gets when they are not allowed to connect to a guest. plushelp.txt           - optional +help file. (needs compile time option)"
+#: ../../source/maintenance.rst:205
+msgid "Example syntaxt for rhost.cron"
 msgstr ""
 
-#: ../../source/maintenance.rst:204
-msgid "Need to mkindx plushelp.txt plushelp.indx for this file"
-msgstr ""
-
-#: ../../source/maintenance.rst:206
-msgid "quit.txt               - file player gets when they disconnect. register.txt           - file player gets when the site is locked down for registration. wizhelp.txt            - your wizhelp file"
-msgstr ""
-
-#: ../../source/maintenance.rst:212
-msgid "Need to mkindx wizhelp.txt wizhelp.indx for this file"
-msgstr ""
-
-#: ../../source/maintenance.rst:214
-msgid "wizmotd.txt            - your wiz motd file"
+#: ../../source/maintenance.rst:216
+msgid "The following scripts are used in the game directory"
 msgstr ""
 
 #: ../../source/maintenance.rst:218
-msgid "Textfile Frequently Asked Questions"
+msgid "Startmush               -- used to Start up the mush backup_flat.sh          -- Used to run backups with @dump/flat within the game (Started with Startmush automatically) backup_restart.sh       -- Restart the backup_flat.sh if changes are done compress_logs.sh        -- Compress logs in 'oldlogs'.  Ran with Startmush findit.sh               -- Internal script used to check for flatfile validity mailhide.sh             -- Wrapper to hide from address using the 'mail' progam minimal.sh              -- Auto-load the minimal db into the mush proxysnarf.sha          -- Internal script for the tor_pull.sh tor proxy blacklist tor_pullit.sh           -- Internal script for the tor_pull.sh for proxy blacklist recovery.sh             -- If your db is corrupt, run this to auto-revert to an earlier flatfile tor_pull.sh             -- Create a blacklist.txt file that can be loaded via the internal @blacklist command for proxy handling"
 msgstr ""
 
-#: ../../source/maintenance.rst:220
-msgid "Q:  How do I put color in these files? A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: ^[[0m (for ANSI_NORMAL).  That's <ESC>[ A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding for ansi, however you compiled your Rhost."
-msgstr ""
-
-#: ../../source/maintenance.rst:224
-msgid "Q:  I want to design my own txt files to read in the mush. A:  Easy.  Design them like help.txt would be set up, mkindx the file, then you can access it via @dynhelp online."
-msgstr ""
-
-#: ../../source/maintenance.rst:227
-msgid "Q:  Do I have to mkindx these files whenever I make changes? A:  Only the ones that have '& ' index. (help.txt, wizhelp.txt, news.txt, etc)"
-msgstr ""
-
-#: ../../source/maintenance.rst:230
-msgid "Q:  Do I have to @readcache in the game whenever I make a change? A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones you use with @dynhelp."
+#: ../../source/maintenance.rst:231
+msgid "Textfiles for RhostMUSH"
 msgstr ""
 
 #: ../../source/maintenance.rst:233
+msgid "areghost.txt           - file player gets when autoregistration on registered host. autoreg.txt            - file player gets when autoregistration on non-registered host. autoreg_include.txt    - file player receives in email when they autoregister attached to login/passwd badsite.txt            - file player gets when site is not allowed. connect.txt            - file player gets when connect create_reg.txt         - file player gets when their site is register and they can't create. doorconf.txt           - file that is searched for information regarding @door."
+msgstr ""
+
+#: ../../source/maintenance.rst:243
+msgid "Need to mkindx doorconf.txt doorconf.indx for this file"
+msgstr ""
+
+#: ../../source/maintenance.rst:245
+msgid "down.txt               - file player gets when the mush has logins disabled (@disable login) error.txt              - the 'Huh? (type help for help)' messages."
+msgstr ""
+
+#: ../../source/maintenance.rst:250
+msgid "Need to mkindx error.txt error.indx for this file"
+msgstr ""
+
+#: ../../source/maintenance.rst:252
+msgid "full.txt               - file player gets when the mush can't have any more players. guest.txt              - file player gets when they connect as a guest. help.txt               - your help file"
+msgstr ""
+
+#: ../../source/maintenance.rst:258
+msgid "Need to mkindx help.txt help.indx for this file"
+msgstr ""
+
+#: ../../source/maintenance.rst:260
+msgid "motd.txt               - your motd file news.txt               - your news file"
+msgstr ""
+
+#: ../../source/maintenance.rst:265
+msgid "Need to mkindx news.txt news.indx for this file"
+msgstr ""
+
+#: ../../source/maintenance.rst:267
+msgid "newuser.txt            - file newly created players get when they connect for the first time. noguest.txt            - file player gets when they are not allowed to connect to a guest. plushelp.txt           - optional +help file. (needs compile time option)"
+msgstr ""
+
+#: ../../source/maintenance.rst:273
+msgid "Need to mkindx plushelp.txt plushelp.indx for this file"
+msgstr ""
+
+#: ../../source/maintenance.rst:275
+msgid "quit.txt               - file player gets when they disconnect. register.txt           - file player gets when the site is locked down for registration. wizhelp.txt            - your wizhelp file"
+msgstr ""
+
+#: ../../source/maintenance.rst:281
+msgid "Need to mkindx wizhelp.txt wizhelp.indx for this file"
+msgstr ""
+
+#: ../../source/maintenance.rst:283
+msgid "wizmotd.txt            - your wiz motd file"
+msgstr ""
+
+#: ../../source/maintenance.rst:287
+msgid "Textfile Frequently Asked Questions"
+msgstr ""
+
+#: ../../source/maintenance.rst:289
+msgid "Q:  How do I put color in these files? A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: ^[[0m (for ANSI_NORMAL).  That's <ESC>[ A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding for ansi, however you compiled your Rhost."
+msgstr ""
+
+#: ../../source/maintenance.rst:293
+msgid "Q:  I want to design my own txt files to read in the mush. A:  Easy.  Design them like help.txt would be set up, mkindx the file, then you can access it via @dynhelp online."
+msgstr ""
+
+#: ../../source/maintenance.rst:296
+msgid "Q:  Do I have to mkindx these files whenever I make changes? A:  Only the ones that have '& ' index. (help.txt, wizhelp.txt, news.txt, etc)"
+msgstr ""
+
+#: ../../source/maintenance.rst:299
+msgid "Q:  Do I have to @readcache in the game whenever I make a change? A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones you use with @dynhelp."
+msgstr ""
+
+#: ../../source/maintenance.rst:302
 msgid "Q:  Can't I just make code in the mush that then is used for these silly txt files? A:  Absolutely.  Check 'wizhelp file_object'."
 msgstr ""

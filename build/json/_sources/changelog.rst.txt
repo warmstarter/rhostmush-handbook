@@ -1,10 +1,14 @@
-=========
-Changelog
-=========
+.. _changelog:
 
+===========
+ Changelog
+===========
 
-RhostMUSH 4.0 Update
-====================
+.. _changelog-4.0:
+
+-------------
+RhostMUSH 4.0
+-------------
 
 MUX passwords didn't work properly because of a memcmp() bug.
 				- Thanks Locke
@@ -75,9 +79,11 @@ SIDEFX permissions were borked for normal players.
 #lambda wasn't case insensitive
 				- Thanks Alley
 
+.. _changelog-3.9.5:
 
-RhostMUSH 3.9.5 Update
-======================
+---------------
+RhostMUSH 3.9.5 
+---------------
 
 Softcode overrides for connect files
 				- Thanks Matrix
@@ -180,8 +186,11 @@ All locatization with CLEAR didn't wipe and reset register names.
 ] for @hook/ignore and @hook/permit was broken.
 				- Thanks Ixokai
 
-RhostMUSH 3.9.4 Update
-======================
+.. _changelog-3.9.4:
+
+---------------
+RhostMUSH 3.9.4
+---------------
 
 REALITY_LEVELS wouldn't compile because of undeclared function.
 				- Thanks Dahan
@@ -210,16 +219,22 @@ functions.c bombed with the clang compiler because of restrictive type-casting c
 Compiletime bug in speech.c with REALITY_LEVELS not defined.
 				- Thanks psc943
 
-RhostMUSH 3.9.3 Update
-======================
+.. _changelog-3.9.3:
+
+---------------
+RhostMUSH 3.9.3
+---------------
 
 @include -- Idea Copied from Penn 
 				- Thanks Jules (and PennMUSH)
 Fix for $Z in timefmt()
 				- Thanks Chime/Loki (Haunted)
 
-RhostMUSH 3.9.2 Update
-======================
+.. _changelog-3.9.2:
+
+---------------
+RhostMUSH 3.9.2
+---------------
 
 @assert/@break didn't handle {} correctly.
 				- Thanks Wyrd
@@ -241,8 +256,11 @@ IDLE had a missmatch on \r and \n parsing -- Fixed
 Discussion/Ideas for strdistance() function.
 				- Thanks Sketch@M*U*S*H
 
-RhostMUSH 3.9.1 Update
-======================
+.. _changelog-3.9.1:
+
+---------------
+RhostMUSH 3.9.1
+---------------
 
 cluster_hasattr() bug for #-1 that should be 0 for non-existant attribs.
 				- Thanks Ol'Sarge@Cajun
@@ -287,8 +305,11 @@ NO_CODE broke global_error_obj as it's executed by enactor.
 Help file typos for various cluster commands.
 				- Thanks Mike@M*U*S*H
 
-RhostMUSH 3.9.0 p00 Update
-==========================
+.. _changelog-3.9.0p00:
+
+-------------------
+RhostMUSH 3.9.0 p00
+-------------------
 
 .. note::
 
@@ -860,10 +881,11 @@ Logging network errors could cause heavy logging on really bad networks - Fixed 
 Connect honors @hide/unfindable/dark [SVN 320]
 				- Thanks Planet X
 
+.. _changelog-3.2.4p18:
 
-
-RhostMUSH 3.2.4 p18 Update
-==========================
+-------------------
+RhostMUSH 3.2.4 p18
+-------------------
 
 [06/28/2004]
 
@@ -987,9 +1009,11 @@ Fix mail issue with marking and folders
 
 Enhanced @break to accept optional argument to 'branch'
 
+.. _changelog-3.2.4p17:
 
-RhostMUSH 3.2.4 p17 Update
-==========================
+-------------------
+RhostMUSH 3.2.4 p17
+-------------------
 
 [ 06/04/2004]
 
@@ -1035,9 +1059,11 @@ Improved attribute handling for corrupting attributes.
 @pcreate/reg would crash if issued by a non-player - fixed
 				- Thanks Xandar
 
+.. _changelog-3.2.4p16:
 
-RhostMUSH 3.2.4 p16 Update 
-==========================
+-------------------
+RhostMUSH 3.2.4 p16
+-------------------
 
 [02/24/2004]
 
@@ -1148,8 +1174,11 @@ hash with an off-by-one count. (Introduced p16 beta) - Fixed
 Typo with help.txt with regards to terse flag - Fixed
 				- Thanks Sasaki Chie@Fantasy Moon
 
-RhostMUSH 3.2.4 p15 Update 
-==========================
+.. _changelog-3.2.4p15:
+
+-------------------
+RhostMUSH 3.2.4 p15
+-------------------
 
 [09/09/2003]
 
@@ -1358,9 +1387,11 @@ wizhelp entry with no_move had grammer mistakes. - Fixed
 Possible overrun on the stack with regards to iter() during certain config opts.
 				- Thanks Illithid@Ennersea
 
+.. _changelog-3.2.4p14:
 
-RhostMUSH 3.2.4 p14 Update
-==========================
+-------------------
+RhostMUSH 3.2.4 p14
+-------------------
 
 [07/10/2002]
 
@@ -1528,8 +1559,11 @@ plushelp_file and plushelp_index missing from wizhelp - Fixed
 wildcard matching could become problematic - Fixed.
 				- Thanks Sketch@M*U*S*H & Javelin
 
-RhostMUSH 3.2.4 p13 Update
-==========================
+.. _changelog-3.2.4p13:
+
+-------------------
+RhostMUSH 3.2.4 p13
+-------------------
 
 [02/01/2002]
 
@@ -1682,8 +1716,11 @@ lcon(), next(), con(), lexits(), lcon(), xcon(), and sees() with reguards to han
 Help for trim() had examples with it's 2nd and 3rds arguments reversed - Fixed
 				- Thanks accela@AniMUSH
 
-RhostMUSH 3.2.4 p12 Update
-==========================
+.. _changelog-3.2.4p12:
+
+-------------------
+RhostMUSH 3.2.4 p12
+-------------------
 
 [06/15/2001]
 
@@ -1793,8 +1830,11 @@ Some side effects had wrong security/permission checks - Fixed
 Side effects did not check inheritance for permission - Fixed
 Iter()/list() and suite did not handle ansi properly - Fixed
 
-RhostMUSH 3.2.4 p11 Update
-==========================
+.. _changelog-3.2.4p11:
+
+-------------------
+RhostMUSH 3.2.4 p11
+-------------------
 
 [03/15/2001]
 
@@ -1904,9 +1944,11 @@ Parenting fix with possible recursion - fixed
 Cloaked items didn't trigger @startup - fixed.
 			-Thanks Rynos@Armageddon
 
+.. _changelog-3.2.4p10:
 
-RhostMUSH 3.2.4 p10 Update
-==========================
+-------------------
+RhostMUSH 3.2.4 p10
+-------------------
 
 [02/15/2001]
 
@@ -1935,8 +1977,11 @@ Bug Fixes
 you could still get into a garbage object - fixed (MINOR)
 forwardlists were not cleared on @wipe - fixed
 
-RhostMUSH 3.2.4 p9 Update
-=========================
+.. _changelog-3.2.4p9:
+
+------------------
+RhostMUSH 3.2.4 p9
+------------------
 
 [12/15/2000]
 
@@ -2011,8 +2056,11 @@ enhanced security for .txt file reading/verification (possible DoS) - fixed
 attrib flag DARK could not be unset by non-god.  Only #1 can set it now - fixed
 encrypt/decrypt really mangled with how it passed key - fixed
 
-RhostMUSH 3.2.4 p8 Update
-=========================
+.. _changelog-3.2.4p8:
+
+------------------
+RhostMUSH 3.2.4 p8
+------------------
 
 [10/12/2000]
 
@@ -2097,8 +2145,11 @@ BACKSTAGE/NOBACKSTAGE didn't handle @zones - fixed
 create() didn't check command permissions first for @dig, @open, and @pcreate
 put a temp fix for a possible SIGSEGV bug.
 
-RhostMUSH 3.2.4 p7 Update
-=========================
+.. _changelog-3.2.4p7:
+
+------------------
+RhostMUSH 3.2.4 p7
+------------------
 
 [07/15/2000]
 
@@ -2126,8 +2177,12 @@ Bug Fixes
 @list options did not show RESTRICT_HOME config setting.  Fixed
 				- Reported by Mercutio@ShatteredCathedrals
 
-RhostMUSH 3.2.4 p6 Update
-=========================
+
+.. _changelog-3.2.4p6:
+
+------------------
+RhostMUSH 3.2.4 p6
+------------------
 
 [06/16/2000]
 
@@ -2158,8 +2213,11 @@ autoreg file inclusion didn't count total lines right.  Fixed.
 
 hastoggles(), haspowers(), and hasdepowers() didn't work.  Fixed.
 
-RhostMUSH 3.2.4 p5 Update
-=========================
+.. _changelog-3.2.4p5:
+
+------------------
+RhostMUSH 3.2.4 p5
+------------------
 
 [06/01/2000]
 
@@ -2184,8 +2242,11 @@ AUTH hung if remote server was configured wrong.  Fix put in around the OS
 limitation to handle this.
 Command substitution (%c/%x) could cause a SIGSEGV at random times.  Fixed.
 
-RhostMUSH 3.2.4 p4 Update
-=========================
+.. _changelog-3.2.4p4:
+
+------------------
+RhostMUSH 3.2.4 p4
+------------------
 
 [04/15/2000]
 
@@ -2302,8 +2363,11 @@ setunion() would not parse 3rd/4th args correctly on rare occurances --fixed
 
 news/articlelife wouldn't reset articlelife with '-1'.  -- fixed
 
-RhostMUSH 3.2.4 p3 Update
-=========================
+.. _changelog-3.2.4p3:
+
+------------------
+RhostMUSH 3.2.4 p3
+------------------
 
 [11/15/1999]
 

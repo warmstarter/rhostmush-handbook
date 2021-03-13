@@ -2,6 +2,74 @@
 Maintenance
 ===========
 
+Note about Patching
+===================
+
+There's two ways you can look to patch the source.  If you plan to run the
+RhostMUSH source from a git repository, then please use the git repo to
+constantly update your code.  If you knew enough to want to set up a git repo                                                                            
+then we expect knowledge on how to keep source trees updated in the git repo
+to be used the same as any other source distribution.
+
+If, however, you have no idea what a git repo even is, or have no inclination                                                                            
+of using git to manage your RhostMUSH source, or just don't care one way
+or another, then you can use the included patch.sh routine (from under the
+Server directory) to patch your source at any time.
+
+From the server directory just type::
+
+  ./patch.sh
+
+That will auto-compile your source, auto make all your header files and
+essentially keep everything up to date to the latest source.
+Once that's done, all you do from within the game is two commands::
+
+  @reboot (or @reboot/silent)  -- This will load in the new binary
+  @readcache  -- This will read in all the .txt file changes
+
+Daily Backups for RhostMUSH
+===========================
+
+Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game. paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following::
+
+   @dump/flat      -- This makes a flatfile dump of the main database.  You want to run this daily.
+   wmail/unload    -- This makes a flatfile dump of the mail database.  You want to run this daily.
+   @areg/unload    -- Only worry about this if you are using auto-registration emailing.  Few do.
+   newsdb/unload   -- Only worry if you use the hardcoded bbs system.  Most don't use it.
+
+
+  Backups are already handled and integrated with a script 'backup_flat.sh'.  
+  If you wish to customize this, feel free.  Again, it is well documented and 
+  just require changing settings at the top of this script.
+
+  By default, it does 7 contiguous backups.  You may increase or decrease 
+  this value to any value you want.
+
+  It will, by default, backup all your txt/\*.txt files, your netrhost.conf 
+  file, your netrhost.db.flat (mush db) file, your RhostMUSH.dump.\* 
+  (mail db) files, your RhostMUSH.news.\* (internal news/bbs db -- if used), 
+  your RhostMUSH.areg.\* (the autoregistration db -- if used), and any sqlite 
+  database you currently may be using which are OPTIONALLY backed up if you 
+  remove the '#' from before it.
+
+  The backup script also will optionally rcp/scp, ftp, or mail any backups 
+  you want to a remote destination.  Be forewarned, the backup files can 
+  potentially get rather large for larger games, even compressed.  The 
+  average size for these files will be 1-5MB.  It could potentially get 
+  over 10-20MB in size for excessively large games, so plan accordingly.
+
+  Be aware that the backup system will NOT make successful backups if you 
+  run out of disk space.  This includes actually running out of disk space 
+  or running out of disk quota.  There is a mechanism inside the backup 
+  script to specify an email address that you wish to get alerts from 
+  in these instances.  I recommend using it.
+
+  If you make changes to your backup_flat.sh script with an already 
+  active and running mush and wish to just restart the backup procedure 
+  just issue::
+
+     ./backup_restart.sh
+
 Signals and why you need them for control
 =========================================
 
@@ -54,9 +122,9 @@ Shutting down gracefully
 Rhostmush has many ways to shut down the game cleanly
 -----------------------------------------------------
 
-1. Log into the mush and issue @shutdown
-2. Issue a kill -USR2 to the mush which issues an emergency @shutdown
-3. Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.
+#. Log into the mush and issue @shutdown
+#. Issue a kill -USR2 to the mush which issues an emergency @shutdown
+#. Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.
 
 WARNING: Never kill -9 Rhost
 ----------------------------
@@ -88,11 +156,11 @@ Network Port redirector
 
 This is a port redirector incase you decide to move your mush
 to a new site/port.  To use, first, compile the code.  To do
-this you would type the following:
+this you would type the following::
 
                   cc portmsg.c -o portmsg
 
-if 'cc' is not defined, try the following:
+if 'cc' is not defined, try the following::
 
                  gcc portmsg.c -o portmsg
 
@@ -100,7 +168,7 @@ Once compiled, you would then modify the file 'file' to describe
 the mush, what was done, where it's moved to, then specify the
 IP address and the PORT where specified.
 
-To launch the application, you would then type:
+To launch the application, you would then type::
 
                  ./portmsg file <port>
 
@@ -112,14 +180,13 @@ Using the built-in cron system for periodically running commands
 Syntax for rhost.cron
 ---------------------
 
-The rhost.cron file will be in the syntax as follows:
+The rhost.cron file will be in the syntax as follows::
 
-username (or dbref#)
-command1;command2;command3;...;commandN
-command
-command
-command1;command2;command3;...;commandN
-
+  username (or dbref#)
+  command1;command2;command3;...;commandN
+  command
+  command
+  command1;command2;command3;...;commandN
 
 You can have commands strung together with a semicolon
 on the same line.  This counts as a single line of input.
@@ -135,13 +202,15 @@ Here is a working example of the code cron file.
 This example will perform dumps of the mush.
 
 Example syntaxt for rhost.cron
-------------------------------
+++++++++++++++++++++++++++++++
 
-#1
-@dump/flat; @@ dump the main game database to flatfile
-wmail/unload; @@ dump the mail database to flatfile
-@areg/unload; @@ dump the registration database to flatfile
-newsdb/unload; @@ dump the news bbs database to flatfile
+::
+
+  #1
+  @dump/flat; @@ dump the main game database to flatfile
+  wmail/unload; @@ dump the mail database to flatfile
+  @areg/unload; @@ dump the registration database to flatfile
+  newsdb/unload; @@ dump the news bbs database to flatfile
 
 The following scripts are used in the game directory
 ====================================================

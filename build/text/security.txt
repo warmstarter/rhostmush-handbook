@@ -1,8 +1,8 @@
-8. Security
+7. Security
 ***********
 
 
-8.1. Considerations to locking down restrictions in RhostMUSH
+7.1. Considerations to locking down restrictions in RhostMUSH
 =============================================================
 
 Sometimes, you want to have things run at various privilage levels and
@@ -23,7 +23,7 @@ powers,
    depowers.
 
 
-8.1.1. Online: Blocking object abilities
+7.1.1. Online: Blocking object abilities
 ----------------------------------------
 
 We have various flag levels.  It is strongly recommanded you check
@@ -32,7 +32,7 @@ or can not do prior to giving the ownership to the object.  Things
 useful for tweaking control on players and objects:
 
 
-8.1.1.1. FLAGS (access with @set)
+7.1.1.1. FLAGS (access with @set)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    IMMORTAL, ROYALTY, COUNCILOR, ARCHITECT, GUILDMASTER, FUBAR, SLAVE,
@@ -43,7 +43,7 @@ useful for tweaking control on players and objects:
    UNFINDABLE, SEE_OEMIT, TELOK, SUSPECT, SPAMMONITOR
 
 
-8.1.1.2. TOGGLES (@toggle)
+7.1.1.2. TOGGLES (@toggle)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    BRANDY_MAIL, PENN_MAIL, MUXPAGE, VPAGE, NOISY, MONITOR* (all
@@ -51,14 +51,14 @@ useful for tweaking control on players and objects:
    SNUFFDARK, VARIABLE
 
 
-8.1.1.3. @powers, @depowers, and @locks
+7.1.1.3. @powers, @depowers, and @locks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please review help (and wizhelp) for each of these items on how it can
 affect a player, thing, exit, or room.  The help is quite verbose.
 
 
-8.1.2. Offline: Blocking twinks from being abusive on your game
+7.1.2. Offline: Blocking twinks from being abusive on your game
 ---------------------------------------------------------------
 
 FLAGS                   : FUBAR, SLAVE, NO_CONNECT Commands:
@@ -70,7 +70,7 @@ Monitoring player       : SUSPECT (flag), @snoop TOR/Proxy blocking:
 wizhelp), @tor (see wizhelp)
 
 
-8.2. Extended lockdown of the mush and considerations
+7.2. Extended lockdown of the mush and considerations
 =====================================================
 
 These are flags, powers, toggles, and various conditions for
@@ -79,7 +79,7 @@ RhostMUSH. These are not all that is availble, but tend to be the
 juicier ones to consider.
 
 
-8.2.1. Attribute Restriction
+7.2.1. Attribute Restriction
 ----------------------------
 
    @attribute – Used for user-defined attributes @admin attr_access –
@@ -87,7 +87,7 @@ juicier ones to consider.
    lovely delicious attribute permission masks
 
 
-8.2.2. Command Restriction
+7.2.2. Command Restriction
 --------------------------
 
    @icmd    - Very useful.   Please see wizhelp on it.  It disallows
@@ -97,7 +97,7 @@ juicier ones to consider.
    commands with softcode.
 
 
-8.2.3. Flag/Toggle Restriction
+7.2.3. Flag/Toggle Restriction
 ------------------------------
 
    @flagdef - Again, see wizhelp on this.  There are also
@@ -106,14 +106,14 @@ juicier ones to consider.
    as what type can use it or wha type it can be used on.
 
 
-8.2.4. Config restrictions
+7.2.4. Config restrictions
 --------------------------
 
    @admin config_access - Changes permission of who can set a config
    param
 
 
-8.2.5. Function Restrictions
+7.2.5. Function Restrictions
 ----------------------------
 
    @function/@lfunction – Allows softcoded functions that you can
@@ -121,7 +121,7 @@ juicier ones to consider.
    can use this even on softcoded functions if you so desired.
 
 
-8.2.6. Flags
+7.2.6. Flags
 ------------
 
    GUEST    - This is your guest flag, it should only be set on guests
@@ -159,7 +159,7 @@ juicier ones to consider.
    processing of commands/building
 
 
-8.2.7. Toggles
+7.2.7. Toggles
 --------------
 
    MONITOR            - Enables site monitoring.  This is the main
@@ -196,7 +196,7 @@ juicier ones to consider.
    a mortal SNUFFDARK          - Hides dark exits from a wizard
 
 
-8.2.8. @powers
+7.2.8. @powers
 --------------
 
    WIZ_WHO            - Allows target to see sites ala wizard who
@@ -231,7 +231,7 @@ juicier ones to consider.
    ~/game/scripts
 
 
-8.2.9. @depowers
+7.2.9. @depowers
 ----------------
 
    WALL               - Disables the ability to @wall LONG_FINGERS
@@ -262,7 +262,7 @@ juicier ones to consider.
    PERSONAL_COMMAND   - Disables all $commands on anything they own
 
 
-8.2.10. Site Restrictions
+7.2.10. Site Restrictions
 -------------------------
 
    These are accessable via the @admin command, and the following
@@ -271,7 +271,7 @@ juicier ones to consider.
    You may see all site information at any time with: @list sites
 
 
-8.2.10.1. IP based restrictions
+7.2.10.1. IP based restrictions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    You may use CIDR notation such as /32 instead of 255.255.255.255.
@@ -307,7 +307,7 @@ juicier ones to consider.
       noauth_site      - Site will no longer do AUTH ident lookups
 
 
-8.2.10.2. DNS based restrictions
+7.2.10.2. DNS based restrictions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    These allow globbing wildcard matches. The advanced feature is you
@@ -330,14 +330,14 @@ juicier ones to consider.
       nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site
 
 
-8.3. Methods to block anonymous connections and the pros and cons of doing so
+7.3. Methods to block anonymous connections and the pros and cons of doing so
 =============================================================================
 
    Now let’s assume you have some troll attempting to use proxies to
    connect. There’s multiple ways to stop this.
 
 
-8.3.1. Blacklisting through external tor_pull.sh script
+7.3.1. Blacklisting through external tor_pull.sh script
 -------------------------------------------------------
 
    In ~/Rhost/Server/game you will see a script called tor_pull.sh
@@ -347,7 +347,7 @@ juicier ones to consider.
    to add them at the end of this file.
 
 
-8.3.2. Blacklisting through internal @blacklist command
+7.3.2. Blacklisting through internal @blacklist command
 -------------------------------------------------------
 
    On the mush, have as part of your startup @blacklist/load This will
@@ -355,7 +355,7 @@ juicier ones to consider.
    based on the ip.
 
 
-8.3.3. Blacklisting through internal @tor command
+7.3.3. Blacklisting through internal @tor command
 -------------------------------------------------
 
    @tor.  Please see ‘wizhelp tor’ on how to set this up.  It in
@@ -364,7 +364,7 @@ juicier ones to consider.
    TOR connections.
 
 
-8.3.4. Blacklisting through internal @admin command
+7.3.4. Blacklisting through internal @admin command
 ---------------------------------------------------
 
    @admin proxy_checker (please see wizhelp) This little doodad uses
@@ -378,11 +378,11 @@ juicier ones to consider.
    may be worth considering adding this to add additional protection.
 
 
-8.4. Setting up an SSL tunnel for secure connection options
+7.4. Setting up an SSL tunnel for secure connection options
 ===========================================================
 
 
-8.4.1. Quickstart for SSL setup with stunnel
+7.4.1. Quickstart for SSL setup with stunnel
 --------------------------------------------
 
 1. Modify your netrhost.conf file and add/change the following
@@ -424,7 +424,7 @@ You do not need to shutdown the ssl handler if you shutdown the mush.
 They are entirely separate processes.
 
 
-8.4.2. Detailed SSL setup with stunnel
+7.4.2. Detailed SSL setup with stunnel
 --------------------------------------
 
 To setup SSL connectivity, we use the STUNNEL application to tunnel
@@ -436,7 +436,7 @@ Note: it is assumed you will have already initially set up your
 netrhost.conf.
 
 
-8.4.2.1. stunnel directory
+7.4.2.1. stunnel directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You would set up the stunnel from the ‘stunnel’ directory.  There the
@@ -455,7 +455,7 @@ not have stunnel, this directory will allow you to download, compile
 and locally install.
 
 
-8.4.2.2. Modifying netrhost.conf
+7.4.2.2. Modifying netrhost.conf
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To be able to utilize SSL, you first must set your netrhost.conf file
@@ -478,7 +478,7 @@ Note: the sconnect_host is optional.  If you do not specify it, it
 will default to two values:  ‘localhost’ and ‘127.0.0.1’.
 
 
-8.4.2.3. Running the stunnel setup program
+7.4.2.3. Running the stunnel setup program
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 At this point you’re ready to run the stunnel setup program.  So at
@@ -499,7 +499,7 @@ Be aware that if you have DNS host lookups disabled on your mush, you
 MUST have 127.0.0.1 as an entry for your sconnect_host file.
 
 
-8.4.2.4. Starting the stunnel proxy
+7.4.2.4. Starting the stunnel proxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you have your stunnel.conf file to the way you want, you then
@@ -508,7 +508,7 @@ issue the following command to run your SSL layer:
    ./stunnel_start.sh
 
 
-8.4.2.5. Shutting down the stunnel proxy
+7.4.2.5. Shutting down the stunnel proxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If ever you need to bring down the SSL layer, you may kill it with the
@@ -517,7 +517,7 @@ command:
    ./stunnel_stop.sh
 
 
-8.4.2.6. Configuring firewall on the host
+7.4.2.6. Configuring firewall on the host
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please be aware that the port that the SSL layer is on must be opened

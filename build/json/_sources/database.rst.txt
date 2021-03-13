@@ -7,10 +7,9 @@ Loading an existing Database
 
 To load in a previous database, you run the db_load script.
 
-From the game directory you would type:
+From the game directory you would type::
 
-./db_load data/netrhost.gdbm yourflatfilehere data/netrhost.db.new
-
+  ./db_load data/netrhost.gdbm yourflatfilehere data/netrhost.db.new
 
 .. note::
 
@@ -18,9 +17,9 @@ From the game directory you would type:
    Then you just follow the prompts to load in your flatfile there.
 
 If you wish to have #1's password reset to 'Nyctasia' please add this
-to the bottom of your netrhost.conf file:
+to the bottom of your netrhost.conf file::
 
-newpass_god 777
+   newpass_god 777
 
 The caveat is that you must not have any netrhost.db* or netrhost.gdbm* files
 in your data directory prior to loading it in.  It'll error out if previous
@@ -48,9 +47,9 @@ the latest PennMUSH databases.  Our apologies.
 To convert a non-pennmush game (or a pennmush 1.7.4 or earlier), you first
 need a valid flatfile of the game you're wanting to convert.  Please refer
 to the documentatation of the mush engine in question (MUX, Penn 1.7, TM2/3)
-on how to do this.  Once you have it type:
+on how to do this.  Once you have it type:::
 
-./doconvert.sh FLATFILETOCONVERT FLATFILEOUTPUT
+  ./doconvert.sh FLATFILETOCONVERT FLATFILEOUTPUT
 
 In this instance, FLATFILETOCONVERT will be the filename (with full path) to
 the flatfile you are wishing to convert.
@@ -60,4 +59,3 @@ flatfile.  I suggest netrhost_converted.db.flat so you know by the name
 what it is.
 
 Follow what it asks for and just let it do its thing.
-

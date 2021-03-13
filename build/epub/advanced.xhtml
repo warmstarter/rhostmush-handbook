@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>12. Advanced Features</title>
+    <title>10. Advanced Features</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/epub.css" type="text/css" /> 
   </head><body>
@@ -14,18 +14,18 @@
           <div class="body" role="main">
             
   <div class="section" id="advanced-features">
-<h1><span class="section-number">12. </span>Advanced Features</h1>
+<h1><span class="section-number">10. </span>Advanced Features</h1>
 <div class="section" id="adding-hardcoded-modules">
-<h2><span class="section-number">12.1. </span>Adding hardcoded modules</h2>
+<h2><span class="section-number">10.1. </span>Adding hardcoded modules</h2>
 <p>RhostMUSH does support module writing.</p>
 <div class="section" id="modifying-sourcode-to-add-a-module">
-<h3><span class="section-number">12.1.1. </span>Modifying sourcode to add a module</h3>
+<h3><span class="section-number">10.1.1. </span>Modifying sourcode to add a module</h3>
 <p>This requires hooking your changes into local.c, then modifying the Makefile (in the src directory)
 for any new source files that you wish to add.</p>
 <p>Something to be aware of is that all localized data is ran after the system cache subroutine.</p>
 </div>
 <div class="section" id="adding-an-startup-to-make-use-of-modules">
-<h3><span class="section-number">12.1.2. </span>Adding an &#64;startup to make use of modules</h3>
+<h3><span class="section-number">10.1.2. </span>Adding an &#64;startup to make use of modules</h3>
 <p>This means that if your code is depending on &#64;startups, you need to put a delay in the &#64;startup
 so that your local code can be loaded in as modules prior to the &#64;startup execution.</p>
 <p>Something that will not work:</p>
@@ -39,7 +39,7 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 <p>That 1 second delay for the queue will give the game engine time to load in your module code.</p>
 </div>
 <div class="section" id="contributing-your-module-back-to-rhost">
-<h3><span class="section-number">12.1.3. </span>Contributing your module back to Rhost</h3>
+<h3><span class="section-number">10.1.3. </span>Contributing your module back to Rhost</h3>
 <p>If you wish your modules to be part of the main Rhost distribution you have two options:</p>
 <ol class="arabic simple">
 <li><p>Attempt to hack the bin/asksource.sh and bin/asksource.blank files.</p></li>
@@ -48,9 +48,9 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 </div>
 </div>
 <div class="section" id="shutting-down-gracefully">
-<h2><span class="section-number">12.2. </span>Shutting down gracefully</h2>
+<h2><span class="section-number">10.2. </span>Shutting down gracefully</h2>
 <div class="section" id="rhostmush-has-many-ways-to-shut-down-the-game-cleanly">
-<h3><span class="section-number">12.2.1. </span>Rhostmush has many ways to shut down the game cleanly</h3>
+<h3><span class="section-number">10.2.1. </span>Rhostmush has many ways to shut down the game cleanly</h3>
 <ol class="arabic simple">
 <li><p>Log into the mush and issue &#64;shutdown</p></li>
 <li><p>Issue a kill -USR2 to the mush which issues an emergency &#64;shutdown</p></li>
@@ -58,7 +58,7 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 </ol>
 </div>
 <div class="section" id="warning-never-kill-9-rhost">
-<h3><span class="section-number">12.2.2. </span>WARNING: Never kill -9 Rhost</h3>
+<h3><span class="section-number">10.2.2. </span>WARNING: Never kill -9 Rhost</h3>
 <p>Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t care for the
 database.  The reason is if the mush happens to be saving, in any method, to the
 database, especially a QDBM database, you will likely have just corrupted your
@@ -69,11 +69,11 @@ in the middle of a write, all bets are off. :)</p>
 </div>
 </div>
 <div class="section" id="reality-levels">
-<h2><span class="section-number">12.3. </span>Reality levels</h2>
+<h2><span class="section-number">10.3. </span>Reality levels</h2>
 <p>Reality levels are a means to forbid (or allow) interaction between objects
 in the same location.</p>
 <div class="section" id="visibility">
-<h3><span class="section-number">12.3.1. </span>Visibility</h3>
+<h3><span class="section-number">10.3.1. </span>Visibility</h3>
 <p>Each object (player, room, exit, thing) has two lists of reality levels.
 An Rx list, which describe what it can see and a Tx list, which describe
 where it can be seen. Those are bitfields. In order for X to see Y a bitwise
@@ -91,7 +91,7 @@ An object is always visible to itself, even if its Rx and Tx levels don’t
 match. (See examples below)</p>
 </div>
 <div class="section" id="descriptions">
-<h3><span class="section-number">12.3.2. </span>Descriptions</h3>
+<h3><span class="section-number">10.3.2. </span>Descriptions</h3>
 <p>For every reality level defined, you can define an attribute that serves as
 description. If you look at something and match more than one of its
 TxLevels, you’ll see all the corresponding descriptions on the target
@@ -113,7 +113,7 @@ order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.</p>
 </div>
 <div class="section" id="configuration-parameters">
-<h3><span class="section-number">12.3.3. </span>Configuration parameters</h3>
+<h3><span class="section-number">10.3.3. </span>Configuration parameters</h3>
 <p>A few configuration parameters have been introduced to deal with the reality
 levels:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">desc</span> <span class="n">attribute</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
@@ -152,7 +152,7 @@ This is an example file only to be added to the mush.conf file Format:</p>
 </div>
 </div>
 <div class="section" id="example-mush-conf">
-<h3><span class="section-number">12.3.4. </span>Example mush.conf</h3>
+<h3><span class="section-number">10.3.4. </span>Example mush.conf</h3>
 <p>reality_level Real 1
 reality_level Obf1 2
 reality_level Obf2 4
@@ -172,7 +172,7 @@ reality_level Death 32768 DEATHDESC
 reality_level All 4294967295</p>
 </div>
 <div class="section" id="commands">
-<h3><span class="section-number">12.3.5. </span>Commands</h3>
+<h3><span class="section-number">10.3.5. </span>Commands</h3>
 <p>Two wiz-only commands are used to set the reality levels of an object:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@rxlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
 <span class="nd">@txlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
@@ -189,7 +189,7 @@ for players).</p>
 </div>
 </div>
 <div class="section" id="functions">
-<h3><span class="section-number">12.3.6. </span>Functions</h3>
+<h3><span class="section-number">10.3.6. </span>Functions</h3>
 <p>There are five functions that deal with reality levels:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hasrxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="n">hastxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
@@ -219,7 +219,7 @@ version checks against the DARK flag.</p>
 </div>
 </div>
 <div class="section" id="example-1-a-simplified-witchcraft-setup">
-<h3><span class="section-number">12.3.7. </span>Example 1: A simplified Witchcraft setup</h3>
+<h3><span class="section-number">10.3.7. </span>Example 1: A simplified Witchcraft setup</h3>
 <p>In Witchcraft, besides the various Gifted classes, characters can be spirits
 There are spirit realms to which the mundane can not travel. Therefore we
 will use 2 reality levels: Real and Ghost. Since some spirits can become
@@ -332,7 +332,7 @@ Frank.                  <a href="#id61"><span class="problematic" id="id62">|</s
 </div></blockquote>
 </div>
 <div class="section" id="example-2-a-wod-setup">
-<h3><span class="section-number">12.3.8. </span>Example 2: A WoD setup</h3>
+<h3><span class="section-number">10.3.8. </span>Example 2: A WoD setup</h3>
 <p>The reality levels will be defined like this:
 reality_level           Real 1
 reality_level           Obf1 2
@@ -405,7 +405,7 @@ Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</p>
 RxLevel: All, TxLevel: All</p>
 </div>
 <div class="section" id="example-3-softcode">
-<h3><span class="section-number">12.3.9. </span>Example 3: Softcode</h3>
+<h3><span class="section-number">10.3.9. </span>Example 3: Softcode</h3>
 <p>Considering the config directives from example 2 and assuming a function
 getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player’s stat from
 the sheet here are softcode examples that implement some of the WoD powers.
@@ -439,11 +439,11 @@ txlevel(%#))]; &#64;pemit %#=You are no longer peeking.</p>
 </div>
 </div>
 <div class="section" id="execscript-and-external-programs-and-scripts">
-<h2><span class="section-number">12.4. </span>Execscript and external programs and scripts</h2>
+<h2><span class="section-number">10.4. </span>Execscript and external programs and scripts</h2>
 <div class="section" id="mush-variables">
-<h3><span class="section-number">12.4.1. </span>Mush variables</h3>
+<h3><span class="section-number">10.4.1. </span>Mush variables</h3>
 <div class="section" id="built-in-variables">
-<h4><span class="section-number">12.4.1.1. </span>Built in variables</h4>
+<h4><span class="section-number">10.4.1.1. </span>Built in variables</h4>
 <p>Variable                   Description
 MUSH_PLAYER                player dbref#
 MUSH_CAUSE                 cause dbref#
@@ -459,14 +459,14 @@ MUSHL_VARS                 space delimited list of MUSH attributes from player</
 </div></blockquote>
 </div>
 <div class="section" id="dynamic-variables">
-<h4><span class="section-number">12.4.1.2. </span>Dynamic variables</h4>
+<h4><span class="section-number">10.4.1.2. </span>Dynamic variables</h4>
 <dl class="simple">
 <dt>MUSHV_&lt;arg&gt;                &lt;arg&gt; variable passed from MUSHL_VARS</dt><dd><p>These are the attributes from EXECSCRIPT_VARS</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="register-variables">
-<h4><span class="section-number">12.4.1.3. </span>Register variables</h4>
+<h4><span class="section-number">10.4.1.3. </span>Register variables</h4>
 <p>MUSHQ_&lt;arg&gt;                setq registers 0-9 and a-z
 MUSHQN_&lt;arg&gt;               labels that are assigned the setq vars
 MUSHN_&lt;arg&gt;                The labels that were defined by any register</p>
@@ -476,18 +476,18 @@ MUSHN_&lt;arg&gt;                The labels that were defined by any register</p
 </div>
 </div>
 <div class="section" id="set-object">
-<h3><span class="section-number">12.4.2. </span>set object</h3>
+<h3><span class="section-number">10.4.2. </span>set object</h3>
 <p>The script executed with execscript() will read in a file with the same name
 as the script ending in ‘.set’.  This is a loader object that will set attributes
 and registers back into the mush that you wish to pass from the script. The
 fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 <div class="section" id="the-format-of-the-fields-are">
-<h4><span class="section-number">12.4.2.1. </span>The format of the fields are</h4>
+<h4><span class="section-number">10.4.2.1. </span>The format of the fields are</h4>
 <div class="section" id="id65">
-<h5><span class="section-number">12.4.2.1.1. </span>Dynamic variables</h5>
+<h5><span class="section-number">10.4.2.1.1. </span>Dynamic variables</h5>
 <p>VARNAME        OWNER        CONTENTS (or leave null to clear)</p>
 <div class="section" id="examples">
-<h6><span class="section-number">12.4.2.1.1.1. </span>Examples</h6>
+<h6><span class="section-number">10.4.2.1.1.1. </span>Examples</h6>
 <p>SEX #123 Male
 DESC #123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.
 RED #123 This is the color %ch%crred%cn.
@@ -499,10 +499,10 @@ on the lines above</p>
 </div>
 </div>
 <div class="section" id="id66">
-<h5><span class="section-number">12.4.2.1.2. </span>Register variables</h5>
+<h5><span class="section-number">10.4.2.1.2. </span>Register variables</h5>
 <p>REGISTER       Q            CONTENTS (or leave null to clear)</p>
 <div class="section" id="examples-the-last-example-clears-register-0">
-<h6><span class="section-number">12.4.2.1.2.1. </span>Examples (The last example clears register 0)</h6>
+<h6><span class="section-number">10.4.2.1.2.1. </span>Examples (The last example clears register 0)</h6>
 <p>W Q This is stored in register W
 1 Q This is stored in register 1
 0 Q
@@ -512,7 +512,7 @@ foo QN this sets register with label ‘foo’</p>
 </div>
 </div>
 <div class="section" id="example-bash-script">
-<h3><span class="section-number">12.4.3. </span>Example bash script</h3>
+<h3><span class="section-number">10.4.3. </span>Example bash script</h3>
 <p>#!/bin/bash
 echo “This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}”
 echo “Displaying Registers:”
@@ -532,7 +532,7 @@ do</p>
 <p>done</p>
 </div>
 <div class="section" id="notes-and-warnings">
-<h3><span class="section-number">12.4.4. </span>Notes and warnings</h3>
+<h3><span class="section-number">10.4.4. </span>Notes and warnings</h3>
 <p>While MUSHL_VARS are sanitized on what is allowable as a mush variable, this
 is not necessarilly sanitized on what the calling script can fetch as a valid
 variable.  Of note, you can not set environment variables that contain an
@@ -542,7 +542,7 @@ This is EXECSCRIPT_VARS on the mush itself, that is the attribute set
 on the target that contains the execscript() that is being executed.</p>
 </div>
 <div class="section" id="scripts-to-be-used-with-execscript">
-<h3><span class="section-number">12.4.5. </span>Scripts to be used with execscript</h3>
+<h3><span class="section-number">10.4.5. </span>Scripts to be used with execscript</h3>
 <p>account/                       – Directory for execscripts relating to account creation
 compile39.sh                   – Script for patching and compiling RhostMUSH 3.9
 compile.sh                     – Script for patching and compiling RhostMUSH
@@ -576,11 +576,11 @@ web.sh                         – Script for querying an arbitary website</p>
 </div>
 </div>
 <div class="section" id="using-printf-for-advanced-text-output">
-<h2><span class="section-number">12.5. </span>Using printf() for advanced text output</h2>
+<h2><span class="section-number">10.5. </span>Using printf() for advanced text output</h2>
 <p>The function printf() in Rhost can be used to greatly reduce coding in efforts for outputs,
 screens and data display.  It can automatically center, justify and wrap the text parameters given to it.</p>
 <div class="section" id="example-one">
-<h3><span class="section-number">12.5.1. </span>Example one</h3>
+<h3><span class="section-number">10.5.1. </span>Example one</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf(|$-12s|$12s|$^12s$&amp;14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
 
 |a b c       |       d e f|   g h i    |0 1 2 3 4 5 |j     k    l|
@@ -592,7 +592,7 @@ screens and data display.  It can automatically center, justify and wrap the tex
 </div>
 </div>
 <div class="section" id="example-two">
-<h3><span class="section-number">12.5.2. </span>Example two</h3>
+<h3><span class="section-number">10.5.2. </span>Example two</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  @emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
   iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
   iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
@@ -609,7 +609,7 @@ Incapacitated      [ ]
 </div>
 </div>
 <div class="section" id="example-three">
-<h3><span class="section-number">12.5.3. </span>Example three</h3>
+<h3><span class="section-number">10.5.3. </span>Example three</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit [printf($-10|&quot;&#39;s$-60|&quot;s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
 this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!
 
@@ -628,7 +628,7 @@ blah blah blah blah blah blah blah                                    END!
 </div>
 </div>
 <div class="section" id="format-for-image-files">
-<h1><span class="section-number">13. </span>Format for image files</h1>
+<h1><span class="section-number">11. </span>Format for image files</h1>
 <p>The image format goes like this:</p>
 <p>Data Type  Example  Description
 ———  ——-  ———————————————————-
@@ -700,7 +700,7 @@ Ugly
 $6$xy$xy
 &lt;</p>
 <div class="section" id="help-key-indexes-for-the-values">
-<h2><span class="section-number">13.1. </span>HELP key indexes for the values:</h2>
+<h2><span class="section-number">11.1. </span>HELP key indexes for the values:</h2>
 <dl class="simple">
 <dt>FLAGS: The following flags are to be used.  They are BITWISE masks that you</dt><dd><p>need to add together for the values tghat you apply</p>
 </dd>

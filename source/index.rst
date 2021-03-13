@@ -1,8 +1,7 @@
 .. RhostMUSH Handbook documentation master file
 
-====================
- RhostMUSH Handbook
-====================
+RhostMUSH Handbook
+==================
 
 The RhostMUSH source tree offers many abilities and options
 not normally found in any other flavor of mush.  This doesn't
@@ -10,9 +9,6 @@ make it better than other servers (though we think so *j/k*)
 but it does give you a wider selection of configurability,
 which, as you know, is the best part of setting up a mush.
 (yea, right)
-
-RhostMUSH offers the following over other mushes
-================================================
 
 *  A high-performance duel-quota system.
 *  A complete rewrite of key areas and referbishments of all the other areas.
@@ -35,15 +31,14 @@ RhostMUSH offers the following over other mushes
    install.rst
    features.rst
    differences.rst
-   installation.rst
    database.rst
    gettingstarted.rst
    toggles.rst
    security.rst
    maintenance.rst
    troubleshooting.rst
-   upgrade.rst
    advanced.rst
+   legacy.rst
 
    flags.rst
    powers.rst
@@ -61,5 +56,4 @@ Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`

@@ -1,14 +1,14 @@
-12. Advanced Features
+10. Advanced Features
 *********************
 
 
-12.1. Adding hardcoded modules
+10.1. Adding hardcoded modules
 ==============================
 
 RhostMUSH does support module writing.
 
 
-12.1.1. Modifying sourcode to add a module
+10.1.1. Modifying sourcode to add a module
 ------------------------------------------
 
 This requires hooking your changes into local.c, then modifying the
@@ -19,7 +19,7 @@ Something to be aware of is that all localized data is ran after the
 system cache subroutine.
 
 
-12.1.2. Adding an @startup to make use of modules
+10.1.2. Adding an @startup to make use of modules
 -------------------------------------------------
 
 This means that if your code is depending on @startups, you need to
@@ -38,7 +38,7 @@ That 1 second delay for the queue will give the game engine time to
 load in your module code.
 
 
-12.1.3. Contributing your module back to Rhost
+10.1.3. Contributing your module back to Rhost
 ----------------------------------------------
 
 If you wish your modules to be part of the main Rhost distribution you
@@ -49,11 +49,11 @@ have two options:
 2. Ask one of the Rhost devs to do it for you :)
 
 
-12.2. Shutting down gracefully
+10.2. Shutting down gracefully
 ==============================
 
 
-12.2.1. Rhostmush has many ways to shut down the game cleanly
+10.2.1. Rhostmush has many ways to shut down the game cleanly
 -------------------------------------------------------------
 
 1. Log into the mush and issue @shutdown
@@ -64,7 +64,7 @@ have two options:
    clean shutdown.
 
 
-12.2.2. WARNING: Never kill -9 Rhost
+10.2.2. WARNING: Never kill -9 Rhost
 ------------------------------------
 
 Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t
@@ -79,14 +79,14 @@ while up, but if it bombs in the middle of a write, all bets are off.
 :)
 
 
-12.3. Reality levels
+10.3. Reality levels
 ====================
 
 Reality levels are a means to forbid (or allow) interaction between
 objects in the same location.
 
 
-12.3.1. Visibility
+10.3.1. Visibility
 ------------------
 
 Each object (player, room, exit, thing) has two lists of reality
@@ -107,7 +107,7 @@ parameters. An object is always visible to itself, even if its Rx and
 Tx levels don’t match. (See examples below)
 
 
-12.3.2. Descriptions
+10.3.2. Descriptions
 --------------------
 
 For every reality level defined, you can define an attribute that
@@ -136,7 +136,7 @@ enactor in turn. There are reasons for this, which will become evident
 in the examples below.
 
 
-12.3.3. Configuration parameters
+10.3.3. Configuration parameters
 --------------------------------
 
 A few configuration parameters have been introduced to deal with the
@@ -179,7 +179,7 @@ mush.conf file Format:
    reality_level <8 char name> <hex-byte-mask> <optional-desc: DESC default>
 
 
-12.3.4. Example mush.conf
+10.3.4. Example mush.conf
 -------------------------
 
 reality_level Real 1 reality_level Obf1 2 reality_level Obf2 4
@@ -192,7 +192,7 @@ reality_level Shadow 8192 SHADOWDESC reality_level Spy 16384
 reality_level Death 32768 DEATHDESC reality_level All 4294967295
 
 
-12.3.5. Commands
+10.3.5. Commands
 ----------------
 
 Two wiz-only commands are used to set the reality levels of an object:
@@ -211,7 +211,7 @@ Warning:
   *player for players).
 
 
-12.3.6. Functions
+10.3.6. Functions
 -----------------
 
 There are five functions that deal with reality levels:
@@ -243,7 +243,7 @@ Warning:
   Realms version checks against the DARK flag.
 
 
-12.3.7. Example 1: A simplified Witchcraft setup
+10.3.7. Example 1: A simplified Witchcraft setup
 ------------------------------------------------
 
 In Witchcraft, besides the various Gifted classes, characters can be
@@ -333,7 +333,7 @@ looked at you. Frank.                  >>|<<This is Frank, looking |
    |
 
 
-12.3.8. Example 2: A WoD setup
+10.3.8. Example 2: A WoD setup
 ------------------------------
 
 The reality levels will be defined like this: reality_level
@@ -415,7 +415,7 @@ Global code objects that all characters should be able to use:
 RxLevel: All, TxLevel: All
 
 
-12.3.9. Example 3: Softcode
+10.3.9. Example 3: Softcode
 ---------------------------
 
 Considering the config directives from example 2 and assuming a
@@ -451,15 +451,15 @@ rls=$+peek/off:@rxlevel %#=!Real !Umbra [setinter(Real Umbra,
 txlevel(%#))]; @pemit %#=You are no longer peeking.
 
 
-12.4. Execscript and external programs and scripts
+10.4. Execscript and external programs and scripts
 ==================================================
 
 
-12.4.1. Mush variables
+10.4.1. Mush variables
 ----------------------
 
 
-12.4.1.1. Built in variables
+10.4.1.1. Built in variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Variable                   Description MUSH_PLAYER
@@ -475,14 +475,14 @@ attributes from player
    This is passed from the mush’s EXECSCRIPT_VARS attr
 
 
-12.4.1.2. Dynamic variables
+10.4.1.2. Dynamic variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 MUSHV_<arg>                <arg> variable passed from MUSHL_VARS
    These are the attributes from EXECSCRIPT_VARS
 
 
-12.4.1.3. Register variables
+10.4.1.3. Register variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 MUSHQ_<arg>                setq registers 0-9 and a-z MUSHQN_<arg>
@@ -492,7 +492,7 @@ labels that were defined by any register
    Note: they must be ASCII-7 clean and contain no white spaces
 
 
-12.4.2. set object
+10.4.2. set object
 ------------------
 
 The script executed with execscript() will read in a file with the
@@ -502,17 +502,17 @@ wish to pass from the script. The fields are SPACE SEPARATED.  The
 values are NOT evaluated.
 
 
-12.4.2.1. The format of the fields are
+10.4.2.1. The format of the fields are
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-12.4.2.1.1. Dynamic variables
+10.4.2.1.1. Dynamic variables
 """""""""""""""""""""""""""""
 
 VARNAME        OWNER        CONTENTS (or leave null to clear)
 
 
-12.4.2.1.1.1. Examples
+10.4.2.1.1.1. Examples
 ++++++++++++++++++++++
 
 SEX #123 Male DESC #123 %r%tThis is a willow tree of unique
@@ -522,20 +522,20 @@ continues on because of the line feed (a control-M) on each line on
 the lines above
 
 
-12.4.2.1.2. Register variables
+10.4.2.1.2. Register variables
 """"""""""""""""""""""""""""""
 
 REGISTER       Q            CONTENTS (or leave null to clear)
 
 
-12.4.2.1.2.1. Examples (The last example clears register 0)
+10.4.2.1.2.1. Examples (The last example clears register 0)
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 W Q This is stored in register W 1 Q This is stored in register 1 0 Q
 foo QN this sets register with label ‘foo’
 
 
-12.4.3. Example bash script
+10.4.3. Example bash script
 ---------------------------
 
 #!/bin/bash echo “This was called by player ${MUSH_PLAYER} that is
@@ -552,7 +552,7 @@ done echo “Displaying variables:” for vars in ${MUSHL_VARS} do
 done
 
 
-12.4.4. Notes and warnings
+10.4.4. Notes and warnings
 --------------------------
 
 While MUSHL_VARS are sanitized on what is allowable as a mush
@@ -566,7 +566,7 @@ This is EXECSCRIPT_VARS on the mush itself, that is the attribute set
 on the target that contains the execscript() that is being executed.
 
 
-12.4.5. Scripts to be used with execscript
+10.4.5. Scripts to be used with execscript
 ------------------------------------------
 
 account/                       – Directory for execscripts relating to
@@ -603,7 +603,7 @@ weather forecast web.sh                         – Script for querying
 an arbitary website
 
 
-12.5. Using printf() for advanced text output
+10.5. Using printf() for advanced text output
 =============================================
 
 The function printf() in Rhost can be used to greatly reduce coding in
@@ -611,7 +611,7 @@ efforts for outputs, screens and data display.  It can automatically
 center, justify and wrap the text parameters given to it.
 
 
-12.5.1. Example one
+10.5.1. Example one
 -------------------
 
    @emit printf(|$-12s|$12s|$^12s$&14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
@@ -623,7 +623,7 @@ center, justify and wrap the text parameters given to it.
                                           |19          |
 
 
-12.5.2. Example two
+10.5.2. Example two
 -------------------
 
      @emit printf($14&s $^4&s $-3&s $15&s,
@@ -640,7 +640,7 @@ center, justify and wrap the text parameters given to it.
    Incapacitated      [ ]
 
 
-12.5.3. Example three
+10.5.3. Example three
 ---------------------
 
    @emit [printf($-10|"'s$-60|"s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
@@ -657,7 +657,7 @@ center, justify and wrap the text parameters given to it.
    blah blah blah blah blah blah blah                                    END!
 
 
-13. Format for image files
+11. Format for image files
 **************************
 
 The image format goes like this:
@@ -717,7 +717,7 @@ file:
 Wheee >Desc Ugly >*Password $6$xy$xy <
 
 
-13.1. HELP key indexes for the values:
+11.1. HELP key indexes for the values:
 ======================================
 
 FLAGS: The following flags are to be used.  They are BITWISE masks

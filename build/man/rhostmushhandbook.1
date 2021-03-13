@@ -37,7 +37,6 @@ make it better than other servers (though we think so \fIj/k\fP)
 but it does give you a wider selection of configurability,
 which, as you know, is the best part of setting up a mush.
 (yea, right)
-.SH RHOSTMUSH OFFERS THE FOLLOWING OVER OTHER MUSHES
 .INDENT 0.0
 .IP \(bu 2
 A high\-performance duel\-quota system.
@@ -60,7 +59,7 @@ Many new functions and commands not seen anywhere else.
 .IP \(bu 2
 A lot more that could drag this document out for pages.
 .UNINDENT
-.SS Installing RhostMUSH
+.SH INSTALLING RHOSTMUSH
 .SS Table of Contents
 .INDENT 0.0
 .IP \(bu 2
@@ -86,9 +85,97 @@ A lot more that could drag this document out for pages.
 .UNINDENT
 .IP \(bu 2
 \fI\%Hosting Requirements\fP
+.IP \(bu 2
+\fI\%Requirements if Using Windows\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%Installing on Windows 10 with BASH\fP
+.IP \(bu 2
+\fI\%Installing on Windows with Cygwin\fP
+.IP \(bu 2
+\fI\%Startig RhostMUSH on Windows\fP
+.UNINDENT
 .UNINDENT
 .IP \(bu 2
 \fI\%Obtaining RhostMUSH\fP
+.IP \(bu 2
+\fI\%Compiling RhostMush\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%Setup directory permissions\fP
+.IP \(bu 2
+\fI\%Compile the source code\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%The confsource Menu\fP
+.UNINDENT
+.IP \(bu 2
+\fI\%Note about Compiling\fP
+.IP \(bu 2
+\fI\%Note about Recompiling\fP
+.UNINDENT
+.IP \(bu 2
+\fI\%Installing using an ansible playbook\fP
+.IP \(bu 2
+\fI\%Starting a Newly Compiled MUSH\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%Configuring the game\fP
+.IP \(bu 2
+\fI\%Starting the game\fP
+.IP \(bu 2
+\fI\%First login to the game\fP
+.UNINDENT
+.IP \(bu 2
+\fI\%Creating RHostMUSH with a Provided DB\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%Important before you actually start building\fP
+.IP \(bu 2
+\fI\%Using the prebuilt flatfile\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%To load a prebuilt flatfile\fP
+.UNINDENT
+.UNINDENT
+.IP \(bu 2
+\fI\%Almost Backwards Instructions for Compiling and Starting a MUSH\fP
+.IP \(bu 2
+\fI\%Basic Instructions for starting a new RhostMUSH\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%Manual configuration of source code\fP
+.IP \(bu 2
+\fI\%Loading a database for your MUSH\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%Option: Only perform these steps if using a provided database\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%Configure the netrhost.conf file for your MUSH\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.IP \(bu 2
+\fI\%Start a  MUSH and logging on for the first time\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%Option: Things to do once you have connected if you did NOT use a provided database\fP
+.UNINDENT
+.IP \(bu 2
+\fI\%Customtize the textfiles for your game\fP
+.IP \(bu 2
+\fI\%Three Options for Starting a MUSH\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%Option 1: Creating a new game with a blank database\fP
+.IP \(bu 2
+\fI\%Options 2: Creating a new game with Ambrosia’s default database\fP
+.IP \(bu 2
+\fI\%Option 3: Creating a new game with the generic default database\fP
+.UNINDENT
+.IP \(bu 2
+\fI\%Starting your MUSH\fP
 .UNINDENT
 .SS RhostMUSH Requirements
 .SS System Requirements
@@ -193,6 +280,64 @@ Most games choose a number between 1025 and 9999, by convention.
 Please make sure your debug_id matches the port number + 5.
 So if your port is 1234, your debug_id will be 12345.
 The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
+.SS Requirements if Using Windows
+.SS Installing on Windows 10 with BASH
+.sp
+Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
+This has been tested with the Preview build 14342.
+.INDENT 0.0
+.IP 1. 3
+After installing Bash you will need to install the following packages:
+.INDENT 3.0
+.IP \(bu 2
+gcc
+.IP \(bu 2
+git
+.IP \(bu 2
+make
+.IP \(bu 2
+libpcre3 (optional)
+.IP \(bu 2
+libpcre3\-dev (optional)
+.IP \(bu 2
+openssl (optional)
+.UNINDENT
+.UNINDENT
+.sp
+2. When configuring rhost (using confsource) select the Disable Debugmon
+option.
+.INDENT 0.0
+.IP 3. 3
+When you issue Startmush, you must pass the \-cyg option.
+.UNINDENT
+.SS Installing on Windows with Cygwin
+.sp
+Rhost does work under windows using the cygwin package.
+.INDENT 0.0
+.IP 1. 3
+When you do install cygwin, the following packages must be added:
+.INDENT 3.0
+.IP \(bu 2
+bash
+.IP \(bu 2
+crypt
+.IP \(bu 2
+gcc
+.IP \(bu 2
+gdbm
+.IP \(bu 2
+git
+.IP \(bu 2
+make
+.IP \(bu 2
+openssl (optional)
+.UNINDENT
+.IP 2. 3
+The src/Makefile has to manually have the CYGWIN line uncommented.
+.UNINDENT
+.SS Startig RhostMUSH on Windows
+.sp
+When you issue Startmush, you must pass it the \-cyg option.
 .SS Obtaining RhostMUSH
 .sp
 It is assumed that you have gotten to this point with the following command:
@@ -221,7 +366,580 @@ chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
 .sp
 This makes sure all the build scripts are properly made executable.
 This will result in ‘permission denied’ or similar results when running a script.
-.SS What RhostMUSH is about and what’s so great about RhostMUSH
+.SS Compiling RhostMush
+.SS Setup directory permissions
+.sp
+Run the supplied directory permission script:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./dirsetup.sh
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+This is a simple script that will change file permissions
+and directory permissions to properly protect RhostMUSH.
+These settings generally work fine out of the box so
+you likely won’t even have to set this up if you don’t want to.
+.SS Compile the source code
+.sp
+Make and run the RhostMUSH source:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+make confsource
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+If you get an error running the script itself:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./bin/script_setup.sh
+make confsource
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS The confsource Menu
+.sp
+This will bring up a menu where you can selection options.
+.sp
+You may also issue ‘make source’ if the Makefile is already defined how
+you want it to be.  Please remember to ‘make clean’ before ‘make source’
+whenever you alter the code or import new source code.
+.sp
+After the compile process is done, you should be good to go.
+If it complains about missing binaries make sure they are linked:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+make links
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Note about Compiling
+.sp
+If your binaries do not work or you get an error type:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./bin/script_setup.sh
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Then type:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+make confsource
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+If you are importing a MUX2 flatfile, make ABSOLUTELY SURE that you select
+mux passwords as a compatibility option, or you will NOT BE ABLE to log in
+to players as the password will not be recognizeable.
+.sp
+Make sure to keep QDBM selected as it’s a much more stable database engine
+that does not have attribute limit restrictions like GDBM does.
+.sp
+If you are converting from a Penn, TinyMUSH, or MUX database, make sure you
+drill down into the LBUF section and select, at minimum, 8K lbufs.  You likely
+want that anyway as it gives you far more room for attribute content storage.
+.sp
+You can go up to 32K safely.  While 64k is safe and does work, there are issues
+with networking and older routers that use a 32K TCP buffer size that can
+at times cut off the data as overflow resulting in output to the end\-point
+players not receiving their data.  So it is strongly recommended not to go
+above 32K in lbuffer size.
+.sp
+Go ahead and select 64 char attributes.  It allows you to have 64 characters
+for attribute names.  It’s handy to have.
+.sp
+If you wish at this point to set up mysql and/or sqlite, you  may do so.
+Yes, you can use them in parallel without any issue.
+.SS Note about Recompiling
+.sp
+If you plan to use ‘make confsource’ to recompile your source, you should first
+issue a ‘make clean’ before re\-issuing a ‘make confsource’.  ‘make confsource’
+remembers the last options you used.
+.sp
+A failure to issue ‘make clean’ prior to re\-compiling with ‘make confsource’ or
+re\-compiling with ‘make source’ can potentially leave stale object files which
+may cause unforseen issues when running code, including but not limited to
+random crashes.  Generally whenever recompiling it’s good to always make clean
+first.
+.SS Installing using an ansible playbook
+.sp
+To begin, you will run the following command in a directory that will house your game:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+git clone https://github.com/RhostMUSH/trunk Rhost
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+You may also just run the yml file and ansible (ansible\-playbook) to install your RhostMUSH engine:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml
+ansible\-playbook rhostinstall.yml
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+This downloads the latest stable version of the code, bringing with it all patches and scripts, documentation and support tools that you will need.
+.SS Starting a Newly Compiled MUSH
+.SS Configuring the game
+.sp
+When setting up a mush for the first time, make sure you
+have all the files configured correctly.  This is with using
+the following file for configuration:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\- netrhost.conf
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Starting the game
+.sp
+Once done, you start up the system with the following command:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+ \- [sh/csh] ./Startmush
+
+It will prompt you to start a new db if it doesn\(aqt find one.
+
+You may also do the commands individually::
+
+   [csh] netrhost \-s netrhost.conf >& netrhost.log &
+   [sh]  netrhost \-s netrhost.conf > netrhost.log 2>&1 &
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS First login to the game
+.sp
+Once started, log in the #1 character (Wizard) with it’s appropiate
+password (no, not ‘potrzebie’, but ‘Nyctasia’).  There were private
+reasons for the password change.
+.sp
+Once in, do a @shutdown to save the database.  Then you can run Startup
+normally.   You may make a backup of your database at anytime on\-line by
+utilizing the @dump/flat option.  A script comes with this distribution
+that allows the ability of auto\-archiving your database for a configurable
+number of backups.
+.SS Creating RHostMUSH with a Provided DB
+.SS Important before you actually start building
+.sp
+The main parts of making your RhostMUSH, easy pleasy:
+.INDENT 0.0
+.IP 1. 3
+The stunnel directory contains TLS/SSL connectivity.  This has to be linked to another port and will tunnel to the mush port.  The README file explains how to set up and configure your TLS/SSL connection.
+.IP 2. 3
+\&./patch.sh – This makes sure you have the latest code.  If you got this by git clone \fI\%https://github.com/RhostMUSH/trunk\fP then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.
+.IP 3. 3
+make confsource.  Yup, it’s menu driven, nifty eh?
+.INDENT 3.0
+.IP 1. 4
+Options you may want to select (other than the defaults):
+.IP 2. 4
+5  (%c is selected by default, but choose %x as well for MUX/TM3 compat)
+.IP 3. 4
+9  (if you want $commands to require the COMMAND flag)
+.IP 4. 4
+16 (if you want a wider WHO listing like older versions of MUX)
+.IP 5. 4
+22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
+.IP 6. 4
+24 (if you have issues with \-lssl not being found)
+.IP 7. 4
+B3 (for 64 character attribute names)
+.IP 8. 4
+B6 (select 8K for Penn/MUX2/TM3 default, up to 32K.  64K is network intensive)
+.IP 9. 4
+B5 (will be autoselected if you choose 8K or more.  Pick this anyway)
+.IP 10. 4
+B4 (if you have sqlite libraries and wish to use this)
+.UNINDENT
+.IP 4. 3
+‘r’ to compile with the settings you selected.
+.IP 5. 3
+Modify your netrhost.conf file as specified.  Make sure to align your port and debug_id as shown in the netrhost.conf file.
+.IP 6. 3
+If you wish to port in an old flatfile, please refer to the readme directory on how to port your flatfile in (README.DBLOADING).
+.UNINDENT
+.SS Using the prebuilt flatfile
+.sp
+There are pre\-loaded flatfile databases you can use at this point.  The netrhost.db.flat
+and corrisponding netrhost.conf file will be located in the minimal\-DBs/minimal_db directory.
+.sp
+You may auto\-load the minimal db and corresponding netrhost.conf file with the command:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./minimal.sh
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+This is ran from within the ‘game’ directory.  Once this is ran, you will need
+to customize the netrhost.conf file for your purposes.  The port and debug_id must
+be changed at the very least.  Keep the debug_id coordinated to the port as described.
+.SS To load a prebuilt flatfile
+.INDENT 0.0
+.IP 1. 3
+Make a backup of your existing netrhost.conf file:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+cp game/netrhost.conf game/netrhost.conf.backup
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP 2. 3
+Copy the netrhost.conf file into your game directory:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+cp \-f ./minimal\-DBs/minimal_db/netrhost.conf ./game/netrhost.conf
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP 3. 3
+At this point you can modify your netrhost.conf file settings in your game directory.
+Using an editor modify the ‘port’ and ‘debug_id’ respectively in your netrhost.conf as state.
+The ‘port’ will be the port the mush listens on, the debug_id is for the debug\-stack and is
+your port with a ‘5’ at the end.  So if your port is 4444, the debug_id is 44445
+.IP 4. 3
+Load in the flatfile into the mush (You could do this in the Startmush as well)
+Manually:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+cd game
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+\&./db_load data/netrhost.gdbm ../minimal\-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF
+.sp
+Start your mush:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./Startmush
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+This will load the db that you loaded.
+.sp
+—————OR——\-
+.sp
+From Startmush when prompted, hit <RETURN> for searching then select the number of the netrhost.db.flat that is listed as ~/minimal\-DBs/minimal_db/netrhost.db.flat:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./Startmush
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Almost Backwards Instructions for Compiling and Starting a MUSH
+.INDENT 0.0
+.IP 1. 3
+You can modify your netrhost.conf file settings in your game directory.
+Using an editor modify the ‘port’ and ‘debug_id’ respectively in your netrhost.conf as stated.
+The ‘port’ will be the port the mush listens on, the debug_id is for the debug\-stack and is
+your port with a ‘5’ at the end.  So if your port is 4444, the debug_id is 44445
+.IP 2. 3
+Start your mush:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\-\-> ./Startmush
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+You can use the ‘vi’ editor or ‘nano’ if you like a more menu driven DOS like experience.
+You can of course use any other editor you’re familar with.
+.sp
+For a more thorough understanding of how to set things up, keep reading!
+.sp
+If you have syntax issues running ‘make config’, ‘make confsource’
+or ‘make bugreport’ please run the script: ./bin/script_setup.sh
+.sp
+Now… things you may need to do on errors.
+.SS Basic Instructions for starting a new RhostMUSH
+.SS Manual configuration of source code
+.sp
+To do manual configuration (skip if the previous step worked for you) And yes, this is a bit of a pain in the bottom, hopefully you will not need this.
+.sp
+You need the following definitions defined to make this work:
+.INDENT 0.0
+.IP 1. 3
+TINY_U, USE_SIDEEFFECTS, MUX_INCDEC, ATTR_HACK
+.IP 2. 3
+(u()/u2() switched)
+.IP 3. 3
+(sideeffects)
+.IP 4. 3
+(inc()/xinc() switched)
+.IP 5. 3
+(support for _/~ attribs)
+.UNINDENT
+.sp
+You only need to do this if you received the RhostMUSH src.  If you received a binary, continue on to the next part.
+.sp
+To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand\-edit the Makefile.
+.sp
+After the compile process is done, type ‘make links’!
+.SS Loading a database for your MUSH
+.sp
+You now have a choice of optionally starting at a provided database or starting from scratch.
+.SS Option: Only perform these steps if using a provided database
+.sp
+Copy an existing flatfile and corresponding netrhost.conf file Default provied example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+cp game/netrhost.conf game/netrhost.conf.backup
+cp \-f minimal\-DBs/minimal_db/netrhost.conf game/netrhost.conf
+cd game
+\&./db_load data/netrhost.gdbm ../minimal\-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Configure the netrhost.conf file for your MUSH
+.INDENT 0.0
+.INDENT 3.5
+Go into the game directory and modify the netrhost.conf file
+The next step is configuring the mush to your config standards.
+There is a file in the game subdirectory called ‘netrhost.conf’.
+You hand\-edit this file and just follow what it says each
+one does.  It’s very well documented and should give you
+great details on what to edit.  For most things, you can
+feel comfortable to stick with the defaults unless you wish
+to change them.  The port and debug_id need to be changed.
+.UNINDENT
+.UNINDENT
+.SS Start a  MUSH and logging on for the first time
+.sp
+From the game diretory issue:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./Startmush
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+To login:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+co Wizard Nyctasia
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Option: Things to do once you have connected if you did NOT use a provided database
+.INDENT 0.0
+.IP 1. 3
+@dig your master room and in your netrhost.conf file define master_room to this dbref (without the #.  So like master_room 2)
+.IP 2. 3
+Create an immortal holder charater (@pcreate then @set immortal) Feel free to set up holder characters for all the bittypes which are: GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL
+.IP 3. 3
+@chown/preserve the master room and #0 to the immortal holder character.
+.IP 4. 3
+Log into the immortal character
+.IP 5. 3
+@pcreate all your guest characters and set them up properly.  My suggestion:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@desc *Guest##=A guest player.;@adisconnect *Guest##=home;@lock *Guest##=*Guest##}
+
+@list guest will show your guest characters and if they\(aqre set up properly.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP 6. 3
+Any master room code you load in from your immholder character (or @chown/preserve to it) The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.  All other softcode (like mail wrappers) can be found on \fI\%https://github.com/RhostMUSH/trunk\fP in Mushcode.
+.IP 7. 3
+Setup new character, staff, and take tasks that can only be accomplished by #1
+.IP 8. 3
+Set up any other characters you want.  Anyone immortal can issue @function, @admin, or anything #1 can do.
+.UNINDENT
+.SS Customtize the textfiles for your game
+.INDENT 0.0
+.INDENT 3.5
+All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a
+README file there that explains their purposes in more detail.  You can see more information on
+all files and how they inter\-relate with ‘wizhelp file’.
+.UNINDENT
+.UNINDENT
+.SS Three Options for Starting a MUSH
+.sp
+The RhostMUSH Git Repository comes with three options for starting your Mush.
+.SS Option 1: Creating a new game with a blank database
+.INDENT 0.0
+.INDENT 3.5
+Modify your ./game/netrhost.conf file or what settings you want.
+Don’t feel overwhelmed, it’s all very well documented.
+.UNINDENT
+.UNINDENT
+.SS Options 2: Creating a new game with Ambrosia’s default database
+.sp
+Follow minimal\-DBs/Amb\-MinimalRhost/IMPORTANT_README
+.sp
+The netrhost.conf file you will copy is in minimal\-DBs/Amb\-MinimalRhost/game
+Copy this netrhost.conf file into your ‘game’ directory.
+.sp
+You will want the custom txt files under Amb\-MinimalRhost/txt in your game/txt directory and to mkindx all the txt files.  You can run ./Startmush \-i to index.
+.sp
+When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit <RETURN> to have it search for flatfiles, then select netrhost.db.flat from under the minimal\-DBs/Amb\-MinimalRhost directory.
+.sp
+The main steps to make sure you do for ~/Server/minimal\-DBs/Amb\-MinimalRhost/netrhost.db.flat – Ambrosia’s secure and featured minimal db
+.INDENT 0.0
+.IP 1. 3
+Use the matching netrhost.conf file under the Amb\-MinimalRhost/game directory
+.IP 2. 3
+Load in the settings specified in the Amb\-MinimalRhost/bin directory.
+.INDENT 3.0
+.IP 1. 3
+Copy this file into your ~/Server/bin directory
+.IP 2. 3
+From ‘Server’ directory type: make clean
+.IP 3. 3
+From ‘Server’ directory type: make confsource and ‘l’oad option 0
+.IP 4. 3
+Specify any \-additional\- options you want at this point.
+.IP 5. 3
+Recompile your code
+.UNINDENT
+.IP 3. 3
+Copy the files in Amb\-MinimalRhost/game/txt into your ~/Server/game/txt directory
+.IP 4. 3
+from your ~/Server/game txt file run on each of the txt files:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&../mkindx <txtfile>.txt <txtfile>.indx
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Where <txtfile> is the name of the file (minus the .txt extension)
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 1. 3
+If running, @reboot your game.
+.UNINDENT
+.SS Option 3: Creating a new game with the generic default database
+.INDENT 0.0
+.INDENT 3.5
+Copy the netrhost.conf from minimal\-DBs/minimal_db to your game directory.
+.sp
+When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit <RETURN>
+to have it search for flatfiles, then select netrhost.db.flat from under
+the minimal\-DBs/minimal_db directory.
+.UNINDENT
+.UNINDENT
+.SS Starting your MUSH
+.sp
+Once you have used one of these three methods to obtaina database, you can start your mush up.
+At this point type from the game directory:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./Startmush
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SH WHAT RHOSTMUSH IS ABOUT AND WHAT’S SO GREAT ABOUT RHOSTMUSH
 .sp
 RhostMUSH was founded in 1989, originally by Natasha Davis (Nyctasia) and as
 a branch from the original release of TinyMUD code.  It was her desire to make
@@ -1491,7 +2209,7 @@ Load the file softfunctions into the mush once it’s set up.  This are
 that is either named differently or we don’t have for one reason or another.
 .UNINDENT
 .UNINDENT
-.SS Comparison of modern MUSH servers
+.SH COMPARISON OF MODERN MUSH SERVERS
 .SS Differences to expect to the end user between PennMUSH, MUX, and RhostMUSH
 .sp
 The largest end user experience will mostly resolve around some look and feel.
@@ -2967,712 +3685,22 @@ Pueblo is not supported.
 .IP \(bu 2
 This uses @restart, Rhost uses @reboot
 .UNINDENT
-.SS Installation
-.SS Compiling the code
-.sp
-make confsource
-.sp
-Yes, that’s all you have to do.
-.sp
-You may also issue ‘make source’ if the Makefile is already defined how
-you want it to be.  Please remember to ‘make clean’ before ‘make source’
-whenever you alter the code or import new source code.
-.SS Note about Compiling
-.sp
-To install, type:  make confsource
-.sp
-If your binaries do not work or you get an error type:  ./bin/script_setup.sh
-Then type: make confsource
-.sp
-If you are importing a MUX2 flatfile, make ABSOLUTELY SURE that you select
-mux passwords as a compatibility option, or you will NOT BE ABLE to log in
-to players as the password will not be recognizeable.
-.sp
-Make sure to keep QDBM selected as it’s a much more stable database engine
-that does not have attribute limit restrictions like GDBM does.
-.sp
-If you are converting from a Penn, TinyMUSH, or MUX database, make sure you
-drill down into the LBUF section and select, at minimum, 8K lbufs.  You likely
-want that anyway as it gives you far more room for attribute content storage.
-.sp
-You can go up to 32K safely.  While 64k is safe and does work, there are issues
-with networking and older routers that use a 32K TCP buffer size that can
-at times cut off the data as overflow resulting in output to the end\-point
-players not receiving their data.  So it is strongly recommended not to go
-above 32K in lbuffer size.
-.sp
-Go ahead and select 64 char attributes.  It allows you to have 64 characters
-for attribute names.  It’s handy to have.
-.sp
-If you wish at this point to set up mysql and/or sqlite, you  may do so.
-Yes, you can use them in parallel without any issue.
-.SS Note about Recompiling
-.sp
-If you plan to use ‘make confsource’ to recompile your source, you should first
-issue a ‘make clean’ before re\-issuing a ‘make confsource’.  ‘make confsource’
-remembers the last options you used.
-.sp
-A failure to issue ‘make clean’ prior to re\-compiling with ‘make confsource’ or
-re\-compiling with ‘make source’ can potentially leave stale object files which
-may cause unforseen issues when running code, including but not limited to
-random crashes.  Generally whenever recompiling it’s good to always make clean
-first.
-.SS Note about Patching
-.sp
-There’s two ways you can look to patch the source.  If you plan to run the
-RhostMUSH source from a git repository, then please use the git repo to
-constantly update your code.  If you knew enough to want to set up a git repo
-then we expect knowledge on how to keep source trees updated in the git repo
-to be used the same as any other source distribution.
-.sp
-If, however, you have no idea what a git repo even is, or have no inclination
-of using git to manage your RhostMUSH source, or just don’t care one way
-or another, then you can use the included patch.sh routine (from under the
-Server directory) to patch your source at any time.
-.sp
-From the server directory just type: ./patch.sh
-.sp
-That will auto\-compile your source, auto make all your header files and
-essentially keep everything up to date to the latest source.
-Once that’s done, all you do from within the game is two commands:
-.INDENT 0.0
-.IP 1. 3
-@reboot (or @reboot/silent)  – This will load in the new binary
-.IP 2. 3
-@readcache  – This will read in all the .txt file changes
-.UNINDENT
-.SS Configuring the game
-.sp
-When setting up a mush for the first time, make sure you
-have all the files configured correctly.  This is with using
-the following file for configuration:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\- netrhost.conf
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.SS Starting the game
-.sp
-Once done, you start up the system with the following command:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
- \- [sh/csh] ./Startmush
-
-It will prompt you to start a new db if it doesn\(aqt find one.
-
-You may also do the commands individually::
-
-   [csh] netrhost \-s netrhost.conf >& netrhost.log &
-   [sh]  netrhost \-s netrhost.conf > netrhost.log 2>&1 &
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.SS First login to the game
-.sp
-Once started, log in the #1 character (Wizard) with it’s appropiate
-password (no, not ‘potrzebie’, but ‘Nyctasia’).  There were private
-reasons for the password change.
-.sp
-Once in, do a @shutdown to save the database.  Then you can run Startup
-normally.   You may make a backup of your database at anytime on\-line by
-utilizing the @dump/flat option.  A script comes with this distribution
-that allows the ability of auto\-archiving your database for a configurable
-number of backups.
-.SS Reporting bugs or getting help
-.sp
-If you find any bugs or problems, notify one of the developers of RhostMUSH and
-a patch or workaround will be made available as soon as possible.  Current
-developers are:  Seawolf, Thorin, Ashen\-Shugar, Lensman, Kale, Mac, Zenty,
-Ambrosia, Amos, and Morgan.  They can be found around the net.
-.SS Installing using an ansible playbook
-.sp
-To begin, you will run the following command in a directory that will house your game:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-git clone https://github.com/RhostMUSH/trunk Rhost
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-You may also just run the yml file and ansible (ansible\-playbook) to install your RhostMUSH engine:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml
-ansible\-playbook rhostinstall.yml
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-This downloads the latest stable version of the code, bringing with it all patches and scripts, documentation and support tools that you will need.
-.SS Quickinstall guide to RhostMUSH
-.SS Compiling RhostMUSH
-.sp
-Once ready to compile type:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-make confsource
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-This will bring up a menu where you can selection options.
-.SS Important before you actually start building
-.sp
-The main parts of making your RhostMUSH, easy pleasy:
-#.  The stunnel directory contains TLS/SSL connectivity.  This has to be linked to another port and will tunnel to the mush port.  The README file explains how to set up and configure your TLS/SSL connection.
-#.  ./patch.sh – This makes sure you have the latest code.  If you got this by git clone \fI\%https://github.com/RhostMUSH/trunk\fP then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.
-#.  make confsource.  Yup, it’s menu driven, nifty eh?
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP 1. 4
-Options you may want to select (other than the defaults):
-.IP 2. 4
-5  (%c is selected by default, but choose %x as well for MUX/TM3 compat)
-.IP 3. 4
-9  (if you want $commands to require the COMMAND flag)
-.IP 4. 4
-16 (if you want a wider WHO listing like older versions of MUX)
-.IP 5. 4
-22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
-.IP 6. 4
-24 (if you have issues with \-lssl not being found)
-.IP 7. 4
-B3 (for 64 character attribute names)
-.IP 8. 4
-B6 (select 8K for Penn/MUX2/TM3 default, up to 32K.  64K is network intensive)
-.IP 9. 4
-B5 (will be autoselected if you choose 8K or more.  Pick this anyway)
-.IP 10. 4
-B4 (if you have sqlite libraries and wish to use this)
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.IP 1. 3
-‘r’ to compile with the settings you selected.
-.IP 2. 3
-Modify your netrhost.conf file as specified.  Make sure to align your port and debug_id as shown in the netrhost.conf file.
-.IP 3. 3
-If you wish to port in an old flatfile, please refer to the readme directory on how to port your flatfile in (README.DBLOADING).
-.UNINDENT
-.SS Using the prebuilt flatfile
-.sp
-There are pre\-loaded flatfile databases you can use at this point.  The netrhost.db.flat
-and corrisponding netrhost.conf file will be located in the minimal\-DBs/minimal_db directory.
-.sp
-You may auto\-load the minimal db and corresponding netrhost.conf file with the command:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\&./minimal.sh
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-This is ran from within the ‘game’ directory.  Once this is ran, you will need
-to customize the netrhost.conf file for your purposes.  The port and debug_id must
-be changed at the very least.  Keep the debug_id coordinated to the port as described.
-.SS To load a prebuilt flatfile
-.sp
-To use these follow these steps:
-1.  Make a backup of your existing netrhost.conf file:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-cp game/netrhost.conf game/netrhost.conf.backup
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.IP 2. 3
-Copy the netrhost.conf file into your game directory:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-cp \-f ./minimal\-DBs/minimal_db/netrhost.conf ./game/netrhost.conf
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.IP 3. 3
-At this point you can modify your netrhost.conf file settings in your game directory.
-Using an editor modify the ‘port’ and ‘debug_id’ respectively in your netrhost.conf as state.
-The ‘port’ will be the port the mush listens on, the debug_id is for the debug\-stack and is
-your port with a ‘5’ at the end.  So if your port is 4444, the debug_id is 44445
-.IP 4. 3
-Load in the flatfile into the mush (You could do this in the Startmush as well)
-Manually:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-cd game
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-\&./db_load data/netrhost.gdbm ../minimal\-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF
-.sp
-Start your mush:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\&./Startmush
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-This will load the db that you loaded.
-.sp
-—————OR——\-
-.sp
-From Startmush:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\-\-> ./Startmush
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-when prompted, hit <RETURN> for searching then select the number of the netrhost.db.flat that is listed as ~/minimal\-DBs/minimal_db/netrhost.db.flat
-.SS Starting from scratch with a brand new database
-.INDENT 0.0
-.IP 1. 3
-You can modify your netrhost.conf file settings in your game directory.
-Using an editor modify the ‘port’ and ‘debug_id’ respectively in your netrhost.conf as stated.
-The ‘port’ will be the port the mush listens on, the debug_id is for the debug\-stack and is
-your port with a ‘5’ at the end.  So if your port is 4444, the debug_id is 44445
-.IP 2. 3
-Start your mush:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\-\-> ./Startmush
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-You can use the ‘vi’ editor or ‘nano’ if you like a more menu driven DOS like experience.
-You can of course use any other editor you’re familar with.
-.sp
-For a more thorough understanding of how to set things up, keep reading!
-.sp
-If you have syntax issues running ‘make config’, ‘make confsource’
-or ‘make bugreport’ please run the script: ./bin/script_setup.sh
-.sp
-Now… things you may need to do on errors.
-.SS Instructions for starting a new RhostMUSH
-.SS Setup directory permissions
-.INDENT 0.0
-.INDENT 3.5
-run ./dirsetup.sh
-.sp
-This is a simple script that will change file permissions
-and directory permissions to properly protect RhostMUSH.
-These settings generally work fine out of the box so
-you likely won’t even have to set this up if you don’t want to.
-.UNINDENT
-.UNINDENT
-.SS Compile the source code
-.sp
-Make and run the RhostMUSH source:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-Type:  make confsource
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-If you get an error running the script itself:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-type: ./bin/script_setup.sh
-
-Then type: make confsource
-
-After the compile process is done, you should be good to go.
-If it complains about missing binaries then type \(aqmake links\(aq
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.SS Manual configuration of source code
-.sp
-To do manual configuration (skip if the previous step worked for you) And yes, this is a bit of a pain in the bottom, hopefully you will not need this.
-.sp
-You need the following definitions defined to make this work:
-.INDENT 0.0
-.IP 1. 3
-TINY_U, USE_SIDEEFFECTS, MUX_INCDEC, ATTR_HACK
-.IP 2. 3
-(u()/u2() switched)
-.IP 3. 3
-(sideeffects)
-.IP 4. 3
-(inc()/xinc() switched)
-.IP 5. 3
-(support for _/~ attribs)
-.UNINDENT
-.sp
-You only need to do this if you received the RhostMUSH src.  If you received a binary, continue on to the next part.
-.sp
-To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand\-edit the Makefile.
-.sp
-After the compile process is done, type ‘make links’!
-.SS Loading a database for your MUSH
-.sp
-You now have a choice of optionally starting at a provided database or starting from scratch.
-.SS Option: Only perform these steps if using a provided database
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.TP
-.B Copy an existing flatfile and corresponding netrhost.conf file
-Default provied example:
-.INDENT 7.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-1.  cp game/netrhost.conf game/netrhost.conf.backup
-2.  cp \-f minimal\-DBs/minimal_db/netrhost.conf game/netrhost.conf
-3.  cd game
-4.  ./db_load data/netrhost.gdbm ../minimal\-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.SS Configure the netrhost.conf file for your MUSH
-.INDENT 0.0
-.INDENT 3.5
-Go into the game directory and modify the netrhost.conf file
-The next step is configuring the mush to your config standards.
-There is a file in the game subdirectory called ‘netrhost.conf’.
-You hand\-edit this file and just follow what it says each
-one does.  It’s very well documented and should give you
-great details on what to edit.  For most things, you can
-feel comfortable to stick with the defaults unless you wish
-to change them.  The port and debug_id need to be changed.
-.UNINDENT
-.UNINDENT
-.SS Start the MUSH and login
-.sp
-From the game diretory issue:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\&./Startmush
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-To login:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-co Wizard Nyctasia
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.SS Option: Things to do once you have connected if you did NOT use a provided database
-.INDENT 0.0
-.IP 1. 3
-@dig your master room and in your netrhost.conf file define master_room to this dbref (without the #.  So like master_room 2)
-.IP 2. 3
-Create an immortal holder charater (@pcreate then @set immortal) Feel free to set up holder characters for all the bittypes which are: GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL
-.IP 3. 3
-@chown/preserve the master room and #0 to the immortal holder character.
-.IP 4. 3
-Log into the immortal character
-.IP 5. 3
-@pcreate all your guest characters and set them up properly.  My suggestion:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-@dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@desc *Guest##=A guest player.;@adisconnect *Guest##=home;@lock *Guest##=*Guest##}
-
-@list guest will show your guest characters and if they\(aqre set up properly.
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.IP 6. 3
-Any master room code you load in from your immholder character (or @chown/preserve to it) The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.  All other softcode (like mail wrappers) can be found on \fI\%https://github.com/RhostMUSH/trunk\fP in Mushcode.
-.UNINDENT
-.SS Setup new character, staff, and take tasks that can only be accomplished by #1
-.sp
-Set up any other characters you want.  Anyone immortal can issue @function, @admin, or anything #1 can do.
-.SS Setup daily backups for your game
-.sp
-Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game. paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-@dump/flat      \-\- This makes a flatfile dump of the main database.  You want to run this daily.
-wmail/unload    \-\- This makes a flatfile dump of the mail database.  You want to run this daily.
-@areg/unload    \-\- Only worry about this if you are using auto\-registration emailing.  Few do.
-newsdb/unload   \-\- Only worry if you use the hardcoded bbs system.  Most don\(aqt use it.
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-The backup_flat.sh script (that launches automatically with Startmush) will archive all the above files if they exist.  It moves these flatfiles into the ‘prevflat’ directory, then tarballs those and dumps consecutive backups in the ‘oldflat’ directory.  By default it keeps 7 consecutive backups.  You may alter this in the backup_flat.sh script itself.
-.SS Customtize the textfiles for your game
-.INDENT 0.0
-.INDENT 3.5
-All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a
-README file there that explains their purposes in more detail.  You can see more information on
-all files and how they inter\-relate with ‘wizhelp file’.
-.UNINDENT
-.UNINDENT
-.SS Make sure to read up further
-.INDENT 0.0
-.INDENT 3.5
-The wiz bits can be confusing, so ‘wizhelp control’ is very helpful to give a high overview
-of what each bit does and their inter\-relationship is.
-.UNINDENT
-.UNINDENT
-.SS What to type to configure and get your RhostMUSH up and running
-.sp
-You may configure Rhost three ways.
-.SS Creating a new game with a blank database
-.INDENT 0.0
-.INDENT 3.5
-Modify your ./game/netrhost.conf file or what settings you want.
-Don’t feel overwhelmed, it’s all very well documented.
-.UNINDENT
-.UNINDENT
-.SS Creating a new game with Ambrosia’s default database
-.sp
-Follow minimal\-DBs/Amb\-MinimalRhost/IMPORTANT_README
-.sp
-The netrhost.conf file you will copy is in minimal\-DBs/Amb\-MinimalRhost/game
-Copy this netrhost.conf file into your ‘game’ directory.
-.sp
-You will want the custom txt files under Amb\-MinimalRhost/txt in your game/txt directory and to mkindx all the txt files.  You can run ./Startmush \-i to index.
-.sp
-When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit <RETURN> to have it search for flatfiles, then select netrhost.db.flat from under the minimal\-DBs/Amb\-MinimalRhost directory.
-.sp
-The main steps to make sure you do for ~/Server/minimal\-DBs/Amb\-MinimalRhost/netrhost.db.flat – Ambrosia’s secure and featured minimal db
-.INDENT 0.0
-.IP 1. 3
-Use the matching netrhost.conf file under the Amb\-MinimalRhost/game directory
-.IP 2. 3
-Load in the settings specified in the Amb\-MinimalRhost/bin directory.
-.INDENT 3.0
-.IP 1. 3
-Copy this file into your ~/Server/bin directory
-.IP 2. 3
-From ‘Server’ directory type: make clean
-.IP 3. 3
-From ‘Server’ directory type: make confsource and ‘l’oad option 0
-.IP 4. 3
-Specify any \-additional\- options you want at this point.
-.IP 5. 3
-Recompile your code
-.UNINDENT
-.IP 3. 3
-Copy the files in Amb\-MinimalRhost/game/txt into your ~/Server/game/txt directory
-.IP 4. 3
-from your ~/Server/game txt file run on each of the txt files:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\&../mkindx <txtfile>.txt <txtfile>.indx
-Where <txtfile> is the name of the file (minus the .txt extension)
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.IP 5. 3
-If running, @reboot your game.
-.UNINDENT
-.SS Creating a new game with the generic default database
-.INDENT 0.0
-.INDENT 3.5
-Copy the netrhost.conf from minimal\-DBs/minimal_db to your game directory.
-.sp
-When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit <RETURN>
-to have it search for flatfiles, then select netrhost.db.flat from under
-the minimal\-DBs/minimal_db directory.
-.UNINDENT
-.UNINDENT
-.SS Starting your MUSH
-.sp
-Once you have used one of these three methods to obtaina database, you can start your mush up.
-At this point type from the game directory:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\&./Startmush
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.SS Backups for RhostMUSH
-.INDENT 0.0
-.INDENT 3.5
-Backups are already handled and integrated with a script ‘backup_flat.sh’.
-If you wish to customize this, feel free.  Again, it is well documented and
-just require changing settings at the top of this script.
-.sp
-By default, it does 7 contiguous backups.  You may increase or decrease
-this value to any value you want.
-.sp
-It will, by default, backup all your txt/\fI\&.txt files, your netrhost.conf
-file, your netrhost.db.flat (mush db) file, your RhostMUSH.dump.\fP
-(mail db) files, your RhostMUSH.news.* (internal news/bbs db – if used),
-your RhostMUSH.areg.* (the autoregistration db – if used), and any sqlite
-database you currently may be using which are OPTIONALLY backed up if you
-remove the ‘#’ from before it.
-.sp
-The backup script also will optionally rcp/scp, ftp, or mail any backups
-you want to a remote destination.  Be forewarned, the backup files can
-potentially get rather large for larger games, even compressed.  The
-average size for these files will be 1\-5MB.  It could potentially get
-over 10\-20MB in size for excessively large games, so plan accordingly.
-.sp
-Be aware that the backup system will NOT make successful backups if you
-run out of disk space.  This includes actually running out of disk space
-or running out of disk quota.  There is a mechanism inside the backup
-script to specify an email address that you wish to get alerts from
-in these instances.  I recommend using it.
-.sp
-If you make changes to your backup_flat.sh script with an already
-active and running mush and wish to just restart the backup procedure
-just issue: ./backup_restart.sh
-.UNINDENT
-.UNINDENT
-.SS Troubleshooting issues with starting up
-.SS Problem: If it says the shared ID is already in use
-.sp
-A1: please verify that it is the right shared debug_id in your netrhost.conf file
-.sp
-A2: Force a start by ./Startmush \-f
-.SS Problem: Your log file is massive and your mush is running
-.sp
-A1: To rotate this use the @logrotate command. See wizhelp on @logrotate
-.SS Problem: The database flatfile you’re loading can’t load because a db is already defined
-.sp
-A1: remove netrhost.db* and netrhost.gdbm* from your data directory
-.SS Problem: The mail database won’t load and mail shows ‘offline’
-.sp
-A1: wmail/load
-.SS Windows
-.SS Installing on Windows 10 with BASH
-.sp
-Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
-This has been tested with the Preview build 14342.
-.sp
-1. After installing Bash you will need to install the following packages:
-git
-make
-gcc
-openssl (optional)
-libpcre3 (optional)
-libpcre3\-dev (optional)
-.sp
-2. When configuring rhost (using confsource) select the Disable Debugmon
-option.
-.INDENT 0.0
-.IP 3. 3
-When you issue Startmush, you must pass the \-cyg option.
-.UNINDENT
-.SS Installing on Windows with Cygwin
-.sp
-Rhost does work under windows using the cygwin package.
-.sp
-1.  When you do install cygwin, the following packages must be added:
-make
-git
-gcc
-crypt
-openssl (optional)
-gdbm
-bash
-.INDENT 0.0
-.IP 2. 3
-The src/Makefile has to manually have the CYGWIN line uncommented.
-.IP 3. 3
-When you issue Startmush, you must pass it the \-cyg option.
-.UNINDENT
-.SS Database
+.SH DATABASE
 .SS Loading an existing Database
 .sp
 To load in a previous database, you run the db_load script.
 .sp
 From the game directory you would type:
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 \&./db_load data/netrhost.gdbm yourflatfilehere data/netrhost.db.new
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 \fBNOTE:\fP
 .INDENT 0.0
@@ -3684,8 +3712,16 @@ Then you just follow the prompts to load in your flatfile there.
 .sp
 If you wish to have #1’s password reset to ‘Nyctasia’ please add this
 to the bottom of your netrhost.conf file:
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 newpass_god 777
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 The caveat is that you must not have any netrhost.db* or netrhost.gdbm* files
 in your data directory prior to loading it in.  It’ll error out if previous
@@ -3711,9 +3747,17 @@ the latest PennMUSH databases.  Our apologies.
 To convert a non\-pennmush game (or a pennmush 1.7.4 or earlier), you first
 need a valid flatfile of the game you’re wanting to convert.  Please refer
 to the documentatation of the mush engine in question (MUX, Penn 1.7, TM2/3)
-on how to do this.  Once you have it type:
+on how to do this.  Once you have it type::
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 \&./doconvert.sh FLATFILETOCONVERT FLATFILEOUTPUT
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 In this instance, FLATFILETOCONVERT will be the filename (with full path) to
 the flatfile you are wishing to convert.
@@ -3723,7 +3767,7 @@ flatfile.  I suggest netrhost_converted.db.flat so you know by the name
 what it is.
 .sp
 Follow what it asks for and just let it do its thing.
-.SS Gettin Started
+.SH GETTIN STARTED
 .SS What to ype to get the basics running if you did not choose a pre\-existing flatfile
 .sp
 If you decided to get a bare\-bone configuration, you will find your mush has just two things.  The #1 (God) player and the starting room #0.  That’s it.
@@ -4392,9 +4436,16 @@ the Global Function objects, based on attribute naming.
 Misc Data object to hold general data, like Staff lists etc.
 .IP \(bu 2
 Reality levels ‘Real’ and ‘Admin’.
+.UNINDENT
 .sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
 All created items and players by default are in Recieve\-Level ‘Real’ and
 Transmit\-Levels ‘Real’ and ‘Admin’.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
 .IP \(bu 2
 All globals, Master Room, BCs\-*, and other staff/code\-related objects
 currently have only ‘Admin’ as their Transmit\-Level. This does not prevent
@@ -4405,10 +4456,17 @@ The supplied netrhost.conf offers a secure setup of options, allows Royalty
 to use @hook and @function, and also sets the function_access of several
 functions to !no_code, which allows NO_CODE players to use the comsys
 properly.
+.UNINDENT
 .sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
 IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
 The ‘Port’ configuration parameter is XXXX’d out. Set it first before starting
 your game.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
 .IP \(bu 2
 All existing objects have been @set SAFE and INDESTRUCTABLE.
 .IP \(bu 2
@@ -4648,7 +4706,7 @@ settings I have used when creating this database. Some settings, like the ANSI
 substitution, are used in the DB.
 .sp
 \fI\%–Ambrosia@RhostMUSH\fP
-.SS What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in RhostMUSH
+.SH WHAT FLAGS, TOGGLES, POWERS, DEPOWERS, AND BITLEVELS MEAN IN RHOSTMUSH
 .SS Flags
 .sp
 Flags are pretty much exactly the same as any other mush.  It’s a flag
@@ -4791,7 +4849,7 @@ extreamly dehibilatating.
 Please keep in mind each of these bitlevels can be tweeked with the @admin
 parameters and with the @powers (accessable by royalty) or @depowers (only
 by immortal and higher).
-.SS Security
+.SH SECURITY
 .SS Considerations to locking down restrictions in RhostMUSH
 .sp
 Sometimes, you want to have things run at various privilage levels and do not
@@ -5290,7 +5348,95 @@ If ever you need to bring down the SSL layer, you may kill it with the command:
 Please be aware that the port that the SSL layer is on must be opened
 in any firewall rule you specified to allow the connectivity.  This also must
 not be the port the mush is running on and requires a separate port.
-.SS Maintenance
+.SH MAINTENANCE
+.SS Note about Patching
+.sp
+There’s two ways you can look to patch the source.  If you plan to run the
+RhostMUSH source from a git repository, then please use the git repo to
+constantly update your code.  If you knew enough to want to set up a git repo
+then we expect knowledge on how to keep source trees updated in the git repo
+to be used the same as any other source distribution.
+.sp
+If, however, you have no idea what a git repo even is, or have no inclination
+of using git to manage your RhostMUSH source, or just don’t care one way
+or another, then you can use the included patch.sh routine (from under the
+Server directory) to patch your source at any time.
+.sp
+From the server directory just type:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./patch.sh
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+That will auto\-compile your source, auto make all your header files and
+essentially keep everything up to date to the latest source.
+Once that’s done, all you do from within the game is two commands:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@reboot (or @reboot/silent)  \-\- This will load in the new binary
+@readcache  \-\- This will read in all the .txt file changes
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Daily Backups for RhostMUSH
+.sp
+Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game. paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+ @dump/flat      \-\- This makes a flatfile dump of the main database.  You want to run this daily.
+ wmail/unload    \-\- This makes a flatfile dump of the mail database.  You want to run this daily.
+ @areg/unload    \-\- Only worry about this if you are using auto\-registration emailing.  Few do.
+ newsdb/unload   \-\- Only worry if you use the hardcoded bbs system.  Most don\(aqt use it.
+
+
+Backups are already handled and integrated with a script \(aqbackup_flat.sh\(aq.
+If you wish to customize this, feel free.  Again, it is well documented and
+just require changing settings at the top of this script.
+
+By default, it does 7 contiguous backups.  You may increase or decrease
+this value to any value you want.
+
+It will, by default, backup all your txt/\e*.txt files, your netrhost.conf
+file, your netrhost.db.flat (mush db) file, your RhostMUSH.dump.\e*
+(mail db) files, your RhostMUSH.news.\e* (internal news/bbs db \-\- if used),
+your RhostMUSH.areg.\e* (the autoregistration db \-\- if used), and any sqlite
+database you currently may be using which are OPTIONALLY backed up if you
+remove the \(aq#\(aq from before it.
+
+The backup script also will optionally rcp/scp, ftp, or mail any backups
+you want to a remote destination.  Be forewarned, the backup files can
+potentially get rather large for larger games, even compressed.  The
+average size for these files will be 1\-5MB.  It could potentially get
+over 10\-20MB in size for excessively large games, so plan accordingly.
+
+Be aware that the backup system will NOT make successful backups if you
+run out of disk space.  This includes actually running out of disk space
+or running out of disk quota.  There is a mechanism inside the backup
+script to specify an email address that you wish to get alerts from
+in these instances.  I recommend using it.
+
+If you make changes to your backup_flat.sh script with an already
+active and running mush and wish to just restart the backup procedure
+just issue::
+
+   ./backup_restart.sh
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Signals and why you need them for control
 .sp
 Rhost by default allows signals at the shell to handle various processes in\-game.
@@ -5387,14 +5533,24 @@ to a new site/port.  To use, first, compile the code.  To do
 this you would type the following:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 cc portmsg.c \-o portmsg
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
 if ‘cc’ is not defined, try the following:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 gcc portmsg.c \-o portmsg
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -5405,7 +5561,12 @@ IP address and the PORT where specified.
 To launch the application, you would then type:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 \&./portmsg file <port>
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -5414,12 +5575,20 @@ Where <port> is the port where the mush used to run at.
 .SS Syntax for rhost.cron
 .sp
 The rhost.cron file will be in the syntax as follows:
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 username (or dbref#)
-command1;command2;command3;…;commandN
+command1;command2;command3;...;commandN
 command
 command
-command1;command2;command3;…;commandN
+command1;command2;command3;...;commandN
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 You can have commands strung together with a semicolon
 on the same line.  This counts as a single line of input.
@@ -5434,12 +5603,20 @@ in the netrhost.gamelog.
 Here is a working example of the code cron file.
 This example will perform dumps of the mush.
 .SS Example syntaxt for rhost.cron
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 #1
 @dump/flat; @@ dump the main game database to flatfile
 wmail/unload; @@ dump the mail database to flatfile
 @areg/unload; @@ dump the registration database to flatfile
 newsdb/unload; @@ dump the news bbs database to flatfile
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS The following scripts are used in the game directory
 .sp
 Startmush               – used to Start up the mush
@@ -5541,7 +5718,48 @@ A:  Only when you modify any of the files listed in README.TXTFILES.  Not the on
 .sp
 Q:  Can’t I just make code in the mush that then is used for these silly txt files?
 A:  Absolutely.  Check ‘wizhelp file_object’.
-.SS Troubleshooting
+.SH TROUBLESHOOTING
+.SS Reporting bugs or getting help
+.sp
+If you find any bugs or problems, notify one of the developers of RhostMUSH and
+a patch or workaround will be made available as soon as possible.  Current
+developers are:  Seawolf, Thorin, Ashen\-Shugar, Lensman, Kale, Mac, Zenty,
+Ambrosia, Amos, and Morgan.  They can be found around the net.
+.SS Troubleshooting issues with starting up
+.SS Problem: If it says the shared ID is already in use
+.sp
+A1: please verify that it is the right shared debug_id in your netrhost.conf file
+.sp
+A2: Force a start by running:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./Startmush \-f
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Problem: Your log file is massive and your mush is running
+.sp
+A1: To rotate this use the @logrotate command. See wizhelp on @logrotate
+.SS Problem: The database flatfile you’re loading can’t load because a db is already defined
+.sp
+A1: remove netrhost.db* and netrhost.gdbm* from your data directory
+.SS Problem: The mail database won’t load and mail shows ‘offline’
+.sp
+A1: from within the MUSH run:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+wmail/load
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Stack limit and debugging
 .sp
 Rhost uses a stack limit in the debug monitor.
@@ -5561,14 +5779,32 @@ process table.  Higher stack means more memory used.
 Also be aware that your shell stack limit directly is affected
 to this value.
 .sp
-Type: ulimit \-a
+Type:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+ulimit \-a
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 This will show you your shell stack limits.  Do NOT set the
 STACKMAX value higher than your shell’s stack value.
 .sp
 The value in ~/Rhost/Server/hdrs/debug.h is currently set as:
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 #define STACKMAX 1000
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 Feel free to change this to a higher value if you wish.
 .sp
@@ -5581,17 +5817,40 @@ A @reboot WILL NOT LOAD IN A NEW DEBUG MONITOR!!!!
 You can issue @list stack to see the current stack ceiling ingame.
 .SS How to reset the password for #1
 .sp
-You can only use one of these options at a time. Make sure to change back your nerhost.conf after making the changes.
-.SS Method 1
+\fBWARNING:\fP
+.INDENT 0.0
+.INDENT 3.5
+You can only use one of these options at a time. Make sure to change back your nerhost.conf and then reboot after making the changes.
+.UNINDENT
+.UNINDENT
+.SS Method 1: Reset to Default Password
 .sp
 in your netrhost.conf file add:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 newpass_god 777
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 This will reset #1’s password to the default ‘Nyctasia’.
-.SS Method 2
+.SS Method 2: Increase Permissions of Immortals
 .sp
 in your netrhost.conf file add:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 newpass_god 1
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 This will allow IMMORTAL players to @newpassword #1 upon reboot.
 .SS Troubleshooting difficulties compiling RhostMUSH
@@ -5605,17 +5864,40 @@ such as the PS2, PS3 or other 128 or 256 bit CPUs, you can easily do
 so by changing a few lines of code in conf.c.
 .sp
 change:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 typedef unsigned int    pmath1;
 typedef int             pmath2;
 #define ALLIGN1 4
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 to:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 typedef unsigned long   pmath1;
 typedef long            pmath2;
 #define ALLIGN1 8
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
-, replacing 8 with the size of your CPU’s long integer. (4 for 32\-bit,
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Replace 8 with the size of your CPU’s long integer. (4 for 32\-bit,
 8 for 64\-bit, 16 for 128\-bit, etc etc)
+.UNINDENT
+.UNINDENT
 .sp
 RhostMUSH has only been tested to work on the AMD64, but there is no
 reason to believe the same will not hold true for IA64.
@@ -5630,31 +5912,51 @@ There are three manual entries:
 .sp
 This one sets how it defines the int to character pointer.  It’s safe
 to keep it as ‘unsigned int’ for 32 bit platforms.  For non 32\-bit,
-define it to  how an int is defined on that system.
+define it to  how an int is defined on that system:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 typedef unsigned int    pmath1;
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
 This one sets how it defines the signed int to character pointer.  Same
-restrictions apply as above for unsigned int.
+restrictions apply as above for unsigned int:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 typedef int     pmath2;
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
 This sets the allignment for the given platform.  4 represents a 32 bit
-platform.  8 would represent a 64 bit platform, etc.  Change accordingly.
+platform.  8 would represent a 64 bit platform, etc.  Change accordingly:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 #define ALLIGN1 4
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
+\fBWARNING:\fP
+.INDENT 0.0
+.INDENT 3.5
 Make sure these three entries are defined in your autoconf.h file else
 the mush will not compile.
+.UNINDENT
+.UNINDENT
 .SS Dealing with DB Corruption
 .sp
 Ok.  Your database won’t come up.
@@ -5677,11 +5979,20 @@ First thing is first.  Don’t have a panic attack.
 .SS Check the names of the database files in your ‘data’ directory
 .sp
 They should be named something like:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 netrhost.db
 netrhost.db.old
 netrhost.db.old.prev
 netrhost.gdbm.dir
 netrhost.gdbm.pag
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 And you may see a netrhost.db.flat
 .SS Check your netrhost.conf file
@@ -5770,31 +6081,32 @@ Please refer to the file ‘README.DBLOADING’.
 .sp
 Your mail db may or may not come up at this point.
 .SS If after restoring main database your mail database works
-.INDENT 0.0
-.TP
-.B If your mail database came up and does not show
+.sp
+If your mail database came up and does not show
 ‘Mail: mail is currently off’ then you should be good to go.
-.UNINDENT
 .sp
-Please issue:
-wmail/fix
-wmail/lfix
-.sp
-This will put your mail system in sync with your current database and
-fix up any errors that may exist.  wmail/fix fixes the mail, wmail/lfix
-loads in the fixes.
-.SS If after restoring main database your mail database does not work
+Please issue on the MUSH:
 .INDENT 0.0
 .INDENT 3.5
-.INDENT 0.0
-.TP
-.B If your mail database is not up and shows
-‘Mail: mail is currently off’ then your mail db is currupt.
-.UNINDENT
+.sp
+.nf
+.ft C
+wmail/fix
+wmail/lfix
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
-To fix your mail db please refer to file ‘README.MAILCANNOTLOAD’
+This will put your mail system in sync with your current database and
+fix up any errors that may exist.
+.sp
+wmail/fix fixes the mail.
+.sp
+wmail/lfix loads in the fixes.
+.SS If after restoring main database your mail database does not work
+.sp
+If your mail database is not up and shows ‘Mail: mail is currently off’ then your mail db is currupt.
 .SS Dealing with a corrupt mail database
 .sp
 It says when you try to access mail that mail is disabled and/or off.
@@ -5809,7 +6121,17 @@ is it hopes that you read ahead of time about how to backup your mush,
 which would include the mail database.
 .SS Backing up your mail database
 .sp
-wmail/unload – this flatfile dumps your mail db.  You should run it daily.
+You should be making a flatifile dump of mail db daily by running on the MUSH:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+wmail/unload
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 To recover your mail, it assumes you have a mail flatfile in either the
 ~/Server/game/data directory or the ~/Server/game/prevflat directory.  The
@@ -5817,16 +6139,29 @@ latter directory is used in junction to the backup_flat.sh and will always
 house the latest flatfile if not one recently dumped in your data directory.
 .SS Automatically recovering your mail database
 .sp
+If you have a flatfile dump of your mail db, run this command on the MUSH:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 wmail/load
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 Yup, that’s it.  It’ll take care of everything else.  Isn’t automation grand?
 .sp
 Doesn’t even require a reboot :)
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
-.TP
-.B NOTE:  You may at this point wish to run the following:
+.INDENT 3.5
+You may at this point wish to run the following:
 wmail/fix  – this fixes the mail database and sync’s it to the mush db.
 wmail/lfix – this loads in the fixed mail database
+.UNINDENT
 .UNINDENT
 .sp
 If you have a very old mail database, this is likely going to be required
@@ -5843,20 +6178,41 @@ First, go into the ‘game’ subdirectory.  Inside that directory is a ‘data�
 directory.
 .sp
 You will be deleting all the files with the following names:
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 RhostMUSH.mail.*                (like RhostMUSH.mail.dir/RhostMUSH.mail.pag)
 RhostMUSH.folder.*              (like RhostMUSH.folder.dir/RhostMUSH.folder.pag)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
+\fBWARNING:\fP
+.INDENT 0.0
+.INDENT 3.5
 DO NOT DELETE OTHER NAMED FILES!!!
+.UNINDENT
+.UNINDENT
 .sp
 Once these files are deleted, you may issue a @reboot to restart the mush.
 This will unlock the mail system and load in a fresh db.
 .sp
 Now, if you have flatfiles of the old mail database, you will see in either
 the ‘data’ directory or the ‘prevflat’ directory files that are called:
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 RhostMUSH.dump.folder
 RhostMUSH.dump.mail
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 Make sure these two files are in the ‘data’ subdirectory.  Copy them in
 if they exist in your ‘prevflat’ directory.
@@ -5874,426 +6230,7 @@ wmail/fix   – this will run a fix on the mail db and repair any issues.
 wmail/lfix  – this will load the fixed flatfile back into the mush.
 .sp
 At this point you should be good to go.
-.SS Upgrading
-.SS Converting database betwen GDBM and QDBM
-.sp
-Ok, if you plan to recompile your game that is using GDBM to QDBM, or visa versa
-some bad news.
-.sp
-The databases are NOT COMPATIBLE to each other, at least in the binary form.
-.SS Downgrading QDBM to GDBM
-.sp
-\fBWARNING:\fP
-.INDENT 0.0
-.INDENT 3.5
-I would NEVER change from QDBM back to GDBM, but if you’re set on it these steps:
-.sp
-You would use the same steps if you plan to move QDBM to GDBM.  I however would
-not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously,
-don’t do it unless you have absolutely no other recourse.
-.sp
-IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify
-the following
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.IP 1. 3
-You have on a 64 bit system, no object that has more than 400 attributes on it.
-.IP 2. 3
-You have on a 32 bit system, no object that has more than 750 attributes on it.
-.IP 3. 3
-Any CONTENT of any attribute must be below 4000 characters in length.
-.IP 4. 3
-Once you have that done, you may follow the procedures below on converting (upgrade) from GDBM to QDBM.  This works the same as converting (downgrading) QDBM back down to GDBM
-.UNINDENT
-.SS Upgradging GDBM to QDBM
-.sp
-Now, if you’ve kept reading and plan to convert your GDBM database to QDBM great news!
-It’s more stable, it’s faster, and lets you have far more flexibility.
-.sp
-So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
-.SS While logged in to your mush, issue the following commands
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP A. 3
-@dump/flat    – This will make a flatfile dump of your MUSH database
-.IP B. 3
-wmail/unload  – This will make a flatfile dump of your MAIL database
-.IP C. 3
-@areg/unload  – If you use the AutoRegistration engine, this dumps it
-.IP D. 3
-newsdb/unload – If you use the hardcoded news/bbs engine.  This dumps it
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.SS Verify the files exist
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP A. 3
-Server/game/data/netrhost.db.flat
-.IP B. 3
-Server/game/data/RhostMUSH.dump.folder
-Server/game/data/RhostMUSH.dump.mail
-.IP C. 3
-(Optional) Server/game/data/RhostMUSH.areg.dump
-.IP D. 3
-(Optional) Server/game/data/RhostMUSH.news.flat
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.SS Shutdown the MUSH
-.sp
-@shutdown your mush
-.SS From the Server directory
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP A. 3
-make clean
-.IP B. 3
-make confsource
-1.  Select QDBM and if you wish at this time increase your LBUF size
-2.  Select any other options you may want
-.IP C. 3
-(r)un and let it compile.
-.IP D. 3
-Main DB: Delete (rm) the following files (from Rhost/Server/game/data)
-netrhost.gdbm*
-netrhost.db
-netrhost.db.new
-netrhost.db.new.prev
-.IP E. 3
-Mail DB: Delete (rm) the following files (from Rhost/Server/game/data)
-RhostMUSH.folder.dir
-RhostMUSH.folder.pag
-RhostMUSH.mail.dir
-RhostMUSH.mail.pag
-.IP F. 3
-(Optional) AutoReg DB: Delete (rm) the following files (from Rhost/Server/game/data)
-RhostMUSH.areg.dir
-RhostMUSH.areg.pag
-.IP G. 3
-(Optional) News/BBS DB: Delete (rm) the following files (from Rhost/Server/game/data)
-RhostMUSH.news.dir
-RhostMUSH.news.pag
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.SS From the Server/game directory
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP A. 3
-\&./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
-.IP B. 3
-\&./Startmush
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.SS While logged into the mush issue the following commands
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP A. 3
-Load in the mail database
-wmail/load
-.IP B. 3
-(optional) Load in the autoreg database
-@areg/load
-.IP C. 3
-(optional) Load in the news/bbs database
-newsdb/load
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.SS Verify that you have QDBM running and your valid values
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP A. 3
-@list options system
-.IP B. 3
-@list options (spammy)
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.SS Updating RhostMUSH prior to 3.9.5p2
-.sp
-Ok.
-.sp
-So you’re running an old RhostMUSH.
-.sp
-One prior to 3.9.5p2 and want to take advantage of the new
-format of the Makefile and the automated mysql stuff and
-all the other goodies that isn’t really (easilly) done
-with just patch.sh.
-.sp
-Well, you’re in luck.  It is actually fairly easy to do.
-.sp
-This is what you have to do.
-.sp
-First thing’s first.
-.INDENT 0.0
-.IP 1. 3
-Log into your existing mush.  Let’s make current backups
-of all your flatfiles.  Issue:
-A. @dump/flat
-B. wmail/unload
-C. @areg/unload
-D. newsdb/unload
-.IP 2. 3
-Shutdown your game (@shutdown)
-.IP 3. 3
-Make an image of all your current backed up files.  From The Server/game directory you would type:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\&./backup_flat.sh \-s
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-Please remember the ‘\-s’ to the ./backup_flat.sh.
-.IP 4. 3
-Make note of the most recently created file in the directory Server/game/oldflat.  It’s usually named something like:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-RhostMUSH.dbflat1.tar.gz
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-You will need this file later.
-.IP 5. 3
-Rename your ‘Rhost’ directory to something else.  This is the directory that you have containing the ‘Server’ directory.  Name it anything you want other than ‘Rhost’.  For those not used to unix you would type:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-mv Rhost Rhost_old
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.IP 6. 3
-Pull in the latest Rhost.  You would type:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-git clone https://github.com/RhostMUSH/trunk Rhost
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-You would type this in the same directory you have renamed your old ‘Rhost’ directory
-.IP 7. 3
-go into the Rhost/Server directory.   Type:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-make confsource
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it’s the ‘r’ option).
-.UNINDENT
-.sp
-8   Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the ‘game’ directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP A. 3
-cp netrhost.conf netrhost.conf.orig
-.IP B. 3
-cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .
-.IP C. 3
-tar \-zxvf RhostMUSH.dbflat1.tar.gz
-.IP D. 3
-Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don’t port or other stuff you have already customized).
-.IP E. 3
-Load in your flatfile information:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\&./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.IP F. 3
-Your ./Startmush should re\-index all your txt files you originally made:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\&./Startmush
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.IP G. 3
-In your game type the following as an immortal or as #1.
-.UNINDENT
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP 1. 3
-Load in your mail flatfile:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-wmail/load
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.IP 2. 3
-Load in your autoregistration flatfile (if available):
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-@areg/load
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.IP 3. 3
-Load in your hardcoded bbs flatfile (if available):
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-newsdb/load
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.IP 9. 3
-You should be good to go on a current directory structure for Rhost.  Enjoy!
-.UNINDENT
-.SS Adding MySQL to RhostMUSH older than 3.9.5p2
-.sp
-MySQL is now native in RhostMUSH as of 3.9.5p2.
-.sp
-\fBWARNING:\fP
-.INDENT 0.0
-.INDENT 3.5
-To autodetect it, YOU MUST HAVE mysql_config installed and running on your server.  Without this, even if you have mysql db installed it won’t be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql_config.
-.UNINDENT
-.UNINDENT
-.sp
-Download the git repository to a seperate directory so that you can
-copy over the files that it requires you to.
-.sp
-Suggestion:  git clone \fI\%https://github.com/RhostMUSH/trunk\fP ~/tmprho
-.sp
-If you are patching UP from an older version, you need to update
-the following files:
-.INDENT 0.0
-.IP 1. 3
-update your src/Makefile to the one in the 3.9.5p2+ repo
-( cp ~/tmprho/Server/src/Makefile ~/Rhost/Server/src/Makefile )
-.IP 2. 3
-update your bin/asksource.* files to the one in the 3.9.5p2+ repo
-( cp ~/tmprho/Server/bin/asksource.* ~/Rhost/Server/bin/ )
-.IP 3. 3
-append ‘include rhost_mysql.conf’ BEFORE the rhost_ingame.conf file
-and before the section that says ‘define local aliases’ toward the end of
-your netrhost.conf file.
-( edit your ~/Rhost/Server/game/netrhost.conf file )
-.IP 4. 3
-copy the game/rhost_mysql.conf file from the 3.9.5p2+ repo
-( cp ~/tmprho/Server/game/rhost_mysql.conf ~/Rhost/Server/game/ )
-.IP 5. 3
-The following lines have to be REPLACED/CHANGED in local.c ( toward the top ):
-( you may edit this or copy the one from the other distro )
-( do either:  edit ~/Rhost/Server/src/local.c )
-(        or:  cp ~/tmprho/Server/src/local.c ~/Rhost/Server/src/local.c )
-.UNINDENT
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-IF REPLACING/CHANGING local.c COPY BELOW
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-/* Called when the mush starts up, immediatly prior to the main game
- * loop being entered. By this point all databases are loaded and
- * all variables configured.
- */
-#ifdef MYSQL_VERSION
-   extern void local_mysql_init(void);
-   extern int sql_shutdown(dbref player);
-#endif
-
-#ifdef SQLITE
-   extern void local_sqlite_init(void);
-#endif /* SQLITE */
-
-void local_startup(void) {
-#ifdef SQLITE
-   local_sqlite_init();
-#endif /* SQLITE */
-#ifdef MYSQL_VERSION
-   local_mysql_init();
-#endif
-   load_regexp_functions();
-}
-
-/* Called immediatly after the main game loop exits. At this point
- * all databases and variables are still configured
- */
-void local_shutdown(void) {
-#ifdef MYSQL_VERSION
-   sql_shutdown(\-1);
-#endif
-}
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.IP 6. 3
-Issue ‘make clean’ then make confsource to rebuild using the latest
-builder script to build in the mysql changes.
-.UNINDENT
-.SS Advanced Features
+.SH ADVANCED FEATURES
 .SS Adding hardcoded modules
 .sp
 RhostMUSH does support module writing.
@@ -7200,7 +7137,7 @@ blah blah blah blah blah blah blah                                    END!
 .fi
 .UNINDENT
 .UNINDENT
-.SS Format for image files
+.SH FORMAT FOR IMAGE FILES
 .sp
 The image format goes like this:
 .sp
@@ -7738,7 +7675,560 @@ Entering zones if it has three zones (#123, #456, and #789)
 .sp
 As you see, the last value of the zone \fIMUST\fP be \-1.  This tells it
 that there are no more zones to add.
-.SS Comparison of Flags
+.SH UPGRADING A LEGACY RHOSTMUSH INSTALLATION
+.SS Converting database betwen GDBM and QDBM
+.sp
+Ok, if you plan to recompile your game that is using GDBM to QDBM, or visa versa
+some bad news.
+.sp
+The databases are NOT COMPATIBLE to each other, at least in the binary form.
+.SS Downgrading QDBM to GDBM
+.sp
+\fBWARNING:\fP
+.INDENT 0.0
+.INDENT 3.5
+I would NEVER change from QDBM back to GDBM, but if you’re set on it these steps:
+.sp
+You would use the same steps if you plan to move QDBM to GDBM.  I however would
+not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously,
+don’t do it unless you have absolutely no other recourse.
+.sp
+IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify
+the following
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 1. 3
+You have on a 64 bit system, no object that has more than 400 attributes on it.
+.IP 2. 3
+You have on a 32 bit system, no object that has more than 750 attributes on it.
+.IP 3. 3
+Any CONTENT of any attribute must be below 4000 characters in length.
+.IP 4. 3
+Once you have that done, you may follow the procedures below on converting (upgrade) from GDBM to QDBM.  This works the same as converting (downgrading) QDBM back down to GDBM
+.UNINDENT
+.SS Upgradging GDBM to QDBM
+.sp
+Now, if you’ve kept reading and plan to convert your GDBM database to QDBM great news!
+It’s more stable, it’s faster, and lets you have far more flexibility.
+.sp
+So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
+.SS While logged in to your mush, issue the following commands
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP A. 3
+@dump/flat    – This will make a flatfile dump of your MUSH database
+.IP B. 3
+wmail/unload  – This will make a flatfile dump of your MAIL database
+.IP C. 3
+@areg/unload  – If you use the AutoRegistration engine, this dumps it
+.IP D. 3
+newsdb/unload – If you use the hardcoded news/bbs engine.  This dumps it
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Verify the files exist
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP A. 3
+Server/game/data/netrhost.db.flat
+.IP B. 3
+Server/game/data/RhostMUSH.dump.folder
+.IP C. 3
+Server/game/data/RhostMUSH.dump.mail
+.IP D. 3
+(Optional) Server/game/data/RhostMUSH.areg.dump
+.IP E. 3
+(Optional) Server/game/data/RhostMUSH.news.flat
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Shutdown the MUSH
+.sp
+@shutdown your mush
+.SS From the Server directory
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP A. 3
+make clean
+.IP B. 3
+make confsource
+1.  Select QDBM and if you wish at this time increase your LBUF size
+2.  Select any other options you may want
+.IP C. 3
+(r)un and let it compile.
+.IP D. 3
+Main DB: Delete (rm) the following files (from Rhost/Server/game/data):
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+netrhost.gdbm*
+netrhost.db
+netrhost.db.new
+netrhost.db.new.prev
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP E. 3
+Mail DB: Delete (rm) the following files (from Rhost/Server/game/data):
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+RhostMUSH.folder.dir
+RhostMUSH.folder.pag
+RhostMUSH.mail.dir
+RhostMUSH.mail.pag
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP F. 3
+(Optional) AutoReg DB: Delete (rm) the following files (from Rhost/Server/game/data):
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+RhostMUSH.areg.dir
+RhostMUSH.areg.pag
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP G. 3
+(Optional) News/BBS DB: Delete (rm) the following files (from Rhost/Server/game/data):
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+RhostMUSH.news.dir
+RhostMUSH.news.pag
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS From the Server/game directory
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP A. 3
+Load the database:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP B. 3
+Start the MUSH back:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./Startmush
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS While logged into the mush issue the following commands
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP A. 3
+Load in the mail database:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+wmail/load
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP B. 3
+(optional) Load in the autoreg database:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@areg/load
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP C. 3
+(optional) Load in the news/bbs database:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+newsdb/load
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Verify that you have QDBM running and your valid values
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP A. 3
+@list options system
+.IP B. 3
+@list options (spammy)
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.SS Updating RhostMUSH prior to 3.9.5p2
+.sp
+Ok.
+.sp
+So you’re running an old RhostMUSH.
+.sp
+One prior to 3.9.5p2 and want to take advantage of the new
+format of the Makefile and the automated mysql stuff and
+all the other goodies that isn’t really (easilly) done
+with just patch.sh.
+.sp
+Well, you’re in luck.  It is actually fairly easy to do.
+.sp
+This is what you have to do.
+.sp
+First thing’s first.
+.INDENT 0.0
+.IP 1. 3
+Log into your existing mush.  Let’s make current backups
+of all your flatfiles.  Issue:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@dump/flat
+wmail/unload
+@areg/unload
+newsdb/unload
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP 2. 3
+Shutdown your game:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@shutdown
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP 3. 3
+Make an image of all your current backed up files.  From The Server/game directory you would type:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./backup_flat.sh \-s
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Please remember the ‘\-s’ to the ./backup_flat.sh.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 4. 3
+Make note of the most recently created file in the directory Server/game/oldflat.  It’s usually named something like:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+RhostMUSH.dbflat1.tar.gz
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+You will need this file later.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 5. 3
+Rename your ‘Rhost’ directory to something else.  This is the directory that you have containing the ‘Server’ directory.  Name it anything you want other than ‘Rhost’.  For those not used to unix you would type:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+mv Rhost Rhost_old
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP 6. 3
+Pull in the latest Rhost.  You would type:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+git clone https://github.com/RhostMUSH/trunk Rhost
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+You would type this in the same directory you have renamed your old ‘Rhost’ directory
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 7. 3
+go into the Rhost/Server directory.   Type:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+make confsource
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it’s the ‘r’ option).
+.IP 8. 3
+Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the ‘game’ directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP A. 3
+cp netrhost.conf netrhost.conf.orig
+.IP B. 3
+cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .
+.IP C. 3
+tar \-zxvf RhostMUSH.dbflat1.tar.gz
+.IP D. 3
+Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don’t port or other stuff you have already customized).
+.IP E. 3
+Load in your flatfile information:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP F. 3
+Your ./Startmush should re\-index all your txt files you originally made:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+\&./Startmush
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP G. 3
+In your game type the following as an immortal or as #1.
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.IP 1. 3
+Load in your mail flatfile:
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+wmail/load
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP 2. 3
+Load in your autoregistration flatfile (if available):
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@areg/load
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.IP 3. 3
+Load in your hardcoded bbs flatfile (if available):
+.INDENT 3.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+newsdb/load
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 9. 3
+You should be good to go on a current directory structure for Rhost.  Enjoy!
+.UNINDENT
+.SS Adding MySQL to RhostMUSH older than 3.9.5p2
+.sp
+MySQL is now native in RhostMUSH as of 3.9.5p2.
+.sp
+\fBWARNING:\fP
+.INDENT 0.0
+.INDENT 3.5
+To autodetect it, YOU MUST HAVE mysql_config installed and running on your server.  Without this, even if you have mysql db installed it won’t be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql_config.
+.UNINDENT
+.UNINDENT
+.sp
+Download the git repository to a seperate directory so that you can
+copy over the files that it requires you to.
+.sp
+Suggestion:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+git clone https://github.com/RhostMUSH/trunk ~/tmprho
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+If you are patching UP from an older version, you need to update
+the following files:
+.INDENT 0.0
+.IP 1. 3
+update your src/Makefile to the one in the 3.9.5p2+ repo
+( cp ~/tmprho/Server/src/Makefile ~/Rhost/Server/src/Makefile )
+.IP 2. 3
+update your bin/asksource.* files to the one in the 3.9.5p2+ repo
+( cp ~/tmprho/Server/bin/asksource.* ~/Rhost/Server/bin/ )
+.IP 3. 3
+append ‘include rhost_mysql.conf’ BEFORE the rhost_ingame.conf file
+and before the section that says ‘define local aliases’ toward the end of
+your netrhost.conf file.
+( edit your ~/Rhost/Server/game/netrhost.conf file )
+.IP 4. 3
+copy the game/rhost_mysql.conf file from the 3.9.5p2+ repo
+( cp ~/tmprho/Server/game/rhost_mysql.conf ~/Rhost/Server/game/ )
+.IP 5. 3
+The following lines have to be REPLACED/CHANGED in local.c ( toward the top ):
+( you may edit this or copy the one from the other distro )
+( do either:  edit ~/Rhost/Server/src/local.c )
+(        or:  cp ~/tmprho/Server/src/local.c ~/Rhost/Server/src/local.c )
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+IF REPLACING/CHANGING local.c COPY BELOW
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+/* Called when the mush starts up, immediatly prior to the main game
+ * loop being entered. By this point all databases are loaded and
+ * all variables configured.
+ */
+#ifdef MYSQL_VERSION
+   extern void local_mysql_init(void);
+   extern int sql_shutdown(dbref player);
+#endif
+
+#ifdef SQLITE
+   extern void local_sqlite_init(void);
+#endif /* SQLITE */
+
+void local_startup(void) {
+#ifdef SQLITE
+   local_sqlite_init();
+#endif /* SQLITE */
+#ifdef MYSQL_VERSION
+   local_mysql_init();
+#endif
+   load_regexp_functions();
+}
+
+/* Called immediatly after the main game loop exits. At this point
+ * all databases and variables are still configured
+ */
+void local_shutdown(void) {
+#ifdef MYSQL_VERSION
+   sql_shutdown(\-1);
+#endif
+}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 6. 3
+Issue ‘make clean’ then make confsource to rebuild using the latest
+builder script to build in the mysql changes.
+.UNINDENT
+.SH COMPARISON OF FLAGS
 .sp
 ABODE           \- ABODE
 BLIND           \- BLIND
@@ -7800,7 +8290,7 @@ HTML            \- Not Available \- Rhost doesn’t support Pueblo
 REDIR_OK        \- Not Available \- Rhost doesn’t support @redirect
 SPEECHMOD       \- Not Available \- Rhost doesn’t support @speechmod \- use @icmd
 MARKER0\-MARKER9 \- MARKER0\-MARKER9
-.SS Comparison of powers
+.SH COMPARISON OF POWERS
 .sp
 announce              Can use the @wall command.
 Rhost Equiv: \- FREE_WALL (@power)
@@ -7895,10 +8385,10 @@ Rhost Equiv: SQL is a 3rd party patch.
 .sp
 watch_logins          Can set or reset the WATCHER flag on themselves.
 Rhost Equiv: MONITOR (@toggle)
-.SS RhostMUSH Internal Help Files
-.SS RhostMUSH Internal Wizhelp Files
-.SS Changelog
-.SS RhostMUSH 4.0 Update
+.SH RHOSTMUSH INTERNAL HELP FILES
+.SH RHOSTMUSH INTERNAL WIZHELP FILES
+.SH CHANGELOG
+.SS RhostMUSH 4.0
 .INDENT 0.0
 .TP
 .B MUX passwords didn’t work properly because of a memcmp() bug.
@@ -8105,7 +8595,7 @@ Thanks jan6
 Thanks Alley
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.9.5 Update
+.SS RhostMUSH 3.9.5
 .INDENT 0.0
 .TP
 .B Softcode overrides for connect files
@@ -8408,7 +8898,7 @@ Thanks MuSoapBox (Auspice, Sparks, Seamus, faraday, Thenomain, and others)
 Thanks Ixokai
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.9.4 Update
+.SS RhostMUSH 3.9.4
 .INDENT 0.0
 .TP
 .B REALITY_LEVELS wouldn’t compile because of undeclared function.
@@ -8489,7 +8979,7 @@ Thanks Volund
 Thanks psc943
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.9.3 Update
+.SS RhostMUSH 3.9.3
 .INDENT 0.0
 .TP
 .B @include – Idea Copied from Penn
@@ -8504,7 +8994,7 @@ Thanks Jules (and PennMUSH)
 Thanks Chime/Loki (Haunted)
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.9.2 Update
+.SS RhostMUSH 3.9.2
 .INDENT 0.0
 .TP
 .B @assert/@break didn’t handle {} correctly.
@@ -8559,7 +9049,7 @@ Thanks \fI\%Mike@M*U*S*H\fP
 Thanks \fI\%Sketch@M*U*S*H\fP
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.9.1 Update
+.SS RhostMUSH 3.9.1
 .INDENT 0.0
 .TP
 .B cluster_hasattr() bug for #\-1 that should be 0 for non\-existant attribs.
@@ -8688,7 +9178,7 @@ Thanks Matrix
 Thanks \fI\%Mike@M*U*S*H\fP
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.9.0 p00 Update
+.SS RhostMUSH 3.9.0 p00
 .sp
 \fBNOTE:\fP
 .INDENT 0.0
@@ -9551,7 +10041,7 @@ Logging network errors could cause heavy logging on really bad networks \- Fixed
 Thanks Planet X
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.2.4 p18 Update
+.SS RhostMUSH 3.2.4 p18
 .sp
 [06/28/2004]
 .SS Changes
@@ -9753,7 +10243,7 @@ Thanks Kevin
 .UNINDENT
 .sp
 Enhanced @break to accept optional argument to ‘branch’
-.SS RhostMUSH 3.2.4 p17 Update
+.SS RhostMUSH 3.2.4 p17
 .sp
 [ 06/04/2004]
 .SS Changes
@@ -9825,7 +10315,7 @@ Improved attribute handling for corrupting attributes.
 Thanks Xandar
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.2.4 p16 Update
+.SS RhostMUSH 3.2.4 p16
 .sp
 [02/24/2004]
 .SS Changes
@@ -10005,7 +10495,7 @@ hash with an off\-by\-one count. (Introduced p16 beta) \- Fixed
 Thanks Sasaki \fI\%Chie@Fantasy\fP Moon
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.2.4 p15 Update
+.SS RhostMUSH 3.2.4 p15
 .sp
 [09/09/2003]
 .SS Changes
@@ -10438,7 +10928,7 @@ Matthew
 Thanks \fI\%Illithid@Ennersea\fP
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.2.4 p14 Update
+.SS RhostMUSH 3.2.4 p14
 .sp
 [07/10/2002]
 .SS Changes
@@ -10739,7 +11229,7 @@ Thanks Ronan
 Thanks \fI\%Sketch@M*U*S*H\fP & Javelin
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.2.4 p13 Update
+.SS RhostMUSH 3.2.4 p13
 .sp
 [02/01/2002]
 .SS Changes
@@ -10948,7 +11438,7 @@ lcon(), next(), con(), lexits(), lcon(), xcon(), and sees() with reguards to han
 Thanks \fI\%accela@AniMUSH\fP
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.2.4 p12 Update
+.SS RhostMUSH 3.2.4 p12
 .sp
 [06/15/2001]
 .SS Changes
@@ -11075,7 +11565,7 @@ LBUF not freed in mail/quota \- Fixed
 Some side effects had wrong security/permission checks \- Fixed
 Side effects did not check inheritance for permission \- Fixed
 Iter()/list() and suite did not handle ansi properly \- Fixed
-.SS RhostMUSH 3.2.4 p11 Update
+.SS RhostMUSH 3.2.4 p11
 .sp
 [03/15/2001]
 .SS Changes
@@ -11244,7 +11734,7 @@ Thanks \fI\%Brazil@MUX2\fP
 .B Cloaked items didn’t trigger @startup \- fixed.
 \-Thanks \fI\%Rynos@Armageddon\fP
 .UNINDENT
-.SS RhostMUSH 3.2.4 p10 Update
+.SS RhostMUSH 3.2.4 p10
 .sp
 [02/15/2001]
 .SS Changes
@@ -11262,7 +11752,7 @@ cpu_secure_lvl admin param (default 0)
 .sp
 you could still get into a garbage object \- fixed (MINOR)
 forwardlists were not cleared on @wipe \- fixed
-.SS RhostMUSH 3.2.4 p9 Update
+.SS RhostMUSH 3.2.4 p9
 .sp
 [12/15/2000]
 .SS Changes
@@ -11345,7 +11835,7 @@ ex thing/\fIsta\fP returns ‘no attribs found’ if tstamps enabled \- fixed
 enhanced security for .txt file reading/verification (possible DoS) \- fixed
 attrib flag DARK could not be unset by non\-god.  Only #1 can set it now \- fixed
 encrypt/decrypt really mangled with how it passed key \- fixed
-.SS RhostMUSH 3.2.4 p8 Update
+.SS RhostMUSH 3.2.4 p8
 .sp
 [10/12/2000]
 .SS Changes
@@ -11433,7 +11923,7 @@ NOMODIFY wasn’t strict enough \- fixed
 BACKSTAGE/NOBACKSTAGE didn’t handle @zones \- fixed
 create() didn’t check command permissions first for @dig, @open, and @pcreate
 put a temp fix for a possible SIGSEGV bug.
-.SS RhostMUSH 3.2.4 p7 Update
+.SS RhostMUSH 3.2.4 p7
 .sp
 [07/15/2000]
 .SS Changes
@@ -11467,7 +11957,7 @@ DARK
 Reported by \fI\%Mercutio@ShatteredCathedrals\fP
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.2.4 p6 Update
+.SS RhostMUSH 3.2.4 p6
 .sp
 [06/16/2000]
 .SS Changes
@@ -11501,7 +11991,7 @@ Reported by \fI\%Rachel@AdminMUSH\fP
 .UNINDENT
 .sp
 hastoggles(), haspowers(), and hasdepowers() didn’t work.  Fixed.
-.SS RhostMUSH 3.2.4 p5 Update
+.SS RhostMUSH 3.2.4 p5
 .sp
 [06/01/2000]
 .SS Changes
@@ -11518,7 +12008,7 @@ nodns_site  – specifies site and mask that DNS lookups are not to be performed
 AUTH hung if remote server was configured wrong.  Fix put in around the OS
 limitation to handle this.
 Command substitution (%c/%x) could cause a SIGSEGV at random times.  Fixed.
-.SS RhostMUSH 3.2.4 p4 Update
+.SS RhostMUSH 3.2.4 p4
 .sp
 [04/15/2000]
 .SS Changes
@@ -11678,7 +12168,7 @@ Reported by \fI\%Tyr@Forgotten\fP (Thanks for the patch)
 .UNINDENT
 .sp
 news/articlelife wouldn’t reset articlelife with ‘\-1’.  – fixed
-.SS RhostMUSH 3.2.4 p3 Update
+.SS RhostMUSH 3.2.4 p3
 .sp
 [11/15/1999]
 .SS Changes
@@ -11876,7 +12366,7 @@ Reported by \fI\%Mercutio@Shattered\fP
 host sites over 50 characters would cause the host parameter to not properly null terminate.  \- fixed.
 @open would, under rare circumstances, clobber the return exit from how tprintf() buffers. \-fixed.
 andflags() and orflags() didn’t escape out ‘2’ or ‘1’ right. \- fixed
-.SS Historical Non\-Disclosure Agreement
+.SH HISTORICAL NON-DISCLOSURE AGREEMENT
 .sp
 The following NDA comes from the time when RhostMUSH was not publially
 available. It is preserved here for historical reasons. We are suckers for
@@ -11910,6 +12400,7 @@ you should be allowed to play with it fully as long as the first two
 rules are kept.
 .UNINDENT
 .UNINDENT
+.SH COPYRIGHT
 .sp
 Copyright © 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -11930,12 +12421,9 @@ the original writers of the code in writing.
 This copyright does not include the original code that was given as GNU freeware
 .sp
 This copyright information may not be changed, altered, or omitted.
-.SH INDICES AND TABLES
 .INDENT 0.0
 .IP \(bu 2
 genindex
-.IP \(bu 2
-modindex
 .IP \(bu 2
 search
 .UNINDENT
