@@ -18,9 +18,9 @@
 # -- Project information -----------------------------------------------------
 
 project = 'RhostMUSH Handbook'
-copyright = '2021, wstarter'
 author = 'wstarter'
-
+copyright = '2021, wstarter'
+version = '0.01a'
 
 # -- General configuration ---------------------------------------------------
 

@@ -18,9 +18,9 @@
                 <paragraph>This means that if your code is depending on @startups, you need to put a delay in the @startup
                     so that your local code can be loaded in as modules prior to the @startup execution.</paragraph>
                 <paragraph>Something that will not work:</paragraph>
-                <paragraph>@startup <reference refuri="mailto:me=@superhappyfuncommand">me=@superhappyfuncommand</reference> loadmeup=now</paragraph>
-                <paragraph>A small alteration that will likely make this work fine.</paragraph>
-                <paragraph>@startup <reference refuri="mailto:me=@wait">me=@wait</reference> <reference refuri="mailto:1=@superhappyfuncommand">1=@superhappyfuncommand</reference> loadmeup=now</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@startup me=@superhappyfuncommand loadmeup=now</literal_block>
+                <paragraph>A small alteration that will likely make this work fine:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@startup me=@wait 1=@superhappyfuncommand loadmeup=now</literal_block>
                 <paragraph>That 1 second delay for the queue will give the game engine time to load in your module code.</paragraph>
             </section>
             <section ids="contributing-your-module-back-to-rhost" names="contributing\ your\ module\ back\ to\ rhost">
@@ -76,8 +76,8 @@
                     0, then X sees Y. If the result is 0, as far as X is concerned, Y doesn’t
                     exist. This affects contents lists, exit lists, look, say, pose, @emit,
                     @verb, connect/disconnect, has arrived/has left messages, exit and object
-                    matching. ‘here’ and ‘me’ match always.
-                    It doesn’t affect @remit, @pemit, page, WHO or channels.
+                    matching. ‘here’ and ‘me’ match always.</paragraph>
+                <paragraph>It doesn’t affect @remit, @pemit, page, WHO or channels.
                     By default, all new objects are created with an RxLevel of 1 and TxLevel of
                     1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of
                     0xFFFFFFFF. Those default levels can be changed with configuration
@@ -91,18 +91,18 @@
                     description. If you look at something and match more than one of its
                     TxLevels, you’ll see all the corresponding descriptions on the target
                     object. If the object doesn’t have any descriptions for the matching levels,
-                    you’ll see the regular @desc.
-                    The @adesc attribute on the target is only triggered if the target can see
+                    you’ll see the regular @desc.</paragraph>
+                <paragraph>The @adesc attribute on the target is only triggered if the target can see
                     the looker in turn. It’s only triggered once, no matter how many descs the
                     looker sees. The @odesc is shown only to those people that see /both/ the
-                    looker and the target.
-                    Through extension, @afail/@ofail and similar pairs (@adrop/@odrop,
+                    looker and the target.</paragraph>
+                <paragraph>Through extension, @afail/@ofail and similar pairs (@adrop/@odrop,
                     @asucc/@osucc etc) work in the same way. @verb commands are similary
-                    affected.
-                    Softcoded commands are only matched on the objects that can see the player.
+                    affected.</paragraph>
+                <paragraph>Softcoded commands are only matched on the objects that can see the player.
                     The player doesn’t have to see the object. This includes commands in the
-                    Master Room.
-                    Exits are treated specially. In order to be able to use an exit name (or to
+                    Master Room.</paragraph>
+                <paragraph>Exits are treated specially. In order to be able to use an exit name (or to
                     use the ‘move &lt;exit&gt;’ command) the exit must be visible to the enactor. In
                     order to pass through the exit, the exit must see the enactor in turn. There
                     are reasons for this, which will become evident in the examples below.</paragraph>
@@ -110,39 +110,33 @@
             <section ids="configuration-parameters" names="configuration\ parameters">
                 <title>Configuration parameters</title>
                 <paragraph>A few configuration parameters have been introduced to deal with the reality
-                    levels.</paragraph>
-                <block_quote>
-                    <paragraph>reality_level &lt;name&gt; &lt;value&gt; [&lt;desc attribute name&gt;]</paragraph>
-                </block_quote>
+                    levels:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">reality_level &lt;name&gt; &lt;value&gt; [&lt;desc attribute name&gt;]</literal_block>
                 <paragraph>This directive can only be used in the config file (not with the @admin
                     command) and should be repeated for each reality level you want to define.
                     It defines a new level named &lt;name&gt; with a bitvalue of &lt;value&gt; and an
                     optional desc attribute. There is a limit of 8 characters on &lt;name&gt;, a
                     32-bit value on &lt;value&gt; (basically an unsigned long) and 32 characters on
-                    the attribute name. A maximum of 32 reality levels can be defined.</paragraph>
-                <block_quote>
-                    <paragraph>def_exit_tx &lt;value&gt;
-                        def_exit_rx &lt;value&gt;
-                        def_room_tx &lt;value&gt;
-                        def_room_rx &lt;value&gt;
-                        def_player_rx &lt;value&gt;
-                        def_player_tx &lt;value&gt;
-                        def_thing_rx &lt;value&gt;
-                        def_thing_tx &lt;value&gt;</paragraph>
-                </block_quote>
+                    the attribute name. A maximum of 32 reality levels can be defined:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">def_exit_tx &lt;value&gt;
+def_exit_rx &lt;value&gt;
+def_room_tx &lt;value&gt;
+def_room_rx &lt;value&gt;
+def_player_rx &lt;value&gt;
+def_player_tx &lt;value&gt;
+def_thing_rx &lt;value&gt;
+def_thing_tx &lt;value&gt;</literal_block>
                 <paragraph>These 8 directives define the default reality levels of newly created
                     objects. They can be set in the config file or with the @admin command.
-                    Like above, &lt;value&gt; must be a decimal number.</paragraph>
-                <block_quote>
-                    <paragraph>wiz_always_real &lt;0|1&gt;</paragraph>
-                </block_quote>
+                    Like above, &lt;value&gt; must be a decimal number:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">wiz_always_real &lt;0|1&gt;</literal_block>
                 <paragraph>If this parameter is set to 1 then wizards (and immortals on Rhost) will see
                     everything and will be visible to everyone. Their effective Rx and Tx levels
                     will always be 0xFFFFFFFF. Also settable in the config file and with the
                     @admin command.</paragraph>
                 <paragraph>Compile with -DREALITY_LEVELS compile time option to enable ‘Real’ needs to be ‘1’
-                    This is an example file only to be added to the mush.conf file
-                    Format: reality_level &lt;8 char name&gt; &lt;hex-byte-mask&gt; &lt;optional-desc: DESC default&gt;</paragraph>
+                    This is an example file only to be added to the mush.conf file Format:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">reality_level &lt;8 char name&gt; &lt;hex-byte-mask&gt; &lt;optional-desc: DESC default&gt;</literal_block>
             </section>
             <section ids="example-mush-conf" names="example\ mush.conf">
                 <title>Example mush.conf</title>
@@ -166,44 +160,40 @@
             </section>
             <section ids="commands" names="commands">
                 <title>Commands</title>
-                <paragraph>Two wiz-only commands are used to set the reality levels of an object.</paragraph>
-                <block_quote>
-                    <paragraph>@rxlevel &lt;object&gt;=&lt;list&gt;
-                        @txlevel &lt;object&gt;=&lt;list&gt;</paragraph>
-                </block_quote>
+                <paragraph>Two wiz-only commands are used to set the reality levels of an object:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@rxlevel &lt;object&gt;=&lt;list&gt;
+@txlevel &lt;object&gt;=&lt;list&gt;</literal_block>
                 <paragraph>&lt;list&gt; is a space-separated list of level names that have to be set on the
                     object. If a level name is prefixed with an exclamation mark (!) that level
-                    will be cleared from the object.
-                    WARNING: Changing the Tx levels of an object might make it invisible to you.
-                    In this case, you can still manipulate it by using his #dbref (or <problematic ids="id2" refid="id1">*</problematic>player
-                    for players).</paragraph>
+                    will be cleared from the object.</paragraph>
+                <warning>
+                    <paragraph>Changing the Tx levels of an object might make it invisible to you.
+                        In this case, you can still manipulate it by using his #dbref (or *player
+                        for players).</paragraph>
+                </warning>
             </section>
             <section ids="functions" names="functions">
                 <title>Functions</title>
-                <paragraph>There are five functions that deal with reality levels.</paragraph>
-                <block_quote>
-                    <paragraph>hasrxlevel(&lt;object&gt;,&lt;level&gt;)
-                        hastxlevel(&lt;object&gt;,&lt;level&gt;)</paragraph>
-                </block_quote>
+                <paragraph>There are five functions that deal with reality levels:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">hasrxlevel(&lt;object&gt;,&lt;level&gt;)
+hastxlevel(&lt;object&gt;,&lt;level&gt;)</literal_block>
                 <paragraph>These two functions check if an object has the specified Rx or Tx level.
                     You must control &lt;object&gt;. They return 0 or 1 and #-1 in case the object
-                    does not exist or you don’t have permissions.</paragraph>
-                <block_quote>
-                    <paragraph>rxlevel(&lt;object&gt;)
-                        txlevel(&lt;object&gt;)</paragraph>
-                </block_quote>
+                    does not exist or you don’t have permissions:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">rxlevel(&lt;object&gt;)
+txlevel(&lt;object&gt;)</literal_block>
                 <paragraph>These two functions return a space-separated list of the object’s Rx or Tx
-                    levels. Again, you must control the object.</paragraph>
-                <block_quote>
-                    <paragraph>cansee(&lt;obj1&gt;,&lt;obj2&gt;)</paragraph>
-                </block_quote>
+                    levels. Again, you must control the object:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">cansee(&lt;obj1&gt;,&lt;obj2&gt;)</literal_block>
                 <paragraph>A wiz-only function, returns 1 of &lt;obj1&gt; can see &lt;obj2&gt; from a reality
                     levels point of view. It doesn’t check if the objects are in the same
                     location, the DARK/CLOAKED flags and so on. Just &lt;obj1&gt;’s Rx level against
-                    &lt;obj2&gt;’s Tx level.
-                    WARNING: If you are using it on MUX2.0 with /both/ reality levels and Wod
-                    Realms enabled, the function will perform both checks and the Wod Realms
-                    version checks against the DARK flag.</paragraph>
+                    &lt;obj2&gt;’s Tx level.</paragraph>
+                <warning>
+                    <paragraph>If you are using it on MUX2.0 with /both/ reality levels and Wod
+                        Realms enabled, the function will perform both checks and the Wod Realms
+                        version checks against the DARK flag.</paragraph>
+                </warning>
             </section>
             <section ids="example-1-a-simplified-witchcraft-setup" names="example\ 1:\ a\ simplified\ witchcraft\ setup">
                 <title>Example 1: A simplified Witchcraft setup</title>
@@ -213,21 +203,15 @@
                     solid for a limited period of time, we will also use an additional desc for
                     the Ghost level, called GHOSTDESC. Therefore in the config file we will
                     have:</paragraph>
-                <block_quote>
-                    <paragraph>reality_level Real 1
-                        reality_level Ghost 2 GHOSTDESC</paragraph>
-                </block_quote>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">reality_level Real 1
+reality_level Ghost 2 GHOSTDESC</literal_block>
                 <paragraph>Ghosts can pass through most mundane locks, so the exists should allows the
                     ghosts to pass:</paragraph>
-                <block_quote>
-                    <paragraph>def_exit_rx 3</paragraph>
-                </block_quote>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">def_exit_rx 3</literal_block>
                 <paragraph>Note that def_exit_tx isn’t set. Why? Because ghosts see the mundane world
                     anyway, so a spirit character will have:</paragraph>
-                <block_quote>
-                    <paragraph>@txlevel &lt;player&gt;=!Real Ghost
-                        @rxlevel &lt;player&gt;=Real Ghost</paragraph>
-                </block_quote>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@txlevel &lt;player&gt;=!Real Ghost
+@rxlevel &lt;player&gt;=Real Ghost</literal_block>
                 <paragraph>Let’s assume 3 players:
                     John is a Mundane. He won’t see spirits.
                     John’s Rx: Real
@@ -262,7 +246,7 @@
                             <term>John            |         Jack          |         Frank</term>
                             <definition>
                                 <line_block>
-                                    <line><problematic ids="id4" refid="id3">|</problematic></line>
+                                    <line><problematic ids="id2" refid="id1">|</problematic></line>
                                 </line_block>
                             </definition>
                         </definition_list_item>
@@ -276,50 +260,50 @@
                     Obvious exits:          |                       |
                     Out &lt;O&gt;                 |                       |</paragraph>
                 <block_quote>
-                    <paragraph><problematic ids="id6" refid="id5">|</problematic>&gt; l                    |
-                        <problematic ids="id8" refid="id7">|</problematic>A room                 |
-                        <problematic ids="id10" refid="id9">|</problematic>This is a bare room.   |
-                        <problematic ids="id12" refid="id11">|</problematic>Contents:              |
-                        <problematic ids="id14" refid="id13">|</problematic>John Frank             |
-                        <problematic ids="id16" refid="id15">|</problematic>Obvious exits:         |
-                        <problematic ids="id18" refid="id17">|</problematic>Out &lt;O&gt;                |
-                        |                       <problematic ids="id20" refid="id19">|</problematic>&gt; l
-                        |                       <problematic ids="id22" refid="id21">|</problematic>A room
-                        |                       <problematic ids="id24" refid="id23">|</problematic>This is a bare room.
-                        |                       <problematic ids="id26" refid="id25">|</problematic>Contents:
-                        |                       <problematic ids="id28" refid="id27">|</problematic>John Jack
-                        |                       <problematic ids="id30" refid="id29">|</problematic>Obvious exits:
-                        |                       <problematic ids="id32" refid="id31">|</problematic>Out &lt;O&gt;</paragraph>
+                    <paragraph><problematic ids="id4" refid="id3">|</problematic>&gt; l                    |
+                        <problematic ids="id6" refid="id5">|</problematic>A room                 |
+                        <problematic ids="id8" refid="id7">|</problematic>This is a bare room.   |
+                        <problematic ids="id10" refid="id9">|</problematic>Contents:              |
+                        <problematic ids="id12" refid="id11">|</problematic>John Frank             |
+                        <problematic ids="id14" refid="id13">|</problematic>Obvious exits:         |
+                        <problematic ids="id16" refid="id15">|</problematic>Out &lt;O&gt;                |
+                        |                       <problematic ids="id18" refid="id17">|</problematic>&gt; l
+                        |                       <problematic ids="id20" refid="id19">|</problematic>A room
+                        |                       <problematic ids="id22" refid="id21">|</problematic>This is a bare room.
+                        |                       <problematic ids="id24" refid="id23">|</problematic>Contents:
+                        |                       <problematic ids="id26" refid="id25">|</problematic>John Jack
+                        |                       <problematic ids="id28" refid="id27">|</problematic>Obvious exits:
+                        |                       <problematic ids="id30" refid="id29">|</problematic>Out &lt;O&gt;</paragraph>
                 </block_quote>
                 <paragraph>&gt;l Jack                 |                       |
-                    Jack                    <problematic ids="id34" refid="id33">|</problematic>John has looked at you.|John has looked at Jack.
+                    Jack                    <problematic ids="id32" refid="id31">|</problematic>John has looked at you.|John has looked at Jack.
                     This is Jack.           |                       |
                     &gt;l Frank                |                       |
                     I don’t see that here.  |                       |</paragraph>
                 <block_quote>
-                    <paragraph><problematic ids="id122" refid="id121">|&gt;l Frank               |
+                    <paragraph><problematic ids="id108" refid="id107">|&gt;l Frank               |
                             |Frank                  |Jack has looked at you.
                             |This is Frank's ghostly|</problematic>
-                        <problematic ids="id36" refid="id35">|</problematic>shape.                 |
-                        |                       <problematic ids="id38" refid="id37">|</problematic>&gt;l John
-                        <problematic ids="id40" refid="id39">|</problematic>Frank has looked at    <problematic ids="id42" refid="id41">|</problematic>John
-                        <problematic ids="id44" refid="id43">|</problematic>John.                  <problematic ids="id46" refid="id45">|</problematic>This is John.
-                        |                       <problematic ids="id48" refid="id47">|</problematic>&gt;+materialize
-                        |                       <problematic ids="id50" refid="id49">|</problematic>You are now material.</paragraph>
+                        <problematic ids="id34" refid="id33">|</problematic>shape.                 |
+                        |                       <problematic ids="id36" refid="id35">|</problematic>&gt;l John
+                        <problematic ids="id38" refid="id37">|</problematic>Frank has looked at    <problematic ids="id40" refid="id39">|</problematic>John
+                        <problematic ids="id42" refid="id41">|</problematic>John.                  <problematic ids="id44" refid="id43">|</problematic>This is John.
+                        |                       <problematic ids="id46" refid="id45">|</problematic>&gt;+materialize
+                        |                       <problematic ids="id48" refid="id47">|</problematic>You are now material.</paragraph>
                 </block_quote>
                 <paragraph>&gt;l Frank                |                       |
-                    Frank                   <problematic ids="id52" refid="id51">|</problematic>John has looked at     <problematic ids="id54" refid="id53">|</problematic>Frank has looked at you.
-                    This is Frank, looking  <problematic ids="id56" refid="id55">|</problematic>Frank.                 |
+                    Frank                   <problematic ids="id50" refid="id49">|</problematic>John has looked at     <problematic ids="id52" refid="id51">|</problematic>Frank has looked at you.
+                    This is Frank, looking  <problematic ids="id54" refid="id53">|</problematic>Frank.                 |
                     human.                  |                       |</paragraph>
                 <block_quote>
-                    <paragraph><problematic ids="id58" refid="id57">|</problematic>&gt;l Frank               |</paragraph>
+                    <paragraph><problematic ids="id56" refid="id55">|</problematic>&gt;l Frank               |</paragraph>
                 </block_quote>
-                <paragraph>Jack has looked at      <problematic ids="id60" refid="id59">|</problematic>Frank                  <problematic ids="id62" refid="id61">|</problematic>John has looked at you.
-                    Frank.                  <problematic ids="id64" refid="id63">|</problematic>This is Frank, looking |</paragraph>
+                <paragraph>Jack has looked at      <problematic ids="id58" refid="id57">|</problematic>Frank                  <problematic ids="id60" refid="id59">|</problematic>John has looked at you.
+                    Frank.                  <problematic ids="id62" refid="id61">|</problematic>This is Frank, looking |</paragraph>
                 <block_quote>
-                    <paragraph><problematic ids="id124" refid="id123">|human.                 |
+                    <paragraph><problematic ids="id110" refid="id109">|human.                 |
                             |This is Frank's ghostly|</problematic>
-                        <problematic ids="id66" refid="id65">|</problematic>shape.                 |</paragraph>
+                        <problematic ids="id64" refid="id63">|</problematic>shape.                 |</paragraph>
                 </block_quote>
             </section>
             <section ids="example-2-a-wod-setup" names="example\ 2:\ a\ wod\ setup">
@@ -338,30 +322,26 @@
                 <paragraph>5 levels of Obfuscation, Umbra, Dreaming, Wraiths. ‘All’ is a handy
                     replacement for all levels, useful for wizards and wizobjects that should
                     be visible on all levels. Also useful when you want to set an object’s
-                    levels to something without knowing what he had before.
-                    @rxlevel #276=!All Real
-                    !All will clear all levels, then the object will gain the Real level.
+                    levels to something without knowing what he had before.</paragraph>
+                <paragraph>@rxlevel #276=!All Real</paragraph>
+                <paragraph>!All will clear all levels, then the object will gain the Real level.
                     There is more than one Obfuscation level because of the relation between
-                    Auspex and Obfuscation.
-                    A vampire with Obfuscate 2, should not be visible by one with Auspex 1.
+                    Auspex and Obfuscation.</paragraph>
+                <paragraph>A vampire with Obfuscate 2, should not be visible by one with Auspex 1.
                     However one with Auspex 3 should see another vampire with Obfuscate 1, 2
-                    /or/ 3.
-                    Obfuscated players can move if they have Obf &gt; 1. Umbral and Shadow players
+                    /or/ 3.</paragraph>
+                <paragraph>Obfuscated players can move if they have Obf &gt; 1. Umbral and Shadow players
                     should also be able to see most of the exits. So the exits at creation
                     should have default levels of Real + Obf2 + Obf3 + Obf4 + Obf5 + Umbra +
-                    Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381</paragraph>
-                <block_quote>
-                    <paragraph>def_exit_rx 381
-                        def_exit_tx 381</paragraph>
-                </block_quote>
+                    Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">def_exit_rx 381
+def_exit_tx 381</literal_block>
                 <paragraph>Obf1 is not included since an Obfuscated vampire should not be able to move
                     if it only has Obf1. Therefore they won’t see the exits. If you want them
                     to be able to see the exits, but not to use them, change the default Tx of
                     the exits:</paragraph>
-                <block_quote>
-                    <paragraph>def_exit_rx 381
-                        def_exit_tx 383</paragraph>
-                </block_quote>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">def_exit_rx 381
+def_exit_tx 383</literal_block>
                 <paragraph>Joe the Mortal will have an RxLevel: Real and a TxLevel: Real
                     Jack the Malk, who likes to walk around Obfuscated and has Obfuscate 2 will
                     have an RxLevel: Real (he sees what the mortals see) but a TxLevel: Obf2
@@ -369,8 +349,8 @@
                     try to make himself invisible will have an RxLevel: Real (as Jack)
                     and a TxLevel: Real Obf4. He will also set his @desc to what the mortals see and
                     &amp;OBFDESC to his real slimy desc. Simply put, he will be visible to mortals,
-                    but not with his real desc.
-                    Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel
+                    but not with his real desc.</paragraph>
+                <paragraph>Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel
                     will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So
                     he can see Joe, Jack and Jimmy’s both descs.
                     Joe, on the other hand, won’t see Jack at all. He will still see Jimmy, but
@@ -381,15 +361,15 @@
                     No &amp;FAEDESC on her, although she’ll be able to see it the one on Frida.
                     Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra
                     and TxLevel: Umbra. &amp;UMBRADESC is his friend. He won’t see mortals or other
-                    characters who are not in the Umbra.
-                    Barbie the Bastet, who’s only peeking in the Umbra, without going there,
+                    characters who are not in the Umbra.</paragraph>
+                <paragraph>Barbie the Bastet, who’s only peeking in the Umbra, without going there,
                     will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she
-                    can’t see the things that see her.
-                    Deanna the Drake, who activates her spirit vision, will have
+                    can’t see the things that see her.</paragraph>
+                <paragraph>Deanna the Drake, who activates her spirit vision, will have
                     RxLevel: Real Umbra and TxLevel: Real. She will see characters in Umbra and
                     real world at the same time and perceive the desc appropiate to the realm
-                    the ohter character is in.
-                    Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her @desc
+                    the ohter character is in.</paragraph>
+                <paragraph>Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her @desc
                     would be empty, but the &amp;SHADOWDESC should be set.
                     Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</paragraph>
                 <paragraph>Global code objects that all characters should be able to use:
@@ -466,14 +446,7 @@
                         MUSHQN_&lt;arg&gt;               labels that are assigned the setq vars
                         MUSHN_&lt;arg&gt;                The labels that were defined by any register</paragraph>
                     <block_quote>
-                        <definition_list>
-                            <definition_list_item>
-                                <term>Note: they must be ASCII-7 clean and contain no</term>
-                                <definition>
-                                    <paragraph>white spaces</paragraph>
-                                </definition>
-                            </definition_list_item>
-                        </definition_list>
+                        <paragraph>Note: they must be ASCII-7 clean and contain no white spaces</paragraph>
                     </block_quote>
                 </section>
             </section>
@@ -485,7 +458,7 @@
                     fields are SPACE SEPARATED.  The values are NOT evaluated.</paragraph>
                 <section ids="the-format-of-the-fields-are" names="the\ format\ of\ the\ fields\ are">
                     <title>The format of the fields are</title>
-                    <section dupnames="dynamic\ variables" ids="id67">
+                    <section dupnames="dynamic\ variables" ids="id65">
                         <title>Dynamic variables</title>
                         <paragraph>VARNAME        OWNER        CONTENTS (or leave null to clear)</paragraph>
                         <section ids="examples" names="examples">
@@ -500,7 +473,7 @@
                                 on the lines above</paragraph>
                         </section>
                     </section>
-                    <section dupnames="register\ variables" ids="id68">
+                    <section dupnames="register\ variables" ids="id66">
                         <title>Register variables</title>
                         <paragraph>REGISTER       Q            CONTENTS (or leave null to clear)</paragraph>
                         <section ids="examples-the-last-example-clears-register-0" names="examples\ (the\ last\ example\ clears\ register\ 0)">
@@ -583,76 +556,43 @@
                 screens and data display.  It can automatically center, justify and wrap the text parameters given to it.</paragraph>
             <section ids="example-one" names="example\ one">
                 <title>Example one</title>
-                <paragraph>&gt; @emit printf(<problematic ids="id126" refid="id125">|$-12s|$12s|$^12s$&amp;14s$_12s|</problematic>,a b c, d e f, g h i, wrap(lnum(20),12, l, <problematic ids="id70" refid="id69">|</problematic>, <problematic ids="id72" refid="id71">|</problematic>), j k l)</paragraph>
-                <block_quote>
-                    <definition_list>
-                        <definition_list_item>
-                            <term><problematic ids="id128" refid="id127">|a b c       |       d e f|</problematic>   g h i    <problematic ids="id130" refid="id129">|0 1 2 3 4 5 |j     k    l|</problematic></term>
-                            <definition>
-                                <paragraph><problematic ids="id74" refid="id73">|</problematic>6 7 8 9 10  |
-                                    <problematic ids="id76" refid="id75">|</problematic>11 12 13 14 |
-                                    <problematic ids="id78" refid="id77">|</problematic>15 16 17 18 |
-                                    <problematic ids="id80" refid="id79">|</problematic>19          |</paragraph>
-                            </definition>
-                        </definition_list_item>
-                    </definition_list>
-                </block_quote>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@emit printf(|$-12s|$12s|$^12s$&amp;14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
+
+|a b c       |       d e f|   g h i    |0 1 2 3 4 5 |j     k    l|
+                                       |6 7 8 9 10  |
+                                       |11 12 13 14 |
+                                       |15 16 17 18 |
+                                       |19          |</literal_block>
             </section>
             <section ids="example-two" names="example\ two">
                 <title>Example two</title>
-                <definition_list>
-                    <definition_list_item>
-                        <term>&gt; @emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,</term>
-                        <definition>
-                            <block_quote>
-                                <paragraph>iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
-                                    iter(<problematic ids="id132" refid="id131">|-1|</problematic>-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
-                                    * Aggravated%RX Lethal%R/ Bashing)</paragraph>
-                                <block_quote>
-                                    <block_quote>
-                                        <definition_list>
-                                            <definition_list_item>
-                                                <term>Bruised      [ ]    * Aggravated</term>
-                                                <definition>
-                                                    <paragraph>Hurt  -1  [ ]        X Lethal</paragraph>
-                                                </definition>
-                                            </definition_list_item>
-                                        </definition_list>
-                                        <paragraph>Injured  -1  [ ]       / Bashing
-                                            Wounded  -2  [ ]</paragraph>
-                                        <block_quote>
-                                            <paragraph>Mauled  -2  [ ]</paragraph>
-                                        </block_quote>
-                                    </block_quote>
-                                    <paragraph>Crippled  -5  [ ]</paragraph>
-                                </block_quote>
-                            </block_quote>
-                            <paragraph>Incapacitated      [ ]</paragraph>
-                        </definition>
-                    </definition_list_item>
-                </definition_list>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">  @emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
+  iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
+  iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
+  * Aggravated%RX Lethal%R/ Bashing)
+
+      Bruised      [ ]    * Aggravated
+         Hurt  -1  [ ]        X Lethal
+      Injured  -1  [ ]       / Bashing
+      Wounded  -2  [ ]
+       Mauled  -2  [ ]
+     Crippled  -5  [ ]
+Incapacitated      [ ]</literal_block>
             </section>
             <section ids="example-three" names="example\ three">
                 <title>Example three</title>
-                <definition_list>
-                    <definition_list_item>
-                        <term>&gt; @emit [printf($-10|“‘s$-60|”s,a b c d e f g h i j k l m n o p q r s t u v w x y z,</term>
-                        <definition>
-                            <block_quote>
-                                <paragraph>this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!</paragraph>
-                            </block_quote>
-                            <paragraph>a b c d e this is a test a groovy test blah blah blah blah blah blah
-                                f g h i j blah blah blah blah blah blah blah blah blah blah blah blah
-                                k l m n o blah blah blah blah blah blah blah blah blah blah blah blah
-                                p q r s t blah blah blah blah blah blah blah blah blah blah blah blah
-                                u v w x y blah blah blah blah blah blah blah blah blah blah blah blah
-                                z         blah blah blah blah blah blah blah blah blah blah blah blah
-                                blah blah blah blah blah blah blah blah blah blah blah blah blah blah
-                                blah blah blah blah blah blah blah blah blah blah blah blah blah blah
-                                blah blah blah blah blah blah blah                                    END!</paragraph>
-                        </definition>
-                    </definition_list_item>
-                </definition_list>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@emit [printf($-10|"'s$-60|"s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
+this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!
+
+a b c d e this is a test a groovy test blah blah blah blah blah blah
+f g h i j blah blah blah blah blah blah blah blah blah blah blah blah
+k l m n o blah blah blah blah blah blah blah blah blah blah blah blah
+p q r s t blah blah blah blah blah blah blah blah blah blah blah blah
+u v w x y blah blah blah blah blah blah blah blah blah blah blah blah
+z         blah blah blah blah blah blah blah blah blah blah blah blah
+blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+blah blah blah blah blah blah blah                                    END!</literal_block>
             </section>
         </section>
     </section>
@@ -663,15 +603,15 @@
             ———  ——-  ———————————————————-
             INT        3        TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5
             STRING     Wizard   NAME: of the target.  Verbatum, no quotes surround it
-            <problematic ids="id82" refid="id81">*</problematic>INT       123      LOCATION: dbref# of the target.  No prepending ‘#’ used.
-            <problematic ids="id84" refid="id83">*</problematic>INT       234      CONTENTS: The first content in a linked list content table (-1 if none)
-            <problematic ids="id86" refid="id85">*</problematic>INT       345      EXITS: The first exit in a linked list exit table (-1 if none)
-            <problematic ids="id88" refid="id87">*</problematic>INT       0        LINK: This is the ‘home’ of the object or what it’s linked to (-1 for none)
-            <problematic ids="id90" refid="id89">*</problematic>INT       123      NEXT: The next thing after this item for a content holder
+            <problematic ids="id68" refid="id67">*</problematic>INT       123      LOCATION: dbref# of the target.  No prepending ‘#’ used.
+            <problematic ids="id70" refid="id69">*</problematic>INT       234      CONTENTS: The first content in a linked list content table (-1 if none)
+            <problematic ids="id72" refid="id71">*</problematic>INT       345      EXITS: The first exit in a linked list exit table (-1 if none)
+            <problematic ids="id74" refid="id73">*</problematic>INT       0        LINK: This is the ‘home’ of the object or what it’s linked to (-1 for none)
+            <problematic ids="id76" refid="id75">*</problematic>INT       123      NEXT: The next thing after this item for a content holder
             STRING     #123     LOCK: The boolean string lock if it exists.  (empty if no lock)
-            <problematic ids="id92" refid="id91">*</problematic>INT       1        OWNER: The dbref# owner of the target.  For players same dbref as player.
+            <problematic ids="id78" refid="id77">*</problematic>INT       1        OWNER: The dbref# owner of the target.  For players same dbref as player.
             INT        789      PARENT: The parent of the target.  (-1 if none)
-            <problematic ids="id94" refid="id93">*</problematic>INT       99999    MONEY: The int value of the money the players has.
+            <problematic ids="id80" refid="id79">*</problematic>INT       99999    MONEY: The int value of the money the players has.
             INT        194592   FLAGS1: The first word of flags (@set flags) on a player      (see FLAGS)
             INT        194222   FLAGS2: The second word of flags (@set flags) on a player     (see FLAGS)
             INT        199999   FLAGS3: The third word of flags (@set flags []) on a player   (see FLAGS)
@@ -689,10 +629,12 @@
             STRING     Wheee    ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)
             &gt;STRING    &gt;Desc    ATTRIBUTENAME: Another attribute to chain in
             STRING     Ugly     ATTRIBUTECONTENTS: Contents of the next attribute
-            &gt;STRING    <problematic ids="id96" refid="id95">*</problematic>Password PASSWORDATTRIB: Special password attribute.  Attribute name is ‘<problematic ids="id98" refid="id97">*</problematic>Password’
+            &gt;STRING    <problematic ids="id82" refid="id81">*</problematic>Password PASSWORDATTRIB: Special password attribute.  Attribute name is ‘<problematic ids="id84" refid="id83">*</problematic>Password’
             STRING     $6$xy$xy PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
             &lt;          &lt;        This is the marker to specify the end of the attribute contents.  This is always the last line</paragraph>
-        <paragraph>NOTE:  Any Data type starting with ‘*’ is ignored when @snapshot/loading.</paragraph>
+        <note>
+            <paragraph>Any Data type starting with ‘*’ is ignored when @snapshot/loading.</paragraph>
+        </note>
         <paragraph>The structure above with the examples would look like this in the file:</paragraph>
         <paragraph>3
             Wizard
@@ -725,330 +667,360 @@
             &gt;*Password
             $6$xy$xy
             &lt;</paragraph>
-        <definition_list>
-            <definition_list_item>
-                <term>FLAGS: The following flags are to be used.  They are BITWISE masks that you</term>
-                <definition>
-                    <paragraph>need to add together for the values tghat you apply</paragraph>
-                </definition>
-            </definition_list_item>
-        </definition_list>
-        <paragraph>/* First word of flags <emphasis>/
-                #define SEETHRU         0x00000008      /</emphasis> Can see through to the other side <emphasis>/
-                #define WIZARD          0x00000010      /</emphasis> gets automatic control <emphasis>/
-                #define LINK_OK         0x00000020      /</emphasis> anybody can link to this room <emphasis>/
-                #define DARK            0x00000040      /</emphasis> Don’t show contents or presence <emphasis>/
-                #define JUMP_OK         0x00000080      /</emphasis> Others may @tel here <emphasis>/
-                #define STICKY          0x00000100      /</emphasis> Object goes home when dropped <emphasis>/
-                #define DESTROY_OK      0x00000200      /</emphasis> Others may @destroy <emphasis>/
-                #define HAVEN           0x00000400      /</emphasis> No killing here, or no pages <emphasis>/
-                #define QUIET           0x00000800      /</emphasis> Prevent ‘feelgood’ messages <emphasis>/
-                #define HALT            0x00001000      /</emphasis> object cannot perform actions <emphasis>/
-                #define TRACE           0x00002000      /</emphasis> Generate evaluation trace output <emphasis>/
-                #define GOING           0x00004000      /</emphasis> object is available for recycling <emphasis>/
-                #define MONITOR         0x00008000      /</emphasis> Process ^x:action listens on obj? <emphasis>/
-                #define MYOPIC          0x00010000      /</emphasis> See things as nonowner/nonwizard <emphasis>/
-                #define PUPPET          0x00020000      /</emphasis> Relays ALL messages to owner <emphasis>/
-                #define CHOWN_OK        0x00040000      /</emphasis> Object may be @chowned freely <emphasis>/
-                #define ENTER_OK        0x00080000      /</emphasis> Object may be ENTERed <emphasis>/
-                #define VISUAL          0x00100000      /</emphasis> Everyone can see properties <emphasis>/
-                #define IMMORTAL        0x00200000      /</emphasis> Object can’t be killed <emphasis>/
-                #define HAS_STARTUP     0x00400000      /</emphasis> Load some attrs at startup <emphasis>/
-                #define OPAQUE          0x00800000      /</emphasis> Can’t see inside <emphasis>/
-                #define VERBOSE         0x01000000      /</emphasis> Tells owner everything it does. <emphasis>/
-                #define INHERIT         0x02000000      /</emphasis> Gets owner’s privs. (i.e. Wiz) <emphasis>/
-                #define NOSPOOF         0x04000000      /</emphasis> Report originator of all actions. <emphasis>/
-                #define ROBOT           0x08000000      /</emphasis> Player is a ROBOT <emphasis>/
-                #define SAFE            0x10000000      /</emphasis> Need /override to @destroy <emphasis>/
-                #define CONTROL_OK      0x20000000      /</emphasis> ControlLk specifies who ctrls me <emphasis>/
-                #define HEARTHRU        0x40000000      /</emphasis> Can hear out of this obj or exit <emphasis>/
-                #define TERSE           0x80000000      /</emphasis> Only show room name on look <problematic ids="id100" refid="id99">*</problematic>/</paragraph>
-        <paragraph>/* Second word of flags <emphasis>/
-                #define KEY             0x00000001      /</emphasis> No puppets <emphasis>/
-                #define ABODE           0x00000002      /</emphasis> May @set home here <emphasis>/
-                #define FLOATING        0x00000004      /</emphasis> Inhibit Floating room.. msgs <emphasis>/
-                #define UNFINDABLE      0x00000008      /</emphasis> Cant loc() from afar <emphasis>/
-                #define PARENT_OK       0x00000010      /</emphasis> Others may @parent to me <emphasis>/
-                #define LIGHT           0x00000020      /</emphasis> Visible in dark places <emphasis>/
-                #define HAS_LISTEN      0x00000040      /</emphasis> Internal: LISTEN attr set <emphasis>/
-                #define HAS_FWDLIST     0x00000080      /</emphasis> Internal: FORWARDLIST attr set <emphasis>/
-                #define ADMIN           0x00000100      /</emphasis> Player has admin privs <emphasis>/
-                #define GUILDOBJ        0x00000200
-                #define GUILDMASTER     0x00000400      /</emphasis> Player has gm privs <emphasis>/
-                #define NO_WALLS        0x00000800      /</emphasis> So to stop normal walls <emphasis>/
-                #define REQUIRE_TREES   0x00001000      /</emphasis> Trees are required on this target for attrib sets <emphasis>/
-                /</emphasis> —-FREE—-         0x00002000 <emphasis>/   /</emphasis> #define OLD_NOROBOT  0x00002000 <emphasis>/
-                #define SCLOAK          0x00004000
-                #define CLOAK           0x00008000
-                #define FUBAR           0x00010000
-                #define INDESTRUCTABLE  0x00020000      /</emphasis> object can’t be nuked <emphasis>/
-                #define NO_YELL         0x00040000      /</emphasis> player can’t @wall <emphasis>/
-                #define NO_TEL          0x00080000      /</emphasis> player can’t @tel or be @tel’d <emphasis>/
-                #define FREE            0x00100000      /</emphasis> object/player has unlim money <emphasis>/
-                #define GUEST_FLAG      0x00200000
-                #define RECOVER         0x00400000
-                #define BYEROOM         0x00800000
-                #define WANDERER        0x01000000
-                #define ANSI            0x02000000
-                #define ANSICOLOR       0x04000000
-                #define NOFLASH         0x08000000
-                #define SUSPECT         0x10000000      /</emphasis> Report some activities to wizards <emphasis>/
-                #define BUILDER         0x20000000      /</emphasis> Player has architect privs <emphasis>/
-                #define CONNECTED       0x40000000      /</emphasis> Player is connected <emphasis>/
-                #define SLAVE           0x80000000      /</emphasis> Disallow most commands <problematic ids="id102" refid="id101">*</problematic>/</paragraph>
-        <paragraph>/* Third word of flags - Thorin 3/95 <emphasis>/
-                #define NOCONNECT       0x00000001
-                #define DPSHIFT         0x00000002
-                #define NOPOSSESS       0x00000004
-                #define COMBAT          0x00000008
-                #define IC              0x00000010
-                #define ZONEMASTER      0x00000020
-                #define ALTQUOTA        0x00000040
-                #define NOEXAMINE       0x00000080
-                #define NOMODIFY        0x00000100
-                #define CMDCHECK        0x00000200
-                #define DOORRED         0x00000400
-                #define PRIVATE         0x00000800      /</emphasis> For exits only <emphasis>/
-                #define NOMOVE          0x00001000
-                #define STOP            0x00002000
-                #define NOSTOP          0x00004000
-                #define NOCOMMAND       0x00008000
-                #define AUDIT           0x00010000
-                #define SEE_OEMIT       0x00020000
-                #define NO_GOBJ         0x00040000
-                #define NO_PESTER       0x00080000
-                #define LRFLAG          0x00100000
-                #define TELOK           0x00200000
-                #define NO_OVERRIDE     0x00400000
-                #define NO_USELOCK      0x00800000
-                #define DR_PURGE        0x01000000      /</emphasis> For rooms only…internal <emphasis>/
-                #define NO_ANSINAME     0x02000000      /</emphasis> Remove the ability to set @ansiname <emphasis>/
-                #define SPOOF           0x04000000
-                #define SIDEFX          0x08000000      /</emphasis> Allow enactor to use side-effects <emphasis>/
-                #define ZONECONTENTS    0x10000000      /</emphasis> Search contents of zonemaster for $commands <emphasis>/
-                #define NOWHO           0x20000000      /</emphasis> Player in WHO doesn’t show up - use with @hide <emphasis>/
-                #define ANONYMOUS       0x40000000      /</emphasis> Player set shows up as ‘Someone’ when talking <emphasis>/
-                #define BACKSTAGE       0x80000000      /</emphasis> Immortal toggle for items on control <problematic ids="id104" refid="id103">*</problematic>/</paragraph>
-        <paragraph>/* Forth word of flags - Thorin 3/95 <emphasis>/
-                #define NOBACKSTAGE     0x00000001      /</emphasis> Immortal toggle to control no-backstage <emphasis>/
-                #define LOGIN           0x00000002      /</emphasis> Enable player to login past @disable logins <emphasis>/
-                #define INPROGRAM       0x00000004      /</emphasis> Player is inside a program <emphasis>/
-                #define COMMANDS        0x00000008      /</emphasis> Optional define for $commands <emphasis>/
-                #define MARKER0         0x00000010      /</emphasis> TM 3.0 marker flags <emphasis>/
-                #define MARKER1         0x00000020
-                #define MARKER2         0x00000040
-                #define MARKER3         0x00000080
-                #define MARKER4         0x00000100
-                #define MARKER5         0x00000200
-                #define MARKER6         0x00000400
-                #define MARKER7         0x00000800
-                #define MARKER8         0x00001000
-                #define MARKER9         0x00002000
-                #define BOUNCE          0x00004000      /</emphasis> That lovly TM 3.0 Bouncey thingy <emphasis>/
-                #define SHOWFAILCMD     0x00008000      /</emphasis> Show failed $commands defauilt error <emphasis>/
-                #define NOUNDERLINE     0x00010000      /</emphasis> Strip UNDERLINE character from ANSI <emphasis>/
-                #define NONAME          0x00020000      /</emphasis> Target does not display name with look <emphasis>/
-                #define ZONEPARENT      0x00040000      /</emphasis> Target zone allows inheritance of attribs <emphasis>/
-                #define SPAMMONITOR     0x00080000      /</emphasis> Monitor the target for spam <emphasis>/
-                #define BLIND           0x00100000      /</emphasis> Exits and locations snuff arrived/left <emphasis>/
-                #define NOCODE          0x00200000      /</emphasis> Players may not code <emphasis>/
-                #define HAS_PROTECT     0x00400000      /</emphasis> Player target has protect name data <emphasis>/
-                #define XTERMCOLOR      0x00800000      /</emphasis> Extended AnSI Xterm colors <emphasis>/
-                #define HAS_ATTRPIPE    0x01000000      /</emphasis> Attribute piping via @pipe <emphasis>/
-                /</emphasis> 0x02000000 free <emphasis>/
-                /</emphasis> 0x04000000 free <emphasis>/
-                /</emphasis> 0x08000000 free <emphasis>/
-                /</emphasis> 0x10000000 free <emphasis>/
-                /</emphasis> 0x20000000 free <emphasis>/
-                /</emphasis> 0x40000000 free <emphasis>/
-                /</emphasis> 0x80000000 free <problematic ids="id106" refid="id105">*</problematic>/</paragraph>
-        <paragraph>/* First word of toggles - Thorin 3/95 <emphasis>/
-                #define TOG_MONITOR             0x00000001      /</emphasis> Active monitor on player <emphasis>/
-                #define TOG_MONITOR_USERID      0x00000002      /</emphasis> show userid <emphasis>/
-                #define TOG_MONITOR_SITE        0x00000004      /</emphasis> show site <emphasis>/
-                #define TOG_MONITOR_STATS       0x00000008      /</emphasis> show stats <emphasis>/
-                #define TOG_MONITOR_FAIL        0x00000010      /</emphasis> show fails <emphasis>/
-                #define TOG_MONITOR_CONN        0x00000020
-                #define TOG_VANILLA_ERRORS      0x00000040      /</emphasis> show normal error msg <emphasis>/
-                #define TOG_NO_ANSI_EX          0x00000080      /</emphasis> supress ansi stuff in ex <emphasis>/
-                #define TOG_CPUTIME             0x00000100      /</emphasis> show cpu time for cmds <emphasis>/
-                #define TOG_MONITOR_DISREASON   0x00000200
-                #define TOG_MONITOR_VLIMIT      0x00000400
-                #define TOG_NOTIFY_LINK         0x00000800
-                #define TOG_MONITOR_AREG        0x00001000
-                #define TOG_MONITOR_TIME        0x00002000
-                #define TOG_CLUSTER             0x00004000      /</emphasis> Object is part of a cluster <emphasis>/
-                #define TOG_SNUFFDARK           0x00008000      /</emphasis> Snuff Dark Exit Viewing <emphasis>/
-                #define TOG_NOANSI_PLAYER       0x00010000      /</emphasis> Do not show ansi player names <emphasis>/
-                #define TOG_NOANSI_THING        0x00020000      /</emphasis> … things <emphasis>/
-                #define TOG_NOANSI_ROOM         0x00040000      /</emphasis> … rooms <emphasis>/
-                #define TOG_NOANSI_EXIT         0x00080000      /</emphasis> … exits <emphasis>/
-                #define TOG_NO_TIMESTAMP        0x00100000      /</emphasis> Do not modify timestamps on target <emphasis>/
-                #define TOG_NO_FORMAT           0x00200000      /</emphasis> Override @conformat/@exitformat <emphasis>/
-                #define TOG_ZONE_AUTOADD        0x00400000      /</emphasis> Automatically add FIRST zone in list <emphasis>/
-                #define TOG_ZONE_AUTOADDALL     0x00800000      /</emphasis> Automatically add ALL zones in list <emphasis>/
-                #define TOG_WIELDABLE           0x01000000      /</emphasis> Marker to specify if object is wieldable <emphasis>/
-                #define TOG_WEARABLE            0x02000000      /</emphasis> Marker to specify if object is wearable <emphasis>/
-                #define TOG_SEE_SUSPECT         0x04000000      /</emphasis> Specify who sees suspect in WHO/MONITOR <emphasis>/
-                #define TOG_MONITOR_CPU         0x08000000      /</emphasis> Specify who sees CPU overflow allerts <emphasis>/
-                #define TOG_BRANDY_MAIL         0x10000000      /</emphasis> Define brandy like mail interface <emphasis>/
-                #define TOG_FORCEHALTED         0x20000000      /</emphasis> The item toggled can @force halted things <emphasis>/
-                #define TOG_PROG                0x40000000      /</emphasis> Can use @program on other people/things <emphasis>/
-                #define TOG_NOSHELLPROG         0x80000000      /</emphasis> Target can not issue commands inside a prog <problematic ids="id108" refid="id107">*</problematic>/</paragraph>
-        <paragraph>/* Second word of toggles – Ash <emphasis>/
-                #define TOG_EXTANSI             0x00000001      /</emphasis> Specify if target can used extended ansi naming <emphasis>/
-                #define TOG_IMMPROG             0x00000002      /</emphasis> Only an immortal can @quitprogram them <emphasis>/
-                #define TOG_MONITOR_BFAIL       0x00000004      /</emphasis> Monitor if a failed connect on bad character <emphasis>/
-                #define TOG_PROG_ON_CONNECT     0x00000008      /</emphasis> Reverse logic of program on connect <emphasis>/
-                #define TOG_MAIL_STRIPRETURN    0x00000010      /</emphasis> Strip carrage return in mail combining <emphasis>/
-                #define TOG_PENN_MAIL           0x00000020      /</emphasis> Use PENN style syntax <emphasis>/
-                #define TOG_SILENTEFFECTS       0x00000040      /</emphasis> Silents did_it() functionality on target <emphasis>/
-                #define TOG_IGNOREZONE          0x00000080      /</emphasis> Target is set to @icmd zones <emphasis>/
-                #define TOG_VPAGE               0x00000100      /</emphasis> Target sees alias in pages <emphasis>/
-                #define TOG_PAGELOCK            0x00000200      /</emphasis> Target issues pagelocks as normal <emphasis>/
-                #define TOG_MAIL_NOPARSE        0x00000400      /</emphasis> Don’t parse %t/%b/%r in mail <emphasis>/
-                #define TOG_MAIL_LOCKDOWN       0x00000800      /</emphasis> Mortal-accessed mail/number and mail/check <emphasis>/
-                #define TOG_MUXPAGE             0x00001000      /</emphasis> Have ‘page’ work like MUX <emphasis>/
-                #define TOG_NOZONEPARENT        0x00002000      /</emphasis> Zone Child does NOT inherit parent attribs <emphasis>/
-                #define TOG_ATRUSE              0x00004000      /</emphasis> Enactor can use Attribute based USELOCKS <emphasis>/
-                #define TOG_VARIABLE            0x00008000      /</emphasis> Set exit to be variable <emphasis>/
-                #define TOG_KEEPALIVE           0x00010000      /</emphasis> Send ‘keepalives’ to the target player <emphasis>/
-                #define TOG_CHKREALITY          0x00020000      /</emphasis> Target checks @lock/user for Reality passes <emphasis>/
-                #define TOG_NOISY               0x00040000      /</emphasis> Always do noisy sets <emphasis>/
-                #define TOG_ZONECMDCHK          0x00080000      /</emphasis> Zone commands checked on target like @parent <emphasis>/
-                #define TOG_HIDEIDLE            0x00100000      /</emphasis> Allow wizards/immortals to hide their idle time <emphasis>/
-                #define TOG_MORTALREALITY       0x00200000      /</emphasis> Override the wiz_always_real setting <emphasis>/
-                #define TOG_ACCENTS             0x00400000      /</emphasis> Accents being displayed <emphasis>/
-                #define TOG_PREMAILVALIDATE     0x00800000      /</emphasis> Pre-Validate the mail send list before sending mail <emphasis>/
-                #define TOG_SAFELOG             0x01000000      /</emphasis> Allow ‘clean logging’ by the player <emphasis>/
-                #define TOG_UTF8                0x02000000      /</emphasis> UTF8 being displayed <emphasis>/
-                /</emphasis> 0x04000000 free <emphasis>/
-                #define TOG_NODEFAULT           0x08000000      /</emphasis> Allow target to inherit default attribs <emphasis>/
-                #define TOG_EXFULLWIZATTR       0x10000000      /</emphasis> Examine Wiz attribs <emphasis>/
-                #ifdef ENH_LOGROOM
-                #define TOG_LOGROOMENH          0x20000000      /</emphasis> Enhanced Room Logging <emphasis>/
-                #endif
-                #define TOG_LOGROOM             0x40000000      /</emphasis> Log Room’s location/contents <emphasis>/
-                #define TOG_NOGLOBPARENT        0x80000000      /</emphasis> Target does not inherit global attributes <problematic ids="id110" refid="id109">*</problematic>/</paragraph>
-        <block_quote>
-            <paragraph>the fact.</paragraph>
-        </block_quote>
-        <definition_list>
-            <definition_list_item>
-                <term>/* First word of power positions.  Each position is 2 bits so the</term>
-                <definition>
-                    <paragraph>number here is how far over to shift the 2 bit pattern         <problematic ids="id112" refid="id111">*</problematic>/</paragraph>
-                </definition>
-            </definition_list_item>
-        </definition_list>
-        <paragraph>#define POWER_CHANGE_QUOTAS     0
-            #define POWER_CHOWN_ME          2
-            #define POWER_CHOWN_ANYWHERE    4
-            #define POWER_CHOWN_OTHER       6
-            #define POWER_WIZ_WHO           8
-            #define POWER_EX_ALL            10
-            #define POWER_NOFORCE           12
-            #define POWER_SEE_QUEUE_ALL     14
-            #define POWER_FREE_QUOTA        16
-            #define POWER_GRAB_PLAYER       18
-            #define POWER_JOIN_PLAYER       20
-            #define POWER_LONG_FINGERS      22
-            #define POWER_NO_BOOT           24
-            #define POWER_BOOT              26
-            #define POWER_STEAL             28
-            #define POWER_SEE_QUEUE         30</paragraph>
-        <paragraph>/* Second word of power positions. <problematic ids="id114" refid="id113">*</problematic>/
-            #define POWER_SHUTDOWN          0
-            #define POWER_TEL_ANYWHERE      2
-            #define POWER_TEL_ANYTHING      4
-            #define POWER_PCREATE           6
-            #define POWER_STAT_ANY          8
-            #define POWER_FREE_WALL         10
-            #define POWER_EXECSCRIPT        12
-            #define POWER_FREE_PAGE         14
-            #define POWER_HALT_QUEUE        16
-            #define POWER_HALT_QUEUE_ALL    18
-            #define POWER_FORMATTING        20
-            #define POWER_NOKILL            22
-            #define POWER_SEARCH_ANY        24
-            #define POWER_SECURITY          26
-            #define POWER_WHO_UNFIND        28</paragraph>
-        <paragraph>/* Third word of power positions. <emphasis>/
-                #define POWER_OPURGE            0
-                #define POWER_HIDEBIT           2
-                #define POWER_NOWHO             4
-                #define POWER_FULLTEL_ANYWHERE  6
-                #define POWER_EX_FULL           8
-                #define POWER_API               10
-                #define POWER_MONITORAPI        12
-                #define POWER_WIZ_IDLE          14
-                #define POWER_WIZ_SPOOF         16
-                /</emphasis> 18 free <emphasis>/
-                /</emphasis> 20 free <emphasis>/
-                /</emphasis> 22 free <emphasis>/
-                /</emphasis> 24 free <emphasis>/
-                /</emphasis> 26 free <emphasis>/
-                /</emphasis> 28 free <emphasis>/
-                /</emphasis> 30 free <problematic ids="id116" refid="id115">*</problematic>/</paragraph>
-        <paragraph>/* First word <problematic ids="id118" refid="id117">*</problematic>/
-            #define DP_WALL                 0
-            #define DP_LONG_FINGERS         2
-            #define DP_STEAL                4
-            #define DP_CREATE               6
-            #define DP_WIZ_WHO              8
-            #define DP_CLOAK                10
-            #define DP_BOOT                 12
-            #define DP_PAGE                 14
-            #define DP_FORCE                16
-            #define DP_LOCKS                18
-            #define DP_COM                  20
-            #define DP_COMMAND              22
-            #define DP_MASTER               24
-            #define DP_EXAMINE              26
-            #define DP_NUKE                 28
-            #define DP_FREE                 30</paragraph>
-        <paragraph>/* Second word <emphasis>/
-                #define DP_OVERRIDE             0
-                #define DP_TEL_ANYWHERE         2
-                #define DP_TEL_ANYTHING         4
-                #define DP_PCREATE              6
-                #define DP_POWER                8
-                #define DP_QUOTA                10
-                #define DP_MODIFY               12
-                #define DP_CHOWN_ME             14
-                #define DP_CHOWN_OTHER          16
-                #define DP_ABUSE                18
-                #define DP_UNL_QUOTA            20
-                #define DP_SEARCH_ANY           22
-                #define DP_GIVE                 24
-                #define DP_RECEIVE              26
-                #define DP_NOGOLD               28
-                #define DP_NOSTEAL              30
-                /</emphasis> Third word…and there was much rejoicing <emphasis>/
-                #define DP_PASSWORD             0
-                #define DP_MORTAL_EXAMINE       2
-                #define DP_PERSONAL_COMMANDS    4
-                /</emphasis> 6  free <emphasis>/
-                #define DP_DARK                 8
-                /</emphasis> 10 free <emphasis>/
-                /</emphasis> 12 free <emphasis>/
-                /</emphasis> 14 free <emphasis>/
-                /</emphasis> 16 free <emphasis>/
-                /</emphasis> 18 free <emphasis>/
-                /</emphasis> 20 free <emphasis>/
-                /</emphasis> 22 free <emphasis>/
-                /</emphasis> 24 free <emphasis>/
-                /</emphasis> 26 free <emphasis>/
-                /</emphasis> 28 free <emphasis>/
-                /</emphasis> 30 free <problematic ids="id120" refid="id119">*</problematic>/</paragraph>
-        <paragraph>So entering zones if there are no zones:
-            -1</paragraph>
-        <paragraph>Entering zones if it has three zones (#123, #456, and #789)
-            123
-            456
-            789
-            -1</paragraph>
-        <paragraph>As you see, the last value of the zone <emphasis>MUST</emphasis> be -1.  This tells it
-            that there are no more zones to add.</paragraph>
+        <section ids="help-key-indexes-for-the-values" names="help\ key\ indexes\ for\ the\ values:">
+            <title>HELP key indexes for the values:</title>
+            <definition_list>
+                <definition_list_item>
+                    <term>FLAGS: The following flags are to be used.  They are BITWISE masks that you</term>
+                    <definition>
+                        <paragraph>need to add together for the values tghat you apply</paragraph>
+                    </definition>
+                </definition_list_item>
+            </definition_list>
+            <paragraph>/* First word of flags <emphasis>/
+                    #define SEETHRU         0x00000008      /</emphasis> Can see through to the other side <emphasis>/
+                    #define WIZARD          0x00000010      /</emphasis> gets automatic control <emphasis>/
+                    #define LINK_OK         0x00000020      /</emphasis> anybody can link to this room <emphasis>/
+                    #define DARK            0x00000040      /</emphasis> Don’t show contents or presence <emphasis>/
+                    #define JUMP_OK         0x00000080      /</emphasis> Others may @tel here <emphasis>/
+                    #define STICKY          0x00000100      /</emphasis> Object goes home when dropped <emphasis>/
+                    #define DESTROY_OK      0x00000200      /</emphasis> Others may @destroy <emphasis>/
+                    #define HAVEN           0x00000400      /</emphasis> No killing here, or no pages <emphasis>/
+                    #define QUIET           0x00000800      /</emphasis> Prevent ‘feelgood’ messages <emphasis>/
+                    #define HALT            0x00001000      /</emphasis> object cannot perform actions <emphasis>/
+                    #define TRACE           0x00002000      /</emphasis> Generate evaluation trace output <emphasis>/
+                    #define GOING           0x00004000      /</emphasis> object is available for recycling <emphasis>/
+                    #define MONITOR         0x00008000      /</emphasis> Process ^x:action listens on obj? <emphasis>/
+                    #define MYOPIC          0x00010000      /</emphasis> See things as nonowner/nonwizard <emphasis>/
+                    #define PUPPET          0x00020000      /</emphasis> Relays ALL messages to owner <emphasis>/
+                    #define CHOWN_OK        0x00040000      /</emphasis> Object may be @chowned freely <emphasis>/
+                    #define ENTER_OK        0x00080000      /</emphasis> Object may be ENTERed <emphasis>/
+                    #define VISUAL          0x00100000      /</emphasis> Everyone can see properties <emphasis>/
+                    #define IMMORTAL        0x00200000      /</emphasis> Object can’t be killed <emphasis>/
+                    #define HAS_STARTUP     0x00400000      /</emphasis> Load some attrs at startup <emphasis>/
+                    #define OPAQUE          0x00800000      /</emphasis> Can’t see inside <emphasis>/
+                    #define VERBOSE         0x01000000      /</emphasis> Tells owner everything it does. <emphasis>/
+                    #define INHERIT         0x02000000      /</emphasis> Gets owner’s privs. (i.e. Wiz) <emphasis>/
+                    #define NOSPOOF         0x04000000      /</emphasis> Report originator of all actions. <emphasis>/
+                    #define ROBOT           0x08000000      /</emphasis> Player is a ROBOT <emphasis>/
+                    #define SAFE            0x10000000      /</emphasis> Need /override to @destroy <emphasis>/
+                    #define CONTROL_OK      0x20000000      /</emphasis> ControlLk specifies who ctrls me <emphasis>/
+                    #define HEARTHRU        0x40000000      /</emphasis> Can hear out of this obj or exit <emphasis>/
+                    #define TERSE           0x80000000      /</emphasis> Only show room name on look <problematic ids="id86" refid="id85">*</problematic>/</paragraph>
+            <paragraph>/* Second word of flags <emphasis>/
+                    #define KEY             0x00000001      /</emphasis> No puppets <emphasis>/
+                    #define ABODE           0x00000002      /</emphasis> May @set home here <emphasis>/
+                    #define FLOATING        0x00000004      /</emphasis> Inhibit Floating room.. msgs <emphasis>/
+                    #define UNFINDABLE      0x00000008      /</emphasis> Cant loc() from afar <emphasis>/
+                    #define PARENT_OK       0x00000010      /</emphasis> Others may @parent to me <emphasis>/
+                    #define LIGHT           0x00000020      /</emphasis> Visible in dark places <emphasis>/
+                    #define HAS_LISTEN      0x00000040      /</emphasis> Internal: LISTEN attr set <emphasis>/
+                    #define HAS_FWDLIST     0x00000080      /</emphasis> Internal: FORWARDLIST attr set <emphasis>/
+                    #define ADMIN           0x00000100      /</emphasis> Player has admin privs <emphasis>/
+                    #define GUILDOBJ        0x00000200
+                    #define GUILDMASTER     0x00000400      /</emphasis> Player has gm privs <emphasis>/
+                    #define NO_WALLS        0x00000800      /</emphasis> So to stop normal walls <emphasis>/
+                    #define REQUIRE_TREES   0x00001000      /</emphasis> Trees are required on this target for attrib sets <emphasis>/
+                    /</emphasis> —-FREE—-         0x00002000 <emphasis>/   /</emphasis> #define OLD_NOROBOT  0x00002000 <emphasis>/
+                    #define SCLOAK          0x00004000
+                    #define CLOAK           0x00008000
+                    #define FUBAR           0x00010000
+                    #define INDESTRUCTABLE  0x00020000      /</emphasis> object can’t be nuked <emphasis>/
+                    #define NO_YELL         0x00040000      /</emphasis> player can’t @wall <emphasis>/
+                    #define NO_TEL          0x00080000      /</emphasis> player can’t @tel or be @tel’d <emphasis>/
+                    #define FREE            0x00100000      /</emphasis> object/player has unlim money <emphasis>/
+                    #define GUEST_FLAG      0x00200000
+                    #define RECOVER         0x00400000
+                    #define BYEROOM         0x00800000
+                    #define WANDERER        0x01000000
+                    #define ANSI            0x02000000
+                    #define ANSICOLOR       0x04000000
+                    #define NOFLASH         0x08000000
+                    #define SUSPECT         0x10000000      /</emphasis> Report some activities to wizards <emphasis>/
+                    #define BUILDER         0x20000000      /</emphasis> Player has architect privs <emphasis>/
+                    #define CONNECTED       0x40000000      /</emphasis> Player is connected <emphasis>/
+                    #define SLAVE           0x80000000      /</emphasis> Disallow most commands <problematic ids="id88" refid="id87">*</problematic>/</paragraph>
+            <paragraph>/* Third word of flags - Thorin 3/95 <emphasis>/
+                    #define NOCONNECT       0x00000001
+                    #define DPSHIFT         0x00000002
+                    #define NOPOSSESS       0x00000004
+                    #define COMBAT          0x00000008
+                    #define IC              0x00000010
+                    #define ZONEMASTER      0x00000020
+                    #define ALTQUOTA        0x00000040
+                    #define NOEXAMINE       0x00000080
+                    #define NOMODIFY        0x00000100
+                    #define CMDCHECK        0x00000200
+                    #define DOORRED         0x00000400
+                    #define PRIVATE         0x00000800      /</emphasis> For exits only <emphasis>/
+                    #define NOMOVE          0x00001000
+                    #define STOP            0x00002000
+                    #define NOSTOP          0x00004000
+                    #define NOCOMMAND       0x00008000
+                    #define AUDIT           0x00010000
+                    #define SEE_OEMIT       0x00020000
+                    #define NO_GOBJ         0x00040000
+                    #define NO_PESTER       0x00080000
+                    #define LRFLAG          0x00100000
+                    #define TELOK           0x00200000
+                    #define NO_OVERRIDE     0x00400000
+                    #define NO_USELOCK      0x00800000
+                    #define DR_PURGE        0x01000000      /</emphasis> For rooms only…internal <emphasis>/
+                    #define NO_ANSINAME     0x02000000      /</emphasis> Remove the ability to set @ansiname <emphasis>/
+                    #define SPOOF           0x04000000
+                    #define SIDEFX          0x08000000      /</emphasis> Allow enactor to use side-effects <emphasis>/
+                    #define ZONECONTENTS    0x10000000      /</emphasis> Search contents of zonemaster for $commands <emphasis>/
+                    #define NOWHO           0x20000000      /</emphasis> Player in WHO doesn’t show up - use with @hide <emphasis>/
+                    #define ANONYMOUS       0x40000000      /</emphasis> Player set shows up as ‘Someone’ when talking <emphasis>/
+                    #define BACKSTAGE       0x80000000      /</emphasis> Immortal toggle for items on control <problematic ids="id90" refid="id89">*</problematic>/</paragraph>
+            <paragraph>/* Forth word of flags - Thorin 3/95 <emphasis>/
+                    #define NOBACKSTAGE     0x00000001      /</emphasis> Immortal toggle to control no-backstage <emphasis>/
+                    #define LOGIN           0x00000002      /</emphasis> Enable player to login past @disable logins <emphasis>/
+                    #define INPROGRAM       0x00000004      /</emphasis> Player is inside a program <emphasis>/
+                    #define COMMANDS        0x00000008      /</emphasis> Optional define for $commands <emphasis>/
+                    #define MARKER0         0x00000010      /</emphasis> TM 3.0 marker flags <emphasis>/
+                    #define MARKER1         0x00000020
+                    #define MARKER2         0x00000040
+                    #define MARKER3         0x00000080
+                    #define MARKER4         0x00000100
+                    #define MARKER5         0x00000200
+                    #define MARKER6         0x00000400
+                    #define MARKER7         0x00000800
+                    #define MARKER8         0x00001000
+                    #define MARKER9         0x00002000
+                    #define BOUNCE          0x00004000      /</emphasis> That lovly TM 3.0 Bouncey thingy <emphasis>/
+                    #define SHOWFAILCMD     0x00008000      /</emphasis> Show failed $commands defauilt error <emphasis>/
+                    #define NOUNDERLINE     0x00010000      /</emphasis> Strip UNDERLINE character from ANSI <emphasis>/
+                    #define NONAME          0x00020000      /</emphasis> Target does not display name with look <emphasis>/
+                    #define ZONEPARENT      0x00040000      /</emphasis> Target zone allows inheritance of attribs <emphasis>/
+                    #define SPAMMONITOR     0x00080000      /</emphasis> Monitor the target for spam <emphasis>/
+                    #define BLIND           0x00100000      /</emphasis> Exits and locations snuff arrived/left <emphasis>/
+                    #define NOCODE          0x00200000      /</emphasis> Players may not code <emphasis>/
+                    #define HAS_PROTECT     0x00400000      /</emphasis> Player target has protect name data <emphasis>/
+                    #define XTERMCOLOR      0x00800000      /</emphasis> Extended AnSI Xterm colors <emphasis>/
+                    #define HAS_ATTRPIPE    0x01000000      /</emphasis> Attribute piping via @pipe <emphasis>/
+                    /</emphasis> 0x02000000 free <emphasis>/
+                    /</emphasis> 0x04000000 free <emphasis>/
+                    /</emphasis> 0x08000000 free <emphasis>/
+                    /</emphasis> 0x10000000 free <emphasis>/
+                    /</emphasis> 0x20000000 free <emphasis>/
+                    /</emphasis> 0x40000000 free <emphasis>/
+                    /</emphasis> 0x80000000 free <problematic ids="id92" refid="id91">*</problematic>/</paragraph>
+            <transition></transition>
+            <definition_list>
+                <definition_list_item>
+                    <term>TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like</term>
+                    <definition>
+                        <paragraph>the flags above.  They are added together for each word type</paragraph>
+                    </definition>
+                </definition_list_item>
+            </definition_list>
+            <paragraph>/* First word of toggles - Thorin 3/95 <emphasis>/
+                    #define TOG_MONITOR             0x00000001      /</emphasis> Active monitor on player <emphasis>/
+                    #define TOG_MONITOR_USERID      0x00000002      /</emphasis> show userid <emphasis>/
+                    #define TOG_MONITOR_SITE        0x00000004      /</emphasis> show site <emphasis>/
+                    #define TOG_MONITOR_STATS       0x00000008      /</emphasis> show stats <emphasis>/
+                    #define TOG_MONITOR_FAIL        0x00000010      /</emphasis> show fails <emphasis>/
+                    #define TOG_MONITOR_CONN        0x00000020
+                    #define TOG_VANILLA_ERRORS      0x00000040      /</emphasis> show normal error msg <emphasis>/
+                    #define TOG_NO_ANSI_EX          0x00000080      /</emphasis> supress ansi stuff in ex <emphasis>/
+                    #define TOG_CPUTIME             0x00000100      /</emphasis> show cpu time for cmds <emphasis>/
+                    #define TOG_MONITOR_DISREASON   0x00000200
+                    #define TOG_MONITOR_VLIMIT      0x00000400
+                    #define TOG_NOTIFY_LINK         0x00000800
+                    #define TOG_MONITOR_AREG        0x00001000
+                    #define TOG_MONITOR_TIME        0x00002000
+                    #define TOG_CLUSTER             0x00004000      /</emphasis> Object is part of a cluster <emphasis>/
+                    #define TOG_SNUFFDARK           0x00008000      /</emphasis> Snuff Dark Exit Viewing <emphasis>/
+                    #define TOG_NOANSI_PLAYER       0x00010000      /</emphasis> Do not show ansi player names <emphasis>/
+                    #define TOG_NOANSI_THING        0x00020000      /</emphasis> … things <emphasis>/
+                    #define TOG_NOANSI_ROOM         0x00040000      /</emphasis> … rooms <emphasis>/
+                    #define TOG_NOANSI_EXIT         0x00080000      /</emphasis> … exits <emphasis>/
+                    #define TOG_NO_TIMESTAMP        0x00100000      /</emphasis> Do not modify timestamps on target <emphasis>/
+                    #define TOG_NO_FORMAT           0x00200000      /</emphasis> Override @conformat/@exitformat <emphasis>/
+                    #define TOG_ZONE_AUTOADD        0x00400000      /</emphasis> Automatically add FIRST zone in list <emphasis>/
+                    #define TOG_ZONE_AUTOADDALL     0x00800000      /</emphasis> Automatically add ALL zones in list <emphasis>/
+                    #define TOG_WIELDABLE           0x01000000      /</emphasis> Marker to specify if object is wieldable <emphasis>/
+                    #define TOG_WEARABLE            0x02000000      /</emphasis> Marker to specify if object is wearable <emphasis>/
+                    #define TOG_SEE_SUSPECT         0x04000000      /</emphasis> Specify who sees suspect in WHO/MONITOR <emphasis>/
+                    #define TOG_MONITOR_CPU         0x08000000      /</emphasis> Specify who sees CPU overflow allerts <emphasis>/
+                    #define TOG_BRANDY_MAIL         0x10000000      /</emphasis> Define brandy like mail interface <emphasis>/
+                    #define TOG_FORCEHALTED         0x20000000      /</emphasis> The item toggled can @force halted things <emphasis>/
+                    #define TOG_PROG                0x40000000      /</emphasis> Can use @program on other people/things <emphasis>/
+                    #define TOG_NOSHELLPROG         0x80000000      /</emphasis> Target can not issue commands inside a prog <problematic ids="id94" refid="id93">*</problematic>/</paragraph>
+            <paragraph>/* Second word of toggles – Ash <emphasis>/
+                    #define TOG_EXTANSI             0x00000001      /</emphasis> Specify if target can used extended ansi naming <emphasis>/
+                    #define TOG_IMMPROG             0x00000002      /</emphasis> Only an immortal can @quitprogram them <emphasis>/
+                    #define TOG_MONITOR_BFAIL       0x00000004      /</emphasis> Monitor if a failed connect on bad character <emphasis>/
+                    #define TOG_PROG_ON_CONNECT     0x00000008      /</emphasis> Reverse logic of program on connect <emphasis>/
+                    #define TOG_MAIL_STRIPRETURN    0x00000010      /</emphasis> Strip carrage return in mail combining <emphasis>/
+                    #define TOG_PENN_MAIL           0x00000020      /</emphasis> Use PENN style syntax <emphasis>/
+                    #define TOG_SILENTEFFECTS       0x00000040      /</emphasis> Silents did_it() functionality on target <emphasis>/
+                    #define TOG_IGNOREZONE          0x00000080      /</emphasis> Target is set to @icmd zones <emphasis>/
+                    #define TOG_VPAGE               0x00000100      /</emphasis> Target sees alias in pages <emphasis>/
+                    #define TOG_PAGELOCK            0x00000200      /</emphasis> Target issues pagelocks as normal <emphasis>/
+                    #define TOG_MAIL_NOPARSE        0x00000400      /</emphasis> Don’t parse %t/%b/%r in mail <emphasis>/
+                    #define TOG_MAIL_LOCKDOWN       0x00000800      /</emphasis> Mortal-accessed mail/number and mail/check <emphasis>/
+                    #define TOG_MUXPAGE             0x00001000      /</emphasis> Have ‘page’ work like MUX <emphasis>/
+                    #define TOG_NOZONEPARENT        0x00002000      /</emphasis> Zone Child does NOT inherit parent attribs <emphasis>/
+                    #define TOG_ATRUSE              0x00004000      /</emphasis> Enactor can use Attribute based USELOCKS <emphasis>/
+                    #define TOG_VARIABLE            0x00008000      /</emphasis> Set exit to be variable <emphasis>/
+                    #define TOG_KEEPALIVE           0x00010000      /</emphasis> Send ‘keepalives’ to the target player <emphasis>/
+                    #define TOG_CHKREALITY          0x00020000      /</emphasis> Target checks @lock/user for Reality passes <emphasis>/
+                    #define TOG_NOISY               0x00040000      /</emphasis> Always do noisy sets <emphasis>/
+                    #define TOG_ZONECMDCHK          0x00080000      /</emphasis> Zone commands checked on target like @parent <emphasis>/
+                    #define TOG_HIDEIDLE            0x00100000      /</emphasis> Allow wizards/immortals to hide their idle time <emphasis>/
+                    #define TOG_MORTALREALITY       0x00200000      /</emphasis> Override the wiz_always_real setting <emphasis>/
+                    #define TOG_ACCENTS             0x00400000      /</emphasis> Accents being displayed <emphasis>/
+                    #define TOG_PREMAILVALIDATE     0x00800000      /</emphasis> Pre-Validate the mail send list before sending mail <emphasis>/
+                    #define TOG_SAFELOG             0x01000000      /</emphasis> Allow ‘clean logging’ by the player <emphasis>/
+                    #define TOG_UTF8                0x02000000      /</emphasis> UTF8 being displayed <emphasis>/
+                    /</emphasis> 0x04000000 free <emphasis>/
+                    #define TOG_NODEFAULT           0x08000000      /</emphasis> Allow target to inherit default attribs <emphasis>/
+                    #define TOG_EXFULLWIZATTR       0x10000000      /</emphasis> Examine Wiz attribs <emphasis>/
+                    #ifdef ENH_LOGROOM
+                    #define TOG_LOGROOMENH          0x20000000      /</emphasis> Enhanced Room Logging <emphasis>/
+                    #endif
+                    #define TOG_LOGROOM             0x40000000      /</emphasis> Log Room’s location/contents <emphasis>/
+                    #define TOG_NOGLOBPARENT        0x80000000      /</emphasis> Target does not inherit global attributes <problematic ids="id96" refid="id95">*</problematic>/</paragraph>
+            <transition></transition>
+            <definition_list>
+                <definition_list_item>
+                    <term>POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift</term>
+                    <definition>
+                        <paragraph>markers that you would have to compute the shift then add it after
+                            the fact.</paragraph>
+                    </definition>
+                </definition_list_item>
+                <definition_list_item>
+                    <term>/* First word of power positions.  Each position is 2 bits so the</term>
+                    <definition>
+                        <paragraph>number here is how far over to shift the 2 bit pattern         <problematic ids="id98" refid="id97">*</problematic>/</paragraph>
+                    </definition>
+                </definition_list_item>
+            </definition_list>
+            <paragraph>#define POWER_CHANGE_QUOTAS     0
+                #define POWER_CHOWN_ME          2
+                #define POWER_CHOWN_ANYWHERE    4
+                #define POWER_CHOWN_OTHER       6
+                #define POWER_WIZ_WHO           8
+                #define POWER_EX_ALL            10
+                #define POWER_NOFORCE           12
+                #define POWER_SEE_QUEUE_ALL     14
+                #define POWER_FREE_QUOTA        16
+                #define POWER_GRAB_PLAYER       18
+                #define POWER_JOIN_PLAYER       20
+                #define POWER_LONG_FINGERS      22
+                #define POWER_NO_BOOT           24
+                #define POWER_BOOT              26
+                #define POWER_STEAL             28
+                #define POWER_SEE_QUEUE         30</paragraph>
+            <paragraph>/* Second word of power positions. <problematic ids="id100" refid="id99">*</problematic>/
+                #define POWER_SHUTDOWN          0
+                #define POWER_TEL_ANYWHERE      2
+                #define POWER_TEL_ANYTHING      4
+                #define POWER_PCREATE           6
+                #define POWER_STAT_ANY          8
+                #define POWER_FREE_WALL         10
+                #define POWER_EXECSCRIPT        12
+                #define POWER_FREE_PAGE         14
+                #define POWER_HALT_QUEUE        16
+                #define POWER_HALT_QUEUE_ALL    18
+                #define POWER_FORMATTING        20
+                #define POWER_NOKILL            22
+                #define POWER_SEARCH_ANY        24
+                #define POWER_SECURITY          26
+                #define POWER_WHO_UNFIND        28</paragraph>
+            <paragraph>/* Third word of power positions. <emphasis>/
+                    #define POWER_OPURGE            0
+                    #define POWER_HIDEBIT           2
+                    #define POWER_NOWHO             4
+                    #define POWER_FULLTEL_ANYWHERE  6
+                    #define POWER_EX_FULL           8
+                    #define POWER_API               10
+                    #define POWER_MONITORAPI        12
+                    #define POWER_WIZ_IDLE          14
+                    #define POWER_WIZ_SPOOF         16
+                    /</emphasis> 18 free <emphasis>/
+                    /</emphasis> 20 free <emphasis>/
+                    /</emphasis> 22 free <emphasis>/
+                    /</emphasis> 24 free <emphasis>/
+                    /</emphasis> 26 free <emphasis>/
+                    /</emphasis> 28 free <emphasis>/
+                    /</emphasis> 30 free <problematic ids="id102" refid="id101">*</problematic>/</paragraph>
+            <transition></transition>
+            <definition_list>
+                <definition_list_item>
+                    <term>DEPOWERS:  like @powers they are handled with a BITWISE offshift that you</term>
+                    <definition>
+                        <paragraph>will have to calculate then add</paragraph>
+                    </definition>
+                </definition_list_item>
+            </definition_list>
+            <paragraph>/* First word <problematic ids="id104" refid="id103">*</problematic>/
+                #define DP_WALL                 0
+                #define DP_LONG_FINGERS         2
+                #define DP_STEAL                4
+                #define DP_CREATE               6
+                #define DP_WIZ_WHO              8
+                #define DP_CLOAK                10
+                #define DP_BOOT                 12
+                #define DP_PAGE                 14
+                #define DP_FORCE                16
+                #define DP_LOCKS                18
+                #define DP_COM                  20
+                #define DP_COMMAND              22
+                #define DP_MASTER               24
+                #define DP_EXAMINE              26
+                #define DP_NUKE                 28
+                #define DP_FREE                 30</paragraph>
+            <paragraph>/* Second word <emphasis>/
+                    #define DP_OVERRIDE             0
+                    #define DP_TEL_ANYWHERE         2
+                    #define DP_TEL_ANYTHING         4
+                    #define DP_PCREATE              6
+                    #define DP_POWER                8
+                    #define DP_QUOTA                10
+                    #define DP_MODIFY               12
+                    #define DP_CHOWN_ME             14
+                    #define DP_CHOWN_OTHER          16
+                    #define DP_ABUSE                18
+                    #define DP_UNL_QUOTA            20
+                    #define DP_SEARCH_ANY           22
+                    #define DP_GIVE                 24
+                    #define DP_RECEIVE              26
+                    #define DP_NOGOLD               28
+                    #define DP_NOSTEAL              30
+                    /</emphasis> Third word…and there was much rejoicing <emphasis>/
+                    #define DP_PASSWORD             0
+                    #define DP_MORTAL_EXAMINE       2
+                    #define DP_PERSONAL_COMMANDS    4
+                    /</emphasis> 6  free <emphasis>/
+                    #define DP_DARK                 8
+                    /</emphasis> 10 free <emphasis>/
+                    /</emphasis> 12 free <emphasis>/
+                    /</emphasis> 14 free <emphasis>/
+                    /</emphasis> 16 free <emphasis>/
+                    /</emphasis> 18 free <emphasis>/
+                    /</emphasis> 20 free <emphasis>/
+                    /</emphasis> 22 free <emphasis>/
+                    /</emphasis> 24 free <emphasis>/
+                    /</emphasis> 26 free <emphasis>/
+                    /</emphasis> 28 free <emphasis>/
+                    /</emphasis> 30 free <problematic ids="id106" refid="id105">*</problematic>/</paragraph>
+            <transition></transition>
+            <note>
+                <paragraph>ZONES:  Zones are special.  If there are no zones, the value will be ‘-1’.</paragraph>
+            </note>
+            <paragraph>So entering zones if there are no zones:
+                -1</paragraph>
+            <paragraph>Entering zones if it has three zones (#123, #456, and #789)
+                123
+                456
+                789
+                -1</paragraph>
+            <paragraph>As you see, the last value of the zone <emphasis>MUST</emphasis> be -1.  This tells it
+                that there are no more zones to add.</paragraph>
+        </section>
     </section>
 </document>

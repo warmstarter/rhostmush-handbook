@@ -66,7 +66,7 @@
 % Set up styles of URL: it should be placed after hyperref.
 \urlstyle{same}
 
-\addto\captionsenglish{\renewcommand{\contentsname}{Contents:}}
+\addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents}}
 
 \usepackage{sphinxmessages}
 \setcounter{tocdepth}{1}
@@ -142,6 +142,268 @@ Many new functions and commands not seen anywhere else.
 A lot more that could drag this document out for pages.
 
 \end{itemize}
+
+
+\section{Installing RhostMUSH}
+\label{\detokenize{install:installing-rhostmush}}\label{\detokenize{install:id1}}\label{\detokenize{install::doc}}
+\begin{sphinxShadowBox}
+\sphinxstyletopictitle{Table of Contents}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\phantomsection\label{\detokenize{install:id7}}{\hyperref[\detokenize{install:rhostmush-requirements}]{\sphinxcrossref{RhostMUSH Requirements}}}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\phantomsection\label{\detokenize{install:id8}}{\hyperref[\detokenize{install:system-requirements}]{\sphinxcrossref{System Requirements}}}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\phantomsection\label{\detokenize{install:id9}}{\hyperref[\detokenize{install:supported-platforms}]{\sphinxcrossref{Supported Platforms}}}
+
+\item {} 
+\sphinxAtStartPar
+\phantomsection\label{\detokenize{install:id10}}{\hyperref[\detokenize{install:unsupported-platforms}]{\sphinxcrossref{Unsupported Platforms}}}
+
+\item {} 
+\sphinxAtStartPar
+\phantomsection\label{\detokenize{install:id11}}{\hyperref[\detokenize{install:untested-platforms}]{\sphinxcrossref{Untested Platforms}}}
+
+\item {} 
+\sphinxAtStartPar
+\phantomsection\label{\detokenize{install:id12}}{\hyperref[\detokenize{install:known-platform-issues}]{\sphinxcrossref{Known Platform Issues}}}
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+\phantomsection\label{\detokenize{install:id13}}{\hyperref[\detokenize{install:software-requirements}]{\sphinxcrossref{Software Requirements}}}
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+\phantomsection\label{\detokenize{install:id14}}{\hyperref[\detokenize{install:optional-packages}]{\sphinxcrossref{Optional Packages}}}
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+\phantomsection\label{\detokenize{install:id15}}{\hyperref[\detokenize{install:hosting-requirements}]{\sphinxcrossref{Hosting Requirements}}}
+
+\end{itemize}
+
+\item {} 
+\sphinxAtStartPar
+\phantomsection\label{\detokenize{install:id16}}{\hyperref[\detokenize{install:obtaining-rhostmush}]{\sphinxcrossref{Obtaining RhostMUSH}}}
+
+\end{itemize}
+\end{sphinxShadowBox}
+
+
+\subsection{RhostMUSH Requirements}
+\label{\detokenize{install:rhostmush-requirements}}\label{\detokenize{install:id2}}
+
+\subsubsection{System Requirements}
+\label{\detokenize{install:system-requirements}}\label{\detokenize{install:id3}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Minimum 1 GB (memory and swap combined) to compile (functions.c is huge)
+
+\item {} 
+\sphinxAtStartPar
+Any Unix flavor should be fine.  Linux, BSD, Mac OSX, Solaris, Tru64, AIX, etc.
+
+\item {} 
+\sphinxAtStartPar
+(BETA ONLY) cygwin under Windows.  It requires the entire base development set and Requirements below.
+
+\item {} 
+\sphinxAtStartPar
+Disk:  100 MB or more (depending on size of db and how many backups you wish to maintain)
+
+\item {} 
+\sphinxAtStartPar
+Memory: 12\sphinxhyphen{}100 MB (depending on size of mush and what size buffers you select and packages you include)
+
+\end{itemize}
+
+
+\paragraph{Supported Platforms}
+\label{\detokenize{install:supported-platforms}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+SunOS (all platforms)
+
+\item {} 
+\sphinxAtStartPar
+Solaris (all platforms)
+
+\item {} 
+\sphinxAtStartPar
+Linux (all platforms except redhat 5.x mentioned below)
+
+\item {} 
+\sphinxAtStartPar
+AIX (all platforms)
+
+\item {} 
+\sphinxAtStartPar
+Ultrix (all platforms)
+
+\item {} 
+\sphinxAtStartPar
+iBSD (all platforms)
+
+\item {} 
+\sphinxAtStartPar
+FreeBSD (all platforms)
+
+\item {} 
+\sphinxAtStartPar
+OpenBSD (all platforms)
+
+\item {} 
+\sphinxAtStartPar
+NetBSD (all platforms)
+
+\item {} 
+\sphinxAtStartPar
+IRIX (all platforms)
+
+\item {} 
+\sphinxAtStartPar
+HPUX (32 bit systems only)
+
+\end{itemize}
+
+\sphinxAtStartPar
+If it’s not listed here, it probably still will compile clean.
+
+
+\paragraph{Unsupported Platforms}
+\label{\detokenize{install:unsupported-platforms}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+Win32/Win16
+
+\item {} 
+\sphinxAtStartPar
+Alpha systems.
+
+\end{itemize}
+
+
+\paragraph{Untested Platforms}
+\label{\detokenize{install:untested-platforms}}\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+HP\sphinxhyphen{}UX (64 bit systems)
+
+\item {} 
+\sphinxAtStartPar
+VMS (all platforms)
+
+\end{itemize}
+
+
+\paragraph{Known Platform Issues}
+\label{\detokenize{install:known-platform-issues}}
+\sphinxAtStartPar
+On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with
+the built\sphinxhyphen{}in gcc package (up to and including 2.8.x).  Because of this some
+config options may not work fully or cause the server to crash.  This is only
+a known issue with config options and only on this platform.
+
+
+\subsubsection{Software Requirements}
+\label{\detokenize{install:software-requirements}}\label{\detokenize{install:id4}}
+\sphinxAtStartPar
+RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.
+In order to build this software, you will need the bare minimum of the ability to run ‘make’ commands.
+
+\sphinxAtStartPar
+Package requirements are as follows:
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+glibc and gcc/clang (compiling the code)
+
+\item {} 
+\sphinxAtStartPar
+git (to clone the source and maintain patches)
+
+\item {} 
+\sphinxAtStartPar
+bash/ksh/dash (or compatible shell \sphinxhyphen{} for use with build menu)
+
+\item {} 
+\sphinxAtStartPar
+libcrypt (for password encryption \sphinxhyphen{} this is usually standard on unix based systems)
+
+\end{itemize}
+
+
+\paragraph{Optional Packages}
+\label{\detokenize{install:optional-packages}}
+\sphinxAtStartPar
+RhostMUSH also offers optional linking and library attachments.
+For some of these libraries it will attempt to do auto\sphinxhyphen{}detection,
+but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.
+
+\sphinxAtStartPar
+Optional packages are as follows:
+\begin{itemize}
+\item {} 
+\sphinxAtStartPar
+openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
+
+\item {} 
+\sphinxAtStartPar
+mysql client \& mysql\_config (required for mysql capabilities)
+
+\item {} 
+\sphinxAtStartPar
+sqlite3 libraries (required for sqlite capabilities)
+
+\item {} 
+\sphinxAtStartPar
+ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
+
+\item {} 
+\sphinxAtStartPar
+libpcre (if you wish to use system pcre libraries instead of the built\sphinxhyphen{}in ones)
+
+\end{itemize}
+
+
+\subsubsection{Hosting Requirements}
+\label{\detokenize{install:hosting-requirements}}\label{\detokenize{install:id5}}
+\sphinxAtStartPar
+You will need a stable host and access to open a single port number of your choice on the firewall.
+Most games choose a number between 1025 and 9999, by convention.
+Please make sure your debug\_id matches the port number + 5.
+So if your port is 1234, your debug\_id will be 12345.
+The debug\_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
+
+
+\subsection{Obtaining RhostMUSH}
+\label{\detokenize{install:obtaining-rhostmush}}\label{\detokenize{install:id6}}
+\sphinxAtStartPar
+It is assumed that you have gotten to this point with the following command:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{git} \PYG{n}{clone} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{github}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{RhostMUSH}\PYG{o}{/}\PYG{n}{trunk} \PYG{n}{Rhost}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+If you did NOT get it this way, your file permissions may not be properly set up.  Please type:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{chmod} \PYG{o}{+}\PYG{n}{rx} \PYG{n+nb}{bin}\PYG{o}{/}\PYG{o}{*}\PYG{o}{.}\PYG{n}{sh} \PYG{n}{src}\PYG{o}{/}\PYG{o}{*}\PYG{o}{.}\PYG{n}{sh} \PYG{n}{game}\PYG{o}{/}\PYG{o}{*}\PYG{o}{.}\PYG{n}{sh} \PYG{n}{game}\PYG{o}{/}\PYG{n}{Startmush} \PYG{n}{game}\PYG{o}{/}\PYG{n}{db\PYGZus{}}\PYG{o}{*}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+This makes sure all the build scripts are properly made executable.
+This will result in ‘permission denied’ or similar results when running a script.
 
 
 \section{What RhostMUSH is about and what’s so great about RhostMUSH}
@@ -3441,179 +3703,6 @@ This uses @restart, Rhost uses @reboot
 \end{itemize}
 
 
-\section{Requirements}
-\label{\detokenize{requirements:requirements}}\label{\detokenize{requirements::doc}}
-
-\subsection{System Requirements}
-\label{\detokenize{requirements:system-requirements}}\begin{itemize}
-\item {} 
-\sphinxAtStartPar
-Minimum 1 GB (memory and swap combined) to compile (functions.c is huge)
-
-\item {} 
-\sphinxAtStartPar
-Any Unix flavor should be fine.  Linux, BSD, Mac OSX, Solaris, Tru64, AIX, etc.
-
-\item {} 
-\sphinxAtStartPar
-(BETA ONLY) cygwin under Windows.  It requires the entire base development set and Requirements below.
-
-\item {} 
-\sphinxAtStartPar
-Disk:  100 MB or more (depending on size of db and how many backups you wish to maintain)
-
-\item {} 
-\sphinxAtStartPar
-Memory: 12\sphinxhyphen{}100 MB (depending on size of mush and what size buffers you select and packages you include)
-
-\end{itemize}
-
-
-\subsubsection{Supported Platforms}
-\label{\detokenize{requirements:supported-platforms}}\begin{itemize}
-\item {} 
-\sphinxAtStartPar
-SunOS (all platforms)
-
-\item {} 
-\sphinxAtStartPar
-Solaris (all platforms)
-
-\item {} 
-\sphinxAtStartPar
-Linux (all platforms except redhat 5.x mentioned below)
-
-\item {} 
-\sphinxAtStartPar
-AIX (all platforms)
-
-\item {} 
-\sphinxAtStartPar
-Ultrix (all platforms)
-
-\item {} 
-\sphinxAtStartPar
-iBSD (all platforms)
-
-\item {} 
-\sphinxAtStartPar
-FreeBSD (all platforms)
-
-\item {} 
-\sphinxAtStartPar
-OpenBSD (all platforms)
-
-\item {} 
-\sphinxAtStartPar
-NetBSD (all platforms)
-
-\item {} 
-\sphinxAtStartPar
-IRIX (all platforms)
-
-\item {} 
-\sphinxAtStartPar
-HPUX (32 bit systems only)
-
-\end{itemize}
-
-\sphinxAtStartPar
-If it’s not listed here, it probably still will compile clean.
-
-
-\subsubsection{Unsupported Platforms}
-\label{\detokenize{requirements:unsupported-platforms}}\begin{itemize}
-\item {} 
-\sphinxAtStartPar
-Win32/Win16
-
-\item {} 
-\sphinxAtStartPar
-Alpha systems.
-
-\end{itemize}
-
-
-\subsubsection{Untested Platforms}
-\label{\detokenize{requirements:untested-platforms}}\begin{itemize}
-\item {} 
-\sphinxAtStartPar
-HP\sphinxhyphen{}UX (64 bit systems)
-
-\item {} 
-\sphinxAtStartPar
-VMS (all platforms)
-
-\end{itemize}
-
-
-\subsubsection{Known Platform Issues}
-\label{\detokenize{requirements:known-platform-issues}}
-\sphinxAtStartPar
-On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with
-the built\sphinxhyphen{}in gcc package (up to and including 2.8.x).  Because of this some
-config options may not work fully or cause the server to crash.  This is only
-a known issue with config options and only on this platform.
-
-
-\subsection{Requirements}
-\label{\detokenize{requirements:id1}}
-\sphinxAtStartPar
-RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.  In order to build this software, you will need the bare minimum of the ability to run ‘make’ commands.  Package requirements are as follows:
-\begin{itemize}
-\item {} 
-\sphinxAtStartPar
-glibc and gcc/clang (compiling the code)
-
-\item {} 
-\sphinxAtStartPar
-git (to clone the source and maintain patches)
-
-\item {} 
-\sphinxAtStartPar
-bash/ksh/dash (or compatible shell \sphinxhyphen{} for use with build menu)
-
-\item {} 
-\sphinxAtStartPar
-libcrypt (for password encryption \sphinxhyphen{} this is usually standard on unix based systems)
-
-\end{itemize}
-
-
-\subsubsection{Optional Packages}
-\label{\detokenize{requirements:optional-packages}}
-\sphinxAtStartPar
-RhostMUSH also offers optional linking and library attachments.  For some of these libraries it will attempt to do auto\sphinxhyphen{}detection, but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.  Optional packages are as follows:
-\begin{itemize}
-\item {} 
-\sphinxAtStartPar
-openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
-
-\item {} 
-\sphinxAtStartPar
-mysql client \& mysql\_config (required for mysql capabilities)
-
-\item {} 
-\sphinxAtStartPar
-sqlite3 libraries (required for sqlite capabilities)
-
-\item {} 
-\sphinxAtStartPar
-ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
-
-\item {} 
-\sphinxAtStartPar
-libpcre (if you wish to use system pcre libraries instead of the built\sphinxhyphen{}in ones)
-
-\end{itemize}
-
-
-\subsection{Hosting Requirements}
-\label{\detokenize{requirements:hosting-requirements}}
-\sphinxAtStartPar
-You will need a stable host and access to open a single port number of your choice on the firewall.  Most games choose a number between 1025 and 9999, by convention.  Please make sure your debug\_id matches the port number + 5.  So if your port is 1234, your debug\_id will be 12345.  The debug\_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
-
-
 \section{Installation}
 \label{\detokenize{installation:installation}}\label{\detokenize{installation::doc}}
 
@@ -3797,26 +3886,8 @@ This downloads the latest stable version of the code, bringing with it all patch
 \subsection{Quickinstall guide to RhostMUSH}
 \label{\detokenize{installation:quickinstall-guide-to-rhostmush}}
 
-\subsubsection{Obtaining RhostMUSH}
-\label{\detokenize{installation:obtaining-rhostmush}}
-\sphinxAtStartPar
-It is assumed that you have gotten to this point with the following command:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{git} \PYG{n}{clone} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{github}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{RhostMUSH}\PYG{o}{/}\PYG{n}{trunk} \PYG{n}{Rhost}
-\end{sphinxVerbatim}
-
-\sphinxAtStartPar
-If you did NOT get it this way, your file permissions may not be properly set up.  Please type:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{n}{chmod} \PYG{o}{+}\PYG{n}{rx} \PYG{n+nb}{bin}\PYG{o}{/}\PYG{o}{*}\PYG{o}{.}\PYG{n}{sh} \PYG{n}{src}\PYG{o}{/}\PYG{o}{*}\PYG{o}{.}\PYG{n}{sh} \PYG{n}{game}\PYG{o}{/}\PYG{o}{*}\PYG{o}{.}\PYG{n}{sh} \PYG{n}{game}\PYG{o}{/}\PYG{n}{Startmush} \PYG{n}{game}\PYG{o}{/}\PYG{n}{db\PYGZus{}}\PYG{o}{*}
-\end{sphinxVerbatim}
-
-\sphinxAtStartPar
-This makes sure all the build scripts are properly made executable.
-This will result in ‘permission denied’ or similar results when running a script.
-
+\subsubsection{Compiling RhostMUSH}
+\label{\detokenize{installation:compiling-rhostmush}}
 \sphinxAtStartPar
 Once ready to compile type:
 
@@ -7630,14 +7701,16 @@ so that your local code can be loaded in as modules prior to the @startup execut
 \sphinxAtStartPar
 Something that will not work:
 
-\sphinxAtStartPar
-@startup \sphinxhref{mailto:me=@superhappyfuncommand}{me=@superhappyfuncommand} loadmeup=now
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@startup} \PYG{n}{me}\PYG{o}{=}\PYG{n+nd}{@superhappyfuncommand} \PYG{n}{loadmeup}\PYG{o}{=}\PYG{n}{now}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-A small alteration that will likely make this work fine.
+A small alteration that will likely make this work fine:
 
-\sphinxAtStartPar
-@startup \sphinxhref{mailto:me=@wait}{me=@wait} \sphinxhref{mailto:1=@superhappyfuncommand}{1=@superhappyfuncommand} loadmeup=now
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@startup} \PYG{n}{me}\PYG{o}{=}\PYG{n+nd}{@wait} \PYG{l+m+mi}{1}\PYG{o}{=}\PYG{n+nd}{@superhappyfuncommand} \PYG{n}{loadmeup}\PYG{o}{=}\PYG{n}{now}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 That 1 second delay for the queue will give the game engine time to load in your module code.
@@ -7713,6 +7786,8 @@ where it can be seen. Those are bitfields. In order for X to see Y a bitwise
 exist. This affects contents lists, exit lists, look, say, pose, @emit,
 @verb, connect/disconnect, has arrived/has left messages, exit and object
 matching. ‘here’ and ‘me’ match always.
+
+\sphinxAtStartPar
 It doesn’t affect @remit, @pemit, page, WHO or channels.
 By default, all new objects are created with an RxLevel of 1 and TxLevel of
 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of
@@ -7730,16 +7805,24 @@ description. If you look at something and match more than one of its
 TxLevels, you’ll see all the corresponding descriptions on the target
 object. If the object doesn’t have any descriptions for the matching levels,
 you’ll see the regular @desc.
+
+\sphinxAtStartPar
 The @adesc attribute on the target is only triggered if the target can see
 the looker in turn. It’s only triggered once, no matter how many descs the
 looker sees. The @odesc is shown only to those people that see /both/ the
 looker and the target.
+
+\sphinxAtStartPar
 Through extension, @afail/@ofail and similar pairs (@adrop/@odrop,
 @asucc/@osucc etc) work in the same way. @verb commands are similary
 affected.
+
+\sphinxAtStartPar
 Softcoded commands are only matched on the objects that can see the player.
 The player doesn’t have to see the object. This includes commands in the
 Master Room.
+
+\sphinxAtStartPar
 Exits are treated specially. In order to be able to use an exit name (or to
 use the ‘move \textless{}exit\textgreater{}’ command) the exit must be visible to the enactor. In
 order to pass through the exit, the exit must see the enactor in turn. There
@@ -7750,12 +7833,11 @@ are reasons for this, which will become evident in the examples below.
 \label{\detokenize{advanced:configuration-parameters}}
 \sphinxAtStartPar
 A few configuration parameters have been introduced to deal with the reality
-levels.
-\begin{quote}
+levels:
 
-\sphinxAtStartPar
-reality\_level \textless{}name\textgreater{} \textless{}value\textgreater{} {[}\textless{}desc attribute name\textgreater{}{]}
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{reality\PYGZus{}level} \PYG{o}{\PYGZlt{}}\PYG{n}{name}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZlt{}}\PYG{n}{value}\PYG{o}{\PYGZgt{}} \PYG{p}{[}\PYG{o}{\PYGZlt{}}\PYG{n}{desc} \PYG{n}{attribute} \PYG{n}{name}\PYG{o}{\PYGZgt{}}\PYG{p}{]}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 This directive can only be used in the config file (not with the @admin
@@ -7763,29 +7845,27 @@ command) and should be repeated for each reality level you want to define.
 It defines a new level named \textless{}name\textgreater{} with a bitvalue of \textless{}value\textgreater{} and an
 optional desc attribute. There is a limit of 8 characters on \textless{}name\textgreater{}, a
 32\sphinxhyphen{}bit value on \textless{}value\textgreater{} (basically an unsigned long) and 32 characters on
-the attribute name. A maximum of 32 reality levels can be defined.
-\begin{quote}
+the attribute name. A maximum of 32 reality levels can be defined:
 
-\sphinxAtStartPar
-def\_exit\_tx \textless{}value\textgreater{}
-def\_exit\_rx \textless{}value\textgreater{}
-def\_room\_tx \textless{}value\textgreater{}
-def\_room\_rx \textless{}value\textgreater{}
-def\_player\_rx \textless{}value\textgreater{}
-def\_player\_tx \textless{}value\textgreater{}
-def\_thing\_rx \textless{}value\textgreater{}
-def\_thing\_tx \textless{}value\textgreater{}
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{def\PYGZus{}exit\PYGZus{}tx} \PYG{o}{\PYGZlt{}}\PYG{n}{value}\PYG{o}{\PYGZgt{}}
+\PYG{n}{def\PYGZus{}exit\PYGZus{}rx} \PYG{o}{\PYGZlt{}}\PYG{n}{value}\PYG{o}{\PYGZgt{}}
+\PYG{n}{def\PYGZus{}room\PYGZus{}tx} \PYG{o}{\PYGZlt{}}\PYG{n}{value}\PYG{o}{\PYGZgt{}}
+\PYG{n}{def\PYGZus{}room\PYGZus{}rx} \PYG{o}{\PYGZlt{}}\PYG{n}{value}\PYG{o}{\PYGZgt{}}
+\PYG{n}{def\PYGZus{}player\PYGZus{}rx} \PYG{o}{\PYGZlt{}}\PYG{n}{value}\PYG{o}{\PYGZgt{}}
+\PYG{n}{def\PYGZus{}player\PYGZus{}tx} \PYG{o}{\PYGZlt{}}\PYG{n}{value}\PYG{o}{\PYGZgt{}}
+\PYG{n}{def\PYGZus{}thing\PYGZus{}rx} \PYG{o}{\PYGZlt{}}\PYG{n}{value}\PYG{o}{\PYGZgt{}}
+\PYG{n}{def\PYGZus{}thing\PYGZus{}tx} \PYG{o}{\PYGZlt{}}\PYG{n}{value}\PYG{o}{\PYGZgt{}}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 These 8 directives define the default reality levels of newly created
 objects. They can be set in the config file or with the @admin command.
-Like above, \textless{}value\textgreater{} must be a decimal number.
-\begin{quote}
+Like above, \textless{}value\textgreater{} must be a decimal number:
 
-\sphinxAtStartPar
-wiz\_always\_real \textless{}0|1\textgreater{}
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{wiz\PYGZus{}always\PYGZus{}real} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{0}\PYG{o}{|}\PYG{l+m+mi}{1}\PYG{o}{\PYGZgt{}}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 If this parameter is set to 1 then wizards (and immortals on Rhost) will see
@@ -7795,8 +7875,11 @@ will always be 0xFFFFFFFF. Also settable in the config file and with the
 
 \sphinxAtStartPar
 Compile with \sphinxhyphen{}DREALITY\_LEVELS compile time option to enable ‘Real’ needs to be ‘1’
-This is an example file only to be added to the mush.conf file
-Format: reality\_level \textless{}8 char name\textgreater{} \textless{}hex\sphinxhyphen{}byte\sphinxhyphen{}mask\textgreater{} \textless{}optional\sphinxhyphen{}desc: DESC default\textgreater{}
+This is an example file only to be added to the mush.conf file Format:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{reality\PYGZus{}level} \PYG{o}{\PYGZlt{}}\PYG{l+m+mi}{8} \PYG{n}{char} \PYG{n}{name}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZlt{}}\PYG{n+nb}{hex}\PYG{o}{\PYGZhy{}}\PYG{n}{byte}\PYG{o}{\PYGZhy{}}\PYG{n}{mask}\PYG{o}{\PYGZgt{}} \PYG{o}{\PYGZlt{}}\PYG{n}{optional}\PYG{o}{\PYGZhy{}}\PYG{n}{desc}\PYG{p}{:} \PYG{n}{DESC} \PYG{n}{default}\PYG{o}{\PYGZgt{}}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Example mush.conf}
@@ -7824,62 +7907,66 @@ reality\_level All 4294967295
 \subsubsection{Commands}
 \label{\detokenize{advanced:commands}}
 \sphinxAtStartPar
-Two wiz\sphinxhyphen{}only commands are used to set the reality levels of an object.
-\begin{quote}
+Two wiz\sphinxhyphen{}only commands are used to set the reality levels of an object:
 
-\sphinxAtStartPar
-@rxlevel \textless{}object\textgreater{}=\textless{}list\textgreater{}
-@txlevel \textless{}object\textgreater{}=\textless{}list\textgreater{}
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@rxlevel} \PYG{o}{\PYGZlt{}}\PYG{n+nb}{object}\PYG{o}{\PYGZgt{}}\PYG{o}{=}\PYG{o}{\PYGZlt{}}\PYG{n+nb}{list}\PYG{o}{\PYGZgt{}}
+\PYG{n+nd}{@txlevel} \PYG{o}{\PYGZlt{}}\PYG{n+nb}{object}\PYG{o}{\PYGZgt{}}\PYG{o}{=}\PYG{o}{\PYGZlt{}}\PYG{n+nb}{list}\PYG{o}{\PYGZgt{}}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 \textless{}list\textgreater{} is a space\sphinxhyphen{}separated list of level names that have to be set on the
 object. If a level name is prefixed with an exclamation mark (!) that level
 will be cleared from the object.
-WARNING: Changing the Tx levels of an object might make it invisible to you.
-In this case, you can still manipulate it by using his \#dbref (or {\color{red}\bfseries{}*}player
+
+\begin{sphinxadmonition}{warning}{Warning:}
+\sphinxAtStartPar
+Changing the Tx levels of an object might make it invisible to you.
+In this case, you can still manipulate it by using his \#dbref (or *player
 for players).
+\end{sphinxadmonition}
 
 
 \subsubsection{Functions}
 \label{\detokenize{advanced:functions}}
 \sphinxAtStartPar
-There are five functions that deal with reality levels.
-\begin{quote}
+There are five functions that deal with reality levels:
 
-\sphinxAtStartPar
-hasrxlevel(\textless{}object\textgreater{},\textless{}level\textgreater{})
-hastxlevel(\textless{}object\textgreater{},\textless{}level\textgreater{})
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{hasrxlevel}\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{n+nb}{object}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{o}{\PYGZlt{}}\PYG{n}{level}\PYG{o}{\PYGZgt{}}\PYG{p}{)}
+\PYG{n}{hastxlevel}\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{n+nb}{object}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{o}{\PYGZlt{}}\PYG{n}{level}\PYG{o}{\PYGZgt{}}\PYG{p}{)}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 These two functions check if an object has the specified Rx or Tx level.
 You must control \textless{}object\textgreater{}. They return 0 or 1 and \#\sphinxhyphen{}1 in case the object
-does not exist or you don’t have permissions.
-\begin{quote}
+does not exist or you don’t have permissions:
 
-\sphinxAtStartPar
-rxlevel(\textless{}object\textgreater{})
-txlevel(\textless{}object\textgreater{})
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{rxlevel}\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{n+nb}{object}\PYG{o}{\PYGZgt{}}\PYG{p}{)}
+\PYG{n}{txlevel}\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{n+nb}{object}\PYG{o}{\PYGZgt{}}\PYG{p}{)}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 These two functions return a space\sphinxhyphen{}separated list of the object’s Rx or Tx
-levels. Again, you must control the object.
-\begin{quote}
+levels. Again, you must control the object:
 
-\sphinxAtStartPar
-cansee(\textless{}obj1\textgreater{},\textless{}obj2\textgreater{})
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{cansee}\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{n}{obj1}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{o}{\PYGZlt{}}\PYG{n}{obj2}\PYG{o}{\PYGZgt{}}\PYG{p}{)}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 A wiz\sphinxhyphen{}only function, returns 1 of \textless{}obj1\textgreater{} can see \textless{}obj2\textgreater{} from a reality
 levels point of view. It doesn’t check if the objects are in the same
 location, the DARK/CLOAKED flags and so on. Just \textless{}obj1\textgreater{}’s Rx level against
 \textless{}obj2\textgreater{}’s Tx level.
-WARNING: If you are using it on MUX2.0 with /both/ reality levels and Wod
+
+\begin{sphinxadmonition}{warning}{Warning:}
+\sphinxAtStartPar
+If you are using it on MUX2.0 with /both/ reality levels and Wod
 Realms enabled, the function will perform both checks and the Wod Realms
 version checks against the DARK flag.
+\end{sphinxadmonition}
 
 
 \subsubsection{Example 1: A simplified Witchcraft setup}
@@ -7891,31 +7978,28 @@ will use 2 reality levels: Real and Ghost. Since some spirits can become
 solid for a limited period of time, we will also use an additional desc for
 the Ghost level, called GHOSTDESC. Therefore in the config file we will
 have:
-\begin{quote}
 
-\sphinxAtStartPar
-reality\_level Real 1
-reality\_level Ghost 2 GHOSTDESC
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Real} \PYG{l+m+mi}{1}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Ghost} \PYG{l+m+mi}{2} \PYG{n}{GHOSTDESC}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 Ghosts can pass through most mundane locks, so the exists should allows the
 ghosts to pass:
-\begin{quote}
 
-\sphinxAtStartPar
-def\_exit\_rx 3
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{def\PYGZus{}exit\PYGZus{}rx} \PYG{l+m+mi}{3}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 Note that def\_exit\_tx isn’t set. Why? Because ghosts see the mundane world
 anyway, so a spirit character will have:
-\begin{quote}
 
-\sphinxAtStartPar
-@txlevel \textless{}player\textgreater{}=!Real Ghost
-@rxlevel \textless{}player\textgreater{}=Real Ghost
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+@txlevel \PYGZlt{}player\PYGZgt{}=!Real Ghost
+@rxlevel \PYGZlt{}player\PYGZgt{}=Real Ghost
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 Let’s assume 3 players:
@@ -8052,35 +8136,41 @@ reality\_level           All 511
 replacement for all levels, useful for wizards and wizobjects that should
 be visible on all levels. Also useful when you want to set an object’s
 levels to something without knowing what he had before.
+
+\sphinxAtStartPar
 @rxlevel \#276=!All Real
+
+\sphinxAtStartPar
 !All will clear all levels, then the object will gain the Real level.
 There is more than one Obfuscation level because of the relation between
 Auspex and Obfuscation.
+
+\sphinxAtStartPar
 A vampire with Obfuscate 2, should not be visible by one with Auspex 1.
 However one with Auspex 3 should see another vampire with Obfuscate 1, 2
 /or/ 3.
+
+\sphinxAtStartPar
 Obfuscated players can move if they have Obf \textgreater{} 1. Umbral and Shadow players
 should also be able to see most of the exits. So the exits at creation
 should have default levels of Real + Obf2 + Obf3 + Obf4 + Obf5 + Umbra +
-Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381
-\begin{quote}
+Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381:
 
-\sphinxAtStartPar
-def\_exit\_rx 381
-def\_exit\_tx 381
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{def\PYGZus{}exit\PYGZus{}rx} \PYG{l+m+mi}{381}
+\PYG{n}{def\PYGZus{}exit\PYGZus{}tx} \PYG{l+m+mi}{381}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 Obf1 is not included since an Obfuscated vampire should not be able to move
 if it only has Obf1. Therefore they won’t see the exits. If you want them
 to be able to see the exits, but not to use them, change the default Tx of
 the exits:
-\begin{quote}
 
-\sphinxAtStartPar
-def\_exit\_rx 381
-def\_exit\_tx 383
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{def\PYGZus{}exit\PYGZus{}rx} \PYG{l+m+mi}{381}
+\PYG{n}{def\PYGZus{}exit\PYGZus{}tx} \PYG{l+m+mi}{383}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 Joe the Mortal will have an RxLevel: Real and a TxLevel: Real
@@ -8091,6 +8181,8 @@ try to make himself invisible will have an RxLevel: Real (as Jack)
 and a TxLevel: Real Obf4. He will also set his @desc to what the mortals see and
 \&OBFDESC to his real slimy desc. Simply put, he will be visible to mortals,
 but not with his real desc.
+
+\sphinxAtStartPar
 Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel
 will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So
 he can see Joe, Jack and Jimmy’s both descs.
@@ -8105,13 +8197,19 @@ No \&FAEDESC on her, although she’ll be able to see it the one on Frida.
 Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra
 and TxLevel: Umbra. \&UMBRADESC is his friend. He won’t see mortals or other
 characters who are not in the Umbra.
+
+\sphinxAtStartPar
 Barbie the Bastet, who’s only peeking in the Umbra, without going there,
 will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she
 can’t see the things that see her.
+
+\sphinxAtStartPar
 Deanna the Drake, who activates her spirit vision, will have
 RxLevel: Real Umbra and TxLevel: Real. She will see characters in Umbra and
 real world at the same time and perceive the desc appropiate to the realm
 the ohter character is in.
+
+\sphinxAtStartPar
 Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her @desc
 would be empty, but the \&SHADOWDESC should be set.
 Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real
@@ -8200,12 +8298,9 @@ MUSHQ\_\textless{}arg\textgreater{}                setq registers 0\sphinxhyphen
 MUSHQN\_\textless{}arg\textgreater{}               labels that are assigned the setq vars
 MUSHN\_\textless{}arg\textgreater{}                The labels that were defined by any register
 \begin{quote}
-\begin{description}
-\item[{Note: they must be ASCII\sphinxhyphen{}7 clean and contain no}] \leavevmode
-\sphinxAtStartPar
-white spaces
 
-\end{description}
+\sphinxAtStartPar
+Note: they must be ASCII\sphinxhyphen{}7 clean and contain no white spaces
 \end{quote}
 
 
@@ -8222,7 +8317,7 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.
 \label{\detokenize{advanced:the-format-of-the-fields-are}}
 
 \subparagraph{Dynamic variables}
-\label{\detokenize{advanced:id67}}
+\label{\detokenize{advanced:id65}}
 \sphinxAtStartPar
 VARNAME        OWNER        CONTENTS (or leave null to clear)
 
@@ -8241,7 +8336,7 @@ on the lines above
 
 
 \subparagraph{Register variables}
-\label{\detokenize{advanced:id68}}
+\label{\detokenize{advanced:id66}}
 \sphinxAtStartPar
 REGISTER       Q            CONTENTS (or leave null to clear)
 
@@ -8343,68 +8438,41 @@ screens and data display.  It can automatically center, justify and wrap the tex
 
 \subsubsection{Example one}
 \label{\detokenize{advanced:example-one}}
-\sphinxAtStartPar
-\textgreater{} @emit printf({\color{red}\bfseries{}|\$\sphinxhyphen{}12s|\$12s|\$\textasciicircum{}12s\$\&14s\$\_12s|},a b c, d e f, g h i, wrap(lnum(20),12, l, {\color{red}\bfseries{}|}, {\color{red}\bfseries{}|}), j k l)
-\begin{quote}
-\begin{description}
-\item[{{\color{red}\bfseries{}|a b c       |       d e f|}   g h i    {\color{red}\bfseries{}|0 1 2 3 4 5 |j     k    l|}}] \leavevmode
-\sphinxAtStartPar
-{\color{red}\bfseries{}|}6 7 8 9 10  |
-{\color{red}\bfseries{}|}11 12 13 14 |
-{\color{red}\bfseries{}|}15 16 17 18 |
-{\color{red}\bfseries{}|}19          |
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+@emit printf(|\PYGZdl{}\PYGZhy{}12s|\PYGZdl{}12s|\PYGZdl{}\PYGZca{}12s\PYGZdl{}\PYGZam{}14s\PYGZdl{}\PYGZus{}12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
 
-\end{description}
-\end{quote}
+|a b c       |       d e f|   g h i    |0 1 2 3 4 5 |j     k    l|
+                                       |6 7 8 9 10  |
+                                       |11 12 13 14 |
+                                       |15 16 17 18 |
+                                       |19          |
+\end{sphinxVerbatim}
 
 
 \subsubsection{Example two}
-\label{\detokenize{advanced:example-two}}\begin{description}
-\item[{\textgreater{} @emit printf(\$14\&s \$\textasciicircum{}4\&s \$\sphinxhyphen{}3\&s \$15\&s,}] \leavevmode\begin{quote}
+\label{\detokenize{advanced:example-two}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+  @emit printf(\PYGZdl{}14\PYGZam{}s \PYGZdl{}\PYGZca{}4\PYGZam{}s \PYGZdl{}\PYGZhy{}3\PYGZam{}s \PYGZdl{}15\PYGZam{}s,
+  iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,\PYGZsh{}\PYGZsh{},|,\PYGZpc{}R),
+  iter(|\PYGZhy{}1|\PYGZhy{}1|\PYGZhy{}2|\PYGZhy{}2|\PYGZhy{}5|,\PYGZsh{}\PYGZsh{},|,\PYGZpc{}r),iter(lnum(1,7),\PYGZpc{}[[if(gte(get(\PYGZpc{}\PYGZsh{}/damage),\PYGZsh{}\PYGZsh{}),X,\PYGZpc{}b)]\PYGZpc{}],,\PYGZpc{}r),
+  * Aggravated\PYGZpc{}RX Lethal\PYGZpc{}R/ Bashing)
 
-\sphinxAtStartPar
-iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,\#\#,|,\%R),
-iter({\color{red}\bfseries{}|\sphinxhyphen{}1|}\sphinxhyphen{}1|\sphinxhyphen{}2|\sphinxhyphen{}2|\sphinxhyphen{}5|,\#\#,|,\%r),iter(lnum(1,7),\%{[}{[}if(gte(get(\%\#/damage),\#\#),X,\%b){]}\%{]},,\%r),
-* Aggravated\%RX Lethal\%R/ Bashing)
-\begin{quote}
-\begin{quote}
-\begin{description}
-\item[{Bruised      {[} {]}    * Aggravated}] \leavevmode
-\sphinxAtStartPar
-Hurt  \sphinxhyphen{}1  {[} {]}        X Lethal
-
-\end{description}
-
-\sphinxAtStartPar
-Injured  \sphinxhyphen{}1  {[} {]}       / Bashing
-Wounded  \sphinxhyphen{}2  {[} {]}
-\begin{quote}
-
-\sphinxAtStartPar
-Mauled  \sphinxhyphen{}2  {[} {]}
-\end{quote}
-\end{quote}
-
-\sphinxAtStartPar
-Crippled  \sphinxhyphen{}5  {[} {]}
-\end{quote}
-\end{quote}
-
-\sphinxAtStartPar
-Incapacitated      {[} {]}
-
-\end{description}
+      Bruised      [ ]    * Aggravated
+         Hurt  \PYGZhy{}1  [ ]        X Lethal
+      Injured  \PYGZhy{}1  [ ]       / Bashing
+      Wounded  \PYGZhy{}2  [ ]
+       Mauled  \PYGZhy{}2  [ ]
+     Crippled  \PYGZhy{}5  [ ]
+Incapacitated      [ ]
+\end{sphinxVerbatim}
 
 
 \subsubsection{Example three}
-\label{\detokenize{advanced:example-three}}\begin{description}
-\item[{\textgreater{} @emit {[}printf(\$\sphinxhyphen{}10|“‘s\$\sphinxhyphen{}60|”s,a b c d e f g h i j k l m n o p q r s t u v w x y z,}] \leavevmode\begin{quote}
+\label{\detokenize{advanced:example-three}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+@emit [printf(\PYGZdl{}\PYGZhy{}10|\PYGZdq{}\PYGZsq{}s\PYGZdl{}\PYGZhy{}60|\PYGZdq{}s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
+this is a test a groovy test blah blah blah [repeat(blah\PYGZpc{}b,100)])]END!
 
-\sphinxAtStartPar
-this is a test a groovy test blah blah blah {[}repeat(blah\%b,100){]}){]}END!
-\end{quote}
-
-\sphinxAtStartPar
 a b c d e this is a test a groovy test blah blah blah blah blah blah
 f g h i j blah blah blah blah blah blah blah blah blah blah blah blah
 k l m n o blah blah blah blah blah blah blah blah blah blah blah blah
@@ -8414,8 +8482,7 @@ z         blah blah blah blah blah blah blah blah blah blah blah blah
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah
 blah blah blah blah blah blah blah                                    END!
-
-\end{description}
+\end{sphinxVerbatim}
 
 
 \section{Format for image files}
@@ -8458,8 +8525,10 @@ STRING     Ugly     ATTRIBUTECONTENTS: Contents of the next attribute
 STRING     \$6\$xy\$xy PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
 \textless{}          \textless{}        This is the marker to specify the end of the attribute contents.  This is always the last line
 
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-NOTE:  Any Data type starting with ‘*’ is ignored when @snapshot/loading.
+Any Data type starting with ‘*’ is ignored when @snapshot/loading.
+\end{sphinxadmonition}
 
 \sphinxAtStartPar
 The structure above with the examples would look like this in the file:
@@ -8496,7 +8565,10 @@ Ugly
 \textgreater{}*Password
 \$6\$xy\$xy
 \textless{}
-\begin{description}
+
+
+\subsection{HELP key indexes for the values:}
+\label{\detokenize{advanced:help-key-indexes-for-the-values}}\begin{description}
 \item[{FLAGS: The following flags are to be used.  They are BITWISE masks that you}] \leavevmode
 \sphinxAtStartPar
 need to add together for the values tghat you apply
@@ -8640,6 +8712,16 @@ need to add together for the values tghat you apply
 /} 0x40000000 free \sphinxstyleemphasis{/
 /} 0x80000000 free {\color{red}\bfseries{}*}/
 
+
+\bigskip\hrule\bigskip
+
+\begin{description}
+\item[{TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like}] \leavevmode
+\sphinxAtStartPar
+the flags above.  They are added together for each word type
+
+\end{description}
+
 \sphinxAtStartPar
 /* First word of toggles \sphinxhyphen{} Thorin 3/95 \sphinxstyleemphasis{/
 \#define TOG\_MONITOR             0x00000001      /} Active monitor on player \sphinxstyleemphasis{/
@@ -8711,12 +8793,16 @@ need to add together for the values tghat you apply
 \#endif
 \#define TOG\_LOGROOM             0x40000000      /} Log Room’s location/contents \sphinxstyleemphasis{/
 \#define TOG\_NOGLOBPARENT        0x80000000      /} Target does not inherit global attributes {\color{red}\bfseries{}*}/
-\begin{quote}
 
-\sphinxAtStartPar
-the fact.
-\end{quote}
+
+\bigskip\hrule\bigskip
+
 \begin{description}
+\item[{POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift}] \leavevmode
+\sphinxAtStartPar
+markers that you would have to compute the shift then add it after
+the fact.
+
 \item[{/* First word of power positions.  Each position is 2 bits so the}] \leavevmode
 \sphinxAtStartPar
 number here is how far over to shift the 2 bit pattern         {\color{red}\bfseries{}*}/
@@ -8778,6 +8864,16 @@ number here is how far over to shift the 2 bit pattern         {\color{red}\bfse
 /} 28 free \sphinxstyleemphasis{/
 /} 30 free {\color{red}\bfseries{}*}/
 
+
+\bigskip\hrule\bigskip
+
+\begin{description}
+\item[{DEPOWERS:  like @powers they are handled with a BITWISE offshift that you}] \leavevmode
+\sphinxAtStartPar
+will have to calculate then add
+
+\end{description}
+
 \sphinxAtStartPar
 /* First word {\color{red}\bfseries{}*}/
 \#define DP\_WALL                 0
@@ -8832,6 +8928,15 @@ number here is how far over to shift the 2 bit pattern         {\color{red}\bfse
 /} 26 free \sphinxstyleemphasis{/
 /} 28 free \sphinxstyleemphasis{/
 /} 30 free {\color{red}\bfseries{}*}/
+
+
+\bigskip\hrule\bigskip
+
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+ZONES:  Zones are special.  If there are no zones, the value will be ‘\sphinxhyphen{}1’.
+\end{sphinxadmonition}
 
 \sphinxAtStartPar
 So entering zones if there are no zones:
@@ -9298,8 +9403,8 @@ Thanks Alley
 \end{description}
 
 
-\subsection{RhostMUSH 3.9.5 Update File}
-\label{\detokenize{changelog:rhostmush-3-9-5-update-file}}\begin{description}
+\subsection{RhostMUSH 3.9.5 Update}
+\label{\detokenize{changelog:rhostmush-3-9-5-update}}\begin{description}
 \item[{Softcode overrides for connect files}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -9653,8 +9758,8 @@ Thanks Ixokai
 \end{description}
 
 
-\subsection{RhostMUSH 3.9.4 Update File}
-\label{\detokenize{changelog:rhostmush-3-9-4-update-file}}\begin{description}
+\subsection{RhostMUSH 3.9.4 Update}
+\label{\detokenize{changelog:rhostmush-3-9-4-update}}\begin{description}
 \item[{REALITY\_LEVELS wouldn’t compile because of undeclared function.}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -9749,8 +9854,8 @@ Thanks psc943
 \end{description}
 
 
-\subsection{RhostMUSH 3.9.3 Update File}
-\label{\detokenize{changelog:rhostmush-3-9-3-update-file}}\begin{description}
+\subsection{RhostMUSH 3.9.3 Update}
+\label{\detokenize{changelog:rhostmush-3-9-3-update}}\begin{description}
 \item[{@include \textendash{} Idea Copied from Penn}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -9768,8 +9873,8 @@ Thanks Chime/Loki (Haunted)
 \end{description}
 
 
-\subsection{RhostMUSH 3.9.2 Update File}
-\label{\detokenize{changelog:rhostmush-3-9-2-update-file}}\begin{description}
+\subsection{RhostMUSH 3.9.2 Update}
+\label{\detokenize{changelog:rhostmush-3-9-2-update}}\begin{description}
 \item[{@assert/@break didn’t handle \{\} correctly.}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -10576,12 +10681,6 @@ idle \sphinxhyphen{} a ‘nothing’ command that won’t effect idle time.  Wiz
 NO\_CODE  \sphinxhyphen{} Controls usage of code\sphinxhyphen{}commandss/functions.  Uses new second permission table.
 
 
-\paragraph{Powers}
-\label{\detokenize{changelog:powers}}
-
-\paragraph{De\sphinxhyphen{}Powers}
-\label{\detokenize{changelog:de-powers}}
-
 \paragraph{Toggles}
 \label{\detokenize{changelog:toggles}}
 \sphinxAtStartPar
@@ -11208,21 +11307,53 @@ Thanks Mortalis @ Cajun
 
 \sphinxAtStartPar
 mail/recall had off\sphinxhyphen{}by\sphinxhyphen{}one for month (introduced p18)
+
+\sphinxAtStartPar
 logf() conflicted with built\sphinxhyphen{}in function in newest gcc compilers \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 type cast warning in random function \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 Unused variable cleanup in code. \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 format\_name undocumented \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 IGSWITCH @hook didn’t work with new format of commands in some instances \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 Trace output issues with CPU protection \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 LBUF failed to be free on examining in rare cases. (introduced p18) \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 Cleanup of some initialization variables.  Not a problem.  Just a cleanup.
+
+\sphinxAtStartPar
 asksource broke on solaris systems. \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 Lots of cleanup for Solaris 2.8/2.9 builds.  Solaris didn’t declare right. \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 Security issue with descs clobbering setq regs \sphinxhyphen{} Fixed (optional @admin param)
+
+\sphinxAtStartPar
 new backup\_flat.sh script broke for remote archives \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 player cache had possible dereferenced pointer call \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 autoreg\_include.txt didn’t check txt subdirectory. \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 reality locks overwrote match state data (introduced p18) \sphinxhyphen{} Fixed
+
+\sphinxAtStartPar
 {[}18\sphinxhyphen{}1{]} Fix for IGSWITCH @hook and multiple switches \sphinxhyphen{} Fixed
 \begin{description}
 \item[{{[}18\sphinxhyphen{}2{]} Fix for unfindable and loc() and other functions \sphinxhyphen{} Fixed}] \leavevmode\begin{itemize}
@@ -11258,7 +11389,6 @@ Thanks Kevin
 
 \sphinxAtStartPar
 {[}18\sphinxhyphen{}6{]} Fix LBUF free issue (introduced 18\sphinxhyphen{}4)
-\begin{quote}
 \begin{description}
 \item[{Fix mail issue with marking and folders}] \leavevmode\begin{itemize}
 \item {} 
@@ -11271,7 +11401,6 @@ Thanks Kevin
 
 \sphinxAtStartPar
 Enhanced @break to accept optional argument to ‘branch’
-\end{quote}
 
 
 \subsection{RhostMUSH 3.2.4 p17 Update}
@@ -11468,23 +11597,8 @@ aiindex() \sphinxhyphen{} works like iindex() except will append to a null list.
 sortby() \sphinxhyphen{} Added for MUX2 compatibility
 
 
-\paragraph{Commands}
-\label{\detokenize{changelog:id8}}
-
-\paragraph{Flags}
-\label{\detokenize{changelog:id9}}
-
-\paragraph{Powers}
-\label{\detokenize{changelog:id10}}
-
-\paragraph{De\sphinxhyphen{}Powers}
-\label{\detokenize{changelog:id11}}
-
-\paragraph{Toggles}
-\label{\detokenize{changelog:id12}}
-
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id13}}
+\label{\detokenize{changelog:id8}}
 \sphinxAtStartPar
 wizmax\_vattr\_limit   \sphinxhyphen{} Attribute limiter for wizards
 wizmax\_dest\_limit    \sphinxhyphen{} Destroy limiter for wizards
@@ -11506,7 +11620,7 @@ examine\_restrictive  \sphinxhyphen{} Settable 1\sphinxhyphen{}5 (0 disables) to
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id14}}
+\label{\detokenize{changelog:id9}}
 \sphinxAtStartPar
 Double free issue with caseall() \sphinxhyphen{} Fixed
 Possible SIGSEGV condition with nobroadcast\_host (introduced p15)  \sphinxhyphen{} Fixed
@@ -11605,7 +11719,7 @@ Thanks Sasaki \sphinxhref{mailto:Chie@Fantasy}{Chie@Fantasy} Moon
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id15}}\begin{description}
+\label{\detokenize{changelog:id10}}\begin{description}
 \item[{MASSIVE internal rewrite of internal flag/command/function structure to prepare for loadable/unloadable module support.}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -11820,10 +11934,10 @@ Lensman
 
 
 \subsubsection{Additions}
-\label{\detokenize{changelog:id16}}
+\label{\detokenize{changelog:id11}}
 
 \paragraph{Functions}
-\label{\detokenize{changelog:id17}}\begin{description}
+\label{\detokenize{changelog:id12}}\begin{description}
 \item[{elementsmux() \sphinxhyphen{} for MUX elements() compatibility.}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -11852,11 +11966,8 @@ escapex() \sphinxhyphen{} just like escape() but you can choose what chars to \_
 securex() \sphinxhyphen{} just like escapex() but for secure()’s counterpart
 
 
-\paragraph{Commands}
-\label{\detokenize{changelog:id18}}
-
 \paragraph{Flags}
-\label{\detokenize{changelog:id19}}\begin{description}
+\label{\detokenize{changelog:id13}}\begin{description}
 \item[{BLIND \sphinxhyphen{} flag for exits and rooms to make target arrival/leaving ‘snuffed’.}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -11872,14 +11983,8 @@ SINGLETHREAD \sphinxhyphen{} Attribute flag to handle single\sphinxhyphen{}threa
 ATRLOCK \sphinxhyphen{} Attribute flag to handle global attribute locking
 
 
-\paragraph{Powers}
-\label{\detokenize{changelog:id20}}
-
-\paragraph{De\sphinxhyphen{}Powers}
-\label{\detokenize{changelog:id21}}
-
 \paragraph{Toggles}
-\label{\detokenize{changelog:id22}}\begin{description}
+\label{\detokenize{changelog:id14}}\begin{description}
 \item[{MUXPAGE \sphinxhyphen{} Toggle to allow mux\sphinxhyphen{}like paging for Penn/MUX/TM3 compatibility.}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -11895,7 +12000,7 @@ NODEFAULT \sphinxhyphen{} Toggle to disable global default handling (TM3)
 
 
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id23}}\begin{description}
+\label{\detokenize{changelog:id15}}\begin{description}
 \item[{mail\_verbosity \sphinxhyphen{} Add Subj: to sent mail as well as to disconnected players.}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -11969,7 +12074,7 @@ nobroadcast\_host \sphinxhyphen{} Define what sites will be ‘snuffed’ from M
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id24}}\begin{description}
+\label{\detokenize{changelog:id16}}\begin{description}
 \item[{Bug in wizhelp with ‘mail\_lockdown’ toggle.  \sphinxhyphen{} Fixed}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -12125,14 +12230,14 @@ Thanks \sphinxhref{mailto:Illithid@Ennersea}{Illithid@Ennersea}
 \end{description}
 
 
-\subsection{RhostMUSH 3.2.4 p14 Update File}
-\label{\detokenize{changelog:rhostmush-3-2-4-p14-update-file}}
+\subsection{RhostMUSH 3.2.4 p14 Update}
+\label{\detokenize{changelog:rhostmush-3-2-4-p14-update}}
 \sphinxAtStartPar
 {[}07/10/2002{]}
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id25}}\begin{description}
+\label{\detokenize{changelog:id17}}\begin{description}
 \item[{round() excepts negative args (60) for rounding values to whole numbers. (MUX2) The SPOOF flag is now inheritable.}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -12226,10 +12331,10 @@ Thanks \sphinxhref{mailto:Azhdeen@RhostMUSH}{Azhdeen@RhostMUSH}
 
 
 \subsubsection{Additions}
-\label{\detokenize{changelog:id26}}
+\label{\detokenize{changelog:id18}}
 
 \paragraph{Functions}
-\label{\detokenize{changelog:id27}}\begin{description}
+\label{\detokenize{changelog:id19}}\begin{description}
 \item[{txlevel() \sphinxhyphen{} sideeffect that sets @txlevel (or displays)}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -12281,7 +12386,7 @@ visiblemux() \sphinxhyphen{} works like mux’s visible()
 
 
 \paragraph{Commands}
-\label{\detokenize{changelog:id28}}
+\label{\detokenize{changelog:id20}}
 \sphinxAtStartPar
 @hook to show/display/change individual hooks.  Switches are:
 
@@ -12297,7 +12402,7 @@ visiblemux() \sphinxhyphen{} works like mux’s visible()
 
 
 \paragraph{Flags}
-\label{\detokenize{changelog:id29}}
+\label{\detokenize{changelog:id21}}
 \sphinxAtStartPar
 ATTRIBUTE FLAG: uselock \sphinxhyphen{} when set on an attribute with a \$command, will look for a matching \textasciitilde{}\textless{}attribute\textgreater{} to eval the lock.  This does BOOLEAN evaluation.  1 pass, 0 fail.
 
@@ -12305,20 +12410,14 @@ ATTRIBUTE FLAG: uselock \sphinxhyphen{} when set on an attribute with a \$comman
 SPAMMONITOR \sphinxhyphen{} mark if player and/or target item check for spam (60 cmds/sec)
 
 
-\paragraph{Powers}
-\label{\detokenize{changelog:id30}}
-
-\paragraph{De\sphinxhyphen{}Powers}
-\label{\detokenize{changelog:id31}}
-
 \paragraph{Toggles}
-\label{\detokenize{changelog:id32}}
+\label{\detokenize{changelog:id22}}
 \sphinxAtStartPar
 ZONEINHERIT \sphinxhyphen{} Allows zonemasters to have attributes inherited to children.
 
 
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id33}}\begin{description}
+\label{\detokenize{changelog:id23}}\begin{description}
 \item[{muddb\_name \sphinxhyphen{} admin param for db names to seperate from ‘mud\_name’}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -12360,7 +12459,7 @@ stack\_limit \sphinxhyphen{} nest check for ‘stack’ to throttle back a given
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id34}}\begin{description}
+\label{\detokenize{changelog:id24}}\begin{description}
 \item[{HELPFILE \sphinxhyphen{} trigger() was not a command but was shown in help. \sphinxhyphen{}Fixed}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -12484,14 +12583,14 @@ Thanks \sphinxhref{mailto:Sketch@M*U*S*H}{Sketch@M*U*S*H} \& Javelin
 \end{description}
 
 
-\subsection{RhostMUSH 3.2.4 p13 Update File}
-\label{\detokenize{changelog:rhostmush-3-2-4-p13-update-file}}
+\subsection{RhostMUSH 3.2.4 p13 Update}
+\label{\detokenize{changelog:rhostmush-3-2-4-p13-update}}
 \sphinxAtStartPar
 {[}02/01/2002{]}
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id35}}
+\label{\detokenize{changelog:id25}}
 \sphinxAtStartPar
 Help was missing for @admin parameter areg\_lim.  \sphinxhyphen{} Added
 Help was inconsistant for die() and dice().  \sphinxhyphen{} Changed
@@ -12541,10 +12640,10 @@ lattr() handles optional target of *player and player now.
 
 
 \subsubsection{Additions}
-\label{\detokenize{changelog:id36}}
+\label{\detokenize{changelog:id26}}
 
 \paragraph{Functions}
-\label{\detokenize{changelog:id37}}
+\label{\detokenize{changelog:id27}}
 \sphinxAtStartPar
 safebuff() \sphinxhyphen{} function to go back in the function until the first matched delimiter if strlen() is equal to or greater than the maximum.  (3998 characters)
 
@@ -12570,19 +12669,13 @@ config() \sphinxhyphen{} if no argument, displays all parameters (you have acces
 
 
 \paragraph{Commands}
-\label{\detokenize{changelog:id38}}
+\label{\detokenize{changelog:id28}}
 \sphinxAtStartPar
 @eval \sphinxhyphen{} force evaluation of functionality (TM3)
 
 
-\paragraph{Flags}
-\label{\detokenize{changelog:id39}}
-
-\paragraph{Powers}
-\label{\detokenize{changelog:id40}}
-
 \paragraph{De\sphinxhyphen{}Powers}
-\label{\detokenize{changelog:id41}}\begin{description}
+\label{\detokenize{changelog:de-powers}}\begin{description}
 \item[{mortal\_examine \sphinxhyphen{} if set, target always examines like a mortal. (@decompile/etc)}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -12594,14 +12687,14 @@ Thanks \sphinxhref{mailto:Belial@Armageddon}{Belial@Armageddon}
 
 
 \paragraph{Toggles}
-\label{\detokenize{changelog:id42}}
+\label{\detokenize{changelog:id29}}
 \sphinxAtStartPar
 mail\_lockdown \sphinxhyphen{} target is restricted in mail ‘monitoring’ like a mortal.
 muxpage \sphinxhyphen{} allows ‘p \textless{}blah\textgreater{}’ to work like in MUX/TM3
 
 
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id43}}
+\label{\detokenize{changelog:id30}}
 \sphinxAtStartPar
 log (parameter) god \sphinxhyphen{} log all activity of \#1
 heavy\_cpu\_max \sphinxhyphen{} ceilings heavilly used cpu\sphinxhyphen{}intensive functions.
@@ -12619,7 +12712,7 @@ global\_parent\_obj \sphinxhyphen{} global parent that attributes are inherited 
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id44}}
+\label{\detokenize{changelog:id31}}
 \sphinxAtStartPar
 convtime() used daylight savings \sphinxhyphen{} no longer uses daylight savings \sphinxhyphen{} Fixed
 IDESC wouldn’t work with Reality Levels \sphinxhyphen{} Fixed
@@ -12752,7 +12845,7 @@ Thanks \sphinxhref{mailto:accela@AniMUSH}{accela@AniMUSH}
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id45}}\begin{description}
+\label{\detokenize{changelog:id32}}\begin{description}
 \item[{Introduction of REALMS/Reality Levels}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -12820,10 +12913,10 @@ switch() and switchall() now recognize \textgreater{} and \textless{} as math\sp
 
 
 \subsubsection{Additions}
-\label{\detokenize{changelog:id46}}
+\label{\detokenize{changelog:id33}}
 
 \paragraph{Functions}
-\label{\detokenize{changelog:id47}}
+\label{\detokenize{changelog:id34}}
 \sphinxAtStartPar
 rxlevel() \sphinxhyphen{} return RX reality level for source check
 txlevel() \sphinxhyphen{} return TX reality level for target check
@@ -12834,7 +12927,7 @@ cansee() \sphinxhyphen{} return ‘1’ if target can see source (reality level 
 
 
 \paragraph{Commands}
-\label{\detokenize{changelog:id48}}
+\label{\detokenize{changelog:id35}}
 \sphinxAtStartPar
 @rxlevel \sphinxhyphen{} set/remove reality level source check
 @txlevel \sphinxhyphen{} set/remove reality level target check
@@ -12842,22 +12935,13 @@ mrpage (mrp) \sphinxhyphen{} respond to the player list that you received in a p
 
 
 \paragraph{Flags}
-\label{\detokenize{changelog:id49}}
+\label{\detokenize{changelog:id36}}
 \sphinxAtStartPar
 NONAME \sphinxhyphen{} if set on a target, the name is not displayed.
 
 
-\paragraph{Powers}
-\label{\detokenize{changelog:id50}}
-\sphinxAtStartPar
-De\sphinxhyphen{}Powers
-
-
-\paragraph{Toggles}
-\label{\detokenize{changelog:id51}}
-
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id52}}
+\label{\detokenize{changelog:id37}}
 \sphinxAtStartPar
 reality\_level     \sphinxhyphen{} define new reality level(s).  32 max.
 wiz\_always\_real   \sphinxhyphen{} a wizard is defined as always seeing everything as ‘real’
@@ -12889,7 +12973,7 @@ penn\_switches     \sphinxhyphen{} if enabled, switch() and switchall() will wor
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id53}}\begin{description}
+\label{\detokenize{changelog:id38}}\begin{description}
 \item[{filter() would accept ‘1\textless{}blah\textgreater{}’ as well as ‘1’.  \sphinxhyphen{} Fixed.}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -12921,7 +13005,7 @@ Iter()/list() and suite did not handle ansi properly \sphinxhyphen{} Fixed
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id54}}\begin{description}
+\label{\detokenize{changelog:id39}}\begin{description}
 \item[{elist() has 5th argument (for string seperator)}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -12981,32 +13065,23 @@ Thanks \sphinxhref{mailto:Belial@Armegeddon}{Belial@Armegeddon}
 
 
 \subsubsection{Additions}
-\label{\detokenize{changelog:id55}}
+\label{\detokenize{changelog:id40}}
 
 \paragraph{Functions}
-\label{\detokenize{changelog:id56}}
+\label{\detokenize{changelog:id41}}
 \sphinxAtStartPar
 foreach() \sphinxhyphen{} (MUX) added for compatibility
 ilev() \sphinxhyphen{} Returns nest level of an iter()
 
 
 \paragraph{Commands}
-\label{\detokenize{changelog:id57}}
+\label{\detokenize{changelog:id42}}
 \sphinxAtStartPar
 @limit {[}/vmod /dmod /list /reset{]} \sphinxhyphen{} to limit max @destroy/vattr creation
 
 
-\paragraph{Flags}
-\label{\detokenize{changelog:id58}}
-
-\paragraph{Powers}
-\label{\detokenize{changelog:id59}}
-
-\paragraph{De\sphinxhyphen{}Powers}
-\label{\detokenize{changelog:id60}}
-
 \paragraph{Toggles}
-\label{\detokenize{changelog:id61}}
+\label{\detokenize{changelog:id43}}
 \sphinxAtStartPar
 IGNOREZONE \sphinxhyphen{} toggles zone/location to enable zone/location command disable/ignore
 VPAGE \sphinxhyphen{} toggles aliases to show/not show in pages you receive.
@@ -13025,7 +13100,7 @@ MAIL\_NOPARSE \sphinxhyphen{} seperate toggle to break up translating \%r’s an
 
 
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id62}}
+\label{\detokenize{changelog:id44}}
 \sphinxAtStartPar
 ignore\_zone \sphinxhyphen{} globally specify zone ignoring for a command
 
@@ -13052,7 +13127,7 @@ Thanks \sphinxhref{mailto:Jeff@SandBox}{Jeff@SandBox}
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id63}}
+\label{\detokenize{changelog:id45}}
 \sphinxAtStartPar
 buffer issue with @decompile \sphinxhyphen{} fixed
 \begin{description}
@@ -13137,41 +13212,29 @@ Thanks \sphinxhref{mailto:Brazil@MUX2}{Brazil@MUX2}
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id64}}
+\label{\detokenize{changelog:id46}}
 \sphinxAtStartPar
 improved CPU handler for DoS protection
 
 
 \subsubsection{Additions}
-\label{\detokenize{changelog:id65}}
+\label{\detokenize{changelog:id47}}
 
 \paragraph{Functions}
-\label{\detokenize{changelog:id66}}
+\label{\detokenize{changelog:id48}}
 \sphinxAtStartPar
 strfunc(\textless{}function\textgreater{},\textless{}string of args\textgreater{}{[},\textless{}optional seperator for args\textgreater{}) \sphinxhyphen{} for lists
 
 
-\paragraph{Commands}
-\label{\detokenize{changelog:id67}}
-
-\paragraph{Flags}
-\label{\detokenize{changelog:id68}}
-
-\paragraph{Powers}
-\label{\detokenize{changelog:id69}}
-
-\paragraph{De\sphinxhyphen{}Powers}
-\label{\detokenize{changelog:id70}}
-
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id71}}
+\label{\detokenize{changelog:id49}}
 \sphinxAtStartPar
 max\_cpu\_cycles admin param (default 3)
 cpu\_secure\_lvl admin param (default 0)
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id72}}
+\label{\detokenize{changelog:id50}}
 \sphinxAtStartPar
 you could still get into a garbage object \sphinxhyphen{} fixed (MINOR)
 forwardlists were not cleared on @wipe \sphinxhyphen{} fixed
@@ -13184,7 +13247,7 @@ forwardlists were not cleared on @wipe \sphinxhyphen{} fixed
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id73}}
+\label{\detokenize{changelog:id51}}
 \sphinxAtStartPar
 mail/write +acc added to allow extending player lists and not replacing.
 \begin{description}
@@ -13218,10 +13281,10 @@ Suggested by \sphinxhref{mailto:Jamie@AdminMUSH}{Jamie@AdminMUSH}
 
 
 \subsubsection{Additions}
-\label{\detokenize{changelog:id74}}
+\label{\detokenize{changelog:id52}}
 
 \paragraph{Functions}
-\label{\detokenize{changelog:id75}}
+\label{\detokenize{changelog:id53}}
 \sphinxAtStartPar
 caseall() \sphinxhyphen{} works like switchall() but for case (Taken from PENN)
 cand() \sphinxhyphen{} works like and() but stops processing on first ‘FALSE’ (from PENN)
@@ -13233,29 +13296,23 @@ inum() \sphinxhyphen{} returns nth arg (num ‘\#@’) of an iter() (from PENN)
 modulo() \sphinxhyphen{} returns the modulus of the numbers (from PENN)
 
 
-\paragraph{Commands}
-\label{\detokenize{changelog:id76}}
-
 \paragraph{Flags}
-\label{\detokenize{changelog:id77}}
+\label{\detokenize{changelog:id54}}
 \sphinxAtStartPar
 NO\_PARSE \sphinxhyphen{} attribute flag that stops processing/evaluation of \%0\sphinxhyphen{}\%9 in \$commands.
 SAFE \sphinxhyphen{} attribute flag that stops modification of attribute it’s set on (TM 3.0)
 SHOWFAILCMD \sphinxhyphen{} when set on object any matching failed \$cmd uses the @ufail suite.
 
 
-\paragraph{Powers}
-\label{\detokenize{changelog:id78}}
-
 \paragraph{Toggles}
-\label{\detokenize{changelog:id79}}
+\label{\detokenize{changelog:id55}}
 \sphinxAtStartPar
 MAIL\_STRIPRETURN \sphinxhyphen{} when combining lines uses spaces instead of carrage returns
 PENN\_MAIL \sphinxhyphen{} when sending mail, use PENN like style
 
 
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id80}}
+\label{\detokenize{changelog:id56}}
 \sphinxAtStartPar
 guest\_namelist \sphinxhyphen{} specifies a dynamic namelist for guests (with protection)
 hackattr\_nowiz \sphinxhyphen{} defines if ‘\_attr’ is wiz only or follows normal rules
@@ -13264,7 +13321,7 @@ penn\_playercmds \sphinxhyphen{} \$commands on player work only for that player 
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id81}}\begin{description}
+\label{\detokenize{changelog:id57}}\begin{description}
 \item[{Bug with dynhelp().  Player (3rd arg) never resolved correctly \sphinxhyphen{} fixed}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -13303,7 +13360,7 @@ encrypt/decrypt really mangled with how it passed key \sphinxhyphen{} fixed
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id82}}
+\label{\detokenize{changelog:id58}}
 \sphinxAtStartPar
 lnum() and lnum2() now can handle negative numbers.
 @list options shows if the COMMAND flag is used.
@@ -13323,10 +13380,10 @@ added modified/created with ‘examine’ and ‘examine/brief’ and ‘examine
 
 
 \subsubsection{Additions}
-\label{\detokenize{changelog:id83}}
+\label{\detokenize{changelog:id59}}
 
 \paragraph{Functions}
-\label{\detokenize{changelog:id84}}\begin{description}
+\label{\detokenize{changelog:id60}}\begin{description}
 \item[{mailalias() \sphinxhyphen{} returns the dbref\# list of players in the given global mail alias}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -13345,14 +13402,14 @@ brackets() \sphinxhyphen{} idea taken from PENN 1.7.3
 
 
 \paragraph{Commands}
-\label{\detokenize{changelog:id85}}
+\label{\detokenize{changelog:id61}}
 \sphinxAtStartPar
 @flagdef \sphinxhyphen{} define flag permission levels (/set, /unset, /see)
 @dynhelp \sphinxhyphen{} dynamically read a specified \textless{}file\textgreater{}.txt file (needs matching .indx!)
 
 
 \paragraph{Flags}
-\label{\detokenize{changelog:id86}}\begin{description}
+\label{\detokenize{changelog:id62}}\begin{description}
 \item[{COMMANDS \sphinxhyphen{} optional \#ifdef to define what uses commands or not (TinyMUSH compat) uses \sphinxhyphen{}DENABLE\_COMMAND\_FLAG}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -13378,21 +13435,22 @@ idea from TinyMUSH 3.0
 BOUNCE \sphinxhyphen{} allows players to pass what they hear to their contents w/o effecting @ahear/@amhear/etc.
 
 
-\paragraph{Powers}
-\label{\detokenize{changelog:id87}}
-
 \paragraph{Toggles}
-\label{\detokenize{changelog:id88}}
+\label{\detokenize{changelog:id63}}
 \sphinxAtStartPar
 MONITOR\_BAD \sphinxhyphen{} monitor failed connections/creations to non\sphinxhyphen{}existant players
 PROG\_ON\_CONNECT \sphinxhyphen{} reverses the current global logic of program and connecting.
 
 
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id89}}
+\label{\detokenize{changelog:id64}}
 \sphinxAtStartPar
 imm\_nomod \sphinxhyphen{} when enabled (default disabled) specifies that only immortal can set/unset the NOMODIFY flag and only immortals can modify things set NOMODIFY.  This will allow NOMODIFY to mimic CONSTANT ala TM 3.0
+
+\sphinxAtStartPar
 paranoid\_exit\_linking \sphinxhyphen{} when enabled, you MUST control exit to link.  This includes UNLINKED exits.  Also, exits won’t be @chowned to you automatically. (Default disabled)
+
+\sphinxAtStartPar
 notonerr\_return \sphinxhyphen{} when DISABLED (default enabled) not() returns a ‘0’ for any function returning \#\sphinxhyphen{}1.
 \begin{description}
 \item[{safer\_passwords \sphinxhyphen{} requires passwords be 5+ chars long and have one upper, one lower, and one special character.}] \leavevmode\begin{itemize}
@@ -13409,7 +13467,7 @@ max\_sitecons \sphinxhyphen{} (default 50) specifies the maximum \# of port conn
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id90}}
+\label{\detokenize{changelog:id65}}
 \sphinxAtStartPar
 NOMODIFY wasn’t strict enough \sphinxhyphen{} fixed
 BACKSTAGE/NOBACKSTAGE didn’t handle @zones \sphinxhyphen{} fixed
@@ -13424,7 +13482,7 @@ put a temp fix for a possible SIGSEGV bug.
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id91}}
+\label{\detokenize{changelog:id66}}
 \sphinxAtStartPar
 @set now recognizes the following attribute flags:
 
@@ -13441,29 +13499,11 @@ put a temp fix for a possible SIGSEGV bug.
 \end{sphinxVerbatim}
 
 
-\subsubsection{Additions}
-\label{\detokenize{changelog:id92}}
-
-\paragraph{Functions}
-\label{\detokenize{changelog:id93}}
-
-\paragraph{Commands}
-\label{\detokenize{changelog:id94}}
-
-\paragraph{Flags}
-\label{\detokenize{changelog:id95}}
-
-\paragraph{Powers}
-\label{\detokenize{changelog:id96}}
-
-\paragraph{Toggles}
-\label{\detokenize{changelog:id97}}
-
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id98}}
+\label{\detokenize{changelog:id67}}
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id99}}\begin{description}
+\label{\detokenize{changelog:id68}}\begin{description}
 \item[{@list options did not show RESTRICT\_HOME config setting.  Fixed}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -13481,28 +13521,10 @@ Reported by \sphinxhref{mailto:Mercutio@ShatteredCathedrals}{Mercutio@ShatteredC
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id100}}
+\label{\detokenize{changelog:id69}}
 \sphinxAtStartPar
 @list site\_information now shows DNS blocking
 
-
-\subsubsection{Additions}
-\label{\detokenize{changelog:id101}}
-
-\paragraph{Functions}
-\label{\detokenize{changelog:id102}}
-
-\paragraph{Commands}
-\label{\detokenize{changelog:id103}}
-
-\paragraph{Flags}
-\label{\detokenize{changelog:id104}}
-
-\paragraph{Powers}
-\label{\detokenize{changelog:id105}}
-
-\paragraph{Toggles}
-\label{\detokenize{changelog:id106}}
 
 \subsubsection{Admins Params}
 \label{\detokenize{changelog:admins-params}}
@@ -13515,7 +13537,7 @@ suspect\_host \sphinxhyphen{} allows DNS entry/modify for suspect hosts
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id107}}\begin{description}
+\label{\detokenize{changelog:id70}}\begin{description}
 \item[{ansi() didn’t recognize ‘u’ for underline.  Fixed.}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -13548,40 +13570,22 @@ hastoggles(), haspowers(), and hasdepowers() didn’t work.  Fixed.
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id108}}
+\label{\detokenize{changelog:id71}}
 \sphinxAtStartPar
 New /noauth and /nodns switches to @site
 Better timeout conditions for AUTH lookups.
 @list site\_information now shows additional information
 
 
-\subsubsection{Additions}
-\label{\detokenize{changelog:id109}}
-
-\paragraph{Functions}
-\label{\detokenize{changelog:id110}}
-
-\paragraph{Commands}
-\label{\detokenize{changelog:id111}}
-
-\paragraph{Flags}
-\label{\detokenize{changelog:id112}}
-
-\paragraph{Powers}
-\label{\detokenize{changelog:id113}}
-
-\paragraph{Toggles}
-\label{\detokenize{changelog:id114}}
-
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id115}}
+\label{\detokenize{changelog:id72}}
 \sphinxAtStartPar
 noauth\_site \textendash{} specifies site and mask that AUTH lookups are not to be performed
 nodns\_site  \textendash{} specifies site and mask that DNS lookups are not to be performed
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id116}}
+\label{\detokenize{changelog:id73}}
 \sphinxAtStartPar
 AUTH hung if remote server was configured wrong.  Fix put in around the OS
 limitation to handle this.
@@ -13595,7 +13599,7 @@ Command substitution (\%c/\%x) could cause a SIGSEGV at random times.  Fixed.
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id117}}
+\label{\detokenize{changelog:id74}}
 \sphinxAtStartPar
 wizhelp has new topic for setting up guests (GUEST SETUP)
 \begin{description}
@@ -13647,10 +13651,10 @@ mail/forward and mail/reply now recognize the BRANDY\_MAIL @toggle.
 
 
 \subsubsection{Additions}
-\label{\detokenize{changelog:id118}}
+\label{\detokenize{changelog:id75}}
 
 \paragraph{Functions}
-\label{\detokenize{changelog:id119}}
+\label{\detokenize{changelog:id76}}
 \sphinxAtStartPar
 listmatch(\textless{}string\textgreater{},\textless{}wildcard\textgreater{}{[},\textless{}delimiter\textgreater{}{]})
 setqmatch(\textless{}string\textgreater{},\textless{}wildcard\textgreater{}{[},\textless{}delimiter\textgreater{}{]})
@@ -13659,7 +13663,7 @@ inprogram(player)
 
 
 \paragraph{Commands}
-\label{\detokenize{changelog:id120}}
+\label{\detokenize{changelog:id77}}
 \sphinxAtStartPar
 @program (idea from MUX)
 @quitprogram (idea from MUX)
@@ -13690,14 +13694,8 @@ Suggested by \sphinxhref{mailto:Trey@GameHendge}{Trey@GameHendge}
 +help (hardcode) (idea from MUX)
 
 
-\paragraph{Flags}
-\label{\detokenize{changelog:id121}}
-
-\paragraph{Powers}
-\label{\detokenize{changelog:id122}}
-
 \paragraph{Toggles}
-\label{\detokenize{changelog:id123}}
+\label{\detokenize{changelog:id78}}
 \sphinxAtStartPar
 PROG (idea from MUX)
 NOSHPROG
@@ -13707,20 +13705,14 @@ IMMPROG
 \subsubsection{Alias Additions}
 \label{\detokenize{changelog:alias-additions}}
 
-\paragraph{Functions}
-\label{\detokenize{changelog:id124}}
-
 \paragraph{Commands}
-\label{\detokenize{changelog:id125}}
+\label{\detokenize{changelog:id79}}
 \sphinxAtStartPar
 @prog aliased to @program
 
 
-\paragraph{Flags}
-\label{\detokenize{changelog:id126}}
-
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id127}}
+\label{\detokenize{changelog:id80}}
 \sphinxAtStartPar
 login\_to\_prog
 \begin{description}
@@ -13763,7 +13755,7 @@ must\_unlquota
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id128}}\begin{description}
+\label{\detokenize{changelog:id81}}\begin{description}
 \item[{news/articlelife not in wizhelp}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -13810,14 +13802,14 @@ Reported by \sphinxhref{mailto:Tyr@Forgotten}{Tyr@Forgotten} (Thanks for the pat
 news/articlelife wouldn’t reset articlelife with ‘\sphinxhyphen{}1’.  \textendash{} fixed
 
 
-\subsection{RhostMUSH 3.2.4 p3 Update File}
-\label{\detokenize{changelog:rhostmush-3-2-4-p3-update-file}}
+\subsection{RhostMUSH 3.2.4 p3 Update}
+\label{\detokenize{changelog:rhostmush-3-2-4-p3-update}}
 \sphinxAtStartPar
 {[}11/15/1999{]}
 
 
 \subsubsection{Changes}
-\label{\detokenize{changelog:id129}}
+\label{\detokenize{changelog:id82}}
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
 Make sure to make the appropiate aliases
@@ -13871,10 +13863,10 @@ if !zonemaster \sphinxhyphen{} specified zone.
 
 
 \subsubsection{Additions}
-\label{\detokenize{changelog:id130}}
+\label{\detokenize{changelog:id83}}
 
 \paragraph{Functions}
-\label{\detokenize{changelog:id131}}
+\label{\detokenize{changelog:id84}}
 \sphinxAtStartPar
 mailquick(\textless{}player\textgreater{}{[},\textless{}folder\textgreater{}{]}) (wiz only)
 eval(\textless{}object\textgreater{},\textless{}attr\textgreater{}) or eval(\textless{}string\textgreater{})
@@ -13923,14 +13915,14 @@ zfunl2default({[}\textless{}zone\textgreater{}/{]}\textless{}attr\textgreater{},
 
 
 \paragraph{Commands}
-\label{\detokenize{changelog:id132}}
+\label{\detokenize{changelog:id85}}
 \sphinxAtStartPar
 @hide{[}/on/off{]} \sphinxhyphen{} For PENN compatibility
 @saystring \sphinxhyphen{} define what is substituted instead of ‘says’
 
 
 \paragraph{Flags}
-\label{\detokenize{changelog:id133}}
+\label{\detokenize{changelog:id86}}
 \sphinxAtStartPar
 NOWHO (internal) \sphinxhyphen{} mark who is @hidden
 LOGIN \sphinxhyphen{} bypass @disable logins
@@ -13941,7 +13933,7 @@ ANONYMOUS \sphinxhyphen{} return ‘Someone’ when cloaked when talk/say
 
 
 \paragraph{Powers}
-\label{\detokenize{changelog:id134}}
+\label{\detokenize{changelog:powers}}
 \sphinxAtStartPar
 NOWHO \sphinxhyphen{} specify who can @hide
 EXAMINE\_FULL \sphinxhyphen{} examine anything but \#1, cloaked, and noexamine things
@@ -13949,17 +13941,17 @@ FULLTEL \sphinxhyphen{} teleport anywhere but \#1 and cloaked locations.
 
 
 \paragraph{Toggles}
-\label{\detokenize{changelog:id135}}
+\label{\detokenize{changelog:id87}}
 \sphinxAtStartPar
 BRANDY\_MAIL \sphinxhyphen{} send mail with ‘mail user\sphinxhyphen{}list=3Dsubject’ methodology
 FORCEHALTED \sphinxhyphen{} force someone who is halted
 
 
 \subsubsection{Alias Additions}
-\label{\detokenize{changelog:id136}}
+\label{\detokenize{changelog:id88}}
 
 \paragraph{Functions}
-\label{\detokenize{changelog:id137}}
+\label{\detokenize{changelog:id89}}
 \sphinxAtStartPar
 subeval() aliased to eval()
 grepi() aliased to grep()
@@ -13981,7 +13973,7 @@ mean() aliased to avg()
 
 
 \paragraph{Commands}
-\label{\detokenize{changelog:id138}}
+\label{\detokenize{changelog:id90}}
 \sphinxAtStartPar
 @brief aliased to examine/brief
 @lemit aliased to @emit/room
@@ -13990,20 +13982,20 @@ mean() aliased to avg()
 
 
 \paragraph{Flags}
-\label{\detokenize{changelog:id139}}
+\label{\detokenize{changelog:id91}}
 \sphinxAtStartPar
 NO\_COMMAND alias to NOCOMMAND
 
 
 \subsubsection{Admin Params}
-\label{\detokenize{changelog:id140}}
+\label{\detokenize{changelog:id92}}
 \sphinxAtStartPar
 mail\_tolist (default 0) \sphinxhyphen{} enable/disable To: \textless{}players\textgreater{} in mail = automatically
 mail\_default (default 0) \sphinxhyphen{} change ‘mail’ from mail/quick to mail/status
 
 
 \subsubsection{Bug Fixes}
-\label{\detokenize{changelog:id141}}
+\label{\detokenize{changelog:id93}}
 \sphinxAtStartPar
 depower \sphinxhyphen{} tel\_anywhere (broke \sphinxhyphen{} fixed)
 look \sphinxhyphen{} could see cloaked things if given long\sphinxhyphen{}finger ability (fixed)

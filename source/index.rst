@@ -1,8 +1,8 @@
 .. RhostMUSH Handbook documentation master file
 
-==================
-RhostMUSH Handbook
-==================
+====================
+ RhostMUSH Handbook
+====================
 
 The RhostMUSH source tree offers many abilities and options
 not normally found in any other flavor of mush.  This doesn't
@@ -27,12 +27,14 @@ RhostMUSH offers the following over other mushes
 
 
 .. toctree::
+   :numbered:
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Table of Contents
+   :name: mastertoc
 
+   install.rst
    features.rst
    differences.rst
-   requirements.rst
    installation.rst
    database.rst
    gettingstarted.rst

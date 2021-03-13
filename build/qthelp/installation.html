@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Installation</title>
+    <title>4. Installation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/nonav.css" type="text/css" /> 
   </head><body>
@@ -15,16 +15,16 @@
           <div class="body" role="main">
             
   <div class="section" id="installation">
-<h1>Installation</h1>
+<h1><span class="section-number">4. </span>Installation</h1>
 <div class="section" id="compiling-the-code">
-<h2>Compiling the code</h2>
+<h2><span class="section-number">4.1. </span>Compiling the code</h2>
 <p>make confsource</p>
 <p>Yes, that’s all you have to do.</p>
 <p>You may also issue ‘make source’ if the Makefile is already defined how
 you want it to be.  Please remember to ‘make clean’ before ‘make source’
 whenever you alter the code or import new source code.</p>
 <div class="section" id="note-about-compiling">
-<h3>Note about Compiling</h3>
+<h3><span class="section-number">4.1.1. </span>Note about Compiling</h3>
 <p>To install, type:  make confsource</p>
 <p>If your binaries do not work or you get an error type:  ./bin/script_setup.sh
 Then type: make confsource</p>
@@ -47,7 +47,7 @@ for attribute names.  It’s handy to have.</p>
 Yes, you can use them in parallel without any issue.</p>
 </div>
 <div class="section" id="note-about-recompiling">
-<h3>Note about Recompiling</h3>
+<h3><span class="section-number">4.1.2. </span>Note about Recompiling</h3>
 <p>If you plan to use ‘make confsource’ to recompile your source, you should first
 issue a ‘make clean’ before re-issuing a ‘make confsource’.  ‘make confsource’
 remembers the last options you used.</p>
@@ -58,7 +58,7 @@ random crashes.  Generally whenever recompiling it’s good to always make clean
 first.</p>
 </div>
 <div class="section" id="note-about-patching">
-<h3>Note about Patching</h3>
+<h3><span class="section-number">4.1.3. </span>Note about Patching</h3>
 <p>There’s two ways you can look to patch the source.  If you plan to run the
 RhostMUSH source from a git repository, then please use the git repo to
 constantly update your code.  If you knew enough to want to set up a git repo
@@ -79,7 +79,7 @@ Once that’s done, all you do from within the game is two commands:</p>
 </div>
 </div>
 <div class="section" id="configuring-the-game">
-<h2>Configuring the game</h2>
+<h2><span class="section-number">4.2. </span>Configuring the game</h2>
 <p>When setting up a mush for the first time, make sure you
 have all the files configured correctly.  This is with using
 the following file for configuration:</p>
@@ -88,7 +88,7 @@ the following file for configuration:</p>
 </div>
 </div>
 <div class="section" id="starting-the-game">
-<h2>Starting the game</h2>
+<h2><span class="section-number">4.3. </span>Starting the game</h2>
 <p>Once done, you start up the system with the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">-</span> <span class="p">[</span><span class="n">sh</span><span class="o">/</span><span class="n">csh</span><span class="p">]</span> <span class="o">./</span><span class="n">Startmush</span>
 
@@ -102,7 +102,7 @@ the following file for configuration:</p>
 </div>
 </div>
 <div class="section" id="first-login-to-the-game">
-<h2>First login to the game</h2>
+<h2><span class="section-number">4.4. </span>First login to the game</h2>
 <p>Once started, log in the #1 character (Wizard) with it’s appropiate
 password (no, not ‘potrzebie’, but ‘Nyctasia’).  There were private
 reasons for the password change.</p>
@@ -113,14 +113,14 @@ that allows the ability of auto-archiving your database for a configurable
 number of backups.</p>
 </div>
 <div class="section" id="reporting-bugs-or-getting-help">
-<h2>Reporting bugs or getting help</h2>
+<h2><span class="section-number">4.5. </span>Reporting bugs or getting help</h2>
 <p>If you find any bugs or problems, notify one of the developers of RhostMUSH and
 a patch or workaround will be made available as soon as possible.  Current
 developers are:  Seawolf, Thorin, Ashen-Shugar, Lensman, Kale, Mac, Zenty,
 Ambrosia, Amos, and Morgan.  They can be found around the net.</p>
 </div>
 <div class="section" id="installing-using-an-ansible-playbook">
-<h2>Installing using an ansible playbook</h2>
+<h2><span class="section-number">4.6. </span>Installing using an ansible playbook</h2>
 <p>To begin, you will run the following command in a directory that will house your game:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RhostMUSH</span><span class="o">/</span><span class="n">trunk</span> <span class="n">Rhost</span>
 </pre></div>
@@ -133,19 +133,9 @@ Ambrosia, Amos, and Morgan.  They can be found around the net.</p>
 <p>This downloads the latest stable version of the code, bringing with it all patches and scripts, documentation and support tools that you will need.</p>
 </div>
 <div class="section" id="quickinstall-guide-to-rhostmush">
-<h2>Quickinstall guide to RhostMUSH</h2>
-<div class="section" id="obtaining-rhostmush">
-<h3>Obtaining RhostMUSH</h3>
-<p>It is assumed that you have gotten to this point with the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RhostMUSH</span><span class="o">/</span><span class="n">trunk</span> <span class="n">Rhost</span>
-</pre></div>
-</div>
-<p>If you did NOT get it this way, your file permissions may not be properly set up.  Please type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span><span class="n">rx</span> <span class="nb">bin</span><span class="o">/*.</span><span class="n">sh</span> <span class="n">src</span><span class="o">/*.</span><span class="n">sh</span> <span class="n">game</span><span class="o">/*.</span><span class="n">sh</span> <span class="n">game</span><span class="o">/</span><span class="n">Startmush</span> <span class="n">game</span><span class="o">/</span><span class="n">db_</span><span class="o">*</span>
-</pre></div>
-</div>
-<p>This makes sure all the build scripts are properly made executable.
-This will result in ‘permission denied’ or similar results when running a script.</p>
+<h2><span class="section-number">4.7. </span>Quickinstall guide to RhostMUSH</h2>
+<div class="section" id="compiling-rhostmush">
+<h3><span class="section-number">4.7.1. </span>Compiling RhostMUSH</h3>
 <p>Once ready to compile type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">confsource</span>
 </pre></div>
@@ -153,7 +143,7 @@ This will result in ‘permission denied’ or similar results when running a sc
 <p>This will bring up a menu where you can selection options.</p>
 </div>
 <div class="section" id="important-before-you-actually-start-building">
-<h3>Important before you actually start building</h3>
+<h3><span class="section-number">4.7.2. </span>Important before you actually start building</h3>
 <p>The main parts of making your RhostMUSH, easy pleasy:
 #.  The stunnel directory contains TLS/SSL connectivity.  This has to be linked to another port and will tunnel to the mush port.  The README file explains how to set up and configure your TLS/SSL connection.
 #.  ./patch.sh – This makes sure you have the latest code.  If you got this by git clone <a class="reference external" href="https://github.com/RhostMUSH/trunk">https://github.com/RhostMUSH/trunk</a> then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.
@@ -179,7 +169,7 @@ This will result in ‘permission denied’ or similar results when running a sc
 </ol>
 </div>
 <div class="section" id="using-the-prebuilt-flatfile">
-<h3>Using the prebuilt flatfile</h3>
+<h3><span class="section-number">4.7.3. </span>Using the prebuilt flatfile</h3>
 <p>There are pre-loaded flatfile databases you can use at this point.  The netrhost.db.flat
 and corrisponding netrhost.conf file will be located in the minimal-DBs/minimal_db directory.</p>
 <p>You may auto-load the minimal db and corresponding netrhost.conf file with the command:</p>
@@ -190,7 +180,7 @@ and corrisponding netrhost.conf file will be located in the minimal-DBs/minimal_
 to customize the netrhost.conf file for your purposes.  The port and debug_id must
 be changed at the very least.  Keep the debug_id coordinated to the port as described.</p>
 <div class="section" id="to-load-a-prebuilt-flatfile">
-<h4>To load a prebuilt flatfile</h4>
+<h4><span class="section-number">4.7.3.1. </span>To load a prebuilt flatfile</h4>
 <p>To use these follow these steps:
 1.  Make a backup of your existing netrhost.conf file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">game</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span> <span class="n">game</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">backup</span>
@@ -228,7 +218,7 @@ Manually:</p>
 </div>
 </div>
 <div class="section" id="starting-from-scratch-with-a-brand-new-database">
-<h3>Starting from scratch with a brand new database</h3>
+<h3><span class="section-number">4.7.4. </span>Starting from scratch with a brand new database</h3>
 <ol class="arabic">
 <li><p>You can modify your netrhost.conf file settings in your game directory.
 Using an editor modify the ‘port’ and ‘debug_id’ respectively in your netrhost.conf as stated.
@@ -248,9 +238,9 @@ or ‘make bugreport’ please run the script: ./bin/script_setup.sh</p>
 <p>Now… things you may need to do on errors.</p>
 </div>
 <div class="section" id="instructions-for-starting-a-new-rhostmush">
-<h3>Instructions for starting a new RhostMUSH</h3>
+<h3><span class="section-number">4.7.5. </span>Instructions for starting a new RhostMUSH</h3>
 <div class="section" id="setup-directory-permissions">
-<h4>Setup directory permissions</h4>
+<h4><span class="section-number">4.7.5.1. </span>Setup directory permissions</h4>
 <blockquote>
 <div><p>run ./dirsetup.sh</p>
 <p>This is a simple script that will change file permissions
@@ -260,7 +250,7 @@ you likely won’t even have to set this up if you don’t want to.</p>
 </div></blockquote>
 </div>
 <div class="section" id="compile-the-source-code">
-<h4>Compile the source code</h4>
+<h4><span class="section-number">4.7.5.2. </span>Compile the source code</h4>
 <p>Make and run the RhostMUSH source:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Type</span><span class="p">:</span>  <span class="n">make</span> <span class="n">confsource</span>
 </pre></div>
@@ -275,7 +265,7 @@ you likely won’t even have to set this up if you don’t want to.</p>
 </pre></div>
 </div>
 <div class="section" id="manual-configuration-of-source-code">
-<h5>Manual configuration of source code</h5>
+<h5><span class="section-number">4.7.5.2.1. </span>Manual configuration of source code</h5>
 <p>To do manual configuration (skip if the previous step worked for you) And yes, this is a bit of a pain in the bottom, hopefully you will not need this.</p>
 <p>You need the following definitions defined to make this work:</p>
 <ol class="arabic simple">
@@ -292,10 +282,10 @@ you likely won’t even have to set this up if you don’t want to.</p>
 </div>
 </div>
 <div class="section" id="loading-a-database-for-your-mush">
-<h3>Loading a database for your MUSH</h3>
+<h3><span class="section-number">4.7.6. </span>Loading a database for your MUSH</h3>
 <p>You now have a choice of optionally starting at a provided database or starting from scratch.</p>
 <div class="section" id="option-only-perform-these-steps-if-using-a-provided-database">
-<h4>Option: Only perform these steps if using a provided database</h4>
+<h4><span class="section-number">4.7.6.1. </span>Option: Only perform these steps if using a provided database</h4>
 <blockquote>
 <div><dl>
 <dt>Copy an existing flatfile and corresponding netrhost.conf file</dt><dd><p>Default provied example:</p>
@@ -311,7 +301,7 @@ you likely won’t even have to set this up if you don’t want to.</p>
 </div>
 </div>
 <div class="section" id="configure-the-netrhost-conf-file-for-your-mush">
-<h3>Configure the netrhost.conf file for your MUSH</h3>
+<h3><span class="section-number">4.7.7. </span>Configure the netrhost.conf file for your MUSH</h3>
 <blockquote>
 <div><p>Go into the game directory and modify the netrhost.conf file
 The next step is configuring the mush to your config standards.
@@ -324,7 +314,7 @@ to change them.  The port and debug_id need to be changed.</p>
 </div></blockquote>
 </div>
 <div class="section" id="start-the-mush-and-login">
-<h3>Start the MUSH and login</h3>
+<h3><span class="section-number">4.7.8. </span>Start the MUSH and login</h3>
 <p>From the game diretory issue:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">Startmush</span>
 </pre></div>
@@ -335,7 +325,7 @@ to change them.  The port and debug_id need to be changed.</p>
 </div>
 </div>
 <div class="section" id="option-things-to-do-once-you-have-connected-if-you-did-not-use-a-provided-database">
-<h3>Option: Things to do once you have connected if you did NOT use a provided database</h3>
+<h3><span class="section-number">4.7.9. </span>Option: Things to do once you have connected if you did NOT use a provided database</h3>
 <ol class="arabic">
 <li><p>&#64;dig your master room and in your netrhost.conf file define master_room to this dbref (without the #.  So like master_room 2)</p></li>
 <li><p>Create an immortal holder charater (&#64;pcreate then &#64;set immortal) Feel free to set up holder characters for all the bittypes which are: GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL</p></li>
@@ -352,11 +342,11 @@ to change them.  The port and debug_id need to be changed.</p>
 </ol>
 </div>
 <div class="section" id="setup-new-character-staff-and-take-tasks-that-can-only-be-accomplished-by-1">
-<h3>Setup new character, staff, and take tasks that can only be accomplished by #1</h3>
+<h3><span class="section-number">4.7.10. </span>Setup new character, staff, and take tasks that can only be accomplished by #1</h3>
 <p>Set up any other characters you want.  Anyone immortal can issue &#64;function, &#64;admin, or anything #1 can do.</p>
 </div>
 <div class="section" id="setup-daily-backups-for-your-game">
-<h3>Setup daily backups for your game</h3>
+<h3><span class="section-number">4.7.11. </span>Setup daily backups for your game</h3>
 <p>Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game. paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@dump</span><span class="o">/</span><span class="n">flat</span>      <span class="o">--</span> <span class="n">This</span> <span class="n">makes</span> <span class="n">a</span> <span class="n">flatfile</span> <span class="n">dump</span> <span class="n">of</span> <span class="n">the</span> <span class="n">main</span> <span class="n">database</span><span class="o">.</span>  <span class="n">You</span> <span class="n">want</span> <span class="n">to</span> <span class="n">run</span> <span class="n">this</span> <span class="n">daily</span><span class="o">.</span>
 <span class="n">wmail</span><span class="o">/</span><span class="n">unload</span>    <span class="o">--</span> <span class="n">This</span> <span class="n">makes</span> <span class="n">a</span> <span class="n">flatfile</span> <span class="n">dump</span> <span class="n">of</span> <span class="n">the</span> <span class="n">mail</span> <span class="n">database</span><span class="o">.</span>  <span class="n">You</span> <span class="n">want</span> <span class="n">to</span> <span class="n">run</span> <span class="n">this</span> <span class="n">daily</span><span class="o">.</span>
@@ -367,7 +357,7 @@ to change them.  The port and debug_id need to be changed.</p>
 <p>The backup_flat.sh script (that launches automatically with Startmush) will archive all the above files if they exist.  It moves these flatfiles into the ‘prevflat’ directory, then tarballs those and dumps consecutive backups in the ‘oldflat’ directory.  By default it keeps 7 consecutive backups.  You may alter this in the backup_flat.sh script itself.</p>
 </div>
 <div class="section" id="customtize-the-textfiles-for-your-game">
-<h3>Customtize the textfiles for your game</h3>
+<h3><span class="section-number">4.7.12. </span>Customtize the textfiles for your game</h3>
 <blockquote>
 <div><p>All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a
 README file there that explains their purposes in more detail.  You can see more information on
@@ -375,7 +365,7 @@ all files and how they inter-relate with ‘wizhelp file’.</p>
 </div></blockquote>
 </div>
 <div class="section" id="make-sure-to-read-up-further">
-<h3>Make sure to read up further</h3>
+<h3><span class="section-number">4.7.13. </span>Make sure to read up further</h3>
 <blockquote>
 <div><p>The wiz bits can be confusing, so ‘wizhelp control’ is very helpful to give a high overview
 of what each bit does and their inter-relationship is.</p>
@@ -383,17 +373,17 @@ of what each bit does and their inter-relationship is.</p>
 </div>
 </div>
 <div class="section" id="what-to-type-to-configure-and-get-your-rhostmush-up-and-running">
-<h2>What to type to configure and get your RhostMUSH up and running</h2>
+<h2><span class="section-number">4.8. </span>What to type to configure and get your RhostMUSH up and running</h2>
 <p>You may configure Rhost three ways.</p>
 <div class="section" id="creating-a-new-game-with-a-blank-database">
-<h3>Creating a new game with a blank database</h3>
+<h3><span class="section-number">4.8.1. </span>Creating a new game with a blank database</h3>
 <blockquote>
 <div><p>Modify your ./game/netrhost.conf file or what settings you want.
 Don’t feel overwhelmed, it’s all very well documented.</p>
 </div></blockquote>
 </div>
 <div class="section" id="creating-a-new-game-with-ambrosia-s-default-database">
-<h3>Creating a new game with Ambrosia’s default database</h3>
+<h3><span class="section-number">4.8.2. </span>Creating a new game with Ambrosia’s default database</h3>
 <p>Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README</p>
 <p>The netrhost.conf file you will copy is in minimal-DBs/Amb-MinimalRhost/game
 Copy this netrhost.conf file into your ‘game’ directory.</p>
@@ -422,7 +412,7 @@ Copy this netrhost.conf file into your ‘game’ directory.</p>
 </ol>
 </div>
 <div class="section" id="creating-a-new-game-with-the-generic-default-database">
-<h3>Creating a new game with the generic default database</h3>
+<h3><span class="section-number">4.8.3. </span>Creating a new game with the generic default database</h3>
 <blockquote>
 <div><p>Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory.</p>
 <p>When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit &lt;RETURN&gt;
@@ -431,7 +421,7 @@ the minimal-DBs/minimal_db directory.</p>
 </div></blockquote>
 </div>
 <div class="section" id="starting-your-mush">
-<h3>Starting your MUSH</h3>
+<h3><span class="section-number">4.8.4. </span>Starting your MUSH</h3>
 <p>Once you have used one of these three methods to obtaina database, you can start your mush up.
 At this point type from the game directory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">Startmush</span>
@@ -439,7 +429,7 @@ At this point type from the game directory:</p>
 </div>
 </div>
 <div class="section" id="backups-for-rhostmush">
-<h3>Backups for RhostMUSH</h3>
+<h3><span class="section-number">4.8.5. </span>Backups for RhostMUSH</h3>
 <blockquote>
 <div><p>Backups are already handled and integrated with a script ‘backup_flat.sh’.
 If you wish to customize this, feel free.  Again, it is well documented and
@@ -468,30 +458,30 @@ just issue: ./backup_restart.sh</p>
 </div></blockquote>
 </div>
 <div class="section" id="troubleshooting-issues-with-starting-up">
-<h3>Troubleshooting issues with starting up</h3>
+<h3><span class="section-number">4.8.6. </span>Troubleshooting issues with starting up</h3>
 <div class="section" id="problem-if-it-says-the-shared-id-is-already-in-use">
-<h4>Problem: If it says the shared ID is already in use</h4>
+<h4><span class="section-number">4.8.6.1. </span>Problem: If it says the shared ID is already in use</h4>
 <p>A1: please verify that it is the right shared debug_id in your netrhost.conf file</p>
 <p>A2: Force a start by ./Startmush -f</p>
 </div>
 <div class="section" id="problem-your-log-file-is-massive-and-your-mush-is-running">
-<h4>Problem: Your log file is massive and your mush is running</h4>
+<h4><span class="section-number">4.8.6.2. </span>Problem: Your log file is massive and your mush is running</h4>
 <p>A1: To rotate this use the &#64;logrotate command. See wizhelp on &#64;logrotate</p>
 </div>
 <div class="section" id="problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined">
-<h4>Problem: The database flatfile you’re loading can’t load because a db is already defined</h4>
+<h4><span class="section-number">4.8.6.3. </span>Problem: The database flatfile you’re loading can’t load because a db is already defined</h4>
 <p>A1: remove netrhost.db* and netrhost.gdbm* from your data directory</p>
 </div>
 <div class="section" id="problem-the-mail-database-won-t-load-and-mail-shows-offline">
-<h4>Problem: The mail database won’t load and mail shows ‘offline’</h4>
+<h4><span class="section-number">4.8.6.4. </span>Problem: The mail database won’t load and mail shows ‘offline’</h4>
 <p>A1: wmail/load</p>
 </div>
 </div>
 </div>
 <div class="section" id="windows">
-<h2>Windows</h2>
+<h2><span class="section-number">4.9. </span>Windows</h2>
 <div class="section" id="installing-on-windows-10-with-bash">
-<h3>Installing on Windows 10 with BASH</h3>
+<h3><span class="section-number">4.9.1. </span>Installing on Windows 10 with BASH</h3>
 <p>Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
 This has been tested with the Preview build 14342.</p>
 <p>1. After installing Bash you will need to install the following packages:
@@ -508,7 +498,7 @@ option.</p>
 </ol>
 </div>
 <div class="section" id="installing-on-windows-with-cygwin">
-<h3>Installing on Windows with Cygwin</h3>
+<h3><span class="section-number">4.9.2. </span>Installing on Windows with Cygwin</h3>
 <p>Rhost does work under windows using the cygwin package.</p>
 <p>1.  When you do install cygwin, the following packages must be added:
 make

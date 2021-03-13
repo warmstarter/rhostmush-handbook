@@ -76,8 +76,8 @@ SIDEFX permissions were borked for normal players.
 				- Thanks Alley
 
 
-RhostMUSH 3.9.5 Update File
-===========================
+RhostMUSH 3.9.5 Update
+======================
 
 Softcode overrides for connect files
 				- Thanks Matrix
@@ -180,10 +180,8 @@ All locatization with CLEAR didn't wipe and reset register names.
 ] for @hook/ignore and @hook/permit was broken.
 				- Thanks Ixokai
 
-
-
-RhostMUSH 3.9.4 Update File
-===========================
+RhostMUSH 3.9.4 Update
+======================
 
 REALITY_LEVELS wouldn't compile because of undeclared function.
 				- Thanks Dahan
@@ -212,16 +210,16 @@ functions.c bombed with the clang compiler because of restrictive type-casting c
 Compiletime bug in speech.c with REALITY_LEVELS not defined.
 				- Thanks psc943
 
-RhostMUSH 3.9.3 Update File
-===========================
+RhostMUSH 3.9.3 Update
+======================
 
 @include -- Idea Copied from Penn 
 				- Thanks Jules (and PennMUSH)
 Fix for $Z in timefmt()
 				- Thanks Chime/Loki (Haunted)
 
-RhostMUSH 3.9.2 Update File
-===========================
+RhostMUSH 3.9.2 Update
+======================
 
 @assert/@break didn't handle {} correctly.
 				- Thanks Wyrd
@@ -657,12 +655,6 @@ Flags
 
 NO_CODE  - Controls usage of code-commandss/functions.  Uses new second permission table.
 
-Powers
-++++++
-
-De-Powers
-+++++++++
-
 Toggles
 +++++++
 
@@ -943,21 +935,37 @@ Month was off by one in mail/recall (introduced p18)
 				- Thanks Mortalis @ Cajun
 
 mail/recall had off-by-one for month (introduced p18)
+
 logf() conflicted with built-in function in newest gcc compilers - Fixed
+
 type cast warning in random function - Fixed
+
 Unused variable cleanup in code. - Fixed
+
 format_name undocumented - Fixed
+
 IGSWITCH @hook didn't work with new format of commands in some instances - Fixed
+
 Trace output issues with CPU protection - Fixed
+
 LBUF failed to be free on examining in rare cases. (introduced p18) - Fixed 
+
 Cleanup of some initialization variables.  Not a problem.  Just a cleanup.
+
 asksource broke on solaris systems. - Fixed
+
 Lots of cleanup for Solaris 2.8/2.9 builds.  Solaris didn't declare right. - Fixed
+
 Security issue with descs clobbering setq regs - Fixed (optional @admin param)
+
 new backup_flat.sh script broke for remote archives - Fixed
+
 player cache had possible dereferenced pointer call - Fixed
+
 autoreg_include.txt didn't check txt subdirectory. - Fixed
+
 reality locks overwrote match state data (introduced p18) - Fixed
+
 [18-1] Fix for IGSWITCH @hook and multiple switches - Fixed
 
 [18-2] Fix for unfindable and loc() and other functions - Fixed
@@ -974,10 +982,10 @@ reality locks overwrote match state data (introduced p18) - Fixed
 
 [18-6] Fix LBUF free issue (introduced 18-4)
 
-       Fix mail issue with marking and folders
+Fix mail issue with marking and folders
 				- Thanks Kevin
 
-       Enhanced @break to accept optional argument to 'branch'
+Enhanced @break to accept optional argument to 'branch'
 
 
 RhostMUSH 3.2.4 p17 Update
@@ -1084,21 +1092,6 @@ Functions
                                 
 aiindex() - works like iindex() except will append to a null list.
 sortby() - Added for MUX2 compatibility
-
-Commands
-++++++++
-
-Flags
-+++++
-
-Powers
-++++++
-
-De-Powers
-+++++++++
-
-Toggles
-+++++++
 
 Admin Params
 ------------
@@ -1253,9 +1246,6 @@ escapex() - just like escape() but you can choose what chars to _not_ escape
 
 securex() - just like escapex() but for secure()'s counterpart
 
-Commands
-++++++++
-
 Flags
 +++++
 
@@ -1265,12 +1255,6 @@ BLIND - flag for exits and rooms to make target arrival/leaving 'snuffed'.
 DEFAULT - Attribute flag for handling default global attrib (TM3)
 SINGLETHREAD - Attribute flag to handle single-threading $commands
 ATRLOCK - Attribute flag to handle global attribute locking
-
-Powers
-++++++
-
-De-Powers
-+++++++++
 
 Toggles
 +++++++
@@ -1375,8 +1359,8 @@ Possible overrun on the stack with regards to iter() during certain config opts.
 				- Thanks Illithid@Ennersea
 
 
-RhostMUSH 3.2.4 p14 Update File
-===============================
+RhostMUSH 3.2.4 p14 Update
+==========================
 
 [07/10/2002]
 
@@ -1467,12 +1451,6 @@ ATTRIBUTE FLAG: uselock - when set on an attribute with a $command, will look fo
 
 SPAMMONITOR - mark if player and/or target item check for spam (60 cmds/sec)
 
-Powers
-++++++
-
-De-Powers
-+++++++++
-
 Toggles
 +++++++
 
@@ -1550,8 +1528,8 @@ plushelp_file and plushelp_index missing from wizhelp - Fixed
 wildcard matching could become problematic - Fixed.
 				- Thanks Sketch@M*U*S*H & Javelin
 
-RhostMUSH 3.2.4 p13 Update File
-===============================
+RhostMUSH 3.2.4 p13 Update
+==========================
 
 [02/01/2002]
 
@@ -1620,12 +1598,6 @@ Commands
 ++++++++
 
 @eval - force evaluation of functionality (TM3)
-
-Flags
-+++++
-
-Powers
-++++++
 
 De-Powers
 +++++++++
@@ -1778,14 +1750,6 @@ Flags
 
 NONAME - if set on a target, the name is not displayed.
 
-Powers
-++++++
-
-De-Powers
-
-Toggles
-+++++++
-
 Admin Params
 ------------
 
@@ -1879,15 +1843,6 @@ Commands
 
 @limit [/vmod /dmod /list /reset] - to limit max @destroy/vattr creation
 
-Flags
-+++++
-
-Powers
-++++++
-
-De-Powers
-+++++++++
-
 Toggles
 +++++++
 
@@ -1968,18 +1923,6 @@ Functions
 
 strfunc(<function>,<string of args>[,<optional seperator for args>) - for lists
 
-Commands
-++++++++
-
-Flags
-+++++
-
-Powers
-++++++
-
-De-Powers
-+++++++++
-
 Admin Params
 ------------
 
@@ -2028,18 +1971,12 @@ itext() - returns nth arg (text '##') of an iter() (from PENN)
 inum() - returns nth arg (num '#@') of an iter() (from PENN)
 modulo() - returns the modulus of the numbers (from PENN)
 
-Commands
-++++++++
-
 Flags
 +++++
 
 NO_PARSE - attribute flag that stops processing/evaluation of %0-%9 in $commands.
 SAFE - attribute flag that stops modification of attribute it's set on (TM 3.0)
 SHOWFAILCMD - when set on object any matching failed $cmd uses the @ufail suite.
-
-Powers
-++++++
 
 Toggles
 +++++++
@@ -2132,9 +2069,6 @@ MARKER0 through MARKER9
 
 BOUNCE - allows players to pass what they hear to their contents w/o effecting @ahear/@amhear/etc.
 
-Powers
-++++++
-
 Toggles
 +++++++
 
@@ -2145,7 +2079,9 @@ Admin Params
 ------------
 
 imm_nomod - when enabled (default disabled) specifies that only immortal can set/unset the NOMODIFY flag and only immortals can modify things set NOMODIFY.  This will allow NOMODIFY to mimic CONSTANT ala TM 3.0
+
 paranoid_exit_linking - when enabled, you MUST control exit to link.  This includes UNLINKED exits.  Also, exits won't be @chowned to you automatically. (Default disabled)
+
 notonerr_return - when DISABLED (default enabled) not() returns a '0' for any function returning #-1.
 
 safer_passwords - requires passwords be 5+ chars long and have one upper, one lower, and one special character.
@@ -2181,24 +2117,6 @@ Changes
     HIDDEN
     DARK
         
-Additions
----------
-
-Functions
-+++++++++
-
-Commands
-++++++++
-
-Flags
-+++++
-
-Powers
-++++++
-
-Toggles
-+++++++
-
 Admin Params
 ------------
 
@@ -2217,24 +2135,6 @@ Changes
 -------
 
 @list site_information now shows DNS blocking
-
-Additions
----------
-
-Functions
-+++++++++
-
-Commands
-++++++++
-
-Flags
-+++++
-
-Powers
-++++++
-
-Toggles
-+++++++
 
 Admins Params
 -------------
@@ -2269,24 +2169,6 @@ Changes
 New /noauth and /nodns switches to @site
 Better timeout conditions for AUTH lookups.
 @list site_information now shows additional information
-
-Additions
----------
-
-Functions
-+++++++++
-
-Commands
-++++++++
-
-Flags
-+++++
-
-Powers
-++++++
-
-Toggles
-+++++++
 
 Admin Params
 ------------
@@ -2365,12 +2247,6 @@ train
 @function/preserve (idea from MUX)
 +help (hardcode) (idea from MUX)
 
-Flags
-+++++
-
-Powers
-++++++
-
 Toggles
 +++++++
 
@@ -2381,16 +2257,10 @@ IMMPROG
 Alias Additions
 ---------------
 
-Functions
-+++++++++
-
 Commands
 ++++++++
 
 @prog aliased to @program
-
-Flags
-+++++
 
 Admin Params
 ------------
@@ -2432,8 +2302,8 @@ setunion() would not parse 3rd/4th args correctly on rare occurances --fixed
 
 news/articlelife wouldn't reset articlelife with '-1'.  -- fixed
 
-RhostMUSH 3.2.4 p3 Update File
-==============================
+RhostMUSH 3.2.4 p3 Update
+=========================
 
 [11/15/1999]
 

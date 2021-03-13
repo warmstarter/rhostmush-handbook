@@ -1,9 +1,9 @@
-Maintenance
-***********
+9. Maintenance
+**************
 
 
-Signals and why you need them for control
-=========================================
+9.1. Signals and why you need them for control
+==============================================
 
 Rhost by default allows signals at the shell to handle various
 processes in-game.
@@ -11,8 +11,8 @@ processes in-game.
 The following signals are useful.
 
 
-TERM (kill -TERM or kill -15)
------------------------------
+9.1.1. TERM (kill -TERM or kill -15)
+------------------------------------
 
    * This will immediately terminate the mush, dumping a special
      flatfile called netrhost.db.TERM and scramming the db in question
@@ -22,8 +22,8 @@ TERM (kill -TERM or kill -15)
      server shutdown, so time is paramount.
 
 
-USR1 (kill -USR1)
------------------
+9.1.2. USR1 (kill -USR1)
+------------------------
 
    * This by default issues a reboot on the server.  This is a special
      parameter because this can actually be changed in-game to do any
@@ -32,8 +32,8 @@ USR1 (kill -USR1)
      USR1 is doing something else.
 
 
-USR2 (kill -USR2)
------------------
+9.1.3. USR2 (kill -USR2)
+------------------------
 
    * This will shutdown (cleanly) the mush.  This behaves as if you
      issued a @shutdown from within the game, and follows all proper
@@ -42,8 +42,8 @@ USR2 (kill -USR2)
      to bring it down from the shell.
 
 
-KILL (kill -KILL or kill -9)
-----------------------------
+9.1.4. KILL (kill -KILL or kill -9)
+-----------------------------------
 
    * This signal can not be caught and will immediately terminate the
      game without any safty to the database at all.  Short of
@@ -57,12 +57,12 @@ KILL (kill -KILL or kill -9)
      back up.
 
 
-Shutting down gracefully
-========================
+9.2. Shutting down gracefully
+=============================
 
 
-Rhostmush has many ways to shut down the game cleanly
------------------------------------------------------
+9.2.1. Rhostmush has many ways to shut down the game cleanly
+------------------------------------------------------------
 
 1. Log into the mush and issue @shutdown
 
@@ -72,8 +72,8 @@ Rhostmush has many ways to shut down the game cleanly
    clean shutdown.
 
 
-WARNING: Never kill -9 Rhost
-----------------------------
+9.2.2. WARNING: Never kill -9 Rhost
+-----------------------------------
 
 Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t
 care for the database.  The reason is if the mush happens to be
@@ -87,8 +87,8 @@ while up, but if it bombs in the middle of a write, all bets are off.
 :)
 
 
-Autoshutdown script
-===================
+9.3. Autoshutdown script
+========================
 
 The makefile will ‘make’ the program that will STOP the mush. Please
 tweek ‘autolog.h’ with the proper parameters.
@@ -100,8 +100,8 @@ processes) like your rc.local file and/or startup scripts when you
 bring your server up.
 
 
-Network Port redirector
-=======================
+9.4. Network Port redirector
+============================
 
 This is a port redirector incase you decide to move your mush to a new
 site/port.  To use, first, compile the code.  To do this you would
@@ -124,12 +124,12 @@ To launch the application, you would then type:
 Where <port> is the port where the mush used to run at.
 
 
-Using the built-in cron system for periodically running commands
-================================================================
+9.5. Using the built-in cron system for periodically running commands
+=====================================================================
 
 
-Syntax for rhost.cron
----------------------
+9.5.1. Syntax for rhost.cron
+----------------------------
 
 The rhost.cron file will be in the syntax as follows:
 
@@ -148,8 +148,8 @@ Here is a working example of the code cron file. This example will
 perform dumps of the mush.
 
 
-Example syntaxt for rhost.cron
-------------------------------
+9.5.2. Example syntaxt for rhost.cron
+-------------------------------------
 
 #1 @dump/flat; @@ dump the main game database to flatfile
 wmail/unload; @@ dump the mail database to flatfile @areg/unload; @@
@@ -157,8 +157,8 @@ dump the registration database to flatfile newsdb/unload; @@ dump the
 news bbs database to flatfile
 
 
-The following scripts are used in the game directory
-====================================================
+9.6. The following scripts are used in the game directory
+=========================================================
 
 Startmush               – used to Start up the mush backup_flat.sh
 – Used to run backups with @dump/flat within the game (Started with
@@ -175,8 +175,8 @@ flatfile tor_pull.sh             – Create a blacklist.txt file that
 can be loaded via the internal @blacklist command for proxy handling
 
 
-Textfiles for RhostMUSH
-=======================
+9.7. Textfiles for RhostMUSH
+============================
 
 areghost.txt           - file player gets when autoregistration on
 registered host. autoreg.txt            - file player gets when
@@ -235,8 +235,8 @@ Note:
 wizmotd.txt            - your wiz motd file
 
 
-Textfile Frequently Asked Questions
------------------------------------
+9.7.1. Textfile Frequently Asked Questions
+------------------------------------------
 
 Q:  How do I put color in these files? A1: Look at ansi.h and you need
 to put the literal ASCII codes.  They will look like: ^[[0m (for

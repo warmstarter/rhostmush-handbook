@@ -1,6 +1,6 @@
 .\" Man page generated from reStructuredText.
 .
-.TH "RHOSTMUSHHANDBOOK" "1" "Mar 13, 2021" "" "RhostMUSH Handbook"
+.TH "RHOSTMUSHHANDBOOK" "1" "Mar 13, 2021" "0.01a" "RhostMUSH Handbook"
 .SH NAME
 rhostmushhandbook \- RhostMUSH Handbook 
 .
@@ -60,6 +60,167 @@ Many new functions and commands not seen anywhere else.
 .IP \(bu 2
 A lot more that could drag this document out for pages.
 .UNINDENT
+.SS Installing RhostMUSH
+.SS Table of Contents
+.INDENT 0.0
+.IP \(bu 2
+\fI\%RhostMUSH Requirements\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%System Requirements\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%Supported Platforms\fP
+.IP \(bu 2
+\fI\%Unsupported Platforms\fP
+.IP \(bu 2
+\fI\%Untested Platforms\fP
+.IP \(bu 2
+\fI\%Known Platform Issues\fP
+.UNINDENT
+.IP \(bu 2
+\fI\%Software Requirements\fP
+.INDENT 2.0
+.IP \(bu 2
+\fI\%Optional Packages\fP
+.UNINDENT
+.IP \(bu 2
+\fI\%Hosting Requirements\fP
+.UNINDENT
+.IP \(bu 2
+\fI\%Obtaining RhostMUSH\fP
+.UNINDENT
+.SS RhostMUSH Requirements
+.SS System Requirements
+.INDENT 0.0
+.IP \(bu 2
+Minimum 1 GB (memory and swap combined) to compile (functions.c is huge)
+.IP \(bu 2
+Any Unix flavor should be fine.  Linux, BSD, Mac OSX, Solaris, Tru64, AIX, etc.
+.IP \(bu 2
+(BETA ONLY) cygwin under Windows.  It requires the entire base development set and Requirements below.
+.IP \(bu 2
+Disk:  100 MB or more (depending on size of db and how many backups you wish to maintain)
+.IP \(bu 2
+Memory: 12\-100 MB (depending on size of mush and what size buffers you select and packages you include)
+.UNINDENT
+.SS Supported Platforms
+.INDENT 0.0
+.IP \(bu 2
+SunOS (all platforms)
+.IP \(bu 2
+Solaris (all platforms)
+.IP \(bu 2
+Linux (all platforms except redhat 5.x mentioned below)
+.IP \(bu 2
+AIX (all platforms)
+.IP \(bu 2
+Ultrix (all platforms)
+.IP \(bu 2
+iBSD (all platforms)
+.IP \(bu 2
+FreeBSD (all platforms)
+.IP \(bu 2
+OpenBSD (all platforms)
+.IP \(bu 2
+NetBSD (all platforms)
+.IP \(bu 2
+IRIX (all platforms)
+.IP \(bu 2
+HPUX (32 bit systems only)
+.UNINDENT
+.sp
+If it’s not listed here, it probably still will compile clean.
+.SS Unsupported Platforms
+.INDENT 0.0
+.IP \(bu 2
+Win32/Win16
+.IP \(bu 2
+Alpha systems.
+.UNINDENT
+.SS Untested Platforms
+.INDENT 0.0
+.IP \(bu 2
+HP\-UX (64 bit systems)
+.IP \(bu 2
+VMS (all platforms)
+.UNINDENT
+.SS Known Platform Issues
+.sp
+On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with
+the built\-in gcc package (up to and including 2.8.x).  Because of this some
+config options may not work fully or cause the server to crash.  This is only
+a known issue with config options and only on this platform.
+.SS Software Requirements
+.sp
+RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.
+In order to build this software, you will need the bare minimum of the ability to run ‘make’ commands.
+.sp
+Package requirements are as follows:
+.INDENT 0.0
+.IP \(bu 2
+glibc and gcc/clang (compiling the code)
+.IP \(bu 2
+git (to clone the source and maintain patches)
+.IP \(bu 2
+bash/ksh/dash (or compatible shell \- for use with build menu)
+.IP \(bu 2
+libcrypt (for password encryption \- this is usually standard on unix based systems)
+.UNINDENT
+.SS Optional Packages
+.sp
+RhostMUSH also offers optional linking and library attachments.
+For some of these libraries it will attempt to do auto\-detection,
+but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.
+.sp
+Optional packages are as follows:
+.INDENT 0.0
+.IP \(bu 2
+openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
+.IP \(bu 2
+mysql client & mysql_config (required for mysql capabilities)
+.IP \(bu 2
+sqlite3 libraries (required for sqlite capabilities)
+.IP \(bu 2
+ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
+.IP \(bu 2
+libpcre (if you wish to use system pcre libraries instead of the built\-in ones)
+.UNINDENT
+.SS Hosting Requirements
+.sp
+You will need a stable host and access to open a single port number of your choice on the firewall.
+Most games choose a number between 1025 and 9999, by convention.
+Please make sure your debug_id matches the port number + 5.
+So if your port is 1234, your debug_id will be 12345.
+The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
+.SS Obtaining RhostMUSH
+.sp
+It is assumed that you have gotten to this point with the following command:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+git clone https://github.com/RhostMUSH/trunk Rhost
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+If you did NOT get it this way, your file permissions may not be properly set up.  Please type:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+This makes sure all the build scripts are properly made executable.
+This will result in ‘permission denied’ or similar results when running a script.
 .SS What RhostMUSH is about and what’s so great about RhostMUSH
 .sp
 RhostMUSH was founded in 1989, originally by Natasha Davis (Nyctasia) and as
@@ -2806,98 +2967,6 @@ Pueblo is not supported.
 .IP \(bu 2
 This uses @restart, Rhost uses @reboot
 .UNINDENT
-.SS Requirements
-.SS System Requirements
-.INDENT 0.0
-.IP \(bu 2
-Minimum 1 GB (memory and swap combined) to compile (functions.c is huge)
-.IP \(bu 2
-Any Unix flavor should be fine.  Linux, BSD, Mac OSX, Solaris, Tru64, AIX, etc.
-.IP \(bu 2
-(BETA ONLY) cygwin under Windows.  It requires the entire base development set and Requirements below.
-.IP \(bu 2
-Disk:  100 MB or more (depending on size of db and how many backups you wish to maintain)
-.IP \(bu 2
-Memory: 12\-100 MB (depending on size of mush and what size buffers you select and packages you include)
-.UNINDENT
-.SS Supported Platforms
-.INDENT 0.0
-.IP \(bu 2
-SunOS (all platforms)
-.IP \(bu 2
-Solaris (all platforms)
-.IP \(bu 2
-Linux (all platforms except redhat 5.x mentioned below)
-.IP \(bu 2
-AIX (all platforms)
-.IP \(bu 2
-Ultrix (all platforms)
-.IP \(bu 2
-iBSD (all platforms)
-.IP \(bu 2
-FreeBSD (all platforms)
-.IP \(bu 2
-OpenBSD (all platforms)
-.IP \(bu 2
-NetBSD (all platforms)
-.IP \(bu 2
-IRIX (all platforms)
-.IP \(bu 2
-HPUX (32 bit systems only)
-.UNINDENT
-.sp
-If it’s not listed here, it probably still will compile clean.
-.SS Unsupported Platforms
-.INDENT 0.0
-.IP \(bu 2
-Win32/Win16
-.IP \(bu 2
-Alpha systems.
-.UNINDENT
-.SS Untested Platforms
-.INDENT 0.0
-.IP \(bu 2
-HP\-UX (64 bit systems)
-.IP \(bu 2
-VMS (all platforms)
-.UNINDENT
-.SS Known Platform Issues
-.sp
-On Alpha boxes running Redhat 5.0, structure pointers are slaughtered with
-the built\-in gcc package (up to and including 2.8.x).  Because of this some
-config options may not work fully or cause the server to crash.  This is only
-a known issue with config options and only on this platform.
-.SS Requirements
-.sp
-RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.  In order to build this software, you will need the bare minimum of the ability to run ‘make’ commands.  Package requirements are as follows:
-.INDENT 0.0
-.IP \(bu 2
-glibc and gcc/clang (compiling the code)
-.IP \(bu 2
-git (to clone the source and maintain patches)
-.IP \(bu 2
-bash/ksh/dash (or compatible shell \- for use with build menu)
-.IP \(bu 2
-libcrypt (for password encryption \- this is usually standard on unix based systems)
-.UNINDENT
-.SS Optional Packages
-.sp
-RhostMUSH also offers optional linking and library attachments.  For some of these libraries it will attempt to do auto\-detection, but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.  Optional packages are as follows:
-.INDENT 0.0
-.IP \(bu 2
-openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
-.IP \(bu 2
-mysql client & mysql_config (required for mysql capabilities)
-.IP \(bu 2
-sqlite3 libraries (required for sqlite capabilities)
-.IP \(bu 2
-ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
-.IP \(bu 2
-libpcre (if you wish to use system pcre libraries instead of the built\-in ones)
-.UNINDENT
-.SS Hosting Requirements
-.sp
-You will need a stable host and access to open a single port number of your choice on the firewall.  Most games choose a number between 1025 and 9999, by convention.  Please make sure your debug_id matches the port number + 5.  So if your port is 1234, your debug_id will be 12345.  The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
 .SS Installation
 .SS Compiling the code
 .sp
@@ -3053,34 +3122,7 @@ ansible\-playbook rhostinstall.yml
 .sp
 This downloads the latest stable version of the code, bringing with it all patches and scripts, documentation and support tools that you will need.
 .SS Quickinstall guide to RhostMUSH
-.SS Obtaining RhostMUSH
-.sp
-It is assumed that you have gotten to this point with the following command:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-git clone https://github.com/RhostMUSH/trunk Rhost
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-If you did NOT get it this way, your file permissions may not be properly set up.  Please type:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-This makes sure all the build scripts are properly made executable.
-This will result in ‘permission denied’ or similar results when running a script.
+.SS Compiling RhostMUSH
 .sp
 Once ready to compile type:
 .INDENT 0.0
@@ -6267,12 +6309,28 @@ This means that if your code is depending on @startups, you need to put a delay 
 so that your local code can be loaded in as modules prior to the @startup execution.
 .sp
 Something that will not work:
+.INDENT 0.0
+.INDENT 3.5
 .sp
-@startup \fI\%me=@superhappyfuncommand\fP loadmeup=now
+.nf
+.ft C
+@startup me=@superhappyfuncommand loadmeup=now
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
-A small alteration that will likely make this work fine.
+A small alteration that will likely make this work fine:
+.INDENT 0.0
+.INDENT 3.5
 .sp
-@startup \fI\%me=@wait\fP \fI\%1=@superhappyfuncommand\fP loadmeup=now
+.nf
+.ft C
+@startup me=@wait 1=@superhappyfuncommand loadmeup=now
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 That 1 second delay for the queue will give the game engine time to load in your module code.
 .SS Contributing your module back to Rhost
@@ -6318,6 +6376,7 @@ where it can be seen. Those are bitfields. In order for X to see Y a bitwise
 exist. This affects contents lists, exit lists, look, say, pose, @emit,
 @verb, connect/disconnect, has arrived/has left messages, exit and object
 matching. ‘here’ and ‘me’ match always.
+.sp
 It doesn’t affect @remit, @pemit, page, WHO or channels.
 By default, all new objects are created with an RxLevel of 1 and TxLevel of
 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of
@@ -6332,16 +6391,20 @@ description. If you look at something and match more than one of its
 TxLevels, you’ll see all the corresponding descriptions on the target
 object. If the object doesn’t have any descriptions for the matching levels,
 you’ll see the regular @desc.
+.sp
 The @adesc attribute on the target is only triggered if the target can see
 the looker in turn. It’s only triggered once, no matter how many descs the
 looker sees. The @odesc is shown only to those people that see /both/ the
 looker and the target.
+.sp
 Through extension, @afail/@ofail and similar pairs (@adrop/@odrop,
 @asucc/@osucc etc) work in the same way. @verb commands are similary
 affected.
+.sp
 Softcoded commands are only matched on the objects that can see the player.
 The player doesn’t have to see the object. This includes commands in the
 Master Room.
+.sp
 Exits are treated specially. In order to be able to use an exit name (or to
 use the ‘move <exit>’ command) the exit must be visible to the enactor. In
 order to pass through the exit, the exit must see the enactor in turn. There
@@ -6349,10 +6412,15 @@ are reasons for this, which will become evident in the examples below.
 .SS Configuration parameters
 .sp
 A few configuration parameters have been introduced to deal with the reality
-levels.
+levels:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 reality_level <name> <value> [<desc attribute name>]
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -6361,9 +6429,12 @@ command) and should be repeated for each reality level you want to define.
 It defines a new level named <name> with a bitvalue of <value> and an
 optional desc attribute. There is a limit of 8 characters on <name>, a
 32\-bit value on <value> (basically an unsigned long) and 32 characters on
-the attribute name. A maximum of 32 reality levels can be defined.
+the attribute name. A maximum of 32 reality levels can be defined:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 def_exit_tx <value>
 def_exit_rx <value>
 def_room_tx <value>
@@ -6372,15 +6443,22 @@ def_player_rx <value>
 def_player_tx <value>
 def_thing_rx <value>
 def_thing_tx <value>
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
 These 8 directives define the default reality levels of newly created
 objects. They can be set in the config file or with the @admin command.
-Like above, <value> must be a decimal number.
+Like above, <value> must be a decimal number:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 wiz_always_real <0|1>
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -6390,8 +6468,17 @@ will always be 0xFFFFFFFF. Also settable in the config file and with the
 @admin command.
 .sp
 Compile with \-DREALITY_LEVELS compile time option to enable ‘Real’ needs to be ‘1’
-This is an example file only to be added to the mush.conf file
-Format: reality_level <8 char name> <hex\-byte\-mask> <optional\-desc: DESC default>
+This is an example file only to be added to the mush.conf file Format:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+reality_level <8 char name> <hex\-byte\-mask> <optional\-desc: DESC default>
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Example mush.conf
 .sp
 reality_level Real 1
@@ -6413,49 +6500,71 @@ reality_level Death 32768 DEATHDESC
 reality_level All 4294967295
 .SS Commands
 .sp
-Two wiz\-only commands are used to set the reality levels of an object.
+Two wiz\-only commands are used to set the reality levels of an object:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 @rxlevel <object>=<list>
 @txlevel <object>=<list>
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
 <list> is a space\-separated list of level names that have to be set on the
 object. If a level name is prefixed with an exclamation mark (!) that level
 will be cleared from the object.
-WARNING: Changing the Tx levels of an object might make it invisible to you.
-In this case, you can still manipulate it by using his #dbref (or 
-.nf
-*
-.fi
-player
-for players).
-.SS Functions
 .sp
-There are five functions that deal with reality levels.
+\fBWARNING:\fP
 .INDENT 0.0
 .INDENT 3.5
+Changing the Tx levels of an object might make it invisible to you.
+In this case, you can still manipulate it by using his #dbref (or *player
+for players).
+.UNINDENT
+.UNINDENT
+.SS Functions
+.sp
+There are five functions that deal with reality levels:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 hasrxlevel(<object>,<level>)
 hastxlevel(<object>,<level>)
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
 These two functions check if an object has the specified Rx or Tx level.
 You must control <object>. They return 0 or 1 and #\-1 in case the object
-does not exist or you don’t have permissions.
+does not exist or you don’t have permissions:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 rxlevel(<object>)
 txlevel(<object>)
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
 These two functions return a space\-separated list of the object’s Rx or Tx
-levels. Again, you must control the object.
+levels. Again, you must control the object:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 cansee(<obj1>,<obj2>)
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -6463,9 +6572,15 @@ A wiz\-only function, returns 1 of <obj1> can see <obj2> from a reality
 levels point of view. It doesn’t check if the objects are in the same
 location, the DARK/CLOAKED flags and so on. Just <obj1>’s Rx level against
 <obj2>’s Tx level.
-WARNING: If you are using it on MUX2.0 with /both/ reality levels and Wod
+.sp
+\fBWARNING:\fP
+.INDENT 0.0
+.INDENT 3.5
+If you are using it on MUX2.0 with /both/ reality levels and Wod
 Realms enabled, the function will perform both checks and the Wod Realms
 version checks against the DARK flag.
+.UNINDENT
+.UNINDENT
 .SS Example 1: A simplified Witchcraft setup
 .sp
 In Witchcraft, besides the various Gifted classes, characters can be spirits
@@ -6476,8 +6591,13 @@ the Ghost level, called GHOSTDESC. Therefore in the config file we will
 have:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 reality_level Real 1
 reality_level Ghost 2 GHOSTDESC
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -6485,7 +6605,12 @@ Ghosts can pass through most mundane locks, so the exists should allows the
 ghosts to pass:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 def_exit_rx 3
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -6493,8 +6618,13 @@ Note that def_exit_tx isn’t set. Why? Because ghosts see the mundane world
 anyway, so a spirit character will have:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 @txlevel <player>=!Real Ghost
 @rxlevel <player>=Real Ghost
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -6760,21 +6890,30 @@ reality_level           All 511
 replacement for all levels, useful for wizards and wizobjects that should
 be visible on all levels. Also useful when you want to set an object’s
 levels to something without knowing what he had before.
+.sp
 @rxlevel #276=!All Real
+.sp
 !All will clear all levels, then the object will gain the Real level.
 There is more than one Obfuscation level because of the relation between
 Auspex and Obfuscation.
+.sp
 A vampire with Obfuscate 2, should not be visible by one with Auspex 1.
 However one with Auspex 3 should see another vampire with Obfuscate 1, 2
 /or/ 3.
+.sp
 Obfuscated players can move if they have Obf > 1. Umbral and Shadow players
 should also be able to see most of the exits. So the exits at creation
 should have default levels of Real + Obf2 + Obf3 + Obf4 + Obf5 + Umbra +
-Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381
+Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 def_exit_rx 381
 def_exit_tx 381
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -6784,8 +6923,13 @@ to be able to see the exits, but not to use them, change the default Tx of
 the exits:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 def_exit_rx 381
 def_exit_tx 383
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -6797,6 +6941,7 @@ try to make himself invisible will have an RxLevel: Real (as Jack)
 and a TxLevel: Real Obf4. He will also set his @desc to what the mortals see and
 &OBFDESC to his real slimy desc. Simply put, he will be visible to mortals,
 but not with his real desc.
+.sp
 Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel
 will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So
 he can see Joe, Jack and Jimmy’s both descs.
@@ -6810,13 +6955,16 @@ No &FAEDESC on her, although she’ll be able to see it the one on Frida.
 Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra
 and TxLevel: Umbra. &UMBRADESC is his friend. He won’t see mortals or other
 characters who are not in the Umbra.
+.sp
 Barbie the Bastet, who’s only peeking in the Umbra, without going there,
 will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she
 can’t see the things that see her.
+.sp
 Deanna the Drake, who activates her spirit vision, will have
 RxLevel: Real Umbra and TxLevel: Real. She will see characters in Umbra and
 real world at the same time and perceive the desc appropiate to the realm
 the ohter character is in.
+.sp
 Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her @desc
 would be empty, but the &SHADOWDESC should be set.
 Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real
@@ -6888,11 +7036,7 @@ MUSHQN_<arg>               labels that are assigned the setq vars
 MUSHN_<arg>                The labels that were defined by any register
 .INDENT 0.0
 .INDENT 3.5
-.INDENT 0.0
-.TP
-.B Note: they must be ASCII\-7 clean and contain no
-white spaces
-.UNINDENT
+Note: they must be ASCII\-7 clean and contain no white spaces
 .UNINDENT
 .UNINDENT
 .SS set object
@@ -6996,107 +7140,53 @@ web.sh                         – Script for querying an arbitary website
 The function printf() in Rhost can be used to greatly reduce coding in efforts for outputs,
 screens and data display.  It can automatically center, justify and wrap the text parameters given to it.
 .SS Example one
-.sp
-> @emit printf(
-.nf
-|$\-12s|$12s|$^12s$&14s$_12s|
-.fi
-,a b c, d e f, g h i, wrap(lnum(20),12, l, 
-.nf
-|
-.fi
-, 
-.nf
-|
-.fi
-), j k l)
 .INDENT 0.0
 .INDENT 3.5
-.INDENT 0.0
-.TP
-.B 
+.sp
 .nf
-|a b c       |       d e f|
-.fi
-   g h i    
-.nf
-|0 1 2 3 4 5 |j     k    l|
-.fi
+.ft C
+@emit printf(|$\-12s|$12s|$^12s$&14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
 
-
-.nf
-|
+|a b c       |       d e f|   g h i    |0 1 2 3 4 5 |j     k    l|
+                                       |6 7 8 9 10  |
+                                       |11 12 13 14 |
+                                       |15 16 17 18 |
+                                       |19          |
+.ft P
 .fi
-6 7 8 9 10  |
-
-.nf
-|
-.fi
-11 12 13 14 |
-
-.nf
-|
-.fi
-15 16 17 18 |
-
-.nf
-|
-.fi
-19          |
-.UNINDENT
 .UNINDENT
 .UNINDENT
 .SS Example two
 .INDENT 0.0
-.TP
-.B > @emit printf($14&s $^4&s $\-3&s $15&s,
-.INDENT 7.0
 .INDENT 3.5
-iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
-iter(
+.sp
 .nf
-|\-1|
-.fi
-\-1|\-2|\-2|\-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
-* Aggravated%RX Lethal%R/ Bashing)
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.TP
-.B Bruised      [ ]    * Aggravated
-Hurt  \-1  [ ]        X Lethal
-.UNINDENT
-.sp
-Injured  \-1  [ ]       / Bashing
-Wounded  \-2  [ ]
-.INDENT 0.0
-.INDENT 3.5
-Mauled  \-2  [ ]
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-Crippled  \-5  [ ]
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
+.ft C
+  @emit printf($14&s $^4&s $\-3&s $15&s,
+  iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
+  iter(|\-1|\-1|\-2|\-2|\-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
+  * Aggravated%RX Lethal%R/ Bashing)
+
+      Bruised      [ ]    * Aggravated
+         Hurt  \-1  [ ]        X Lethal
+      Injured  \-1  [ ]       / Bashing
+      Wounded  \-2  [ ]
+       Mauled  \-2  [ ]
+     Crippled  \-5  [ ]
 Incapacitated      [ ]
+.ft P
+.fi
+.UNINDENT
 .UNINDENT
 .SS Example three
 .INDENT 0.0
-.TP
-.B > @emit [printf($\-10|“‘s$\-60|”s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
-.INDENT 7.0
 .INDENT 3.5
-this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!
-.UNINDENT
-.UNINDENT
 .sp
+.nf
+.ft C
+@emit [printf($\-10|"\(aqs$\-60|"s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
+this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!
+
 a b c d e this is a test a groovy test blah blah blah blah blah blah
 f g h i j blah blah blah blah blah blah blah blah blah blah blah blah
 k l m n o blah blah blah blah blah blah blah blah blah blah blah blah
@@ -7106,6 +7196,9 @@ z         blah blah blah blah blah blah blah blah blah blah blah blah
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah
 blah blah blah blah blah blah blah                                    END!
+.ft P
+.fi
+.UNINDENT
 .UNINDENT
 .SS Format for image files
 .sp
@@ -7181,7 +7274,12 @@ Password’
 STRING     $6$xy$xy PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
 <          <        This is the marker to specify the end of the attribute contents.  This is always the last line
 .sp
-NOTE:  Any Data type starting with ‘*’ is ignored when @snapshot/loading.
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Any Data type starting with ‘*’ is ignored when @snapshot/loading.
+.UNINDENT
+.UNINDENT
 .sp
 The structure above with the examples would look like this in the file:
 .sp
@@ -7216,6 +7314,7 @@ Ugly
 >*Password
 $6$xy$xy
 <
+.SS HELP key indexes for the values:
 .INDENT 0.0
 .TP
 .B FLAGS: The following flags are to be used.  They are BITWISE masks that you
@@ -7370,6 +7469,18 @@ need to add together for the values tghat you apply
 *
 .fi
 /
+
+.sp
+.ce
+----
+
+.ce 0
+.sp
+.INDENT 0.0
+.TP
+.B TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like
+the flags above.  They are added together for each word type
+.UNINDENT
 .sp
 /* First word of toggles \- Thorin 3/95 \fI/
 #define TOG_MONITOR             0x00000001      /\fP Active monitor on player \fI/
@@ -7448,12 +7559,18 @@ need to add together for the values tghat you apply
 *
 .fi
 /
+
+.sp
+.ce
+----
+
+.ce 0
+.sp
 .INDENT 0.0
-.INDENT 3.5
+.TP
+.B POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift
+markers that you would have to compute the shift then add it after
 the fact.
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
 .TP
 .B /* First word of power positions.  Each position is 2 bits so the
 number here is how far over to shift the 2 bit pattern         
@@ -7522,6 +7639,18 @@ number here is how far over to shift the 2 bit pattern
 *
 .fi
 /
+
+.sp
+.ce
+----
+
+.ce 0
+.sp
+.INDENT 0.0
+.TP
+.B DEPOWERS:  like @powers they are handled with a BITWISE offshift that you
+will have to calculate then add
+.UNINDENT
 .sp
 /* First word 
 .nf
@@ -7583,6 +7712,20 @@ number here is how far over to shift the 2 bit pattern
 *
 .fi
 /
+
+.sp
+.ce
+----
+
+.ce 0
+.sp
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+ZONES:  Zones are special.  If there are no zones, the value will be ‘\-1’.
+.UNINDENT
+.UNINDENT
 .sp
 So entering zones if there are no zones:
 \-1
@@ -7962,7 +8105,7 @@ Thanks jan6
 Thanks Alley
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.9.5 Update File
+.SS RhostMUSH 3.9.5 Update
 .INDENT 0.0
 .TP
 .B Softcode overrides for connect files
@@ -8265,7 +8408,7 @@ Thanks MuSoapBox (Auspice, Sparks, Seamus, faraday, Thenomain, and others)
 Thanks Ixokai
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.9.4 Update File
+.SS RhostMUSH 3.9.4 Update
 .INDENT 0.0
 .TP
 .B REALITY_LEVELS wouldn’t compile because of undeclared function.
@@ -8346,7 +8489,7 @@ Thanks Volund
 Thanks psc943
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.9.3 Update File
+.SS RhostMUSH 3.9.3 Update
 .INDENT 0.0
 .TP
 .B @include – Idea Copied from Penn
@@ -8361,7 +8504,7 @@ Thanks Jules (and PennMUSH)
 Thanks Chime/Loki (Haunted)
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.9.2 Update File
+.SS RhostMUSH 3.9.2 Update
 .INDENT 0.0
 .TP
 .B @assert/@break didn’t handle {} correctly.
@@ -9011,8 +9154,6 @@ idle \- a ‘nothing’ command that won’t effect idle time.  Wizzes can optio
 .SS Flags
 .sp
 NO_CODE  \- Controls usage of code\-commandss/functions.  Uses new second permission table.
-.SS Powers
-.SS De\-Powers
 .SS Toggles
 .sp
 HIDEIDLE \- Stops the ‘idle’ from being updated as well as command count.  Wiz+ only.
@@ -9542,21 +9683,37 @@ Thanks Mortalis @ Cajun
 .UNINDENT
 .sp
 mail/recall had off\-by\-one for month (introduced p18)
+.sp
 logf() conflicted with built\-in function in newest gcc compilers \- Fixed
+.sp
 type cast warning in random function \- Fixed
+.sp
 Unused variable cleanup in code. \- Fixed
+.sp
 format_name undocumented \- Fixed
+.sp
 IGSWITCH @hook didn’t work with new format of commands in some instances \- Fixed
+.sp
 Trace output issues with CPU protection \- Fixed
+.sp
 LBUF failed to be free on examining in rare cases. (introduced p18) \- Fixed
+.sp
 Cleanup of some initialization variables.  Not a problem.  Just a cleanup.
+.sp
 asksource broke on solaris systems. \- Fixed
+.sp
 Lots of cleanup for Solaris 2.8/2.9 builds.  Solaris didn’t declare right. \- Fixed
+.sp
 Security issue with descs clobbering setq regs \- Fixed (optional @admin param)
+.sp
 new backup_flat.sh script broke for remote archives \- Fixed
+.sp
 player cache had possible dereferenced pointer call \- Fixed
+.sp
 autoreg_include.txt didn’t check txt subdirectory. \- Fixed
+.sp
 reality locks overwrote match state data (introduced p18) \- Fixed
+.sp
 [18\-1] Fix for IGSWITCH @hook and multiple switches \- Fixed
 .INDENT 0.0
 .TP
@@ -9587,8 +9744,6 @@ Thanks Kevin
 .sp
 [18\-6] Fix LBUF free issue (introduced 18\-4)
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
 .TP
 .B Fix mail issue with marking and folders
 .INDENT 7.0
@@ -9598,8 +9753,6 @@ Thanks Kevin
 .UNINDENT
 .sp
 Enhanced @break to accept optional argument to ‘branch’
-.UNINDENT
-.UNINDENT
 .SS RhostMUSH 3.2.4 p17 Update
 .sp
 [ 06/04/2004]
@@ -9754,11 +9907,6 @@ Thanks \fI\%Sirona@Cajun\fP
 .sp
 aiindex() \- works like iindex() except will append to a null list.
 sortby() \- Added for MUX2 compatibility
-.SS Commands
-.SS Flags
-.SS Powers
-.SS De\-Powers
-.SS Toggles
 .SS Admin Params
 .sp
 wizmax_vattr_limit   \- Attribute limiter for wizards
@@ -10069,7 +10217,6 @@ Thanks Storm
 escapex() \- just like escape() but you can choose what chars to _not_ escape
 .sp
 securex() \- just like escapex() but for secure()’s counterpart
-.SS Commands
 .SS Flags
 .INDENT 0.0
 .TP
@@ -10083,8 +10230,6 @@ Idea from many people (and TM3)
 DEFAULT \- Attribute flag for handling default global attrib (TM3)
 SINGLETHREAD \- Attribute flag to handle single\-threading $commands
 ATRLOCK \- Attribute flag to handle global attribute locking
-.SS Powers
-.SS De\-Powers
 .SS Toggles
 .INDENT 0.0
 .TP
@@ -10293,7 +10438,7 @@ Matthew
 Thanks \fI\%Illithid@Ennersea\fP
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.2.4 p14 Update File
+.SS RhostMUSH 3.2.4 p14 Update
 .sp
 [07/10/2002]
 .SS Changes
@@ -10443,8 +10588,6 @@ visiblemux() \- works like mux’s visible()
 ATTRIBUTE FLAG: uselock \- when set on an attribute with a $command, will look for a matching ~<attribute> to eval the lock.  This does BOOLEAN evaluation.  1 pass, 0 fail.
 .sp
 SPAMMONITOR \- mark if player and/or target item check for spam (60 cmds/sec)
-.SS Powers
-.SS De\-Powers
 .SS Toggles
 .sp
 ZONEINHERIT \- Allows zonemasters to have attributes inherited to children.
@@ -10596,7 +10739,7 @@ Thanks Ronan
 Thanks \fI\%Sketch@M*U*S*H\fP & Javelin
 .UNINDENT
 .UNINDENT
-.SS RhostMUSH 3.2.4 p13 Update File
+.SS RhostMUSH 3.2.4 p13 Update
 .sp
 [02/01/2002]
 .SS Changes
@@ -10670,8 +10813,6 @@ config() \- if no argument, displays all parameters (you have access to), otherw
 .SS Commands
 .sp
 @eval \- force evaluation of functionality (TM3)
-.SS Flags
-.SS Powers
 .SS De\-Powers
 .INDENT 0.0
 .TP
@@ -10885,10 +11026,6 @@ mrpage (mrp) \- respond to the player list that you received in a page.  like rp
 .SS Flags
 .sp
 NONAME \- if set on a target, the name is not displayed.
-.SS Powers
-.sp
-De\-Powers
-.SS Toggles
 .SS Admin Params
 .sp
 reality_level     \- define new reality level(s).  32 max.
@@ -11005,9 +11142,6 @@ ilev() \- Returns nest level of an iter()
 .SS Commands
 .sp
 @limit [/vmod /dmod /list /reset] \- to limit max @destroy/vattr creation
-.SS Flags
-.SS Powers
-.SS De\-Powers
 .SS Toggles
 .sp
 IGNOREZONE \- toggles zone/location to enable zone/location command disable/ignore
@@ -11120,10 +11254,6 @@ improved CPU handler for DoS protection
 .SS Functions
 .sp
 strfunc(<function>,<string of args>[,<optional seperator for args>) \- for lists
-.SS Commands
-.SS Flags
-.SS Powers
-.SS De\-Powers
 .SS Admin Params
 .sp
 max_cpu_cycles admin param (default 3)
@@ -11173,13 +11303,11 @@ isword() \- returns ‘TRUE’ if entire string is all alpha (or has a hyphon)
 itext() \- returns nth arg (text ‘##’) of an iter() (from PENN)
 inum() \- returns nth arg (num ‘#@’) of an iter() (from PENN)
 modulo() \- returns the modulus of the numbers (from PENN)
-.SS Commands
 .SS Flags
 .sp
 NO_PARSE \- attribute flag that stops processing/evaluation of %0\-%9 in $commands.
 SAFE \- attribute flag that stops modification of attribute it’s set on (TM 3.0)
 SHOWFAILCMD \- when set on object any matching failed $cmd uses the @ufail suite.
-.SS Powers
 .SS Toggles
 .sp
 MAIL_STRIPRETURN \- when combining lines uses spaces instead of carrage returns
@@ -11278,7 +11406,6 @@ idea from TinyMUSH 3.0
 .UNINDENT
 .sp
 BOUNCE \- allows players to pass what they hear to their contents w/o effecting @ahear/@amhear/etc.
-.SS Powers
 .SS Toggles
 .sp
 MONITOR_BAD \- monitor failed connections/creations to non\-existant players
@@ -11286,7 +11413,9 @@ PROG_ON_CONNECT \- reverses the current global logic of program and connecting.
 .SS Admin Params
 .sp
 imm_nomod \- when enabled (default disabled) specifies that only immortal can set/unset the NOMODIFY flag and only immortals can modify things set NOMODIFY.  This will allow NOMODIFY to mimic CONSTANT ala TM 3.0
+.sp
 paranoid_exit_linking \- when enabled, you MUST control exit to link.  This includes UNLINKED exits.  Also, exits won’t be @chowned to you automatically. (Default disabled)
+.sp
 notonerr_return \- when DISABLED (default enabled) not() returns a ‘0’ for any function returning #\-1.
 .INDENT 0.0
 .TP
@@ -11328,12 +11457,6 @@ DARK
 .fi
 .UNINDENT
 .UNINDENT
-.SS Additions
-.SS Functions
-.SS Commands
-.SS Flags
-.SS Powers
-.SS Toggles
 .SS Admin Params
 .SS Bug Fixes
 .INDENT 0.0
@@ -11350,12 +11473,6 @@ Reported by \fI\%Mercutio@ShatteredCathedrals\fP
 .SS Changes
 .sp
 @list site_information now shows DNS blocking
-.SS Additions
-.SS Functions
-.SS Commands
-.SS Flags
-.SS Powers
-.SS Toggles
 .SS Admins Params
 .sp
 forbid_host \- allows DNS entry/modify for forbidding hosts
@@ -11392,12 +11509,6 @@ hastoggles(), haspowers(), and hasdepowers() didn’t work.  Fixed.
 New /noauth and /nodns switches to @site
 Better timeout conditions for AUTH lookups.
 @list site_information now shows additional information
-.SS Additions
-.SS Functions
-.SS Commands
-.SS Flags
-.SS Powers
-.SS Toggles
 .SS Admin Params
 .sp
 noauth_site – specifies site and mask that AUTH lookups are not to be performed
@@ -11485,19 +11596,15 @@ Suggested by \fI\%Trey@GameHendge\fP
 .sp
 @function/preserve (idea from MUX)
 +help (hardcode) (idea from MUX)
-.SS Flags
-.SS Powers
 .SS Toggles
 .sp
 PROG (idea from MUX)
 NOSHPROG
 IMMPROG
 .SS Alias Additions
-.SS Functions
 .SS Commands
 .sp
 @prog aliased to @program
-.SS Flags
 .SS Admin Params
 .sp
 login_to_prog
@@ -11571,7 +11678,7 @@ Reported by \fI\%Tyr@Forgotten\fP (Thanks for the patch)
 .UNINDENT
 .sp
 news/articlelife wouldn’t reset articlelife with ‘\-1’.  – fixed
-.SS RhostMUSH 3.2.4 p3 Update File
+.SS RhostMUSH 3.2.4 p3 Update
 .sp
 [11/15/1999]
 .SS Changes

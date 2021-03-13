@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Advanced Features</title>
+    <title>12. Advanced Features</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/nonav.css" type="text/css" /> 
   </head><body>
@@ -15,28 +15,32 @@
           <div class="body" role="main">
             
   <div class="section" id="advanced-features">
-<h1>Advanced Features</h1>
+<h1><span class="section-number">12. </span>Advanced Features</h1>
 <div class="section" id="adding-hardcoded-modules">
-<h2>Adding hardcoded modules</h2>
+<h2><span class="section-number">12.1. </span>Adding hardcoded modules</h2>
 <p>RhostMUSH does support module writing.</p>
 <div class="section" id="modifying-sourcode-to-add-a-module">
-<h3>Modifying sourcode to add a module</h3>
+<h3><span class="section-number">12.1.1. </span>Modifying sourcode to add a module</h3>
 <p>This requires hooking your changes into local.c, then modifying the Makefile (in the src directory)
 for any new source files that you wish to add.</p>
 <p>Something to be aware of is that all localized data is ran after the system cache subroutine.</p>
 </div>
 <div class="section" id="adding-an-startup-to-make-use-of-modules">
-<h3>Adding an &#64;startup to make use of modules</h3>
+<h3><span class="section-number">12.1.2. </span>Adding an &#64;startup to make use of modules</h3>
 <p>This means that if your code is depending on &#64;startups, you need to put a delay in the &#64;startup
 so that your local code can be loaded in as modules prior to the &#64;startup execution.</p>
 <p>Something that will not work:</p>
-<p>&#64;startup <a class="reference external" href="mailto:me=&#37;&#52;&#48;superhappyfuncommand">me=<span>&#64;</span>superhappyfuncommand</a> loadmeup=now</p>
-<p>A small alteration that will likely make this work fine.</p>
-<p>&#64;startup <a class="reference external" href="mailto:me=&#37;&#52;&#48;wait">me=<span>&#64;</span>wait</a> <a class="reference external" href="mailto:1=&#37;&#52;&#48;superhappyfuncommand">1=<span>&#64;</span>superhappyfuncommand</a> loadmeup=now</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@startup</span> <span class="n">me</span><span class="o">=</span><span class="nd">@superhappyfuncommand</span> <span class="n">loadmeup</span><span class="o">=</span><span class="n">now</span>
+</pre></div>
+</div>
+<p>A small alteration that will likely make this work fine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@startup</span> <span class="n">me</span><span class="o">=</span><span class="nd">@wait</span> <span class="mi">1</span><span class="o">=</span><span class="nd">@superhappyfuncommand</span> <span class="n">loadmeup</span><span class="o">=</span><span class="n">now</span>
+</pre></div>
+</div>
 <p>That 1 second delay for the queue will give the game engine time to load in your module code.</p>
 </div>
 <div class="section" id="contributing-your-module-back-to-rhost">
-<h3>Contributing your module back to Rhost</h3>
+<h3><span class="section-number">12.1.3. </span>Contributing your module back to Rhost</h3>
 <p>If you wish your modules to be part of the main Rhost distribution you have two options:</p>
 <ol class="arabic simple">
 <li><p>Attempt to hack the bin/asksource.sh and bin/asksource.blank files.</p></li>
@@ -45,9 +49,9 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 </div>
 </div>
 <div class="section" id="shutting-down-gracefully">
-<h2>Shutting down gracefully</h2>
+<h2><span class="section-number">12.2. </span>Shutting down gracefully</h2>
 <div class="section" id="rhostmush-has-many-ways-to-shut-down-the-game-cleanly">
-<h3>Rhostmush has many ways to shut down the game cleanly</h3>
+<h3><span class="section-number">12.2.1. </span>Rhostmush has many ways to shut down the game cleanly</h3>
 <ol class="arabic simple">
 <li><p>Log into the mush and issue &#64;shutdown</p></li>
 <li><p>Issue a kill -USR2 to the mush which issues an emergency &#64;shutdown</p></li>
@@ -55,7 +59,7 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 </ol>
 </div>
 <div class="section" id="warning-never-kill-9-rhost">
-<h3>WARNING: Never kill -9 Rhost</h3>
+<h3><span class="section-number">12.2.2. </span>WARNING: Never kill -9 Rhost</h3>
 <p>Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t care for the
 database.  The reason is if the mush happens to be saving, in any method, to the
 database, especially a QDBM database, you will likely have just corrupted your
@@ -66,11 +70,11 @@ in the middle of a write, all bets are off. :)</p>
 </div>
 </div>
 <div class="section" id="reality-levels">
-<h2>Reality levels</h2>
+<h2><span class="section-number">12.3. </span>Reality levels</h2>
 <p>Reality levels are a means to forbid (or allow) interaction between objects
 in the same location.</p>
 <div class="section" id="visibility">
-<h3>Visibility</h3>
+<h3><span class="section-number">12.3.1. </span>Visibility</h3>
 <p>Each object (player, room, exit, thing) has two lists of reality levels.
 An Rx list, which describe what it can see and a Tx list, which describe
 where it can be seen. Those are bitfields. In order for X to see Y a bitwise
@@ -78,8 +82,8 @@ where it can be seen. Those are bitfields. In order for X to see Y a bitwise
 0, then X sees Y. If the result is 0, as far as X is concerned, Y doesn’t
 exist. This affects contents lists, exit lists, look, say, pose, &#64;emit,
 &#64;verb, connect/disconnect, has arrived/has left messages, exit and object
-matching. ‘here’ and ‘me’ match always.
-It doesn’t affect &#64;remit, &#64;pemit, page, WHO or channels.
+matching. ‘here’ and ‘me’ match always.</p>
+<p>It doesn’t affect &#64;remit, &#64;pemit, page, WHO or channels.
 By default, all new objects are created with an RxLevel of 1 and TxLevel of
 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of
 0xFFFFFFFF. Those default levels can be changed with configuration
@@ -88,66 +92,68 @@ An object is always visible to itself, even if its Rx and Tx levels don’t
 match. (See examples below)</p>
 </div>
 <div class="section" id="descriptions">
-<h3>Descriptions</h3>
+<h3><span class="section-number">12.3.2. </span>Descriptions</h3>
 <p>For every reality level defined, you can define an attribute that serves as
 description. If you look at something and match more than one of its
 TxLevels, you’ll see all the corresponding descriptions on the target
 object. If the object doesn’t have any descriptions for the matching levels,
-you’ll see the regular &#64;desc.
-The &#64;adesc attribute on the target is only triggered if the target can see
+you’ll see the regular &#64;desc.</p>
+<p>The &#64;adesc attribute on the target is only triggered if the target can see
 the looker in turn. It’s only triggered once, no matter how many descs the
 looker sees. The &#64;odesc is shown only to those people that see /both/ the
-looker and the target.
-Through extension, &#64;afail/&#64;ofail and similar pairs (&#64;adrop/&#64;odrop,
+looker and the target.</p>
+<p>Through extension, &#64;afail/&#64;ofail and similar pairs (&#64;adrop/&#64;odrop,
 &#64;asucc/&#64;osucc etc) work in the same way. &#64;verb commands are similary
-affected.
-Softcoded commands are only matched on the objects that can see the player.
+affected.</p>
+<p>Softcoded commands are only matched on the objects that can see the player.
 The player doesn’t have to see the object. This includes commands in the
-Master Room.
-Exits are treated specially. In order to be able to use an exit name (or to
+Master Room.</p>
+<p>Exits are treated specially. In order to be able to use an exit name (or to
 use the ‘move &lt;exit&gt;’ command) the exit must be visible to the enactor. In
 order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.</p>
 </div>
 <div class="section" id="configuration-parameters">
-<h3>Configuration parameters</h3>
+<h3><span class="section-number">12.3.3. </span>Configuration parameters</h3>
 <p>A few configuration parameters have been introduced to deal with the reality
-levels.</p>
-<blockquote>
-<div><p>reality_level &lt;name&gt; &lt;value&gt; [&lt;desc attribute name&gt;]</p>
-</div></blockquote>
+levels:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">desc</span> <span class="n">attribute</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
 <p>This directive can only be used in the config file (not with the &#64;admin
 command) and should be repeated for each reality level you want to define.
 It defines a new level named &lt;name&gt; with a bitvalue of &lt;value&gt; and an
 optional desc attribute. There is a limit of 8 characters on &lt;name&gt;, a
 32-bit value on &lt;value&gt; (basically an unsigned long) and 32 characters on
-the attribute name. A maximum of 32 reality levels can be defined.</p>
-<blockquote>
-<div><p>def_exit_tx &lt;value&gt;
-def_exit_rx &lt;value&gt;
-def_room_tx &lt;value&gt;
-def_room_rx &lt;value&gt;
-def_player_rx &lt;value&gt;
-def_player_tx &lt;value&gt;
-def_thing_rx &lt;value&gt;
-def_thing_tx &lt;value&gt;</p>
-</div></blockquote>
+the attribute name. A maximum of 32 reality levels can be defined:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">def_exit_tx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_exit_rx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_room_tx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_room_rx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_player_rx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_player_tx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_thing_rx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_thing_tx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 <p>These 8 directives define the default reality levels of newly created
 objects. They can be set in the config file or with the &#64;admin command.
-Like above, &lt;value&gt; must be a decimal number.</p>
-<blockquote>
-<div><p>wiz_always_real &lt;0|1&gt;</p>
-</div></blockquote>
+Like above, &lt;value&gt; must be a decimal number:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wiz_always_real</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 <p>If this parameter is set to 1 then wizards (and immortals on Rhost) will see
 everything and will be visible to everyone. Their effective Rx and Tx levels
 will always be 0xFFFFFFFF. Also settable in the config file and with the
 &#64;admin command.</p>
 <p>Compile with -DREALITY_LEVELS compile time option to enable ‘Real’ needs to be ‘1’
-This is an example file only to be added to the mush.conf file
-Format: reality_level &lt;8 char name&gt; &lt;hex-byte-mask&gt; &lt;optional-desc: DESC default&gt;</p>
+This is an example file only to be added to the mush.conf file Format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="o">&lt;</span><span class="mi">8</span> <span class="n">char</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">hex</span><span class="o">-</span><span class="n">byte</span><span class="o">-</span><span class="n">mask</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">optional</span><span class="o">-</span><span class="n">desc</span><span class="p">:</span> <span class="n">DESC</span> <span class="n">default</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="example-mush-conf">
-<h3>Example mush.conf</h3>
+<h3><span class="section-number">12.3.4. </span>Example mush.conf</h3>
 <p>reality_level Real 1
 reality_level Obf1 2
 reality_level Obf2 4
@@ -167,69 +173,75 @@ reality_level Death 32768 DEATHDESC
 reality_level All 4294967295</p>
 </div>
 <div class="section" id="commands">
-<h3>Commands</h3>
-<p>Two wiz-only commands are used to set the reality levels of an object.</p>
-<blockquote>
-<div><p>&#64;rxlevel &lt;object&gt;=&lt;list&gt;
-&#64;txlevel &lt;object&gt;=&lt;list&gt;</p>
-</div></blockquote>
+<h3><span class="section-number">12.3.5. </span>Commands</h3>
+<p>Two wiz-only commands are used to set the reality levels of an object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@rxlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
+<span class="nd">@txlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
+</pre></div>
+</div>
 <p>&lt;list&gt; is a space-separated list of level names that have to be set on the
 object. If a level name is prefixed with an exclamation mark (!) that level
-will be cleared from the object.
-WARNING: Changing the Tx levels of an object might make it invisible to you.
-In this case, you can still manipulate it by using his #dbref (or <a href="#id1"><span class="problematic" id="id2">*</span></a>player
+will be cleared from the object.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Changing the Tx levels of an object might make it invisible to you.
+In this case, you can still manipulate it by using his #dbref (or *player
 for players).</p>
 </div>
+</div>
 <div class="section" id="functions">
-<h3>Functions</h3>
-<p>There are five functions that deal with reality levels.</p>
-<blockquote>
-<div><p>hasrxlevel(&lt;object&gt;,&lt;level&gt;)
-hastxlevel(&lt;object&gt;,&lt;level&gt;)</p>
-</div></blockquote>
+<h3><span class="section-number">12.3.6. </span>Functions</h3>
+<p>There are five functions that deal with reality levels:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hasrxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">hastxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>These two functions check if an object has the specified Rx or Tx level.
 You must control &lt;object&gt;. They return 0 or 1 and #-1 in case the object
-does not exist or you don’t have permissions.</p>
-<blockquote>
-<div><p>rxlevel(&lt;object&gt;)
-txlevel(&lt;object&gt;)</p>
-</div></blockquote>
+does not exist or you don’t have permissions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">txlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>These two functions return a space-separated list of the object’s Rx or Tx
-levels. Again, you must control the object.</p>
-<blockquote>
-<div><p>cansee(&lt;obj1&gt;,&lt;obj2&gt;)</p>
-</div></blockquote>
+levels. Again, you must control the object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cansee</span><span class="p">(</span><span class="o">&lt;</span><span class="n">obj1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">obj2</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>A wiz-only function, returns 1 of &lt;obj1&gt; can see &lt;obj2&gt; from a reality
 levels point of view. It doesn’t check if the objects are in the same
 location, the DARK/CLOAKED flags and so on. Just &lt;obj1&gt;’s Rx level against
-&lt;obj2&gt;’s Tx level.
-WARNING: If you are using it on MUX2.0 with /both/ reality levels and Wod
+&lt;obj2&gt;’s Tx level.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are using it on MUX2.0 with /both/ reality levels and Wod
 Realms enabled, the function will perform both checks and the Wod Realms
 version checks against the DARK flag.</p>
 </div>
+</div>
 <div class="section" id="example-1-a-simplified-witchcraft-setup">
-<h3>Example 1: A simplified Witchcraft setup</h3>
+<h3><span class="section-number">12.3.7. </span>Example 1: A simplified Witchcraft setup</h3>
 <p>In Witchcraft, besides the various Gifted classes, characters can be spirits
 There are spirit realms to which the mundane can not travel. Therefore we
 will use 2 reality levels: Real and Ghost. Since some spirits can become
 solid for a limited period of time, we will also use an additional desc for
 the Ghost level, called GHOSTDESC. Therefore in the config file we will
 have:</p>
-<blockquote>
-<div><p>reality_level Real 1
-reality_level Ghost 2 GHOSTDESC</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="n">Real</span> <span class="mi">1</span>
+<span class="n">reality_level</span> <span class="n">Ghost</span> <span class="mi">2</span> <span class="n">GHOSTDESC</span>
+</pre></div>
+</div>
 <p>Ghosts can pass through most mundane locks, so the exists should allows the
 ghosts to pass:</p>
-<blockquote>
-<div><p>def_exit_rx 3</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">def_exit_rx</span> <span class="mi">3</span>
+</pre></div>
+</div>
 <p>Note that def_exit_tx isn’t set. Why? Because ghosts see the mundane world
 anyway, so a spirit character will have:</p>
-<blockquote>
-<div><p>&#64;txlevel &lt;player&gt;=!Real Ghost
-&#64;rxlevel &lt;player&gt;=Real Ghost</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@txlevel &lt;player&gt;=!Real Ghost
+@rxlevel &lt;player&gt;=Real Ghost
+</pre></div>
+</div>
 <p>Let’s assume 3 players:
 John is a Mundane. He won’t see spirits.
 John’s Rx: Real
@@ -261,7 +273,7 @@ are now material.</p>
 <blockquote>
 <div><dl>
 <dt>John            |         Jack          |         Frank</dt><dd><div class="line-block">
-<div class="line"><a href="#id3"><span class="problematic" id="id4">|</span></a></div>
+<div class="line"><a href="#id1"><span class="problematic" id="id2">|</span></a></div>
 </div>
 </dd>
 </dl>
@@ -274,54 +286,54 @@ Jack                    |                       |
 Obvious exits:          |                       |
 Out &lt;O&gt;                 |                       |</p>
 <blockquote>
-<div><p><a href="#id5"><span class="problematic" id="id6">|</span></a>&gt; l                    |
-<a href="#id7"><span class="problematic" id="id8">|</span></a>A room                 |
-<a href="#id9"><span class="problematic" id="id10">|</span></a>This is a bare room.   |
-<a href="#id11"><span class="problematic" id="id12">|</span></a>Contents:              |
-<a href="#id13"><span class="problematic" id="id14">|</span></a>John Frank             |
-<a href="#id15"><span class="problematic" id="id16">|</span></a>Obvious exits:         |
-<a href="#id17"><span class="problematic" id="id18">|</span></a>Out &lt;O&gt;                |
-|                       <a href="#id19"><span class="problematic" id="id20">|</span></a>&gt; l
-|                       <a href="#id21"><span class="problematic" id="id22">|</span></a>A room
-|                       <a href="#id23"><span class="problematic" id="id24">|</span></a>This is a bare room.
-|                       <a href="#id25"><span class="problematic" id="id26">|</span></a>Contents:
-|                       <a href="#id27"><span class="problematic" id="id28">|</span></a>John Jack
-|                       <a href="#id29"><span class="problematic" id="id30">|</span></a>Obvious exits:
-|                       <a href="#id31"><span class="problematic" id="id32">|</span></a>Out &lt;O&gt;</p>
+<div><p><a href="#id3"><span class="problematic" id="id4">|</span></a>&gt; l                    |
+<a href="#id5"><span class="problematic" id="id6">|</span></a>A room                 |
+<a href="#id7"><span class="problematic" id="id8">|</span></a>This is a bare room.   |
+<a href="#id9"><span class="problematic" id="id10">|</span></a>Contents:              |
+<a href="#id11"><span class="problematic" id="id12">|</span></a>John Frank             |
+<a href="#id13"><span class="problematic" id="id14">|</span></a>Obvious exits:         |
+<a href="#id15"><span class="problematic" id="id16">|</span></a>Out &lt;O&gt;                |
+|                       <a href="#id17"><span class="problematic" id="id18">|</span></a>&gt; l
+|                       <a href="#id19"><span class="problematic" id="id20">|</span></a>A room
+|                       <a href="#id21"><span class="problematic" id="id22">|</span></a>This is a bare room.
+|                       <a href="#id23"><span class="problematic" id="id24">|</span></a>Contents:
+|                       <a href="#id25"><span class="problematic" id="id26">|</span></a>John Jack
+|                       <a href="#id27"><span class="problematic" id="id28">|</span></a>Obvious exits:
+|                       <a href="#id29"><span class="problematic" id="id30">|</span></a>Out &lt;O&gt;</p>
 </div></blockquote>
 <p>&gt;l Jack                 |                       |
-Jack                    <a href="#id33"><span class="problematic" id="id34">|</span></a>John has looked at you.|John has looked at Jack.
+Jack                    <a href="#id31"><span class="problematic" id="id32">|</span></a>John has looked at you.|John has looked at Jack.
 This is Jack.           |                       |
 &gt;l Frank                |                       |
 I don’t see that here.  |                       |</p>
 <blockquote>
-<div><p><a href="#id121"><span class="problematic" id="id122">|&gt;l Frank               |
+<div><p><a href="#id107"><span class="problematic" id="id108">|&gt;l Frank               |
 |Frank                  |Jack has looked at you.
 |This is Frank's ghostly|</span></a>
-<a href="#id35"><span class="problematic" id="id36">|</span></a>shape.                 |
-|                       <a href="#id37"><span class="problematic" id="id38">|</span></a>&gt;l John
-<a href="#id39"><span class="problematic" id="id40">|</span></a>Frank has looked at    <a href="#id41"><span class="problematic" id="id42">|</span></a>John
-<a href="#id43"><span class="problematic" id="id44">|</span></a>John.                  <a href="#id45"><span class="problematic" id="id46">|</span></a>This is John.
-|                       <a href="#id47"><span class="problematic" id="id48">|</span></a>&gt;+materialize
-|                       <a href="#id49"><span class="problematic" id="id50">|</span></a>You are now material.</p>
+<a href="#id33"><span class="problematic" id="id34">|</span></a>shape.                 |
+|                       <a href="#id35"><span class="problematic" id="id36">|</span></a>&gt;l John
+<a href="#id37"><span class="problematic" id="id38">|</span></a>Frank has looked at    <a href="#id39"><span class="problematic" id="id40">|</span></a>John
+<a href="#id41"><span class="problematic" id="id42">|</span></a>John.                  <a href="#id43"><span class="problematic" id="id44">|</span></a>This is John.
+|                       <a href="#id45"><span class="problematic" id="id46">|</span></a>&gt;+materialize
+|                       <a href="#id47"><span class="problematic" id="id48">|</span></a>You are now material.</p>
 </div></blockquote>
 <p>&gt;l Frank                |                       |
-Frank                   <a href="#id51"><span class="problematic" id="id52">|</span></a>John has looked at     <a href="#id53"><span class="problematic" id="id54">|</span></a>Frank has looked at you.
-This is Frank, looking  <a href="#id55"><span class="problematic" id="id56">|</span></a>Frank.                 |
+Frank                   <a href="#id49"><span class="problematic" id="id50">|</span></a>John has looked at     <a href="#id51"><span class="problematic" id="id52">|</span></a>Frank has looked at you.
+This is Frank, looking  <a href="#id53"><span class="problematic" id="id54">|</span></a>Frank.                 |
 human.                  |                       |</p>
 <blockquote>
-<div><p><a href="#id57"><span class="problematic" id="id58">|</span></a>&gt;l Frank               |</p>
+<div><p><a href="#id55"><span class="problematic" id="id56">|</span></a>&gt;l Frank               |</p>
 </div></blockquote>
-<p>Jack has looked at      <a href="#id59"><span class="problematic" id="id60">|</span></a>Frank                  <a href="#id61"><span class="problematic" id="id62">|</span></a>John has looked at you.
-Frank.                  <a href="#id63"><span class="problematic" id="id64">|</span></a>This is Frank, looking |</p>
+<p>Jack has looked at      <a href="#id57"><span class="problematic" id="id58">|</span></a>Frank                  <a href="#id59"><span class="problematic" id="id60">|</span></a>John has looked at you.
+Frank.                  <a href="#id61"><span class="problematic" id="id62">|</span></a>This is Frank, looking |</p>
 <blockquote>
-<div><p><a href="#id123"><span class="problematic" id="id124">|human.                 |
+<div><p><a href="#id109"><span class="problematic" id="id110">|human.                 |
 |This is Frank's ghostly|</span></a>
-<a href="#id65"><span class="problematic" id="id66">|</span></a>shape.                 |</p>
+<a href="#id63"><span class="problematic" id="id64">|</span></a>shape.                 |</p>
 </div></blockquote>
 </div>
 <div class="section" id="example-2-a-wod-setup">
-<h3>Example 2: A WoD setup</h3>
+<h3><span class="section-number">12.3.8. </span>Example 2: A WoD setup</h3>
 <p>The reality levels will be defined like this:
 reality_level           Real 1
 reality_level           Obf1 2
@@ -336,30 +348,30 @@ reality_level           All 511</p>
 <p>5 levels of Obfuscation, Umbra, Dreaming, Wraiths. ‘All’ is a handy
 replacement for all levels, useful for wizards and wizobjects that should
 be visible on all levels. Also useful when you want to set an object’s
-levels to something without knowing what he had before.
-&#64;rxlevel #276=!All Real
-!All will clear all levels, then the object will gain the Real level.
+levels to something without knowing what he had before.</p>
+<p>&#64;rxlevel #276=!All Real</p>
+<p>!All will clear all levels, then the object will gain the Real level.
 There is more than one Obfuscation level because of the relation between
-Auspex and Obfuscation.
-A vampire with Obfuscate 2, should not be visible by one with Auspex 1.
+Auspex and Obfuscation.</p>
+<p>A vampire with Obfuscate 2, should not be visible by one with Auspex 1.
 However one with Auspex 3 should see another vampire with Obfuscate 1, 2
-/or/ 3.
-Obfuscated players can move if they have Obf &gt; 1. Umbral and Shadow players
+/or/ 3.</p>
+<p>Obfuscated players can move if they have Obf &gt; 1. Umbral and Shadow players
 should also be able to see most of the exits. So the exits at creation
 should have default levels of Real + Obf2 + Obf3 + Obf4 + Obf5 + Umbra +
-Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381</p>
-<blockquote>
-<div><p>def_exit_rx 381
-def_exit_tx 381</p>
-</div></blockquote>
+Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">def_exit_rx</span> <span class="mi">381</span>
+<span class="n">def_exit_tx</span> <span class="mi">381</span>
+</pre></div>
+</div>
 <p>Obf1 is not included since an Obfuscated vampire should not be able to move
 if it only has Obf1. Therefore they won’t see the exits. If you want them
 to be able to see the exits, but not to use them, change the default Tx of
 the exits:</p>
-<blockquote>
-<div><p>def_exit_rx 381
-def_exit_tx 383</p>
-</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">def_exit_rx</span> <span class="mi">381</span>
+<span class="n">def_exit_tx</span> <span class="mi">383</span>
+</pre></div>
+</div>
 <p>Joe the Mortal will have an RxLevel: Real and a TxLevel: Real
 Jack the Malk, who likes to walk around Obfuscated and has Obfuscate 2 will
 have an RxLevel: Real (he sees what the mortals see) but a TxLevel: Obf2
@@ -367,8 +379,8 @@ Jimmy the Nossie, who is using the Mask and has Obfuscate 4, but doesn’t
 try to make himself invisible will have an RxLevel: Real (as Jack)
 and a TxLevel: Real Obf4. He will also set his &#64;desc to what the mortals see and
 &amp;OBFDESC to his real slimy desc. Simply put, he will be visible to mortals,
-but not with his real desc.
-Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel
+but not with his real desc.</p>
+<p>Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel
 will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So
 he can see Joe, Jack and Jimmy’s both descs.
 Joe, on the other hand, won’t see Jack at all. He will still see Jimmy, but
@@ -379,22 +391,22 @@ Emily the Enchanted will have an RxLevel: Real Fae, but the TxLevel: Real.
 No &amp;FAEDESC on her, although she’ll be able to see it the one on Frida.
 Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra
 and TxLevel: Umbra. &amp;UMBRADESC is his friend. He won’t see mortals or other
-characters who are not in the Umbra.
-Barbie the Bastet, who’s only peeking in the Umbra, without going there,
+characters who are not in the Umbra.</p>
+<p>Barbie the Bastet, who’s only peeking in the Umbra, without going there,
 will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she
-can’t see the things that see her.
-Deanna the Drake, who activates her spirit vision, will have
+can’t see the things that see her.</p>
+<p>Deanna the Drake, who activates her spirit vision, will have
 RxLevel: Real Umbra and TxLevel: Real. She will see characters in Umbra and
 real world at the same time and perceive the desc appropiate to the realm
-the ohter character is in.
-Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her &#64;desc
+the ohter character is in.</p>
+<p>Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her &#64;desc
 would be empty, but the &amp;SHADOWDESC should be set.
 Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</p>
 <p>Global code objects that all characters should be able to use:
 RxLevel: All, TxLevel: All</p>
 </div>
 <div class="section" id="example-3-softcode">
-<h3>Example 3: Softcode</h3>
+<h3><span class="section-number">12.3.9. </span>Example 3: Softcode</h3>
 <p>Considering the config directives from example 2 and assuming a function
 getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player’s stat from
 the sheet here are softcode examples that implement some of the WoD powers.
@@ -428,11 +440,11 @@ txlevel(%#))]; &#64;pemit %#=You are no longer peeking.</p>
 </div>
 </div>
 <div class="section" id="execscript-and-external-programs-and-scripts">
-<h2>Execscript and external programs and scripts</h2>
+<h2><span class="section-number">12.4. </span>Execscript and external programs and scripts</h2>
 <div class="section" id="mush-variables">
-<h3>Mush variables</h3>
+<h3><span class="section-number">12.4.1. </span>Mush variables</h3>
 <div class="section" id="built-in-variables">
-<h4>Built in variables</h4>
+<h4><span class="section-number">12.4.1.1. </span>Built in variables</h4>
 <p>Variable                   Description
 MUSH_PLAYER                player dbref#
 MUSH_CAUSE                 cause dbref#
@@ -448,38 +460,35 @@ MUSHL_VARS                 space delimited list of MUSH attributes from player</
 </div></blockquote>
 </div>
 <div class="section" id="dynamic-variables">
-<h4>Dynamic variables</h4>
+<h4><span class="section-number">12.4.1.2. </span>Dynamic variables</h4>
 <dl class="simple">
 <dt>MUSHV_&lt;arg&gt;                &lt;arg&gt; variable passed from MUSHL_VARS</dt><dd><p>These are the attributes from EXECSCRIPT_VARS</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="register-variables">
-<h4>Register variables</h4>
+<h4><span class="section-number">12.4.1.3. </span>Register variables</h4>
 <p>MUSHQ_&lt;arg&gt;                setq registers 0-9 and a-z
 MUSHQN_&lt;arg&gt;               labels that are assigned the setq vars
 MUSHN_&lt;arg&gt;                The labels that were defined by any register</p>
 <blockquote>
-<div><dl class="simple">
-<dt>Note: they must be ASCII-7 clean and contain no</dt><dd><p>white spaces</p>
-</dd>
-</dl>
+<div><p>Note: they must be ASCII-7 clean and contain no white spaces</p>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="set-object">
-<h3>set object</h3>
+<h3><span class="section-number">12.4.2. </span>set object</h3>
 <p>The script executed with execscript() will read in a file with the same name
 as the script ending in ‘.set’.  This is a loader object that will set attributes
 and registers back into the mush that you wish to pass from the script. The
 fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 <div class="section" id="the-format-of-the-fields-are">
-<h4>The format of the fields are</h4>
-<div class="section" id="id67">
-<h5>Dynamic variables</h5>
+<h4><span class="section-number">12.4.2.1. </span>The format of the fields are</h4>
+<div class="section" id="id65">
+<h5><span class="section-number">12.4.2.1.1. </span>Dynamic variables</h5>
 <p>VARNAME        OWNER        CONTENTS (or leave null to clear)</p>
 <div class="section" id="examples">
-<h6>Examples</h6>
+<h6><span class="section-number">12.4.2.1.1.1. </span>Examples</h6>
 <p>SEX #123 Male
 DESC #123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.
 RED #123 This is the color %ch%crred%cn.
@@ -490,11 +499,11 @@ because of the line feed (a control-M) on each line
 on the lines above</p>
 </div>
 </div>
-<div class="section" id="id68">
-<h5>Register variables</h5>
+<div class="section" id="id66">
+<h5><span class="section-number">12.4.2.1.2. </span>Register variables</h5>
 <p>REGISTER       Q            CONTENTS (or leave null to clear)</p>
 <div class="section" id="examples-the-last-example-clears-register-0">
-<h6>Examples (The last example clears register 0)</h6>
+<h6><span class="section-number">12.4.2.1.2.1. </span>Examples (The last example clears register 0)</h6>
 <p>W Q This is stored in register W
 1 Q This is stored in register 1
 0 Q
@@ -504,7 +513,7 @@ foo QN this sets register with label ‘foo’</p>
 </div>
 </div>
 <div class="section" id="example-bash-script">
-<h3>Example bash script</h3>
+<h3><span class="section-number">12.4.3. </span>Example bash script</h3>
 <p>#!/bin/bash
 echo “This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}”
 echo “Displaying Registers:”
@@ -524,7 +533,7 @@ do</p>
 <p>done</p>
 </div>
 <div class="section" id="notes-and-warnings">
-<h3>Notes and warnings</h3>
+<h3><span class="section-number">12.4.4. </span>Notes and warnings</h3>
 <p>While MUSHL_VARS are sanitized on what is allowable as a mush variable, this
 is not necessarilly sanitized on what the calling script can fetch as a valid
 variable.  Of note, you can not set environment variables that contain an
@@ -534,7 +543,7 @@ This is EXECSCRIPT_VARS on the mush itself, that is the attribute set
 on the target that contains the execscript() that is being executed.</p>
 </div>
 <div class="section" id="scripts-to-be-used-with-execscript">
-<h3>Scripts to be used with execscript</h3>
+<h3><span class="section-number">12.4.5. </span>Scripts to be used with execscript</h3>
 <p>account/                       – Directory for execscripts relating to account creation
 compile39.sh                   – Script for patching and compiling RhostMUSH 3.9
 compile.sh                     – Script for patching and compiling RhostMUSH
@@ -568,55 +577,44 @@ web.sh                         – Script for querying an arbitary website</p>
 </div>
 </div>
 <div class="section" id="using-printf-for-advanced-text-output">
-<h2>Using printf() for advanced text output</h2>
+<h2><span class="section-number">12.5. </span>Using printf() for advanced text output</h2>
 <p>The function printf() in Rhost can be used to greatly reduce coding in efforts for outputs,
 screens and data display.  It can automatically center, justify and wrap the text parameters given to it.</p>
 <div class="section" id="example-one">
-<h3>Example one</h3>
-<p>&gt; &#64;emit printf(<a href="#id125"><span class="problematic" id="id126">|$-12s|$12s|$^12s$&amp;14s$_12s|</span></a>,a b c, d e f, g h i, wrap(lnum(20),12, l, <a href="#id69"><span class="problematic" id="id70">|</span></a>, <a href="#id71"><span class="problematic" id="id72">|</span></a>), j k l)</p>
-<blockquote>
-<div><dl class="simple">
-<dt><a href="#id127"><span class="problematic" id="id128">|a b c       |       d e f|</span></a>   g h i    <a href="#id129"><span class="problematic" id="id130">|0 1 2 3 4 5 |j     k    l|</span></a></dt><dd><p><a href="#id73"><span class="problematic" id="id74">|</span></a>6 7 8 9 10  |
-<a href="#id75"><span class="problematic" id="id76">|</span></a>11 12 13 14 |
-<a href="#id77"><span class="problematic" id="id78">|</span></a>15 16 17 18 |
-<a href="#id79"><span class="problematic" id="id80">|</span></a>19          |</p>
-</dd>
-</dl>
-</div></blockquote>
+<h3><span class="section-number">12.5.1. </span>Example one</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf(|$-12s|$12s|$^12s$&amp;14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
+
+|a b c       |       d e f|   g h i    |0 1 2 3 4 5 |j     k    l|
+                                       |6 7 8 9 10  |
+                                       |11 12 13 14 |
+                                       |15 16 17 18 |
+                                       |19          |
+</pre></div>
+</div>
 </div>
 <div class="section" id="example-two">
-<h3>Example two</h3>
-<dl>
-<dt>&gt; &#64;emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,</dt><dd><blockquote>
-<div><p>iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
-iter(<a href="#id131"><span class="problematic" id="id132">|-1|</span></a>-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
-* Aggravated%RX Lethal%R/ Bashing)</p>
-<blockquote>
-<div><blockquote>
-<div><dl class="simple">
-<dt>Bruised      [ ]    * Aggravated</dt><dd><p>Hurt  -1  [ ]        X Lethal</p>
-</dd>
-</dl>
-<p>Injured  -1  [ ]       / Bashing
-Wounded  -2  [ ]</p>
-<blockquote>
-<div><p>Mauled  -2  [ ]</p>
-</div></blockquote>
-</div></blockquote>
-<p>Crippled  -5  [ ]</p>
-</div></blockquote>
-</div></blockquote>
-<p>Incapacitated      [ ]</p>
-</dd>
-</dl>
+<h3><span class="section-number">12.5.2. </span>Example two</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  @emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
+  iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
+  iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
+  * Aggravated%RX Lethal%R/ Bashing)
+
+      Bruised      [ ]    * Aggravated
+         Hurt  -1  [ ]        X Lethal
+      Injured  -1  [ ]       / Bashing
+      Wounded  -2  [ ]
+       Mauled  -2  [ ]
+     Crippled  -5  [ ]
+Incapacitated      [ ]
+</pre></div>
+</div>
 </div>
 <div class="section" id="example-three">
-<h3>Example three</h3>
-<dl>
-<dt>&gt; &#64;emit [printf($-10|“‘s$-60|”s,a b c d e f g h i j k l m n o p q r s t u v w x y z,</dt><dd><blockquote>
-<div><p>this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!</p>
-</div></blockquote>
-<p>a b c d e this is a test a groovy test blah blah blah blah blah blah
+<h3><span class="section-number">12.5.3. </span>Example three</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit [printf($-10|&quot;&#39;s$-60|&quot;s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
+this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!
+
+a b c d e this is a test a groovy test blah blah blah blah blah blah
 f g h i j blah blah blah blah blah blah blah blah blah blah blah blah
 k l m n o blah blah blah blah blah blah blah blah blah blah blah blah
 p q r s t blah blah blah blah blah blah blah blah blah blah blah blah
@@ -624,28 +622,28 @@ u v w x y blah blah blah blah blah blah blah blah blah blah blah blah
 z         blah blah blah blah blah blah blah blah blah blah blah blah
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah
-blah blah blah blah blah blah blah                                    END!</p>
-</dd>
-</dl>
+blah blah blah blah blah blah blah                                    END!
+</pre></div>
+</div>
 </div>
 </div>
 </div>
 <div class="section" id="format-for-image-files">
-<h1>Format for image files</h1>
+<h1><span class="section-number">13. </span>Format for image files</h1>
 <p>The image format goes like this:</p>
 <p>Data Type  Example  Description
 ———  ——-  ———————————————————-
 INT        3        TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5
 STRING     Wizard   NAME: of the target.  Verbatum, no quotes surround it
-<a href="#id81"><span class="problematic" id="id82">*</span></a>INT       123      LOCATION: dbref# of the target.  No prepending ‘#’ used.
-<a href="#id83"><span class="problematic" id="id84">*</span></a>INT       234      CONTENTS: The first content in a linked list content table (-1 if none)
-<a href="#id85"><span class="problematic" id="id86">*</span></a>INT       345      EXITS: The first exit in a linked list exit table (-1 if none)
-<a href="#id87"><span class="problematic" id="id88">*</span></a>INT       0        LINK: This is the ‘home’ of the object or what it’s linked to (-1 for none)
-<a href="#id89"><span class="problematic" id="id90">*</span></a>INT       123      NEXT: The next thing after this item for a content holder
+<a href="#id67"><span class="problematic" id="id68">*</span></a>INT       123      LOCATION: dbref# of the target.  No prepending ‘#’ used.
+<a href="#id69"><span class="problematic" id="id70">*</span></a>INT       234      CONTENTS: The first content in a linked list content table (-1 if none)
+<a href="#id71"><span class="problematic" id="id72">*</span></a>INT       345      EXITS: The first exit in a linked list exit table (-1 if none)
+<a href="#id73"><span class="problematic" id="id74">*</span></a>INT       0        LINK: This is the ‘home’ of the object or what it’s linked to (-1 for none)
+<a href="#id75"><span class="problematic" id="id76">*</span></a>INT       123      NEXT: The next thing after this item for a content holder
 STRING     #123     LOCK: The boolean string lock if it exists.  (empty if no lock)
-<a href="#id91"><span class="problematic" id="id92">*</span></a>INT       1        OWNER: The dbref# owner of the target.  For players same dbref as player.
+<a href="#id77"><span class="problematic" id="id78">*</span></a>INT       1        OWNER: The dbref# owner of the target.  For players same dbref as player.
 INT        789      PARENT: The parent of the target.  (-1 if none)
-<a href="#id93"><span class="problematic" id="id94">*</span></a>INT       99999    MONEY: The int value of the money the players has.
+<a href="#id79"><span class="problematic" id="id80">*</span></a>INT       99999    MONEY: The int value of the money the players has.
 INT        194592   FLAGS1: The first word of flags (&#64;set flags) on a player      (see FLAGS)
 INT        194222   FLAGS2: The second word of flags (&#64;set flags) on a player     (see FLAGS)
 INT        199999   FLAGS3: The third word of flags (&#64;set flags []) on a player   (see FLAGS)
@@ -663,10 +661,13 @@ INT        -1       ZONE(S): The list of zones starting here and ending with ‘
 STRING     Wheee    ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)
 &gt;STRING    &gt;Desc    ATTRIBUTENAME: Another attribute to chain in
 STRING     Ugly     ATTRIBUTECONTENTS: Contents of the next attribute
-&gt;STRING    <a href="#id95"><span class="problematic" id="id96">*</span></a>Password PASSWORDATTRIB: Special password attribute.  Attribute name is ‘<a href="#id97"><span class="problematic" id="id98">*</span></a>Password’
+&gt;STRING    <a href="#id81"><span class="problematic" id="id82">*</span></a>Password PASSWORDATTRIB: Special password attribute.  Attribute name is ‘<a href="#id83"><span class="problematic" id="id84">*</span></a>Password’
 STRING     $6$xy$xy PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
 &lt;          &lt;        This is the marker to specify the end of the attribute contents.  This is always the last line</p>
-<p>NOTE:  Any Data type starting with ‘*’ is ignored when &#64;snapshot/loading.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any Data type starting with ‘*’ is ignored when &#64;snapshot/loading.</p>
+</div>
 <p>The structure above with the examples would look like this in the file:</p>
 <p>3
 Wizard
@@ -699,6 +700,8 @@ Ugly
 &gt;*Password
 $6$xy$xy
 &lt;</p>
+<div class="section" id="help-key-indexes-for-the-values">
+<h2><span class="section-number">13.1. </span>HELP key indexes for the values:</h2>
 <dl class="simple">
 <dt>FLAGS: The following flags are to be used.  They are BITWISE masks that you</dt><dd><p>need to add together for the values tghat you apply</p>
 </dd>
@@ -732,7 +735,7 @@ $6$xy$xy
 #define SAFE            0x10000000      /</em> Need /override to &#64;destroy <em>/
 #define CONTROL_OK      0x20000000      /</em> ControlLk specifies who ctrls me <em>/
 #define HEARTHRU        0x40000000      /</em> Can hear out of this obj or exit <em>/
-#define TERSE           0x80000000      /</em> Only show room name on look <a href="#id99"><span class="problematic" id="id100">*</span></a>/</p>
+#define TERSE           0x80000000      /</em> Only show room name on look <a href="#id85"><span class="problematic" id="id86">*</span></a>/</p>
 <p>/* Second word of flags <em>/
 #define KEY             0x00000001      /</em> No puppets <em>/
 #define ABODE           0x00000002      /</em> May &#64;set home here <em>/
@@ -765,7 +768,7 @@ $6$xy$xy
 #define SUSPECT         0x10000000      /</em> Report some activities to wizards <em>/
 #define BUILDER         0x20000000      /</em> Player has architect privs <em>/
 #define CONNECTED       0x40000000      /</em> Player is connected <em>/
-#define SLAVE           0x80000000      /</em> Disallow most commands <a href="#id101"><span class="problematic" id="id102">*</span></a>/</p>
+#define SLAVE           0x80000000      /</em> Disallow most commands <a href="#id87"><span class="problematic" id="id88">*</span></a>/</p>
 <p>/* Third word of flags - Thorin 3/95 <em>/
 #define NOCONNECT       0x00000001
 #define DPSHIFT         0x00000002
@@ -798,7 +801,7 @@ $6$xy$xy
 #define ZONECONTENTS    0x10000000      /</em> Search contents of zonemaster for $commands <em>/
 #define NOWHO           0x20000000      /</em> Player in WHO doesn’t show up - use with &#64;hide <em>/
 #define ANONYMOUS       0x40000000      /</em> Player set shows up as ‘Someone’ when talking <em>/
-#define BACKSTAGE       0x80000000      /</em> Immortal toggle for items on control <a href="#id103"><span class="problematic" id="id104">*</span></a>/</p>
+#define BACKSTAGE       0x80000000      /</em> Immortal toggle for items on control <a href="#id89"><span class="problematic" id="id90">*</span></a>/</p>
 <p>/* Forth word of flags - Thorin 3/95 <em>/
 #define NOBACKSTAGE     0x00000001      /</em> Immortal toggle to control no-backstage <em>/
 #define LOGIN           0x00000002      /</em> Enable player to login past &#64;disable logins <em>/
@@ -831,7 +834,12 @@ $6$xy$xy
 /</em> 0x10000000 free <em>/
 /</em> 0x20000000 free <em>/
 /</em> 0x40000000 free <em>/
-/</em> 0x80000000 free <a href="#id105"><span class="problematic" id="id106">*</span></a>/</p>
+/</em> 0x80000000 free <a href="#id91"><span class="problematic" id="id92">*</span></a>/</p>
+<hr class="docutils" />
+<dl class="simple">
+<dt>TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like</dt><dd><p>the flags above.  They are added together for each word type</p>
+</dd>
+</dl>
 <p>/* First word of toggles - Thorin 3/95 <em>/
 #define TOG_MONITOR             0x00000001      /</em> Active monitor on player <em>/
 #define TOG_MONITOR_USERID      0x00000002      /</em> show userid <em>/
@@ -864,7 +872,7 @@ $6$xy$xy
 #define TOG_BRANDY_MAIL         0x10000000      /</em> Define brandy like mail interface <em>/
 #define TOG_FORCEHALTED         0x20000000      /</em> The item toggled can &#64;force halted things <em>/
 #define TOG_PROG                0x40000000      /</em> Can use &#64;program on other people/things <em>/
-#define TOG_NOSHELLPROG         0x80000000      /</em> Target can not issue commands inside a prog <a href="#id107"><span class="problematic" id="id108">*</span></a>/</p>
+#define TOG_NOSHELLPROG         0x80000000      /</em> Target can not issue commands inside a prog <a href="#id93"><span class="problematic" id="id94">*</span></a>/</p>
 <p>/* Second word of toggles – Ash <em>/
 #define TOG_EXTANSI             0x00000001      /</em> Specify if target can used extended ansi naming <em>/
 #define TOG_IMMPROG             0x00000002      /</em> Only an immortal can &#64;quitprogram them <em>/
@@ -899,12 +907,13 @@ $6$xy$xy
 #define TOG_LOGROOMENH          0x20000000      /</em> Enhanced Room Logging <em>/
 #endif
 #define TOG_LOGROOM             0x40000000      /</em> Log Room’s location/contents <em>/
-#define TOG_NOGLOBPARENT        0x80000000      /</em> Target does not inherit global attributes <a href="#id109"><span class="problematic" id="id110">*</span></a>/</p>
-<blockquote>
-<div><p>the fact.</p>
-</div></blockquote>
+#define TOG_NOGLOBPARENT        0x80000000      /</em> Target does not inherit global attributes <a href="#id95"><span class="problematic" id="id96">*</span></a>/</p>
+<hr class="docutils" />
 <dl class="simple">
-<dt>/* First word of power positions.  Each position is 2 bits so the</dt><dd><p>number here is how far over to shift the 2 bit pattern         <a href="#id111"><span class="problematic" id="id112">*</span></a>/</p>
+<dt>POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift</dt><dd><p>markers that you would have to compute the shift then add it after
+the fact.</p>
+</dd>
+<dt>/* First word of power positions.  Each position is 2 bits so the</dt><dd><p>number here is how far over to shift the 2 bit pattern         <a href="#id97"><span class="problematic" id="id98">*</span></a>/</p>
 </dd>
 </dl>
 <p>#define POWER_CHANGE_QUOTAS     0
@@ -923,7 +932,7 @@ $6$xy$xy
 #define POWER_BOOT              26
 #define POWER_STEAL             28
 #define POWER_SEE_QUEUE         30</p>
-<p>/* Second word of power positions. <a href="#id113"><span class="problematic" id="id114">*</span></a>/
+<p>/* Second word of power positions. <a href="#id99"><span class="problematic" id="id100">*</span></a>/
 #define POWER_SHUTDOWN          0
 #define POWER_TEL_ANYWHERE      2
 #define POWER_TEL_ANYTHING      4
@@ -955,8 +964,13 @@ $6$xy$xy
 /</em> 24 free <em>/
 /</em> 26 free <em>/
 /</em> 28 free <em>/
-/</em> 30 free <a href="#id115"><span class="problematic" id="id116">*</span></a>/</p>
-<p>/* First word <a href="#id117"><span class="problematic" id="id118">*</span></a>/
+/</em> 30 free <a href="#id101"><span class="problematic" id="id102">*</span></a>/</p>
+<hr class="docutils" />
+<dl class="simple">
+<dt>DEPOWERS:  like &#64;powers they are handled with a BITWISE offshift that you</dt><dd><p>will have to calculate then add</p>
+</dd>
+</dl>
+<p>/* First word <a href="#id103"><span class="problematic" id="id104">*</span></a>/
 #define DP_WALL                 0
 #define DP_LONG_FINGERS         2
 #define DP_STEAL                4
@@ -1006,7 +1020,12 @@ $6$xy$xy
 /</em> 24 free <em>/
 /</em> 26 free <em>/
 /</em> 28 free <em>/
-/</em> 30 free <a href="#id119"><span class="problematic" id="id120">*</span></a>/</p>
+/</em> 30 free <a href="#id105"><span class="problematic" id="id106">*</span></a>/</p>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ZONES:  Zones are special.  If there are no zones, the value will be ‘-1’.</p>
+</div>
 <p>So entering zones if there are no zones:
 -1</p>
 <p>Entering zones if it has three zones (#123, #456, and #789)
@@ -1016,6 +1035,7 @@ $6$xy$xy
 -1</p>
 <p>As you see, the last value of the zone <em>MUST</em> be -1.  This tells it
 that there are no more zones to add.</p>
+</div>
 </div>
 
 

@@ -1,9 +1,9 @@
-Changelog
-*********
+18. Changelog
+*************
 
 
-RhostMUSH 4.0 Update
-====================
+18.1. RhostMUSH 4.0 Update
+==========================
 
 MUX passwords didn’t work properly because of a memcmp() bug.
    * Thanks Locke
@@ -114,8 +114,8 @@ SIDEFX permissions were borked for normal players.
    * Thanks Alley
 
 
-RhostMUSH 3.9.5 Update File
-===========================
+18.2. RhostMUSH 3.9.5 Update
+============================
 
 Softcode overrides for connect files
    * Thanks Matrix
@@ -277,8 +277,8 @@ All locatization with CLEAR didn’t wipe and reset register names.
    * Thanks Ixokai
 
 
-RhostMUSH 3.9.4 Update File
-===========================
+18.3. RhostMUSH 3.9.4 Update
+============================
 
 REALITY_LEVELS wouldn’t compile because of undeclared function.
    * Thanks Dahan
@@ -324,8 +324,8 @@ Compiletime bug in speech.c with REALITY_LEVELS not defined.
    * Thanks psc943
 
 
-RhostMUSH 3.9.3 Update File
-===========================
+18.4. RhostMUSH 3.9.3 Update
+============================
 
 @include – Idea Copied from Penn
    * Thanks Jules (and PennMUSH)
@@ -334,8 +334,8 @@ Fix for $Z in timefmt()
    * Thanks Chime/Loki (Haunted)
 
 
-RhostMUSH 3.9.2 Update File
-===========================
+18.5. RhostMUSH 3.9.2 Update
+============================
 
 @assert/@break didn’t handle {} correctly.
    * Thanks Wyrd
@@ -366,8 +366,8 @@ Discussion/Ideas for strdistance() function.
    * Thanks Sketch@M*U*S*H
 
 
-RhostMUSH 3.9.1 Update
-======================
+18.6. RhostMUSH 3.9.1 Update
+============================
 
 cluster_hasattr() bug for #-1 that should be 0 for non-existant
 attribs.
@@ -434,16 +434,16 @@ Help file typos for various cluster commands.
    * Thanks Mike@M*U*S*H
 
 
-RhostMUSH 3.9.0 p00 Update
-==========================
+18.7. RhostMUSH 3.9.0 p00 Update
+================================
 
 Note:
 
   v3.9 is the development branch leading to RhostMUSH v4.0
 
 
-Changes
--------
+18.7.1. Changes
+---------------
 
 Fixed some mishandled signals which should not cause Rhost to panic
 shutdown.
@@ -747,12 +747,12 @@ Note:
   TO BE DONE: add python interpreter TO BE DONE: @plugin
 
 
-Additions
----------
+18.7.2. Additions
+-----------------
 
 
-Functions
-~~~~~~~~~
+18.7.2.1. Functions
+~~~~~~~~~~~~~~~~~~~
 
 [18-13] Add isint() for MUX/Penn compatability [18-17] Added fmod()
 for Penn compatability. regmatch()      - regexp (penn) regmatchi()
@@ -804,8 +804,8 @@ cluster get_eval() [SVN 233] cluster_ueval()         - cluster ueval()
 [SVN 233]
 
 
-Commands
-~~~~~~~~
+18.7.2.2. Commands
+~~~~~~~~~~~~~~~~~~
 
 @assert - Works like @break but reverse logic [18-9] idle - a
 ‘nothing’ command that won’t effect idle time.  Wizzes can optionally
@@ -831,23 +831,15 @@ physically cuts the item from a cluster - only use as last resort [SVN
 cluster [SVN 233]
 
 
-Flags
-~~~~~
+18.7.2.3. Flags
+~~~~~~~~~~~~~~~
 
 NO_CODE  - Controls usage of code-commandss/functions.  Uses new
 second permission table.
 
 
-Powers
-~~~~~~
-
-
-De-Powers
-~~~~~~~~~
-
-
-Toggles
-~~~~~~~
+18.7.2.4. Toggles
+~~~~~~~~~~~~~~~~~
 
 HIDEIDLE - Stops the ‘idle’ from being updated as well as command
 count.  Wiz+ only. MORTALREALITY - disables the inherit ability of
@@ -860,8 +852,8 @@ to anyone if invalid.
 CLUSTER - (internal toggle to handle cluster objects)
 
 
-Admin Params
-------------
+18.7.3. Admin Params
+--------------------
 
 [18-9] Added zones_like_parents for zones to search like @parents.  -
 this does require the ZONECMDCHK @toggle set on each item/player.
@@ -884,8 +876,8 @@ effect. [SVN 212] log_network_errors      - enables (or disables)
 logging of network errors on sockets
 
 
-Bug Fixes
----------
+18.7.4. Bug Fixes
+-----------------
 
 SORTBY was mangling the enactor.
    * Melpomine @ Vieux Carre
@@ -1125,14 +1117,14 @@ Connect honors @hide/unfindable/dark [SVN 320]
    * Thanks Planet X
 
 
-RhostMUSH 3.2.4 p18 Update
-==========================
+18.8. RhostMUSH 3.2.4 p18 Update
+================================
 
 [06/28/2004]
 
 
-Changes
--------
+18.8.1. Changes
+---------------
 
 @aflags takes /full switch to give count on how many objects have the
 attribute.  useful incase you have concerns of attributes
@@ -1196,8 +1188,8 @@ backup_flat.sh now accept a ‘-s’ option for single-mode for cron
 entry.
 
 
-Bug Fixes
----------
+18.8.2. Bug Fixes
+-----------------
 
 WHO/DOING on the connect screen had a broken conditional where if you
 were NOT unfindable you still wouldn’t show up on WHO/DOING on the
@@ -1222,22 +1214,45 @@ CPU Protection not as robust on certain cases - Fixed
 Month was off by one in mail/recall (introduced p18)
    * Thanks Mortalis @ Cajun
 
-mail/recall had off-by-one for month (introduced p18) logf()
-conflicted with built-in function in newest gcc compilers - Fixed type
-cast warning in random function - Fixed Unused variable cleanup in
-code. - Fixed format_name undocumented - Fixed IGSWITCH @hook didn’t
-work with new format of commands in some instances - Fixed Trace
-output issues with CPU protection - Fixed LBUF failed to be free on
-examining in rare cases. (introduced p18) - Fixed Cleanup of some
-initialization variables.  Not a problem.  Just a cleanup. asksource
-broke on solaris systems. - Fixed Lots of cleanup for Solaris 2.8/2.9
-builds.  Solaris didn’t declare right. - Fixed Security issue with
-descs clobbering setq regs - Fixed (optional @admin param) new
-backup_flat.sh script broke for remote archives - Fixed player cache
-had possible dereferenced pointer call - Fixed autoreg_include.txt
-didn’t check txt subdirectory. - Fixed reality locks overwrote match
-state data (introduced p18) - Fixed [18-1] Fix for IGSWITCH @hook and
-multiple switches - Fixed
+mail/recall had off-by-one for month (introduced p18)
+
+logf() conflicted with built-in function in newest gcc compilers -
+Fixed
+
+type cast warning in random function - Fixed
+
+Unused variable cleanup in code. - Fixed
+
+format_name undocumented - Fixed
+
+IGSWITCH @hook didn’t work with new format of commands in some
+instances - Fixed
+
+Trace output issues with CPU protection - Fixed
+
+LBUF failed to be free on examining in rare cases. (introduced p18) -
+Fixed
+
+Cleanup of some initialization variables.  Not a problem.  Just a
+cleanup.
+
+asksource broke on solaris systems. - Fixed
+
+Lots of cleanup for Solaris 2.8/2.9 builds.  Solaris didn’t declare
+right. - Fixed
+
+Security issue with descs clobbering setq regs - Fixed (optional
+@admin param)
+
+new backup_flat.sh script broke for remote archives - Fixed
+
+player cache had possible dereferenced pointer call - Fixed
+
+autoreg_include.txt didn’t check txt subdirectory. - Fixed
+
+reality locks overwrote match state data (introduced p18) - Fixed
+
+[18-1] Fix for IGSWITCH @hook and multiple switches - Fixed
 
 [18-2] Fix for unfindable and loc() and other functions - Fixed
    * Thanks Spatterlight
@@ -1255,20 +1270,20 @@ been ‘owhat’
 
 [18-6] Fix LBUF free issue (introduced 18-4)
 
-   Fix mail issue with marking and folders
-      * Thanks Kevin
+Fix mail issue with marking and folders
+   * Thanks Kevin
 
-   Enhanced @break to accept optional argument to ‘branch’
+Enhanced @break to accept optional argument to ‘branch’
 
 
-RhostMUSH 3.2.4 p17 Update
-==========================
+18.9. RhostMUSH 3.2.4 p17 Update
+================================
 
 [ 06/04/2004]
 
 
-Changes
--------
+18.9.1. Changes
+---------------
 
 Rhost 3.2.4 is a locked version.  only bug fixes from this point on.
 The next release will be 3.9 which will be alpha/beta leading to the
@@ -1290,8 +1305,8 @@ attrcnt() modified to help rebuild wonked attribute tables @aflags
 modified to help list attribute information
 
 
-Bug Fixes
----------
+18.9.2. Bug Fixes
+-----------------
 
 malloc.h wasn’t properly identified in the configure tool - Fixed
 ZENTY_ANSI didn’t handle ansi correctly if TINY_SUB was also defined -
@@ -1317,14 +1332,14 @@ numerical unique identifer of the attribute
    * Thanks Xandar
 
 
-RhostMUSH 3.2.4 p16 Update
-==========================
+18.10. RhostMUSH 3.2.4 p16 Update
+=================================
 
 [02/24/2004]
 
 
-Changes
--------
+18.10.1. Changes
+----------------
 
 +proof in mail now displays text for forwarding/replied messages.
    * Many Many People
@@ -1370,39 +1385,19 @@ lattr() takes multiple page values
    * Thanks Sirona@Cajun
 
 
-Additions
----------
+18.10.2. Additions
+------------------
 
 
-Functions
-~~~~~~~~~
+18.10.2.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 aiindex() - works like iindex() except will append to a null list.
 sortby() - Added for MUX2 compatibility
 
 
-Commands
-~~~~~~~~
-
-
-Flags
-~~~~~
-
-
-Powers
-~~~~~~
-
-
-De-Powers
-~~~~~~~~~
-
-
-Toggles
-~~~~~~~
-
-
-Admin Params
-------------
+18.10.3. Admin Params
+---------------------
 
 wizmax_vattr_limit   - Attribute limiter for wizards wizmax_dest_limit
 - Destroy limiter for wizards vattr_limit_checkwiz - Enable/Disable
@@ -1421,8 +1416,8 @@ switches. examine_restrictive  - Settable 1-5 (0 disables) to restrict
 examine based on ‘level’
 
 
-Bug Fixes
----------
+18.10.4. Bug Fixes
+------------------
 
 Double free issue with caseall() - Fixed Possible SIGSEGV condition
 with nobroadcast_host (introduced p15)  - Fixed If memory/system
@@ -1472,14 +1467,14 @@ Typo with help.txt with regards to terse flag - Fixed
    * Thanks Sasaki Chie@Fantasy Moon
 
 
-RhostMUSH 3.2.4 p15 Update
-==========================
+18.11. RhostMUSH 3.2.4 p15 Update
+=================================
 
 [09/09/2003]
 
 
-Changes
--------
+18.11.1. Changes
+----------------
 
 MASSIVE internal rewrite of internal flag/command/function structure
 to prepare for loadable/unloadable module support.
@@ -1583,12 +1578,12 @@ switch.
    * Lensman
 
 
-Additions
----------
+18.11.2. Additions
+------------------
 
 
-Functions
-~~~~~~~~~
+18.11.2.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 elementsmux() - for MUX elements() compatibility.
    * Thanks Rook@EnnerSeas
@@ -1605,12 +1600,8 @@ escape
 securex() - just like escapex() but for secure()’s counterpart
 
 
-Commands
-~~~~~~~~
-
-
-Flags
-~~~~~
+18.11.2.2. Flags
+~~~~~~~~~~~~~~~~
 
 BLIND - flag for exits and rooms to make target arrival/leaving
 ‘snuffed’.
@@ -1621,16 +1612,8 @@ SINGLETHREAD - Attribute flag to handle single-threading $commands
 ATRLOCK - Attribute flag to handle global attribute locking
 
 
-Powers
-~~~~~~
-
-
-De-Powers
-~~~~~~~~~
-
-
-Toggles
-~~~~~~~
+18.11.2.3. Toggles
+~~~~~~~~~~~~~~~~~~
 
 MUXPAGE - Toggle to allow mux-like paging for Penn/MUX/TM3
 compatibility.
@@ -1640,8 +1623,8 @@ NOGLOBPARENT - Toggle to disable inheritance of global inheret
 parents. NODEFAULT - Toggle to disable global default handling (TM3)
 
 
-Admin Params
-------------
+18.11.3. Admin Params
+---------------------
 
 mail_verbosity - Add Subj: to sent mail as well as to disconnected
 players.
@@ -1687,8 +1670,8 @@ global locker for attribute sets/clears nobroadcast_host - Define what
 sites will be ‘snuffed’ from MONITOR
 
 
-Bug Fixes
----------
+18.11.4. Bug Fixes
+------------------
 
 Bug in wizhelp with ‘mail_lockdown’ toggle.  - Fixed
    * Thanks Dervish
@@ -1768,14 +1751,14 @@ config opts.
    * Thanks Illithid@Ennersea
 
 
-RhostMUSH 3.2.4 p14 Update File
-===============================
+18.12. RhostMUSH 3.2.4 p14 Update
+=================================
 
 [07/10/2002]
 
 
-Changes
--------
+18.12.1. Changes
+----------------
 
 round() excepts negative args (60) for rounding values to whole
 numbers. (MUX2) The SPOOF flag is now inheritable.
@@ -1825,12 +1808,12 @@ the fly.
    * Thanks Azhdeen@RhostMUSH
 
 
-Additions
----------
+18.12.2. Additions
+------------------
 
 
-Functions
-~~~~~~~~~
+18.12.2.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 txlevel() - sideeffect that sets @txlevel (or displays)
    * Thanks accela@AniMUSH
@@ -1856,8 +1839,8 @@ ctu() - function that does deg/rad/grad conversion visiblemux() -
 works like mux’s visible()
 
 
-Commands
-~~~~~~~~
+18.12.2.2. Commands
+~~~~~~~~~~~~~~~~~~~
 
 @hook to show/display/change individual hooks.  Switches are:
 
@@ -1870,8 +1853,8 @@ Commands
    - Thanks Moe@BrazilMUX (/igswitch idea)
 
 
-Flags
-~~~~~
+18.12.2.3. Flags
+~~~~~~~~~~~~~~~~
 
 ATTRIBUTE FLAG: uselock - when set on an attribute with a $command,
 will look for a matching ~<attribute> to eval the lock.  This does
@@ -1881,23 +1864,15 @@ SPAMMONITOR - mark if player and/or target item check for spam (60
 cmds/sec)
 
 
-Powers
-~~~~~~
-
-
-De-Powers
-~~~~~~~~~
-
-
-Toggles
-~~~~~~~
+18.12.2.4. Toggles
+~~~~~~~~~~~~~~~~~~
 
 ZONEINHERIT - Allows zonemasters to have attributes inherited to
 children.
 
 
-Admin Params
-------------
+18.12.3. Admin Params
+---------------------
 
 muddb_name - admin param for db names to seperate from ‘mud_name’
    * Thanks Milk@MattRhost
@@ -1927,8 +1902,8 @@ examine. stack_limit - nest check for ‘stack’ to throttle back a given
 amount. (Penn)
 
 
-Bug Fixes
----------
+18.12.4. Bug Fixes
+------------------
 
 HELPFILE - trigger() was not a command but was shown in help. -Fixed
    * Thanks accela@AniMUSH
@@ -1991,14 +1966,14 @@ wildcard matching could become problematic - Fixed.
    * Thanks Sketch@M*U*S*H & Javelin
 
 
-RhostMUSH 3.2.4 p13 Update File
-===============================
+18.13. RhostMUSH 3.2.4 p13 Update
+=================================
 
 [02/01/2002]
 
 
-Changes
--------
+18.13.1. Changes
+----------------
 
 Help was missing for @admin parameter areg_lim.  - Added Help was
 inconsistant for die() and dice().  - Changed
@@ -2035,12 +2010,12 @@ handle target port lattr() handles optional target of *player and
 player now.
 
 
-Additions
----------
+18.13.2. Additions
+------------------
 
 
-Functions
-~~~~~~~~~
+18.13.2.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 safebuff() - function to go back in the function until the first
 matched delimiter if strlen() is equal to or greater than the maximum.
@@ -2067,37 +2042,29 @@ parameters (you have access to), otherwise display the value of the
 specified parameter.
 
 
-Commands
-~~~~~~~~
+18.13.2.2. Commands
+~~~~~~~~~~~~~~~~~~~
 
 @eval - force evaluation of functionality (TM3)
 
 
-Flags
-~~~~~
-
-
-Powers
-~~~~~~
-
-
-De-Powers
-~~~~~~~~~
+18.13.2.3. De-Powers
+~~~~~~~~~~~~~~~~~~~~
 
 mortal_examine - if set, target always examines like a mortal.
 (@decompile/etc)
    * Thanks Belial@Armageddon
 
 
-Toggles
-~~~~~~~
+18.13.2.4. Toggles
+~~~~~~~~~~~~~~~~~~
 
 mail_lockdown - target is restricted in mail ‘monitoring’ like a
 mortal. muxpage - allows ‘p <blah>’ to work like in MUX/TM3
 
 
-Admin Params
-------------
+18.13.3. Admin Params
+---------------------
 
 log (parameter) god - log all activity of #1 heavy_cpu_max - ceilings
 heavilly used cpu-intensive functions. lastsite_paranoia - enable
@@ -2115,8 +2082,8 @@ of action you want to take against infidels (0-2) global_parent_obj -
 global parent that attributes are inherited off of.
 
 
-Bug Fixes
----------
+18.13.4. Bug Fixes
+------------------
 
 convtime() used daylight savings - no longer uses daylight savings -
 Fixed IDESC wouldn’t work with Reality Levels - Fixed Bad memory could
@@ -2185,14 +2152,14 @@ Help for trim() had examples with it’s 2nd and 3rds arguments reversed
    * Thanks accela@AniMUSH
 
 
-RhostMUSH 3.2.4 p12 Update
-==========================
+18.14. RhostMUSH 3.2.4 p12 Update
+=================================
 
 [06/15/2001]
 
 
-Changes
--------
+18.14.1. Changes
+----------------
 
 Introduction of REALMS/Reality Levels
    * Thanks to Shade@Mediterranian for the code
@@ -2229,12 +2196,12 @@ protection vers. race conditions on connect screen. switch() and
 switchall() now recognize > and < as math-args (config param)
 
 
-Additions
----------
+18.14.2. Additions
+------------------
 
 
-Functions
-~~~~~~~~~
+18.14.2.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 rxlevel() - return RX reality level for source check txlevel() -
 return TX reality level for target check listrlevels() - list all
@@ -2243,32 +2210,22 @@ levels hasrxlevel() - return ‘1’ if target has rxlevel() hastxlevel()
 can see source (reality level based only)
 
 
-Commands
-~~~~~~~~
+18.14.2.2. Commands
+~~~~~~~~~~~~~~~~~~~
 
 @rxlevel - set/remove reality level source check @txlevel - set/remove
 reality level target check mrpage (mrp) - respond to the player list
 that you received in a page.  like rpage, this is seperate from lpage
 
 
-Flags
-~~~~~
+18.14.2.3. Flags
+~~~~~~~~~~~~~~~~
 
 NONAME - if set on a target, the name is not displayed.
 
 
-Powers
-~~~~~~
-
-De-Powers
-
-
-Toggles
-~~~~~~~
-
-
-Admin Params
-------------
+18.14.3. Admin Params
+---------------------
 
 reality_level     - define new reality level(s).  32 max.
 wiz_always_real   - a wizard is defined as always seeing everything as
@@ -2295,8 +2252,8 @@ This will always be 10 less than the OS can handle. penn_switches
 < and > as mathmatical operands.
 
 
-Bug Fixes
----------
+18.14.4. Bug Fixes
+------------------
 
 filter() would accept ‘1<blah>’ as well as ‘1’.  - Fixed.
    * Thanks Raevnos@M*U*S*H
@@ -2314,14 +2271,14 @@ Fixed Side effects did not check inheritance for permission - Fixed
 Iter()/list() and suite did not handle ansi properly - Fixed
 
 
-RhostMUSH 3.2.4 p11 Update
-==========================
+18.15. RhostMUSH 3.2.4 p11 Update
+=================================
 
 [03/15/2001]
 
 
-Changes
--------
+18.15.1. Changes
+----------------
 
 elist() has 5th argument (for string seperator)
    * Thanks Talek@M*U*S*H
@@ -2354,38 +2311,26 @@ toggle.
 @pemit has /silent switch for PENN compatibility
 
 
-Additions
----------
+18.15.2. Additions
+------------------
 
 
-Functions
-~~~~~~~~~
+18.15.2.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 foreach() - (MUX) added for compatibility ilev() - Returns nest level
 of an iter()
 
 
-Commands
-~~~~~~~~
+18.15.2.2. Commands
+~~~~~~~~~~~~~~~~~~~
 
 @limit [/vmod /dmod /list /reset] - to limit max @destroy/vattr
 creation
 
 
-Flags
-~~~~~
-
-
-Powers
-~~~~~~
-
-
-De-Powers
-~~~~~~~~~
-
-
-Toggles
-~~~~~~~
+18.15.2.3. Toggles
+~~~~~~~~~~~~~~~~~~
 
 IGNOREZONE - toggles zone/location to enable zone/location command
 disable/ignore VPAGE - toggles aliases to show/not show in pages you
@@ -2399,8 +2344,8 @@ MAIL_NOPARSE - seperate toggle to break up translating %r’s and %t’s
 in mail viewing.
 
 
-Admin Params
-------------
+18.15.3. Admin Params
+---------------------
 
 ignore_zone - globally specify zone ignoring for a command
 
@@ -2418,8 +2363,8 @@ hide_nospoof - if ‘1’ you have to control target to see NOSPOOF flag
    * Thanks Jeff@SandBox
 
 
-Bug Fixes
----------
+18.15.4. Bug Fixes
+------------------
 
 buffer issue with @decompile - fixed
 
@@ -2458,67 +2403,51 @@ Cloaked items didn’t trigger @startup - fixed.
    -Thanks Rynos@Armageddon
 
 
-RhostMUSH 3.2.4 p10 Update
-==========================
+18.16. RhostMUSH 3.2.4 p10 Update
+=================================
 
 [02/15/2001]
 
 
-Changes
--------
+18.16.1. Changes
+----------------
 
 improved CPU handler for DoS protection
 
 
-Additions
----------
+18.16.2. Additions
+------------------
 
 
-Functions
-~~~~~~~~~
+18.16.2.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 strfunc(<function>,<string of args>[,<optional seperator for args>) -
 for lists
 
 
-Commands
-~~~~~~~~
-
-
-Flags
-~~~~~
-
-
-Powers
-~~~~~~
-
-
-De-Powers
-~~~~~~~~~
-
-
-Admin Params
-------------
+18.16.3. Admin Params
+---------------------
 
 max_cpu_cycles admin param (default 3) cpu_secure_lvl admin param
 (default 0)
 
 
-Bug Fixes
----------
+18.16.4. Bug Fixes
+------------------
 
 you could still get into a garbage object - fixed (MINOR) forwardlists
 were not cleared on @wipe - fixed
 
 
-RhostMUSH 3.2.4 p9 Update
-=========================
+18.17. RhostMUSH 3.2.4 p9 Update
+================================
 
 [12/15/2000]
 
 
-Changes
--------
+18.17.1. Changes
+----------------
 
 mail/write +acc added to allow extending player lists and not
 replacing.
@@ -2538,12 +2467,12 @@ filler to columns() (new argument)
    * Suggested by Jamie@AdminMUSH
 
 
-Additions
----------
+18.17.2. Additions
+------------------
 
 
-Functions
-~~~~~~~~~
+18.17.2.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 caseall() - works like switchall() but for case (Taken from PENN)
 cand() - works like and() but stops processing on first ‘FALSE’ (from
@@ -2555,12 +2484,8 @@ returns nth arg (num ‘#@’) of an iter() (from PENN) modulo() - returns
 the modulus of the numbers (from PENN)
 
 
-Commands
-~~~~~~~~
-
-
-Flags
-~~~~~
+18.17.2.2. Flags
+~~~~~~~~~~~~~~~~
 
 NO_PARSE - attribute flag that stops processing/evaluation of %0-%9 in
 $commands. SAFE - attribute flag that stops modification of attribute
@@ -2568,19 +2493,15 @@ it’s set on (TM 3.0) SHOWFAILCMD - when set on object any matching
 failed $cmd uses the @ufail suite.
 
 
-Powers
-~~~~~~
-
-
-Toggles
-~~~~~~~
+18.17.2.3. Toggles
+~~~~~~~~~~~~~~~~~~
 
 MAIL_STRIPRETURN - when combining lines uses spaces instead of carrage
 returns PENN_MAIL - when sending mail, use PENN like style
 
 
-Admin Params
-------------
+18.17.3. Admin Params
+---------------------
 
 guest_namelist - specifies a dynamic namelist for guests (with
 protection) hackattr_nowiz - defines if ‘_attr’ is wiz only or follows
@@ -2589,8 +2510,8 @@ only. penn_playercmds - $commands on player work only for that player
 or inventory (from PENN)
 
 
-Bug Fixes
----------
+18.17.4. Bug Fixes
+------------------
 
 Bug with dynhelp().  Player (3rd arg) never resolved correctly - fixed
    * Thanks Svlatmaer@BTW
@@ -2611,14 +2532,14 @@ it now - fixed encrypt/decrypt really mangled with how it passed key -
 fixed
 
 
-RhostMUSH 3.2.4 p8 Update
-=========================
+18.18. RhostMUSH 3.2.4 p8 Update
+================================
 
 [10/12/2000]
 
 
-Changes
--------
+18.18.1. Changes
+----------------
 
 lnum() and lnum2() now can handle negative numbers. @list options
 shows if the COMMAND flag is used. NOMODIFY can be configured to be
@@ -2643,12 +2564,12 @@ based on toggle. added modified/created with ‘examine’ and
 ‘examine/brief’ and ‘examine thing/*’
 
 
-Additions
----------
+18.18.2. Additions
+------------------
 
 
-Functions
-~~~~~~~~~
+18.18.2.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 mailalias() - returns the dbref# list of players in the given global
 mail alias
@@ -2661,15 +2582,15 @@ from PENN 1.7.3 @@() - works like null() but does not evaluate (idea
 from PENN 1.7.3)
 
 
-Commands
-~~~~~~~~
+18.18.2.2. Commands
+~~~~~~~~~~~~~~~~~~~
 
 @flagdef - define flag permission levels (/set, /unset, /see) @dynhelp
 - dynamically read a specified <file>.txt file (needs matching .indx!)
 
 
-Flags
-~~~~~
+18.18.2.3. Flags
+~~~~~~~~~~~~~~~~
 
 COMMANDS - optional #ifdef to define what uses commands or not
 (TinyMUSH compat) uses -DENABLE_COMMAND_FLAG
@@ -2685,28 +2606,28 @@ BOUNCE - allows players to pass what they hear to their contents w/o
 effecting @ahear/@amhear/etc.
 
 
-Powers
-~~~~~~
-
-
-Toggles
-~~~~~~~
+18.18.2.4. Toggles
+~~~~~~~~~~~~~~~~~~
 
 MONITOR_BAD - monitor failed connections/creations to non-existant
 players PROG_ON_CONNECT - reverses the current global logic of program
 and connecting.
 
 
-Admin Params
-------------
+18.18.3. Admin Params
+---------------------
 
 imm_nomod - when enabled (default disabled) specifies that only
 immortal can set/unset the NOMODIFY flag and only immortals can modify
 things set NOMODIFY.  This will allow NOMODIFY to mimic CONSTANT ala
-TM 3.0 paranoid_exit_linking - when enabled, you MUST control exit to
-link.  This includes UNLINKED exits.  Also, exits won’t be @chowned to
-you automatically. (Default disabled) notonerr_return - when DISABLED
-(default enabled) not() returns a ‘0’ for any function returning #-1.
+TM 3.0
+
+paranoid_exit_linking - when enabled, you MUST control exit to link.
+This includes UNLINKED exits.  Also, exits won’t be @chowned to you
+automatically. (Default disabled)
+
+notonerr_return - when DISABLED (default enabled) not() returns a ‘0’
+for any function returning #-1.
 
 safer_passwords - requires passwords be 5+ chars long and have one
 upper, one lower, and one special character.
@@ -2716,8 +2637,8 @@ max_sitecons - (default 50) specifies the maximum # of port
 connections to site of that given site.
 
 
-Bug Fixes
----------
+18.18.4. Bug Fixes
+------------------
 
 NOMODIFY wasn’t strict enough - fixed BACKSTAGE/NOBACKSTAGE didn’t
 handle @zones - fixed create() didn’t check command permissions first
@@ -2725,14 +2646,14 @@ for @dig, @open, and @pcreate put a temp fix for a possible SIGSEGV
 bug.
 
 
-RhostMUSH 3.2.4 p7 Update
-=========================
+18.19. RhostMUSH 3.2.4 p7 Update
+================================
 
 [07/15/2000]
 
 
-Changes
--------
+18.19.1. Changes
+----------------
 
 @set now recognizes the following attribute flags:
 
@@ -2747,79 +2668,31 @@ Changes
    DARK
 
 
-Additions
----------
+18.19.2. Admin Params
+---------------------
 
 
-Functions
-~~~~~~~~~
-
-
-Commands
-~~~~~~~~
-
-
-Flags
-~~~~~
-
-
-Powers
-~~~~~~
-
-
-Toggles
-~~~~~~~
-
-
-Admin Params
-------------
-
-
-Bug Fixes
----------
+18.19.3. Bug Fixes
+------------------
 
 @list options did not show RESTRICT_HOME config setting.  Fixed
    * Reported by Mercutio@ShatteredCathedrals
 
 
-RhostMUSH 3.2.4 p6 Update
-=========================
+18.20. RhostMUSH 3.2.4 p6 Update
+================================
 
 [06/16/2000]
 
 
-Changes
--------
+18.20.1. Changes
+----------------
 
 @list site_information now shows DNS blocking
 
 
-Additions
----------
-
-
-Functions
-~~~~~~~~~
-
-
-Commands
-~~~~~~~~
-
-
-Flags
-~~~~~
-
-
-Powers
-~~~~~~
-
-
-Toggles
-~~~~~~~
-
-
-Admins Params
--------------
+18.20.2. Admins Params
+----------------------
 
 forbid_host - allows DNS entry/modify for forbidding hosts
 register_host - allows DNS entry/modify for registered hosts
@@ -2828,8 +2701,8 @@ hosts noguest_host - allows DNS entry/modify for disallowing guests to
 hosts suspect_host - allows DNS entry/modify for suspect hosts
 
 
-Bug Fixes
----------
+18.20.3. Bug Fixes
+------------------
 
 ansi() didn’t recognize ‘u’ for underline.  Fixed.
    * Reported by LadyDraconis@BermudaByNight
@@ -2842,67 +2715,43 @@ autoreg file inclusion didn’t count total lines right.  Fixed.
 hastoggles(), haspowers(), and hasdepowers() didn’t work.  Fixed.
 
 
-RhostMUSH 3.2.4 p5 Update
-=========================
+18.21. RhostMUSH 3.2.4 p5 Update
+================================
 
 [06/01/2000]
 
 
-Changes
--------
+18.21.1. Changes
+----------------
 
 New /noauth and /nodns switches to @site Better timeout conditions for
 AUTH lookups. @list site_information now shows additional information
 
 
-Additions
----------
-
-
-Functions
-~~~~~~~~~
-
-
-Commands
-~~~~~~~~
-
-
-Flags
-~~~~~
-
-
-Powers
-~~~~~~
-
-
-Toggles
-~~~~~~~
-
-
-Admin Params
-------------
+18.21.2. Admin Params
+---------------------
 
 noauth_site – specifies site and mask that AUTH lookups are not to be
 performed nodns_site  – specifies site and mask that DNS lookups are
 not to be performed
 
 
-Bug Fixes
----------
+18.21.3. Bug Fixes
+------------------
 
 AUTH hung if remote server was configured wrong.  Fix put in around
 the OS limitation to handle this. Command substitution (%c/%x) could
 cause a SIGSEGV at random times.  Fixed.
 
 
-RhostMUSH 3.2.4 p4 Update
-=========================
+18.22. RhostMUSH 3.2.4 p4 Update
+================================
 
 [04/15/2000]
 
 
-Changes
--------
+18.22.1. Changes
+----------------
 
 wizhelp has new topic for setting up guests (GUEST SETUP)
 
@@ -2932,20 +2781,20 @@ now show how many characters you have written. mail/forward and
 mail/reply now recognize the BRANDY_MAIL @toggle.
 
 
-Additions
----------
+18.22.2. Additions
+------------------
 
 
-Functions
-~~~~~~~~~
+18.22.2.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 listmatch(<string>,<wildcard>[,<delimiter>])
 setqmatch(<string>,<wildcard>[,<delimiter>])
 listnewsgroups([<player>]) inprogram(player)
 
 
-Commands
-~~~~~~~~
+18.22.2.2. Commands
+~~~~~~~~~~~~~~~~~~~
 
 @program (idea from MUX) @quitprogram (idea from MUX)
 
@@ -2960,40 +2809,24 @@ train
 @function/preserve (idea from MUX) +help (hardcode) (idea from MUX)
 
 
-Flags
-~~~~~
-
-
-Powers
-~~~~~~
-
-
-Toggles
-~~~~~~~
+18.22.2.3. Toggles
+~~~~~~~~~~~~~~~~~~
 
 PROG (idea from MUX) NOSHPROG IMMPROG
 
 
-Alias Additions
----------------
+18.22.3. Alias Additions
+------------------------
 
 
-Functions
-~~~~~~~~~
-
-
-Commands
-~~~~~~~~
+18.22.3.1. Commands
+~~~~~~~~~~~~~~~~~~~
 
 @prog aliased to @program
 
 
-Flags
-~~~~~
-
-
-Admin Params
-------------
+18.22.4. Admin Params
+---------------------
 
 login_to_prog
 
@@ -3013,8 +2846,8 @@ mailinclude_file
 must_unlquota
 
 
-Bug Fixes
----------
+18.22.5. Bug Fixes
+------------------
 
 news/articlelife not in wizhelp
    * Reported by Rachel@AdminMUSH
@@ -3037,14 +2870,14 @@ setunion() would not parse 3rd/4th args correctly on rare occurances
 news/articlelife wouldn’t reset articlelife with ‘-1’.  – fixed
 
 
-RhostMUSH 3.2.4 p3 Update File
-==============================
+18.23. RhostMUSH 3.2.4 p3 Update
+================================
 
 [11/15/1999]
 
 
-Changes
--------
+18.23.1. Changes
+----------------
 
 Note:
 
@@ -3072,12 +2905,12 @@ examine/brief - Modified for MUX/PENN compatibility
 marks current message and reads previous mail
 
 
-Additions
----------
+18.23.2. Additions
+------------------
 
 
-Functions
-~~~~~~~~~
+18.23.2.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 mailquick(<player>[,<folder>]) (wiz only) eval(<object>,<attr>) or
 eval(<string>) translate(<string>,<(s)pace/un(p)arse>)
@@ -3105,15 +2938,15 @@ zfunldefault([<zone>/]<attr>,<default>[,<args>])
 zfunl2default([<zone>/]<attr>,<default>[,<args>])
 
 
-Commands
-~~~~~~~~
+18.23.2.2. Commands
+~~~~~~~~~~~~~~~~~~~
 
 @hide[/on/off] - For PENN compatibility @saystring - define what is
 substituted instead of ‘says’
 
 
-Flags
-~~~~~
+18.23.2.3. Flags
+~~~~~~~~~~~~~~~~
 
 NOWHO (internal) - mark who is @hidden LOGIN - bypass @disable logins
 ZONECONTENTS - makes zonemaster behave like master room BACKSTAGE -
@@ -3122,27 +2955,27 @@ backstage checks ANONYMOUS - return ‘Someone’ when cloaked when
 talk/say
 
 
-Powers
-~~~~~~
+18.23.2.4. Powers
+~~~~~~~~~~~~~~~~~
 
 NOWHO - specify who can @hide EXAMINE_FULL - examine anything but #1,
 cloaked, and noexamine things FULLTEL - teleport anywhere but #1 and
 cloaked locations.
 
 
-Toggles
-~~~~~~~
+18.23.2.5. Toggles
+~~~~~~~~~~~~~~~~~~
 
 BRANDY_MAIL - send mail with ‘mail user-list=3Dsubject’ methodology
 FORCEHALTED - force someone who is halted
 
 
-Alias Additions
----------------
+18.23.3. Alias Additions
+------------------------
 
 
-Functions
-~~~~~~~~~
+18.23.3.1. Functions
+~~~~~~~~~~~~~~~~~~~~
 
 subeval() aliased to eval() grepi() aliased to grep() zone() aliased
 to lzone() element aliased to elements() if() aliased to ifelse()
@@ -3154,29 +2987,29 @@ loop() aliased to list() enumerate() aliased to elist() mean() aliased
 to avg()
 
 
-Commands
-~~~~~~~~
+18.23.3.2. Commands
+~~~~~~~~~~~~~~~~~~~
 
 @brief aliased to examine/brief @lemit aliased to @emit/room @remit
 aliased to @pemit/contents/list @zemit aliased to @pemit/zone/list
 
 
-Flags
-~~~~~
+18.23.3.3. Flags
+~~~~~~~~~~~~~~~~
 
 NO_COMMAND alias to NOCOMMAND
 
 
-Admin Params
-------------
+18.23.4. Admin Params
+---------------------
 
 mail_tolist (default 0) - enable/disable To: <players> in mail =
 automatically mail_default (default 0) - change ‘mail’ from mail/quick
 to mail/status
 
 
-Bug Fixes
----------
+18.23.5. Bug Fixes
+------------------
 
 depower - tel_anywhere (broke - fixed) look - could see cloaked things
 if given long-finger ability (fixed) recover objects - could be

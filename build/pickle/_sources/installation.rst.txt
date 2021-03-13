@@ -141,19 +141,8 @@ This downloads the latest stable version of the code, bringing with it all patch
 Quickinstall guide to RhostMUSH
 ===============================
 
-Obtaining RhostMUSH
+Compiling RhostMUSH
 -------------------
-
-It is assumed that you have gotten to this point with the following command::
-
-   git clone https://github.com/RhostMUSH/trunk Rhost
-
-If you did NOT get it this way, your file permissions may not be properly set up.  Please type::
-
-    chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
-
-This makes sure all the build scripts are properly made executable.
-This will result in 'permission denied' or similar results when running a script.
 
 Once ready to compile type::
 

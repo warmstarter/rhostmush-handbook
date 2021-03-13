@@ -21,13 +21,13 @@ Adding an @startup to make use of modules
 This means that if your code is depending on @startups, you need to put a delay in the @startup
 so that your local code can be loaded in as modules prior to the @startup execution.
 
-Something that will not work:
+Something that will not work::
 
-@startup me=@superhappyfuncommand loadmeup=now
+  @startup me=@superhappyfuncommand loadmeup=now
 
-A small alteration that will likely make this work fine.
+A small alteration that will likely make this work fine::
 
-@startup me=@wait 1=@superhappyfuncommand loadmeup=now
+  @startup me=@wait 1=@superhappyfuncommand loadmeup=now
 
 That 1 second delay for the queue will give the game engine time to load in your module code.
 
@@ -37,7 +37,6 @@ Contributing your module back to Rhost
 If you wish your modules to be part of the main Rhost distribution you have two options:
 
 1.  Attempt to hack the bin/asksource.sh and bin/asksource.blank files.
-
 2.  Ask one of the Rhost devs to do it for you :)
 
 Shutting down gracefully
@@ -79,6 +78,7 @@ where it can be seen. Those are bitfields. In order for X to see Y a bitwise
 exist. This affects contents lists, exit lists, look, say, pose, @emit, 
 @verb, connect/disconnect, has arrived/has left messages, exit and object 
 matching. 'here' and 'me' match always.
+
 It doesn't affect @remit, @pemit, page, WHO or channels.
 By default, all new objects are created with an RxLevel of 1 and TxLevel of 
 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of 
@@ -95,16 +95,20 @@ description. If you look at something and match more than one of its
 TxLevels, you'll see all the corresponding descriptions on the target 
 object. If the object doesn't have any descriptions for the matching levels,
 you'll see the regular @desc.
+
 The @adesc attribute on the target is only triggered if the target can see 
 the looker in turn. It's only triggered once, no matter how many descs the 
 looker sees. The @odesc is shown only to those people that see /both/ the 
 looker and the target.
+
 Through extension, @afail/@ofail and similar pairs (@adrop/@odrop, 
 @asucc/@osucc etc) work in the same way. @verb commands are similary 
 affected.
+
 Softcoded commands are only matched on the objects that can see the player.
 The player doesn't have to see the object. This includes commands in the
 Master Room.
+
 Exits are treated specially. In order to be able to use an exit name (or to
 use the 'move <exit>' command) the exit must be visible to the enactor. In
 order to pass through the exit, the exit must see the enactor in turn. There
@@ -114,7 +118,7 @@ Configuration parameters
 ------------------------
 
 A few configuration parameters have been introduced to deal with the reality
-levels.
+levels::
 
 	reality_level <name> <value> [<desc attribute name>]
 
@@ -123,7 +127,7 @@ command) and should be repeated for each reality level you want to define.
 It defines a new level named <name> with a bitvalue of <value> and an 
 optional desc attribute. There is a limit of 8 characters on <name>, a 
 32-bit value on <value> (basically an unsigned long) and 32 characters on
-the attribute name. A maximum of 32 reality levels can be defined.
+the attribute name. A maximum of 32 reality levels can be defined::
 
 	def_exit_tx <value>
 	def_exit_rx <value>
@@ -136,7 +140,7 @@ the attribute name. A maximum of 32 reality levels can be defined.
 
 These 8 directives define the default reality levels of newly created 
 objects. They can be set in the config file or with the @admin command. 
-Like above, <value> must be a decimal number.
+Like above, <value> must be a decimal number::
 
 	wiz_always_real <0|1>
 
@@ -146,8 +150,9 @@ will always be 0xFFFFFFFF. Also settable in the config file and with the
 @admin command.
 
 Compile with -DREALITY_LEVELS compile time option to enable 'Real' needs to be '1'
-This is an example file only to be added to the mush.conf file
-Format: reality_level <8 char name> <hex-byte-mask> <optional-desc: DESC default>
+This is an example file only to be added to the mush.conf file Format::
+
+  reality_level <8 char name> <hex-byte-mask> <optional-desc: DESC default>
 
 Example mush.conf
 -----------------
@@ -173,7 +178,7 @@ reality_level All 4294967295
 Commands
 --------
 
-Two wiz-only commands are used to set the reality levels of an object.
+Two wiz-only commands are used to set the reality levels of an object::
 
 	@rxlevel <object>=<list>
 	@txlevel <object>=<list>
@@ -181,34 +186,44 @@ Two wiz-only commands are used to set the reality levels of an object.
 <list> is a space-separated list of level names that have to be set on the
 object. If a level name is prefixed with an exclamation mark (!) that level
 will be cleared from the object.
-WARNING: Changing the Tx levels of an object might make it invisible to you.
-In this case, you can still manipulate it by using his #dbref (or *player 
-for players).
+
+
+.. warning::
+
+   Changing the Tx levels of an object might make it invisible to you.
+   In this case, you can still manipulate it by using his #dbref (or \*player 
+   for players).
 
 Functions
 ---------
 
-There are five functions that deal with reality levels.
+There are five functions that deal with reality levels::
 
 	hasrxlevel(<object>,<level>)
 	hastxlevel(<object>,<level>)
+        
 These two functions check if an object has the specified Rx or Tx level.
 You must control <object>. They return 0 or 1 and #-1 in case the object
-does not exist or you don't have permissions.
+does not exist or you don't have permissions::
 
 	rxlevel(<object>)
 	txlevel(<object>)
+        
 These two functions return a space-separated list of the object's Rx or Tx
-levels. Again, you must control the object.
+levels. Again, you must control the object::
 
 	cansee(<obj1>,<obj2>)
+
 A wiz-only function, returns 1 of <obj1> can see <obj2> from a reality
 levels point of view. It doesn't check if the objects are in the same 
 location, the DARK/CLOAKED flags and so on. Just <obj1>'s Rx level against
 <obj2>'s Tx level.
-WARNING: If you are using it on MUX2.0 with /both/ reality levels and Wod
-Realms enabled, the function will perform both checks and the Wod Realms
-version checks against the DARK flag.
+
+.. warning::
+
+    If you are using it on MUX2.0 with /both/ reality levels and Wod
+    Realms enabled, the function will perform both checks and the Wod Realms
+    version checks against the DARK flag.
 
 Example 1: A simplified Witchcraft setup
 ----------------------------------------
@@ -218,16 +233,19 @@ There are spirit realms to which the mundane can not travel. Therefore we
 will use 2 reality levels: Real and Ghost. Since some spirits can become
 solid for a limited period of time, we will also use an additional desc for
 the Ghost level, called GHOSTDESC. Therefore in the config file we will
-have:
+have::
+
 	reality_level Real 1
 	reality_level Ghost 2 GHOSTDESC
 
 Ghosts can pass through most mundane locks, so the exists should allows the
-ghosts to pass:
+ghosts to pass::
+
 	def_exit_rx 3
 
 Note that def_exit_tx isn't set. Why? Because ghosts see the mundane world 
-anyway, so a spirit character will have:
+anyway, so a spirit character will have::
+
 	@txlevel <player>=!Real Ghost
 	@rxlevel <player>=Real Ghost
 
@@ -331,24 +349,30 @@ reality_level		All 511
 replacement for all levels, useful for wizards and wizobjects that should 
 be visible on all levels. Also useful when you want to set an object's 
 levels to something without knowing what he had before.
+
 @rxlevel #276=!All Real
+
 !All will clear all levels, then the object will gain the Real level.
 There is more than one Obfuscation level because of the relation between
 Auspex and Obfuscation.
+
 A vampire with Obfuscate 2, should not be visible by one with Auspex 1.
 However one with Auspex 3 should see another vampire with Obfuscate 1, 2
 /or/ 3.
+
 Obfuscated players can move if they have Obf > 1. Umbral and Shadow players
 should also be able to see most of the exits. So the exits at creation
 should have default levels of Real + Obf2 + Obf3 + Obf4 + Obf5 + Umbra + 
-Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381
+Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381::
+
 	def_exit_rx 381
 	def_exit_tx 381
 
 Obf1 is not included since an Obfuscated vampire should not be able to move
 if it only has Obf1. Therefore they won't see the exits. If you want them 
 to be able to see the exits, but not to use them, change the default Tx of 
-the exits:
+the exits::
+
 	def_exit_rx 381
 	def_exit_tx 383
 
@@ -360,6 +384,7 @@ try to make himself invisible will have an RxLevel: Real (as Jack)
 and a TxLevel: Real Obf4. He will also set his @desc to what the mortals see and 
 &OBFDESC to his real slimy desc. Simply put, he will be visible to mortals,
 but not with his real desc.
+
 Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel 
 will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So
 he can see Joe, Jack and Jimmy's both descs.
@@ -373,13 +398,16 @@ No &FAEDESC on her, although she'll be able to see it the one on Frida.
 Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra
 and TxLevel: Umbra. &UMBRADESC is his friend. He won't see mortals or other
 characters who are not in the Umbra.
+
 Barbie the Bastet, who's only peeking in the Umbra, without going there, 
 will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she
 can't see the things that see her.
+
 Deanna the Drake, who activates her spirit vision, will have 
 RxLevel: Real Umbra and TxLevel: Real. She will see characters in Umbra and
 real world at the same time and perceive the desc appropiate to the realm 
 the ohter character is in.
+
 Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her @desc
 would be empty, but the &SHADOWDESC should be set.
 Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real
@@ -454,8 +482,7 @@ Register variables
 MUSHQ_<arg>                setq registers 0-9 and a-z
 MUSHQN_<arg>               labels that are assigned the setq vars
 MUSHN_<arg>                The labels that were defined by any register
-                           Note: they must be ASCII-7 clean and contain no
-                                 white spaces
+                           Note: they must be ASCII-7 clean and contain no white spaces
 
 
 set object
@@ -573,7 +600,9 @@ screens and data display.  It can automatically center, justify and wrap the tex
 Example one
 -----------
 
-> @emit printf(|$-12s|$12s|$^12s$&14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
+::
+
+  @emit printf(|$-12s|$12s|$^12s$&14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
 
   |a b c       |       d e f|   g h i    |0 1 2 3 4 5 |j     k    l|
                                          |6 7 8 9 10  |
@@ -581,37 +610,42 @@ Example one
                                          |15 16 17 18 |
                                          |19          |
 
+
 Example two
 -----------
 
-> @emit printf($14&s $^4&s $-3&s $15&s,
-    iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
-    iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
-    * Aggravated%RX Lethal%R/ Bashing)
+::
 
-        Bruised      [ ]    * Aggravated
-           Hurt  -1  [ ]        X Lethal
-        Injured  -1  [ ]       / Bashing
-        Wounded  -2  [ ]                
-         Mauled  -2  [ ]                
-       Crippled  -5  [ ]                
-  Incapacitated      [ ]  
+        @emit printf($14&s $^4&s $-3&s $15&s,
+        iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
+        iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
+        * Aggravated%RX Lethal%R/ Bashing)
+
+            Bruised      [ ]    * Aggravated
+               Hurt  -1  [ ]        X Lethal
+            Injured  -1  [ ]       / Bashing
+            Wounded  -2  [ ]                
+             Mauled  -2  [ ]                
+           Crippled  -5  [ ]                
+      Incapacitated      [ ]  
   
 Example three
 -------------
 
-> @emit [printf($-10|"'s$-60|"s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
+::
+
+    @emit [printf($-10|"'s$-60|"s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
     this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!
 
-  a b c d e this is a test a groovy test blah blah blah blah blah blah  
-  f g h i j blah blah blah blah blah blah blah blah blah blah blah blah 
-  k l m n o blah blah blah blah blah blah blah blah blah blah blah blah 
-  p q r s t blah blah blah blah blah blah blah blah blah blah blah blah 
-  u v w x y blah blah blah blah blah blah blah blah blah blah blah blah 
-  z         blah blah blah blah blah blah blah blah blah blah blah blah 
-  blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
-  blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
-  blah blah blah blah blah blah blah                                    END!
+    a b c d e this is a test a groovy test blah blah blah blah blah blah  
+    f g h i j blah blah blah blah blah blah blah blah blah blah blah blah 
+    k l m n o blah blah blah blah blah blah blah blah blah blah blah blah 
+    p q r s t blah blah blah blah blah blah blah blah blah blah blah blah 
+    u v w x y blah blah blah blah blah blah blah blah blah blah blah blah 
+    z         blah blah blah blah blah blah blah blah blah blah blah blah 
+    blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+    blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+    blah blah blah blah blah blah blah                                    END!
 
 ======================
 Format for image files
@@ -653,7 +687,9 @@ STRING     Ugly     ATTRIBUTECONTENTS: Contents of the next attribute
 STRING     $6$xy$xy PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
 <          <        This is the marker to specify the end of the attribute contents.  This is always the last line
 
-NOTE:  Any Data type starting with '*' is ignored when @snapshot/loading.
+.. note::
+
+    Any Data type starting with '*' is ignored when @snapshot/loading.
 
 The structure above with the examples would look like this in the file:
 
@@ -690,7 +726,7 @@ $6$xy$xy
 <
 
 HELP key indexes for the values:
---------------------------------
+================================
 
 FLAGS: The following flags are to be used.  They are BITWISE masks that you 
        need to add together for the values tghat you apply
@@ -829,6 +865,7 @@ FLAGS: The following flags are to be used.  They are BITWISE masks that you
 /* 0x80000000 free */
 
 ------------------------------------------------------------------------------
+
 TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like
          the flags above.  They are added together for each word type
 
@@ -903,6 +940,7 @@ TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like
 #define TOG_NOGLOBPARENT        0x80000000      /* Target does not inherit global attributes */
 
 ------------------------------------------------------------------------------
+
 POWERS:  Powers are handled a bit differently.  They're used as BITWISE shift
          markers that you would have to compute the shift then add it after
          the fact.
@@ -962,6 +1000,7 @@ POWERS:  Powers are handled a bit differently.  They're used as BITWISE shift
 /* 30 free */
 
 ------------------------------------------------------------------------------
+
 DEPOWERS:  like @powers they are handled with a BITWISE offshift that you
            will have to calculate then add
 
@@ -1019,7 +1058,10 @@ DEPOWERS:  like @powers they are handled with a BITWISE offshift that you
 /* 30 free */
 
 ------------------------------------------------------------------------------
-ZONES:  Zones are special.  If there are no zones, the value will be '-1'.
+
+.. note::
+
+    ZONES:  Zones are special.  If there are no zones, the value will be '-1'.
 
 So entering zones if there are no zones:
 -1

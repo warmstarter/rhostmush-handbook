@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Comparison of modern MUSH servers</title>
+    <title>3. Comparison of modern MUSH servers</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/nonav.css" type="text/css" /> 
   </head><body>
@@ -15,16 +15,16 @@
           <div class="body" role="main">
             
   <div class="section" id="comparison-of-modern-mush-servers">
-<h1>Comparison of modern MUSH servers</h1>
+<h1><span class="section-number">3. </span>Comparison of modern MUSH servers</h1>
 <div class="section" id="differences-to-expect-to-the-end-user-between-pennmush-mux-and-rhostmush">
-<h2>Differences to expect to the end user between PennMUSH, MUX, and RhostMUSH</h2>
+<h2><span class="section-number">3.1. </span>Differences to expect to the end user between PennMUSH, MUX, and RhostMUSH</h2>
 <p>The largest end user experience will mostly resolve around some look and feel.
 The general look and feel of how to set attributes, work with commands and
 functions, and getting around a grid will be identical between the mush flavors.
 &#64;nuke and &#64;destroy will work somewhat differently between the three codebases
 and some effort should be looked at on how different it behaves.</p>
 <div class="section" id="pennmush">
-<h3>PennMUSH</h3>
+<h3><span class="section-number">3.1.1. </span>PennMUSH</h3>
 <ul class="simple">
 <li><p>The way the comsystem (hardcode) works with the latest PennMUSH has some
 compatibility now with MUX’s comsystem.</p></li>
@@ -38,7 +38,7 @@ compatibility now with MUX’s comsystem.</p></li>
 </ul>
 </div>
 <div class="section" id="mux">
-<h3>MUX</h3>
+<h3><span class="section-number">3.1.2. </span>MUX</h3>
 <ul class="simple">
 <li><p>The comsystem (hardcode) is unique to MUX/TinyMUSH3 and is not compatible with Penn.</p></li>
 <li><p>The &#64;mail system is unique to MUX/TinyMUSH3 and is not compatible with Penn.</p></li>
@@ -50,7 +50,7 @@ compatibility now with MUX’s comsystem.</p></li>
 </ul>
 </div>
 <div class="section" id="rhostmush">
-<h3>RhostMUSH</h3>
+<h3><span class="section-number">3.1.3. </span>RhostMUSH</h3>
 <ul class="simple">
 <li><p>The comsystem (softcode) is in the Mushcode directory and is compatible to both PennMUSH and MUX.</p></li>
 <li><p>The mail system is unique to Rhost but there exists mail wrappers that allow MUX and Penn compatibility.</p></li>
@@ -63,7 +63,7 @@ compatibility now with MUX’s comsystem.</p></li>
 </div>
 </div>
 <div class="section" id="comparison-of-features-between-rhostmush-pennmush-and-mux2">
-<h2>Comparison of features between RhostMUSH, PennMUSH, and MUX2</h2>
+<h2><span class="section-number">3.2. </span>Comparison of features between RhostMUSH, PennMUSH, and MUX2</h2>
 <p>There are differences in the initial set up from Rhost to PennMUSH (and MUX2).</p>
 <p>A lot of people use PennMUSH and if you are one of them, this may help you.
 Some people use MUX2, hopefully this will help you as well.</p>
@@ -76,7 +76,7 @@ information on when it’ll be released.</p>
 </dl>
 </div>
 <div class="section" id="organization-of-help-and-wizhelp">
-<h2>Organization of help and wizhelp</h2>
+<h2><span class="section-number">3.3. </span>Organization of help and wizhelp</h2>
 <p>First, on PennMUSH, help is separated into ‘help’ and ‘wizhelp’.  This can
 be confusing. If you want to ‘combine’ them, you may use the following snippit:</p>
 <p>$ahelp*:&#64;pemit %#=[switch([!!words(%0)][match(/search,%0*)],0?,[setq(0,help)][setq(1,0)],11,[setq(0,rest(%0))][setq(1,2)],setq(0,trim(%0)))][setq(a,textfile(help,%q0,%q1))][setq(b,textfile(wizhelp,%q0,%q1))][setq(2,)][ifelse(!strmatch(%qa,No entry*),%qa[setq(2,%r)])][ifelse(!strmatch(%qb,No entry*),%q2%qb[setq(2,%r)])][ifelse(!$r(2),No topics found for ‘%q0’.)]</p>
@@ -84,7 +84,7 @@ be confusing. If you want to ‘combine’ them, you may use the following snipp
 should make life easier for you.  This also honors the /search switch.</p>
 </div>
 <div class="section" id="mail-comsystem-guests-master-rooms-etc">
-<h2>Mail, comsystem, guests, master rooms, etc..</h2>
+<h2><span class="section-number">3.4. </span>Mail, comsystem, guests, master rooms, etc..</h2>
 <p>The comsystem is softcode and included in the readme directory. (comsys).
 Just load it in.  The mail wrappers can be gotten from:</p>
 <blockquote>
@@ -94,14 +94,14 @@ Just load it in.  The mail wrappers can be gotten from:</p>
 guests, master rooms, and so forth.</p>
 </div>
 <div class="section" id="comparisons-of-features">
-<h2>Comparisons of features</h2>
+<h2><span class="section-number">3.5. </span>Comparisons of features</h2>
 <p>Comparisons were done based on the following:
 RhostMUSH 3.9.5p2
 MUX 2.12.0.2
 PennMUSH 1.8.6p0</p>
 </div>
 <div class="section" id="commands-with-equivalents">
-<h2>&#64;commands with equivalents</h2>
+<h2><span class="section-number">3.6. </span>&#64;commands with equivalents</h2>
 <p>The following are used for compatibility to keep in mind:</p>
 <dl class="simple">
 <dt>&#64;commands Pennmush—————-RhostMUSH———————-MUX2</dt><dd><p>&#64;&#64;                      &#64;&#64;                             &#64;&#64;
@@ -321,7 +321,7 @@ WITH                    N/A                            N/A</p>
 </dl>
 </div>
 <div class="section" id="commands-unique-to-rhostmush">
-<h2>&#64;commands unique to RhostMUSH</h2>
+<h2><span class="section-number">3.7. </span>&#64;commands unique to RhostMUSH</h2>
 <p>Commands that exist in Rhost that have no PennMUSH equivelant:
 &#64;aflags                      &#64;apply_marked                 &#64;areg
 &#64;blacklist                   &#64;cluster                      &#64;conncheck
@@ -345,7 +345,7 @@ smell                        taste                         touch
 wielded                      worn                          +players</p>
 </div>
 <div class="section" id="lock-equivalents">
-<h2>&#64;lock equivalents</h2>
+<h2><span class="section-number">3.8. </span>&#64;lock equivalents</h2>
 <dl class="simple">
 <dt>&#64;locks PennMUSH—————RhostMUSH———————————–MUX2</dt><dd><p>BASIC                  BASIC/DEFAULT                               DEFAULT
 ENTER                  ENTER                                       ENTER
@@ -387,13 +387,13 @@ N/A                    DARK                                        VISIBLE</p>
 </dl>
 </div>
 <div class="section" id="locks-that-only-exist-in-rhostmush">
-<h2>&#64;locks that only exist in RhostMUSH</h2>
+<h2><span class="section-number">3.9. </span>&#64;locks that only exist in RhostMUSH</h2>
 <p>&#64;locks that exist in Rhost that have no PennMUSH equivelant:
 TELOUTLOCK                   TWINKLOCK                     DARKLOCK
 ALTNAME                      CHOWN</p>
 </div>
 <div class="section" id="flag-and-toggle-equivalents">
-<h2>Flag and toggle equivalents</h2>
+<h2><span class="section-number">3.10. </span>Flag and toggle equivalents</h2>
 <dl class="simple">
 <dt>FLAGS Pennmush—————-RhostMUSH——————————MUX2</dt><dd><p>ABODE                   ABODE                                  ABODE
 N/A                     N/A                                    ASCII
@@ -471,9 +471,9 @@ XTERM256                XTERMCOLOR                             COLOR256</p>
 </dl>
 </div>
 <div class="section" id="flags-and-toggles-that-only-exist-in-rhostmush">
-<h2>Flags and toggles that only exist in RhostMUSH</h2>
+<h2><span class="section-number">3.11. </span>Flags and toggles that only exist in RhostMUSH</h2>
 <div class="section" id="flags">
-<h3>Flags</h3>
+<h3><span class="section-number">3.11.1. </span>Flags</h3>
 <p>ALTQUOTA                     ANONYMOUS                     ARCHITECT
 AUDITORIUM                   BLIND                         BOUNCE
 CLOAK                        COUNCILOR                     FUBAR
@@ -491,7 +491,7 @@ STOP                         WANDERER                      ZONECONTENTS
 ZONEPARENT</p>
 </div>
 <div class="section" id="toggles">
-<h3>Toggles</h3>
+<h3><span class="section-number">3.11.2. </span>Toggles</h3>
 <p>ATRUSE                       CHKREALITY                    CPUTIME
 EXFULLWIZATTR                FORCEHALTED                   HIDEIDLE
 IGNOREZONE                   IMMPROG                       LOGROOM
@@ -510,7 +510,7 @@ ZONECMDCHK                   ZONE_AUTOADD                  ZONE_AUTOADDALL</p>
 </div>
 </div>
 <div class="section" id="power-equivalents">
-<h2>&#64;power equivalents</h2>
+<h2><span class="section-number">3.12. </span>&#64;power equivalents</h2>
 <dl class="simple">
 <dt>&#64;powers Pennmush—————-RhostMUSH——————————————MUX2</dt><dd><p>Announce                FREE_WALL                                          Announce
 Boot                    BOOT                                               Boot
@@ -560,7 +560,7 @@ Unkillable              NOKILL                                             Unkil
 </dd>
 </dl>
 <div class="section" id="power-unique-to-rhostmush">
-<h3>&#64;power unique to RhostMUSH</h3>
+<h3><span class="section-number">3.12.1. </span>&#64;power unique to RhostMUSH</h3>
 <p>Depowers are unique in Rhost and PennMUSH has no equivelant.</p>
 <p>Powers that exist in RhostMUSH that have no match in PennMUSH:
 CHOWN_ME                     WIZ_WHO                       NOFORCE
@@ -572,7 +572,7 @@ HIDEBIT</p>
 </div>
 </div>
 <div class="section" id="functions-equivalents">
-<h2>Functions equivalents</h2>
+<h2><span class="section-number">3.13. </span>Functions equivalents</h2>
 <dl class="simple">
 <dt>Functions Pennmush—————-RhostMUSH——————–MUX</dt><dd><p>&#64;&#64;                      &#64;&#64;                           &#64;&#64;
 ABS                     ABS                          ABS/IABS
@@ -1133,7 +1133,7 @@ ZWHO                    ZWHO                         ZWHO</p>
 </dd>
 </dl>
 <div class="section" id="functions-that-only-exist-in-rhostmush">
-<h3>Functions that only exist in RhostMUSH</h3>
+<h3><span class="section-number">3.13.1. </span>Functions that only exist in RhostMUSH</h3>
 <p>Functions that exist in Rhost that do not have a match in PennMUSH:
 AIINDEX                      AINDEX                        ANDCHR
 ARRAY                        ATTRCNT                       BETWEEN
@@ -1193,27 +1193,27 @@ ZFUNLDEFAULT                 ZFUNLOCAL</p>
 </div>
 </div>
 <div class="section" id="what-may-need-to-be-modified-to-get-softcode-from-pennmush-tinymush2-tinymush3-or-mux2-to-work-on-rhost">
-<h2>What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</h2>
+<h2><span class="section-number">3.14. </span>What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost</h2>
 <p>RhostMUSH, for the most part, will work out of the box with most softcode gotten
 from other codebases.  There are, however, exceptions.  Most of these exceptions
 will be minor code differences between how ANSI is processed, the variences
 of arguments or switches to commands or functions, or required flags.</p>
 <p>Most changes will revolve around the ones listed in this document.</p>
 <div class="section" id="problematic-functions-between-codebases">
-<h3>Problematic functions between codebases</h3>
+<h3><span class="section-number">3.14.1. </span>Problematic functions between codebases</h3>
 <p>lsearch()/search(), align()/printf(), *attrval()</p>
 </div>
 <div class="section" id="problematic-features-between-codebases">
-<h3>Problematic features between codebases</h3>
+<h3><span class="section-number">3.14.2. </span>Problematic features between codebases</h3>
 <p>named variables for regexp patterns in $commands are not supported.
 &#64;aliases on non-players are not supported.  Frankly I find them redundant.</p>
 </div>
 <div class="section" id="problematic-commands">
-<h3>Problematic commands</h3>
+<h3><span class="section-number">3.14.3. </span>Problematic commands</h3>
 <p>&#64;mapsql, hardcoded required comssytem commands (some are redundant)</p>
 </div>
 <div class="section" id="sidefx-flag">
-<h3>SIDEFX flag</h3>
+<h3><span class="section-number">3.14.4. </span>SIDEFX flag</h3>
 <blockquote>
 <div><p>Anything that uses sideeffects –DIRECTLY– requires this flag.
 Sideeffects are like set(), pemit(), and so forth.  list(), while a
@@ -1221,7 +1221,7 @@ side-effect, does not require this flag as it is considered passive and safe.</p
 </div></blockquote>
 </div>
 <div class="section" id="variable-exits">
-<h3>Variable exits</h3>
+<h3><span class="section-number">3.14.5. </span>Variable exits</h3>
 <blockquote>
 <div><p>Rhost handles them slightly different.  You do not link
 exits to #-4.  That’s an invalid destination.  I always found it, frankly,
@@ -1231,7 +1231,7 @@ At that point you use &#64;exitto like you would any other codebase.</p>
 </div></blockquote>
 </div>
 <div class="section" id="zones">
-<h3>Zones</h3>
+<h3><span class="section-number">3.14.6. </span>Zones</h3>
 <blockquote>
 <div><p>Zones actually can work near exactly as you would expect them to
 work on TinyMUSH, MUX, or Penn.  Either at once or at different times.
@@ -1243,7 +1243,7 @@ ported to Rhost.</p>
 </div></blockquote>
 </div>
 <div class="section" id="powers">
-<h3>&#64;powers</h3>
+<h3><span class="section-number">3.14.7. </span>&#64;powers</h3>
 <blockquote>
 <div><p>Powers work a bit differently in Rhost and they’re named
 differently, which should not be that big a surprise as they’re different
@@ -1254,7 +1254,7 @@ that is the anti-thesis of &#64;power</p>
 </div></blockquote>
 </div>
 <div class="section" id="attribute-length">
-<h3>Attribute length</h3>
+<h3><span class="section-number">3.14.8. </span>Attribute length</h3>
 <blockquote>
 <div><p>While we have 64 character attribute capabilities like
 most other codebases, PennMUSH allows 1024 attribute length attributes.
@@ -1263,7 +1263,7 @@ that long you need to make sure they are cut down to the proper length.</p>
 </div></blockquote>
 </div>
 <div class="section" id="attribute-contents">
-<h3>Attribute contents</h3>
+<h3><span class="section-number">3.14.9. </span>Attribute contents</h3>
 <blockquote>
 <div><p>You’ll be happy to know that Rhost allows upwards
 to 64,000 bytes of data to be assigned an LBUF.  We strongly recommand
@@ -1272,11 +1272,11 @@ with that value.</p>
 </div></blockquote>
 </div>
 <div class="section" id="color">
-<h3>256 color</h3>
+<h3><span class="section-number">3.14.10. </span>256 color</h3>
 <p>Yup!  We got it.</p>
 </div>
 <div class="section" id="unicode-utf8">
-<h3>Unicode/UTF8</h3>
+<h3><span class="section-number">3.14.11. </span>Unicode/UTF8</h3>
 <blockquote>
 <div><p>Yup!  We got this too.  Not quiet yet in the main branch,
 but download Kage’s branch, you won’t be dissapointed.  We will have
@@ -1284,7 +1284,7 @@ UTF8 in Rhost 4.0 when released.</p>
 </div></blockquote>
 </div>
 <div class="section" id="attributes-per-object">
-<h3>Attributes per object</h3>
+<h3><span class="section-number">3.14.12. </span>Attributes per object</h3>
 <blockquote>
 <div><p>This is configurable with the VLIMIT &#64;admin
 command, however, it is absolutely hard-limited at 10000 maximum.
@@ -1294,7 +1294,7 @@ should never be a reason to exceed that.  If you need more, use
 </div></blockquote>
 </div>
 <div class="section" id="destroying">
-<h3>Destroying</h3>
+<h3><span class="section-number">3.14.13. </span>Destroying</h3>
 <blockquote>
 <div><p>&#64;nuke only works on players.  &#64;destroy works on non-players.
 Never the two will meet.  We also have a built in recycle bin meaning
@@ -1306,11 +1306,11 @@ days.  Groovy, eh?</p>
 </div></blockquote>
 </div>
 <div class="section" id="object-id-s">
-<h3>object id’s</h3>
+<h3><span class="section-number">3.14.14. </span>object id’s</h3>
 <p>Yup, we got them.  Even in searches, and, well, everything.</p>
 </div>
 <div class="section" id="lsearch-and-search">
-<h3>lsearch() and search()</h3>
+<h3><span class="section-number">3.14.15. </span>lsearch() and search()</h3>
 <blockquote>
 <div><p>lsearch() in Penn is not syntacically similar to non-Penn search().
 This will have to be altered.  In addition, search() in non-penn games
@@ -1318,14 +1318,14 @@ have to have special consideration for escaping out the evaled args.</p>
 </div></blockquote>
 </div>
 <div class="section" id="locks-can-be-different">
-<h3>&#64;locks can be different</h3>
+<h3><span class="section-number">3.14.16. </span>&#64;locks can be different</h3>
 <blockquote>
 <div><p>We have many more lock capabilities and options
 so this should be a non-issue.</p>
 </div></blockquote>
 </div>
 <div class="section" id="customer-user-locks">
-<h3>Customer user-locks</h3>
+<h3><span class="section-number">3.14.17. </span>Customer user-locks</h3>
 <blockquote>
 <div><p>We do not have custom user-locks like Penn.  We do, however, have the way
 to set encapsulated lock data into an attribute to fetch and compare
@@ -1334,7 +1334,7 @@ See: lockencode(), lockdecode(), and lockcheck()</p>
 </div></blockquote>
 </div>
 <div class="section" id="attribute-trees">
-<h3>Attribute trees</h3>
+<h3><span class="section-number">3.14.18. </span>Attribute trees</h3>
 <blockquote>
 <div><p>Unlike Penn, we don’t really have attribute trees.  We do support the
 basic capabilities of it for compatibility if you load in softcode that
@@ -1343,7 +1343,7 @@ Please see ‘help attribute tree’ for more information.</p>
 </div></blockquote>
 </div>
 <div class="section" id="prefix-permission-locking">
-<h3>Prefix permission locking</h3>
+<h3><span class="section-number">3.14.19. </span>Prefix permission locking</h3>
 <blockquote>
 <div><p>We do allow prefix permission locking, and some very advanced abilities
 of it.  Please see wizhelp on &#64;aflags for more information.
@@ -1354,33 +1354,33 @@ of it.  Please see wizhelp on &#64;aflags for more information.
 </div></blockquote>
 </div>
 <div class="section" id="align-and-printf">
-<h3>align() and printf()</h3>
+<h3><span class="section-number">3.14.20. </span>align() and printf()</h3>
 <blockquote>
 <div><p>We do not have align().  Most of the code that uses align() will have to
 be converted to our printf() (which is compatible but has different syntax)</p>
 </div></blockquote>
 </div>
 <div class="section" id="mysql">
-<h3>MySQL</h3>
+<h3><span class="section-number">3.14.21. </span>MySQL</h3>
 <blockquote>
 <div><p>While we support MySQL, we do not have an async method like MUX2.  This
 is just not possible, sorry.</p>
 </div></blockquote>
 </div>
 <div class="section" id="mail-system">
-<h3>Mail System</h3>
+<h3><span class="section-number">3.14.22. </span>Mail System</h3>
 <blockquote>
 <div><p>There are mail wrappers to mimic MUX/TM3 and Penn mail systems.</p>
 </div></blockquote>
 </div>
 <div class="section" id="comsystem">
-<h3>Comsystem</h3>
+<h3><span class="section-number">3.14.23. </span>Comsystem</h3>
 <blockquote>
 <div><p>The softcoded comsystem mimics MUX/TM3 and Penn’s comsystem.</p>
 </div></blockquote>
 </div>
 <div class="section" id="various-functions">
-<h3>Various Functions</h3>
+<h3><span class="section-number">3.14.24. </span>Various Functions</h3>
 <blockquote>
 <div><p>There is a ‘softcode.minmax’ in the Mushcode directory that loads up a slew
 of &#64;function wrappers that will emulate various functions that MUX, Penn, or
@@ -1391,7 +1391,7 @@ the native functions, but the &#64;function wrappers are there for lazyness :)</
 </div></blockquote>
 </div>
 <div class="section" id="empty-attributes">
-<h3>Empty Attributes</h3>
+<h3><span class="section-number">3.14.25. </span>Empty Attributes</h3>
 <blockquote>
 <div><p>Penn allows you to have empty attributes.  Non-penn codebases do not.
 Thus, hasattrval and the like are not needed and should likely just point
@@ -1399,7 +1399,7 @@ to hasattr instead.</p>
 </div></blockquote>
 </div>
 <div class="section" id="player-stats">
-<h3>Player Stats</h3>
+<h3><span class="section-number">3.14.26. </span>Player Stats</h3>
 <blockquote>
 <div><p>MUX has some built in ways for player stats.  We do as well but they’re
 either done via functions or attribute contents.  Code that requires this
@@ -1407,14 +1407,14 @@ will have to be recoded.</p>
 </div></blockquote>
 </div>
 <div class="section" id="percent-substitutions">
-<h3>Percent Substitutions</h3>
+<h3><span class="section-number">3.14.27. </span>Percent Substitutions</h3>
 <blockquote>
 <div><p>Some percent substitutions may differ between codebases.  Luckily, Rhost
 allows the ability to remap or creaete new ones if this is a problem.</p>
 </div></blockquote>
 </div>
 <div class="section" id="switches">
-<h3>Switches</h3>
+<h3><span class="section-number">3.14.28. </span>Switches</h3>
 <blockquote>
 <div><p>Some switches may not exist in Rhost that do in other codebases, in such
 a case, Rhost does allow the ability to &#64;hook a command to define your own
@@ -1422,7 +1422,7 @@ softcoded switch to a hardcoded command and work around the limitation.</p>
 </div></blockquote>
 </div>
 <div class="section" id="id1">
-<h3>Flags</h3>
+<h3><span class="section-number">3.14.29. </span>Flags</h3>
 <blockquote>
 <div><p>Some flags may be missing.  If it’s a dummy flag, feel free to use the
 marker flags MARKER0 to MARKER9 to set them.  If it’s an existing flag
@@ -1431,16 +1431,16 @@ it to the other name if you want.</p>
 </div></blockquote>
 </div>
 <div class="section" id="aliases">
-<h3>Aliases</h3>
+<h3><span class="section-number">3.14.30. </span>Aliases</h3>
 <blockquote>
 <div><p>Multiple aliases are supported via &#64;protect.</p>
 </div></blockquote>
 </div>
 </div>
 <div class="section" id="things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it">
-<h2>Things other mushes can do that Rhost can not and how to emulate it</h2>
+<h2><span class="section-number">3.15. </span>Things other mushes can do that Rhost can not and how to emulate it</h2>
 <div class="section" id="id2">
-<h3>PennMUSH</h3>
+<h3><span class="section-number">3.15.1. </span>PennMUSH</h3>
 <ul>
 <li><p>Attribute trees.  These are emulated as a base set and can be duplicated enough to at least port code.</p></li>
 <li><p>lsearch() will have to be recoded to search()</p></li>
@@ -1460,7 +1460,7 @@ it to the other name if you want.</p>
 </ul>
 </div>
 <div class="section" id="id3">
-<h3>MUX</h3>
+<h3><span class="section-number">3.15.2. </span>MUX</h3>
 <ul class="simple">
 <li><p>Mux has an async mysql database engine.  This is not possible with Rhost.  You’ll have to use the sync method instead.</p></li>
 <li><p>UTF8 is supported but internally passed differently.</p></li>

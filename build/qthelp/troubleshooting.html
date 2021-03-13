@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Troubleshooting</title>
+    <title>10. Troubleshooting</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/nonav.css" type="text/css" /> 
   </head><body>
@@ -15,9 +15,9 @@
           <div class="body" role="main">
             
   <div class="section" id="troubleshooting">
-<h1>Troubleshooting</h1>
+<h1><span class="section-number">10. </span>Troubleshooting</h1>
 <div class="section" id="stack-limit-and-debugging">
-<h2>Stack limit and debugging</h2>
+<h2><span class="section-number">10.1. </span>Stack limit and debugging</h2>
 <p>Rhost uses a stack limit in the debug monitor.</p>
 <p>This stack limit is set to a reasonable amount of 1000.
 This is defined in the debug.h file in the hdrs directory.</p>
@@ -43,25 +43,25 @@ then a fresh ./Startmush.</p>
 <p>You can issue &#64;list stack to see the current stack ceiling ingame.</p>
 </div>
 <div class="section" id="how-to-reset-the-password-for-1">
-<h2>How to reset the password for #1</h2>
+<h2><span class="section-number">10.2. </span>How to reset the password for #1</h2>
 <p>You can only use one of these options at a time. Make sure to change back your nerhost.conf after making the changes.</p>
 <div class="section" id="method-1">
-<h3>Method 1</h3>
+<h3><span class="section-number">10.2.1. </span>Method 1</h3>
 <p>in your netrhost.conf file add:
 newpass_god 777</p>
 <p>This will reset #1’s password to the default ‘Nyctasia’.</p>
 </div>
 <div class="section" id="method-2">
-<h3>Method 2</h3>
+<h3><span class="section-number">10.2.2. </span>Method 2</h3>
 <p>in your netrhost.conf file add:
 newpass_god 1</p>
 <p>This will allow IMMORTAL players to &#64;newpassword #1 upon reboot.</p>
 </div>
 </div>
 <div class="section" id="troubleshooting-difficulties-compiling-rhostmush">
-<h2>Troubleshooting difficulties compiling RhostMUSH</h2>
+<h2><span class="section-number">10.3. </span>Troubleshooting difficulties compiling RhostMUSH</h2>
 <div class="section" id="changes-to-conf-for-high-bit-cpus">
-<h3>Changes to conf for high-bit CPUs</h3>
+<h3><span class="section-number">10.3.1. </span>Changes to conf for high-bit CPUs</h3>
 <p>RhostMUSH automatically detects 64-bit platforms, and should compile
 cleanly on these.</p>
 <p>In case you are trying to compile Rhost on some other crazy-wide CPUs
@@ -81,7 +81,7 @@ typedef long            pmath2;
 reason to believe the same will not hold true for IA64.</p>
 </div>
 <div class="section" id="changes-to-autconf-for-certain-systems">
-<h3>Changes to autconf for certain systems</h3>
+<h3><span class="section-number">10.3.2. </span>Changes to autconf for certain systems</h3>
 <p>You should not have to worry about this, but incase something really
 weird occurs, you may need to look into these changes…</p>
 <p>The autoconfig.h file needs to have modifications to it by hand.</p>
@@ -107,7 +107,7 @@ the mush will not compile.</p>
 </div>
 </div>
 <div class="section" id="dealing-with-db-corruption">
-<h2>Dealing with DB Corruption</h2>
+<h2><span class="section-number">10.4. </span>Dealing with DB Corruption</h2>
 <p>Ok.  Your database won’t come up.</p>
 <p>If you are reading this, then likely the scenerio is one of the following:</p>
 <ol class="arabic simple">
@@ -119,9 +119,9 @@ all the names and attributes of things seem to be gone!</p></li>
 </ol>
 <p>First thing is first.  Don’t have a panic attack.</p>
 <div class="section" id="if-the-mush-says-it-can-t-find-your-database-files">
-<h3>If the mush says it can’t find your database files</h3>
+<h3><span class="section-number">10.4.1. </span>If the mush says it can’t find your database files</h3>
 <div class="section" id="check-the-names-of-the-database-files-in-your-data-directory">
-<h4>Check the names of the database files in your ‘data’ directory</h4>
+<h4><span class="section-number">10.4.1.1. </span>Check the names of the database files in your ‘data’ directory</h4>
 <p>They should be named something like:
 netrhost.db
 netrhost.db.old
@@ -131,7 +131,7 @@ netrhost.gdbm.pag</p>
 <p>And you may see a netrhost.db.flat</p>
 </div>
 <div class="section" id="check-your-netrhost-conf-file">
-<h4>Check your netrhost.conf file</h4>
+<h4><span class="section-number">10.4.1.2. </span>Check your netrhost.conf file</h4>
 <p>If you never touched the *database or muddb_name params, you should be good.</p>
 <p>Verify your *database params (and muddb_name) are still set to ‘netrhost’ as
 part of the name.  Ergo, the default values and you didn’t change them.
@@ -140,7 +140,7 @@ These should match up with the filenames in your data directory.</p>
 So you shouldn’t have to change these names, ever. :)</p>
 </div>
 <div class="section" id="check-your-mush-config-file">
-<h4>Check your mush.config file</h4>
+<h4><span class="section-number">10.4.1.3. </span>Check your mush.config file</h4>
 <p>If you never modified this file, you should be good.</p>
 <p>The gamename should be ‘netrhost’ for this file.  This does NOT control
 the name of your game.  This controls the name of all the files
@@ -149,10 +149,10 @@ file, all your database files, and so forth.  Please don’t change this :)</p>
 </div>
 </div>
 <div class="section" id="if-the-mush-says-it-can-t-read-or-load-your-database-files">
-<h3>If the mush says it can’t read or load your database files</h3>
+<h3><span class="section-number">10.4.2. </span>If the mush says it can’t read or load your database files</h3>
 <p>Double check everything for the previous issue. Make sure everything is named properly.</p>
 <div class="section" id="verify-you-have-enough-disk-space-quota">
-<h4>Verify you have enough disk space. (quota)</h4>
+<h4><span class="section-number">10.4.2.1. </span>Verify you have enough disk space. (quota)</h4>
 <p>Some account have a limited quota to run in.  If you reached or exceed
 your disk quota, you can have a corrupted database.  So always keep
 your eye on the size.  quota -s to see a human readable format to see
@@ -164,7 +164,7 @@ mush again.  Try to keep your quota at least 200 megs free to allow
 plenty of wonderful growth space for the mush.</p>
 </div>
 <div class="section" id="verify-you-have-enough-disk-space-system">
-<h4>Verify you have enough disk space.  (system)</h4>
+<h4><span class="section-number">10.4.2.2. </span>Verify you have enough disk space.  (system)</h4>
 <p>The second way you can run out of disk space is by the filesystem itself.
 do a df -h . in your ‘game’ directory’.  That is df -h &lt;period&gt;.
 This will return how much disk space is being used and how much remains.
@@ -178,7 +178,7 @@ No disk to run the game.</p>
 </div>
 </div>
 <div class="section" id="if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone">
-<h3>If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!</h3>
+<h3><span class="section-number">10.4.3. </span>If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!</h3>
 <p>Ok, at this point you likely had your mush up when the physical server
 went down hard.  Weither through an emergency shutdown or a physical
 power outage, your db likely was brought down hard during a write,
@@ -186,7 +186,7 @@ so it left it in a corrupt state.  These things happen.  This is
 why we always strongly request you make daily flatfile dumps.</p>
 <p>So, to recover your database.</p>
 <div class="section" id="the-bad-news">
-<h4>The bad news</h4>
+<h4><span class="section-number">10.4.3.1. </span>The bad news</h4>
 <p>If you have no flatfile backup or never bothered with backups?
 I’m sorry, at this point you’re SOA.  There’s no easy way to
 recover a corrupted binary database.  If you absolutely need
@@ -195,7 +195,7 @@ out of it, but otherwise it’s a lost cause.  You’ll have to start
 over from scratch.  I’m sorry.</p>
 </div>
 <div class="section" id="the-good-news">
-<h4>The good news</h4>
+<h4><span class="section-number">10.4.3.2. </span>The good news</h4>
 <p>If you made backups, or if the server had a normal shutdown, you
 likely have a flatfile backup.  You will see a netrhost.db.flat
 in either the ‘data’ directory or ‘prevflat’ directory.  That
@@ -210,15 +210,15 @@ that the very last line shows something like ** END OF DUMP **.
 That shows you had a successful backup.</p>
 </div>
 <div class="section" id="now-to-restore-your-database">
-<h4>Now, to restore your database?</h4>
+<h4><span class="section-number">10.4.3.3. </span>Now, to restore your database?</h4>
 <p>Please refer to the file ‘README.DBLOADING’.</p>
 </div>
 </div>
 <div class="section" id="bringing-up-your-mail-database">
-<h3>Bringing up your mail database</h3>
+<h3><span class="section-number">10.4.4. </span>Bringing up your mail database</h3>
 <p>Your mail db may or may not come up at this point.</p>
 <div class="section" id="if-after-restoring-main-database-your-mail-database-works">
-<h4>If after restoring main database your mail database works</h4>
+<h4><span class="section-number">10.4.4.1. </span>If after restoring main database your mail database works</h4>
 <dl class="simple">
 <dt>If your mail database came up and does not show</dt><dd><p>‘Mail: mail is currently off’ then you should be good to go.</p>
 </dd>
@@ -231,7 +231,7 @@ fix up any errors that may exist.  wmail/fix fixes the mail, wmail/lfix
 loads in the fixes.</p>
 </div>
 <div class="section" id="if-after-restoring-main-database-your-mail-database-does-not-work">
-<h4>If after restoring main database your mail database does not work</h4>
+<h4><span class="section-number">10.4.4.2. </span>If after restoring main database your mail database does not work</h4>
 <blockquote>
 <div><dl class="simple">
 <dt>If your mail database is not up and shows</dt><dd><p>‘Mail: mail is currently off’ then your mail db is currupt.</p>
@@ -243,7 +243,7 @@ loads in the fixes.</p>
 </div>
 </div>
 <div class="section" id="dealing-with-a-corrupt-mail-database">
-<h2>Dealing with a corrupt mail database</h2>
+<h2><span class="section-number">10.5. </span>Dealing with a corrupt mail database</h2>
 <p>It says when you try to access mail that mail is disabled and/or off.</p>
 <p>Nothing you do can bring it on line.  Well, this is bad, but not horrible.</p>
 <p>The mail db is totally separate from the main game database.  This means
@@ -252,7 +252,7 @@ that it in no way damaged or corrupted your main mush database.</p>
 is it hopes that you read ahead of time about how to backup your mush,
 which would include the mail database.</p>
 <div class="section" id="backing-up-your-mail-database">
-<h3>Backing up your mail database</h3>
+<h3><span class="section-number">10.5.1. </span>Backing up your mail database</h3>
 <p>wmail/unload – this flatfile dumps your mail db.  You should run it daily.</p>
 <p>To recover your mail, it assumes you have a mail flatfile in either the
 ~/Server/game/data directory or the ~/Server/game/prevflat directory.  The
@@ -260,7 +260,7 @@ latter directory is used in junction to the backup_flat.sh and will always
 house the latest flatfile if not one recently dumped in your data directory.</p>
 </div>
 <div class="section" id="automatically-recovering-your-mail-database">
-<h3>Automatically recovering your mail database</h3>
+<h3><span class="section-number">10.5.2. </span>Automatically recovering your mail database</h3>
 <p>wmail/load</p>
 <p>Yup, that’s it.  It’ll take care of everything else.  Isn’t automation grand?</p>
 <p>Doesn’t even require a reboot :)</p>
@@ -274,7 +274,7 @@ to sync against nuked players and other changes to the game since the flatfile.<
 <p>If this is a new db that you have, you can skip the fixing.</p>
 </div>
 <div class="section" id="manually-recovering-your-mail-database">
-<h3>Manually recovering your mail database</h3>
+<h3><span class="section-number">10.5.3. </span>Manually recovering your mail database</h3>
 <p>To recover your mail manually, you need to delete your mail databases,
 reboot, then reload your mail flatfiles.  If you have no mail flatfiles,
 well, you’re going to have to start over with the mail database.  Sorry.</p>

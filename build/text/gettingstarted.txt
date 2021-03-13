@@ -1,25 +1,25 @@
-Gettin Started
-**************
+6. Gettin Started
+*****************
 
 
-What to ype to get the basics running if you did not choose a pre-existing flatfile
-===================================================================================
+6.1. What to ype to get the basics running if you did not choose a pre-existing flatfile
+========================================================================================
 
 If you decided to get a bare-bone configuration, you will find your
 mush has just two things.  The #1 (God) player and the starting room
 #0.  That’s it.
 
 
-Login to #1 from the connect screen
------------------------------------
+6.1.1. Login to #1 from the connect screen
+------------------------------------------
 
 Nyctasia is the default password:
 
    co #1 Nyctasia
 
 
-Change #1’s password to something you’ll remember but is hard to guess
-----------------------------------------------------------------------
+6.1.2. Change #1’s password to something you’ll remember but is hard to guess
+-----------------------------------------------------------------------------
 
 Note: yourpasswordgoeshere can be any password you choose.  Choose
 well:
@@ -27,8 +27,8 @@ well:
    @password Nyctasia=YOURPASSWORDGOESHERE
 
 
-Master Room
------------
+6.1.3. Master Room
+------------------
 
 At this point you should create your master room:
 
@@ -42,8 +42,8 @@ Note:
   use.
 
 
-Flag and protect Master Room
-----------------------------
+6.1.4. Flag and protect Master Room
+-----------------------------------
 
 It will return a dbref#, it should be #2 if you’ve not created
 anything else:
@@ -51,8 +51,8 @@ anything else:
    @set #2=safe ind halt float
 
 
-Player Holder Characters
-------------------------
+6.1.5. Player Holder Characters
+-------------------------------
 
 Feel free to change the password to what you want
 
@@ -63,48 +63,48 @@ Note:
   will give you a complete breakdown of what each bit can do.
 
 
-Immortal Holder
-~~~~~~~~~~~~~~~
+6.1.5.1. Immortal Holder
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    @pcreate ImmHolder=abc123
    @set *Immholder=no_connect !wanderer immortal
    @badsite *immholder=*
 
 
-Royalty/Wizard Holder
-~~~~~~~~~~~~~~~~~~~~~
+6.1.5.2. Royalty/Wizard Holder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    @pcreate WizHolder=abc123
    @set *wizholder=no_connect !wanderer royalty
    @badsite *wizholder=*
 
 
-Councilor/Admin Holder
-~~~~~~~~~~~~~~~~~~~~~~
+6.1.5.3. Councilor/Admin Holder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    @pcreate AdminHolder=abc123
    @set *adminholder=no_connect !wanderer councilor
    @badsite *adminholder=*
 
 
-Architect/Staff Holder
-~~~~~~~~~~~~~~~~~~~~~~
+6.1.5.4. Architect/Staff Holder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    @pcreate StaffHolder=abc123
    @set *staffholder=no_connect !wanderer architect
    @badsite *staffholder=*
 
 
-Guildmaster/Lead Holder
-~~~~~~~~~~~~~~~~~~~~~~~
+6.1.5.5. Guildmaster/Lead Holder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    @pcreate GuildHolder=abc123
    @set *guildholder=no_connect !wanderer guildmaster
    @badsite *guildholder=*
 
 
-Chown #0 (The starting room) and #2 (The Master room) to immholder
-------------------------------------------------------------------
+6.1.6. Chown #0 (The starting room) and #2 (The Master room) to immholder
+-------------------------------------------------------------------------
 
 Note:
 
@@ -115,8 +115,8 @@ Note:
    @chown/preserve #2=*immholder
 
 
-Create yourself your own immortal player then log off #1 and into this immortal player
---------------------------------------------------------------------------------------
+6.1.7. Create yourself your own immortal player then log off #1 and into this immortal player
+---------------------------------------------------------------------------------------------
 
 Note:
 
@@ -126,8 +126,8 @@ Note:
    @set *playername=!wanderer immortal
 
 
-Log out of #1 and log into your immortal player
------------------------------------------------
+6.1.8. Log out of #1 and log into your immortal player
+------------------------------------------------------
 
 Note:
 
@@ -137,8 +137,8 @@ Note:
    co PLAYERNAME PLAYERPASSWORD
 
 
-Create your guest characters
-----------------------------
+6.1.9. Create your guest characters
+-----------------------------------
 
 Note:
 
@@ -147,8 +147,8 @@ Note:
    @dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@adisconnect *Guest##=home;@lock *Guest##=*Guest##;@desc *Guest##=A Stranger in a strange land.}
 
 
-Dig a closet to store important objects but non-master room
------------------------------------------------------------
+6.1.10. Dig a closet to store important objects but non-master room
+-------------------------------------------------------------------
 
 Note:
 
@@ -157,8 +157,8 @@ Note:
    @dig Closet
 
 
-Set the flags on the closet and ownership of it
------------------------------------------------
+6.1.11. Set the flags on the closet and ownership of it
+-------------------------------------------------------
 
 Note:
 
@@ -168,14 +168,14 @@ Note:
    @chown/pres #123=*immholder
 
 
-Create an Admin object for future ease of customization
--------------------------------------------------------
+6.1.12. Create an Admin object for future ease of customization
+---------------------------------------------------------------
 
    @create AdminObject
 
 
-Set the flags on the admin object and ownership and location
-------------------------------------------------------------
+6.1.13. Set the flags on the admin object and ownership and location
+--------------------------------------------------------------------
 
 Note:
 
@@ -191,8 +191,8 @@ Note:
    @tel adminobject=#234
 
 
-Add admin object to configuration
----------------------------------
+6.1.14. Add admin object to configuration
+-----------------------------------------
 
 Modify the netrhost.conf file with the following line at the bottom
 after the line ‘# define local alises here’ where you replace 123 with
@@ -201,14 +201,14 @@ the dbref# of the admin object that you made:
    admin_object 123
 
 
-Reboot your mush to load up the change for the admin object
------------------------------------------------------------
+6.1.15. Reboot your mush to load up the change for the admin object
+-------------------------------------------------------------------
 
    @reboot
 
 
-Do @admin/list to see if it shows the admin object
---------------------------------------------------
+6.1.16. Do @admin/list to see if it shows the admin object
+----------------------------------------------------------
 
 Note:
 
@@ -217,15 +217,15 @@ Note:
    @admin/list
 
 
-Load in all the various softcode that you want
-----------------------------------------------
+6.1.17. Load in all the various softcode that you want
+------------------------------------------------------
 
 This is client dependant based on whatever method it uses to load
 softcode.
 
 
-Myrddin MushCron
-~~~~~~~~~~~~~~~~
+6.1.17.1. Myrddin MushCron
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Load in the Myrddin Mush Cron. It’s a very handy piece of software and
 strongly suggested to do so.  You can find this in the ‘Mushcode’
@@ -243,8 +243,8 @@ Note:
    @tel Myrddin=#234 (where #234 is the dbref# of your code closet)
 
 
-AshCom
-~~~~~~
+6.1.17.2. AshCom
+~~~~~~~~~~~~~~~~
 
 Load in default softcoded comsystem.  This is PennMUSH and MUX/TM3
 compatible. Filename:
@@ -258,8 +258,8 @@ Chown the Comsystem and everything inside it to immholder:
    @tel Chansys=globalroom()
 
 
-Mail Wrappers
-~~~~~~~~~~~~~
+6.1.17.3. Mail Wrappers
+~~~~~~~~~~~~~~~~~~~~~~~
 
 Load in mail wrappers if you want MUX/TM3 and/or Penn mail wrapping.
 Filename (MUX/TM3):
@@ -277,8 +277,8 @@ Chown to immholder:
    @tel/list mux penn=globalroom()
 
 
-Myrddin BBS
-~~~~~~~~~~~
+6.1.17.4. Myrddin BBS
+~~~~~~~~~~~~~~~~~~~~~
 
 Load in Myrddin’s BBS Filename:
 
@@ -291,8 +291,8 @@ Chown to immholder and the contents of it as well:
    @tel myrddin=globalroom()
 
 
-Other Mushcode
-~~~~~~~~~~~~~~
+6.1.17.5. Other Mushcode
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 There’s other code in the Mushcode directory that you are welcome to
 install.  You would follow similar procedures for loading it in,
@@ -303,8 +303,8 @@ should be portable to RhostMUSH with little to no changes depending on
 the complexity of the code in question.
 
 
-Minimal DB instructions
-=======================
+6.2. Minimal DB instructions
+============================
 
 The ‘retired’ directory has older image files if you’re interested
 
@@ -324,8 +324,8 @@ mkindx the files (substitute FILENAME with the filename):
    ../mkindx FILENAME.txt FILENAME.indx
 
 
-Startup Steps
--------------
+6.2.1. Startup Steps
+--------------------
 
 1. Using the Startmush utility for the first time, select the load db
    method
@@ -347,12 +347,12 @@ Startup Steps
 4. Startmush as expected
 
 
-Ambrosia’s Minimal Rhost DB
-===========================
+6.3. Ambrosia’s Minimal Rhost DB
+================================
 
 
-Version: 1.0.5          2020-01-31
-----------------------------------
+6.3.1. Version: 1.0.5          2020-01-31
+-----------------------------------------
 
 Version history:
    1.0.0
@@ -417,8 +417,8 @@ Version history:
         Bobbi@COH
 
 
-Introduction
-------------
+6.3.2. Introduction
+-------------------
 
 Note:
 
@@ -430,12 +430,12 @@ This minimal Rhost DB was made with a secure setup, and as a good base
 to start a new game off in mind.
 
 
-Features
---------
+6.3.3. Features
+---------------
 
 
-Configuration
-~~~~~~~~~~~~~
+6.3.3.1. Configuration
+~~~~~~~~~~~~~~~~~~~~~~
 
 * Limbo, Master Room and Auxiliary room.
 
@@ -516,8 +516,8 @@ Configuration
 * Architects can set _Attributes
 
 
-Softcode
-~~~~~~~~
+6.3.3.2. Softcode
+~~~~~~~~~~~~~~~~~
 
 * Set-up compatibility SoftFunctions and @hook object.
 
@@ -543,8 +543,8 @@ Softcode
 * @dynhelp access lowered to architect to call above helpfiles.
 
 
-Functions
-~~~~~~~~~
+6.3.3.3. Functions
+~~~~~~~~~~~~~~~~~~
 
 * isstaff() - Softcoded function that returns ‘1’ if its argument
   matches a #dbref in the ‘isstaff’ attribute on the Misc Data object.
@@ -588,8 +588,8 @@ Note:
   empty if you want to set one of the latter parameters.
 
 
-Bitlevels
----------
+6.3.4. Bitlevels
+----------------
 
 The whole DB is highly geared for a low-bitlevel setup. I am a strong
 believer in least-privileges-needed to do the job. Bittypes and powers
@@ -601,15 +601,15 @@ Note:
   Here is my suggested list of powers and bittypes for staffers.
 
 
-Storytellers
-~~~~~~~~~~~~
+6.3.4.1. Storytellers
+~~~~~~~~~~~~~~~~~~~~~
 
 @powered TEL_ANYWHERE, JOIN_PLAYER and GRAB_PLAYER on Guildmaster
 level.
 
 
-Builder-BCs
-~~~~~~~~~~~
+6.3.4.2. Builder-BCs
+~~~~~~~~~~~~~~~~~~~~
 
 Mortal, with @quota and money for their job. There should be one
 shared BC for each area of the game, like BC-Houston. Special Rooms,
@@ -625,8 +625,8 @@ Both the -powered and -admin BCs can have random passwords and be @set
 NO_CONNECT.
 
 
-Building Head
-~~~~~~~~~~~~~
+6.3.4.3. Building Head
+~~~~~~~~~~~~~~~~~~~~~~
 
 @set Guildmaster, powered TEL_ANYWHERE, TEL_ANYTHING and optionally
 CHOWN_OTHER on Guildmaster level. Mind that the latter technically
@@ -635,8 +635,8 @@ master and auxiliary rooms. However, it allows the Building Head to
 @chown items between BCs- and to the BC-<location>-powered.
 
 
-Enforcers
-~~~~~~~~~
+6.3.4.4. Enforcers
+~~~~~~~~~~~~~~~~~~
 
 As Storyteller above, plus being @powered Security at Guildmaster
 level, in order to handle problem players.
@@ -644,14 +644,14 @@ level, in order to handle problem players.
 Optionally always given to Storytellers.
 
 
-Coders
-~~~~~~
+6.3.4.5. Coders
+~~~~~~~~~~~~~~~
 
 @set Architect
 
 
-Head Coder
-~~~~~~~~~~
+6.3.4.6. Head Coder
+~~~~~~~~~~~~~~~~~~~
 
 Always trust your head coder. @set Architect for the everyday bit.
 Give access to a maintenance Councilor bit for special code projects.
@@ -665,8 +665,8 @@ maintenance Royalty bit in order to properly code banning/blacklisting
 chown finished code to bc-admin-royalty.
 
 
-MU* Head(s)
-~~~~~~~~~~~
+6.3.4.7. MU* Head(s)
+~~~~~~~~~~~~~~~~~~~~
 
 You’re the boss(es). But please use an Architect bit for your everyday
 things. Keep Immortal to yourself. Keep #1 to yourself. And seriously
@@ -674,8 +674,8 @@ avoid using either of them except for creating a Royalty bit or doing
 intricate DB maintenance.
 
 
-Site Admins
-~~~~~~~~~~~
+6.3.4.8. Site Admins
+~~~~~~~~~~~~~~~~~~~~
 
 They already have more powers than any in-game bit can ever have ;)
 
@@ -686,8 +686,8 @@ down the game for maintenance, up to being the only person with actual
 access to #1.
 
 
-Globals
-~~~~~~~
+6.3.4.9. Globals
+~~~~~~~~~~~~~~~~
 
 Handle necessary functionality for adminning through the admin-only
 globals and softcode.
@@ -729,8 +729,8 @@ instead, keeping them at Architect-power but making them unmodifyable
 by Architects.
 
 
-Quota
------
+6.3.5. Quota
+------------
 
 I highly recommend the use of the alternative @quota system. BC-Admin-
 Mortal and BC-Admin-Guildmaster both have this @quota system set up on
@@ -738,8 +738,8 @@ themselves. Both of them have a high amount of money for everyday
 operations. You should not give them free quota or money.
 
 
-Functions
----------
+6.3.6. Functions
+----------------
 
 I also recommend to setup most global functions with /Privileged even
 if they are mortal-powered, to make them work even when players are
@@ -748,8 +748,8 @@ set NO_CODE and WANDERER by default.
 Enjoy!
 
 
-Compiling
----------
+6.3.7. Compiling
+----------------
 
 P.S. the ‘bin/asksource.save0’ file has been supplied for loading in
 the ‘make config’ or ‘make confsource’ step of Rhost installation. It

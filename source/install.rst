@@ -1,6 +1,20 @@
-============
-Requirements
-============
+.. _installing-rhostmush:
+
+======================
+ Installing RhostMUSH
+======================
+
+.. contents:: Table of Contents
+   :local:
+   :backlinks: top
+
+.. _rhostmush-requirements:
+
+------------------------
+ RhostMUSH Requirements
+------------------------
+
+.. _system-requirements:
 
 System Requirements
 ===================
@@ -48,10 +62,15 @@ the built-in gcc package (up to and including 2.8.x).  Because of this some
 config options may not work fully or cause the server to crash.  This is only
 a known issue with config options and only on this platform.
 
-Requirements
-============
+.. _software-requirements:
 
-RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.  In order to build this software, you will need the bare minimum of the ability to run 'make' commands.  Package requirements are as follows:
+Software Requirements
+=====================
+
+RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.
+In order to build this software, you will need the bare minimum of the ability to run 'make' commands.
+
+Package requirements are as follows:
 
 * glibc and gcc/clang (compiling the code)
 * git (to clone the source and maintain patches)
@@ -61,7 +80,11 @@ RhostMUSH is a Linux or Unix based server software that runs as a daemon on the 
 Optional Packages
 -----------------
 
-RhostMUSH also offers optional linking and library attachments.  For some of these libraries it will attempt to do auto-detection, but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.  Optional packages are as follows:
+RhostMUSH also offers optional linking and library attachments.
+For some of these libraries it will attempt to do auto-detection,
+but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.
+
+Optional packages are as follows:
 
 * openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
 * mysql client & mysql_config (required for mysql capabilities)
@@ -69,7 +92,32 @@ RhostMUSH also offers optional linking and library attachments.  For some of the
 * ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
 * libpcre (if you wish to use system pcre libraries instead of the built-in ones)
 
+.. _hosting-requirements:
+
 Hosting Requirements
 ====================
 
-You will need a stable host and access to open a single port number of your choice on the firewall.  Most games choose a number between 1025 and 9999, by convention.  Please make sure your debug_id matches the port number + 5.  So if your port is 1234, your debug_id will be 12345.  The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
+You will need a stable host and access to open a single port number of your choice on the firewall.
+Most games choose a number between 1025 and 9999, by convention.
+Please make sure your debug_id matches the port number + 5.
+So if your port is 1234, your debug_id will be 12345.
+The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
+
+.. _obtaining-rhostmush:
+
+---------------------
+ Obtaining RhostMUSH
+---------------------
+
+It is assumed that you have gotten to this point with the following command::
+
+   git clone https://github.com/RhostMUSH/trunk Rhost
+
+If you did NOT get it this way, your file permissions may not be properly set up.  Please type::
+
+    chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
+
+This makes sure all the build scripts are properly made executable.
+This will result in 'permission denied' or similar results when running a script.
+
+
