@@ -18,7 +18,7 @@
 <h1><span class="section-number">16. </span>RhostMUSH Internal Help Files</h1>
 <HTML><HEAD><TITLE>RhostMUSH Help File [HTML Version]</TITLE></HEAD><BODY>
 <H1>RhostMUSH Help File [HTML Version]</H1>
-Generated: Sat Mar 13 17:30:28 2021
+Generated: Mon Mar 15 08:33:40 2021
 <HR><A NAME="topic index"><H2>Topic Index</H2></A><PRE>
 <A HREF="#QUOTE">&quot;</A>                         <A HREF="##">#</A>                         <A HREF="##lambda">#LAMBDA</A>
 <A HREF="#DOLARMINUScommands">$-commands</A>                <A HREF="#%">%</A>                         <A HREF="#%BANG">%!</A>
@@ -6167,6 +6167,7 @@ Generated: Sat Mar 13 17:30:28 2021
   * float_switches config param to allow @switch/switch() float compares [ASH]
   * Port binder will now attempt 5 times for port connects to allow slow
     kernels and/or cached I/O and/or swapped games time to rebind [ASH]
+  * @exec callback for execscript() to push to the queue any command [ASH]
   
   Changes
   ------------
@@ -6180,6 +6181,7 @@ Generated: Sat Mar 13 17:30:28 2021
   * Forced carrage returns no longer on connect screen.  
     Code all softcoded connect screens accordingly!!!! [ASH]
   * Add MUSH_VERSION environment variable to execscript [ASH]
+  * Totems of player and owner of player passed to execscript [ASH]
   
   Bug Fixes
   ------------
@@ -45466,7 +45468,7 @@ Generated: Sat Mar 13 17:30:28 2021
   BNT    Brunei Darussalam Time              Asia             UTC + 8 hours
   BOT    Bolivia Time                        South America    UTC - 4 hours
   BRST   Brasilia Summer Time                South America    UTC - 2 hours
-  BRT    Braslia time                       South America    UTC - 3 hours
+  BRT    Brasilia time                       South America    UTC - 3 hours
   BST    Bangladesh Standard Time            Asia             UTC + 6 hours
   BST1   British Summer Time                 Europe           UTC + 1 hour
   BTT    Bhutan Time                         Asia             UTC + 6 hours
@@ -45571,17 +45573,17 @@ Generated: Sat Mar 13 17:30:28 2021
   GST    Gulf Standard Time                  Asia             UTC + 4 hours
   GYT    Guyana Time                         South America    UTC - 4 hours
   H      Hotel Time Zone                     Military         UTC + 8 hours
-  HAA    Heure Avance de l'Atlantique       North America    UTC - 3 hours
-  HAA1   Heure Avance de l'Atlantique       Atlantic         UTC - 3 hours
-  HAC    Heure Avance du Centre             North America    UTC - 5 hours
+  HAA    Heure Avancee de l'Atlantique       North America    UTC - 3 hours
+  HAA1   Heure Avancee de l'Atlantique       Atlantic         UTC - 3 hours
+  HAC    Heure Avancee du Centre             North America    UTC - 5 hours
   HADT   Hawaii-Aleutian Daylight Time       North America    UTC - 9 hours
-  HAE    Heure Avance de l'Est              North America    UTC - 4 hours
-  HAE1   Heure Avance de l'Est              Caribbean        UTC - 4 hours
-  HAP    Heure Avance du Pacifique          North America    UTC - 7 hours
-  HAR    Heure Avance des Rocheuses         North America    UTC - 6 hours
+  HAE    Heure Avancee de l'Est              North America    UTC - 4 hours
+  HAE1   Heure Avancee de l'Est              Caribbean        UTC - 4 hours
+  HAP    Heure Avancee du Pacifique          North America    UTC - 7 hours
+  HAR    Heure Avancee des Rocheuses         North America    UTC - 6 hours
   HAST   Hawaii-Aleutian Standard Time       North America    UTC - 10 hours
-  HAT    Heure Avance de Terre-Neuve        North America    UTC - 2:30 hours
-  HAY    Heure Avance du Yukon              North America    UTC - 8 hours
+  HAT    Heure Avancee de Terre-Neuve        North America    UTC - 2:30 hours
+  HAY    Heure Avancee du Yukon              North America    UTC - 8 hours
   
 { timezone list6 to continue }    5 of 12
 
@@ -45707,7 +45709,7 @@ Generated: Sat Mar 13 17:30:28 2021
   PONT   Pohnpei Standard Time               Pacific          UTC + 11 hours
   PST    Pacific Standard Time               North America    UTC - 8 hours
   PST1   Pitcairn Standard Time              Pacific          UTC - 8 hours
-  PT     Tiempo del Pacfico                 North America    UTC - 8 hours
+  PT     Tiempo del Pacifico                 North America    UTC - 8 hours
   PWT    Palau Time                          Pacific          UTC + 9 hours
   PYST   Paraguay Summer Time                South America    UTC - 3 hours
   PYT    Paraguay Time                       South America    UTC - 4 hours

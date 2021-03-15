@@ -76,7 +76,7 @@ Hosting Requirements
 * Most games choose a number between 1025 and 9999, by convention.
 * Please make sure your debug_id matches the port number + 5.
 
-  - So if your port is 1234, your debug_id will be 12345.
+  - So if your port is 4201, your debug_id will be 42015.
   - The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
 
 .. _obtaining-rhostmush:
@@ -102,9 +102,11 @@ It is possible, but not recommended to download RhostMUSH via a web browser::
 
   This documentation generally assumes that you obtained the RhostMUSH source
   code by cloning it's git repository or at the very least downloading an
-  archive of the source code from the GitHub website. It also assumes that
-  all commands on the server are being run from within the main directory of
-  that cloned git repo or equivalent.
+  archive of the source code from the GitHub website.
+ 
+  It also assumes that the base directory from which all commands are run
+  and all files are looked for is that git repo's ``Server/`` directory,
+  unless specifically noted otherwise.
 
 -------------------------
 Options for making a MUSH
@@ -210,7 +212,19 @@ all. If you don't start with mastering the basics, you'll never end up knowing
 what are the most RhostMUSH options. I can't tell you what they are, it's truly
 something you have to discover on your own. Remember, you want to build your
 dream MUSH, not mine.
-  
+
+.. note::
+
+  Unless you are intending to start with a brand new database, you must be
+  aware of it's needs and expectations for the settings of ``confsource`` and
+  ``netrhost.conf`` Starter databases tend to distribute with them config
+  files of at least the options they expect set or not set during the process
+  of configuring and compiling the server.
+
+  Knowing which database you intend to use is the first choice made of these
+  initial major configuration options, but that last that is made part of the
+  MUSH.
+
 .. _compiling-rhostmush:
 
 -------------------
@@ -236,7 +250,6 @@ and then re-run the automated permission script::
   chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
   ./dirsetup.sh
 
-
 Compile the source code
 =======================
 
@@ -247,8 +260,26 @@ options you want to have available to your installation::
 
   make confsource
 
-The confsource Menu
--------------------
+.. note::
+
+  It is recommended that if you are just starting out with RhostMUSH that you
+  compile for the first time using the default compile options which have
+  specifically been tuned to be closest to what the average person would need
+  or expect. Changing these options before you have a grood grasp of what
+  they mean and how RhostMUSH works on a deeper level can potentially cause
+  security issues, reduce compatibility with softcode rom other types of MUSH
+  servers, as well as waste system resources.
+
+Saving your compile options
+---------------------------
+
+``make confsource`` will remember the most recent options you used to compile
+the source code for the next time you use ``make confsource`` It might still
+be a good idea to more permanently save the options you used to attempt to
+compile. However, you still might want to have these options saved more
+permanently, just in case. At the ``make confsource`` menu there is an
+option to save your current settings to a file. If you choose to do this,
+you will find the the save file in the ``bin/`` directory.
 
 Troubleshooting compile errors
 ------------------------------
@@ -269,15 +300,13 @@ to run in any situation::
 Recompiling the source code
 ---------------------------
 
-If you plan to use ``make confsource`` to recompile your source, you should first
-issue a 'make clean' before re-issuing a ``make confsource``.  ``make confsource``
-remembers the last options you used.
+If you plan to use ``make confsource`` to recompile your source, you should
+first issue a ``make clean`` before re-issuing a ``make confsource``
 
-A failure to issue ``make clean`` prior to re-compiling with ``make confsource`` or
-re-compiling with ``make source`` can potentially leave stale object files which
-may cause unforseen issues when running code, including but not limited to 
-random crashes.  Generally whenever recompiling it's good to always make clean
-first.
+A failure to issue ``make clean`` prior to re-compiling with ``make confsource``
+can potentially leave stale object files which may cause unforseen issues when
+running code, including but not limited to random crashes.  Generally whenever
+recompiling it's good to always make clean first.
 
 .. note::
 
@@ -285,73 +314,43 @@ first.
   you want it to be.  Please remember to ``make clean`` before ``make source```
   whenever you alter the code or import new source code.
 
-
-Note about Compiling
-====================
-
-If you are importing a MUX2 flatfile, make ABSOLUTELY SURE that you select
-mux passwords as a compatibility option, or you will NOT BE ABLE to log in
-to players as the password will not be recognizeable.
-
-Make sure to keep QDBM selected as it's a much more stable database engine
-that does not have attribute limit restrictions like GDBM does.
-
-If you are converting from a Penn, TinyMUSH, or MUX database, make sure you
-drill down into the LBUF section and select, at minimum, 8K lbufs.  You likely
-want that anyway as it gives you far more room for attribute content storage.
-
-You can go up to 32K safely.  While 64k is safe and does work, there are issues
-with networking and older routers that use a 32K TCP buffer size that can
-at times cut off the data as overflow resulting in output to the end-point
-players not receiving their data.  So it is strongly recommended not to go
-above 32K in lbuffer size.
-
-Go ahead and select 64 char attributes.  It allows you to have 64 characters
-for attribute names.  It's handy to have.
-
-If you wish at this point to set up mysql and/or sqlite, you  may do so.
-Yes, you can use them in parallel without any issue.
-
-.. _ansible-install:
-
-------------------------------------
-Installing using an ansible playbook
-------------------------------------
-
-To begin, you will run the following command in a directory that will house your game::
-
-   git clone https://github.com/RhostMUSH/trunk Rhost
-
-You may also just run the yml file and ansible (ansible-playbook) to install your RhostMUSH engine::
-
-   wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml
-   ansible-playbook rhostinstall.yml
-
-This downloads the latest stable version of the code, bringing with it all patches and scripts, documentation and support tools that you will need.
-
-------------------------------
-Starting a Newly Compiled MUSH
-------------------------------
-
+--------------------
 Configuring the game
-====================
+--------------------
 
-When setting up a mush for the first time, make sure you
-have all the files configured correctly.  This is with using
-the following file for configuration::
+Persistent configurable game options
+====================================
 
-   - netrhost.conf
+Upon compiling a RhostMUSH server, if it doesn't already exist, a
+``netrhost.conf`` is copied into the ``game/`` directory for your game. It
+includes useful defaults for most compile-time options that will work well for
+most games, particularly ones using both the default ``confsource`` options and
+related database.
+
+This configuration is derived from ``defaults/game/netrhost.conf.default``
+
+While this ``netrhost.conf`` is very well documented and quite easy to change
+in some places, but there are also some rather technical options that you it's
+important to know the full implications of this.
+
+.. note::
+
+  The default ``netrhost.conf`` starts the game running on the port *4021* of
+  the server. If this is your time creating a MUSH, it is recommended that this
+  setting is the only one that you potentially change, and only if there is a
+  good reason to. Ports below 1024 are priviliged ports and can not be used for
+  this purpose.
 
 Starting the game
 =================
 
 Once done, you start up the system with the following command::
 
-   - [sh/csh] ./Startmush
+   ./Startmush
   
-  It will prompt you to start a new db if it doesn't find one.
+It will prompt you to start a new db if it doesn't find one.
   
-  You may also do the commands individually::
+You may also do the commands individually::
 
      [csh] netrhost -s netrhost.conf >& netrhost.log &
      [sh]  netrhost -s netrhost.conf > netrhost.log 2>&1 &
@@ -446,28 +445,6 @@ To load a prebuilt flatfile
 
         ./Startmush
 
----------------------------------------------------------------
-Almost Backwards Instructions for Compiling and Starting a MUSH
----------------------------------------------------------------
-
-1.  You can modify your netrhost.conf file settings in your game directory.
-    Using an editor modify the 'port' and 'debug_id' respectively in your netrhost.conf as stated.
-    The 'port' will be the port the mush listens on, the debug_id is for the debug-stack and is
-    your port with a '5' at the end.  So if your port is 4444, the debug_id is 44445
-2.  Start your mush::
-
-    --> ./Startmush
-
-You can use the 'vi' editor or 'nano' if you like a more menu driven DOS like experience.
-You can of course use any other editor you're familar with.
-
-For a more thorough understanding of how to set things up, keep reading!
-
-If you have syntax issues running 'make config', 'make confsource' 
-or 'make bugreport' please run the script: ./bin/script_setup.sh
-
-Now... things you may need to do on errors.
-
 -----------------------------------------------
 Basic Instructions for starting a new RhostMUSH
 -----------------------------------------------
@@ -506,31 +483,6 @@ Copy an existing flatfile and corresponding netrhost.conf file Default provied e
    cd game
    ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
 
-Configure the netrhost.conf file for your MUSH
-++++++++++++++++++++++++++++++++++++++++++++++
-
-        Go into the game directory and modify the netrhost.conf file
-	The next step is configuring the mush to your config standards.
-	There is a file in the game subdirectory called 'netrhost.conf'.
-	You hand-edit this file and just follow what it says each 
-	one does.  It's very well documented and should give you
-	great details on what to edit.  For most things, you can
-	feel comfortable to stick with the defaults unless you wish
-	to change them.  The port and debug_id need to be changed.
-
------------------------------------------------
-Start a  MUSH and logging on for the first time
------------------------------------------------
-
-From the game diretory issue::
-
-    ./Startmush 
-
-To login::
-
-    co Wizard Nyctasia
-
-
 Option: Things to do once you have connected if you did NOT use a provided database
 ===================================================================================
 
@@ -550,7 +502,7 @@ Option: Things to do once you have connected if you did NOT use a provided datab
 
 .. todo::
 
-   Figure out what they were trying to say by having those two sentences right after each other.
+   Figure out what they were trying to say by having those above two sentences right after each other.
 
 --------------------------------------
 Customtize the textfiles for your game
@@ -617,17 +569,3 @@ Option 3: Creating a new game with the generic default database
   When ./Startmush prompts you to load a flatfile, say 'yes' and hit <RETURN>
   to have it search for flatfiles, then select netrhost.db.flat from under
   the minimal-DBs/minimal_db directory.
-
-------------------
-Starting your MUSH
-------------------
-
-Once you have used one of these three methods to obtaina database, you can start your mush up.
-At this point type from the game directory::
-
-    ./Startmush
-
-.. todo::
-
-  Considering this was already mentioned earlier in other parts, yeah this all needs to be a bit more coherent and focused.
-  Check to see if there are other install bits not yet even integrated here.

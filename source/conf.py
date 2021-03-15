@@ -45,11 +45,14 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme_path = ['_themes']
-html_theme = 'karma_sphinx_theme'
+html_theme = 'groundwork'
 html_theme_options = {
-    'navigation_depth': 2,
-    'includehidden': True,
-    'titles_only': False
+    "sidebar_width": '240px',
+    "stickysidebar": True,
+    "stickysidebarscrollable": True,
+    "contribute": False,
+    "github_fork": "useblocks/groundwork",
+    "github_user": "useblocks",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

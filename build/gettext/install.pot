@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RhostMUSH Handbook 0.01a\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-13 21:33-0500\n"
+"POT-Creation-Date: 2021-03-15 09:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,7 +145,7 @@ msgid "Please make sure your debug_id matches the port number + 5."
 msgstr ""
 
 #: ../../source/install.rst:79
-msgid "So if your port is 1234, your debug_id will be 12345."
+msgid "So if your port is 4201, your debug_id will be 42015."
 msgstr ""
 
 #: ../../source/install.rst:80
@@ -169,612 +169,550 @@ msgid "It is possible, but not recommended to download RhostMUSH via a web brows
 msgstr ""
 
 #: ../../source/install.rst:103
-msgid "This documentation generally assumes that you obtained the RhostMUSH source code by cloning it's git repository or at the very least downloading an archive of the source code from the GitHub website. It also assumes that all commands on the server are being run from within the main directory of that cloned git repo or equivalent."
+msgid "This documentation generally assumes that you obtained the RhostMUSH source code by cloning it's git repository or at the very least downloading an archive of the source code from the GitHub website."
 msgstr ""
 
-#: ../../source/install.rst:111
-msgid "Options for making a MUSH"
+#: ../../source/install.rst:107
+msgid "It also assumes that the base directory from which all commands are run and all files are looked for is that git repo's ``Server/`` directory, unless specifically noted otherwise."
 msgstr ""
 
 #: ../../source/install.rst:113
+msgid "Options for making a MUSH"
+msgstr ""
+
+#: ../../source/install.rst:115
 msgid "There is a *lot* of options once your start making your MUSH, but there are also a few big choices right as you get started making a MUSH. No matter which choices you ultimately make, there are certain things you will need to know how to do. This chapter is going to walk you through making the simplest possible version of RhostMUSH. It's going to show you the things you would have to do no matter which choices you were making."
 msgstr ""
 
-#: ../../source/install.rst:120
+#: ../../source/install.rst:122
 msgid "In the process of making that simplest possible RhostMUSH you'll also learn what the basics of those choices are and when and how you would make them. Later chapters will get much more into all of those choices, but they will also assume you know everything in this chapter already, or at least have it as a handy point of reference."
 msgstr ""
 
-#: ../../source/install.rst:126
+#: ../../source/install.rst:128
 msgid "While there are lots of little options, there are three big areas where you make those choices."
 msgstr ""
 
-#: ../../source/install.rst:130
+#: ../../source/install.rst:132
 msgid "Compile time options"
 msgstr ""
 
-#: ../../source/install.rst:132
+#: ../../source/install.rst:134
 msgid "One of the first steps of making a MUSH or really any computer program is to compile the source code. This takes what's basically text files full of code and turns them into a program you can run. Within that source code are a number of options to choose from, but any time you want to change one of them, you have to recompile the source code and then restart the MUSH."
 msgstr ""
 
-#: ../../source/install.rst:138
+#: ../../source/install.rst:140
 msgid "These choices are typically made through the ``confsource`` menu which you'll be seeing momentarily. There are some pretty big choices here from whether or not you want hardcoded +help and comsys, deciding between a more secure server and certtain powerful but potentially dangerous MUSHcode options, and then whether or not you want to be able to connect to a variety of external programs like databases, webservers, and even other programming languages."
 msgstr ""
 
-#: ../../source/install.rst:146
+#: ../../source/install.rst:148
 msgid "Configuration file options"
 msgstr ""
 
-#: ../../source/install.rst:148
+#: ../../source/install.rst:150
 msgid "While there are some options in RhostMUSH that can only be changed through recompiling the source code, there are way more options that can be changed without having to recompile. These choices are mostly made through the ``netrhost.conf`` file. Whenever a MUSH starts up or gets rebooted, it's going to look to what's in that file. A few of those choices relate to further configuring the choices you made with ``confsource``"
 msgstr ""
 
-#: ../../source/install.rst:155
+#: ../../source/install.rst:157
 msgid "The ``netrhost.conf`` file has some aesthetic options like what if anything it says when the database is being saved or whether or not your MUSH will allow ANSI color, both in general, but also in things like people's names. It has a lot of very esoteric options for tuning the performance and safety of your MUSH. It also is where you define things that connect to your database like your master room and guests. It let's you determine which powers your staff does or does not have, and it's also where you have an option to change the password for #1 should you forget it. There are ways to change some of these options from within the MUSH and even have those changes become new defaults that survive a reboot. One thing you set there that you definitely can't change from within the MUSH, is which port it runs on."
 msgstr ""
 
-#: ../../source/install.rst:168
+#: ../../source/install.rst:170
 msgid "Starting database options"
 msgstr ""
 
-#: ../../source/install.rst:170
+#: ../../source/install.rst:172
 msgid "This last big choice is one that you probably are well aware of at least some of the things it allows for, mostly because the database is basically where everyone on a MUSH lives. Most of the choices you ever make about your MUSH will happen in the database and it's something that's basically always going to be changing in more ways than any one person could follow. No matter how vast the database of a MUSH gets, they all started somewhere, and that's the last big choice you have to make."
 msgstr ""
 
-#: ../../source/install.rst:178
+#: ../../source/install.rst:180
 msgid "Depending on how you look at it, there's somewhere between thousands of choices and two choices for a starting database. What I mean is that you have the choice of starting with a brand new database to populate, only a room (#0) and you (#1), even the Master Room is something you'd have to add to it. The other option is to import an existing database, though to choose that option you'd also have to have access to an existing database."
 msgstr ""
 
-#: ../../source/install.rst:185
+#: ../../source/install.rst:187
 msgid "Besides the brand new database that can be made on-demand, RhostMUSH comes with two databases that you can use to get your start. One is called 'Minimal' and the other is called 'Ambrosia' after the lead RhostMUSH developed that made it. Despite the name, they're both fairly minimal, there's no grid in either, but what you get is a lot of pre-installed softcode and security, as well as a ``netrhost.conf``` file that has been tuned to work well with it. Even if you don't use those databases you can take ideas for the ``netrhost.conf`` file for tuning your MUSH or even use some RhostMUSH commands to import that softcode into your database."
 msgstr ""
 
-#: ../../source/install.rst:196
+#: ../../source/install.rst:198
 msgid "The Choices We Make"
 msgstr ""
 
-#: ../../source/install.rst:198
+#: ../../source/install.rst:200
 msgid "Well, not you're aware of those three big choices, what they are, and where you'll run across them. Later in this Handbook we'll be going through those choices in-depth. In this chapter, what we'll be doing is using the default options for for ``confsource`` and ``netrhost.conf`` and a brand new database. Those options and that blank slate are necessary so that you have in front of you a working MUSH with only #0 and #1 and get shown the way of building it into whatever is your dream MUSH, and I know we all have one."
 msgstr ""
 
-#: ../../source/install.rst:206
+#: ../../source/install.rst:208
 msgid "There will be a chance to make all those other choices later, in fact that will be happening very soon. There's a lot of very interesting choices that you can make with RhostMUSH, too many for anyone to ever be able to use them all. If you don't start with mastering the basics, you'll never end up knowing what are the most RhostMUSH options. I can't tell you what they are, it's truly something you have to discover on your own. Remember, you want to build your dream MUSH, not mine."
 msgstr ""
 
 #: ../../source/install.rst:218
+msgid "Unless you are intending to start with a brand new database, you must be aware of it's needs and expectations for the settings of ``confsource`` and ``netrhost.conf`` Starter databases tend to distribute with them config files of at least the options they expect set or not set during the process of configuring and compiling the server."
+msgstr ""
+
+#: ../../source/install.rst:224
+msgid "Knowing which database you intend to use is the first choice made of these initial major configuration options, but that last that is made part of the MUSH."
+msgstr ""
+
+#: ../../source/install.rst:232
 msgid "Compiling RhostMush"
 msgstr ""
 
-#: ../../source/install.rst:221
+#: ../../source/install.rst:235
 msgid "Setup directory permissions"
 msgstr ""
 
-#: ../../source/install.rst:223
+#: ../../source/install.rst:237
 msgid "In order to both compile and run, all of the RhostMUSH files and directories need to have the proper permissions set. If you obtained the source code directly from GitHub, it is likely that this step is not required, but there is no harm in running it anyway::"
 msgstr ""
 
-#: ../../source/install.rst:230
+#: ../../source/install.rst:244
 msgid "If you did NOT obtain the source code directly from GitHub, it is possible that even the above script will fail to run with 'permission denied' or similar errors. It is recommended that you obtain the source code from there, but if for whatever reason this is not an option, manually adjust your permissions and then re-run the automated permission script::"
 msgstr ""
 
-#: ../../source/install.rst:241
+#: ../../source/install.rst:254
 msgid "Compile the source code"
 msgstr ""
 
-#: ../../source/install.rst:243
+#: ../../source/install.rst:256
 msgid "Once the source code has been obtained and the proper file and directory permissions have been set, the RhostMUSH source code is ready to be compiled. This is typically done through an interactive program where you configure the options you want to have available to your installation::"
 msgstr ""
 
-#: ../../source/install.rst:251
-msgid "The confsource Menu"
+#: ../../source/install.rst:265
+msgid "It is recommended that if you are just starting out with RhostMUSH that you compile for the first time using the default compile options which have specifically been tuned to be closest to what the average person would need or expect. Changing these options before you have a grood grasp of what they mean and how RhostMUSH works on a deeper level can potentially cause security issues, reduce compatibility with softcode rom other types of MUSH servers, as well as waste system resources."
 msgstr ""
 
-#: ../../source/install.rst:254
-msgid "Troubleshooting compile errors"
-msgstr ""
-
-#: ../../source/install.rst:256
-msgid "Should this result in an error, a script has been included to correct the most common errors, after which you can once more try to compile::"
-msgstr ""
-
-#: ../../source/install.rst:262
-msgid "Once the compile process successfully complete, you should be able to start-up your new RhostMUSH server. If it complains about missing binaries make sure they are linked. The provided script will fix this issue, and is not harmful to run in any situation::"
-msgstr ""
-
-#: ../../source/install.rst:270
-msgid "Recompiling the source code"
-msgstr ""
-
-#: ../../source/install.rst:272
-msgid "If you plan to use ``make confsource`` to recompile your source, you should first issue a 'make clean' before re-issuing a ``make confsource``.  ``make confsource`` remembers the last options you used."
+#: ../../source/install.rst:274
+msgid "Saving your compile options"
 msgstr ""
 
 #: ../../source/install.rst:276
-msgid "A failure to issue ``make clean`` prior to re-compiling with ``make confsource`` or re-compiling with ``make source`` can potentially leave stale object files which may cause unforseen issues when running code, including but not limited to random crashes.  Generally whenever recompiling it's good to always make clean first."
+msgid "``make confsource`` will remember the most recent options you used to compile the source code for the next time you use ``make confsource`` It might still be a good idea to more permanently save the options you used to attempt to compile. However, you still might want to have these options saved more permanently, just in case. At the ``make confsource`` menu there is an option to save your current settings to a file. If you choose to do this, you will find the the save file in the ``bin/`` directory."
 msgstr ""
 
-#: ../../source/install.rst:284
-msgid "You may also issue ``make source`` if the ``Makefile`` is already defined how you want it to be.  Please remember to ``make clean`` before ``make source``` whenever you alter the code or import new source code."
+#: ../../source/install.rst:285
+msgid "Troubleshooting compile errors"
 msgstr ""
 
-#: ../../source/install.rst:290
-msgid "Note about Compiling"
+#: ../../source/install.rst:287
+msgid "Should this result in an error, a script has been included to correct the most common errors, after which you can once more try to compile::"
 msgstr ""
 
-#: ../../source/install.rst:292
-msgid "If you are importing a MUX2 flatfile, make ABSOLUTELY SURE that you select mux passwords as a compatibility option, or you will NOT BE ABLE to log in to players as the password will not be recognizeable."
+#: ../../source/install.rst:293
+msgid "Once the compile process successfully complete, you should be able to start-up your new RhostMUSH server. If it complains about missing binaries make sure they are linked. The provided script will fix this issue, and is not harmful to run in any situation::"
 msgstr ""
 
-#: ../../source/install.rst:296
-msgid "Make sure to keep QDBM selected as it's a much more stable database engine that does not have attribute limit restrictions like GDBM does."
-msgstr ""
-
-#: ../../source/install.rst:299
-msgid "If you are converting from a Penn, TinyMUSH, or MUX database, make sure you drill down into the LBUF section and select, at minimum, 8K lbufs.  You likely want that anyway as it gives you far more room for attribute content storage."
+#: ../../source/install.rst:301
+msgid "Recompiling the source code"
 msgstr ""
 
 #: ../../source/install.rst:303
-msgid "You can go up to 32K safely.  While 64k is safe and does work, there are issues with networking and older routers that use a 32K TCP buffer size that can at times cut off the data as overflow resulting in output to the end-point players not receiving their data.  So it is strongly recommended not to go above 32K in lbuffer size."
+msgid "If you plan to use ``make confsource`` to recompile your source, you should first issue a ``make clean`` before re-issuing a ``make confsource``"
 msgstr ""
 
-#: ../../source/install.rst:309
-msgid "Go ahead and select 64 char attributes.  It allows you to have 64 characters for attribute names.  It's handy to have."
+#: ../../source/install.rst:306
+msgid "A failure to issue ``make clean`` prior to re-compiling with ``make confsource`` can potentially leave stale object files which may cause unforseen issues when running code, including but not limited to random crashes.  Generally whenever recompiling it's good to always make clean first."
 msgstr ""
 
-#: ../../source/install.rst:312
-msgid "If you wish at this point to set up mysql and/or sqlite, you  may do so. Yes, you can use them in parallel without any issue."
+#: ../../source/install.rst:313
+msgid "You may also issue ``make source`` if the ``Makefile`` is already defined how you want it to be.  Please remember to ``make clean`` before ``make source``` whenever you alter the code or import new source code."
 msgstr ""
 
 #: ../../source/install.rst:319
-msgid "Installing using an ansible playbook"
-msgstr ""
-
-#: ../../source/install.rst:321
-msgid "To begin, you will run the following command in a directory that will house your game::"
-msgstr ""
-
-#: ../../source/install.rst:325
-msgid "You may also just run the yml file and ansible (ansible-playbook) to install your RhostMUSH engine::"
-msgstr ""
-
-#: ../../source/install.rst:330
-msgid "This downloads the latest stable version of the code, bringing with it all patches and scripts, documentation and support tools that you will need."
-msgstr ""
-
-#: ../../source/install.rst:334
-msgid "Starting a Newly Compiled MUSH"
-msgstr ""
-
-#: ../../source/install.rst:337
 msgid "Configuring the game"
 msgstr ""
 
-#: ../../source/install.rst:339
-msgid "When setting up a mush for the first time, make sure you have all the files configured correctly.  This is with using the following file for configuration::"
+#: ../../source/install.rst:322
+msgid "Persistent configurable game options"
 msgstr ""
 
-#: ../../source/install.rst:346
+#: ../../source/install.rst:324
+msgid "Upon compiling a RhostMUSH server, if it doesn't already exist, a ``netrhost.conf`` is copied into the ``game/`` directory for your game. It includes useful defaults for most compile-time options that will work well for most games, particularly ones using both the default ``confsource`` options and related database."
+msgstr ""
+
+#: ../../source/install.rst:330
+msgid "This configuration is derived from ``defaults/game/netrhost.conf.default``"
+msgstr ""
+
+#: ../../source/install.rst:332
+msgid "While this ``netrhost.conf`` is very well documented and quite easy to change in some places, but there are also some rather technical options that you it's important to know the full implications of this."
+msgstr ""
+
+#: ../../source/install.rst:338
+msgid "The default ``netrhost.conf`` starts the game running on the port *4021* of the server. If this is your time creating a MUSH, it is recommended that this setting is the only one that you potentially change, and only if there is a good reason to. Ports below 1024 are priviliged ports and can not be used for this purpose."
+msgstr ""
+
+#: ../../source/install.rst:345
 msgid "Starting the game"
 msgstr ""
 
-#: ../../source/install.rst:348
+#: ../../source/install.rst:347
 msgid "Once done, you start up the system with the following command::"
 msgstr ""
 
-#: ../../source/install.rst:360
+#: ../../source/install.rst:351
+msgid "It will prompt you to start a new db if it doesn't find one."
+msgstr ""
+
+#: ../../source/install.rst:353
+msgid "You may also do the commands individually::"
+msgstr ""
+
+#: ../../source/install.rst:359
 msgid "First login to the game"
 msgstr ""
 
-#: ../../source/install.rst:362
+#: ../../source/install.rst:361
 msgid "Once started, log in the #1 character (Wizard) with it's appropiate password (no, not 'potrzebie', but 'Nyctasia').  There were private reasons for the password change."
 msgstr ""
 
-#: ../../source/install.rst:366
+#: ../../source/install.rst:365
 msgid "Once in, do a @shutdown to save the database.  Then you can run Startup normally.   You may make a backup of your database at anytime on-line by utilizing the @dump/flat option.  A script comes with this distribution that allows the ability of auto-archiving your database for a configurable number of backups."
 msgstr ""
 
-#: ../../source/install.rst:374
+#: ../../source/install.rst:373
 msgid "Creating RHostMUSH with a Provided DB"
 msgstr ""
 
-#: ../../source/install.rst:377
+#: ../../source/install.rst:376
 msgid "Important before you actually start building"
 msgstr ""
 
-#: ../../source/install.rst:379
+#: ../../source/install.rst:378
 msgid "The main parts of making your RhostMUSH, easy pleasy:"
 msgstr ""
 
-#: ../../source/install.rst:381
+#: ../../source/install.rst:380
 msgid "The stunnel directory contains TLS/SSL connectivity.  This has to be linked to another port and will tunnel to the mush port.  The README file explains how to set up and configure your TLS/SSL connection."
 msgstr ""
 
-#: ../../source/install.rst:382
+#: ../../source/install.rst:381
 msgid "./patch.sh -- This makes sure you have the latest code.  If you got this by git clone https://github.com/RhostMUSH/trunk then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules."
 msgstr ""
 
-#: ../../source/install.rst:383
+#: ../../source/install.rst:382
 msgid "make confsource.  Yup, it's menu driven, nifty eh?"
 msgstr ""
 
-#: ../../source/install.rst:385
+#: ../../source/install.rst:384
 msgid "Options you may want to select (other than the defaults):"
 msgstr ""
 
-#: ../../source/install.rst:386
+#: ../../source/install.rst:385
 msgid "5  (%c is selected by default, but choose %x as well for MUX/TM3 compat)"
 msgstr ""
 
-#: ../../source/install.rst:387
+#: ../../source/install.rst:386
 msgid "9  (if you want $commands to require the COMMAND flag)"
 msgstr ""
 
-#: ../../source/install.rst:388
+#: ../../source/install.rst:387
 msgid "16 (if you want a wider WHO listing like older versions of MUX)"
 msgstr ""
 
-#: ../../source/install.rst:389
+#: ../../source/install.rst:388
 msgid "22 (if you're converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)"
 msgstr ""
 
-#: ../../source/install.rst:390
+#: ../../source/install.rst:389
 msgid "24 (if you have issues with -lssl not being found)"
 msgstr ""
 
-#: ../../source/install.rst:391
+#: ../../source/install.rst:390
 msgid "B3 (for 64 character attribute names)"
 msgstr ""
 
-#: ../../source/install.rst:392
+#: ../../source/install.rst:391
 msgid "B6 (select 8K for Penn/MUX2/TM3 default, up to 32K.  64K is network intensive)"
 msgstr ""
 
-#: ../../source/install.rst:393
+#: ../../source/install.rst:392
 msgid "B5 (will be autoselected if you choose 8K or more.  Pick this anyway)"
 msgstr ""
 
-#: ../../source/install.rst:394
+#: ../../source/install.rst:393
 msgid "B4 (if you have sqlite libraries and wish to use this)"
 msgstr ""
 
-#: ../../source/install.rst:396
+#: ../../source/install.rst:395
 msgid "'r' to compile with the settings you selected."
 msgstr ""
 
-#: ../../source/install.rst:397
+#: ../../source/install.rst:396
 msgid "Modify your netrhost.conf file as specified.  Make sure to align your port and debug_id as shown in the netrhost.conf file."
 msgstr ""
 
-#: ../../source/install.rst:398
+#: ../../source/install.rst:397
 msgid "If you wish to port in an old flatfile, please refer to the readme directory on how to port your flatfile in (README.DBLOADING)."
 msgstr ""
 
-#: ../../source/install.rst:401
+#: ../../source/install.rst:400
 msgid "Using the prebuilt flatfile"
 msgstr ""
 
-#: ../../source/install.rst:403
+#: ../../source/install.rst:402
 msgid "There are pre-loaded flatfile databases you can use at this point.  The netrhost.db.flat and corrisponding netrhost.conf file will be located in the minimal-DBs/minimal_db directory."
 msgstr ""
 
-#: ../../source/install.rst:406
+#: ../../source/install.rst:405
 msgid "You may auto-load the minimal db and corresponding netrhost.conf file with the command::"
 msgstr ""
 
-#: ../../source/install.rst:410
+#: ../../source/install.rst:409
 msgid "This is ran from within the 'game' directory.  Once this is ran, you will need to customize the netrhost.conf file for your purposes.  The port and debug_id must be changed at the very least.  Keep the debug_id coordinated to the port as described."
 msgstr ""
 
-#: ../../source/install.rst:415
+#: ../../source/install.rst:414
 msgid "To load a prebuilt flatfile"
 msgstr ""
 
-#: ../../source/install.rst:417
+#: ../../source/install.rst:416
 msgid "Make a backup of your existing netrhost.conf file::"
 msgstr ""
 
-#: ../../source/install.rst:421
+#: ../../source/install.rst:420
 msgid "Copy the netrhost.conf file into your game directory::"
 msgstr ""
 
-#: ../../source/install.rst:425
+#: ../../source/install.rst:424
 msgid "At this point you can modify your netrhost.conf file settings in your game directory. Using an editor modify the 'port' and 'debug_id' respectively in your netrhost.conf as state. The 'port' will be the port the mush listens on, the debug_id is for the debug-stack and is your port with a '5' at the end.  So if your port is 4444, the debug_id is 44445"
 msgstr ""
 
-#: ../../source/install.rst:430
+#: ../../source/install.rst:429
 msgid "Load in the flatfile into the mush (You could do this in the Startmush as well) Manually::"
 msgstr ""
 
-#: ../../source/install.rst:435
+#: ../../source/install.rst:434
 msgid "./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF"
 msgstr ""
 
-#: ../../source/install.rst:437
-#: ../../source/install.rst:457
+#: ../../source/install.rst:436
 msgid "Start your mush::"
 msgstr ""
 
-#: ../../source/install.rst:441
+#: ../../source/install.rst:440
 msgid "This will load the db that you loaded."
 msgstr ""
 
-#: ../../source/install.rst:443
+#: ../../source/install.rst:442
 msgid "---------------OR-------"
 msgstr ""
 
-#: ../../source/install.rst:445
+#: ../../source/install.rst:444
 msgid "From Startmush when prompted, hit <RETURN> for searching then select the number of the netrhost.db.flat that is listed as ~/minimal-DBs/minimal_db/netrhost.db.flat::"
 msgstr ""
 
-#: ../../source/install.rst:451
-msgid "Almost Backwards Instructions for Compiling and Starting a MUSH"
-msgstr ""
-
-#: ../../source/install.rst:453
-msgid "You can modify your netrhost.conf file settings in your game directory. Using an editor modify the 'port' and 'debug_id' respectively in your netrhost.conf as stated. The 'port' will be the port the mush listens on, the debug_id is for the debug-stack and is your port with a '5' at the end.  So if your port is 4444, the debug_id is 44445"
-msgstr ""
-
-#: ../../source/install.rst:461
-msgid "You can use the 'vi' editor or 'nano' if you like a more menu driven DOS like experience. You can of course use any other editor you're familar with."
-msgstr ""
-
-#: ../../source/install.rst:464
-msgid "For a more thorough understanding of how to set things up, keep reading!"
-msgstr ""
-
-#: ../../source/install.rst:466
-msgid "If you have syntax issues running 'make config', 'make confsource' or 'make bugreport' please run the script: ./bin/script_setup.sh"
-msgstr ""
-
-#: ../../source/install.rst:469
-msgid "Now... things you may need to do on errors."
-msgstr ""
-
-#: ../../source/install.rst:473
+#: ../../source/install.rst:450
 msgid "Basic Instructions for starting a new RhostMUSH"
 msgstr ""
 
-#: ../../source/install.rst:476
+#: ../../source/install.rst:453
 msgid "Manual configuration of source code"
 msgstr ""
 
-#: ../../source/install.rst:478
+#: ../../source/install.rst:455
 msgid "To do manual configuration (skip if the previous step worked for you) And yes, this is a bit of a pain in the bottom, hopefully you will not need this."
 msgstr ""
 
-#: ../../source/install.rst:480
+#: ../../source/install.rst:457
 msgid "You need the following definitions defined to make this work:"
 msgstr ""
 
-#: ../../source/install.rst:482
+#: ../../source/install.rst:459
 msgid "TINY_U, USE_SIDEEFFECTS, MUX_INCDEC, ATTR_HACK"
 msgstr ""
 
-#: ../../source/install.rst:483
+#: ../../source/install.rst:460
 msgid "(u()/u2() switched)"
 msgstr ""
 
-#: ../../source/install.rst:484
+#: ../../source/install.rst:461
 msgid "(sideeffects)"
 msgstr ""
 
-#: ../../source/install.rst:485
+#: ../../source/install.rst:462
 msgid "(inc()/xinc() switched)"
 msgstr ""
 
-#: ../../source/install.rst:486
+#: ../../source/install.rst:463
 msgid "(support for _/~ attribs)"
 msgstr ""
 
-#: ../../source/install.rst:488
+#: ../../source/install.rst:465
 msgid "You only need to do this if you received the RhostMUSH src.  If you received a binary, continue on to the next part."
 msgstr ""
 
-#: ../../source/install.rst:490
+#: ../../source/install.rst:467
 msgid "To compile the code, just type 'make confsource'.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run 'make source', if you so choose to hand-edit the Makefile."
 msgstr ""
 
-#: ../../source/install.rst:492
+#: ../../source/install.rst:469
 msgid "After the compile process is done, type 'make links'!"
 msgstr ""
 
-#: ../../source/install.rst:495
+#: ../../source/install.rst:472
 msgid "Loading a database for your MUSH"
 msgstr ""
 
-#: ../../source/install.rst:497
+#: ../../source/install.rst:474
 msgid "You now have a choice of optionally starting at a provided database or starting from scratch."
 msgstr ""
 
-#: ../../source/install.rst:500
+#: ../../source/install.rst:477
 msgid "Option: Only perform these steps if using a provided database"
 msgstr ""
 
-#: ../../source/install.rst:502
+#: ../../source/install.rst:479
 msgid "Copy an existing flatfile and corresponding netrhost.conf file Default provied example::"
 msgstr ""
 
-#: ../../source/install.rst:510
-msgid "Configure the netrhost.conf file for your MUSH"
-msgstr ""
-
-#: ../../source/install.rst:512
-msgid "Go into the game directory and modify the netrhost.conf file The next step is configuring the mush to your config standards. There is a file in the game subdirectory called 'netrhost.conf'. You hand-edit this file and just follow what it says each one does.  It's very well documented and should give you great details on what to edit.  For most things, you can feel comfortable to stick with the defaults unless you wish to change them.  The port and debug_id need to be changed."
-msgstr ""
-
-#: ../../source/install.rst:523
-msgid "Start a  MUSH and logging on for the first time"
-msgstr ""
-
-#: ../../source/install.rst:525
-msgid "From the game diretory issue::"
-msgstr ""
-
-#: ../../source/install.rst:529
-msgid "To login::"
-msgstr ""
-
-#: ../../source/install.rst:535
+#: ../../source/install.rst:487
 msgid "Option: Things to do once you have connected if you did NOT use a provided database"
 msgstr ""
 
-#: ../../source/install.rst:537
+#: ../../source/install.rst:489
 msgid "@dig your master room and in your netrhost.conf file define master_room to this dbref (without the #.  So like master_room 2)"
 msgstr ""
 
-#: ../../source/install.rst:538
+#: ../../source/install.rst:490
 msgid "Create an immortal holder charater (@pcreate then @set immortal) Feel free to set up holder characters for all the bittypes which are: GUILDMASTER, ARCHITECT, COUNCILOR, WIZARD, IMMORTAL"
 msgstr ""
 
-#: ../../source/install.rst:539
+#: ../../source/install.rst:491
 msgid "@chown/preserve the master room and #0 to the immortal holder character."
 msgstr ""
 
-#: ../../source/install.rst:540
+#: ../../source/install.rst:492
 msgid "Log into the immortal character"
 msgstr ""
 
-#: ../../source/install.rst:541
+#: ../../source/install.rst:493
 msgid "@pcreate all your guest characters and set them up properly.  My suggestion::"
 msgstr ""
 
-#: ../../source/install.rst:547
+#: ../../source/install.rst:499
 msgid "Any master room code you load in from your immholder character (or @chown/preserve to it) The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.  All other softcode (like mail wrappers) can be found on https://github.com/RhostMUSH/trunk in Mushcode."
 msgstr ""
 
-#: ../../source/install.rst:548
+#: ../../source/install.rst:500
 msgid "Setup new character, staff, and take tasks that can only be accomplished by #1"
 msgstr ""
 
-#: ../../source/install.rst:549
+#: ../../source/install.rst:501
 msgid "Set up any other characters you want.  Anyone immortal can issue @function, @admin, or anything #1 can do."
 msgstr ""
 
-#: ../../source/install.rst:551
-#: ../../source/install.rst:569
-#: ../../source/install.rst:630
+#: ../../source/install.rst:503
+#: ../../source/install.rst:521
 msgid "Todo"
 msgstr ""
 
-#: ../../source/install.rst:553
-msgid "Figure out what they were trying to say by having those two sentences right after each other."
+#: ../../source/install.rst:505
+msgid "Figure out what they were trying to say by having those above two sentences right after each other."
 msgstr ""
 
-#: ../../source/install.rst:557
+#: ../../source/install.rst:509
 msgid "Customtize the textfiles for your game"
 msgstr ""
 
-#: ../../source/install.rst:559
+#: ../../source/install.rst:511
 msgid "All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a README file there that explains their purposes in more detail.  You can see more information on all files and how they inter-relate with 'wizhelp file'."
 msgstr ""
 
-#: ../../source/install.rst:565
+#: ../../source/install.rst:517
 msgid "Three Options for Starting a MUSH"
 msgstr ""
 
-#: ../../source/install.rst:567
+#: ../../source/install.rst:519
 msgid "The RhostMUSH Git Repository comes with three options for starting your Mush."
 msgstr ""
 
-#: ../../source/install.rst:571
+#: ../../source/install.rst:523
 msgid "Well, there's also some other pre-existing DB or upgrading, so let's try to make this a little more coherent."
 msgstr ""
 
-#: ../../source/install.rst:574
+#: ../../source/install.rst:526
 msgid "Option 1: Creating a new game with a blank database"
 msgstr ""
 
-#: ../../source/install.rst:576
+#: ../../source/install.rst:528
 msgid "Modify your ./game/netrhost.conf file or what settings you want. Don't feel overwhelmed, it's all very well documented."
 msgstr ""
 
-#: ../../source/install.rst:580
+#: ../../source/install.rst:532
 msgid "Options 2: Creating a new game with Ambrosia's default database"
 msgstr ""
 
-#: ../../source/install.rst:582
+#: ../../source/install.rst:534
 msgid "Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README"
 msgstr ""
 
-#: ../../source/install.rst:584
+#: ../../source/install.rst:536
 msgid "The netrhost.conf file you will copy is in minimal-DBs/Amb-MinimalRhost/game Copy this netrhost.conf file into your 'game' directory."
 msgstr ""
 
-#: ../../source/install.rst:587
+#: ../../source/install.rst:539
 msgid "You will want the custom txt files under Amb-MinimalRhost/txt in your game/txt directory and to mkindx all the txt files.  You can run ./Startmush -i to index."
 msgstr ""
 
-#: ../../source/install.rst:589
+#: ../../source/install.rst:541
 msgid "When ./Startmush prompts you to load a flatfile, say 'yes' and hit <RETURN> to have it search for flatfiles, then select netrhost.db.flat from under the minimal-DBs/Amb-MinimalRhost directory."
 msgstr ""
 
-#: ../../source/install.rst:591
+#: ../../source/install.rst:543
 msgid "The main steps to make sure you do for ~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat -- Ambrosia's secure and featured minimal db"
 msgstr ""
 
-#: ../../source/install.rst:593
+#: ../../source/install.rst:545
 msgid "Use the matching netrhost.conf file under the Amb-MinimalRhost/game directory"
 msgstr ""
 
-#: ../../source/install.rst:594
+#: ../../source/install.rst:546
 msgid "Load in the settings specified in the Amb-MinimalRhost/bin directory."
 msgstr ""
 
-#: ../../source/install.rst:596
+#: ../../source/install.rst:548
 msgid "Copy this file into your ~/Server/bin directory"
 msgstr ""
 
-#: ../../source/install.rst:597
+#: ../../source/install.rst:549
 msgid "From 'Server' directory type: make clean"
 msgstr ""
 
-#: ../../source/install.rst:598
+#: ../../source/install.rst:550
 msgid "From 'Server' directory type: make confsource and 'l'oad option 0"
 msgstr ""
 
-#: ../../source/install.rst:599
+#: ../../source/install.rst:551
 msgid "Specify any -additional- options you want at this point."
 msgstr ""
 
-#: ../../source/install.rst:600
+#: ../../source/install.rst:552
 msgid "Recompile your code"
 msgstr ""
 
-#: ../../source/install.rst:601
+#: ../../source/install.rst:553
 msgid "Copy the files in Amb-MinimalRhost/game/txt into your ~/Server/game/txt directory"
 msgstr ""
 
-#: ../../source/install.rst:602
+#: ../../source/install.rst:554
 msgid "from your ~/Server/game txt file run on each of the txt files::"
 msgstr ""
 
-#: ../../source/install.rst:608
+#: ../../source/install.rst:560
 msgid "Where <txtfile> is the name of the file (minus the .txt extension)"
 msgstr ""
 
-#: ../../source/install.rst:610
+#: ../../source/install.rst:562
 msgid "If running, @reboot your game."
 msgstr ""
 
-#: ../../source/install.rst:613
+#: ../../source/install.rst:565
 msgid "Option 3: Creating a new game with the generic default database"
 msgstr ""
 
-#: ../../source/install.rst:615
+#: ../../source/install.rst:567
 msgid "Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory."
 msgstr ""
 
-#: ../../source/install.rst:617
+#: ../../source/install.rst:569
 msgid "When ./Startmush prompts you to load a flatfile, say 'yes' and hit <RETURN> to have it search for flatfiles, then select netrhost.db.flat from under the minimal-DBs/minimal_db directory."
-msgstr ""
-
-#: ../../source/install.rst:623
-msgid "Starting your MUSH"
-msgstr ""
-
-#: ../../source/install.rst:625
-msgid "Once you have used one of these three methods to obtaina database, you can start your mush up. At this point type from the game directory::"
-msgstr ""
-
-#: ../../source/install.rst:632
-msgid "Considering this was already mentioned earlier in other parts, yeah this all needs to be a bit more coherent and focused. Check to see if there are other install bits not yet even integrated here."
 msgstr ""

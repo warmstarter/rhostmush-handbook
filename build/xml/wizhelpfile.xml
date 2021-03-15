@@ -6,7 +6,7 @@
         <title>RhostMUSH Internal Wizhelp Files</title>
         <raw format="html" source="source/wizhelp.html" xml:space="preserve">&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;RhostMUSH Help File [HTML Version]&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;BODY&gt;
 &lt;H1&gt;RhostMUSH Help File [HTML Version]&lt;/H1&gt;
-Generated: Sat Mar 13 17:30:44 2021
+Generated: Mon Mar 15 08:30:56 2021
 &lt;HR&gt;&lt;A NAME="topic index"&gt;&lt;H2&gt;Topic Index&lt;/H2&gt;&lt;/A&gt;&lt;PRE&gt;
 &lt;A HREF="##1"&gt;#1&lt;/A&gt;                        &lt;A HREF="#PLUSplayers"&gt;+players&lt;/A&gt;                  &lt;A HREF="#@adesc2"&gt;@adesc2&lt;/A&gt;
 &lt;A HREF="#@admin"&gt;@admin&lt;/A&gt;                    &lt;A HREF="#@aflags"&gt;@aflags&lt;/A&gt;                   &lt;A HREF="#@aflags add"&gt;@aflags add&lt;/A&gt;
@@ -10028,11 +10028,13 @@ Generated: Sat Mar 13 17:30:44 2021
     MUSH_CAUSE        - [%#] dbref# of cause followed by name of cause.  
     MUSH_CALLER       - [%@] dbref# of caller followed by name of caller.  
     MUSH_FLAGS        - the flags of the player.
-    MUSH_TOGGLES      - the togglesof the player.
+    MUSH_TOGGLES      - the toggles of the player.
+    MUSH_TOTEMS       - the totems of the player.
     MUSH_OWNER        - dbref# of player's owner by name of owner.
     MUSH_OBJID        - objid's of player, cause, caller, owner (in that order)
     MUSH_OWNERFLAGS   - the flags of the player's owner.
     MUSH_OWNERTOGGLES - the toggles of the player's owner.
+    MUSH_OWNERTOTEMS  - the totems of the player's owner.
     MUSHL_VARS        - All the variables you want the script to see which
                         is passed as the mush attribute EXECSCRIPT_VARS
                         on the container that is executing execscript()
@@ -22633,6 +22635,9 @@ Generated: Sat Mar 13 17:30:44 2021
     &amp;lt;variable&amp;gt; &amp;lt;dbref#&amp;gt;      -- This clears the attribute on dbref#
     &amp;lt;variable&amp;gt; &amp;lt;dbref#&amp;gt; bob  -- This sets 'bob' to the attribute
   
+  To execute code use:
+    @exec &amp;lt;dbref#&amp;gt; &amp;lt;commands separated by semicolon&amp;gt;
+  
   To set flag, toggle, and totem flags use:
     @set &amp;lt;dbref#&amp;gt; &amp;lt;flag ... !flag&amp;gt;    -- Set/unset flag on dbref#
     @totem &amp;lt;dbref#&amp;gt; &amp;lt;flag ... !flag&amp;gt;  -- Set/unset totem on dbref#
@@ -22659,6 +22664,7 @@ Generated: Sat Mar 13 17:30:44 2021
      @set #123 inherit
      @totem #123 marker0
      @toggle #123 variable
+     @exec #123 @wait 10={think 1;think 2};&amp;amp;FOO me=test
      snork QN Setting register with label snork 
      BOB #456 This is my BOB attribute
      SEX #123 Male
@@ -22675,6 +22681,7 @@ Generated: Sat Mar 13 17:30:44 2021
      @set #123 &amp;lt;flag&amp;gt; -- Same as @set #123=&amp;lt;flag&amp;gt;
      @totem #123 &amp;lt;totem&amp;gt; -- Same as @totem #123=&amp;lt;totem&amp;gt;
      @toggle #123 &amp;lt;toggle&amp;gt; -- Same as @toggle #123=&amp;lt;toggle&amp;gt;
+     Execute as #123 @wait 10={think1 ;think2} and set FOO on #123 to 'test'
      snork QN &amp;lt;string&amp;gt; -- sets string to register with label 'snork'
      BOB #456 &amp;lt;string&amp;gt; -- Same as &amp;amp;BOB #456=&amp;lt;string&amp;gt;
      SEX #123 &amp;lt;string&amp;gt; -- Same as @sex #123=&amp;lt;string&amp;gt;
@@ -22736,6 +22743,9 @@ Generated: Sat Mar 13 17:30:44 2021
     &amp;lt;variable&amp;gt; &amp;lt;dbref#&amp;gt;      -- This clears the attribute on dbref#
     &amp;lt;variable&amp;gt; &amp;lt;dbref#&amp;gt; bob  -- This sets 'bob' to the attribute
   
+  To execute code use:
+    @exec &amp;lt;dbref#&amp;gt; &amp;lt;commands separated by semicolon&amp;gt;
+  
   To set flag, toggle, and totem flags use:
     @set &amp;lt;dbref#&amp;gt; &amp;lt;flag ... !flag&amp;gt;    -- Set/unset flag on dbref#
     @totem &amp;lt;dbref#&amp;gt; &amp;lt;flag ... !flag&amp;gt;  -- Set/unset totem on dbref#
@@ -22762,6 +22772,7 @@ Generated: Sat Mar 13 17:30:44 2021
      @set #123 inherit
      @totem #123 marker0
      @toggle #123 variable
+     @exec #123 @wait 10={think 1;think 2};&amp;amp;FOO me=test
      snork QN Setting register with label snork 
      BOB #456 This is my BOB attribute
      SEX #123 Male
@@ -22778,6 +22789,7 @@ Generated: Sat Mar 13 17:30:44 2021
      @set #123 &amp;lt;flag&amp;gt; -- Same as @set #123=&amp;lt;flag&amp;gt;
      @totem #123 &amp;lt;totem&amp;gt; -- Same as @totem #123=&amp;lt;totem&amp;gt;
      @toggle #123 &amp;lt;toggle&amp;gt; -- Same as @toggle #123=&amp;lt;toggle&amp;gt;
+     Execute as #123 @wait 10={think1 ;think2} and set FOO on #123 to 'test'
      snork QN &amp;lt;string&amp;gt; -- sets string to register with label 'snork'
      BOB #456 &amp;lt;string&amp;gt; -- Same as &amp;amp;BOB #456=&amp;lt;string&amp;gt;
      SEX #123 &amp;lt;string&amp;gt; -- Same as @sex #123=&amp;lt;string&amp;gt;
