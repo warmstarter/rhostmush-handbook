@@ -1,6 +1,6 @@
 .\" Man page generated from reStructuredText.
 .
-.TH "RHOSTMUSHHANDBOOK" "1" "Mar 15, 2021" "0.01a" "RhostMUSH Handbook"
+.TH "RHOSTMUSHHANDBOOK" "1" "Mar 30, 2021" "0.01a" "RhostMUSH Handbook"
 .SH NAME
 rhostmushhandbook \- RhostMUSH Handbook 
 .
@@ -5169,9 +5169,9 @@ it may be worth considering adding this to add additional protection.
 Modify your netrhost.conf file and add/change the following parameters:
 .INDENT 3.0
 .IP 1. 3
-stunnel_reip 1
+sconnect_reip 1
 .IP 2. 3
-stunnel_cmd SECRET\-MAGIC\-COOKIE
+sconnect_cmd SECRET\-MAGIC\-COOKIE
 .INDENT 3.0
 .INDENT 3.5
 .INDENT 0.0
@@ -8266,67 +8266,453 @@ Issue ‘make clean’ then make confsource to rebuild using the latest
 builder script to build in the mysql changes.
 .UNINDENT
 .SH COMPARISON OF FLAGS
-.sp
-ABODE           \- ABODE
-BLIND           \- BLIND
-CHOWN_OK        \- CHOWN_OK
-DARK            \- DARK
-FREE            \- FREE
-GOING           \- GOING/BYEROOM
-HAVEN           \- HAVEN
-INHERIT         \- INHERIT
-JUMP_OK         \- JUMP_OK
-KEY             \- KEY
-LINK_OK         \- LINK_OK
-MONITOR         \- MONITOR
-NOSPOOF         \- NOSPOOF
-OPAQUE          \- OPAQUE
-QUIET           \- QUIET
-STICKY          \- STICKY
-TRACE           \- TRACE
-UNFINDABLE      \- UNFINDABLE
-VISUAL          \- VISUAL
-WIZARD          \- ROYALTY
-ANSI            \- ANSI/ANSICOLOR
-PARENT_OK       \- PARENT_OK
-ROYALTY         \- COUNCILOR/ARCHITECT
-AUDIBLE         \- AUDIBLE
-BOUNCE          \- BOUNCE
-CONNECTED       \- CONNECTED
-DESTROY_OK      \- DESTROY_OK
-ENTER_OK        \- ENTER_OK
-FIXED           \- NO_TEL
-UNINSPECTED     \- Not Available \- Just a marker flag
-HALTED          \- HALTED
-IMMORTAL        \- GUILDMASTER (You don’t want IMMORTAL)
-GAGGED          \- FUBAR
-CONSTANT        \- NO_MODIFY
-LIGHT           \- LIGHT
-MYOPIC          \- MYOPIC
-AUDITORIUM      \- AUDITORIUM
-ZONE            \- Use @zone
-PUPPET          \- PUPPET
-TERSE           \- TERSE
-ROBOT           \- ROBOT
-SAFE            \- SAFE
-TRANSPARENT     \- TRANSPARENT
-SUSPECT         \- SUSPECT
-VERBOSE         \- VERBOSE
-STAFF           \- Not Available \- Just a marker flag.
-SLAVE           \- SLAVE
-ORPHAN          \- Not Available \- @lock/use the parent instead
-CONTROL_OK      \- Not Available \- Use @lock/ZoneWizLock
-STOP            \- STOP (See also NOSTOP)
-COMMANDS        \- COMMANDS
-PRESENCE        \- Not Available \- See: Reality Levels
-NOBLEED         \- Not Needed.  Rhost doesn’t bleed ANSI.
-VACATION        \- Not Available \- Just a marker flag.
-HEAD            \- Not Available \- Just a marker flag.
-WATCHER         \- Not Available \- @toggle MONITOR
-HTML            \- Not Available \- Rhost doesn’t support Pueblo
-REDIR_OK        \- Not Available \- Rhost doesn’t support @redirect
-SPEECHMOD       \- Not Available \- Rhost doesn’t support @speechmod \- use @icmd
-MARKER0\-MARKER9 \- MARKER0\-MARKER9
+.TS
+center;
+|l|l|l|.
+_
+T{
+PENN/MUX Flag
+T}	T{
+RhostMUSH Flag
+T}	T{
+Commentary on Difference Between Flags
+T}
+_
+T{
+ABODE
+T}	T{
+ABODE
+T}	T{
+T}
+_
+T{
+BLIND
+T}	T{
+BLIND
+T}	T{
+T}
+_
+T{
+CHOWN_OK
+T}	T{
+CHOWN_OK
+T}	T{
+T}
+_
+T{
+DARK
+T}	T{
+DARK
+T}	T{
+T}
+_
+T{
+FREE
+T}	T{
+FREE
+T}	T{
+T}
+_
+T{
+GOING
+T}	T{
+GOING/BYEROOM
+T}	T{
+T}
+_
+T{
+HAVEN
+T}	T{
+HAVEN
+T}	T{
+T}
+_
+T{
+INHERIT
+T}	T{
+INHERIT
+T}	T{
+T}
+_
+T{
+JUMP_OK
+T}	T{
+JUMP_OK
+T}	T{
+T}
+_
+T{
+KEY
+T}	T{
+KEY
+T}	T{
+T}
+_
+T{
+LINK_OK
+T}	T{
+LINK_OK
+T}	T{
+T}
+_
+T{
+MONITOR
+T}	T{
+MONITOR
+T}	T{
+T}
+_
+T{
+NOSPOOF
+T}	T{
+NOSPOOF
+T}	T{
+T}
+_
+T{
+OPAQUE
+T}	T{
+OPAQUE
+T}	T{
+T}
+_
+T{
+QUIET
+T}	T{
+QUIET
+T}	T{
+T}
+_
+T{
+STICKY
+T}	T{
+STICKY
+T}	T{
+T}
+_
+T{
+TRACE
+T}	T{
+TRACE
+T}	T{
+T}
+_
+T{
+UNFINDABLE
+T}	T{
+UNFINDABLE
+T}	T{
+T}
+_
+T{
+VISUAL
+T}	T{
+VISUAL
+T}	T{
+T}
+_
+T{
+WIZARD
+T}	T{
+ROYALTY
+T}	T{
+T}
+_
+T{
+ANSI
+T}	T{
+ANSI/ANSICOLOR
+T}	T{
+T}
+_
+T{
+PARENT_OK
+T}	T{
+PARENT_OK
+T}	T{
+T}
+_
+T{
+ROYALTY
+T}	T{
+COUNCILOR/ARCHITECT
+T}	T{
+T}
+_
+T{
+AUDIBLE
+T}	T{
+AUDIBLE
+T}	T{
+T}
+_
+T{
+BOUNCE
+T}	T{
+BOUNCE
+T}	T{
+T}
+_
+T{
+CONNECTED
+T}	T{
+CONNECTED
+T}	T{
+T}
+_
+T{
+DESTROY_OK
+T}	T{
+DESTROY_OK
+T}	T{
+T}
+_
+T{
+ENTER_OK
+T}	T{
+ENTER_OK
+T}	T{
+T}
+_
+T{
+FIXED
+T}	T{
+NO_TEL
+T}	T{
+T}
+_
+T{
+UNINSPECTED
+T}	T{
+Not Available
+T}	T{
+Just a marker flag
+T}
+_
+T{
+HALTED
+T}	T{
+HALTED
+T}	T{
+T}
+_
+T{
+IMMORTAL
+T}	T{
+GUILDMASTER
+T}	T{
+You don’t want IMMORTAL
+T}
+_
+T{
+GAGGED
+T}	T{
+FUBAR
+T}	T{
+T}
+_
+T{
+CONSTANT
+T}	T{
+NO_MODIFY
+T}	T{
+T}
+_
+T{
+LIGHT
+T}	T{
+LIGHT
+T}	T{
+T}
+_
+T{
+MYOPIC
+T}	T{
+MYOPIC
+T}	T{
+T}
+_
+T{
+AUDITORIUM
+T}	T{
+AUDITORIUM
+T}	T{
+T}
+_
+T{
+ZONE
+T}	T{
+Use @zone
+T}	T{
+T}
+_
+T{
+PUPPET
+T}	T{
+PUPPET
+T}	T{
+T}
+_
+T{
+TERSE
+T}	T{
+TERSE
+T}	T{
+T}
+_
+T{
+ROBOT
+T}	T{
+ROBOT
+T}	T{
+T}
+_
+T{
+SAFE
+T}	T{
+SAFE
+T}	T{
+T}
+_
+T{
+TRANSPARENT
+T}	T{
+TRANSPARENT
+T}	T{
+T}
+_
+T{
+SUSPECT
+T}	T{
+SUSPECT
+T}	T{
+T}
+_
+T{
+VERBOSE
+T}	T{
+VERBOSE
+T}	T{
+T}
+_
+T{
+STAFF
+T}	T{
+Not Available
+T}	T{
+Just a marker flag
+T}
+_
+T{
+SLAVE
+T}	T{
+SLAVE
+T}	T{
+T}
+_
+T{
+ORPHAN
+T}	T{
+Not Available
+T}	T{
+@lock/use the parent instead
+T}
+_
+T{
+CONTROL_OK
+T}	T{
+Not Available
+T}	T{
+Use @lock/ZoneWizLock
+T}
+_
+T{
+STOP
+T}	T{
+STOP
+T}	T{
+See also NOSTOP
+T}
+_
+T{
+COMMANDS
+T}	T{
+COMMANDS
+T}	T{
+T}
+_
+T{
+PRESENCE
+T}	T{
+Not Available
+T}	T{
+See: Reality Levels
+T}
+_
+T{
+NOBLEED
+T}	T{
+Not Needed
+T}	T{
+Rhost doesn’t bleed ANSI
+T}
+_
+T{
+VACATION
+T}	T{
+Not Available
+T}	T{
+Just a marker flag
+T}
+_
+T{
+HEAD
+T}	T{
+Not Available
+T}	T{
+Just a marker flag
+T}
+_
+T{
+WATCHER
+T}	T{
+Not Available
+T}	T{
+@toggle MONITOR
+T}
+_
+T{
+HTML
+T}	T{
+Not Available
+T}	T{
+Rhost doesn’t support Pueblo
+T}
+_
+T{
+REDIR_OK
+T}	T{
+Not Available
+T}	T{
+Rhost doesn’t support @redirect
+T}
+_
+T{
+SPEECHMOD
+T}	T{
+Not Available
+T}	T{
+Rhost doesn’t support @speechmod \- use @icmd
+T}
+_
+T{
+MARKER0\-MARKER9
+T}	T{
+MARKER0\-MARKER9
+T}	T{
+T}
+_
+.TE
 .SH COMPARISON OF POWERS
 .sp
 announce              Can use the @wall command.
@@ -12439,7 +12825,11 @@ rules are kept.
 .UNINDENT
 .SH COPYRIGHT
 .sp
-Copyright © 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+Copyright 
+.nf
+|copy|
+.fi
+ 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021
 .sp

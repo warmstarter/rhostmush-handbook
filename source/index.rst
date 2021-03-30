@@ -43,12 +43,9 @@ which, as you know, is the best part of setting up a mush.
 
    flags.rst
    powers.rst
-
    helpfile.rst
    wizhelpfile.rst
-
    changelog.rst
-
    nda.rst
 
 .. include:: copyright.rst

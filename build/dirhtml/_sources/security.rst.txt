@@ -344,8 +344,8 @@ Quickstart for SSL setup with stunnel
 
 #.  Modify your netrhost.conf file and add/change the following parameters:
 
-    #. stunnel_reip 1
-    #. stunnel_cmd SECRET-MAGIC-COOKIE
+    #. sconnect_reip 1
+    #. sconnect_cmd SECRET-MAGIC-COOKIE
 
         #.  SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the '#' character is allowable.  You may use up to 30 characters.
         #.  Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address.

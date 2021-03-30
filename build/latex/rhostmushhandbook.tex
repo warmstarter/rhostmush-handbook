@@ -74,7 +74,7 @@
 
 
 \title{RhostMUSH Handbook}
-\date{Mar 15, 2021}
+\date{Mar 30, 2021}
 \release{}
 \author{wstarter}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -6218,11 +6218,11 @@ Modify your netrhost.conf file and add/change the following parameters:
 \sphinxsetlistlabels{\arabic}{enumii}{enumiii}{}{.}%
 \item {} 
 \sphinxAtStartPar
-stunnel\_reip 1
+sconnect\_reip 1
 
 \item {} 
 \sphinxAtStartPar
-stunnel\_cmd SECRET\sphinxhyphen{}MAGIC\sphinxhyphen{}COOKIE
+sconnect\_cmd SECRET\sphinxhyphen{}MAGIC\sphinxhyphen{}COOKIE
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumiii}{enumiv}{}{.}%
 \item {} 
@@ -9275,67 +9275,507 @@ builder script to build in the mysql changes.
 
 \chapter{Comparison of Flags}
 \label{\detokenize{flags:comparison-of-flags}}\label{\detokenize{flags::doc}}
+
+\begin{savenotes}\sphinxatlongtablestart\begin{longtable}[c]{|l|l|l|}
+\hline
+\sphinxstyletheadfamily 
 \sphinxAtStartPar
-ABODE           \sphinxhyphen{} ABODE
-BLIND           \sphinxhyphen{} BLIND
-CHOWN\_OK        \sphinxhyphen{} CHOWN\_OK
-DARK            \sphinxhyphen{} DARK
-FREE            \sphinxhyphen{} FREE
-GOING           \sphinxhyphen{} GOING/BYEROOM
-HAVEN           \sphinxhyphen{} HAVEN
-INHERIT         \sphinxhyphen{} INHERIT
-JUMP\_OK         \sphinxhyphen{} JUMP\_OK
-KEY             \sphinxhyphen{} KEY
-LINK\_OK         \sphinxhyphen{} LINK\_OK
-MONITOR         \sphinxhyphen{} MONITOR
-NOSPOOF         \sphinxhyphen{} NOSPOOF
-OPAQUE          \sphinxhyphen{} OPAQUE
-QUIET           \sphinxhyphen{} QUIET
-STICKY          \sphinxhyphen{} STICKY
-TRACE           \sphinxhyphen{} TRACE
-UNFINDABLE      \sphinxhyphen{} UNFINDABLE
-VISUAL          \sphinxhyphen{} VISUAL
-WIZARD          \sphinxhyphen{} ROYALTY
-ANSI            \sphinxhyphen{} ANSI/ANSICOLOR
-PARENT\_OK       \sphinxhyphen{} PARENT\_OK
-ROYALTY         \sphinxhyphen{} COUNCILOR/ARCHITECT
-AUDIBLE         \sphinxhyphen{} AUDIBLE
-BOUNCE          \sphinxhyphen{} BOUNCE
-CONNECTED       \sphinxhyphen{} CONNECTED
-DESTROY\_OK      \sphinxhyphen{} DESTROY\_OK
-ENTER\_OK        \sphinxhyphen{} ENTER\_OK
-FIXED           \sphinxhyphen{} NO\_TEL
-UNINSPECTED     \sphinxhyphen{} Not Available \sphinxhyphen{} Just a marker flag
-HALTED          \sphinxhyphen{} HALTED
-IMMORTAL        \sphinxhyphen{} GUILDMASTER (You don’t want IMMORTAL)
-GAGGED          \sphinxhyphen{} FUBAR
-CONSTANT        \sphinxhyphen{} NO\_MODIFY
-LIGHT           \sphinxhyphen{} LIGHT
-MYOPIC          \sphinxhyphen{} MYOPIC
-AUDITORIUM      \sphinxhyphen{} AUDITORIUM
-ZONE            \sphinxhyphen{} Use @zone
-PUPPET          \sphinxhyphen{} PUPPET
-TERSE           \sphinxhyphen{} TERSE
-ROBOT           \sphinxhyphen{} ROBOT
-SAFE            \sphinxhyphen{} SAFE
-TRANSPARENT     \sphinxhyphen{} TRANSPARENT
-SUSPECT         \sphinxhyphen{} SUSPECT
-VERBOSE         \sphinxhyphen{} VERBOSE
-STAFF           \sphinxhyphen{} Not Available \sphinxhyphen{} Just a marker flag.
-SLAVE           \sphinxhyphen{} SLAVE
-ORPHAN          \sphinxhyphen{} Not Available \sphinxhyphen{} @lock/use the parent instead
-CONTROL\_OK      \sphinxhyphen{} Not Available \sphinxhyphen{} Use @lock/ZoneWizLock
-STOP            \sphinxhyphen{} STOP (See also NOSTOP)
-COMMANDS        \sphinxhyphen{} COMMANDS
-PRESENCE        \sphinxhyphen{} Not Available \sphinxhyphen{} See: Reality Levels
-NOBLEED         \sphinxhyphen{} Not Needed.  Rhost doesn’t bleed ANSI.
-VACATION        \sphinxhyphen{} Not Available \sphinxhyphen{} Just a marker flag.
-HEAD            \sphinxhyphen{} Not Available \sphinxhyphen{} Just a marker flag.
-WATCHER         \sphinxhyphen{} Not Available \sphinxhyphen{} @toggle MONITOR
-HTML            \sphinxhyphen{} Not Available \sphinxhyphen{} Rhost doesn’t support Pueblo
-REDIR\_OK        \sphinxhyphen{} Not Available \sphinxhyphen{} Rhost doesn’t support @redirect
-SPEECHMOD       \sphinxhyphen{} Not Available \sphinxhyphen{} Rhost doesn’t support @speechmod \sphinxhyphen{} use @icmd
-MARKER0\sphinxhyphen{}MARKER9 \sphinxhyphen{} MARKER0\sphinxhyphen{}MARKER9
+PENN/MUX Flag
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+RhostMUSH Flag
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Commentary on Difference Between Flags
+\\
+\hline
+\endfirsthead
+
+\multicolumn{3}{c}%
+{\makebox[0pt]{\sphinxtablecontinued{\tablename\ \thetable{} \textendash{} continued from previous page}}}\\
+\hline
+\sphinxstyletheadfamily 
+\sphinxAtStartPar
+PENN/MUX Flag
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+RhostMUSH Flag
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Commentary on Difference Between Flags
+\\
+\hline
+\endhead
+
+\hline
+\multicolumn{3}{r}{\makebox[0pt][r]{\sphinxtablecontinued{continues on next page}}}\\
+\endfoot
+
+\endlastfoot
+
+\sphinxAtStartPar
+ABODE
+&
+\sphinxAtStartPar
+ABODE
+&\\
+\hline
+\sphinxAtStartPar
+BLIND
+&
+\sphinxAtStartPar
+BLIND
+&\\
+\hline
+\sphinxAtStartPar
+CHOWN\_OK
+&
+\sphinxAtStartPar
+CHOWN\_OK
+&\\
+\hline
+\sphinxAtStartPar
+DARK
+&
+\sphinxAtStartPar
+DARK
+&\\
+\hline
+\sphinxAtStartPar
+FREE
+&
+\sphinxAtStartPar
+FREE
+&\\
+\hline
+\sphinxAtStartPar
+GOING
+&
+\sphinxAtStartPar
+GOING/BYEROOM
+&\\
+\hline
+\sphinxAtStartPar
+HAVEN
+&
+\sphinxAtStartPar
+HAVEN
+&\\
+\hline
+\sphinxAtStartPar
+INHERIT
+&
+\sphinxAtStartPar
+INHERIT
+&\\
+\hline
+\sphinxAtStartPar
+JUMP\_OK
+&
+\sphinxAtStartPar
+JUMP\_OK
+&\\
+\hline
+\sphinxAtStartPar
+KEY
+&
+\sphinxAtStartPar
+KEY
+&\\
+\hline
+\sphinxAtStartPar
+LINK\_OK
+&
+\sphinxAtStartPar
+LINK\_OK
+&\\
+\hline
+\sphinxAtStartPar
+MONITOR
+&
+\sphinxAtStartPar
+MONITOR
+&\\
+\hline
+\sphinxAtStartPar
+NOSPOOF
+&
+\sphinxAtStartPar
+NOSPOOF
+&\\
+\hline
+\sphinxAtStartPar
+OPAQUE
+&
+\sphinxAtStartPar
+OPAQUE
+&\\
+\hline
+\sphinxAtStartPar
+QUIET
+&
+\sphinxAtStartPar
+QUIET
+&\\
+\hline
+\sphinxAtStartPar
+STICKY
+&
+\sphinxAtStartPar
+STICKY
+&\\
+\hline
+\sphinxAtStartPar
+TRACE
+&
+\sphinxAtStartPar
+TRACE
+&\\
+\hline
+\sphinxAtStartPar
+UNFINDABLE
+&
+\sphinxAtStartPar
+UNFINDABLE
+&\\
+\hline
+\sphinxAtStartPar
+VISUAL
+&
+\sphinxAtStartPar
+VISUAL
+&\\
+\hline
+\sphinxAtStartPar
+WIZARD
+&
+\sphinxAtStartPar
+ROYALTY
+&\\
+\hline
+\sphinxAtStartPar
+ANSI
+&
+\sphinxAtStartPar
+ANSI/ANSICOLOR
+&\\
+\hline
+\sphinxAtStartPar
+PARENT\_OK
+&
+\sphinxAtStartPar
+PARENT\_OK
+&\\
+\hline
+\sphinxAtStartPar
+ROYALTY
+&
+\sphinxAtStartPar
+COUNCILOR/ARCHITECT
+&\\
+\hline
+\sphinxAtStartPar
+AUDIBLE
+&
+\sphinxAtStartPar
+AUDIBLE
+&\\
+\hline
+\sphinxAtStartPar
+BOUNCE
+&
+\sphinxAtStartPar
+BOUNCE
+&\\
+\hline
+\sphinxAtStartPar
+CONNECTED
+&
+\sphinxAtStartPar
+CONNECTED
+&\\
+\hline
+\sphinxAtStartPar
+DESTROY\_OK
+&
+\sphinxAtStartPar
+DESTROY\_OK
+&\\
+\hline
+\sphinxAtStartPar
+ENTER\_OK
+&
+\sphinxAtStartPar
+ENTER\_OK
+&\\
+\hline
+\sphinxAtStartPar
+FIXED
+&
+\sphinxAtStartPar
+NO\_TEL
+&\\
+\hline
+\sphinxAtStartPar
+UNINSPECTED
+&
+\sphinxAtStartPar
+Not Available
+&
+\sphinxAtStartPar
+Just a marker flag
+\\
+\hline
+\sphinxAtStartPar
+HALTED
+&
+\sphinxAtStartPar
+HALTED
+&\\
+\hline
+\sphinxAtStartPar
+IMMORTAL
+&
+\sphinxAtStartPar
+GUILDMASTER
+&
+\sphinxAtStartPar
+You don’t want IMMORTAL
+\\
+\hline
+\sphinxAtStartPar
+GAGGED
+&
+\sphinxAtStartPar
+FUBAR
+&\\
+\hline
+\sphinxAtStartPar
+CONSTANT
+&
+\sphinxAtStartPar
+NO\_MODIFY
+&\\
+\hline
+\sphinxAtStartPar
+LIGHT
+&
+\sphinxAtStartPar
+LIGHT
+&\\
+\hline
+\sphinxAtStartPar
+MYOPIC
+&
+\sphinxAtStartPar
+MYOPIC
+&\\
+\hline
+\sphinxAtStartPar
+AUDITORIUM
+&
+\sphinxAtStartPar
+AUDITORIUM
+&\\
+\hline
+\sphinxAtStartPar
+ZONE
+&
+\sphinxAtStartPar
+Use @zone
+&\\
+\hline
+\sphinxAtStartPar
+PUPPET
+&
+\sphinxAtStartPar
+PUPPET
+&\\
+\hline
+\sphinxAtStartPar
+TERSE
+&
+\sphinxAtStartPar
+TERSE
+&\\
+\hline
+\sphinxAtStartPar
+ROBOT
+&
+\sphinxAtStartPar
+ROBOT
+&\\
+\hline
+\sphinxAtStartPar
+SAFE
+&
+\sphinxAtStartPar
+SAFE
+&\\
+\hline
+\sphinxAtStartPar
+TRANSPARENT
+&
+\sphinxAtStartPar
+TRANSPARENT
+&\\
+\hline
+\sphinxAtStartPar
+SUSPECT
+&
+\sphinxAtStartPar
+SUSPECT
+&\\
+\hline
+\sphinxAtStartPar
+VERBOSE
+&
+\sphinxAtStartPar
+VERBOSE
+&\\
+\hline
+\sphinxAtStartPar
+STAFF
+&
+\sphinxAtStartPar
+Not Available
+&
+\sphinxAtStartPar
+Just a marker flag
+\\
+\hline
+\sphinxAtStartPar
+SLAVE
+&
+\sphinxAtStartPar
+SLAVE
+&\\
+\hline
+\sphinxAtStartPar
+ORPHAN
+&
+\sphinxAtStartPar
+Not Available
+&
+\sphinxAtStartPar
+@lock/use the parent instead
+\\
+\hline
+\sphinxAtStartPar
+CONTROL\_OK
+&
+\sphinxAtStartPar
+Not Available
+&
+\sphinxAtStartPar
+Use @lock/ZoneWizLock
+\\
+\hline
+\sphinxAtStartPar
+STOP
+&
+\sphinxAtStartPar
+STOP
+&
+\sphinxAtStartPar
+See also NOSTOP
+\\
+\hline
+\sphinxAtStartPar
+COMMANDS
+&
+\sphinxAtStartPar
+COMMANDS
+&\\
+\hline
+\sphinxAtStartPar
+PRESENCE
+&
+\sphinxAtStartPar
+Not Available
+&
+\sphinxAtStartPar
+See: Reality Levels
+\\
+\hline
+\sphinxAtStartPar
+NOBLEED
+&
+\sphinxAtStartPar
+Not Needed
+&
+\sphinxAtStartPar
+Rhost doesn’t bleed ANSI
+\\
+\hline
+\sphinxAtStartPar
+VACATION
+&
+\sphinxAtStartPar
+Not Available
+&
+\sphinxAtStartPar
+Just a marker flag
+\\
+\hline
+\sphinxAtStartPar
+HEAD
+&
+\sphinxAtStartPar
+Not Available
+&
+\sphinxAtStartPar
+Just a marker flag
+\\
+\hline
+\sphinxAtStartPar
+WATCHER
+&
+\sphinxAtStartPar
+Not Available
+&
+\sphinxAtStartPar
+@toggle MONITOR
+\\
+\hline
+\sphinxAtStartPar
+HTML
+&
+\sphinxAtStartPar
+Not Available
+&
+\sphinxAtStartPar
+Rhost doesn’t support Pueblo
+\\
+\hline
+\sphinxAtStartPar
+REDIR\_OK
+&
+\sphinxAtStartPar
+Not Available
+&
+\sphinxAtStartPar
+Rhost doesn’t support @redirect
+\\
+\hline
+\sphinxAtStartPar
+SPEECHMOD
+&
+\sphinxAtStartPar
+Not Available
+&
+\sphinxAtStartPar
+Rhost doesn’t support @speechmod \sphinxhyphen{} use @icmd
+\\
+\hline
+\sphinxAtStartPar
+MARKER0\sphinxhyphen{}MARKER9
+&
+\sphinxAtStartPar
+MARKER0\sphinxhyphen{}MARKER9
+&\\
+\hline
+\end{longtable}\sphinxatlongtableend\end{savenotes}
 
 
 \chapter{Comparison of powers}
@@ -14411,7 +14851,7 @@ rules are kept.
 \chapter{Copyright}
 \label{\detokenize{index:copyright}}
 \sphinxAtStartPar
-Copyright © 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+Copyright {\color{red}\bfseries{}|copy|} 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021
 

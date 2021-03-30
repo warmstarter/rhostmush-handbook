@@ -21,5 +21,3 @@ the original writers of the code in writing.
 This copyright does not include the original code that was given as GNU freeware
 
 This copyright information may not be changed, altered, or omitted.
-
-.. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN

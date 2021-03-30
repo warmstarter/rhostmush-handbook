@@ -21,7 +21,7 @@
 
 @copying
 @quotation
-RhostMUSH Handbook , Mar 15, 2021
+RhostMUSH Handbook , Mar 30, 2021
 
 wstarter
 
@@ -7557,10 +7557,10 @@ Modify your netrhost.conf file and add/change the following parameters:
 @enumerate 
 
 @item 
-stunnel_reip 1
+sconnect_reip 1
 
 @item 
-stunnel_cmd SECRET-MAGIC-COOKIE
+sconnect_cmd SECRET-MAGIC-COOKIE
 
 @quotation
 
@@ -10855,66 +10855,696 @@ builder script to build in the mysql changes.
 @chapter Comparison of Flags
 
 
-ABODE           - ABODE
-BLIND           - BLIND
-CHOWN_OK        - CHOWN_OK
-DARK            - DARK
-FREE            - FREE
-GOING           - GOING/BYEROOM
-HAVEN           - HAVEN
-INHERIT         - INHERIT
-JUMP_OK         - JUMP_OK
-KEY             - KEY
-LINK_OK         - LINK_OK
-MONITOR         - MONITOR
-NOSPOOF         - NOSPOOF
-OPAQUE          - OPAQUE
-QUIET           - QUIET
-STICKY          - STICKY
-TRACE           - TRACE
-UNFINDABLE      - UNFINDABLE
-VISUAL          - VISUAL
-WIZARD          - ROYALTY
-ANSI            - ANSI/ANSICOLOR
-PARENT_OK       - PARENT_OK
-ROYALTY         - COUNCILOR/ARCHITECT
-AUDIBLE         - AUDIBLE
-BOUNCE          - BOUNCE
-CONNECTED       - CONNECTED
-DESTROY_OK      - DESTROY_OK
-ENTER_OK        - ENTER_OK
-FIXED           - NO_TEL
-UNINSPECTED     - Not Available - Just a marker flag
-HALTED          - HALTED
-IMMORTAL        - GUILDMASTER (You don’t want IMMORTAL)
-GAGGED          - FUBAR
-CONSTANT        - NO_MODIFY
-LIGHT           - LIGHT
-MYOPIC          - MYOPIC
-AUDITORIUM      - AUDITORIUM
-ZONE            - Use @@zone
-PUPPET          - PUPPET
-TERSE           - TERSE
-ROBOT           - ROBOT
-SAFE            - SAFE
-TRANSPARENT     - TRANSPARENT
-SUSPECT         - SUSPECT
-VERBOSE         - VERBOSE
-STAFF           - Not Available - Just a marker flag.
-SLAVE           - SLAVE
-ORPHAN          - Not Available - @@lock/use the parent instead
-CONTROL_OK      - Not Available - Use @@lock/ZoneWizLock
-STOP            - STOP (See also NOSTOP)
-COMMANDS        - COMMANDS
-PRESENCE        - Not Available - See: Reality Levels
-NOBLEED         - Not Needed.  Rhost doesn’t bleed ANSI.
-VACATION        - Not Available - Just a marker flag.
-HEAD            - Not Available - Just a marker flag.
-WATCHER         - Not Available - @@toggle MONITOR
-HTML            - Not Available - Rhost doesn’t support Pueblo
-REDIR_OK        - Not Available - Rhost doesn’t support @@redirect
-SPEECHMOD       - Not Available - Rhost doesn’t support @@speechmod - use @@icmd
-MARKER0-MARKER9 - MARKER0-MARKER9
+
+@multitable {xxxxxxxxxxxxxxxxx} {xxxxxxxxxxxxxxxxxxxxx} {xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx} 
+@headitem
+
+PENN/MUX Flag
+
+@tab
+
+RhostMUSH Flag
+
+@tab
+
+Commentary on Difference Between Flags
+
+@item
+
+ABODE
+
+@tab
+
+ABODE
+
+@tab
+
+
+@item
+
+BLIND
+
+@tab
+
+BLIND
+
+@tab
+
+
+@item
+
+CHOWN_OK
+
+@tab
+
+CHOWN_OK
+
+@tab
+
+
+@item
+
+DARK
+
+@tab
+
+DARK
+
+@tab
+
+
+@item
+
+FREE
+
+@tab
+
+FREE
+
+@tab
+
+
+@item
+
+GOING
+
+@tab
+
+GOING/BYEROOM
+
+@tab
+
+
+@item
+
+HAVEN
+
+@tab
+
+HAVEN
+
+@tab
+
+
+@item
+
+INHERIT
+
+@tab
+
+INHERIT
+
+@tab
+
+
+@item
+
+JUMP_OK
+
+@tab
+
+JUMP_OK
+
+@tab
+
+
+@item
+
+KEY
+
+@tab
+
+KEY
+
+@tab
+
+
+@item
+
+LINK_OK
+
+@tab
+
+LINK_OK
+
+@tab
+
+
+@item
+
+MONITOR
+
+@tab
+
+MONITOR
+
+@tab
+
+
+@item
+
+NOSPOOF
+
+@tab
+
+NOSPOOF
+
+@tab
+
+
+@item
+
+OPAQUE
+
+@tab
+
+OPAQUE
+
+@tab
+
+
+@item
+
+QUIET
+
+@tab
+
+QUIET
+
+@tab
+
+
+@item
+
+STICKY
+
+@tab
+
+STICKY
+
+@tab
+
+
+@item
+
+TRACE
+
+@tab
+
+TRACE
+
+@tab
+
+
+@item
+
+UNFINDABLE
+
+@tab
+
+UNFINDABLE
+
+@tab
+
+
+@item
+
+VISUAL
+
+@tab
+
+VISUAL
+
+@tab
+
+
+@item
+
+WIZARD
+
+@tab
+
+ROYALTY
+
+@tab
+
+
+@item
+
+ANSI
+
+@tab
+
+ANSI/ANSICOLOR
+
+@tab
+
+
+@item
+
+PARENT_OK
+
+@tab
+
+PARENT_OK
+
+@tab
+
+
+@item
+
+ROYALTY
+
+@tab
+
+COUNCILOR/ARCHITECT
+
+@tab
+
+
+@item
+
+AUDIBLE
+
+@tab
+
+AUDIBLE
+
+@tab
+
+
+@item
+
+BOUNCE
+
+@tab
+
+BOUNCE
+
+@tab
+
+
+@item
+
+CONNECTED
+
+@tab
+
+CONNECTED
+
+@tab
+
+
+@item
+
+DESTROY_OK
+
+@tab
+
+DESTROY_OK
+
+@tab
+
+
+@item
+
+ENTER_OK
+
+@tab
+
+ENTER_OK
+
+@tab
+
+
+@item
+
+FIXED
+
+@tab
+
+NO_TEL
+
+@tab
+
+
+@item
+
+UNINSPECTED
+
+@tab
+
+Not Available
+
+@tab
+
+Just a marker flag
+
+@item
+
+HALTED
+
+@tab
+
+HALTED
+
+@tab
+
+
+@item
+
+IMMORTAL
+
+@tab
+
+GUILDMASTER
+
+@tab
+
+You don’t want IMMORTAL
+
+@item
+
+GAGGED
+
+@tab
+
+FUBAR
+
+@tab
+
+
+@item
+
+CONSTANT
+
+@tab
+
+NO_MODIFY
+
+@tab
+
+
+@item
+
+LIGHT
+
+@tab
+
+LIGHT
+
+@tab
+
+
+@item
+
+MYOPIC
+
+@tab
+
+MYOPIC
+
+@tab
+
+
+@item
+
+AUDITORIUM
+
+@tab
+
+AUDITORIUM
+
+@tab
+
+
+@item
+
+ZONE
+
+@tab
+
+Use @@zone
+
+@tab
+
+
+@item
+
+PUPPET
+
+@tab
+
+PUPPET
+
+@tab
+
+
+@item
+
+TERSE
+
+@tab
+
+TERSE
+
+@tab
+
+
+@item
+
+ROBOT
+
+@tab
+
+ROBOT
+
+@tab
+
+
+@item
+
+SAFE
+
+@tab
+
+SAFE
+
+@tab
+
+
+@item
+
+TRANSPARENT
+
+@tab
+
+TRANSPARENT
+
+@tab
+
+
+@item
+
+SUSPECT
+
+@tab
+
+SUSPECT
+
+@tab
+
+
+@item
+
+VERBOSE
+
+@tab
+
+VERBOSE
+
+@tab
+
+
+@item
+
+STAFF
+
+@tab
+
+Not Available
+
+@tab
+
+Just a marker flag
+
+@item
+
+SLAVE
+
+@tab
+
+SLAVE
+
+@tab
+
+
+@item
+
+ORPHAN
+
+@tab
+
+Not Available
+
+@tab
+
+@@lock/use the parent instead
+
+@item
+
+CONTROL_OK
+
+@tab
+
+Not Available
+
+@tab
+
+Use @@lock/ZoneWizLock
+
+@item
+
+STOP
+
+@tab
+
+STOP
+
+@tab
+
+See also NOSTOP
+
+@item
+
+COMMANDS
+
+@tab
+
+COMMANDS
+
+@tab
+
+
+@item
+
+PRESENCE
+
+@tab
+
+Not Available
+
+@tab
+
+See: Reality Levels
+
+@item
+
+NOBLEED
+
+@tab
+
+Not Needed
+
+@tab
+
+Rhost doesn’t bleed ANSI
+
+@item
+
+VACATION
+
+@tab
+
+Not Available
+
+@tab
+
+Just a marker flag
+
+@item
+
+HEAD
+
+@tab
+
+Not Available
+
+@tab
+
+Just a marker flag
+
+@item
+
+WATCHER
+
+@tab
+
+Not Available
+
+@tab
+
+@@toggle MONITOR
+
+@item
+
+HTML
+
+@tab
+
+Not Available
+
+@tab
+
+Rhost doesn’t support Pueblo
+
+@item
+
+REDIR_OK
+
+@tab
+
+Not Available
+
+@tab
+
+Rhost doesn’t support @@redirect
+
+@item
+
+SPEECHMOD
+
+@tab
+
+Not Available
+
+@tab
+
+Rhost doesn’t support @@speechmod - use @@icmd
+
+@item
+
+MARKER0-MARKER9
+
+@tab
+
+MARKER0-MARKER9
+
+@tab
+
+
+@end multitable
+
 
 @node Comparison of powers,RhostMUSH Internal Help Files,Comparison of Flags,Top
 @anchor{powers doc}@anchor{188}@anchor{powers comparison-of-powers}@anchor{189}
@@ -17244,7 +17874,7 @@ rules are kept.
 @chapter Copyright
 
 
-Copyright © 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+Copyright >>|copy|<< 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021
 
