@@ -350,7 +350,7 @@ Quickstart for SSL setup with stunnel
         #.  SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the '#' character is allowable.  You may use up to 30 characters.
         #.  Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address.
 
-    #. stunnel_host localhost 127.0.0.1 othersite.goes.here
+    #. sconnect_host localhost 127.0.0.1 othersite.goes.here
 
         #.  This is optional.  
         #.  If you do not specify it it defaults to 'localhost 127.0.0.1'.  If your domain has a unique name like 'localhost.localdomain' like some ubuntu distributions, then you should customize your stunnel_host.
