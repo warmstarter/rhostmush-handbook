@@ -116,18 +116,18 @@ KILL (kill -KILL or kill -9)
      Also, when you bring down a mush in this manner, you need to issue
      Startmush -f to bring it back up.
 
-Shutting down gracefully
-========================
+Shutting down RhostMUSH gracefully
+==================================
 
-Rhostmush has many ways to shut down the game cleanly
------------------------------------------------------
+RhostMUSH has many ways to shutdown the game cleanly
+----------------------------------------------------
 
 #. Log into the mush and issue @shutdown
 #. Issue a kill -USR2 to the mush which issues an emergency @shutdown
 #. Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.
 
-WARNING: Never kill -9 Rhost
-----------------------------
+WARNING: Never kill -9 RhostMUSH
+---------------------------------
 
 Under NO CIRCUMSTANCES should you kill -9 your mush unless you don't care for the 
 database.  The reason is if the mush happens to be saving, in any method, to the 

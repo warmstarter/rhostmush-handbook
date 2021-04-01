@@ -113,107 +113,107 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 &#64;admin function_access – You can use this even on softcoded functions if you so desired.</p>
 </div></blockquote>
 </div>
-<div class="section" id="flags">
-<h3><span class="section-number">7.2.6. </span>Flags</h3>
-<blockquote>
-<div><p>GUEST    - This is your guest flag, it should only be set on guests
-WANDERER - the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.
-NO_COMMAND - You can use this to stop a player from being able to connect without worrying about changing their password
-FUBAR      - As the flag states, it f*’s them up beind all recognition.  It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command.
-SLAVE      - Funny enough, slave allows anything but say and pose.  To ruin a troll’s life, set both FUBAR and SLAVE and sit back and smile.
-NO_TEL     - The target can’t teleport or be teleported
-NO_MOVE    - The target is locked at their location unable to move at all
-NO_WALL    - They do not see any &#64;wall except a wizard &#64;wall/no_prefix.  This has the bonus of snuffing db save messages.
-NO_POSSESS - Sometimes it’s useful to grant a builder character to multiple players.  The NO_POSSESS flag makes it so that player can not be logged in more than 2 times.
-NO_MODIFY  - The target can not be modified (except by immortal/#1)
-NO_EXAMINE - The target can not be examined/decompiled (except by immortal/#1)
-STOP       - Once a matching $command is found on an object set STOP, it ‘stops’ trying to find other $command matches.
-NOSTOP     - If a target that is set STOP is also set NOSTOP, it will check the master room for a command and execute that as well if found.
-NO_PESTER  - Stops target from &#64;pemit or whisper.  You may use &#64;icmd as well.
-NO_OVERRIDE - Useful for immortals.  By default they override all locks, including attribute locks.  This makes it so an immortal’s passing of locks will behave like a mortals NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely want to set this on your immortal and wizard.
+<div class="section" id="rhostmush-flags-and-descriptions">
+<h3><span class="section-number">7.2.6. </span>RhostMUSH Flags and Descriptions</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GUEST       - This is your guest flag, it should only be set on guests
+WANDERER    - the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.
+NO_COMMAND  - You can use this to stop a player from being able to connect without worrying about changing their password
+FUBAR       - As the flag states, it f*&#39;s them up beind all recognition.  It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command.
+SLAVE       - Funny enough, slave allows anything but say and pose.  To ruin a troll&#39;s life, set both FUBAR and SLAVE and sit back and smile.
+NO_TEL      - The target can&#39;t teleport or be teleported
+NO_MOVE     - The target is locked at their location unable to move at all
+NO_WALL     - They do not see any @wall except a wizard @wall/no_prefix.  This has the bonus of snuffing db save messages.
+NO_POSSESS  - Sometimes it&#39;s useful to grant a builder character to multiple players.  The NO_POSSESS flag makes it so that player can not be logged in more than 2 times.
+NO_MODIFY   - The target can not be modified (except by immortal/#1)
+NO_EXAMINE  - The target can not be examined/decompiled (except by immortal/#1)
+STOP        - Once a matching $command is found on an object set STOP, it &#39;stops&#39; trying to find other $command matches.
+NOSTOP      - If a target that is set STOP is also set NOSTOP, it will check the master room for a command and execute that as well if found.
+NO_PESTER   - Stops target from @pemit or whisper.  You may use @icmd as well.
+NO_OVERRIDE - Useful for immortals.  By default they override all locks, including attribute locks.  This makes it so an immortal&#39;s passing of locks will behave like a mortals
+NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely want to set this on your immortal and wizard.
 NO_ANSINAME - stops a target from having an ansified name
 NO_CODE     - lock down advanced coding from a target
 SPAMMONITOR - stop a target from issuing more than 60 commands a minute.
-FREE        - Stop costing money for day to day processing of commands/building</p>
-</div></blockquote>
+FREE        - Stop costing money for day to day processing of commands/building
+</pre></div>
 </div>
-<div class="section" id="toggles">
-<h3><span class="section-number">7.2.7. </span>Toggles</h3>
-<blockquote>
-<div><p>MONITOR            - Enables site monitoring.  This is the main toggle
-MONITOR_SITE       - Adds site information to site monitoring
-MONITOR_USERID     - Adds the userid to site monitoring
-MONITOR_STATS      - Adds connection stats to site monitoring
-MONITOR_FAIL       - Adds showing failed connections to site monitoring
-MONITOR_CONN       - Adds connection monitoring to site monitoring
-MONITOR_DISREASON  - Adds disconnect reasons to site monitoring
-MONITOR_TIME       - Adds time stamps to site monitoring
-MONITOR_BAD        - Shows all bad creation attempts to site monitoring
-MONITOR_VLIMIT     - Shows attempts to bypass MAX ATTRIBUTES
-MONITOR_AREG       - Shows all auto registration attempts
-MONITOR_CPU        - Shows all CPU warnings and/or alerts on the mush
-NO_FORMAT          - Bypasses &#64;conformat, &#64;exitformat, and other formats
-SEE_SUSPECT        - Allows you to see suspect info in the WHO/DOING
-FORCEHALTED        - Allows you to &#64;force/&#64;sudo a HALTED target
-NOSHPROG           - Disallows using ‘|’ to execute commands outside &#64;program
-PROG               - Allows the target to use &#64;program
-IMMPROG            - Disables the ability to use &#64;quitprogram from a &#64;program
-PROG_ON_CONNECT    - Allows a &#64;program to resume if someone reconnects
-IGNOREZONE         - Enables a zone to process &#64;icmd’s
-PAGELOCK           - Enforces target to require passing pagelocks
-MAIL_LOCKDOWN      - Blocks the ability of a wizard to check another player’s mail
-ATRUSE             - Enables the attribute to use attribute content locking
-NOGLOBPARENT       - Disables the target from inheriting global parenting
-LOGROOM            - Enables system logs on the room
-EXFULLWIZATTR      - Allows target to examine all wizard attributes
-NODEFAULT          - Disables attribute formatting/handling on the target
-CHKREALITY         - Enables the use of reality locks on the target
-HIDEIDLE           - Disables deidling when you execute any command
-MORTALREALITY      - Enforces a wizard to pass realities as a mortal
-SNUFFDARK          - Hides dark exits from a wizard</p>
-</div></blockquote>
 </div>
-<div class="section" id="powers">
-<h3><span class="section-number">7.2.8. </span>&#64;powers</h3>
-<blockquote>
-<div><p>WIZ_WHO            - Allows target to see sites ala wizard who
-NOFORCE            - target an not be forced (except by immortal/#1)
-FREE_QUOTA         - Allow target to have unlimited quota
-JOIN_PLAYER        - Allow to ‘join’ a player’s location
-NO_BOOT            - Player can not be booted except by immortal/#1
-STEAL              - Player can give negative money
-TEL_ANYWHERE       - Player can teleport anywhere
-STAT_ANY           - Player can &#64;search, &#64;stat, or &#64;find things
-HALT_QUEUE_ALL     - Player can halt the queue
-SEARCH_ANY         - Player can search for anything
-WHO_UNFIND         - Player can see hidden player on WHO
-SHUTDOWN           - Player can &#64;shutdown the mush
-PURGE              - Player can use /purge to &#64;destroy and &#64;nuke
-EXAMINE_FULL       - Player can examine anything (not set NO_EXAMINE or cloaked)
-FORMATTING         - &#64;*formats allow passing what a person sees as %0, %1, etc
-CHOWN_ANYWHERE     - Chown anything anywhere to yourself
-CHOWN_OTHER        - Chown something you don’t own to yourself
-EXAMINE_ALL        - Examine other things (tiered)
-SEE_QUEUE_ALL      - Player can see the full queue
-GRAB_PLAYER        - Player can grab a remote player and pull them to location
-LONG_FINGERS       - Player is granted remote control of things they own
-BOOT               - Player can &#64;boot
-SEE_QUEUE          - Player can see advanced queue features
-TEL_ANYTHING       - Player can &#64;teleport anything
-PCREATE            - Player can &#64;pcreate players
-NOWHO              - Allows the use of &#64;hide
-HALT_QUEUE         - Allows halting queue by specified bitlevel
-SECURITY           - Allows setting  NOMOVE    NO_TEL   SLAVE   NO_YELL
-WRAITH             - Allows bypassing exit locks
-HIDEBIT            - Hides your admin level from lower levels
-FULLTEL            - Allows full immortal level teleportation
-EXECSCRIPT         - Allows executing external scripts in ~/game/scripts</p>
-</div></blockquote>
+<div class="section" id="rhostmush-toggles-and-descriptions">
+<h3><span class="section-number">7.2.7. </span>RhostMUSH Toggles and Descriptions</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MONITOR</span>            <span class="o">-</span> <span class="n">Enables</span> <span class="n">site</span> <span class="n">monitoring</span><span class="o">.</span>  <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">main</span> <span class="n">toggle</span>
+<span class="n">MONITOR_SITE</span>       <span class="o">-</span> <span class="n">Adds</span> <span class="n">site</span> <span class="n">information</span> <span class="n">to</span> <span class="n">site</span> <span class="n">monitoring</span>
+<span class="n">MONITOR_USERID</span>     <span class="o">-</span> <span class="n">Adds</span> <span class="n">the</span> <span class="n">userid</span> <span class="n">to</span> <span class="n">site</span> <span class="n">monitoring</span>
+<span class="n">MONITOR_STATS</span>      <span class="o">-</span> <span class="n">Adds</span> <span class="n">connection</span> <span class="n">stats</span> <span class="n">to</span> <span class="n">site</span> <span class="n">monitoring</span>
+<span class="n">MONITOR_FAIL</span>       <span class="o">-</span> <span class="n">Adds</span> <span class="n">showing</span> <span class="n">failed</span> <span class="n">connections</span> <span class="n">to</span> <span class="n">site</span> <span class="n">monitoring</span>
+<span class="n">MONITOR_CONN</span>       <span class="o">-</span> <span class="n">Adds</span> <span class="n">connection</span> <span class="n">monitoring</span> <span class="n">to</span> <span class="n">site</span> <span class="n">monitoring</span>
+<span class="n">MONITOR_DISREASON</span>  <span class="o">-</span> <span class="n">Adds</span> <span class="n">disconnect</span> <span class="n">reasons</span> <span class="n">to</span> <span class="n">site</span> <span class="n">monitoring</span>
+<span class="n">MONITOR_TIME</span>       <span class="o">-</span> <span class="n">Adds</span> <span class="n">time</span> <span class="n">stamps</span> <span class="n">to</span> <span class="n">site</span> <span class="n">monitoring</span>
+<span class="n">MONITOR_BAD</span>        <span class="o">-</span> <span class="n">Shows</span> <span class="nb">all</span> <span class="n">bad</span> <span class="n">creation</span> <span class="n">attempts</span> <span class="n">to</span> <span class="n">site</span> <span class="n">monitoring</span>
+<span class="n">MONITOR_VLIMIT</span>     <span class="o">-</span> <span class="n">Shows</span> <span class="n">attempts</span> <span class="n">to</span> <span class="n">bypass</span> <span class="n">MAX</span> <span class="n">ATTRIBUTES</span>
+<span class="n">MONITOR_AREG</span>       <span class="o">-</span> <span class="n">Shows</span> <span class="nb">all</span> <span class="n">auto</span> <span class="n">registration</span> <span class="n">attempts</span>
+<span class="n">MONITOR_CPU</span>        <span class="o">-</span> <span class="n">Shows</span> <span class="nb">all</span> <span class="n">CPU</span> <span class="n">warnings</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">alerts</span> <span class="n">on</span> <span class="n">the</span> <span class="n">mush</span>
+<span class="n">NO_FORMAT</span>          <span class="o">-</span> <span class="n">Bypasses</span> <span class="nd">@conformat</span><span class="p">,</span> <span class="nd">@exitformat</span><span class="p">,</span> <span class="ow">and</span> <span class="n">other</span> <span class="n">formats</span>
+<span class="n">SEE_SUSPECT</span>        <span class="o">-</span> <span class="n">Allows</span> <span class="n">you</span> <span class="n">to</span> <span class="n">see</span> <span class="n">suspect</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">WHO</span><span class="o">/</span><span class="n">DOING</span>
+<span class="n">FORCEHALTED</span>        <span class="o">-</span> <span class="n">Allows</span> <span class="n">you</span> <span class="n">to</span> <span class="nd">@force</span><span class="o">/</span><span class="nd">@sudo</span> <span class="n">a</span> <span class="n">HALTED</span> <span class="n">target</span>
+<span class="n">NOSHPROG</span>           <span class="o">-</span> <span class="n">Disallows</span> <span class="n">using</span> <span class="s1">&#39;|&#39;</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">commands</span> <span class="n">outside</span> <span class="nd">@program</span>
+<span class="n">PROG</span>               <span class="o">-</span> <span class="n">Allows</span> <span class="n">the</span> <span class="n">target</span> <span class="n">to</span> <span class="n">use</span> <span class="nd">@program</span>
+<span class="n">IMMPROG</span>            <span class="o">-</span> <span class="n">Disables</span> <span class="n">the</span> <span class="n">ability</span> <span class="n">to</span> <span class="n">use</span> <span class="nd">@quitprogram</span> <span class="kn">from</span> <span class="nn">a</span> <span class="nd">@program</span>
+<span class="n">PROG_ON_CONNECT</span>    <span class="o">-</span> <span class="n">Allows</span> <span class="n">a</span> <span class="nd">@program</span> <span class="n">to</span> <span class="n">resume</span> <span class="k">if</span> <span class="n">someone</span> <span class="n">reconnects</span>
+<span class="n">IGNOREZONE</span>         <span class="o">-</span> <span class="n">Enables</span> <span class="n">a</span> <span class="n">zone</span> <span class="n">to</span> <span class="n">process</span> <span class="nd">@icmd</span><span class="s1">&#39;s</span>
+<span class="n">PAGELOCK</span>           <span class="o">-</span> <span class="n">Enforces</span> <span class="n">target</span> <span class="n">to</span> <span class="n">require</span> <span class="n">passing</span> <span class="n">pagelocks</span>
+<span class="n">MAIL_LOCKDOWN</span>      <span class="o">-</span> <span class="n">Blocks</span> <span class="n">the</span> <span class="n">ability</span> <span class="n">of</span> <span class="n">a</span> <span class="n">wizard</span> <span class="n">to</span> <span class="n">check</span> <span class="n">another</span> <span class="n">player</span><span class="s1">&#39;s mail</span>
+<span class="n">ATRUSE</span>             <span class="o">-</span> <span class="n">Enables</span> <span class="n">the</span> <span class="n">attribute</span> <span class="n">to</span> <span class="n">use</span> <span class="n">attribute</span> <span class="n">content</span> <span class="n">locking</span>
+<span class="n">NOGLOBPARENT</span>       <span class="o">-</span> <span class="n">Disables</span> <span class="n">the</span> <span class="n">target</span> <span class="kn">from</span> <span class="nn">inheriting</span> <span class="k">global</span> <span class="n">parenting</span>
+<span class="n">LOGROOM</span>            <span class="o">-</span> <span class="n">Enables</span> <span class="n">system</span> <span class="n">logs</span> <span class="n">on</span> <span class="n">the</span> <span class="n">room</span>
+<span class="n">EXFULLWIZATTR</span>      <span class="o">-</span> <span class="n">Allows</span> <span class="n">target</span> <span class="n">to</span> <span class="n">examine</span> <span class="nb">all</span> <span class="n">wizard</span> <span class="n">attributes</span>
+<span class="n">NODEFAULT</span>          <span class="o">-</span> <span class="n">Disables</span> <span class="n">attribute</span> <span class="n">formatting</span><span class="o">/</span><span class="n">handling</span> <span class="n">on</span> <span class="n">the</span> <span class="n">target</span>
+<span class="n">CHKREALITY</span>         <span class="o">-</span> <span class="n">Enables</span> <span class="n">the</span> <span class="n">use</span> <span class="n">of</span> <span class="n">reality</span> <span class="n">locks</span> <span class="n">on</span> <span class="n">the</span> <span class="n">target</span>
+<span class="n">HIDEIDLE</span>           <span class="o">-</span> <span class="n">Disables</span> <span class="n">deidling</span> <span class="n">when</span> <span class="n">you</span> <span class="n">execute</span> <span class="nb">any</span> <span class="n">command</span>
+<span class="n">MORTALREALITY</span>      <span class="o">-</span> <span class="n">Enforces</span> <span class="n">a</span> <span class="n">wizard</span> <span class="n">to</span> <span class="k">pass</span> <span class="n">realities</span> <span class="k">as</span> <span class="n">a</span> <span class="n">mortal</span>
+<span class="n">SNUFFDARK</span>          <span class="o">-</span> <span class="n">Hides</span> <span class="n">dark</span> <span class="n">exits</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">wizard</span>
+</pre></div>
 </div>
-<div class="section" id="depowers">
-<h3><span class="section-number">7.2.9. </span>&#64;depowers</h3>
-<blockquote>
-<div><p>WALL               - Disables the ability to &#64;wall
+</div>
+<div class="section" id="rhostmush-powers-and-descriptions">
+<h3><span class="section-number">7.2.8. </span>RhostMUSH &#64;powers and Descriptions</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WIZ_WHO</span>            <span class="o">-</span> <span class="n">Allows</span> <span class="n">target</span> <span class="n">to</span> <span class="n">see</span> <span class="n">sites</span> <span class="n">ala</span> <span class="n">wizard</span> <span class="n">who</span>
+<span class="n">NOFORCE</span>            <span class="o">-</span> <span class="n">target</span> <span class="n">an</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">forced</span> <span class="p">(</span><span class="k">except</span> <span class="n">by</span> <span class="n">immortal</span><span class="o">/</span><span class="c1">#1)</span>
+<span class="n">FREE_QUOTA</span>         <span class="o">-</span> <span class="n">Allow</span> <span class="n">target</span> <span class="n">to</span> <span class="n">have</span> <span class="n">unlimited</span> <span class="n">quota</span>
+<span class="n">JOIN_PLAYER</span>        <span class="o">-</span> <span class="n">Allow</span> <span class="n">to</span> <span class="s1">&#39;join&#39;</span> <span class="n">a</span> <span class="n">player</span><span class="s1">&#39;s location</span>
+<span class="n">NO_BOOT</span>            <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">booted</span> <span class="k">except</span> <span class="n">by</span> <span class="n">immortal</span><span class="o">/</span><span class="c1">#1</span>
+<span class="n">STEAL</span>              <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="n">give</span> <span class="n">negative</span> <span class="n">money</span>
+<span class="n">TEL_ANYWHERE</span>       <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="n">teleport</span> <span class="n">anywhere</span>
+<span class="n">STAT_ANY</span>           <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="nd">@search</span><span class="p">,</span> <span class="nd">@stat</span><span class="p">,</span> <span class="ow">or</span> <span class="nd">@find</span> <span class="n">things</span>
+<span class="n">HALT_QUEUE_ALL</span>     <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="n">halt</span> <span class="n">the</span> <span class="n">queue</span>
+<span class="n">SEARCH_ANY</span>         <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="n">search</span> <span class="k">for</span> <span class="n">anything</span>
+<span class="n">WHO_UNFIND</span>         <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="n">see</span> <span class="n">hidden</span> <span class="n">player</span> <span class="n">on</span> <span class="n">WHO</span>
+<span class="n">SHUTDOWN</span>           <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="nd">@shutdown</span> <span class="n">the</span> <span class="n">mush</span>
+<span class="n">PURGE</span>              <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="n">use</span> <span class="o">/</span><span class="n">purge</span> <span class="n">to</span> <span class="nd">@destroy</span> <span class="ow">and</span> <span class="nd">@nuke</span>
+<span class="n">EXAMINE_FULL</span>       <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="n">examine</span> <span class="n">anything</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">set</span> <span class="n">NO_EXAMINE</span> <span class="ow">or</span> <span class="n">cloaked</span><span class="p">)</span>
+<span class="n">FORMATTING</span>         <span class="o">-</span> <span class="o">@*</span><span class="n">formats</span> <span class="n">allow</span> <span class="n">passing</span> <span class="n">what</span> <span class="n">a</span> <span class="n">person</span> <span class="n">sees</span> <span class="k">as</span> <span class="o">%</span><span class="mi">0</span><span class="p">,</span> <span class="o">%</span><span class="mi">1</span><span class="p">,</span> <span class="n">etc</span>
+<span class="n">CHOWN_ANYWHERE</span>     <span class="o">-</span> <span class="n">Chown</span> <span class="n">anything</span> <span class="n">anywhere</span> <span class="n">to</span> <span class="n">yourself</span>
+<span class="n">CHOWN_OTHER</span>        <span class="o">-</span> <span class="n">Chown</span> <span class="n">something</span> <span class="n">you</span> <span class="n">don</span><span class="s1">&#39;t own to yourself</span>
+<span class="n">EXAMINE_ALL</span>        <span class="o">-</span> <span class="n">Examine</span> <span class="n">other</span> <span class="n">things</span> <span class="p">(</span><span class="n">tiered</span><span class="p">)</span>
+<span class="n">SEE_QUEUE_ALL</span>      <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="n">see</span> <span class="n">the</span> <span class="n">full</span> <span class="n">queue</span>
+<span class="n">GRAB_PLAYER</span>        <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="n">grab</span> <span class="n">a</span> <span class="n">remote</span> <span class="n">player</span> <span class="ow">and</span> <span class="n">pull</span> <span class="n">them</span> <span class="n">to</span> <span class="n">location</span>
+<span class="n">LONG_FINGERS</span>       <span class="o">-</span> <span class="n">Player</span> <span class="ow">is</span> <span class="n">granted</span> <span class="n">remote</span> <span class="n">control</span> <span class="n">of</span> <span class="n">things</span> <span class="n">they</span> <span class="n">own</span>
+<span class="n">BOOT</span>               <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="nd">@boot</span>
+<span class="n">SEE_QUEUE</span>          <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="n">see</span> <span class="n">advanced</span> <span class="n">queue</span> <span class="n">features</span>
+<span class="n">TEL_ANYTHING</span>       <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="nd">@teleport</span> <span class="n">anything</span>
+<span class="n">PCREATE</span>            <span class="o">-</span> <span class="n">Player</span> <span class="n">can</span> <span class="nd">@pcreate</span> <span class="n">players</span>
+<span class="n">NOWHO</span>              <span class="o">-</span> <span class="n">Allows</span> <span class="n">the</span> <span class="n">use</span> <span class="n">of</span> <span class="nd">@hide</span>
+<span class="n">HALT_QUEUE</span>         <span class="o">-</span> <span class="n">Allows</span> <span class="n">halting</span> <span class="n">queue</span> <span class="n">by</span> <span class="n">specified</span> <span class="n">bitlevel</span>
+<span class="n">SECURITY</span>           <span class="o">-</span> <span class="n">Allows</span> <span class="n">setting</span>  <span class="n">NOMOVE</span>    <span class="n">NO_TEL</span>   <span class="n">SLAVE</span>   <span class="n">NO_YELL</span>
+<span class="n">WRAITH</span>             <span class="o">-</span> <span class="n">Allows</span> <span class="n">bypassing</span> <span class="n">exit</span> <span class="n">locks</span>
+<span class="n">HIDEBIT</span>            <span class="o">-</span> <span class="n">Hides</span> <span class="n">your</span> <span class="n">admin</span> <span class="n">level</span> <span class="kn">from</span> <span class="nn">lower</span> <span class="n">levels</span>
+<span class="n">FULLTEL</span>            <span class="o">-</span> <span class="n">Allows</span> <span class="n">full</span> <span class="n">immortal</span> <span class="n">level</span> <span class="n">teleportation</span>
+<span class="n">EXECSCRIPT</span>         <span class="o">-</span> <span class="n">Allows</span> <span class="n">executing</span> <span class="n">external</span> <span class="n">scripts</span> <span class="ow">in</span> <span class="o">~/</span><span class="n">game</span><span class="o">/</span><span class="n">scripts</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rhostmush-depowers-and-descriptions">
+<h3><span class="section-number">7.2.9. </span>RhostMUSH &#64;depowers and Descriptions</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WALL               - Disables the ability to @wall
 LONG_FINGERS       - Disables remote access to things
 STEAL              - Can not steal money
 CREATE             - Can not create anything
@@ -221,7 +221,7 @@ WIZ_WHO            - Can not access wizard who
 CLOAK              - Can not wizard cloak
 BOOT               - Can not boot
 PAGE               - Can not page
-FORCE              - Can not &#64;force/&#64;sudo
+FORCE              - Can not @force/@sudo
 LOCKS              - Can not pass locks
 COMMAND            - Can not execute any $command (including master room)
 MASTER             - Can not use any master room $command
@@ -231,21 +231,22 @@ FREE               - No longer has free money for anything
 OVERRIDE           - No longer can override anything
 TEL_ANYWHERE       - No longer can teleport anywhere
 TEL_ANYTHING       - No longer can teleport anything other than themselves
-POWER              - Can no longer use &#64;power
+POWER              - Can no longer use @power
 MODIFY             - Can not modify things
 CHOWN_ME           - Can not chown anything to themselves
 CHOWN_OTHER        - Can not chown anything to others
 ABUSE              - Can not use $commands on anything they do not own
 UNL_QUOTA          - No longer has infinite quota
-SEARCH_ANY         - Disables the ability to &#64;search/&#64;find things
+SEARCH_ANY         - Disables the ability to @search/@find things
 GIVE               - Disables ability to give things/money
 RECEIVE            - Disables the ability to recieve things/money
 NOGOLD             - Limits (or disables) how much gold someone can give
 NOSTEAL            - Can not give negative gold
 PASSWORD           - Can not change password
 MORTAL_EXAMINE     - drops examine and all fetching to mortal only
-PERSONAL_COMMAND   - Disables all $commands on anything they own</p>
-</div></blockquote>
+PERSONAL_COMMAND   - Disables all $commands on anything they own
+</pre></div>
+</div>
 </div>
 <div class="section" id="site-restrictions">
 <h3><span class="section-number">7.2.10. </span>Site Restrictions</h3>
@@ -260,25 +261,27 @@ allowable.</p>
 <div><p>You may use CIDR notation such as /32 instead of 255.255.255.255.
 Config file:  (see section on forbid_site as it describes and gives examples)
 Online Syntax: MASK:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                   <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span>
-                   <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.255</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>                <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span>
+                <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.255</span>
 
-   <span class="n">CIDR</span><span class="p">::</span>
+<span class="n">CIDR</span><span class="p">::</span>
 
-                   <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span> <span class="o">/</span><span class="mi">24</span>
-                   <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span> <span class="o">/</span><span class="mi">32</span>
+                <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span> <span class="o">/</span><span class="mi">24</span>
+                <span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span> <span class="o">/</span><span class="mi">32</span>
 
-   <span class="n">REMOVING</span><span class="p">:</span> <span class="n">MASK</span><span class="p">::</span>
+<span class="n">REMOVING</span><span class="p">:</span> <span class="n">MASK</span><span class="p">::</span>
 
-                   <span class="nd">@site</span><span class="o">/</span><span class="nb">all</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span><span class="o">=</span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.255</span>
-                   <span class="nd">@site</span><span class="o">/</span><span class="n">forbid</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span><span class="o">=</span><span class="mf">254.255</span><span class="o">.</span><span class="mf">255.0</span>
+                <span class="nd">@site</span><span class="o">/</span><span class="nb">all</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span><span class="o">=</span><span class="mf">255.255</span><span class="o">.</span><span class="mf">255.255</span>
+                <span class="nd">@site</span><span class="o">/</span><span class="n">forbid</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span><span class="o">=</span><span class="mf">254.255</span><span class="o">.</span><span class="mf">255.0</span>
 
-             <span class="n">CIDR</span><span class="p">::</span>
+          <span class="n">CIDR</span><span class="p">::</span>
 
-                   <span class="nd">@site</span><span class="o">/</span><span class="nb">all</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span><span class="o">=/</span><span class="mi">32</span>
-                   <span class="nd">@site</span><span class="o">/</span><span class="n">forbid</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span><span class="o">=/</span><span class="mi">24</span>
-
-<span class="n">forbid_site</span>      <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span> <span class="n">forbid</span> <span class="n">only</span>
+                <span class="nd">@site</span><span class="o">/</span><span class="nb">all</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.123</span><span class="o">=/</span><span class="mi">32</span>
+                <span class="nd">@site</span><span class="o">/</span><span class="n">forbid</span> <span class="mf">123.123</span><span class="o">.</span><span class="mf">123.0</span><span class="o">=/</span><span class="mi">24</span>
+</pre></div>
+</div>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">forbid_site</span>      <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span> <span class="n">forbid</span> <span class="n">only</span>
 <span class="n">register_site</span>    <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span> <span class="n">register</span> <span class="n">only</span>
 <span class="n">noguest_site</span>     <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">guests</span>
 <span class="n">suspect_site</span>     <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span> <span class="n">suspect</span> <span class="n">on</span> <span class="n">connect</span>
@@ -289,7 +292,6 @@ Online Syntax: MASK:</p>
 <span class="n">noauth_site</span>      <span class="o">-</span> <span class="n">Site</span> <span class="n">will</span> <span class="n">no</span> <span class="n">longer</span> <span class="n">do</span> <span class="n">AUTH</span> <span class="n">ident</span> <span class="n">lookups</span>
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="dns-based-restrictions">
 <h4><span class="section-number">7.2.10.2. </span>DNS based restrictions</h4>
@@ -300,21 +302,22 @@ when the condition is matched, such as allowing 2 players from a site to
 be connected before disallowing anyone else to connect.
 Config File: (see section on forbid_host as it describes and gives examples)
 Online Syntax:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>        ADD:      @admin forbid_host=*.dsl*.comcast.net *.aol.com *another.site
-        DEL:      @admin forbid_host=!*.aol.com
-        ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at once only)
-
-forbid_host     - Set the specified site(s) forbid only
-register_host   - Set the specified site(s) register only
-noguest_host    - Set the specified site(s) unable to connect to guests
-suspect_host    - Set the specified site(s) suspect on connect
-noautoreg_host  - Set the specified site(s) to not allow autoregistration
-validate_host   - Do not allow any autoregistration from emails matching site
-goodmail_host   - Always allow autoregistration from emails matching site
-nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ADD:      @admin forbid_host=*.dsl*.comcast.net *.aol.com *another.site
+DEL:      @admin forbid_host=!*.aol.com
+ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at once only)
 </pre></div>
 </div>
 </div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">forbid_host</span>     <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">forbid</span> <span class="n">only</span>
+<span class="n">register_host</span>   <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">register</span> <span class="n">only</span>
+<span class="n">noguest_host</span>    <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">unable</span> <span class="n">to</span> <span class="n">connect</span> <span class="n">to</span> <span class="n">guests</span>
+<span class="n">suspect_host</span>    <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">suspect</span> <span class="n">on</span> <span class="n">connect</span>
+<span class="n">noautoreg_host</span>  <span class="o">-</span> <span class="n">Set</span> <span class="n">the</span> <span class="n">specified</span> <span class="n">site</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="ow">not</span> <span class="n">allow</span> <span class="n">autoregistration</span>
+<span class="n">validate_host</span>   <span class="o">-</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">allow</span> <span class="nb">any</span> <span class="n">autoregistration</span> <span class="kn">from</span> <span class="nn">emails</span> <span class="n">matching</span> <span class="n">site</span>
+<span class="n">goodmail_host</span>   <span class="o">-</span> <span class="n">Always</span> <span class="n">allow</span> <span class="n">autoregistration</span> <span class="kn">from</span> <span class="nn">emails</span> <span class="n">matching</span> <span class="n">site</span>
+<span class="n">nobroadcast_host</span> <span class="o">-</span> <span class="n">Snuff</span> <span class="n">online</span> <span class="n">site</span> <span class="n">broadcasts</span> <span class="n">via</span> <span class="n">MONITOR</span> <span class="k">for</span> <span class="n">specified</span> <span class="n">site</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -409,18 +412,23 @@ are entirely separate processes.</p>
 <p>To setup SSL connectivity, we use the STUNNEL application to tunnel SSL to
 the mush.  This acts a bit like a man in the middle but remains controlled
 by the game owner which would have access to the end point anyway.</p>
-<p>Note: it is assumed you will have already initially set up your netrhost.conf.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>it is assumed you will have already initially set up your netrhost.conf.</p>
+</div>
 <div class="section" id="stunnel-directory">
 <h4><span class="section-number">7.4.2.1. </span>stunnel directory</h4>
 <p>You would set up the stunnel from the ‘stunnel’ directory.  There the following
 files are of relevance:</p>
-<p>README                     – a readme explaining the points of stunnel
-stunnel.conf.example       – The example stunnel.conf file.  If you wish to create this manually you’re welcome to.  Just make sure the end file is stunnel.conf
-stunnel_setup.sh           – the script to build a stunnel.conf file for you which will be dropped at your specified location.
-stunnel_kill.sh            – Stop/terminate the stunnel process.
-stunnel_start.sh           – Start the stunnel process.
-warpbubble.pl              – the perl script that handles stunnel to mush connectivity.
-stunnel_src                – If you do not have stunnel, this directory will allow you to download, compile and locally install.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">README</span>                     <span class="o">--</span> <span class="n">a</span> <span class="n">readme</span> <span class="n">explaining</span> <span class="n">the</span> <span class="n">points</span> <span class="n">of</span> <span class="n">stunnel</span>
+<span class="n">stunnel</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">example</span>       <span class="o">--</span> <span class="n">The</span> <span class="n">example</span> <span class="n">stunnel</span><span class="o">.</span><span class="n">conf</span> <span class="n">file</span><span class="o">.</span>  <span class="n">If</span> <span class="n">you</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">create</span> <span class="n">this</span> <span class="n">manually</span> <span class="n">you</span><span class="s1">&#39;re welcome to.  Just make sure the end file is stunnel.conf</span>
+<span class="n">stunnel_setup</span><span class="o">.</span><span class="n">sh</span>           <span class="o">--</span> <span class="n">the</span> <span class="n">script</span> <span class="n">to</span> <span class="n">build</span> <span class="n">a</span> <span class="n">stunnel</span><span class="o">.</span><span class="n">conf</span> <span class="n">file</span> <span class="k">for</span> <span class="n">you</span> <span class="n">which</span> <span class="n">will</span> <span class="n">be</span> <span class="n">dropped</span> <span class="n">at</span> <span class="n">your</span> <span class="n">specified</span> <span class="n">location</span><span class="o">.</span>
+<span class="n">stunnel_kill</span><span class="o">.</span><span class="n">sh</span>            <span class="o">--</span> <span class="n">Stop</span><span class="o">/</span><span class="n">terminate</span> <span class="n">the</span> <span class="n">stunnel</span> <span class="n">process</span><span class="o">.</span>
+<span class="n">stunnel_start</span><span class="o">.</span><span class="n">sh</span>           <span class="o">--</span> <span class="n">Start</span> <span class="n">the</span> <span class="n">stunnel</span> <span class="n">process</span><span class="o">.</span>
+<span class="n">warpbubble</span><span class="o">.</span><span class="n">pl</span>              <span class="o">--</span> <span class="n">the</span> <span class="n">perl</span> <span class="n">script</span> <span class="n">that</span> <span class="n">handles</span> <span class="n">stunnel</span> <span class="n">to</span> <span class="n">mush</span> <span class="n">connectivity</span><span class="o">.</span>
+<span class="n">stunnel_src</span>                <span class="o">--</span> <span class="n">If</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">have</span> <span class="n">stunnel</span><span class="p">,</span> <span class="n">this</span> <span class="n">directory</span> <span class="n">will</span> <span class="n">allow</span> <span class="n">you</span> <span class="n">to</span> <span class="n">download</span><span class="p">,</span> <span class="nb">compile</span> <span class="ow">and</span> <span class="n">locally</span> <span class="n">install</span><span class="o">.</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="modifying-netrhost-conf">
 <h4><span class="section-number">7.4.2.2. </span>Modifying netrhost.conf</h4>
@@ -428,10 +436,15 @@ stunnel_src                – If you do not have stunnel, this directory will a
 the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect_host if
 not set will default to ‘localhost 127.0.0.1’.</p>
-<p>sconnect_reip 1         – This enables the SSL tunnel layer handler within rhost.
-sconnect_cmd XYZZY      – this will set the secret SSL command handshake command to XYZZY.  This is case sensitive and can be up to 31 characters.  Please make sure to only use printable non-whitespace characters.  Ergo: one word
-sconnect_host wildcards – This allows wildcarded sites (one or more) to allow to access the sconnect/stunnel handler.  This defaults to ‘localhost’ and ‘127.0.0.1’ so if you have ‘localhost.localdomain’ instead then you must set this to whatever is seen as ‘localhost’ to you.  You can verify this by checking your /etc/hosts file.</p>
-<p>Note: the sconnect_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sconnect_reip</span> <span class="mi">1</span>         <span class="o">--</span> <span class="n">This</span> <span class="n">enables</span> <span class="n">the</span> <span class="n">SSL</span> <span class="n">tunnel</span> <span class="n">layer</span> <span class="n">handler</span> <span class="n">within</span> <span class="n">rhost</span><span class="o">.</span>
+<span class="n">sconnect_cmd</span> <span class="n">XYZZY</span>      <span class="o">--</span> <span class="n">this</span> <span class="n">will</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">secret</span> <span class="n">SSL</span> <span class="n">command</span> <span class="n">handshake</span> <span class="n">command</span> <span class="n">to</span> <span class="n">XYZZY</span><span class="o">.</span>  <span class="n">This</span> <span class="ow">is</span> <span class="n">case</span> <span class="n">sensitive</span> <span class="ow">and</span> <span class="n">can</span> <span class="n">be</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">31</span> <span class="n">characters</span><span class="o">.</span>  <span class="n">Please</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">to</span> <span class="n">only</span> <span class="n">use</span> <span class="n">printable</span> <span class="n">non</span><span class="o">-</span><span class="n">whitespace</span> <span class="n">characters</span><span class="o">.</span>  <span class="n">Ergo</span><span class="p">:</span> <span class="n">one</span> <span class="n">word</span>
+<span class="n">sconnect_host</span> <span class="n">wildcards</span> <span class="o">--</span> <span class="n">This</span> <span class="n">allows</span> <span class="n">wildcarded</span> <span class="n">sites</span> <span class="p">(</span><span class="n">one</span> <span class="ow">or</span> <span class="n">more</span><span class="p">)</span> <span class="n">to</span> <span class="n">allow</span> <span class="n">to</span> <span class="n">access</span> <span class="n">the</span> <span class="n">sconnect</span><span class="o">/</span><span class="n">stunnel</span> <span class="n">handler</span><span class="o">.</span>  <span class="n">This</span> <span class="n">defaults</span> <span class="n">to</span> <span class="s1">&#39;localhost&#39;</span> <span class="ow">and</span> <span class="s1">&#39;127.0.0.1&#39;</span> <span class="n">so</span> <span class="k">if</span> <span class="n">you</span> <span class="n">have</span> <span class="s1">&#39;localhost.localdomain&#39;</span> <span class="n">instead</span> <span class="n">then</span> <span class="n">you</span> <span class="n">must</span> <span class="nb">set</span> <span class="n">this</span> <span class="n">to</span> <span class="n">whatever</span> <span class="ow">is</span> <span class="n">seen</span> <span class="k">as</span> <span class="s1">&#39;localhost&#39;</span> <span class="n">to</span> <span class="n">you</span><span class="o">.</span>  <span class="n">You</span> <span class="n">can</span> <span class="n">verify</span> <span class="n">this</span> <span class="n">by</span> <span class="n">checking</span> <span class="n">your</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hosts</span> <span class="n">file</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the sconnect_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.</p>
+</div>
 </div>
 <div class="section" id="running-the-stunnel-setup-program">
 <h4><span class="section-number">7.4.2.3. </span>Running the stunnel setup program</h4>

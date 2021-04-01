@@ -74,7 +74,7 @@
 
 
 \title{RhostMUSH Handbook}
-\date{Mar 30, 2021}
+\date{Apr 01, 2021}
 \release{}
 \author{wstarter}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -5571,8 +5571,8 @@ substitution, are used in the DB.
 \chapter{What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in RhostMUSH}
 \label{\detokenize{toggles:what-flags-toggles-powers-depowers-and-bitlevels-mean-in-rhostmush}}\label{\detokenize{toggles::doc}}
 
-\section{Flags}
-\label{\detokenize{toggles:flags}}
+\section{What are Flags?}
+\label{\detokenize{toggles:what-are-flags}}
 \sphinxAtStartPar
 Flags are pretty much exactly the same as any other mush.  It’s a flag
 that you set or unset on a target which then enables/disables or
@@ -5580,8 +5580,8 @@ alters something that target can do.  There’s help on all the flags
 in help and wizhelp.
 
 
-\section{Toggles}
-\label{\detokenize{toggles:toggles}}
+\section{What are Toggles?}
+\label{\detokenize{toggles:what-are-toggles}}
 \sphinxAtStartPar
 Toggles were designed as a single point flag that immediately enables
 or disables a set ability or condition, thus a ‘toggle’.  It works
@@ -5590,8 +5590,8 @@ distinguish from the multi\sphinxhyphen{}meaning of a ‘flag’, and because fr
 we ran out of flag space :)
 
 
-\section{@power}
-\label{\detokenize{toggles:power}}
+\section{What is an @power?}
+\label{\detokenize{toggles:what-is-an-power}}
 \sphinxAtStartPar
 A power is similar to a power on other mushes, but unlike them, our
 powers are multi\sphinxhyphen{}tier.  This means that they can be customized to
@@ -5603,8 +5603,8 @@ This requires the INHERIT flag for non\sphinxhyphen{}players to inherit powers,
 however, a specific object can be granted a power as well.
 
 
-\section{@depower}
-\label{\detokenize{toggles:depower}}
+\section{What is an @depower?}
+\label{\detokenize{toggles:what-is-an-depower}}
 \sphinxAtStartPar
 This is the anti\sphinxhyphen{}thesis of @power.  Also, depowers do not require
 inheritance.  They also have priority over flags, toggles, and
@@ -5926,146 +5926,143 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 \end{quote}
 
 
-\subsection{Flags}
-\label{\detokenize{security:flags}}\begin{quote}
-
-\sphinxAtStartPar
-GUEST    \sphinxhyphen{} This is your guest flag, it should only be set on guests
-WANDERER \sphinxhyphen{} the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.
-NO\_COMMAND \sphinxhyphen{} You can use this to stop a player from being able to connect without worrying about changing their password
-FUBAR      \sphinxhyphen{} As the flag states, it f*’s them up beind all recognition.  It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command.
-SLAVE      \sphinxhyphen{} Funny enough, slave allows anything but say and pose.  To ruin a troll’s life, set both FUBAR and SLAVE and sit back and smile.
-NO\_TEL     \sphinxhyphen{} The target can’t teleport or be teleported
-NO\_MOVE    \sphinxhyphen{} The target is locked at their location unable to move at all
-NO\_WALL    \sphinxhyphen{} They do not see any @wall except a wizard @wall/no\_prefix.  This has the bonus of snuffing db save messages.
-NO\_POSSESS \sphinxhyphen{} Sometimes it’s useful to grant a builder character to multiple players.  The NO\_POSSESS flag makes it so that player can not be logged in more than 2 times.
-NO\_MODIFY  \sphinxhyphen{} The target can not be modified (except by immortal/\#1)
-NO\_EXAMINE \sphinxhyphen{} The target can not be examined/decompiled (except by immortal/\#1)
-STOP       \sphinxhyphen{} Once a matching \$command is found on an object set STOP, it ‘stops’ trying to find other \$command matches.
-NOSTOP     \sphinxhyphen{} If a target that is set STOP is also set NOSTOP, it will check the master room for a command and execute that as well if found.
-NO\_PESTER  \sphinxhyphen{} Stops target from @pemit or whisper.  You may use @icmd as well.
-NO\_OVERRIDE \sphinxhyphen{} Useful for immortals.  By default they override all locks, including attribute locks.  This makes it so an immortal’s passing of locks will behave like a mortals NO\_USELOCK  \sphinxhyphen{} This is like NO\_OVERRIDE but only effects uselocks.  You likely want to set this on your immortal and wizard.
-NO\_ANSINAME \sphinxhyphen{} stops a target from having an ansified name
-NO\_CODE     \sphinxhyphen{} lock down advanced coding from a target
-SPAMMONITOR \sphinxhyphen{} stop a target from issuing more than 60 commands a minute.
-FREE        \sphinxhyphen{} Stop costing money for day to day processing of commands/building
-\end{quote}
-
-
-\subsection{Toggles}
-\label{\detokenize{security:toggles}}\begin{quote}
-
-\sphinxAtStartPar
-MONITOR            \sphinxhyphen{} Enables site monitoring.  This is the main toggle
-MONITOR\_SITE       \sphinxhyphen{} Adds site information to site monitoring
-MONITOR\_USERID     \sphinxhyphen{} Adds the userid to site monitoring
-MONITOR\_STATS      \sphinxhyphen{} Adds connection stats to site monitoring
-MONITOR\_FAIL       \sphinxhyphen{} Adds showing failed connections to site monitoring
-MONITOR\_CONN       \sphinxhyphen{} Adds connection monitoring to site monitoring
-MONITOR\_DISREASON  \sphinxhyphen{} Adds disconnect reasons to site monitoring
-MONITOR\_TIME       \sphinxhyphen{} Adds time stamps to site monitoring
-MONITOR\_BAD        \sphinxhyphen{} Shows all bad creation attempts to site monitoring
-MONITOR\_VLIMIT     \sphinxhyphen{} Shows attempts to bypass MAX ATTRIBUTES
-MONITOR\_AREG       \sphinxhyphen{} Shows all auto registration attempts
-MONITOR\_CPU        \sphinxhyphen{} Shows all CPU warnings and/or alerts on the mush
-NO\_FORMAT          \sphinxhyphen{} Bypasses @conformat, @exitformat, and other formats
-SEE\_SUSPECT        \sphinxhyphen{} Allows you to see suspect info in the WHO/DOING
-FORCEHALTED        \sphinxhyphen{} Allows you to @force/@sudo a HALTED target
-NOSHPROG           \sphinxhyphen{} Disallows using ‘|’ to execute commands outside @program
-PROG               \sphinxhyphen{} Allows the target to use @program
-IMMPROG            \sphinxhyphen{} Disables the ability to use @quitprogram from a @program
-PROG\_ON\_CONNECT    \sphinxhyphen{} Allows a @program to resume if someone reconnects
-IGNOREZONE         \sphinxhyphen{} Enables a zone to process @icmd’s
-PAGELOCK           \sphinxhyphen{} Enforces target to require passing pagelocks
-MAIL\_LOCKDOWN      \sphinxhyphen{} Blocks the ability of a wizard to check another player’s mail
-ATRUSE             \sphinxhyphen{} Enables the attribute to use attribute content locking
-NOGLOBPARENT       \sphinxhyphen{} Disables the target from inheriting global parenting
-LOGROOM            \sphinxhyphen{} Enables system logs on the room
-EXFULLWIZATTR      \sphinxhyphen{} Allows target to examine all wizard attributes
-NODEFAULT          \sphinxhyphen{} Disables attribute formatting/handling on the target
-CHKREALITY         \sphinxhyphen{} Enables the use of reality locks on the target
-HIDEIDLE           \sphinxhyphen{} Disables deidling when you execute any command
-MORTALREALITY      \sphinxhyphen{} Enforces a wizard to pass realities as a mortal
-SNUFFDARK          \sphinxhyphen{} Hides dark exits from a wizard
-\end{quote}
+\subsection{RhostMUSH Flags and Descriptions}
+\label{\detokenize{security:rhostmush-flags-and-descriptions}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+GUEST       \PYGZhy{} This is your guest flag, it should only be set on guests
+WANDERER    \PYGZhy{} the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.
+NO\PYGZus{}COMMAND  \PYGZhy{} You can use this to stop a player from being able to connect without worrying about changing their password
+FUBAR       \PYGZhy{} As the flag states, it f*\PYGZsq{}s them up beind all recognition.  It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command.
+SLAVE       \PYGZhy{} Funny enough, slave allows anything but say and pose.  To ruin a troll\PYGZsq{}s life, set both FUBAR and SLAVE and sit back and smile.
+NO\PYGZus{}TEL      \PYGZhy{} The target can\PYGZsq{}t teleport or be teleported
+NO\PYGZus{}MOVE     \PYGZhy{} The target is locked at their location unable to move at all
+NO\PYGZus{}WALL     \PYGZhy{} They do not see any @wall except a wizard @wall/no\PYGZus{}prefix.  This has the bonus of snuffing db save messages.
+NO\PYGZus{}POSSESS  \PYGZhy{} Sometimes it\PYGZsq{}s useful to grant a builder character to multiple players.  The NO\PYGZus{}POSSESS flag makes it so that player can not be logged in more than 2 times.
+NO\PYGZus{}MODIFY   \PYGZhy{} The target can not be modified (except by immortal/\PYGZsh{}1)
+NO\PYGZus{}EXAMINE  \PYGZhy{} The target can not be examined/decompiled (except by immortal/\PYGZsh{}1)
+STOP        \PYGZhy{} Once a matching \PYGZdl{}command is found on an object set STOP, it \PYGZsq{}stops\PYGZsq{} trying to find other \PYGZdl{}command matches.
+NOSTOP      \PYGZhy{} If a target that is set STOP is also set NOSTOP, it will check the master room for a command and execute that as well if found.
+NO\PYGZus{}PESTER   \PYGZhy{} Stops target from @pemit or whisper.  You may use @icmd as well.
+NO\PYGZus{}OVERRIDE \PYGZhy{} Useful for immortals.  By default they override all locks, including attribute locks.  This makes it so an immortal\PYGZsq{}s passing of locks will behave like a mortals
+NO\PYGZus{}USELOCK  \PYGZhy{} This is like NO\PYGZus{}OVERRIDE but only effects uselocks.  You likely want to set this on your immortal and wizard.
+NO\PYGZus{}ANSINAME \PYGZhy{} stops a target from having an ansified name
+NO\PYGZus{}CODE     \PYGZhy{} lock down advanced coding from a target
+SPAMMONITOR \PYGZhy{} stop a target from issuing more than 60 commands a minute.
+FREE        \PYGZhy{} Stop costing money for day to day processing of commands/building
+\end{sphinxVerbatim}
 
 
-\subsection{@powers}
-\label{\detokenize{security:powers}}\begin{quote}
-
-\sphinxAtStartPar
-WIZ\_WHO            \sphinxhyphen{} Allows target to see sites ala wizard who
-NOFORCE            \sphinxhyphen{} target an not be forced (except by immortal/\#1)
-FREE\_QUOTA         \sphinxhyphen{} Allow target to have unlimited quota
-JOIN\_PLAYER        \sphinxhyphen{} Allow to ‘join’ a player’s location
-NO\_BOOT            \sphinxhyphen{} Player can not be booted except by immortal/\#1
-STEAL              \sphinxhyphen{} Player can give negative money
-TEL\_ANYWHERE       \sphinxhyphen{} Player can teleport anywhere
-STAT\_ANY           \sphinxhyphen{} Player can @search, @stat, or @find things
-HALT\_QUEUE\_ALL     \sphinxhyphen{} Player can halt the queue
-SEARCH\_ANY         \sphinxhyphen{} Player can search for anything
-WHO\_UNFIND         \sphinxhyphen{} Player can see hidden player on WHO
-SHUTDOWN           \sphinxhyphen{} Player can @shutdown the mush
-PURGE              \sphinxhyphen{} Player can use /purge to @destroy and @nuke
-EXAMINE\_FULL       \sphinxhyphen{} Player can examine anything (not set NO\_EXAMINE or cloaked)
-FORMATTING         \sphinxhyphen{} @*formats allow passing what a person sees as \%0, \%1, etc
-CHOWN\_ANYWHERE     \sphinxhyphen{} Chown anything anywhere to yourself
-CHOWN\_OTHER        \sphinxhyphen{} Chown something you don’t own to yourself
-EXAMINE\_ALL        \sphinxhyphen{} Examine other things (tiered)
-SEE\_QUEUE\_ALL      \sphinxhyphen{} Player can see the full queue
-GRAB\_PLAYER        \sphinxhyphen{} Player can grab a remote player and pull them to location
-LONG\_FINGERS       \sphinxhyphen{} Player is granted remote control of things they own
-BOOT               \sphinxhyphen{} Player can @boot
-SEE\_QUEUE          \sphinxhyphen{} Player can see advanced queue features
-TEL\_ANYTHING       \sphinxhyphen{} Player can @teleport anything
-PCREATE            \sphinxhyphen{} Player can @pcreate players
-NOWHO              \sphinxhyphen{} Allows the use of @hide
-HALT\_QUEUE         \sphinxhyphen{} Allows halting queue by specified bitlevel
-SECURITY           \sphinxhyphen{} Allows setting  NOMOVE    NO\_TEL   SLAVE   NO\_YELL
-WRAITH             \sphinxhyphen{} Allows bypassing exit locks
-HIDEBIT            \sphinxhyphen{} Hides your admin level from lower levels
-FULLTEL            \sphinxhyphen{} Allows full immortal level teleportation
-EXECSCRIPT         \sphinxhyphen{} Allows executing external scripts in \textasciitilde{}/game/scripts
-\end{quote}
+\subsection{RhostMUSH Toggles and Descriptions}
+\label{\detokenize{security:rhostmush-toggles-and-descriptions}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{MONITOR}            \PYG{o}{\PYGZhy{}} \PYG{n}{Enables} \PYG{n}{site} \PYG{n}{monitoring}\PYG{o}{.}  \PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{the} \PYG{n}{main} \PYG{n}{toggle}
+\PYG{n}{MONITOR\PYGZus{}SITE}       \PYG{o}{\PYGZhy{}} \PYG{n}{Adds} \PYG{n}{site} \PYG{n}{information} \PYG{n}{to} \PYG{n}{site} \PYG{n}{monitoring}
+\PYG{n}{MONITOR\PYGZus{}USERID}     \PYG{o}{\PYGZhy{}} \PYG{n}{Adds} \PYG{n}{the} \PYG{n}{userid} \PYG{n}{to} \PYG{n}{site} \PYG{n}{monitoring}
+\PYG{n}{MONITOR\PYGZus{}STATS}      \PYG{o}{\PYGZhy{}} \PYG{n}{Adds} \PYG{n}{connection} \PYG{n}{stats} \PYG{n}{to} \PYG{n}{site} \PYG{n}{monitoring}
+\PYG{n}{MONITOR\PYGZus{}FAIL}       \PYG{o}{\PYGZhy{}} \PYG{n}{Adds} \PYG{n}{showing} \PYG{n}{failed} \PYG{n}{connections} \PYG{n}{to} \PYG{n}{site} \PYG{n}{monitoring}
+\PYG{n}{MONITOR\PYGZus{}CONN}       \PYG{o}{\PYGZhy{}} \PYG{n}{Adds} \PYG{n}{connection} \PYG{n}{monitoring} \PYG{n}{to} \PYG{n}{site} \PYG{n}{monitoring}
+\PYG{n}{MONITOR\PYGZus{}DISREASON}  \PYG{o}{\PYGZhy{}} \PYG{n}{Adds} \PYG{n}{disconnect} \PYG{n}{reasons} \PYG{n}{to} \PYG{n}{site} \PYG{n}{monitoring}
+\PYG{n}{MONITOR\PYGZus{}TIME}       \PYG{o}{\PYGZhy{}} \PYG{n}{Adds} \PYG{n}{time} \PYG{n}{stamps} \PYG{n}{to} \PYG{n}{site} \PYG{n}{monitoring}
+\PYG{n}{MONITOR\PYGZus{}BAD}        \PYG{o}{\PYGZhy{}} \PYG{n}{Shows} \PYG{n+nb}{all} \PYG{n}{bad} \PYG{n}{creation} \PYG{n}{attempts} \PYG{n}{to} \PYG{n}{site} \PYG{n}{monitoring}
+\PYG{n}{MONITOR\PYGZus{}VLIMIT}     \PYG{o}{\PYGZhy{}} \PYG{n}{Shows} \PYG{n}{attempts} \PYG{n}{to} \PYG{n}{bypass} \PYG{n}{MAX} \PYG{n}{ATTRIBUTES}
+\PYG{n}{MONITOR\PYGZus{}AREG}       \PYG{o}{\PYGZhy{}} \PYG{n}{Shows} \PYG{n+nb}{all} \PYG{n}{auto} \PYG{n}{registration} \PYG{n}{attempts}
+\PYG{n}{MONITOR\PYGZus{}CPU}        \PYG{o}{\PYGZhy{}} \PYG{n}{Shows} \PYG{n+nb}{all} \PYG{n}{CPU} \PYG{n}{warnings} \PYG{o+ow}{and}\PYG{o}{/}\PYG{o+ow}{or} \PYG{n}{alerts} \PYG{n}{on} \PYG{n}{the} \PYG{n}{mush}
+\PYG{n}{NO\PYGZus{}FORMAT}          \PYG{o}{\PYGZhy{}} \PYG{n}{Bypasses} \PYG{n+nd}{@conformat}\PYG{p}{,} \PYG{n+nd}{@exitformat}\PYG{p}{,} \PYG{o+ow}{and} \PYG{n}{other} \PYG{n}{formats}
+\PYG{n}{SEE\PYGZus{}SUSPECT}        \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{you} \PYG{n}{to} \PYG{n}{see} \PYG{n}{suspect} \PYG{n}{info} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{WHO}\PYG{o}{/}\PYG{n}{DOING}
+\PYG{n}{FORCEHALTED}        \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{you} \PYG{n}{to} \PYG{n+nd}{@force}\PYG{o}{/}\PYG{n+nd}{@sudo} \PYG{n}{a} \PYG{n}{HALTED} \PYG{n}{target}
+\PYG{n}{NOSHPROG}           \PYG{o}{\PYGZhy{}} \PYG{n}{Disallows} \PYG{n}{using} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{|}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{to} \PYG{n}{execute} \PYG{n}{commands} \PYG{n}{outside} \PYG{n+nd}{@program}
+\PYG{n}{PROG}               \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{the} \PYG{n}{target} \PYG{n}{to} \PYG{n}{use} \PYG{n+nd}{@program}
+\PYG{n}{IMMPROG}            \PYG{o}{\PYGZhy{}} \PYG{n}{Disables} \PYG{n}{the} \PYG{n}{ability} \PYG{n}{to} \PYG{n}{use} \PYG{n+nd}{@quitprogram} \PYG{k+kn}{from} \PYG{n+nn}{a} \PYG{n+nd}{@program}
+\PYG{n}{PROG\PYGZus{}ON\PYGZus{}CONNECT}    \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{a} \PYG{n+nd}{@program} \PYG{n}{to} \PYG{n}{resume} \PYG{k}{if} \PYG{n}{someone} \PYG{n}{reconnects}
+\PYG{n}{IGNOREZONE}         \PYG{o}{\PYGZhy{}} \PYG{n}{Enables} \PYG{n}{a} \PYG{n}{zone} \PYG{n}{to} \PYG{n}{process} \PYG{n+nd}{@icmd}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s}
+\PYG{n}{PAGELOCK}           \PYG{o}{\PYGZhy{}} \PYG{n}{Enforces} \PYG{n}{target} \PYG{n}{to} \PYG{n}{require} \PYG{n}{passing} \PYG{n}{pagelocks}
+\PYG{n}{MAIL\PYGZus{}LOCKDOWN}      \PYG{o}{\PYGZhy{}} \PYG{n}{Blocks} \PYG{n}{the} \PYG{n}{ability} \PYG{n}{of} \PYG{n}{a} \PYG{n}{wizard} \PYG{n}{to} \PYG{n}{check} \PYG{n}{another} \PYG{n}{player}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s mail}
+\PYG{n}{ATRUSE}             \PYG{o}{\PYGZhy{}} \PYG{n}{Enables} \PYG{n}{the} \PYG{n}{attribute} \PYG{n}{to} \PYG{n}{use} \PYG{n}{attribute} \PYG{n}{content} \PYG{n}{locking}
+\PYG{n}{NOGLOBPARENT}       \PYG{o}{\PYGZhy{}} \PYG{n}{Disables} \PYG{n}{the} \PYG{n}{target} \PYG{k+kn}{from} \PYG{n+nn}{inheriting} \PYG{k}{global} \PYG{n}{parenting}
+\PYG{n}{LOGROOM}            \PYG{o}{\PYGZhy{}} \PYG{n}{Enables} \PYG{n}{system} \PYG{n}{logs} \PYG{n}{on} \PYG{n}{the} \PYG{n}{room}
+\PYG{n}{EXFULLWIZATTR}      \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{target} \PYG{n}{to} \PYG{n}{examine} \PYG{n+nb}{all} \PYG{n}{wizard} \PYG{n}{attributes}
+\PYG{n}{NODEFAULT}          \PYG{o}{\PYGZhy{}} \PYG{n}{Disables} \PYG{n}{attribute} \PYG{n}{formatting}\PYG{o}{/}\PYG{n}{handling} \PYG{n}{on} \PYG{n}{the} \PYG{n}{target}
+\PYG{n}{CHKREALITY}         \PYG{o}{\PYGZhy{}} \PYG{n}{Enables} \PYG{n}{the} \PYG{n}{use} \PYG{n}{of} \PYG{n}{reality} \PYG{n}{locks} \PYG{n}{on} \PYG{n}{the} \PYG{n}{target}
+\PYG{n}{HIDEIDLE}           \PYG{o}{\PYGZhy{}} \PYG{n}{Disables} \PYG{n}{deidling} \PYG{n}{when} \PYG{n}{you} \PYG{n}{execute} \PYG{n+nb}{any} \PYG{n}{command}
+\PYG{n}{MORTALREALITY}      \PYG{o}{\PYGZhy{}} \PYG{n}{Enforces} \PYG{n}{a} \PYG{n}{wizard} \PYG{n}{to} \PYG{k}{pass} \PYG{n}{realities} \PYG{k}{as} \PYG{n}{a} \PYG{n}{mortal}
+\PYG{n}{SNUFFDARK}          \PYG{o}{\PYGZhy{}} \PYG{n}{Hides} \PYG{n}{dark} \PYG{n}{exits} \PYG{k+kn}{from} \PYG{n+nn}{a} \PYG{n}{wizard}
+\end{sphinxVerbatim}
 
 
-\subsection{@depowers}
-\label{\detokenize{security:depowers}}\begin{quote}
+\subsection{RhostMUSH @powers and Descriptions}
+\label{\detokenize{security:rhostmush-powers-and-descriptions}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{WIZ\PYGZus{}WHO}            \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{target} \PYG{n}{to} \PYG{n}{see} \PYG{n}{sites} \PYG{n}{ala} \PYG{n}{wizard} \PYG{n}{who}
+\PYG{n}{NOFORCE}            \PYG{o}{\PYGZhy{}} \PYG{n}{target} \PYG{n}{an} \PYG{o+ow}{not} \PYG{n}{be} \PYG{n}{forced} \PYG{p}{(}\PYG{k}{except} \PYG{n}{by} \PYG{n}{immortal}\PYG{o}{/}\PYG{c+c1}{\PYGZsh{}1)}
+\PYG{n}{FREE\PYGZus{}QUOTA}         \PYG{o}{\PYGZhy{}} \PYG{n}{Allow} \PYG{n}{target} \PYG{n}{to} \PYG{n}{have} \PYG{n}{unlimited} \PYG{n}{quota}
+\PYG{n}{JOIN\PYGZus{}PLAYER}        \PYG{o}{\PYGZhy{}} \PYG{n}{Allow} \PYG{n}{to} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{join}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{a} \PYG{n}{player}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s location}
+\PYG{n}{NO\PYGZus{}BOOT}            \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{o+ow}{not} \PYG{n}{be} \PYG{n}{booted} \PYG{k}{except} \PYG{n}{by} \PYG{n}{immortal}\PYG{o}{/}\PYG{c+c1}{\PYGZsh{}1}
+\PYG{n}{STEAL}              \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n}{give} \PYG{n}{negative} \PYG{n}{money}
+\PYG{n}{TEL\PYGZus{}ANYWHERE}       \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n}{teleport} \PYG{n}{anywhere}
+\PYG{n}{STAT\PYGZus{}ANY}           \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n+nd}{@search}\PYG{p}{,} \PYG{n+nd}{@stat}\PYG{p}{,} \PYG{o+ow}{or} \PYG{n+nd}{@find} \PYG{n}{things}
+\PYG{n}{HALT\PYGZus{}QUEUE\PYGZus{}ALL}     \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n}{halt} \PYG{n}{the} \PYG{n}{queue}
+\PYG{n}{SEARCH\PYGZus{}ANY}         \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n}{search} \PYG{k}{for} \PYG{n}{anything}
+\PYG{n}{WHO\PYGZus{}UNFIND}         \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n}{see} \PYG{n}{hidden} \PYG{n}{player} \PYG{n}{on} \PYG{n}{WHO}
+\PYG{n}{SHUTDOWN}           \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n+nd}{@shutdown} \PYG{n}{the} \PYG{n}{mush}
+\PYG{n}{PURGE}              \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n}{use} \PYG{o}{/}\PYG{n}{purge} \PYG{n}{to} \PYG{n+nd}{@destroy} \PYG{o+ow}{and} \PYG{n+nd}{@nuke}
+\PYG{n}{EXAMINE\PYGZus{}FULL}       \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n}{examine} \PYG{n}{anything} \PYG{p}{(}\PYG{o+ow}{not} \PYG{n+nb}{set} \PYG{n}{NO\PYGZus{}EXAMINE} \PYG{o+ow}{or} \PYG{n}{cloaked}\PYG{p}{)}
+\PYG{n}{FORMATTING}         \PYG{o}{\PYGZhy{}} \PYG{o}{@}\PYG{o}{*}\PYG{n}{formats} \PYG{n}{allow} \PYG{n}{passing} \PYG{n}{what} \PYG{n}{a} \PYG{n}{person} \PYG{n}{sees} \PYG{k}{as} \PYG{o}{\PYGZpc{}}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZpc{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{etc}
+\PYG{n}{CHOWN\PYGZus{}ANYWHERE}     \PYG{o}{\PYGZhy{}} \PYG{n}{Chown} \PYG{n}{anything} \PYG{n}{anywhere} \PYG{n}{to} \PYG{n}{yourself}
+\PYG{n}{CHOWN\PYGZus{}OTHER}        \PYG{o}{\PYGZhy{}} \PYG{n}{Chown} \PYG{n}{something} \PYG{n}{you} \PYG{n}{don}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{t own to yourself}
+\PYG{n}{EXAMINE\PYGZus{}ALL}        \PYG{o}{\PYGZhy{}} \PYG{n}{Examine} \PYG{n}{other} \PYG{n}{things} \PYG{p}{(}\PYG{n}{tiered}\PYG{p}{)}
+\PYG{n}{SEE\PYGZus{}QUEUE\PYGZus{}ALL}      \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n}{see} \PYG{n}{the} \PYG{n}{full} \PYG{n}{queue}
+\PYG{n}{GRAB\PYGZus{}PLAYER}        \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n}{grab} \PYG{n}{a} \PYG{n}{remote} \PYG{n}{player} \PYG{o+ow}{and} \PYG{n}{pull} \PYG{n}{them} \PYG{n}{to} \PYG{n}{location}
+\PYG{n}{LONG\PYGZus{}FINGERS}       \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{o+ow}{is} \PYG{n}{granted} \PYG{n}{remote} \PYG{n}{control} \PYG{n}{of} \PYG{n}{things} \PYG{n}{they} \PYG{n}{own}
+\PYG{n}{BOOT}               \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n+nd}{@boot}
+\PYG{n}{SEE\PYGZus{}QUEUE}          \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n}{see} \PYG{n}{advanced} \PYG{n}{queue} \PYG{n}{features}
+\PYG{n}{TEL\PYGZus{}ANYTHING}       \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n+nd}{@teleport} \PYG{n}{anything}
+\PYG{n}{PCREATE}            \PYG{o}{\PYGZhy{}} \PYG{n}{Player} \PYG{n}{can} \PYG{n+nd}{@pcreate} \PYG{n}{players}
+\PYG{n}{NOWHO}              \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{the} \PYG{n}{use} \PYG{n}{of} \PYG{n+nd}{@hide}
+\PYG{n}{HALT\PYGZus{}QUEUE}         \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{halting} \PYG{n}{queue} \PYG{n}{by} \PYG{n}{specified} \PYG{n}{bitlevel}
+\PYG{n}{SECURITY}           \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{setting}  \PYG{n}{NOMOVE}    \PYG{n}{NO\PYGZus{}TEL}   \PYG{n}{SLAVE}   \PYG{n}{NO\PYGZus{}YELL}
+\PYG{n}{WRAITH}             \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{bypassing} \PYG{n}{exit} \PYG{n}{locks}
+\PYG{n}{HIDEBIT}            \PYG{o}{\PYGZhy{}} \PYG{n}{Hides} \PYG{n}{your} \PYG{n}{admin} \PYG{n}{level} \PYG{k+kn}{from} \PYG{n+nn}{lower} \PYG{n}{levels}
+\PYG{n}{FULLTEL}            \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{full} \PYG{n}{immortal} \PYG{n}{level} \PYG{n}{teleportation}
+\PYG{n}{EXECSCRIPT}         \PYG{o}{\PYGZhy{}} \PYG{n}{Allows} \PYG{n}{executing} \PYG{n}{external} \PYG{n}{scripts} \PYG{o+ow}{in} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n}{game}\PYG{o}{/}\PYG{n}{scripts}
+\end{sphinxVerbatim}
 
-\sphinxAtStartPar
-WALL               \sphinxhyphen{} Disables the ability to @wall
-LONG\_FINGERS       \sphinxhyphen{} Disables remote access to things
-STEAL              \sphinxhyphen{} Can not steal money
-CREATE             \sphinxhyphen{} Can not create anything
-WIZ\_WHO            \sphinxhyphen{} Can not access wizard who
-CLOAK              \sphinxhyphen{} Can not wizard cloak
-BOOT               \sphinxhyphen{} Can not boot
-PAGE               \sphinxhyphen{} Can not page
-FORCE              \sphinxhyphen{} Can not @force/@sudo
-LOCKS              \sphinxhyphen{} Can not pass locks
-COMMAND            \sphinxhyphen{} Can not execute any \$command (including master room)
-MASTER             \sphinxhyphen{} Can not use any master room \$command
-EXAMINE            \sphinxhyphen{} Lowers or disables the ability to examine/decompile
-NUKE               \sphinxhyphen{} Can not nuke, toad, or turtle
-FREE               \sphinxhyphen{} No longer has free money for anything
-OVERRIDE           \sphinxhyphen{} No longer can override anything
-TEL\_ANYWHERE       \sphinxhyphen{} No longer can teleport anywhere
-TEL\_ANYTHING       \sphinxhyphen{} No longer can teleport anything other than themselves
-POWER              \sphinxhyphen{} Can no longer use @power
-MODIFY             \sphinxhyphen{} Can not modify things
-CHOWN\_ME           \sphinxhyphen{} Can not chown anything to themselves
-CHOWN\_OTHER        \sphinxhyphen{} Can not chown anything to others
-ABUSE              \sphinxhyphen{} Can not use \$commands on anything they do not own
-UNL\_QUOTA          \sphinxhyphen{} No longer has infinite quota
-SEARCH\_ANY         \sphinxhyphen{} Disables the ability to @search/@find things
-GIVE               \sphinxhyphen{} Disables ability to give things/money
-RECEIVE            \sphinxhyphen{} Disables the ability to recieve things/money
-NOGOLD             \sphinxhyphen{} Limits (or disables) how much gold someone can give
-NOSTEAL            \sphinxhyphen{} Can not give negative gold
-PASSWORD           \sphinxhyphen{} Can not change password
-MORTAL\_EXAMINE     \sphinxhyphen{} drops examine and all fetching to mortal only
-PERSONAL\_COMMAND   \sphinxhyphen{} Disables all \$commands on anything they own
-\end{quote}
+
+\subsection{RhostMUSH @depowers and Descriptions}
+\label{\detokenize{security:rhostmush-depowers-and-descriptions}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+WALL               \PYGZhy{} Disables the ability to @wall
+LONG\PYGZus{}FINGERS       \PYGZhy{} Disables remote access to things
+STEAL              \PYGZhy{} Can not steal money
+CREATE             \PYGZhy{} Can not create anything
+WIZ\PYGZus{}WHO            \PYGZhy{} Can not access wizard who
+CLOAK              \PYGZhy{} Can not wizard cloak
+BOOT               \PYGZhy{} Can not boot
+PAGE               \PYGZhy{} Can not page
+FORCE              \PYGZhy{} Can not @force/@sudo
+LOCKS              \PYGZhy{} Can not pass locks
+COMMAND            \PYGZhy{} Can not execute any \PYGZdl{}command (including master room)
+MASTER             \PYGZhy{} Can not use any master room \PYGZdl{}command
+EXAMINE            \PYGZhy{} Lowers or disables the ability to examine/decompile
+NUKE               \PYGZhy{} Can not nuke, toad, or turtle
+FREE               \PYGZhy{} No longer has free money for anything
+OVERRIDE           \PYGZhy{} No longer can override anything
+TEL\PYGZus{}ANYWHERE       \PYGZhy{} No longer can teleport anywhere
+TEL\PYGZus{}ANYTHING       \PYGZhy{} No longer can teleport anything other than themselves
+POWER              \PYGZhy{} Can no longer use @power
+MODIFY             \PYGZhy{} Can not modify things
+CHOWN\PYGZus{}ME           \PYGZhy{} Can not chown anything to themselves
+CHOWN\PYGZus{}OTHER        \PYGZhy{} Can not chown anything to others
+ABUSE              \PYGZhy{} Can not use \PYGZdl{}commands on anything they do not own
+UNL\PYGZus{}QUOTA          \PYGZhy{} No longer has infinite quota
+SEARCH\PYGZus{}ANY         \PYGZhy{} Disables the ability to @search/@find things
+GIVE               \PYGZhy{} Disables ability to give things/money
+RECEIVE            \PYGZhy{} Disables the ability to recieve things/money
+NOGOLD             \PYGZhy{} Limits (or disables) how much gold someone can give
+NOSTEAL            \PYGZhy{} Can not give negative gold
+PASSWORD           \PYGZhy{} Can not change password
+MORTAL\PYGZus{}EXAMINE     \PYGZhy{} drops examine and all fetching to mortal only
+PERSONAL\PYGZus{}COMMAND   \PYGZhy{} Disables all \PYGZdl{}commands on anything they own
+\end{sphinxVerbatim}
 
 
 \subsection{Site Restrictions}
@@ -6089,24 +6086,27 @@ Config file:  (see section on forbid\_site as it describes and gives examples)
 Online Syntax: MASK:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-                   \PYG{n+nd}{@admin} \PYG{n}{forbid\PYGZus{}site}\PYG{o}{=}\PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.0} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.0}
-                   \PYG{n+nd}{@admin} \PYG{n}{forbid\PYGZus{}site}\PYG{o}{=}\PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.123} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.255}
+                \PYG{n+nd}{@admin} \PYG{n}{forbid\PYGZus{}site}\PYG{o}{=}\PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.0} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.0}
+                \PYG{n+nd}{@admin} \PYG{n}{forbid\PYGZus{}site}\PYG{o}{=}\PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.123} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.255}
 
-   \PYG{n}{CIDR}\PYG{p}{:}\PYG{p}{:}
+\PYG{n}{CIDR}\PYG{p}{:}\PYG{p}{:}
 
-                   \PYG{n+nd}{@admin} \PYG{n}{forbid\PYGZus{}site}\PYG{o}{=}\PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.0} \PYG{o}{/}\PYG{l+m+mi}{24}
-                   \PYG{n+nd}{@admin} \PYG{n}{forbid\PYGZus{}site}\PYG{o}{=}\PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.123} \PYG{o}{/}\PYG{l+m+mi}{32}
+                \PYG{n+nd}{@admin} \PYG{n}{forbid\PYGZus{}site}\PYG{o}{=}\PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.0} \PYG{o}{/}\PYG{l+m+mi}{24}
+                \PYG{n+nd}{@admin} \PYG{n}{forbid\PYGZus{}site}\PYG{o}{=}\PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.123} \PYG{o}{/}\PYG{l+m+mi}{32}
 
-   \PYG{n}{REMOVING}\PYG{p}{:} \PYG{n}{MASK}\PYG{p}{:}\PYG{p}{:}
+\PYG{n}{REMOVING}\PYG{p}{:} \PYG{n}{MASK}\PYG{p}{:}\PYG{p}{:}
 
-                   \PYG{n+nd}{@site}\PYG{o}{/}\PYG{n+nb}{all} \PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.123}\PYG{o}{=}\PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.255}
-                   \PYG{n+nd}{@site}\PYG{o}{/}\PYG{n}{forbid} \PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.0}\PYG{o}{=}\PYG{l+m+mf}{254.255}\PYG{o}{.}\PYG{l+m+mf}{255.0}
+                \PYG{n+nd}{@site}\PYG{o}{/}\PYG{n+nb}{all} \PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.123}\PYG{o}{=}\PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.255}
+                \PYG{n+nd}{@site}\PYG{o}{/}\PYG{n}{forbid} \PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.0}\PYG{o}{=}\PYG{l+m+mf}{254.255}\PYG{o}{.}\PYG{l+m+mf}{255.0}
 
-             \PYG{n}{CIDR}\PYG{p}{:}\PYG{p}{:}
+          \PYG{n}{CIDR}\PYG{p}{:}\PYG{p}{:}
 
-                   \PYG{n+nd}{@site}\PYG{o}{/}\PYG{n+nb}{all} \PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.123}\PYG{o}{=}\PYG{o}{/}\PYG{l+m+mi}{32}
-                   \PYG{n+nd}{@site}\PYG{o}{/}\PYG{n}{forbid} \PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.0}\PYG{o}{=}\PYG{o}{/}\PYG{l+m+mi}{24}
+                \PYG{n+nd}{@site}\PYG{o}{/}\PYG{n+nb}{all} \PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.123}\PYG{o}{=}\PYG{o}{/}\PYG{l+m+mi}{32}
+                \PYG{n+nd}{@site}\PYG{o}{/}\PYG{n}{forbid} \PYG{l+m+mf}{123.123}\PYG{o}{.}\PYG{l+m+mf}{123.0}\PYG{o}{=}\PYG{o}{/}\PYG{l+m+mi}{24}
+\end{sphinxVerbatim}
+\end{quote}
 
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{forbid\PYGZus{}site}      \PYG{o}{\PYGZhy{}} \PYG{n}{Set} \PYG{n}{the} \PYG{n}{specified} \PYG{n}{site} \PYG{n}{forbid} \PYG{n}{only}
 \PYG{n}{register\PYGZus{}site}    \PYG{o}{\PYGZhy{}} \PYG{n}{Set} \PYG{n}{the} \PYG{n}{specified} \PYG{n}{site} \PYG{n}{register} \PYG{n}{only}
 \PYG{n}{noguest\PYGZus{}site}     \PYG{o}{\PYGZhy{}} \PYG{n}{Set} \PYG{n}{the} \PYG{n}{specified} \PYG{n}{site} \PYG{n}{unable} \PYG{n}{to} \PYG{n}{connect} \PYG{n}{to} \PYG{n}{guests}
@@ -6117,7 +6117,6 @@ Online Syntax: MASK:
 \PYG{n}{nodns\PYGZus{}site}       \PYG{o}{\PYGZhy{}} \PYG{n}{Site} \PYG{n}{will} \PYG{n}{no} \PYG{n}{longer} \PYG{n}{do} \PYG{n}{reverse} \PYG{n}{DNS} \PYG{n}{lookups}
 \PYG{n}{noauth\PYGZus{}site}      \PYG{o}{\PYGZhy{}} \PYG{n}{Site} \PYG{n}{will} \PYG{n}{no} \PYG{n}{longer} \PYG{n}{do} \PYG{n}{AUTH} \PYG{n}{ident} \PYG{n}{lookups}
 \end{sphinxVerbatim}
-\end{quote}
 
 
 \subsubsection{DNS based restrictions}
@@ -6132,20 +6131,22 @@ Config File: (see section on forbid\_host as it describes and gives examples)
 Online Syntax:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-        ADD:      @admin forbid\PYGZus{}host=*.dsl*.comcast.net *.aol.com *another.site
-        DEL:      @admin forbid\PYGZus{}host=!*.aol.com
-        ADVANCED: @admin forbid\PYGZus{}host=mudconnect.com|3 (allow 3 at once only)
-
-forbid\PYGZus{}host     \PYGZhy{} Set the specified site(s) forbid only
-register\PYGZus{}host   \PYGZhy{} Set the specified site(s) register only
-noguest\PYGZus{}host    \PYGZhy{} Set the specified site(s) unable to connect to guests
-suspect\PYGZus{}host    \PYGZhy{} Set the specified site(s) suspect on connect
-noautoreg\PYGZus{}host  \PYGZhy{} Set the specified site(s) to not allow autoregistration
-validate\PYGZus{}host   \PYGZhy{} Do not allow any autoregistration from emails matching site
-goodmail\PYGZus{}host   \PYGZhy{} Always allow autoregistration from emails matching site
-nobroadcast\PYGZus{}host \PYGZhy{} Snuff online site broadcasts via MONITOR for specified site
+ADD:      @admin forbid\PYGZus{}host=*.dsl*.comcast.net *.aol.com *another.site
+DEL:      @admin forbid\PYGZus{}host=!*.aol.com
+ADVANCED: @admin forbid\PYGZus{}host=mudconnect.com|3 (allow 3 at once only)
 \end{sphinxVerbatim}
 \end{quote}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{forbid\PYGZus{}host}     \PYG{o}{\PYGZhy{}} \PYG{n}{Set} \PYG{n}{the} \PYG{n}{specified} \PYG{n}{site}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)} \PYG{n}{forbid} \PYG{n}{only}
+\PYG{n}{register\PYGZus{}host}   \PYG{o}{\PYGZhy{}} \PYG{n}{Set} \PYG{n}{the} \PYG{n}{specified} \PYG{n}{site}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)} \PYG{n}{register} \PYG{n}{only}
+\PYG{n}{noguest\PYGZus{}host}    \PYG{o}{\PYGZhy{}} \PYG{n}{Set} \PYG{n}{the} \PYG{n}{specified} \PYG{n}{site}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)} \PYG{n}{unable} \PYG{n}{to} \PYG{n}{connect} \PYG{n}{to} \PYG{n}{guests}
+\PYG{n}{suspect\PYGZus{}host}    \PYG{o}{\PYGZhy{}} \PYG{n}{Set} \PYG{n}{the} \PYG{n}{specified} \PYG{n}{site}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)} \PYG{n}{suspect} \PYG{n}{on} \PYG{n}{connect}
+\PYG{n}{noautoreg\PYGZus{}host}  \PYG{o}{\PYGZhy{}} \PYG{n}{Set} \PYG{n}{the} \PYG{n}{specified} \PYG{n}{site}\PYG{p}{(}\PYG{n}{s}\PYG{p}{)} \PYG{n}{to} \PYG{o+ow}{not} \PYG{n}{allow} \PYG{n}{autoregistration}
+\PYG{n}{validate\PYGZus{}host}   \PYG{o}{\PYGZhy{}} \PYG{n}{Do} \PYG{o+ow}{not} \PYG{n}{allow} \PYG{n+nb}{any} \PYG{n}{autoregistration} \PYG{k+kn}{from} \PYG{n+nn}{emails} \PYG{n}{matching} \PYG{n}{site}
+\PYG{n}{goodmail\PYGZus{}host}   \PYG{o}{\PYGZhy{}} \PYG{n}{Always} \PYG{n}{allow} \PYG{n}{autoregistration} \PYG{k+kn}{from} \PYG{n+nn}{emails} \PYG{n}{matching} \PYG{n}{site}
+\PYG{n}{nobroadcast\PYGZus{}host} \PYG{o}{\PYGZhy{}} \PYG{n}{Snuff} \PYG{n}{online} \PYG{n}{site} \PYG{n}{broadcasts} \PYG{n}{via} \PYG{n}{MONITOR} \PYG{k}{for} \PYG{n}{specified} \PYG{n}{site}
+\end{sphinxVerbatim}
 
 
 \section{Methods to block anonymous connections and the pros and cons of doing so}
@@ -6293,8 +6294,10 @@ To setup SSL connectivity, we use the STUNNEL application to tunnel SSL to
 the mush.  This acts a bit like a man in the middle but remains controlled
 by the game owner which would have access to the end point anyway.
 
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Note: it is assumed you will have already initially set up your netrhost.conf.
+it is assumed you will have already initially set up your netrhost.conf.
+\end{sphinxadmonition}
 
 
 \subsubsection{stunnel directory}
@@ -6303,14 +6306,15 @@ Note: it is assumed you will have already initially set up your netrhost.conf.
 You would set up the stunnel from the ‘stunnel’ directory.  There the following
 files are of relevance:
 
-\sphinxAtStartPar
-README                     \textendash{} a readme explaining the points of stunnel
-stunnel.conf.example       \textendash{} The example stunnel.conf file.  If you wish to create this manually you’re welcome to.  Just make sure the end file is stunnel.conf
-stunnel\_setup.sh           \textendash{} the script to build a stunnel.conf file for you which will be dropped at your specified location.
-stunnel\_kill.sh            \textendash{} Stop/terminate the stunnel process.
-stunnel\_start.sh           \textendash{} Start the stunnel process.
-warpbubble.pl              \textendash{} the perl script that handles stunnel to mush connectivity.
-stunnel\_src                \textendash{} If you do not have stunnel, this directory will allow you to download, compile and locally install.
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{README}                     \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{a} \PYG{n}{readme} \PYG{n}{explaining} \PYG{n}{the} \PYG{n}{points} \PYG{n}{of} \PYG{n}{stunnel}
+\PYG{n}{stunnel}\PYG{o}{.}\PYG{n}{conf}\PYG{o}{.}\PYG{n}{example}       \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{The} \PYG{n}{example} \PYG{n}{stunnel}\PYG{o}{.}\PYG{n}{conf} \PYG{n}{file}\PYG{o}{.}  \PYG{n}{If} \PYG{n}{you} \PYG{n}{wish} \PYG{n}{to} \PYG{n}{create} \PYG{n}{this} \PYG{n}{manually} \PYG{n}{you}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{re welcome to.  Just make sure the end file is stunnel.conf}
+\PYG{n}{stunnel\PYGZus{}setup}\PYG{o}{.}\PYG{n}{sh}           \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{the} \PYG{n}{script} \PYG{n}{to} \PYG{n}{build} \PYG{n}{a} \PYG{n}{stunnel}\PYG{o}{.}\PYG{n}{conf} \PYG{n}{file} \PYG{k}{for} \PYG{n}{you} \PYG{n}{which} \PYG{n}{will} \PYG{n}{be} \PYG{n}{dropped} \PYG{n}{at} \PYG{n}{your} \PYG{n}{specified} \PYG{n}{location}\PYG{o}{.}
+\PYG{n}{stunnel\PYGZus{}kill}\PYG{o}{.}\PYG{n}{sh}            \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Stop}\PYG{o}{/}\PYG{n}{terminate} \PYG{n}{the} \PYG{n}{stunnel} \PYG{n}{process}\PYG{o}{.}
+\PYG{n}{stunnel\PYGZus{}start}\PYG{o}{.}\PYG{n}{sh}           \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Start} \PYG{n}{the} \PYG{n}{stunnel} \PYG{n}{process}\PYG{o}{.}
+\PYG{n}{warpbubble}\PYG{o}{.}\PYG{n}{pl}              \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{the} \PYG{n}{perl} \PYG{n}{script} \PYG{n}{that} \PYG{n}{handles} \PYG{n}{stunnel} \PYG{n}{to} \PYG{n}{mush} \PYG{n}{connectivity}\PYG{o}{.}
+\PYG{n}{stunnel\PYGZus{}src}                \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{If} \PYG{n}{you} \PYG{n}{do} \PYG{o+ow}{not} \PYG{n}{have} \PYG{n}{stunnel}\PYG{p}{,} \PYG{n}{this} \PYG{n}{directory} \PYG{n}{will} \PYG{n}{allow} \PYG{n}{you} \PYG{n}{to} \PYG{n}{download}\PYG{p}{,} \PYG{n+nb}{compile} \PYG{o+ow}{and} \PYG{n}{locally} \PYG{n}{install}\PYG{o}{.}
+\end{sphinxVerbatim}
 
 
 \subsubsection{Modifying netrhost.conf}
@@ -6321,13 +6325,16 @@ the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect\_host if
 not set will default to ‘localhost 127.0.0.1’.
 
-\sphinxAtStartPar
-sconnect\_reip 1         \textendash{} This enables the SSL tunnel layer handler within rhost.
-sconnect\_cmd XYZZY      \textendash{} this will set the secret SSL command handshake command to XYZZY.  This is case sensitive and can be up to 31 characters.  Please make sure to only use printable non\sphinxhyphen{}whitespace characters.  Ergo: one word
-sconnect\_host wildcards \textendash{} This allows wildcarded sites (one or more) to allow to access the sconnect/stunnel handler.  This defaults to ‘localhost’ and ‘127.0.0.1’ so if you have ‘localhost.localdomain’ instead then you must set this to whatever is seen as ‘localhost’ to you.  You can verify this by checking your /etc/hosts file.
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{sconnect\PYGZus{}reip} \PYG{l+m+mi}{1}         \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{This} \PYG{n}{enables} \PYG{n}{the} \PYG{n}{SSL} \PYG{n}{tunnel} \PYG{n}{layer} \PYG{n}{handler} \PYG{n}{within} \PYG{n}{rhost}\PYG{o}{.}
+\PYG{n}{sconnect\PYGZus{}cmd} \PYG{n}{XYZZY}      \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{this} \PYG{n}{will} \PYG{n+nb}{set} \PYG{n}{the} \PYG{n}{secret} \PYG{n}{SSL} \PYG{n}{command} \PYG{n}{handshake} \PYG{n}{command} \PYG{n}{to} \PYG{n}{XYZZY}\PYG{o}{.}  \PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{case} \PYG{n}{sensitive} \PYG{o+ow}{and} \PYG{n}{can} \PYG{n}{be} \PYG{n}{up} \PYG{n}{to} \PYG{l+m+mi}{31} \PYG{n}{characters}\PYG{o}{.}  \PYG{n}{Please} \PYG{n}{make} \PYG{n}{sure} \PYG{n}{to} \PYG{n}{only} \PYG{n}{use} \PYG{n}{printable} \PYG{n}{non}\PYG{o}{\PYGZhy{}}\PYG{n}{whitespace} \PYG{n}{characters}\PYG{o}{.}  \PYG{n}{Ergo}\PYG{p}{:} \PYG{n}{one} \PYG{n}{word}
+\PYG{n}{sconnect\PYGZus{}host} \PYG{n}{wildcards} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{This} \PYG{n}{allows} \PYG{n}{wildcarded} \PYG{n}{sites} \PYG{p}{(}\PYG{n}{one} \PYG{o+ow}{or} \PYG{n}{more}\PYG{p}{)} \PYG{n}{to} \PYG{n}{allow} \PYG{n}{to} \PYG{n}{access} \PYG{n}{the} \PYG{n}{sconnect}\PYG{o}{/}\PYG{n}{stunnel} \PYG{n}{handler}\PYG{o}{.}  \PYG{n}{This} \PYG{n}{defaults} \PYG{n}{to} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{localhost}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o+ow}{and} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{127.0.0.1}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{so} \PYG{k}{if} \PYG{n}{you} \PYG{n}{have} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{localhost.localdomain}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{instead} \PYG{n}{then} \PYG{n}{you} \PYG{n}{must} \PYG{n+nb}{set} \PYG{n}{this} \PYG{n}{to} \PYG{n}{whatever} \PYG{o+ow}{is} \PYG{n}{seen} \PYG{k}{as} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{localhost}\PYG{l+s+s1}{\PYGZsq{}} \PYG{n}{to} \PYG{n}{you}\PYG{o}{.}  \PYG{n}{You} \PYG{n}{can} \PYG{n}{verify} \PYG{n}{this} \PYG{n}{by} \PYG{n}{checking} \PYG{n}{your} \PYG{o}{/}\PYG{n}{etc}\PYG{o}{/}\PYG{n}{hosts} \PYG{n}{file}\PYG{o}{.}
+\end{sphinxVerbatim}
 
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Note: the sconnect\_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.
+the sconnect\_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.
+\end{sphinxadmonition}
 
 
 \subsubsection{Running the stunnel setup program}
@@ -6528,11 +6535,11 @@ Startmush \sphinxhyphen{}f to bring it back up.
 \end{itemize}
 
 
-\section{Shutting down gracefully}
-\label{\detokenize{maintenance:shutting-down-gracefully}}
+\section{Shutting down RhostMUSH gracefully}
+\label{\detokenize{maintenance:shutting-down-rhostmush-gracefully}}
 
-\subsection{Rhostmush has many ways to shut down the game cleanly}
-\label{\detokenize{maintenance:rhostmush-has-many-ways-to-shut-down-the-game-cleanly}}\begin{enumerate}
+\subsection{RhostMUSH has many ways to shutdown the game cleanly}
+\label{\detokenize{maintenance:rhostmush-has-many-ways-to-shutdown-the-game-cleanly}}\begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
@@ -6549,8 +6556,8 @@ Issue a kill \sphinxhyphen{}TERM to the mush which issues an emergency abort and
 \end{enumerate}
 
 
-\subsection{WARNING: Never kill \sphinxhyphen{}9 Rhost}
-\label{\detokenize{maintenance:warning-never-kill-9-rhost}}
+\subsection{WARNING: Never kill \sphinxhyphen{}9 RhostMUSH}
+\label{\detokenize{maintenance:warning-never-kill-9-rhostmush}}
 \sphinxAtStartPar
 Under NO CIRCUMSTANCES should you kill \sphinxhyphen{}9 your mush unless you don’t care for the
 database.  The reason is if the mush happens to be saving, in any method, to the
@@ -7404,11 +7411,11 @@ Ask one of the Rhost devs to do it for you :)
 \end{enumerate}
 
 
-\section{Shutting down gracefully}
-\label{\detokenize{advanced:shutting-down-gracefully}}
+\section{Shutting down RhostMUSH gracefully}
+\label{\detokenize{advanced:shutting-down-rhostmush-gracefully}}
 
-\subsection{Rhostmush has many ways to shut down the game cleanly}
-\label{\detokenize{advanced:rhostmush-has-many-ways-to-shut-down-the-game-cleanly}}\begin{enumerate}
+\subsection{There are a few ways to cleanly shutdown RhostMUSH}
+\label{\detokenize{advanced:there-are-a-few-ways-to-cleanly-shutdown-rhostmush}}\begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
@@ -7425,8 +7432,8 @@ Issue a kill \sphinxhyphen{}TERM to the mush which issues an emergency abort and
 \end{enumerate}
 
 
-\subsection{WARNING: Never kill \sphinxhyphen{}9 Rhost}
-\label{\detokenize{advanced:warning-never-kill-9-rhost}}
+\subsection{WARNING: Never kill \sphinxhyphen{}9 RhostMUSH}
+\label{\detokenize{advanced:warning-never-kill-9-rhostmush}}
 \sphinxAtStartPar
 Under NO CIRCUMSTANCES should you kill \sphinxhyphen{}9 your mush unless you don’t care for the
 database.  The reason is if the mush happens to be saving, in any method, to the
@@ -7439,15 +7446,15 @@ of a db write.  Rhost can recover corruption in\sphinxhyphen{}game while up, but
 in the middle of a write, all bets are off. :)
 
 
-\section{Reality levels}
-\label{\detokenize{advanced:reality-levels}}
+\section{Reality Levels Setup}
+\label{\detokenize{advanced:reality-levels-setup}}
 \sphinxAtStartPar
 Reality levels are a means to forbid (or allow) interaction between objects
 in the same location.
 
 
-\subsection{Visibility}
-\label{\detokenize{advanced:visibility}}
+\subsection{Reality Levels Visibility}
+\label{\detokenize{advanced:reality-levels-visibility}}
 \sphinxAtStartPar
 Each object (player, room, exit, thing) has two lists of reality levels.
 An Rx list, which describe what it can see and a Tx list, which describe
@@ -7468,8 +7475,8 @@ An object is always visible to itself, even if its Rx and Tx levels don’t
 match. (See examples below)
 
 
-\subsection{Descriptions}
-\label{\detokenize{advanced:descriptions}}
+\subsection{Reality Levels Descriptions}
+\label{\detokenize{advanced:reality-levels-descriptions}}
 \sphinxAtStartPar
 For every reality level defined, you can define an attribute that serves as
 description. If you look at something and match more than one of its
@@ -7500,8 +7507,8 @@ order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.
 
 
-\subsection{Configuration parameters}
-\label{\detokenize{advanced:configuration-parameters}}
+\subsection{Reality Levels Configuration parameters}
+\label{\detokenize{advanced:reality-levels-configuration-parameters}}
 \sphinxAtStartPar
 A few configuration parameters have been introduced to deal with the reality
 levels:
@@ -7553,30 +7560,31 @@ This is an example file only to be added to the mush.conf file Format:
 \end{sphinxVerbatim}
 
 
-\subsection{Example mush.conf}
-\label{\detokenize{advanced:example-mush-conf}}
-\sphinxAtStartPar
-reality\_level Real 1
-reality\_level Obf1 2
-reality\_level Obf2 4
-reality\_level Obf3 8 OBFDESC
-reality\_level Obf4 16 OBFDESC
-reality\_level Obf5 32 OBFDESC
-reality\_level Obf6 64 OBFDESC
-reality\_level Obf7 128 OBFDESC
-reality\_level Obf8 256 OBFDESC
-reality\_level Obf9 512 OBFDESC
-reality\_level Obf10 1024 OBFDESC
-reality\_level Umbra 2048 UMBRADESC
-reality\_level Fae 4096 FAEDESC
-reality\_level Shadow 8192 SHADOWDESC
-reality\_level Spy 16384
-reality\_level Death 32768 DEATHDESC
-reality\_level All 4294967295
+\subsection{Reality Levels Example mush.conf}
+\label{\detokenize{advanced:reality-levels-example-mush-conf}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Real} \PYG{l+m+mi}{1}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Obf1} \PYG{l+m+mi}{2}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Obf2} \PYG{l+m+mi}{4}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Obf3} \PYG{l+m+mi}{8} \PYG{n}{OBFDESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Obf4} \PYG{l+m+mi}{16} \PYG{n}{OBFDESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Obf5} \PYG{l+m+mi}{32} \PYG{n}{OBFDESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Obf6} \PYG{l+m+mi}{64} \PYG{n}{OBFDESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Obf7} \PYG{l+m+mi}{128} \PYG{n}{OBFDESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Obf8} \PYG{l+m+mi}{256} \PYG{n}{OBFDESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Obf9} \PYG{l+m+mi}{512} \PYG{n}{OBFDESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Obf10} \PYG{l+m+mi}{1024} \PYG{n}{OBFDESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Umbra} \PYG{l+m+mi}{2048} \PYG{n}{UMBRADESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Fae} \PYG{l+m+mi}{4096} \PYG{n}{FAEDESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Shadow} \PYG{l+m+mi}{8192} \PYG{n}{SHADOWDESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Spy} \PYG{l+m+mi}{16384}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{Death} \PYG{l+m+mi}{32768} \PYG{n}{DEATHDESC}
+\PYG{n}{reality\PYGZus{}level} \PYG{n}{All} \PYG{l+m+mi}{4294967295}
+\end{sphinxVerbatim}
 
 
-\subsection{Commands}
-\label{\detokenize{advanced:commands}}
+\subsection{Reality Levels Commands}
+\label{\detokenize{advanced:reality-levels-commands}}
 \sphinxAtStartPar
 Two wiz\sphinxhyphen{}only commands are used to set the reality levels of an object:
 
@@ -7674,142 +7682,126 @@ anyway, so a spirit character will have:
 
 \sphinxAtStartPar
 Let’s assume 3 players:
-John is a Mundane. He won’t see spirits.
-John’s Rx: Real
-John’s Tx: Real
-John’s @desc: This is John.
-John’s \&GHOSTDESC: (Not important, since it’s never visible)
-Johh’s @adesc: \%N has looked at you.
-John’s @odesc: has looked at John.
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{John} \PYG{o+ow}{is} \PYG{n}{a} \PYG{n}{Mundane}\PYG{o}{.} \PYG{n}{He} \PYG{n}{won}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{t see spirits.}
+\PYG{n}{John}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Rx: Real}
+\PYG{n}{John}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Tx: Real}
+\PYG{n}{John}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s @desc: This is John.}
+\PYG{n}{John}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s \PYGZam{}GHOSTDESC: (Not important, since it}\PYG{l+s+s1}{\PYGZsq{}}\PYG{n}{s} \PYG{n}{never} \PYG{n}{visible}\PYG{p}{)}
+\PYG{n}{Johh}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s @adesc: }\PYG{l+s+s1}{\PYGZpc{}}\PYG{l+s+s1}{N has looked at you.}
+\PYG{n}{John}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s @odesc: has looked at John.}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Jack is a Gifted. He will sense spirits, but is still made from flesh
-and blood so visible to mundanes.
-Jack’s Rx: Real Ghost
-Jack’s Tx: Real
-Jack’s @desc: This is Jack.
-Jack’s \&GHOSTDESC: (Not important, since it’s never visible)
-Jack’s @adesc: \%N has looked at you.
-Jack’s @odesc: has looked at Jack.
+Jack is a Gifted. He will sense spirits, but is still made from flesh and blood so visible to mundanes:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Jack}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Rx: Real Ghost}
+\PYG{n}{Jack}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Tx: Real}
+\PYG{n}{Jack}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s @desc: This is Jack.}
+\PYG{n}{Jack}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s \PYGZam{}GHOSTDESC: (Not important, since it}\PYG{l+s+s1}{\PYGZsq{}}\PYG{n}{s} \PYG{n}{never} \PYG{n}{visible}\PYG{p}{)}
+\PYG{n}{Jack}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s @adesc: }\PYG{l+s+s1}{\PYGZpc{}}\PYG{l+s+s1}{N has looked at you.}
+\PYG{n}{Jack}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s @odesc: has looked at Jack.}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Frank is a ghost. He will see other spirits as well as mundanes, but won’t
-be visible to mundanes. He can also become visible to everybody.
-Frank’s Rx: Real Ghost
-Frank’s Tx: Ghost
-Frank’s @desc: This is Frank, looking human.
-Frank’s \&GHOSTDESC: This is Frank’s ghostly shape.
-Frank’s @adesc: \%N has looked at you.
-Frank’s @odesc: has looked at Frank.
+Frank is a ghost. He will see other spirits as well as mundanes, but won’t be visible to mundanes. He can also become visible to everybody:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Frank}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Rx: Real Ghost}
+ \PYG{n}{Frank}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Tx: Ghost}
+ \PYG{n}{Frank}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s @desc: This is Frank, looking human.}
+ \PYG{n}{Frank}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s \PYGZam{}GHOSTDESC: This is Frank}\PYG{l+s+s1}{\PYGZsq{}}\PYG{n}{s} \PYG{n}{ghostly} \PYG{n}{shape}\PYG{o}{.}
+ \PYG{n}{Frank}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s @adesc: }\PYG{l+s+s1}{\PYGZpc{}}\PYG{l+s+s1}{N has looked at you.}
+ \PYG{n}{Frank}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s @odesc: has looked at Frank.}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Following are commands that each of the players enter and what they see.
-I’ll assume the +materialize command is defined like:
-\&CMD\_MATERIALIZE \textless{}cmdobject\textgreater{}=\$+materialize:@txlevel \%\#=Real; @pemit \%\#=You
-are now material.
-\begin{quote}
-\begin{description}
-\item[{John            |         Jack          |         Frank}] \leavevmode
-\begin{DUlineblock}{0em}
-\item[] {\color{red}\bfseries{}|}
-\end{DUlineblock}
+Following are commands that each of the players enter and what they see.  I’ll assume the +materialize command is defined like:
 
-\end{description}
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZam{}CMD\PYGZus{}MATERIALIZE \PYGZlt{}cmdobject\PYGZgt{}=\PYGZdl{}+materialize:@txlevel \PYGZpc{}\PYGZsh{}=Real; @pemit \PYGZpc{}\PYGZsh{}=You are now material.
+\end{sphinxVerbatim}
 
-\sphinxAtStartPar
-\textgreater{} l                     |                       |
-A room                  |                       |
-This is a bare room.    |                       |
-Contents:               |                       |
-Jack                    |                       |
-Obvious exits:          |                       |
-Out \textless{}O\textgreater{}                 |                       |
-\begin{quote}
-
-\sphinxAtStartPar
-{\color{red}\bfseries{}|}\textgreater{} l                    |
-{\color{red}\bfseries{}|}A room                 |
-{\color{red}\bfseries{}|}This is a bare room.   |
-{\color{red}\bfseries{}|}Contents:              |
-{\color{red}\bfseries{}|}John Frank             |
-{\color{red}\bfseries{}|}Obvious exits:         |
-{\color{red}\bfseries{}|}Out \textless{}O\textgreater{}                |
-|                       {\color{red}\bfseries{}|}\textgreater{} l
-|                       {\color{red}\bfseries{}|}A room
-|                       {\color{red}\bfseries{}|}This is a bare room.
-|                       {\color{red}\bfseries{}|}Contents:
-|                       {\color{red}\bfseries{}|}John Jack
-|                       {\color{red}\bfseries{}|}Obvious exits:
-|                       {\color{red}\bfseries{}|}Out \textless{}O\textgreater{}
-\end{quote}
-
-\sphinxAtStartPar
-\textgreater{}l Jack                 |                       |
-Jack                    {\color{red}\bfseries{}|}John has looked at you.|John has looked at Jack.
-This is Jack.           |                       |
-\textgreater{}l Frank                |                       |
-I don’t see that here.  |                       |
-\begin{quote}
-
-\sphinxAtStartPar
-{\color{red}\bfseries{}|\textgreater{}l Frank               |
-|Frank                  |Jack has looked at you.
-|This is Frank\textquotesingle{}s ghostly|}
-{\color{red}\bfseries{}|}shape.                 |
-|                       {\color{red}\bfseries{}|}\textgreater{}l John
-{\color{red}\bfseries{}|}Frank has looked at    {\color{red}\bfseries{}|}John
-{\color{red}\bfseries{}|}John.                  {\color{red}\bfseries{}|}This is John.
-|                       {\color{red}\bfseries{}|}\textgreater{}+materialize
-|                       {\color{red}\bfseries{}|}You are now material.
-\end{quote}
-
-\sphinxAtStartPar
-\textgreater{}l Frank                |                       |
-Frank                   {\color{red}\bfseries{}|}John has looked at     {\color{red}\bfseries{}|}Frank has looked at you.
-This is Frank, looking  {\color{red}\bfseries{}|}Frank.                 |
-human.                  |                       |
-\begin{quote}
-
-\sphinxAtStartPar
-{\color{red}\bfseries{}|}\textgreater{}l Frank               |
-\end{quote}
-
-\sphinxAtStartPar
-Jack has looked at      {\color{red}\bfseries{}|}Frank                  {\color{red}\bfseries{}|}John has looked at you.
-Frank.                  {\color{red}\bfseries{}|}This is Frank, looking |
-\begin{quote}
-
-\sphinxAtStartPar
-{\color{red}\bfseries{}|human.                 |
-|This is Frank\textquotesingle{}s ghostly|}
-{\color{red}\bfseries{}|}shape.                 |
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{o}{|}         \PYG{n}{John}           \PYG{o}{|}         \PYG{n}{Jack}          \PYG{o}{|}         \PYG{n}{Frank}
+                         \PYG{o}{|}                       \PYG{o}{|}
+ \PYG{o}{\PYGZgt{}} \PYG{n}{l}                     \PYG{o}{|}                       \PYG{o}{|}
+ \PYG{n}{A} \PYG{n}{room}                  \PYG{o}{|}                       \PYG{o}{|}
+ \PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{a} \PYG{n}{bare} \PYG{n}{room}\PYG{o}{.}    \PYG{o}{|}                       \PYG{o}{|}
+ \PYG{n}{Contents}\PYG{p}{:}               \PYG{o}{|}                       \PYG{o}{|}
+ \PYG{n}{Jack}                    \PYG{o}{|}                       \PYG{o}{|}
+ \PYG{n}{Obvious} \PYG{n}{exits}\PYG{p}{:}          \PYG{o}{|}                       \PYG{o}{|}
+ \PYG{n}{Out} \PYG{o}{\PYGZlt{}}\PYG{n}{O}\PYG{o}{\PYGZgt{}}                 \PYG{o}{|}                       \PYG{o}{|}
+                         \PYG{o}{|}\PYG{o}{\PYGZgt{}} \PYG{n}{l}                    \PYG{o}{|}
+                         \PYG{o}{|}\PYG{n}{A} \PYG{n}{room}                 \PYG{o}{|}
+                         \PYG{o}{|}\PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{a} \PYG{n}{bare} \PYG{n}{room}\PYG{o}{.}   \PYG{o}{|}
+                         \PYG{o}{|}\PYG{n}{Contents}\PYG{p}{:}              \PYG{o}{|}
+                         \PYG{o}{|}\PYG{n}{John} \PYG{n}{Frank}             \PYG{o}{|}
+                         \PYG{o}{|}\PYG{n}{Obvious} \PYG{n}{exits}\PYG{p}{:}         \PYG{o}{|}
+                         \PYG{o}{|}\PYG{n}{Out} \PYG{o}{\PYGZlt{}}\PYG{n}{O}\PYG{o}{\PYGZgt{}}                \PYG{o}{|}
+                         \PYG{o}{|}                       \PYG{o}{|}\PYG{o}{\PYGZgt{}} \PYG{n}{l}
+                         \PYG{o}{|}                       \PYG{o}{|}\PYG{n}{A} \PYG{n}{room}
+                         \PYG{o}{|}                       \PYG{o}{|}\PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{a} \PYG{n}{bare} \PYG{n}{room}\PYG{o}{.}
+                         \PYG{o}{|}                       \PYG{o}{|}\PYG{n}{Contents}\PYG{p}{:}
+                         \PYG{o}{|}                       \PYG{o}{|}\PYG{n}{John} \PYG{n}{Jack}
+                         \PYG{o}{|}                       \PYG{o}{|}\PYG{n}{Obvious} \PYG{n}{exits}\PYG{p}{:}
+                         \PYG{o}{|}                       \PYG{o}{|}\PYG{n}{Out} \PYG{o}{\PYGZlt{}}\PYG{n}{O}\PYG{o}{\PYGZgt{}}
+ \PYG{o}{\PYGZgt{}}\PYG{n}{l} \PYG{n}{Jack}                 \PYG{o}{|}                       \PYG{o}{|}
+ \PYG{n}{Jack}                    \PYG{o}{|}\PYG{n}{John} \PYG{n}{has} \PYG{n}{looked} \PYG{n}{at} \PYG{n}{you}\PYG{o}{.}\PYG{o}{|}\PYG{n}{John} \PYG{n}{has} \PYG{n}{looked} \PYG{n}{at} \PYG{n}{Jack}\PYG{o}{.}
+ \PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{Jack}\PYG{o}{.}           \PYG{o}{|}                       \PYG{o}{|}
+ \PYG{o}{\PYGZgt{}}\PYG{n}{l} \PYG{n}{Frank}                \PYG{o}{|}                       \PYG{o}{|}
+ \PYG{n}{I} \PYG{n}{don}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{t see that here.  |                       |}
+                         \PYG{o}{|}\PYG{o}{\PYGZgt{}}\PYG{n}{l} \PYG{n}{Frank}               \PYG{o}{|}
+                         \PYG{o}{|}\PYG{n}{Frank}                  \PYG{o}{|}\PYG{n}{Jack} \PYG{n}{has} \PYG{n}{looked} \PYG{n}{at} \PYG{n}{you}\PYG{o}{.}
+                         \PYG{o}{|}\PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{Frank}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s ghostly|}
+                         \PYG{o}{|}\PYG{n}{shape}\PYG{o}{.}                 \PYG{o}{|}
+                         \PYG{o}{|}                       \PYG{o}{|}\PYG{o}{\PYGZgt{}}\PYG{n}{l} \PYG{n}{John}
+                         \PYG{o}{|}\PYG{n}{Frank} \PYG{n}{has} \PYG{n}{looked} \PYG{n}{at}    \PYG{o}{|}\PYG{n}{John}
+                         \PYG{o}{|}\PYG{n}{John}\PYG{o}{.}                  \PYG{o}{|}\PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{John}\PYG{o}{.}
+                         \PYG{o}{|}                       \PYG{o}{|}\PYG{o}{\PYGZgt{}}\PYG{o}{+}\PYG{n}{materialize}
+                         \PYG{o}{|}                       \PYG{o}{|}\PYG{n}{You} \PYG{n}{are} \PYG{n}{now} \PYG{n}{material}\PYG{o}{.}
+ \PYG{o}{\PYGZgt{}}\PYG{n}{l} \PYG{n}{Frank}                \PYG{o}{|}                       \PYG{o}{|}
+ \PYG{n}{Frank}                   \PYG{o}{|}\PYG{n}{John} \PYG{n}{has} \PYG{n}{looked} \PYG{n}{at}     \PYG{o}{|}\PYG{n}{Frank} \PYG{n}{has} \PYG{n}{looked} \PYG{n}{at} \PYG{n}{you}\PYG{o}{.}
+ \PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{Frank}\PYG{p}{,} \PYG{n}{looking}  \PYG{o}{|}\PYG{n}{Frank}\PYG{o}{.}                 \PYG{o}{|}
+ \PYG{n}{human}\PYG{o}{.}                  \PYG{o}{|}                       \PYG{o}{|}
+                         \PYG{o}{|}\PYG{o}{\PYGZgt{}}\PYG{n}{l} \PYG{n}{Frank}               \PYG{o}{|}
+ \PYG{n}{Jack} \PYG{n}{has} \PYG{n}{looked} \PYG{n}{at}      \PYG{o}{|}\PYG{n}{Frank}                  \PYG{o}{|}\PYG{n}{John} \PYG{n}{has} \PYG{n}{looked} \PYG{n}{at} \PYG{n}{you}\PYG{o}{.}
+ \PYG{n}{Frank}\PYG{o}{.}                  \PYG{o}{|}\PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{Frank}\PYG{p}{,} \PYG{n}{looking} \PYG{o}{|}
+                         \PYG{o}{|}\PYG{n}{human}\PYG{o}{.}                 \PYG{o}{|}
+                         \PYG{o}{|}\PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{Frank}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s ghostly|}
+                         \PYG{o}{|}\PYG{n}{shape}\PYG{o}{.}                 \PYG{o}{|}
+\end{sphinxVerbatim}
 
 
 \subsection{Example 2: A WoD setup}
 \label{\detokenize{advanced:example-2-a-wod-setup}}
 \sphinxAtStartPar
 The reality levels will be defined like this:
-reality\_level           Real 1
-reality\_level           Obf1 2
-reality\_level           Obf2 4
-reality\_level           Obf3 8 OBFDESC
-reality\_level           Obf4 16 OBFDESC
-reality\_level           Obf5 32 OBFDESC
-reality\_level           Umbra 64 UMBRADESC
-reality\_level           Fae 128 FAEDESC
-reality\_level           Shadow 256 SHADOWDESC
-reality\_level           All 511
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{reality\PYGZus{}level}         \PYG{n}{Real} \PYG{l+m+mi}{1}
+\PYG{n}{reality\PYGZus{}level}         \PYG{n}{Obf1} \PYG{l+m+mi}{2}
+\PYG{n}{reality\PYGZus{}level}         \PYG{n}{Obf2} \PYG{l+m+mi}{4}
+\PYG{n}{reality\PYGZus{}level}         \PYG{n}{Obf3} \PYG{l+m+mi}{8} \PYG{n}{OBFDESC}
+\PYG{n}{reality\PYGZus{}level}         \PYG{n}{Obf4} \PYG{l+m+mi}{16} \PYG{n}{OBFDESC}
+\PYG{n}{reality\PYGZus{}level}         \PYG{n}{Obf5} \PYG{l+m+mi}{32} \PYG{n}{OBFDESC}
+\PYG{n}{reality\PYGZus{}level}         \PYG{n}{Umbra} \PYG{l+m+mi}{64} \PYG{n}{UMBRADESC}
+\PYG{n}{reality\PYGZus{}level}         \PYG{n}{Fae} \PYG{l+m+mi}{128} \PYG{n}{FAEDESC}
+\PYG{n}{reality\PYGZus{}level}         \PYG{n}{Shadow} \PYG{l+m+mi}{256} \PYG{n}{SHADOWDESC}
+\PYG{n}{reality\PYGZus{}level}         \PYG{n}{All} \PYG{l+m+mi}{511}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 5 levels of Obfuscation, Umbra, Dreaming, Wraiths. ‘All’ is a handy
 replacement for all levels, useful for wizards and wizobjects that should
 be visible on all levels. Also useful when you want to set an object’s
-levels to something without knowing what he had before.
+levels to something without knowing what he had before:
 
-\sphinxAtStartPar
-@rxlevel \#276=!All Real
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@rxlevel} \PYG{c+c1}{\PYGZsh{}276=!All Real}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 !All will clear all levels, then the object will gain the Real level.
@@ -7887,7 +7879,10 @@ Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real
 
 \sphinxAtStartPar
 Global code objects that all characters should be able to use:
-RxLevel: All, TxLevel: All
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{RxLevel}\PYG{p}{:} \PYG{n}{All}\PYG{p}{,} \PYG{n}{TxLevel}\PYG{p}{:} \PYG{n}{All}
+\end{sphinxVerbatim}
 
 
 \subsection{Example 3: Softcode}
@@ -7898,33 +7893,23 @@ getstat(\textless{}dbref\textgreater{},\textless{}stat\textgreater{}) that will 
 the sheet here are softcode examples that implement some of the WoD powers.
 In a real game you would have to use some more checks, of course.
 
-\sphinxAtStartPar
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 @create Reality Levels Commands (RLS)
-\&CMD\_OBFON rls=\$+obf/on:@switch {[}setr(0, getstat(\%\#,Obfuscate)){]}=0, @pemit
-\%\#=You don’t have Obfuscate!, \{@txlevel \%\#=!All Obf\%q0; @pemit \%\#=You are
-now invisible.\}
-\&CMD\_OBFOFF rls=\$+obf/off:@txlevel \%\#=Real; @pemit \%\#=You are now visible.
+\PYGZam{}CMD\PYGZus{}OBFON rls=\PYGZdl{}+obf/on:@switch [setr(0, getstat(\PYGZpc{}\PYGZsh{},Obfuscate))]=0, @pemit \PYGZpc{}\PYGZsh{}=You don\PYGZsq{}t have Obfuscate!, \PYGZob{}@txlevel \PYGZpc{}\PYGZsh{}=!All Obf\PYGZpc{}q0; @pemit \PYGZpc{}\PYGZsh{}=You are now invisible.\PYGZcb{}
+\PYGZam{}CMD\PYGZus{}OBFOFF rls=\PYGZdl{}+obf/off:@txlevel \PYGZpc{}\PYGZsh{}=Real; @pemit \PYGZpc{}\PYGZsh{}=You are now visible.
 @@ Note: +obf/on clears all TxLevels before setting the appropiate Obf
 @@ This is necesary, because a character might advance from Obf2 to
 @@ Obf3 and he should be visible /only/ on the Obf3 level.
 @@ +obf/off simply sets the Real Tx level, without clearing the Obf. The
 @@ reason is the Mask. Players with Obf3 or higher who use the Mask should
 @@ +obf/on, then +obf/off after approval and everything is set.
-\&CMD\_AUSPEXON rls=\$+auspex/on:@switch {[}setr(0, getstat(\%\#, Auspex)){]}=0,
-@pemit \%\#=You don’t have Auspex!, \{@rxlevel \%\#={[}iter(lnum(1, \%q0), Obf\#\#){]};
-@pemit \%\#=Auspex enabled.\}
-\&CMD\_AUSPEXOFF rls=\$+auspex/off:@switch {[}hasrxlevel(\%\#, Obf1){]}=0, @pemit \%\#=
-You don’t have Auspex enabled!, \{@rxlevel \%\#={[}iter(lnum(1, 5), !Obf\#\#){]};
-@pemit \%\#=Auspex disabled.\}
-\&CMD\_UMBRAENTER rls=\$+umbra/enter:@rxlevel \%\#=!Real Umbra; @txlevel \%\#=
-!Real Umbra; @pemit \%\#=You are now in the Umbra.
-\&CMD\_UMBRALEAVE rls=\$+umbra/leave:@rxlevel \%\#=Real !Umbra; @txlevel \%\#=
-Real !Umbra; @pemit \%\#=You left the Umbra.
-\&CMD\_PEEKON rls=\$+peek/on:@switch hastxlevel(\%\#,Umbra)=1, \{@rxlevel \%\#=Real
-!Umbra; @pemit \%\#=You are now peeking in the real world\}, \{@rxlevel \%\#=!Real
-Umbra; @pemit \%\#=You are now peeking into the Umbra\}
-\&CMD\_PEEKOFF rls=\$+peek/off:@rxlevel \%\#=!Real !Umbra {[}setinter(Real Umbra,
-txlevel(\%\#)){]}; @pemit \%\#=You are no longer peeking.
+\PYGZam{}CMD\PYGZus{}AUSPEXON rls=\PYGZdl{}+auspex/on:@switch [setr(0, getstat(\PYGZpc{}\PYGZsh{}, Auspex))]=0, @pemit \PYGZpc{}\PYGZsh{}=You don\PYGZsq{}t have Auspex!, \PYGZob{}@rxlevel \PYGZpc{}\PYGZsh{}=[iter(lnum(1, \PYGZpc{}q0), Obf\PYGZsh{}\PYGZsh{})]; @pemit \PYGZpc{}\PYGZsh{}=Auspex enabled.\PYGZcb{}
+\PYGZam{}CMD\PYGZus{}AUSPEXOFF rls=\PYGZdl{}+auspex/off:@switch [hasrxlevel(\PYGZpc{}\PYGZsh{}, Obf1)]=0, @pemit \PYGZpc{}\PYGZsh{}= You don\PYGZsq{}t have Auspex enabled!, \PYGZob{}@rxlevel \PYGZpc{}\PYGZsh{}=[iter(lnum(1, 5), !Obf\PYGZsh{}\PYGZsh{})]; @pemit \PYGZpc{}\PYGZsh{}=Auspex disabled.\PYGZcb{}
+\PYGZam{}CMD\PYGZus{}UMBRAENTER rls=\PYGZdl{}+umbra/enter:@rxlevel \PYGZpc{}\PYGZsh{}=!Real Umbra; @txlevel \PYGZpc{}\PYGZsh{}= !Real Umbra; @pemit \PYGZpc{}\PYGZsh{}=You are now in the Umbra.
+\PYGZam{}CMD\PYGZus{}UMBRALEAVE rls=\PYGZdl{}+umbra/leave:@rxlevel \PYGZpc{}\PYGZsh{}=Real !Umbra; @txlevel \PYGZpc{}\PYGZsh{}= Real !Umbra; @pemit \PYGZpc{}\PYGZsh{}=You left the Umbra.
+\PYGZam{}CMD\PYGZus{}PEEKON rls=\PYGZdl{}+peek/on:@switch hastxlevel(\PYGZpc{}\PYGZsh{},Umbra)=1, \PYGZob{}@rxlevel \PYGZpc{}\PYGZsh{}=Real !Umbra; @pemit \PYGZpc{}\PYGZsh{}=You are now peeking in the real world\PYGZcb{}, \PYGZob{}@rxlevel \PYGZpc{}\PYGZsh{}=!Real Umbra; @pemit \PYGZpc{}\PYGZsh{}=You are now peeking into the Umbra\PYGZcb{}
+\PYGZam{}CMD\PYGZus{}PEEKOFF rls=\PYGZdl{}+peek/off:@rxlevel \PYGZpc{}\PYGZsh{}=!Real !Umbra [setinter(Real Umbra, txlevel(\PYGZpc{}\PYGZsh{}))]; @pemit \PYGZpc{}\PYGZsh{}=You are no longer peeking.
+\end{sphinxVerbatim}
 
 
 \section{Execscript and external programs and scripts}
@@ -7935,44 +7920,156 @@ txlevel(\%\#)){]}; @pemit \%\#=You are no longer peeking.
 
 \subsubsection{Built in variables}
 \label{\detokenize{advanced:built-in-variables}}
-\sphinxAtStartPar
-Variable                   Description
-MUSH\_PLAYER                player dbref\#
-MUSH\_CAUSE                 cause dbref\#
-MUSH\_CALLER                caller dbref\#
-MUSH\_OWNER                 owner of player dbref\#
-MUSH\_FLAGS                 space delimited list of flags on player
-MUSH\_TOGGLES               space delimited list of toggles on player
-MUSH\_OFLAGS                space delimited list of flags of player owner
-MUSH\_OTOGGLES              space delimited list of toggles of player owner
-MUSHL\_VARS                 space delimited list of MUSH attributes from player
-\begin{quote}
 
+\begin{savenotes}\sphinxattablestart
+\centering
+\begin{tabulary}{\linewidth}[t]{|T|T|}
+\hline
+\sphinxstyletheadfamily 
 \sphinxAtStartPar
+Variable
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Description
+\\
+\hline
+\sphinxAtStartPar
+MUSH\_PLAYER
+&
+\sphinxAtStartPar
+player dbref\#
+\\
+\hline
+\sphinxAtStartPar
+MUSH\_CAUSE
+&
+\sphinxAtStartPar
+cause dbref\#
+\\
+\hline
+\sphinxAtStartPar
+MUSH\_CALLER
+&
+\sphinxAtStartPar
+caller dbref\#
+\\
+\hline
+\sphinxAtStartPar
+MUSH\_OWNER
+&
+\sphinxAtStartPar
+owner of player dbref\#
+\\
+\hline
+\sphinxAtStartPar
+MUSH\_FLAGS
+&
+\sphinxAtStartPar
+space delimited list of flags on player
+\\
+\hline
+\sphinxAtStartPar
+MUSH\_TOGGLES
+&
+\sphinxAtStartPar
+space delimited list of toggles on player
+\\
+\hline
+\sphinxAtStartPar
+MUSH\_OFLAGS
+&
+\sphinxAtStartPar
+space delimited list of flags of player owner
+\\
+\hline
+\sphinxAtStartPar
+MUSH\_OTOGGLES
+&
+\sphinxAtStartPar
+space delimited list of toggles of player owner
+\\
+\hline
+\sphinxAtStartPar
+MUSHL\_VARS
+&
+\sphinxAtStartPar
+space delimited list of MUSH attributes from player
 This is passed from the mush’s EXECSCRIPT\_VARS attr
-\end{quote}
+\\
+\hline
+\end{tabulary}
+\par
+\sphinxattableend\end{savenotes}
 
 
 \subsubsection{Dynamic variables}
-\label{\detokenize{advanced:dynamic-variables}}\begin{description}
-\item[{MUSHV\_\textless{}arg\textgreater{}                \textless{}arg\textgreater{} variable passed from MUSHL\_VARS}] \leavevmode
-\sphinxAtStartPar
-These are the attributes from EXECSCRIPT\_VARS
+\label{\detokenize{advanced:dynamic-variables}}
 
-\end{description}
+\begin{savenotes}\sphinxattablestart
+\centering
+\begin{tabulary}{\linewidth}[t]{|T|T|}
+\hline
+\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Variable
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Description
+\\
+\hline
+\sphinxAtStartPar
+MUSHV\_\textless{}arg\textgreater{}
+&
+\sphinxAtStartPar
+\textless{}arg\textgreater{} variable passed from MUSHL\_VARS
+These are the attributes from EXECSCRIPT\_VARS
+\\
+\hline
+\end{tabulary}
+\par
+\sphinxattableend\end{savenotes}
 
 
 \subsubsection{Register variables}
 \label{\detokenize{advanced:register-variables}}
-\sphinxAtStartPar
-MUSHQ\_\textless{}arg\textgreater{}                setq registers 0\sphinxhyphen{}9 and a\sphinxhyphen{}z
-MUSHQN\_\textless{}arg\textgreater{}               labels that are assigned the setq vars
-MUSHN\_\textless{}arg\textgreater{}                The labels that were defined by any register
-\begin{quote}
 
+\begin{savenotes}\sphinxattablestart
+\centering
+\begin{tabulary}{\linewidth}[t]{|T|T|}
+\hline
+\sphinxstyletheadfamily 
 \sphinxAtStartPar
+Variable
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Description
+\\
+\hline
+\sphinxAtStartPar
+MUSHQ\_\textless{}arg\textgreater{}
+&
+\sphinxAtStartPar
+setq registers 0\sphinxhyphen{}9 and a\sphinxhyphen{}z
+\\
+\hline
+\sphinxAtStartPar
+MUSHQN\_\textless{}arg\textgreater{}
+&
+\sphinxAtStartPar
+labels that are assigned the setq vars
+\\
+\hline
+\sphinxAtStartPar
+MUSHN\_\textless{}arg\textgreater{}
+&
+\sphinxAtStartPar
+The labels that were defined by any register
 Note: they must be ASCII\sphinxhyphen{}7 clean and contain no white spaces
-\end{quote}
+\\
+\hline
+\end{tabulary}
+\par
+\sphinxattableend\end{savenotes}
 
 
 \subsection{set object}
@@ -7988,67 +8085,60 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.
 \label{\detokenize{advanced:the-format-of-the-fields-are}}
 
 \paragraph{Dynamic variables}
-\label{\detokenize{advanced:id65}}
-\sphinxAtStartPar
-VARNAME        OWNER        CONTENTS (or leave null to clear)
+\label{\detokenize{advanced:id1}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{VARNAME}        \PYG{n}{OWNER}        \PYG{n}{CONTENTS} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{leave} \PYG{n}{null} \PYG{n}{to} \PYG{n}{clear}\PYG{p}{)}
+\end{sphinxVerbatim}
 
 
 \subparagraph{Examples}
 \label{\detokenize{advanced:examples}}
-\sphinxAtStartPar
-SEX \#123 Male
-DESC \#123 \%r\%tThis is a willow tree of unique description\%r\%rIt sways in the wind.
-RED \#123 This is the color \%ch\%crred\%cn.
-WIPETHISATTR \#123
-MULTILINE \#123 This is a line
-that continues on
-because of the line feed (a control\sphinxhyphen{}M) on each line
-on the lines above
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{SEX} \PYG{c+c1}{\PYGZsh{}123 Male}
+\PYG{n}{DESC} \PYG{c+c1}{\PYGZsh{}123 \PYGZpc{}r\PYGZpc{}tThis is a willow tree of unique description\PYGZpc{}r\PYGZpc{}rIt sways in the wind.}
+\PYG{n}{RED} \PYG{c+c1}{\PYGZsh{}123 This is the color \PYGZpc{}ch\PYGZpc{}crred\PYGZpc{}cn.}
+\PYG{n}{WIPETHISATTR} \PYG{c+c1}{\PYGZsh{}123}
+\PYG{n}{MULTILINE} \PYG{c+c1}{\PYGZsh{}123 This is a line}
+\PYG{n}{that} \PYG{n}{continues} \PYG{n}{on}
+\PYG{n}{because} \PYG{n}{of} \PYG{n}{the} \PYG{n}{line} \PYG{n}{feed} \PYG{p}{(}\PYG{n}{a} \PYG{n}{control}\PYG{o}{\PYGZhy{}}\PYG{n}{M}\PYG{p}{)} \PYG{n}{on} \PYG{n}{each} \PYG{n}{line}
+\PYG{n}{on} \PYG{n}{the} \PYG{n}{lines} \PYG{n}{above}
+\end{sphinxVerbatim}
 
 
 \paragraph{Register variables}
-\label{\detokenize{advanced:id66}}
-\sphinxAtStartPar
-REGISTER       Q            CONTENTS (or leave null to clear)
+\label{\detokenize{advanced:id2}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{REGISTER}       \PYG{n}{Q}            \PYG{n}{CONTENTS} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{leave} \PYG{n}{null} \PYG{n}{to} \PYG{n}{clear}\PYG{p}{)}
+\end{sphinxVerbatim}
 
 
 \subparagraph{Examples (The last example clears register 0)}
 \label{\detokenize{advanced:examples-the-last-example-clears-register-0}}
-\sphinxAtStartPar
-W Q This is stored in register W
-1 Q This is stored in register 1
-0 Q
-foo QN this sets register with label ‘foo’
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{W} \PYG{n}{Q} \PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{stored} \PYG{o+ow}{in} \PYG{n}{register} \PYG{n}{W}
+\PYG{l+m+mi}{1} \PYG{n}{Q} \PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{stored} \PYG{o+ow}{in} \PYG{n}{register} \PYG{l+m+mi}{1}
+\PYG{l+m+mi}{0} \PYG{n}{Q}
+\PYG{n}{foo} \PYG{n}{QN} \PYG{n}{this} \PYG{n}{sets} \PYG{n}{register} \PYG{k}{with} \PYG{n}{label} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{foo}\PYG{l+s+s1}{\PYGZsq{}}
+\end{sphinxVerbatim}
 
 
 \subsection{Example bash script}
 \label{\detokenize{advanced:example-bash-script}}
-\sphinxAtStartPar
-\#!/bin/bash
-echo “This was called by player \$\{MUSH\_PLAYER\} that is owned by \$\{MUSH\_OWNER\}”
-echo “Displaying Registers:”
-regs=”0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z”
-for list in \$\{regs\}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZsh{}!/bin/bash
+echo \PYGZdq{}This was called by player \PYGZdl{}\PYGZob{}MUSH\PYGZus{}PLAYER\PYGZcb{} that is owned by \PYGZdl{}\PYGZob{}MUSH\PYGZus{}OWNER\PYGZcb{}\PYGZdq{}
+echo \PYGZdq{}Displaying Registers:\PYGZdq{}
+regs=\PYGZdq{}0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z\PYGZdq{}
+for list in \PYGZdl{}\PYGZob{}regs\PYGZcb{}
 do
-\begin{quote}
-
-\sphinxAtStartPar
-eval echo “Register \$\{list\}: \$\{MUSHQ\_\$\{list\}\}”
-\end{quote}
-
-\sphinxAtStartPar
+    eval echo \PYGZdq{}Register \PYGZdl{}\PYGZob{}list\PYGZcb{}: \PYGZbs{}\PYGZdl{}\PYGZob{}MUSHQ\PYGZus{}\PYGZdl{}\PYGZob{}list\PYGZcb{}\PYGZcb{}\PYGZdq{}
 done
-echo “Displaying variables:”
-for vars in \$\{MUSHL\_VARS\}
+echo \PYGZdq{}Displaying variables:\PYGZdq{}
+for vars in \PYGZdl{}\PYGZob{}MUSHL\PYGZus{}VARS\PYGZcb{}
 do
-\begin{quote}
-
-\sphinxAtStartPar
-eval echo “Variable \$\{vars\}: \$\{MUSHV\_\$\{vars\}\}”
-\end{quote}
-
-\sphinxAtStartPar
+    eval echo \PYGZdq{}Variable \PYGZdl{}\PYGZob{}vars\PYGZcb{}: \PYGZbs{}\PYGZdl{}\PYGZob{}MUSHV\PYGZus{}\PYGZdl{}\PYGZob{}vars\PYGZcb{}\PYGZcb{}\PYGZdq{}
 done
+\end{sphinxVerbatim}
 
 
 \subsection{Notes and warnings}
@@ -8067,37 +8157,38 @@ on the target that contains the execscript() that is being executed.
 
 \subsection{Scripts to be used with execscript}
 \label{\detokenize{advanced:scripts-to-be-used-with-execscript}}
-\sphinxAtStartPar
-account/                       \textendash{} Directory for execscripts relating to account creation
-compile39.sh                   \textendash{} Script for patching and compiling RhostMUSH 3.9
-compile.sh                     \textendash{} Script for patching and compiling RhostMUSH
-config.sh                      \textendash{} Script for setting compile time options for RhostMUSH
-debug.sh                       \textendash{} Script for debugging RhostMUSH
-dict.sh                        \textendash{} Script for querying a dictionary
-diff.sh                        \textendash{} Script for querying differences between two arguments
-fortune.sh                     \textendash{} Script for querying fortune program
-fullweather.sh                 \textendash{} Script for querying a graphical weather forecast (alternative)
-git.sh                         \textendash{} Script for querying git version of RhostMUSH
-hello.sh                       \textendash{} Script for teaching execscript for ‘Hello World’
-iostat.sh                      \textendash{} Script for querying server stats of RhostMUSH
-jsonvalidate.sh                \textendash{} Python Script for validating JSON
-logsearch.sh                   \textendash{} Script for searching throgh logfiles for RhostMUSH
-math\_example.sh                \textendash{} Examples of math operations to be used with math.sh
-math.sh                        \textendash{} Script for mathematical operations
-memory.sh                      \textendash{} Script for querying memory usage of RhostMUSH
-mkindx.sh                      \textendash{} Script for indexing RhostMSH helpfiles
-pastebinread.sh                \textendash{} Script for reading data from a pastebin URL
-pastebinwrite.sh               \textendash{} Script for writing data to a pastebin
-qspell.sh                      \textendash{} Script for checking spelling (alternative)
-quota.sh                       \textendash{} Script for checking disk quote and usage
-random.sh                      \textendash{} Script for getting a random number
-roomlog.sh                     \textendash{} Script for viewing logs in roomlog directory
-spell.sh                       \textendash{} Script for checking spelling
-stats.sh                       \textendash{} Script for querying server and process stats for RhostMUSH
-thes.sh                        \textendash{} Script for adding a word to the dictionary for spell scripts
-tinyurl.sh                     \textendash{} Script for shortening a URL
-weather.sh                     \textendash{} Script for querying a graphical weather forecast
-web.sh                         \textendash{} Script for querying an arbitary website
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{account}\PYG{o}{/}                       \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Directory} \PYG{k}{for} \PYG{n}{execscripts} \PYG{n}{relating} \PYG{n}{to} \PYG{n}{account} \PYG{n}{creation}
+\PYG{n}{compile39}\PYG{o}{.}\PYG{n}{sh}                   \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{patching} \PYG{o+ow}{and} \PYG{n}{compiling} \PYG{n}{RhostMUSH} \PYG{l+m+mf}{3.9}
+\PYG{n+nb}{compile}\PYG{o}{.}\PYG{n}{sh}                     \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{patching} \PYG{o+ow}{and} \PYG{n}{compiling} \PYG{n}{RhostMUSH}
+\PYG{n}{config}\PYG{o}{.}\PYG{n}{sh}                      \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{setting} \PYG{n+nb}{compile} \PYG{n}{time} \PYG{n}{options} \PYG{k}{for} \PYG{n}{RhostMUSH}
+\PYG{n}{debug}\PYG{o}{.}\PYG{n}{sh}                       \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{debugging} \PYG{n}{RhostMUSH}
+\PYG{n+nb}{dict}\PYG{o}{.}\PYG{n}{sh}                        \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{querying} \PYG{n}{a} \PYG{n}{dictionary}
+\PYG{n}{diff}\PYG{o}{.}\PYG{n}{sh}                        \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{querying} \PYG{n}{differences} \PYG{n}{between} \PYG{n}{two} \PYG{n}{arguments}
+\PYG{n}{fortune}\PYG{o}{.}\PYG{n}{sh}                     \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{querying} \PYG{n}{fortune} \PYG{n}{program}
+\PYG{n}{fullweather}\PYG{o}{.}\PYG{n}{sh}                 \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{querying} \PYG{n}{a} \PYG{n}{graphical} \PYG{n}{weather} \PYG{n}{forecast} \PYG{p}{(}\PYG{n}{alternative}\PYG{p}{)}
+\PYG{n}{git}\PYG{o}{.}\PYG{n}{sh}                         \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{querying} \PYG{n}{git} \PYG{n}{version} \PYG{n}{of} \PYG{n}{RhostMUSH}
+\PYG{n}{hello}\PYG{o}{.}\PYG{n}{sh}                       \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{teaching} \PYG{n}{execscript} \PYG{k}{for} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{Hello World}\PYG{l+s+s1}{\PYGZsq{}}
+\PYG{n}{iostat}\PYG{o}{.}\PYG{n}{sh}                      \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{querying} \PYG{n}{server} \PYG{n}{stats} \PYG{n}{of} \PYG{n}{RhostMUSH}
+\PYG{n}{jsonvalidate}\PYG{o}{.}\PYG{n}{sh}                \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Python} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{validating} \PYG{n}{JSON}
+\PYG{n}{logsearch}\PYG{o}{.}\PYG{n}{sh}                   \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{searching} \PYG{n}{throgh} \PYG{n}{logfiles} \PYG{k}{for} \PYG{n}{RhostMUSH}
+\PYG{n}{math\PYGZus{}example}\PYG{o}{.}\PYG{n}{sh}                \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Examples} \PYG{n}{of} \PYG{n}{math} \PYG{n}{operations} \PYG{n}{to} \PYG{n}{be} \PYG{n}{used} \PYG{k}{with} \PYG{n}{math}\PYG{o}{.}\PYG{n}{sh}
+\PYG{n}{math}\PYG{o}{.}\PYG{n}{sh}                        \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{mathematical} \PYG{n}{operations}
+\PYG{n}{memory}\PYG{o}{.}\PYG{n}{sh}                      \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{querying} \PYG{n}{memory} \PYG{n}{usage} \PYG{n}{of} \PYG{n}{RhostMUSH}
+\PYG{n}{mkindx}\PYG{o}{.}\PYG{n}{sh}                      \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{indexing} \PYG{n}{RhostMSH} \PYG{n}{helpfiles}
+\PYG{n}{pastebinread}\PYG{o}{.}\PYG{n}{sh}                \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{reading} \PYG{n}{data} \PYG{k+kn}{from} \PYG{n+nn}{a} \PYG{n}{pastebin} \PYG{n}{URL}
+\PYG{n}{pastebinwrite}\PYG{o}{.}\PYG{n}{sh}               \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{writing} \PYG{n}{data} \PYG{n}{to} \PYG{n}{a} \PYG{n}{pastebin}
+\PYG{n}{qspell}\PYG{o}{.}\PYG{n}{sh}                      \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{checking} \PYG{n}{spelling} \PYG{p}{(}\PYG{n}{alternative}\PYG{p}{)}
+\PYG{n}{quota}\PYG{o}{.}\PYG{n}{sh}                       \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{checking} \PYG{n}{disk} \PYG{n}{quote} \PYG{o+ow}{and} \PYG{n}{usage}
+\PYG{n}{random}\PYG{o}{.}\PYG{n}{sh}                      \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{getting} \PYG{n}{a} \PYG{n}{random} \PYG{n}{number}
+\PYG{n}{roomlog}\PYG{o}{.}\PYG{n}{sh}                     \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{viewing} \PYG{n}{logs} \PYG{o+ow}{in} \PYG{n}{roomlog} \PYG{n}{directory}
+\PYG{n}{spell}\PYG{o}{.}\PYG{n}{sh}                       \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{checking} \PYG{n}{spelling}
+\PYG{n}{stats}\PYG{o}{.}\PYG{n}{sh}                       \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{querying} \PYG{n}{server} \PYG{o+ow}{and} \PYG{n}{process} \PYG{n}{stats} \PYG{k}{for} \PYG{n}{RhostMUSH}
+\PYG{n}{thes}\PYG{o}{.}\PYG{n}{sh}                        \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{adding} \PYG{n}{a} \PYG{n}{word} \PYG{n}{to} \PYG{n}{the} \PYG{n}{dictionary} \PYG{k}{for} \PYG{n}{spell} \PYG{n}{scripts}
+\PYG{n}{tinyurl}\PYG{o}{.}\PYG{n}{sh}                     \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{shortening} \PYG{n}{a} \PYG{n}{URL}
+\PYG{n}{weather}\PYG{o}{.}\PYG{n}{sh}                     \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{querying} \PYG{n}{a} \PYG{n}{graphical} \PYG{n}{weather} \PYG{n}{forecast}
+\PYG{n}{web}\PYG{o}{.}\PYG{n}{sh}                         \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Script} \PYG{k}{for} \PYG{n}{querying} \PYG{n}{an} \PYG{n}{arbitary} \PYG{n}{website}
+\end{sphinxVerbatim}
 
 
 \section{Using printf() for advanced text output}
@@ -8123,18 +8214,18 @@ screens and data display.  It can automatically center, justify and wrap the tex
 \subsection{Example two}
 \label{\detokenize{advanced:example-two}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-  @emit printf(\PYGZdl{}14\PYGZam{}s \PYGZdl{}\PYGZca{}4\PYGZam{}s \PYGZdl{}\PYGZhy{}3\PYGZam{}s \PYGZdl{}15\PYGZam{}s,
-  iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,\PYGZsh{}\PYGZsh{},|,\PYGZpc{}R),
-  iter(|\PYGZhy{}1|\PYGZhy{}1|\PYGZhy{}2|\PYGZhy{}2|\PYGZhy{}5|,\PYGZsh{}\PYGZsh{},|,\PYGZpc{}r),iter(lnum(1,7),\PYGZpc{}[[if(gte(get(\PYGZpc{}\PYGZsh{}/damage),\PYGZsh{}\PYGZsh{}),X,\PYGZpc{}b)]\PYGZpc{}],,\PYGZpc{}r),
-  * Aggravated\PYGZpc{}RX Lethal\PYGZpc{}R/ Bashing)
+@emit printf(\PYGZdl{}14\PYGZam{}s \PYGZdl{}\PYGZca{}4\PYGZam{}s \PYGZdl{}\PYGZhy{}3\PYGZam{}s \PYGZdl{}15\PYGZam{}s,
+iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,\PYGZsh{}\PYGZsh{},|,\PYGZpc{}R),
+iter(|\PYGZhy{}1|\PYGZhy{}1|\PYGZhy{}2|\PYGZhy{}2|\PYGZhy{}5|,\PYGZsh{}\PYGZsh{},|,\PYGZpc{}r),iter(lnum(1,7),\PYGZpc{}[[if(gte(get(\PYGZpc{}\PYGZsh{}/damage),\PYGZsh{}\PYGZsh{}),X,\PYGZpc{}b)]\PYGZpc{}],,\PYGZpc{}r),
+* Aggravated\PYGZpc{}RX Lethal\PYGZpc{}R/ Bashing)
 
-      Bruised      [ ]    * Aggravated
-         Hurt  \PYGZhy{}1  [ ]        X Lethal
-      Injured  \PYGZhy{}1  [ ]       / Bashing
-      Wounded  \PYGZhy{}2  [ ]
-       Mauled  \PYGZhy{}2  [ ]
-     Crippled  \PYGZhy{}5  [ ]
-Incapacitated      [ ]
+         Bruised      [ ]    * Aggravated
+            Hurt  \PYGZhy{}1  [ ]        X Lethal
+         Injured  \PYGZhy{}1  [ ]       / Bashing
+         Wounded  \PYGZhy{}2  [ ]
+          Mauled  \PYGZhy{}2  [ ]
+        Crippled  \PYGZhy{}5  [ ]
+   Incapacitated      [ ]
 \end{sphinxVerbatim}
 
 
@@ -8161,40 +8252,355 @@ blah blah blah blah blah blah blah                                    END!
 \sphinxAtStartPar
 The image format goes like this:
 
+
+\begin{savenotes}\sphinxatlongtablestart\begin{longtable}[c]{|l|l|l|}
+\hline
+\sphinxstyletheadfamily 
 \sphinxAtStartPar
-Data Type  Example  Description
-———  ——\sphinxhyphen{}  ———————————————————\sphinxhyphen{}
-INT        3        TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5
-STRING     Wizard   NAME: of the target.  Verbatum, no quotes surround it
-{\color{red}\bfseries{}*}INT       123      LOCATION: dbref\# of the target.  No prepending ‘\#’ used.
-{\color{red}\bfseries{}*}INT       234      CONTENTS: The first content in a linked list content table (\sphinxhyphen{}1 if none)
-{\color{red}\bfseries{}*}INT       345      EXITS: The first exit in a linked list exit table (\sphinxhyphen{}1 if none)
-{\color{red}\bfseries{}*}INT       0        LINK: This is the ‘home’ of the object or what it’s linked to (\sphinxhyphen{}1 for none)
-{\color{red}\bfseries{}*}INT       123      NEXT: The next thing after this item for a content holder
-STRING     \#123     LOCK: The boolean string lock if it exists.  (empty if no lock)
-{\color{red}\bfseries{}*}INT       1        OWNER: The dbref\# owner of the target.  For players same dbref as player.
-INT        789      PARENT: The parent of the target.  (\sphinxhyphen{}1 if none)
-{\color{red}\bfseries{}*}INT       99999    MONEY: The int value of the money the players has.
-INT        194592   FLAGS1: The first word of flags (@set flags) on a player      (see FLAGS)
-INT        194222   FLAGS2: The second word of flags (@set flags) on a player     (see FLAGS)
-INT        199999   FLAGS3: The third word of flags (@set flags {[}{]}) on a player   (see FLAGS)
-INT        1582958  FLAGS4: The forth word of flags (@set flags {[}{]}) on a player   (see FLAGS)
-INT        159955   TOGGLES1: The first word of toggles (@toggle) on a player    (see TOGGLES)
-INT        159958   TOGGLES2: The second word of toggles (@toggle) on a player   (see TOGGLES)
-INT        159958   POWER1: The first word of powers (@power) on a player         (see POWERS)
-INT        159958   POWER2: The second word of powers (@power) on a player        (see POWERS)
-INT        159958   POWER3: The third word of powers (@power) on a player         (see POWERS)
-INT        159958   DEPOWER1: The first word of depowers (@depower) on a player  (see DEPOWERS)
-INT        159958   DEPOWER2: The second word of depowers (@depower) on a player (see DEPOWERS)
-INT        159958   DEPOWER3: The third word of depowers (@depower) on a player  (see DEPOWERS)
-INT        \sphinxhyphen{}1       ZONE(S): The list of zones starting here and ending with ‘\sphinxhyphen{}1’. (see ZONES)
-\textgreater{}STRING    \textgreater{}VA      ATTRIBUTENAME: Attribute name to store, starts with \textgreater{} identifier
-STRING     Wheee    ATTRIBUTECONTENTS: Contents of attribute.  Multi\sphinxhyphen{}lines seperate with \textasciicircum{}M (control\sphinxhyphen{}M)
-\textgreater{}STRING    \textgreater{}Desc    ATTRIBUTENAME: Another attribute to chain in
-STRING     Ugly     ATTRIBUTECONTENTS: Contents of the next attribute
-\textgreater{}STRING    {\color{red}\bfseries{}*}Password PASSWORDATTRIB: Special password attribute.  Attribute name is ‘{\color{red}\bfseries{}*}Password’
-STRING     \$6\$xy\$xy PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
-\textless{}          \textless{}        This is the marker to specify the end of the attribute contents.  This is always the last line
+Data Type
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Example
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Description
+\\
+\hline
+\endfirsthead
+
+\multicolumn{3}{c}%
+{\makebox[0pt]{\sphinxtablecontinued{\tablename\ \thetable{} \textendash{} continued from previous page}}}\\
+\hline
+\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Data Type
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Example
+&\sphinxstyletheadfamily 
+\sphinxAtStartPar
+Description
+\\
+\hline
+\endhead
+
+\hline
+\multicolumn{3}{r}{\makebox[0pt][r]{\sphinxtablecontinued{continues on next page}}}\\
+\endfoot
+
+\endlastfoot
+
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+3
+&
+\sphinxAtStartPar
+TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5
+\\
+\hline
+\sphinxAtStartPar
+STRING
+&
+\sphinxAtStartPar
+Wizard
+&
+\sphinxAtStartPar
+NAME: of the target.  Verbatum, no quotes surround it
+\\
+\hline
+\sphinxAtStartPar
+*INT
+&
+\sphinxAtStartPar
+123
+&
+\sphinxAtStartPar
+LOCATION: dbref\# of the target.  No prepending ‘\#’ used.
+\\
+\hline
+\sphinxAtStartPar
+*INT
+&
+\sphinxAtStartPar
+234
+&
+\sphinxAtStartPar
+CONTENTS: The first content in a linked list content table (\sphinxhyphen{}1 if none)
+\\
+\hline
+\sphinxAtStartPar
+*INT
+&
+\sphinxAtStartPar
+345
+&
+\sphinxAtStartPar
+EXITS: The first exit in a linked list exit table (\sphinxhyphen{}1 if none)
+\\
+\hline
+\sphinxAtStartPar
+*INT
+&
+\sphinxAtStartPar
+0
+&
+\sphinxAtStartPar
+LINK: This is the ‘home’ of the object or what it’s linked to (\sphinxhyphen{}1 for none)
+\\
+\hline
+\sphinxAtStartPar
+*INT
+&
+\sphinxAtStartPar
+123
+&
+\sphinxAtStartPar
+NEXT: The next thing after this item for a content holder
+\\
+\hline
+\sphinxAtStartPar
+STRING
+&
+\sphinxAtStartPar
+\#123
+&
+\sphinxAtStartPar
+LOCK: The boolean string lock if it exists.  (empty if no lock)
+\\
+\hline
+\sphinxAtStartPar
+*INT
+&
+\sphinxAtStartPar
+1
+&
+\sphinxAtStartPar
+OWNER: The dbref\# owner of the target.  For players same dbref as player.
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+789
+&
+\sphinxAtStartPar
+PARENT: The parent of the target.  (\sphinxhyphen{}1 if none)
+\\
+\hline
+\sphinxAtStartPar
+*INT
+&
+\sphinxAtStartPar
+99999
+&
+\sphinxAtStartPar
+MONEY: The int value of the money the players has.
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+194592
+&
+\sphinxAtStartPar
+FLAGS1: The first word of flags (@set flags) on a player      (see FLAGS)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+194222
+&
+\sphinxAtStartPar
+FLAGS2: The second word of flags (@set flags) on a player     (see FLAGS)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+199999
+&
+\sphinxAtStartPar
+FLAGS3: The third word of flags (@set flags {[}{]}) on a player   (see FLAGS)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+1582958
+&
+\sphinxAtStartPar
+FLAGS4: The forth word of flags (@set flags {[}{]}) on a player   (see FLAGS)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+159955
+&
+\sphinxAtStartPar
+TOGGLES1: The first word of toggles (@toggle) on a player    (see TOGGLES)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+159958
+&
+\sphinxAtStartPar
+TOGGLES2: The second word of toggles (@toggle) on a player   (see TOGGLES)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+159958
+&
+\sphinxAtStartPar
+POWER1: The first word of powers (@power) on a player         (see POWERS)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+159958
+&
+\sphinxAtStartPar
+POWER2: The second word of powers (@power) on a player        (see POWERS)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+159958
+&
+\sphinxAtStartPar
+POWER3: The third word of powers (@power) on a player         (see POWERS)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+159958
+&
+\sphinxAtStartPar
+DEPOWER1: The first word of depowers (@depower) on a player  (see DEPOWERS)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+159958
+&
+\sphinxAtStartPar
+DEPOWER2: The second word of depowers (@depower) on a player (see DEPOWERS)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+159958
+&
+\sphinxAtStartPar
+DEPOWER3: The third word of depowers (@depower) on a player  (see DEPOWERS)
+\\
+\hline
+\sphinxAtStartPar
+INT
+&
+\sphinxAtStartPar
+\sphinxhyphen{}1
+&
+\sphinxAtStartPar
+ZONE(S): The list of zones starting here and ending with ‘\sphinxhyphen{}1’. (see ZONES)
+\\
+\hline
+\sphinxAtStartPar
+\textgreater{}STRING
+&
+\sphinxAtStartPar
+\textgreater{}VA
+&
+\sphinxAtStartPar
+ATTRIBUTENAME: Attribute name to store, starts with \textgreater{} identifier
+\\
+\hline
+\sphinxAtStartPar
+STRING
+&
+\sphinxAtStartPar
+Wheee
+&
+\sphinxAtStartPar
+ATTRIBUTECONTENTS: Contents of attribute.  Multi\sphinxhyphen{}lines seperate with \textasciicircum{}M (control\sphinxhyphen{}M)
+\\
+\hline
+\sphinxAtStartPar
+\textgreater{}STRING
+&
+\sphinxAtStartPar
+\textgreater{}Desc
+&
+\sphinxAtStartPar
+ATTRIBUTENAME: Another attribute to chain in
+\\
+\hline
+\sphinxAtStartPar
+STRING
+&
+\sphinxAtStartPar
+Ugly
+&
+\sphinxAtStartPar
+ATTRIBUTECONTENTS: Contents of the next attribute
+\\
+\hline
+\sphinxAtStartPar
+\textgreater{}STRING
+&
+\sphinxAtStartPar
+*Password
+&
+\sphinxAtStartPar
+PASSWORDATTRIB: Special password attribute.  Attribute name is ‘*Password’
+\\
+\hline
+\sphinxAtStartPar
+STRING
+&
+\sphinxAtStartPar
+\$6\$xy\$xy
+&
+\sphinxAtStartPar
+PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
+\\
+\hline
+\sphinxAtStartPar
+\textless{}
+&
+\sphinxAtStartPar
+\textless{}
+&
+\sphinxAtStartPar
+This is the marker to specify the end of the attribute contents.  This is always the last line
+\\
+\hline
+\end{longtable}\sphinxatlongtableend\end{savenotes}
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
@@ -8204,7 +8610,7 @@ Any Data type starting with ‘*’ is ignored when @snapshot/loading.
 \sphinxAtStartPar
 The structure above with the examples would look like this in the file:
 
-\sphinxAtStartPar
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 3
 Wizard
 123
@@ -8212,7 +8618,7 @@ Wizard
 345
 0
 123
-\#123
+\PYGZsh{}123
 1
 789
 99999
@@ -8228,14 +8634,15 @@ Wizard
 159958
 159958
 159958
-\sphinxhyphen{}1
-\textgreater{}VA
+\PYGZhy{}1
+\PYGZgt{}VA
 Wheee
-\textgreater{}Desc
+\PYGZgt{}Desc
 Ugly
-\textgreater{}*Password
-\$6\$xy\$xy
-\textless{}
+\PYGZgt{}*Password
+\PYGZdl{}6\PYGZdl{}xy\PYGZdl{}xy
+\PYGZlt{}
+\end{sphinxVerbatim}
 
 
 \section{HELP key indexes for the values:}

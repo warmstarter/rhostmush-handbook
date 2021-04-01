@@ -98,31 +98,36 @@ Function Restrictions
   @function/@lfunction -- Allows softcoded functions that you can optionally lock down at your leasure
   @admin function_access -- You can use this even on softcoded functions if you so desired.
 
-Flags
------
+RhostMUSH Flags and Descriptions
+--------------------------------
 
-  GUEST    - This is your guest flag, it should only be set on guests
-  WANDERER - the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.  
-  NO_COMMAND - You can use this to stop a player from being able to connect without worrying about changing their password
-  FUBAR      - As the flag states, it f*'s them up beind all recognition.  It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command.
-  SLAVE      - Funny enough, slave allows anything but say and pose.  To ruin a troll's life, set both FUBAR and SLAVE and sit back and smile.
-  NO_TEL     - The target can't teleport or be teleported
-  NO_MOVE    - The target is locked at their location unable to move at all
-  NO_WALL    - They do not see any @wall except a wizard @wall/no_prefix.  This has the bonus of snuffing db save messages.
-  NO_POSSESS - Sometimes it's useful to grant a builder character to multiple players.  The NO_POSSESS flag makes it so that player can not be logged in more than 2 times.
-  NO_MODIFY  - The target can not be modified (except by immortal/#1)
-  NO_EXAMINE - The target can not be examined/decompiled (except by immortal/#1)
-  STOP       - Once a matching $command is found on an object set STOP, it 'stops' trying to find other $command matches.
-  NOSTOP     - If a target that is set STOP is also set NOSTOP, it will check the master room for a command and execute that as well if found.
-  NO_PESTER  - Stops target from @pemit or whisper.  You may use @icmd as well.
-  NO_OVERRIDE - Useful for immortals.  By default they override all locks, including attribute locks.  This makes it so an immortal's passing of locks will behave like a mortals NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely want to set this on your immortal and wizard.
+::
+
+  GUEST       - This is your guest flag, it should only be set on guests
+  WANDERER    - the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.  
+  NO_COMMAND  - You can use this to stop a player from being able to connect without worrying about changing their password
+  FUBAR       - As the flag states, it f*'s them up beind all recognition.  It essentially stops them from doing absolutely anything in the mush but pose and say.  Yes, it even disables the quit command.
+  SLAVE       - Funny enough, slave allows anything but say and pose.  To ruin a troll's life, set both FUBAR and SLAVE and sit back and smile.
+  NO_TEL      - The target can't teleport or be teleported
+  NO_MOVE     - The target is locked at their location unable to move at all
+  NO_WALL     - They do not see any @wall except a wizard @wall/no_prefix.  This has the bonus of snuffing db save messages.
+  NO_POSSESS  - Sometimes it's useful to grant a builder character to multiple players.  The NO_POSSESS flag makes it so that player can not be logged in more than 2 times.
+  NO_MODIFY   - The target can not be modified (except by immortal/#1)
+  NO_EXAMINE  - The target can not be examined/decompiled (except by immortal/#1)
+  STOP        - Once a matching $command is found on an object set STOP, it 'stops' trying to find other $command matches.
+  NOSTOP      - If a target that is set STOP is also set NOSTOP, it will check the master room for a command and execute that as well if found.
+  NO_PESTER   - Stops target from @pemit or whisper.  You may use @icmd as well.
+  NO_OVERRIDE - Useful for immortals.  By default they override all locks, including attribute locks.  This makes it so an immortal's passing of locks will behave like a mortals
+  NO_USELOCK  - This is like NO_OVERRIDE but only effects uselocks.  You likely want to set this on your immortal and wizard.
   NO_ANSINAME - stops a target from having an ansified name
   NO_CODE     - lock down advanced coding from a target
   SPAMMONITOR - stop a target from issuing more than 60 commands a minute.
   FREE        - Stop costing money for day to day processing of commands/building
 
-Toggles
--------
+RhostMUSH Toggles and Descriptions
+----------------------------------
+
+::
 
   MONITOR            - Enables site monitoring.  This is the main toggle
   MONITOR_SITE       - Adds site information to site monitoring 
@@ -156,8 +161,10 @@ Toggles
   MORTALREALITY      - Enforces a wizard to pass realities as a mortal
   SNUFFDARK          - Hides dark exits from a wizard
 
-@powers
--------
+RhostMUSH @powers and Descriptions
+----------------------------------
+
+::
 
   WIZ_WHO            - Allows target to see sites ala wizard who
   NOFORCE            - target an not be forced (except by immortal/#1)
@@ -192,8 +199,10 @@ Toggles
   FULLTEL            - Allows full immortal level teleportation
   EXECSCRIPT         - Allows executing external scripts in ~/game/scripts
 
-@depowers
----------
+RhostMUSH @depowers and Descriptions
+------------------------------------
+
+::
 
   WALL               - Disables the ability to @wall  
   LONG_FINGERS       - Disables remote access to things
@@ -261,6 +270,8 @@ IP based restrictions
                        @site/all 123.123.123.123=/32
                        @site/forbid 123.123.123.0=/24
 
+::
+
     forbid_site      - Set the specified site forbid only
     register_site    - Set the specified site register only
     noguest_site     - Set the specified site unable to connect to guests
@@ -284,6 +295,8 @@ DNS based restrictions
             ADD:      @admin forbid_host=*.dsl*.comcast.net *.aol.com *another.site
             DEL:      @admin forbid_host=!*.aol.com
             ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at once only)
+
+::
 
     forbid_host     - Set the specified site(s) forbid only
     register_host   - Set the specified site(s) register only
@@ -374,21 +387,23 @@ To setup SSL connectivity, we use the STUNNEL application to tunnel SSL to
 the mush.  This acts a bit like a man in the middle but remains controlled 
 by the game owner which would have access to the end point anyway.
 
-Note: it is assumed you will have already initially set up your netrhost.conf.
+.. note::
+
+   it is assumed you will have already initially set up your netrhost.conf.
 
 stunnel directory
 +++++++++++++++++
 
 You would set up the stunnel from the 'stunnel' directory.  There the following
-files are of relevance:
+files are of relevance::
 
-README                     -- a readme explaining the points of stunnel
-stunnel.conf.example       -- The example stunnel.conf file.  If you wish to create this manually you're welcome to.  Just make sure the end file is stunnel.conf
-stunnel_setup.sh           -- the script to build a stunnel.conf file for you which will be dropped at your specified location.
-stunnel_kill.sh            -- Stop/terminate the stunnel process.
-stunnel_start.sh           -- Start the stunnel process.
-warpbubble.pl              -- the perl script that handles stunnel to mush connectivity.
-stunnel_src                -- If you do not have stunnel, this directory will allow you to download, compile and locally install.
+  README                     -- a readme explaining the points of stunnel
+  stunnel.conf.example       -- The example stunnel.conf file.  If you wish to create this manually you're welcome to.  Just make sure the end file is stunnel.conf
+  stunnel_setup.sh           -- the script to build a stunnel.conf file for you which will be dropped at your specified location.
+  stunnel_kill.sh            -- Stop/terminate the stunnel process.
+  stunnel_start.sh           -- Start the stunnel process.
+  warpbubble.pl              -- the perl script that handles stunnel to mush connectivity.
+  stunnel_src                -- If you do not have stunnel, this directory will allow you to download, compile and locally install.
 
 
 Modifying netrhost.conf
@@ -399,11 +414,15 @@ the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect_host if
 not set will default to 'localhost 127.0.0.1'.
 
-sconnect_reip 1         -- This enables the SSL tunnel layer handler within rhost.
-sconnect_cmd XYZZY      -- this will set the secret SSL command handshake command to XYZZY.  This is case sensitive and can be up to 31 characters.  Please make sure to only use printable non-whitespace characters.  Ergo: one word
-sconnect_host wildcards -- This allows wildcarded sites (one or more) to allow to access the sconnect/stunnel handler.  This defaults to 'localhost' and '127.0.0.1' so if you have 'localhost.localdomain' instead then you must set this to whatever is seen as 'localhost' to you.  You can verify this by checking your /etc/hosts file.
+::
 
-Note: the sconnect_host is optional.  If you do not specify it, it will default to two values:  'localhost' and '127.0.0.1'.
+  sconnect_reip 1         -- This enables the SSL tunnel layer handler within rhost.
+  sconnect_cmd XYZZY      -- this will set the secret SSL command handshake command to XYZZY.  This is case sensitive and can be up to 31 characters.  Please make sure to only use printable non-whitespace characters.  Ergo: one word
+  sconnect_host wildcards -- This allows wildcarded sites (one or more) to allow to access the sconnect/stunnel handler.  This defaults to 'localhost' and '127.0.0.1' so if you have 'localhost.localdomain' instead then you must set this to whatever is seen as 'localhost' to you.  You can verify this by checking your /etc/hosts file.
+
+.. note::
+
+   the sconnect_host is optional.  If you do not specify it, it will default to two values:  'localhost' and '127.0.0.1'.
  
 Running the stunnel setup program
 +++++++++++++++++++++++++++++++++

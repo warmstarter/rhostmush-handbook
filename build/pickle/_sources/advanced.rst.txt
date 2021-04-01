@@ -55,18 +55,18 @@ If you wish your modules to be part of the main Rhost distribution you have two 
 1.  Attempt to hack the bin/asksource.sh and bin/asksource.blank files.
 2.  Ask one of the Rhost devs to do it for you :)
 
-Shutting down gracefully
-========================
+Shutting down RhostMUSH gracefully
+==================================
 
-Rhostmush has many ways to shut down the game cleanly
------------------------------------------------------
+There are a few ways to cleanly shutdown RhostMUSH
+--------------------------------------------------
 
 1. Log into the mush and issue @shutdown
 2. Issue a kill -USR2 to the mush which issues an emergency @shutdown
 3. Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.
 
-WARNING: Never kill -9 Rhost
-----------------------------
+WARNING: Never kill -9 RhostMUSH
+--------------------------------
 
 Under NO CIRCUMSTANCES should you kill -9 your mush unless you don't care for the 
 database.  The reason is if the mush happens to be saving, in any method, to the 
@@ -77,14 +77,14 @@ Sadly, this also may occur if the server hosting you takes a nose-dive in the mi
 of a db write.  Rhost can recover corruption in-game while up, but if it bombs
 in the middle of a write, all bets are off. :)
 
-Reality levels
-==============
+Reality Levels Setup
+====================
 
 Reality levels are a means to forbid (or allow) interaction between objects
 in the same location.
 
-Visibility
-----------
+Reality Levels Visibility
+-------------------------
 
 Each object (player, room, exit, thing) has two lists of reality levels. 
 An Rx list, which describe what it can see and a Tx list, which describe 
@@ -103,8 +103,8 @@ parameters.
 An object is always visible to itself, even if its Rx and Tx levels don't 
 match. (See examples below)
 
-Descriptions
-------------
+Reality Levels Descriptions
+---------------------------
 
 For every reality level defined, you can define an attribute that serves as 
 description. If you look at something and match more than one of its 
@@ -130,8 +130,8 @@ use the 'move <exit>' command) the exit must be visible to the enactor. In
 order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.
 
-Configuration parameters
-------------------------
+Reality Levels Configuration parameters
+---------------------------------------
 
 A few configuration parameters have been introduced to deal with the reality
 levels::
@@ -170,29 +170,31 @@ This is an example file only to be added to the mush.conf file Format::
 
   reality_level <8 char name> <hex-byte-mask> <optional-desc: DESC default>
 
-Example mush.conf
------------------
+Reality Levels Example mush.conf
+--------------------------------
 
-reality_level Real 1
-reality_level Obf1 2
-reality_level Obf2 4
-reality_level Obf3 8 OBFDESC
-reality_level Obf4 16 OBFDESC
-reality_level Obf5 32 OBFDESC
-reality_level Obf6 64 OBFDESC
-reality_level Obf7 128 OBFDESC
-reality_level Obf8 256 OBFDESC
-reality_level Obf9 512 OBFDESC
-reality_level Obf10 1024 OBFDESC
-reality_level Umbra 2048 UMBRADESC
-reality_level Fae 4096 FAEDESC
-reality_level Shadow 8192 SHADOWDESC
-reality_level Spy 16384
-reality_level Death 32768 DEATHDESC
-reality_level All 4294967295
+::
 
-Commands
---------
+  reality_level Real 1
+  reality_level Obf1 2
+  reality_level Obf2 4
+  reality_level Obf3 8 OBFDESC
+  reality_level Obf4 16 OBFDESC
+  reality_level Obf5 32 OBFDESC
+  reality_level Obf6 64 OBFDESC
+  reality_level Obf7 128 OBFDESC
+  reality_level Obf8 256 OBFDESC
+  reality_level Obf9 512 OBFDESC
+  reality_level Obf10 1024 OBFDESC
+  reality_level Umbra 2048 UMBRADESC
+  reality_level Fae 4096 FAEDESC
+  reality_level Shadow 8192 SHADOWDESC
+  reality_level Spy 16384
+  reality_level Death 32768 DEATHDESC
+  reality_level All 4294967295
+
+Reality Levels Commands
+-----------------------
 
 Two wiz-only commands are used to set the reality levels of an object::
 
@@ -265,108 +267,112 @@ anyway, so a spirit character will have::
 	@txlevel <player>=!Real Ghost
 	@rxlevel <player>=Real Ghost
 
-Let's assume 3 players: 
-John is a Mundane. He won't see spirits.
-John's Rx: Real
-John's Tx: Real
-John's @desc: This is John.
-John's &GHOSTDESC: (Not important, since it's never visible)
-Johh's @adesc: %N has looked at you.
-John's @odesc: has looked at John.
+Let's assume 3 players::
 
-Jack is a Gifted. He will sense spirits, but is still made from flesh
-and blood so visible to mundanes.
-Jack's Rx: Real Ghost
-Jack's Tx: Real
-Jack's @desc: This is Jack.
-Jack's &GHOSTDESC: (Not important, since it's never visible)
-Jack's @adesc: %N has looked at you.
-Jack's @odesc: has looked at Jack.
+  John is a Mundane. He won't see spirits.
+  John's Rx: Real
+  John's Tx: Real
+  John's @desc: This is John.
+  John's &GHOSTDESC: (Not important, since it's never visible)
+  Johh's @adesc: %N has looked at you.
+  John's @odesc: has looked at John.
 
-Frank is a ghost. He will see other spirits as well as mundanes, but won't 
-be visible to mundanes. He can also become visible to everybody.
-Frank's Rx: Real Ghost
-Frank's Tx: Ghost
-Frank's @desc: This is Frank, looking human.
-Frank's &GHOSTDESC: This is Frank's ghostly shape.
-Frank's @adesc: %N has looked at you.
-Frank's @odesc: has looked at Frank.
+Jack is a Gifted. He will sense spirits, but is still made from flesh and blood so visible to mundanes::
 
-Following are commands that each of the players enter and what they see.
-I'll assume the +materialize command is defined like:
-&CMD_MATERIALIZE <cmdobject>=$+materialize:@txlevel %#=Real; @pemit %#=You
-are now material.
+  Jack's Rx: Real Ghost
+  Jack's Tx: Real
+  Jack's @desc: This is Jack.
+  Jack's &GHOSTDESC: (Not important, since it's never visible)
+  Jack's @adesc: %N has looked at you.
+  Jack's @odesc: has looked at Jack.
 
-        John            |         Jack          |         Frank
-                        |                       |
-> l                     |                       |
-A room                  |                       |
-This is a bare room.    |                       |
-Contents:               |                       |
-Jack                    |                       |
-Obvious exits:          |                       |
-Out <O>                 |                       |
-                        |> l                    |
-                        |A room                 |
-                        |This is a bare room.   |
-                        |Contents:              |
-                        |John Frank             |
-                        |Obvious exits:         |
-                        |Out <O>                |
-                        |                       |> l
-                        |                       |A room
-                        |                       |This is a bare room.
-                        |                       |Contents:
-                        |                       |John Jack
-                        |                       |Obvious exits:
-                        |                       |Out <O>
->l Jack                 |                       |
-Jack                    |John has looked at you.|John has looked at Jack.
-This is Jack.           |                       |
->l Frank                |                       |
-I don't see that here.  |                       |
-                        |>l Frank               |
-                        |Frank                  |Jack has looked at you.
-                        |This is Frank's ghostly|
-                        |shape.                 |
-                        |                       |>l John
-                        |Frank has looked at    |John
-                        |John.                  |This is John.
-                        |                       |>+materialize
-                        |                       |You are now material.
->l Frank                |                       |
-Frank                   |John has looked at     |Frank has looked at you.
-This is Frank, looking  |Frank.                 |
-human.                  |                       |
-                        |>l Frank               |
-Jack has looked at      |Frank                  |John has looked at you.
-Frank.                  |This is Frank, looking |
-                        |human.                 |
-                        |This is Frank's ghostly|
-                        |shape.                 |
+Frank is a ghost. He will see other spirits as well as mundanes, but won't be visible to mundanes. He can also become visible to everybody::
+
+ Frank's Rx: Real Ghost
+  Frank's Tx: Ghost
+  Frank's @desc: This is Frank, looking human.
+  Frank's &GHOSTDESC: This is Frank's ghostly shape.
+  Frank's @adesc: %N has looked at you.
+  Frank's @odesc: has looked at Frank.
+  
+Following are commands that each of the players enter and what they see.  I'll assume the +materialize command is defined like::
+
+  &CMD_MATERIALIZE <cmdobject>=$+materialize:@txlevel %#=Real; @pemit %#=You are now material.
+
+
+::
+
+ |         John           |         Jack          |         Frank
+                          |                       |
+  > l                     |                       |
+  A room                  |                       |
+  This is a bare room.    |                       |
+  Contents:               |                       |
+  Jack                    |                       |
+  Obvious exits:          |                       |
+  Out <O>                 |                       |
+                          |> l                    |
+                          |A room                 |
+                          |This is a bare room.   |
+                          |Contents:              |
+                          |John Frank             |
+                          |Obvious exits:         |
+                          |Out <O>                |
+                          |                       |> l
+                          |                       |A room
+                          |                       |This is a bare room.
+                          |                       |Contents:
+                          |                       |John Jack
+                          |                       |Obvious exits:
+                          |                       |Out <O>
+  >l Jack                 |                       |
+  Jack                    |John has looked at you.|John has looked at Jack.
+  This is Jack.           |                       |
+  >l Frank                |                       |
+  I don't see that here.  |                       |
+                          |>l Frank               |
+                          |Frank                  |Jack has looked at you.
+                          |This is Frank's ghostly|
+                          |shape.                 |
+                          |                       |>l John
+                          |Frank has looked at    |John
+                          |John.                  |This is John.
+                          |                       |>+materialize
+                          |                       |You are now material.
+  >l Frank                |                       |
+  Frank                   |John has looked at     |Frank has looked at you.
+  This is Frank, looking  |Frank.                 |
+  human.                  |                       |
+                          |>l Frank               |
+  Jack has looked at      |Frank                  |John has looked at you.
+  Frank.                  |This is Frank, looking |
+                          |human.                 |
+                          |This is Frank's ghostly|
+                          |shape.                 |
 
 
 Example 2: A WoD setup
 ----------------------
 
-The reality levels will be defined like this:
-reality_level		Real 1
-reality_level		Obf1 2
-reality_level		Obf2 4
-reality_level		Obf3 8 OBFDESC
-reality_level		Obf4 16 OBFDESC
-reality_level		Obf5 32 OBFDESC
-reality_level		Umbra 64 UMBRADESC
-reality_level		Fae 128 FAEDESC
-reality_level		Shadow 256 SHADOWDESC
-reality_level		All 511
+The reality levels will be defined like this::
+
+  reality_level		Real 1
+  reality_level		Obf1 2
+  reality_level		Obf2 4
+  reality_level		Obf3 8 OBFDESC
+  reality_level		Obf4 16 OBFDESC
+  reality_level		Obf5 32 OBFDESC
+  reality_level		Umbra 64 UMBRADESC
+  reality_level		Fae 128 FAEDESC
+  reality_level		Shadow 256 SHADOWDESC
+  reality_level		All 511
 
 5 levels of Obfuscation, Umbra, Dreaming, Wraiths. 'All' is a handy
 replacement for all levels, useful for wizards and wizobjects that should 
 be visible on all levels. Also useful when you want to set an object's 
-levels to something without knowing what he had before.
+levels to something without knowing what he had before::
 
-@rxlevel #276=!All Real
+      @rxlevel #276=!All Real
 
 !All will clear all levels, then the object will gain the Real level.
 There is more than one Obfuscation level because of the relation between
@@ -428,8 +434,9 @@ Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her @desc
 would be empty, but the &SHADOWDESC should be set.
 Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real
 
-Global code objects that all characters should be able to use: 
-RxLevel: All, TxLevel: All
+Global code objects that all characters should be able to use::
+
+  RxLevel: All, TxLevel: All
 
 Example 3: Softcode
 -------------------
@@ -439,32 +446,23 @@ getstat(<dbref>,<stat>) that will return the value of a player's stat from
 the sheet here are softcode examples that implement some of the WoD powers.
 In a real game you would have to use some more checks, of course.
 
-@create Reality Levels Commands (RLS)
-&CMD_OBFON rls=$+obf/on:@switch [setr(0, getstat(%#,Obfuscate))]=0, @pemit 
-%#=You don't have Obfuscate!, {@txlevel %#=!All Obf%q0; @pemit %#=You are 
-now invisible.}
-&CMD_OBFOFF rls=$+obf/off:@txlevel %#=Real; @pemit %#=You are now visible.
-@@ Note: +obf/on clears all TxLevels before setting the appropiate Obf
-@@ This is necesary, because a character might advance from Obf2 to
-@@ Obf3 and he should be visible /only/ on the Obf3 level.
-@@ +obf/off simply sets the Real Tx level, without clearing the Obf. The
-@@ reason is the Mask. Players with Obf3 or higher who use the Mask should
-@@ +obf/on, then +obf/off after approval and everything is set.
-&CMD_AUSPEXON rls=$+auspex/on:@switch [setr(0, getstat(%#, Auspex))]=0, 
-@pemit %#=You don't have Auspex!, {@rxlevel %#=[iter(lnum(1, %q0), Obf##)]; 
-@pemit %#=Auspex enabled.}
-&CMD_AUSPEXOFF rls=$+auspex/off:@switch [hasrxlevel(%#, Obf1)]=0, @pemit %#=
-You don't have Auspex enabled!, {@rxlevel %#=[iter(lnum(1, 5), !Obf##)];
-@pemit %#=Auspex disabled.}
-&CMD_UMBRAENTER rls=$+umbra/enter:@rxlevel %#=!Real Umbra; @txlevel %#=
-!Real Umbra; @pemit %#=You are now in the Umbra.
-&CMD_UMBRALEAVE rls=$+umbra/leave:@rxlevel %#=Real !Umbra; @txlevel %#=
-Real !Umbra; @pemit %#=You left the Umbra.
-&CMD_PEEKON rls=$+peek/on:@switch hastxlevel(%#,Umbra)=1, {@rxlevel %#=Real
-!Umbra; @pemit %#=You are now peeking in the real world}, {@rxlevel %#=!Real
-Umbra; @pemit %#=You are now peeking into the Umbra}
-&CMD_PEEKOFF rls=$+peek/off:@rxlevel %#=!Real !Umbra [setinter(Real Umbra,
-txlevel(%#))]; @pemit %#=You are no longer peeking.
+:: 
+
+  @create Reality Levels Commands (RLS)
+  &CMD_OBFON rls=$+obf/on:@switch [setr(0, getstat(%#,Obfuscate))]=0, @pemit %#=You don't have Obfuscate!, {@txlevel %#=!All Obf%q0; @pemit %#=You are now invisible.}
+  &CMD_OBFOFF rls=$+obf/off:@txlevel %#=Real; @pemit %#=You are now visible.
+  @@ Note: +obf/on clears all TxLevels before setting the appropiate Obf
+  @@ This is necesary, because a character might advance from Obf2 to
+  @@ Obf3 and he should be visible /only/ on the Obf3 level.
+  @@ +obf/off simply sets the Real Tx level, without clearing the Obf. The
+  @@ reason is the Mask. Players with Obf3 or higher who use the Mask should
+  @@ +obf/on, then +obf/off after approval and everything is set.
+  &CMD_AUSPEXON rls=$+auspex/on:@switch [setr(0, getstat(%#, Auspex))]=0, @pemit %#=You don't have Auspex!, {@rxlevel %#=[iter(lnum(1, %q0), Obf##)]; @pemit %#=Auspex enabled.}
+  &CMD_AUSPEXOFF rls=$+auspex/off:@switch [hasrxlevel(%#, Obf1)]=0, @pemit %#= You don't have Auspex enabled!, {@rxlevel %#=[iter(lnum(1, 5), !Obf##)]; @pemit %#=Auspex disabled.}
+  &CMD_UMBRAENTER rls=$+umbra/enter:@rxlevel %#=!Real Umbra; @txlevel %#= !Real Umbra; @pemit %#=You are now in the Umbra.
+  &CMD_UMBRALEAVE rls=$+umbra/leave:@rxlevel %#=Real !Umbra; @txlevel %#= Real !Umbra; @pemit %#=You left the Umbra.
+  &CMD_PEEKON rls=$+peek/on:@switch hastxlevel(%#,Umbra)=1, {@rxlevel %#=Real !Umbra; @pemit %#=You are now peeking in the real world}, {@rxlevel %#=!Real Umbra; @pemit %#=You are now peeking into the Umbra}
+  &CMD_PEEKOFF rls=$+peek/off:@rxlevel %#=!Real !Umbra [setinter(Real Umbra, txlevel(%#))]; @pemit %#=You are no longer peeking.
 
 Execscript and external programs and scripts
 ============================================
@@ -475,7 +473,9 @@ Mush variables
 Built in variables
 ++++++++++++++++++
 
+========================== ===================================================
 Variable                   Description
+========================== ===================================================
 MUSH_PLAYER                player dbref# 
 MUSH_CAUSE                 cause dbref#
 MUSH_CALLER                caller dbref#
@@ -486,19 +486,29 @@ MUSH_OFLAGS                space delimited list of flags of player owner
 MUSH_OTOGGLES              space delimited list of toggles of player owner
 MUSHL_VARS                 space delimited list of MUSH attributes from player
                            This is passed from the mush's EXECSCRIPT_VARS attr
+========================== ===================================================
+
 Dynamic variables
 +++++++++++++++++
 
+========================== =============================================
+Variable                   Description
+========================== =============================================
 MUSHV_<arg>                <arg> variable passed from MUSHL_VARS
                            These are the attributes from EXECSCRIPT_VARS
+========================== =============================================
 
 Register variables
 ++++++++++++++++++
 
+========================== ============================================================
+Variable                   Description
+========================== ============================================================
 MUSHQ_<arg>                setq registers 0-9 and a-z
 MUSHQN_<arg>               labels that are assigned the setq vars
 MUSHN_<arg>                The labels that were defined by any register
                            Note: they must be ASCII-7 clean and contain no white spaces
+========================== ============================================================
 
 
 set object
@@ -515,50 +525,59 @@ The format of the fields are
 Dynamic variables
 """""""""""""""""
 
-VARNAME        OWNER        CONTENTS (or leave null to clear)
+::
+
+  VARNAME        OWNER        CONTENTS (or leave null to clear)
 
 Examples
 ''''''''
+::
 
-SEX #123 Male
-DESC #123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.
-RED #123 This is the color %ch%crred%cn.
-WIPETHISATTR #123
-MULTILINE #123 This is a line
-that continues on
-because of the line feed (a control-M) on each line
-on the lines above
+  SEX #123 Male
+  DESC #123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.
+  RED #123 This is the color %ch%crred%cn.
+  WIPETHISATTR #123
+  MULTILINE #123 This is a line
+  that continues on
+  because of the line feed (a control-M) on each line
+  on the lines above
 
 Register variables
 """"""""""""""""""
 
-REGISTER       Q            CONTENTS (or leave null to clear)
+::
+
+  REGISTER       Q            CONTENTS (or leave null to clear)
 
 Examples (The last example clears register 0)
 '''''''''''''''''''''''''''''''''''''''''''''
 
-W Q This is stored in register W
-1 Q This is stored in register 1
-0 Q
-foo QN this sets register with label 'foo'
+::
+
+  W Q This is stored in register W
+  1 Q This is stored in register 1
+  0 Q
+  foo QN this sets register with label 'foo'
 
 
 Example bash script
 -------------------
 
-#!/bin/bash
-echo "This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}"
-echo "Displaying Registers:"
-regs="0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
-for list in ${regs}
-do
-   eval echo "Register ${list}: \${MUSHQ_${list}}"
-done
-echo "Displaying variables:"
-for vars in ${MUSHL_VARS}
-do
-    eval echo "Variable ${vars}: \${MUSHV_${vars}}"
-done
+::
+
+  #!/bin/bash
+  echo "This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}"
+  echo "Displaying Registers:"
+  regs="0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
+  for list in ${regs}
+  do
+      eval echo "Register ${list}: \${MUSHQ_${list}}"
+  done
+  echo "Displaying variables:"
+  for vars in ${MUSHL_VARS}
+  do
+      eval echo "Variable ${vars}: \${MUSHV_${vars}}"
+  done
 
 
 Notes and warnings
@@ -576,36 +595,38 @@ on the target that contains the execscript() that is being executed.
 Scripts to be used with execscript
 ----------------------------------
 
-account/                       -- Directory for execscripts relating to account creation
-compile39.sh                   -- Script for patching and compiling RhostMUSH 3.9
-compile.sh                     -- Script for patching and compiling RhostMUSH
-config.sh                      -- Script for setting compile time options for RhostMUSH
-debug.sh                       -- Script for debugging RhostMUSH
-dict.sh                        -- Script for querying a dictionary
-diff.sh                        -- Script for querying differences between two arguments
-fortune.sh                     -- Script for querying fortune program
-fullweather.sh                 -- Script for querying a graphical weather forecast (alternative)
-git.sh                         -- Script for querying git version of RhostMUSH
-hello.sh                       -- Script for teaching execscript for 'Hello World'
-iostat.sh                      -- Script for querying server stats of RhostMUSH
-jsonvalidate.sh                -- Python Script for validating JSON
-logsearch.sh                   -- Script for searching throgh logfiles for RhostMUSH
-math_example.sh                -- Examples of math operations to be used with math.sh
-math.sh                        -- Script for mathematical operations
-memory.sh                      -- Script for querying memory usage of RhostMUSH
-mkindx.sh                      -- Script for indexing RhostMSH helpfiles
-pastebinread.sh                -- Script for reading data from a pastebin URL
-pastebinwrite.sh               -- Script for writing data to a pastebin
-qspell.sh                      -- Script for checking spelling (alternative)
-quota.sh                       -- Script for checking disk quote and usage
-random.sh                      -- Script for getting a random number
-roomlog.sh                     -- Script for viewing logs in roomlog directory
-spell.sh                       -- Script for checking spelling
-stats.sh                       -- Script for querying server and process stats for RhostMUSH
-thes.sh                        -- Script for adding a word to the dictionary for spell scripts
-tinyurl.sh                     -- Script for shortening a URL
-weather.sh                     -- Script for querying a graphical weather forecast
-web.sh                         -- Script for querying an arbitary website
+::
+
+  account/                       -- Directory for execscripts relating to account creation
+  compile39.sh                   -- Script for patching and compiling RhostMUSH 3.9
+  compile.sh                     -- Script for patching and compiling RhostMUSH
+  config.sh                      -- Script for setting compile time options for RhostMUSH
+  debug.sh                       -- Script for debugging RhostMUSH
+  dict.sh                        -- Script for querying a dictionary
+  diff.sh                        -- Script for querying differences between two arguments
+  fortune.sh                     -- Script for querying fortune program
+  fullweather.sh                 -- Script for querying a graphical weather forecast (alternative)
+  git.sh                         -- Script for querying git version of RhostMUSH
+  hello.sh                       -- Script for teaching execscript for 'Hello World'
+  iostat.sh                      -- Script for querying server stats of RhostMUSH
+  jsonvalidate.sh                -- Python Script for validating JSON
+  logsearch.sh                   -- Script for searching throgh logfiles for RhostMUSH
+  math_example.sh                -- Examples of math operations to be used with math.sh
+  math.sh                        -- Script for mathematical operations
+  memory.sh                      -- Script for querying memory usage of RhostMUSH
+  mkindx.sh                      -- Script for indexing RhostMSH helpfiles
+  pastebinread.sh                -- Script for reading data from a pastebin URL
+  pastebinwrite.sh               -- Script for writing data to a pastebin
+  qspell.sh                      -- Script for checking spelling (alternative)
+  quota.sh                       -- Script for checking disk quote and usage
+  random.sh                      -- Script for getting a random number
+  roomlog.sh                     -- Script for viewing logs in roomlog directory
+  spell.sh                       -- Script for checking spelling
+  stats.sh                       -- Script for querying server and process stats for RhostMUSH
+  thes.sh                        -- Script for adding a word to the dictionary for spell scripts
+  tinyurl.sh                     -- Script for shortening a URL
+  weather.sh                     -- Script for querying a graphical weather forecast
+  web.sh                         -- Script for querying an arbitary website
 
 Using printf() for advanced text output
 =======================================
@@ -632,10 +653,11 @@ Example two
 
 ::
 
-        @emit printf($14&s $^4&s $-3&s $15&s,
-        iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
-        iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
-        * Aggravated%RX Lethal%R/ Bashing)
+ 
+   @emit printf($14&s $^4&s $-3&s $15&s,
+   iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
+   iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
+   * Aggravated%RX Lethal%R/ Bashing)
 
             Bruised      [ ]    * Aggravated
                Hurt  -1  [ ]        X Lethal
@@ -669,77 +691,80 @@ Format for image files
 
 The image format goes like this:
 
-Data Type  Example  Description
----------  -------  ----------------------------------------------------------                                                                           
-INT        3        TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5                                                                           
-STRING     Wizard   NAME: of the target.  Verbatum, no quotes surround it
-*INT       123      LOCATION: dbref# of the target.  No prepending '#' used.
-*INT       234      CONTENTS: The first content in a linked list content table (-1 if none)                                                              
-*INT       345      EXITS: The first exit in a linked list exit table (-1 if none)                                                                       
-*INT       0        LINK: This is the 'home' of the object or what it's linked to (-1 for none)                                                          
-*INT       123      NEXT: The next thing after this item for a content holder                                                                            
-STRING     #123     LOCK: The boolean string lock if it exists.  (empty if no lock)                                                                      
-*INT       1        OWNER: The dbref# owner of the target.  For players same dbref as player.                                                            
-INT        789      PARENT: The parent of the target.  (-1 if none)
-*INT       99999    MONEY: The int value of the money the players has.
-INT        194592   FLAGS1: The first word of flags (@set flags) on a player      (see FLAGS)
-INT        194222   FLAGS2: The second word of flags (@set flags) on a player     (see FLAGS)
-INT        199999   FLAGS3: The third word of flags (@set flags []) on a player   (see FLAGS)
-INT        1582958  FLAGS4: The forth word of flags (@set flags []) on a player   (see FLAGS)
-INT        159955   TOGGLES1: The first word of toggles (@toggle) on a player    (see TOGGLES)
-INT        159958   TOGGLES2: The second word of toggles (@toggle) on a player   (see TOGGLES)
-INT        159958   POWER1: The first word of powers (@power) on a player         (see POWERS)
-INT        159958   POWER2: The second word of powers (@power) on a player        (see POWERS)
-INT        159958   POWER3: The third word of powers (@power) on a player         (see POWERS)
-INT        159958   DEPOWER1: The first word of depowers (@depower) on a player  (see DEPOWERS)
-INT        159958   DEPOWER2: The second word of depowers (@depower) on a player (see DEPOWERS)
-INT        159958   DEPOWER3: The third word of depowers (@depower) on a player  (see DEPOWERS)
-INT        -1       ZONE(S): The list of zones starting here and ending with '-1'. (see ZONES)
->STRING    >VA      ATTRIBUTENAME: Attribute name to store, starts with > identifier
-STRING     Wheee    ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)
->STRING    >Desc    ATTRIBUTENAME: Another attribute to chain in
-STRING     Ugly     ATTRIBUTECONTENTS: Contents of the next attribute
->STRING    *Password PASSWORDATTRIB: Special password attribute.  Attribute name is '*Password'
-STRING     $6$xy$xy PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
-<          <        This is the marker to specify the end of the attribute contents.  This is always the last line
+========== ========== ==============================================================================================
+Data Type  Example    Description
+========== ========== ==============================================================================================
+INT        3          TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5                                                                           
+STRING     Wizard     NAME: of the target.  Verbatum, no quotes surround it
+\*INT       123        LOCATION: dbref# of the target.  No prepending '#' used.
+\*INT       234        CONTENTS: The first content in a linked list content table (-1 if none)                                                              
+\*INT       345        EXITS: The first exit in a linked list exit table (-1 if none)                                                                       
+\*INT       0          LINK: This is the 'home' of the object or what it's linked to (-1 for none)                                                          
+\*INT       123        NEXT: The next thing after this item for a content holder                                                                            
+STRING     #123       LOCK: The boolean string lock if it exists.  (empty if no lock)                                                                      
+\*INT       1          OWNER: The dbref# owner of the target.  For players same dbref as player.                                                            
+INT        789        PARENT: The parent of the target.  (-1 if none)
+\*INT       99999      MONEY: The int value of the money the players has.
+INT        194592     FLAGS1: The first word of flags (@set flags) on a player      (see FLAGS)
+INT        194222     FLAGS2: The second word of flags (@set flags) on a player     (see FLAGS)
+INT        199999     FLAGS3: The third word of flags (@set flags []) on a player   (see FLAGS)
+INT        1582958    FLAGS4: The forth word of flags (@set flags []) on a player   (see FLAGS)
+INT        159955     TOGGLES1: The first word of toggles (@toggle) on a player    (see TOGGLES)
+INT        159958     TOGGLES2: The second word of toggles (@toggle) on a player   (see TOGGLES)
+INT        159958     POWER1: The first word of powers (@power) on a player         (see POWERS)
+INT        159958     POWER2: The second word of powers (@power) on a player        (see POWERS)
+INT        159958     POWER3: The third word of powers (@power) on a player         (see POWERS)
+INT        159958     DEPOWER1: The first word of depowers (@depower) on a player  (see DEPOWERS)
+INT        159958     DEPOWER2: The second word of depowers (@depower) on a player (see DEPOWERS)
+INT        159958     DEPOWER3: The third word of depowers (@depower) on a player  (see DEPOWERS)
+INT        -1         ZONE(S): The list of zones starting here and ending with '-1'. (see ZONES)
+>STRING    >VA        ATTRIBUTENAME: Attribute name to store, starts with > identifier
+STRING     Wheee      ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)
+>STRING    >Desc      ATTRIBUTENAME: Another attribute to chain in
+STRING     Ugly       ATTRIBUTECONTENTS: Contents of the next attribute
+>STRING    \*Password  PASSWORDATTRIB: Special password attribute.  Attribute name is '\*Password'
+STRING     $6$xy$xy   PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
+<          <          This is the marker to specify the end of the attribute contents.  This is always the last line
+========== ========== ==============================================================================================
+
 
 .. note::
 
     Any Data type starting with '*' is ignored when @snapshot/loading.
 
-The structure above with the examples would look like this in the file:
+The structure above with the examples would look like this in the file::
 
-3
-Wizard
-123
-234
-345
-0
-123
-#123
-1
-789
-99999
-194592
-194222
-199999
-1582958
-159955
-159958
-159958
-159958
-159958
-159958
-159958
-159958
--1
->VA
-Wheee
->Desc
-Ugly
->*Password
-$6$xy$xy
-<
+  3
+  Wizard
+  123
+  234
+  345
+  0
+  123
+  #123
+  1
+  789
+  99999
+  194592
+  194222
+  199999
+  1582958
+  159955
+  159958
+  159958
+  159958
+  159958
+  159958
+  159958
+  159958
+  -1
+  >VA
+  Wheee
+  >Desc
+  Ugly
+  >*Password
+  $6$xy$xy
+  <
 
 HELP key indexes for the values:
 ================================

@@ -46,10 +46,10 @@ ansible-playbook rhostinstall.yml</literal_block>
                 </enumerated_list>
             </section>
         </section>
-        <section ids="shutting-down-gracefully" names="shutting\ down\ gracefully">
-            <title>Shutting down gracefully</title>
-            <section ids="rhostmush-has-many-ways-to-shut-down-the-game-cleanly" names="rhostmush\ has\ many\ ways\ to\ shut\ down\ the\ game\ cleanly">
-                <title>Rhostmush has many ways to shut down the game cleanly</title>
+        <section ids="shutting-down-rhostmush-gracefully" names="shutting\ down\ rhostmush\ gracefully">
+            <title>Shutting down RhostMUSH gracefully</title>
+            <section ids="there-are-a-few-ways-to-cleanly-shutdown-rhostmush" names="there\ are\ a\ few\ ways\ to\ cleanly\ shutdown\ rhostmush">
+                <title>There are a few ways to cleanly shutdown RhostMUSH</title>
                 <enumerated_list enumtype="arabic" prefix="" suffix=".">
                     <list_item>
                         <paragraph>Log into the mush and issue @shutdown</paragraph>
@@ -62,8 +62,8 @@ ansible-playbook rhostinstall.yml</literal_block>
                     </list_item>
                 </enumerated_list>
             </section>
-            <section ids="warning-never-kill-9-rhost" names="warning:\ never\ kill\ -9\ rhost">
-                <title>WARNING: Never kill -9 Rhost</title>
+            <section ids="warning-never-kill-9-rhostmush" names="warning:\ never\ kill\ -9\ rhostmush">
+                <title>WARNING: Never kill -9 RhostMUSH</title>
                 <paragraph>Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t care for the
                     database.  The reason is if the mush happens to be saving, in any method, to the
                     database, especially a QDBM database, you will likely have just corrupted your
@@ -73,12 +73,12 @@ ansible-playbook rhostinstall.yml</literal_block>
                     in the middle of a write, all bets are off. :)</paragraph>
             </section>
         </section>
-        <section ids="reality-levels" names="reality\ levels">
-            <title>Reality levels</title>
+        <section ids="reality-levels-setup" names="reality\ levels\ setup">
+            <title>Reality Levels Setup</title>
             <paragraph>Reality levels are a means to forbid (or allow) interaction between objects
                 in the same location.</paragraph>
-            <section ids="visibility" names="visibility">
-                <title>Visibility</title>
+            <section ids="reality-levels-visibility" names="reality\ levels\ visibility">
+                <title>Reality Levels Visibility</title>
                 <paragraph>Each object (player, room, exit, thing) has two lists of reality levels.
                     An Rx list, which describe what it can see and a Tx list, which describe
                     where it can be seen. Those are bitfields. In order for X to see Y a bitwise
@@ -95,8 +95,8 @@ ansible-playbook rhostinstall.yml</literal_block>
                     An object is always visible to itself, even if its Rx and Tx levels don’t
                     match. (See examples below)</paragraph>
             </section>
-            <section ids="descriptions" names="descriptions">
-                <title>Descriptions</title>
+            <section ids="reality-levels-descriptions" names="reality\ levels\ descriptions">
+                <title>Reality Levels Descriptions</title>
                 <paragraph>For every reality level defined, you can define an attribute that serves as
                     description. If you look at something and match more than one of its
                     TxLevels, you’ll see all the corresponding descriptions on the target
@@ -117,8 +117,8 @@ ansible-playbook rhostinstall.yml</literal_block>
                     order to pass through the exit, the exit must see the enactor in turn. There
                     are reasons for this, which will become evident in the examples below.</paragraph>
             </section>
-            <section ids="configuration-parameters" names="configuration\ parameters">
-                <title>Configuration parameters</title>
+            <section ids="reality-levels-configuration-parameters" names="reality\ levels\ configuration\ parameters">
+                <title>Reality Levels Configuration parameters</title>
                 <paragraph>A few configuration parameters have been introduced to deal with the reality
                     levels:</paragraph>
                 <literal_block force="False" language="default" linenos="False" xml:space="preserve">reality_level &lt;name&gt; &lt;value&gt; [&lt;desc attribute name&gt;]</literal_block>
@@ -148,28 +148,28 @@ def_thing_tx &lt;value&gt;</literal_block>
                     This is an example file only to be added to the mush.conf file Format:</paragraph>
                 <literal_block force="False" language="default" linenos="False" xml:space="preserve">reality_level &lt;8 char name&gt; &lt;hex-byte-mask&gt; &lt;optional-desc: DESC default&gt;</literal_block>
             </section>
-            <section ids="example-mush-conf" names="example\ mush.conf">
-                <title>Example mush.conf</title>
-                <paragraph>reality_level Real 1
-                    reality_level Obf1 2
-                    reality_level Obf2 4
-                    reality_level Obf3 8 OBFDESC
-                    reality_level Obf4 16 OBFDESC
-                    reality_level Obf5 32 OBFDESC
-                    reality_level Obf6 64 OBFDESC
-                    reality_level Obf7 128 OBFDESC
-                    reality_level Obf8 256 OBFDESC
-                    reality_level Obf9 512 OBFDESC
-                    reality_level Obf10 1024 OBFDESC
-                    reality_level Umbra 2048 UMBRADESC
-                    reality_level Fae 4096 FAEDESC
-                    reality_level Shadow 8192 SHADOWDESC
-                    reality_level Spy 16384
-                    reality_level Death 32768 DEATHDESC
-                    reality_level All 4294967295</paragraph>
+            <section ids="reality-levels-example-mush-conf" names="reality\ levels\ example\ mush.conf">
+                <title>Reality Levels Example mush.conf</title>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">reality_level Real 1
+reality_level Obf1 2
+reality_level Obf2 4
+reality_level Obf3 8 OBFDESC
+reality_level Obf4 16 OBFDESC
+reality_level Obf5 32 OBFDESC
+reality_level Obf6 64 OBFDESC
+reality_level Obf7 128 OBFDESC
+reality_level Obf8 256 OBFDESC
+reality_level Obf9 512 OBFDESC
+reality_level Obf10 1024 OBFDESC
+reality_level Umbra 2048 UMBRADESC
+reality_level Fae 4096 FAEDESC
+reality_level Shadow 8192 SHADOWDESC
+reality_level Spy 16384
+reality_level Death 32768 DEATHDESC
+reality_level All 4294967295</literal_block>
             </section>
-            <section ids="commands" names="commands">
-                <title>Commands</title>
+            <section ids="reality-levels-commands" names="reality\ levels\ commands">
+                <title>Reality Levels Commands</title>
                 <paragraph>Two wiz-only commands are used to set the reality levels of an object:</paragraph>
                 <literal_block force="False" language="default" linenos="False" xml:space="preserve">@rxlevel &lt;object&gt;=&lt;list&gt;
 @txlevel &lt;object&gt;=&lt;list&gt;</literal_block>
@@ -222,118 +222,96 @@ reality_level Ghost 2 GHOSTDESC</literal_block>
                     anyway, so a spirit character will have:</paragraph>
                 <literal_block force="False" language="default" linenos="False" xml:space="preserve">@txlevel &lt;player&gt;=!Real Ghost
 @rxlevel &lt;player&gt;=Real Ghost</literal_block>
-                <paragraph>Let’s assume 3 players:
-                    John is a Mundane. He won’t see spirits.
-                    John’s Rx: Real
-                    John’s Tx: Real
-                    John’s @desc: This is John.
-                    John’s &amp;GHOSTDESC: (Not important, since it’s never visible)
-                    Johh’s @adesc: %N has looked at you.
-                    John’s @odesc: has looked at John.</paragraph>
-                <paragraph>Jack is a Gifted. He will sense spirits, but is still made from flesh
-                    and blood so visible to mundanes.
-                    Jack’s Rx: Real Ghost
-                    Jack’s Tx: Real
-                    Jack’s @desc: This is Jack.
-                    Jack’s &amp;GHOSTDESC: (Not important, since it’s never visible)
-                    Jack’s @adesc: %N has looked at you.
-                    Jack’s @odesc: has looked at Jack.</paragraph>
-                <paragraph>Frank is a ghost. He will see other spirits as well as mundanes, but won’t
-                    be visible to mundanes. He can also become visible to everybody.
-                    Frank’s Rx: Real Ghost
-                    Frank’s Tx: Ghost
-                    Frank’s @desc: This is Frank, looking human.
-                    Frank’s &amp;GHOSTDESC: This is Frank’s ghostly shape.
-                    Frank’s @adesc: %N has looked at you.
-                    Frank’s @odesc: has looked at Frank.</paragraph>
-                <paragraph>Following are commands that each of the players enter and what they see.
-                    I’ll assume the +materialize command is defined like:
-                    &amp;CMD_MATERIALIZE &lt;cmdobject&gt;=$+materialize:@txlevel %#=Real; @pemit %#=You
-                    are now material.</paragraph>
-                <block_quote>
-                    <definition_list>
-                        <definition_list_item>
-                            <term>John            |         Jack          |         Frank</term>
-                            <definition>
-                                <line_block>
-                                    <line><problematic ids="id2" refid="id1">|</problematic></line>
-                                </line_block>
-                            </definition>
-                        </definition_list_item>
-                    </definition_list>
-                </block_quote>
-                <paragraph>&gt; l                     |                       |
-                    A room                  |                       |
-                    This is a bare room.    |                       |
-                    Contents:               |                       |
-                    Jack                    |                       |
-                    Obvious exits:          |                       |
-                    Out &lt;O&gt;                 |                       |</paragraph>
-                <block_quote>
-                    <paragraph><problematic ids="id4" refid="id3">|</problematic>&gt; l                    |
-                        <problematic ids="id6" refid="id5">|</problematic>A room                 |
-                        <problematic ids="id8" refid="id7">|</problematic>This is a bare room.   |
-                        <problematic ids="id10" refid="id9">|</problematic>Contents:              |
-                        <problematic ids="id12" refid="id11">|</problematic>John Frank             |
-                        <problematic ids="id14" refid="id13">|</problematic>Obvious exits:         |
-                        <problematic ids="id16" refid="id15">|</problematic>Out &lt;O&gt;                |
-                        |                       <problematic ids="id18" refid="id17">|</problematic>&gt; l
-                        |                       <problematic ids="id20" refid="id19">|</problematic>A room
-                        |                       <problematic ids="id22" refid="id21">|</problematic>This is a bare room.
-                        |                       <problematic ids="id24" refid="id23">|</problematic>Contents:
-                        |                       <problematic ids="id26" refid="id25">|</problematic>John Jack
-                        |                       <problematic ids="id28" refid="id27">|</problematic>Obvious exits:
-                        |                       <problematic ids="id30" refid="id29">|</problematic>Out &lt;O&gt;</paragraph>
-                </block_quote>
-                <paragraph>&gt;l Jack                 |                       |
-                    Jack                    <problematic ids="id32" refid="id31">|</problematic>John has looked at you.|John has looked at Jack.
-                    This is Jack.           |                       |
-                    &gt;l Frank                |                       |
-                    I don’t see that here.  |                       |</paragraph>
-                <block_quote>
-                    <paragraph><problematic ids="id108" refid="id107">|&gt;l Frank               |
-                            |Frank                  |Jack has looked at you.
-                            |This is Frank's ghostly|</problematic>
-                        <problematic ids="id34" refid="id33">|</problematic>shape.                 |
-                        |                       <problematic ids="id36" refid="id35">|</problematic>&gt;l John
-                        <problematic ids="id38" refid="id37">|</problematic>Frank has looked at    <problematic ids="id40" refid="id39">|</problematic>John
-                        <problematic ids="id42" refid="id41">|</problematic>John.                  <problematic ids="id44" refid="id43">|</problematic>This is John.
-                        |                       <problematic ids="id46" refid="id45">|</problematic>&gt;+materialize
-                        |                       <problematic ids="id48" refid="id47">|</problematic>You are now material.</paragraph>
-                </block_quote>
-                <paragraph>&gt;l Frank                |                       |
-                    Frank                   <problematic ids="id50" refid="id49">|</problematic>John has looked at     <problematic ids="id52" refid="id51">|</problematic>Frank has looked at you.
-                    This is Frank, looking  <problematic ids="id54" refid="id53">|</problematic>Frank.                 |
-                    human.                  |                       |</paragraph>
-                <block_quote>
-                    <paragraph><problematic ids="id56" refid="id55">|</problematic>&gt;l Frank               |</paragraph>
-                </block_quote>
-                <paragraph>Jack has looked at      <problematic ids="id58" refid="id57">|</problematic>Frank                  <problematic ids="id60" refid="id59">|</problematic>John has looked at you.
-                    Frank.                  <problematic ids="id62" refid="id61">|</problematic>This is Frank, looking |</paragraph>
-                <block_quote>
-                    <paragraph><problematic ids="id110" refid="id109">|human.                 |
-                            |This is Frank's ghostly|</problematic>
-                        <problematic ids="id64" refid="id63">|</problematic>shape.                 |</paragraph>
-                </block_quote>
+                <paragraph>Let’s assume 3 players:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">John is a Mundane. He won't see spirits.
+John's Rx: Real
+John's Tx: Real
+John's @desc: This is John.
+John's &amp;GHOSTDESC: (Not important, since it's never visible)
+Johh's @adesc: %N has looked at you.
+John's @odesc: has looked at John.</literal_block>
+                <paragraph>Jack is a Gifted. He will sense spirits, but is still made from flesh and blood so visible to mundanes:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">Jack's Rx: Real Ghost
+Jack's Tx: Real
+Jack's @desc: This is Jack.
+Jack's &amp;GHOSTDESC: (Not important, since it's never visible)
+Jack's @adesc: %N has looked at you.
+Jack's @odesc: has looked at Jack.</literal_block>
+                <paragraph>Frank is a ghost. He will see other spirits as well as mundanes, but won’t be visible to mundanes. He can also become visible to everybody:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">Frank's Rx: Real Ghost
+ Frank's Tx: Ghost
+ Frank's @desc: This is Frank, looking human.
+ Frank's &amp;GHOSTDESC: This is Frank's ghostly shape.
+ Frank's @adesc: %N has looked at you.
+ Frank's @odesc: has looked at Frank.</literal_block>
+                <paragraph>Following are commands that each of the players enter and what they see.  I’ll assume the +materialize command is defined like:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">&amp;CMD_MATERIALIZE &lt;cmdobject&gt;=$+materialize:@txlevel %#=Real; @pemit %#=You are now material.</literal_block>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">|         John           |         Jack          |         Frank
+                         |                       |
+ &gt; l                     |                       |
+ A room                  |                       |
+ This is a bare room.    |                       |
+ Contents:               |                       |
+ Jack                    |                       |
+ Obvious exits:          |                       |
+ Out &lt;O&gt;                 |                       |
+                         |&gt; l                    |
+                         |A room                 |
+                         |This is a bare room.   |
+                         |Contents:              |
+                         |John Frank             |
+                         |Obvious exits:         |
+                         |Out &lt;O&gt;                |
+                         |                       |&gt; l
+                         |                       |A room
+                         |                       |This is a bare room.
+                         |                       |Contents:
+                         |                       |John Jack
+                         |                       |Obvious exits:
+                         |                       |Out &lt;O&gt;
+ &gt;l Jack                 |                       |
+ Jack                    |John has looked at you.|John has looked at Jack.
+ This is Jack.           |                       |
+ &gt;l Frank                |                       |
+ I don't see that here.  |                       |
+                         |&gt;l Frank               |
+                         |Frank                  |Jack has looked at you.
+                         |This is Frank's ghostly|
+                         |shape.                 |
+                         |                       |&gt;l John
+                         |Frank has looked at    |John
+                         |John.                  |This is John.
+                         |                       |&gt;+materialize
+                         |                       |You are now material.
+ &gt;l Frank                |                       |
+ Frank                   |John has looked at     |Frank has looked at you.
+ This is Frank, looking  |Frank.                 |
+ human.                  |                       |
+                         |&gt;l Frank               |
+ Jack has looked at      |Frank                  |John has looked at you.
+ Frank.                  |This is Frank, looking |
+                         |human.                 |
+                         |This is Frank's ghostly|
+                         |shape.                 |</literal_block>
             </section>
             <section ids="example-2-a-wod-setup" names="example\ 2:\ a\ wod\ setup">
                 <title>Example 2: A WoD setup</title>
-                <paragraph>The reality levels will be defined like this:
-                    reality_level           Real 1
-                    reality_level           Obf1 2
-                    reality_level           Obf2 4
-                    reality_level           Obf3 8 OBFDESC
-                    reality_level           Obf4 16 OBFDESC
-                    reality_level           Obf5 32 OBFDESC
-                    reality_level           Umbra 64 UMBRADESC
-                    reality_level           Fae 128 FAEDESC
-                    reality_level           Shadow 256 SHADOWDESC
-                    reality_level           All 511</paragraph>
+                <paragraph>The reality levels will be defined like this:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">reality_level         Real 1
+reality_level         Obf1 2
+reality_level         Obf2 4
+reality_level         Obf3 8 OBFDESC
+reality_level         Obf4 16 OBFDESC
+reality_level         Obf5 32 OBFDESC
+reality_level         Umbra 64 UMBRADESC
+reality_level         Fae 128 FAEDESC
+reality_level         Shadow 256 SHADOWDESC
+reality_level         All 511</literal_block>
                 <paragraph>5 levels of Obfuscation, Umbra, Dreaming, Wraiths. ‘All’ is a handy
                     replacement for all levels, useful for wizards and wizobjects that should
                     be visible on all levels. Also useful when you want to set an object’s
-                    levels to something without knowing what he had before.</paragraph>
-                <paragraph>@rxlevel #276=!All Real</paragraph>
+                    levels to something without knowing what he had before:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@rxlevel #276=!All Real</literal_block>
                 <paragraph>!All will clear all levels, then the object will gain the Real level.
                     There is more than one Obfuscation level because of the relation between
                     Auspex and Obfuscation.</paragraph>
@@ -382,8 +360,8 @@ def_exit_tx 383</literal_block>
                 <paragraph>Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her @desc
                     would be empty, but the &amp;SHADOWDESC should be set.
                     Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</paragraph>
-                <paragraph>Global code objects that all characters should be able to use:
-                    RxLevel: All, TxLevel: All</paragraph>
+                <paragraph>Global code objects that all characters should be able to use:</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">RxLevel: All, TxLevel: All</literal_block>
             </section>
             <section ids="example-3-softcode" names="example\ 3:\ softcode">
                 <title>Example 3: Softcode</title>
@@ -391,32 +369,21 @@ def_exit_tx 383</literal_block>
                     getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player’s stat from
                     the sheet here are softcode examples that implement some of the WoD powers.
                     In a real game you would have to use some more checks, of course.</paragraph>
-                <paragraph>@create Reality Levels Commands (RLS)
-                    &amp;CMD_OBFON rls=$+obf/on:@switch [setr(0, getstat(%#,Obfuscate))]=0, @pemit
-                    %#=You don’t have Obfuscate!, {@txlevel %#=!All Obf%q0; @pemit %#=You are
-                    now invisible.}
-                    &amp;CMD_OBFOFF rls=$+obf/off:@txlevel %#=Real; @pemit %#=You are now visible.
-                    @@ Note: +obf/on clears all TxLevels before setting the appropiate Obf
-                    @@ This is necesary, because a character might advance from Obf2 to
-                    @@ Obf3 and he should be visible /only/ on the Obf3 level.
-                    @@ +obf/off simply sets the Real Tx level, without clearing the Obf. The
-                    @@ reason is the Mask. Players with Obf3 or higher who use the Mask should
-                    @@ +obf/on, then +obf/off after approval and everything is set.
-                    &amp;CMD_AUSPEXON rls=$+auspex/on:@switch [setr(0, getstat(%#, Auspex))]=0,
-                    @pemit %#=You don’t have Auspex!, {@rxlevel %#=[iter(lnum(1, %q0), Obf##)];
-                    @pemit %#=Auspex enabled.}
-                    &amp;CMD_AUSPEXOFF rls=$+auspex/off:@switch [hasrxlevel(%#, Obf1)]=0, @pemit %#=
-                    You don’t have Auspex enabled!, {@rxlevel %#=[iter(lnum(1, 5), !Obf##)];
-                    @pemit %#=Auspex disabled.}
-                    &amp;CMD_UMBRAENTER rls=$+umbra/enter:@rxlevel %#=!Real Umbra; @txlevel %#=
-                    !Real Umbra; @pemit %#=You are now in the Umbra.
-                    &amp;CMD_UMBRALEAVE rls=$+umbra/leave:@rxlevel %#=Real !Umbra; @txlevel %#=
-                    Real !Umbra; @pemit %#=You left the Umbra.
-                    &amp;CMD_PEEKON rls=$+peek/on:@switch hastxlevel(%#,Umbra)=1, {@rxlevel %#=Real
-                    !Umbra; @pemit %#=You are now peeking in the real world}, {@rxlevel %#=!Real
-                    Umbra; @pemit %#=You are now peeking into the Umbra}
-                    &amp;CMD_PEEKOFF rls=$+peek/off:@rxlevel %#=!Real !Umbra [setinter(Real Umbra,
-                    txlevel(%#))]; @pemit %#=You are no longer peeking.</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@create Reality Levels Commands (RLS)
+&amp;CMD_OBFON rls=$+obf/on:@switch [setr(0, getstat(%#,Obfuscate))]=0, @pemit %#=You don't have Obfuscate!, {@txlevel %#=!All Obf%q0; @pemit %#=You are now invisible.}
+&amp;CMD_OBFOFF rls=$+obf/off:@txlevel %#=Real; @pemit %#=You are now visible.
+@@ Note: +obf/on clears all TxLevels before setting the appropiate Obf
+@@ This is necesary, because a character might advance from Obf2 to
+@@ Obf3 and he should be visible /only/ on the Obf3 level.
+@@ +obf/off simply sets the Real Tx level, without clearing the Obf. The
+@@ reason is the Mask. Players with Obf3 or higher who use the Mask should
+@@ +obf/on, then +obf/off after approval and everything is set.
+&amp;CMD_AUSPEXON rls=$+auspex/on:@switch [setr(0, getstat(%#, Auspex))]=0, @pemit %#=You don't have Auspex!, {@rxlevel %#=[iter(lnum(1, %q0), Obf##)]; @pemit %#=Auspex enabled.}
+&amp;CMD_AUSPEXOFF rls=$+auspex/off:@switch [hasrxlevel(%#, Obf1)]=0, @pemit %#= You don't have Auspex enabled!, {@rxlevel %#=[iter(lnum(1, 5), !Obf##)]; @pemit %#=Auspex disabled.}
+&amp;CMD_UMBRAENTER rls=$+umbra/enter:@rxlevel %#=!Real Umbra; @txlevel %#= !Real Umbra; @pemit %#=You are now in the Umbra.
+&amp;CMD_UMBRALEAVE rls=$+umbra/leave:@rxlevel %#=Real !Umbra; @txlevel %#= Real !Umbra; @pemit %#=You left the Umbra.
+&amp;CMD_PEEKON rls=$+peek/on:@switch hastxlevel(%#,Umbra)=1, {@rxlevel %#=Real !Umbra; @pemit %#=You are now peeking in the real world}, {@rxlevel %#=!Real Umbra; @pemit %#=You are now peeking into the Umbra}
+&amp;CMD_PEEKOFF rls=$+peek/off:@rxlevel %#=!Real !Umbra [setinter(Real Umbra, txlevel(%#))]; @pemit %#=You are no longer peeking.</literal_block>
             </section>
         </section>
         <section ids="execscript-and-external-programs-and-scripts" names="execscript\ and\ external\ programs\ and\ scripts">
@@ -425,39 +392,173 @@ def_exit_tx 383</literal_block>
                 <title>Mush variables</title>
                 <section ids="built-in-variables" names="built\ in\ variables">
                     <title>Built in variables</title>
-                    <paragraph>Variable                   Description
-                        MUSH_PLAYER                player dbref#
-                        MUSH_CAUSE                 cause dbref#
-                        MUSH_CALLER                caller dbref#
-                        MUSH_OWNER                 owner of player dbref#
-                        MUSH_FLAGS                 space delimited list of flags on player
-                        MUSH_TOGGLES               space delimited list of toggles on player
-                        MUSH_OFLAGS                space delimited list of flags of player owner
-                        MUSH_OTOGGLES              space delimited list of toggles of player owner
-                        MUSHL_VARS                 space delimited list of MUSH attributes from player</paragraph>
-                    <block_quote>
-                        <paragraph>This is passed from the mush’s EXECSCRIPT_VARS attr</paragraph>
-                    </block_quote>
+                    <table align="default">
+                        <tgroup cols="2">
+                            <colspec colwidth="26"></colspec>
+                            <colspec colwidth="51"></colspec>
+                            <thead>
+                                <row>
+                                    <entry>
+                                        <paragraph>Variable</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>Description</paragraph>
+                                    </entry>
+                                </row>
+                            </thead>
+                            <tbody>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSH_PLAYER</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>player dbref#</paragraph>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSH_CAUSE</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>cause dbref#</paragraph>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSH_CALLER</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>caller dbref#</paragraph>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSH_OWNER</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>owner of player dbref#</paragraph>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSH_FLAGS</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>space delimited list of flags on player</paragraph>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSH_TOGGLES</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>space delimited list of toggles on player</paragraph>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSH_OFLAGS</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>space delimited list of flags of player owner</paragraph>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSH_OTOGGLES</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>space delimited list of toggles of player owner</paragraph>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSHL_VARS</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>space delimited list of MUSH attributes from player
+                                            This is passed from the mush’s EXECSCRIPT_VARS attr</paragraph>
+                                    </entry>
+                                </row>
+                            </tbody>
+                        </tgroup>
+                    </table>
                 </section>
                 <section dupnames="dynamic\ variables" ids="dynamic-variables">
                     <title>Dynamic variables</title>
-                    <definition_list>
-                        <definition_list_item>
-                            <term>MUSHV_&lt;arg&gt;                &lt;arg&gt; variable passed from MUSHL_VARS</term>
-                            <definition>
-                                <paragraph>These are the attributes from EXECSCRIPT_VARS</paragraph>
-                            </definition>
-                        </definition_list_item>
-                    </definition_list>
+                    <table align="default">
+                        <tgroup cols="2">
+                            <colspec colwidth="26"></colspec>
+                            <colspec colwidth="45"></colspec>
+                            <thead>
+                                <row>
+                                    <entry>
+                                        <paragraph>Variable</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>Description</paragraph>
+                                    </entry>
+                                </row>
+                            </thead>
+                            <tbody>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSHV_&lt;arg&gt;</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>&lt;arg&gt; variable passed from MUSHL_VARS
+                                            These are the attributes from EXECSCRIPT_VARS</paragraph>
+                                    </entry>
+                                </row>
+                            </tbody>
+                        </tgroup>
+                    </table>
                 </section>
                 <section dupnames="register\ variables" ids="register-variables">
                     <title>Register variables</title>
-                    <paragraph>MUSHQ_&lt;arg&gt;                setq registers 0-9 and a-z
-                        MUSHQN_&lt;arg&gt;               labels that are assigned the setq vars
-                        MUSHN_&lt;arg&gt;                The labels that were defined by any register</paragraph>
-                    <block_quote>
-                        <paragraph>Note: they must be ASCII-7 clean and contain no white spaces</paragraph>
-                    </block_quote>
+                    <table align="default">
+                        <tgroup cols="2">
+                            <colspec colwidth="26"></colspec>
+                            <colspec colwidth="60"></colspec>
+                            <thead>
+                                <row>
+                                    <entry>
+                                        <paragraph>Variable</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>Description</paragraph>
+                                    </entry>
+                                </row>
+                            </thead>
+                            <tbody>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSHQ_&lt;arg&gt;</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>setq registers 0-9 and a-z</paragraph>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSHQN_&lt;arg&gt;</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>labels that are assigned the setq vars</paragraph>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>
+                                        <paragraph>MUSHN_&lt;arg&gt;</paragraph>
+                                    </entry>
+                                    <entry>
+                                        <paragraph>The labels that were defined by any register
+                                            Note: they must be ASCII-7 clean and contain no white spaces</paragraph>
+                                    </entry>
+                                </row>
+                            </tbody>
+                        </tgroup>
+                    </table>
                 </section>
             </section>
             <section ids="set-object" names="set\ object">
@@ -468,53 +569,49 @@ def_exit_tx 383</literal_block>
                     fields are SPACE SEPARATED.  The values are NOT evaluated.</paragraph>
                 <section ids="the-format-of-the-fields-are" names="the\ format\ of\ the\ fields\ are">
                     <title>The format of the fields are</title>
-                    <section dupnames="dynamic\ variables" ids="id65">
+                    <section dupnames="dynamic\ variables" ids="id1">
                         <title>Dynamic variables</title>
-                        <paragraph>VARNAME        OWNER        CONTENTS (or leave null to clear)</paragraph>
+                        <literal_block force="False" language="default" linenos="False" xml:space="preserve">VARNAME        OWNER        CONTENTS (or leave null to clear)</literal_block>
                         <section ids="examples" names="examples">
                             <title>Examples</title>
-                            <paragraph>SEX #123 Male
-                                DESC #123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.
-                                RED #123 This is the color %ch%crred%cn.
-                                WIPETHISATTR #123
-                                MULTILINE #123 This is a line
-                                that continues on
-                                because of the line feed (a control-M) on each line
-                                on the lines above</paragraph>
+                            <literal_block force="False" language="default" linenos="False" xml:space="preserve">SEX #123 Male
+DESC #123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.
+RED #123 This is the color %ch%crred%cn.
+WIPETHISATTR #123
+MULTILINE #123 This is a line
+that continues on
+because of the line feed (a control-M) on each line
+on the lines above</literal_block>
                         </section>
                     </section>
-                    <section dupnames="register\ variables" ids="id66">
+                    <section dupnames="register\ variables" ids="id2">
                         <title>Register variables</title>
-                        <paragraph>REGISTER       Q            CONTENTS (or leave null to clear)</paragraph>
+                        <literal_block force="False" language="default" linenos="False" xml:space="preserve">REGISTER       Q            CONTENTS (or leave null to clear)</literal_block>
                         <section ids="examples-the-last-example-clears-register-0" names="examples\ (the\ last\ example\ clears\ register\ 0)">
                             <title>Examples (The last example clears register 0)</title>
-                            <paragraph>W Q This is stored in register W
-                                1 Q This is stored in register 1
-                                0 Q
-                                foo QN this sets register with label ‘foo’</paragraph>
+                            <literal_block force="False" language="default" linenos="False" xml:space="preserve">W Q This is stored in register W
+1 Q This is stored in register 1
+0 Q
+foo QN this sets register with label 'foo'</literal_block>
                         </section>
                     </section>
                 </section>
             </section>
             <section ids="example-bash-script" names="example\ bash\ script">
                 <title>Example bash script</title>
-                <paragraph>#!/bin/bash
-                    echo “This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}”
-                    echo “Displaying Registers:”
-                    regs=”0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z”
-                    for list in ${regs}
-                    do</paragraph>
-                <block_quote>
-                    <paragraph>eval echo “Register ${list}: ${MUSHQ_${list}}”</paragraph>
-                </block_quote>
-                <paragraph>done
-                    echo “Displaying variables:”
-                    for vars in ${MUSHL_VARS}
-                    do</paragraph>
-                <block_quote>
-                    <paragraph>eval echo “Variable ${vars}: ${MUSHV_${vars}}”</paragraph>
-                </block_quote>
-                <paragraph>done</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">#!/bin/bash
+echo "This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}"
+echo "Displaying Registers:"
+regs="0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
+for list in ${regs}
+do
+    eval echo "Register ${list}: \${MUSHQ_${list}}"
+done
+echo "Displaying variables:"
+for vars in ${MUSHL_VARS}
+do
+    eval echo "Variable ${vars}: \${MUSHV_${vars}}"
+done</literal_block>
             </section>
             <section ids="notes-and-warnings" names="notes\ and\ warnings">
                 <title>Notes and warnings</title>
@@ -528,36 +625,36 @@ def_exit_tx 383</literal_block>
             </section>
             <section ids="scripts-to-be-used-with-execscript" names="scripts\ to\ be\ used\ with\ execscript">
                 <title>Scripts to be used with execscript</title>
-                <paragraph>account/                       – Directory for execscripts relating to account creation
-                    compile39.sh                   – Script for patching and compiling RhostMUSH 3.9
-                    compile.sh                     – Script for patching and compiling RhostMUSH
-                    config.sh                      – Script for setting compile time options for RhostMUSH
-                    debug.sh                       – Script for debugging RhostMUSH
-                    dict.sh                        – Script for querying a dictionary
-                    diff.sh                        – Script for querying differences between two arguments
-                    fortune.sh                     – Script for querying fortune program
-                    fullweather.sh                 – Script for querying a graphical weather forecast (alternative)
-                    git.sh                         – Script for querying git version of RhostMUSH
-                    hello.sh                       – Script for teaching execscript for ‘Hello World’
-                    iostat.sh                      – Script for querying server stats of RhostMUSH
-                    jsonvalidate.sh                – Python Script for validating JSON
-                    logsearch.sh                   – Script for searching throgh logfiles for RhostMUSH
-                    math_example.sh                – Examples of math operations to be used with math.sh
-                    math.sh                        – Script for mathematical operations
-                    memory.sh                      – Script for querying memory usage of RhostMUSH
-                    mkindx.sh                      – Script for indexing RhostMSH helpfiles
-                    pastebinread.sh                – Script for reading data from a pastebin URL
-                    pastebinwrite.sh               – Script for writing data to a pastebin
-                    qspell.sh                      – Script for checking spelling (alternative)
-                    quota.sh                       – Script for checking disk quote and usage
-                    random.sh                      – Script for getting a random number
-                    roomlog.sh                     – Script for viewing logs in roomlog directory
-                    spell.sh                       – Script for checking spelling
-                    stats.sh                       – Script for querying server and process stats for RhostMUSH
-                    thes.sh                        – Script for adding a word to the dictionary for spell scripts
-                    tinyurl.sh                     – Script for shortening a URL
-                    weather.sh                     – Script for querying a graphical weather forecast
-                    web.sh                         – Script for querying an arbitary website</paragraph>
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">account/                       -- Directory for execscripts relating to account creation
+compile39.sh                   -- Script for patching and compiling RhostMUSH 3.9
+compile.sh                     -- Script for patching and compiling RhostMUSH
+config.sh                      -- Script for setting compile time options for RhostMUSH
+debug.sh                       -- Script for debugging RhostMUSH
+dict.sh                        -- Script for querying a dictionary
+diff.sh                        -- Script for querying differences between two arguments
+fortune.sh                     -- Script for querying fortune program
+fullweather.sh                 -- Script for querying a graphical weather forecast (alternative)
+git.sh                         -- Script for querying git version of RhostMUSH
+hello.sh                       -- Script for teaching execscript for 'Hello World'
+iostat.sh                      -- Script for querying server stats of RhostMUSH
+jsonvalidate.sh                -- Python Script for validating JSON
+logsearch.sh                   -- Script for searching throgh logfiles for RhostMUSH
+math_example.sh                -- Examples of math operations to be used with math.sh
+math.sh                        -- Script for mathematical operations
+memory.sh                      -- Script for querying memory usage of RhostMUSH
+mkindx.sh                      -- Script for indexing RhostMSH helpfiles
+pastebinread.sh                -- Script for reading data from a pastebin URL
+pastebinwrite.sh               -- Script for writing data to a pastebin
+qspell.sh                      -- Script for checking spelling (alternative)
+quota.sh                       -- Script for checking disk quote and usage
+random.sh                      -- Script for getting a random number
+roomlog.sh                     -- Script for viewing logs in roomlog directory
+spell.sh                       -- Script for checking spelling
+stats.sh                       -- Script for querying server and process stats for RhostMUSH
+thes.sh                        -- Script for adding a word to the dictionary for spell scripts
+tinyurl.sh                     -- Script for shortening a URL
+weather.sh                     -- Script for querying a graphical weather forecast
+web.sh                         -- Script for querying an arbitary website</literal_block>
             </section>
         </section>
         <section ids="using-printf-for-advanced-text-output" names="using\ printf()\ for\ advanced\ text\ output">
@@ -576,18 +673,18 @@ def_exit_tx 383</literal_block>
             </section>
             <section ids="example-two" names="example\ two">
                 <title>Example two</title>
-                <literal_block force="False" language="default" linenos="False" xml:space="preserve">  @emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
-  iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
-  iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
-  * Aggravated%RX Lethal%R/ Bashing)
+                <literal_block force="False" language="default" linenos="False" xml:space="preserve">@emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
+iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
+iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
+* Aggravated%RX Lethal%R/ Bashing)
 
-      Bruised      [ ]    * Aggravated
-         Hurt  -1  [ ]        X Lethal
-      Injured  -1  [ ]       / Bashing
-      Wounded  -2  [ ]
-       Mauled  -2  [ ]
-     Crippled  -5  [ ]
-Incapacitated      [ ]</literal_block>
+         Bruised      [ ]    * Aggravated
+            Hurt  -1  [ ]        X Lethal
+         Injured  -1  [ ]       / Bashing
+         Wounded  -2  [ ]
+          Mauled  -2  [ ]
+        Crippled  -5  [ ]
+   Incapacitated      [ ]</literal_block>
             </section>
             <section ids="example-three" names="example\ three">
                 <title>Example three</title>
@@ -609,74 +706,404 @@ blah blah blah blah blah blah blah                                    END!</lite
     <section ids="format-for-image-files" names="format\ for\ image\ files">
         <title>Format for image files</title>
         <paragraph>The image format goes like this:</paragraph>
-        <paragraph>Data Type  Example  Description
-            ———  ——-  ———————————————————-
-            INT        3        TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5
-            STRING     Wizard   NAME: of the target.  Verbatum, no quotes surround it
-            <problematic ids="id68" refid="id67">*</problematic>INT       123      LOCATION: dbref# of the target.  No prepending ‘#’ used.
-            <problematic ids="id70" refid="id69">*</problematic>INT       234      CONTENTS: The first content in a linked list content table (-1 if none)
-            <problematic ids="id72" refid="id71">*</problematic>INT       345      EXITS: The first exit in a linked list exit table (-1 if none)
-            <problematic ids="id74" refid="id73">*</problematic>INT       0        LINK: This is the ‘home’ of the object or what it’s linked to (-1 for none)
-            <problematic ids="id76" refid="id75">*</problematic>INT       123      NEXT: The next thing after this item for a content holder
-            STRING     #123     LOCK: The boolean string lock if it exists.  (empty if no lock)
-            <problematic ids="id78" refid="id77">*</problematic>INT       1        OWNER: The dbref# owner of the target.  For players same dbref as player.
-            INT        789      PARENT: The parent of the target.  (-1 if none)
-            <problematic ids="id80" refid="id79">*</problematic>INT       99999    MONEY: The int value of the money the players has.
-            INT        194592   FLAGS1: The first word of flags (@set flags) on a player      (see FLAGS)
-            INT        194222   FLAGS2: The second word of flags (@set flags) on a player     (see FLAGS)
-            INT        199999   FLAGS3: The third word of flags (@set flags []) on a player   (see FLAGS)
-            INT        1582958  FLAGS4: The forth word of flags (@set flags []) on a player   (see FLAGS)
-            INT        159955   TOGGLES1: The first word of toggles (@toggle) on a player    (see TOGGLES)
-            INT        159958   TOGGLES2: The second word of toggles (@toggle) on a player   (see TOGGLES)
-            INT        159958   POWER1: The first word of powers (@power) on a player         (see POWERS)
-            INT        159958   POWER2: The second word of powers (@power) on a player        (see POWERS)
-            INT        159958   POWER3: The third word of powers (@power) on a player         (see POWERS)
-            INT        159958   DEPOWER1: The first word of depowers (@depower) on a player  (see DEPOWERS)
-            INT        159958   DEPOWER2: The second word of depowers (@depower) on a player (see DEPOWERS)
-            INT        159958   DEPOWER3: The third word of depowers (@depower) on a player  (see DEPOWERS)
-            INT        -1       ZONE(S): The list of zones starting here and ending with ‘-1’. (see ZONES)
-            &gt;STRING    &gt;VA      ATTRIBUTENAME: Attribute name to store, starts with &gt; identifier
-            STRING     Wheee    ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)
-            &gt;STRING    &gt;Desc    ATTRIBUTENAME: Another attribute to chain in
-            STRING     Ugly     ATTRIBUTECONTENTS: Contents of the next attribute
-            &gt;STRING    <problematic ids="id82" refid="id81">*</problematic>Password PASSWORDATTRIB: Special password attribute.  Attribute name is ‘<problematic ids="id84" refid="id83">*</problematic>Password’
-            STRING     $6$xy$xy PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
-            &lt;          &lt;        This is the marker to specify the end of the attribute contents.  This is always the last line</paragraph>
+        <table align="default">
+            <tgroup cols="3">
+                <colspec colwidth="10"></colspec>
+                <colspec colwidth="10"></colspec>
+                <colspec colwidth="94"></colspec>
+                <thead>
+                    <row>
+                        <entry>
+                            <paragraph>Data Type</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>Example</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>Description</paragraph>
+                        </entry>
+                    </row>
+                </thead>
+                <tbody>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>3</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>STRING</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>Wizard</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>NAME: of the target.  Verbatum, no quotes surround it</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>*INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>123</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>LOCATION: dbref# of the target.  No prepending ‘#’ used.</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>*INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>234</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>CONTENTS: The first content in a linked list content table (-1 if none)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>*INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>345</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>EXITS: The first exit in a linked list exit table (-1 if none)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>*INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>0</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>LINK: This is the ‘home’ of the object or what it’s linked to (-1 for none)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>*INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>123</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>NEXT: The next thing after this item for a content holder</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>STRING</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>#123</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>LOCK: The boolean string lock if it exists.  (empty if no lock)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>*INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>1</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>OWNER: The dbref# owner of the target.  For players same dbref as player.</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>789</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>PARENT: The parent of the target.  (-1 if none)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>*INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>99999</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>MONEY: The int value of the money the players has.</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>194592</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>FLAGS1: The first word of flags (@set flags) on a player      (see FLAGS)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>194222</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>FLAGS2: The second word of flags (@set flags) on a player     (see FLAGS)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>199999</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>FLAGS3: The third word of flags (@set flags []) on a player   (see FLAGS)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>1582958</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>FLAGS4: The forth word of flags (@set flags []) on a player   (see FLAGS)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>159955</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>TOGGLES1: The first word of toggles (@toggle) on a player    (see TOGGLES)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>159958</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>TOGGLES2: The second word of toggles (@toggle) on a player   (see TOGGLES)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>159958</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>POWER1: The first word of powers (@power) on a player         (see POWERS)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>159958</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>POWER2: The second word of powers (@power) on a player        (see POWERS)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>159958</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>POWER3: The third word of powers (@power) on a player         (see POWERS)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>159958</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>DEPOWER1: The first word of depowers (@depower) on a player  (see DEPOWERS)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>159958</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>DEPOWER2: The second word of depowers (@depower) on a player (see DEPOWERS)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>159958</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>DEPOWER3: The third word of depowers (@depower) on a player  (see DEPOWERS)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>INT</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>-1</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>ZONE(S): The list of zones starting here and ending with ‘-1’. (see ZONES)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>&gt;STRING</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>&gt;VA</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>ATTRIBUTENAME: Attribute name to store, starts with &gt; identifier</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>STRING</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>Wheee</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>&gt;STRING</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>&gt;Desc</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>ATTRIBUTENAME: Another attribute to chain in</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>STRING</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>Ugly</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>ATTRIBUTECONTENTS: Contents of the next attribute</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>&gt;STRING</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>*Password</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>PASSWORDATTRIB: Special password attribute.  Attribute name is ‘*Password’</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>STRING</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>$6$xy$xy</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)</paragraph>
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            <paragraph>&lt;</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>&lt;</paragraph>
+                        </entry>
+                        <entry>
+                            <paragraph>This is the marker to specify the end of the attribute contents.  This is always the last line</paragraph>
+                        </entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
         <note>
             <paragraph>Any Data type starting with ‘*’ is ignored when @snapshot/loading.</paragraph>
         </note>
         <paragraph>The structure above with the examples would look like this in the file:</paragraph>
-        <paragraph>3
-            Wizard
-            123
-            234
-            345
-            0
-            123
-            #123
-            1
-            789
-            99999
-            194592
-            194222
-            199999
-            1582958
-            159955
-            159958
-            159958
-            159958
-            159958
-            159958
-            159958
-            159958
-            -1
-            &gt;VA
-            Wheee
-            &gt;Desc
-            Ugly
-            &gt;*Password
-            $6$xy$xy
-            &lt;</paragraph>
+        <literal_block force="False" language="default" linenos="False" xml:space="preserve">3
+Wizard
+123
+234
+345
+0
+123
+#123
+1
+789
+99999
+194592
+194222
+199999
+1582958
+159955
+159958
+159958
+159958
+159958
+159958
+159958
+159958
+-1
+&gt;VA
+Wheee
+&gt;Desc
+Ugly
+&gt;*Password
+$6$xy$xy
+&lt;</literal_block>
         <section ids="help-key-indexes-for-the-values" names="help\ key\ indexes\ for\ the\ values:">
             <title>HELP key indexes for the values:</title>
             <definition_list>
@@ -716,7 +1143,7 @@ blah blah blah blah blah blah blah                                    END!</lite
                     #define SAFE            0x10000000      /</emphasis> Need /override to @destroy <emphasis>/
                     #define CONTROL_OK      0x20000000      /</emphasis> ControlLk specifies who ctrls me <emphasis>/
                     #define HEARTHRU        0x40000000      /</emphasis> Can hear out of this obj or exit <emphasis>/
-                    #define TERSE           0x80000000      /</emphasis> Only show room name on look <problematic ids="id86" refid="id85">*</problematic>/</paragraph>
+                    #define TERSE           0x80000000      /</emphasis> Only show room name on look <problematic ids="id4" refid="id3">*</problematic>/</paragraph>
             <paragraph>/* Second word of flags <emphasis>/
                     #define KEY             0x00000001      /</emphasis> No puppets <emphasis>/
                     #define ABODE           0x00000002      /</emphasis> May @set home here <emphasis>/
@@ -749,7 +1176,7 @@ blah blah blah blah blah blah blah                                    END!</lite
                     #define SUSPECT         0x10000000      /</emphasis> Report some activities to wizards <emphasis>/
                     #define BUILDER         0x20000000      /</emphasis> Player has architect privs <emphasis>/
                     #define CONNECTED       0x40000000      /</emphasis> Player is connected <emphasis>/
-                    #define SLAVE           0x80000000      /</emphasis> Disallow most commands <problematic ids="id88" refid="id87">*</problematic>/</paragraph>
+                    #define SLAVE           0x80000000      /</emphasis> Disallow most commands <problematic ids="id6" refid="id5">*</problematic>/</paragraph>
             <paragraph>/* Third word of flags - Thorin 3/95 <emphasis>/
                     #define NOCONNECT       0x00000001
                     #define DPSHIFT         0x00000002
@@ -782,7 +1209,7 @@ blah blah blah blah blah blah blah                                    END!</lite
                     #define ZONECONTENTS    0x10000000      /</emphasis> Search contents of zonemaster for $commands <emphasis>/
                     #define NOWHO           0x20000000      /</emphasis> Player in WHO doesn’t show up - use with @hide <emphasis>/
                     #define ANONYMOUS       0x40000000      /</emphasis> Player set shows up as ‘Someone’ when talking <emphasis>/
-                    #define BACKSTAGE       0x80000000      /</emphasis> Immortal toggle for items on control <problematic ids="id90" refid="id89">*</problematic>/</paragraph>
+                    #define BACKSTAGE       0x80000000      /</emphasis> Immortal toggle for items on control <problematic ids="id8" refid="id7">*</problematic>/</paragraph>
             <paragraph>/* Forth word of flags - Thorin 3/95 <emphasis>/
                     #define NOBACKSTAGE     0x00000001      /</emphasis> Immortal toggle to control no-backstage <emphasis>/
                     #define LOGIN           0x00000002      /</emphasis> Enable player to login past @disable logins <emphasis>/
@@ -815,7 +1242,7 @@ blah blah blah blah blah blah blah                                    END!</lite
                     /</emphasis> 0x10000000 free <emphasis>/
                     /</emphasis> 0x20000000 free <emphasis>/
                     /</emphasis> 0x40000000 free <emphasis>/
-                    /</emphasis> 0x80000000 free <problematic ids="id92" refid="id91">*</problematic>/</paragraph>
+                    /</emphasis> 0x80000000 free <problematic ids="id10" refid="id9">*</problematic>/</paragraph>
             <transition></transition>
             <definition_list>
                 <definition_list_item>
@@ -857,7 +1284,7 @@ blah blah blah blah blah blah blah                                    END!</lite
                     #define TOG_BRANDY_MAIL         0x10000000      /</emphasis> Define brandy like mail interface <emphasis>/
                     #define TOG_FORCEHALTED         0x20000000      /</emphasis> The item toggled can @force halted things <emphasis>/
                     #define TOG_PROG                0x40000000      /</emphasis> Can use @program on other people/things <emphasis>/
-                    #define TOG_NOSHELLPROG         0x80000000      /</emphasis> Target can not issue commands inside a prog <problematic ids="id94" refid="id93">*</problematic>/</paragraph>
+                    #define TOG_NOSHELLPROG         0x80000000      /</emphasis> Target can not issue commands inside a prog <problematic ids="id12" refid="id11">*</problematic>/</paragraph>
             <paragraph>/* Second word of toggles – Ash <emphasis>/
                     #define TOG_EXTANSI             0x00000001      /</emphasis> Specify if target can used extended ansi naming <emphasis>/
                     #define TOG_IMMPROG             0x00000002      /</emphasis> Only an immortal can @quitprogram them <emphasis>/
@@ -892,7 +1319,7 @@ blah blah blah blah blah blah blah                                    END!</lite
                     #define TOG_LOGROOMENH          0x20000000      /</emphasis> Enhanced Room Logging <emphasis>/
                     #endif
                     #define TOG_LOGROOM             0x40000000      /</emphasis> Log Room’s location/contents <emphasis>/
-                    #define TOG_NOGLOBPARENT        0x80000000      /</emphasis> Target does not inherit global attributes <problematic ids="id96" refid="id95">*</problematic>/</paragraph>
+                    #define TOG_NOGLOBPARENT        0x80000000      /</emphasis> Target does not inherit global attributes <problematic ids="id14" refid="id13">*</problematic>/</paragraph>
             <transition></transition>
             <definition_list>
                 <definition_list_item>
@@ -905,7 +1332,7 @@ blah blah blah blah blah blah blah                                    END!</lite
                 <definition_list_item>
                     <term>/* First word of power positions.  Each position is 2 bits so the</term>
                     <definition>
-                        <paragraph>number here is how far over to shift the 2 bit pattern         <problematic ids="id98" refid="id97">*</problematic>/</paragraph>
+                        <paragraph>number here is how far over to shift the 2 bit pattern         <problematic ids="id16" refid="id15">*</problematic>/</paragraph>
                     </definition>
                 </definition_list_item>
             </definition_list>
@@ -925,7 +1352,7 @@ blah blah blah blah blah blah blah                                    END!</lite
                 #define POWER_BOOT              26
                 #define POWER_STEAL             28
                 #define POWER_SEE_QUEUE         30</paragraph>
-            <paragraph>/* Second word of power positions. <problematic ids="id100" refid="id99">*</problematic>/
+            <paragraph>/* Second word of power positions. <problematic ids="id18" refid="id17">*</problematic>/
                 #define POWER_SHUTDOWN          0
                 #define POWER_TEL_ANYWHERE      2
                 #define POWER_TEL_ANYTHING      4
@@ -957,7 +1384,7 @@ blah blah blah blah blah blah blah                                    END!</lite
                     /</emphasis> 24 free <emphasis>/
                     /</emphasis> 26 free <emphasis>/
                     /</emphasis> 28 free <emphasis>/
-                    /</emphasis> 30 free <problematic ids="id102" refid="id101">*</problematic>/</paragraph>
+                    /</emphasis> 30 free <problematic ids="id20" refid="id19">*</problematic>/</paragraph>
             <transition></transition>
             <definition_list>
                 <definition_list_item>
@@ -967,7 +1394,7 @@ blah blah blah blah blah blah blah                                    END!</lite
                     </definition>
                 </definition_list_item>
             </definition_list>
-            <paragraph>/* First word <problematic ids="id104" refid="id103">*</problematic>/
+            <paragraph>/* First word <problematic ids="id22" refid="id21">*</problematic>/
                 #define DP_WALL                 0
                 #define DP_LONG_FINGERS         2
                 #define DP_STEAL                4
@@ -1017,7 +1444,7 @@ blah blah blah blah blah blah blah                                    END!</lite
                     /</emphasis> 24 free <emphasis>/
                     /</emphasis> 26 free <emphasis>/
                     /</emphasis> 28 free <emphasis>/
-                    /</emphasis> 30 free <problematic ids="id106" refid="id105">*</problematic>/</paragraph>
+                    /</emphasis> 30 free <problematic ids="id24" refid="id23">*</problematic>/</paragraph>
             <transition></transition>
             <note>
                 <paragraph>ZONES:  Zones are special.  If there are no zones, the value will be ‘-1’.</paragraph>

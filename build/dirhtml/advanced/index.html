@@ -87,18 +87,18 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 </ol>
 </div>
 </div>
-<div class="section" id="shutting-down-gracefully">
-<h2><span class="section-number">10.3. </span>Shutting down gracefully<a class="headerlink" href="#shutting-down-gracefully" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="rhostmush-has-many-ways-to-shut-down-the-game-cleanly">
-<h3><span class="section-number">10.3.1. </span>Rhostmush has many ways to shut down the game cleanly<a class="headerlink" href="#rhostmush-has-many-ways-to-shut-down-the-game-cleanly" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="shutting-down-rhostmush-gracefully">
+<h2><span class="section-number">10.3. </span>Shutting down RhostMUSH gracefully<a class="headerlink" href="#shutting-down-rhostmush-gracefully" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="there-are-a-few-ways-to-cleanly-shutdown-rhostmush">
+<h3><span class="section-number">10.3.1. </span>There are a few ways to cleanly shutdown RhostMUSH<a class="headerlink" href="#there-are-a-few-ways-to-cleanly-shutdown-rhostmush" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>Log into the mush and issue &#64;shutdown</p></li>
 <li><p>Issue a kill -USR2 to the mush which issues an emergency &#64;shutdown</p></li>
 <li><p>Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.</p></li>
 </ol>
 </div>
-<div class="section" id="warning-never-kill-9-rhost">
-<h3><span class="section-number">10.3.2. </span>WARNING: Never kill -9 Rhost<a class="headerlink" href="#warning-never-kill-9-rhost" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="warning-never-kill-9-rhostmush">
+<h3><span class="section-number">10.3.2. </span>WARNING: Never kill -9 RhostMUSH<a class="headerlink" href="#warning-never-kill-9-rhostmush" title="Permalink to this headline">¶</a></h3>
 <p>Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t care for the
 database.  The reason is if the mush happens to be saving, in any method, to the
 database, especially a QDBM database, you will likely have just corrupted your
@@ -108,12 +108,12 @@ of a db write.  Rhost can recover corruption in-game while up, but if it bombs
 in the middle of a write, all bets are off. :)</p>
 </div>
 </div>
-<div class="section" id="reality-levels">
-<h2><span class="section-number">10.4. </span>Reality levels<a class="headerlink" href="#reality-levels" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="reality-levels-setup">
+<h2><span class="section-number">10.4. </span>Reality Levels Setup<a class="headerlink" href="#reality-levels-setup" title="Permalink to this headline">¶</a></h2>
 <p>Reality levels are a means to forbid (or allow) interaction between objects
 in the same location.</p>
-<div class="section" id="visibility">
-<h3><span class="section-number">10.4.1. </span>Visibility<a class="headerlink" href="#visibility" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="reality-levels-visibility">
+<h3><span class="section-number">10.4.1. </span>Reality Levels Visibility<a class="headerlink" href="#reality-levels-visibility" title="Permalink to this headline">¶</a></h3>
 <p>Each object (player, room, exit, thing) has two lists of reality levels.
 An Rx list, which describe what it can see and a Tx list, which describe
 where it can be seen. Those are bitfields. In order for X to see Y a bitwise
@@ -130,8 +130,8 @@ parameters.
 An object is always visible to itself, even if its Rx and Tx levels don’t
 match. (See examples below)</p>
 </div>
-<div class="section" id="descriptions">
-<h3><span class="section-number">10.4.2. </span>Descriptions<a class="headerlink" href="#descriptions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="reality-levels-descriptions">
+<h3><span class="section-number">10.4.2. </span>Reality Levels Descriptions<a class="headerlink" href="#reality-levels-descriptions" title="Permalink to this headline">¶</a></h3>
 <p>For every reality level defined, you can define an attribute that serves as
 description. If you look at something and match more than one of its
 TxLevels, you’ll see all the corresponding descriptions on the target
@@ -152,8 +152,8 @@ use the ‘move &lt;exit&gt;’ command) the exit must be visible to the enactor
 order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.</p>
 </div>
-<div class="section" id="configuration-parameters">
-<h3><span class="section-number">10.4.3. </span>Configuration parameters<a class="headerlink" href="#configuration-parameters" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="reality-levels-configuration-parameters">
+<h3><span class="section-number">10.4.3. </span>Reality Levels Configuration parameters<a class="headerlink" href="#reality-levels-configuration-parameters" title="Permalink to this headline">¶</a></h3>
 <p>A few configuration parameters have been introduced to deal with the reality
 levels:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">desc</span> <span class="n">attribute</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
@@ -191,28 +191,30 @@ This is an example file only to be added to the mush.conf file Format:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="example-mush-conf">
-<h3><span class="section-number">10.4.4. </span>Example mush.conf<a class="headerlink" href="#example-mush-conf" title="Permalink to this headline">¶</a></h3>
-<p>reality_level Real 1
-reality_level Obf1 2
-reality_level Obf2 4
-reality_level Obf3 8 OBFDESC
-reality_level Obf4 16 OBFDESC
-reality_level Obf5 32 OBFDESC
-reality_level Obf6 64 OBFDESC
-reality_level Obf7 128 OBFDESC
-reality_level Obf8 256 OBFDESC
-reality_level Obf9 512 OBFDESC
-reality_level Obf10 1024 OBFDESC
-reality_level Umbra 2048 UMBRADESC
-reality_level Fae 4096 FAEDESC
-reality_level Shadow 8192 SHADOWDESC
-reality_level Spy 16384
-reality_level Death 32768 DEATHDESC
-reality_level All 4294967295</p>
+<div class="section" id="reality-levels-example-mush-conf">
+<h3><span class="section-number">10.4.4. </span>Reality Levels Example mush.conf<a class="headerlink" href="#reality-levels-example-mush-conf" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="n">Real</span> <span class="mi">1</span>
+<span class="n">reality_level</span> <span class="n">Obf1</span> <span class="mi">2</span>
+<span class="n">reality_level</span> <span class="n">Obf2</span> <span class="mi">4</span>
+<span class="n">reality_level</span> <span class="n">Obf3</span> <span class="mi">8</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf4</span> <span class="mi">16</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf5</span> <span class="mi">32</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf6</span> <span class="mi">64</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf7</span> <span class="mi">128</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf8</span> <span class="mi">256</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf9</span> <span class="mi">512</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf10</span> <span class="mi">1024</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Umbra</span> <span class="mi">2048</span> <span class="n">UMBRADESC</span>
+<span class="n">reality_level</span> <span class="n">Fae</span> <span class="mi">4096</span> <span class="n">FAEDESC</span>
+<span class="n">reality_level</span> <span class="n">Shadow</span> <span class="mi">8192</span> <span class="n">SHADOWDESC</span>
+<span class="n">reality_level</span> <span class="n">Spy</span> <span class="mi">16384</span>
+<span class="n">reality_level</span> <span class="n">Death</span> <span class="mi">32768</span> <span class="n">DEATHDESC</span>
+<span class="n">reality_level</span> <span class="n">All</span> <span class="mi">4294967295</span>
+</pre></div>
 </div>
-<div class="section" id="commands">
-<h3><span class="section-number">10.4.5. </span>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="reality-levels-commands">
+<h3><span class="section-number">10.4.5. </span>Reality Levels Commands<a class="headerlink" href="#reality-levels-commands" title="Permalink to this headline">¶</a></h3>
 <p>Two wiz-only commands are used to set the reality levels of an object:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@rxlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
 <span class="nd">@txlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
@@ -281,114 +283,110 @@ anyway, so a spirit character will have:</p>
 @rxlevel &lt;player&gt;=Real Ghost
 </pre></div>
 </div>
-<p>Let’s assume 3 players:
-John is a Mundane. He won’t see spirits.
-John’s Rx: Real
-John’s Tx: Real
-John’s &#64;desc: This is John.
-John’s &amp;GHOSTDESC: (Not important, since it’s never visible)
-Johh’s &#64;adesc: %N has looked at you.
-John’s &#64;odesc: has looked at John.</p>
-<p>Jack is a Gifted. He will sense spirits, but is still made from flesh
-and blood so visible to mundanes.
-Jack’s Rx: Real Ghost
-Jack’s Tx: Real
-Jack’s &#64;desc: This is Jack.
-Jack’s &amp;GHOSTDESC: (Not important, since it’s never visible)
-Jack’s &#64;adesc: %N has looked at you.
-Jack’s &#64;odesc: has looked at Jack.</p>
-<p>Frank is a ghost. He will see other spirits as well as mundanes, but won’t
-be visible to mundanes. He can also become visible to everybody.
-Frank’s Rx: Real Ghost
-Frank’s Tx: Ghost
-Frank’s &#64;desc: This is Frank, looking human.
-Frank’s &amp;GHOSTDESC: This is Frank’s ghostly shape.
-Frank’s &#64;adesc: %N has looked at you.
-Frank’s &#64;odesc: has looked at Frank.</p>
-<p>Following are commands that each of the players enter and what they see.
-I’ll assume the +materialize command is defined like:
-&amp;CMD_MATERIALIZE &lt;cmdobject&gt;=$+materialize:&#64;txlevel %#=Real; &#64;pemit %#=You
-are now material.</p>
-<blockquote>
-<div><dl>
-<dt>John            |         Jack          |         Frank</dt><dd><div class="line-block">
-<div class="line"><a href="#id1"><span class="problematic" id="id2">|</span></a></div>
+<p>Let’s assume 3 players:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">John</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">Mundane</span><span class="o">.</span> <span class="n">He</span> <span class="n">won</span><span class="s1">&#39;t see spirits.</span>
+<span class="n">John</span><span class="s1">&#39;s Rx: Real</span>
+<span class="n">John</span><span class="s1">&#39;s Tx: Real</span>
+<span class="n">John</span><span class="s1">&#39;s @desc: This is John.</span>
+<span class="n">John</span><span class="s1">&#39;s &amp;GHOSTDESC: (Not important, since it&#39;</span><span class="n">s</span> <span class="n">never</span> <span class="n">visible</span><span class="p">)</span>
+<span class="n">Johh</span><span class="s1">&#39;s @adesc: %N has looked at you.</span>
+<span class="n">John</span><span class="s1">&#39;s @odesc: has looked at John.</span>
+</pre></div>
 </div>
-</dd>
-</dl>
-</div></blockquote>
-<p>&gt; l                     |                       |
-A room                  |                       |
-This is a bare room.    |                       |
-Contents:               |                       |
-Jack                    |                       |
-Obvious exits:          |                       |
-Out &lt;O&gt;                 |                       |</p>
-<blockquote>
-<div><p><a href="#id3"><span class="problematic" id="id4">|</span></a>&gt; l                    |
-<a href="#id5"><span class="problematic" id="id6">|</span></a>A room                 |
-<a href="#id7"><span class="problematic" id="id8">|</span></a>This is a bare room.   |
-<a href="#id9"><span class="problematic" id="id10">|</span></a>Contents:              |
-<a href="#id11"><span class="problematic" id="id12">|</span></a>John Frank             |
-<a href="#id13"><span class="problematic" id="id14">|</span></a>Obvious exits:         |
-<a href="#id15"><span class="problematic" id="id16">|</span></a>Out &lt;O&gt;                |
-|                       <a href="#id17"><span class="problematic" id="id18">|</span></a>&gt; l
-|                       <a href="#id19"><span class="problematic" id="id20">|</span></a>A room
-|                       <a href="#id21"><span class="problematic" id="id22">|</span></a>This is a bare room.
-|                       <a href="#id23"><span class="problematic" id="id24">|</span></a>Contents:
-|                       <a href="#id25"><span class="problematic" id="id26">|</span></a>John Jack
-|                       <a href="#id27"><span class="problematic" id="id28">|</span></a>Obvious exits:
-|                       <a href="#id29"><span class="problematic" id="id30">|</span></a>Out &lt;O&gt;</p>
-</div></blockquote>
-<p>&gt;l Jack                 |                       |
-Jack                    <a href="#id31"><span class="problematic" id="id32">|</span></a>John has looked at you.|John has looked at Jack.
-This is Jack.           |                       |
-&gt;l Frank                |                       |
-I don’t see that here.  |                       |</p>
-<blockquote>
-<div><p><a href="#id107"><span class="problematic" id="id108">|&gt;l Frank               |
-|Frank                  |Jack has looked at you.
-|This is Frank's ghostly|</span></a>
-<a href="#id33"><span class="problematic" id="id34">|</span></a>shape.                 |
-|                       <a href="#id35"><span class="problematic" id="id36">|</span></a>&gt;l John
-<a href="#id37"><span class="problematic" id="id38">|</span></a>Frank has looked at    <a href="#id39"><span class="problematic" id="id40">|</span></a>John
-<a href="#id41"><span class="problematic" id="id42">|</span></a>John.                  <a href="#id43"><span class="problematic" id="id44">|</span></a>This is John.
-|                       <a href="#id45"><span class="problematic" id="id46">|</span></a>&gt;+materialize
-|                       <a href="#id47"><span class="problematic" id="id48">|</span></a>You are now material.</p>
-</div></blockquote>
-<p>&gt;l Frank                |                       |
-Frank                   <a href="#id49"><span class="problematic" id="id50">|</span></a>John has looked at     <a href="#id51"><span class="problematic" id="id52">|</span></a>Frank has looked at you.
-This is Frank, looking  <a href="#id53"><span class="problematic" id="id54">|</span></a>Frank.                 |
-human.                  |                       |</p>
-<blockquote>
-<div><p><a href="#id55"><span class="problematic" id="id56">|</span></a>&gt;l Frank               |</p>
-</div></blockquote>
-<p>Jack has looked at      <a href="#id57"><span class="problematic" id="id58">|</span></a>Frank                  <a href="#id59"><span class="problematic" id="id60">|</span></a>John has looked at you.
-Frank.                  <a href="#id61"><span class="problematic" id="id62">|</span></a>This is Frank, looking |</p>
-<blockquote>
-<div><p><a href="#id109"><span class="problematic" id="id110">|human.                 |
-|This is Frank's ghostly|</span></a>
-<a href="#id63"><span class="problematic" id="id64">|</span></a>shape.                 |</p>
-</div></blockquote>
+<p>Jack is a Gifted. He will sense spirits, but is still made from flesh and blood so visible to mundanes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Jack</span><span class="s1">&#39;s Rx: Real Ghost</span>
+<span class="n">Jack</span><span class="s1">&#39;s Tx: Real</span>
+<span class="n">Jack</span><span class="s1">&#39;s @desc: This is Jack.</span>
+<span class="n">Jack</span><span class="s1">&#39;s &amp;GHOSTDESC: (Not important, since it&#39;</span><span class="n">s</span> <span class="n">never</span> <span class="n">visible</span><span class="p">)</span>
+<span class="n">Jack</span><span class="s1">&#39;s @adesc: %N has looked at you.</span>
+<span class="n">Jack</span><span class="s1">&#39;s @odesc: has looked at Jack.</span>
+</pre></div>
+</div>
+<p>Frank is a ghost. He will see other spirits as well as mundanes, but won’t be visible to mundanes. He can also become visible to everybody:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Frank</span><span class="s1">&#39;s Rx: Real Ghost</span>
+ <span class="n">Frank</span><span class="s1">&#39;s Tx: Ghost</span>
+ <span class="n">Frank</span><span class="s1">&#39;s @desc: This is Frank, looking human.</span>
+ <span class="n">Frank</span><span class="s1">&#39;s &amp;GHOSTDESC: This is Frank&#39;</span><span class="n">s</span> <span class="n">ghostly</span> <span class="n">shape</span><span class="o">.</span>
+ <span class="n">Frank</span><span class="s1">&#39;s @adesc: %N has looked at you.</span>
+ <span class="n">Frank</span><span class="s1">&#39;s @odesc: has looked at Frank.</span>
+</pre></div>
+</div>
+<p>Following are commands that each of the players enter and what they see.  I’ll assume the +materialize command is defined like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&amp;CMD_MATERIALIZE &lt;cmdobject&gt;=$+materialize:@txlevel %#=Real; @pemit %#=You are now material.
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>         <span class="n">John</span>           <span class="o">|</span>         <span class="n">Jack</span>          <span class="o">|</span>         <span class="n">Frank</span>
+                         <span class="o">|</span>                       <span class="o">|</span>
+ <span class="o">&gt;</span> <span class="n">l</span>                     <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">A</span> <span class="n">room</span>                  <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">bare</span> <span class="n">room</span><span class="o">.</span>    <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Contents</span><span class="p">:</span>               <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Jack</span>                    <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Obvious</span> <span class="n">exits</span><span class="p">:</span>          <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Out</span> <span class="o">&lt;</span><span class="n">O</span><span class="o">&gt;</span>                 <span class="o">|</span>                       <span class="o">|</span>
+                         <span class="o">|&gt;</span> <span class="n">l</span>                    <span class="o">|</span>
+                         <span class="o">|</span><span class="n">A</span> <span class="n">room</span>                 <span class="o">|</span>
+                         <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">bare</span> <span class="n">room</span><span class="o">.</span>   <span class="o">|</span>
+                         <span class="o">|</span><span class="n">Contents</span><span class="p">:</span>              <span class="o">|</span>
+                         <span class="o">|</span><span class="n">John</span> <span class="n">Frank</span>             <span class="o">|</span>
+                         <span class="o">|</span><span class="n">Obvious</span> <span class="n">exits</span><span class="p">:</span>         <span class="o">|</span>
+                         <span class="o">|</span><span class="n">Out</span> <span class="o">&lt;</span><span class="n">O</span><span class="o">&gt;</span>                <span class="o">|</span>
+                         <span class="o">|</span>                       <span class="o">|&gt;</span> <span class="n">l</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">A</span> <span class="n">room</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">bare</span> <span class="n">room</span><span class="o">.</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">Contents</span><span class="p">:</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">John</span> <span class="n">Jack</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">Obvious</span> <span class="n">exits</span><span class="p">:</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">Out</span> <span class="o">&lt;</span><span class="n">O</span><span class="o">&gt;</span>
+ <span class="o">&gt;</span><span class="n">l</span> <span class="n">Jack</span>                 <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Jack</span>                    <span class="o">|</span><span class="n">John</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span> <span class="n">you</span><span class="o">.|</span><span class="n">John</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span> <span class="n">Jack</span><span class="o">.</span>
+ <span class="n">This</span> <span class="ow">is</span> <span class="n">Jack</span><span class="o">.</span>           <span class="o">|</span>                       <span class="o">|</span>
+ <span class="o">&gt;</span><span class="n">l</span> <span class="n">Frank</span>                <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">I</span> <span class="n">don</span><span class="s1">&#39;t see that here.  |                       |</span>
+                         <span class="o">|&gt;</span><span class="n">l</span> <span class="n">Frank</span>               <span class="o">|</span>
+                         <span class="o">|</span><span class="n">Frank</span>                  <span class="o">|</span><span class="n">Jack</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span> <span class="n">you</span><span class="o">.</span>
+                         <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">Frank</span><span class="s1">&#39;s ghostly|</span>
+                         <span class="o">|</span><span class="n">shape</span><span class="o">.</span>                 <span class="o">|</span>
+                         <span class="o">|</span>                       <span class="o">|&gt;</span><span class="n">l</span> <span class="n">John</span>
+                         <span class="o">|</span><span class="n">Frank</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span>    <span class="o">|</span><span class="n">John</span>
+                         <span class="o">|</span><span class="n">John</span><span class="o">.</span>                  <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">John</span><span class="o">.</span>
+                         <span class="o">|</span>                       <span class="o">|&gt;+</span><span class="n">materialize</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">You</span> <span class="n">are</span> <span class="n">now</span> <span class="n">material</span><span class="o">.</span>
+ <span class="o">&gt;</span><span class="n">l</span> <span class="n">Frank</span>                <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Frank</span>                   <span class="o">|</span><span class="n">John</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span>     <span class="o">|</span><span class="n">Frank</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span> <span class="n">you</span><span class="o">.</span>
+ <span class="n">This</span> <span class="ow">is</span> <span class="n">Frank</span><span class="p">,</span> <span class="n">looking</span>  <span class="o">|</span><span class="n">Frank</span><span class="o">.</span>                 <span class="o">|</span>
+ <span class="n">human</span><span class="o">.</span>                  <span class="o">|</span>                       <span class="o">|</span>
+                         <span class="o">|&gt;</span><span class="n">l</span> <span class="n">Frank</span>               <span class="o">|</span>
+ <span class="n">Jack</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span>      <span class="o">|</span><span class="n">Frank</span>                  <span class="o">|</span><span class="n">John</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span> <span class="n">you</span><span class="o">.</span>
+ <span class="n">Frank</span><span class="o">.</span>                  <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">Frank</span><span class="p">,</span> <span class="n">looking</span> <span class="o">|</span>
+                         <span class="o">|</span><span class="n">human</span><span class="o">.</span>                 <span class="o">|</span>
+                         <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">Frank</span><span class="s1">&#39;s ghostly|</span>
+                         <span class="o">|</span><span class="n">shape</span><span class="o">.</span>                 <span class="o">|</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="example-2-a-wod-setup">
 <h3><span class="section-number">10.4.8. </span>Example 2: A WoD setup<a class="headerlink" href="#example-2-a-wod-setup" title="Permalink to this headline">¶</a></h3>
-<p>The reality levels will be defined like this:
-reality_level           Real 1
-reality_level           Obf1 2
-reality_level           Obf2 4
-reality_level           Obf3 8 OBFDESC
-reality_level           Obf4 16 OBFDESC
-reality_level           Obf5 32 OBFDESC
-reality_level           Umbra 64 UMBRADESC
-reality_level           Fae 128 FAEDESC
-reality_level           Shadow 256 SHADOWDESC
-reality_level           All 511</p>
+<p>The reality levels will be defined like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span>         <span class="n">Real</span> <span class="mi">1</span>
+<span class="n">reality_level</span>         <span class="n">Obf1</span> <span class="mi">2</span>
+<span class="n">reality_level</span>         <span class="n">Obf2</span> <span class="mi">4</span>
+<span class="n">reality_level</span>         <span class="n">Obf3</span> <span class="mi">8</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span>         <span class="n">Obf4</span> <span class="mi">16</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span>         <span class="n">Obf5</span> <span class="mi">32</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span>         <span class="n">Umbra</span> <span class="mi">64</span> <span class="n">UMBRADESC</span>
+<span class="n">reality_level</span>         <span class="n">Fae</span> <span class="mi">128</span> <span class="n">FAEDESC</span>
+<span class="n">reality_level</span>         <span class="n">Shadow</span> <span class="mi">256</span> <span class="n">SHADOWDESC</span>
+<span class="n">reality_level</span>         <span class="n">All</span> <span class="mi">511</span>
+</pre></div>
+</div>
 <p>5 levels of Obfuscation, Umbra, Dreaming, Wraiths. ‘All’ is a handy
 replacement for all levels, useful for wizards and wizobjects that should
 be visible on all levels. Also useful when you want to set an object’s
-levels to something without knowing what he had before.</p>
-<p>&#64;rxlevel #276=!All Real</p>
+levels to something without knowing what he had before:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@rxlevel</span> <span class="c1">#276=!All Real</span>
+</pre></div>
+</div>
 <p>!All will clear all levels, then the object will gain the Real level.
 There is more than one Obfuscation level because of the relation between
 Auspex and Obfuscation.</p>
@@ -441,8 +439,10 @@ the ohter character is in.</p>
 <p>Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her &#64;desc
 would be empty, but the &amp;SHADOWDESC should be set.
 Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</p>
-<p>Global code objects that all characters should be able to use:
-RxLevel: All, TxLevel: All</p>
+<p>Global code objects that all characters should be able to use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RxLevel</span><span class="p">:</span> <span class="n">All</span><span class="p">,</span> <span class="n">TxLevel</span><span class="p">:</span> <span class="n">All</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="example-3-softcode">
 <h3><span class="section-number">10.4.9. </span>Example 3: Softcode<a class="headerlink" href="#example-3-softcode" title="Permalink to this headline">¶</a></h3>
@@ -450,32 +450,23 @@ RxLevel: All, TxLevel: All</p>
 getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player’s stat from
 the sheet here are softcode examples that implement some of the WoD powers.
 In a real game you would have to use some more checks, of course.</p>
-<p>&#64;create Reality Levels Commands (RLS)
-&amp;CMD_OBFON rls=$+obf/on:&#64;switch [setr(0, getstat(%#,Obfuscate))]=0, &#64;pemit
-%#=You don’t have Obfuscate!, {&#64;txlevel %#=!All Obf%q0; &#64;pemit %#=You are
-now invisible.}
-&amp;CMD_OBFOFF rls=$+obf/off:&#64;txlevel %#=Real; &#64;pemit %#=You are now visible.
-&#64;&#64; Note: +obf/on clears all TxLevels before setting the appropiate Obf
-&#64;&#64; This is necesary, because a character might advance from Obf2 to
-&#64;&#64; Obf3 and he should be visible /only/ on the Obf3 level.
-&#64;&#64; +obf/off simply sets the Real Tx level, without clearing the Obf. The
-&#64;&#64; reason is the Mask. Players with Obf3 or higher who use the Mask should
-&#64;&#64; +obf/on, then +obf/off after approval and everything is set.
-&amp;CMD_AUSPEXON rls=$+auspex/on:&#64;switch [setr(0, getstat(%#, Auspex))]=0,
-&#64;pemit %#=You don’t have Auspex!, {&#64;rxlevel %#=[iter(lnum(1, %q0), Obf##)];
-&#64;pemit %#=Auspex enabled.}
-&amp;CMD_AUSPEXOFF rls=$+auspex/off:&#64;switch [hasrxlevel(%#, Obf1)]=0, &#64;pemit %#=
-You don’t have Auspex enabled!, {&#64;rxlevel %#=[iter(lnum(1, 5), !Obf##)];
-&#64;pemit %#=Auspex disabled.}
-&amp;CMD_UMBRAENTER rls=$+umbra/enter:&#64;rxlevel %#=!Real Umbra; &#64;txlevel %#=
-!Real Umbra; &#64;pemit %#=You are now in the Umbra.
-&amp;CMD_UMBRALEAVE rls=$+umbra/leave:&#64;rxlevel %#=Real !Umbra; &#64;txlevel %#=
-Real !Umbra; &#64;pemit %#=You left the Umbra.
-&amp;CMD_PEEKON rls=$+peek/on:&#64;switch hastxlevel(%#,Umbra)=1, {&#64;rxlevel %#=Real
-!Umbra; &#64;pemit %#=You are now peeking in the real world}, {&#64;rxlevel %#=!Real
-Umbra; &#64;pemit %#=You are now peeking into the Umbra}
-&amp;CMD_PEEKOFF rls=$+peek/off:&#64;rxlevel %#=!Real !Umbra [setinter(Real Umbra,
-txlevel(%#))]; &#64;pemit %#=You are no longer peeking.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@create Reality Levels Commands (RLS)
+&amp;CMD_OBFON rls=$+obf/on:@switch [setr(0, getstat(%#,Obfuscate))]=0, @pemit %#=You don&#39;t have Obfuscate!, {@txlevel %#=!All Obf%q0; @pemit %#=You are now invisible.}
+&amp;CMD_OBFOFF rls=$+obf/off:@txlevel %#=Real; @pemit %#=You are now visible.
+@@ Note: +obf/on clears all TxLevels before setting the appropiate Obf
+@@ This is necesary, because a character might advance from Obf2 to
+@@ Obf3 and he should be visible /only/ on the Obf3 level.
+@@ +obf/off simply sets the Real Tx level, without clearing the Obf. The
+@@ reason is the Mask. Players with Obf3 or higher who use the Mask should
+@@ +obf/on, then +obf/off after approval and everything is set.
+&amp;CMD_AUSPEXON rls=$+auspex/on:@switch [setr(0, getstat(%#, Auspex))]=0, @pemit %#=You don&#39;t have Auspex!, {@rxlevel %#=[iter(lnum(1, %q0), Obf##)]; @pemit %#=Auspex enabled.}
+&amp;CMD_AUSPEXOFF rls=$+auspex/off:@switch [hasrxlevel(%#, Obf1)]=0, @pemit %#= You don&#39;t have Auspex enabled!, {@rxlevel %#=[iter(lnum(1, 5), !Obf##)]; @pemit %#=Auspex disabled.}
+&amp;CMD_UMBRAENTER rls=$+umbra/enter:@rxlevel %#=!Real Umbra; @txlevel %#= !Real Umbra; @pemit %#=You are now in the Umbra.
+&amp;CMD_UMBRALEAVE rls=$+umbra/leave:@rxlevel %#=Real !Umbra; @txlevel %#= Real !Umbra; @pemit %#=You left the Umbra.
+&amp;CMD_PEEKON rls=$+peek/on:@switch hastxlevel(%#,Umbra)=1, {@rxlevel %#=Real !Umbra; @pemit %#=You are now peeking in the real world}, {@rxlevel %#=!Real Umbra; @pemit %#=You are now peeking into the Umbra}
+&amp;CMD_PEEKOFF rls=$+peek/off:@rxlevel %#=!Real !Umbra [setinter(Real Umbra, txlevel(%#))]; @pemit %#=You are no longer peeking.
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="execscript-and-external-programs-and-scripts">
@@ -484,35 +475,93 @@ txlevel(%#))]; &#64;pemit %#=You are no longer peeking.</p>
 <h3><span class="section-number">10.5.1. </span>Mush variables<a class="headerlink" href="#mush-variables" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="built-in-variables">
 <h4><span class="section-number">10.5.1.1. </span>Built in variables<a class="headerlink" href="#built-in-variables" title="Permalink to this headline">¶</a></h4>
-<p>Variable                   Description
-MUSH_PLAYER                player dbref#
-MUSH_CAUSE                 cause dbref#
-MUSH_CALLER                caller dbref#
-MUSH_OWNER                 owner of player dbref#
-MUSH_FLAGS                 space delimited list of flags on player
-MUSH_TOGGLES               space delimited list of toggles on player
-MUSH_OFLAGS                space delimited list of flags of player owner
-MUSH_OTOGGLES              space delimited list of toggles of player owner
-MUSHL_VARS                 space delimited list of MUSH attributes from player</p>
-<blockquote>
-<div><p>This is passed from the mush’s EXECSCRIPT_VARS attr</p>
-</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MUSH_PLAYER</p></td>
+<td><p>player dbref#</p></td>
+</tr>
+<tr class="row-odd"><td><p>MUSH_CAUSE</p></td>
+<td><p>cause dbref#</p></td>
+</tr>
+<tr class="row-even"><td><p>MUSH_CALLER</p></td>
+<td><p>caller dbref#</p></td>
+</tr>
+<tr class="row-odd"><td><p>MUSH_OWNER</p></td>
+<td><p>owner of player dbref#</p></td>
+</tr>
+<tr class="row-even"><td><p>MUSH_FLAGS</p></td>
+<td><p>space delimited list of flags on player</p></td>
+</tr>
+<tr class="row-odd"><td><p>MUSH_TOGGLES</p></td>
+<td><p>space delimited list of toggles on player</p></td>
+</tr>
+<tr class="row-even"><td><p>MUSH_OFLAGS</p></td>
+<td><p>space delimited list of flags of player owner</p></td>
+</tr>
+<tr class="row-odd"><td><p>MUSH_OTOGGLES</p></td>
+<td><p>space delimited list of toggles of player owner</p></td>
+</tr>
+<tr class="row-even"><td><p>MUSHL_VARS</p></td>
+<td><p>space delimited list of MUSH attributes from player
+This is passed from the mush’s EXECSCRIPT_VARS attr</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="dynamic-variables">
 <h4><span class="section-number">10.5.1.2. </span>Dynamic variables<a class="headerlink" href="#dynamic-variables" title="Permalink to this headline">¶</a></h4>
-<dl class="simple">
-<dt>MUSHV_&lt;arg&gt;                &lt;arg&gt; variable passed from MUSHL_VARS</dt><dd><p>These are the attributes from EXECSCRIPT_VARS</p>
-</dd>
-</dl>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MUSHV_&lt;arg&gt;</p></td>
+<td><p>&lt;arg&gt; variable passed from MUSHL_VARS
+These are the attributes from EXECSCRIPT_VARS</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="register-variables">
 <h4><span class="section-number">10.5.1.3. </span>Register variables<a class="headerlink" href="#register-variables" title="Permalink to this headline">¶</a></h4>
-<p>MUSHQ_&lt;arg&gt;                setq registers 0-9 and a-z
-MUSHQN_&lt;arg&gt;               labels that are assigned the setq vars
-MUSHN_&lt;arg&gt;                The labels that were defined by any register</p>
-<blockquote>
-<div><p>Note: they must be ASCII-7 clean and contain no white spaces</p>
-</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MUSHQ_&lt;arg&gt;</p></td>
+<td><p>setq registers 0-9 and a-z</p></td>
+</tr>
+<tr class="row-odd"><td><p>MUSHQN_&lt;arg&gt;</p></td>
+<td><p>labels that are assigned the setq vars</p></td>
+</tr>
+<tr class="row-even"><td><p>MUSHN_&lt;arg&gt;</p></td>
+<td><p>The labels that were defined by any register
+Note: they must be ASCII-7 clean and contain no white spaces</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="section" id="set-object">
@@ -523,53 +572,59 @@ and registers back into the mush that you wish to pass from the script. The
 fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 <div class="section" id="the-format-of-the-fields-are">
 <h4><span class="section-number">10.5.2.1. </span>The format of the fields are<a class="headerlink" href="#the-format-of-the-fields-are" title="Permalink to this headline">¶</a></h4>
-<div class="section" id="id65">
-<h5><span class="section-number">10.5.2.1.1. </span>Dynamic variables<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h5>
-<p>VARNAME        OWNER        CONTENTS (or leave null to clear)</p>
+<div class="section" id="id1">
+<h5><span class="section-number">10.5.2.1.1. </span>Dynamic variables<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VARNAME</span>        <span class="n">OWNER</span>        <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="section" id="examples">
 <h6><span class="section-number">10.5.2.1.1.1. </span>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h6>
-<p>SEX #123 Male
-DESC #123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.
-RED #123 This is the color %ch%crred%cn.
-WIPETHISATTR #123
-MULTILINE #123 This is a line
-that continues on
-because of the line feed (a control-M) on each line
-on the lines above</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SEX</span> <span class="c1">#123 Male</span>
+<span class="n">DESC</span> <span class="c1">#123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.</span>
+<span class="n">RED</span> <span class="c1">#123 This is the color %ch%crred%cn.</span>
+<span class="n">WIPETHISATTR</span> <span class="c1">#123</span>
+<span class="n">MULTILINE</span> <span class="c1">#123 This is a line</span>
+<span class="n">that</span> <span class="n">continues</span> <span class="n">on</span>
+<span class="n">because</span> <span class="n">of</span> <span class="n">the</span> <span class="n">line</span> <span class="n">feed</span> <span class="p">(</span><span class="n">a</span> <span class="n">control</span><span class="o">-</span><span class="n">M</span><span class="p">)</span> <span class="n">on</span> <span class="n">each</span> <span class="n">line</span>
+<span class="n">on</span> <span class="n">the</span> <span class="n">lines</span> <span class="n">above</span>
+</pre></div>
 </div>
 </div>
-<div class="section" id="id66">
-<h5><span class="section-number">10.5.2.1.2. </span>Register variables<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h5>
-<p>REGISTER       Q            CONTENTS (or leave null to clear)</p>
+</div>
+<div class="section" id="id2">
+<h5><span class="section-number">10.5.2.1.2. </span>Register variables<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REGISTER</span>       <span class="n">Q</span>            <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="section" id="examples-the-last-example-clears-register-0">
 <h6><span class="section-number">10.5.2.1.2.1. </span>Examples (The last example clears register 0)<a class="headerlink" href="#examples-the-last-example-clears-register-0" title="Permalink to this headline">¶</a></h6>
-<p>W Q This is stored in register W
-1 Q This is stored in register 1
-0 Q
-foo QN this sets register with label ‘foo’</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">W</span> <span class="n">Q</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">stored</span> <span class="ow">in</span> <span class="n">register</span> <span class="n">W</span>
+<span class="mi">1</span> <span class="n">Q</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">stored</span> <span class="ow">in</span> <span class="n">register</span> <span class="mi">1</span>
+<span class="mi">0</span> <span class="n">Q</span>
+<span class="n">foo</span> <span class="n">QN</span> <span class="n">this</span> <span class="n">sets</span> <span class="n">register</span> <span class="k">with</span> <span class="n">label</span> <span class="s1">&#39;foo&#39;</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="example-bash-script">
 <h3><span class="section-number">10.5.3. </span>Example bash script<a class="headerlink" href="#example-bash-script" title="Permalink to this headline">¶</a></h3>
-<p>#!/bin/bash
-echo “This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}”
-echo “Displaying Registers:”
-regs=”0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z”
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+echo &quot;This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}&quot;
+echo &quot;Displaying Registers:&quot;
+regs=&quot;0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z&quot;
 for list in ${regs}
-do</p>
-<blockquote>
-<div><p>eval echo “Register ${list}: ${MUSHQ_${list}}”</p>
-</div></blockquote>
-<p>done
-echo “Displaying variables:”
+do
+    eval echo &quot;Register ${list}: \${MUSHQ_${list}}&quot;
+done
+echo &quot;Displaying variables:&quot;
 for vars in ${MUSHL_VARS}
-do</p>
-<blockquote>
-<div><p>eval echo “Variable ${vars}: ${MUSHV_${vars}}”</p>
-</div></blockquote>
-<p>done</p>
+do
+    eval echo &quot;Variable ${vars}: \${MUSHV_${vars}}&quot;
+done
+</pre></div>
+</div>
 </div>
 <div class="section" id="notes-and-warnings">
 <h3><span class="section-number">10.5.4. </span>Notes and warnings<a class="headerlink" href="#notes-and-warnings" title="Permalink to this headline">¶</a></h3>
@@ -583,36 +638,38 @@ on the target that contains the execscript() that is being executed.</p>
 </div>
 <div class="section" id="scripts-to-be-used-with-execscript">
 <h3><span class="section-number">10.5.5. </span>Scripts to be used with execscript<a class="headerlink" href="#scripts-to-be-used-with-execscript" title="Permalink to this headline">¶</a></h3>
-<p>account/                       – Directory for execscripts relating to account creation
-compile39.sh                   – Script for patching and compiling RhostMUSH 3.9
-compile.sh                     – Script for patching and compiling RhostMUSH
-config.sh                      – Script for setting compile time options for RhostMUSH
-debug.sh                       – Script for debugging RhostMUSH
-dict.sh                        – Script for querying a dictionary
-diff.sh                        – Script for querying differences between two arguments
-fortune.sh                     – Script for querying fortune program
-fullweather.sh                 – Script for querying a graphical weather forecast (alternative)
-git.sh                         – Script for querying git version of RhostMUSH
-hello.sh                       – Script for teaching execscript for ‘Hello World’
-iostat.sh                      – Script for querying server stats of RhostMUSH
-jsonvalidate.sh                – Python Script for validating JSON
-logsearch.sh                   – Script for searching throgh logfiles for RhostMUSH
-math_example.sh                – Examples of math operations to be used with math.sh
-math.sh                        – Script for mathematical operations
-memory.sh                      – Script for querying memory usage of RhostMUSH
-mkindx.sh                      – Script for indexing RhostMSH helpfiles
-pastebinread.sh                – Script for reading data from a pastebin URL
-pastebinwrite.sh               – Script for writing data to a pastebin
-qspell.sh                      – Script for checking spelling (alternative)
-quota.sh                       – Script for checking disk quote and usage
-random.sh                      – Script for getting a random number
-roomlog.sh                     – Script for viewing logs in roomlog directory
-spell.sh                       – Script for checking spelling
-stats.sh                       – Script for querying server and process stats for RhostMUSH
-thes.sh                        – Script for adding a word to the dictionary for spell scripts
-tinyurl.sh                     – Script for shortening a URL
-weather.sh                     – Script for querying a graphical weather forecast
-web.sh                         – Script for querying an arbitary website</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">account</span><span class="o">/</span>                       <span class="o">--</span> <span class="n">Directory</span> <span class="k">for</span> <span class="n">execscripts</span> <span class="n">relating</span> <span class="n">to</span> <span class="n">account</span> <span class="n">creation</span>
+<span class="n">compile39</span><span class="o">.</span><span class="n">sh</span>                   <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span> <span class="mf">3.9</span>
+<span class="nb">compile</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span>
+<span class="n">config</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">setting</span> <span class="nb">compile</span> <span class="n">time</span> <span class="n">options</span> <span class="k">for</span> <span class="n">RhostMUSH</span>
+<span class="n">debug</span><span class="o">.</span><span class="n">sh</span>                       <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">debugging</span> <span class="n">RhostMUSH</span>
+<span class="nb">dict</span><span class="o">.</span><span class="n">sh</span>                        <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">a</span> <span class="n">dictionary</span>
+<span class="n">diff</span><span class="o">.</span><span class="n">sh</span>                        <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">differences</span> <span class="n">between</span> <span class="n">two</span> <span class="n">arguments</span>
+<span class="n">fortune</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">fortune</span> <span class="n">program</span>
+<span class="n">fullweather</span><span class="o">.</span><span class="n">sh</span>                 <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">a</span> <span class="n">graphical</span> <span class="n">weather</span> <span class="n">forecast</span> <span class="p">(</span><span class="n">alternative</span><span class="p">)</span>
+<span class="n">git</span><span class="o">.</span><span class="n">sh</span>                         <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">git</span> <span class="n">version</span> <span class="n">of</span> <span class="n">RhostMUSH</span>
+<span class="n">hello</span><span class="o">.</span><span class="n">sh</span>                       <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">teaching</span> <span class="n">execscript</span> <span class="k">for</span> <span class="s1">&#39;Hello World&#39;</span>
+<span class="n">iostat</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">server</span> <span class="n">stats</span> <span class="n">of</span> <span class="n">RhostMUSH</span>
+<span class="n">jsonvalidate</span><span class="o">.</span><span class="n">sh</span>                <span class="o">--</span> <span class="n">Python</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">validating</span> <span class="n">JSON</span>
+<span class="n">logsearch</span><span class="o">.</span><span class="n">sh</span>                   <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">searching</span> <span class="n">throgh</span> <span class="n">logfiles</span> <span class="k">for</span> <span class="n">RhostMUSH</span>
+<span class="n">math_example</span><span class="o">.</span><span class="n">sh</span>                <span class="o">--</span> <span class="n">Examples</span> <span class="n">of</span> <span class="n">math</span> <span class="n">operations</span> <span class="n">to</span> <span class="n">be</span> <span class="n">used</span> <span class="k">with</span> <span class="n">math</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">math</span><span class="o">.</span><span class="n">sh</span>                        <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">mathematical</span> <span class="n">operations</span>
+<span class="n">memory</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">memory</span> <span class="n">usage</span> <span class="n">of</span> <span class="n">RhostMUSH</span>
+<span class="n">mkindx</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">indexing</span> <span class="n">RhostMSH</span> <span class="n">helpfiles</span>
+<span class="n">pastebinread</span><span class="o">.</span><span class="n">sh</span>                <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">reading</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">pastebin</span> <span class="n">URL</span>
+<span class="n">pastebinwrite</span><span class="o">.</span><span class="n">sh</span>               <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">writing</span> <span class="n">data</span> <span class="n">to</span> <span class="n">a</span> <span class="n">pastebin</span>
+<span class="n">qspell</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">checking</span> <span class="n">spelling</span> <span class="p">(</span><span class="n">alternative</span><span class="p">)</span>
+<span class="n">quota</span><span class="o">.</span><span class="n">sh</span>                       <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">checking</span> <span class="n">disk</span> <span class="n">quote</span> <span class="ow">and</span> <span class="n">usage</span>
+<span class="n">random</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">getting</span> <span class="n">a</span> <span class="n">random</span> <span class="n">number</span>
+<span class="n">roomlog</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">viewing</span> <span class="n">logs</span> <span class="ow">in</span> <span class="n">roomlog</span> <span class="n">directory</span>
+<span class="n">spell</span><span class="o">.</span><span class="n">sh</span>                       <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">checking</span> <span class="n">spelling</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">sh</span>                       <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">server</span> <span class="ow">and</span> <span class="n">process</span> <span class="n">stats</span> <span class="k">for</span> <span class="n">RhostMUSH</span>
+<span class="n">thes</span><span class="o">.</span><span class="n">sh</span>                        <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">adding</span> <span class="n">a</span> <span class="n">word</span> <span class="n">to</span> <span class="n">the</span> <span class="n">dictionary</span> <span class="k">for</span> <span class="n">spell</span> <span class="n">scripts</span>
+<span class="n">tinyurl</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">shortening</span> <span class="n">a</span> <span class="n">URL</span>
+<span class="n">weather</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">a</span> <span class="n">graphical</span> <span class="n">weather</span> <span class="n">forecast</span>
+<span class="n">web</span><span class="o">.</span><span class="n">sh</span>                         <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">an</span> <span class="n">arbitary</span> <span class="n">website</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="using-printf-for-advanced-text-output">
@@ -633,18 +690,18 @@ screens and data display.  It can automatically center, justify and wrap the tex
 </div>
 <div class="section" id="example-two">
 <h3><span class="section-number">10.6.2. </span>Example two<a class="headerlink" href="#example-two" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  @emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
-  iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
-  iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
-  * Aggravated%RX Lethal%R/ Bashing)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
+iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
+iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
+* Aggravated%RX Lethal%R/ Bashing)
 
-      Bruised      [ ]    * Aggravated
-         Hurt  -1  [ ]        X Lethal
-      Injured  -1  [ ]       / Bashing
-      Wounded  -2  [ ]
-       Mauled  -2  [ ]
-     Crippled  -5  [ ]
-Incapacitated      [ ]
+         Bruised      [ ]    * Aggravated
+            Hurt  -1  [ ]        X Lethal
+         Injured  -1  [ ]       / Bashing
+         Wounded  -2  [ ]
+          Mauled  -2  [ ]
+        Crippled  -5  [ ]
+   Incapacitated      [ ]
 </pre></div>
 </div>
 </div>
@@ -670,45 +727,151 @@ blah blah blah blah blah blah blah                                    END!
 <div class="section" id="format-for-image-files">
 <h1><span class="section-number">11. </span>Format for image files<a class="headerlink" href="#format-for-image-files" title="Permalink to this headline">¶</a></h1>
 <p>The image format goes like this:</p>
-<p>Data Type  Example  Description
-———  ——-  ———————————————————-
-INT        3        TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5
-STRING     Wizard   NAME: of the target.  Verbatum, no quotes surround it
-<a href="#id67"><span class="problematic" id="id68">*</span></a>INT       123      LOCATION: dbref# of the target.  No prepending ‘#’ used.
-<a href="#id69"><span class="problematic" id="id70">*</span></a>INT       234      CONTENTS: The first content in a linked list content table (-1 if none)
-<a href="#id71"><span class="problematic" id="id72">*</span></a>INT       345      EXITS: The first exit in a linked list exit table (-1 if none)
-<a href="#id73"><span class="problematic" id="id74">*</span></a>INT       0        LINK: This is the ‘home’ of the object or what it’s linked to (-1 for none)
-<a href="#id75"><span class="problematic" id="id76">*</span></a>INT       123      NEXT: The next thing after this item for a content holder
-STRING     #123     LOCK: The boolean string lock if it exists.  (empty if no lock)
-<a href="#id77"><span class="problematic" id="id78">*</span></a>INT       1        OWNER: The dbref# owner of the target.  For players same dbref as player.
-INT        789      PARENT: The parent of the target.  (-1 if none)
-<a href="#id79"><span class="problematic" id="id80">*</span></a>INT       99999    MONEY: The int value of the money the players has.
-INT        194592   FLAGS1: The first word of flags (&#64;set flags) on a player      (see FLAGS)
-INT        194222   FLAGS2: The second word of flags (&#64;set flags) on a player     (see FLAGS)
-INT        199999   FLAGS3: The third word of flags (&#64;set flags []) on a player   (see FLAGS)
-INT        1582958  FLAGS4: The forth word of flags (&#64;set flags []) on a player   (see FLAGS)
-INT        159955   TOGGLES1: The first word of toggles (&#64;toggle) on a player    (see TOGGLES)
-INT        159958   TOGGLES2: The second word of toggles (&#64;toggle) on a player   (see TOGGLES)
-INT        159958   POWER1: The first word of powers (&#64;power) on a player         (see POWERS)
-INT        159958   POWER2: The second word of powers (&#64;power) on a player        (see POWERS)
-INT        159958   POWER3: The third word of powers (&#64;power) on a player         (see POWERS)
-INT        159958   DEPOWER1: The first word of depowers (&#64;depower) on a player  (see DEPOWERS)
-INT        159958   DEPOWER2: The second word of depowers (&#64;depower) on a player (see DEPOWERS)
-INT        159958   DEPOWER3: The third word of depowers (&#64;depower) on a player  (see DEPOWERS)
-INT        -1       ZONE(S): The list of zones starting here and ending with ‘-1’. (see ZONES)
-&gt;STRING    &gt;VA      ATTRIBUTENAME: Attribute name to store, starts with &gt; identifier
-STRING     Wheee    ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)
-&gt;STRING    &gt;Desc    ATTRIBUTENAME: Another attribute to chain in
-STRING     Ugly     ATTRIBUTECONTENTS: Contents of the next attribute
-&gt;STRING    <a href="#id81"><span class="problematic" id="id82">*</span></a>Password PASSWORDATTRIB: Special password attribute.  Attribute name is ‘<a href="#id83"><span class="problematic" id="id84">*</span></a>Password’
-STRING     $6$xy$xy PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)
-&lt;          &lt;        This is the marker to specify the end of the attribute contents.  This is always the last line</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 82%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Data Type</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>3</p></td>
+<td><p>TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRING</p></td>
+<td><p>Wizard</p></td>
+<td><p>NAME: of the target.  Verbatum, no quotes surround it</p></td>
+</tr>
+<tr class="row-even"><td><p>*INT</p></td>
+<td><p>123</p></td>
+<td><p>LOCATION: dbref# of the target.  No prepending ‘#’ used.</p></td>
+</tr>
+<tr class="row-odd"><td><p>*INT</p></td>
+<td><p>234</p></td>
+<td><p>CONTENTS: The first content in a linked list content table (-1 if none)</p></td>
+</tr>
+<tr class="row-even"><td><p>*INT</p></td>
+<td><p>345</p></td>
+<td><p>EXITS: The first exit in a linked list exit table (-1 if none)</p></td>
+</tr>
+<tr class="row-odd"><td><p>*INT</p></td>
+<td><p>0</p></td>
+<td><p>LINK: This is the ‘home’ of the object or what it’s linked to (-1 for none)</p></td>
+</tr>
+<tr class="row-even"><td><p>*INT</p></td>
+<td><p>123</p></td>
+<td><p>NEXT: The next thing after this item for a content holder</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRING</p></td>
+<td><p>#123</p></td>
+<td><p>LOCK: The boolean string lock if it exists.  (empty if no lock)</p></td>
+</tr>
+<tr class="row-even"><td><p>*INT</p></td>
+<td><p>1</p></td>
+<td><p>OWNER: The dbref# owner of the target.  For players same dbref as player.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>789</p></td>
+<td><p>PARENT: The parent of the target.  (-1 if none)</p></td>
+</tr>
+<tr class="row-even"><td><p>*INT</p></td>
+<td><p>99999</p></td>
+<td><p>MONEY: The int value of the money the players has.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>194592</p></td>
+<td><p>FLAGS1: The first word of flags (&#64;set flags) on a player      (see FLAGS)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>194222</p></td>
+<td><p>FLAGS2: The second word of flags (&#64;set flags) on a player     (see FLAGS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>199999</p></td>
+<td><p>FLAGS3: The third word of flags (&#64;set flags []) on a player   (see FLAGS)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>1582958</p></td>
+<td><p>FLAGS4: The forth word of flags (&#64;set flags []) on a player   (see FLAGS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>159955</p></td>
+<td><p>TOGGLES1: The first word of toggles (&#64;toggle) on a player    (see TOGGLES)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>TOGGLES2: The second word of toggles (&#64;toggle) on a player   (see TOGGLES)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>POWER1: The first word of powers (&#64;power) on a player         (see POWERS)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>POWER2: The second word of powers (&#64;power) on a player        (see POWERS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>POWER3: The third word of powers (&#64;power) on a player         (see POWERS)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>DEPOWER1: The first word of depowers (&#64;depower) on a player  (see DEPOWERS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>DEPOWER2: The second word of depowers (&#64;depower) on a player (see DEPOWERS)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>DEPOWER3: The third word of depowers (&#64;depower) on a player  (see DEPOWERS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>-1</p></td>
+<td><p>ZONE(S): The list of zones starting here and ending with ‘-1’. (see ZONES)</p></td>
+</tr>
+<tr class="row-even"><td><p>&gt;STRING</p></td>
+<td><p>&gt;VA</p></td>
+<td><p>ATTRIBUTENAME: Attribute name to store, starts with &gt; identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRING</p></td>
+<td><p>Wheee</p></td>
+<td><p>ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)</p></td>
+</tr>
+<tr class="row-even"><td><p>&gt;STRING</p></td>
+<td><p>&gt;Desc</p></td>
+<td><p>ATTRIBUTENAME: Another attribute to chain in</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRING</p></td>
+<td><p>Ugly</p></td>
+<td><p>ATTRIBUTECONTENTS: Contents of the next attribute</p></td>
+</tr>
+<tr class="row-even"><td><p>&gt;STRING</p></td>
+<td><p>*Password</p></td>
+<td><p>PASSWORDATTRIB: Special password attribute.  Attribute name is ‘*Password’</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRING</p></td>
+<td><p>$6$xy$xy</p></td>
+<td><p>PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;</p></td>
+<td><p>&lt;</p></td>
+<td><p>This is the marker to specify the end of the attribute contents.  This is always the last line</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Any Data type starting with ‘*’ is ignored when &#64;snapshot/loading.</p>
 </div>
 <p>The structure above with the examples would look like this in the file:</p>
-<p>3
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>3
 Wizard
 123
 234
@@ -738,7 +901,9 @@ Wheee
 Ugly
 &gt;*Password
 $6$xy$xy
-&lt;</p>
+&lt;
+</pre></div>
+</div>
 <div class="section" id="help-key-indexes-for-the-values">
 <h2><span class="section-number">11.1. </span>HELP key indexes for the values:<a class="headerlink" href="#help-key-indexes-for-the-values" title="Permalink to this headline">¶</a></h2>
 <dl class="simple">
@@ -774,7 +939,7 @@ $6$xy$xy
 #define SAFE            0x10000000      /</em> Need /override to &#64;destroy <em>/
 #define CONTROL_OK      0x20000000      /</em> ControlLk specifies who ctrls me <em>/
 #define HEARTHRU        0x40000000      /</em> Can hear out of this obj or exit <em>/
-#define TERSE           0x80000000      /</em> Only show room name on look <a href="#id85"><span class="problematic" id="id86">*</span></a>/</p>
+#define TERSE           0x80000000      /</em> Only show room name on look <a href="#id3"><span class="problematic" id="id4">*</span></a>/</p>
 <p>/* Second word of flags <em>/
 #define KEY             0x00000001      /</em> No puppets <em>/
 #define ABODE           0x00000002      /</em> May &#64;set home here <em>/
@@ -807,7 +972,7 @@ $6$xy$xy
 #define SUSPECT         0x10000000      /</em> Report some activities to wizards <em>/
 #define BUILDER         0x20000000      /</em> Player has architect privs <em>/
 #define CONNECTED       0x40000000      /</em> Player is connected <em>/
-#define SLAVE           0x80000000      /</em> Disallow most commands <a href="#id87"><span class="problematic" id="id88">*</span></a>/</p>
+#define SLAVE           0x80000000      /</em> Disallow most commands <a href="#id5"><span class="problematic" id="id6">*</span></a>/</p>
 <p>/* Third word of flags - Thorin 3/95 <em>/
 #define NOCONNECT       0x00000001
 #define DPSHIFT         0x00000002
@@ -840,7 +1005,7 @@ $6$xy$xy
 #define ZONECONTENTS    0x10000000      /</em> Search contents of zonemaster for $commands <em>/
 #define NOWHO           0x20000000      /</em> Player in WHO doesn’t show up - use with &#64;hide <em>/
 #define ANONYMOUS       0x40000000      /</em> Player set shows up as ‘Someone’ when talking <em>/
-#define BACKSTAGE       0x80000000      /</em> Immortal toggle for items on control <a href="#id89"><span class="problematic" id="id90">*</span></a>/</p>
+#define BACKSTAGE       0x80000000      /</em> Immortal toggle for items on control <a href="#id7"><span class="problematic" id="id8">*</span></a>/</p>
 <p>/* Forth word of flags - Thorin 3/95 <em>/
 #define NOBACKSTAGE     0x00000001      /</em> Immortal toggle to control no-backstage <em>/
 #define LOGIN           0x00000002      /</em> Enable player to login past &#64;disable logins <em>/
@@ -873,7 +1038,7 @@ $6$xy$xy
 /</em> 0x10000000 free <em>/
 /</em> 0x20000000 free <em>/
 /</em> 0x40000000 free <em>/
-/</em> 0x80000000 free <a href="#id91"><span class="problematic" id="id92">*</span></a>/</p>
+/</em> 0x80000000 free <a href="#id9"><span class="problematic" id="id10">*</span></a>/</p>
 <hr class="docutils" />
 <dl class="simple">
 <dt>TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like</dt><dd><p>the flags above.  They are added together for each word type</p>
@@ -911,7 +1076,7 @@ $6$xy$xy
 #define TOG_BRANDY_MAIL         0x10000000      /</em> Define brandy like mail interface <em>/
 #define TOG_FORCEHALTED         0x20000000      /</em> The item toggled can &#64;force halted things <em>/
 #define TOG_PROG                0x40000000      /</em> Can use &#64;program on other people/things <em>/
-#define TOG_NOSHELLPROG         0x80000000      /</em> Target can not issue commands inside a prog <a href="#id93"><span class="problematic" id="id94">*</span></a>/</p>
+#define TOG_NOSHELLPROG         0x80000000      /</em> Target can not issue commands inside a prog <a href="#id11"><span class="problematic" id="id12">*</span></a>/</p>
 <p>/* Second word of toggles – Ash <em>/
 #define TOG_EXTANSI             0x00000001      /</em> Specify if target can used extended ansi naming <em>/
 #define TOG_IMMPROG             0x00000002      /</em> Only an immortal can &#64;quitprogram them <em>/
@@ -946,13 +1111,13 @@ $6$xy$xy
 #define TOG_LOGROOMENH          0x20000000      /</em> Enhanced Room Logging <em>/
 #endif
 #define TOG_LOGROOM             0x40000000      /</em> Log Room’s location/contents <em>/
-#define TOG_NOGLOBPARENT        0x80000000      /</em> Target does not inherit global attributes <a href="#id95"><span class="problematic" id="id96">*</span></a>/</p>
+#define TOG_NOGLOBPARENT        0x80000000      /</em> Target does not inherit global attributes <a href="#id13"><span class="problematic" id="id14">*</span></a>/</p>
 <hr class="docutils" />
 <dl class="simple">
 <dt>POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift</dt><dd><p>markers that you would have to compute the shift then add it after
 the fact.</p>
 </dd>
-<dt>/* First word of power positions.  Each position is 2 bits so the</dt><dd><p>number here is how far over to shift the 2 bit pattern         <a href="#id97"><span class="problematic" id="id98">*</span></a>/</p>
+<dt>/* First word of power positions.  Each position is 2 bits so the</dt><dd><p>number here is how far over to shift the 2 bit pattern         <a href="#id15"><span class="problematic" id="id16">*</span></a>/</p>
 </dd>
 </dl>
 <p>#define POWER_CHANGE_QUOTAS     0
@@ -971,7 +1136,7 @@ the fact.</p>
 #define POWER_BOOT              26
 #define POWER_STEAL             28
 #define POWER_SEE_QUEUE         30</p>
-<p>/* Second word of power positions. <a href="#id99"><span class="problematic" id="id100">*</span></a>/
+<p>/* Second word of power positions. <a href="#id17"><span class="problematic" id="id18">*</span></a>/
 #define POWER_SHUTDOWN          0
 #define POWER_TEL_ANYWHERE      2
 #define POWER_TEL_ANYTHING      4
@@ -1003,13 +1168,13 @@ the fact.</p>
 /</em> 24 free <em>/
 /</em> 26 free <em>/
 /</em> 28 free <em>/
-/</em> 30 free <a href="#id101"><span class="problematic" id="id102">*</span></a>/</p>
+/</em> 30 free <a href="#id19"><span class="problematic" id="id20">*</span></a>/</p>
 <hr class="docutils" />
 <dl class="simple">
 <dt>DEPOWERS:  like &#64;powers they are handled with a BITWISE offshift that you</dt><dd><p>will have to calculate then add</p>
 </dd>
 </dl>
-<p>/* First word <a href="#id103"><span class="problematic" id="id104">*</span></a>/
+<p>/* First word <a href="#id21"><span class="problematic" id="id22">*</span></a>/
 #define DP_WALL                 0
 #define DP_LONG_FINGERS         2
 #define DP_STEAL                4
@@ -1059,7 +1224,7 @@ the fact.</p>
 /</em> 24 free <em>/
 /</em> 26 free <em>/
 /</em> 28 free <em>/
-/</em> 30 free <a href="#id105"><span class="problematic" id="id106">*</span></a>/</p>
+/</em> 30 free <a href="#id23"><span class="problematic" id="id24">*</span></a>/</p>
 <hr class="docutils" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1094,17 +1259,17 @@ that there are no more zones to add.</p>
 <li><a class="reference internal" href="#contributing-your-module-back-to-rhost">10.2.3. Contributing your module back to Rhost</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#shutting-down-gracefully">10.3. Shutting down gracefully</a><ul>
-<li><a class="reference internal" href="#rhostmush-has-many-ways-to-shut-down-the-game-cleanly">10.3.1. Rhostmush has many ways to shut down the game cleanly</a></li>
-<li><a class="reference internal" href="#warning-never-kill-9-rhost">10.3.2. WARNING: Never kill -9 Rhost</a></li>
+<li><a class="reference internal" href="#shutting-down-rhostmush-gracefully">10.3. Shutting down RhostMUSH gracefully</a><ul>
+<li><a class="reference internal" href="#there-are-a-few-ways-to-cleanly-shutdown-rhostmush">10.3.1. There are a few ways to cleanly shutdown RhostMUSH</a></li>
+<li><a class="reference internal" href="#warning-never-kill-9-rhostmush">10.3.2. WARNING: Never kill -9 RhostMUSH</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#reality-levels">10.4. Reality levels</a><ul>
-<li><a class="reference internal" href="#visibility">10.4.1. Visibility</a></li>
-<li><a class="reference internal" href="#descriptions">10.4.2. Descriptions</a></li>
-<li><a class="reference internal" href="#configuration-parameters">10.4.3. Configuration parameters</a></li>
-<li><a class="reference internal" href="#example-mush-conf">10.4.4. Example mush.conf</a></li>
-<li><a class="reference internal" href="#commands">10.4.5. Commands</a></li>
+<li><a class="reference internal" href="#reality-levels-setup">10.4. Reality Levels Setup</a><ul>
+<li><a class="reference internal" href="#reality-levels-visibility">10.4.1. Reality Levels Visibility</a></li>
+<li><a class="reference internal" href="#reality-levels-descriptions">10.4.2. Reality Levels Descriptions</a></li>
+<li><a class="reference internal" href="#reality-levels-configuration-parameters">10.4.3. Reality Levels Configuration parameters</a></li>
+<li><a class="reference internal" href="#reality-levels-example-mush-conf">10.4.4. Reality Levels Example mush.conf</a></li>
+<li><a class="reference internal" href="#reality-levels-commands">10.4.5. Reality Levels Commands</a></li>
 <li><a class="reference internal" href="#functions">10.4.6. Functions</a></li>
 <li><a class="reference internal" href="#example-1-a-simplified-witchcraft-setup">10.4.7. Example 1: A simplified Witchcraft setup</a></li>
 <li><a class="reference internal" href="#example-2-a-wod-setup">10.4.8. Example 2: A WoD setup</a></li>
@@ -1120,11 +1285,11 @@ that there are no more zones to add.</p>
 </li>
 <li><a class="reference internal" href="#set-object">10.5.2. set object</a><ul>
 <li><a class="reference internal" href="#the-format-of-the-fields-are">10.5.2.1. The format of the fields are</a><ul>
-<li><a class="reference internal" href="#id65">10.5.2.1.1. Dynamic variables</a><ul>
+<li><a class="reference internal" href="#id1">10.5.2.1.1. Dynamic variables</a><ul>
 <li><a class="reference internal" href="#examples">10.5.2.1.1.1. Examples</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id66">10.5.2.1.2. Register variables</a><ul>
+<li><a class="reference internal" href="#id2">10.5.2.1.2. Register variables</a><ul>
 <li><a class="reference internal" href="#examples-the-last-example-clears-register-0">10.5.2.1.2.1. Examples (The last example clears register 0)</a></li>
 </ul>
 </li>
