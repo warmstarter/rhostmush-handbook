@@ -125,21 +125,21 @@ RhostMUSH has many ways to shutdown the game cleanly
 #. Log into the mush and issue @shutdown
 #. Issue a kill -USR2 to the mush which issues an emergency @shutdown
 #. Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.
+#. Through the Autoshutdown script
 
-WARNING: Never kill -9 RhostMUSH
----------------------------------
+.. warning:: Never kill -9 RhostMUSH
 
-Under NO CIRCUMSTANCES should you kill -9 your mush unless you don't care for the 
-database.  The reason is if the mush happens to be saving, in any method, to the 
-database, especially a QDBM database, you will likely have just corrupted your
-database, so pull out a flatfile to recover.
+   Under NO CIRCUMSTANCES should you kill -9 your mush unless you don't care for the 
+   database.  The reason is if the mush happens to be saving, in any method, to the 
+   database, especially a QDBM database, you will likely have just corrupted your
+   database, so pull out a flatfile to recover.
 
-Sadly, this also may occur if the server hosting you takes a nose-dive in the middle
-of a db write.  Rhost can recover corruption in-game while up, but if it bombs
-in the middle of a write, all bets are off. :)
+   Sadly, this also may occur if the server hosting you takes a nose-dive in the middle
+   of a db write.  Rhost can recover corruption in-game while up, but if it bombs
+   in the middle of a write, all bets are off. :)
 
 Autoshutdown script
-===================
+-------------------
 
 The makefile will 'make' the program that will STOP the mush.
 Please tweek 'autolog.h' with the proper parameters.

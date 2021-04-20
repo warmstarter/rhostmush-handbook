@@ -386,7 +386,7 @@ The main parts of making your RhostMUSH, easy pleasy:
     #. 9  (if you want $commands to require the COMMAND flag)
     #. 16 (if you want a wider WHO listing like older versions of MUX)
     #. 22 (if you're converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
-    #.  24 (if you have issues with -lssl not being found)
+    #. 24 (if you have issues with -lssl not being found)
     #. B3 (for 64 character attribute names)
     #. B6 (select 8K for Penn/MUX2/TM3 default, up to 32K.  64K is network intensive)
     #. B5 (will be autoselected if you choose 8K or more.  Pick this anyway)

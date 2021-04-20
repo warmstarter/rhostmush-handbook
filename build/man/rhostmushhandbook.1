@@ -1,6 +1,6 @@
 .\" Man page generated from reStructuredText.
 .
-.TH "RHOSTMUSHHANDBOOK" "1" "Apr 19, 2021" "0.01a" "RhostMUSH Handbook"
+.TH "RHOSTMUSHHANDBOOK" "1" "Apr 20, 2021" "0.01a" "RhostMUSH Handbook"
 .SH NAME
 rhostmushhandbook \- RhostMUSH Handbook 
 .
@@ -783,6 +783,13 @@ Setup new character, staff, and take tasks that can only be accomplished by #1
 .IP 8. 3
 Set up any other characters you want.  Anyone immortal can issue @function, @admin, or anything #1 can do.
 .UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.SS Todo
+.sp
+Figure out what they were trying to say by having those above two sentences right after each other.
+.UNINDENT
+.UNINDENT
 .SS Customtize the textfiles for your game
 .INDENT 0.0
 .INDENT 3.5
@@ -794,6 +801,13 @@ all files and how they inter\-relate with ‘wizhelp file’.
 .SS Three Options for Starting a MUSH
 .sp
 The RhostMUSH Git Repository comes with three options for starting your Mush.
+.INDENT 0.0
+.INDENT 3.5
+.SS Todo
+.sp
+Well, there’s also some other pre\-existing DB or upgrading, so let’s try to make this a little more coherent.
+.UNINDENT
+.UNINDENT
 .SS Option 1: Creating a new game with a blank database
 .INDENT 0.0
 .INDENT 3.5
@@ -2144,21 +2158,37 @@ There are differences in the initial set up from Rhost to PennMUSH (and MUX2).
 .sp
 A lot of people use PennMUSH and if you are one of them, this may help you.
 Some people use MUX2, hopefully this will help you as well.
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
-.TP
-.B NOTE:  If you plan to use sideeffects, you must set the SIDEFX flag to allow
+.INDENT 3.5
+If you plan to use sideeffects, you must set the SIDEFX flag to allow
 the target to use it
-.TP
-.B NOTE:  Rhost does support UNICODE/UTF8, but it’s currently not part of the main
+.UNINDENT
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Rhost does support UNICODE/UTF8, but it’s currently not part of the main
 branch as of this writing.  Please talk to Kage on the dev site for more
 information on when it’ll be released.
+.UNINDENT
 .UNINDENT
 .SS Organization of help and wizhelp
 .sp
 First, on PennMUSH, help is separated into ‘help’ and ‘wizhelp’.  This can
 be confusing. If you want to ‘combine’ them, you may use the following snippit:
+.INDENT 0.0
+.INDENT 3.5
 .sp
-$ahelp*:@pemit %#=[switch([!!words(%0)][match(/search,%0*)],0?,[setq(0,help)][setq(1,0)],11,[setq(0,rest(%0))][setq(1,2)],setq(0,trim(%0)))][setq(a,textfile(help,%q0,%q1))][setq(b,textfile(wizhelp,%q0,%q1))][setq(2,)][ifelse(!strmatch(%qa,No entry*),%qa[setq(2,%r)])][ifelse(!strmatch(%qb,No entry*),%q2%qb[setq(2,%r)])][ifelse(!$r(2),No topics found for ‘%q0’.)]
+.nf
+.ft C
+$ahelp*:@pemit %#=[switch([!!words(%0)][match(/search,%0*)],0?,[setq(0,help)][setq(1,0)],11,[setq(0,rest(%0))][setq(1,2)],setq(0,trim(%0)))][setq(a,textfile(help,%q0,%q1))][setq(b,textfile(wizhelp,%q0,%q1))][setq(2,)][ifelse(!strmatch(%qa,No entry*),%qa[setq(2,%r)])][ifelse(!strmatch(%qb,No entry*),%q2%qb[setq(2,%r)])][ifelse(!$r(2),No topics found for \(aq%q0\(aq.)]
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 This will display help from help and wizhelp for any matching topic.  It
 should make life easier for you.  This also honors the /search switch.
@@ -2168,7 +2198,12 @@ The comsystem is softcode and included in the readme directory. (comsys).
 Just load it in.  The mail wrappers can be gotten from:
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 The Mushcode directory in the Rhost Distribution.
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .sp
@@ -2184,8 +2219,12 @@ PennMUSH 1.8.6p0
 .sp
 The following are used for compatibility to keep in mind:
 .INDENT 0.0
-.TP
-.B @commands Pennmush—————\-RhostMUSH———————\-MUX2
+.INDENT 3.5
+.sp
+.nf
+.ft C
+Pennmush                RhostMUSH                      MUX2
+
 @@                      @@                             @@
 @ALLHALT                @halt/all                      @HALT/ALL
 @ALLQUOTA               @quota/all                     @QUOTA/ALL
@@ -2399,10 +2438,18 @@ WARN_ON_MISSING         N/A                            N/A
 WHISPER                 whisper                        WHISPER
 WHO                     who                            WHO
 WITH                    N/A                            N/A
+.ft P
+.fi
+.UNINDENT
 .UNINDENT
 .SS @commands unique to RhostMUSH
 .sp
 Commands that exist in Rhost that have no PennMUSH equivelant:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 @aflags                      @apply_marked                 @areg
 @blacklist                   @cluster                      @conncheck
 @convert                     @cut                          @dbclean
@@ -2423,10 +2470,18 @@ grab                         join                          listen
 mrpage                       newsdb                        rpage
 smell                        taste                         touch
 wielded                      worn                          +players
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS @lock equivalents
 .INDENT 0.0
-.TP
-.B @locks PennMUSH—————RhostMUSH———————————–MUX2
+.INDENT 3.5
+.sp
+.nf
+.ft C
+PennMUSH               RhostMUSH                                   MUX2
+
 BASIC                  BASIC/DEFAULT                               DEFAULT
 ENTER                  ENTER                                       ENTER
 TELEPORT               TPORT                                       TPORT
@@ -2463,16 +2518,30 @@ TAKE                   GETFROM                                     GETFROM
 MAILFORWARD            mail/lock, mail/autofor                     N/A
 N/A                    TELOUT                                      TELOUT
 N/A                    DARK                                        VISIBLE
+.ft P
+.fi
 .UNINDENT
-.SS @locks that only exist in RhostMUSH
+.UNINDENT
+.SS @locks that exist in Rhost that have no PennMUSH equivelant
+.INDENT 0.0
+.INDENT 3.5
 .sp
-@locks that exist in Rhost that have no PennMUSH equivelant:
+.nf
+.ft C
 TELOUTLOCK                   TWINKLOCK                     DARKLOCK
 ALTNAME                      CHOWN
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Flag and toggle equivalents
 .INDENT 0.0
-.TP
-.B FLAGS Pennmush—————\-RhostMUSH——————————MUX2
+.INDENT 3.5
+.sp
+.nf
+.ft C
+Pennmush                RhostMUSH                              MUX2
+
 ABODE                   ABODE                                  ABODE
 N/A                     N/A                                    ASCII
 ANSI                    ANSI                                   ANSI
@@ -2498,7 +2567,7 @@ HALT                    HALT                                   HALT
 HAVEN                   HAVEN                                  HAVEN
 (see @flag)             (marker0\-marker9)                      HEAD
 HEAR_CONNECT            MONITOR (@toggle)                      SITECON
-HEAVY                   \fI\%NO_TEL/@lock\-teleport\fP                  N/A
+HEAVY                   NO_TEL/@lock\-teleport                  N/A
 N/A                     N/A                                    HTML
 N/A                     FREE                                   IMMORTAL
 N/A                     INHERIT                                INHERIT
@@ -2519,7 +2588,7 @@ NOACCENTS               ACCENTS (@toggle)                      ACCENTS
 NOSPOOF                 NOSPOOF                                NOSPOOF
 (See @ns\-commands)      Auto\-Enabled for Wiz+                  SPOOF
 NO_COMMAND              NO_COMMAND                             NO_COMMAND
-NO_LEAVE                @icmd \fI\%leave/@lock\-leave\fP                @icmd \fI\%leave/@lock\-leave\fP
+NO_LEAVE                @icmd leave/@lock\-leave                @icmd leave/@lock\-leave
 NO_TEL                  NO_TEL                                 N/A
 ON\-VACATION             MARKER0\-MARKER9                        VACATION
 OPAQUE                  OPAQUE                                 OPAQUE
@@ -2545,10 +2614,18 @@ VERBOSE                 VERBOSE                                VERBOSE
 VISUAL                  VISUAL                                 VISUAL
 WIZARD                  WIZARD/IMMORTAL                        WIZARD
 XTERM256                XTERMCOLOR                             COLOR256
+.ft P
+.fi
+.UNINDENT
 .UNINDENT
 .SS Flags and toggles that only exist in RhostMUSH
-.SS Flags
 .sp
+Flags:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 ALTQUOTA                     ANONYMOUS                     ARCHITECT
 AUDITORIUM                   BLIND                         BOUNCE
 CLOAK                        COUNCILOR                     FUBAR
@@ -2564,8 +2641,17 @@ SCLOAK                       SEE_OEMIT                     SHOWFAILCMD
 SIDEFX                       SPAMMONITOR                   SPOOF
 STOP                         WANDERER                      ZONECONTENTS
 ZONEPARENT
-.SS Toggles
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
+Toggles:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 ATRUSE                       CHKREALITY                    CPUTIME
 EXFULLWIZATTR                FORCEHALTED                   HIDEIDLE
 IGNOREZONE                   IMMPROG                       LOGROOM
@@ -2581,14 +2667,22 @@ NO_FORMAT                    NO_TIMESTAMP                  PAGELOCK
 PROG                         PROG_ON_CONNECT               SAFELOG
 SEE_SUSPECT                  SILENTEFFECT                  SNUFFDARK
 ZONECMDCHK                   ZONE_AUTOADD                  ZONE_AUTOADDALL
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS @power equivalents
 .INDENT 0.0
-.TP
-.B @powers Pennmush—————\-RhostMUSH——————————————MUX2
+.INDENT 3.5
+.sp
+.nf
+.ft C
+Pennmush                RhostMUSH                                          MUX2
+
 Announce                FREE_WALL                                          Announce
 Boot                    BOOT                                               Boot
 Builder                 @quota !WANDERER (flag)                            Builder
-CAN_DARK                @admin \fI\%player_dark/@depower\fP dark                   N/A
+CAN_DARK                @admin player_dark/@depower dark                   N/A
 Can_spoof               N/A \- Wizard+ auto\-spoof                           N/A
 Cemit                   N/A                                                N/A
 N/A                     CHOWN_OTHER                                        chown_anything
@@ -2616,7 +2710,7 @@ PICK_DBREFS             Wizard+ only                                       N/A
 PUEBLO_SEND             N/A                                                N/A
 Pemit_All               LONG_FINGERS                                       N/A
 Player_Create           PCREATE                                            N/A
-Poll                    N/A – Softcode @doing/header                      Poll
+Poll                    N/A \-\- Softcode @doing/header                      Poll
 N/A                     PROG (@toggle)                                     Prog
 Queue                   SEE_QUEUE/SEE_QUEUE_ALL/HALT_QUEUE/HALT_QUEUE_ALL  N/A
 Quotas                  CHANGE_QUOTAS                                      N/A
@@ -2630,22 +2724,38 @@ N/A                     STAT_ANY                                           Stat_
 Tport_Anything          TEL_ANYTHING                                       Tel_anything
 Tport_Anywhere          TEL_ANYWHERE                                       Tel_anywhere
 Unkillable              NOKILL                                             Unkillable
+.ft P
+.fi
+.UNINDENT
 .UNINDENT
 .SS @power unique to RhostMUSH
 .sp
 Depowers are unique in Rhost and PennMUSH has no equivelant.
 .sp
 Powers that exist in RhostMUSH that have no match in PennMUSH:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 CHOWN_ME                     WIZ_WHO                       NOFORCE
 FREE_QUOTA                   JOIN_PLAYER                   NO_BOOT
 STAT_ANY                     WHO_UNFIND                    SHUTDOWN
 PURGE                        CHOWN_ANYWHERE                CHOWN_OTHER
 GRAB_PLAYER                  SECURITY                      WRAITH
 HIDEBIT
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Functions equivalents
 .INDENT 0.0
-.TP
-.B Functions Pennmush—————\-RhostMUSH——————–MUX
+.INDENT 3.5
+.sp
+.nf
+.ft C
+Pennmush                RhostMUSH                    MUX
+
 @@                      @@                           @@
 ABS                     ABS                          ABS/IABS
 ACCENT                  ACCENT                       ACCENT
@@ -2749,7 +2859,7 @@ DECRYPT                 DECRYPT                      DECRYPT
 DEFAULT                 DEFAULT                      DEFAULT
 N/A                     DESTROY                      DESTROY
 DIE                     DICE                         DIE
-DIG                     DIG                          CREATE(with ‘r’)
+DIG                     DIG                          CREATE(with \(aqr\(aq)
 DIGEST                  DIGEST                       DIGEST
 N/A                     TIMEFMT                      DIGITTIME
 DIST2D                  DIST2D                       DIST2D
@@ -3202,10 +3312,18 @@ ZFUN                    ZFUN                         ZFUN
 ZMWHO                   ZWHO + STREVAL at mortal     N/A
 ZONE                    LZONE                        ZONE
 ZWHO                    ZWHO                         ZWHO
+.ft P
+.fi
+.UNINDENT
 .UNINDENT
 .SS Functions that only exist in RhostMUSH
 .sp
 Functions that exist in Rhost that do not have a match in PennMUSH:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 AIINDEX                      AINDEX                        ANDCHR
 ARRAY                        ATTRCNT                       BETWEEN
 BITTYPE                      CANSEE                        CAPLIST
@@ -3261,6 +3379,10 @@ WHILE                        WILDMATCH                     WRAPCOLUMNS
 WRITABLE                     XNOR                          XORCHR
 XORFLAG                      ZFUNDEFAULT                   ZFUNEVAL
 ZFUNLDEFAULT                 ZFUNLOCAL
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost
 .sp
 RhostMUSH, for the most part, will work out of the box with most softcode gotten
@@ -3658,8 +3780,8 @@ for attribute names.  It’s handy to have.
 .sp
 If you wish at this point to set up mysql and/or sqlite, you  may do so.
 Yes, you can use them in parallel without any issue.
-.SH GETTIN STARTED
-.SS What to ype to get the basics running if you did not choose a pre\-existing flatfile
+.SH GETTING STARTED
+.SS What to type to get the basics running if you did not choose a pre\-existing flatfile
 .sp
 If you decided to get a bare\-bone configuration, you will find your mush has just two things.  The #1 (God) player and the starting room #0.  That’s it.
 .SS Login to #1 from the connect screen
@@ -4197,7 +4319,7 @@ type:
 .IP 4. 3
 Startmush as expected
 .UNINDENT
-.SS Ambrosia’s Minimal Rhost DB
+.SH AMBROSIA’S MINIMAL RHOST DB
 .SS Version: 1.0.5          2020\-01\-31
 .INDENT 0.0
 .TP
@@ -4597,38 +4719,12 @@ settings I have used when creating this database. Some settings, like the ANSI
 substitution, are used in the DB.
 .sp
 \fI\%–Ambrosia@RhostMUSH\fP
-.SH WHAT FLAGS, TOGGLES, POWERS, DEPOWERS, AND BITLEVELS MEAN IN RHOSTMUSH
-.SS What are Flags?
+.SH MULTI-TIERED BITLEVEL SYSTEMS
+.SS Altering bitlevels
 .sp
-Flags are pretty much exactly the same as any other mush.  It’s a flag
-that you set or unset on a target which then enables/disables or
-alters something that target can do.  There’s help on all the flags
-in help and wizhelp.
-.SS What are Toggles?
-.sp
-Toggles were designed as a single point flag that immediately enables
-or disables a set ability or condition, thus a ‘toggle’.  It works
-exactly like a flag and was originally designed for two reasons.  To
-distinguish from the multi\-meaning of a ‘flag’, and because frankly
-we ran out of flag space :)
-.SS What is an @power?
-.sp
-A power is similar to a power on other mushes, but unlike them, our
-powers are multi\-tier.  This means that they can be customized to
-empower something at a given bitlevel.  You may empower something
-from guildmaster up to councilor level.  There are some powers
-with a power level of N/A meaning they are a toggle power granting
-an absolute power level as specified in the help for that power.
-This requires the INHERIT flag for non\-players to inherit powers,
-however, a specific object can be granted a power as well.
-.SS What is an @depower?
-.sp
-This is the anti\-thesis of @power.  Also, depowers do not require
-inheritance.  They also have priority over flags, toggles, and
-powers.  You can use depower to remove or lower abilities and
-control from a target, even a full wizard (royalty) can be
-depowered.
-.SS Multi\-tiered bitlevel systems
+Please keep in mind each of these bitlevels can be tweeked with the @admin
+parameters and with the @powers (accessable by royalty) or @depowers (only
+by immortal and higher).
 .sp
 RhostMUSH offers a multi\-tier bitlevel system.  They go in order of presidence
 You do not have to use all these bits, only use what you want.
@@ -4735,11 +4831,37 @@ This is a bigger hinderance flag.  By default all guests should be
 set this.  This flag stops the player from ANY database manipulation
 along with @teleporting, and many other advanced commands.  It’s
 extreamly dehibilatating.
-.SS Altering bitlevels
+.SH WHAT FLAGS, TOGGLES, POWERS, AND DEPOWERS MEAN IN RHOSTMUSH
+.SS What are Flags?
 .sp
-Please keep in mind each of these bitlevels can be tweeked with the @admin
-parameters and with the @powers (accessable by royalty) or @depowers (only
-by immortal and higher).
+Flags are pretty much exactly the same as any other mush.  It’s a flag
+that you set or unset on a target which then enables/disables or
+alters something that target can do.  There’s help on all the flags
+in help and wizhelp.
+.SS What are Toggles?
+.sp
+Toggles were designed as a single point flag that immediately enables
+or disables a set ability or condition, thus a ‘toggle’.  It works
+exactly like a flag and was originally designed for two reasons.  To
+distinguish from the multi\-meaning of a ‘flag’, and because frankly
+we ran out of flag space :)
+.SS What is an @power?
+.sp
+A power is similar to a power on other mushes, but unlike them, our
+powers are multi\-tier.  This means that they can be customized to
+empower something at a given bitlevel.  You may empower something
+from guildmaster up to councilor level.  There are some powers
+with a power level of N/A meaning they are a toggle power granting
+an absolute power level as specified in the help for that power.
+This requires the INHERIT flag for non\-players to inherit powers,
+however, a specific object can be granted a power as well.
+.SS What is an @depower?
+.sp
+This is the anti\-thesis of @power.  Also, depowers do not require
+inheritance.  They also have priority over flags, toggles, and
+powers.  You can use depower to remove or lower abilities and
+control from a target, even a full wizard (royalty) can be
+depowered.
 .SH SECURITY
 .SS Considerations to locking down restrictions in RhostMUSH
 .sp
@@ -5460,8 +5582,14 @@ Log into the mush and issue @shutdown
 Issue a kill \-USR2 to the mush which issues an emergency @shutdown
 .IP 3. 3
 Issue a kill \-TERM to the mush which issues an emergency abort and clean shutdown.
+.IP 4. 3
+Through the Autoshutdown script
 .UNINDENT
-.SS WARNING: Never kill \-9 RhostMUSH
+.sp
+\fBWARNING:\fP
+.INDENT 0.0
+.INDENT 3.5
+Never kill \-9 RhostMUSH
 .sp
 Under NO CIRCUMSTANCES should you kill \-9 your mush unless you don’t care for the
 database.  The reason is if the mush happens to be saving, in any method, to the
@@ -5471,6 +5599,8 @@ database, so pull out a flatfile to recover.
 Sadly, this also may occur if the server hosting you takes a nose\-dive in the middle
 of a db write.  Rhost can recover corruption in\-game while up, but if it bombs
 in the middle of a write, all bets are off. :)
+.UNINDENT
+.UNINDENT
 .SS Autoshutdown script
 .sp
 The makefile will ‘make’ the program that will STOP the mush.
@@ -7450,7 +7580,7 @@ $6$xy$xy
 .SS HELP key indexes for the values
 .sp
 FLAGS: The following flags are to be used.  They are BITWISE masks that you
-need to add together for the values that you apply:
+need to add together for the values that you apply
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -7594,7 +7724,7 @@ need to add together for the values that you apply:
 .UNINDENT
 .sp
 TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like
-the flags above.  They are added together for each word type:
+the flags above.  They are added together for each word type
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -7675,7 +7805,7 @@ the flags above.  They are added together for each word type:
 .UNINDENT
 .sp
 POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift
-markers that you would have to compute the shift then add it after the fact.:
+markers that you would have to compute the shift then add it after the fact.
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -7740,7 +7870,7 @@ markers that you would have to compute the shift then add it after the fact.:
 .UNINDENT
 .sp
 DEPOWERS:  like @powers they are handled with a BITWISE offshift that you
-will have to calculate then add:
+will have to calculate then add
 .INDENT 0.0
 .INDENT 3.5
 .sp

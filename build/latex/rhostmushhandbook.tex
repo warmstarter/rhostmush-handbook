@@ -74,7 +74,7 @@
 
 
 \title{RhostMUSH Handbook}
-\date{Apr 19, 2021}
+\date{Apr 20, 2021}
 \release{}
 \author{wstarter}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -1053,6 +1053,11 @@ Set up any other characters you want.  Anyone immortal can issue @function, @adm
 
 \end{enumerate}
 
+\begin{sphinxadmonition}{note}{\label{\detokenize{install:id7}}Todo:}
+\sphinxAtStartPar
+Figure out what they were trying to say by having those above two sentences right after each other.
+\end{sphinxadmonition}
+
 
 \section{Customtize the textfiles for your game}
 \label{\detokenize{install:customtize-the-textfiles-for-your-game}}\begin{quote}
@@ -1068,6 +1073,11 @@ all files and how they inter\sphinxhyphen{}relate with ‘wizhelp file’.
 \label{\detokenize{install:three-options-for-starting-a-mush}}
 \sphinxAtStartPar
 The RhostMUSH Git Repository comes with three options for starting your Mush.
+
+\begin{sphinxadmonition}{note}{\label{\detokenize{install:id8}}Todo:}
+\sphinxAtStartPar
+Well, there’s also some other pre\sphinxhyphen{}existing DB or upgrading, so let’s try to make this a little more coherent.
+\end{sphinxadmonition}
 
 
 \subsection{Option 1: Creating a new game with a blank database}
@@ -2816,17 +2826,19 @@ There are differences in the initial set up from Rhost to PennMUSH (and MUX2).
 \sphinxAtStartPar
 A lot of people use PennMUSH and if you are one of them, this may help you.
 Some people use MUX2, hopefully this will help you as well.
-\begin{description}
-\item[{NOTE:  If you plan to use sideeffects, you must set the SIDEFX flag to allow}] \leavevmode
-\sphinxAtStartPar
-the target to use it
 
-\item[{NOTE:  Rhost does support UNICODE/UTF8, but it’s currently not part of the main}] \leavevmode
+\begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
+If you plan to use sideeffects, you must set the SIDEFX flag to allow
+the target to use it
+\end{sphinxadmonition}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+Rhost does support UNICODE/UTF8, but it’s currently not part of the main
 branch as of this writing.  Please talk to Kage on the dev site for more
 information on when it’ll be released.
-
-\end{description}
+\end{sphinxadmonition}
 
 
 \section{Organization of help and wizhelp}
@@ -2835,8 +2847,9 @@ information on when it’ll be released.
 First, on PennMUSH, help is separated into ‘help’ and ‘wizhelp’.  This can
 be confusing. If you want to ‘combine’ them, you may use the following snippit:
 
-\sphinxAtStartPar
-\$ahelp*:@pemit \%\#={[}switch({[}!!words(\%0){]}{[}match(/search,\%0*){]},0?,{[}setq(0,help){]}{[}setq(1,0){]},11,{[}setq(0,rest(\%0)){]}{[}setq(1,2){]},setq(0,trim(\%0))){]}{[}setq(a,textfile(help,\%q0,\%q1)){]}{[}setq(b,textfile(wizhelp,\%q0,\%q1)){]}{[}setq(2,){]}{[}ifelse(!strmatch(\%qa,No entry*),\%qa{[}setq(2,\%r){]}){]}{[}ifelse(!strmatch(\%qb,No entry*),\%q2\%qb{[}setq(2,\%r){]}){]}{[}ifelse(!\$r(2),No topics found for ‘\%q0’.){]}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYGZdl{}ahelp*:@pemit \PYGZpc{}\PYGZsh{}=[switch([!!words(\PYGZpc{}0)][match(/search,\PYGZpc{}0*)],0?,[setq(0,help)][setq(1,0)],11,[setq(0,rest(\PYGZpc{}0))][setq(1,2)],setq(0,trim(\PYGZpc{}0)))][setq(a,textfile(help,\PYGZpc{}q0,\PYGZpc{}q1))][setq(b,textfile(wizhelp,\PYGZpc{}q0,\PYGZpc{}q1))][setq(2,)][ifelse(!strmatch(\PYGZpc{}qa,No entry*),\PYGZpc{}qa[setq(2,\PYGZpc{}r)])][ifelse(!strmatch(\PYGZpc{}qb,No entry*),\PYGZpc{}q2\PYGZpc{}qb[setq(2,\PYGZpc{}r)])][ifelse(!\PYGZdl{}r(2),No topics found for \PYGZsq{}\PYGZpc{}q0\PYGZsq{}.)]
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 This will display help from help and wizhelp for any matching topic.  It
@@ -2848,11 +2861,10 @@ should make life easier for you.  This also honors the /search switch.
 \sphinxAtStartPar
 The comsystem is softcode and included in the readme directory. (comsys).
 Just load it in.  The mail wrappers can be gotten from:
-\begin{quote}
 
-\sphinxAtStartPar
-The Mushcode directory in the Rhost Distribution.
-\end{quote}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{The} \PYG{n}{Mushcode} \PYG{n}{directory} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{Rhost} \PYG{n}{Distribution}\PYG{o}{.}
+\end{sphinxVerbatim}
 
 \sphinxAtStartPar
 Please see the other readme files on setting other things up like
@@ -2872,19 +2884,20 @@ PennMUSH 1.8.6p0
 \label{\detokenize{differences:commands-with-equivalents}}
 \sphinxAtStartPar
 The following are used for compatibility to keep in mind:
-\begin{description}
-\item[{@commands Pennmush—————\sphinxhyphen{}RhostMUSH———————\sphinxhyphen{}MUX2}] \leavevmode
-\sphinxAtStartPar
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+Pennmush                RhostMUSH                      MUX2
+
 @@                      @@                             @@
 @ALLHALT                @halt/all                      @HALT/ALL
 @ALLQUOTA               @quota/all                     @QUOTA/ALL
 @ALIAS                  @alias/@protect                @ALIAS
-N/A                     @apply\_marked                  @APPLY\_MARKED
+N/A                     @apply\PYGZus{}marked                  @APPLY\PYGZus{}MARKED
 @ASSERT                 @assert                        @ASSERT
 @ATRCHOWN               @chown                         @CHOWN
 @ATRLOCK                @lock                          @LOCK
 @ATTRIBUTE              @attribute                     @ATTRIBUTE
-N/A                     (see backup\_flat.sh)           @BACKUP
+N/A                     (see backup\PYGZus{}flat.sh)           @BACKUP
 @BOOT                   @boot                          @BOOT
 @BREAK                  @break                         @BREAK
 N/A                     N/A                            @CCHARGE
@@ -2945,14 +2958,14 @@ N/A                     @last                          @LAST
 @LEMIT                  @lemit                         @LEMIT
 @LINK                   @link                          @LINK
 @LIST                   @list                          @LIST
-N/A                     @list\_file                     @LIST\_FILE
+N/A                     @list\PYGZus{}file                     @LIST\PYGZus{}FILE
 @LISTMOTD               @listmotd                      @LISTMOTD
 @LOCK                   @lock                          @LOCK
 @LOG                    @log                           @LOG
 @LOGWIPE                N/A                            N/A
 @LSET                   @set                           @SET
 N/A                     @mark                          @MARK
-N/A                     @mark\_all                      @MARK\_ALL
+N/A                     @mark\PYGZus{}all                      @MARK\PYGZus{}ALL
 @MAIL                   mail                           @MAIL
 @MALIAS                 wmail/alias                    @MALIAS
 @MAPSQL                 N/A                            N/A
@@ -3004,7 +3017,7 @@ N/A                     @robot                         @ROBOT
 @SELECT                 @switch/first                  @SWITCH/FIRST
 @SET                    @set                           @SET
 @SHUTDOWN               @shutdown                      @SHUTDOWN
-@SITELOCK               @admin forbid\_host/forbid\_site @admin forbid\_site
+@SITELOCK               @admin forbid\PYGZus{}host/forbid\PYGZus{}site @admin forbid\PYGZus{}site
 @SLAVE                  N/A                            @STARTSLAVE
 @SOCKSET                N/A                            N/A
 @SQL                    (only if MySQL enabled)        @QUERY
@@ -3042,7 +3055,7 @@ N/A                     (softcode)                     DELCOM
 N/A                     (softcode)                     ADDCOM
 N/A                     (softcode)                     COMTITLE
 ANEWS                   @dynhelp                       N/A
-ATTRIB\_SET              (@hook on S)                   (@hook on S)
+ATTRIB\PYGZus{}SET              (@hook on S)                   (@hook on S)
 BRIEF                   ex/brief                       EX/BRIEF
 BUY                     N/A                            N/A
 N/A                     N/A                            CLEARCOM
@@ -3059,7 +3072,7 @@ GIVE                    give                           GIVE
 GOTO                    goto                           GOTO
 HELP                    help/wizhelp                   HELP/WIZHELP
 HOME                    home                           HOME
-HUH\_COMMAND             @admin global\_error\_obj        @admin global\_error\_obj
+HUH\PYGZus{}COMMAND             @admin global\PYGZus{}error\PYGZus{}obj        @admin global\PYGZus{}error\PYGZus{}obj
 INFO                    INFO                           INFO
 INVENTORY               inventory                      INVENTORY
 KILL                    kill                           KILL
@@ -3082,268 +3095,272 @@ SLAY                    slay                           SLAY
 TEACH                   train                          TRAIN
 THINK                   think                          THINK
 UNFOLLOW                (see follow softcode)          N/A
-UNIMPLEMENTED\_COMMAND   @admin global\_error\_obj        @admin global\_error\_obj
+UNIMPLEMENTED\PYGZus{}COMMAND   @admin global\PYGZus{}error\PYGZus{}obj        @admin global\PYGZus{}error\PYGZus{}obj
 USE                     use                            USE
-WARN\_ON\_MISSING         N/A                            N/A
+WARN\PYGZus{}ON\PYGZus{}MISSING         N/A                            N/A
 WHISPER                 whisper                        WHISPER
 WHO                     who                            WHO
 WITH                    N/A                            N/A
-
-\end{description}
+\end{sphinxVerbatim}
 
 
 \section{@commands unique to RhostMUSH}
 \label{\detokenize{differences:commands-unique-to-rhostmush}}
 \sphinxAtStartPar
 Commands that exist in Rhost that have no PennMUSH equivelant:
-@aflags                      @apply\_marked                 @areg
-@blacklist                   @cluster                      @conncheck
-@convert                     @cut                          @dbclean
-@depower                     @dynhelp                      @eval
-@femit                       @fixdb                        @fpose
-@freeze                      @fsay                         @icmd
-@last                        @lfunction                    @limit
-@logrotate                   @mark                         @mark\_all
-@money                       @pipe                         @program
-@progreset                   @protect                      @quitprogram
-@reclist                     @recover                      @register
-@remote                      @robot                        @rxlevel
-@skip                        @snapshot                     @snoop
-@thaw                        @timewarp                     @toad
-@toggle                      @toggledef                    @tor
-@turtle                      @txlevel                      @whereall
-grab                         join                          listen
-mrpage                       newsdb                        rpage
-smell                        taste                         touch
-wielded                      worn                          +players
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@aflags}                      \PYG{n+nd}{@apply\PYGZus{}marked}                 \PYG{n+nd}{@areg}
+\PYG{n+nd}{@blacklist}                   \PYG{n+nd}{@cluster}                      \PYG{n+nd}{@conncheck}
+\PYG{n+nd}{@convert}                     \PYG{n+nd}{@cut}                          \PYG{n+nd}{@dbclean}
+\PYG{n+nd}{@depower}                     \PYG{n+nd}{@dynhelp}                      \PYG{n+nd}{@eval}
+\PYG{n+nd}{@femit}                       \PYG{n+nd}{@fixdb}                        \PYG{n+nd}{@fpose}
+\PYG{n+nd}{@freeze}                      \PYG{n+nd}{@fsay}                         \PYG{n+nd}{@icmd}
+\PYG{n+nd}{@last}                        \PYG{n+nd}{@lfunction}                    \PYG{n+nd}{@limit}
+\PYG{n+nd}{@logrotate}                   \PYG{n+nd}{@mark}                         \PYG{n+nd}{@mark\PYGZus{}all}
+\PYG{n+nd}{@money}                       \PYG{n+nd}{@pipe}                         \PYG{n+nd}{@program}
+\PYG{n+nd}{@progreset}                   \PYG{n+nd}{@protect}                      \PYG{n+nd}{@quitprogram}
+\PYG{n+nd}{@reclist}                     \PYG{n+nd}{@recover}                      \PYG{n+nd}{@register}
+\PYG{n+nd}{@remote}                      \PYG{n+nd}{@robot}                        \PYG{n+nd}{@rxlevel}
+\PYG{n+nd}{@skip}                        \PYG{n+nd}{@snapshot}                     \PYG{n+nd}{@snoop}
+\PYG{n+nd}{@thaw}                        \PYG{n+nd}{@timewarp}                     \PYG{n+nd}{@toad}
+\PYG{n+nd}{@toggle}                      \PYG{n+nd}{@toggledef}                    \PYG{n+nd}{@tor}
+\PYG{n+nd}{@turtle}                      \PYG{n+nd}{@txlevel}                      \PYG{n+nd}{@whereall}
+\PYG{n}{grab}                         \PYG{n}{join}                          \PYG{n}{listen}
+\PYG{n}{mrpage}                       \PYG{n}{newsdb}                        \PYG{n}{rpage}
+\PYG{n}{smell}                        \PYG{n}{taste}                         \PYG{n}{touch}
+\PYG{n}{wielded}                      \PYG{n}{worn}                          \PYG{o}{+}\PYG{n}{players}
+\end{sphinxVerbatim}
 
 
 \section{@lock equivalents}
-\label{\detokenize{differences:lock-equivalents}}\begin{description}
-\item[{@locks PennMUSH—————RhostMUSH———————————\textendash{}MUX2}] \leavevmode
-\sphinxAtStartPar
-BASIC                  BASIC/DEFAULT                               DEFAULT
-ENTER                  ENTER                                       ENTER
-TELEPORT               TPORT                                       TPORT
-USE                    USE                                         USE
-PAGE                   PAGE                                        PAGE
-ZONE                   ZONEWIZLOCK/ZONETOLOCK/TWINKLOCK            N/A
-PARENT                 PARENT                                      PARENT
-LINK                   LINK                                        LINK
-OPEN                   OPEN                                        OPEN
-MAIL                   mail/lock                                   MAIL
-USER                   USER                                        USER
-USER:\textless{}dynamicname\textgreater{}     lockencode()/lockdecode()/lockcheck()       N/A
-SPEECH                 SPEECH                                      SPEECH
-LISTEN                 USE (see listen argument)                   N/A
-COMMAND                USE (commands are default)                  N/A
-LEAVE                  LEAVE                                       LEAVE
-DROP                   DROP                                        DROP
-DROPIN                 DROPTO                                      N/A
-GIVE                   GIVE                                        GIVE
-FROM                   GIVETO                                      N/A
-PAY                    N/A                                         N/A
-RECEIVE                RECEIVE                                     RECEIVE
-FOLLOW                 (See softcoded follow code)                 N/A
-EXAMINE                See NO\_MODIFY/NO\_EXAMINE/TWINKLOCK          N/A
-CHZONE                 ZONETOLOCK/ZONEWIZLOCK/TWINKLOCK            N/A
-FORWARD                N/A                                         N/A
-FILTER                 N/A                                         N/A
-INFILTER               N/A                                         N/A
-CONTROL                CONTROL                                     N/A
-DROPTO                 DROPTO                                      N/A
-DESTROY                See: @recover/@purge/INDESTRUCTIBLE/SAFE    N/A
-INTERACT               N/A (See: Reality Levels)                   N/A (See: Reality Levels)
-TAKE                   GETFROM                                     GETFROM
-MAILFORWARD            mail/lock, mail/autofor                     N/A
-N/A                    TELOUT                                      TELOUT
-N/A                    DARK                                        VISIBLE
+\label{\detokenize{differences:lock-equivalents}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{PennMUSH}               \PYG{n}{RhostMUSH}                                   \PYG{n}{MUX2}
 
-\end{description}
+\PYG{n}{BASIC}                  \PYG{n}{BASIC}\PYG{o}{/}\PYG{n}{DEFAULT}                               \PYG{n}{DEFAULT}
+\PYG{n}{ENTER}                  \PYG{n}{ENTER}                                       \PYG{n}{ENTER}
+\PYG{n}{TELEPORT}               \PYG{n}{TPORT}                                       \PYG{n}{TPORT}
+\PYG{n}{USE}                    \PYG{n}{USE}                                         \PYG{n}{USE}
+\PYG{n}{PAGE}                   \PYG{n}{PAGE}                                        \PYG{n}{PAGE}
+\PYG{n}{ZONE}                   \PYG{n}{ZONEWIZLOCK}\PYG{o}{/}\PYG{n}{ZONETOLOCK}\PYG{o}{/}\PYG{n}{TWINKLOCK}            \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{PARENT}                 \PYG{n}{PARENT}                                      \PYG{n}{PARENT}
+\PYG{n}{LINK}                   \PYG{n}{LINK}                                        \PYG{n}{LINK}
+\PYG{n}{OPEN}                   \PYG{n}{OPEN}                                        \PYG{n}{OPEN}
+\PYG{n}{MAIL}                   \PYG{n}{mail}\PYG{o}{/}\PYG{n}{lock}                                   \PYG{n}{MAIL}
+\PYG{n}{USER}                   \PYG{n}{USER}                                        \PYG{n}{USER}
+\PYG{n}{USER}\PYG{p}{:}\PYG{o}{\PYGZlt{}}\PYG{n}{dynamicname}\PYG{o}{\PYGZgt{}}     \PYG{n}{lockencode}\PYG{p}{(}\PYG{p}{)}\PYG{o}{/}\PYG{n}{lockdecode}\PYG{p}{(}\PYG{p}{)}\PYG{o}{/}\PYG{n}{lockcheck}\PYG{p}{(}\PYG{p}{)}       \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{SPEECH}                 \PYG{n}{SPEECH}                                      \PYG{n}{SPEECH}
+\PYG{n}{LISTEN}                 \PYG{n}{USE} \PYG{p}{(}\PYG{n}{see} \PYG{n}{listen} \PYG{n}{argument}\PYG{p}{)}                   \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{COMMAND}                \PYG{n}{USE} \PYG{p}{(}\PYG{n}{commands} \PYG{n}{are} \PYG{n}{default}\PYG{p}{)}                  \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{LEAVE}                  \PYG{n}{LEAVE}                                       \PYG{n}{LEAVE}
+\PYG{n}{DROP}                   \PYG{n}{DROP}                                        \PYG{n}{DROP}
+\PYG{n}{DROPIN}                 \PYG{n}{DROPTO}                                      \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{GIVE}                   \PYG{n}{GIVE}                                        \PYG{n}{GIVE}
+\PYG{n}{FROM}                   \PYG{n}{GIVETO}                                      \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{PAY}                    \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                                         \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{RECEIVE}                \PYG{n}{RECEIVE}                                     \PYG{n}{RECEIVE}
+\PYG{n}{FOLLOW}                 \PYG{p}{(}\PYG{n}{See} \PYG{n}{softcoded} \PYG{n}{follow} \PYG{n}{code}\PYG{p}{)}                 \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{EXAMINE}                \PYG{n}{See} \PYG{n}{NO\PYGZus{}MODIFY}\PYG{o}{/}\PYG{n}{NO\PYGZus{}EXAMINE}\PYG{o}{/}\PYG{n}{TWINKLOCK}          \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{CHZONE}                 \PYG{n}{ZONETOLOCK}\PYG{o}{/}\PYG{n}{ZONEWIZLOCK}\PYG{o}{/}\PYG{n}{TWINKLOCK}            \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{FORWARD}                \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                                         \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{FILTER}                 \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                                         \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{INFILTER}               \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                                         \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{CONTROL}                \PYG{n}{CONTROL}                                     \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{DROPTO}                 \PYG{n}{DROPTO}                                      \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{DESTROY}                \PYG{n}{See}\PYG{p}{:} \PYG{n+nd}{@recover}\PYG{o}{/}\PYG{n+nd}{@purge}\PYG{o}{/}\PYG{n}{INDESTRUCTIBLE}\PYG{o}{/}\PYG{n}{SAFE}    \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{INTERACT}               \PYG{n}{N}\PYG{o}{/}\PYG{n}{A} \PYG{p}{(}\PYG{n}{See}\PYG{p}{:} \PYG{n}{Reality} \PYG{n}{Levels}\PYG{p}{)}                   \PYG{n}{N}\PYG{o}{/}\PYG{n}{A} \PYG{p}{(}\PYG{n}{See}\PYG{p}{:} \PYG{n}{Reality} \PYG{n}{Levels}\PYG{p}{)}
+\PYG{n}{TAKE}                   \PYG{n}{GETFROM}                                     \PYG{n}{GETFROM}
+\PYG{n}{MAILFORWARD}            \PYG{n}{mail}\PYG{o}{/}\PYG{n}{lock}\PYG{p}{,} \PYG{n}{mail}\PYG{o}{/}\PYG{n}{autofor}                     \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                    \PYG{n}{TELOUT}                                      \PYG{n}{TELOUT}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                    \PYG{n}{DARK}                                        \PYG{n}{VISIBLE}
+\end{sphinxVerbatim}
 
 
-\section{@locks that only exist in RhostMUSH}
-\label{\detokenize{differences:locks-that-only-exist-in-rhostmush}}
-\sphinxAtStartPar
-@locks that exist in Rhost that have no PennMUSH equivelant:
-TELOUTLOCK                   TWINKLOCK                     DARKLOCK
-ALTNAME                      CHOWN
+\section{@locks that exist in Rhost that have no PennMUSH equivelant}
+\label{\detokenize{differences:locks-that-exist-in-rhost-that-have-no-pennmush-equivelant}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{TELOUTLOCK}                   \PYG{n}{TWINKLOCK}                     \PYG{n}{DARKLOCK}
+\PYG{n}{ALTNAME}                      \PYG{n}{CHOWN}
+\end{sphinxVerbatim}
 
 
 \section{Flag and toggle equivalents}
-\label{\detokenize{differences:flag-and-toggle-equivalents}}\begin{description}
-\item[{FLAGS Pennmush—————\sphinxhyphen{}RhostMUSH——————————MUX2}] \leavevmode
-\sphinxAtStartPar
-ABODE                   ABODE                                  ABODE
-N/A                     N/A                                    ASCII
-ANSI                    ANSI                                   ANSI
-AUDIBLE                 AUDIBLE                                AUDIBLE
-(Not Needed)            (Not Needed)                           BLEED
-N/A                     AUDITORIUM                             AUDITORIUM
-N/A                     BLIND                                  BLIND
-N/A                     COMMANDS                               COMMANDS
-CHAN\_USEFIRSTMATCH      N/A                                    N/A
-CHOWN\_OK                CHOWN\_OK                               CHOWN\_OK
-CLOUDY                  N/A                                    N/A
-COLOR                   ANSICOLOR                              N/A
-CONNECTED               CONNECTED                              CONNECTED
-DARK                    DARK                                   DARK
-DEBUG                   TRACE                                  TRACE
-DESTROY\_OK              DESTROY\_OK                             DESTROY\_OK
-ENTER\_OK                ENTER\_OK                               ENTER\_OK
-FIXED                   NO\_TEL                                 FIXED
-FLOATING                FLOATING                               FLOATING
-GAGGED                  FUBAR                                  GAGGED
-GOING                   GOING                                  GOING
-HALT                    HALT                                   HALT
-HAVEN                   HAVEN                                  HAVEN
-(see @flag)             (marker0\sphinxhyphen{}marker9)                      HEAD
-HEAR\_CONNECT            MONITOR (@toggle)                      SITECON
-HEAVY                   \sphinxhref{mailto:NO\_TEL/@lock-teleport}{NO\_TEL/@lock\sphinxhyphen{}teleport}                  N/A
-N/A                     N/A                                    HTML
-N/A                     FREE                                   IMMORTAL
-N/A                     INHERIT                                INHERIT
-JUMP\_OK                 JUMP\_OK                                JUMP\_OK
-KEEPALIVE               KEEPALIVE (@toggle)                    KEEPALIVE
-N/A                     KEY                                    KEY
-LIGHT                   LIGHT                                  LIGHT
-LINK\_OK                 LINK\_OK                                LINK\_OK
-LISTEN\_PARENT           (@admin listen\_parents)                N/A
-LOUD                    NO\_OVERRIDE/NO\_USELOCK                 N/A
-(see @flag)             MARKER0\sphinxhyphen{}MARKER9                        MARKER0\sphinxhyphen{}MARKER9
-MISTRUST                GUILDOBJ/NO\_GOBJ/BACKSTAGE/NOBACKSTAGE N/A
-MONIKER                 EXTANSI (@toggle)                      N/A
-MONITOR                 MONITOR                                MONITOR
-MYOPIC                  MYOPIC                                 MYOPIC
-NOACCENTS               ACCENTS (@toggle)                      ACCENTS
-(Not Needed)            (Not Needed)                           NO\_BLEED
-NOSPOOF                 NOSPOOF                                NOSPOOF
-(See @ns\sphinxhyphen{}commands)      Auto\sphinxhyphen{}Enabled for Wiz+                  SPOOF
-NO\_COMMAND              NO\_COMMAND                             NO\_COMMAND
-NO\_LEAVE                @icmd \sphinxhref{mailto:leave/@lock-leave}{leave/@lock\sphinxhyphen{}leave}                @icmd \sphinxhref{mailto:leave/@lock-leave}{leave/@lock\sphinxhyphen{}leave}
-NO\_TEL                  NO\_TEL                                 N/A
-ON\sphinxhyphen{}VACATION             MARKER0\sphinxhyphen{}MARKER9                        VACATION
-OPAQUE                  OPAQUE                                 OPAQUE
-OPEN\_OK                 @lock\sphinxhyphen{}openfrom                         OPEN\_OK
-ORPHAN                  NOGLOBPARENT (@toggle)                 N/A
-N/A                     PARENT\_OK                              PARENT\_OK
-PUPPET                  PUPPET                                 PUPPET
-QUIET                   QUIET                                  QUIET
-N/A                     ROBOT                                  ROBOT
-ROYALTY                 GUILDMASTER/ARCHITECT/COUNCILOR        ROYALTY
-(@see @flag)            MARKER0\sphinxhyphen{}9                              STAFF
-SAFE                    SAFE                                   SAFE
-N/A                     SLAVE                                  SLAVE
-N/A                     MONITOR (@toggle)                      SITEMON
-STICKY                  STICKY                                 STICKY
-N/A                     SUSPECT                                SUSPECT
-TERSE                   TERSE                                  TERSE
-TRANSPARENT             TRANSPARENT                            TRANSPARENT
-UNFINDABLE              UNFINDABLE                             UNFINDABLE
-N/A                     N/A                                    UNICODE
-(See @flag)             WANDERER                               UNINSPECTED
-VERBOSE                 VERBOSE                                VERBOSE
-VISUAL                  VISUAL                                 VISUAL
-WIZARD                  WIZARD/IMMORTAL                        WIZARD
-XTERM256                XTERMCOLOR                             COLOR256
+\label{\detokenize{differences:flag-and-toggle-equivalents}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{Pennmush}                \PYG{n}{RhostMUSH}                              \PYG{n}{MUX2}
 
-\end{description}
+\PYG{n}{ABODE}                   \PYG{n}{ABODE}                                  \PYG{n}{ABODE}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                                    \PYG{n}{ASCII}
+\PYG{n}{ANSI}                    \PYG{n}{ANSI}                                   \PYG{n}{ANSI}
+\PYG{n}{AUDIBLE}                 \PYG{n}{AUDIBLE}                                \PYG{n}{AUDIBLE}
+\PYG{p}{(}\PYG{n}{Not} \PYG{n}{Needed}\PYG{p}{)}            \PYG{p}{(}\PYG{n}{Not} \PYG{n}{Needed}\PYG{p}{)}                           \PYG{n}{BLEED}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{AUDITORIUM}                             \PYG{n}{AUDITORIUM}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{BLIND}                                  \PYG{n}{BLIND}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{COMMANDS}                               \PYG{n}{COMMANDS}
+\PYG{n}{CHAN\PYGZus{}USEFIRSTMATCH}      \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                                    \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{CHOWN\PYGZus{}OK}                \PYG{n}{CHOWN\PYGZus{}OK}                               \PYG{n}{CHOWN\PYGZus{}OK}
+\PYG{n}{CLOUDY}                  \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                                    \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{COLOR}                   \PYG{n}{ANSICOLOR}                              \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{CONNECTED}               \PYG{n}{CONNECTED}                              \PYG{n}{CONNECTED}
+\PYG{n}{DARK}                    \PYG{n}{DARK}                                   \PYG{n}{DARK}
+\PYG{n}{DEBUG}                   \PYG{n}{TRACE}                                  \PYG{n}{TRACE}
+\PYG{n}{DESTROY\PYGZus{}OK}              \PYG{n}{DESTROY\PYGZus{}OK}                             \PYG{n}{DESTROY\PYGZus{}OK}
+\PYG{n}{ENTER\PYGZus{}OK}                \PYG{n}{ENTER\PYGZus{}OK}                               \PYG{n}{ENTER\PYGZus{}OK}
+\PYG{n}{FIXED}                   \PYG{n}{NO\PYGZus{}TEL}                                 \PYG{n}{FIXED}
+\PYG{n}{FLOATING}                \PYG{n}{FLOATING}                               \PYG{n}{FLOATING}
+\PYG{n}{GAGGED}                  \PYG{n}{FUBAR}                                  \PYG{n}{GAGGED}
+\PYG{n}{GOING}                   \PYG{n}{GOING}                                  \PYG{n}{GOING}
+\PYG{n}{HALT}                    \PYG{n}{HALT}                                   \PYG{n}{HALT}
+\PYG{n}{HAVEN}                   \PYG{n}{HAVEN}                                  \PYG{n}{HAVEN}
+\PYG{p}{(}\PYG{n}{see} \PYG{n+nd}{@flag}\PYG{p}{)}             \PYG{p}{(}\PYG{n}{marker0}\PYG{o}{\PYGZhy{}}\PYG{n}{marker9}\PYG{p}{)}                      \PYG{n}{HEAD}
+\PYG{n}{HEAR\PYGZus{}CONNECT}            \PYG{n}{MONITOR} \PYG{p}{(}\PYG{n+nd}{@toggle}\PYG{p}{)}                      \PYG{n}{SITECON}
+\PYG{n}{HEAVY}                   \PYG{n}{NO\PYGZus{}TEL}\PYG{o}{/}\PYG{n+nd}{@lock}\PYG{o}{\PYGZhy{}}\PYG{n}{teleport}                  \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                                    \PYG{n}{HTML}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{FREE}                                   \PYG{n}{IMMORTAL}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{INHERIT}                                \PYG{n}{INHERIT}
+\PYG{n}{JUMP\PYGZus{}OK}                 \PYG{n}{JUMP\PYGZus{}OK}                                \PYG{n}{JUMP\PYGZus{}OK}
+\PYG{n}{KEEPALIVE}               \PYG{n}{KEEPALIVE} \PYG{p}{(}\PYG{n+nd}{@toggle}\PYG{p}{)}                    \PYG{n}{KEEPALIVE}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{KEY}                                    \PYG{n}{KEY}
+\PYG{n}{LIGHT}                   \PYG{n}{LIGHT}                                  \PYG{n}{LIGHT}
+\PYG{n}{LINK\PYGZus{}OK}                 \PYG{n}{LINK\PYGZus{}OK}                                \PYG{n}{LINK\PYGZus{}OK}
+\PYG{n}{LISTEN\PYGZus{}PARENT}           \PYG{p}{(}\PYG{n+nd}{@admin} \PYG{n}{listen\PYGZus{}parents}\PYG{p}{)}                \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{LOUD}                    \PYG{n}{NO\PYGZus{}OVERRIDE}\PYG{o}{/}\PYG{n}{NO\PYGZus{}USELOCK}                 \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{p}{(}\PYG{n}{see} \PYG{n+nd}{@flag}\PYG{p}{)}             \PYG{n}{MARKER0}\PYG{o}{\PYGZhy{}}\PYG{n}{MARKER9}                        \PYG{n}{MARKER0}\PYG{o}{\PYGZhy{}}\PYG{n}{MARKER9}
+\PYG{n}{MISTRUST}                \PYG{n}{GUILDOBJ}\PYG{o}{/}\PYG{n}{NO\PYGZus{}GOBJ}\PYG{o}{/}\PYG{n}{BACKSTAGE}\PYG{o}{/}\PYG{n}{NOBACKSTAGE} \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{MONIKER}                 \PYG{n}{EXTANSI} \PYG{p}{(}\PYG{n+nd}{@toggle}\PYG{p}{)}                      \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{MONITOR}                 \PYG{n}{MONITOR}                                \PYG{n}{MONITOR}
+\PYG{n}{MYOPIC}                  \PYG{n}{MYOPIC}                                 \PYG{n}{MYOPIC}
+\PYG{n}{NOACCENTS}               \PYG{n}{ACCENTS} \PYG{p}{(}\PYG{n+nd}{@toggle}\PYG{p}{)}                      \PYG{n}{ACCENTS}
+\PYG{p}{(}\PYG{n}{Not} \PYG{n}{Needed}\PYG{p}{)}            \PYG{p}{(}\PYG{n}{Not} \PYG{n}{Needed}\PYG{p}{)}                           \PYG{n}{NO\PYGZus{}BLEED}
+\PYG{n}{NOSPOOF}                 \PYG{n}{NOSPOOF}                                \PYG{n}{NOSPOOF}
+\PYG{p}{(}\PYG{n}{See} \PYG{n+nd}{@ns}\PYG{o}{\PYGZhy{}}\PYG{n}{commands}\PYG{p}{)}      \PYG{n}{Auto}\PYG{o}{\PYGZhy{}}\PYG{n}{Enabled} \PYG{k}{for} \PYG{n}{Wiz}\PYG{o}{+}                  \PYG{n}{SPOOF}
+\PYG{n}{NO\PYGZus{}COMMAND}              \PYG{n}{NO\PYGZus{}COMMAND}                             \PYG{n}{NO\PYGZus{}COMMAND}
+\PYG{n}{NO\PYGZus{}LEAVE}                \PYG{n+nd}{@icmd} \PYG{n}{leave}\PYG{o}{/}\PYG{n+nd}{@lock}\PYG{o}{\PYGZhy{}}\PYG{n}{leave}                \PYG{n+nd}{@icmd} \PYG{n}{leave}\PYG{o}{/}\PYG{n+nd}{@lock}\PYG{o}{\PYGZhy{}}\PYG{n}{leave}
+\PYG{n}{NO\PYGZus{}TEL}                  \PYG{n}{NO\PYGZus{}TEL}                                 \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{ON}\PYG{o}{\PYGZhy{}}\PYG{n}{VACATION}             \PYG{n}{MARKER0}\PYG{o}{\PYGZhy{}}\PYG{n}{MARKER9}                        \PYG{n}{VACATION}
+\PYG{n}{OPAQUE}                  \PYG{n}{OPAQUE}                                 \PYG{n}{OPAQUE}
+\PYG{n}{OPEN\PYGZus{}OK}                 \PYG{n+nd}{@lock}\PYG{o}{\PYGZhy{}}\PYG{n}{openfrom}                         \PYG{n}{OPEN\PYGZus{}OK}
+\PYG{n}{ORPHAN}                  \PYG{n}{NOGLOBPARENT} \PYG{p}{(}\PYG{n+nd}{@toggle}\PYG{p}{)}                 \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{PARENT\PYGZus{}OK}                              \PYG{n}{PARENT\PYGZus{}OK}
+\PYG{n}{PUPPET}                  \PYG{n}{PUPPET}                                 \PYG{n}{PUPPET}
+\PYG{n}{QUIET}                   \PYG{n}{QUIET}                                  \PYG{n}{QUIET}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{ROBOT}                                  \PYG{n}{ROBOT}
+\PYG{n}{ROYALTY}                 \PYG{n}{GUILDMASTER}\PYG{o}{/}\PYG{n}{ARCHITECT}\PYG{o}{/}\PYG{n}{COUNCILOR}        \PYG{n}{ROYALTY}
+\PYG{p}{(}\PYG{n+nd}{@see} \PYG{n+nd}{@flag}\PYG{p}{)}            \PYG{n}{MARKER0}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{9}                              \PYG{n}{STAFF}
+\PYG{n}{SAFE}                    \PYG{n}{SAFE}                                   \PYG{n}{SAFE}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{SLAVE}                                  \PYG{n}{SLAVE}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{MONITOR} \PYG{p}{(}\PYG{n+nd}{@toggle}\PYG{p}{)}                      \PYG{n}{SITEMON}
+\PYG{n}{STICKY}                  \PYG{n}{STICKY}                                 \PYG{n}{STICKY}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{SUSPECT}                                \PYG{n}{SUSPECT}
+\PYG{n}{TERSE}                   \PYG{n}{TERSE}                                  \PYG{n}{TERSE}
+\PYG{n}{TRANSPARENT}             \PYG{n}{TRANSPARENT}                            \PYG{n}{TRANSPARENT}
+\PYG{n}{UNFINDABLE}              \PYG{n}{UNFINDABLE}                             \PYG{n}{UNFINDABLE}
+\PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                     \PYG{n}{N}\PYG{o}{/}\PYG{n}{A}                                    \PYG{n}{UNICODE}
+\PYG{p}{(}\PYG{n}{See} \PYG{n+nd}{@flag}\PYG{p}{)}             \PYG{n}{WANDERER}                               \PYG{n}{UNINSPECTED}
+\PYG{n}{VERBOSE}                 \PYG{n}{VERBOSE}                                \PYG{n}{VERBOSE}
+\PYG{n}{VISUAL}                  \PYG{n}{VISUAL}                                 \PYG{n}{VISUAL}
+\PYG{n}{WIZARD}                  \PYG{n}{WIZARD}\PYG{o}{/}\PYG{n}{IMMORTAL}                        \PYG{n}{WIZARD}
+\PYG{n}{XTERM256}                \PYG{n}{XTERMCOLOR}                             \PYG{n}{COLOR256}
+\end{sphinxVerbatim}
 
 
 \section{Flags and toggles that only exist in RhostMUSH}
 \label{\detokenize{differences:flags-and-toggles-that-only-exist-in-rhostmush}}
-
-\subsection{Flags}
-\label{\detokenize{differences:flags}}
 \sphinxAtStartPar
-ALTQUOTA                     ANONYMOUS                     ARCHITECT
-AUDITORIUM                   BLIND                         BOUNCE
-CLOAK                        COUNCILOR                     FUBAR
-GUILDMASTER                  GUILDOBJ                      IMMORTAL
-INDESTRUCTABLE               NO\_ANSINAME                   NO\_BACKSTAGE
-NO\_CODE                      NO\_CONNECT                    NO\_EXAMINE
-NO\_FLASH                     NO\_GOBJ                       NO\_MODIFY
-NO\_MOVE                      NO\_NAME                       NO\_OVERRIDE
-NO\_PESTER                    NO\_POSSESS                    NO\_STOP
-NO\_UNDERLINE                 NO\_USELOCK                    NO\_WALLS
-NO\_YELL                      PRIVATE                       ROBOT
-SCLOAK                       SEE\_OEMIT                     SHOWFAILCMD
-SIDEFX                       SPAMMONITOR                   SPOOF
-STOP                         WANDERER                      ZONECONTENTS
-ZONEPARENT
+Flags:
 
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{ALTQUOTA}                     \PYG{n}{ANONYMOUS}                     \PYG{n}{ARCHITECT}
+\PYG{n}{AUDITORIUM}                   \PYG{n}{BLIND}                         \PYG{n}{BOUNCE}
+\PYG{n}{CLOAK}                        \PYG{n}{COUNCILOR}                     \PYG{n}{FUBAR}
+\PYG{n}{GUILDMASTER}                  \PYG{n}{GUILDOBJ}                      \PYG{n}{IMMORTAL}
+\PYG{n}{INDESTRUCTABLE}               \PYG{n}{NO\PYGZus{}ANSINAME}                   \PYG{n}{NO\PYGZus{}BACKSTAGE}
+\PYG{n}{NO\PYGZus{}CODE}                      \PYG{n}{NO\PYGZus{}CONNECT}                    \PYG{n}{NO\PYGZus{}EXAMINE}
+\PYG{n}{NO\PYGZus{}FLASH}                     \PYG{n}{NO\PYGZus{}GOBJ}                       \PYG{n}{NO\PYGZus{}MODIFY}
+\PYG{n}{NO\PYGZus{}MOVE}                      \PYG{n}{NO\PYGZus{}NAME}                       \PYG{n}{NO\PYGZus{}OVERRIDE}
+\PYG{n}{NO\PYGZus{}PESTER}                    \PYG{n}{NO\PYGZus{}POSSESS}                    \PYG{n}{NO\PYGZus{}STOP}
+\PYG{n}{NO\PYGZus{}UNDERLINE}                 \PYG{n}{NO\PYGZus{}USELOCK}                    \PYG{n}{NO\PYGZus{}WALLS}
+\PYG{n}{NO\PYGZus{}YELL}                      \PYG{n}{PRIVATE}                       \PYG{n}{ROBOT}
+\PYG{n}{SCLOAK}                       \PYG{n}{SEE\PYGZus{}OEMIT}                     \PYG{n}{SHOWFAILCMD}
+\PYG{n}{SIDEFX}                       \PYG{n}{SPAMMONITOR}                   \PYG{n}{SPOOF}
+\PYG{n}{STOP}                         \PYG{n}{WANDERER}                      \PYG{n}{ZONECONTENTS}
+\PYG{n}{ZONEPARENT}
+\end{sphinxVerbatim}
 
-\subsection{Toggles}
-\label{\detokenize{differences:toggles}}
 \sphinxAtStartPar
-ATRUSE                       CHKREALITY                    CPUTIME
-EXFULLWIZATTR                FORCEHALTED                   HIDEIDLE
-IGNOREZONE                   IMMPROG                       LOGROOM
-MAILVALIDATE                 MAIL\_LOCKDOWN                 MAIL\_NOPARSE
-MAIL\_STRIPRETURN             MONITOR\_AREG                  MONITOR\_BAD
-MONITOR\_CONN                 MONITOR\_CPU                   MONITOR\_DISREASON
-MONITOR\_FAIL                 MONITOR\_SITE                  MONITOR\_STATS
-MONITOR\_TIME                 MONITOR\_USERID                MONITOR\_VLIMIT
-MORTALREALITY                NODEFAULT                     NOSHPROG
-NOZONEPARENT                 NO\_ANSI\_EX                    NO\_ANSI\_EXIT
-NO\_ANSI\_PLAYER               NO\_ANSI\_ROOM                  NO\_ANSI\_THING
-NO\_FORMAT                    NO\_TIMESTAMP                  PAGELOCK
-PROG                         PROG\_ON\_CONNECT               SAFELOG
-SEE\_SUSPECT                  SILENTEFFECT                  SNUFFDARK
-ZONECMDCHK                   ZONE\_AUTOADD                  ZONE\_AUTOADDALL
+Toggles:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{ATRUSE}                       \PYG{n}{CHKREALITY}                    \PYG{n}{CPUTIME}
+\PYG{n}{EXFULLWIZATTR}                \PYG{n}{FORCEHALTED}                   \PYG{n}{HIDEIDLE}
+\PYG{n}{IGNOREZONE}                   \PYG{n}{IMMPROG}                       \PYG{n}{LOGROOM}
+\PYG{n}{MAILVALIDATE}                 \PYG{n}{MAIL\PYGZus{}LOCKDOWN}                 \PYG{n}{MAIL\PYGZus{}NOPARSE}
+\PYG{n}{MAIL\PYGZus{}STRIPRETURN}             \PYG{n}{MONITOR\PYGZus{}AREG}                  \PYG{n}{MONITOR\PYGZus{}BAD}
+\PYG{n}{MONITOR\PYGZus{}CONN}                 \PYG{n}{MONITOR\PYGZus{}CPU}                   \PYG{n}{MONITOR\PYGZus{}DISREASON}
+\PYG{n}{MONITOR\PYGZus{}FAIL}                 \PYG{n}{MONITOR\PYGZus{}SITE}                  \PYG{n}{MONITOR\PYGZus{}STATS}
+\PYG{n}{MONITOR\PYGZus{}TIME}                 \PYG{n}{MONITOR\PYGZus{}USERID}                \PYG{n}{MONITOR\PYGZus{}VLIMIT}
+\PYG{n}{MORTALREALITY}                \PYG{n}{NODEFAULT}                     \PYG{n}{NOSHPROG}
+\PYG{n}{NOZONEPARENT}                 \PYG{n}{NO\PYGZus{}ANSI\PYGZus{}EX}                    \PYG{n}{NO\PYGZus{}ANSI\PYGZus{}EXIT}
+\PYG{n}{NO\PYGZus{}ANSI\PYGZus{}PLAYER}               \PYG{n}{NO\PYGZus{}ANSI\PYGZus{}ROOM}                  \PYG{n}{NO\PYGZus{}ANSI\PYGZus{}THING}
+\PYG{n}{NO\PYGZus{}FORMAT}                    \PYG{n}{NO\PYGZus{}TIMESTAMP}                  \PYG{n}{PAGELOCK}
+\PYG{n}{PROG}                         \PYG{n}{PROG\PYGZus{}ON\PYGZus{}CONNECT}               \PYG{n}{SAFELOG}
+\PYG{n}{SEE\PYGZus{}SUSPECT}                  \PYG{n}{SILENTEFFECT}                  \PYG{n}{SNUFFDARK}
+\PYG{n}{ZONECMDCHK}                   \PYG{n}{ZONE\PYGZus{}AUTOADD}                  \PYG{n}{ZONE\PYGZus{}AUTOADDALL}
+\end{sphinxVerbatim}
 
 
 \section{@power equivalents}
-\label{\detokenize{differences:power-equivalents}}\begin{description}
-\item[{@powers Pennmush—————\sphinxhyphen{}RhostMUSH——————————————MUX2}] \leavevmode
-\sphinxAtStartPar
-Announce                FREE\_WALL                                          Announce
+\label{\detokenize{differences:power-equivalents}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+Pennmush                RhostMUSH                                          MUX2
+
+Announce                FREE\PYGZus{}WALL                                          Announce
 Boot                    BOOT                                               Boot
 Builder                 @quota !WANDERER (flag)                            Builder
-CAN\_DARK                @admin \sphinxhref{mailto:player\_dark/@depower}{player\_dark/@depower} dark                   N/A
-Can\_spoof               N/A \sphinxhyphen{} Wizard+ auto\sphinxhyphen{}spoof                           N/A
+CAN\PYGZus{}DARK                @admin player\PYGZus{}dark/@depower dark                   N/A
+Can\PYGZus{}spoof               N/A \PYGZhy{} Wizard+ auto\PYGZhy{}spoof                           N/A
 Cemit                   N/A                                                N/A
-N/A                     CHOWN\_OTHER                                        chown\_anything
-N/A                     @lock/twink                                        control\_all
-N/A                     WIZ\_WHO                                            expanded\_who
-Chat\_Privs              N/A                                                comm\_all
-DEBIT                   STEAL                                              Steal\_money
+N/A                     CHOWN\PYGZus{}OTHER                                        chown\PYGZus{}anything
+N/A                     @lock/twink                                        control\PYGZus{}all
+N/A                     WIZ\PYGZus{}WHO                                            expanded\PYGZus{}who
+Chat\PYGZus{}Privs              N/A                                                comm\PYGZus{}all
+DEBIT                   STEAL                                              Steal\PYGZus{}money
 Functions               (See @lfunctions)                                  Wizard+ only
 Guest                   GUEST (flag)                                       Guest
 HOOK                    Wizard+ only                                       Wizard+ only
-Halt                    HALT\_QUEUE/HALT\_QUEUE\_ALL                          Halt
+Halt                    HALT\PYGZus{}QUEUE/HALT\PYGZus{}QUEUE\PYGZus{}ALL                          Halt
 Hide                    NOWHO                                              Hide
-Idle                    @timeout player to \sphinxhyphen{}1                              Idle
-N/A                     NO\_MODIFY (flag)                                   Immutable
-Link\_Anywhere           N/A (security risk)                                N/A
+Idle                    @timeout player to \PYGZhy{}1                              Idle
+N/A                     NO\PYGZus{}MODIFY (flag)                                   Immutable
+Link\PYGZus{}Anywhere           N/A (security risk)                                N/A
 Login                   LOGIN (flag)                                       LOGIN (flag)
-Long\_Fingers            LONG\_FINGERS                                       Long\_fingers
-MANY\_ATTRIBS            (@admin vlimit)                                    N/A
+Long\PYGZus{}Fingers            LONG\PYGZus{}FINGERS                                       Long\PYGZus{}fingers
+MANY\PYGZus{}ATTRIBS            (@admin vlimit)                                    N/A
 N/A                     MONITOR (@toggle)                                  Monitor
-No\_Pay                  FREE (flag)                                        Free\_money
-No\_Quota                FREE\_QUOTA                                         Free\_quota
-Open\_Anywhere           N/A (security risk)                                N/A
-N/A                     (Wiz+ Automatic)                                   Pass\_locks
-PICK\_DBREFS             Wizard+ only                                       N/A
-PUEBLO\_SEND             N/A                                                N/A
-Pemit\_All               LONG\_FINGERS                                       N/A
-Player\_Create           PCREATE                                            N/A
-Poll                    N/A \textendash{} Softcode @doing/header                      Poll
+No\PYGZus{}Pay                  FREE (flag)                                        Free\PYGZus{}money
+No\PYGZus{}Quota                FREE\PYGZus{}QUOTA                                         Free\PYGZus{}quota
+Open\PYGZus{}Anywhere           N/A (security risk)                                N/A
+N/A                     (Wiz+ Automatic)                                   Pass\PYGZus{}locks
+PICK\PYGZus{}DBREFS             Wizard+ only                                       N/A
+PUEBLO\PYGZus{}SEND             N/A                                                N/A
+Pemit\PYGZus{}All               LONG\PYGZus{}FINGERS                                       N/A
+Player\PYGZus{}Create           PCREATE                                            N/A
+Poll                    N/A \PYGZhy{}\PYGZhy{} Softcode @doing/header                      Poll
 N/A                     PROG (@toggle)                                     Prog
-Queue                   SEE\_QUEUE/SEE\_QUEUE\_ALL/HALT\_QUEUE/HALT\_QUEUE\_ALL  N/A
-Quotas                  CHANGE\_QUOTAS                                      N/A
-SQL\_OK                  N/A                                                N/A
-Search                  SEARCH\_ANY                                         Search
-See\_All                 EXAMINE\_FULL                                       See\_all
-N/A                     WHO\_UNFIND                                         See\_hidden
+Queue                   SEE\PYGZus{}QUEUE/SEE\PYGZus{}QUEUE\PYGZus{}ALL/HALT\PYGZus{}QUEUE/HALT\PYGZus{}QUEUE\PYGZus{}ALL  N/A
+Quotas                  CHANGE\PYGZus{}QUOTAS                                      N/A
+SQL\PYGZus{}OK                  N/A                                                N/A
+Search                  SEARCH\PYGZus{}ANY                                         Search
+See\PYGZus{}All                 EXAMINE\PYGZus{}FULL                                       See\PYGZus{}all
+N/A                     WHO\PYGZus{}UNFIND                                         See\PYGZus{}hidden
 N/A                     SHUTDOWN                                           Siteadmin
-See\_Queue               SEE\_QUEUE/SEE\_QUEUE\_ALL                            N/A
-N/A                     STAT\_ANY                                           Stat\_any
-Tport\_Anything          TEL\_ANYTHING                                       Tel\_anything
-Tport\_Anywhere          TEL\_ANYWHERE                                       Tel\_anywhere
+See\PYGZus{}Queue               SEE\PYGZus{}QUEUE/SEE\PYGZus{}QUEUE\PYGZus{}ALL                            N/A
+N/A                     STAT\PYGZus{}ANY                                           Stat\PYGZus{}any
+Tport\PYGZus{}Anything          TEL\PYGZus{}ANYTHING                                       Tel\PYGZus{}anything
+Tport\PYGZus{}Anywhere          TEL\PYGZus{}ANYWHERE                                       Tel\PYGZus{}anywhere
 Unkillable              NOKILL                                             Unkillable
-
-\end{description}
+\end{sphinxVerbatim}
 
 
 \subsection{@power unique to RhostMUSH}
@@ -3353,18 +3370,22 @@ Depowers are unique in Rhost and PennMUSH has no equivelant.
 
 \sphinxAtStartPar
 Powers that exist in RhostMUSH that have no match in PennMUSH:
-CHOWN\_ME                     WIZ\_WHO                       NOFORCE
-FREE\_QUOTA                   JOIN\_PLAYER                   NO\_BOOT
-STAT\_ANY                     WHO\_UNFIND                    SHUTDOWN
-PURGE                        CHOWN\_ANYWHERE                CHOWN\_OTHER
-GRAB\_PLAYER                  SECURITY                      WRAITH
-HIDEBIT
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{CHOWN\PYGZus{}ME}                     \PYG{n}{WIZ\PYGZus{}WHO}                       \PYG{n}{NOFORCE}
+\PYG{n}{FREE\PYGZus{}QUOTA}                   \PYG{n}{JOIN\PYGZus{}PLAYER}                   \PYG{n}{NO\PYGZus{}BOOT}
+\PYG{n}{STAT\PYGZus{}ANY}                     \PYG{n}{WHO\PYGZus{}UNFIND}                    \PYG{n}{SHUTDOWN}
+\PYG{n}{PURGE}                        \PYG{n}{CHOWN\PYGZus{}ANYWHERE}                \PYG{n}{CHOWN\PYGZus{}OTHER}
+\PYG{n}{GRAB\PYGZus{}PLAYER}                  \PYG{n}{SECURITY}                      \PYG{n}{WRAITH}
+\PYG{n}{HIDEBIT}
+\end{sphinxVerbatim}
 
 
 \section{Functions equivalents}
-\label{\detokenize{differences:functions-equivalents}}\begin{description}
-\item[{Functions Pennmush—————\sphinxhyphen{}RhostMUSH——————\textendash{}MUX}] \leavevmode
-\sphinxAtStartPar
+\label{\detokenize{differences:functions-equivalents}}
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+Pennmush                RhostMUSH                    MUX
+
 @@                      @@                           @@
 ABS                     ABS                          ABS/IABS
 ACCENT                  ACCENT                       ACCENT
@@ -3372,7 +3393,7 @@ ACCNAME                 CNAME                        MONIKER
 ACOS                    ACOS                         ACOS
 ADD                     ADD                          ADD
 AFTER                   AFTER                        AFTER
-ALIAS                   get(\#db/alias)/LISTPROTECT   get(\#db/alias)
+ALIAS                   get(\PYGZsh{}db/alias)/LISTPROTECT   get(\PYGZsh{}db/alias)
 ALIGN                   PRINTF                       N/A
 ALLOF                   OFPARSE                      N/A
 ALPHAMAX                ALPHAMAX                     ALPHAMAX
@@ -3388,8 +3409,8 @@ ASIN                    ASIN                         ASIN
 ATAN                    ATAN                         ATAN
 ATAN2                   ATAN2                        ATAN2
 N/A                     ATTRCNT                      ATTRCNT
-ATRLOCK                 HASFLAG(\#obj/attr,LOCK)      HASFLAG(\#obj/attr,LOCK)
-ATTRIB\_SET              SET                          SET
+ATRLOCK                 HASFLAG(\PYGZsh{}obj/attr,LOCK)      HASFLAG(\PYGZsh{}obj/attr,LOCK)
+ATTRIB\PYGZus{}SET              SET                          SET
 BAND                    MASK                         BAND
 BASECONV                PACK/UNPACK                  BASECONV
 BEEP                    BEEP                         BEEP
@@ -3436,7 +3457,7 @@ COND                    @function (softfunctions)    N/A
 CONDALL                 @function (softfunctions)    N/A
 CONFIG                  CONFIG                       CONFIG
 CONN                    CONN                         CONN
-convsecs(get(\#db/last)) convsecs(get(\#db/last))      CONNLAST
+convsecs(get(\PYGZsh{}db/last)) convsecs(get(\PYGZsh{}db/last))      CONNLAST
 N/A                     N/A                          CONNLEFT
 N/A                     N/A                          CONNMAX
 N/A                     N/A                          CONNNUM
@@ -3468,7 +3489,7 @@ DECRYPT                 DECRYPT                      DECRYPT
 DEFAULT                 DEFAULT                      DEFAULT
 N/A                     DESTROY                      DESTROY
 DIE                     DICE                         DIE
-DIG                     DIG                          CREATE(with ‘r’)
+DIG                     DIG                          CREATE(with \PYGZsq{}r\PYGZsq{})
 DIGEST                  DIGEST                       DIGEST
 N/A                     TIMEFMT                      DIGITTIME
 DIST2D                  DIST2D                       DIST2D
@@ -3498,8 +3519,8 @@ EVAL                    EVAL                         EVAL
 EXIT                    EXIT                         EXIT
 N/A                     EXP                          EXP
 EXTRACT                 EXTRACT                      EXTRACT
-\%+                      \%+                           FCOUNT
-\%+                      \%+                           FDEPTH
+\PYGZpc{}+                      \PYGZpc{}+                           FCOUNT
+\PYGZpc{}+                      \PYGZpc{}+                           FDEPTH
 FDIV                    FDIV                         FDIV
 FILTER                  FILTER                       FILTER
 FILTERBOOL              FILTER                       FILTERBOOL
@@ -3523,7 +3544,7 @@ FULLNAME                FULLNAME                     FULLNAME
 FUNCTIONS               LISTFUNCTIONS                N/A
 GET                     GET                          GET
 GETPIDS                 PIDS                         N/A
-GET\_EVAL                GET\_EVAL                     GET\_EVAL
+GET\PYGZus{}EVAL                GET\PYGZus{}EVAL                     GET\PYGZus{}EVAL
 GRAB                    GRAB                         GRAB
 GRABALL                 GRABALL                      GRABALL
 GREP                    GREP                         GREP
@@ -3541,7 +3562,7 @@ HASTYPE                 HASTYPE                      HASTYPE
 HEIGHT                  @function (softfunctions)    HEIGHT
 HIDDEN                  HIDDEN                       N/A
 HOME                    HOME                         HOME
-HOST                    LOOKUP\_SITE                  HOST
+HOST                    LOOKUP\PYGZus{}SITE                  HOST
 HTML                    N/A                          N/A
 IBREAK                  IBREAK                       N/A
 IDLE                    IDLE                         IDLE
@@ -3553,7 +3574,7 @@ INC                     INC/XINC                     INC
 INDEX                   INDEX                        INDEX
 INUM                    INUM/INUM2                   INUM
 N/A                     INZONE                       INZONE
-IPADDR                  LOOKUP\_SITE                  N/A
+IPADDR                  LOOKUP\PYGZus{}SITE                  N/A
 ISDAYLIGHT              TIMEFMT                      N/A
 ISDBREF                 ISDBREF                      ISDBREF
 ISINT                   ISINT                        ISINT
@@ -3724,7 +3745,7 @@ PEMIT                   PEMIT                        PEMIT
 PFUN                    U + PARENT                   U + PARENT
 PI                      PI                           PI
 PIDINFO                 PID                          N/A
-PLAYER                  before(grab(lwho(1),*:\%0),:) N/A
+PLAYER                  before(grab(lwho(1),*:\PYGZpc{}0),:) N/A
 PLAYERMEM               SIZE                         PLAYMEM
 PMATCH                  PMATCH                       PMATCH
 POLL                    DOING                        POLL
@@ -3803,7 +3824,7 @@ DIGEST                  DIGEST                       SHA1
 SHL                     SHL                          SHL
 SHR                     SHR                          SHR
 SHUFFLE                 SHUFFLE                      SHUFFLE
-SIGN                    NCOMP(\%0,0)                  SIGN
+SIGN                    NCOMP(\PYGZpc{}0,0)                  SIGN
 SIN                     SIN                          SIN
 SLEV                    N/A                          N/A
 @function               @function                    SITEINFO
@@ -3870,7 +3891,7 @@ TYPE                    TYPE                         TYPE
 UCSTR                   UCSTR                        UCSTR
 UDEFAULT                UDEFAULT                     UDEFAULT
 UFUN                    U                            U
-ULAMBDA                 U + \#lambda                  N/A
+ULAMBDA                 U + \PYGZsh{}lambda                  N/A
 ULDEFAULT               ULDEFAULT                    N/A
 ULOCAL                  ULOCAL                       ULOCAL
 UNIQUE                  LISTDIFF/LISTUNION/LISTINTER N/A
@@ -3921,69 +3942,71 @@ ZFUN                    ZFUN                         ZFUN
 ZMWHO                   ZWHO + STREVAL at mortal     N/A
 ZONE                    LZONE                        ZONE
 ZWHO                    ZWHO                         ZWHO
-
-\end{description}
+\end{sphinxVerbatim}
 
 
 \subsection{Functions that only exist in RhostMUSH}
 \label{\detokenize{differences:functions-that-only-exist-in-rhostmush}}
 \sphinxAtStartPar
 Functions that exist in Rhost that do not have a match in PennMUSH:
-AIINDEX                      AINDEX                        ANDCHR
-ARRAY                        ATTRCNT                       BETWEEN
-BITTYPE                      CANSEE                        CAPLIST
-CHKGARBAGE                   CHKREALITY                    CHKTRACE
-CHOMP                        CITER                         CLOAK
-CLUSTER\_ADD                  CLUSTER\_ATTRCNT               CLUSTER\_DEFAULT
-CLUSTER\_EDEFAULT             CLUSTER\_FLAGS                 CLUSTER\_GET
-CLUSTER\_GET\_EVAL             CLUSTER\_GREP                  CLUSTER\_HASATTR
-CLUSTER\_HASFLAG              CLUSTER\_LATTR                 CLUSTER\_REGREP
-CLUSTER\_REGREPI              CLUSTER\_SET                   CLUSTER\_STATS
-CLUSTER\_U                    CLUSTER\_U2                    CLUSTER\_U2DEFAULT
-CLUSTER\_U2LDEFAULT           CLUSTER\_U2LOCAL               CLUSTER\_UDEFAULT
-CLUSTER\_UEVAL                CLUSTER\_ULDEFAULT             CLUSTER\_ULOCAL
-CLUSTER\_VATTRCNT             CLUSTER\_WIPE                  CLUSTER\_XGET
-COLUMNS                      COSH                          COUNTSPECIAL
-CRC32                        DELEXTRACT                    DESTROY
-EDITANSI                     EE                            ERROR
-EXP                          FBETWEEN                      FBOUND
-GARBLE                       GLOBALROOM                    GUILD
-HASDEPOWER                   HASQUOTA                      HASRXLEVEL
-HASTOGGLE                    HASTXLEVEL                    INPROGRAM
-INZONE                       ISALNUM                       ISALPHA
-ISCLUSTER                    ISDIGIT                       ISHIDDEN
-ISLOWER                      ISPUNCT                       ISSPACE
-ISUPPER                      ISXDIGIT                      KEEPFLAGS
-KEEPTYPE                     LAND                          LAVG
-LCMDS                        LDEPOWERS                     LISTMATCH
-LISTNEWSGROUPS               LISTRLEVELS                   LISTTOGGLES
-LLOC                         LMAX                          LMIN
-LMUL                         LNOR                          LOCALFUNC
-LOCKDECODE                   LOCKENCODE                    LOGSTATUS
-LOGTOFILE                    LOR                           LRAND
-LROOMS                       LTOGGLES                      LXNOR
-LXOR                         MONEYNAME                     MOON
-MOVE                         NAMEQ                         NOSTR
-NOTCHR                       NSLOOKUP                      ORCHR
-PARENMATCH                   PFIND                         PGREP
-POWER10                      PRIVATIZE                     PROGRAMMER
-PUSHREGS                     RACE                          RANDMATCH
-RANDPOS                      REGEDITALLILIT                REGEDITALLLIT
-REGEDITILIT                  REGEDITLIT                    REGNUMMATCH
-REGNUMMATCHI                 REMFLAGS                      REMTYPE
-ROMAN                        ROTL                          ROTR
-RSET                         RXLEVEL                       SAFEBUFF
-SEES                         SETQMATCH                     SHIFT
-SINH                         SORTLISAT                     STR
-STRDISTANCE                  STREQ                         STREVAL
-STRFUNC                      STRIP                         STRLENRAW
-STRLENVIS                    STRMATH                       SUBNETMATCH
-TANH                         TOGGLE                        TOTCMDS
-TRACE                        TXLEVEL                       UEVAL
-WHILE                        WILDMATCH                     WRAPCOLUMNS
-WRITABLE                     XNOR                          XORCHR
-XORFLAG                      ZFUNDEFAULT                   ZFUNEVAL
-ZFUNLDEFAULT                 ZFUNLOCAL
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{AIINDEX}                      \PYG{n}{AINDEX}                        \PYG{n}{ANDCHR}
+\PYG{n}{ARRAY}                        \PYG{n}{ATTRCNT}                       \PYG{n}{BETWEEN}
+\PYG{n}{BITTYPE}                      \PYG{n}{CANSEE}                        \PYG{n}{CAPLIST}
+\PYG{n}{CHKGARBAGE}                   \PYG{n}{CHKREALITY}                    \PYG{n}{CHKTRACE}
+\PYG{n}{CHOMP}                        \PYG{n}{CITER}                         \PYG{n}{CLOAK}
+\PYG{n}{CLUSTER\PYGZus{}ADD}                  \PYG{n}{CLUSTER\PYGZus{}ATTRCNT}               \PYG{n}{CLUSTER\PYGZus{}DEFAULT}
+\PYG{n}{CLUSTER\PYGZus{}EDEFAULT}             \PYG{n}{CLUSTER\PYGZus{}FLAGS}                 \PYG{n}{CLUSTER\PYGZus{}GET}
+\PYG{n}{CLUSTER\PYGZus{}GET\PYGZus{}EVAL}             \PYG{n}{CLUSTER\PYGZus{}GREP}                  \PYG{n}{CLUSTER\PYGZus{}HASATTR}
+\PYG{n}{CLUSTER\PYGZus{}HASFLAG}              \PYG{n}{CLUSTER\PYGZus{}LATTR}                 \PYG{n}{CLUSTER\PYGZus{}REGREP}
+\PYG{n}{CLUSTER\PYGZus{}REGREPI}              \PYG{n}{CLUSTER\PYGZus{}SET}                   \PYG{n}{CLUSTER\PYGZus{}STATS}
+\PYG{n}{CLUSTER\PYGZus{}U}                    \PYG{n}{CLUSTER\PYGZus{}U2}                    \PYG{n}{CLUSTER\PYGZus{}U2DEFAULT}
+\PYG{n}{CLUSTER\PYGZus{}U2LDEFAULT}           \PYG{n}{CLUSTER\PYGZus{}U2LOCAL}               \PYG{n}{CLUSTER\PYGZus{}UDEFAULT}
+\PYG{n}{CLUSTER\PYGZus{}UEVAL}                \PYG{n}{CLUSTER\PYGZus{}ULDEFAULT}             \PYG{n}{CLUSTER\PYGZus{}ULOCAL}
+\PYG{n}{CLUSTER\PYGZus{}VATTRCNT}             \PYG{n}{CLUSTER\PYGZus{}WIPE}                  \PYG{n}{CLUSTER\PYGZus{}XGET}
+\PYG{n}{COLUMNS}                      \PYG{n}{COSH}                          \PYG{n}{COUNTSPECIAL}
+\PYG{n}{CRC32}                        \PYG{n}{DELEXTRACT}                    \PYG{n}{DESTROY}
+\PYG{n}{EDITANSI}                     \PYG{n}{EE}                            \PYG{n}{ERROR}
+\PYG{n}{EXP}                          \PYG{n}{FBETWEEN}                      \PYG{n}{FBOUND}
+\PYG{n}{GARBLE}                       \PYG{n}{GLOBALROOM}                    \PYG{n}{GUILD}
+\PYG{n}{HASDEPOWER}                   \PYG{n}{HASQUOTA}                      \PYG{n}{HASRXLEVEL}
+\PYG{n}{HASTOGGLE}                    \PYG{n}{HASTXLEVEL}                    \PYG{n}{INPROGRAM}
+\PYG{n}{INZONE}                       \PYG{n}{ISALNUM}                       \PYG{n}{ISALPHA}
+\PYG{n}{ISCLUSTER}                    \PYG{n}{ISDIGIT}                       \PYG{n}{ISHIDDEN}
+\PYG{n}{ISLOWER}                      \PYG{n}{ISPUNCT}                       \PYG{n}{ISSPACE}
+\PYG{n}{ISUPPER}                      \PYG{n}{ISXDIGIT}                      \PYG{n}{KEEPFLAGS}
+\PYG{n}{KEEPTYPE}                     \PYG{n}{LAND}                          \PYG{n}{LAVG}
+\PYG{n}{LCMDS}                        \PYG{n}{LDEPOWERS}                     \PYG{n}{LISTMATCH}
+\PYG{n}{LISTNEWSGROUPS}               \PYG{n}{LISTRLEVELS}                   \PYG{n}{LISTTOGGLES}
+\PYG{n}{LLOC}                         \PYG{n}{LMAX}                          \PYG{n}{LMIN}
+\PYG{n}{LMUL}                         \PYG{n}{LNOR}                          \PYG{n}{LOCALFUNC}
+\PYG{n}{LOCKDECODE}                   \PYG{n}{LOCKENCODE}                    \PYG{n}{LOGSTATUS}
+\PYG{n}{LOGTOFILE}                    \PYG{n}{LOR}                           \PYG{n}{LRAND}
+\PYG{n}{LROOMS}                       \PYG{n}{LTOGGLES}                      \PYG{n}{LXNOR}
+\PYG{n}{LXOR}                         \PYG{n}{MONEYNAME}                     \PYG{n}{MOON}
+\PYG{n}{MOVE}                         \PYG{n}{NAMEQ}                         \PYG{n}{NOSTR}
+\PYG{n}{NOTCHR}                       \PYG{n}{NSLOOKUP}                      \PYG{n}{ORCHR}
+\PYG{n}{PARENMATCH}                   \PYG{n}{PFIND}                         \PYG{n}{PGREP}
+\PYG{n}{POWER10}                      \PYG{n}{PRIVATIZE}                     \PYG{n}{PROGRAMMER}
+\PYG{n}{PUSHREGS}                     \PYG{n}{RACE}                          \PYG{n}{RANDMATCH}
+\PYG{n}{RANDPOS}                      \PYG{n}{REGEDITALLILIT}                \PYG{n}{REGEDITALLLIT}
+\PYG{n}{REGEDITILIT}                  \PYG{n}{REGEDITLIT}                    \PYG{n}{REGNUMMATCH}
+\PYG{n}{REGNUMMATCHI}                 \PYG{n}{REMFLAGS}                      \PYG{n}{REMTYPE}
+\PYG{n}{ROMAN}                        \PYG{n}{ROTL}                          \PYG{n}{ROTR}
+\PYG{n}{RSET}                         \PYG{n}{RXLEVEL}                       \PYG{n}{SAFEBUFF}
+\PYG{n}{SEES}                         \PYG{n}{SETQMATCH}                     \PYG{n}{SHIFT}
+\PYG{n}{SINH}                         \PYG{n}{SORTLISAT}                     \PYG{n}{STR}
+\PYG{n}{STRDISTANCE}                  \PYG{n}{STREQ}                         \PYG{n}{STREVAL}
+\PYG{n}{STRFUNC}                      \PYG{n}{STRIP}                         \PYG{n}{STRLENRAW}
+\PYG{n}{STRLENVIS}                    \PYG{n}{STRMATH}                       \PYG{n}{SUBNETMATCH}
+\PYG{n}{TANH}                         \PYG{n}{TOGGLE}                        \PYG{n}{TOTCMDS}
+\PYG{n}{TRACE}                        \PYG{n}{TXLEVEL}                       \PYG{n}{UEVAL}
+\PYG{n}{WHILE}                        \PYG{n}{WILDMATCH}                     \PYG{n}{WRAPCOLUMNS}
+\PYG{n}{WRITABLE}                     \PYG{n}{XNOR}                          \PYG{n}{XORCHR}
+\PYG{n}{XORFLAG}                      \PYG{n}{ZFUNDEFAULT}                   \PYG{n}{ZFUNEVAL}
+\PYG{n}{ZFUNLDEFAULT}                 \PYG{n}{ZFUNLOCAL}
+\end{sphinxVerbatim}
 
 
 \section{What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost}
@@ -4492,11 +4515,11 @@ If you wish at this point to set up mysql and/or sqlite, you  may do so.
 Yes, you can use them in parallel without any issue.
 
 
-\chapter{Gettin Started}
-\label{\detokenize{gettingstarted:gettin-started}}\label{\detokenize{gettingstarted::doc}}
+\chapter{Getting Started}
+\label{\detokenize{gettingstarted:getting-started}}\label{\detokenize{gettingstarted::doc}}
 
-\section{What to ype to get the basics running if you did not choose a pre\sphinxhyphen{}existing flatfile}
-\label{\detokenize{gettingstarted:what-to-ype-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile}}
+\section{What to type to get the basics running if you did not choose a pre\sphinxhyphen{}existing flatfile}
+\label{\detokenize{gettingstarted:what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile}}
 \sphinxAtStartPar
 If you decided to get a bare\sphinxhyphen{}bone configuration, you will find your mush has just two things.  The \#1 (God) player and the starting room \#0.  That’s it.
 
@@ -4919,11 +4942,11 @@ Startmush as expected
 \end{enumerate}
 
 
-\section{Ambrosia’s Minimal Rhost DB}
-\label{\detokenize{gettingstarted:ambrosia-s-minimal-rhost-db}}
+\chapter{Ambrosia’s Minimal Rhost DB}
+\label{\detokenize{ambrosiadb:ambrosia-s-minimal-rhost-db}}\label{\detokenize{ambrosiadb::doc}}
 
-\subsection{Version: 1.0.5          2020\sphinxhyphen{}01\sphinxhyphen{}31}
-\label{\detokenize{gettingstarted:version-1-0-5-2020-01-31}}\begin{description}
+\section{Version: 1.0.5          2020\sphinxhyphen{}01\sphinxhyphen{}31}
+\label{\detokenize{ambrosiadb:version-1-0-5-2020-01-31}}\begin{description}
 \item[{Version history:}] \leavevmode\begin{description}
 \item[{1.0.0}] \leavevmode\begin{itemize}
 \item {} 
@@ -5037,8 +5060,8 @@ functions\_max \sphinxhyphen{}\textgreater{} function\_max. Thanks to \sphinxhre
 \end{description}
 
 
-\subsection{AmbrosiaDB Introduction}
-\label{\detokenize{gettingstarted:ambrosiadb-introduction}}
+\section{AmbrosiaDB Introduction}
+\label{\detokenize{ambrosiadb:ambrosiadb-introduction}}
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
 READ THIS DOCUMENT CAREFULLY!
@@ -5052,11 +5075,11 @@ This minimal Rhost DB was made with a secure setup, and as a good base to start
 a new game off in mind.
 
 
-\subsection{AmbrosiaDB Features}
-\label{\detokenize{gettingstarted:ambrosiadb-features}}
+\section{AmbrosiaDB Features}
+\label{\detokenize{ambrosiadb:ambrosiadb-features}}
 
-\subsubsection{AmbrosiaDB Configuration}
-\label{\detokenize{gettingstarted:ambrosiadb-configuration}}\begin{itemize}
+\subsection{AmbrosiaDB Configuration}
+\label{\detokenize{ambrosiadb:ambrosiadb-configuration}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 Limbo, Master Room and Auxiliary room.
@@ -5194,8 +5217,8 @@ Architects can set \_Attributes
 \end{itemize}
 
 
-\subsubsection{AmbeosiaDB Softcode}
-\label{\detokenize{gettingstarted:ambeosiadb-softcode}}\begin{itemize}
+\subsection{AmbeosiaDB Softcode}
+\label{\detokenize{ambrosiadb:ambeosiadb-softcode}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 Set\sphinxhyphen{}up compatibility SoftFunctions and @hook object.
@@ -5243,8 +5266,8 @@ help .txt files and .indx files for the above.
 \end{itemize}
 
 
-\subsubsection{AmbrosiaDB Functions}
-\label{\detokenize{gettingstarted:ambrosiadb-functions}}\begin{itemize}
+\subsection{AmbrosiaDB Functions}
+\label{\detokenize{ambrosiadb:ambrosiadb-functions}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
 isstaff() \sphinxhyphen{} Softcoded function that returns ‘1’ if its argument matches
@@ -5302,8 +5325,8 @@ one of the latter parameters.
 \end{sphinxadmonition}
 
 
-\subsection{AmbrosiaDB Bitlevels}
-\label{\detokenize{gettingstarted:ambrosiadb-bitlevels}}
+\section{AmbrosiaDB Bitlevels}
+\label{\detokenize{ambrosiadb:ambrosiadb-bitlevels}}
 \sphinxAtStartPar
 The whole DB is highly geared for a low\sphinxhyphen{}bitlevel setup.
 I am a strong believer in least\sphinxhyphen{}privileges\sphinxhyphen{}needed to do the job. Bittypes and
@@ -5316,14 +5339,14 @@ Here is my suggested list of powers and bittypes for staffers.
 \end{sphinxadmonition}
 
 
-\subsubsection{AmbrosiaDB Storytellers}
-\label{\detokenize{gettingstarted:ambrosiadb-storytellers}}
+\subsection{AmbrosiaDB Storytellers}
+\label{\detokenize{ambrosiadb:ambrosiadb-storytellers}}
 \sphinxAtStartPar
 @powered TEL\_ANYWHERE, JOIN\_PLAYER and GRAB\_PLAYER on Guildmaster level.
 
 
-\subsubsection{AmbrosiaDB Builder\sphinxhyphen{}BCs}
-\label{\detokenize{gettingstarted:ambrosiadb-builder-bcs}}
+\subsection{AmbrosiaDB Builder\sphinxhyphen{}BCs}
+\label{\detokenize{ambrosiadb:ambrosiadb-builder-bcs}}
 \sphinxAtStartPar
 Mortal, with @quota and money for their job. There should be one
 shared BC for each area of the game, like BC\sphinxhyphen{}Houston. Special
@@ -5341,8 +5364,8 @@ Both the \sphinxhyphen{}powered and \sphinxhyphen{}admin BCs can have random pas
 be @set NO\_CONNECT.
 
 
-\subsubsection{AmbrosiaDB Building Head}
-\label{\detokenize{gettingstarted:ambrosiadb-building-head}}
+\subsection{AmbrosiaDB Building Head}
+\label{\detokenize{ambrosiadb:ambrosiadb-building-head}}
 \sphinxAtStartPar
 @set Guildmaster, powered TEL\_ANYWHERE, TEL\_ANYTHING and
 optionally CHOWN\_OTHER on Guildmaster level. Mind that the
@@ -5352,8 +5375,8 @@ it allows the Building Head to @chown items between BCs\sphinxhyphen{} and
 to the BC\sphinxhyphen{}\textless{}location\textgreater{}\sphinxhyphen{}powered.
 
 
-\subsubsection{AmbrosiaDB Enforcers}
-\label{\detokenize{gettingstarted:ambrosiadb-enforcers}}
+\subsection{AmbrosiaDB Enforcers}
+\label{\detokenize{ambrosiadb:ambrosiadb-enforcers}}
 \sphinxAtStartPar
 As Storyteller above, plus being @powered Security at
 Guildmaster level, in order to handle problem players.
@@ -5362,14 +5385,14 @@ Guildmaster level, in order to handle problem players.
 Optionally always given to Storytellers.
 
 
-\subsubsection{AmbrosiaDB Coders}
-\label{\detokenize{gettingstarted:ambrosiadb-coders}}
+\subsection{AmbrosiaDB Coders}
+\label{\detokenize{ambrosiadb:ambrosiadb-coders}}
 \sphinxAtStartPar
 @set Architect
 
 
-\subsubsection{AmbrosiaDB Head Coder}
-\label{\detokenize{gettingstarted:ambrosiadb-head-coder}}
+\subsection{AmbrosiaDB Head Coder}
+\label{\detokenize{ambrosiadb:ambrosiadb-head-coder}}
 \sphinxAtStartPar
 Always trust your head coder.
 @set Architect for the everyday bit. Give access to a
@@ -5385,8 +5408,8 @@ banning/blacklisting +commands and other rare code that requires
 Royalty powers. Again, chown finished code to bc\sphinxhyphen{}admin\sphinxhyphen{}royalty.
 
 
-\subsubsection{AmbrosiaDB MU* Head(s)}
-\label{\detokenize{gettingstarted:ambrosiadb-mu-head-s}}
+\subsection{AmbrosiaDB MU* Head(s)}
+\label{\detokenize{ambrosiadb:ambrosiadb-mu-head-s}}
 \sphinxAtStartPar
 You’re the boss(es). But please use an Architect bit for your
 everyday things. Keep Immortal to yourself. Keep \#1 to yourself.
@@ -5394,8 +5417,8 @@ And seriously avoid using either of them except for creating
 a Royalty bit or doing intricate DB maintenance.
 
 
-\subsubsection{AmbrosiaDB Site Admins}
-\label{\detokenize{gettingstarted:ambrosiadb-site-admins}}
+\subsection{AmbrosiaDB Site Admins}
+\label{\detokenize{ambrosiadb:ambrosiadb-site-admins}}
 \sphinxAtStartPar
 They already have more powers than any in\sphinxhyphen{}game bit can ever
 have ;)
@@ -5408,8 +5431,8 @@ order to shut down the game for maintenance, up to being the
 only person with actual access to \#1.
 
 
-\subsubsection{AmbrosiaDB Globals}
-\label{\detokenize{gettingstarted:ambrosiadb-globals}}
+\subsection{AmbrosiaDB Globals}
+\label{\detokenize{ambrosiadb:ambrosiadb-globals}}
 \sphinxAtStartPar
 Handle necessary functionality for adminning through the admin\sphinxhyphen{}only globals and
 softcode.
@@ -5450,8 +5473,8 @@ objects NO\_MODIFY instead, keeping them at Architect\sphinxhyphen{}power but ma
 unmodifyable by Architects.
 
 
-\subsection{AmbrosiaDB Quota}
-\label{\detokenize{gettingstarted:ambrosiadb-quota}}
+\section{AmbrosiaDB Quota}
+\label{\detokenize{ambrosiadb:ambrosiadb-quota}}
 \sphinxAtStartPar
 I highly recommend the use of the alternative @quota system. BC\sphinxhyphen{}Admin\sphinxhyphen{}Mortal
 and BC\sphinxhyphen{}Admin\sphinxhyphen{}Guildmaster both have this @quota system set up on themselves. Both
@@ -5459,8 +5482,8 @@ of them have a high amount of money for everyday operations. You should not give
 them free quota or money.
 
 
-\subsection{AmbrosiaDB Adding Functions}
-\label{\detokenize{gettingstarted:ambrosiadb-adding-functions}}
+\section{AmbrosiaDB Adding Functions}
+\label{\detokenize{ambrosiadb:ambrosiadb-adding-functions}}
 \sphinxAtStartPar
 I also recommend to setup most global functions with /Privileged even if they
 are mortal\sphinxhyphen{}powered, to make them work even when players are set NO\_CODE and
@@ -5470,8 +5493,8 @@ WANDERER by default.
 Enjoy!
 
 
-\subsection{AmbrosiaDB Compiling}
-\label{\detokenize{gettingstarted:ambrosiadb-compiling}}
+\section{AmbrosiaDB Compiling}
+\label{\detokenize{ambrosiadb:ambrosiadb-compiling}}
 \sphinxAtStartPar
 P.S. the ‘bin/asksource.save0’ file has been supplied for loading in the
 ‘make config’ or ‘make confsource’ step of Rhost installation. It provides the
@@ -5482,66 +5505,29 @@ substitution, are used in the DB.
 \sphinxhref{mailto:--Ambrosia@RhostMUSH}{\textendash{}Ambrosia@RhostMUSH}
 
 
-\chapter{What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in RhostMUSH}
-\label{\detokenize{toggles:what-flags-toggles-powers-depowers-and-bitlevels-mean-in-rhostmush}}\label{\detokenize{toggles::doc}}
+\chapter{Multi\sphinxhyphen{}tiered bitlevel systems}
+\label{\detokenize{bitlevels:multi-tiered-bitlevel-systems}}\label{\detokenize{bitlevels::doc}}
 
-\section{What are Flags?}
-\label{\detokenize{toggles:what-are-flags}}
+\section{Altering bitlevels}
+\label{\detokenize{bitlevels:altering-bitlevels}}
 \sphinxAtStartPar
-Flags are pretty much exactly the same as any other mush.  It’s a flag
-that you set or unset on a target which then enables/disables or
-alters something that target can do.  There’s help on all the flags
-in help and wizhelp.
+Please keep in mind each of these bitlevels can be tweeked with the @admin
+parameters and with the @powers (accessable by royalty) or @depowers (only
+by immortal and higher).
 
-
-\section{What are Toggles?}
-\label{\detokenize{toggles:what-are-toggles}}
-\sphinxAtStartPar
-Toggles were designed as a single point flag that immediately enables
-or disables a set ability or condition, thus a ‘toggle’.  It works
-exactly like a flag and was originally designed for two reasons.  To
-distinguish from the multi\sphinxhyphen{}meaning of a ‘flag’, and because frankly
-we ran out of flag space :)
-
-
-\section{What is an @power?}
-\label{\detokenize{toggles:what-is-an-power}}
-\sphinxAtStartPar
-A power is similar to a power on other mushes, but unlike them, our
-powers are multi\sphinxhyphen{}tier.  This means that they can be customized to
-empower something at a given bitlevel.  You may empower something
-from guildmaster up to councilor level.  There are some powers
-with a power level of N/A meaning they are a toggle power granting
-an absolute power level as specified in the help for that power.
-This requires the INHERIT flag for non\sphinxhyphen{}players to inherit powers,
-however, a specific object can be granted a power as well.
-
-
-\section{What is an @depower?}
-\label{\detokenize{toggles:what-is-an-depower}}
-\sphinxAtStartPar
-This is the anti\sphinxhyphen{}thesis of @power.  Also, depowers do not require
-inheritance.  They also have priority over flags, toggles, and
-powers.  You can use depower to remove or lower abilities and
-control from a target, even a full wizard (royalty) can be
-depowered.
-
-
-\section{Multi\sphinxhyphen{}tiered bitlevel systems}
-\label{\detokenize{toggles:multi-tiered-bitlevel-systems}}
 \sphinxAtStartPar
 RhostMUSH offers a multi\sphinxhyphen{}tier bitlevel system.  They go in order of presidence
 You do not have to use all these bits, only use what you want.
 
 
-\subsection{ghod (\#1) \textless{}bitlevel 7\textgreater{}}
-\label{\detokenize{toggles:ghod-1-bitlevel-7}}
+\section{ghod (\#1) \textless{}bitlevel 7\textgreater{}}
+\label{\detokenize{bitlevels:ghod-1-bitlevel-7}}
 \sphinxAtStartPar
 This bitlevel can do everything.  Only those who you trust with absolute power should have this.  Period.
 
 
-\subsection{Immortal(i) \textless{}Level 6\textgreater{} \sphinxhyphen{} Basically \#1}
-\label{\detokenize{toggles:immortal-i-level-6-basically-1}}
+\section{Immortal(i) \textless{}Level 6\textgreater{} \sphinxhyphen{} Basically \#1}
+\label{\detokenize{bitlevels:immortal-i-level-6-basically-1}}
 \sphinxAtStartPar
 The only thing this bitlevel can not do is directly effect \#1,
 set/unset some internal flags/attributes, and set/unset the
@@ -5556,8 +5542,8 @@ Can do everything except set some internal flags, effect \#1, and set/remove the
 \end{itemize}
 
 
-\subsection{Royalty(W) \textless{}Level 5\textgreater{} \sphinxhyphen{} FULL wizbit level}
-\label{\detokenize{toggles:royalty-w-level-5-full-wizbit-level}}
+\section{Royalty(W) \textless{}Level 5\textgreater{} \sphinxhyphen{} FULL wizbit level}
+\label{\detokenize{bitlevels:royalty-w-level-5-full-wizbit-level}}
 \sphinxAtStartPar
 This is your standard wizard.  They can do everything you’re
 used to on other mushes that wizards can do.  In addition, they
@@ -5584,8 +5570,8 @@ Ability to WIZCLOAK
 \end{itemize}
 
 
-\subsection{Councilor(a) \textless{}Level 4\textgreater{} \sphinxhyphen{} High wizbit level}
-\label{\detokenize{toggles:councilor-a-level-4-high-wizbit-level}}
+\section{Councilor(a) \textless{}Level 4\textgreater{} \sphinxhyphen{} High wizbit level}
+\label{\detokenize{bitlevels:councilor-a-level-4-high-wizbit-level}}
 \sphinxAtStartPar
 This is your almost\sphinxhyphen{}but\sphinxhyphen{}not\sphinxhyphen{}quite wizard.  They have access to
 about 80\% of the wizard commands.  This includes @nuke, @toad,
@@ -5608,8 +5594,8 @@ Ability to @nuke, @toad, @boot, @chownall, @dbck, @poor, @newpassword, @pcreate,
 \end{itemize}
 
 
-\subsection{Architect(B) \textless{}Level 3\textgreater{} \sphinxhyphen{} Middle wizbit level}
-\label{\detokenize{toggles:architect-b-level-3-middle-wizbit-level}}
+\section{Architect(B) \textless{}Level 3\textgreater{} \sphinxhyphen{} Middle wizbit level}
+\label{\detokenize{bitlevels:architect-b-level-3-middle-wizbit-level}}
 \sphinxAtStartPar
 This is your sub\sphinxhyphen{}wizard.  They still have the ability to control
 anything their bitlevel and lower (including @chown, @destroy, etc)
@@ -5652,8 +5638,8 @@ Able to @toggle the MONITOR
 \end{itemize}
 
 
-\subsection{Guildmaster(g) \textless{}Level 2\textgreater{} \sphinxhyphen{} Lowest wizbit level}
-\label{\detokenize{toggles:guildmaster-g-level-2-lowest-wizbit-level}}
+\section{Guildmaster(g) \textless{}Level 2\textgreater{} \sphinxhyphen{} Lowest wizbit level}
+\label{\detokenize{bitlevels:guildmaster-g-level-2-lowest-wizbit-level}}
 \sphinxAtStartPar
 This is the lowest wiz bit.  They only have moderate abilities.
 They can examine/decompile anything their level and lower, they can
@@ -5683,8 +5669,8 @@ Can set @quota/@guild on their level and lower.
 \end{itemize}
 
 
-\subsection{Wanderer \textless{}bitlevel 0\textgreater{}}
-\label{\detokenize{toggles:wanderer-bitlevel-0}}
+\section{Wanderer \textless{}bitlevel 0\textgreater{}}
+\label{\detokenize{bitlevels:wanderer-bitlevel-0}}
 \sphinxAtStartPar
 This is a hinderance flag.  This flag is automatically set on new
 players that are created (which can be disabled).  This flag stops
@@ -5694,8 +5680,8 @@ still are allowed to set/unset locks/attributes/etc though without
 hinderance.
 
 
-\subsection{Guest \textless{}bitlevel 0 as well\textgreater{}}
-\label{\detokenize{toggles:guest-bitlevel-0-as-well}}
+\section{Guest \textless{}bitlevel 0 as well\textgreater{}}
+\label{\detokenize{bitlevels:guest-bitlevel-0-as-well}}
 \sphinxAtStartPar
 This is a bigger hinderance flag.  By default all guests should be
 set this.  This flag stops the player from ANY database manipulation
@@ -5703,12 +5689,49 @@ along with @teleporting, and many other advanced commands.  It’s
 extreamly dehibilatating.
 
 
-\section{Altering bitlevels}
-\label{\detokenize{toggles:altering-bitlevels}}
+\chapter{What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH}
+\label{\detokenize{toggles:what-flags-toggles-powers-and-depowers-mean-in-rhostmush}}\label{\detokenize{toggles::doc}}
+
+\section{What are Flags?}
+\label{\detokenize{toggles:what-are-flags}}
 \sphinxAtStartPar
-Please keep in mind each of these bitlevels can be tweeked with the @admin
-parameters and with the @powers (accessable by royalty) or @depowers (only
-by immortal and higher).
+Flags are pretty much exactly the same as any other mush.  It’s a flag
+that you set or unset on a target which then enables/disables or
+alters something that target can do.  There’s help on all the flags
+in help and wizhelp.
+
+
+\section{What are Toggles?}
+\label{\detokenize{toggles:what-are-toggles}}
+\sphinxAtStartPar
+Toggles were designed as a single point flag that immediately enables
+or disables a set ability or condition, thus a ‘toggle’.  It works
+exactly like a flag and was originally designed for two reasons.  To
+distinguish from the multi\sphinxhyphen{}meaning of a ‘flag’, and because frankly
+we ran out of flag space :)
+
+
+\section{What is an @power?}
+\label{\detokenize{toggles:what-is-an-power}}
+\sphinxAtStartPar
+A power is similar to a power on other mushes, but unlike them, our
+powers are multi\sphinxhyphen{}tier.  This means that they can be customized to
+empower something at a given bitlevel.  You may empower something
+from guildmaster up to councilor level.  There are some powers
+with a power level of N/A meaning they are a toggle power granting
+an absolute power level as specified in the help for that power.
+This requires the INHERIT flag for non\sphinxhyphen{}players to inherit powers,
+however, a specific object can be granted a power as well.
+
+
+\section{What is an @depower?}
+\label{\detokenize{toggles:what-is-an-depower}}
+\sphinxAtStartPar
+This is the anti\sphinxhyphen{}thesis of @power.  Also, depowers do not require
+inheritance.  They also have priority over flags, toggles, and
+powers.  You can use depower to remove or lower abilities and
+control from a target, even a full wizard (royalty) can be
+depowered.
 
 
 \chapter{Security}
@@ -6467,11 +6490,16 @@ Issue a kill \sphinxhyphen{}USR2 to the mush which issues an emergency @shutdown
 \sphinxAtStartPar
 Issue a kill \sphinxhyphen{}TERM to the mush which issues an emergency abort and clean shutdown.
 
+\item {} 
+\sphinxAtStartPar
+Through the Autoshutdown script
+
 \end{enumerate}
 
+\begin{sphinxadmonition}{warning}{Warning:}
+\sphinxAtStartPar
+Never kill \sphinxhyphen{}9 RhostMUSH
 
-\subsection{WARNING: Never kill \sphinxhyphen{}9 RhostMUSH}
-\label{\detokenize{maintenance:warning-never-kill-9-rhostmush}}
 \sphinxAtStartPar
 Under NO CIRCUMSTANCES should you kill \sphinxhyphen{}9 your mush unless you don’t care for the
 database.  The reason is if the mush happens to be saving, in any method, to the
@@ -6482,9 +6510,10 @@ database, so pull out a flatfile to recover.
 Sadly, this also may occur if the server hosting you takes a nose\sphinxhyphen{}dive in the middle
 of a db write.  Rhost can recover corruption in\sphinxhyphen{}game while up, but if it bombs
 in the middle of a write, all bets are off. :)
+\end{sphinxadmonition}
 
 
-\section{Autoshutdown script}
+\subsection{Autoshutdown script}
 \label{\detokenize{maintenance:autoshutdown-script}}
 \sphinxAtStartPar
 The makefile will ‘make’ the program that will STOP the mush.
@@ -8009,19 +8038,19 @@ The last exammple clears register 0
 \subsection{Execscript Example bash script}
 \label{\detokenize{advanced:execscript-example-bash-script}}
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYGZsh{}!/bin/bash
-echo \PYGZdq{}This was called by player \PYGZdl{}\PYGZob{}MUSH\PYGZus{}PLAYER\PYGZcb{} that is owned by \PYGZdl{}\PYGZob{}MUSH\PYGZus{}OWNER\PYGZcb{}\PYGZdq{}
-echo \PYGZdq{}Displaying Registers:\PYGZdq{}
-regs=\PYGZdq{}0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z\PYGZdq{}
-for list in \PYGZdl{}\PYGZob{}regs\PYGZcb{}
-do
-    eval echo \PYGZdq{}Register \PYGZdl{}\PYGZob{}list\PYGZcb{}: \PYGZbs{}\PYGZdl{}\PYGZob{}MUSHQ\PYGZus{}\PYGZdl{}\PYGZob{}list\PYGZcb{}\PYGZcb{}\PYGZdq{}
-done
-echo \PYGZdq{}Displaying variables:\PYGZdq{}
-for vars in \PYGZdl{}\PYGZob{}MUSHL\PYGZus{}VARS\PYGZcb{}
-do
-    eval echo \PYGZdq{}Variable \PYGZdl{}\PYGZob{}vars\PYGZcb{}: \PYGZbs{}\PYGZdl{}\PYGZob{}MUSHV\PYGZus{}\PYGZdl{}\PYGZob{}vars\PYGZcb{}\PYGZcb{}\PYGZdq{}
-done
+\PYG{c+ch}{\PYGZsh{}!/bin/bash}
+\PYG{n+nb}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{This was called by player }\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{MUSH\PYGZus{}PLAYER}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{ that is owned by }\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{MUSH\PYGZus{}OWNER}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{n+nb}{echo} \PYG{l+s+s2}{\PYGZdq{}Displaying Registers:\PYGZdq{}}
+\PYG{n+nv}{regs}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z\PYGZdq{}}
+\PYG{k}{for} list \PYG{k}{in} \PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{regs}\PYG{l+s+si}{\PYGZcb{}}
+\PYG{k}{do}
+    \PYG{n+nb}{eval} \PYG{n+nb}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Register }\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{list}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{: \PYGZbs{}\PYGZdl{}\PYGZob{}MUSHQ\PYGZus{}}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{list}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{k}{done}
+\PYG{n+nb}{echo} \PYG{l+s+s2}{\PYGZdq{}Displaying variables:\PYGZdq{}}
+\PYG{k}{for} vars \PYG{k}{in} \PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{MUSHL\PYGZus{}VARS}\PYG{l+s+si}{\PYGZcb{}}
+\PYG{k}{do}
+    \PYG{n+nb}{eval} \PYG{n+nb}{echo} \PYG{l+s+s2}{\PYGZdq{}}\PYG{l+s+s2}{Variable }\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{vars}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{: \PYGZbs{}\PYGZdl{}\PYGZob{}MUSHV\PYGZus{}}\PYG{l+s+si}{\PYGZdl{}\PYGZob{}}\PYG{n+nv}{vars}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}
+\PYG{k}{done}
 \end{sphinxVerbatim}
 
 
@@ -8533,336 +8562,336 @@ Ugly
 \label{\detokenize{advanced:help-key-indexes-for-the-values}}
 \sphinxAtStartPar
 FLAGS: The following flags are to be used.  They are BITWISE masks that you
-need to add together for the values that you apply:
+need to add together for the values that you apply
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{First} \PYG{n}{word} \PYG{n}{of} \PYG{n}{flags} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define SEETHRU         0x00000008      /* Can see through to the other side */}
-\PYG{c+c1}{\PYGZsh{}define WIZARD          0x00000010      /* gets automatic control */}
-\PYG{c+c1}{\PYGZsh{}define LINK\PYGZus{}OK         0x00000020      /* anybody can link to this room */}
-\PYG{c+c1}{\PYGZsh{}define DARK            0x00000040      /* Don\PYGZsq{}t show contents or presence */}
-\PYG{c+c1}{\PYGZsh{}define JUMP\PYGZus{}OK         0x00000080      /* Others may @tel here */}
-\PYG{c+c1}{\PYGZsh{}define STICKY          0x00000100      /* Object goes home when dropped */}
-\PYG{c+c1}{\PYGZsh{}define DESTROY\PYGZus{}OK      0x00000200      /* Others may @destroy */}
-\PYG{c+c1}{\PYGZsh{}define HAVEN           0x00000400      /* No killing here, or no pages */}
-\PYG{c+c1}{\PYGZsh{}define QUIET           0x00000800      /* Prevent \PYGZsq{}feelgood\PYGZsq{} messages */}
-\PYG{c+c1}{\PYGZsh{}define HALT            0x00001000      /* object cannot perform actions */}
-\PYG{c+c1}{\PYGZsh{}define TRACE           0x00002000      /* Generate evaluation trace output */}
-\PYG{c+c1}{\PYGZsh{}define GOING           0x00004000      /* object is available for recycling */}
-\PYG{c+c1}{\PYGZsh{}define MONITOR         0x00008000      /* Process \PYGZca{}x:action listens on obj? */}
-\PYG{c+c1}{\PYGZsh{}define MYOPIC          0x00010000      /* See things as nonowner/nonwizard */}
-\PYG{c+c1}{\PYGZsh{}define PUPPET          0x00020000      /* Relays ALL messages to owner */}
-\PYG{c+c1}{\PYGZsh{}define CHOWN\PYGZus{}OK        0x00040000      /* Object may be @chowned freely */}
-\PYG{c+c1}{\PYGZsh{}define ENTER\PYGZus{}OK        0x00080000      /* Object may be ENTERed */}
-\PYG{c+c1}{\PYGZsh{}define VISUAL          0x00100000      /* Everyone can see properties */}
-\PYG{c+c1}{\PYGZsh{}define IMMORTAL        0x00200000      /* Object can\PYGZsq{}t be killed */}
-\PYG{c+c1}{\PYGZsh{}define HAS\PYGZus{}STARTUP     0x00400000      /* Load some attrs at startup */}
-\PYG{c+c1}{\PYGZsh{}define OPAQUE          0x00800000      /* Can\PYGZsq{}t see inside */}
-\PYG{c+c1}{\PYGZsh{}define VERBOSE         0x01000000      /* Tells owner everything it does. */}
-\PYG{c+c1}{\PYGZsh{}define INHERIT         0x02000000      /* Gets owner\PYGZsq{}s privs. (i.e. Wiz) */}
-\PYG{c+c1}{\PYGZsh{}define NOSPOOF         0x04000000      /* Report originator of all actions. */}
-\PYG{c+c1}{\PYGZsh{}define ROBOT           0x08000000      /* Player is a ROBOT */}
-\PYG{c+c1}{\PYGZsh{}define SAFE            0x10000000      /* Need /override to @destroy */}
-\PYG{c+c1}{\PYGZsh{}define CONTROL\PYGZus{}OK      0x20000000      /* ControlLk specifies who ctrls me */}
-\PYG{c+c1}{\PYGZsh{}define HEARTHRU        0x40000000      /* Can hear out of this obj or exit */}
-\PYG{c+c1}{\PYGZsh{}define TERSE           0x80000000      /* Only show room name on look */}
+\PYG{c+cm}{/* First word of flags */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define SEETHRU         0x00000008      }\PYG{c+cm}{/* Can see through to the other side */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define WIZARD          0x00000010      }\PYG{c+cm}{/* gets automatic control */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define LINK\PYGZus{}OK         0x00000020      }\PYG{c+cm}{/* anybody can link to this room */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DARK            0x00000040      }\PYG{c+cm}{/* Don\PYGZsq{}t show contents or presence */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define JUMP\PYGZus{}OK         0x00000080      }\PYG{c+cm}{/* Others may @tel here */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define STICKY          0x00000100      }\PYG{c+cm}{/* Object goes home when dropped */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DESTROY\PYGZus{}OK      0x00000200      }\PYG{c+cm}{/* Others may @destroy */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define HAVEN           0x00000400      }\PYG{c+cm}{/* No killing here, or no pages */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define QUIET           0x00000800      }\PYG{c+cm}{/* Prevent \PYGZsq{}feelgood\PYGZsq{} messages */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define HALT            0x00001000      }\PYG{c+cm}{/* object cannot perform actions */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TRACE           0x00002000      }\PYG{c+cm}{/* Generate evaluation trace output */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define GOING           0x00004000      }\PYG{c+cm}{/* object is available for recycling */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MONITOR         0x00008000      }\PYG{c+cm}{/* Process \PYGZca{}x:action listens on obj? */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MYOPIC          0x00010000      }\PYG{c+cm}{/* See things as nonowner/nonwizard */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define PUPPET          0x00020000      }\PYG{c+cm}{/* Relays ALL messages to owner */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define CHOWN\PYGZus{}OK        0x00040000      }\PYG{c+cm}{/* Object may be @chowned freely */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define ENTER\PYGZus{}OK        0x00080000      }\PYG{c+cm}{/* Object may be ENTERed */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define VISUAL          0x00100000      }\PYG{c+cm}{/* Everyone can see properties */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define IMMORTAL        0x00200000      }\PYG{c+cm}{/* Object can\PYGZsq{}t be killed */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define HAS\PYGZus{}STARTUP     0x00400000      }\PYG{c+cm}{/* Load some attrs at startup */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define OPAQUE          0x00800000      }\PYG{c+cm}{/* Can\PYGZsq{}t see inside */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define VERBOSE         0x01000000      }\PYG{c+cm}{/* Tells owner everything it does. */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define INHERIT         0x02000000      }\PYG{c+cm}{/* Gets owner\PYGZsq{}s privs. (i.e. Wiz) */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOSPOOF         0x04000000      }\PYG{c+cm}{/* Report originator of all actions. */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define ROBOT           0x08000000      }\PYG{c+cm}{/* Player is a ROBOT */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define SAFE            0x10000000      }\PYG{c+cm}{/* Need /override to @destroy */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define CONTROL\PYGZus{}OK      0x20000000      }\PYG{c+cm}{/* ControlLk specifies who ctrls me */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define HEARTHRU        0x40000000      }\PYG{c+cm}{/* Can hear out of this obj or exit */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TERSE           0x80000000      }\PYG{c+cm}{/* Only show room name on look */}
 
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{Second} \PYG{n}{word} \PYG{n}{of} \PYG{n}{flags} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define KEY             0x00000001      /* No puppets */}
-\PYG{c+c1}{\PYGZsh{}define ABODE           0x00000002      /* May @set home here */}
-\PYG{c+c1}{\PYGZsh{}define FLOATING        0x00000004      /* Inhibit Floating room.. msgs */}
-\PYG{c+c1}{\PYGZsh{}define UNFINDABLE      0x00000008      /* Cant loc() from afar */}
-\PYG{c+c1}{\PYGZsh{}define PARENT\PYGZus{}OK       0x00000010      /* Others may @parent to me */}
-\PYG{c+c1}{\PYGZsh{}define LIGHT           0x00000020      /* Visible in dark places */}
-\PYG{c+c1}{\PYGZsh{}define HAS\PYGZus{}LISTEN      0x00000040      /* Internal: LISTEN attr set */}
-\PYG{c+c1}{\PYGZsh{}define HAS\PYGZus{}FWDLIST     0x00000080      /* Internal: FORWARDLIST attr set */}
-\PYG{c+c1}{\PYGZsh{}define ADMIN           0x00000100      /* Player has admin privs */}
-\PYG{c+c1}{\PYGZsh{}define GUILDOBJ        0x00000200}
-\PYG{c+c1}{\PYGZsh{}define GUILDMASTER     0x00000400      /* Player has gm privs */}
-\PYG{c+c1}{\PYGZsh{}define NO\PYGZus{}WALLS        0x00000800      /* So to stop normal walls */}
-\PYG{c+c1}{\PYGZsh{}define REQUIRE\PYGZus{}TREES   0x00001000      /* Trees are required on this target for attrib sets */}
-\PYG{o}{/}\PYG{o}{*} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{n}{FREE}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}}         \PYG{l+m+mh}{0x00002000} \PYG{o}{*}\PYG{o}{/}   \PYG{o}{/}\PYG{o}{*} \PYG{c+c1}{\PYGZsh{}define OLD\PYGZus{}NOROBOT  0x00002000 */}
-\PYG{c+c1}{\PYGZsh{}define SCLOAK          0x00004000}
-\PYG{c+c1}{\PYGZsh{}define CLOAK           0x00008000}
-\PYG{c+c1}{\PYGZsh{}define FUBAR           0x00010000}
-\PYG{c+c1}{\PYGZsh{}define INDESTRUCTABLE  0x00020000      /* object can\PYGZsq{}t be nuked */}
-\PYG{c+c1}{\PYGZsh{}define NO\PYGZus{}YELL         0x00040000      /* player can\PYGZsq{}t @wall */}
-\PYG{c+c1}{\PYGZsh{}define NO\PYGZus{}TEL          0x00080000      /* player can\PYGZsq{}t @tel or be @tel\PYGZsq{}d */}
-\PYG{c+c1}{\PYGZsh{}define FREE            0x00100000      /* object/player has unlim money */}
-\PYG{c+c1}{\PYGZsh{}define GUEST\PYGZus{}FLAG      0x00200000}
-\PYG{c+c1}{\PYGZsh{}define RECOVER         0x00400000}
-\PYG{c+c1}{\PYGZsh{}define BYEROOM         0x00800000}
-\PYG{c+c1}{\PYGZsh{}define WANDERER        0x01000000}
-\PYG{c+c1}{\PYGZsh{}define ANSI            0x02000000}
-\PYG{c+c1}{\PYGZsh{}define ANSICOLOR       0x04000000}
-\PYG{c+c1}{\PYGZsh{}define NOFLASH         0x08000000}
-\PYG{c+c1}{\PYGZsh{}define SUSPECT         0x10000000      /* Report some activities to wizards */}
-\PYG{c+c1}{\PYGZsh{}define BUILDER         0x20000000      /* Player has architect privs */}
-\PYG{c+c1}{\PYGZsh{}define CONNECTED       0x40000000      /* Player is connected */}
-\PYG{c+c1}{\PYGZsh{}define SLAVE           0x80000000      /* Disallow most commands */}
+\PYG{c+cm}{/* Second word of flags */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define KEY             0x00000001      }\PYG{c+cm}{/* No puppets */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define ABODE           0x00000002      }\PYG{c+cm}{/* May @set home here */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define FLOATING        0x00000004      }\PYG{c+cm}{/* Inhibit Floating room.. msgs */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define UNFINDABLE      0x00000008      }\PYG{c+cm}{/* Cant loc() from afar */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define PARENT\PYGZus{}OK       0x00000010      }\PYG{c+cm}{/* Others may @parent to me */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define LIGHT           0x00000020      }\PYG{c+cm}{/* Visible in dark places */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define HAS\PYGZus{}LISTEN      0x00000040      }\PYG{c+cm}{/* Internal: LISTEN attr set */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define HAS\PYGZus{}FWDLIST     0x00000080      }\PYG{c+cm}{/* Internal: FORWARDLIST attr set */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define ADMIN           0x00000100      }\PYG{c+cm}{/* Player has admin privs */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define GUILDOBJ        0x00000200}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define GUILDMASTER     0x00000400      }\PYG{c+cm}{/* Player has gm privs */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NO\PYGZus{}WALLS        0x00000800      }\PYG{c+cm}{/* So to stop normal walls */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define REQUIRE\PYGZus{}TREES   0x00001000      }\PYG{c+cm}{/* Trees are required on this target for attrib sets */}
+\PYG{c+cm}{/* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}FREE\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}         0x00002000 */}   \PYG{c+cm}{/* \PYGZsh{}define OLD\PYGZus{}NOROBOT  0x00002000 */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define SCLOAK          0x00004000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define CLOAK           0x00008000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define FUBAR           0x00010000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define INDESTRUCTABLE  0x00020000      }\PYG{c+cm}{/* object can\PYGZsq{}t be nuked */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NO\PYGZus{}YELL         0x00040000      }\PYG{c+cm}{/* player can\PYGZsq{}t @wall */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NO\PYGZus{}TEL          0x00080000      }\PYG{c+cm}{/* player can\PYGZsq{}t @tel or be @tel\PYGZsq{}d */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define FREE            0x00100000      }\PYG{c+cm}{/* object/player has unlim money */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define GUEST\PYGZus{}FLAG      0x00200000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define RECOVER         0x00400000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define BYEROOM         0x00800000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define WANDERER        0x01000000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define ANSI            0x02000000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define ANSICOLOR       0x04000000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOFLASH         0x08000000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define SUSPECT         0x10000000      }\PYG{c+cm}{/* Report some activities to wizards */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define BUILDER         0x20000000      }\PYG{c+cm}{/* Player has architect privs */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define CONNECTED       0x40000000      }\PYG{c+cm}{/* Player is connected */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define SLAVE           0x80000000      }\PYG{c+cm}{/* Disallow most commands */}
 
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{Third} \PYG{n}{word} \PYG{n}{of} \PYG{n}{flags} \PYG{o}{\PYGZhy{}} \PYG{n}{Thorin} \PYG{l+m+mi}{3}\PYG{o}{/}\PYG{l+m+mi}{95} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define NOCONNECT       0x00000001}
-\PYG{c+c1}{\PYGZsh{}define DPSHIFT         0x00000002}
-\PYG{c+c1}{\PYGZsh{}define NOPOSSESS       0x00000004}
-\PYG{c+c1}{\PYGZsh{}define COMBAT          0x00000008}
-\PYG{c+c1}{\PYGZsh{}define IC              0x00000010}
-\PYG{c+c1}{\PYGZsh{}define ZONEMASTER      0x00000020}
-\PYG{c+c1}{\PYGZsh{}define ALTQUOTA        0x00000040}
-\PYG{c+c1}{\PYGZsh{}define NOEXAMINE       0x00000080}
-\PYG{c+c1}{\PYGZsh{}define NOMODIFY        0x00000100}
-\PYG{c+c1}{\PYGZsh{}define CMDCHECK        0x00000200}
-\PYG{c+c1}{\PYGZsh{}define DOORRED         0x00000400}
-\PYG{c+c1}{\PYGZsh{}define PRIVATE         0x00000800      /* For exits only */}
-\PYG{c+c1}{\PYGZsh{}define NOMOVE          0x00001000}
-\PYG{c+c1}{\PYGZsh{}define STOP            0x00002000}
-\PYG{c+c1}{\PYGZsh{}define NOSTOP          0x00004000}
-\PYG{c+c1}{\PYGZsh{}define NOCOMMAND       0x00008000}
-\PYG{c+c1}{\PYGZsh{}define AUDIT           0x00010000}
-\PYG{c+c1}{\PYGZsh{}define SEE\PYGZus{}OEMIT       0x00020000}
-\PYG{c+c1}{\PYGZsh{}define NO\PYGZus{}GOBJ         0x00040000}
-\PYG{c+c1}{\PYGZsh{}define NO\PYGZus{}PESTER       0x00080000}
-\PYG{c+c1}{\PYGZsh{}define LRFLAG          0x00100000}
-\PYG{c+c1}{\PYGZsh{}define TELOK           0x00200000}
-\PYG{c+c1}{\PYGZsh{}define NO\PYGZus{}OVERRIDE     0x00400000}
-\PYG{c+c1}{\PYGZsh{}define NO\PYGZus{}USELOCK      0x00800000}
-\PYG{c+c1}{\PYGZsh{}define DR\PYGZus{}PURGE        0x01000000      /* For rooms only...internal */}
-\PYG{c+c1}{\PYGZsh{}define NO\PYGZus{}ANSINAME     0x02000000      /* Remove the ability to set @ansiname */}
-\PYG{c+c1}{\PYGZsh{}define SPOOF           0x04000000}
-\PYG{c+c1}{\PYGZsh{}define SIDEFX          0x08000000      /* Allow enactor to use side\PYGZhy{}effects */}
-\PYG{c+c1}{\PYGZsh{}define ZONECONTENTS    0x10000000      /* Search contents of zonemaster for \PYGZdl{}commands */}
-\PYG{c+c1}{\PYGZsh{}define NOWHO           0x20000000      /* Player in WHO doesn\PYGZsq{}t show up \PYGZhy{} use with @hide */}
-\PYG{c+c1}{\PYGZsh{}define ANONYMOUS       0x40000000      /* Player set shows up as \PYGZsq{}Someone\PYGZsq{} when talking */}
-\PYG{c+c1}{\PYGZsh{}define BACKSTAGE       0x80000000      /* Immortal toggle for items on control */}
+\PYG{c+cm}{/* Third word of flags \PYGZhy{} Thorin 3/95 */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOCONNECT       0x00000001}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DPSHIFT         0x00000002}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOPOSSESS       0x00000004}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define COMBAT          0x00000008}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define IC              0x00000010}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define ZONEMASTER      0x00000020}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define ALTQUOTA        0x00000040}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOEXAMINE       0x00000080}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOMODIFY        0x00000100}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define CMDCHECK        0x00000200}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DOORRED         0x00000400}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define PRIVATE         0x00000800      }\PYG{c+cm}{/* For exits only */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOMOVE          0x00001000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define STOP            0x00002000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOSTOP          0x00004000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOCOMMAND       0x00008000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define AUDIT           0x00010000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define SEE\PYGZus{}OEMIT       0x00020000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NO\PYGZus{}GOBJ         0x00040000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NO\PYGZus{}PESTER       0x00080000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define LRFLAG          0x00100000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TELOK           0x00200000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NO\PYGZus{}OVERRIDE     0x00400000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NO\PYGZus{}USELOCK      0x00800000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DR\PYGZus{}PURGE        0x01000000      }\PYG{c+cm}{/* For rooms only...internal */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NO\PYGZus{}ANSINAME     0x02000000      }\PYG{c+cm}{/* Remove the ability to set @ansiname */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define SPOOF           0x04000000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define SIDEFX          0x08000000      }\PYG{c+cm}{/* Allow enactor to use side\PYGZhy{}effects */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define ZONECONTENTS    0x10000000      }\PYG{c+cm}{/* Search contents of zonemaster for \PYGZdl{}commands */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOWHO           0x20000000      }\PYG{c+cm}{/* Player in WHO doesn\PYGZsq{}t show up \PYGZhy{} use with @hide */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define ANONYMOUS       0x40000000      }\PYG{c+cm}{/* Player set shows up as \PYGZsq{}Someone\PYGZsq{} when talking */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define BACKSTAGE       0x80000000      }\PYG{c+cm}{/* Immortal toggle for items on control */}
 
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{Forth} \PYG{n}{word} \PYG{n}{of} \PYG{n}{flags} \PYG{o}{\PYGZhy{}} \PYG{n}{Thorin} \PYG{l+m+mi}{3}\PYG{o}{/}\PYG{l+m+mi}{95} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define NOBACKSTAGE     0x00000001      /* Immortal toggle to control no\PYGZhy{}backstage */}
-\PYG{c+c1}{\PYGZsh{}define LOGIN           0x00000002      /* Enable player to login past @disable logins */}
-\PYG{c+c1}{\PYGZsh{}define INPROGRAM       0x00000004      /* Player is inside a program */}
-\PYG{c+c1}{\PYGZsh{}define COMMANDS        0x00000008      /* Optional define for \PYGZdl{}commands */}
-\PYG{c+c1}{\PYGZsh{}define MARKER0         0x00000010      /* TM 3.0 marker flags */}
-\PYG{c+c1}{\PYGZsh{}define MARKER1         0x00000020}
-\PYG{c+c1}{\PYGZsh{}define MARKER2         0x00000040}
-\PYG{c+c1}{\PYGZsh{}define MARKER3         0x00000080}
-\PYG{c+c1}{\PYGZsh{}define MARKER4         0x00000100}
-\PYG{c+c1}{\PYGZsh{}define MARKER5         0x00000200}
-\PYG{c+c1}{\PYGZsh{}define MARKER6         0x00000400}
-\PYG{c+c1}{\PYGZsh{}define MARKER7         0x00000800}
-\PYG{c+c1}{\PYGZsh{}define MARKER8         0x00001000}
-\PYG{c+c1}{\PYGZsh{}define MARKER9         0x00002000}
-\PYG{c+c1}{\PYGZsh{}define BOUNCE          0x00004000      /* That lovly TM 3.0 Bouncey thingy */}
-\PYG{c+c1}{\PYGZsh{}define SHOWFAILCMD     0x00008000      /* Show failed \PYGZdl{}commands defauilt error */}
-\PYG{c+c1}{\PYGZsh{}define NOUNDERLINE     0x00010000      /* Strip UNDERLINE character from ANSI */}
-\PYG{c+c1}{\PYGZsh{}define NONAME          0x00020000      /* Target does not display name with look */}
-\PYG{c+c1}{\PYGZsh{}define ZONEPARENT      0x00040000      /* Target zone allows inheritance of attribs */}
-\PYG{c+c1}{\PYGZsh{}define SPAMMONITOR     0x00080000      /* Monitor the target for spam */}
-\PYG{c+c1}{\PYGZsh{}define BLIND           0x00100000      /* Exits and locations snuff arrived/left */}
-\PYG{c+c1}{\PYGZsh{}define NOCODE          0x00200000      /* Players may not code */}
-\PYG{c+c1}{\PYGZsh{}define HAS\PYGZus{}PROTECT     0x00400000      /* Player target has protect name data */}
-\PYG{c+c1}{\PYGZsh{}define XTERMCOLOR      0x00800000      /* Extended AnSI Xterm colors */}
-\PYG{c+c1}{\PYGZsh{}define HAS\PYGZus{}ATTRPIPE    0x01000000      /* Attribute piping via @pipe */}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mh}{0x02000000} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mh}{0x04000000} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mh}{0x08000000} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mh}{0x10000000} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mh}{0x20000000} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mh}{0x40000000} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mh}{0x80000000} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
+\PYG{c+cm}{/* Forth word of flags \PYGZhy{} Thorin 3/95 */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOBACKSTAGE     0x00000001      }\PYG{c+cm}{/* Immortal toggle to control no\PYGZhy{}backstage */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define LOGIN           0x00000002      }\PYG{c+cm}{/* Enable player to login past @disable logins */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define INPROGRAM       0x00000004      }\PYG{c+cm}{/* Player is inside a program */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define COMMANDS        0x00000008      }\PYG{c+cm}{/* Optional define for \PYGZdl{}commands */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MARKER0         0x00000010      }\PYG{c+cm}{/* TM 3.0 marker flags */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MARKER1         0x00000020}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MARKER2         0x00000040}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MARKER3         0x00000080}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MARKER4         0x00000100}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MARKER5         0x00000200}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MARKER6         0x00000400}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MARKER7         0x00000800}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MARKER8         0x00001000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define MARKER9         0x00002000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define BOUNCE          0x00004000      }\PYG{c+cm}{/* That lovly TM 3.0 Bouncey thingy */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define SHOWFAILCMD     0x00008000      }\PYG{c+cm}{/* Show failed \PYGZdl{}commands defauilt error */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOUNDERLINE     0x00010000      }\PYG{c+cm}{/* Strip UNDERLINE character from ANSI */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NONAME          0x00020000      }\PYG{c+cm}{/* Target does not display name with look */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define ZONEPARENT      0x00040000      }\PYG{c+cm}{/* Target zone allows inheritance of attribs */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define SPAMMONITOR     0x00080000      }\PYG{c+cm}{/* Monitor the target for spam */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define BLIND           0x00100000      }\PYG{c+cm}{/* Exits and locations snuff arrived/left */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define NOCODE          0x00200000      }\PYG{c+cm}{/* Players may not code */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define HAS\PYGZus{}PROTECT     0x00400000      }\PYG{c+cm}{/* Player target has protect name data */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define XTERMCOLOR      0x00800000      }\PYG{c+cm}{/* Extended AnSI Xterm colors */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define HAS\PYGZus{}ATTRPIPE    0x01000000      }\PYG{c+cm}{/* Attribute piping via @pipe */}
+\PYG{c+cm}{/* 0x02000000 free */}
+\PYG{c+cm}{/* 0x04000000 free */}
+\PYG{c+cm}{/* 0x08000000 free */}
+\PYG{c+cm}{/* 0x10000000 free */}
+\PYG{c+cm}{/* 0x20000000 free */}
+\PYG{c+cm}{/* 0x40000000 free */}
+\PYG{c+cm}{/* 0x80000000 free */}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
 TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like
-the flags above.  They are added together for each word type:
+the flags above.  They are added together for each word type
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{First} \PYG{n}{word} \PYG{n}{of} \PYG{n}{toggles} \PYG{o}{\PYGZhy{}} \PYG{n}{Thorin} \PYG{l+m+mi}{3}\PYG{o}{/}\PYG{l+m+mi}{95} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR             0x00000001      /* Active monitor on player */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR\PYGZus{}USERID      0x00000002      /* show userid */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR\PYGZus{}SITE        0x00000004      /* show site */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR\PYGZus{}STATS       0x00000008      /* show stats */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR\PYGZus{}FAIL        0x00000010      /* show fails */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR\PYGZus{}CONN        0x00000020}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}VANILLA\PYGZus{}ERRORS      0x00000040      /* show normal error msg */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NO\PYGZus{}ANSI\PYGZus{}EX          0x00000080      /* supress ansi stuff in ex */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}CPUTIME             0x00000100      /* show cpu time for cmds */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR\PYGZus{}DISREASON   0x00000200}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR\PYGZus{}VLIMIT      0x00000400}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NOTIFY\PYGZus{}LINK         0x00000800}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR\PYGZus{}AREG        0x00001000}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR\PYGZus{}TIME        0x00002000}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}CLUSTER             0x00004000      /* Object is part of a cluster */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}SNUFFDARK           0x00008000      /* Snuff Dark Exit Viewing */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NOANSI\PYGZus{}PLAYER       0x00010000      /* Do not show ansi player names */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NOANSI\PYGZus{}THING        0x00020000      /* ... things */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NOANSI\PYGZus{}ROOM         0x00040000      /* ... rooms */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NOANSI\PYGZus{}EXIT         0x00080000      /* ... exits */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NO\PYGZus{}TIMESTAMP        0x00100000      /* Do not modify timestamps on target */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NO\PYGZus{}FORMAT           0x00200000      /* Override @conformat/@exitformat */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}ZONE\PYGZus{}AUTOADD        0x00400000      /* Automatically add FIRST zone in list */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}ZONE\PYGZus{}AUTOADDALL     0x00800000      /* Automatically add ALL zones in list */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}WIELDABLE           0x01000000      /* Marker to specify if object is wieldable */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}WEARABLE            0x02000000      /* Marker to specify if object is wearable */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}SEE\PYGZus{}SUSPECT         0x04000000      /* Specify who sees suspect in WHO/MONITOR */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR\PYGZus{}CPU         0x08000000      /* Specify who sees CPU overflow allerts */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}BRANDY\PYGZus{}MAIL         0x10000000      /* Define brandy like mail interface */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}FORCEHALTED         0x20000000      /* The item toggled can @force halted things */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}PROG                0x40000000      /* Can use @program on other people/things */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NOSHELLPROG         0x80000000      /* Target can not issue commands inside a prog */}
+\PYG{c+cm}{/* First word of toggles \PYGZhy{} Thorin 3/95 */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR             0x00000001      }\PYG{c+cm}{/* Active monitor on player */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR\PYGZus{}USERID      0x00000002      }\PYG{c+cm}{/* show userid */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR\PYGZus{}SITE        0x00000004      }\PYG{c+cm}{/* show site */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR\PYGZus{}STATS       0x00000008      }\PYG{c+cm}{/* show stats */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR\PYGZus{}FAIL        0x00000010      }\PYG{c+cm}{/* show fails */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR\PYGZus{}CONN        0x00000020}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}VANILLA\PYGZus{}ERRORS      0x00000040      }\PYG{c+cm}{/* show normal error msg */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NO\PYGZus{}ANSI\PYGZus{}EX          0x00000080      }\PYG{c+cm}{/* supress ansi stuff in ex */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}CPUTIME             0x00000100      }\PYG{c+cm}{/* show cpu time for cmds */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR\PYGZus{}DISREASON   0x00000200}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR\PYGZus{}VLIMIT      0x00000400}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NOTIFY\PYGZus{}LINK         0x00000800}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR\PYGZus{}AREG        0x00001000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR\PYGZus{}TIME        0x00002000}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}CLUSTER             0x00004000      }\PYG{c+cm}{/* Object is part of a cluster */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}SNUFFDARK           0x00008000      }\PYG{c+cm}{/* Snuff Dark Exit Viewing */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NOANSI\PYGZus{}PLAYER       0x00010000      }\PYG{c+cm}{/* Do not show ansi player names */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NOANSI\PYGZus{}THING        0x00020000      }\PYG{c+cm}{/* ... things */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NOANSI\PYGZus{}ROOM         0x00040000      }\PYG{c+cm}{/* ... rooms */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NOANSI\PYGZus{}EXIT         0x00080000      }\PYG{c+cm}{/* ... exits */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NO\PYGZus{}TIMESTAMP        0x00100000      }\PYG{c+cm}{/* Do not modify timestamps on target */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NO\PYGZus{}FORMAT           0x00200000      }\PYG{c+cm}{/* Override @conformat/@exitformat */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}ZONE\PYGZus{}AUTOADD        0x00400000      }\PYG{c+cm}{/* Automatically add FIRST zone in list */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}ZONE\PYGZus{}AUTOADDALL     0x00800000      }\PYG{c+cm}{/* Automatically add ALL zones in list */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}WIELDABLE           0x01000000      }\PYG{c+cm}{/* Marker to specify if object is wieldable */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}WEARABLE            0x02000000      }\PYG{c+cm}{/* Marker to specify if object is wearable */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}SEE\PYGZus{}SUSPECT         0x04000000      }\PYG{c+cm}{/* Specify who sees suspect in WHO/MONITOR */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR\PYGZus{}CPU         0x08000000      }\PYG{c+cm}{/* Specify who sees CPU overflow allerts */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}BRANDY\PYGZus{}MAIL         0x10000000      }\PYG{c+cm}{/* Define brandy like mail interface */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}FORCEHALTED         0x20000000      }\PYG{c+cm}{/* The item toggled can @force halted things */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}PROG                0x40000000      }\PYG{c+cm}{/* Can use @program on other people/things */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NOSHELLPROG         0x80000000      }\PYG{c+cm}{/* Target can not issue commands inside a prog */}
 
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{Second} \PYG{n}{word} \PYG{n}{of} \PYG{n}{toggles} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Ash} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}EXTANSI             0x00000001      /* Specify if target can used extended ansi naming */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}IMMPROG             0x00000002      /* Only an immortal can @quitprogram them */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MONITOR\PYGZus{}BFAIL       0x00000004      /* Monitor if a failed connect on bad character */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}PROG\PYGZus{}ON\PYGZus{}CONNECT     0x00000008      /* Reverse logic of program on connect */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MAIL\PYGZus{}STRIPRETURN    0x00000010      /* Strip carrage return in mail combining */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}PENN\PYGZus{}MAIL           0x00000020      /* Use PENN style syntax */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}SILENTEFFECTS       0x00000040      /* Silents did\PYGZus{}it() functionality on target */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}IGNOREZONE          0x00000080      /* Target is set to @icmd zones */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}VPAGE               0x00000100      /* Target sees alias in pages */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}PAGELOCK            0x00000200      /* Target issues pagelocks as normal */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MAIL\PYGZus{}NOPARSE        0x00000400      /* Don\PYGZsq{}t parse \PYGZpc{}t/\PYGZpc{}b/\PYGZpc{}r in mail */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MAIL\PYGZus{}LOCKDOWN       0x00000800      /* Mortal\PYGZhy{}accessed mail/number and mail/check */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MUXPAGE             0x00001000      /* Have \PYGZsq{}page\PYGZsq{} work like MUX */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NOZONEPARENT        0x00002000      /* Zone Child does NOT inherit parent attribs */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}ATRUSE              0x00004000      /* Enactor can use Attribute based USELOCKS */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}VARIABLE            0x00008000      /* Set exit to be variable */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}KEEPALIVE           0x00010000      /* Send \PYGZsq{}keepalives\PYGZsq{} to the target player */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}CHKREALITY          0x00020000      /* Target checks @lock/user for Reality passes */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NOISY               0x00040000      /* Always do noisy sets */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}ZONECMDCHK          0x00080000      /* Zone commands checked on target like @parent */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}HIDEIDLE            0x00100000      /* Allow wizards/immortals to hide their idle time */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}MORTALREALITY       0x00200000      /* Override the wiz\PYGZus{}always\PYGZus{}real setting */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}ACCENTS             0x00400000      /* Accents being displayed */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}PREMAILVALIDATE     0x00800000      /* Pre\PYGZhy{}Validate the mail send list before sending mail */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}SAFELOG             0x01000000      /* Allow \PYGZsq{}clean logging\PYGZsq{} by the player */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}UTF8                0x02000000      /* UTF8 being displayed */}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mh}{0x04000000} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NODEFAULT           0x08000000      /* Allow target to inherit default attribs */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}EXFULLWIZATTR       0x10000000      /* Examine Wiz attribs */}
-\PYG{c+c1}{\PYGZsh{}ifdef ENH\PYGZus{}LOGROOM}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}LOGROOMENH          0x20000000      /* Enhanced Room Logging */}
-\PYG{c+c1}{\PYGZsh{}endif}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}LOGROOM             0x40000000      /* Log Room\PYGZsq{}s location/contents */}
-\PYG{c+c1}{\PYGZsh{}define TOG\PYGZus{}NOGLOBPARENT        0x80000000      /* Target does not inherit global attributes */}
+\PYG{c+cm}{/* Second word of toggles \PYGZhy{}\PYGZhy{} Ash */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}EXTANSI             0x00000001      }\PYG{c+cm}{/* Specify if target can used extended ansi naming */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}IMMPROG             0x00000002      }\PYG{c+cm}{/* Only an immortal can @quitprogram them */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MONITOR\PYGZus{}BFAIL       0x00000004      }\PYG{c+cm}{/* Monitor if a failed connect on bad character */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}PROG\PYGZus{}ON\PYGZus{}CONNECT     0x00000008      }\PYG{c+cm}{/* Reverse logic of program on connect */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MAIL\PYGZus{}STRIPRETURN    0x00000010      }\PYG{c+cm}{/* Strip carrage return in mail combining */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}PENN\PYGZus{}MAIL           0x00000020      }\PYG{c+cm}{/* Use PENN style syntax */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}SILENTEFFECTS       0x00000040      }\PYG{c+cm}{/* Silents did\PYGZus{}it() functionality on target */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}IGNOREZONE          0x00000080      }\PYG{c+cm}{/* Target is set to @icmd zones */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}VPAGE               0x00000100      }\PYG{c+cm}{/* Target sees alias in pages */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}PAGELOCK            0x00000200      }\PYG{c+cm}{/* Target issues pagelocks as normal */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MAIL\PYGZus{}NOPARSE        0x00000400      }\PYG{c+cm}{/* Don\PYGZsq{}t parse \PYGZpc{}t/\PYGZpc{}b/\PYGZpc{}r in mail */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MAIL\PYGZus{}LOCKDOWN       0x00000800      }\PYG{c+cm}{/* Mortal\PYGZhy{}accessed mail/number and mail/check */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MUXPAGE             0x00001000      }\PYG{c+cm}{/* Have \PYGZsq{}page\PYGZsq{} work like MUX */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NOZONEPARENT        0x00002000      }\PYG{c+cm}{/* Zone Child does NOT inherit parent attribs */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}ATRUSE              0x00004000      }\PYG{c+cm}{/* Enactor can use Attribute based USELOCKS */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}VARIABLE            0x00008000      }\PYG{c+cm}{/* Set exit to be variable */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}KEEPALIVE           0x00010000      }\PYG{c+cm}{/* Send \PYGZsq{}keepalives\PYGZsq{} to the target player */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}CHKREALITY          0x00020000      }\PYG{c+cm}{/* Target checks @lock/user for Reality passes */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NOISY               0x00040000      }\PYG{c+cm}{/* Always do noisy sets */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}ZONECMDCHK          0x00080000      }\PYG{c+cm}{/* Zone commands checked on target like @parent */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}HIDEIDLE            0x00100000      }\PYG{c+cm}{/* Allow wizards/immortals to hide their idle time */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}MORTALREALITY       0x00200000      }\PYG{c+cm}{/* Override the wiz\PYGZus{}always\PYGZus{}real setting */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}ACCENTS             0x00400000      }\PYG{c+cm}{/* Accents being displayed */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}PREMAILVALIDATE     0x00800000      }\PYG{c+cm}{/* Pre\PYGZhy{}Validate the mail send list before sending mail */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}SAFELOG             0x01000000      }\PYG{c+cm}{/* Allow \PYGZsq{}clean logging\PYGZsq{} by the player */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}UTF8                0x02000000      }\PYG{c+cm}{/* UTF8 being displayed */}
+\PYG{c+cm}{/* 0x04000000 free */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NODEFAULT           0x08000000      }\PYG{c+cm}{/* Allow target to inherit default attribs */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}EXFULLWIZATTR       0x10000000      }\PYG{c+cm}{/* Examine Wiz attribs */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{ifdef ENH\PYGZus{}LOGROOM}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}LOGROOMENH          0x20000000      }\PYG{c+cm}{/* Enhanced Room Logging */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{endif}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}LOGROOM             0x40000000      }\PYG{c+cm}{/* Log Room\PYGZsq{}s location/contents */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define TOG\PYGZus{}NOGLOBPARENT        0x80000000      }\PYG{c+cm}{/* Target does not inherit global attributes */}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
 POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift
-markers that you would have to compute the shift then add it after the fact.:
+markers that you would have to compute the shift then add it after the fact.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{First} \PYG{n}{word} \PYG{n}{of} \PYG{n}{power} \PYG{n}{positions}\PYG{o}{.}  \PYG{n}{Each} \PYG{n}{position} \PYG{o+ow}{is} \PYG{l+m+mi}{2} \PYG{n}{bits} \PYG{n}{so} \PYG{n}{the}
-   \PYG{n}{number} \PYG{n}{here} \PYG{o+ow}{is} \PYG{n}{how} \PYG{n}{far} \PYG{n}{over} \PYG{n}{to} \PYG{n}{shift} \PYG{n}{the} \PYG{l+m+mi}{2} \PYG{n}{bit} \PYG{n}{pattern}         \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}CHANGE\PYGZus{}QUOTAS     0}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}CHOWN\PYGZus{}ME          2}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}CHOWN\PYGZus{}ANYWHERE    4}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}CHOWN\PYGZus{}OTHER       6}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}WIZ\PYGZus{}WHO           8}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}EX\PYGZus{}ALL            10}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}NOFORCE           12}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}SEE\PYGZus{}QUEUE\PYGZus{}ALL     14}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}FREE\PYGZus{}QUOTA        16}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}GRAB\PYGZus{}PLAYER       18}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}JOIN\PYGZus{}PLAYER       20}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}LONG\PYGZus{}FINGERS      22}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}NO\PYGZus{}BOOT           24}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}BOOT              26}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}STEAL             28}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}SEE\PYGZus{}QUEUE         30}
+\PYG{c+cm}{/* First word of power positions.  Each position is 2 bits so the}
+\PYG{c+cm}{   number here is how far over to shift the 2 bit pattern         */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}CHANGE\PYGZus{}QUOTAS     0}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}CHOWN\PYGZus{}ME          2}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}CHOWN\PYGZus{}ANYWHERE    4}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}CHOWN\PYGZus{}OTHER       6}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}WIZ\PYGZus{}WHO           8}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}EX\PYGZus{}ALL            10}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}NOFORCE           12}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}SEE\PYGZus{}QUEUE\PYGZus{}ALL     14}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}FREE\PYGZus{}QUOTA        16}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}GRAB\PYGZus{}PLAYER       18}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}JOIN\PYGZus{}PLAYER       20}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}LONG\PYGZus{}FINGERS      22}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}NO\PYGZus{}BOOT           24}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}BOOT              26}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}STEAL             28}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}SEE\PYGZus{}QUEUE         30}
 
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{Second} \PYG{n}{word} \PYG{n}{of} \PYG{n}{power} \PYG{n}{positions}\PYG{o}{.} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}SHUTDOWN          0}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}TEL\PYGZus{}ANYWHERE      2}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}TEL\PYGZus{}ANYTHING      4}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}PCREATE           6}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}STAT\PYGZus{}ANY          8}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}FREE\PYGZus{}WALL         10}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}EXECSCRIPT        12}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}FREE\PYGZus{}PAGE         14}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}HALT\PYGZus{}QUEUE        16}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}HALT\PYGZus{}QUEUE\PYGZus{}ALL    18}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}FORMATTING        20}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}NOKILL            22}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}SEARCH\PYGZus{}ANY        24}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}SECURITY          26}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}WHO\PYGZus{}UNFIND        28}
+\PYG{c+cm}{/* Second word of power positions. */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}SHUTDOWN          0}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}TEL\PYGZus{}ANYWHERE      2}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}TEL\PYGZus{}ANYTHING      4}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}PCREATE           6}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}STAT\PYGZus{}ANY          8}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}FREE\PYGZus{}WALL         10}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}EXECSCRIPT        12}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}FREE\PYGZus{}PAGE         14}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}HALT\PYGZus{}QUEUE        16}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}HALT\PYGZus{}QUEUE\PYGZus{}ALL    18}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}FORMATTING        20}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}NOKILL            22}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}SEARCH\PYGZus{}ANY        24}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}SECURITY          26}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}WHO\PYGZus{}UNFIND        28}
 
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{Third} \PYG{n}{word} \PYG{n}{of} \PYG{n}{power} \PYG{n}{positions}\PYG{o}{.} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}OPURGE            0}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}HIDEBIT           2}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}NOWHO             4}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}FULLTEL\PYGZus{}ANYWHERE  6}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}EX\PYGZus{}FULL           8}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}API               10}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}MONITORAPI        12}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}WIZ\PYGZus{}IDLE          14}
-\PYG{c+c1}{\PYGZsh{}define POWER\PYGZus{}WIZ\PYGZus{}SPOOF         16}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{18} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{20} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{22} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{24} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{26} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{28} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{30} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
+\PYG{c+cm}{/* Third word of power positions. */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}OPURGE            0}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}HIDEBIT           2}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}NOWHO             4}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}FULLTEL\PYGZus{}ANYWHERE  6}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}EX\PYGZus{}FULL           8}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}API               10}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}MONITORAPI        12}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}WIZ\PYGZus{}IDLE          14}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define POWER\PYGZus{}WIZ\PYGZus{}SPOOF         16}
+\PYG{c+cm}{/* 18 free */}
+\PYG{c+cm}{/* 20 free */}
+\PYG{c+cm}{/* 22 free */}
+\PYG{c+cm}{/* 24 free */}
+\PYG{c+cm}{/* 26 free */}
+\PYG{c+cm}{/* 28 free */}
+\PYG{c+cm}{/* 30 free */}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
 DEPOWERS:  like @powers they are handled with a BITWISE offshift that you
-will have to calculate then add:
+will have to calculate then add
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{First} \PYG{n}{word} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}WALL                 0}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}LONG\PYGZus{}FINGERS         2}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}STEAL                4}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}CREATE               6}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}WIZ\PYGZus{}WHO              8}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}CLOAK                10}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}BOOT                 12}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}PAGE                 14}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}FORCE                16}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}LOCKS                18}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}COM                  20}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}COMMAND              22}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}MASTER               24}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}EXAMINE              26}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}NUKE                 28}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}FREE                 30}
+\PYG{c+cm}{/* First word */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}WALL                 0}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}LONG\PYGZus{}FINGERS         2}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}STEAL                4}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}CREATE               6}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}WIZ\PYGZus{}WHO              8}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}CLOAK                10}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}BOOT                 12}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}PAGE                 14}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}FORCE                16}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}LOCKS                18}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}COM                  20}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}COMMAND              22}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}MASTER               24}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}EXAMINE              26}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}NUKE                 28}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}FREE                 30}
 
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{Second} \PYG{n}{word} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}OVERRIDE             0}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}TEL\PYGZus{}ANYWHERE         2}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}TEL\PYGZus{}ANYTHING         4}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}PCREATE              6}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}POWER                8}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}QUOTA                10}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}MODIFY               12}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}CHOWN\PYGZus{}ME             14}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}CHOWN\PYGZus{}OTHER          16}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}ABUSE                18}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}UNL\PYGZus{}QUOTA            20}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}SEARCH\PYGZus{}ANY           22}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}GIVE                 24}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}RECEIVE              26}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}NOGOLD               28}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}NOSTEAL              30}
-\PYG{o}{/}\PYG{o}{*} \PYG{n}{Third} \PYG{n}{word}\PYG{o}{.}\PYG{o}{.}\PYG{o}{.}\PYG{o+ow}{and} \PYG{n}{there} \PYG{n}{was} \PYG{n}{much} \PYG{n}{rejoicing} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}PASSWORD             0}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}MORTAL\PYGZus{}EXAMINE       2}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}PERSONAL\PYGZus{}COMMANDS    4}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{6}  \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{c+c1}{\PYGZsh{}define DP\PYGZus{}DARK                 8}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{10} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{12} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{14} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{16} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{18} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{20} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{22} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{24} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{26} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{28} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
-\PYG{o}{/}\PYG{o}{*} \PYG{l+m+mi}{30} \PYG{n}{free} \PYG{o}{*}\PYG{o}{/}
+\PYG{c+cm}{/* Second word */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}OVERRIDE             0}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}TEL\PYGZus{}ANYWHERE         2}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}TEL\PYGZus{}ANYTHING         4}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}PCREATE              6}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}POWER                8}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}QUOTA                10}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}MODIFY               12}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}CHOWN\PYGZus{}ME             14}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}CHOWN\PYGZus{}OTHER          16}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}ABUSE                18}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}UNL\PYGZus{}QUOTA            20}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}SEARCH\PYGZus{}ANY           22}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}GIVE                 24}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}RECEIVE              26}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}NOGOLD               28}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}NOSTEAL              30}
+\PYG{c+cm}{/* Third word...and there was much rejoicing */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}PASSWORD             0}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}MORTAL\PYGZus{}EXAMINE       2}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}PERSONAL\PYGZus{}COMMANDS    4}
+\PYG{c+cm}{/* 6  free */}
+\PYG{c+cp}{\PYGZsh{}}\PYG{c+cp}{define DP\PYGZus{}DARK                 8}
+\PYG{c+cm}{/* 10 free */}
+\PYG{c+cm}{/* 12 free */}
+\PYG{c+cm}{/* 14 free */}
+\PYG{c+cm}{/* 16 free */}
+\PYG{c+cm}{/* 18 free */}
+\PYG{c+cm}{/* 20 free */}
+\PYG{c+cm}{/* 22 free */}
+\PYG{c+cm}{/* 24 free */}
+\PYG{c+cm}{/* 26 free */}
+\PYG{c+cm}{/* 28 free */}
+\PYG{c+cm}{/* 30 free */}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
@@ -10172,12 +10201,12 @@ Rhost Equiv: MONITOR (@toggle)
 
 
 \chapter{RhostMUSH Internal Help Files}
-\label{\detokenize{helpfile:rhostmush-internal-help-files}}\label{\detokenize{helpfile::doc}}
+\label{\detokenize{help:rhostmush-internal-help-files}}\label{\detokenize{help::doc}}
 
 
 
 \chapter{RhostMUSH Internal Wizhelp Files}
-\label{\detokenize{wizhelpfile:rhostmush-internal-wizhelp-files}}\label{\detokenize{wizhelpfile::doc}}
+\label{\detokenize{wizhelp:rhostmush-internal-wizhelp-files}}\label{\detokenize{wizhelp::doc}}
 
 
 

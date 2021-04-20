@@ -1,9 +1,9 @@
-9. Troubleshooting
-******************
+11. Troubleshooting
+*******************
 
 
-9.1. Reporting bugs or getting help
-===================================
+11.1. Reporting bugs or getting help
+====================================
 
 If you find any bugs or problems, notify one of the developers of
 RhostMUSH and a patch or workaround will be made available as soon as
@@ -12,12 +12,12 @@ Lensman, Kale, Mac, Zenty, Ambrosia, Amos, and Morgan.  They can be
 found around the net.
 
 
-9.1.1. Troubleshooting issues with starting up
-----------------------------------------------
+11.1.1. Troubleshooting issues with starting up
+-----------------------------------------------
 
 
-9.1.1.1. Problem: If it says the shared ID is already in use
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.1.1.1. Problem: If it says the shared ID is already in use
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A1: please verify that it is the right shared debug_id in your
 netrhost.conf file
@@ -27,29 +27,29 @@ A2: Force a start by running:
    ./Startmush -f
 
 
-9.1.1.2. Problem: Your log file is massive and your mush is running
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.1.1.2. Problem: Your log file is massive and your mush is running
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A1: To rotate this use the @logrotate command. See wizhelp on
 @logrotate
 
 
-9.1.1.3. Problem: The database flatfile you’re loading can’t load because a db is already defined
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.1.1.3. Problem: The database flatfile you’re loading can’t load because a db is already defined
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A1: remove netrhost.db* and netrhost.gdbm* from your data directory
 
 
-9.1.1.4. Problem: The mail database won’t load and mail shows ‘offline’
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.1.1.4. Problem: The mail database won’t load and mail shows ‘offline’
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A1: from within the MUSH run:
 
    wmail/load
 
 
-9.2. Stack limit and debugging
-==============================
+11.2. Stack limit and debugging
+===============================
 
 Rhost uses a stack limit in the debug monitor.
 
@@ -90,8 +90,8 @@ A @reboot WILL NOT LOAD IN A NEW DEBUG MONITOR!!!!
 You can issue @list stack to see the current stack ceiling ingame.
 
 
-9.3. How to reset the password for #1
-=====================================
+11.3. How to reset the password for #1
+======================================
 
 Warning:
 
@@ -99,8 +99,8 @@ Warning:
   back your nerhost.conf and then reboot after making the changes.
 
 
-9.3.1. Method 1: Reset to Default Password
-------------------------------------------
+11.3.1. Method 1: Reset to Default Password
+-------------------------------------------
 
 in your netrhost.conf file add:
 
@@ -109,8 +109,8 @@ in your netrhost.conf file add:
 This will reset #1’s password to the default ‘Nyctasia’.
 
 
-9.3.2. Method 2: Increase Permissions of Immortals
---------------------------------------------------
+11.3.2. Method 2: Increase Permissions of Immortals
+---------------------------------------------------
 
 in your netrhost.conf file add:
 
@@ -119,12 +119,12 @@ in your netrhost.conf file add:
 This will allow IMMORTAL players to @newpassword #1 upon reboot.
 
 
-9.4. Troubleshooting difficulties compiling RhostMUSH
-=====================================================
+11.4. Troubleshooting difficulties compiling RhostMUSH
+======================================================
 
 
-9.4.1. Changes to conf for high-bit CPUs
-----------------------------------------
+11.4.1. Changes to conf for high-bit CPUs
+-----------------------------------------
 
 RhostMUSH automatically detects 64-bit platforms, and should compile
 cleanly on these.
@@ -154,8 +154,8 @@ RhostMUSH has only been tested to work on the AMD64, but there is no
 reason to believe the same will not hold true for IA64.
 
 
-9.4.2. Changes to autconf for certain systems
----------------------------------------------
+11.4.2. Changes to autconf for certain systems
+----------------------------------------------
 
 You should not have to worry about this, but incase something really
 weird occurs, you may need to look into these changes…
@@ -187,8 +187,8 @@ Warning:
   else the mush will not compile.
 
 
-9.5. Dealing with DB Corruption
-===============================
+11.5. Dealing with DB Corruption
+================================
 
 Ok.  Your database won’t come up.
 
@@ -207,12 +207,12 @@ following:
 First thing is first.  Don’t have a panic attack.
 
 
-9.5.1. If the mush says it can’t find your database files
----------------------------------------------------------
+11.5.1. If the mush says it can’t find your database files
+----------------------------------------------------------
 
 
-9.5.1.1. Check the names of the database files in your ‘data’ directory
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.5.1.1. Check the names of the database files in your ‘data’ directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 They should be named something like:
 
@@ -225,8 +225,8 @@ They should be named something like:
 And you may see a netrhost.db.flat
 
 
-9.5.1.2. Check your netrhost.conf file
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.5.1.2. Check your netrhost.conf file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you never touched the *database or muddb_name params, you should be
 good.
@@ -240,8 +240,8 @@ If these names do not match up, it can’t find the database files to
 load. So you shouldn’t have to change these names, ever. :)
 
 
-9.5.1.3. Check your mush.config file
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.5.1.3. Check your mush.config file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you never modified this file, you should be good.
 
@@ -252,15 +252,15 @@ netrhost.conf file, all your database files, and so forth.  Please
 don’t change this :)
 
 
-9.5.2. If the mush says it can’t read or load your database files
------------------------------------------------------------------
+11.5.2. If the mush says it can’t read or load your database files
+------------------------------------------------------------------
 
 Double check everything for the previous issue. Make sure everything
 is named properly.
 
 
-9.5.2.1. Verify you have enough disk space. (quota)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.5.2.1. Verify you have enough disk space. (quota)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Some account have a limited quota to run in.  If you reached or exceed
 your disk quota, you can have a corrupted database.  So always keep
@@ -274,8 +274,8 @@ mush again.  Try to keep your quota at least 200 megs free to allow
 plenty of wonderful growth space for the mush.
 
 
-9.5.2.2. Verify you have enough disk space.  (system)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.5.2.2. Verify you have enough disk space.  (system)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The second way you can run out of disk space is by the filesystem
 itself. do a df -h . in your ‘game’ directory’.  That is df -h
@@ -292,8 +292,8 @@ Until this issue is resolved, you can not repair and bring up your
 mush. No disk to run the game.
 
 
-9.5.3. If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!
--------------------------------------------------------------------------------------------------------------------------------------
+11.5.3. If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!
+--------------------------------------------------------------------------------------------------------------------------------------
 
 Ok, at this point you likely had your mush up when the physical server
 went down hard.  Weither through an emergency shutdown or a physical
@@ -304,8 +304,8 @@ always strongly request you make daily flatfile dumps.
 So, to recover your database.
 
 
-9.5.3.1. The bad news
-~~~~~~~~~~~~~~~~~~~~~
+11.5.3.1. The bad news
+~~~~~~~~~~~~~~~~~~~~~~
 
 If you have no flatfile backup or never bothered with backups? I’m
 sorry, at this point you’re SOA.  There’s no easy way to recover a
@@ -315,8 +315,8 @@ it’s a lost cause.  You’ll have to start over from scratch.  I’m
 sorry.
 
 
-9.5.3.2. The good news
-~~~~~~~~~~~~~~~~~~~~~~
+11.5.3.2. The good news
+~~~~~~~~~~~~~~~~~~~~~~~
 
 If you made backups, or if the server had a normal shutdown, you
 likely have a flatfile backup.  You will see a netrhost.db.flat in
@@ -332,20 +332,20 @@ as your recovery flatfile that the very last line shows something like
 ** END OF DUMP **. That shows you had a successful backup.
 
 
-9.5.3.3. Now, to restore your database?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.5.3.3. Now, to restore your database?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please refer to the file ‘README.DBLOADING’.
 
 
-9.5.4. Bringing up your mail database
--------------------------------------
+11.5.4. Bringing up your mail database
+--------------------------------------
 
 Your mail db may or may not come up at this point.
 
 
-9.5.4.1. If after restoring main database your mail database works
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.5.4.1. If after restoring main database your mail database works
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If your mail database came up and does not show ‘Mail: mail is
 currently off’ then you should be good to go.
@@ -363,15 +363,15 @@ wmail/fix fixes the mail.
 wmail/lfix loads in the fixes.
 
 
-9.5.4.2. If after restoring main database your mail database does not work
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+11.5.4.2. If after restoring main database your mail database does not work
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If your mail database is not up and shows ‘Mail: mail is currently
 off’ then your mail db is currupt.
 
 
-9.6. Dealing with a corrupt mail database
-=========================================
+11.6. Dealing with a corrupt mail database
+==========================================
 
 It says when you try to access mail that mail is disabled and/or off.
 
@@ -386,8 +386,8 @@ is it hopes that you read ahead of time about how to backup your mush,
 which would include the mail database.
 
 
-9.6.1. Backing up your mail database
-------------------------------------
+11.6.1. Backing up your mail database
+-------------------------------------
 
 You should be making a flatifile dump of mail db daily by running on
 the MUSH:
@@ -401,8 +401,8 @@ backup_flat.sh and will always house the latest flatfile if not one
 recently dumped in your data directory.
 
 
-9.6.2. Automatically recovering your mail database
---------------------------------------------------
+11.6.2. Automatically recovering your mail database
+---------------------------------------------------
 
 If you have a flatfile dump of your mail db, run this command on the
 MUSH:
@@ -427,8 +427,8 @@ since the flatfile.
 If this is a new db that you have, you can skip the fixing.
 
 
-9.6.3. Manually recovering your mail database
----------------------------------------------
+11.6.3. Manually recovering your mail database
+----------------------------------------------
 
 To recover your mail manually, you need to delete your mail databases,
 reboot, then reload your mail flatfiles.  If you have no mail

@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6. Ambrosia’s Minimal Rhost DB</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="copyright" title="Copyright" href="copyright.html" />
+    <link rel="next" title="7. Multi-tiered bitlevel systems" href="bitlevels.html" />
+    <link rel="prev" title="5. Getting Started" href="gettingstarted.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul></pre>
+<ul>
+    <li><a href="index.html">Home</a> |</li>
+    <li><a href="help.html">RhostMUSH Help File</a> |</li>
+    <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
+    <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
+    <li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6. </span>Ambrosia’s Minimal Rhost DB</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="ambrosia-s-minimal-rhost-db">
+<h1><span class="section-number">6. </span>Ambrosia’s Minimal Rhost DB</h1>
+<div class="section" id="version-1-0-5-2020-01-31">
+<h2><span class="section-number">6.1. </span>Version: 1.0.5          2020-01-31</h2>
+<dl class="simple">
+<dt>Version history:</dt><dd><dl class="simple">
+<dt>1.0.0</dt><dd><ul class="simple">
+<li><p>Initial database setup.</p></li>
+</ul>
+</dd>
+<dt>1.0.1</dt><dd><ul class="simple">
+<li><p>Small fixes of objid(), isstaff() and bccheck() permissions and handling.</p></li>
+<li><p>bittype() access lowered to Architect level</p></li>
+<li><p>NO_CODE flag made visual to Architect</p></li>
+</ul>
+</dd>
+<dt>1.0.2</dt><dd><ul class="simple">
+<li><p>Several convenience changes and fixes: _ Attributes moved to &#64;aflags
+system, allowing Architects to set, Guildmasters to see them.</p></li>
+<li><p>&#64;flagdef lowered to Royalty level. &#64;quota/max, &#64;quota/unlock and &#64;convert
+moved to Architect level.</p></li>
+<li><p>NO_CODE flag made settable/unsettable by Architects.</p></li>
+<li><p>Fixed typo in conf file: ifselse -&gt; ifelse</p></li>
+<li><p>Switched _Attributes to use the &#64;aflags system
+See: Guildmaster
+Set: Architect</p></li>
+</ul>
+</dd>
+<dt>1.0.3</dt><dd><ul class="simple">
+<li><p>Removed &#64;flagdefs from in-game softcode, converted to flag_access_*
+config options</p></li>
+<li><p>Lowered mailstatus() access to architect.</p></li>
+</ul>
+</dd>
+<dt>1.0.4</dt><dd><ul class="simple">
+<li><p>Changed softcoded objid() to tag(), due to Rhost’s new hardcoded
+objid() which does perform a different functionality.</p></li>
+<li><p>Added more staff recommendations to this file.</p></li>
+<li><p>Added Reality TXLevel ‘Admin’ to all objects in the db except #1</p></li>
+</ul>
+</dd>
+<dt>1.0.5</dt><dd><ul class="simple">
+<li><p>Replaced softcoded tag() system with Rhost’s new hardcoded &#64;tag/tag()
+system. All previous tags are set on the database. The Tag Object
+was removed.</p></li>
+<li><p>&#64;function startup on BC-Admin-Royalty fixed - &#64;wait 1 workaround for
+Tags in place.</p></li>
+<li><p>Places System &#64;startup integrated into BC-Admin-Royalty’s &#64;startup</p></li>
+<li><p>Made &#64;dump and &#64;dump/flat available to Councilors in netrhost.conf</p></li>
+</ul>
+</dd>
+<dt>1.0.6</dt><dd><ul class="simple">
+<li><p>A small typo fix in netrhost.conf. float_preciiosn -&gt; precision and
+functions_max -&gt; function_max. Thanks to <a class="reference external" href="mailto:Bobbi&#37;&#52;&#48;COH">Bobbi<span>&#64;</span>COH</a></p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="ambrosiadb-introduction">
+<h2><span class="section-number">6.2. </span>AmbrosiaDB Introduction</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>READ THIS DOCUMENT CAREFULLY!</p>
+</div>
+<p>Greetings,</p>
+<p>This minimal Rhost DB was made with a secure setup, and as a good base to start
+a new game off in mind.</p>
+</div>
+<div class="section" id="ambrosiadb-features">
+<h2><span class="section-number">6.3. </span>AmbrosiaDB Features</h2>
+<div class="section" id="ambrosiadb-configuration">
+<h3><span class="section-number">6.3.1. </span>AmbrosiaDB Configuration</h3>
+<ul class="simple">
+<li><p>Limbo, Master Room and Auxiliary room.</p></li>
+<li><p>BC-Admin-&lt;bitlevel&gt; characters set up for each bitlevel to own global and
+data objects, and inherit to.</p></li>
+<li><p>BC-Admin-Mortal is &#64;powered EXAMINE_ALL(Guildmaster), NOFORCE(Architect) and
+LONG_FINGERS.</p></li>
+<li><p>&#64;startup on BC-Admin-Immortal lowers DARK flag access to Councilor level, and
+NO_CODE visual access to Architect level.</p></li>
+<li><p>Global Command objects inheriting from each bitlevel, with a separate staff-only object for each level.</p></li>
+<li><p>Global Function objects inheriting from each bitlevel.</p></li>
+<li><p>local Function objects inheriting from each bitlevel.</p></li>
+<li><p>&#64;function and &#64;hook access lowered to Royalty level to remove immediate need
+for Immortals or actual Immortal code.</p></li>
+<li><p>&#64;rxlevel, &#64;txlevel, bittype() access lowered to Architect level to remove
+immediate need for Royalty in many cases.</p></li>
+<li><p>&#64;startup on BC-Admin-Royalty to automatically load &#64;hooks and &#64;functions from
+the Global Function objects, based on attribute naming.</p></li>
+<li><p>Misc Data object to hold general data, like Staff lists etc.</p></li>
+<li><p>Reality levels ‘Real’ and ‘Admin’.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All created items and players by default are in Recieve-Level ‘Real’ and
+Transmit-Levels ‘Real’ and ‘Admin’.</p>
+</div>
+<ul class="simple">
+<li><p>All globals, Master Room, BCs-*, and other staff/code-related objects
+currently have only ‘Admin’ as their Transmit-Level. This does not prevent
+them fromi working properly. The only exception is #1, who has empty reality
+levels.</p></li>
+<li><p>The supplied netrhost.conf offers a secure setup of options, allows Royalty
+to use &#64;hook and &#64;function, and also sets the function_access of several
+functions to !no_code, which allows NO_CODE players to use the comsys
+properly.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
+The ‘Port’ configuration parameter is XXXX’d out. Set it first before starting
+your game.</p>
+</div>
+<ul class="simple">
+<li><p>All existing objects have been &#64;set SAFE and INDESTRUCTABLE.</p></li>
+<li><p>All existing objects have a paranoid series of &#64;locks set on themselves.</p></li>
+<li><p>The +supersafe command is provided on #1 as an example of what was used to
+easily set this on objects.</p></li>
+<li><p>Players are &#64;set NO_CODE and WANDERER by default. They get 40 credits on
+creation, and a 1-credit-per-day paycheck.</p></li>
+<li><p>All *mit sideeffects, as well as set(), create() and list() are enabled. The
+latter three are necessary for the Comsystem. The rest of sideeffects are
+disabled completely.</p></li>
+<li><p>Flashing ansi is disabled.</p></li>
+<li><p>_Attributes are settable by Architects, and seeable by Guildmasters. Read:
+Still invisible and unsettable by mortals.</p></li>
+<li><p>Architects can set up, unlock, and change alternate &#64;quota on players.</p></li>
+<li><p>Architects can set/unset the NO_CODE flag.</p></li>
+<li><p>Guildmasters can see _Attributes</p></li>
+<li><p>Architects can set _Attributes</p></li>
+</ul>
+</div>
+<div class="section" id="ambeosiadb-softcode">
+<h3><span class="section-number">6.3.2. </span>AmbeosiaDB Softcode</h3>
+<ul class="simple">
+<li><p>Set-up compatibility SoftFunctions and &#64;hook object.</p></li>
+<li><p>Set up Comsys 1.0.9b at Architect level. (+bbhelp command)</p></li>
+<li><p>Set up Myrddin +bboard at Architect level.</p></li>
+<li><p>Set up Myrddon Cron at Architect level.</p></li>
+<li><p>Anomaly Jobs (+jhelp)</p></li>
+<li><p>SGP Places &amp; Mutter</p></li>
+<li><p>Set up Penn-style follow.</p></li>
+<li><p>Set up &#64;scan (Up to architect-level items).</p></li>
+<li><p>Set up Penn- and Mux compatibility Mailwrappers. (phelp and mhelp commands)</p></li>
+<li><p>help .txt files and .indx files for the above.</p></li>
+<li><p>&#64;dynhelp access lowered to architect to call above helpfiles.</p></li>
+</ul>
+</div>
+<div class="section" id="ambrosiadb-functions">
+<h3><span class="section-number">6.3.3. </span>AmbrosiaDB Functions</h3>
+<ul class="simple">
+<li><p>isstaff() - Softcoded function that returns ‘1’ if its argument matches
+a #dbref in the ‘isstaff’ attribute on the Misc Data object.</p></li>
+<li><p>bccheck() - Softcoded function that returns ‘1’ if its argument matches
+a #dbref in the ‘bcs’ attribute on the Misc Data object.</p></li>
+<li><p>width() - Softcoded function that returns 78 for now. For cross-MU*
+compatibility.</p></li>
+<li><p>pass() - Softcoded function that takes a number as its parameter, and return
+a random string of that length. Perfect for setting random passwords.</p></li>
+<li><p>cmdmessage() - Softcoded function that takes two strings as its parameters.
+Returns ‘&lt;&lt; STRING1 &gt;&gt; String2’. The &lt;&lt;&gt;&gt; part is highlighted red. Good for
+all kinds of messages sent by game commands.</p></li>
+<li><p>header() - Highly versatile, and a buffer-saving alternative
+to using printf() for centering with ansi borders. HIGHLY recommended to use
+instead of printf() for such things.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">header</span><span class="p">(</span><span class="n">text</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">filler</span><span class="p">,</span><span class="n">fillercolor</span><span class="p">,</span><span class="n">outerpadding</span><span class="p">,</span><span class="n">paddingcolor</span><span class="p">,</span>
+       <span class="n">leftinnerpadding</span><span class="p">,</span><span class="n">leftinnercolor</span><span class="p">,</span><span class="n">rightinnerpadding</span><span class="p">,</span><span class="n">rightinnercolor</span><span class="p">)</span>
+  <span class="n">text</span> <span class="o">-</span> <span class="n">Text</span> <span class="n">to</span> <span class="n">center</span>
+  <span class="n">width</span> <span class="o">-</span> <span class="n">Width</span> <span class="n">of</span> <span class="n">the</span> <span class="n">header</span><span class="p">,</span> <span class="n">defaults</span> <span class="n">to</span> <span class="n">width</span><span class="p">()</span>
+  <span class="n">filler</span> <span class="o">-</span> <span class="n">Character</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">to</span> <span class="n">draw</span> <span class="n">the</span> <span class="n">line</span> <span class="k">with</span><span class="o">.</span> <span class="n">Default</span><span class="p">:</span> <span class="o">=</span>
+  <span class="n">fillercolor</span> <span class="o">-</span> <span class="n">ansicode</span> <span class="n">to</span> <span class="n">color</span> <span class="n">the</span> <span class="n">line</span> <span class="k">with</span>
+  <span class="n">outerpadding</span> <span class="o">-</span> <span class="n">Characters</span> <span class="n">to</span> <span class="n">frame</span> <span class="n">the</span> <span class="n">outer</span> <span class="n">ends</span> <span class="n">of</span> <span class="n">the</span> <span class="n">line</span> <span class="k">with</span><span class="o">.</span>
+  <span class="n">paddingcolor</span> <span class="o">-</span> <span class="n">ansicode</span> <span class="n">to</span> <span class="n">color</span> <span class="n">the</span> <span class="n">outer</span> <span class="n">characters</span> <span class="k">with</span>
+  <span class="n">leftinnerpadding</span> <span class="o">-</span> <span class="n">characters</span> <span class="n">to</span> <span class="n">put</span> <span class="n">at</span> <span class="n">the</span> <span class="n">left</span> <span class="n">side</span> <span class="n">of</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span>
+  <span class="n">leftinnercolor</span> <span class="o">-</span> <span class="n">ansicode</span> <span class="n">to</span> <span class="n">color</span> <span class="n">the</span> <span class="n">leftside</span> <span class="n">characters</span> <span class="k">with</span>
+  <span class="n">rightinnerpadding</span> <span class="o">-</span> <span class="n">characters</span> <span class="n">to</span> <span class="n">put</span> <span class="n">at</span> <span class="n">the</span> <span class="n">right</span> <span class="n">side</span> <span class="n">of</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span>
+  <span class="n">rightinnercolor</span> <span class="o">-</span> <span class="n">ansicode</span> <span class="n">to</span> <span class="n">color</span> <span class="n">the</span> <span class="n">rightside</span> <span class="n">characters</span> <span class="k">with</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ALL of header()’s parameters are optional. By default, header() simply draws
+a 78-char wide line of =’s. Simply leave parameters empty if you want to set
+one of the latter parameters.</p>
+</div>
+</div>
+</div>
+<div class="section" id="ambrosiadb-bitlevels">
+<h2><span class="section-number">6.4. </span>AmbrosiaDB Bitlevels</h2>
+<p>The whole DB is highly geared for a low-bitlevel setup.
+I am a strong believer in least-privileges-needed to do the job. Bittypes and
+powers are tools to do that job, not badges of friendship or trust that get
+tossed about.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here is my suggested list of powers and bittypes for staffers.</p>
+</div>
+<div class="section" id="ambrosiadb-storytellers">
+<h3><span class="section-number">6.4.1. </span>AmbrosiaDB Storytellers</h3>
+<p>&#64;powered TEL_ANYWHERE, JOIN_PLAYER and GRAB_PLAYER on Guildmaster level.</p>
+</div>
+<div class="section" id="ambrosiadb-builder-bcs">
+<h3><span class="section-number">6.4.2. </span>AmbrosiaDB Builder-BCs</h3>
+<p>Mortal, with &#64;quota and money for their job. There should be one
+shared BC for each area of the game, like BC-Houston. Special
+Rooms, items or exits that require privilegs to examine or &#64;tel
+a player should belong to a BC-Houston-Powered that is &#64;powered
+EXAMINE_ALL, LONG_FINGERS And TEL_ANYTHING on Guildmaster level.
+If the object actually needs to modify a player directly, have
+it use a restricted staff Global, or if you absolutely must,
+make a BC-Houston-Admin and &#64;set it Architect. Do not give
+normal builders access to it, only &#64;chown things to it and &#64;set
+them inherit after review.</p>
+<p>Both the -powered and -admin BCs can have random passwords and
+be &#64;set NO_CONNECT.</p>
+</div>
+<div class="section" id="ambrosiadb-building-head">
+<h3><span class="section-number">6.4.3. </span>AmbrosiaDB Building Head</h3>
+<p>&#64;set Guildmaster, powered TEL_ANYWHERE, TEL_ANYTHING and
+optionally CHOWN_OTHER on Guildmaster level. Mind that the
+latter technically allows them to &#64;chown anything guildmaster-
+and lower-owned in the master and auxiliary rooms. However,
+it allows the Building Head to &#64;chown items between BCs- and
+to the BC-&lt;location&gt;-powered.</p>
+</div>
+<div class="section" id="ambrosiadb-enforcers">
+<h3><span class="section-number">6.4.4. </span>AmbrosiaDB Enforcers</h3>
+<p>As Storyteller above, plus being &#64;powered Security at
+Guildmaster level, in order to handle problem players.</p>
+<p>Optionally always given to Storytellers.</p>
+</div>
+<div class="section" id="ambrosiadb-coders">
+<h3><span class="section-number">6.4.5. </span>AmbrosiaDB Coders</h3>
+<p>&#64;set Architect</p>
+</div>
+<div class="section" id="ambrosiadb-head-coder">
+<h3><span class="section-number">6.4.6. </span>AmbrosiaDB Head Coder</h3>
+<p>Always trust your head coder.
+&#64;set Architect for the everyday bit. Give access to a
+maintenance Councilor bit for special code projects. Finished
+code along those lines should get &#64;chowned to the
+bc-admin-councilor.</p>
+<p>If you as the MU* Head(s) don’t know Softcode well, or want to
+leave anything Code to your Head Coder, also give them optional
+access to a maintenance Royalty bit in order to properly code
+banning/blacklisting +commands and other rare code that requires
+Royalty powers. Again, chown finished code to bc-admin-royalty.</p>
+</div>
+<div class="section" id="ambrosiadb-mu-head-s">
+<h3><span class="section-number">6.4.7. </span>AmbrosiaDB MU* Head(s)</h3>
+<p>You’re the boss(es). But please use an Architect bit for your
+everyday things. Keep Immortal to yourself. Keep #1 to yourself.
+And seriously avoid using either of them except for creating
+a Royalty bit or doing intricate DB maintenance.</p>
+</div>
+<div class="section" id="ambrosiadb-site-admins">
+<h3><span class="section-number">6.4.8. </span>AmbrosiaDB Site Admins</h3>
+<p>They already have more powers than any in-game bit can ever
+have ;)</p>
+<p>Depending on actual involvement with your game, their abilities
+in-game can range from merely being &#64;powered free_wall for
+notifying players of downtimes and/or being &#64;powered shutdown in
+order to shut down the game for maintenance, up to being the
+only person with actual access to #1.</p>
+</div>
+<div class="section" id="ambrosiadb-globals">
+<h3><span class="section-number">6.4.9. </span>AmbrosiaDB Globals</h3>
+<p>Handle necessary functionality for adminning through the admin-only globals and
+softcode.</p>
+<p>The setup I personally suggest is to have ALL staffers be AT MAX Architect-level
+for everyday work and communication, with special coders that -really- require
+it having Councilor-characters available to log into for maintenance or special
+code setup. Technically if everything is done right, the Coder(s) of the game do
+not require higher privileges than Architect for the vast majority of things.
+Royalty-level code should be a rare exception, if at all necessary. The MU*
+Head(s) or site-admin should be the only one having access to #1, Immortals or
+perhaps even Royalty. The BC’s, Global Function objects and Function objects at
+level Royalty and higher have simply been provided as a if-necessary convenience.</p>
+<p>Current objects are only &#64;chowned to certain bitlevels if it is really required
+for them to function. Whenever possible, they have been &#64;chowned to the mortal
+BC-Admin-Mortal. All custom global functions listed above are on the semi-
+-mortal Global Functions object. The Master Room and Auxiliary Room have been
+&#64;chowned to BC-Admin-Architect.</p>
+<p>The Comsystem and +bboard are owned by BC-Admin-Architect, which means that
+higher bitlevels might not be able to use those systems if they hide and set
+themselves DARK. This is intentional. The Architect bitlevel is enough to freely
+set attributes on players, so these systems did not need anything higher, and
+it prioritizes Councilor+ as mere mainenance-duty bitlevels. Even the MU* Head
+should log on as an Architect for everyday things.</p>
+<p>The Comsystem and BBOARD have been modified to be configurable by Architect and
+higher. Both systems have a CANUSE attribute with the according code on them.
+Note that if you want both systems to be only configurable by Councilor+, that
+instead of &#64;chowning them to a Councilor after changing those attribute for
+Councilor or higher, I suggest to simply &#64;set the bboard and comsystem core
+objects NO_MODIFY instead, keeping them at Architect-power but making them
+unmodifyable by Architects.</p>
+</div>
+</div>
+<div class="section" id="ambrosiadb-quota">
+<h2><span class="section-number">6.5. </span>AmbrosiaDB Quota</h2>
+<p>I highly recommend the use of the alternative &#64;quota system. BC-Admin-Mortal
+and BC-Admin-Guildmaster both have this &#64;quota system set up on themselves. Both
+of them have a high amount of money for everyday operations. You should not give
+them free quota or money.</p>
+</div>
+<div class="section" id="ambrosiadb-adding-functions">
+<h2><span class="section-number">6.6. </span>AmbrosiaDB Adding Functions</h2>
+<p>I also recommend to setup most global functions with /Privileged even if they
+are mortal-powered, to make them work even when players are set NO_CODE and
+WANDERER by default.</p>
+<p>Enjoy!</p>
+</div>
+<div class="section" id="ambrosiadb-compiling">
+<h2><span class="section-number">6.7. </span>AmbrosiaDB Compiling</h2>
+<p>P.S. the ‘bin/asksource.save0’ file has been supplied for loading in the
+‘make config’ or ‘make confsource’ step of Rhost installation. It provides the
+settings I have used when creating this database. Some settings, like the ANSI
+substitution, are used in the DB.</p>
+<p><a class="reference external" href="mailto:--Ambrosia&#37;&#52;&#48;RhostMUSH">–Ambrosia<span>&#64;</span>RhostMUSH</a></p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; <a href="copyright.html">Copyright</a> 2021, wstarter.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
+</html>

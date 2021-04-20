@@ -652,7 +652,7 @@
             <section ids="execscript-example-bash-script" names="execscript\ example\ bash\ script">
                 <title>
                     Execscript Example bash script
-                <literal_block force="False" language="default" linenos="False" xml:space="preserve">
+                <literal_block force="False" highlight_args="{}" language="bash" linenos="False" xml:space="preserve">
                     #!/bin/bash
                     echo "This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}"
                     echo "Displaying Registers:"
@@ -1135,8 +1135,8 @@
                 HELP key indexes for the values
             <paragraph>
                 FLAGS: The following flags are to be used.  They are BITWISE masks that you
-                need to add together for the values that you apply:
-            <literal_block force="False" language="default" linenos="False" xml:space="preserve">
+                need to add together for the values that you apply
+            <literal_block force="False" highlight_args="{}" language="c" linenos="False" xml:space="preserve">
                 /* First word of flags */
                 #define SEETHRU         0x00000008      /* Can see through to the other side */
                 #define WIZARD          0x00000010      /* gets automatic control */
@@ -1271,8 +1271,8 @@
                 /* 0x80000000 free */
             <paragraph>
                 TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like
-                the flags above.  They are added together for each word type:
-            <literal_block force="False" language="default" linenos="False" xml:space="preserve">
+                the flags above.  They are added together for each word type
+            <literal_block force="False" highlight_args="{}" language="c" linenos="False" xml:space="preserve">
                 /* First word of toggles - Thorin 3/95 */
                 #define TOG_MONITOR             0x00000001      /* Active monitor on player */
                 #define TOG_MONITOR_USERID      0x00000002      /* show userid */
@@ -1344,8 +1344,8 @@
                 #define TOG_NOGLOBPARENT        0x80000000      /* Target does not inherit global attributes */
             <paragraph>
                 POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift
-                markers that you would have to compute the shift then add it after the fact.:
-            <literal_block force="False" language="default" linenos="False" xml:space="preserve">
+                markers that you would have to compute the shift then add it after the fact.
+            <literal_block force="False" highlight_args="{}" language="c" linenos="False" xml:space="preserve">
                 /* First word of power positions.  Each position is 2 bits so the
                    number here is how far over to shift the 2 bit pattern         */
                 #define POWER_CHANGE_QUOTAS     0
@@ -1401,8 +1401,8 @@
                 /* 30 free */
             <paragraph>
                 DEPOWERS:  like @powers they are handled with a BITWISE offshift that you
-                will have to calculate then add:
-            <literal_block force="False" language="default" linenos="False" xml:space="preserve">
+                will have to calculate then add
+            <literal_block force="False" highlight_args="{}" language="c" linenos="False" xml:space="preserve">
                 /* First word */
                 #define DP_WALL                 0
                 #define DP_LONG_FINGERS         2

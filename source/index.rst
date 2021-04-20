@@ -33,6 +33,8 @@ which, as you know, is the best part of setting up a mush.
    differences.rst
    database.rst
    gettingstarted.rst
+   ambrosiadb.rst
+   bitlevels.rst
    toggles.rst
    security.rst
    maintenance.rst
@@ -43,8 +45,8 @@ which, as you know, is the best part of setting up a mush.
 
    flags.rst
    powers.rst
-   helpfile.rst
-   wizhelpfile.rst
+   help.rst
+   wizhelp.rst
    nda.rst
 
 .. include:: copyright.rst

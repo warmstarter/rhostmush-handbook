@@ -546,7 +546,7 @@ Execscript set object Register variables Examples
 Execscript Example bash script
 ------------------------------
 
-::
+.. code-block:: bash
 
   #!/bin/bash
   echo "This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}"
@@ -754,7 +754,9 @@ HELP key indexes for the values
 
 
 FLAGS: The following flags are to be used.  They are BITWISE masks that you 
-need to add together for the values that you apply::
+need to add together for the values that you apply
+
+.. code-block:: c
 
     /* First word of flags */
     #define SEETHRU         0x00000008      /* Can see through to the other side */
@@ -891,7 +893,9 @@ need to add together for the values that you apply::
 
 
 TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like
-the flags above.  They are added together for each word type::
+the flags above.  They are added together for each word type
+
+.. code-block:: c
 
     /* First word of toggles - Thorin 3/95 */
     #define TOG_MONITOR             0x00000001      /* Active monitor on player */
@@ -966,7 +970,9 @@ the flags above.  They are added together for each word type::
 
 
 POWERS:  Powers are handled a bit differently.  They're used as BITWISE shift
-markers that you would have to compute the shift then add it after the fact.::
+markers that you would have to compute the shift then add it after the fact.
+
+.. code-block:: c
 
     /* First word of power positions.  Each position is 2 bits so the
        number here is how far over to shift the 2 bit pattern         */
@@ -1023,7 +1029,9 @@ markers that you would have to compute the shift then add it after the fact.::
     /* 30 free */
 
 DEPOWERS:  like @powers they are handled with a BITWISE offshift that you
-will have to calculate then add::
+will have to calculate then add
+
+.. code-block:: c
 
     /* First word */
     #define DP_WALL                 0

@@ -153,26 +153,29 @@ just issue::
                     <list_item>
                         <paragraph>Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.</paragraph>
                     </list_item>
+                    <list_item>
+                        <paragraph>Through the Autoshutdown script</paragraph>
+                    </list_item>
                 </enumerated_list>
+                <warning>
+                    <paragraph>Never kill -9 RhostMUSH</paragraph>
+                    <paragraph>Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t care for the
+                        database.  The reason is if the mush happens to be saving, in any method, to the
+                        database, especially a QDBM database, you will likely have just corrupted your
+                        database, so pull out a flatfile to recover.</paragraph>
+                    <paragraph>Sadly, this also may occur if the server hosting you takes a nose-dive in the middle
+                        of a db write.  Rhost can recover corruption in-game while up, but if it bombs
+                        in the middle of a write, all bets are off. :)</paragraph>
+                </warning>
             </section>
-            <section ids="warning-never-kill-9-rhostmush" names="warning:\ never\ kill\ -9\ rhostmush">
-                <title>WARNING: Never kill -9 RhostMUSH</title>
-                <paragraph>Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t care for the
-                    database.  The reason is if the mush happens to be saving, in any method, to the
-                    database, especially a QDBM database, you will likely have just corrupted your
-                    database, so pull out a flatfile to recover.</paragraph>
-                <paragraph>Sadly, this also may occur if the server hosting you takes a nose-dive in the middle
-                    of a db write.  Rhost can recover corruption in-game while up, but if it bombs
-                    in the middle of a write, all bets are off. :)</paragraph>
+            <section ids="autoshutdown-script" names="autoshutdown\ script">
+                <title>Autoshutdown script</title>
+                <paragraph>The makefile will ‘make’ the program that will STOP the mush.
+                    Please tweek ‘autolog.h’ with the proper parameters.</paragraph>
+                <paragraph>The ‘startup.sh’ will START the mush.</paragraph>
+                <paragraph>Both of these are intended to be used for automations (automated processes)
+                    like your rc.local file and/or startup scripts when you bring your server up.</paragraph>
             </section>
-        </section>
-        <section ids="autoshutdown-script" names="autoshutdown\ script">
-            <title>Autoshutdown script</title>
-            <paragraph>The makefile will ‘make’ the program that will STOP the mush.
-                Please tweek ‘autolog.h’ with the proper parameters.</paragraph>
-            <paragraph>The ‘startup.sh’ will START the mush.</paragraph>
-            <paragraph>Both of these are intended to be used for automations (automated processes)
-                like your rc.local file and/or startup scripts when you bring your server up.</paragraph>
         </section>
         <section ids="network-port-redirector" names="network\ port\ redirector">
             <title>Network Port redirector</title>

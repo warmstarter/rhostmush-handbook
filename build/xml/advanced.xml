@@ -586,7 +586,7 @@ foo QN this sets register with label 'foo'</literal_block>
             </section>
             <section ids="execscript-example-bash-script" names="execscript\ example\ bash\ script">
                 <title>Execscript Example bash script</title>
-                <literal_block force="False" language="default" linenos="False" xml:space="preserve">#!/bin/bash
+                <literal_block force="False" highlight_args="{}" language="bash" linenos="False" xml:space="preserve">#!/bin/bash
 echo "This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}"
 echo "Displaying Registers:"
 regs="0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z"
@@ -1094,8 +1094,8 @@ $6$xy$xy
         <section ids="help-key-indexes-for-the-values" names="help\ key\ indexes\ for\ the\ values">
             <title>HELP key indexes for the values</title>
             <paragraph>FLAGS: The following flags are to be used.  They are BITWISE masks that you
-                need to add together for the values that you apply:</paragraph>
-            <literal_block force="False" language="default" linenos="False" xml:space="preserve">/* First word of flags */
+                need to add together for the values that you apply</paragraph>
+            <literal_block force="False" highlight_args="{}" language="c" linenos="False" xml:space="preserve">/* First word of flags */
 #define SEETHRU         0x00000008      /* Can see through to the other side */
 #define WIZARD          0x00000010      /* gets automatic control */
 #define LINK_OK         0x00000020      /* anybody can link to this room */
@@ -1228,8 +1228,8 @@ $6$xy$xy
 /* 0x40000000 free */
 /* 0x80000000 free */</literal_block>
             <paragraph>TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like
-                the flags above.  They are added together for each word type:</paragraph>
-            <literal_block force="False" language="default" linenos="False" xml:space="preserve">/* First word of toggles - Thorin 3/95 */
+                the flags above.  They are added together for each word type</paragraph>
+            <literal_block force="False" highlight_args="{}" language="c" linenos="False" xml:space="preserve">/* First word of toggles - Thorin 3/95 */
 #define TOG_MONITOR             0x00000001      /* Active monitor on player */
 #define TOG_MONITOR_USERID      0x00000002      /* show userid */
 #define TOG_MONITOR_SITE        0x00000004      /* show site */
@@ -1299,8 +1299,8 @@ $6$xy$xy
 #define TOG_LOGROOM             0x40000000      /* Log Room's location/contents */
 #define TOG_NOGLOBPARENT        0x80000000      /* Target does not inherit global attributes */</literal_block>
             <paragraph>POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift
-                markers that you would have to compute the shift then add it after the fact.:</paragraph>
-            <literal_block force="False" language="default" linenos="False" xml:space="preserve">/* First word of power positions.  Each position is 2 bits so the
+                markers that you would have to compute the shift then add it after the fact.</paragraph>
+            <literal_block force="False" highlight_args="{}" language="c" linenos="False" xml:space="preserve">/* First word of power positions.  Each position is 2 bits so the
    number here is how far over to shift the 2 bit pattern         */
 #define POWER_CHANGE_QUOTAS     0
 #define POWER_CHOWN_ME          2
@@ -1354,8 +1354,8 @@ $6$xy$xy
 /* 28 free */
 /* 30 free */</literal_block>
             <paragraph>DEPOWERS:  like @powers they are handled with a BITWISE offshift that you
-                will have to calculate then add:</paragraph>
-            <literal_block force="False" language="default" linenos="False" xml:space="preserve">/* First word */
+                will have to calculate then add</paragraph>
+            <literal_block force="False" highlight_args="{}" language="c" linenos="False" xml:space="preserve">/* First word */
 #define DP_WALL                 0
 #define DP_LONG_FINGERS         2
 #define DP_STEAL                4

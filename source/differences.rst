@@ -54,20 +54,24 @@ There are differences in the initial set up from Rhost to PennMUSH (and MUX2).
 A lot of people use PennMUSH and if you are one of them, this may help you.
 Some people use MUX2, hopefully this will help you as well.
 
-NOTE:  If you plan to use sideeffects, you must set the SIDEFX flag to allow 
-       the target to use it
+.. note::
 
-NOTE:  Rhost does support UNICODE/UTF8, but it's currently not part of the main
-       branch as of this writing.  Please talk to Kage on the dev site for more
-       information on when it'll be released.
+    If you plan to use sideeffects, you must set the SIDEFX flag to allow 
+    the target to use it
+
+.. note::
+
+    Rhost does support UNICODE/UTF8, but it's currently not part of the main
+    branch as of this writing.  Please talk to Kage on the dev site for more
+    information on when it'll be released.
 
 Organization of help and wizhelp
 ================================
        
 First, on PennMUSH, help is separated into 'help' and 'wizhelp'.  This can 
-be confusing. If you want to 'combine' them, you may use the following snippit:
+be confusing. If you want to 'combine' them, you may use the following snippit::
 
-$ahelp*:@pemit %#=[switch([!!words(%0)][match(/search,%0*)],0?,[setq(0,help)][setq(1,0)],11,[setq(0,rest(%0))][setq(1,2)],setq(0,trim(%0)))][setq(a,textfile(help,%q0,%q1))][setq(b,textfile(wizhelp,%q0,%q1))][setq(2,)][ifelse(!strmatch(%qa,No entry*),%qa[setq(2,%r)])][ifelse(!strmatch(%qb,No entry*),%q2%qb[setq(2,%r)])][ifelse(!$r(2),No topics found for '%q0'.)]
+    $ahelp*:@pemit %#=[switch([!!words(%0)][match(/search,%0*)],0?,[setq(0,help)][setq(1,0)],11,[setq(0,rest(%0))][setq(1,2)],setq(0,trim(%0)))][setq(a,textfile(help,%q0,%q1))][setq(b,textfile(wizhelp,%q0,%q1))][setq(2,)][ifelse(!strmatch(%qa,No entry*),%qa[setq(2,%r)])][ifelse(!strmatch(%qb,No entry*),%q2%qb[setq(2,%r)])][ifelse(!$r(2),No topics found for '%q0'.)]
 
 This will display help from help and wizhelp for any matching topic.  It 
 should make life easier for you.  This also honors the /search switch.
@@ -76,9 +80,9 @@ Mail, comsystem, guests, master rooms, etc..
 ============================================
 
 The comsystem is softcode and included in the readme directory. (comsys).  
-Just load it in.  The mail wrappers can be gotten from:
+Just load it in.  The mail wrappers can be gotten from::
 
-        The Mushcode directory in the Rhost Distribution.
+   The Mushcode directory in the Rhost Distribution.
 
 Please see the other readme files on setting other things up like 
 guests, master rooms, and so forth.
@@ -94,9 +98,10 @@ PennMUSH 1.8.6p0
 @commands with equivalents
 ==========================
 
-The following are used for compatibility to keep in mind:
+The following are used for compatibility to keep in mind::
 
-@commands Pennmush----------------RhostMUSH----------------------MUX2
+          Pennmush                RhostMUSH                      MUX2
+
           @@                      @@                             @@
           @ALLHALT                @halt/all                      @HALT/ALL
           @ALLQUOTA               @quota/all                     @QUOTA/ALL
@@ -314,32 +319,36 @@ The following are used for compatibility to keep in mind:
 @commands unique to RhostMUSH
 =============================
 
-Commands that exist in Rhost that have no PennMUSH equivelant:
-@aflags                      @apply_marked                 @areg
-@blacklist                   @cluster                      @conncheck
-@convert                     @cut                          @dbclean
-@depower                     @dynhelp                      @eval
-@femit                       @fixdb                        @fpose
-@freeze                      @fsay                         @icmd
-@last                        @lfunction                    @limit
-@logrotate                   @mark                         @mark_all
-@money                       @pipe                         @program
-@progreset                   @protect                      @quitprogram
-@reclist                     @recover                      @register
-@remote                      @robot                        @rxlevel
-@skip                        @snapshot                     @snoop
-@thaw                        @timewarp                     @toad
-@toggle                      @toggledef                    @tor
-@turtle                      @txlevel                      @whereall
-grab                         join                          listen
-mrpage                       newsdb                        rpage
-smell                        taste                         touch
-wielded                      worn                          +players
+Commands that exist in Rhost that have no PennMUSH equivelant::
+
+   @aflags                      @apply_marked                 @areg
+   @blacklist                   @cluster                      @conncheck
+   @convert                     @cut                          @dbclean
+   @depower                     @dynhelp                      @eval
+   @femit                       @fixdb                        @fpose
+   @freeze                      @fsay                         @icmd
+   @last                        @lfunction                    @limit
+   @logrotate                   @mark                         @mark_all
+   @money                       @pipe                         @program
+   @progreset                   @protect                      @quitprogram
+   @reclist                     @recover                      @register
+   @remote                      @robot                        @rxlevel
+   @skip                        @snapshot                     @snoop
+   @thaw                        @timewarp                     @toad
+   @toggle                      @toggledef                    @tor
+   @turtle                      @txlevel                      @whereall
+   grab                         join                          listen
+   mrpage                       newsdb                        rpage
+   smell                        taste                         touch
+   wielded                      worn                          +players
 
 @lock equivalents
 =================
 
-@locks PennMUSH---------------RhostMUSH-----------------------------------MUX2
+::
+
+       PennMUSH               RhostMUSH                                   MUX2
+
        BASIC                  BASIC/DEFAULT                               DEFAULT
        ENTER                  ENTER                                       ENTER
        TELEPORT               TPORT                                       TPORT
@@ -377,17 +386,21 @@ wielded                      worn                          +players
        N/A                    TELOUT                                      TELOUT
        N/A                    DARK                                        VISIBLE
 
-@locks that only exist in RhostMUSH
-===================================
+@locks that exist in Rhost that have no PennMUSH equivelant
+===========================================================
 
-@locks that exist in Rhost that have no PennMUSH equivelant:
-TELOUTLOCK                   TWINKLOCK                     DARKLOCK
-ALTNAME                      CHOWN                         
+::
+
+  TELOUTLOCK                   TWINKLOCK                     DARKLOCK
+  ALTNAME                      CHOWN                         
 
 Flag and toggle equivalents
 ===========================
 
-FLAGS Pennmush----------------RhostMUSH------------------------------MUX2
+::
+
+      Pennmush                RhostMUSH                              MUX2
+
       ABODE                   ABODE                                  ABODE
       N/A                     N/A                                    ASCII
       ANSI                    ANSI                                   ANSI
@@ -464,48 +477,49 @@ FLAGS Pennmush----------------RhostMUSH------------------------------MUX2
 Flags and toggles that only exist in RhostMUSH
 ==============================================
 
-Flags
------
+Flags::
 
-ALTQUOTA                     ANONYMOUS                     ARCHITECT
-AUDITORIUM                   BLIND                         BOUNCE
-CLOAK                        COUNCILOR                     FUBAR
-GUILDMASTER                  GUILDOBJ                      IMMORTAL
-INDESTRUCTABLE               NO_ANSINAME                   NO_BACKSTAGE
-NO_CODE                      NO_CONNECT                    NO_EXAMINE
-NO_FLASH                     NO_GOBJ                       NO_MODIFY
-NO_MOVE                      NO_NAME                       NO_OVERRIDE
-NO_PESTER                    NO_POSSESS                    NO_STOP
-NO_UNDERLINE                 NO_USELOCK                    NO_WALLS
-NO_YELL                      PRIVATE                       ROBOT
-SCLOAK                       SEE_OEMIT                     SHOWFAILCMD
-SIDEFX                       SPAMMONITOR                   SPOOF
-STOP                         WANDERER                      ZONECONTENTS
-ZONEPARENT
+   ALTQUOTA                     ANONYMOUS                     ARCHITECT
+   AUDITORIUM                   BLIND                         BOUNCE
+   CLOAK                        COUNCILOR                     FUBAR
+   GUILDMASTER                  GUILDOBJ                      IMMORTAL
+   INDESTRUCTABLE               NO_ANSINAME                   NO_BACKSTAGE
+   NO_CODE                      NO_CONNECT                    NO_EXAMINE
+   NO_FLASH                     NO_GOBJ                       NO_MODIFY
+   NO_MOVE                      NO_NAME                       NO_OVERRIDE
+   NO_PESTER                    NO_POSSESS                    NO_STOP
+   NO_UNDERLINE                 NO_USELOCK                    NO_WALLS
+   NO_YELL                      PRIVATE                       ROBOT
+   SCLOAK                       SEE_OEMIT                     SHOWFAILCMD
+   SIDEFX                       SPAMMONITOR                   SPOOF
+   STOP                         WANDERER                      ZONECONTENTS
+   ZONEPARENT
 
-Toggles
--------
+Toggles::
 
-ATRUSE                       CHKREALITY                    CPUTIME
-EXFULLWIZATTR                FORCEHALTED                   HIDEIDLE
-IGNOREZONE                   IMMPROG                       LOGROOM
-MAILVALIDATE                 MAIL_LOCKDOWN                 MAIL_NOPARSE
-MAIL_STRIPRETURN             MONITOR_AREG                  MONITOR_BAD
-MONITOR_CONN                 MONITOR_CPU                   MONITOR_DISREASON
-MONITOR_FAIL                 MONITOR_SITE                  MONITOR_STATS
-MONITOR_TIME                 MONITOR_USERID                MONITOR_VLIMIT
-MORTALREALITY                NODEFAULT                     NOSHPROG
-NOZONEPARENT                 NO_ANSI_EX                    NO_ANSI_EXIT
-NO_ANSI_PLAYER               NO_ANSI_ROOM                  NO_ANSI_THING
-NO_FORMAT                    NO_TIMESTAMP                  PAGELOCK
-PROG                         PROG_ON_CONNECT               SAFELOG
-SEE_SUSPECT                  SILENTEFFECT                  SNUFFDARK
-ZONECMDCHK                   ZONE_AUTOADD                  ZONE_AUTOADDALL
+   ATRUSE                       CHKREALITY                    CPUTIME
+   EXFULLWIZATTR                FORCEHALTED                   HIDEIDLE
+   IGNOREZONE                   IMMPROG                       LOGROOM
+   MAILVALIDATE                 MAIL_LOCKDOWN                 MAIL_NOPARSE
+   MAIL_STRIPRETURN             MONITOR_AREG                  MONITOR_BAD
+   MONITOR_CONN                 MONITOR_CPU                   MONITOR_DISREASON
+   MONITOR_FAIL                 MONITOR_SITE                  MONITOR_STATS
+   MONITOR_TIME                 MONITOR_USERID                MONITOR_VLIMIT
+   MORTALREALITY                NODEFAULT                     NOSHPROG
+   NOZONEPARENT                 NO_ANSI_EX                    NO_ANSI_EXIT
+   NO_ANSI_PLAYER               NO_ANSI_ROOM                  NO_ANSI_THING
+   NO_FORMAT                    NO_TIMESTAMP                  PAGELOCK
+   PROG                         PROG_ON_CONNECT               SAFELOG
+   SEE_SUSPECT                  SILENTEFFECT                  SNUFFDARK
+   ZONECMDCHK                   ZONE_AUTOADD                  ZONE_AUTOADDALL
 
 @power equivalents
 ==================
 
-@powers Pennmush----------------RhostMUSH------------------------------------------MUX2
+::
+
+        Pennmush                RhostMUSH                                          MUX2
+
         Announce                FREE_WALL                                          Announce
         Boot                    BOOT                                               Boot
         Builder                 @quota !WANDERER (flag)                            Builder
@@ -557,18 +571,22 @@ ZONECMDCHK                   ZONE_AUTOADD                  ZONE_AUTOADDALL
 
 Depowers are unique in Rhost and PennMUSH has no equivelant.
 
-Powers that exist in RhostMUSH that have no match in PennMUSH:
-CHOWN_ME                     WIZ_WHO                       NOFORCE
-FREE_QUOTA                   JOIN_PLAYER                   NO_BOOT
-STAT_ANY                     WHO_UNFIND                    SHUTDOWN
-PURGE                        CHOWN_ANYWHERE                CHOWN_OTHER
-GRAB_PLAYER                  SECURITY                      WRAITH
-HIDEBIT
+Powers that exist in RhostMUSH that have no match in PennMUSH::
+
+   CHOWN_ME                     WIZ_WHO                       NOFORCE
+   FREE_QUOTA                   JOIN_PLAYER                   NO_BOOT
+   STAT_ANY                     WHO_UNFIND                    SHUTDOWN
+   PURGE                        CHOWN_ANYWHERE                CHOWN_OTHER
+   GRAB_PLAYER                  SECURITY                      WRAITH
+   HIDEBIT
 
 Functions equivalents
 =====================
 
-Functions Pennmush----------------RhostMUSH--------------------MUX
+::
+
+          Pennmush                RhostMUSH                    MUX
+
           @@                      @@                           @@
           ABS                     ABS                          ABS/IABS
           ACCENT                  ACCENT                       ACCENT
@@ -1129,62 +1147,63 @@ Functions Pennmush----------------RhostMUSH--------------------MUX
 Functions that only exist in RhostMUSH
 --------------------------------------
 
-Functions that exist in Rhost that do not have a match in PennMUSH:
-AIINDEX                      AINDEX                        ANDCHR 
-ARRAY                        ATTRCNT                       BETWEEN 
-BITTYPE                      CANSEE                        CAPLIST 
-CHKGARBAGE                   CHKREALITY                    CHKTRACE 
-CHOMP                        CITER                         CLOAK 
-CLUSTER_ADD                  CLUSTER_ATTRCNT               CLUSTER_DEFAULT 
-CLUSTER_EDEFAULT             CLUSTER_FLAGS                 CLUSTER_GET 
-CLUSTER_GET_EVAL             CLUSTER_GREP                  CLUSTER_HASATTR 
-CLUSTER_HASFLAG              CLUSTER_LATTR                 CLUSTER_REGREP 
-CLUSTER_REGREPI              CLUSTER_SET                   CLUSTER_STATS 
-CLUSTER_U                    CLUSTER_U2                    CLUSTER_U2DEFAULT 
-CLUSTER_U2LDEFAULT           CLUSTER_U2LOCAL               CLUSTER_UDEFAULT 
-CLUSTER_UEVAL                CLUSTER_ULDEFAULT             CLUSTER_ULOCAL 
-CLUSTER_VATTRCNT             CLUSTER_WIPE                  CLUSTER_XGET 
-COLUMNS                      COSH                          COUNTSPECIAL 
-CRC32                        DELEXTRACT                    DESTROY 
-EDITANSI                     EE                            ERROR 
-EXP                          FBETWEEN                      FBOUND 
-GARBLE                       GLOBALROOM                    GUILD 
-HASDEPOWER                   HASQUOTA                      HASRXLEVEL 
-HASTOGGLE                    HASTXLEVEL                    INPROGRAM   
-INZONE                       ISALNUM                       ISALPHA 
-ISCLUSTER                    ISDIGIT                       ISHIDDEN 
-ISLOWER                      ISPUNCT                       ISSPACE 
-ISUPPER                      ISXDIGIT                      KEEPFLAGS 
-KEEPTYPE                     LAND                          LAVG 
-LCMDS                        LDEPOWERS                     LISTMATCH 
-LISTNEWSGROUPS               LISTRLEVELS                   LISTTOGGLES 
-LLOC                         LMAX                          LMIN 
-LMUL                         LNOR                          LOCALFUNC 
-LOCKDECODE                   LOCKENCODE                    LOGSTATUS 
-LOGTOFILE                    LOR                           LRAND 
-LROOMS                       LTOGGLES                      LXNOR 
-LXOR                         MONEYNAME                     MOON 
-MOVE                         NAMEQ                         NOSTR 
-NOTCHR                       NSLOOKUP                      ORCHR 
-PARENMATCH                   PFIND                         PGREP 
-POWER10                      PRIVATIZE                     PROGRAMMER 
-PUSHREGS                     RACE                          RANDMATCH 
-RANDPOS                      REGEDITALLILIT                REGEDITALLLIT 
-REGEDITILIT                  REGEDITLIT                    REGNUMMATCH 
-REGNUMMATCHI                 REMFLAGS                      REMTYPE 
-ROMAN                        ROTL                          ROTR         
-RSET                         RXLEVEL                       SAFEBUFF 
-SEES                         SETQMATCH                     SHIFT 
-SINH                         SORTLISAT                     STR
-STRDISTANCE                  STREQ                         STREVAL
-STRFUNC                      STRIP                         STRLENRAW
-STRLENVIS                    STRMATH                       SUBNETMATCH
-TANH                         TOGGLE                        TOTCMDS
-TRACE                        TXLEVEL                       UEVAL
-WHILE                        WILDMATCH                     WRAPCOLUMNS
-WRITABLE                     XNOR                          XORCHR
-XORFLAG                      ZFUNDEFAULT                   ZFUNEVAL
-ZFUNLDEFAULT                 ZFUNLOCAL 
+Functions that exist in Rhost that do not have a match in PennMUSH::
+
+   AIINDEX                      AINDEX                        ANDCHR 
+   ARRAY                        ATTRCNT                       BETWEEN 
+   BITTYPE                      CANSEE                        CAPLIST 
+   CHKGARBAGE                   CHKREALITY                    CHKTRACE 
+   CHOMP                        CITER                         CLOAK 
+   CLUSTER_ADD                  CLUSTER_ATTRCNT               CLUSTER_DEFAULT 
+   CLUSTER_EDEFAULT             CLUSTER_FLAGS                 CLUSTER_GET 
+   CLUSTER_GET_EVAL             CLUSTER_GREP                  CLUSTER_HASATTR 
+   CLUSTER_HASFLAG              CLUSTER_LATTR                 CLUSTER_REGREP 
+   CLUSTER_REGREPI              CLUSTER_SET                   CLUSTER_STATS 
+   CLUSTER_U                    CLUSTER_U2                    CLUSTER_U2DEFAULT 
+   CLUSTER_U2LDEFAULT           CLUSTER_U2LOCAL               CLUSTER_UDEFAULT 
+   CLUSTER_UEVAL                CLUSTER_ULDEFAULT             CLUSTER_ULOCAL 
+   CLUSTER_VATTRCNT             CLUSTER_WIPE                  CLUSTER_XGET 
+   COLUMNS                      COSH                          COUNTSPECIAL 
+   CRC32                        DELEXTRACT                    DESTROY 
+   EDITANSI                     EE                            ERROR 
+   EXP                          FBETWEEN                      FBOUND 
+   GARBLE                       GLOBALROOM                    GUILD 
+   HASDEPOWER                   HASQUOTA                      HASRXLEVEL 
+   HASTOGGLE                    HASTXLEVEL                    INPROGRAM   
+   INZONE                       ISALNUM                       ISALPHA 
+   ISCLUSTER                    ISDIGIT                       ISHIDDEN 
+   ISLOWER                      ISPUNCT                       ISSPACE 
+   ISUPPER                      ISXDIGIT                      KEEPFLAGS 
+   KEEPTYPE                     LAND                          LAVG 
+   LCMDS                        LDEPOWERS                     LISTMATCH 
+   LISTNEWSGROUPS               LISTRLEVELS                   LISTTOGGLES 
+   LLOC                         LMAX                          LMIN 
+   LMUL                         LNOR                          LOCALFUNC 
+   LOCKDECODE                   LOCKENCODE                    LOGSTATUS 
+   LOGTOFILE                    LOR                           LRAND 
+   LROOMS                       LTOGGLES                      LXNOR 
+   LXOR                         MONEYNAME                     MOON 
+   MOVE                         NAMEQ                         NOSTR 
+   NOTCHR                       NSLOOKUP                      ORCHR 
+   PARENMATCH                   PFIND                         PGREP 
+   POWER10                      PRIVATIZE                     PROGRAMMER 
+   PUSHREGS                     RACE                          RANDMATCH 
+   RANDPOS                      REGEDITALLILIT                REGEDITALLLIT 
+   REGEDITILIT                  REGEDITLIT                    REGNUMMATCH 
+   REGNUMMATCHI                 REMFLAGS                      REMTYPE 
+   ROMAN                        ROTL                          ROTR         
+   RSET                         RXLEVEL                       SAFEBUFF 
+   SEES                         SETQMATCH                     SHIFT 
+   SINH                         SORTLISAT                     STR
+   STRDISTANCE                  STREQ                         STREVAL
+   STRFUNC                      STRIP                         STRLENRAW
+   STRLENVIS                    STRMATH                       SUBNETMATCH
+   TANH                         TOGGLE                        TOTCMDS
+   TRACE                        TXLEVEL                       UEVAL
+   WHILE                        WILDMATCH                     WRAPCOLUMNS
+   WRITABLE                     XNOR                          XORCHR
+   XORFLAG                      ZFUNDEFAULT                   ZFUNEVAL
+   ZFUNLDEFAULT                 ZFUNLOCAL 
 
 What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost
 ==========================================================================================================

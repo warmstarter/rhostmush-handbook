@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>8. Maintenance</title>
+    <title>10. Maintenance</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/nonav.css" type="text/css" /> 
+    <link rel="stylesheet" href="_static/style.css" type="text/css" /> 
   </head><body>
 
     <div class="document">
@@ -15,9 +15,9 @@
           <div class="body" role="main">
             
   <div class="section" id="maintenance">
-<h1><span class="section-number">8. </span>Maintenance</h1>
+<h1><span class="section-number">10. </span>Maintenance</h1>
 <div class="section" id="note-about-patching">
-<h2><span class="section-number">8.1. </span>Note about Patching</h2>
+<h2><span class="section-number">10.1. </span>Note about Patching</h2>
 <p>There’s two ways you can look to patch the source.  If you plan to run the
 RhostMUSH source from a git repository, then please use the git repo to
 constantly update your code.  If you knew enough to want to set up a git repo
@@ -40,7 +40,7 @@ Once that’s done, all you do from within the game is two commands:</p>
 </div>
 </div>
 <div class="section" id="daily-backups-for-rhostmush">
-<h2><span class="section-number">8.2. </span>Daily Backups for RhostMUSH</h2>
+<h2><span class="section-number">10.2. </span>Daily Backups for RhostMUSH</h2>
 <p>Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game. paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="nd">@dump</span><span class="o">/</span><span class="n">flat</span>      <span class="o">--</span> <span class="n">This</span> <span class="n">makes</span> <span class="n">a</span> <span class="n">flatfile</span> <span class="n">dump</span> <span class="n">of</span> <span class="n">the</span> <span class="n">main</span> <span class="n">database</span><span class="o">.</span>  <span class="n">You</span> <span class="n">want</span> <span class="n">to</span> <span class="n">run</span> <span class="n">this</span> <span class="n">daily</span><span class="o">.</span>
  <span class="n">wmail</span><span class="o">/</span><span class="n">unload</span>    <span class="o">--</span> <span class="n">This</span> <span class="n">makes</span> <span class="n">a</span> <span class="n">flatfile</span> <span class="n">dump</span> <span class="n">of</span> <span class="n">the</span> <span class="n">mail</span> <span class="n">database</span><span class="o">.</span>  <span class="n">You</span> <span class="n">want</span> <span class="n">to</span> <span class="n">run</span> <span class="n">this</span> <span class="n">daily</span><span class="o">.</span>
@@ -83,11 +83,11 @@ Once that’s done, all you do from within the game is two commands:</p>
 </div>
 </div>
 <div class="section" id="signals-and-why-you-need-them-for-control">
-<h2><span class="section-number">8.3. </span>Signals and why you need them for control</h2>
+<h2><span class="section-number">10.3. </span>Signals and why you need them for control</h2>
 <p>Rhost by default allows signals at the shell to handle various processes in-game.</p>
 <p>The following signals are useful.</p>
 <div class="section" id="term-kill-term-or-kill-15">
-<h3><span class="section-number">8.3.1. </span>TERM (kill -TERM or kill -15)</h3>
+<h3><span class="section-number">10.3.1. </span>TERM (kill -TERM or kill -15)</h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>This will immediately terminate the mush, dumping a special flatfile called
@@ -99,7 +99,7 @@ a TERM signal is common during a server shutdown, so time is paramount.</p></li>
 </div></blockquote>
 </div>
 <div class="section" id="usr1-kill-usr1">
-<h3><span class="section-number">8.3.2. </span>USR1 (kill -USR1)</h3>
+<h3><span class="section-number">10.3.2. </span>USR1 (kill -USR1)</h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>This by default issues a reboot on the server.  This is a special parameter
@@ -110,7 +110,7 @@ the default behavior or if the method for USR1 is doing something else.</p></li>
 </div></blockquote>
 </div>
 <div class="section" id="usr2-kill-usr2">
-<h3><span class="section-number">8.3.3. </span>USR2 (kill -USR2)</h3>
+<h3><span class="section-number">10.3.3. </span>USR2 (kill -USR2)</h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>This will shutdown (cleanly) the mush.  This behaves as if you issued
@@ -122,7 +122,7 @@ from the shell.</p></li>
 </div></blockquote>
 </div>
 <div class="section" id="kill-kill-kill-or-kill-9">
-<h3><span class="section-number">8.3.4. </span>KILL (kill -KILL or kill -9)</h3>
+<h3><span class="section-number">10.3.4. </span>KILL (kill -KILL or kill -9)</h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>This signal can not be caught and will immediately terminate the game
@@ -139,17 +139,18 @@ Startmush -f to bring it back up.</p></li>
 </div>
 </div>
 <div class="section" id="shutting-down-rhostmush-gracefully">
-<h2><span class="section-number">8.4. </span>Shutting down RhostMUSH gracefully</h2>
+<h2><span class="section-number">10.4. </span>Shutting down RhostMUSH gracefully</h2>
 <div class="section" id="rhostmush-has-many-ways-to-shutdown-the-game-cleanly">
-<h3><span class="section-number">8.4.1. </span>RhostMUSH has many ways to shutdown the game cleanly</h3>
+<h3><span class="section-number">10.4.1. </span>RhostMUSH has many ways to shutdown the game cleanly</h3>
 <ol class="arabic simple">
 <li><p>Log into the mush and issue &#64;shutdown</p></li>
 <li><p>Issue a kill -USR2 to the mush which issues an emergency &#64;shutdown</p></li>
 <li><p>Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.</p></li>
+<li><p>Through the Autoshutdown script</p></li>
 </ol>
-</div>
-<div class="section" id="warning-never-kill-9-rhostmush">
-<h3><span class="section-number">8.4.2. </span>WARNING: Never kill -9 RhostMUSH</h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Never kill -9 RhostMUSH</p>
 <p>Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t care for the
 database.  The reason is if the mush happens to be saving, in any method, to the
 database, especially a QDBM database, you will likely have just corrupted your
@@ -160,15 +161,16 @@ in the middle of a write, all bets are off. :)</p>
 </div>
 </div>
 <div class="section" id="autoshutdown-script">
-<h2><span class="section-number">8.5. </span>Autoshutdown script</h2>
+<h3><span class="section-number">10.4.2. </span>Autoshutdown script</h3>
 <p>The makefile will ‘make’ the program that will STOP the mush.
 Please tweek ‘autolog.h’ with the proper parameters.</p>
 <p>The ‘startup.sh’ will START the mush.</p>
 <p>Both of these are intended to be used for automations (automated processes)
 like your rc.local file and/or startup scripts when you bring your server up.</p>
 </div>
+</div>
 <div class="section" id="network-port-redirector">
-<h2><span class="section-number">8.6. </span>Network Port redirector</h2>
+<h2><span class="section-number">10.5. </span>Network Port redirector</h2>
 <p>This is a port redirector incase you decide to move your mush
 to a new site/port.  To use, first, compile the code.  To do
 this you would type the following:</p>
@@ -189,9 +191,9 @@ IP address and the PORT where specified.</p>
 <p>Where &lt;port&gt; is the port where the mush used to run at.</p>
 </div>
 <div class="section" id="using-the-built-in-cron-system-for-periodically-running-commands">
-<h2><span class="section-number">8.7. </span>Using the built-in cron system for periodically running commands</h2>
+<h2><span class="section-number">10.6. </span>Using the built-in cron system for periodically running commands</h2>
 <div class="section" id="syntax-for-rhost-cron">
-<h3><span class="section-number">8.7.1. </span>Syntax for rhost.cron</h3>
+<h3><span class="section-number">10.6.1. </span>Syntax for rhost.cron</h3>
 <p>The rhost.cron file will be in the syntax as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span> <span class="p">(</span><span class="ow">or</span> <span class="n">dbref</span><span class="c1">#)</span>
 <span class="n">command1</span><span class="p">;</span><span class="n">command2</span><span class="p">;</span><span class="n">command3</span><span class="p">;</span><span class="o">...</span><span class="p">;</span><span class="n">commandN</span>
@@ -212,7 +214,7 @@ in the netrhost.gamelog.</p>
 <p>Here is a working example of the code cron file.
 This example will perform dumps of the mush.</p>
 <div class="section" id="example-syntaxt-for-rhost-cron">
-<h4><span class="section-number">8.7.1.1. </span>Example syntaxt for rhost.cron</h4>
+<h4><span class="section-number">10.6.1.1. </span>Example syntaxt for rhost.cron</h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#1</span>
 <span class="nd">@dump</span><span class="o">/</span><span class="n">flat</span><span class="p">;</span> <span class="o">@@</span> <span class="n">dump</span> <span class="n">the</span> <span class="n">main</span> <span class="n">game</span> <span class="n">database</span> <span class="n">to</span> <span class="n">flatfile</span>
 <span class="n">wmail</span><span class="o">/</span><span class="n">unload</span><span class="p">;</span> <span class="o">@@</span> <span class="n">dump</span> <span class="n">the</span> <span class="n">mail</span> <span class="n">database</span> <span class="n">to</span> <span class="n">flatfile</span>
@@ -224,7 +226,7 @@ This example will perform dumps of the mush.</p>
 </div>
 </div>
 <div class="section" id="the-following-scripts-are-used-in-the-game-directory">
-<h2><span class="section-number">8.8. </span>The following scripts are used in the game directory</h2>
+<h2><span class="section-number">10.7. </span>The following scripts are used in the game directory</h2>
 <p>Startmush               – used to Start up the mush
 backup_flat.sh          – Used to run backups with &#64;dump/flat within the game (Started with Startmush automatically)
 backup_restart.sh       – Restart the backup_flat.sh if changes are done
@@ -238,7 +240,7 @@ recovery.sh             – If your db is corrupt, run this to auto-revert to an
 tor_pull.sh             – Create a blacklist.txt file that can be loaded via the internal &#64;blacklist command for proxy handling</p>
 </div>
 <div class="section" id="textfiles-for-rhostmush">
-<h2><span class="section-number">8.9. </span>Textfiles for RhostMUSH</h2>
+<h2><span class="section-number">10.8. </span>Textfiles for RhostMUSH</h2>
 <p>areghost.txt           - file player gets when autoregistration on registered host.
 autoreg.txt            - file player gets when autoregistration on non-registered host.
 autoreg_include.txt    - file player receives in email when they autoregister attached to login/passwd
@@ -285,7 +287,7 @@ wizhelp.txt            - your wizhelp file</p>
 </div>
 <p>wizmotd.txt            - your wiz motd file</p>
 <div class="section" id="textfile-frequently-asked-questions">
-<h3><span class="section-number">8.9.1. </span>Textfile Frequently Asked Questions</h3>
+<h3><span class="section-number">10.8.1. </span>Textfile Frequently Asked Questions</h3>
 <p>Q:  How do I put color in these files?
 A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: ^[[0m (for ANSI_NORMAL).  That’s &lt;ESC&gt;[
 A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding for ansi, however you compiled your Rhost.</p>
@@ -307,5 +309,6 @@ A:  Absolutely.  Check ‘wizhelp file_object’.</p>
       </div>
       <div class="clearer"></div>
     </div>
+
   </body>
 </html>
