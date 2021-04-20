@@ -55,28 +55,6 @@ If you wish your modules to be part of the main Rhost distribution you have two 
 1.  Attempt to hack the bin/asksource.sh and bin/asksource.blank files.
 2.  Ask one of the Rhost devs to do it for you :)
 
-Shutting down RhostMUSH gracefully
-==================================
-
-There are a few ways to cleanly shutdown RhostMUSH
---------------------------------------------------
-
-1. Log into the mush and issue @shutdown
-2. Issue a kill -USR2 to the mush which issues an emergency @shutdown
-3. Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.
-
-WARNING: Never kill -9 RhostMUSH
---------------------------------
-
-Under NO CIRCUMSTANCES should you kill -9 your mush unless you don't care for the 
-database.  The reason is if the mush happens to be saving, in any method, to the 
-database, especially a QDBM database, you will likely have just corrupted your
-database, so pull out a flatfile to recover.
-
-Sadly, this also may occur if the server hosting you takes a nose-dive in the middle
-of a db write.  Rhost can recover corruption in-game while up, but if it bombs
-in the middle of a write, all bets are off. :)
-
 Reality Levels Setup
 ====================
 
@@ -467,11 +445,11 @@ In a real game you would have to use some more checks, of course.
 Execscript and external programs and scripts
 ============================================
 
-Mush variables
---------------
+Execscript variables
+--------------------
 
-Built in variables
-++++++++++++++++++
+Execscript Built in variables
++++++++++++++++++++++++++++++
 
 ========================== ===================================================
 Variable                   Description
@@ -488,8 +466,8 @@ MUSHL_VARS                 space delimited list of MUSH attributes from player
                            This is passed from the mush's EXECSCRIPT_VARS attr
 ========================== ===================================================
 
-Dynamic variables
-+++++++++++++++++
+Execscript Dynamic variables
+++++++++++++++++++++++++++++
 
 ========================== =============================================
 Variable                   Description
@@ -498,8 +476,8 @@ MUSHV_<arg>                <arg> variable passed from MUSHL_VARS
                            These are the attributes from EXECSCRIPT_VARS
 ========================== =============================================
 
-Register variables
-++++++++++++++++++
+Execscript Register variables
++++++++++++++++++++++++++++++
 
 ========================== ============================================================
 Variable                   Description
@@ -511,26 +489,26 @@ MUSHN_<arg>                The labels that were defined by any register
 ========================== ============================================================
 
 
-set object
-----------
+Execsript set object
+--------------------
 
 The script executed with execscript() will read in a file with the same name
 as the script ending in '.set'.  This is a loader object that will set attributes
 and registers back into the mush that you wish to pass from the script. The
 fields are SPACE SEPARATED.  The values are NOT evaluated.
 
-The format of the fields are
-++++++++++++++++++++++++++++
+Execscript set object field format
+++++++++++++++++++++++++++++++++++
 
-Dynamic variables
-"""""""""""""""""
+Execscript set object Dynamic variables
+"""""""""""""""""""""""""""""""""""""""
 
 ::
 
   VARNAME        OWNER        CONTENTS (or leave null to clear)
 
-Examples
-''''''''
+Execscript set object Dynamic variables Examples
+''''''''''''''''''''''''''''''''''''''''''''''''
 ::
 
   SEX #123 Male
@@ -542,15 +520,20 @@ Examples
   because of the line feed (a control-M) on each line
   on the lines above
 
-Register variables
-""""""""""""""""""
+Execscript set object Register variables
+""""""""""""""""""""""""""""""""""""""""
 
 ::
 
   REGISTER       Q            CONTENTS (or leave null to clear)
 
-Examples (The last example clears register 0)
-'''''''''''''''''''''''''''''''''''''''''''''
+Execscript set object Register variables Examples
+'''''''''''''''''''''''''''''''''''''''''''''''''
+
+.. note::
+
+   The last exammple clears register 0
+
 
 ::
 
@@ -560,8 +543,8 @@ Examples (The last example clears register 0)
   foo QN this sets register with label 'foo'
 
 
-Example bash script
--------------------
+Execscript Example bash script
+------------------------------
 
 ::
 
@@ -580,8 +563,8 @@ Example bash script
   done
 
 
-Notes and warnings
-------------------
+Exescript Notes and warnings
+----------------------------
 
 While MUSHL_VARS are sanitized on what is allowable as a mush variable, this
 is not necessarilly sanitized on what the calling script can fetch as a valid
@@ -634,8 +617,8 @@ Using printf() for advanced text output
 The function printf() in Rhost can be used to greatly reduce coding in efforts for outputs,
 screens and data display.  It can automatically center, justify and wrap the text parameters given to it.
 
-Example one
------------
+Printf Example one
+------------------
 
 ::
 
@@ -648,8 +631,8 @@ Example one
                                          |19          |
 
 
-Example two
------------
+Printf Example two
+------------------
 
 ::
 
@@ -667,8 +650,8 @@ Example two
            Crippled  -5  [ ]                
       Incapacitated      [ ]  
   
-Example three
--------------
+Printf Example three
+--------------------
 
 ::
 
@@ -766,354 +749,349 @@ The structure above with the examples would look like this in the file::
   $6$xy$xy
   <
 
-HELP key indexes for the values:
-================================
+HELP key indexes for the values
+===============================
+
 
 FLAGS: The following flags are to be used.  They are BITWISE masks that you 
-       need to add together for the values tghat you apply
+need to add together for the values that you apply::
 
-/* First word of flags */
-#define SEETHRU         0x00000008      /* Can see through to the other side */
-#define WIZARD          0x00000010      /* gets automatic control */
-#define LINK_OK         0x00000020      /* anybody can link to this room */
-#define DARK            0x00000040      /* Don't show contents or presence */
-#define JUMP_OK         0x00000080      /* Others may @tel here */
-#define STICKY          0x00000100      /* Object goes home when dropped */
-#define DESTROY_OK      0x00000200      /* Others may @destroy */
-#define HAVEN           0x00000400      /* No killing here, or no pages */
-#define QUIET           0x00000800      /* Prevent 'feelgood' messages */
-#define HALT            0x00001000      /* object cannot perform actions */
-#define TRACE           0x00002000      /* Generate evaluation trace output */
-#define GOING           0x00004000      /* object is available for recycling */
-#define MONITOR         0x00008000      /* Process ^x:action listens on obj? */
-#define MYOPIC          0x00010000      /* See things as nonowner/nonwizard */
-#define PUPPET          0x00020000      /* Relays ALL messages to owner */
-#define CHOWN_OK        0x00040000      /* Object may be @chowned freely */
-#define ENTER_OK        0x00080000      /* Object may be ENTERed */
-#define VISUAL          0x00100000      /* Everyone can see properties */
-#define IMMORTAL        0x00200000      /* Object can't be killed */
-#define HAS_STARTUP     0x00400000      /* Load some attrs at startup */
-#define OPAQUE          0x00800000      /* Can't see inside */
-#define VERBOSE         0x01000000      /* Tells owner everything it does. */
-#define INHERIT         0x02000000      /* Gets owner's privs. (i.e. Wiz) */
-#define NOSPOOF         0x04000000      /* Report originator of all actions. */
-#define ROBOT           0x08000000      /* Player is a ROBOT */
-#define SAFE            0x10000000      /* Need /override to @destroy */
-#define CONTROL_OK      0x20000000      /* ControlLk specifies who ctrls me */
-#define HEARTHRU        0x40000000      /* Can hear out of this obj or exit */
-#define TERSE           0x80000000      /* Only show room name on look */
+    /* First word of flags */
+    #define SEETHRU         0x00000008      /* Can see through to the other side */
+    #define WIZARD          0x00000010      /* gets automatic control */
+    #define LINK_OK         0x00000020      /* anybody can link to this room */
+    #define DARK            0x00000040      /* Don't show contents or presence */
+    #define JUMP_OK         0x00000080      /* Others may @tel here */
+    #define STICKY          0x00000100      /* Object goes home when dropped */
+    #define DESTROY_OK      0x00000200      /* Others may @destroy */
+    #define HAVEN           0x00000400      /* No killing here, or no pages */
+    #define QUIET           0x00000800      /* Prevent 'feelgood' messages */
+    #define HALT            0x00001000      /* object cannot perform actions */
+    #define TRACE           0x00002000      /* Generate evaluation trace output */
+    #define GOING           0x00004000      /* object is available for recycling */
+    #define MONITOR         0x00008000      /* Process ^x:action listens on obj? */
+    #define MYOPIC          0x00010000      /* See things as nonowner/nonwizard */
+    #define PUPPET          0x00020000      /* Relays ALL messages to owner */
+    #define CHOWN_OK        0x00040000      /* Object may be @chowned freely */
+    #define ENTER_OK        0x00080000      /* Object may be ENTERed */
+    #define VISUAL          0x00100000      /* Everyone can see properties */
+    #define IMMORTAL        0x00200000      /* Object can't be killed */
+    #define HAS_STARTUP     0x00400000      /* Load some attrs at startup */
+    #define OPAQUE          0x00800000      /* Can't see inside */
+    #define VERBOSE         0x01000000      /* Tells owner everything it does. */
+    #define INHERIT         0x02000000      /* Gets owner's privs. (i.e. Wiz) */
+    #define NOSPOOF         0x04000000      /* Report originator of all actions. */
+    #define ROBOT           0x08000000      /* Player is a ROBOT */
+    #define SAFE            0x10000000      /* Need /override to @destroy */
+    #define CONTROL_OK      0x20000000      /* ControlLk specifies who ctrls me */
+    #define HEARTHRU        0x40000000      /* Can hear out of this obj or exit */
+    #define TERSE           0x80000000      /* Only show room name on look */
 
-/* Second word of flags */
-#define KEY             0x00000001      /* No puppets */
-#define ABODE           0x00000002      /* May @set home here */
-#define FLOATING        0x00000004      /* Inhibit Floating room.. msgs */
-#define UNFINDABLE      0x00000008      /* Cant loc() from afar */
-#define PARENT_OK       0x00000010      /* Others may @parent to me */
-#define LIGHT           0x00000020      /* Visible in dark places */
-#define HAS_LISTEN      0x00000040      /* Internal: LISTEN attr set */
-#define HAS_FWDLIST     0x00000080      /* Internal: FORWARDLIST attr set */
-#define ADMIN           0x00000100      /* Player has admin privs */
-#define GUILDOBJ        0x00000200      
-#define GUILDMASTER     0x00000400      /* Player has gm privs */
-#define NO_WALLS        0x00000800      /* So to stop normal walls */
-#define REQUIRE_TREES   0x00001000      /* Trees are required on this target for attrib sets */
-/* ----FREE----         0x00002000 */   /* #define OLD_NOROBOT  0x00002000 */
-#define SCLOAK          0x00004000
-#define CLOAK           0x00008000
-#define FUBAR           0x00010000
-#define INDESTRUCTABLE  0x00020000      /* object can't be nuked */
-#define NO_YELL         0x00040000      /* player can't @wall */
-#define NO_TEL          0x00080000      /* player can't @tel or be @tel'd */
-#define FREE            0x00100000      /* object/player has unlim money */
-#define GUEST_FLAG      0x00200000
-#define RECOVER         0x00400000
-#define BYEROOM         0x00800000
-#define WANDERER        0x01000000
-#define ANSI            0x02000000
-#define ANSICOLOR       0x04000000
-#define NOFLASH         0x08000000
-#define SUSPECT         0x10000000      /* Report some activities to wizards */
-#define BUILDER         0x20000000      /* Player has architect privs */
-#define CONNECTED       0x40000000      /* Player is connected */
-#define SLAVE           0x80000000      /* Disallow most commands */
+    /* Second word of flags */
+    #define KEY             0x00000001      /* No puppets */
+    #define ABODE           0x00000002      /* May @set home here */
+    #define FLOATING        0x00000004      /* Inhibit Floating room.. msgs */
+    #define UNFINDABLE      0x00000008      /* Cant loc() from afar */
+    #define PARENT_OK       0x00000010      /* Others may @parent to me */
+    #define LIGHT           0x00000020      /* Visible in dark places */
+    #define HAS_LISTEN      0x00000040      /* Internal: LISTEN attr set */
+    #define HAS_FWDLIST     0x00000080      /* Internal: FORWARDLIST attr set */
+    #define ADMIN           0x00000100      /* Player has admin privs */
+    #define GUILDOBJ        0x00000200      
+    #define GUILDMASTER     0x00000400      /* Player has gm privs */
+    #define NO_WALLS        0x00000800      /* So to stop normal walls */
+    #define REQUIRE_TREES   0x00001000      /* Trees are required on this target for attrib sets */
+    /* ----FREE----         0x00002000 */   /* #define OLD_NOROBOT  0x00002000 */
+    #define SCLOAK          0x00004000
+    #define CLOAK           0x00008000
+    #define FUBAR           0x00010000
+    #define INDESTRUCTABLE  0x00020000      /* object can't be nuked */
+    #define NO_YELL         0x00040000      /* player can't @wall */
+    #define NO_TEL          0x00080000      /* player can't @tel or be @tel'd */
+    #define FREE            0x00100000      /* object/player has unlim money */
+    #define GUEST_FLAG      0x00200000
+    #define RECOVER         0x00400000
+    #define BYEROOM         0x00800000
+    #define WANDERER        0x01000000
+    #define ANSI            0x02000000
+    #define ANSICOLOR       0x04000000
+    #define NOFLASH         0x08000000
+    #define SUSPECT         0x10000000      /* Report some activities to wizards */
+    #define BUILDER         0x20000000      /* Player has architect privs */
+    #define CONNECTED       0x40000000      /* Player is connected */
+    #define SLAVE           0x80000000      /* Disallow most commands */
 
-/* Third word of flags - Thorin 3/95 */
-#define NOCONNECT       0x00000001
-#define DPSHIFT         0x00000002
-#define NOPOSSESS       0x00000004
-#define COMBAT          0x00000008
-#define IC              0x00000010
-#define ZONEMASTER      0x00000020
-#define ALTQUOTA        0x00000040
-#define NOEXAMINE       0x00000080
-#define NOMODIFY        0x00000100
-#define CMDCHECK        0x00000200
-#define DOORRED         0x00000400
-#define PRIVATE         0x00000800      /* For exits only */
-#define NOMOVE          0x00001000
-#define STOP            0x00002000
-#define NOSTOP          0x00004000
-#define NOCOMMAND       0x00008000
-#define AUDIT           0x00010000
-#define SEE_OEMIT       0x00020000
-#define NO_GOBJ         0x00040000
-#define NO_PESTER       0x00080000
-#define LRFLAG          0x00100000
-#define TELOK           0x00200000
-#define NO_OVERRIDE     0x00400000
-#define NO_USELOCK      0x00800000
-#define DR_PURGE        0x01000000      /* For rooms only...internal */
-#define NO_ANSINAME     0x02000000      /* Remove the ability to set @ansiname */
-#define SPOOF           0x04000000
-#define SIDEFX          0x08000000      /* Allow enactor to use side-effects */
-#define ZONECONTENTS    0x10000000      /* Search contents of zonemaster for $commands */
-#define NOWHO           0x20000000      /* Player in WHO doesn't show up - use with @hide */
-#define ANONYMOUS       0x40000000      /* Player set shows up as 'Someone' when talking */
-#define BACKSTAGE       0x80000000      /* Immortal toggle for items on control */
+    /* Third word of flags - Thorin 3/95 */
+    #define NOCONNECT       0x00000001
+    #define DPSHIFT         0x00000002
+    #define NOPOSSESS       0x00000004
+    #define COMBAT          0x00000008
+    #define IC              0x00000010
+    #define ZONEMASTER      0x00000020
+    #define ALTQUOTA        0x00000040
+    #define NOEXAMINE       0x00000080
+    #define NOMODIFY        0x00000100
+    #define CMDCHECK        0x00000200
+    #define DOORRED         0x00000400
+    #define PRIVATE         0x00000800      /* For exits only */
+    #define NOMOVE          0x00001000
+    #define STOP            0x00002000
+    #define NOSTOP          0x00004000
+    #define NOCOMMAND       0x00008000
+    #define AUDIT           0x00010000
+    #define SEE_OEMIT       0x00020000
+    #define NO_GOBJ         0x00040000
+    #define NO_PESTER       0x00080000
+    #define LRFLAG          0x00100000
+    #define TELOK           0x00200000
+    #define NO_OVERRIDE     0x00400000
+    #define NO_USELOCK      0x00800000
+    #define DR_PURGE        0x01000000      /* For rooms only...internal */
+    #define NO_ANSINAME     0x02000000      /* Remove the ability to set @ansiname */
+    #define SPOOF           0x04000000
+    #define SIDEFX          0x08000000      /* Allow enactor to use side-effects */
+    #define ZONECONTENTS    0x10000000      /* Search contents of zonemaster for $commands */
+    #define NOWHO           0x20000000      /* Player in WHO doesn't show up - use with @hide */
+    #define ANONYMOUS       0x40000000      /* Player set shows up as 'Someone' when talking */
+    #define BACKSTAGE       0x80000000      /* Immortal toggle for items on control */
 
-/* Forth word of flags - Thorin 3/95 */
-#define NOBACKSTAGE     0x00000001      /* Immortal toggle to control no-backstage */
-#define LOGIN           0x00000002      /* Enable player to login past @disable logins */
-#define INPROGRAM       0x00000004      /* Player is inside a program */
-#define COMMANDS        0x00000008      /* Optional define for $commands */
-#define MARKER0         0x00000010      /* TM 3.0 marker flags */
-#define MARKER1         0x00000020
-#define MARKER2         0x00000040
-#define MARKER3         0x00000080
-#define MARKER4         0x00000100
-#define MARKER5         0x00000200
-#define MARKER6         0x00000400
-#define MARKER7         0x00000800
-#define MARKER8         0x00001000
-#define MARKER9         0x00002000
-#define BOUNCE          0x00004000      /* That lovly TM 3.0 Bouncey thingy */
-#define SHOWFAILCMD     0x00008000      /* Show failed $commands defauilt error */
-#define NOUNDERLINE     0x00010000      /* Strip UNDERLINE character from ANSI */
-#define NONAME          0x00020000      /* Target does not display name with look */
-#define ZONEPARENT      0x00040000      /* Target zone allows inheritance of attribs */
-#define SPAMMONITOR     0x00080000      /* Monitor the target for spam */
-#define BLIND           0x00100000      /* Exits and locations snuff arrived/left */
-#define NOCODE          0x00200000      /* Players may not code */
-#define HAS_PROTECT     0x00400000      /* Player target has protect name data */
-#define XTERMCOLOR      0x00800000      /* Extended AnSI Xterm colors */
-#define HAS_ATTRPIPE    0x01000000      /* Attribute piping via @pipe */
-/* 0x02000000 free */
-/* 0x04000000 free */
-/* 0x08000000 free */
-/* 0x10000000 free */
-/* 0x20000000 free */
-/* 0x40000000 free */
-/* 0x80000000 free */
+    /* Forth word of flags - Thorin 3/95 */
+    #define NOBACKSTAGE     0x00000001      /* Immortal toggle to control no-backstage */
+    #define LOGIN           0x00000002      /* Enable player to login past @disable logins */
+    #define INPROGRAM       0x00000004      /* Player is inside a program */
+    #define COMMANDS        0x00000008      /* Optional define for $commands */
+    #define MARKER0         0x00000010      /* TM 3.0 marker flags */
+    #define MARKER1         0x00000020
+    #define MARKER2         0x00000040
+    #define MARKER3         0x00000080
+    #define MARKER4         0x00000100
+    #define MARKER5         0x00000200
+    #define MARKER6         0x00000400
+    #define MARKER7         0x00000800
+    #define MARKER8         0x00001000
+    #define MARKER9         0x00002000
+    #define BOUNCE          0x00004000      /* That lovly TM 3.0 Bouncey thingy */
+    #define SHOWFAILCMD     0x00008000      /* Show failed $commands defauilt error */
+    #define NOUNDERLINE     0x00010000      /* Strip UNDERLINE character from ANSI */
+    #define NONAME          0x00020000      /* Target does not display name with look */
+    #define ZONEPARENT      0x00040000      /* Target zone allows inheritance of attribs */
+    #define SPAMMONITOR     0x00080000      /* Monitor the target for spam */
+    #define BLIND           0x00100000      /* Exits and locations snuff arrived/left */
+    #define NOCODE          0x00200000      /* Players may not code */
+    #define HAS_PROTECT     0x00400000      /* Player target has protect name data */
+    #define XTERMCOLOR      0x00800000      /* Extended AnSI Xterm colors */
+    #define HAS_ATTRPIPE    0x01000000      /* Attribute piping via @pipe */
+    /* 0x02000000 free */
+    /* 0x04000000 free */
+    /* 0x08000000 free */
+    /* 0x10000000 free */
+    /* 0x20000000 free */
+    /* 0x40000000 free */
+    /* 0x80000000 free */
 
-------------------------------------------------------------------------------
 
 TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like
-         the flags above.  They are added together for each word type
+the flags above.  They are added together for each word type::
 
-/* First word of toggles - Thorin 3/95 */
-#define TOG_MONITOR             0x00000001      /* Active monitor on player */
-#define TOG_MONITOR_USERID      0x00000002      /* show userid */
-#define TOG_MONITOR_SITE        0x00000004      /* show site */
-#define TOG_MONITOR_STATS       0x00000008      /* show stats */
-#define TOG_MONITOR_FAIL        0x00000010      /* show fails */
-#define TOG_MONITOR_CONN        0x00000020
-#define TOG_VANILLA_ERRORS      0x00000040      /* show normal error msg */
-#define TOG_NO_ANSI_EX          0x00000080      /* supress ansi stuff in ex */
-#define TOG_CPUTIME             0x00000100      /* show cpu time for cmds */
-#define TOG_MONITOR_DISREASON   0x00000200
-#define TOG_MONITOR_VLIMIT      0x00000400
-#define TOG_NOTIFY_LINK         0x00000800
-#define TOG_MONITOR_AREG        0x00001000
-#define TOG_MONITOR_TIME        0x00002000
-#define TOG_CLUSTER             0x00004000      /* Object is part of a cluster */
-#define TOG_SNUFFDARK           0x00008000      /* Snuff Dark Exit Viewing */
-#define TOG_NOANSI_PLAYER       0x00010000      /* Do not show ansi player names */
-#define TOG_NOANSI_THING        0x00020000      /* ... things */
-#define TOG_NOANSI_ROOM         0x00040000      /* ... rooms */
-#define TOG_NOANSI_EXIT         0x00080000      /* ... exits */
-#define TOG_NO_TIMESTAMP        0x00100000      /* Do not modify timestamps on target */
-#define TOG_NO_FORMAT           0x00200000      /* Override @conformat/@exitformat */
-#define TOG_ZONE_AUTOADD        0x00400000      /* Automatically add FIRST zone in list */
-#define TOG_ZONE_AUTOADDALL     0x00800000      /* Automatically add ALL zones in list */
-#define TOG_WIELDABLE           0x01000000      /* Marker to specify if object is wieldable */
-#define TOG_WEARABLE            0x02000000      /* Marker to specify if object is wearable */
-#define TOG_SEE_SUSPECT         0x04000000      /* Specify who sees suspect in WHO/MONITOR */
-#define TOG_MONITOR_CPU         0x08000000      /* Specify who sees CPU overflow allerts */
-#define TOG_BRANDY_MAIL         0x10000000      /* Define brandy like mail interface */
-#define TOG_FORCEHALTED         0x20000000      /* The item toggled can @force halted things */
-#define TOG_PROG                0x40000000      /* Can use @program on other people/things */
-#define TOG_NOSHELLPROG         0x80000000      /* Target can not issue commands inside a prog */
+    /* First word of toggles - Thorin 3/95 */
+    #define TOG_MONITOR             0x00000001      /* Active monitor on player */
+    #define TOG_MONITOR_USERID      0x00000002      /* show userid */
+    #define TOG_MONITOR_SITE        0x00000004      /* show site */
+    #define TOG_MONITOR_STATS       0x00000008      /* show stats */
+    #define TOG_MONITOR_FAIL        0x00000010      /* show fails */
+    #define TOG_MONITOR_CONN        0x00000020
+    #define TOG_VANILLA_ERRORS      0x00000040      /* show normal error msg */
+    #define TOG_NO_ANSI_EX          0x00000080      /* supress ansi stuff in ex */
+    #define TOG_CPUTIME             0x00000100      /* show cpu time for cmds */
+    #define TOG_MONITOR_DISREASON   0x00000200
+    #define TOG_MONITOR_VLIMIT      0x00000400
+    #define TOG_NOTIFY_LINK         0x00000800
+    #define TOG_MONITOR_AREG        0x00001000
+    #define TOG_MONITOR_TIME        0x00002000
+    #define TOG_CLUSTER             0x00004000      /* Object is part of a cluster */
+    #define TOG_SNUFFDARK           0x00008000      /* Snuff Dark Exit Viewing */
+    #define TOG_NOANSI_PLAYER       0x00010000      /* Do not show ansi player names */
+    #define TOG_NOANSI_THING        0x00020000      /* ... things */
+    #define TOG_NOANSI_ROOM         0x00040000      /* ... rooms */
+    #define TOG_NOANSI_EXIT         0x00080000      /* ... exits */
+    #define TOG_NO_TIMESTAMP        0x00100000      /* Do not modify timestamps on target */
+    #define TOG_NO_FORMAT           0x00200000      /* Override @conformat/@exitformat */
+    #define TOG_ZONE_AUTOADD        0x00400000      /* Automatically add FIRST zone in list */
+    #define TOG_ZONE_AUTOADDALL     0x00800000      /* Automatically add ALL zones in list */
+    #define TOG_WIELDABLE           0x01000000      /* Marker to specify if object is wieldable */
+    #define TOG_WEARABLE            0x02000000      /* Marker to specify if object is wearable */
+    #define TOG_SEE_SUSPECT         0x04000000      /* Specify who sees suspect in WHO/MONITOR */
+    #define TOG_MONITOR_CPU         0x08000000      /* Specify who sees CPU overflow allerts */
+    #define TOG_BRANDY_MAIL         0x10000000      /* Define brandy like mail interface */
+    #define TOG_FORCEHALTED         0x20000000      /* The item toggled can @force halted things */
+    #define TOG_PROG                0x40000000      /* Can use @program on other people/things */
+    #define TOG_NOSHELLPROG         0x80000000      /* Target can not issue commands inside a prog */
 
-/* Second word of toggles -- Ash */
-#define TOG_EXTANSI             0x00000001      /* Specify if target can used extended ansi naming */
-#define TOG_IMMPROG             0x00000002      /* Only an immortal can @quitprogram them */
-#define TOG_MONITOR_BFAIL       0x00000004      /* Monitor if a failed connect on bad character */
-#define TOG_PROG_ON_CONNECT     0x00000008      /* Reverse logic of program on connect */
-#define TOG_MAIL_STRIPRETURN    0x00000010      /* Strip carrage return in mail combining */
-#define TOG_PENN_MAIL           0x00000020      /* Use PENN style syntax */
-#define TOG_SILENTEFFECTS       0x00000040      /* Silents did_it() functionality on target */
-#define TOG_IGNOREZONE          0x00000080      /* Target is set to @icmd zones */
-#define TOG_VPAGE               0x00000100      /* Target sees alias in pages */
-#define TOG_PAGELOCK            0x00000200      /* Target issues pagelocks as normal */
-#define TOG_MAIL_NOPARSE        0x00000400      /* Don't parse %t/%b/%r in mail */
-#define TOG_MAIL_LOCKDOWN       0x00000800      /* Mortal-accessed mail/number and mail/check */
-#define TOG_MUXPAGE             0x00001000      /* Have 'page' work like MUX */
-#define TOG_NOZONEPARENT        0x00002000      /* Zone Child does NOT inherit parent attribs */
-#define TOG_ATRUSE              0x00004000      /* Enactor can use Attribute based USELOCKS */
-#define TOG_VARIABLE            0x00008000      /* Set exit to be variable */
-#define TOG_KEEPALIVE           0x00010000      /* Send 'keepalives' to the target player */
-#define TOG_CHKREALITY          0x00020000      /* Target checks @lock/user for Reality passes */
-#define TOG_NOISY               0x00040000      /* Always do noisy sets */
-#define TOG_ZONECMDCHK          0x00080000      /* Zone commands checked on target like @parent */
-#define TOG_HIDEIDLE            0x00100000      /* Allow wizards/immortals to hide their idle time */
-#define TOG_MORTALREALITY       0x00200000      /* Override the wiz_always_real setting */
-#define TOG_ACCENTS             0x00400000      /* Accents being displayed */
-#define TOG_PREMAILVALIDATE     0x00800000      /* Pre-Validate the mail send list before sending mail */
-#define TOG_SAFELOG             0x01000000      /* Allow 'clean logging' by the player */
-#define TOG_UTF8                0x02000000      /* UTF8 being displayed */
-/* 0x04000000 free */
-#define TOG_NODEFAULT           0x08000000      /* Allow target to inherit default attribs */
-#define TOG_EXFULLWIZATTR       0x10000000      /* Examine Wiz attribs */
-#ifdef ENH_LOGROOM
-#define TOG_LOGROOMENH          0x20000000      /* Enhanced Room Logging */
-#endif
-#define TOG_LOGROOM             0x40000000      /* Log Room's location/contents */
-#define TOG_NOGLOBPARENT        0x80000000      /* Target does not inherit global attributes */
+    /* Second word of toggles -- Ash */
+    #define TOG_EXTANSI             0x00000001      /* Specify if target can used extended ansi naming */
+    #define TOG_IMMPROG             0x00000002      /* Only an immortal can @quitprogram them */
+    #define TOG_MONITOR_BFAIL       0x00000004      /* Monitor if a failed connect on bad character */
+    #define TOG_PROG_ON_CONNECT     0x00000008      /* Reverse logic of program on connect */
+    #define TOG_MAIL_STRIPRETURN    0x00000010      /* Strip carrage return in mail combining */
+    #define TOG_PENN_MAIL           0x00000020      /* Use PENN style syntax */
+    #define TOG_SILENTEFFECTS       0x00000040      /* Silents did_it() functionality on target */
+    #define TOG_IGNOREZONE          0x00000080      /* Target is set to @icmd zones */
+    #define TOG_VPAGE               0x00000100      /* Target sees alias in pages */
+    #define TOG_PAGELOCK            0x00000200      /* Target issues pagelocks as normal */
+    #define TOG_MAIL_NOPARSE        0x00000400      /* Don't parse %t/%b/%r in mail */
+    #define TOG_MAIL_LOCKDOWN       0x00000800      /* Mortal-accessed mail/number and mail/check */
+    #define TOG_MUXPAGE             0x00001000      /* Have 'page' work like MUX */
+    #define TOG_NOZONEPARENT        0x00002000      /* Zone Child does NOT inherit parent attribs */
+    #define TOG_ATRUSE              0x00004000      /* Enactor can use Attribute based USELOCKS */
+    #define TOG_VARIABLE            0x00008000      /* Set exit to be variable */
+    #define TOG_KEEPALIVE           0x00010000      /* Send 'keepalives' to the target player */
+    #define TOG_CHKREALITY          0x00020000      /* Target checks @lock/user for Reality passes */
+    #define TOG_NOISY               0x00040000      /* Always do noisy sets */
+    #define TOG_ZONECMDCHK          0x00080000      /* Zone commands checked on target like @parent */
+    #define TOG_HIDEIDLE            0x00100000      /* Allow wizards/immortals to hide their idle time */
+    #define TOG_MORTALREALITY       0x00200000      /* Override the wiz_always_real setting */
+    #define TOG_ACCENTS             0x00400000      /* Accents being displayed */
+    #define TOG_PREMAILVALIDATE     0x00800000      /* Pre-Validate the mail send list before sending mail */
+    #define TOG_SAFELOG             0x01000000      /* Allow 'clean logging' by the player */
+    #define TOG_UTF8                0x02000000      /* UTF8 being displayed */
+    /* 0x04000000 free */
+    #define TOG_NODEFAULT           0x08000000      /* Allow target to inherit default attribs */
+    #define TOG_EXFULLWIZATTR       0x10000000      /* Examine Wiz attribs */
+    #ifdef ENH_LOGROOM
+    #define TOG_LOGROOMENH          0x20000000      /* Enhanced Room Logging */
+    #endif
+    #define TOG_LOGROOM             0x40000000      /* Log Room's location/contents */
+    #define TOG_NOGLOBPARENT        0x80000000      /* Target does not inherit global attributes */
 
-------------------------------------------------------------------------------
+
 
 POWERS:  Powers are handled a bit differently.  They're used as BITWISE shift
-         markers that you would have to compute the shift then add it after
-         the fact.
+markers that you would have to compute the shift then add it after the fact.::
 
-/* First word of power positions.  Each position is 2 bits so the
-   number here is how far over to shift the 2 bit pattern         */
-#define POWER_CHANGE_QUOTAS     0
-#define POWER_CHOWN_ME          2
-#define POWER_CHOWN_ANYWHERE    4
-#define POWER_CHOWN_OTHER       6
-#define POWER_WIZ_WHO           8
-#define POWER_EX_ALL            10
-#define POWER_NOFORCE           12
-#define POWER_SEE_QUEUE_ALL     14
-#define POWER_FREE_QUOTA        16
-#define POWER_GRAB_PLAYER       18
-#define POWER_JOIN_PLAYER       20
-#define POWER_LONG_FINGERS      22
-#define POWER_NO_BOOT           24
-#define POWER_BOOT              26
-#define POWER_STEAL             28
-#define POWER_SEE_QUEUE         30
+    /* First word of power positions.  Each position is 2 bits so the
+       number here is how far over to shift the 2 bit pattern         */
+    #define POWER_CHANGE_QUOTAS     0
+    #define POWER_CHOWN_ME          2
+    #define POWER_CHOWN_ANYWHERE    4
+    #define POWER_CHOWN_OTHER       6
+    #define POWER_WIZ_WHO           8
+    #define POWER_EX_ALL            10
+    #define POWER_NOFORCE           12
+    #define POWER_SEE_QUEUE_ALL     14
+    #define POWER_FREE_QUOTA        16
+    #define POWER_GRAB_PLAYER       18
+    #define POWER_JOIN_PLAYER       20
+    #define POWER_LONG_FINGERS      22
+    #define POWER_NO_BOOT           24
+    #define POWER_BOOT              26
+    #define POWER_STEAL             28
+    #define POWER_SEE_QUEUE         30
 
-/* Second word of power positions. */
-#define POWER_SHUTDOWN          0
-#define POWER_TEL_ANYWHERE      2
-#define POWER_TEL_ANYTHING      4
-#define POWER_PCREATE           6
-#define POWER_STAT_ANY          8
-#define POWER_FREE_WALL         10
-#define POWER_EXECSCRIPT        12
-#define POWER_FREE_PAGE         14
-#define POWER_HALT_QUEUE        16
-#define POWER_HALT_QUEUE_ALL    18
-#define POWER_FORMATTING        20
-#define POWER_NOKILL            22
-#define POWER_SEARCH_ANY        24
-#define POWER_SECURITY          26
-#define POWER_WHO_UNFIND        28
+    /* Second word of power positions. */
+    #define POWER_SHUTDOWN          0
+    #define POWER_TEL_ANYWHERE      2
+    #define POWER_TEL_ANYTHING      4
+    #define POWER_PCREATE           6
+    #define POWER_STAT_ANY          8
+    #define POWER_FREE_WALL         10
+    #define POWER_EXECSCRIPT        12
+    #define POWER_FREE_PAGE         14
+    #define POWER_HALT_QUEUE        16
+    #define POWER_HALT_QUEUE_ALL    18
+    #define POWER_FORMATTING        20
+    #define POWER_NOKILL            22
+    #define POWER_SEARCH_ANY        24
+    #define POWER_SECURITY          26
+    #define POWER_WHO_UNFIND        28
 
-/* Third word of power positions. */
-#define POWER_OPURGE            0
-#define POWER_HIDEBIT           2 
-#define POWER_NOWHO             4
-#define POWER_FULLTEL_ANYWHERE  6
-#define POWER_EX_FULL           8
-#define POWER_API               10
-#define POWER_MONITORAPI        12
-#define POWER_WIZ_IDLE          14
-#define POWER_WIZ_SPOOF         16
-/* 18 free */
-/* 20 free */
-/* 22 free */
-/* 24 free */
-/* 26 free */
-/* 28 free */
-/* 30 free */
-
-------------------------------------------------------------------------------
+    /* Third word of power positions. */
+    #define POWER_OPURGE            0
+    #define POWER_HIDEBIT           2 
+    #define POWER_NOWHO             4
+    #define POWER_FULLTEL_ANYWHERE  6
+    #define POWER_EX_FULL           8
+    #define POWER_API               10
+    #define POWER_MONITORAPI        12
+    #define POWER_WIZ_IDLE          14
+    #define POWER_WIZ_SPOOF         16
+    /* 18 free */
+    /* 20 free */
+    /* 22 free */
+    /* 24 free */
+    /* 26 free */
+    /* 28 free */
+    /* 30 free */
 
 DEPOWERS:  like @powers they are handled with a BITWISE offshift that you
-           will have to calculate then add
+will have to calculate then add::
 
-/* First word */
-#define DP_WALL                 0
-#define DP_LONG_FINGERS         2
-#define DP_STEAL                4
-#define DP_CREATE               6
-#define DP_WIZ_WHO              8
-#define DP_CLOAK                10
-#define DP_BOOT                 12
-#define DP_PAGE                 14
-#define DP_FORCE                16
-#define DP_LOCKS                18
-#define DP_COM                  20
-#define DP_COMMAND              22
-#define DP_MASTER               24
-#define DP_EXAMINE              26
-#define DP_NUKE                 28
-#define DP_FREE                 30
+    /* First word */
+    #define DP_WALL                 0
+    #define DP_LONG_FINGERS         2
+    #define DP_STEAL                4
+    #define DP_CREATE               6
+    #define DP_WIZ_WHO              8
+    #define DP_CLOAK                10
+    #define DP_BOOT                 12
+    #define DP_PAGE                 14
+    #define DP_FORCE                16
+    #define DP_LOCKS                18
+    #define DP_COM                  20
+    #define DP_COMMAND              22
+    #define DP_MASTER               24
+    #define DP_EXAMINE              26
+    #define DP_NUKE                 28
+    #define DP_FREE                 30
 
-/* Second word */
-#define DP_OVERRIDE             0
-#define DP_TEL_ANYWHERE         2
-#define DP_TEL_ANYTHING         4
-#define DP_PCREATE              6
-#define DP_POWER                8
-#define DP_QUOTA                10
-#define DP_MODIFY               12
-#define DP_CHOWN_ME             14
-#define DP_CHOWN_OTHER          16
-#define DP_ABUSE                18
-#define DP_UNL_QUOTA            20
-#define DP_SEARCH_ANY           22
-#define DP_GIVE                 24
-#define DP_RECEIVE              26
-#define DP_NOGOLD               28
-#define DP_NOSTEAL              30
-/* Third word...and there was much rejoicing */
-#define DP_PASSWORD             0
-#define DP_MORTAL_EXAMINE       2
-#define DP_PERSONAL_COMMANDS    4
-/* 6  free */
-#define DP_DARK                 8
-/* 10 free */
-/* 12 free */
-/* 14 free */
-/* 16 free */
-/* 18 free */
-/* 20 free */
-/* 22 free */
-/* 24 free */
-/* 26 free */
-/* 28 free */
-/* 30 free */
-
-------------------------------------------------------------------------------
-
-.. note::
-
-    ZONES:  Zones are special.  If there are no zones, the value will be '-1'.
-
-So entering zones if there are no zones:
--1
+    /* Second word */
+    #define DP_OVERRIDE             0
+    #define DP_TEL_ANYWHERE         2
+    #define DP_TEL_ANYTHING         4
+    #define DP_PCREATE              6
+    #define DP_POWER                8
+    #define DP_QUOTA                10
+    #define DP_MODIFY               12
+    #define DP_CHOWN_ME             14
+    #define DP_CHOWN_OTHER          16
+    #define DP_ABUSE                18
+    #define DP_UNL_QUOTA            20
+    #define DP_SEARCH_ANY           22
+    #define DP_GIVE                 24
+    #define DP_RECEIVE              26
+    #define DP_NOGOLD               28
+    #define DP_NOSTEAL              30
+    /* Third word...and there was much rejoicing */
+    #define DP_PASSWORD             0
+    #define DP_MORTAL_EXAMINE       2
+    #define DP_PERSONAL_COMMANDS    4
+    /* 6  free */
+    #define DP_DARK                 8
+    /* 10 free */
+    /* 12 free */
+    /* 14 free */
+    /* 16 free */
+    /* 18 free */
+    /* 20 free */
+    /* 22 free */
+    /* 24 free */
+    /* 26 free */
+    /* 28 free */
+    /* 30 free */
 
 
-Entering zones if it has three zones (#123, #456, and #789)
-123
-456
-789
--1
+ZONES:  Zones are special.  If there are no zones, the value will be '-1'.
 
+So entering zones if there are no zones::
+
+   -1
+
+
+Entering zones if it has three zones (#123, #456, and #789)::
+
+   123
+   456
+   789
+   -1
 
 As you see, the last value of the zone *MUST* be -1.  This tells it
 that there are no more zones to add.

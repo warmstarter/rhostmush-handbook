@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RhostMUSH Handbook 0.01a\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-01 02:53-0400\n"
+"POT-Creation-Date: 2021-04-19 23:55-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,838 +93,748 @@ msgid "Ask one of the Rhost devs to do it for you :)"
 msgstr ""
 
 #: ../../source/advanced.rst:59
-msgid "Shutting down RhostMUSH gracefully"
-msgstr ""
-
-#: ../../source/advanced.rst:62
-msgid "There are a few ways to cleanly shutdown RhostMUSH"
-msgstr ""
-
-#: ../../source/advanced.rst:64
-msgid "Log into the mush and issue @shutdown"
-msgstr ""
-
-#: ../../source/advanced.rst:65
-msgid "Issue a kill -USR2 to the mush which issues an emergency @shutdown"
-msgstr ""
-
-#: ../../source/advanced.rst:66
-msgid "Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown."
-msgstr ""
-
-#: ../../source/advanced.rst:69
-msgid "WARNING: Never kill -9 RhostMUSH"
-msgstr ""
-
-#: ../../source/advanced.rst:71
-msgid "Under NO CIRCUMSTANCES should you kill -9 your mush unless you don't care for the database.  The reason is if the mush happens to be saving, in any method, to the database, especially a QDBM database, you will likely have just corrupted your database, so pull out a flatfile to recover."
-msgstr ""
-
-#: ../../source/advanced.rst:76
-msgid "Sadly, this also may occur if the server hosting you takes a nose-dive in the middle of a db write.  Rhost can recover corruption in-game while up, but if it bombs in the middle of a write, all bets are off. :)"
-msgstr ""
-
-#: ../../source/advanced.rst:81
 msgid "Reality Levels Setup"
 msgstr ""
 
-#: ../../source/advanced.rst:83
+#: ../../source/advanced.rst:61
 msgid "Reality levels are a means to forbid (or allow) interaction between objects in the same location."
 msgstr ""
 
-#: ../../source/advanced.rst:87
+#: ../../source/advanced.rst:65
 msgid "Reality Levels Visibility"
 msgstr ""
 
-#: ../../source/advanced.rst:89
+#: ../../source/advanced.rst:67
 msgid "Each object (player, room, exit, thing) has two lists of reality levels. An Rx list, which describe what it can see and a Tx list, which describe where it can be seen. Those are bitfields. In order for X to see Y a bitwise 'and' is performed between X's RxLevel and Y's TxLevel. If the result is not 0, then X sees Y. If the result is 0, as far as X is concerned, Y doesn't exist. This affects contents lists, exit lists, look, say, pose, @emit, @verb, connect/disconnect, has arrived/has left messages, exit and object matching. 'here' and 'me' match always."
 msgstr ""
 
-#: ../../source/advanced.rst:98
+#: ../../source/advanced.rst:76
 msgid "It doesn't affect @remit, @pemit, page, WHO or channels. By default, all new objects are created with an RxLevel of 1 and TxLevel of 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of 0xFFFFFFFF. Those default levels can be changed with configuration parameters. An object is always visible to itself, even if its Rx and Tx levels don't match. (See examples below)"
 msgstr ""
 
-#: ../../source/advanced.rst:107
+#: ../../source/advanced.rst:85
 msgid "Reality Levels Descriptions"
 msgstr ""
 
-#: ../../source/advanced.rst:109
+#: ../../source/advanced.rst:87
 msgid "For every reality level defined, you can define an attribute that serves as description. If you look at something and match more than one of its TxLevels, you'll see all the corresponding descriptions on the target object. If the object doesn't have any descriptions for the matching levels, you'll see the regular @desc."
 msgstr ""
 
-#: ../../source/advanced.rst:115
+#: ../../source/advanced.rst:93
 msgid "The @adesc attribute on the target is only triggered if the target can see the looker in turn. It's only triggered once, no matter how many descs the looker sees. The @odesc is shown only to those people that see /both/ the looker and the target."
 msgstr ""
 
-#: ../../source/advanced.rst:120
+#: ../../source/advanced.rst:98
 msgid "Through extension, @afail/@ofail and similar pairs (@adrop/@odrop, @asucc/@osucc etc) work in the same way. @verb commands are similary affected."
 msgstr ""
 
-#: ../../source/advanced.rst:124
+#: ../../source/advanced.rst:102
 msgid "Softcoded commands are only matched on the objects that can see the player. The player doesn't have to see the object. This includes commands in the Master Room."
 msgstr ""
 
-#: ../../source/advanced.rst:128
+#: ../../source/advanced.rst:106
 msgid "Exits are treated specially. In order to be able to use an exit name (or to use the 'move <exit>' command) the exit must be visible to the enactor. In order to pass through the exit, the exit must see the enactor in turn. There are reasons for this, which will become evident in the examples below."
 msgstr ""
 
-#: ../../source/advanced.rst:134
+#: ../../source/advanced.rst:112
 msgid "Reality Levels Configuration parameters"
 msgstr ""
 
-#: ../../source/advanced.rst:136
+#: ../../source/advanced.rst:114
 msgid "A few configuration parameters have been introduced to deal with the reality levels::"
 msgstr ""
 
-#: ../../source/advanced.rst:141
+#: ../../source/advanced.rst:119
 msgid "This directive can only be used in the config file (not with the @admin command) and should be repeated for each reality level you want to define. It defines a new level named <name> with a bitvalue of <value> and an optional desc attribute. There is a limit of 8 characters on <name>, a 32-bit value on <value> (basically an unsigned long) and 32 characters on the attribute name. A maximum of 32 reality levels can be defined::"
 msgstr ""
 
-#: ../../source/advanced.rst:157
+#: ../../source/advanced.rst:135
 msgid "These 8 directives define the default reality levels of newly created objects. They can be set in the config file or with the @admin command. Like above, <value> must be a decimal number::"
 msgstr ""
 
-#: ../../source/advanced.rst:163
+#: ../../source/advanced.rst:141
 msgid "If this parameter is set to 1 then wizards (and immortals on Rhost) will see everything and will be visible to everyone. Their effective Rx and Tx levels will always be 0xFFFFFFFF. Also settable in the config file and with the @admin command."
 msgstr ""
 
-#: ../../source/advanced.rst:168
+#: ../../source/advanced.rst:146
 msgid "Compile with -DREALITY_LEVELS compile time option to enable 'Real' needs to be '1' This is an example file only to be added to the mush.conf file Format::"
 msgstr ""
 
-#: ../../source/advanced.rst:174
+#: ../../source/advanced.rst:152
 msgid "Reality Levels Example mush.conf"
 msgstr ""
 
-#: ../../source/advanced.rst:197
+#: ../../source/advanced.rst:175
 msgid "Reality Levels Commands"
 msgstr ""
 
-#: ../../source/advanced.rst:199
+#: ../../source/advanced.rst:177
 msgid "Two wiz-only commands are used to set the reality levels of an object::"
 msgstr ""
 
-#: ../../source/advanced.rst:204
+#: ../../source/advanced.rst:182
 msgid "<list> is a space-separated list of level names that have to be set on the object. If a level name is prefixed with an exclamation mark (!) that level will be cleared from the object."
 msgstr ""
 
-#: ../../source/advanced.rst:211
+#: ../../source/advanced.rst:189
 msgid "Changing the Tx levels of an object might make it invisible to you. In this case, you can still manipulate it by using his #dbref (or \\*player for players)."
 msgstr ""
 
-#: ../../source/advanced.rst:216
+#: ../../source/advanced.rst:194
 msgid "Functions"
 msgstr ""
 
-#: ../../source/advanced.rst:218
+#: ../../source/advanced.rst:196
 msgid "There are five functions that deal with reality levels::"
 msgstr ""
 
-#: ../../source/advanced.rst:223
+#: ../../source/advanced.rst:201
 msgid "These two functions check if an object has the specified Rx or Tx level. You must control <object>. They return 0 or 1 and #-1 in case the object does not exist or you don't have permissions::"
 msgstr ""
 
-#: ../../source/advanced.rst:230
+#: ../../source/advanced.rst:208
 msgid "These two functions return a space-separated list of the object's Rx or Tx levels. Again, you must control the object::"
 msgstr ""
 
-#: ../../source/advanced.rst:235
+#: ../../source/advanced.rst:213
 msgid "A wiz-only function, returns 1 of <obj1> can see <obj2> from a reality levels point of view. It doesn't check if the objects are in the same location, the DARK/CLOAKED flags and so on. Just <obj1>'s Rx level against <obj2>'s Tx level."
 msgstr ""
 
-#: ../../source/advanced.rst:242
+#: ../../source/advanced.rst:220
 msgid "If you are using it on MUX2.0 with /both/ reality levels and Wod Realms enabled, the function will perform both checks and the Wod Realms version checks against the DARK flag."
 msgstr ""
 
-#: ../../source/advanced.rst:247
+#: ../../source/advanced.rst:225
 msgid "Example 1: A simplified Witchcraft setup"
 msgstr ""
 
-#: ../../source/advanced.rst:249
+#: ../../source/advanced.rst:227
 msgid "In Witchcraft, besides the various Gifted classes, characters can be spirits There are spirit realms to which the mundane can not travel. Therefore we will use 2 reality levels: Real and Ghost. Since some spirits can become solid for a limited period of time, we will also use an additional desc for the Ghost level, called GHOSTDESC. Therefore in the config file we will have::"
 msgstr ""
 
-#: ../../source/advanced.rst:259
+#: ../../source/advanced.rst:237
 msgid "Ghosts can pass through most mundane locks, so the exists should allows the ghosts to pass::"
 msgstr ""
 
-#: ../../source/advanced.rst:264
+#: ../../source/advanced.rst:242
 msgid "Note that def_exit_tx isn't set. Why? Because ghosts see the mundane world anyway, so a spirit character will have::"
 msgstr ""
 
-#: ../../source/advanced.rst:270
+#: ../../source/advanced.rst:248
 msgid "Let's assume 3 players::"
 msgstr ""
 
-#: ../../source/advanced.rst:280
+#: ../../source/advanced.rst:258
 msgid "Jack is a Gifted. He will sense spirits, but is still made from flesh and blood so visible to mundanes::"
 msgstr ""
 
-#: ../../source/advanced.rst:289
+#: ../../source/advanced.rst:267
 msgid "Frank is a ghost. He will see other spirits as well as mundanes, but won't be visible to mundanes. He can also become visible to everybody::"
 msgstr ""
 
-#: ../../source/advanced.rst:298
+#: ../../source/advanced.rst:276
 msgid "Following are commands that each of the players enter and what they see.  I'll assume the +materialize command is defined like::"
 msgstr ""
 
-#: ../../source/advanced.rst:355
+#: ../../source/advanced.rst:333
 msgid "Example 2: A WoD setup"
 msgstr ""
 
-#: ../../source/advanced.rst:357
+#: ../../source/advanced.rst:335
 msgid "The reality levels will be defined like this::"
 msgstr ""
 
-#: ../../source/advanced.rst:370
+#: ../../source/advanced.rst:348
 msgid "5 levels of Obfuscation, Umbra, Dreaming, Wraiths. 'All' is a handy replacement for all levels, useful for wizards and wizobjects that should be visible on all levels. Also useful when you want to set an object's levels to something without knowing what he had before::"
 msgstr ""
 
-#: ../../source/advanced.rst:377
+#: ../../source/advanced.rst:355
 msgid "!All will clear all levels, then the object will gain the Real level. There is more than one Obfuscation level because of the relation between Auspex and Obfuscation."
 msgstr ""
 
-#: ../../source/advanced.rst:381
+#: ../../source/advanced.rst:359
 msgid "A vampire with Obfuscate 2, should not be visible by one with Auspex 1. However one with Auspex 3 should see another vampire with Obfuscate 1, 2 /or/ 3."
 msgstr ""
 
-#: ../../source/advanced.rst:385
+#: ../../source/advanced.rst:363
 msgid "Obfuscated players can move if they have Obf > 1. Umbral and Shadow players should also be able to see most of the exits. So the exits at creation should have default levels of Real + Obf2 + Obf3 + Obf4 + Obf5 + Umbra + Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381::"
 msgstr ""
 
-#: ../../source/advanced.rst:393
+#: ../../source/advanced.rst:371
 msgid "Obf1 is not included since an Obfuscated vampire should not be able to move if it only has Obf1. Therefore they won't see the exits. If you want them to be able to see the exits, but not to use them, change the default Tx of the exits::"
 msgstr ""
 
-#: ../../source/advanced.rst:401
+#: ../../source/advanced.rst:379
 msgid "Joe the Mortal will have an RxLevel: Real and a TxLevel: Real Jack the Malk, who likes to walk around Obfuscated and has Obfuscate 2 will have an RxLevel: Real (he sees what the mortals see) but a TxLevel: Obf2 Jimmy the Nossie, who is using the Mask and has Obfuscate 4, but doesn't try to make himself invisible will have an RxLevel: Real (as Jack) and a TxLevel: Real Obf4. He will also set his @desc to what the mortals see and &OBFDESC to his real slimy desc. Simply put, he will be visible to mortals, but not with his real desc."
 msgstr ""
 
-#: ../../source/advanced.rst:410
+#: ../../source/advanced.rst:388
 msgid "Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So he can see Joe, Jack and Jimmy's both descs. Joe, on the other hand, won't see Jack at all. He will still see Jimmy, but only Jimmy's @desc, not the OBFDESC"
 msgstr ""
 
-#: ../../source/advanced.rst:416
+#: ../../source/advanced.rst:394
 msgid "Frida the Fae... will have RxLevel: Real Fae and TxLevel: Real Fae. @desc set to the mundane desc, &FAEDESC set to the Chimerical desc. Emily the Enchanted will have an RxLevel: Real Fae, but the TxLevel: Real. No &FAEDESC on her, although she'll be able to see it the one on Frida. Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra and TxLevel: Umbra. &UMBRADESC is his friend. He won't see mortals or other characters who are not in the Umbra."
 msgstr ""
 
-#: ../../source/advanced.rst:424
+#: ../../source/advanced.rst:402
 msgid "Barbie the Bastet, who's only peeking in the Umbra, without going there, will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she can't see the things that see her."
 msgstr ""
 
-#: ../../source/advanced.rst:428
+#: ../../source/advanced.rst:406
 msgid "Deanna the Drake, who activates her spirit vision, will have RxLevel: Real Umbra and TxLevel: Real. She will see characters in Umbra and real world at the same time and perceive the desc appropiate to the realm the ohter character is in."
 msgstr ""
 
-#: ../../source/advanced.rst:433
+#: ../../source/advanced.rst:411
 msgid "Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her @desc would be empty, but the &SHADOWDESC should be set. Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real"
 msgstr ""
 
-#: ../../source/advanced.rst:437
+#: ../../source/advanced.rst:415
 msgid "Global code objects that all characters should be able to use::"
 msgstr ""
 
-#: ../../source/advanced.rst:442
+#: ../../source/advanced.rst:420
 msgid "Example 3: Softcode"
 msgstr ""
 
-#: ../../source/advanced.rst:444
+#: ../../source/advanced.rst:422
 msgid "Considering the config directives from example 2 and assuming a function getstat(<dbref>,<stat>) that will return the value of a player's stat from the sheet here are softcode examples that implement some of the WoD powers. In a real game you would have to use some more checks, of course."
 msgstr ""
 
-#: ../../source/advanced.rst:468
+#: ../../source/advanced.rst:446
 msgid "Execscript and external programs and scripts"
 msgstr ""
 
-#: ../../source/advanced.rst:471
-msgid "Mush variables"
+#: ../../source/advanced.rst:449
+msgid "Execscript variables"
 msgstr ""
 
-#: ../../source/advanced.rst:474
-msgid "Built in variables"
+#: ../../source/advanced.rst:452
+msgid "Execscript Built in variables"
 msgstr ""
 
-#: ../../source/advanced.rst:477
-#: ../../source/advanced.rst:495
-#: ../../source/advanced.rst:505
+#: ../../source/advanced.rst:455
+#: ../../source/advanced.rst:473
+#: ../../source/advanced.rst:483
 msgid "Variable"
 msgstr ""
 
-#: ../../source/advanced.rst:477
-#: ../../source/advanced.rst:495
-#: ../../source/advanced.rst:505
-#: ../../source/advanced.rst:695
+#: ../../source/advanced.rst:455
+#: ../../source/advanced.rst:473
+#: ../../source/advanced.rst:483
+#: ../../source/advanced.rst:678
 msgid "Description"
 msgstr ""
 
-#: ../../source/advanced.rst:479
+#: ../../source/advanced.rst:457
 msgid "MUSH_PLAYER"
 msgstr ""
 
-#: ../../source/advanced.rst:479
+#: ../../source/advanced.rst:457
 msgid "player dbref#"
 msgstr ""
 
-#: ../../source/advanced.rst:480
+#: ../../source/advanced.rst:458
 msgid "MUSH_CAUSE"
 msgstr ""
 
-#: ../../source/advanced.rst:480
+#: ../../source/advanced.rst:458
 msgid "cause dbref#"
 msgstr ""
 
-#: ../../source/advanced.rst:481
+#: ../../source/advanced.rst:459
 msgid "MUSH_CALLER"
 msgstr ""
 
-#: ../../source/advanced.rst:481
+#: ../../source/advanced.rst:459
 msgid "caller dbref#"
 msgstr ""
 
-#: ../../source/advanced.rst:482
+#: ../../source/advanced.rst:460
 msgid "MUSH_OWNER"
 msgstr ""
 
-#: ../../source/advanced.rst:482
+#: ../../source/advanced.rst:460
 msgid "owner of player dbref#"
 msgstr ""
 
-#: ../../source/advanced.rst:483
+#: ../../source/advanced.rst:461
 msgid "MUSH_FLAGS"
 msgstr ""
 
-#: ../../source/advanced.rst:483
+#: ../../source/advanced.rst:461
 msgid "space delimited list of flags on player"
 msgstr ""
 
-#: ../../source/advanced.rst:484
+#: ../../source/advanced.rst:462
 msgid "MUSH_TOGGLES"
 msgstr ""
 
-#: ../../source/advanced.rst:484
+#: ../../source/advanced.rst:462
 msgid "space delimited list of toggles on player"
 msgstr ""
 
-#: ../../source/advanced.rst:485
+#: ../../source/advanced.rst:463
 msgid "MUSH_OFLAGS"
 msgstr ""
 
-#: ../../source/advanced.rst:485
+#: ../../source/advanced.rst:463
 msgid "space delimited list of flags of player owner"
 msgstr ""
 
-#: ../../source/advanced.rst:486
+#: ../../source/advanced.rst:464
 msgid "MUSH_OTOGGLES"
 msgstr ""
 
-#: ../../source/advanced.rst:486
+#: ../../source/advanced.rst:464
 msgid "space delimited list of toggles of player owner"
 msgstr ""
 
-#: ../../source/advanced.rst:487
+#: ../../source/advanced.rst:465
 msgid "MUSHL_VARS"
 msgstr ""
 
-#: ../../source/advanced.rst:487
+#: ../../source/advanced.rst:465
 msgid "space delimited list of MUSH attributes from player This is passed from the mush's EXECSCRIPT_VARS attr"
 msgstr ""
 
-#: ../../source/advanced.rst:492
-#: ../../source/advanced.rst:526
-msgid "Dynamic variables"
+#: ../../source/advanced.rst:470
+msgid "Execscript Dynamic variables"
 msgstr ""
 
-#: ../../source/advanced.rst:497
+#: ../../source/advanced.rst:475
 msgid "MUSHV_<arg>"
 msgstr ""
 
-#: ../../source/advanced.rst:497
+#: ../../source/advanced.rst:475
 msgid "<arg> variable passed from MUSHL_VARS These are the attributes from EXECSCRIPT_VARS"
 msgstr ""
 
-#: ../../source/advanced.rst:502
-#: ../../source/advanced.rst:546
-msgid "Register variables"
+#: ../../source/advanced.rst:480
+msgid "Execscript Register variables"
 msgstr ""
 
-#: ../../source/advanced.rst:507
+#: ../../source/advanced.rst:485
 msgid "MUSHQ_<arg>"
 msgstr ""
 
-#: ../../source/advanced.rst:507
+#: ../../source/advanced.rst:485
 msgid "setq registers 0-9 and a-z"
 msgstr ""
 
-#: ../../source/advanced.rst:508
+#: ../../source/advanced.rst:486
 msgid "MUSHQN_<arg>"
 msgstr ""
 
-#: ../../source/advanced.rst:508
+#: ../../source/advanced.rst:486
 msgid "labels that are assigned the setq vars"
 msgstr ""
 
-#: ../../source/advanced.rst:509
+#: ../../source/advanced.rst:487
 msgid "MUSHN_<arg>"
 msgstr ""
 
-#: ../../source/advanced.rst:509
+#: ../../source/advanced.rst:487
 msgid "The labels that were defined by any register Note: they must be ASCII-7 clean and contain no white spaces"
 msgstr ""
 
-#: ../../source/advanced.rst:515
-msgid "set object"
+#: ../../source/advanced.rst:493
+msgid "Execsript set object"
 msgstr ""
 
-#: ../../source/advanced.rst:517
+#: ../../source/advanced.rst:495
 msgid "The script executed with execscript() will read in a file with the same name as the script ending in '.set'.  This is a loader object that will set attributes and registers back into the mush that you wish to pass from the script. The fields are SPACE SEPARATED.  The values are NOT evaluated."
 msgstr ""
 
-#: ../../source/advanced.rst:523
-msgid "The format of the fields are"
+#: ../../source/advanced.rst:501
+msgid "Execscript set object field format"
 msgstr ""
 
-#: ../../source/advanced.rst:533
-msgid "Examples"
+#: ../../source/advanced.rst:504
+msgid "Execscript set object Dynamic variables"
 msgstr ""
 
-#: ../../source/advanced.rst:553
-msgid "Examples (The last example clears register 0)"
+#: ../../source/advanced.rst:511
+msgid "Execscript set object Dynamic variables Examples"
 msgstr ""
 
-#: ../../source/advanced.rst:564
-msgid "Example bash script"
+#: ../../source/advanced.rst:524
+msgid "Execscript set object Register variables"
 msgstr ""
 
-#: ../../source/advanced.rst:584
-msgid "Notes and warnings"
+#: ../../source/advanced.rst:531
+msgid "Execscript set object Register variables Examples"
 msgstr ""
 
-#: ../../source/advanced.rst:586
+#: ../../source/advanced.rst:535
+msgid "The last exammple clears register 0"
+msgstr ""
+
+#: ../../source/advanced.rst:547
+msgid "Execscript Example bash script"
+msgstr ""
+
+#: ../../source/advanced.rst:567
+msgid "Exescript Notes and warnings"
+msgstr ""
+
+#: ../../source/advanced.rst:569
 msgid "While MUSHL_VARS are sanitized on what is allowable as a mush variable, this is not necessarilly sanitized on what the calling script can fetch as a valid variable.  Of note, you can not set environment variables that contain an equals sign.  Be aware of this limitation."
 msgstr ""
 
-#: ../../source/advanced.rst:591
+#: ../../source/advanced.rst:574
 msgid "Remember, MUSHL_VARS is the environment variable seen by the script. This is EXECSCRIPT_VARS on the mush itself, that is the attribute set on the target that contains the execscript() that is being executed."
 msgstr ""
 
-#: ../../source/advanced.rst:596
+#: ../../source/advanced.rst:579
 msgid "Scripts to be used with execscript"
 msgstr ""
 
-#: ../../source/advanced.rst:632
+#: ../../source/advanced.rst:615
 msgid "Using printf() for advanced text output"
 msgstr ""
 
-#: ../../source/advanced.rst:634
+#: ../../source/advanced.rst:617
 msgid "The function printf() in Rhost can be used to greatly reduce coding in efforts for outputs, screens and data display.  It can automatically center, justify and wrap the text parameters given to it."
 msgstr ""
 
-#: ../../source/advanced.rst:638
-msgid "Example one"
+#: ../../source/advanced.rst:621
+msgid "Printf Example one"
 msgstr ""
 
-#: ../../source/advanced.rst:652
-msgid "Example two"
+#: ../../source/advanced.rst:635
+msgid "Printf Example two"
 msgstr ""
 
-#: ../../source/advanced.rst:671
-msgid "Example three"
+#: ../../source/advanced.rst:654
+msgid "Printf Example three"
 msgstr ""
 
-#: ../../source/advanced.rst:690
+#: ../../source/advanced.rst:673
 msgid "Format for image files"
 msgstr ""
 
-#: ../../source/advanced.rst:692
+#: ../../source/advanced.rst:675
 msgid "The image format goes like this:"
 msgstr ""
 
-#: ../../source/advanced.rst:695
+#: ../../source/advanced.rst:678
 msgid "Data Type"
 msgstr ""
 
-#: ../../source/advanced.rst:695
+#: ../../source/advanced.rst:678
 msgid "Example"
 msgstr ""
 
+#: ../../source/advanced.rst:680
+#: ../../source/advanced.rst:689
+#: ../../source/advanced.rst:691
+#: ../../source/advanced.rst:692
+#: ../../source/advanced.rst:693
+#: ../../source/advanced.rst:694
+#: ../../source/advanced.rst:695
+#: ../../source/advanced.rst:696
 #: ../../source/advanced.rst:697
-#: ../../source/advanced.rst:706
-#: ../../source/advanced.rst:708
-#: ../../source/advanced.rst:709
-#: ../../source/advanced.rst:710
-#: ../../source/advanced.rst:711
-#: ../../source/advanced.rst:712
-#: ../../source/advanced.rst:713
-#: ../../source/advanced.rst:714
-#: ../../source/advanced.rst:715
-#: ../../source/advanced.rst:716
-#: ../../source/advanced.rst:717
-#: ../../source/advanced.rst:718
-#: ../../source/advanced.rst:719
-#: ../../source/advanced.rst:720
+#: ../../source/advanced.rst:698
+#: ../../source/advanced.rst:699
+#: ../../source/advanced.rst:700
+#: ../../source/advanced.rst:701
+#: ../../source/advanced.rst:702
+#: ../../source/advanced.rst:703
 msgid "INT"
 msgstr ""
 
-#: ../../source/advanced.rst:697
+#: ../../source/advanced.rst:680
 msgid "3"
 msgstr ""
 
-#: ../../source/advanced.rst:697
+#: ../../source/advanced.rst:680
 msgid "TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5"
 msgstr ""
 
-#: ../../source/advanced.rst:698
-#: ../../source/advanced.rst:704
-#: ../../source/advanced.rst:722
-#: ../../source/advanced.rst:724
-#: ../../source/advanced.rst:726
+#: ../../source/advanced.rst:681
+#: ../../source/advanced.rst:687
+#: ../../source/advanced.rst:705
+#: ../../source/advanced.rst:707
+#: ../../source/advanced.rst:709
 msgid "STRING"
 msgstr ""
 
-#: ../../source/advanced.rst:698
+#: ../../source/advanced.rst:681
 msgid "Wizard"
 msgstr ""
 
-#: ../../source/advanced.rst:698
+#: ../../source/advanced.rst:681
 msgid "NAME: of the target.  Verbatum, no quotes surround it"
 msgstr ""
 
-#: ../../source/advanced.rst:699
-#: ../../source/advanced.rst:700
-#: ../../source/advanced.rst:701
-#: ../../source/advanced.rst:702
-#: ../../source/advanced.rst:703
-#: ../../source/advanced.rst:705
-#: ../../source/advanced.rst:707
+#: ../../source/advanced.rst:682
+#: ../../source/advanced.rst:683
+#: ../../source/advanced.rst:684
+#: ../../source/advanced.rst:685
+#: ../../source/advanced.rst:686
+#: ../../source/advanced.rst:688
+#: ../../source/advanced.rst:690
 msgid "\\*INT"
 msgstr ""
 
-#: ../../source/advanced.rst:699
-#: ../../source/advanced.rst:703
+#: ../../source/advanced.rst:682
+#: ../../source/advanced.rst:686
 msgid "123"
 msgstr ""
 
-#: ../../source/advanced.rst:699
+#: ../../source/advanced.rst:682
 msgid "LOCATION: dbref# of the target.  No prepending '#' used."
 msgstr ""
 
-#: ../../source/advanced.rst:700
+#: ../../source/advanced.rst:683
 msgid "234"
 msgstr ""
 
-#: ../../source/advanced.rst:700
+#: ../../source/advanced.rst:683
 msgid "CONTENTS: The first content in a linked list content table (-1 if none)"
 msgstr ""
 
-#: ../../source/advanced.rst:701
+#: ../../source/advanced.rst:684
 msgid "345"
 msgstr ""
 
-#: ../../source/advanced.rst:701
+#: ../../source/advanced.rst:684
 msgid "EXITS: The first exit in a linked list exit table (-1 if none)"
 msgstr ""
 
-#: ../../source/advanced.rst:702
+#: ../../source/advanced.rst:685
 msgid "0"
 msgstr ""
 
-#: ../../source/advanced.rst:702
+#: ../../source/advanced.rst:685
 msgid "LINK: This is the 'home' of the object or what it's linked to (-1 for none)"
 msgstr ""
 
-#: ../../source/advanced.rst:703
+#: ../../source/advanced.rst:686
 msgid "NEXT: The next thing after this item for a content holder"
 msgstr ""
 
-#: ../../source/advanced.rst:704
+#: ../../source/advanced.rst:687
 msgid "#123"
 msgstr ""
 
-#: ../../source/advanced.rst:704
+#: ../../source/advanced.rst:687
 msgid "LOCK: The boolean string lock if it exists.  (empty if no lock)"
 msgstr ""
 
-#: ../../source/advanced.rst:705
+#: ../../source/advanced.rst:688
 msgid "1"
 msgstr ""
 
-#: ../../source/advanced.rst:705
+#: ../../source/advanced.rst:688
 msgid "OWNER: The dbref# owner of the target.  For players same dbref as player."
 msgstr ""
 
-#: ../../source/advanced.rst:706
+#: ../../source/advanced.rst:689
 msgid "789"
 msgstr ""
 
-#: ../../source/advanced.rst:706
+#: ../../source/advanced.rst:689
 msgid "PARENT: The parent of the target.  (-1 if none)"
 msgstr ""
 
-#: ../../source/advanced.rst:707
+#: ../../source/advanced.rst:690
 msgid "99999"
 msgstr ""
 
-#: ../../source/advanced.rst:707
+#: ../../source/advanced.rst:690
 msgid "MONEY: The int value of the money the players has."
 msgstr ""
 
-#: ../../source/advanced.rst:708
+#: ../../source/advanced.rst:691
 msgid "194592"
 msgstr ""
 
-#: ../../source/advanced.rst:708
+#: ../../source/advanced.rst:691
 msgid "FLAGS1: The first word of flags (@set flags) on a player      (see FLAGS)"
 msgstr ""
 
-#: ../../source/advanced.rst:709
+#: ../../source/advanced.rst:692
 msgid "194222"
 msgstr ""
 
-#: ../../source/advanced.rst:709
+#: ../../source/advanced.rst:692
 msgid "FLAGS2: The second word of flags (@set flags) on a player     (see FLAGS)"
 msgstr ""
 
-#: ../../source/advanced.rst:710
+#: ../../source/advanced.rst:693
 msgid "199999"
 msgstr ""
 
-#: ../../source/advanced.rst:710
+#: ../../source/advanced.rst:693
 msgid "FLAGS3: The third word of flags (@set flags []) on a player   (see FLAGS)"
 msgstr ""
 
-#: ../../source/advanced.rst:711
+#: ../../source/advanced.rst:694
 msgid "1582958"
 msgstr ""
 
-#: ../../source/advanced.rst:711
+#: ../../source/advanced.rst:694
 msgid "FLAGS4: The forth word of flags (@set flags []) on a player   (see FLAGS)"
 msgstr ""
 
-#: ../../source/advanced.rst:712
+#: ../../source/advanced.rst:695
 msgid "159955"
 msgstr ""
 
-#: ../../source/advanced.rst:712
+#: ../../source/advanced.rst:695
 msgid "TOGGLES1: The first word of toggles (@toggle) on a player    (see TOGGLES)"
 msgstr ""
 
-#: ../../source/advanced.rst:713
-#: ../../source/advanced.rst:714
-#: ../../source/advanced.rst:715
-#: ../../source/advanced.rst:716
-#: ../../source/advanced.rst:717
-#: ../../source/advanced.rst:718
-#: ../../source/advanced.rst:719
+#: ../../source/advanced.rst:696
+#: ../../source/advanced.rst:697
+#: ../../source/advanced.rst:698
+#: ../../source/advanced.rst:699
+#: ../../source/advanced.rst:700
+#: ../../source/advanced.rst:701
+#: ../../source/advanced.rst:702
 msgid "159958"
 msgstr ""
 
-#: ../../source/advanced.rst:713
+#: ../../source/advanced.rst:696
 msgid "TOGGLES2: The second word of toggles (@toggle) on a player   (see TOGGLES)"
 msgstr ""
 
-#: ../../source/advanced.rst:714
+#: ../../source/advanced.rst:697
 msgid "POWER1: The first word of powers (@power) on a player         (see POWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:715
+#: ../../source/advanced.rst:698
 msgid "POWER2: The second word of powers (@power) on a player        (see POWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:716
+#: ../../source/advanced.rst:699
 msgid "POWER3: The third word of powers (@power) on a player         (see POWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:717
+#: ../../source/advanced.rst:700
 msgid "DEPOWER1: The first word of depowers (@depower) on a player  (see DEPOWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:718
+#: ../../source/advanced.rst:701
 msgid "DEPOWER2: The second word of depowers (@depower) on a player (see DEPOWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:719
+#: ../../source/advanced.rst:702
 msgid "DEPOWER3: The third word of depowers (@depower) on a player  (see DEPOWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:720
+#: ../../source/advanced.rst:703
 msgid "-1"
 msgstr ""
 
-#: ../../source/advanced.rst:720
+#: ../../source/advanced.rst:703
 msgid "ZONE(S): The list of zones starting here and ending with '-1'. (see ZONES)"
 msgstr ""
 
-#: ../../source/advanced.rst:721
-#: ../../source/advanced.rst:723
-#: ../../source/advanced.rst:725
+#: ../../source/advanced.rst:704
+#: ../../source/advanced.rst:706
+#: ../../source/advanced.rst:708
 msgid ">STRING"
 msgstr ""
 
-#: ../../source/advanced.rst:721
+#: ../../source/advanced.rst:704
 msgid ">VA"
 msgstr ""
 
-#: ../../source/advanced.rst:721
+#: ../../source/advanced.rst:704
 msgid "ATTRIBUTENAME: Attribute name to store, starts with > identifier"
 msgstr ""
 
-#: ../../source/advanced.rst:722
+#: ../../source/advanced.rst:705
 msgid "Wheee"
 msgstr ""
 
-#: ../../source/advanced.rst:722
+#: ../../source/advanced.rst:705
 msgid "ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)"
 msgstr ""
 
-#: ../../source/advanced.rst:723
+#: ../../source/advanced.rst:706
 msgid ">Desc"
 msgstr ""
 
-#: ../../source/advanced.rst:723
+#: ../../source/advanced.rst:706
 msgid "ATTRIBUTENAME: Another attribute to chain in"
 msgstr ""
 
-#: ../../source/advanced.rst:724
+#: ../../source/advanced.rst:707
 msgid "Ugly"
 msgstr ""
 
-#: ../../source/advanced.rst:724
+#: ../../source/advanced.rst:707
 msgid "ATTRIBUTECONTENTS: Contents of the next attribute"
 msgstr ""
 
-#: ../../source/advanced.rst:725
+#: ../../source/advanced.rst:708
 msgid "\\*Password"
 msgstr ""
 
-#: ../../source/advanced.rst:725
+#: ../../source/advanced.rst:708
 msgid "PASSWORDATTRIB: Special password attribute.  Attribute name is '\\*Password'"
 msgstr ""
 
-#: ../../source/advanced.rst:726
+#: ../../source/advanced.rst:709
 msgid "$6$xy$xy"
 msgstr ""
 
-#: ../../source/advanced.rst:726
+#: ../../source/advanced.rst:709
 msgid "PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)"
 msgstr ""
 
-#: ../../source/advanced.rst:727
-#: ../../source/advanced.rst:727
+#: ../../source/advanced.rst:710
+#: ../../source/advanced.rst:710
 msgid "<"
 msgstr ""
 
-#: ../../source/advanced.rst:727
+#: ../../source/advanced.rst:710
 msgid "This is the marker to specify the end of the attribute contents.  This is always the last line"
 msgstr ""
 
-#: ../../source/advanced.rst:733
+#: ../../source/advanced.rst:716
 msgid "Any Data type starting with '*' is ignored when @snapshot/loading."
 msgstr ""
 
-#: ../../source/advanced.rst:735
+#: ../../source/advanced.rst:718
 msgid "The structure above with the examples would look like this in the file::"
 msgstr ""
 
-#: ../../source/advanced.rst:770
-msgid "HELP key indexes for the values:"
+#: ../../source/advanced.rst:753
+msgid "HELP key indexes for the values"
 msgstr ""
 
-#: ../../source/advanced.rst:773
-msgid "FLAGS: The following flags are to be used.  They are BITWISE masks that you"
+#: ../../source/advanced.rst:756
+msgid "FLAGS: The following flags are to be used.  They are BITWISE masks that you need to add together for the values that you apply::"
 msgstr ""
 
-#: ../../source/advanced.rst:773
-msgid "need to add together for the values tghat you apply"
+#: ../../source/advanced.rst:893
+msgid "TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like the flags above.  They are added together for each word type::"
 msgstr ""
 
-#: ../../source/advanced.rst:775
-msgid "/* First word of flags */ #define SEETHRU         0x00000008      /* Can see through to the other side */ #define WIZARD          0x00000010      /* gets automatic control */ #define LINK_OK         0x00000020      /* anybody can link to this room */ #define DARK            0x00000040      /* Don't show contents or presence */ #define JUMP_OK         0x00000080      /* Others may @tel here */ #define STICKY          0x00000100      /* Object goes home when dropped */ #define DESTROY_OK      0x00000200      /* Others may @destroy */ #define HAVEN           0x00000400      /* No killing here, or no pages */ #define QUIET           0x00000800      /* Prevent 'feelgood' messages */ #define HALT            0x00001000      /* object cannot perform actions */ #define TRACE           0x00002000      /* Generate evaluation trace output */ #define GOING           0x00004000      /* object is available for recycling */ #define MONITOR         0x00008000      /* Process ^x:action listens on obj? */ #define MYOPIC          0x00010000      /* See things as nonowner/nonwizard */ #define PUPPET          0x00020000      /* Relays ALL messages to owner */ #define CHOWN_OK        0x00040000      /* Object may be @chowned freely */ #define ENTER_OK        0x00080000      /* Object may be ENTERed */ #define VISUAL          0x00100000      /* Everyone can see properties */ #define IMMORTAL        0x00200000      /* Object can't be killed */ #define HAS_STARTUP     0x00400000      /* Load some attrs at startup */ #define OPAQUE          0x00800000      /* Can't see inside */ #define VERBOSE         0x01000000      /* Tells owner everything it does. */ #define INHERIT         0x02000000      /* Gets owner's privs. (i.e. Wiz) */ #define NOSPOOF         0x04000000      /* Report originator of all actions. */ #define ROBOT           0x08000000      /* Player is a ROBOT */ #define SAFE            0x10000000      /* Need /override to @destroy */ #define CONTROL_OK      0x20000000      /* ControlLk specifies who ctrls me */ #define HEARTHRU        0x40000000      /* Can hear out of this obj or exit */ #define TERSE           0x80000000      /* Only show room name on look */"
-msgstr ""
-
-#: ../../source/advanced.rst:806
-msgid "/* Second word of flags */ #define KEY             0x00000001      /* No puppets */ #define ABODE           0x00000002      /* May @set home here */ #define FLOATING        0x00000004      /* Inhibit Floating room.. msgs */ #define UNFINDABLE      0x00000008      /* Cant loc() from afar */ #define PARENT_OK       0x00000010      /* Others may @parent to me */ #define LIGHT           0x00000020      /* Visible in dark places */ #define HAS_LISTEN      0x00000040      /* Internal: LISTEN attr set */ #define HAS_FWDLIST     0x00000080      /* Internal: FORWARDLIST attr set */ #define ADMIN           0x00000100      /* Player has admin privs */ #define GUILDOBJ        0x00000200 #define GUILDMASTER     0x00000400      /* Player has gm privs */ #define NO_WALLS        0x00000800      /* So to stop normal walls */ #define REQUIRE_TREES   0x00001000      /* Trees are required on this target for attrib sets */ /* ----FREE----         0x00002000 */   /* #define OLD_NOROBOT  0x00002000 */ #define SCLOAK          0x00004000 #define CLOAK           0x00008000 #define FUBAR           0x00010000 #define INDESTRUCTABLE  0x00020000      /* object can't be nuked */ #define NO_YELL         0x00040000      /* player can't @wall */ #define NO_TEL          0x00080000      /* player can't @tel or be @tel'd */ #define FREE            0x00100000      /* object/player has unlim money */ #define GUEST_FLAG      0x00200000 #define RECOVER         0x00400000 #define BYEROOM         0x00800000 #define WANDERER        0x01000000 #define ANSI            0x02000000 #define ANSICOLOR       0x04000000 #define NOFLASH         0x08000000 #define SUSPECT         0x10000000      /* Report some activities to wizards */ #define BUILDER         0x20000000      /* Player has architect privs */ #define CONNECTED       0x40000000      /* Player is connected */ #define SLAVE           0x80000000      /* Disallow most commands */"
-msgstr ""
-
-#: ../../source/advanced.rst:840
-msgid "/* Third word of flags - Thorin 3/95 */ #define NOCONNECT       0x00000001 #define DPSHIFT         0x00000002 #define NOPOSSESS       0x00000004 #define COMBAT          0x00000008 #define IC              0x00000010 #define ZONEMASTER      0x00000020 #define ALTQUOTA        0x00000040 #define NOEXAMINE       0x00000080 #define NOMODIFY        0x00000100 #define CMDCHECK        0x00000200 #define DOORRED         0x00000400 #define PRIVATE         0x00000800      /* For exits only */ #define NOMOVE          0x00001000 #define STOP            0x00002000 #define NOSTOP          0x00004000 #define NOCOMMAND       0x00008000 #define AUDIT           0x00010000 #define SEE_OEMIT       0x00020000 #define NO_GOBJ         0x00040000 #define NO_PESTER       0x00080000 #define LRFLAG          0x00100000 #define TELOK           0x00200000 #define NO_OVERRIDE     0x00400000 #define NO_USELOCK      0x00800000 #define DR_PURGE        0x01000000      /* For rooms only...internal */ #define NO_ANSINAME     0x02000000      /* Remove the ability to set @ansiname */ #define SPOOF           0x04000000 #define SIDEFX          0x08000000      /* Allow enactor to use side-effects */ #define ZONECONTENTS    0x10000000      /* Search contents of zonemaster for $commands */ #define NOWHO           0x20000000      /* Player in WHO doesn't show up - use with @hide */ #define ANONYMOUS       0x40000000      /* Player set shows up as 'Someone' when talking */ #define BACKSTAGE       0x80000000      /* Immortal toggle for items on control */"
-msgstr ""
-
-#: ../../source/advanced.rst:874
-msgid "/* Forth word of flags - Thorin 3/95 */ #define NOBACKSTAGE     0x00000001      /* Immortal toggle to control no-backstage */ #define LOGIN           0x00000002      /* Enable player to login past @disable logins */ #define INPROGRAM       0x00000004      /* Player is inside a program */ #define COMMANDS        0x00000008      /* Optional define for $commands */ #define MARKER0         0x00000010      /* TM 3.0 marker flags */ #define MARKER1         0x00000020 #define MARKER2         0x00000040 #define MARKER3         0x00000080 #define MARKER4         0x00000100 #define MARKER5         0x00000200 #define MARKER6         0x00000400 #define MARKER7         0x00000800 #define MARKER8         0x00001000 #define MARKER9         0x00002000 #define BOUNCE          0x00004000      /* That lovly TM 3.0 Bouncey thingy */ #define SHOWFAILCMD     0x00008000      /* Show failed $commands defauilt error */ #define NOUNDERLINE     0x00010000      /* Strip UNDERLINE character from ANSI */ #define NONAME          0x00020000      /* Target does not display name with look */ #define ZONEPARENT      0x00040000      /* Target zone allows inheritance of attribs */ #define SPAMMONITOR     0x00080000      /* Monitor the target for spam */ #define BLIND           0x00100000      /* Exits and locations snuff arrived/left */ #define NOCODE          0x00200000      /* Players may not code */ #define HAS_PROTECT     0x00400000      /* Player target has protect name data */ #define XTERMCOLOR      0x00800000      /* Extended AnSI Xterm colors */ #define HAS_ATTRPIPE    0x01000000      /* Attribute piping via @pipe */ /* 0x02000000 free */ /* 0x04000000 free */ /* 0x08000000 free */ /* 0x10000000 free */ /* 0x20000000 free */ /* 0x40000000 free */ /* 0x80000000 free */"
-msgstr ""
-
-#: ../../source/advanced.rst:911
-msgid "TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like"
-msgstr ""
-
-#: ../../source/advanced.rst:911
-msgid "the flags above.  They are added together for each word type"
-msgstr ""
-
-#: ../../source/advanced.rst:913
-msgid "/* First word of toggles - Thorin 3/95 */ #define TOG_MONITOR             0x00000001      /* Active monitor on player */ #define TOG_MONITOR_USERID      0x00000002      /* show userid */ #define TOG_MONITOR_SITE        0x00000004      /* show site */ #define TOG_MONITOR_STATS       0x00000008      /* show stats */ #define TOG_MONITOR_FAIL        0x00000010      /* show fails */ #define TOG_MONITOR_CONN        0x00000020 #define TOG_VANILLA_ERRORS      0x00000040      /* show normal error msg */ #define TOG_NO_ANSI_EX          0x00000080      /* supress ansi stuff in ex */ #define TOG_CPUTIME             0x00000100      /* show cpu time for cmds */ #define TOG_MONITOR_DISREASON   0x00000200 #define TOG_MONITOR_VLIMIT      0x00000400 #define TOG_NOTIFY_LINK         0x00000800 #define TOG_MONITOR_AREG        0x00001000 #define TOG_MONITOR_TIME        0x00002000 #define TOG_CLUSTER             0x00004000      /* Object is part of a cluster */ #define TOG_SNUFFDARK           0x00008000      /* Snuff Dark Exit Viewing */ #define TOG_NOANSI_PLAYER       0x00010000      /* Do not show ansi player names */ #define TOG_NOANSI_THING        0x00020000      /* ... things */ #define TOG_NOANSI_ROOM         0x00040000      /* ... rooms */ #define TOG_NOANSI_EXIT         0x00080000      /* ... exits */ #define TOG_NO_TIMESTAMP        0x00100000      /* Do not modify timestamps on target */ #define TOG_NO_FORMAT           0x00200000      /* Override @conformat/@exitformat */ #define TOG_ZONE_AUTOADD        0x00400000      /* Automatically add FIRST zone in list */ #define TOG_ZONE_AUTOADDALL     0x00800000      /* Automatically add ALL zones in list */ #define TOG_WIELDABLE           0x01000000      /* Marker to specify if object is wieldable */ #define TOG_WEARABLE            0x02000000      /* Marker to specify if object is wearable */ #define TOG_SEE_SUSPECT         0x04000000      /* Specify who sees suspect in WHO/MONITOR */ #define TOG_MONITOR_CPU         0x08000000      /* Specify who sees CPU overflow allerts */ #define TOG_BRANDY_MAIL         0x10000000      /* Define brandy like mail interface */ #define TOG_FORCEHALTED         0x20000000      /* The item toggled can @force halted things */ #define TOG_PROG                0x40000000      /* Can use @program on other people/things */ #define TOG_NOSHELLPROG         0x80000000      /* Target can not issue commands inside a prog */"
-msgstr ""
-
-#: ../../source/advanced.rst:947
-msgid "/* Second word of toggles -- Ash */ #define TOG_EXTANSI             0x00000001      /* Specify if target can used extended ansi naming */ #define TOG_IMMPROG             0x00000002      /* Only an immortal can @quitprogram them */ #define TOG_MONITOR_BFAIL       0x00000004      /* Monitor if a failed connect on bad character */ #define TOG_PROG_ON_CONNECT     0x00000008      /* Reverse logic of program on connect */ #define TOG_MAIL_STRIPRETURN    0x00000010      /* Strip carrage return in mail combining */ #define TOG_PENN_MAIL           0x00000020      /* Use PENN style syntax */ #define TOG_SILENTEFFECTS       0x00000040      /* Silents did_it() functionality on target */ #define TOG_IGNOREZONE          0x00000080      /* Target is set to @icmd zones */ #define TOG_VPAGE               0x00000100      /* Target sees alias in pages */ #define TOG_PAGELOCK            0x00000200      /* Target issues pagelocks as normal */ #define TOG_MAIL_NOPARSE        0x00000400      /* Don't parse %t/%b/%r in mail */ #define TOG_MAIL_LOCKDOWN       0x00000800      /* Mortal-accessed mail/number and mail/check */ #define TOG_MUXPAGE             0x00001000      /* Have 'page' work like MUX */ #define TOG_NOZONEPARENT        0x00002000      /* Zone Child does NOT inherit parent attribs */ #define TOG_ATRUSE              0x00004000      /* Enactor can use Attribute based USELOCKS */ #define TOG_VARIABLE            0x00008000      /* Set exit to be variable */ #define TOG_KEEPALIVE           0x00010000      /* Send 'keepalives' to the target player */ #define TOG_CHKREALITY          0x00020000      /* Target checks @lock/user for Reality passes */ #define TOG_NOISY               0x00040000      /* Always do noisy sets */ #define TOG_ZONECMDCHK          0x00080000      /* Zone commands checked on target like @parent */ #define TOG_HIDEIDLE            0x00100000      /* Allow wizards/immortals to hide their idle time */ #define TOG_MORTALREALITY       0x00200000      /* Override the wiz_always_real setting */ #define TOG_ACCENTS             0x00400000      /* Accents being displayed */ #define TOG_PREMAILVALIDATE     0x00800000      /* Pre-Validate the mail send list before sending mail */ #define TOG_SAFELOG             0x01000000      /* Allow 'clean logging' by the player */ #define TOG_UTF8                0x02000000      /* UTF8 being displayed */ /* 0x04000000 free */ #define TOG_NODEFAULT           0x08000000      /* Allow target to inherit default attribs */ #define TOG_EXFULLWIZATTR       0x10000000      /* Examine Wiz attribs */ #ifdef ENH_LOGROOM #define TOG_LOGROOMENH          0x20000000      /* Enhanced Room Logging */ #endif #define TOG_LOGROOM             0x40000000      /* Log Room's location/contents */ #define TOG_NOGLOBPARENT        0x80000000      /* Target does not inherit global attributes */"
-msgstr ""
-
-#: ../../source/advanced.rst:987
-msgid "POWERS:  Powers are handled a bit differently.  They're used as BITWISE shift"
-msgstr ""
-
-#: ../../source/advanced.rst:986
-msgid "markers that you would have to compute the shift then add it after the fact."
-msgstr ""
-
-#: ../../source/advanced.rst:989
-msgid "/* First word of power positions.  Each position is 2 bits so the"
-msgstr ""
-
-#: ../../source/advanced.rst:990
-msgid "number here is how far over to shift the 2 bit pattern         */"
-msgstr ""
-
-#: ../../source/advanced.rst:991
-msgid "#define POWER_CHANGE_QUOTAS     0 #define POWER_CHOWN_ME          2 #define POWER_CHOWN_ANYWHERE    4 #define POWER_CHOWN_OTHER       6 #define POWER_WIZ_WHO           8 #define POWER_EX_ALL            10 #define POWER_NOFORCE           12 #define POWER_SEE_QUEUE_ALL     14 #define POWER_FREE_QUOTA        16 #define POWER_GRAB_PLAYER       18 #define POWER_JOIN_PLAYER       20 #define POWER_LONG_FINGERS      22 #define POWER_NO_BOOT           24 #define POWER_BOOT              26 #define POWER_STEAL             28 #define POWER_SEE_QUEUE         30"
-msgstr ""
-
-#: ../../source/advanced.rst:1008
-msgid "/* Second word of power positions. */ #define POWER_SHUTDOWN          0 #define POWER_TEL_ANYWHERE      2 #define POWER_TEL_ANYTHING      4 #define POWER_PCREATE           6 #define POWER_STAT_ANY          8 #define POWER_FREE_WALL         10 #define POWER_EXECSCRIPT        12 #define POWER_FREE_PAGE         14 #define POWER_HALT_QUEUE        16 #define POWER_HALT_QUEUE_ALL    18 #define POWER_FORMATTING        20 #define POWER_NOKILL            22 #define POWER_SEARCH_ANY        24 #define POWER_SECURITY          26 #define POWER_WHO_UNFIND        28"
+#: ../../source/advanced.rst:968
+msgid "POWERS:  Powers are handled a bit differently.  They're used as BITWISE shift markers that you would have to compute the shift then add it after the fact.::"
 msgstr ""
 
 #: ../../source/advanced.rst:1025
-msgid "/* Third word of power positions. */ #define POWER_OPURGE            0 #define POWER_HIDEBIT           2 #define POWER_NOWHO             4 #define POWER_FULLTEL_ANYWHERE  6 #define POWER_EX_FULL           8 #define POWER_API               10 #define POWER_MONITORAPI        12 #define POWER_WIZ_IDLE          14 #define POWER_WIZ_SPOOF         16 /* 18 free */ /* 20 free */ /* 22 free */ /* 24 free */ /* 26 free */ /* 28 free */ /* 30 free */"
+msgid "DEPOWERS:  like @powers they are handled with a BITWISE offshift that you will have to calculate then add::"
 msgstr ""
 
-#: ../../source/advanced.rst:1046
-msgid "DEPOWERS:  like @powers they are handled with a BITWISE offshift that you"
-msgstr ""
-
-#: ../../source/advanced.rst:1046
-msgid "will have to calculate then add"
-msgstr ""
-
-#: ../../source/advanced.rst:1048
-msgid "/* First word */ #define DP_WALL                 0 #define DP_LONG_FINGERS         2 #define DP_STEAL                4 #define DP_CREATE               6 #define DP_WIZ_WHO              8 #define DP_CLOAK                10 #define DP_BOOT                 12 #define DP_PAGE                 14 #define DP_FORCE                16 #define DP_LOCKS                18 #define DP_COM                  20 #define DP_COMMAND              22 #define DP_MASTER               24 #define DP_EXAMINE              26 #define DP_NUKE                 28 #define DP_FREE                 30"
-msgstr ""
-
-#: ../../source/advanced.rst:1066
-msgid "/* Second word */ #define DP_OVERRIDE             0 #define DP_TEL_ANYWHERE         2 #define DP_TEL_ANYTHING         4 #define DP_PCREATE              6 #define DP_POWER                8 #define DP_QUOTA                10 #define DP_MODIFY               12 #define DP_CHOWN_ME             14 #define DP_CHOWN_OTHER          16 #define DP_ABUSE                18 #define DP_UNL_QUOTA            20 #define DP_SEARCH_ANY           22 #define DP_GIVE                 24 #define DP_RECEIVE              26 #define DP_NOGOLD               28 #define DP_NOSTEAL              30 /* Third word...and there was much rejoicing */ #define DP_PASSWORD             0 #define DP_MORTAL_EXAMINE       2 #define DP_PERSONAL_COMMANDS    4 /* 6  free */ #define DP_DARK                 8 /* 10 free */ /* 12 free */ /* 14 free */ /* 16 free */ /* 18 free */ /* 20 free */ /* 22 free */ /* 24 free */ /* 26 free */ /* 28 free */ /* 30 free */"
-msgstr ""
-
-#: ../../source/advanced.rst:1105
+#: ../../source/advanced.rst:1082
 msgid "ZONES:  Zones are special.  If there are no zones, the value will be '-1'."
 msgstr ""
 
-#: ../../source/advanced.rst:1107
-msgid "So entering zones if there are no zones: -1"
+#: ../../source/advanced.rst:1084
+msgid "So entering zones if there are no zones::"
 msgstr ""
 
-#: ../../source/advanced.rst:1111
-msgid "Entering zones if it has three zones (#123, #456, and #789) 123 456 789 -1"
+#: ../../source/advanced.rst:1089
+msgid "Entering zones if it has three zones (#123, #456, and #789)::"
 msgstr ""
 
-#: ../../source/advanced.rst:1118
+#: ../../source/advanced.rst:1096
 msgid "As you see, the last value of the zone *MUST* be -1.  This tells it that there are no more zones to add."
 msgstr ""

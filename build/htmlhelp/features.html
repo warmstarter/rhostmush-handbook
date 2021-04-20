@@ -806,57 +806,8 @@ Also look at lit() as a solution.</p>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it">
-<h3><span class="section-number">2.23.23. </span>Things other mushes can do that Rhost can not and how to emulate it</h3>
-<div class="section" id="pennmush">
-<h4><span class="section-number">2.23.23.1. </span>PennMUSH</h4>
-<blockquote>
-<div><ul>
-<li><p class="first">Attribute trees.  These are emulated as a base set and can be duplicated enough to at least port code.</p>
-</li>
-<li><p class="first">lsearch() will have to be recoded to search()</p>
-</li>
-<li><p class="first">align() will have to be recoded to printf()</p>
-</li>
-<li><p class="first">Penn allows empty attributes.  Rhost does not.  Work will have to
-be done to take this into consideration.</p>
-</li>
-<li><p class="first">All *val() functions in Penn that are used will have to be remapped to a non-*val() function.  It should be as simple as function_alias to the non-*val.  Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span> <span class="n">function_alias</span><span class="o">=</span><span class="n">hasattrval</span> <span class="nb">hasattr</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">Penn’s hardcoded comsystem is emulated with the softcode comsys</p>
-</li>
-<li><p class="first">Penn’s &#64;mail system is workable with mail wrappers</p>
-</li>
-<li><p class="first">Pueblo is not supported.</p>
-</li>
-<li><p class="first">json is not supported.</p>
-</li>
-<li><p class="first">ssl is not natively supported (yet), see section XIV</p>
-</li>
-<li><p class="first">This uses &#64;shutdown/restart, Rhost uses &#64;reboot</p>
-</li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="mux">
-<h4><span class="section-number">2.23.23.2. </span>MUX</h4>
-<blockquote>
-<div><ul class="simple">
-<li>Mux has an async mysql database engine.  This is not possible with Rhost.  You’ll have to use the sync method instead.</li>
-<li>UTF8 is supported but internally passed differently.</li>
-<li>Mux’s hardcoded comsystem is emulated with the softcode comsys</li>
-<li>MUX’s &#64;mail system is workable with mail wrappers</li>
-<li>Pueblo is not supported.</li>
-<li>This uses &#64;restart, Rhost uses &#64;reboot</li>
-</ul>
-</div></blockquote>
-</div>
-</div>
 <div class="section" id="advanced-guest-setup">
-<h3><span class="section-number">2.23.24. </span>Advanced guest setup</h3>
+<h3><span class="section-number">2.23.23. </span>Advanced guest setup</h3>
 <blockquote>
 <div><ul>
 <li><p class="first">After you set up your guests, you can set unique names to each guest
@@ -874,7 +825,7 @@ increase guests (or decrease them) between 0-31 guests.</p>
 </div></blockquote>
 </div>
 <div class="section" id="attribute-permission-masking-and-the-joys-of-the-power-behind-it">
-<h3><span class="section-number">2.23.25. </span>Attribute permission masking and the joys of the power behind it</h3>
+<h3><span class="section-number">2.23.24. </span>Attribute permission masking and the joys of the power behind it</h3>
 <blockquote>
 <div><ul>
 <li><p class="first">Attribute contentlocks can be set up so you can lock the actual
@@ -893,7 +844,7 @@ The sky’s the limit.</p>
 </div></blockquote>
 </div>
 <div class="section" id="the-amazing-cluster-and-what-it-can-do-for-you">
-<h3><span class="section-number">2.23.26. </span>The amazing &#64;cluster and what it can do for you</h3>
+<h3><span class="section-number">2.23.25. </span>The amazing &#64;cluster and what it can do for you</h3>
 <blockquote>
 <div><ul>
 <li><p class="first">Clusters is the way to virtually assign multiple objects into
@@ -913,7 +864,7 @@ amount of attributes without paying a hefty penalty on object bloat.</p>
 </div></blockquote>
 </div>
 <div class="section" id="what-we-plan-for-the-future">
-<h3><span class="section-number">2.23.27. </span>What we plan for the future</h3>
+<h3><span class="section-number">2.23.26. </span>What we plan for the future</h3>
 <blockquote>
 <div><ul class="simple">
 <li>Things to look forward to the future with RhostMUSH.<ul>
@@ -929,7 +880,7 @@ amount of attributes without paying a hefty penalty on object bloat.</p>
 </div></blockquote>
 </div>
 <div class="section" id="additional-features-not-covered-otherwise">
-<h3><span class="section-number">2.23.28. </span>Additional features not covered otherwise</h3>
+<h3><span class="section-number">2.23.27. </span>Additional features not covered otherwise</h3>
 <blockquote>
 <div><ul>
 <li><p class="first">+/- 5.4 million years can be utilized with the built in time functions

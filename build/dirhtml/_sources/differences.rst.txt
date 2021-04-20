@@ -11,8 +11,8 @@ functions, and getting around a grid will be identical between the mush flavors.
 @nuke and @destroy will work somewhat differently between the three codebases
 and some effort should be looked at on how different it behaves.
 
-PennMUSH
---------
+Differences with PennMUSH
+-------------------------
 
 - The way the comsystem (hardcode) works with the latest PennMUSH has some 
   compatibility now with MUX's comsystem.  
@@ -24,8 +24,8 @@ PennMUSH
 - Penn supports attribute trees.
 - Penn has the standard set of bitlevel flags with on/off @powers
 
-MUX
----
+Differences with MUX
+---------------------
 
 - The comsystem (hardcode) is unique to MUX/TinyMUSH3 and is not compatible with Penn.
 - The @mail system is unique to MUX/TinyMUSH3 and is not compatible with Penn.
@@ -35,8 +35,8 @@ MUX
 - MUX does not support attribute trees.
 - MUX has the standard set of bitlevel flags with on/off @powers
 
-RhostMUSH
----------
+Differences with RhostMUSH
+--------------------------
 
 - The comsystem (softcode) is in the Mushcode directory and is compatible to both PennMUSH and MUX.
 - The mail system is unique to Rhost but there exists mail wrappers that allow MUX and Penn compatibility.
@@ -1400,8 +1400,8 @@ Switches
     a case, Rhost does allow the ability to @hook a command to define your own
     softcoded switch to a hardcoded command and work around the limitation.
 
-Flags
------
+Adding Flags
+------------
 
     Some flags may be missing.  If it's a dummy flag, feel free to use the
     marker flags MARKER0 to MARKER9 to set them.  If it's an existing flag

@@ -660,39 +660,6 @@ RhostMUSH limitations and how to get around them
       in most cases use a % instead or double escape the \ to make it work.
       Also look at lit() as a solution.
 
-
-Things other mushes can do that Rhost can not and how to emulate it
--------------------------------------------------------------------
-
-PennMUSH
-++++++++
-
-      - Attribute trees.  These are emulated as a base set and can be duplicated enough to at least port code.
-      - lsearch() will have to be recoded to search()
-      - align() will have to be recoded to printf()
-      - Penn allows empty attributes.  Rhost does not.  Work will have to
-        be done to take this into consideration. 
-      - All \*val() functions in Penn that are used will have to be remapped to a non-\*val() function.  It should be as simple as function_alias to the non-\*val.  Example::
-
-            @admin function_alias=hasattrval hasattr
-
-      - Penn's hardcoded comsystem is emulated with the softcode comsys
-      - Penn's @mail system is workable with mail wrappers
-      - Pueblo is not supported.
-      - json is not supported.
-      - ssl is not natively supported (yet), see section XIV
-      - This uses @shutdown/restart, Rhost uses @reboot
- 
-MUX
-+++
-
-      - Mux has an async mysql database engine.  This is not possible with Rhost.  You'll have to use the sync method instead.
-      - UTF8 is supported but internally passed differently.
-      - Mux's hardcoded comsystem is emulated with the softcode comsys
-      - MUX's @mail system is workable with mail wrappers
-      - Pueblo is not supported.
-      - This uses @restart, Rhost uses @reboot
-
 Advanced guest setup
 --------------------
 

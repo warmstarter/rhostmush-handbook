@@ -1,0 +1,562 @@
+<document source="/home/pi/rhostmush/rhostmush-handbook/source/index.rst">
+    <substitution_definition names="br">
+        <raw format="html .. force a line break in html output (blank lines needed here)" xml:space="preserve">
+            <br />
+    <substitution_definition names="p">
+        <raw format="html .. force a blank line in html output (blank lines needed here)" xml:space="preserve">
+            <p></p>
+    <comment xml:space="preserve">
+        These are replacement strings for non-ASCII characters used within the project
+        using the same name as the html entity names (e.g., &copy;) for that character
+    <substitution_definition ltrim="1" names="copy">
+        ©
+    <substitution_definition ltrim="1" names="trade">
+        ™
+    <substitution_definition ltrim="1" names="reg">
+        ®
+    <substitution_definition ltrim="1" names="deg">
+        °
+    <substitution_definition names="plusminus" rtrim="1">
+        ±
+    <substitution_definition names="micro" rtrim="1">
+        µ
+    <substitution_definition ltrim="1" names="sup2">
+        ²
+    <comment xml:space="preserve">
+        RhostMUSH Handbook documentation master file
+    <section ids="rhostmush-handbook" names="rhostmush\ handbook">
+        <title>
+            RhostMUSH Handbook
+        <paragraph>
+            The RhostMUSH source tree offers many abilities and options
+            not normally found in any other flavor of mush.  This doesn’t
+            make it better than other servers (though we think so 
+            <emphasis>
+                j/k
+            )
+            but it does give you a wider selection of configurability,
+            which, as you know, is the best part of setting up a mush.
+            (yea, right)
+        <bullet_list bullet="*">
+            <list_item>
+                <paragraph>
+                    A high-performance dual-quota system.
+            <list_item>
+                <paragraph>
+                    A complete rewrite of key areas and referbishments of all the other areas.
+            <list_item>
+                <paragraph>
+                    An on-line recover tool for accidental db destruction.
+            <list_item>
+                <paragraph>
+                    Multi-wizard architecture for better control of staff.
+            <list_item>
+                <paragraph>
+                    Multi-power system to tweek abilities of players.
+            <list_item>
+                <paragraph>
+                    Multi-zone system where people can belong to multiple zones.
+            <list_item>
+                <paragraph>
+                    Built in error correction for db corruption or other misuse.
+            <list_item>
+                <paragraph>
+                    Built in accounting for those annoying twinks who try to hack.
+            <list_item>
+                <paragraph>
+                    Many new functions and commands not seen anywhere else.
+            <list_item>
+                <paragraph>
+                    A lot more that could drag this document out for pages.
+        <compound classes="toctree-wrapper" ids="mastertoc" names="mastertoc">
+            <compact_paragraph toctree="True">
+                <caption>
+                    Table of Contents
+                <bullet_list>
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="install" secnumber="1">
+                                Installing RhostMUSH
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#rhostmush-requirements" internal="True" refuri="install#rhostmush-requirements" secnumber="1 1">
+                                        RhostMUSH Requirements
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#obtaining-rhostmush-source-code" internal="True" refuri="install#obtaining-rhostmush-source-code" secnumber="1 2">
+                                        Obtaining RhostMUSH Source Code
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#options-for-making-a-mush" internal="True" refuri="install#options-for-making-a-mush" secnumber="1 3">
+                                        Options for making a MUSH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#compiling-rhostmush" internal="True" refuri="install#compiling-rhostmush" secnumber="1 4">
+                                        Compiling RhostMush
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#configuring-the-game" internal="True" refuri="install#configuring-the-game" secnumber="1 5">
+                                        Configuring the game
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#creating-rhostmush-with-a-provided-db" internal="True" refuri="install#creating-rhostmush-with-a-provided-db" secnumber="1 6">
+                                        Creating RHostMUSH with a Provided DB
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#basic-instructions-for-starting-a-new-rhostmush" internal="True" refuri="install#basic-instructions-for-starting-a-new-rhostmush" secnumber="1 7">
+                                        Basic Instructions for starting a new RhostMUSH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#customtize-the-textfiles-for-your-game" internal="True" refuri="install#customtize-the-textfiles-for-your-game" secnumber="1 8">
+                                        Customtize the textfiles for your game
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#three-options-for-starting-a-mush" internal="True" refuri="install#three-options-for-starting-a-mush" secnumber="1 9">
+                                        Three Options for Starting a MUSH
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="features" secnumber="2">
+                                What RhostMUSH is about and what’s so great about RhostMUSH
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#recycle-bin" internal="True" refuri="features#recycle-bin" secnumber="2 1">
+                                        Recycle bin
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#snapshot" internal="True" refuri="features#snapshot" secnumber="2 2">
+                                        @snapshot
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#wizard-and-immortals-by-default" internal="True" refuri="features#wizard-and-immortals-by-default" secnumber="2 3">
+                                        Wizard and Immortals by default
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#titles-and-captions-to-a-player-s-name" internal="True" refuri="features#titles-and-captions-to-a-player-s-name" secnumber="2 4">
+                                        Titles and Captions to a player’s name
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#have-an-alternate-name-with-locks-for-npc-obfuscation" internal="True" refuri="features#have-an-alternate-name-with-locks-for-npc-obfuscation" secnumber="2 5">
+                                        Have an alternate name with locks for NPC obfuscation
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#have-multiple-player-aliases" internal="True" refuri="features#have-multiple-player-aliases" secnumber="2 6">
+                                        Have multiple player aliases
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#actively-control-how-dark-works-both-game-wide-and-individually" internal="True" refuri="features#actively-control-how-dark-works-both-game-wide-and-individually" secnumber="2 7">
+                                        Actively control how dark works both game-wide and individually
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#make-config-file-changes-in-game-without-having-to-reboot-or-have-shell-access" internal="True" refuri="features#make-config-file-changes-in-game-without-having-to-reboot-or-have-shell-access" secnumber="2 8">
+                                        Make config file changes in-game without having to reboot or have shell access
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#execute-any-binary-or-script-as-a-localized-function" internal="True" refuri="features#execute-any-binary-or-script-as-a-localized-function" secnumber="2 9">
+                                        Execute any binary or script as a localized function
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#customized-percent-substitutions-like-n-etc" internal="True" refuri="features#customized-percent-substitutions-like-n-etc" secnumber="2 10">
+                                        Customized percent substitutions (like %n, %#, etc)
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#redefine-percent-substitutions-like-n-etc" internal="True" refuri="features#redefine-percent-substitutions-like-n-etc" secnumber="2 11">
+                                        Redefine percent substitutions (like %n, %#, etc)
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#localize-command-and-function-overrides-in-a-sandbox" internal="True" refuri="features#localize-command-and-function-overrides-in-a-sandbox" secnumber="2 12">
+                                        Localize command and function overrides in a sandbox
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#multiple-zones" internal="True" refuri="features#multiple-zones" secnumber="2 13">
+                                        Multiple Zones
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#optionally-control-enable-or-disable-sideeffects" internal="True" refuri="features#optionally-control-enable-or-disable-sideeffects" secnumber="2 14">
+                                        Optionally control, enable, or disable sideeffects
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#have-31-cross-interactive-realities-for-locations" internal="True" refuri="features#have-31-cross-interactive-realities-for-locations" secnumber="2 15">
+                                        Have 31 cross-interactive realities for locations
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#override-any-command-with-softcode" internal="True" refuri="features#override-any-command-with-softcode" secnumber="2 16">
+                                        Override any command with softcode
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#the-abilility-to-raise-or-lower-permissions-on-the-various" internal="True" refuri="features#the-abilility-to-raise-or-lower-permissions-on-the-various" secnumber="2 17">
+                                        The abilility to raise or lower permissions on the various
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#customize-new-commands-on-the-connect-screen" internal="True" refuri="features#customize-new-commands-on-the-connect-screen" secnumber="2 18">
+                                        Customize new commands on the connect screen
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#softcode-any-txt-file-like-connect-txt" internal="True" refuri="features#softcode-any-txt-file-like-connect-txt" secnumber="2 19">
+                                        Softcode any txt file (like connect.txt)
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#advanced-tracing-methods-for-debugging-your-code-including-labels" internal="True" refuri="features#advanced-tracing-methods-for-debugging-your-code-including-labels" secnumber="2 20">
+                                        Advanced tracing methods for debugging your code including labels!
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#built-in-pretty-printing-of-attributes-with-the-parenmatch-function" internal="True" refuri="features#built-in-pretty-printing-of-attributes-with-the-parenmatch-function" secnumber="2 21">
+                                        Built in pretty-printing of attributes with the parenmatch() function
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#plenty-more-not-mentioned" internal="True" refuri="features#plenty-more-not-mentioned" secnumber="2 22">
+                                        Plenty more not mentioned!
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#advanced-features-of-rhostmush" internal="True" refuri="features#advanced-features-of-rhostmush" secnumber="2 23">
+                                        Advanced features of RhostMUSH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#random-notes-and-things-to-know-about-rhostmush" internal="True" refuri="features#random-notes-and-things-to-know-about-rhostmush" secnumber="2 24">
+                                        Random notes and things to know about RhostMUSH
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="differences" secnumber="3">
+                                Comparison of modern MUSH servers
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#differences-to-expect-to-the-end-user-between-pennmush-mux-and-rhostmush" internal="True" refuri="differences#differences-to-expect-to-the-end-user-between-pennmush-mux-and-rhostmush" secnumber="3 1">
+                                        Differences to expect to the end user between PennMUSH, MUX, and RhostMUSH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#comparison-of-features-between-rhostmush-pennmush-and-mux2" internal="True" refuri="differences#comparison-of-features-between-rhostmush-pennmush-and-mux2" secnumber="3 2">
+                                        Comparison of features between RhostMUSH, PennMUSH, and MUX2
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#organization-of-help-and-wizhelp" internal="True" refuri="differences#organization-of-help-and-wizhelp" secnumber="3 3">
+                                        Organization of help and wizhelp
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#mail-comsystem-guests-master-rooms-etc" internal="True" refuri="differences#mail-comsystem-guests-master-rooms-etc" secnumber="3 4">
+                                        Mail, comsystem, guests, master rooms, etc..
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#comparisons-of-features" internal="True" refuri="differences#comparisons-of-features" secnumber="3 5">
+                                        Comparisons of features
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#commands-with-equivalents" internal="True" refuri="differences#commands-with-equivalents" secnumber="3 6">
+                                        @commands with equivalents
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#commands-unique-to-rhostmush" internal="True" refuri="differences#commands-unique-to-rhostmush" secnumber="3 7">
+                                        @commands unique to RhostMUSH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#lock-equivalents" internal="True" refuri="differences#lock-equivalents" secnumber="3 8">
+                                        @lock equivalents
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#locks-that-only-exist-in-rhostmush" internal="True" refuri="differences#locks-that-only-exist-in-rhostmush" secnumber="3 9">
+                                        @locks that only exist in RhostMUSH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#flag-and-toggle-equivalents" internal="True" refuri="differences#flag-and-toggle-equivalents" secnumber="3 10">
+                                        Flag and toggle equivalents
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#flags-and-toggles-that-only-exist-in-rhostmush" internal="True" refuri="differences#flags-and-toggles-that-only-exist-in-rhostmush" secnumber="3 11">
+                                        Flags and toggles that only exist in RhostMUSH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#power-equivalents" internal="True" refuri="differences#power-equivalents" secnumber="3 12">
+                                        @power equivalents
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#functions-equivalents" internal="True" refuri="differences#functions-equivalents" secnumber="3 13">
+                                        Functions equivalents
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#what-may-need-to-be-modified-to-get-softcode-from-pennmush-tinymush2-tinymush3-or-mux2-to-work-on-rhost" internal="True" refuri="differences#what-may-need-to-be-modified-to-get-softcode-from-pennmush-tinymush2-tinymush3-or-mux2-to-work-on-rhost" secnumber="3 14">
+                                        What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it" internal="True" refuri="differences#things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it" secnumber="3 15">
+                                        Things other mushes can do that Rhost can not and how to emulate it
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="database" secnumber="4">
+                                Database
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#loading-an-existing-database" internal="True" refuri="database#loading-an-existing-database" secnumber="4 1">
+                                        Loading an existing Database
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#converting-a-flatfile-database-for-use-in-rhostmush" internal="True" refuri="database#converting-a-flatfile-database-for-use-in-rhostmush" secnumber="4 2">
+                                        Converting a flatfile database for use in RhostMUSH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#note-about-compiling" internal="True" refuri="database#note-about-compiling" secnumber="4 3">
+                                        Note about Compiling
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="gettingstarted" secnumber="5">
+                                Gettin Started
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#what-to-ype-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile" internal="True" refuri="gettingstarted#what-to-ype-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile" secnumber="5 1">
+                                        What to ype to get the basics running if you did not choose a pre-existing flatfile
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#minimal-db-instructions" internal="True" refuri="gettingstarted#minimal-db-instructions" secnumber="5 2">
+                                        Minimal DB instructions
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#ambrosia-s-minimal-rhost-db" internal="True" refuri="gettingstarted#ambrosia-s-minimal-rhost-db" secnumber="5 3">
+                                        Ambrosia’s Minimal Rhost DB
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="toggles" secnumber="6">
+                                What FLAGS, TOGGLES, POWERS, DEPOWERS, and BITLEVELS mean in RhostMUSH
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#what-are-flags" internal="True" refuri="toggles#what-are-flags" secnumber="6 1">
+                                        What are Flags?
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#what-are-toggles" internal="True" refuri="toggles#what-are-toggles" secnumber="6 2">
+                                        What are Toggles?
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#what-is-an-power" internal="True" refuri="toggles#what-is-an-power" secnumber="6 3">
+                                        What is an @power?
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#what-is-an-depower" internal="True" refuri="toggles#what-is-an-depower" secnumber="6 4">
+                                        What is an @depower?
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#multi-tiered-bitlevel-systems" internal="True" refuri="toggles#multi-tiered-bitlevel-systems" secnumber="6 5">
+                                        Multi-tiered bitlevel systems
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#altering-bitlevels" internal="True" refuri="toggles#altering-bitlevels" secnumber="6 6">
+                                        Altering bitlevels
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="security" secnumber="7">
+                                Security
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#considerations-to-locking-down-restrictions-in-rhostmush" internal="True" refuri="security#considerations-to-locking-down-restrictions-in-rhostmush" secnumber="7 1">
+                                        Considerations to locking down restrictions in RhostMUSH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#extended-lockdown-of-the-mush-and-considerations" internal="True" refuri="security#extended-lockdown-of-the-mush-and-considerations" secnumber="7 2">
+                                        Extended lockdown of the mush and considerations
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so" internal="True" refuri="security#methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so" secnumber="7 3">
+                                        Methods to block anonymous connections and the pros and cons of doing so
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#setting-up-an-ssl-tunnel-for-secure-connection-options" internal="True" refuri="security#setting-up-an-ssl-tunnel-for-secure-connection-options" secnumber="7 4">
+                                        Setting up an SSL tunnel for secure connection options
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="maintenance" secnumber="8">
+                                Maintenance
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#note-about-patching" internal="True" refuri="maintenance#note-about-patching" secnumber="8 1">
+                                        Note about Patching
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#daily-backups-for-rhostmush" internal="True" refuri="maintenance#daily-backups-for-rhostmush" secnumber="8 2">
+                                        Daily Backups for RhostMUSH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#signals-and-why-you-need-them-for-control" internal="True" refuri="maintenance#signals-and-why-you-need-them-for-control" secnumber="8 3">
+                                        Signals and why you need them for control
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#shutting-down-rhostmush-gracefully" internal="True" refuri="maintenance#shutting-down-rhostmush-gracefully" secnumber="8 4">
+                                        Shutting down RhostMUSH gracefully
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#autoshutdown-script" internal="True" refuri="maintenance#autoshutdown-script" secnumber="8 5">
+                                        Autoshutdown script
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#network-port-redirector" internal="True" refuri="maintenance#network-port-redirector" secnumber="8 6">
+                                        Network Port redirector
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#using-the-built-in-cron-system-for-periodically-running-commands" internal="True" refuri="maintenance#using-the-built-in-cron-system-for-periodically-running-commands" secnumber="8 7">
+                                        Using the built-in cron system for periodically running commands
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#the-following-scripts-are-used-in-the-game-directory" internal="True" refuri="maintenance#the-following-scripts-are-used-in-the-game-directory" secnumber="8 8">
+                                        The following scripts are used in the game directory
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#textfiles-for-rhostmush" internal="True" refuri="maintenance#textfiles-for-rhostmush" secnumber="8 9">
+                                        Textfiles for RhostMUSH
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="troubleshooting" secnumber="9">
+                                Troubleshooting
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#reporting-bugs-or-getting-help" internal="True" refuri="troubleshooting#reporting-bugs-or-getting-help" secnumber="9 1">
+                                        Reporting bugs or getting help
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#stack-limit-and-debugging" internal="True" refuri="troubleshooting#stack-limit-and-debugging" secnumber="9 2">
+                                        Stack limit and debugging
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#how-to-reset-the-password-for-1" internal="True" refuri="troubleshooting#how-to-reset-the-password-for-1" secnumber="9 3">
+                                        How to reset the password for #1
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#troubleshooting-difficulties-compiling-rhostmush" internal="True" refuri="troubleshooting#troubleshooting-difficulties-compiling-rhostmush" secnumber="9 4">
+                                        Troubleshooting difficulties compiling RhostMUSH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#dealing-with-db-corruption" internal="True" refuri="troubleshooting#dealing-with-db-corruption" secnumber="9 5">
+                                        Dealing with DB Corruption
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#dealing-with-a-corrupt-mail-database" internal="True" refuri="troubleshooting#dealing-with-a-corrupt-mail-database" secnumber="9 6">
+                                        Dealing with a corrupt mail database
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="advanced" secnumber="10">
+                                Advanced Features
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#installing-using-an-ansible-playbook" internal="True" refuri="advanced#installing-using-an-ansible-playbook" secnumber="10 1">
+                                        Installing using an ansible playbook
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#adding-hardcoded-modules" internal="True" refuri="advanced#adding-hardcoded-modules" secnumber="10 2">
+                                        Adding hardcoded modules
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#reality-levels-setup" internal="True" refuri="advanced#reality-levels-setup" secnumber="10 3">
+                                        Reality Levels Setup
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#execscript-and-external-programs-and-scripts" internal="True" refuri="advanced#execscript-and-external-programs-and-scripts" secnumber="10 4">
+                                        Execscript and external programs and scripts
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#using-printf-for-advanced-text-output" internal="True" refuri="advanced#using-printf-for-advanced-text-output" secnumber="10 5">
+                                        Using printf() for advanced text output
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="#format-for-image-files" internal="True" refuri="advanced#format-for-image-files" secnumber="11">
+                                Format for image files
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#help-key-indexes-for-the-values" internal="True" refuri="advanced#help-key-indexes-for-the-values" secnumber="11 1">
+                                        HELP key indexes for the values
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="windows" secnumber="12">
+                                Requirements if Using Windows
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#installing-on-windows-10-with-bash" internal="True" refuri="windows#installing-on-windows-10-with-bash" secnumber="12 1">
+                                        Installing on Windows 10 with BASH
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#installing-on-windows-with-cygwin" internal="True" refuri="windows#installing-on-windows-with-cygwin" secnumber="12 2">
+                                        Installing on Windows with Cygwin
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#startig-rhostmush-on-windows" internal="True" refuri="windows#startig-rhostmush-on-windows" secnumber="12 3">
+                                        Startig RhostMUSH on Windows
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="legacy" secnumber="13">
+                                Upgrading a Legacy RhostMUSH Installation
+                        <bullet_list>
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#converting-database-betwen-gdbm-and-qdbm" internal="True" refuri="legacy#converting-database-betwen-gdbm-and-qdbm" secnumber="13 1">
+                                        Converting database betwen GDBM and QDBM
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#updating-rhostmush-prior-to-3-9-5p2" internal="True" refuri="legacy#updating-rhostmush-prior-to-3-9-5p2" secnumber="13 2">
+                                        Updating RhostMUSH prior to 3.9.5p2
+                            <list_item classes="toctree-l2">
+                                <compact_paragraph classes="toctree-l2">
+                                    <reference anchorname="#adding-mysql-to-rhostmush-older-than-3-9-5p2" internal="True" refuri="legacy#adding-mysql-to-rhostmush-older-than-3-9-5p2" secnumber="13 3">
+                                        Adding MySQL to RhostMUSH older than 3.9.5p2
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="flags" secnumber="14">
+                                Comparison of Flags
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="powers" secnumber="15">
+                                Comparison of powers
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="helpfile" secnumber="16">
+                                RhostMUSH Internal Help Files
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="wizhelpfile" secnumber="17">
+                                RhostMUSH Internal Wizhelp Files
+                    <list_item classes="toctree-l1">
+                        <compact_paragraph classes="toctree-l1">
+                            <reference anchorname="" internal="True" refuri="nda" secnumber="18">
+                                Historical Non-Disclosure Agreement
+        <paragraph>
+            Copyright
+            ©
+             1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+            2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
+            2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021
+        <paragraph>
+            Seawolf, Thorin, Ashen-Shugar, Kale, Lensman, Morgan, Odin, Kage, Ambrosia, Rook
+        <paragraph>
+            All rights, reserved.
+        <paragraph>
+            The copyright includes but is not limited to all changes and modifications to
+            the code, the help files, and all information included in this code.
+            Copying of these changes is not permitted without prior approval.
+            Borrowing of ideas require notification of where idea originated.
+            Please use ‘RhostMUSH’ when identifying source. Modification of code is allowed
+            as long as contact and acceptance is made prior to changes with one (or more) of
+            the original writers of the code in writing.
+        <paragraph>
+            This copyright does not include the original code that was given as GNU freeware
+        <paragraph>
+            This copyright information may not be changed, altered, or omitted.
+        <comment xml:space="preserve">
+            changelog.rst
+    <section ids="indices-and-tables" names="indices\ and\ tables">
+        <title>
+            Indices and tables
+        <bullet_list bullet="*">
+            <list_item>
+                <paragraph>
+                    <reference internal="True" refuri="genindex">
+                        <inline classes="std std-ref">
+                            Index
+            <list_item>
+                <paragraph>
+                    <reference internal="True" refuri="search">
+                        <inline classes="std std-ref">
+                            Search Page

@@ -376,8 +376,8 @@ Version history:
     - A small typo fix in netrhost.conf. float_preciiosn -> precision and
       functions_max -> function_max. Thanks to Bobbi@COH
 
-Introduction
-------------
+AmbrosiaDB Introduction
+-----------------------
 
 .. note::
 
@@ -388,11 +388,11 @@ Greetings,
 This minimal Rhost DB was made with a secure setup, and as a good base to start
 a new game off in mind.
 
-Features
---------
+AmbrosiaDB Features
+-------------------
 
-Configuration
-+++++++++++++
+AmbrosiaDB Configuration
+++++++++++++++++++++++++
 
 * Limbo, Master Room and Auxiliary room.
 * BC-Admin-<bitlevel> characters set up for each bitlevel to own global and
@@ -450,8 +450,8 @@ Configuration
 * Guildmasters can see _Attributes
 * Architects can set _Attributes
 
-Softcode
-++++++++
+AmbeosiaDB Softcode
++++++++++++++++++++
 
 * Set-up compatibility SoftFunctions and @hook object.
 * Set up Comsys 1.0.9b at Architect level. (+bbhelp command)
@@ -465,8 +465,8 @@ Softcode
 * help .txt files and .indx files for the above.
 * @dynhelp access lowered to architect to call above helpfiles.
 
-Functions
-+++++++++
+AmbrosiaDB Functions
++++++++++++++++++++++
 
 * isstaff() - Softcoded function that returns '1' if its argument matches
   a #dbref in the 'isstaff' attribute on the Misc Data object.
@@ -505,8 +505,8 @@ Functions
     a 78-char wide line of ='s. Simply leave parameters empty if you want to set
     one of the latter parameters.
 
-Bitlevels
----------
+AmbrosiaDB Bitlevels
+---------------------
 
 The whole DB is highly geared for a low-bitlevel setup.
 I am a strong believer in least-privileges-needed to do the job. Bittypes and
@@ -517,13 +517,13 @@ tossed about.
 
    Here is my suggested list of powers and bittypes for staffers.
 
-Storytellers
-++++++++++++
+AmbrosiaDB Storytellers
++++++++++++++++++++++++
 
 @powered TEL_ANYWHERE, JOIN_PLAYER and GRAB_PLAYER on Guildmaster level.
 
-Builder-BCs
-+++++++++++
+AmbrosiaDB Builder-BCs
+++++++++++++++++++++++
 
 Mortal, with @quota and money for their job. There should be one
 shared BC for each area of the game, like BC-Houston. Special
@@ -539,8 +539,8 @@ them inherit after review.
 Both the -powered and -admin BCs can have random passwords and
 be @set NO_CONNECT.
 
-Building Head
-+++++++++++++
+AmbrosiaDB Building Head
+++++++++++++++++++++++++
 
 @set Guildmaster, powered TEL_ANYWHERE, TEL_ANYTHING and
 optionally CHOWN_OTHER on Guildmaster level. Mind that the
@@ -549,21 +549,21 @@ and lower-owned in the master and auxiliary rooms. However,
 it allows the Building Head to @chown items between BCs- and
 to the BC-<location>-powered.
 
-Enforcers
-+++++++++
+AmbrosiaDB Enforcers
+++++++++++++++++++++
 
 As Storyteller above, plus being @powered Security at
 Guildmaster level, in order to handle problem players.
 
 Optionally always given to Storytellers.
 
-Coders
-++++++
+AmbrosiaDB Coders
+++++++++++++++++++
 
 @set Architect
 
-Head Coder
-++++++++++
+AmbrosiaDB Head Coder
+++++++++++++++++++++++
 
 Always trust your head coder.
 @set Architect for the everyday bit. Give access to a
@@ -577,16 +577,16 @@ access to a maintenance Royalty bit in order to properly code
 banning/blacklisting +commands and other rare code that requires
 Royalty powers. Again, chown finished code to bc-admin-royalty.
 
-MU* Head(s)
-+++++++++++
+AmbrosiaDB MU* Head(s)
+++++++++++++++++++++++
 
 You're the boss(es). But please use an Architect bit for your
 everyday things. Keep Immortal to yourself. Keep #1 to yourself.
 And seriously avoid using either of them except for creating
 a Royalty bit or doing intricate DB maintenance.
 
-Site Admins
-+++++++++++
+AmbrosiaDB Site Admins
+++++++++++++++++++++++
 
 They already have more powers than any in-game bit can ever
 have ;)
@@ -597,8 +597,8 @@ notifying players of downtimes and/or being @powered shutdown in
 order to shut down the game for maintenance, up to being the
 only person with actual access to #1.
 
-Globals
-+++++++
+AmbrosiaDB Globals
+++++++++++++++++++
 
 Handle necessary functionality for adminning through the admin-only globals and
 softcode.
@@ -634,16 +634,16 @@ Councilor or higher, I suggest to simply @set the bboard and comsystem core
 objects NO_MODIFY instead, keeping them at Architect-power but making them
 unmodifyable by Architects.
 
-Quota
------
+AmbrosiaDB Quota
+----------------
 
 I highly recommend the use of the alternative @quota system. BC-Admin-Mortal
 and BC-Admin-Guildmaster both have this @quota system set up on themselves. Both
 of them have a high amount of money for everyday operations. You should not give
 them free quota or money.
 
-Functions
----------
+AmbrosiaDB Adding Functions
+---------------------------
 
 I also recommend to setup most global functions with /Privileged even if they
 are mortal-powered, to make them work even when players are set NO_CODE and
@@ -651,8 +651,8 @@ WANDERER by default.
 
 Enjoy!
 
-Compiling
----------
+AmbrosiaDB Compiling
+---------------------
 
 P.S. the 'bin/asksource.save0' file has been supplied for loading in the
 'make config' or 'make confsource' step of Rhost installation. It provides the

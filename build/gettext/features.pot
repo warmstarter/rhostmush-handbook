@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RhostMUSH Handbook 0.01a\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-01 02:53-0400\n"
+"POT-Creation-Date: 2021-04-19 23:55-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1033,287 +1033,210 @@ msgstr ""
 msgid "Sometime you may find a single \\ may not work for an escape.  You can in most cases use a % instead or double escape the \\ to make it work. Also look at lit() as a solution."
 msgstr ""
 
-#: ../../source/features.rst:665
-msgid "Things other mushes can do that Rhost can not and how to emulate it"
-msgstr ""
-
-#: ../../source/features.rst:668
-msgid "PennMUSH"
-msgstr ""
-
-#: ../../source/features.rst:670
-msgid "Attribute trees.  These are emulated as a base set and can be duplicated enough to at least port code."
-msgstr ""
-
-#: ../../source/features.rst:671
-msgid "lsearch() will have to be recoded to search()"
-msgstr ""
-
-#: ../../source/features.rst:672
-msgid "align() will have to be recoded to printf()"
-msgstr ""
-
-#: ../../source/features.rst:673
-msgid "Penn allows empty attributes.  Rhost does not.  Work will have to be done to take this into consideration."
-msgstr ""
-
-#: ../../source/features.rst:675
-msgid "All \\*val() functions in Penn that are used will have to be remapped to a non-\\*val() function.  It should be as simple as function_alias to the non-\\*val.  Example::"
-msgstr ""
-
-#: ../../source/features.rst:679
-msgid "Penn's hardcoded comsystem is emulated with the softcode comsys"
-msgstr ""
-
-#: ../../source/features.rst:680
-msgid "Penn's @mail system is workable with mail wrappers"
-msgstr ""
-
-#: ../../source/features.rst:681
-#: ../../source/features.rst:693
-msgid "Pueblo is not supported."
-msgstr ""
-
-#: ../../source/features.rst:682
-msgid "json is not supported."
-msgstr ""
-
-#: ../../source/features.rst:683
-msgid "ssl is not natively supported (yet), see section XIV"
-msgstr ""
-
-#: ../../source/features.rst:684
-msgid "This uses @shutdown/restart, Rhost uses @reboot"
-msgstr ""
-
-#: ../../source/features.rst:687
-msgid "MUX"
-msgstr ""
-
-#: ../../source/features.rst:689
-msgid "Mux has an async mysql database engine.  This is not possible with Rhost.  You'll have to use the sync method instead."
-msgstr ""
-
-#: ../../source/features.rst:690
-msgid "UTF8 is supported but internally passed differently."
-msgstr ""
-
-#: ../../source/features.rst:691
-msgid "Mux's hardcoded comsystem is emulated with the softcode comsys"
-msgstr ""
-
-#: ../../source/features.rst:692
-msgid "MUX's @mail system is workable with mail wrappers"
-msgstr ""
-
-#: ../../source/features.rst:694
-msgid "This uses @restart, Rhost uses @reboot"
-msgstr ""
-
-#: ../../source/features.rst:697
+#: ../../source/features.rst:664
 msgid "Advanced guest setup"
 msgstr ""
 
-#: ../../source/features.rst:699
+#: ../../source/features.rst:666
 msgid "After you set up your guests, you can set unique names to each guest if you so want after defining the dbref#'s your guests use.  This is done by defining them in the guest_namelist parameter.  You can also increase guests (or decrease them) between 0-31 guests."
 msgstr ""
 
-#: ../../source/features.rst:704
+#: ../../source/features.rst:671
 msgid "wizhelp guest_namelist"
 msgstr ""
 
-#: ../../source/features.rst:705
+#: ../../source/features.rst:672
 msgid "wizhelp num_guests"
 msgstr ""
 
-#: ../../source/features.rst:708
+#: ../../source/features.rst:675
 msgid "Attribute permission masking and the joys of the power behind it"
 msgstr ""
 
-#: ../../source/features.rst:710
+#: ../../source/features.rst:677
 msgid "Attribute contentlocks can be set up so you can lock the actual content that you can set (or even unset!) into an attribute. The beauty of this is that you can specify case sensitive information, lock different ways contents in attributes are set based on who is setting it, or even on where it's being set. The sky's the limit."
 msgstr ""
 
-#: ../../source/features.rst:717
+#: ../../source/features.rst:684
 msgid "global_attrdefault    - Target for defining content locks"
 msgstr ""
 
-#: ../../source/features.rst:721
+#: ../../source/features.rst:688
 msgid "The amazing @cluster and what it can do for you"
 msgstr ""
 
-#: ../../source/features.rst:723
+#: ../../source/features.rst:690
 msgid "Clusters is the way to virtually assign multiple objects into a single physical object.  It essentially chains together two or more objects to share attributes between them, so that any attribute set on any object in that cluster can be set or fetched as if it was a singular entity.  This allows some amazing ability to distribute attribute content or even have a farm of a massive amount of attributes without paying a hefty penalty on object bloat."
 msgstr ""
 
-#: ../../source/features.rst:731
+#: ../../source/features.rst:698
 msgid "help cluster  -- Gives a fantastic overview of how clusters work."
 msgstr ""
 
-#: ../../source/features.rst:734
+#: ../../source/features.rst:701
 msgid "What we plan for the future"
 msgstr ""
 
-#: ../../source/features.rst:736
+#: ../../source/features.rst:703
 msgid "Things to look forward to the future with RhostMUSH."
 msgstr ""
 
-#: ../../source/features.rst:738
+#: ../../source/features.rst:705
 msgid "Full Unicode/UTF8 in Rhost 4.0"
 msgstr ""
 
-#: ../../source/features.rst:739
+#: ../../source/features.rst:706
 msgid "A fully featured tag system in Rhost 4.0"
 msgstr ""
 
-#: ../../source/features.rst:740
+#: ../../source/features.rst:707
 msgid "Built in Python API handler in Rhost 4.0"
 msgstr ""
 
-#: ../../source/features.rst:741
+#: ../../source/features.rst:708
 msgid "Hopefully a built in Ruby and Perl API in Rhost 4.0/4.1"
 msgstr ""
 
-#: ../../source/features.rst:742
+#: ../../source/features.rst:709
 msgid "Cross-Mush execution between mushes in Rhost 4.1"
 msgstr ""
 
-#: ../../source/features.rst:743
+#: ../../source/features.rst:710
 msgid "More as we think about it :)"
 msgstr ""
 
-#: ../../source/features.rst:746
+#: ../../source/features.rst:713
 msgid "Additional features not covered otherwise"
 msgstr ""
 
-#: ../../source/features.rst:748
+#: ../../source/features.rst:715
 msgid "+/- 5.4 million years can be utilized with the built in time functions which includes timefmt(), secs(), convtime(), convsecs(), and moon().  Party on!"
 msgstr ""
 
-#: ../../source/features.rst:750
+#: ../../source/features.rst:717
 msgid "Changing permission levels in the middle of execution for evaluation."
 msgstr ""
 
-#: ../../source/features.rst:752
+#: ../../source/features.rst:719
 msgid "see help on the streval and ueval function'"
 msgstr ""
 
-#: ../../source/features.rst:753
+#: ../../source/features.rst:720
 msgid "Full features in-game customization of near every aspect of the game."
 msgstr ""
 
-#: ../../source/features.rst:756
+#: ../../source/features.rst:723
 msgid "Random notes and things to know about RhostMUSH"
 msgstr ""
 
-#: ../../source/features.rst:758
+#: ../../source/features.rst:725
 msgid "Here are some things to know about RhostMUSH and what you may or may not want to do.  Things here are not covered in other documents:"
 msgstr ""
 
-#: ../../source/features.rst:761
+#: ../../source/features.rst:728
 msgid "Admin toggles to configure the WHO, various things you're used to, etc is in the 'netrhost.conf' file.  descriptions Notes in the autoconf.h file is in the README.AUTOCONF file."
 msgstr ""
 
-#: ../../source/features.rst:767
+#: ../../source/features.rst:734
 msgid "Note on bits, their levels, and things they do"
 msgstr ""
 
-#: ../../source/features.rst:769
+#: ../../source/features.rst:736
 msgid "IMMORTAL - They can do anything.  Treat this as #1 and only give to people you trust.  Period.   You don't have to use this bit if you do not want to and just assume #1."
 msgstr ""
 
-#: ../../source/features.rst:773
+#: ../../source/features.rst:740
 msgid "ROYALTY - Unlike PENN/MUX, this is *not* a sub-wizard, this is a FULL wizard.  Plus, they can do a bit more."
 msgstr ""
 
-#: ../../source/features.rst:776
+#: ../../source/features.rst:743
 msgid "COUNCILOR - Like royalty on PENN/MUX but they can modify."
 msgstr ""
 
-#: ../../source/features.rst:778
+#: ../../source/features.rst:745
 msgid "ARCHITECT - Can't do as much as councilor, but lot more than BUILDER."
 msgstr ""
 
-#: ../../source/features.rst:780
+#: ../../source/features.rst:747
 msgid "GUILDMASTER - Very limited.  Sees dbrief#'s, can ex things their level and lower and @quota players."
 msgstr ""
 
-#: ../../source/features.rst:785
+#: ../../source/features.rst:752
 msgid "You need to @pcreate your guest characters and set them GUEST"
 msgstr ""
 
-#: ../../source/features.rst:787
+#: ../../source/features.rst:754
 msgid "It doesn't create them on the fly but we considered this better. You have 31 total you can have.  It defaults to 10 in the netrhost.conf file.  You can rename the guests anything you want, but before you do so, you must add the dbref#'s to the param guest_namelist"
 msgstr ""
 
-#: ../../source/features.rst:794
+#: ../../source/features.rst:761
 msgid "@powers are INHERITED"
 msgstr ""
 
-#: ../../source/features.rst:796
+#: ../../source/features.rst:763
 msgid "Therefore, you need power_objects enabled (@admin) to make this work properly for non-plauyers. A power is taken before a bit level ONLY if higher than that bit. Yes, powers are multi-level."
 msgstr ""
 
-#: ../../source/features.rst:802
+#: ../../source/features.rst:769
 msgid "@depowers are automatically checked first before anything else"
 msgstr ""
 
-#: ../../source/features.rst:804
+#: ../../source/features.rst:771
 msgid "This is also meaningless on objects."
 msgstr ""
 
-#: ../../source/features.rst:807
+#: ../../source/features.rst:774
 msgid "Zones are unique"
 msgstr ""
 
-#: ../../source/features.rst:809
+#: ../../source/features.rst:776
 msgid "You can have things in multiple zones."
 msgstr ""
 
-#: ../../source/features.rst:812
+#: ../../source/features.rst:779
 msgid "The db auto-repares itself when it can"
 msgstr ""
 
-#: ../../source/features.rst:814
+#: ../../source/features.rst:781
 msgid "It does this by purging anything it can't identify.  Dataloss is better than unrecoverable data. Yes, any such 'repairing' is logged so you know if something is up."
 msgstr ""
 
-#: ../../source/features.rst:819
+#: ../../source/features.rst:786
 msgid "You can get your connect.txt to parse ansi"
 msgstr ""
 
-#: ../../source/features.rst:821
+#: ../../source/features.rst:788
 msgid "See ansi_txtfiles in wizhelp."
 msgstr ""
 
-#: ../../source/features.rst:823
+#: ../../source/features.rst:790
 msgid "You can also override it with softcode if you so wanted."
 msgstr ""
 
-#: ../../source/features.rst:825
+#: ../../source/features.rst:792
 msgid "See file_object in wizhelp for more information on this."
 msgstr ""
 
-#: ../../source/features.rst:828
+#: ../../source/features.rst:795
 msgid "Re-compiled binaries do not require an @shutdown"
 msgstr ""
 
-#: ../../source/features.rst:830
+#: ../../source/features.rst:797
 msgid "When re-compiling the binaries, all you have to remember is when done, issue"
 msgstr ""
 
-#: ../../source/features.rst:832
+#: ../../source/features.rst:799
 msgid "@reboot on the game and @readcache."
 msgstr ""
 
-#: ../../source/features.rst:834
+#: ../../source/features.rst:801
 msgid "You do not need to @shutdown."
 msgstr ""
 
-#: ../../source/features.rst:837
+#: ../../source/features.rst:804
 msgid "Softcode emulations of functions from other servers are included"
 msgstr ""
 
-#: ../../source/features.rst:839
+#: ../../source/features.rst:806
 msgid "Load the file softfunctions into the mush once it's set up.  This are @functions that will alias the functions that PENN, MUX, and TinyMUSH have that is either named differently or we don't have for one reason or another."
 msgstr ""

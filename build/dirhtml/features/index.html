@@ -834,47 +834,8 @@ Also look at lit() as a solution.</p></li>
 </ul>
 </div></blockquote>
 </div>
-<div class="section" id="things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it">
-<h3><span class="section-number">2.23.23. </span>Things other mushes can do that Rhost can not and how to emulate it<a class="headerlink" href="#things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="pennmush">
-<h4><span class="section-number">2.23.23.1. </span>PennMUSH<a class="headerlink" href="#pennmush" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul>
-<li><p>Attribute trees.  These are emulated as a base set and can be duplicated enough to at least port code.</p></li>
-<li><p>lsearch() will have to be recoded to search()</p></li>
-<li><p>align() will have to be recoded to printf()</p></li>
-<li><p>Penn allows empty attributes.  Rhost does not.  Work will have to
-be done to take this into consideration.</p></li>
-<li><p>All *val() functions in Penn that are used will have to be remapped to a non-*val() function.  It should be as simple as function_alias to the non-*val.  Example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span> <span class="n">function_alias</span><span class="o">=</span><span class="n">hasattrval</span> <span class="nb">hasattr</span>
-</pre></div>
-</div>
-</li>
-<li><p>Penn’s hardcoded comsystem is emulated with the softcode comsys</p></li>
-<li><p>Penn’s &#64;mail system is workable with mail wrappers</p></li>
-<li><p>Pueblo is not supported.</p></li>
-<li><p>json is not supported.</p></li>
-<li><p>ssl is not natively supported (yet), see section XIV</p></li>
-<li><p>This uses &#64;shutdown/restart, Rhost uses &#64;reboot</p></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="mux">
-<h4><span class="section-number">2.23.23.2. </span>MUX<a class="headerlink" href="#mux" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><ul class="simple">
-<li><p>Mux has an async mysql database engine.  This is not possible with Rhost.  You’ll have to use the sync method instead.</p></li>
-<li><p>UTF8 is supported but internally passed differently.</p></li>
-<li><p>Mux’s hardcoded comsystem is emulated with the softcode comsys</p></li>
-<li><p>MUX’s &#64;mail system is workable with mail wrappers</p></li>
-<li><p>Pueblo is not supported.</p></li>
-<li><p>This uses &#64;restart, Rhost uses &#64;reboot</p></li>
-</ul>
-</div></blockquote>
-</div>
-</div>
 <div class="section" id="advanced-guest-setup">
-<h3><span class="section-number">2.23.24. </span>Advanced guest setup<a class="headerlink" href="#advanced-guest-setup" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.23.23. </span>Advanced guest setup<a class="headerlink" href="#advanced-guest-setup" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><p>After you set up your guests, you can set unique names to each guest
@@ -892,7 +853,7 @@ increase guests (or decrease them) between 0-31 guests.</p>
 </div></blockquote>
 </div>
 <div class="section" id="attribute-permission-masking-and-the-joys-of-the-power-behind-it">
-<h3><span class="section-number">2.23.25. </span>Attribute permission masking and the joys of the power behind it<a class="headerlink" href="#attribute-permission-masking-and-the-joys-of-the-power-behind-it" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.23.24. </span>Attribute permission masking and the joys of the power behind it<a class="headerlink" href="#attribute-permission-masking-and-the-joys-of-the-power-behind-it" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><p>Attribute contentlocks can be set up so you can lock the actual
@@ -911,7 +872,7 @@ The sky’s the limit.</p>
 </div></blockquote>
 </div>
 <div class="section" id="the-amazing-cluster-and-what-it-can-do-for-you">
-<h3><span class="section-number">2.23.26. </span>The amazing &#64;cluster and what it can do for you<a class="headerlink" href="#the-amazing-cluster-and-what-it-can-do-for-you" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.23.25. </span>The amazing &#64;cluster and what it can do for you<a class="headerlink" href="#the-amazing-cluster-and-what-it-can-do-for-you" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><p>Clusters is the way to virtually assign multiple objects into
@@ -931,7 +892,7 @@ amount of attributes without paying a hefty penalty on object bloat.</p>
 </div></blockquote>
 </div>
 <div class="section" id="what-we-plan-for-the-future">
-<h3><span class="section-number">2.23.27. </span>What we plan for the future<a class="headerlink" href="#what-we-plan-for-the-future" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.23.26. </span>What we plan for the future<a class="headerlink" href="#what-we-plan-for-the-future" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p>Things to look forward to the future with RhostMUSH.</p>
@@ -948,7 +909,7 @@ amount of attributes without paying a hefty penalty on object bloat.</p>
 </div></blockquote>
 </div>
 <div class="section" id="additional-features-not-covered-otherwise">
-<h3><span class="section-number">2.23.28. </span>Additional features not covered otherwise<a class="headerlink" href="#additional-features-not-covered-otherwise" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.23.27. </span>Additional features not covered otherwise<a class="headerlink" href="#additional-features-not-covered-otherwise" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><ul>
 <li><p>+/- 5.4 million years can be utilized with the built in time functions
@@ -1107,16 +1068,11 @@ that is either named differently or we don’t have for one reason or another.</
 <li><a class="reference internal" href="#signal-handling-how-it-works-and-when-and-why-use-it">2.23.20. Signal handling, how it works, and when and why use it</a></li>
 <li><a class="reference internal" href="#setting-up-global-parents-global-parents-global-attribute-formatting-and-other-global-setups">2.23.21. Setting up global parents, global &#64;parents, global attribute formatting, and other global setups</a></li>
 <li><a class="reference internal" href="#rhostmush-limitations-and-how-to-get-around-them">2.23.22. RhostMUSH limitations and how to get around them</a></li>
-<li><a class="reference internal" href="#things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it">2.23.23. Things other mushes can do that Rhost can not and how to emulate it</a><ul>
-<li><a class="reference internal" href="#pennmush">2.23.23.1. PennMUSH</a></li>
-<li><a class="reference internal" href="#mux">2.23.23.2. MUX</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#advanced-guest-setup">2.23.24. Advanced guest setup</a></li>
-<li><a class="reference internal" href="#attribute-permission-masking-and-the-joys-of-the-power-behind-it">2.23.25. Attribute permission masking and the joys of the power behind it</a></li>
-<li><a class="reference internal" href="#the-amazing-cluster-and-what-it-can-do-for-you">2.23.26. The amazing &#64;cluster and what it can do for you</a></li>
-<li><a class="reference internal" href="#what-we-plan-for-the-future">2.23.27. What we plan for the future</a></li>
-<li><a class="reference internal" href="#additional-features-not-covered-otherwise">2.23.28. Additional features not covered otherwise</a></li>
+<li><a class="reference internal" href="#advanced-guest-setup">2.23.23. Advanced guest setup</a></li>
+<li><a class="reference internal" href="#attribute-permission-masking-and-the-joys-of-the-power-behind-it">2.23.24. Attribute permission masking and the joys of the power behind it</a></li>
+<li><a class="reference internal" href="#the-amazing-cluster-and-what-it-can-do-for-you">2.23.25. The amazing &#64;cluster and what it can do for you</a></li>
+<li><a class="reference internal" href="#what-we-plan-for-the-future">2.23.26. What we plan for the future</a></li>
+<li><a class="reference internal" href="#additional-features-not-covered-otherwise">2.23.27. Additional features not covered otherwise</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#random-notes-and-things-to-know-about-rhostmush">2.24. Random notes and things to know about RhostMUSH</a><ul>

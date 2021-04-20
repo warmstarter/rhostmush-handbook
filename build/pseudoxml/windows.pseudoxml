@@ -1,0 +1,103 @@
+<document source="/home/pi/rhostmush/rhostmush-handbook/source/windows.rst">
+    <substitution_definition names="br">
+        <raw format="html .. force a line break in html output (blank lines needed here)" xml:space="preserve">
+            <br />
+    <substitution_definition names="p">
+        <raw format="html .. force a blank line in html output (blank lines needed here)" xml:space="preserve">
+            <p></p>
+    <comment xml:space="preserve">
+        These are replacement strings for non-ASCII characters used within the project
+        using the same name as the html entity names (e.g., &copy;) for that character
+    <substitution_definition ltrim="1" names="copy">
+        ©
+    <substitution_definition ltrim="1" names="trade">
+        ™
+    <substitution_definition ltrim="1" names="reg">
+        ®
+    <substitution_definition ltrim="1" names="deg">
+        °
+    <substitution_definition names="plusminus" rtrim="1">
+        ±
+    <substitution_definition names="micro" rtrim="1">
+        µ
+    <substitution_definition ltrim="1" names="sup2">
+        ²
+    <target refid="windows-requirements">
+    <section ids="requirements-if-using-windows windows-requirements" names="requirements\ if\ using\ windows windows-requirements">
+        <title>
+            Requirements if Using Windows
+        <bullet_list bullet="*">
+            <list_item>
+                <paragraph>
+                    (BETA ONLY) cygwin under Windows.  It requires the entire base development set and Requirements below.
+        <section ids="installing-on-windows-10-with-bash" names="installing\ on\ windows\ 10\ with\ bash">
+            <title>
+                Installing on Windows 10 with BASH
+            <paragraph>
+                Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
+                This has been tested with the Preview build 14342.
+            <enumerated_list enumtype="arabic" prefix="" suffix=".">
+                <list_item>
+                    <paragraph>
+                        After installing Bash you will need to install the following packages:
+                    <bullet_list bullet="-">
+                        <list_item>
+                            <paragraph>
+                                gcc
+                        <list_item>
+                            <paragraph>
+                                git
+                        <list_item>
+                            <paragraph>
+                                make
+                        <list_item>
+                            <paragraph>
+                                libpcre3 (optional)
+                        <list_item>
+                            <paragraph>
+                                libpcre3-dev (optional)
+                        <list_item>
+                            <paragraph>
+                                openssl (optional)
+            <paragraph>
+                2. When configuring rhost (using confsource) select the Disable Debugmon
+                option.
+        <section ids="installing-on-windows-with-cygwin" names="installing\ on\ windows\ with\ cygwin">
+            <title>
+                Installing on Windows with Cygwin
+            <paragraph>
+                Rhost does work under windows using the cygwin package.
+            <enumerated_list enumtype="arabic" prefix="" suffix=".">
+                <list_item>
+                    <paragraph>
+                        When you do install cygwin, the following packages must be added:
+                    <bullet_list bullet="-">
+                        <list_item>
+                            <paragraph>
+                                bash
+                        <list_item>
+                            <paragraph>
+                                crypt
+                        <list_item>
+                            <paragraph>
+                                gcc
+                        <list_item>
+                            <paragraph>
+                                gdbm
+                        <list_item>
+                            <paragraph>
+                                git
+                        <list_item>
+                            <paragraph>
+                                make
+                        <list_item>
+                            <paragraph>
+                                openssl (optional)
+                <list_item>
+                    <paragraph>
+                        The src/Makefile has to manually have the CYGWIN line uncommented.
+        <section ids="startig-rhostmush-on-windows" names="startig\ rhostmush\ on\ windows">
+            <title>
+                Startig RhostMUSH on Windows
+            <paragraph>
+                When you issue Startmush, you must pass it the -cyg option.

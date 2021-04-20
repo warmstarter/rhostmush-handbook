@@ -10,7 +10,7 @@ but it does give you a wider selection of configurability,
 which, as you know, is the best part of setting up a mush.
 (yea, right)
 
-*  A high-performance duel-quota system.
+*  A high-performance dual-quota system.
 *  A complete rewrite of key areas and referbishments of all the other areas.
 *  An on-line recover tool for accidental db destruction.
 *  Multi-wizard architecture for better control of staff.
@@ -45,10 +45,12 @@ which, as you know, is the best part of setting up a mush.
    powers.rst
    helpfile.rst
    wizhelpfile.rst
-   changelog.rst
    nda.rst
 
 .. include:: copyright.rst
+
+..
+   changelog.rst
 
 Indices and tables
 ==================

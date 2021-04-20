@@ -60,33 +60,12 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 </ol>
 </div>
 </div>
-<div class="section" id="shutting-down-rhostmush-gracefully">
-<h2><span class="section-number">10.3. </span>Shutting down RhostMUSH gracefully</h2>
-<div class="section" id="there-are-a-few-ways-to-cleanly-shutdown-rhostmush">
-<h3><span class="section-number">10.3.1. </span>There are a few ways to cleanly shutdown RhostMUSH</h3>
-<ol class="arabic simple">
-<li><p>Log into the mush and issue &#64;shutdown</p></li>
-<li><p>Issue a kill -USR2 to the mush which issues an emergency &#64;shutdown</p></li>
-<li><p>Issue a kill -TERM to the mush which issues an emergency abort and clean shutdown.</p></li>
-</ol>
-</div>
-<div class="section" id="warning-never-kill-9-rhostmush">
-<h3><span class="section-number">10.3.2. </span>WARNING: Never kill -9 RhostMUSH</h3>
-<p>Under NO CIRCUMSTANCES should you kill -9 your mush unless you don’t care for the
-database.  The reason is if the mush happens to be saving, in any method, to the
-database, especially a QDBM database, you will likely have just corrupted your
-database, so pull out a flatfile to recover.</p>
-<p>Sadly, this also may occur if the server hosting you takes a nose-dive in the middle
-of a db write.  Rhost can recover corruption in-game while up, but if it bombs
-in the middle of a write, all bets are off. :)</p>
-</div>
-</div>
 <div class="section" id="reality-levels-setup">
-<h2><span class="section-number">10.4. </span>Reality Levels Setup</h2>
+<h2><span class="section-number">10.3. </span>Reality Levels Setup</h2>
 <p>Reality levels are a means to forbid (or allow) interaction between objects
 in the same location.</p>
 <div class="section" id="reality-levels-visibility">
-<h3><span class="section-number">10.4.1. </span>Reality Levels Visibility</h3>
+<h3><span class="section-number">10.3.1. </span>Reality Levels Visibility</h3>
 <p>Each object (player, room, exit, thing) has two lists of reality levels.
 An Rx list, which describe what it can see and a Tx list, which describe
 where it can be seen. Those are bitfields. In order for X to see Y a bitwise
@@ -104,7 +83,7 @@ An object is always visible to itself, even if its Rx and Tx levels don’t
 match. (See examples below)</p>
 </div>
 <div class="section" id="reality-levels-descriptions">
-<h3><span class="section-number">10.4.2. </span>Reality Levels Descriptions</h3>
+<h3><span class="section-number">10.3.2. </span>Reality Levels Descriptions</h3>
 <p>For every reality level defined, you can define an attribute that serves as
 description. If you look at something and match more than one of its
 TxLevels, you’ll see all the corresponding descriptions on the target
@@ -126,7 +105,7 @@ order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.</p>
 </div>
 <div class="section" id="reality-levels-configuration-parameters">
-<h3><span class="section-number">10.4.3. </span>Reality Levels Configuration parameters</h3>
+<h3><span class="section-number">10.3.3. </span>Reality Levels Configuration parameters</h3>
 <p>A few configuration parameters have been introduced to deal with the reality
 levels:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">desc</span> <span class="n">attribute</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
@@ -165,7 +144,7 @@ This is an example file only to be added to the mush.conf file Format:</p>
 </div>
 </div>
 <div class="section" id="reality-levels-example-mush-conf">
-<h3><span class="section-number">10.4.4. </span>Reality Levels Example mush.conf</h3>
+<h3><span class="section-number">10.3.4. </span>Reality Levels Example mush.conf</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="n">Real</span> <span class="mi">1</span>
 <span class="n">reality_level</span> <span class="n">Obf1</span> <span class="mi">2</span>
 <span class="n">reality_level</span> <span class="n">Obf2</span> <span class="mi">4</span>
@@ -187,7 +166,7 @@ This is an example file only to be added to the mush.conf file Format:</p>
 </div>
 </div>
 <div class="section" id="reality-levels-commands">
-<h3><span class="section-number">10.4.5. </span>Reality Levels Commands</h3>
+<h3><span class="section-number">10.3.5. </span>Reality Levels Commands</h3>
 <p>Two wiz-only commands are used to set the reality levels of an object:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@rxlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
 <span class="nd">@txlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
@@ -204,7 +183,7 @@ for players).</p>
 </div>
 </div>
 <div class="section" id="functions">
-<h3><span class="section-number">10.4.6. </span>Functions</h3>
+<h3><span class="section-number">10.3.6. </span>Functions</h3>
 <p>There are five functions that deal with reality levels:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hasrxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="n">hastxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
@@ -234,7 +213,7 @@ version checks against the DARK flag.</p>
 </div>
 </div>
 <div class="section" id="example-1-a-simplified-witchcraft-setup">
-<h3><span class="section-number">10.4.7. </span>Example 1: A simplified Witchcraft setup</h3>
+<h3><span class="section-number">10.3.7. </span>Example 1: A simplified Witchcraft setup</h3>
 <p>In Witchcraft, besides the various Gifted classes, characters can be spirits
 There are spirit realms to which the mundane can not travel. Therefore we
 will use 2 reality levels: Real and Ghost. Since some spirits can become
@@ -339,7 +318,7 @@ anyway, so a spirit character will have:</p>
 </div>
 </div>
 <div class="section" id="example-2-a-wod-setup">
-<h3><span class="section-number">10.4.8. </span>Example 2: A WoD setup</h3>
+<h3><span class="section-number">10.3.8. </span>Example 2: A WoD setup</h3>
 <p>The reality levels will be defined like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span>         <span class="n">Real</span> <span class="mi">1</span>
 <span class="n">reality_level</span>         <span class="n">Obf1</span> <span class="mi">2</span>
@@ -418,7 +397,7 @@ Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</p>
 </div>
 </div>
 <div class="section" id="example-3-softcode">
-<h3><span class="section-number">10.4.9. </span>Example 3: Softcode</h3>
+<h3><span class="section-number">10.3.9. </span>Example 3: Softcode</h3>
 <p>Considering the config directives from example 2 and assuming a function
 getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player’s stat from
 the sheet here are softcode examples that implement some of the WoD powers.
@@ -443,11 +422,11 @@ In a real game you would have to use some more checks, of course.</p>
 </div>
 </div>
 <div class="section" id="execscript-and-external-programs-and-scripts">
-<h2><span class="section-number">10.5. </span>Execscript and external programs and scripts</h2>
-<div class="section" id="mush-variables">
-<h3><span class="section-number">10.5.1. </span>Mush variables</h3>
-<div class="section" id="built-in-variables">
-<h4><span class="section-number">10.5.1.1. </span>Built in variables</h4>
+<h2><span class="section-number">10.4. </span>Execscript and external programs and scripts</h2>
+<div class="section" id="execscript-variables">
+<h3><span class="section-number">10.4.1. </span>Execscript variables</h3>
+<div class="section" id="execscript-built-in-variables">
+<h4><span class="section-number">10.4.1.1. </span>Execscript Built in variables</h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
@@ -490,8 +469,8 @@ This is passed from the mush’s EXECSCRIPT_VARS attr</p></td>
 </tbody>
 </table>
 </div>
-<div class="section" id="dynamic-variables">
-<h4><span class="section-number">10.5.1.2. </span>Dynamic variables</h4>
+<div class="section" id="execscript-dynamic-variables">
+<h4><span class="section-number">10.4.1.2. </span>Execscript Dynamic variables</h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 37%" />
@@ -510,8 +489,8 @@ These are the attributes from EXECSCRIPT_VARS</p></td>
 </tbody>
 </table>
 </div>
-<div class="section" id="register-variables">
-<h4><span class="section-number">10.5.1.3. </span>Register variables</h4>
+<div class="section" id="execscript-register-variables">
+<h4><span class="section-number">10.4.1.3. </span>Execscript Register variables</h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
@@ -537,21 +516,21 @@ Note: they must be ASCII-7 clean and contain no white spaces</p></td>
 </table>
 </div>
 </div>
-<div class="section" id="set-object">
-<h3><span class="section-number">10.5.2. </span>set object</h3>
+<div class="section" id="execsript-set-object">
+<h3><span class="section-number">10.4.2. </span>Execsript set object</h3>
 <p>The script executed with execscript() will read in a file with the same name
 as the script ending in ‘.set’.  This is a loader object that will set attributes
 and registers back into the mush that you wish to pass from the script. The
 fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
-<div class="section" id="the-format-of-the-fields-are">
-<h4><span class="section-number">10.5.2.1. </span>The format of the fields are</h4>
-<div class="section" id="id1">
-<h5><span class="section-number">10.5.2.1.1. </span>Dynamic variables</h5>
+<div class="section" id="execscript-set-object-field-format">
+<h4><span class="section-number">10.4.2.1. </span>Execscript set object field format</h4>
+<div class="section" id="execscript-set-object-dynamic-variables">
+<h5><span class="section-number">10.4.2.1.1. </span>Execscript set object Dynamic variables</h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VARNAME</span>        <span class="n">OWNER</span>        <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="examples">
-<h6><span class="section-number">10.5.2.1.1.1. </span>Examples</h6>
+<div class="section" id="execscript-set-object-dynamic-variables-examples">
+<h6><span class="section-number">10.4.2.1.1.1. </span>Execscript set object Dynamic variables Examples</h6>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SEX</span> <span class="c1">#123 Male</span>
 <span class="n">DESC</span> <span class="c1">#123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.</span>
 <span class="n">RED</span> <span class="c1">#123 This is the color %ch%crred%cn.</span>
@@ -564,13 +543,17 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 </div>
 </div>
 </div>
-<div class="section" id="id2">
-<h5><span class="section-number">10.5.2.1.2. </span>Register variables</h5>
+<div class="section" id="execscript-set-object-register-variables">
+<h5><span class="section-number">10.4.2.1.2. </span>Execscript set object Register variables</h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REGISTER</span>       <span class="n">Q</span>            <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="examples-the-last-example-clears-register-0">
-<h6><span class="section-number">10.5.2.1.2.1. </span>Examples (The last example clears register 0)</h6>
+<div class="section" id="execscript-set-object-register-variables-examples">
+<h6><span class="section-number">10.4.2.1.2.1. </span>Execscript set object Register variables Examples</h6>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The last exammple clears register 0</p>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">W</span> <span class="n">Q</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">stored</span> <span class="ow">in</span> <span class="n">register</span> <span class="n">W</span>
 <span class="mi">1</span> <span class="n">Q</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">stored</span> <span class="ow">in</span> <span class="n">register</span> <span class="mi">1</span>
 <span class="mi">0</span> <span class="n">Q</span>
@@ -581,8 +564,8 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 </div>
 </div>
 </div>
-<div class="section" id="example-bash-script">
-<h3><span class="section-number">10.5.3. </span>Example bash script</h3>
+<div class="section" id="execscript-example-bash-script">
+<h3><span class="section-number">10.4.3. </span>Execscript Example bash script</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 echo &quot;This was called by player ${MUSH_PLAYER} that is owned by ${MUSH_OWNER}&quot;
 echo &quot;Displaying Registers:&quot;
@@ -599,8 +582,8 @@ done
 </pre></div>
 </div>
 </div>
-<div class="section" id="notes-and-warnings">
-<h3><span class="section-number">10.5.4. </span>Notes and warnings</h3>
+<div class="section" id="exescript-notes-and-warnings">
+<h3><span class="section-number">10.4.4. </span>Exescript Notes and warnings</h3>
 <p>While MUSHL_VARS are sanitized on what is allowable as a mush variable, this
 is not necessarilly sanitized on what the calling script can fetch as a valid
 variable.  Of note, you can not set environment variables that contain an
@@ -610,7 +593,7 @@ This is EXECSCRIPT_VARS on the mush itself, that is the attribute set
 on the target that contains the execscript() that is being executed.</p>
 </div>
 <div class="section" id="scripts-to-be-used-with-execscript">
-<h3><span class="section-number">10.5.5. </span>Scripts to be used with execscript</h3>
+<h3><span class="section-number">10.4.5. </span>Scripts to be used with execscript</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">account</span><span class="o">/</span>                       <span class="o">--</span> <span class="n">Directory</span> <span class="k">for</span> <span class="n">execscripts</span> <span class="n">relating</span> <span class="n">to</span> <span class="n">account</span> <span class="n">creation</span>
 <span class="n">compile39</span><span class="o">.</span><span class="n">sh</span>                   <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span> <span class="mf">3.9</span>
 <span class="nb">compile</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span>
@@ -646,11 +629,11 @@ on the target that contains the execscript() that is being executed.</p>
 </div>
 </div>
 <div class="section" id="using-printf-for-advanced-text-output">
-<h2><span class="section-number">10.6. </span>Using printf() for advanced text output</h2>
+<h2><span class="section-number">10.5. </span>Using printf() for advanced text output</h2>
 <p>The function printf() in Rhost can be used to greatly reduce coding in efforts for outputs,
 screens and data display.  It can automatically center, justify and wrap the text parameters given to it.</p>
-<div class="section" id="example-one">
-<h3><span class="section-number">10.6.1. </span>Example one</h3>
+<div class="section" id="printf-example-one">
+<h3><span class="section-number">10.5.1. </span>Printf Example one</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf(|$-12s|$12s|$^12s$&amp;14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
 
 |a b c       |       d e f|   g h i    |0 1 2 3 4 5 |j     k    l|
@@ -661,8 +644,8 @@ screens and data display.  It can automatically center, justify and wrap the tex
 </pre></div>
 </div>
 </div>
-<div class="section" id="example-two">
-<h3><span class="section-number">10.6.2. </span>Example two</h3>
+<div class="section" id="printf-example-two">
+<h3><span class="section-number">10.5.2. </span>Printf Example two</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
 iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
 iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
@@ -678,8 +661,8 @@ iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)
 </pre></div>
 </div>
 </div>
-<div class="section" id="example-three">
-<h3><span class="section-number">10.6.3. </span>Example three</h3>
+<div class="section" id="printf-example-three">
+<h3><span class="section-number">10.5.3. </span>Printf Example three</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit [printf($-10|&quot;&#39;s$-60|&quot;s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
 this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!
 
@@ -878,338 +861,341 @@ $6$xy$xy
 </pre></div>
 </div>
 <div class="section" id="help-key-indexes-for-the-values">
-<h2><span class="section-number">11.1. </span>HELP key indexes for the values:</h2>
-<dl class="simple">
-<dt>FLAGS: The following flags are to be used.  They are BITWISE masks that you</dt><dd><p>need to add together for the values tghat you apply</p>
-</dd>
-</dl>
-<p>/* First word of flags <em>/
-#define SEETHRU         0x00000008      /</em> Can see through to the other side <em>/
-#define WIZARD          0x00000010      /</em> gets automatic control <em>/
-#define LINK_OK         0x00000020      /</em> anybody can link to this room <em>/
-#define DARK            0x00000040      /</em> Don’t show contents or presence <em>/
-#define JUMP_OK         0x00000080      /</em> Others may &#64;tel here <em>/
-#define STICKY          0x00000100      /</em> Object goes home when dropped <em>/
-#define DESTROY_OK      0x00000200      /</em> Others may &#64;destroy <em>/
-#define HAVEN           0x00000400      /</em> No killing here, or no pages <em>/
-#define QUIET           0x00000800      /</em> Prevent ‘feelgood’ messages <em>/
-#define HALT            0x00001000      /</em> object cannot perform actions <em>/
-#define TRACE           0x00002000      /</em> Generate evaluation trace output <em>/
-#define GOING           0x00004000      /</em> object is available for recycling <em>/
-#define MONITOR         0x00008000      /</em> Process ^x:action listens on obj? <em>/
-#define MYOPIC          0x00010000      /</em> See things as nonowner/nonwizard <em>/
-#define PUPPET          0x00020000      /</em> Relays ALL messages to owner <em>/
-#define CHOWN_OK        0x00040000      /</em> Object may be &#64;chowned freely <em>/
-#define ENTER_OK        0x00080000      /</em> Object may be ENTERed <em>/
-#define VISUAL          0x00100000      /</em> Everyone can see properties <em>/
-#define IMMORTAL        0x00200000      /</em> Object can’t be killed <em>/
-#define HAS_STARTUP     0x00400000      /</em> Load some attrs at startup <em>/
-#define OPAQUE          0x00800000      /</em> Can’t see inside <em>/
-#define VERBOSE         0x01000000      /</em> Tells owner everything it does. <em>/
-#define INHERIT         0x02000000      /</em> Gets owner’s privs. (i.e. Wiz) <em>/
-#define NOSPOOF         0x04000000      /</em> Report originator of all actions. <em>/
-#define ROBOT           0x08000000      /</em> Player is a ROBOT <em>/
-#define SAFE            0x10000000      /</em> Need /override to &#64;destroy <em>/
-#define CONTROL_OK      0x20000000      /</em> ControlLk specifies who ctrls me <em>/
-#define HEARTHRU        0x40000000      /</em> Can hear out of this obj or exit <em>/
-#define TERSE           0x80000000      /</em> Only show room name on look <a href="#id3"><span class="problematic" id="id4">*</span></a>/</p>
-<p>/* Second word of flags <em>/
-#define KEY             0x00000001      /</em> No puppets <em>/
-#define ABODE           0x00000002      /</em> May &#64;set home here <em>/
-#define FLOATING        0x00000004      /</em> Inhibit Floating room.. msgs <em>/
-#define UNFINDABLE      0x00000008      /</em> Cant loc() from afar <em>/
-#define PARENT_OK       0x00000010      /</em> Others may &#64;parent to me <em>/
-#define LIGHT           0x00000020      /</em> Visible in dark places <em>/
-#define HAS_LISTEN      0x00000040      /</em> Internal: LISTEN attr set <em>/
-#define HAS_FWDLIST     0x00000080      /</em> Internal: FORWARDLIST attr set <em>/
-#define ADMIN           0x00000100      /</em> Player has admin privs <em>/
-#define GUILDOBJ        0x00000200
-#define GUILDMASTER     0x00000400      /</em> Player has gm privs <em>/
-#define NO_WALLS        0x00000800      /</em> So to stop normal walls <em>/
-#define REQUIRE_TREES   0x00001000      /</em> Trees are required on this target for attrib sets <em>/
-/</em> —-FREE—-         0x00002000 <em>/   /</em> #define OLD_NOROBOT  0x00002000 <em>/
-#define SCLOAK          0x00004000
-#define CLOAK           0x00008000
-#define FUBAR           0x00010000
-#define INDESTRUCTABLE  0x00020000      /</em> object can’t be nuked <em>/
-#define NO_YELL         0x00040000      /</em> player can’t &#64;wall <em>/
-#define NO_TEL          0x00080000      /</em> player can’t &#64;tel or be &#64;tel’d <em>/
-#define FREE            0x00100000      /</em> object/player has unlim money <em>/
-#define GUEST_FLAG      0x00200000
-#define RECOVER         0x00400000
-#define BYEROOM         0x00800000
-#define WANDERER        0x01000000
-#define ANSI            0x02000000
-#define ANSICOLOR       0x04000000
-#define NOFLASH         0x08000000
-#define SUSPECT         0x10000000      /</em> Report some activities to wizards <em>/
-#define BUILDER         0x20000000      /</em> Player has architect privs <em>/
-#define CONNECTED       0x40000000      /</em> Player is connected <em>/
-#define SLAVE           0x80000000      /</em> Disallow most commands <a href="#id5"><span class="problematic" id="id6">*</span></a>/</p>
-<p>/* Third word of flags - Thorin 3/95 <em>/
-#define NOCONNECT       0x00000001
-#define DPSHIFT         0x00000002
-#define NOPOSSESS       0x00000004
-#define COMBAT          0x00000008
-#define IC              0x00000010
-#define ZONEMASTER      0x00000020
-#define ALTQUOTA        0x00000040
-#define NOEXAMINE       0x00000080
-#define NOMODIFY        0x00000100
-#define CMDCHECK        0x00000200
-#define DOORRED         0x00000400
-#define PRIVATE         0x00000800      /</em> For exits only <em>/
-#define NOMOVE          0x00001000
-#define STOP            0x00002000
-#define NOSTOP          0x00004000
-#define NOCOMMAND       0x00008000
-#define AUDIT           0x00010000
-#define SEE_OEMIT       0x00020000
-#define NO_GOBJ         0x00040000
-#define NO_PESTER       0x00080000
-#define LRFLAG          0x00100000
-#define TELOK           0x00200000
-#define NO_OVERRIDE     0x00400000
-#define NO_USELOCK      0x00800000
-#define DR_PURGE        0x01000000      /</em> For rooms only…internal <em>/
-#define NO_ANSINAME     0x02000000      /</em> Remove the ability to set &#64;ansiname <em>/
-#define SPOOF           0x04000000
-#define SIDEFX          0x08000000      /</em> Allow enactor to use side-effects <em>/
-#define ZONECONTENTS    0x10000000      /</em> Search contents of zonemaster for $commands <em>/
-#define NOWHO           0x20000000      /</em> Player in WHO doesn’t show up - use with &#64;hide <em>/
-#define ANONYMOUS       0x40000000      /</em> Player set shows up as ‘Someone’ when talking <em>/
-#define BACKSTAGE       0x80000000      /</em> Immortal toggle for items on control <a href="#id7"><span class="problematic" id="id8">*</span></a>/</p>
-<p>/* Forth word of flags - Thorin 3/95 <em>/
-#define NOBACKSTAGE     0x00000001      /</em> Immortal toggle to control no-backstage <em>/
-#define LOGIN           0x00000002      /</em> Enable player to login past &#64;disable logins <em>/
-#define INPROGRAM       0x00000004      /</em> Player is inside a program <em>/
-#define COMMANDS        0x00000008      /</em> Optional define for $commands <em>/
-#define MARKER0         0x00000010      /</em> TM 3.0 marker flags <em>/
-#define MARKER1         0x00000020
-#define MARKER2         0x00000040
-#define MARKER3         0x00000080
-#define MARKER4         0x00000100
-#define MARKER5         0x00000200
-#define MARKER6         0x00000400
-#define MARKER7         0x00000800
-#define MARKER8         0x00001000
-#define MARKER9         0x00002000
-#define BOUNCE          0x00004000      /</em> That lovly TM 3.0 Bouncey thingy <em>/
-#define SHOWFAILCMD     0x00008000      /</em> Show failed $commands defauilt error <em>/
-#define NOUNDERLINE     0x00010000      /</em> Strip UNDERLINE character from ANSI <em>/
-#define NONAME          0x00020000      /</em> Target does not display name with look <em>/
-#define ZONEPARENT      0x00040000      /</em> Target zone allows inheritance of attribs <em>/
-#define SPAMMONITOR     0x00080000      /</em> Monitor the target for spam <em>/
-#define BLIND           0x00100000      /</em> Exits and locations snuff arrived/left <em>/
-#define NOCODE          0x00200000      /</em> Players may not code <em>/
-#define HAS_PROTECT     0x00400000      /</em> Player target has protect name data <em>/
-#define XTERMCOLOR      0x00800000      /</em> Extended AnSI Xterm colors <em>/
-#define HAS_ATTRPIPE    0x01000000      /</em> Attribute piping via &#64;pipe <em>/
-/</em> 0x02000000 free <em>/
-/</em> 0x04000000 free <em>/
-/</em> 0x08000000 free <em>/
-/</em> 0x10000000 free <em>/
-/</em> 0x20000000 free <em>/
-/</em> 0x40000000 free <em>/
-/</em> 0x80000000 free <a href="#id9"><span class="problematic" id="id10">*</span></a>/</p>
-<hr class="docutils" />
-<dl class="simple">
-<dt>TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like</dt><dd><p>the flags above.  They are added together for each word type</p>
-</dd>
-</dl>
-<p>/* First word of toggles - Thorin 3/95 <em>/
-#define TOG_MONITOR             0x00000001      /</em> Active monitor on player <em>/
-#define TOG_MONITOR_USERID      0x00000002      /</em> show userid <em>/
-#define TOG_MONITOR_SITE        0x00000004      /</em> show site <em>/
-#define TOG_MONITOR_STATS       0x00000008      /</em> show stats <em>/
-#define TOG_MONITOR_FAIL        0x00000010      /</em> show fails <em>/
-#define TOG_MONITOR_CONN        0x00000020
-#define TOG_VANILLA_ERRORS      0x00000040      /</em> show normal error msg <em>/
-#define TOG_NO_ANSI_EX          0x00000080      /</em> supress ansi stuff in ex <em>/
-#define TOG_CPUTIME             0x00000100      /</em> show cpu time for cmds <em>/
-#define TOG_MONITOR_DISREASON   0x00000200
-#define TOG_MONITOR_VLIMIT      0x00000400
-#define TOG_NOTIFY_LINK         0x00000800
-#define TOG_MONITOR_AREG        0x00001000
-#define TOG_MONITOR_TIME        0x00002000
-#define TOG_CLUSTER             0x00004000      /</em> Object is part of a cluster <em>/
-#define TOG_SNUFFDARK           0x00008000      /</em> Snuff Dark Exit Viewing <em>/
-#define TOG_NOANSI_PLAYER       0x00010000      /</em> Do not show ansi player names <em>/
-#define TOG_NOANSI_THING        0x00020000      /</em> … things <em>/
-#define TOG_NOANSI_ROOM         0x00040000      /</em> … rooms <em>/
-#define TOG_NOANSI_EXIT         0x00080000      /</em> … exits <em>/
-#define TOG_NO_TIMESTAMP        0x00100000      /</em> Do not modify timestamps on target <em>/
-#define TOG_NO_FORMAT           0x00200000      /</em> Override &#64;conformat/&#64;exitformat <em>/
-#define TOG_ZONE_AUTOADD        0x00400000      /</em> Automatically add FIRST zone in list <em>/
-#define TOG_ZONE_AUTOADDALL     0x00800000      /</em> Automatically add ALL zones in list <em>/
-#define TOG_WIELDABLE           0x01000000      /</em> Marker to specify if object is wieldable <em>/
-#define TOG_WEARABLE            0x02000000      /</em> Marker to specify if object is wearable <em>/
-#define TOG_SEE_SUSPECT         0x04000000      /</em> Specify who sees suspect in WHO/MONITOR <em>/
-#define TOG_MONITOR_CPU         0x08000000      /</em> Specify who sees CPU overflow allerts <em>/
-#define TOG_BRANDY_MAIL         0x10000000      /</em> Define brandy like mail interface <em>/
-#define TOG_FORCEHALTED         0x20000000      /</em> The item toggled can &#64;force halted things <em>/
-#define TOG_PROG                0x40000000      /</em> Can use &#64;program on other people/things <em>/
-#define TOG_NOSHELLPROG         0x80000000      /</em> Target can not issue commands inside a prog <a href="#id11"><span class="problematic" id="id12">*</span></a>/</p>
-<p>/* Second word of toggles – Ash <em>/
-#define TOG_EXTANSI             0x00000001      /</em> Specify if target can used extended ansi naming <em>/
-#define TOG_IMMPROG             0x00000002      /</em> Only an immortal can &#64;quitprogram them <em>/
-#define TOG_MONITOR_BFAIL       0x00000004      /</em> Monitor if a failed connect on bad character <em>/
-#define TOG_PROG_ON_CONNECT     0x00000008      /</em> Reverse logic of program on connect <em>/
-#define TOG_MAIL_STRIPRETURN    0x00000010      /</em> Strip carrage return in mail combining <em>/
-#define TOG_PENN_MAIL           0x00000020      /</em> Use PENN style syntax <em>/
-#define TOG_SILENTEFFECTS       0x00000040      /</em> Silents did_it() functionality on target <em>/
-#define TOG_IGNOREZONE          0x00000080      /</em> Target is set to &#64;icmd zones <em>/
-#define TOG_VPAGE               0x00000100      /</em> Target sees alias in pages <em>/
-#define TOG_PAGELOCK            0x00000200      /</em> Target issues pagelocks as normal <em>/
-#define TOG_MAIL_NOPARSE        0x00000400      /</em> Don’t parse %t/%b/%r in mail <em>/
-#define TOG_MAIL_LOCKDOWN       0x00000800      /</em> Mortal-accessed mail/number and mail/check <em>/
-#define TOG_MUXPAGE             0x00001000      /</em> Have ‘page’ work like MUX <em>/
-#define TOG_NOZONEPARENT        0x00002000      /</em> Zone Child does NOT inherit parent attribs <em>/
-#define TOG_ATRUSE              0x00004000      /</em> Enactor can use Attribute based USELOCKS <em>/
-#define TOG_VARIABLE            0x00008000      /</em> Set exit to be variable <em>/
-#define TOG_KEEPALIVE           0x00010000      /</em> Send ‘keepalives’ to the target player <em>/
-#define TOG_CHKREALITY          0x00020000      /</em> Target checks &#64;lock/user for Reality passes <em>/
-#define TOG_NOISY               0x00040000      /</em> Always do noisy sets <em>/
-#define TOG_ZONECMDCHK          0x00080000      /</em> Zone commands checked on target like &#64;parent <em>/
-#define TOG_HIDEIDLE            0x00100000      /</em> Allow wizards/immortals to hide their idle time <em>/
-#define TOG_MORTALREALITY       0x00200000      /</em> Override the wiz_always_real setting <em>/
-#define TOG_ACCENTS             0x00400000      /</em> Accents being displayed <em>/
-#define TOG_PREMAILVALIDATE     0x00800000      /</em> Pre-Validate the mail send list before sending mail <em>/
-#define TOG_SAFELOG             0x01000000      /</em> Allow ‘clean logging’ by the player <em>/
-#define TOG_UTF8                0x02000000      /</em> UTF8 being displayed <em>/
-/</em> 0x04000000 free <em>/
-#define TOG_NODEFAULT           0x08000000      /</em> Allow target to inherit default attribs <em>/
-#define TOG_EXFULLWIZATTR       0x10000000      /</em> Examine Wiz attribs <em>/
-#ifdef ENH_LOGROOM
-#define TOG_LOGROOMENH          0x20000000      /</em> Enhanced Room Logging <em>/
-#endif
-#define TOG_LOGROOM             0x40000000      /</em> Log Room’s location/contents <em>/
-#define TOG_NOGLOBPARENT        0x80000000      /</em> Target does not inherit global attributes <a href="#id13"><span class="problematic" id="id14">*</span></a>/</p>
-<hr class="docutils" />
-<dl class="simple">
-<dt>POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift</dt><dd><p>markers that you would have to compute the shift then add it after
-the fact.</p>
-</dd>
-<dt>/* First word of power positions.  Each position is 2 bits so the</dt><dd><p>number here is how far over to shift the 2 bit pattern         <a href="#id15"><span class="problematic" id="id16">*</span></a>/</p>
-</dd>
-</dl>
-<p>#define POWER_CHANGE_QUOTAS     0
-#define POWER_CHOWN_ME          2
-#define POWER_CHOWN_ANYWHERE    4
-#define POWER_CHOWN_OTHER       6
-#define POWER_WIZ_WHO           8
-#define POWER_EX_ALL            10
-#define POWER_NOFORCE           12
-#define POWER_SEE_QUEUE_ALL     14
-#define POWER_FREE_QUOTA        16
-#define POWER_GRAB_PLAYER       18
-#define POWER_JOIN_PLAYER       20
-#define POWER_LONG_FINGERS      22
-#define POWER_NO_BOOT           24
-#define POWER_BOOT              26
-#define POWER_STEAL             28
-#define POWER_SEE_QUEUE         30</p>
-<p>/* Second word of power positions. <a href="#id17"><span class="problematic" id="id18">*</span></a>/
-#define POWER_SHUTDOWN          0
-#define POWER_TEL_ANYWHERE      2
-#define POWER_TEL_ANYTHING      4
-#define POWER_PCREATE           6
-#define POWER_STAT_ANY          8
-#define POWER_FREE_WALL         10
-#define POWER_EXECSCRIPT        12
-#define POWER_FREE_PAGE         14
-#define POWER_HALT_QUEUE        16
-#define POWER_HALT_QUEUE_ALL    18
-#define POWER_FORMATTING        20
-#define POWER_NOKILL            22
-#define POWER_SEARCH_ANY        24
-#define POWER_SECURITY          26
-#define POWER_WHO_UNFIND        28</p>
-<p>/* Third word of power positions. <em>/
-#define POWER_OPURGE            0
-#define POWER_HIDEBIT           2
-#define POWER_NOWHO             4
-#define POWER_FULLTEL_ANYWHERE  6
-#define POWER_EX_FULL           8
-#define POWER_API               10
-#define POWER_MONITORAPI        12
-#define POWER_WIZ_IDLE          14
-#define POWER_WIZ_SPOOF         16
-/</em> 18 free <em>/
-/</em> 20 free <em>/
-/</em> 22 free <em>/
-/</em> 24 free <em>/
-/</em> 26 free <em>/
-/</em> 28 free <em>/
-/</em> 30 free <a href="#id19"><span class="problematic" id="id20">*</span></a>/</p>
-<hr class="docutils" />
-<dl class="simple">
-<dt>DEPOWERS:  like &#64;powers they are handled with a BITWISE offshift that you</dt><dd><p>will have to calculate then add</p>
-</dd>
-</dl>
-<p>/* First word <a href="#id21"><span class="problematic" id="id22">*</span></a>/
-#define DP_WALL                 0
-#define DP_LONG_FINGERS         2
-#define DP_STEAL                4
-#define DP_CREATE               6
-#define DP_WIZ_WHO              8
-#define DP_CLOAK                10
-#define DP_BOOT                 12
-#define DP_PAGE                 14
-#define DP_FORCE                16
-#define DP_LOCKS                18
-#define DP_COM                  20
-#define DP_COMMAND              22
-#define DP_MASTER               24
-#define DP_EXAMINE              26
-#define DP_NUKE                 28
-#define DP_FREE                 30</p>
-<p>/* Second word <em>/
-#define DP_OVERRIDE             0
-#define DP_TEL_ANYWHERE         2
-#define DP_TEL_ANYTHING         4
-#define DP_PCREATE              6
-#define DP_POWER                8
-#define DP_QUOTA                10
-#define DP_MODIFY               12
-#define DP_CHOWN_ME             14
-#define DP_CHOWN_OTHER          16
-#define DP_ABUSE                18
-#define DP_UNL_QUOTA            20
-#define DP_SEARCH_ANY           22
-#define DP_GIVE                 24
-#define DP_RECEIVE              26
-#define DP_NOGOLD               28
-#define DP_NOSTEAL              30
-/</em> Third word…and there was much rejoicing <em>/
-#define DP_PASSWORD             0
-#define DP_MORTAL_EXAMINE       2
-#define DP_PERSONAL_COMMANDS    4
-/</em> 6  free <em>/
-#define DP_DARK                 8
-/</em> 10 free <em>/
-/</em> 12 free <em>/
-/</em> 14 free <em>/
-/</em> 16 free <em>/
-/</em> 18 free <em>/
-/</em> 20 free <em>/
-/</em> 22 free <em>/
-/</em> 24 free <em>/
-/</em> 26 free <em>/
-/</em> 28 free <em>/
-/</em> 30 free <a href="#id23"><span class="problematic" id="id24">*</span></a>/</p>
-<hr class="docutils" />
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>ZONES:  Zones are special.  If there are no zones, the value will be ‘-1’.</p>
+<h2><span class="section-number">11.1. </span>HELP key indexes for the values</h2>
+<p>FLAGS: The following flags are to be used.  They are BITWISE masks that you
+need to add together for the values that you apply:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">First</span> <span class="n">word</span> <span class="n">of</span> <span class="n">flags</span> <span class="o">*/</span>
+<span class="c1">#define SEETHRU         0x00000008      /* Can see through to the other side */</span>
+<span class="c1">#define WIZARD          0x00000010      /* gets automatic control */</span>
+<span class="c1">#define LINK_OK         0x00000020      /* anybody can link to this room */</span>
+<span class="c1">#define DARK            0x00000040      /* Don&#39;t show contents or presence */</span>
+<span class="c1">#define JUMP_OK         0x00000080      /* Others may @tel here */</span>
+<span class="c1">#define STICKY          0x00000100      /* Object goes home when dropped */</span>
+<span class="c1">#define DESTROY_OK      0x00000200      /* Others may @destroy */</span>
+<span class="c1">#define HAVEN           0x00000400      /* No killing here, or no pages */</span>
+<span class="c1">#define QUIET           0x00000800      /* Prevent &#39;feelgood&#39; messages */</span>
+<span class="c1">#define HALT            0x00001000      /* object cannot perform actions */</span>
+<span class="c1">#define TRACE           0x00002000      /* Generate evaluation trace output */</span>
+<span class="c1">#define GOING           0x00004000      /* object is available for recycling */</span>
+<span class="c1">#define MONITOR         0x00008000      /* Process ^x:action listens on obj? */</span>
+<span class="c1">#define MYOPIC          0x00010000      /* See things as nonowner/nonwizard */</span>
+<span class="c1">#define PUPPET          0x00020000      /* Relays ALL messages to owner */</span>
+<span class="c1">#define CHOWN_OK        0x00040000      /* Object may be @chowned freely */</span>
+<span class="c1">#define ENTER_OK        0x00080000      /* Object may be ENTERed */</span>
+<span class="c1">#define VISUAL          0x00100000      /* Everyone can see properties */</span>
+<span class="c1">#define IMMORTAL        0x00200000      /* Object can&#39;t be killed */</span>
+<span class="c1">#define HAS_STARTUP     0x00400000      /* Load some attrs at startup */</span>
+<span class="c1">#define OPAQUE          0x00800000      /* Can&#39;t see inside */</span>
+<span class="c1">#define VERBOSE         0x01000000      /* Tells owner everything it does. */</span>
+<span class="c1">#define INHERIT         0x02000000      /* Gets owner&#39;s privs. (i.e. Wiz) */</span>
+<span class="c1">#define NOSPOOF         0x04000000      /* Report originator of all actions. */</span>
+<span class="c1">#define ROBOT           0x08000000      /* Player is a ROBOT */</span>
+<span class="c1">#define SAFE            0x10000000      /* Need /override to @destroy */</span>
+<span class="c1">#define CONTROL_OK      0x20000000      /* ControlLk specifies who ctrls me */</span>
+<span class="c1">#define HEARTHRU        0x40000000      /* Can hear out of this obj or exit */</span>
+<span class="c1">#define TERSE           0x80000000      /* Only show room name on look */</span>
+
+<span class="o">/*</span> <span class="n">Second</span> <span class="n">word</span> <span class="n">of</span> <span class="n">flags</span> <span class="o">*/</span>
+<span class="c1">#define KEY             0x00000001      /* No puppets */</span>
+<span class="c1">#define ABODE           0x00000002      /* May @set home here */</span>
+<span class="c1">#define FLOATING        0x00000004      /* Inhibit Floating room.. msgs */</span>
+<span class="c1">#define UNFINDABLE      0x00000008      /* Cant loc() from afar */</span>
+<span class="c1">#define PARENT_OK       0x00000010      /* Others may @parent to me */</span>
+<span class="c1">#define LIGHT           0x00000020      /* Visible in dark places */</span>
+<span class="c1">#define HAS_LISTEN      0x00000040      /* Internal: LISTEN attr set */</span>
+<span class="c1">#define HAS_FWDLIST     0x00000080      /* Internal: FORWARDLIST attr set */</span>
+<span class="c1">#define ADMIN           0x00000100      /* Player has admin privs */</span>
+<span class="c1">#define GUILDOBJ        0x00000200</span>
+<span class="c1">#define GUILDMASTER     0x00000400      /* Player has gm privs */</span>
+<span class="c1">#define NO_WALLS        0x00000800      /* So to stop normal walls */</span>
+<span class="c1">#define REQUIRE_TREES   0x00001000      /* Trees are required on this target for attrib sets */</span>
+<span class="o">/*</span> <span class="o">----</span><span class="n">FREE</span><span class="o">----</span>         <span class="mh">0x00002000</span> <span class="o">*/</span>   <span class="o">/*</span> <span class="c1">#define OLD_NOROBOT  0x00002000 */</span>
+<span class="c1">#define SCLOAK          0x00004000</span>
+<span class="c1">#define CLOAK           0x00008000</span>
+<span class="c1">#define FUBAR           0x00010000</span>
+<span class="c1">#define INDESTRUCTABLE  0x00020000      /* object can&#39;t be nuked */</span>
+<span class="c1">#define NO_YELL         0x00040000      /* player can&#39;t @wall */</span>
+<span class="c1">#define NO_TEL          0x00080000      /* player can&#39;t @tel or be @tel&#39;d */</span>
+<span class="c1">#define FREE            0x00100000      /* object/player has unlim money */</span>
+<span class="c1">#define GUEST_FLAG      0x00200000</span>
+<span class="c1">#define RECOVER         0x00400000</span>
+<span class="c1">#define BYEROOM         0x00800000</span>
+<span class="c1">#define WANDERER        0x01000000</span>
+<span class="c1">#define ANSI            0x02000000</span>
+<span class="c1">#define ANSICOLOR       0x04000000</span>
+<span class="c1">#define NOFLASH         0x08000000</span>
+<span class="c1">#define SUSPECT         0x10000000      /* Report some activities to wizards */</span>
+<span class="c1">#define BUILDER         0x20000000      /* Player has architect privs */</span>
+<span class="c1">#define CONNECTED       0x40000000      /* Player is connected */</span>
+<span class="c1">#define SLAVE           0x80000000      /* Disallow most commands */</span>
+
+<span class="o">/*</span> <span class="n">Third</span> <span class="n">word</span> <span class="n">of</span> <span class="n">flags</span> <span class="o">-</span> <span class="n">Thorin</span> <span class="mi">3</span><span class="o">/</span><span class="mi">95</span> <span class="o">*/</span>
+<span class="c1">#define NOCONNECT       0x00000001</span>
+<span class="c1">#define DPSHIFT         0x00000002</span>
+<span class="c1">#define NOPOSSESS       0x00000004</span>
+<span class="c1">#define COMBAT          0x00000008</span>
+<span class="c1">#define IC              0x00000010</span>
+<span class="c1">#define ZONEMASTER      0x00000020</span>
+<span class="c1">#define ALTQUOTA        0x00000040</span>
+<span class="c1">#define NOEXAMINE       0x00000080</span>
+<span class="c1">#define NOMODIFY        0x00000100</span>
+<span class="c1">#define CMDCHECK        0x00000200</span>
+<span class="c1">#define DOORRED         0x00000400</span>
+<span class="c1">#define PRIVATE         0x00000800      /* For exits only */</span>
+<span class="c1">#define NOMOVE          0x00001000</span>
+<span class="c1">#define STOP            0x00002000</span>
+<span class="c1">#define NOSTOP          0x00004000</span>
+<span class="c1">#define NOCOMMAND       0x00008000</span>
+<span class="c1">#define AUDIT           0x00010000</span>
+<span class="c1">#define SEE_OEMIT       0x00020000</span>
+<span class="c1">#define NO_GOBJ         0x00040000</span>
+<span class="c1">#define NO_PESTER       0x00080000</span>
+<span class="c1">#define LRFLAG          0x00100000</span>
+<span class="c1">#define TELOK           0x00200000</span>
+<span class="c1">#define NO_OVERRIDE     0x00400000</span>
+<span class="c1">#define NO_USELOCK      0x00800000</span>
+<span class="c1">#define DR_PURGE        0x01000000      /* For rooms only...internal */</span>
+<span class="c1">#define NO_ANSINAME     0x02000000      /* Remove the ability to set @ansiname */</span>
+<span class="c1">#define SPOOF           0x04000000</span>
+<span class="c1">#define SIDEFX          0x08000000      /* Allow enactor to use side-effects */</span>
+<span class="c1">#define ZONECONTENTS    0x10000000      /* Search contents of zonemaster for $commands */</span>
+<span class="c1">#define NOWHO           0x20000000      /* Player in WHO doesn&#39;t show up - use with @hide */</span>
+<span class="c1">#define ANONYMOUS       0x40000000      /* Player set shows up as &#39;Someone&#39; when talking */</span>
+<span class="c1">#define BACKSTAGE       0x80000000      /* Immortal toggle for items on control */</span>
+
+<span class="o">/*</span> <span class="n">Forth</span> <span class="n">word</span> <span class="n">of</span> <span class="n">flags</span> <span class="o">-</span> <span class="n">Thorin</span> <span class="mi">3</span><span class="o">/</span><span class="mi">95</span> <span class="o">*/</span>
+<span class="c1">#define NOBACKSTAGE     0x00000001      /* Immortal toggle to control no-backstage */</span>
+<span class="c1">#define LOGIN           0x00000002      /* Enable player to login past @disable logins */</span>
+<span class="c1">#define INPROGRAM       0x00000004      /* Player is inside a program */</span>
+<span class="c1">#define COMMANDS        0x00000008      /* Optional define for $commands */</span>
+<span class="c1">#define MARKER0         0x00000010      /* TM 3.0 marker flags */</span>
+<span class="c1">#define MARKER1         0x00000020</span>
+<span class="c1">#define MARKER2         0x00000040</span>
+<span class="c1">#define MARKER3         0x00000080</span>
+<span class="c1">#define MARKER4         0x00000100</span>
+<span class="c1">#define MARKER5         0x00000200</span>
+<span class="c1">#define MARKER6         0x00000400</span>
+<span class="c1">#define MARKER7         0x00000800</span>
+<span class="c1">#define MARKER8         0x00001000</span>
+<span class="c1">#define MARKER9         0x00002000</span>
+<span class="c1">#define BOUNCE          0x00004000      /* That lovly TM 3.0 Bouncey thingy */</span>
+<span class="c1">#define SHOWFAILCMD     0x00008000      /* Show failed $commands defauilt error */</span>
+<span class="c1">#define NOUNDERLINE     0x00010000      /* Strip UNDERLINE character from ANSI */</span>
+<span class="c1">#define NONAME          0x00020000      /* Target does not display name with look */</span>
+<span class="c1">#define ZONEPARENT      0x00040000      /* Target zone allows inheritance of attribs */</span>
+<span class="c1">#define SPAMMONITOR     0x00080000      /* Monitor the target for spam */</span>
+<span class="c1">#define BLIND           0x00100000      /* Exits and locations snuff arrived/left */</span>
+<span class="c1">#define NOCODE          0x00200000      /* Players may not code */</span>
+<span class="c1">#define HAS_PROTECT     0x00400000      /* Player target has protect name data */</span>
+<span class="c1">#define XTERMCOLOR      0x00800000      /* Extended AnSI Xterm colors */</span>
+<span class="c1">#define HAS_ATTRPIPE    0x01000000      /* Attribute piping via @pipe */</span>
+<span class="o">/*</span> <span class="mh">0x02000000</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mh">0x04000000</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mh">0x08000000</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mh">0x10000000</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mh">0x20000000</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mh">0x40000000</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mh">0x80000000</span> <span class="n">free</span> <span class="o">*/</span>
+</pre></div>
 </div>
-<p>So entering zones if there are no zones:
--1</p>
-<p>Entering zones if it has three zones (#123, #456, and #789)
-123
-456
-789
--1</p>
+<p>TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like
+the flags above.  They are added together for each word type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">First</span> <span class="n">word</span> <span class="n">of</span> <span class="n">toggles</span> <span class="o">-</span> <span class="n">Thorin</span> <span class="mi">3</span><span class="o">/</span><span class="mi">95</span> <span class="o">*/</span>
+<span class="c1">#define TOG_MONITOR             0x00000001      /* Active monitor on player */</span>
+<span class="c1">#define TOG_MONITOR_USERID      0x00000002      /* show userid */</span>
+<span class="c1">#define TOG_MONITOR_SITE        0x00000004      /* show site */</span>
+<span class="c1">#define TOG_MONITOR_STATS       0x00000008      /* show stats */</span>
+<span class="c1">#define TOG_MONITOR_FAIL        0x00000010      /* show fails */</span>
+<span class="c1">#define TOG_MONITOR_CONN        0x00000020</span>
+<span class="c1">#define TOG_VANILLA_ERRORS      0x00000040      /* show normal error msg */</span>
+<span class="c1">#define TOG_NO_ANSI_EX          0x00000080      /* supress ansi stuff in ex */</span>
+<span class="c1">#define TOG_CPUTIME             0x00000100      /* show cpu time for cmds */</span>
+<span class="c1">#define TOG_MONITOR_DISREASON   0x00000200</span>
+<span class="c1">#define TOG_MONITOR_VLIMIT      0x00000400</span>
+<span class="c1">#define TOG_NOTIFY_LINK         0x00000800</span>
+<span class="c1">#define TOG_MONITOR_AREG        0x00001000</span>
+<span class="c1">#define TOG_MONITOR_TIME        0x00002000</span>
+<span class="c1">#define TOG_CLUSTER             0x00004000      /* Object is part of a cluster */</span>
+<span class="c1">#define TOG_SNUFFDARK           0x00008000      /* Snuff Dark Exit Viewing */</span>
+<span class="c1">#define TOG_NOANSI_PLAYER       0x00010000      /* Do not show ansi player names */</span>
+<span class="c1">#define TOG_NOANSI_THING        0x00020000      /* ... things */</span>
+<span class="c1">#define TOG_NOANSI_ROOM         0x00040000      /* ... rooms */</span>
+<span class="c1">#define TOG_NOANSI_EXIT         0x00080000      /* ... exits */</span>
+<span class="c1">#define TOG_NO_TIMESTAMP        0x00100000      /* Do not modify timestamps on target */</span>
+<span class="c1">#define TOG_NO_FORMAT           0x00200000      /* Override @conformat/@exitformat */</span>
+<span class="c1">#define TOG_ZONE_AUTOADD        0x00400000      /* Automatically add FIRST zone in list */</span>
+<span class="c1">#define TOG_ZONE_AUTOADDALL     0x00800000      /* Automatically add ALL zones in list */</span>
+<span class="c1">#define TOG_WIELDABLE           0x01000000      /* Marker to specify if object is wieldable */</span>
+<span class="c1">#define TOG_WEARABLE            0x02000000      /* Marker to specify if object is wearable */</span>
+<span class="c1">#define TOG_SEE_SUSPECT         0x04000000      /* Specify who sees suspect in WHO/MONITOR */</span>
+<span class="c1">#define TOG_MONITOR_CPU         0x08000000      /* Specify who sees CPU overflow allerts */</span>
+<span class="c1">#define TOG_BRANDY_MAIL         0x10000000      /* Define brandy like mail interface */</span>
+<span class="c1">#define TOG_FORCEHALTED         0x20000000      /* The item toggled can @force halted things */</span>
+<span class="c1">#define TOG_PROG                0x40000000      /* Can use @program on other people/things */</span>
+<span class="c1">#define TOG_NOSHELLPROG         0x80000000      /* Target can not issue commands inside a prog */</span>
+
+<span class="o">/*</span> <span class="n">Second</span> <span class="n">word</span> <span class="n">of</span> <span class="n">toggles</span> <span class="o">--</span> <span class="n">Ash</span> <span class="o">*/</span>
+<span class="c1">#define TOG_EXTANSI             0x00000001      /* Specify if target can used extended ansi naming */</span>
+<span class="c1">#define TOG_IMMPROG             0x00000002      /* Only an immortal can @quitprogram them */</span>
+<span class="c1">#define TOG_MONITOR_BFAIL       0x00000004      /* Monitor if a failed connect on bad character */</span>
+<span class="c1">#define TOG_PROG_ON_CONNECT     0x00000008      /* Reverse logic of program on connect */</span>
+<span class="c1">#define TOG_MAIL_STRIPRETURN    0x00000010      /* Strip carrage return in mail combining */</span>
+<span class="c1">#define TOG_PENN_MAIL           0x00000020      /* Use PENN style syntax */</span>
+<span class="c1">#define TOG_SILENTEFFECTS       0x00000040      /* Silents did_it() functionality on target */</span>
+<span class="c1">#define TOG_IGNOREZONE          0x00000080      /* Target is set to @icmd zones */</span>
+<span class="c1">#define TOG_VPAGE               0x00000100      /* Target sees alias in pages */</span>
+<span class="c1">#define TOG_PAGELOCK            0x00000200      /* Target issues pagelocks as normal */</span>
+<span class="c1">#define TOG_MAIL_NOPARSE        0x00000400      /* Don&#39;t parse %t/%b/%r in mail */</span>
+<span class="c1">#define TOG_MAIL_LOCKDOWN       0x00000800      /* Mortal-accessed mail/number and mail/check */</span>
+<span class="c1">#define TOG_MUXPAGE             0x00001000      /* Have &#39;page&#39; work like MUX */</span>
+<span class="c1">#define TOG_NOZONEPARENT        0x00002000      /* Zone Child does NOT inherit parent attribs */</span>
+<span class="c1">#define TOG_ATRUSE              0x00004000      /* Enactor can use Attribute based USELOCKS */</span>
+<span class="c1">#define TOG_VARIABLE            0x00008000      /* Set exit to be variable */</span>
+<span class="c1">#define TOG_KEEPALIVE           0x00010000      /* Send &#39;keepalives&#39; to the target player */</span>
+<span class="c1">#define TOG_CHKREALITY          0x00020000      /* Target checks @lock/user for Reality passes */</span>
+<span class="c1">#define TOG_NOISY               0x00040000      /* Always do noisy sets */</span>
+<span class="c1">#define TOG_ZONECMDCHK          0x00080000      /* Zone commands checked on target like @parent */</span>
+<span class="c1">#define TOG_HIDEIDLE            0x00100000      /* Allow wizards/immortals to hide their idle time */</span>
+<span class="c1">#define TOG_MORTALREALITY       0x00200000      /* Override the wiz_always_real setting */</span>
+<span class="c1">#define TOG_ACCENTS             0x00400000      /* Accents being displayed */</span>
+<span class="c1">#define TOG_PREMAILVALIDATE     0x00800000      /* Pre-Validate the mail send list before sending mail */</span>
+<span class="c1">#define TOG_SAFELOG             0x01000000      /* Allow &#39;clean logging&#39; by the player */</span>
+<span class="c1">#define TOG_UTF8                0x02000000      /* UTF8 being displayed */</span>
+<span class="o">/*</span> <span class="mh">0x04000000</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="c1">#define TOG_NODEFAULT           0x08000000      /* Allow target to inherit default attribs */</span>
+<span class="c1">#define TOG_EXFULLWIZATTR       0x10000000      /* Examine Wiz attribs */</span>
+<span class="c1">#ifdef ENH_LOGROOM</span>
+<span class="c1">#define TOG_LOGROOMENH          0x20000000      /* Enhanced Room Logging */</span>
+<span class="c1">#endif</span>
+<span class="c1">#define TOG_LOGROOM             0x40000000      /* Log Room&#39;s location/contents */</span>
+<span class="c1">#define TOG_NOGLOBPARENT        0x80000000      /* Target does not inherit global attributes */</span>
+</pre></div>
+</div>
+<p>POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift
+markers that you would have to compute the shift then add it after the fact.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">First</span> <span class="n">word</span> <span class="n">of</span> <span class="n">power</span> <span class="n">positions</span><span class="o">.</span>  <span class="n">Each</span> <span class="n">position</span> <span class="ow">is</span> <span class="mi">2</span> <span class="n">bits</span> <span class="n">so</span> <span class="n">the</span>
+   <span class="n">number</span> <span class="n">here</span> <span class="ow">is</span> <span class="n">how</span> <span class="n">far</span> <span class="n">over</span> <span class="n">to</span> <span class="n">shift</span> <span class="n">the</span> <span class="mi">2</span> <span class="n">bit</span> <span class="n">pattern</span>         <span class="o">*/</span>
+<span class="c1">#define POWER_CHANGE_QUOTAS     0</span>
+<span class="c1">#define POWER_CHOWN_ME          2</span>
+<span class="c1">#define POWER_CHOWN_ANYWHERE    4</span>
+<span class="c1">#define POWER_CHOWN_OTHER       6</span>
+<span class="c1">#define POWER_WIZ_WHO           8</span>
+<span class="c1">#define POWER_EX_ALL            10</span>
+<span class="c1">#define POWER_NOFORCE           12</span>
+<span class="c1">#define POWER_SEE_QUEUE_ALL     14</span>
+<span class="c1">#define POWER_FREE_QUOTA        16</span>
+<span class="c1">#define POWER_GRAB_PLAYER       18</span>
+<span class="c1">#define POWER_JOIN_PLAYER       20</span>
+<span class="c1">#define POWER_LONG_FINGERS      22</span>
+<span class="c1">#define POWER_NO_BOOT           24</span>
+<span class="c1">#define POWER_BOOT              26</span>
+<span class="c1">#define POWER_STEAL             28</span>
+<span class="c1">#define POWER_SEE_QUEUE         30</span>
+
+<span class="o">/*</span> <span class="n">Second</span> <span class="n">word</span> <span class="n">of</span> <span class="n">power</span> <span class="n">positions</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#define POWER_SHUTDOWN          0</span>
+<span class="c1">#define POWER_TEL_ANYWHERE      2</span>
+<span class="c1">#define POWER_TEL_ANYTHING      4</span>
+<span class="c1">#define POWER_PCREATE           6</span>
+<span class="c1">#define POWER_STAT_ANY          8</span>
+<span class="c1">#define POWER_FREE_WALL         10</span>
+<span class="c1">#define POWER_EXECSCRIPT        12</span>
+<span class="c1">#define POWER_FREE_PAGE         14</span>
+<span class="c1">#define POWER_HALT_QUEUE        16</span>
+<span class="c1">#define POWER_HALT_QUEUE_ALL    18</span>
+<span class="c1">#define POWER_FORMATTING        20</span>
+<span class="c1">#define POWER_NOKILL            22</span>
+<span class="c1">#define POWER_SEARCH_ANY        24</span>
+<span class="c1">#define POWER_SECURITY          26</span>
+<span class="c1">#define POWER_WHO_UNFIND        28</span>
+
+<span class="o">/*</span> <span class="n">Third</span> <span class="n">word</span> <span class="n">of</span> <span class="n">power</span> <span class="n">positions</span><span class="o">.</span> <span class="o">*/</span>
+<span class="c1">#define POWER_OPURGE            0</span>
+<span class="c1">#define POWER_HIDEBIT           2</span>
+<span class="c1">#define POWER_NOWHO             4</span>
+<span class="c1">#define POWER_FULLTEL_ANYWHERE  6</span>
+<span class="c1">#define POWER_EX_FULL           8</span>
+<span class="c1">#define POWER_API               10</span>
+<span class="c1">#define POWER_MONITORAPI        12</span>
+<span class="c1">#define POWER_WIZ_IDLE          14</span>
+<span class="c1">#define POWER_WIZ_SPOOF         16</span>
+<span class="o">/*</span> <span class="mi">18</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">20</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">22</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">24</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">26</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">28</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">30</span> <span class="n">free</span> <span class="o">*/</span>
+</pre></div>
+</div>
+<p>DEPOWERS:  like &#64;powers they are handled with a BITWISE offshift that you
+will have to calculate then add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span> <span class="n">First</span> <span class="n">word</span> <span class="o">*/</span>
+<span class="c1">#define DP_WALL                 0</span>
+<span class="c1">#define DP_LONG_FINGERS         2</span>
+<span class="c1">#define DP_STEAL                4</span>
+<span class="c1">#define DP_CREATE               6</span>
+<span class="c1">#define DP_WIZ_WHO              8</span>
+<span class="c1">#define DP_CLOAK                10</span>
+<span class="c1">#define DP_BOOT                 12</span>
+<span class="c1">#define DP_PAGE                 14</span>
+<span class="c1">#define DP_FORCE                16</span>
+<span class="c1">#define DP_LOCKS                18</span>
+<span class="c1">#define DP_COM                  20</span>
+<span class="c1">#define DP_COMMAND              22</span>
+<span class="c1">#define DP_MASTER               24</span>
+<span class="c1">#define DP_EXAMINE              26</span>
+<span class="c1">#define DP_NUKE                 28</span>
+<span class="c1">#define DP_FREE                 30</span>
+
+<span class="o">/*</span> <span class="n">Second</span> <span class="n">word</span> <span class="o">*/</span>
+<span class="c1">#define DP_OVERRIDE             0</span>
+<span class="c1">#define DP_TEL_ANYWHERE         2</span>
+<span class="c1">#define DP_TEL_ANYTHING         4</span>
+<span class="c1">#define DP_PCREATE              6</span>
+<span class="c1">#define DP_POWER                8</span>
+<span class="c1">#define DP_QUOTA                10</span>
+<span class="c1">#define DP_MODIFY               12</span>
+<span class="c1">#define DP_CHOWN_ME             14</span>
+<span class="c1">#define DP_CHOWN_OTHER          16</span>
+<span class="c1">#define DP_ABUSE                18</span>
+<span class="c1">#define DP_UNL_QUOTA            20</span>
+<span class="c1">#define DP_SEARCH_ANY           22</span>
+<span class="c1">#define DP_GIVE                 24</span>
+<span class="c1">#define DP_RECEIVE              26</span>
+<span class="c1">#define DP_NOGOLD               28</span>
+<span class="c1">#define DP_NOSTEAL              30</span>
+<span class="o">/*</span> <span class="n">Third</span> <span class="n">word</span><span class="o">...</span><span class="ow">and</span> <span class="n">there</span> <span class="n">was</span> <span class="n">much</span> <span class="n">rejoicing</span> <span class="o">*/</span>
+<span class="c1">#define DP_PASSWORD             0</span>
+<span class="c1">#define DP_MORTAL_EXAMINE       2</span>
+<span class="c1">#define DP_PERSONAL_COMMANDS    4</span>
+<span class="o">/*</span> <span class="mi">6</span>  <span class="n">free</span> <span class="o">*/</span>
+<span class="c1">#define DP_DARK                 8</span>
+<span class="o">/*</span> <span class="mi">10</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">12</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">14</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">16</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">18</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">20</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">22</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">24</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">26</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">28</span> <span class="n">free</span> <span class="o">*/</span>
+<span class="o">/*</span> <span class="mi">30</span> <span class="n">free</span> <span class="o">*/</span>
+</pre></div>
+</div>
+<p>ZONES:  Zones are special.  If there are no zones, the value will be ‘-1’.</p>
+<p>So entering zones if there are no zones:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Entering zones if it has three zones (#123, #456, and #789):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">123</span>
+<span class="mi">456</span>
+<span class="mi">789</span>
+<span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
 <p>As you see, the last value of the zone <em>MUST</em> be -1.  This tells it
 that there are no more zones to add.</p>
 </div>
