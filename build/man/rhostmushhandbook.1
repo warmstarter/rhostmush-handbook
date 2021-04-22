@@ -877,8 +877,7 @@ customization in\-game of every single feature available in Rhost without
 having the requirement to modify the hardcode.  This includes but is
 not limited to:
 .SS Recycle bin
-.INDENT 0.0
-.INDENT 3.5
+.sp
 Yup, you guessed it.  RhostMUSH has a windows like recycle bin.
 This means the objects you @nuke and @destroy become \(aqdestroyed\(aq
 but not recycled until they are @purged.  If you use the Myrddin
@@ -889,22 +888,15 @@ nuked things from any period of time, as long as they were not
 @purged first.
 .sp
 Commands: @purge, @nuke, @destroy, @recover, @reclist
-.UNINDENT
-.UNINDENT
 .SS @snapshot
-.INDENT 0.0
-.INDENT 3.5
+.sp
 Live image snapshots to unload or load to and from
 disk.  As many snapshots as you want, as often as you want.
 It essentially does a flatfile dump of a dbref#.  Great for
 backups or cross\-Rhost portability.
 .sp
 Command: @snapshot
-.UNINDENT
-.UNINDENT
 .SS Wizard and Immortals by default
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 are spoofable.  Meaning all their @pemits by default will not
@@ -926,32 +918,20 @@ this can not be disabled, and you must consider that immortals
 should be treated as the God player (#1) since they are
 effectively #1 in nearly every way.
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Titles and Captions to a player\(aqs name
-.INDENT 0.0
-.INDENT 3.5
+.sp
 @caption and @titlecaption
-.UNINDENT
-.UNINDENT
 .SS Have an alternate name with locks for NPC obfuscation
-.INDENT 0.0
-.INDENT 3.5
+.sp
 @altname
 @lock/altname
-.UNINDENT
-.UNINDENT
 .SS Have multiple player aliases
-.INDENT 0.0
-.INDENT 3.5
+.sp
 As well as a method to reserve player names per player w/o revealing who has what name.
 .sp
 @protect
-.UNINDENT
-.UNINDENT
 .SS Actively control how dark works both game\-wide and individually
-.INDENT 0.0
-.INDENT 3.5
+.sp
 @depower dark
 .sp
 @admin allow_whodark, sweep_dark, command_dark, lcon_checks_dark,
@@ -960,55 +940,31 @@ secure_dark, see_owned_dark, idle_wiz_dark, player_dark
 @toggle snuffdark
 .sp
 @flagdef to redefine who and what can set the DARK flag
-.UNINDENT
-.UNINDENT
 .SS Make config file changes in\-game without having to reboot or have shell access
-.INDENT 0.0
-.INDENT 3.5
+.sp
 @admin admin_object
-.UNINDENT
-.UNINDENT
 .SS Execute any binary or script as a localized function
-.INDENT 0.0
-.INDENT 3.5
+.sp
 EXECSCRIPT (power), SIDEFX (flag)
-.UNINDENT
-.UNINDENT
 .SS Customized percent substitutions (like %n, %#, etc)
-.INDENT 0.0
-.INDENT 3.5
+.sp
 @admin sub_include, @hook
-.UNINDENT
-.UNINDENT
 .SS Redefine percent substitutions (like %n, %#, etc)
-.INDENT 0.0
-.INDENT 3.5
+.sp
 @admin sub_override, @hook
-.UNINDENT
-.UNINDENT
 .SS Localize command and function overrides in a sandbox
-.INDENT 0.0
-.INDENT 3.5
+.sp
 @icmd, @lfunction, subeval(), sandbox()
-.UNINDENT
-.UNINDENT
 .SS Multiple Zones
-.INDENT 0.0
-.INDENT 3.5
+.sp
 Have multiple zones which can optionally belong to multiple targets (multiple zones per target allowable!)
 .sp
 @zone, zones, lzone(), zonecmd()
-.UNINDENT
-.UNINDENT
 .SS Optionally control, enable, or disable sideeffects
-.INDENT 0.0
-.INDENT 3.5
+.sp
 @admin sideeffects, SIDEFX (flag)
-.UNINDENT
-.UNINDENT
 .SS Have 31 cross\-interactive realities for locations
-.INDENT 0.0
-.INDENT 3.5
+.sp
 This works as a truly independant and self\-contained environment.
 A room can have 31 \(aqlayers\(aq, each \(aqlayer\(aq is a reality in
 the same physical space.  These layers can work independently
@@ -1018,41 +974,26 @@ looking, $commands, listens, movement, interaction, pretty
 much every single aspect of mushing.
 .sp
 REALITY LEVELS
-.UNINDENT
-.UNINDENT
 .SS Override any command with softcode
-.INDENT 0.0
-.INDENT 3.5
+.sp
 @admin access (check ignore)
 .sp
 Master room $commands to then override the hardcode
-.UNINDENT
-.UNINDENT
 .SS The abilility to raise or lower permissions on the various
-.INDENT 0.0
-.INDENT 3.5
+.sp
 staff bitlevels for each player.
 .sp
 @power, @depower, TOGGLES, FLAGS
-.UNINDENT
-.UNINDENT
 .SS Customize new commands on the connect screen
-.INDENT 0.0
-.INDENT 3.5
+.sp
 @admin file_object2
-.UNINDENT
-.UNINDENT
 .SS Softcode any txt file (like connect.txt)
-.INDENT 0.0
-.INDENT 3.5
+.sp
 and have it evaluate in\-game.  It evaluates as the object it is on.
 .sp
 @admin file_object
-.UNINDENT
-.UNINDENT
 .SS Advanced tracing methods for debugging your code including labels!
-.INDENT 0.0
-.INDENT 3.5
+.sp
 Commands: @label
 .sp
 Functions: parenmatch(), trace()
@@ -1064,8 +1005,6 @@ Flags: TRACE
 Attributes: TRACE_GREP, TRACE, TRACE_COLOR, TRACE_COLOR_<attr>
 .sp
 Substitutions: %_
-.UNINDENT
-.UNINDENT
 .SS Built in pretty\-printing of attributes with the parenmatch() function
 .sp
 Example Code Output:
@@ -1107,8 +1046,6 @@ do.
 .SS Advanced features of RhostMUSH
 .SS Debugging/Tracing
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Debugging in Rhost allows for advanced features like expressing where and
 when to do debugging via a trace() function, with toggled labels, and the
@@ -1128,11 +1065,7 @@ help parenmatch()
 help parenstr()
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Zoning
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Zoning in Rhost allows the same functionality of Penn and MUX, though the
@@ -1154,11 +1087,7 @@ help @Lock type twink
 help @lock type zone
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Reality Levels
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Reality levels allows for the ability to have a sandboxed \(aqexistance\(aq
@@ -1179,11 +1108,7 @@ wizhelp reaity level
 help @Lock type user
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Function and Command Overriding
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Functions and commands can both be overridden with softcode.  To
@@ -1232,11 +1157,7 @@ wizhelp bypass()
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS The Recycle Bin
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Rhost has a recycle bin that works a bit like a windows recycle bin.
@@ -1246,6 +1167,8 @@ the dbref# as garbage in any sense of the word.  However, the object
 is not able to be reused until purged.  Once purged, it is put onto
 a free list that can then be reassigned to a new object.
 .INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
 .IP \(bu 2
 wizhelp @nuke
 .IP \(bu 2
@@ -1266,14 +1189,14 @@ wizhelp @reclist
 .UNINDENT
 .SS Percent Substitution Adding/Overriding
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Rhost allows the ability to both override percent substitutions as
 well as creating new ones.  This is done with @Hook and admin
 params and issues softcode overriding.  Due to how it is evaluated
 there is no risk of recursion.
 .INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
 .IP \(bu 2
 wizhelp @hook
 .IP \(bu 2
@@ -1288,12 +1211,12 @@ wizhelp sub_override
 .UNINDENT
 .SS Hooking
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 Hooking allows you to have advanced methods to manipulate commands
 including adding customized switches to them via softcode.
 .INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
 .IP \(bu 2
 wizhelp @hook
 .IP \(bu 2
@@ -1307,8 +1230,6 @@ wizhelp hook setup
 .UNINDENT
 .UNINDENT
 .SS Command based uselocks
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 This allows you to have unique uselocks per $command.  This is done
@@ -1326,11 +1247,7 @@ wizhelp atruse toggle
 help attribute uselocks
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Differentating between command and listen locks
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 We distinguish between commands and listens with uselocks by passing
@@ -1342,11 +1259,7 @@ a listen lock.
 help @lock type uselock
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Wizard auto\-overiding and how to disable it
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 By default wizards override all locks, including attribute locks,
@@ -1363,11 +1276,7 @@ wizhelp no_uselock (disable just uselock overriding)
 wizhelp pagelock toggle (disable pagelock overriding)
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Advanced FLAG and TOGGLE control
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Flags and toggles can be controlled to have multiple permissions
@@ -1405,11 +1314,7 @@ wizhelp toggle_access_type
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Advanced site control
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 We allow advanced site control by not only blocking various sites
@@ -1427,11 +1332,7 @@ wizhelp noguest_host
 wizhelp @list (site option)
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Auto\-Registration
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Autoregistration is the method that a player can auto\-register
@@ -1443,11 +1344,7 @@ provides.  This is well described in the wizhelp.
 wizhelp autoregistration
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Which bit level is best?
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 This is something that should be discussed by you and the staff
@@ -1469,60 +1366,38 @@ detail of the various bitlevels and what each can do.
 wizhelp control
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS What are the limits for size/growth for RhostMUSH?
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP \(bu 2
+.sp
 While using QDBM, there\(aqs really no set limits for most things.
 The limits that we have are as followed:
-.UNINDENT
 .INDENT 0.0
-.INDENT 3.5
+.IP \(bu 2
 LBUF \- 64K.  It is recommended to only use 32K as there is some issues with networking with 64K lbufs.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.INDENT 2.0
 .IP \(bu 2
 Compile time option with the menu configurator
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
+.IP \(bu 2
 SBUF \- 64 characters (if configured \-\- it\(aqs suggested you do).
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.INDENT 2.0
 .IP \(bu 2
 Compile time option with the menu configurator
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
+.IP \(bu 2
 MBUF \- 200 characters.  Not able to be changed.
-.sp
+.IP \(bu 2
 MAX CONNECTIONS \- Limited by the total number of open sockets and descriptors on the account and server running on.  There are various tools to limit connection DoS attemps and other such nastiness.  This is well documented in the netrhost.conf file.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.INDENT 2.0
 .IP \(bu 2
 wizhelp max_players
 .IP \(bu 2
 ~/game/netrhost.conf
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
+.IP \(bu 2
 MEMORY \- no limit.  Generally runs between 8\-50M depending on the size of the mush and the LBUF size specified.
-.sp
+.IP \(bu 2
 CPU  \- no limit, but has built in cpu abort in code.  The netrhost.conf file documents this well for customizing.  the default values are usually good enough.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.INDENT 2.0
 .IP \(bu 2
 wizhelp max_cpu_cycles
 .IP \(bu 2
@@ -1536,15 +1411,11 @@ wizhelp heavy_cpu_max
 .IP \(bu 2
 ~/game/netrhost.conf
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
+.IP \(bu 2
 DISK \- no limit.  Generally will be 75\-200M depending on size, number of backups and if you leave your compiled object files in.
-.sp
+.IP \(bu 2
 DB Size \- (20000 default) There is no limit on the number of objects the db can have.  By default it\(aqs soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.INDENT 2.0
 .IP \(bu 2
 wizhelp maximum_size
 .IP \(bu 2
@@ -1554,29 +1425,16 @@ wizhelp @quota
 .IP \(bu 2
 wizhelp @limit
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
+.IP \(bu 2
 Attribute Size \- 10K as a hard limit.  750 as a soft limit.  You can increase this but it can\(aqt exceed 10000 attributes.  This is to avoid DoS style attacks.
-.INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
+.INDENT 2.0
 .IP \(bu 2
 wizhelp vlimit
 .IP \(bu 2
 wizhelp @limit
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Sqlite and MySQL/Maria setup and why use it?
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Both of these can be configured separately or conjointly to
@@ -1586,11 +1444,7 @@ external data storage or accessing a central repository
 of data to share between multiple projects.  Like, for
 example between a wiki, a forum, and the mush.
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Executing outside scripts and binaries within RhostMUSH
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Rhost has execscript() which allows executing outside binaries
@@ -1608,11 +1462,7 @@ help sidefx
 wizhelp writing scripts
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Pulling external data into RhostMUSH
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 You are capable of pulling external data in to RhostMUSH using several methods.  These are by using:
@@ -1629,11 +1479,7 @@ cron (wizhelp signal)
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Integrating a unix cron right into RhostMUSH
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 The unix cron can be used to integrate with Rhost fairly
@@ -1648,11 +1494,7 @@ wizhelp signal
 wizhelp signal_cron
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Signal handling, how it works, and when and why use it
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Signals are used to do different things for the mush.  By default,
@@ -1667,11 +1509,7 @@ SIGUSR2 \- will do a clean shutdown of the mush.
 SIGTERM \- will immediately scram the mush as cleanly and fast as possible.  It will avoid dumping anything to the database to speed up scramming, but write a TERM flat file to be loaded in if corruption.
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Setting up global parents, global @parents, global attribute formatting, and other global setups
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Global parents are useful when you want to have a global \(aqparent\(aq
@@ -1687,13 +1525,15 @@ self\->@parent(s)\->@zone(s)\->GlobalParent
 .fi
 .UNINDENT
 .UNINDENT
-.sp
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
 The type of the parent does not have to match the target.
 .sp
 These global parents can be defined either by using a global
 generic parent or by using the type.  If a type is specified it
 overrides the generic.  The following parameters are used:
-.INDENT 2.0
+.INDENT 0.0
 .INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
@@ -1709,6 +1549,9 @@ global_parent_player  \- The player global parent
 .UNINDENT
 .UNINDENT
 .UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
 .IP \(bu 2
 Global @parents are different than global parents in that any new
 item of similar type that is created is automatically assigned this
@@ -1757,11 +1600,8 @@ player_attr_default   \- Target for player formatting
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS RhostMUSH limitations and how to get around them
-.INDENT 0.0
-.INDENT 3.5
+.sp
 While Rhost is insanely configurable and quite powerful, there are
 limitations that exist within it.
 .INDENT 0.0
@@ -1770,33 +1610,23 @@ Function invocations.  Sometimes you will hit a ceiling on evaluation.
 You may want to tweak values to allow more functions or commands
 to execute.  The following controls that:
 .INDENT 2.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 function_invocation_limit [25000 default] \- specifies the total functions you can execute per command.
 .IP \(bu 2
 function_recursion_limit [50] \- specifies the total times a function can call itself over and over.  Rarely should this be increased and doing so can effect your stack depth.
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .IP \(bu 2
 Command queue limits.  Sometimes you want more to be queued up for
 players or wizards.
 .INDENT 2.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 player_queue_limit  \- Max number of entries a player can queue
 .IP \(bu 2
 wizard_queue_limit  \- Max number of entries a wizard can queue
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .IP \(bu 2
 @limit is a wonderful way to lock down limitations per player or global.  Lots of power is available here.
 .INDENT 2.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 @limit
 .IP \(bu 2
@@ -1810,17 +1640,11 @@ max_vattr_limit      \- Set player global VATTR limits
 .IP \(bu 2
 max_dest_limit       \- Set player global @destroy limits
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .IP \(bu 2
 Lots of trace output can be cut off.  You can modify this with:
 .INDENT 2.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 trace_output_limit   \- Set lines of trace output shown
-.UNINDENT
-.UNINDENT
 .UNINDENT
 .IP \(bu 2
 To define how many commands a minute a player set SPAMMONITOR can use
@@ -1847,11 +1671,7 @@ Sometime you may find a single may not work for an escape.  You can
 in most cases use a % instead or double escape the to make it work.
 Also look at lit() as a solution.
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Advanced guest setup
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 After you set up your guests, you can set unique names to each guest
@@ -1859,21 +1679,13 @@ if you so want after defining the dbref#\(aqs your guests use.  This is
 done by defining them in the guest_namelist parameter.  You can also
 increase guests (or decrease them) between 0\-31 guests.
 .INDENT 2.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 wizhelp guest_namelist
 .IP \(bu 2
 wizhelp num_guests
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Attribute permission masking and the joys of the power behind it
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Attribute contentlocks can be set up so you can lock the actual
@@ -1891,11 +1703,7 @@ global_attrdefault    \- Target for defining content locks
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS The amazing @cluster and what it can do for you
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Clusters is the way to virtually assign multiple objects into
@@ -1906,23 +1714,17 @@ as if it was a singular entity.  This allows some amazing ability
 to distribute attribute content or even have a farm of a massive
 amount of attributes without paying a hefty penalty on object bloat.
 .INDENT 2.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 help cluster  \-\- Gives a fantastic overview of how clusters work.
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.UNINDENT
 .SS What we plan for the future
-.INDENT 0.0
-.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 Things to look forward to the future with RhostMUSH.
 .INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
 .IP \(bu 2
 Full Unicode/UTF8 in Rhost 4.0
 .IP \(bu 2
@@ -1941,8 +1743,6 @@ More as we think about it :)
 .UNINDENT
 .SS Additional features not covered otherwise
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
 .IP \(bu 2
 +/\- 5.4 million years can be utilized with the built in time functions
 which includes timefmt(), secs(), convtime(), convsecs(), and moon().  Party on!
@@ -1959,8 +1759,6 @@ see help on the streval and ueval function\(aq
 .IP \(bu 2
 Full features in\-game customization of near every aspect of the game.
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Random notes and things to know about RhostMUSH
 .sp
 Here are some things to know about RhostMUSH and what you may or may not
@@ -1971,89 +1769,207 @@ Admin toggles to configure the WHO, various things you\(aqre used to, etc is in 
 README.AUTOCONF file.
 .SS Note on bits, their levels, and things they do
 .INDENT 0.0
-.INDENT 3.5
+.IP \(bu 2
 IMMORTAL \- They can do anything.  Treat this as #1 and only give to
 people you trust.  Period.   You don\(aqt have to use this bit
 if you do not want to and just assume #1.
-.sp
+.IP \(bu 2
 ROYALTY \- Unlike PENN/MUX, this is \fInot\fP a sub\-wizard, this is a
 FULL wizard.  Plus, they can do a bit more.
-.sp
+.IP \(bu 2
 COUNCILOR \- Like royalty on PENN/MUX but they can modify.
-.sp
+.IP \(bu 2
 ARCHITECT \- Can\(aqt do as much as councilor, but lot more than BUILDER.
-.sp
+.IP \(bu 2
 GUILDMASTER \- Very limited.  Sees dbrief#\(aqs, can ex things their
 level and lower and @quota players.
 .UNINDENT
-.UNINDENT
 .SS You need to @pcreate your guest characters and set them GUEST
-.INDENT 0.0
-.INDENT 3.5
+.sp
 It doesn\(aqt create them on the fly but we considered this better.
 You have 31 total you can have.  It defaults to 10 in the
 netrhost.conf file.  You can rename the guests anything you want,
 but before you do so, you must add the dbref#\(aqs to the param
 guest_namelist
-.UNINDENT
-.UNINDENT
 .SS @powers are INHERITED
-.INDENT 0.0
-.INDENT 3.5
+.sp
 Therefore, you need power_objects enabled (@admin)
 to make this work properly for non\-plauyers.
 A power is taken before a bit level ONLY if higher than that bit.
 Yes, powers are multi\-level.
-.UNINDENT
-.UNINDENT
 .SS @depowers are automatically checked first before anything else
-.INDENT 0.0
-.INDENT 3.5
+.sp
 This is also meaningless on objects.
-.UNINDENT
-.UNINDENT
 .SS Zones are unique
-.INDENT 0.0
-.INDENT 3.5
+.sp
 You can have things in multiple zones.
-.UNINDENT
-.UNINDENT
 .SS The db auto\-repares itself when it can
-.INDENT 0.0
-.INDENT 3.5
+.sp
 It does this by purging anything
 it can\(aqt identify.  Dataloss is better than unrecoverable data.
 Yes, any such \(aqrepairing\(aq is logged so you know if something is up.
-.UNINDENT
-.UNINDENT
 .SS You can get your connect.txt to parse ansi
-.INDENT 0.0
-.INDENT 3.5
+.sp
 See ansi_txtfiles in wizhelp.
 .sp
 You can also override it with softcode if you so wanted.
 .sp
 See file_object in wizhelp for more information on this.
-.UNINDENT
-.UNINDENT
 .SS Re\-compiled binaries do not require an @shutdown
-.INDENT 0.0
-.INDENT 3.5
+.sp
 When re\-compiling the binaries, all you have to remember is when done, issue
 .sp
 @reboot on the game and @readcache.
 .sp
 You do not need to @shutdown.
-.UNINDENT
-.UNINDENT
 .SS Softcode emulations of functions from other servers are included
-.INDENT 0.0
-.INDENT 3.5
+.sp
 Load the file softfunctions into the mush once it\(aqs set up.  This are
 @functions that will alias the functions that PENN, MUX, and TinyMUSH have
 that is either named differently or we don\(aqt have for one reason or another.
+.SH WHAT FLAGS, TOGGLES, POWERS, AND DEPOWERS MEAN IN RHOSTMUSH
+.SS What are Flags?
+.sp
+Flags are pretty much exactly the same as any other mush.  It\(aqs a flag
+that you set or unset on a target which then enables/disables or
+alters something that target can do.  There\(aqs help on all the flags
+in help and wizhelp.
+.SS What are Toggles?
+.sp
+Toggles were designed as a single point flag that immediately enables
+or disables a set ability or condition, thus a \(aqtoggle\(aq.  It works
+exactly like a flag and was originally designed for two reasons.  To
+distinguish from the multi\-meaning of a \(aqflag\(aq, and because frankly
+we ran out of flag space :)
+.SS What is an @power?
+.sp
+A power is similar to a power on other mushes, but unlike them, our
+powers are multi\-tier.  This means that they can be customized to
+empower something at a given bitlevel.  You may empower something
+from guildmaster up to councilor level.  There are some powers
+with a power level of N/A meaning they are a toggle power granting
+an absolute power level as specified in the help for that power.
+This requires the INHERIT flag for non\-players to inherit powers,
+however, a specific object can be granted a power as well.
+.SS What is an @depower?
+.sp
+This is the anti\-thesis of @power.  Also, depowers do not require
+inheritance.  They also have priority over flags, toggles, and
+powers.  You can use depower to remove or lower abilities and
+control from a target, even a full wizard (royalty) can be
+depowered.
+.SH MULTI-TIERED BITLEVEL SYSTEMS
+.SS Altering bitlevels
+.sp
+Please keep in mind each of these bitlevels can be tweeked with the @admin
+parameters and with the @powers (accessable by royalty) or @depowers (only
+by immortal and higher).
+.sp
+RhostMUSH offers a multi\-tier bitlevel system.  They go in order of presidence
+You do not have to use all these bits, only use what you want.
+.SS ghod (#1) <bitlevel 7>
+.sp
+This bitlevel can do everything.  Only those who you trust with absolute power should have this.  Period.
+.SS Immortal(i) <Level 6> \- Basically #1
+.sp
+The only thing this bitlevel can not do is directly effect #1,
+set/unset some internal flags/attributes, and set/unset the
+immortal flag.  These players can do EVERYTHING else.  Treat
+this bit as you would treat #1.  Only give it to those you know
+without a doubt you can trust.
+.INDENT 0.0
+.IP \(bu 2
+Can do everything except set some internal flags, effect #1, and set/remove the immortal flag.
 .UNINDENT
+.SS Royalty(W) <Level 5> \- FULL wizbit level
+.sp
+This is your standard wizard.  They can do everything you\(aqre
+used to on other mushes that wizards can do.  In addition, they
+also override all locks by default (this can be disabled), and
+they have an enhanced wizcloaking ability (which also can be
+disabled).  They can also set all the lower bitlevels.
+.INDENT 0.0
+.IP \(bu 2
+All things of Level 4 and lower
+.IP \(bu 2
+Ability to set more flags: STOP, NOSTOP, FUBAR
+.IP \(bu 2
+Ability to @attribute,
+.IP \(bu 2
+Ability to WIZCLOAK
 .UNINDENT
+.SS Councilor(a) <Level 4> \- High wizbit level
+.sp
+This is your almost\-but\-not\-quite wizard.  They have access to
+about 80% of the wizard commands.  This includes @nuke, @toad,
+@newpassword and the like.  The only things they can\(aqt do that
+wizards can is cloak, override locks, and use some of the
+database manipulation tools in wizhelp.
+.INDENT 0.0
+.IP \(bu 2
+All things of Level 3 and lower
+.IP \(bu 2
+Ability to set more flags: NOCONNECT, WANDERER, FREE
+.IP \(bu 2
+Ability to @nuke, @toad, @boot, @chownall, @dbck, @poor, @newpassword, @pcreate, slay
+.UNINDENT
+.SS Architect(B) <Level 3> \- Middle wizbit level
+.sp
+This is your sub\-wizard.  They still have the ability to control
+anything their bitlevel and lower (including @chown, @destroy, etc)
+but do not have any control of other players (like @nuke, @toad, etc)
+but they can set the slave flag.  Otherwise, all things their level
+and lower they can treat as if they owned it.
+.INDENT 0.0
+.IP \(bu 2
+All things of Level 2
+.IP \(bu 2
+Ability to fully control and modify anything their level and lower (including @cloning, @destroying, etc)
+.IP \(bu 2
+Ability to use @tel on anything their level and lower.
+.IP \(bu 2
+Ability to bypass jump_ok rooms on anything their level & lower.
+.IP \(bu 2
+Ability to set some restricted flags: SLAVE, NO_YELL
+.IP \(bu 2
+Has infinite quota and money
+.IP \(bu 2
+Able to give negative money (Steal)
+.IP \(bu 2
+Able to @toggle the MONITOR
+.UNINDENT
+.SS Guildmaster(g) <Level 2> \- Lowest wizbit level
+.sp
+This is the lowest wiz bit.  They only have moderate abilities.
+They can examine/decompile anything their level and lower, they can
+@guild/@quota people, and they have a few other minor abilities.
+They don\(aqt have free money however.
+.INDENT 0.0
+.IP \(bu 2
+Ability to access things remotely (long_fingers)
+.IP \(bu 2
+Things are FREE for them in the queue.
+.IP \(bu 2
+Can see dbref#\(aqs of things their level and lower
+.IP \(bu 2
+Can examine/decompile things their level and lower.
+.IP \(bu 2
+Can set @quota/@guild on their level and lower.
+.UNINDENT
+.SS Wanderer <bitlevel 0>
+.sp
+This is a hinderance flag.  This flag is automatically set on new
+players that are created (which can be disabled).  This flag stops
+the player from creating/destroying any database information.   In
+effect it stops them from any type of building type commands.  They
+still are allowed to set/unset locks/attributes/etc though without
+hinderance.
+.SS Guest <bitlevel 0 as well>
+.sp
+This is a bigger hinderance flag.  By default all guests should be
+set this.  This flag stops the player from ANY database manipulation
+along with @teleporting, and many other advanced commands.  It\(aqs
+extreamly dehibilatating.
 .SH COMPARISON OF MODERN MUSH SERVERS
 .SS Differences to expect to the end user between PennMUSH, MUX, and RhostMUSH
 .sp
@@ -4685,149 +4601,6 @@ settings I have used when creating this database. Some settings, like the ANSI
 substitution, are used in the DB.
 .sp
 \fI\%\-\-Ambrosia@RhostMUSH\fP
-.SH MULTI-TIERED BITLEVEL SYSTEMS
-.SS Altering bitlevels
-.sp
-Please keep in mind each of these bitlevels can be tweeked with the @admin
-parameters and with the @powers (accessable by royalty) or @depowers (only
-by immortal and higher).
-.sp
-RhostMUSH offers a multi\-tier bitlevel system.  They go in order of presidence
-You do not have to use all these bits, only use what you want.
-.SS ghod (#1) <bitlevel 7>
-.sp
-This bitlevel can do everything.  Only those who you trust with absolute power should have this.  Period.
-.SS Immortal(i) <Level 6> \- Basically #1
-.sp
-The only thing this bitlevel can not do is directly effect #1,
-set/unset some internal flags/attributes, and set/unset the
-immortal flag.  These players can do EVERYTHING else.  Treat
-this bit as you would treat #1.  Only give it to those you know
-without a doubt you can trust.
-.INDENT 0.0
-.IP \(bu 2
-Can do everything except set some internal flags, effect #1, and set/remove the immortal flag.
-.UNINDENT
-.SS Royalty(W) <Level 5> \- FULL wizbit level
-.sp
-This is your standard wizard.  They can do everything you\(aqre
-used to on other mushes that wizards can do.  In addition, they
-also override all locks by default (this can be disabled), and
-they have an enhanced wizcloaking ability (which also can be
-disabled).  They can also set all the lower bitlevels.
-.INDENT 0.0
-.IP \(bu 2
-All things of Level 4 and lower
-.IP \(bu 2
-Ability to set more flags: STOP, NOSTOP, FUBAR
-.IP \(bu 2
-Ability to @attribute,
-.IP \(bu 2
-Ability to WIZCLOAK
-.UNINDENT
-.SS Councilor(a) <Level 4> \- High wizbit level
-.sp
-This is your almost\-but\-not\-quite wizard.  They have access to
-about 80% of the wizard commands.  This includes @nuke, @toad,
-@newpassword and the like.  The only things they can\(aqt do that
-wizards can is cloak, override locks, and use some of the
-database manipulation tools in wizhelp.
-.INDENT 0.0
-.IP \(bu 2
-All things of Level 3 and lower
-.IP \(bu 2
-Ability to set more flags: NOCONNECT, WANDERER, FREE
-.IP \(bu 2
-Ability to @nuke, @toad, @boot, @chownall, @dbck, @poor, @newpassword, @pcreate, slay
-.UNINDENT
-.SS Architect(B) <Level 3> \- Middle wizbit level
-.sp
-This is your sub\-wizard.  They still have the ability to control
-anything their bitlevel and lower (including @chown, @destroy, etc)
-but do not have any control of other players (like @nuke, @toad, etc)
-but they can set the slave flag.  Otherwise, all things their level
-and lower they can treat as if they owned it.
-.INDENT 0.0
-.IP \(bu 2
-All things of Level 2
-.IP \(bu 2
-Ability to fully control and modify anything their level and lower (including @cloning, @destroying, etc)
-.IP \(bu 2
-Ability to use @tel on anything their level and lower.
-.IP \(bu 2
-Ability to bypass jump_ok rooms on anything their level & lower.
-.IP \(bu 2
-Ability to set some restricted flags: SLAVE, NO_YELL
-.IP \(bu 2
-Has infinite quota and money
-.IP \(bu 2
-Able to give negative money (Steal)
-.IP \(bu 2
-Able to @toggle the MONITOR
-.UNINDENT
-.SS Guildmaster(g) <Level 2> \- Lowest wizbit level
-.sp
-This is the lowest wiz bit.  They only have moderate abilities.
-They can examine/decompile anything their level and lower, they can
-@guild/@quota people, and they have a few other minor abilities.
-They don\(aqt have free money however.
-.INDENT 0.0
-.IP \(bu 2
-Ability to access things remotely (long_fingers)
-.IP \(bu 2
-Things are FREE for them in the queue.
-.IP \(bu 2
-Can see dbref#\(aqs of things their level and lower
-.IP \(bu 2
-Can examine/decompile things their level and lower.
-.IP \(bu 2
-Can set @quota/@guild on their level and lower.
-.UNINDENT
-.SS Wanderer <bitlevel 0>
-.sp
-This is a hinderance flag.  This flag is automatically set on new
-players that are created (which can be disabled).  This flag stops
-the player from creating/destroying any database information.   In
-effect it stops them from any type of building type commands.  They
-still are allowed to set/unset locks/attributes/etc though without
-hinderance.
-.SS Guest <bitlevel 0 as well>
-.sp
-This is a bigger hinderance flag.  By default all guests should be
-set this.  This flag stops the player from ANY database manipulation
-along with @teleporting, and many other advanced commands.  It\(aqs
-extreamly dehibilatating.
-.SH WHAT FLAGS, TOGGLES, POWERS, AND DEPOWERS MEAN IN RHOSTMUSH
-.SS What are Flags?
-.sp
-Flags are pretty much exactly the same as any other mush.  It\(aqs a flag
-that you set or unset on a target which then enables/disables or
-alters something that target can do.  There\(aqs help on all the flags
-in help and wizhelp.
-.SS What are Toggles?
-.sp
-Toggles were designed as a single point flag that immediately enables
-or disables a set ability or condition, thus a \(aqtoggle\(aq.  It works
-exactly like a flag and was originally designed for two reasons.  To
-distinguish from the multi\-meaning of a \(aqflag\(aq, and because frankly
-we ran out of flag space :)
-.SS What is an @power?
-.sp
-A power is similar to a power on other mushes, but unlike them, our
-powers are multi\-tier.  This means that they can be customized to
-empower something at a given bitlevel.  You may empower something
-from guildmaster up to councilor level.  There are some powers
-with a power level of N/A meaning they are a toggle power granting
-an absolute power level as specified in the help for that power.
-This requires the INHERIT flag for non\-players to inherit powers,
-however, a specific object can be granted a power as well.
-.SS What is an @depower?
-.sp
-This is the anti\-thesis of @power.  Also, depowers do not require
-inheritance.  They also have priority over flags, toggles, and
-powers.  You can use depower to remove or lower abilities and
-control from a target, even a full wizard (royalty) can be
-depowered.
 .SH SECURITY
 .SS Considerations to locking down restrictions in RhostMUSH
 .sp
@@ -7968,33 +7741,48 @@ that there are no more zones to add.
 Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
 This has been tested with the Preview build 14342.
 .INDENT 0.0
-.IP 1. 3
+.IP \(bu 2
 After installing Bash you will need to install the following packages:
-.INDENT 3.0
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
 .IP \(bu 2
 gcc
 .IP \(bu 2
 git
 .IP \(bu 2
 make
-.IP \(bu 2
-libpcre3 (optional)
-.IP \(bu 2
-libpcre3\-dev (optional)
-.IP \(bu 2
-openssl (optional)
 .UNINDENT
+.UNINDENT
+.UNINDENT
+.IP \(bu 2
+Optional packages:
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+libpcre3
+.IP \(bu 2
+libpcre3\-dev
+.IP \(bu 2
+openssl
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.IP \(bu 2
+When configuring rhost (using confsource) select the Disable Debugmon
 .UNINDENT
 .sp
-#. When configuring rhost (using confsource) select the Disable Debugmon
 option.
 .SS Installing on Windows with Cygwin
 .sp
 Rhost does work under windows using the cygwin package.
 .INDENT 0.0
-.IP 1. 3
+.IP \(bu 2
 When you do install cygwin, the following packages must be added:
-.INDENT 3.0
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
 .IP \(bu 2
 bash
 .IP \(bu 2
@@ -8007,10 +7795,20 @@ gdbm
 git
 .IP \(bu 2
 make
-.IP \(bu 2
-openssl (optional)
 .UNINDENT
-.IP 2. 3
+.UNINDENT
+.UNINDENT
+.IP \(bu 2
+Optional packages:
+.INDENT 2.0
+.INDENT 3.5
+.INDENT 0.0
+.IP \(bu 2
+openssl
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.IP \(bu 2
 The src/Makefile has to manually have the CYGWIN line uncommented.
 .UNINDENT
 .SS Startig RhostMUSH on Windows
@@ -9134,9 +8932,13 @@ Rhost Equiv: MONITOR (@toggle)
 The following NDA comes from the time when RhostMUSH was not publially
 available. It is preserved here for historical reasons. We are suckers for
 looking back at things. :)
-\-\-Ambrosia
 .INDENT 0.0
 .INDENT 3.5
+.INDENT 0.0
+.INDENT 3.5
+\-\-Ambrosia
+.UNINDENT
+.UNINDENT
 .INDENT 0.0
 .IP 1. 3
 I agree, to not give out the code, in part or in full, in any form of
@@ -9163,8 +8965,7 @@ you should be allowed to play with it fully as long as the first two
 rules are kept.
 .UNINDENT
 .UNINDENT
-.SH RHOSTMUSH INTERNAL HELP FILES
-.SH RHOSTMUSH INTERNAL WIZHELP FILES
+.SH COPYRIGHT
 .sp
 Copyright© 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -9185,6 +8986,8 @@ the original writers of the code in writing.
 This copyright does not include the original code that was given as GNU freeware
 .sp
 This copyright information may not be changed, altered, or omitted.
+.SH RHOSTMUSH INTERNAL HELP FILES
+.SH RHOSTMUSH INTERNAL WIZHELP FILES
 .SH AUTHOR
 wstarter
 .SH COPYRIGHT

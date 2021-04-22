@@ -1,8 +1,8 @@
-5. Getting Started
+7. Getting Started
 ******************
 
 
-5.1. What to type to get the basics running if you did not choose a pre-existing flatfile
+7.1. What to type to get the basics running if you did not choose a pre-existing flatfile
 =========================================================================================
 
 If you decided to get a bare-bone configuration, you will find your
@@ -10,7 +10,7 @@ mush has just two things.  The #1 (God) player and the starting room
 #0.  That's it.
 
 
-5.1.1. Login to #1 from the connect screen
+7.1.1. Login to #1 from the connect screen
 ------------------------------------------
 
 Nyctasia is the default password:
@@ -18,7 +18,7 @@ Nyctasia is the default password:
    co #1 Nyctasia
 
 
-5.1.2. Change #1's password to something you'll remember but is hard to guess
+7.1.2. Change #1's password to something you'll remember but is hard to guess
 -----------------------------------------------------------------------------
 
 Note: yourpasswordgoeshere can be any password you choose.  Choose
@@ -27,7 +27,7 @@ well:
    @password Nyctasia=YOURPASSWORDGOESHERE
 
 
-5.1.3. Master Room
+7.1.3. Master Room
 ------------------
 
 At this point you should create your master room:
@@ -42,7 +42,7 @@ Note:
   use.
 
 
-5.1.4. Flag and protect Master Room
+7.1.4. Flag and protect Master Room
 -----------------------------------
 
 It will return a dbref#, it should be #2 if you've not created
@@ -51,7 +51,7 @@ anything else:
    @set #2=safe ind halt float
 
 
-5.1.5. Player Holder Characters
+7.1.5. Player Holder Characters
 -------------------------------
 
 Feel free to change the password to what you want
@@ -63,7 +63,7 @@ Note:
   will give you a complete breakdown of what each bit can do.
 
 
-5.1.5.1. Immortal Holder
+7.1.5.1. Immortal Holder
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
    @pcreate ImmHolder=abc123
@@ -71,7 +71,7 @@ Note:
    @badsite *immholder=*
 
 
-5.1.5.2. Royalty/Wizard Holder
+7.1.5.2. Royalty/Wizard Holder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    @pcreate WizHolder=abc123
@@ -79,7 +79,7 @@ Note:
    @badsite *wizholder=*
 
 
-5.1.5.3. Councilor/Admin Holder
+7.1.5.3. Councilor/Admin Holder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    @pcreate AdminHolder=abc123
@@ -87,7 +87,7 @@ Note:
    @badsite *adminholder=*
 
 
-5.1.5.4. Architect/Staff Holder
+7.1.5.4. Architect/Staff Holder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    @pcreate StaffHolder=abc123
@@ -95,7 +95,7 @@ Note:
    @badsite *staffholder=*
 
 
-5.1.5.5. Guildmaster/Lead Holder
+7.1.5.5. Guildmaster/Lead Holder
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    @pcreate GuildHolder=abc123
@@ -103,7 +103,7 @@ Note:
    @badsite *guildholder=*
 
 
-5.1.6. Chown #0 (The starting room) and #2 (The Master room) to immholder
+7.1.6. Chown #0 (The starting room) and #2 (The Master room) to immholder
 -------------------------------------------------------------------------
 
 Note:
@@ -115,7 +115,7 @@ Note:
    @chown/preserve #2=*immholder
 
 
-5.1.7. Create yourself your own immortal player then log off #1 and into this immortal player
+7.1.7. Create yourself your own immortal player then log off #1 and into this immortal player
 ---------------------------------------------------------------------------------------------
 
 Note:
@@ -126,7 +126,7 @@ Note:
    @set *playername=!wanderer immortal
 
 
-5.1.8. Log out of #1 and log into your immortal player
+7.1.8. Log out of #1 and log into your immortal player
 ------------------------------------------------------
 
 Note:
@@ -137,7 +137,7 @@ Note:
    co PLAYERNAME PLAYERPASSWORD
 
 
-5.1.9. Create your guest characters
+7.1.9. Create your guest characters
 -----------------------------------
 
 Note:
@@ -147,7 +147,7 @@ Note:
    @dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@adisconnect *Guest##=home;@lock *Guest##=*Guest##;@desc *Guest##=A Stranger in a strange land.}
 
 
-5.1.10. Dig a closet to store important objects but non-master room
+7.1.10. Dig a closet to store important objects but non-master room
 -------------------------------------------------------------------
 
 Note:
@@ -157,7 +157,7 @@ Note:
    @dig Closet
 
 
-5.1.11. Set the flags on the closet and ownership of it
+7.1.11. Set the flags on the closet and ownership of it
 -------------------------------------------------------
 
 Note:
@@ -168,13 +168,13 @@ Note:
    @chown/pres #123=*immholder
 
 
-5.1.12. Create an Admin object for future ease of customization
+7.1.12. Create an Admin object for future ease of customization
 ---------------------------------------------------------------
 
    @create AdminObject
 
 
-5.1.13. Set the flags on the admin object and ownership and location
+7.1.13. Set the flags on the admin object and ownership and location
 --------------------------------------------------------------------
 
 Note:
@@ -191,7 +191,7 @@ Note:
    @tel adminobject=#234
 
 
-5.1.14. Add admin object to configuration
+7.1.14. Add admin object to configuration
 -----------------------------------------
 
 Modify the netrhost.conf file with the following line at the bottom
@@ -201,13 +201,13 @@ the dbref# of the admin object that you made:
    admin_object 123
 
 
-5.1.15. Reboot your mush to load up the change for the admin object
+7.1.15. Reboot your mush to load up the change for the admin object
 -------------------------------------------------------------------
 
    @reboot
 
 
-5.1.16. Do @admin/list to see if it shows the admin object
+7.1.16. Do @admin/list to see if it shows the admin object
 ----------------------------------------------------------
 
 Note:
@@ -217,14 +217,14 @@ Note:
    @admin/list
 
 
-5.1.17. Load in all the various softcode that you want
+7.1.17. Load in all the various softcode that you want
 ------------------------------------------------------
 
 This is client dependant based on whatever method it uses to load
 softcode.
 
 
-5.1.17.1. Myrddin MushCron
+7.1.17.1. Myrddin MushCron
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Load in the Myrddin Mush Cron. It's a very handy piece of software and
@@ -243,7 +243,7 @@ Note:
    @tel Myrddin=#234 (where #234 is the dbref# of your code closet)
 
 
-5.1.17.2. AshCom
+7.1.17.2. AshCom
 ~~~~~~~~~~~~~~~~
 
 Load in default softcoded comsystem.  This is PennMUSH and MUX/TM3
@@ -258,7 +258,7 @@ Chown the Comsystem and everything inside it to immholder:
    @tel Chansys=globalroom()
 
 
-5.1.17.3. Mail Wrappers
+7.1.17.3. Mail Wrappers
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 Load in mail wrappers if you want MUX/TM3 and/or Penn mail wrapping.
@@ -277,7 +277,7 @@ Chown to immholder:
    @tel/list mux penn=globalroom()
 
 
-5.1.17.4. Myrddin BBS
+7.1.17.4. Myrddin BBS
 ~~~~~~~~~~~~~~~~~~~~~
 
 Load in Myrddin's BBS Filename:
@@ -291,7 +291,7 @@ Chown to immholder and the contents of it as well:
    @tel myrddin=globalroom()
 
 
-5.1.17.5. Other Mushcode
+7.1.17.5. Other Mushcode
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 There's other code in the Mushcode directory that you are welcome to
@@ -303,7 +303,7 @@ should be portable to RhostMUSH with little to no changes depending on
 the complexity of the code in question.
 
 
-5.2. Minimal DB instructions
+7.2. Minimal DB instructions
 ============================
 
 The 'retired' directory has older image files if you're interested
@@ -324,7 +324,7 @@ mkindx the files (substitute FILENAME with the filename):
    ../mkindx FILENAME.txt FILENAME.indx
 
 
-5.2.1. Startup Steps
+7.2.1. Startup Steps
 --------------------
 
 1. Using the Startmush utility for the first time, select the load db

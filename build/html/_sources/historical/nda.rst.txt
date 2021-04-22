@@ -1,14 +1,15 @@
 .. _historical-nda:
 .. index:: NDA, Non-Disclosure Agreement
 
-***********************************
+===================================
 Historical Non-Disclosure Agreement
-***********************************
+===================================
 
 The following NDA comes from the time when RhostMUSH was not publially
 available. It is preserved here for historical reasons. We are suckers for
 looking back at things. :)
---Ambrosia
+
+   --Ambrosia
 
 
  #. I agree, to not give out the code, in part or in full, in any form of

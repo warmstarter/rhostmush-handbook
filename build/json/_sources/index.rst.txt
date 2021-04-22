@@ -31,28 +31,26 @@ which, as you know, is the best part of setting up a mush.
 
    install.rst
    features.rst
-   differences.rst
+   features/bitlevels.rst
+   comparison.rst
    database.rst
    gettingstarted.rst
    ambrosiadb.rst
-   bitlevels.rst
-   toggles.rst
    security.rst
    maintenance.rst
    troubleshooting.rst
    advanced.rst
-   windows.rst
+   install/windows.rst
    legacy.rst
 
-   flags.rst
-   powers.rst
+   comparison/flags.rst
+   comparison/powers.rst
 
    historical/nda.rst
+   meta/copyright.rst
 
-   help.rst
-   wizhelp.rst
-
-.. include:: copyright.rst
+   txtfiles/help.rst
+   txtfiles/wizhelp.rst
 
 ..
    changelog.rst

@@ -98,12 +98,12 @@ A lot more that could drag this document out for pages.
 @menu
 * Installing RhostMUSH:: 
 * What RhostMUSH is about and what's so great about RhostMUSH:: 
+* What FLAGS@comma{} TOGGLES@comma{} POWERS@comma{} and DEPOWERS mean in RhostMUSH: What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH. 
+* Multi-tiered bitlevel systems:: 
 * Comparison of modern MUSH servers:: 
 * Database:: 
 * Getting Started:: 
 * Ambrosia's Minimal Rhost DB:: 
-* Multi-tiered bitlevel systems:: 
-* What FLAGS@comma{} TOGGLES@comma{} POWERS@comma{} and DEPOWERS mean in RhostMUSH: What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH. 
 * Security:: 
 * Maintenance:: 
 * Troubleshooting:: 
@@ -114,6 +114,7 @@ A lot more that could drag this document out for pages.
 * Comparison of Flags:: 
 * Comparison of powers:: 
 * Historical Non-Disclosure Agreement:: 
+* Copyright:: 
 * RhostMUSH Internal Help Files:: 
 * RhostMUSH Internal WizHelp Files:: 
 * Index:: 
@@ -260,6 +261,25 @@ Random notes and things to know about RhostMUSH
 * You can get your connect.txt to parse ansi: You can get your connect txt to parse ansi. 
 * Re-compiled binaries do not require an @@shutdown:: 
 * Softcode emulations of functions from other servers are included:: 
+
+What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH
+
+* What are Flags?:: 
+* What are Toggles?:: 
+* What is an @@power?:: 
+* What is an @@depower?:: 
+
+Multi-tiered bitlevel systems
+
+* Altering bitlevels:: 
+* ghod (#1) <bitlevel 7>: ghod #1 <bitlevel 7>. 
+* Immortal(i) <Level 6> - Basically #1: Immortal i <Level 6> - Basically #1. 
+* Royalty(W) <Level 5> - FULL wizbit level: Royalty W <Level 5> - FULL wizbit level. 
+* Councilor(a) <Level 4> - High wizbit level: Councilor a <Level 4> - High wizbit level. 
+* Architect(B) <Level 3> - Middle wizbit level: Architect B <Level 3> - Middle wizbit level. 
+* Guildmaster(g) <Level 2> - Lowest wizbit level: Guildmaster g <Level 2> - Lowest wizbit level. 
+* Wanderer <bitlevel 0>:: 
+* Guest <bitlevel 0 as well>:: 
 
 Comparison of modern MUSH servers
 
@@ -409,25 +429,6 @@ AmbrosiaDB Bitlevels
 * AmbrosiaDB Head Coder:: 
 * AmbrosiaDB MU* Head(s): AmbrosiaDB MU* Head s. 
 * AmbrosiaDB Site Admins:: 
-
-Multi-tiered bitlevel systems
-
-* Altering bitlevels:: 
-* ghod (#1) <bitlevel 7>: ghod #1 <bitlevel 7>. 
-* Immortal(i) <Level 6> - Basically #1: Immortal i <Level 6> - Basically #1. 
-* Royalty(W) <Level 5> - FULL wizbit level: Royalty W <Level 5> - FULL wizbit level. 
-* Councilor(a) <Level 4> - High wizbit level: Councilor a <Level 4> - High wizbit level. 
-* Architect(B) <Level 3> - Middle wizbit level: Architect B <Level 3> - Middle wizbit level. 
-* Guildmaster(g) <Level 2> - Lowest wizbit level: Guildmaster g <Level 2> - Lowest wizbit level. 
-* Wanderer <bitlevel 0>:: 
-* Guest <bitlevel 0 as well>:: 
-
-What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH
-
-* What are Flags?:: 
-* What are Toggles?:: 
-* What is an @@power?:: 
-* What is an @@depower?:: 
 
 Security
 
@@ -1570,7 +1571,7 @@ This option is covered in detail here: @ref{2f,,Ambrosia's Minimal Rhost DB}
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
-@node What RhostMUSH is about and what's so great about RhostMUSH,Comparison of modern MUSH servers,Installing RhostMUSH,Top
+@node What RhostMUSH is about and what's so great about RhostMUSH,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH,Installing RhostMUSH,Top
 @anchor{features doc}@anchor{30}@anchor{features what-rhostmush-is-about-and-what-s-so-great-about-rhostmush}@anchor{31}
 @chapter What RhostMUSH is about and what's so great about RhostMUSH
 
@@ -1639,8 +1640,6 @@ not limited to:
 @section Recycle bin
 
 
-@quotation
-
 Yup, you guessed it.  RhostMUSH has a windows like recycle bin.
 This means the objects you @@nuke and @@destroy become 'destroyed'
 but not recycled until they are @@purged.  If you use the Myrddin
@@ -1651,14 +1650,11 @@ nuked things from any period of time, as long as they were not
 @@purged first.
 
 Commands: @@purge, @@nuke, @@destroy, @@recover, @@reclist
-@end quotation
 
 @node @@snapshot,Wizard and Immortals by default,Recycle bin,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features snapshot}@anchor{33}
 @section @@snapshot
 
-
-@quotation
 
 Live image snapshots to unload or load to and from
 disk.  As many snapshots as you want, as often as you want.
@@ -1666,14 +1662,11 @@ It essentially does a flatfile dump of a dbref#.  Great for
 backups or cross-Rhost portability.
 
 Command: @@snapshot
-@end quotation
 
 @node Wizard and Immortals by default,Titles and Captions to a player's name,@@snapshot,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features wizard-and-immortals-by-default}@anchor{34}
 @section Wizard and Immortals by default
 
-
-@quotation
 
 
 @itemize *
@@ -1701,47 +1694,35 @@ this can not be disabled, and you must consider that immortals
 should be treated as the God player (#1) since they are
 effectively #1 in nearly every way.
 @end itemize
-@end quotation
 
 @node Titles and Captions to a player's name,Have an alternate name with locks for NPC obfuscation,Wizard and Immortals by default,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features titles-and-captions-to-a-player-s-name}@anchor{35}
 @section Titles and Captions to a player's name
 
 
-@quotation
-
 @@caption and @@titlecaption
-@end quotation
 
 @node Have an alternate name with locks for NPC obfuscation,Have multiple player aliases,Titles and Captions to a player's name,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features have-an-alternate-name-with-locks-for-npc-obfuscation}@anchor{36}
 @section Have an alternate name with locks for NPC obfuscation
 
 
-@quotation
-
 @@altname
 @@lock/altname
-@end quotation
 
 @node Have multiple player aliases,Actively control how dark works both game-wide and individually,Have an alternate name with locks for NPC obfuscation,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features have-multiple-player-aliases}@anchor{37}
 @section Have multiple player aliases
 
 
-@quotation
-
 As well as a method to reserve player names per player w/o revealing who has what name.
 
 @@protect
-@end quotation
 
 @node Actively control how dark works both game-wide and individually,Make config file changes in-game without having to reboot or have shell access,Have multiple player aliases,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features actively-control-how-dark-works-both-game-wide-and-individually}@anchor{38}
 @section Actively control how dark works both game-wide and individually
 
-
-@quotation
 
 @@depower dark
 
@@ -1751,86 +1732,62 @@ secure_dark, see_owned_dark, idle_wiz_dark, player_dark
 @@toggle snuffdark
 
 @@flagdef to redefine who and what can set the DARK flag
-@end quotation
 
 @node Make config file changes in-game without having to reboot or have shell access,Execute any binary or script as a localized function,Actively control how dark works both game-wide and individually,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features make-config-file-changes-in-game-without-having-to-reboot-or-have-shell-access}@anchor{39}
 @section Make config file changes in-game without having to reboot or have shell access
 
 
-@quotation
-
 @@admin admin_object
-@end quotation
 
 @node Execute any binary or script as a localized function,Customized percent substitutions like %n %# etc,Make config file changes in-game without having to reboot or have shell access,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features execute-any-binary-or-script-as-a-localized-function}@anchor{3a}
 @section Execute any binary or script as a localized function
 
 
-@quotation
-
 EXECSCRIPT (power), SIDEFX (flag)
-@end quotation
 
 @node Customized percent substitutions like %n %# etc,Redefine percent substitutions like %n %# etc,Execute any binary or script as a localized function,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features customized-percent-substitutions-like-n-etc}@anchor{3b}
 @section Customized percent substitutions (like %n, %#, etc)
 
 
-@quotation
-
 @@admin sub_include, @@hook
-@end quotation
 
 @node Redefine percent substitutions like %n %# etc,Localize command and function overrides in a sandbox,Customized percent substitutions like %n %# etc,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features redefine-percent-substitutions-like-n-etc}@anchor{3c}
 @section Redefine percent substitutions (like %n, %#, etc)
 
 
-@quotation
-
 @@admin sub_override, @@hook
-@end quotation
 
 @node Localize command and function overrides in a sandbox,Multiple Zones,Redefine percent substitutions like %n %# etc,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features localize-command-and-function-overrides-in-a-sandbox}@anchor{3d}
 @section Localize command and function overrides in a sandbox
 
 
-@quotation
-
 @@icmd, @@lfunction, subeval(), sandbox()
-@end quotation
 
 @node Multiple Zones,Optionally control enable or disable sideeffects,Localize command and function overrides in a sandbox,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features multiple-zones}@anchor{3e}
 @section Multiple Zones
 
 
-@quotation
-
 Have multiple zones which can optionally belong to multiple targets (multiple zones per target allowable!)
 
 @@zone, zones, lzone(), zonecmd()
-@end quotation
 
 @node Optionally control enable or disable sideeffects,Have 31 cross-interactive realities for locations,Multiple Zones,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features optionally-control-enable-or-disable-sideeffects}@anchor{3f}
 @section Optionally control, enable, or disable sideeffects
 
 
-@quotation
-
 @@admin sideeffects, SIDEFX (flag)
-@end quotation
 
 @node Have 31 cross-interactive realities for locations,Override any command with softcode,Optionally control enable or disable sideeffects,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features have-31-cross-interactive-realities-for-locations}@anchor{40}
 @section Have 31 cross-interactive realities for locations
 
-
-@quotation
 
 This works as a truly independant and self-contained environment.
 A room can have 31 'layers', each 'layer' is a reality in
@@ -1841,60 +1798,45 @@ looking, $commands, listens, movement, interaction, pretty
 much every single aspect of mushing.
 
 REALITY LEVELS
-@end quotation
 
 @node Override any command with softcode,The abilility to raise or lower permissions on the various,Have 31 cross-interactive realities for locations,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features override-any-command-with-softcode}@anchor{41}
 @section Override any command with softcode
 
 
-@quotation
-
 @@admin access (check ignore)
 
 Master room $commands to then override the hardcode
-@end quotation
 
 @node The abilility to raise or lower permissions on the various,Customize new commands on the connect screen,Override any command with softcode,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features the-abilility-to-raise-or-lower-permissions-on-the-various}@anchor{42}
 @section The abilility to raise or lower permissions on the various
 
 
-@quotation
-
 staff bitlevels for each player.
 
 @@power, @@depower, TOGGLES, FLAGS
-@end quotation
 
 @node Customize new commands on the connect screen,Softcode any txt file like connect txt,The abilility to raise or lower permissions on the various,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features customize-new-commands-on-the-connect-screen}@anchor{43}
 @section Customize new commands on the connect screen
 
 
-@quotation
-
 @@admin file_object2
-@end quotation
 
 @node Softcode any txt file like connect txt,Advanced tracing methods for debugging your code including labels!,Customize new commands on the connect screen,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features softcode-any-txt-file-like-connect-txt}@anchor{44}
 @section Softcode any txt file (like connect.txt)
 
 
-@quotation
-
 and have it evaluate in-game.  It evaluates as the object it is on.
 
 @@admin file_object
-@end quotation
 
 @node Advanced tracing methods for debugging your code including labels!,Built in pretty-printing of attributes with the parenmatch function,Softcode any txt file like connect txt,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features advanced-tracing-methods-for-debugging-your-code-including-labels}@anchor{45}
 @section Advanced tracing methods for debugging your code including labels!
 
-
-@quotation
 
 Commands: @@label
 
@@ -1907,7 +1849,6 @@ Flags: TRACE
 Attributes: TRACE_GREP, TRACE, TRACE_COLOR, TRACE_COLOR_<attr>
 
 Substitutions: %_
-@end quotation
 
 @node Built in pretty-printing of attributes with the parenmatch function,Plenty more not mentioned!,Advanced tracing methods for debugging your code including labels!,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features built-in-pretty-printing-of-attributes-with-the-parenmatch-function}@anchor{46}
@@ -1990,8 +1931,6 @@ do.
 @subsection Debugging/Tracing
 
 
-@quotation
-
 
 @itemize *
 
@@ -2021,14 +1960,11 @@ help parenmatch()
 help parenstr()
 @end itemize
 @end itemize
-@end quotation
 
 @node Zoning,Reality Levels,Debugging/Tracing,Advanced features of RhostMUSH
 @anchor{features zoning}@anchor{4a}
 @subsection Zoning
 
-
-@quotation
 
 
 @itemize *
@@ -2061,14 +1997,11 @@ help @@Lock type twink
 help @@lock type zone
 @end itemize
 @end itemize
-@end quotation
 
 @node Reality Levels,Function and Command Overriding,Zoning,Advanced features of RhostMUSH
 @anchor{features reality-levels}@anchor{4b}
 @subsection Reality Levels
 
-
-@quotation
 
 
 @itemize *
@@ -2098,14 +2031,11 @@ wizhelp reaity level
 help @@Lock type user
 @end itemize
 @end itemize
-@end quotation
 
 @node Function and Command Overriding,The Recycle Bin,Reality Levels,Advanced features of RhostMUSH
 @anchor{features function-and-command-overriding}@anchor{4c}
 @subsection Function and Command Overriding
 
-
-@quotation
 
 
 @itemize *
@@ -2169,14 +2099,11 @@ wizhelp bypass()
 @end itemize
 @end quotation
 @end itemize
-@end quotation
 
 @node The Recycle Bin,Percent Substitution Adding/Overriding,Function and Command Overriding,Advanced features of RhostMUSH
 @anchor{features the-recycle-bin}@anchor{4d}
 @subsection The Recycle Bin
 
-
-@quotation
 
 
 @itemize *
@@ -2188,6 +2115,8 @@ the recycle bin and marked unavailable within the mush.  This marks
 the dbref# as garbage in any sense of the word.  However, the object
 is not able to be reused until purged.  Once purged, it is put onto
 a free list that can then be reassigned to a new object.
+
+@quotation
 
 
 @itemize -
@@ -2213,15 +2142,13 @@ wizhelp @@recover
 @item 
 wizhelp @@reclist
 @end itemize
-@end itemize
 @end quotation
+@end itemize
 
 @node Percent Substitution Adding/Overriding,Hooking,The Recycle Bin,Advanced features of RhostMUSH
 @anchor{features percent-substitution-adding-overriding}@anchor{4e}
 @subsection Percent Substitution Adding/Overriding
 
-
-@quotation
 
 
 @itemize *
@@ -2231,6 +2158,8 @@ Rhost allows the ability to both override percent substitutions as
 well as creating new ones.  This is done with @@Hook and admin
 params and issues softcode overriding.  Due to how it is evaluated
 there is no risk of recursion.
+
+@quotation
 
 
 @itemize -
@@ -2247,15 +2176,13 @@ wizhelp sub_include
 @item 
 wizhelp sub_override
 @end itemize
-@end itemize
 @end quotation
+@end itemize
 
 @node Hooking,Command based uselocks,Percent Substitution Adding/Overriding,Advanced features of RhostMUSH
 @anchor{features hooking}@anchor{4f}
 @subsection Hooking
 
-
-@quotation
 
 
 @itemize *
@@ -2263,6 +2190,8 @@ wizhelp sub_override
 @item 
 Hooking allows you to have advanced methods to manipulate commands
 including adding customized switches to them via softcode.
+
+@quotation
 
 
 @itemize -
@@ -2279,15 +2208,13 @@ wizhelp hook_obj
 @item 
 wizhelp hook setup
 @end itemize
-@end itemize
 @end quotation
+@end itemize
 
 @node Command based uselocks,Differentating between command and listen locks,Hooking,Advanced features of RhostMUSH
 @anchor{features command-based-uselocks}@anchor{50}
 @subsection Command based uselocks
 
-
-@quotation
 
 
 @itemize *
@@ -2312,14 +2239,11 @@ wizhelp atruse toggle
 help attribute uselocks
 @end itemize
 @end itemize
-@end quotation
 
 @node Differentating between command and listen locks,Wizard auto-overiding and how to disable it,Command based uselocks,Advanced features of RhostMUSH
 @anchor{features differentating-between-command-and-listen-locks}@anchor{51}
 @subsection Differentating between command and listen locks
 
-
-@quotation
 
 
 @itemize *
@@ -2337,14 +2261,11 @@ a listen lock.
 help @@lock type uselock
 @end itemize
 @end itemize
-@end quotation
 
 @node Wizard auto-overiding and how to disable it,Advanced FLAG and TOGGLE control,Differentating between command and listen locks,Advanced features of RhostMUSH
 @anchor{features wizard-auto-overiding-and-how-to-disable-it}@anchor{52}
 @subsection Wizard auto-overiding and how to disable it
 
-
-@quotation
 
 
 @itemize *
@@ -2370,14 +2291,11 @@ wizhelp no_uselock (disable just uselock overriding)
 wizhelp pagelock toggle (disable pagelock overriding)
 @end itemize
 @end itemize
-@end quotation
 
 @node Advanced FLAG and TOGGLE control,Advanced site control,Wizard auto-overiding and how to disable it,Advanced features of RhostMUSH
 @anchor{features advanced-flag-and-toggle-control}@anchor{53}
 @subsection Advanced FLAG and TOGGLE control
 
-
-@quotation
 
 
 @itemize *
@@ -2436,14 +2354,11 @@ wizhelp toggle_access_type
 @end itemize
 @end itemize
 @end itemize
-@end quotation
 
 @node Advanced site control,Auto-Registration,Advanced FLAG and TOGGLE control,Advanced features of RhostMUSH
 @anchor{features advanced-site-control}@anchor{54}
 @subsection Advanced site control
 
-
-@quotation
 
 
 @itemize *
@@ -2470,14 +2385,11 @@ wizhelp noguest_host
 wizhelp @@list (site option)
 @end itemize
 @end itemize
-@end quotation
 
 @node Auto-Registration,Which bit level is best?,Advanced site control,Advanced features of RhostMUSH
 @anchor{features auto-registration}@anchor{55}
 @subsection Auto-Registration
 
-
-@quotation
 
 
 @itemize *
@@ -2495,14 +2407,11 @@ provides.  This is well described in the wizhelp.
 wizhelp autoregistration
 @end itemize
 @end itemize
-@end quotation
 
 @node Which bit level is best?,What are the limits for size/growth for RhostMUSH?,Auto-Registration,Advanced features of RhostMUSH
 @anchor{features which-bit-level-is-best}@anchor{56}
 @subsection Which bit level is best?
 
-
-@quotation
 
 
 @itemize *
@@ -2530,56 +2439,43 @@ detail of the various bitlevels and what each can do.
 wizhelp control
 @end itemize
 @end itemize
-@end quotation
 
 @node What are the limits for size/growth for RhostMUSH?,Sqlite and MySQL/Maria setup and why use it?,Which bit level is best?,Advanced features of RhostMUSH
 @anchor{features what-are-the-limits-for-size-growth-for-rhostmush}@anchor{57}
 @subsection What are the limits for size/growth for RhostMUSH?
 
 
-@quotation
+While using QDBM, there's really no set limits for most things.
+The limits that we have are as followed:
 
 
 @itemize *
 
 @item 
-While using QDBM, there's really no set limits for most things.
-The limits that we have are as followed:
-@end itemize
-
-@quotation
-
 LBUF - 64K.  It is recommended to only use 32K as there is some issues with networking with 64K lbufs.
 
-@quotation
-
-@quotation
-
 
 @itemize -
 
 @item 
 Compile time option with the menu configurator
 @end itemize
-@end quotation
 
+@item 
 SBUF - 64 characters (if configured -- it's suggested you do).
 
-@quotation
-
 
 @itemize -
 
 @item 
 Compile time option with the menu configurator
 @end itemize
-@end quotation
 
+@item 
 MBUF - 200 characters.  Not able to be changed.
 
+@item 
 MAX CONNECTIONS - Limited by the total number of open sockets and descriptors on the account and server running on.  There are various tools to limit connection DoS attemps and other such nastiness.  This is well documented in the netrhost.conf file.
-
-@quotation
 
 
 @itemize -
@@ -2590,13 +2486,12 @@ wizhelp max_players
 @item 
 ~/game/netrhost.conf
 @end itemize
-@end quotation
 
+@item 
 MEMORY - no limit.  Generally runs between 8-50M depending on the size of the mush and the LBUF size specified.
 
+@item 
 CPU  - no limit, but has built in cpu abort in code.  The netrhost.conf file documents this well for customizing.  the default values are usually good enough.
-
-@quotation
 
 
 @itemize -
@@ -2619,13 +2514,12 @@ wizhelp heavy_cpu_max
 @item 
 ~/game/netrhost.conf
 @end itemize
-@end quotation
 
+@item 
 DISK - no limit.  Generally will be 75-200M depending on size, number of backups and if you leave your compiled object files in.
 
+@item 
 DB Size - (20000 default) There is no limit on the number of objects the db can have.  By default it's soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem.
-
-@quotation
 
 
 @itemize -
@@ -2642,11 +2536,9 @@ wizhelp @@quota
 @item 
 wizhelp @@limit
 @end itemize
-@end quotation
 
+@item 
 Attribute Size - 10K as a hard limit.  750 as a soft limit.  You can increase this but it can't exceed 10000 attributes.  This is to avoid DoS style attacks.
-
-@quotation
 
 
 @itemize -
@@ -2657,17 +2549,12 @@ wizhelp vlimit
 @item 
 wizhelp @@limit
 @end itemize
-@end quotation
-@end quotation
-@end quotation
-@end quotation
+@end itemize
 
 @node Sqlite and MySQL/Maria setup and why use it?,Executing outside scripts and binaries within RhostMUSH,What are the limits for size/growth for RhostMUSH?,Advanced features of RhostMUSH
 @anchor{features sqlite-and-mysql-maria-setup-and-why-use-it}@anchor{58}
 @subsection Sqlite and MySQL/Maria setup and why use it?
 
-
-@quotation
 
 
 @itemize *
@@ -2680,14 +2567,11 @@ external data storage or accessing a central repository
 of data to share between multiple projects.  Like, for
 example between a wiki, a forum, and the mush.
 @end itemize
-@end quotation
 
 @node Executing outside scripts and binaries within RhostMUSH,Pulling external data into RhostMUSH,Sqlite and MySQL/Maria setup and why use it?,Advanced features of RhostMUSH
 @anchor{features executing-outside-scripts-and-binaries-within-rhostmush}@anchor{59}
 @subsection Executing outside scripts and binaries within RhostMUSH
 
-
-@quotation
 
 
 @itemize *
@@ -2714,14 +2598,11 @@ help sidefx
 wizhelp writing scripts
 @end itemize
 @end itemize
-@end quotation
 
 @node Pulling external data into RhostMUSH,Integrating a unix cron right into RhostMUSH,Executing outside scripts and binaries within RhostMUSH,Advanced features of RhostMUSH
 @anchor{features pulling-external-data-into-rhostmush}@anchor{5a}
 @subsection Pulling external data into RhostMUSH
 
-
-@quotation
 
 
 @itemize *
@@ -2745,14 +2626,11 @@ cron (wizhelp signal)
 @end itemize
 @end quotation
 @end itemize
-@end quotation
 
 @node Integrating a unix cron right into RhostMUSH,Signal handling how it works and when and why use it,Pulling external data into RhostMUSH,Advanced features of RhostMUSH
 @anchor{features integrating-a-unix-cron-right-into-rhostmush}@anchor{5b}
 @subsection Integrating a unix cron right into RhostMUSH
 
-
-@quotation
 
 
 @itemize *
@@ -2774,14 +2652,11 @@ wizhelp signal
 wizhelp signal_cron
 @end itemize
 @end itemize
-@end quotation
 
 @node Signal handling how it works and when and why use it,Setting up global parents global @@parents global attribute formatting and other global setups,Integrating a unix cron right into RhostMUSH,Advanced features of RhostMUSH
 @anchor{features signal-handling-how-it-works-and-when-and-why-use-it}@anchor{5c}
 @subsection Signal handling, how it works, and when and why use it
 
-
-@quotation
 
 
 @itemize *
@@ -2804,14 +2679,11 @@ SIGUSR2 - will do a clean shutdown of the mush.
 SIGTERM - will immediately scram the mush as cleanly and fast as possible.  It will avoid dumping anything to the database to speed up scramming, but write a TERM flat file to be loaded in if corruption.
 @end itemize
 @end itemize
-@end quotation
 
 @node Setting up global parents global @@parents global attribute formatting and other global setups,RhostMUSH limitations and how to get around them,Signal handling how it works and when and why use it,Advanced features of RhostMUSH
 @anchor{features setting-up-global-parents-global-parents-global-attribute-formatting-and-other-global-setups}@anchor{5d}
 @subsection Setting up global parents, global @@parents, global attribute formatting, and other global setups
 
-
-@quotation
 
 
 @itemize *
@@ -2824,6 +2696,9 @@ highest tier in a lookup.  The way lookups will go will be:
 @example
 self->@@parent(s)->@@zone(s)->GlobalParent
 @end example
+@end itemize
+
+@quotation
 
 The type of the parent does not have to match the target.
 
@@ -2852,6 +2727,10 @@ global_parent_thing   - The thing global parent
 global_parent_player  - The player global parent
 @end itemize
 @end quotation
+@end quotation
+
+
+@itemize *
 
 @item 
 Global @@parents are different than global parents in that any new
@@ -2912,14 +2791,11 @@ player_attr_default   - Target for player formatting
 @end itemize
 @end quotation
 @end itemize
-@end quotation
 
 @node RhostMUSH limitations and how to get around them,Advanced guest setup,Setting up global parents global @@parents global attribute formatting and other global setups,Advanced features of RhostMUSH
 @anchor{features rhostmush-limitations-and-how-to-get-around-them}@anchor{5e}
 @subsection RhostMUSH limitations and how to get around them
 
-
-@quotation
 
 While Rhost is insanely configurable and quite powerful, there are
 limitations that exist within it.
@@ -2932,8 +2808,6 @@ Function invocations.  Sometimes you will hit a ceiling on evaluation.
 You may want to tweak values to allow more functions or commands
 to execute.  The following controls that:
 
-@quotation
-
 
 @itemize -
 
@@ -2943,13 +2817,10 @@ function_invocation_limit [25000 default] - specifies the total functions you ca
 @item 
 function_recursion_limit [50] - specifies the total times a function can call itself over and over.  Rarely should this be increased and doing so can effect your stack depth.
 @end itemize
-@end quotation
 
 @item 
 Command queue limits.  Sometimes you want more to be queued up for
 players or wizards.
-
-@quotation
 
 
 @itemize -
@@ -2960,12 +2831,9 @@ player_queue_limit  - Max number of entries a player can queue
 @item 
 wizard_queue_limit  - Max number of entries a wizard can queue
 @end itemize
-@end quotation
 
 @item 
 @@limit is a wonderful way to lock down limitations per player or global.  Lots of power is available here.
-
-@quotation
 
 
 @itemize -
@@ -2988,12 +2856,9 @@ max_vattr_limit      - Set player global VATTR limits
 @item 
 max_dest_limit       - Set player global @@destroy limits
 @end itemize
-@end quotation
 
 @item 
 Lots of trace output can be cut off.  You can modify this with:
-
-@quotation
 
 
 @itemize -
@@ -3001,7 +2866,6 @@ Lots of trace output can be cut off.  You can modify this with:
 @item 
 trace_output_limit   - Set lines of trace output shown
 @end itemize
-@end quotation
 
 @item 
 To define how many commands a minute a player set SPAMMONITOR can use
@@ -3036,14 +2900,11 @@ Sometime you may find a single may not work for an escape.  You can
 in most cases use a % instead or double escape the to make it work.
 Also look at lit() as a solution.
 @end itemize
-@end quotation
 
 @node Advanced guest setup,Attribute permission masking and the joys of the power behind it,RhostMUSH limitations and how to get around them,Advanced features of RhostMUSH
 @anchor{features advanced-guest-setup}@anchor{5f}
 @subsection Advanced guest setup
 
-
-@quotation
 
 
 @itemize *
@@ -3054,8 +2915,6 @@ if you so want after defining the dbref#'s your guests use.  This is
 done by defining them in the guest_namelist parameter.  You can also
 increase guests (or decrease them) between 0-31 guests.
 
-@quotation
-
 
 @itemize -
 
@@ -3065,16 +2924,12 @@ wizhelp guest_namelist
 @item 
 wizhelp num_guests
 @end itemize
-@end quotation
 @end itemize
-@end quotation
 
 @node Attribute permission masking and the joys of the power behind it,The amazing @@cluster and what it can do for you,Advanced guest setup,Advanced features of RhostMUSH
 @anchor{features attribute-permission-masking-and-the-joys-of-the-power-behind-it}@anchor{60}
 @subsection Attribute permission masking and the joys of the power behind it
 
-
-@quotation
 
 
 @itemize *
@@ -3097,14 +2952,11 @@ global_attrdefault    - Target for defining content locks
 @end itemize
 @end quotation
 @end itemize
-@end quotation
 
 @node The amazing @@cluster and what it can do for you,What we plan for the future,Attribute permission masking and the joys of the power behind it,Advanced features of RhostMUSH
 @anchor{features the-amazing-cluster-and-what-it-can-do-for-you}@anchor{61}
 @subsection The amazing @@cluster and what it can do for you
 
-
-@quotation
 
 
 @itemize *
@@ -3118,30 +2970,26 @@ as if it was a singular entity.  This allows some amazing ability
 to distribute attribute content or even have a farm of a massive
 amount of attributes without paying a hefty penalty on object bloat.
 
-@quotation
-
 
 @itemize -
 
 @item 
 help cluster  -- Gives a fantastic overview of how clusters work.
 @end itemize
-@end quotation
 @end itemize
-@end quotation
 
 @node What we plan for the future,Additional features not covered otherwise,The amazing @@cluster and what it can do for you,Advanced features of RhostMUSH
 @anchor{features what-we-plan-for-the-future}@anchor{62}
 @subsection What we plan for the future
 
 
-@quotation
-
 
 @itemize *
 
 @item 
 Things to look forward to the future with RhostMUSH.
+
+@quotation
 
 
 @itemize -
@@ -3164,15 +3012,13 @@ Cross-Mush execution between mushes in Rhost 4.1
 @item 
 More as we think about it :)
 @end itemize
-@end itemize
 @end quotation
+@end itemize
 
 @node Additional features not covered otherwise,,What we plan for the future,Advanced features of RhostMUSH
 @anchor{features additional-features-not-covered-otherwise}@anchor{63}
 @subsection Additional features not covered otherwise
 
-
-@quotation
 
 
 @itemize *
@@ -3197,7 +3043,6 @@ see help on the streval and ueval function'
 @item 
 Full features in-game customization of near every aspect of the game.
 @end itemize
-@end quotation
 
 @node Random notes and things to know about RhostMUSH,,Advanced features of RhostMUSH,What RhostMUSH is about and what's so great about RhostMUSH
 @anchor{features random-notes-and-things-to-know-about-rhostmush}@anchor{64}
@@ -3229,127 +3074,369 @@ README.AUTOCONF file.
 @subsection Note on bits, their levels, and things they do
 
 
-@quotation
 
+@itemize *
+
+@item 
 IMMORTAL - They can do anything.  Treat this as #1 and only give to
 people you trust.  Period.   You don't have to use this bit
 if you do not want to and just assume #1.
 
+@item 
 ROYALTY - Unlike PENN/MUX, this is @emph{not} a sub-wizard, this is a
 FULL wizard.  Plus, they can do a bit more.
 
+@item 
 COUNCILOR - Like royalty on PENN/MUX but they can modify.
 
+@item 
 ARCHITECT - Can't do as much as councilor, but lot more than BUILDER.
 
+@item 
 GUILDMASTER - Very limited.  Sees dbrief#'s, can ex things their
 level and lower and @@quota players.
-@end quotation
+@end itemize
 
 @node You need to @@pcreate your guest characters and set them GUEST,@@powers are INHERITED,Note on bits their levels and things they do,Random notes and things to know about RhostMUSH
 @anchor{features you-need-to-pcreate-your-guest-characters-and-set-them-guest}@anchor{66}
 @subsection You need to @@pcreate your guest characters and set them GUEST
 
 
-@quotation
-
 It doesn't create them on the fly but we considered this better.
 You have 31 total you can have.  It defaults to 10 in the
 netrhost.conf file.  You can rename the guests anything you want,
 but before you do so, you must add the dbref#'s to the param
 guest_namelist
-@end quotation
 
 @node @@powers are INHERITED,@@depowers are automatically checked first before anything else,You need to @@pcreate your guest characters and set them GUEST,Random notes and things to know about RhostMUSH
 @anchor{features powers-are-inherited}@anchor{67}
 @subsection @@powers are INHERITED
 
 
-@quotation
-
 Therefore, you need power_objects enabled (@@admin)
 to make this work properly for non-plauyers.
 A power is taken before a bit level ONLY if higher than that bit.
 Yes, powers are multi-level.
-@end quotation
 
 @node @@depowers are automatically checked first before anything else,Zones are unique,@@powers are INHERITED,Random notes and things to know about RhostMUSH
 @anchor{features depowers-are-automatically-checked-first-before-anything-else}@anchor{68}
 @subsection @@depowers are automatically checked first before anything else
 
 
-@quotation
-
 This is also meaningless on objects.
-@end quotation
 
 @node Zones are unique,The db auto-repares itself when it can,@@depowers are automatically checked first before anything else,Random notes and things to know about RhostMUSH
 @anchor{features zones-are-unique}@anchor{69}
 @subsection Zones are unique
 
 
-@quotation
-
 You can have things in multiple zones.
-@end quotation
 
 @node The db auto-repares itself when it can,You can get your connect txt to parse ansi,Zones are unique,Random notes and things to know about RhostMUSH
 @anchor{features the-db-auto-repares-itself-when-it-can}@anchor{6a}
 @subsection The db auto-repares itself when it can
 
 
-@quotation
-
 It does this by purging anything
 it can't identify.  Dataloss is better than unrecoverable data.
 Yes, any such 'repairing' is logged so you know if something is up.
-@end quotation
 
 @node You can get your connect txt to parse ansi,Re-compiled binaries do not require an @@shutdown,The db auto-repares itself when it can,Random notes and things to know about RhostMUSH
 @anchor{features you-can-get-your-connect-txt-to-parse-ansi}@anchor{6b}
 @subsection You can get your connect.txt to parse ansi
 
 
-@quotation
-
 See ansi_txtfiles in wizhelp.
 
 You can also override it with softcode if you so wanted.
 
 See file_object in wizhelp for more information on this.
-@end quotation
 
 @node Re-compiled binaries do not require an @@shutdown,Softcode emulations of functions from other servers are included,You can get your connect txt to parse ansi,Random notes and things to know about RhostMUSH
 @anchor{features re-compiled-binaries-do-not-require-an-shutdown}@anchor{6c}
 @subsection Re-compiled binaries do not require an @@shutdown
 
 
-@quotation
-
 When re-compiling the binaries, all you have to remember is when done, issue
 
 @@reboot on the game and @@readcache.
 
 You do not need to @@shutdown.
-@end quotation
 
 @node Softcode emulations of functions from other servers are included,,Re-compiled binaries do not require an @@shutdown,Random notes and things to know about RhostMUSH
 @anchor{features softcode-emulations-of-functions-from-other-servers-are-included}@anchor{6d}
 @subsection Softcode emulations of functions from other servers are included
 
 
-@quotation
-
 Load the file softfunctions into the mush once it's set up.  This are
 @@functions that will alias the functions that PENN, MUX, and TinyMUSH have
 that is either named differently or we don't have for one reason or another.
-@end quotation
+
+@node What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH,Multi-tiered bitlevel systems,What RhostMUSH is about and what's so great about RhostMUSH,Top
+@anchor{features what-flags-toggles-powers-and-depowers-mean-in-rhostmush}@anchor{6e}
+@chapter What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH
+
+
+@menu
+* What are Flags?:: 
+* What are Toggles?:: 
+* What is an @@power?:: 
+* What is an @@depower?:: 
+
+@end menu
+
+@node What are Flags?,What are Toggles?,,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH
+@anchor{features what-are-flags}@anchor{6f}
+@section What are Flags?
+
+
+Flags are pretty much exactly the same as any other mush.  It's a flag
+that you set or unset on a target which then enables/disables or
+alters something that target can do.  There's help on all the flags
+in help and wizhelp.
+
+@node What are Toggles?,What is an @@power?,What are Flags?,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH
+@anchor{features what-are-toggles}@anchor{70}
+@section What are Toggles?
+
+
+Toggles were designed as a single point flag that immediately enables
+or disables a set ability or condition, thus a 'toggle'.  It works
+exactly like a flag and was originally designed for two reasons.  To
+distinguish from the multi-meaning of a 'flag', and because frankly
+we ran out of flag space :)
+
+@node What is an @@power?,What is an @@depower?,What are Toggles?,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH
+@anchor{features what-is-an-power}@anchor{71}
+@section What is an @@power?
+
+
+A power is similar to a power on other mushes, but unlike them, our
+powers are multi-tier.  This means that they can be customized to
+empower something at a given bitlevel.  You may empower something
+from guildmaster up to councilor level.  There are some powers
+with a power level of N/A meaning they are a toggle power granting
+an absolute power level as specified in the help for that power.
+This requires the INHERIT flag for non-players to inherit powers,
+however, a specific object can be granted a power as well.
+
+@node What is an @@depower?,,What is an @@power?,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH
+@anchor{features what-is-an-depower}@anchor{72}
+@section What is an @@depower?
+
+
+This is the anti-thesis of @@power.  Also, depowers do not require
+inheritance.  They also have priority over flags, toggles, and
+powers.  You can use depower to remove or lower abilities and
+control from a target, even a full wizard (royalty) can be
+depowered.
+
+@c These are replacement strings for non-ASCII characters used within the project
+@c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{features/bitlevels bitlevels}@anchor{73}
+@geindex Bitlevels
+
+@node Multi-tiered bitlevel systems,Comparison of modern MUSH servers,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH,Top
+@anchor{features/bitlevels doc}@anchor{74}@anchor{features/bitlevels multi-tiered-bitlevel-systems}@anchor{75}
+@chapter Multi-tiered bitlevel systems
+
+
+@menu
+* Altering bitlevels:: 
+* ghod (#1) <bitlevel 7>: ghod #1 <bitlevel 7>. 
+* Immortal(i) <Level 6> - Basically #1: Immortal i <Level 6> - Basically #1. 
+* Royalty(W) <Level 5> - FULL wizbit level: Royalty W <Level 5> - FULL wizbit level. 
+* Councilor(a) <Level 4> - High wizbit level: Councilor a <Level 4> - High wizbit level. 
+* Architect(B) <Level 3> - Middle wizbit level: Architect B <Level 3> - Middle wizbit level. 
+* Guildmaster(g) <Level 2> - Lowest wizbit level: Guildmaster g <Level 2> - Lowest wizbit level. 
+* Wanderer <bitlevel 0>:: 
+* Guest <bitlevel 0 as well>:: 
+
+@end menu
+
+@node Altering bitlevels,ghod #1 <bitlevel 7>,,Multi-tiered bitlevel systems
+@anchor{features/bitlevels altering-bitlevels}@anchor{76}
+@section Altering bitlevels
+
+
+Please keep in mind each of these bitlevels can be tweeked with the @@admin
+parameters and with the @@powers (accessable by royalty) or @@depowers (only
+by immortal and higher).
+
+RhostMUSH offers a multi-tier bitlevel system.  They go in order of presidence
+You do not have to use all these bits, only use what you want.
+
+@node ghod #1 <bitlevel 7>,Immortal i <Level 6> - Basically #1,Altering bitlevels,Multi-tiered bitlevel systems
+@anchor{features/bitlevels ghod-1-bitlevel-7}@anchor{77}
+@section ghod (#1) <bitlevel 7>
+
+
+This bitlevel can do everything.  Only those who you trust with absolute power should have this.  Period.
+
+@node Immortal i <Level 6> - Basically #1,Royalty W <Level 5> - FULL wizbit level,ghod #1 <bitlevel 7>,Multi-tiered bitlevel systems
+@anchor{features/bitlevels immortal-i-level-6-basically-1}@anchor{78}
+@section Immortal(i) <Level 6> - Basically #1
+
+
+The only thing this bitlevel can not do is directly effect #1,
+set/unset some internal flags/attributes, and set/unset the
+immortal flag.  These players can do EVERYTHING else.  Treat
+this bit as you would treat #1.  Only give it to those you know
+without a doubt you can trust.
+
+
+@itemize *
+
+@item 
+Can do everything except set some internal flags, effect #1, and set/remove the immortal flag.
+@end itemize
+
+@node Royalty W <Level 5> - FULL wizbit level,Councilor a <Level 4> - High wizbit level,Immortal i <Level 6> - Basically #1,Multi-tiered bitlevel systems
+@anchor{features/bitlevels royalty-w-level-5-full-wizbit-level}@anchor{79}
+@section Royalty(W) <Level 5> - FULL wizbit level
+
+
+This is your standard wizard.  They can do everything you're
+used to on other mushes that wizards can do.  In addition, they
+also override all locks by default (this can be disabled), and
+they have an enhanced wizcloaking ability (which also can be
+disabled).  They can also set all the lower bitlevels.
+
+
+@itemize *
+
+@item 
+All things of Level 4 and lower
+
+@item 
+Ability to set more flags: STOP, NOSTOP, FUBAR
+
+@item 
+Ability to @@attribute,
+
+@item 
+Ability to WIZCLOAK
+@end itemize
+
+@node Councilor a <Level 4> - High wizbit level,Architect B <Level 3> - Middle wizbit level,Royalty W <Level 5> - FULL wizbit level,Multi-tiered bitlevel systems
+@anchor{features/bitlevels councilor-a-level-4-high-wizbit-level}@anchor{7a}
+@section Councilor(a) <Level 4> - High wizbit level
+
+
+This is your almost-but-not-quite wizard.  They have access to
+about 80% of the wizard commands.  This includes @@nuke, @@toad,
+@@newpassword and the like.  The only things they can't do that
+wizards can is cloak, override locks, and use some of the
+database manipulation tools in wizhelp.
+
+
+@itemize *
+
+@item 
+All things of Level 3 and lower
+
+@item 
+Ability to set more flags: NOCONNECT, WANDERER, FREE
+
+@item 
+Ability to @@nuke, @@toad, @@boot, @@chownall, @@dbck, @@poor, @@newpassword, @@pcreate, slay
+@end itemize
+
+@node Architect B <Level 3> - Middle wizbit level,Guildmaster g <Level 2> - Lowest wizbit level,Councilor a <Level 4> - High wizbit level,Multi-tiered bitlevel systems
+@anchor{features/bitlevels architect-b-level-3-middle-wizbit-level}@anchor{7b}
+@section Architect(B) <Level 3> - Middle wizbit level
+
+
+This is your sub-wizard.  They still have the ability to control
+anything their bitlevel and lower (including @@chown, @@destroy, etc)
+but do not have any control of other players (like @@nuke, @@toad, etc)
+but they can set the slave flag.  Otherwise, all things their level
+and lower they can treat as if they owned it.
+
+
+@itemize *
+
+@item 
+All things of Level 2
+
+@item 
+Ability to fully control and modify anything their level and lower (including @@cloning, @@destroying, etc)
+
+@item 
+Ability to use @@tel on anything their level and lower.
+
+@item 
+Ability to bypass jump_ok rooms on anything their level & lower.
+
+@item 
+Ability to set some restricted flags: SLAVE, NO_YELL
+
+@item 
+Has infinite quota and money
+
+@item 
+Able to give negative money (Steal)
+
+@item 
+Able to @@toggle the MONITOR
+@end itemize
+
+@node Guildmaster g <Level 2> - Lowest wizbit level,Wanderer <bitlevel 0>,Architect B <Level 3> - Middle wizbit level,Multi-tiered bitlevel systems
+@anchor{features/bitlevels guildmaster-g-level-2-lowest-wizbit-level}@anchor{7c}
+@section Guildmaster(g) <Level 2> - Lowest wizbit level
+
+
+This is the lowest wiz bit.  They only have moderate abilities.
+They can examine/decompile anything their level and lower, they can
+@@guild/@@quota people, and they have a few other minor abilities.
+They don't have free money however.
+
+
+@itemize *
+
+@item 
+Ability to access things remotely (long_fingers)
+
+@item 
+Things are FREE for them in the queue.
+
+@item 
+Can see dbref#'s of things their level and lower
+
+@item 
+Can examine/decompile things their level and lower.
+
+@item 
+Can set @@quota/@@guild on their level and lower.
+@end itemize
+
+@node Wanderer <bitlevel 0>,Guest <bitlevel 0 as well>,Guildmaster g <Level 2> - Lowest wizbit level,Multi-tiered bitlevel systems
+@anchor{features/bitlevels wanderer-bitlevel-0}@anchor{7d}
+@section Wanderer <bitlevel 0>
+
+
+This is a hinderance flag.  This flag is automatically set on new
+players that are created (which can be disabled).  This flag stops
+the player from creating/destroying any database information.   In
+effect it stops them from any type of building type commands.  They
+still are allowed to set/unset locks/attributes/etc though without
+hinderance.
+
+@node Guest <bitlevel 0 as well>,,Wanderer <bitlevel 0>,Multi-tiered bitlevel systems
+@anchor{features/bitlevels guest-bitlevel-0-as-well}@anchor{7e}
+@section Guest <bitlevel 0 as well>
+
+
+This is a bigger hinderance flag.  By default all guests should be
+set this.  This flag stops the player from ANY database manipulation
+along with @@teleporting, and many other advanced commands.  It's
+extreamly dehibilatating.
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
-@node Comparison of modern MUSH servers,Database,What RhostMUSH is about and what's so great about RhostMUSH,Top
-@anchor{differences doc}@anchor{6e}@anchor{differences comparison-of-modern-mush-servers}@anchor{6f}
+@node Comparison of modern MUSH servers,Database,Multi-tiered bitlevel systems,Top
+@anchor{comparison doc}@anchor{7f}@anchor{comparison comparison-of-modern-mush-servers}@anchor{80}
 @chapter Comparison of modern MUSH servers
 
 
@@ -3373,7 +3460,7 @@ that is either named differently or we don't have for one reason or another.
 @end menu
 
 @node Differences to expect to the end user between PennMUSH MUX and RhostMUSH,Comparison of features between RhostMUSH PennMUSH and MUX2,,Comparison of modern MUSH servers
-@anchor{differences differences-to-expect-to-the-end-user-between-pennmush-mux-and-rhostmush}@anchor{70}
+@anchor{comparison differences-to-expect-to-the-end-user-between-pennmush-mux-and-rhostmush}@anchor{81}
 @section Differences to expect to the end user between PennMUSH, MUX, and RhostMUSH
 
 
@@ -3391,7 +3478,7 @@ and some effort should be looked at on how different it behaves.
 @end menu
 
 @node Differences with PennMUSH,Differences with MUX,,Differences to expect to the end user between PennMUSH MUX and RhostMUSH
-@anchor{differences differences-with-pennmush}@anchor{71}
+@anchor{comparison differences-with-pennmush}@anchor{82}
 @subsection Differences with PennMUSH
 
 
@@ -3425,7 +3512,7 @@ Penn has the standard set of bitlevel flags with on/off @@powers
 @end itemize
 
 @node Differences with MUX,Differences with RhostMUSH,Differences with PennMUSH,Differences to expect to the end user between PennMUSH MUX and RhostMUSH
-@anchor{differences differences-with-mux}@anchor{72}
+@anchor{comparison differences-with-mux}@anchor{83}
 @subsection Differences with MUX
 
 
@@ -3455,7 +3542,7 @@ MUX has the standard set of bitlevel flags with on/off @@powers
 @end itemize
 
 @node Differences with RhostMUSH,,Differences with MUX,Differences to expect to the end user between PennMUSH MUX and RhostMUSH
-@anchor{differences differences-with-rhostmush}@anchor{73}
+@anchor{comparison differences-with-rhostmush}@anchor{84}
 @subsection Differences with RhostMUSH
 
 
@@ -3485,7 +3572,7 @@ Rhost has a multi-level set of bitlevel flags with multi-tier @@powers, @@depowe
 @end itemize
 
 @node Comparison of features between RhostMUSH PennMUSH and MUX2,Organization of help and wizhelp,Differences to expect to the end user between PennMUSH MUX and RhostMUSH,Comparison of modern MUSH servers
-@anchor{differences comparison-of-features-between-rhostmush-pennmush-and-mux2}@anchor{74}
+@anchor{comparison comparison-of-features-between-rhostmush-pennmush-and-mux2}@anchor{85}
 @section Comparison of features between RhostMUSH, PennMUSH, and MUX2
 
 
@@ -3510,7 +3597,7 @@ information on when it'll be released.
 @end cartouche
 
 @node Organization of help and wizhelp,Mail comsystem guests master rooms etc,Comparison of features between RhostMUSH PennMUSH and MUX2,Comparison of modern MUSH servers
-@anchor{differences organization-of-help-and-wizhelp}@anchor{75}
+@anchor{comparison organization-of-help-and-wizhelp}@anchor{86}
 @section Organization of help and wizhelp
 
 
@@ -3525,7 +3612,7 @@ This will display help from help and wizhelp for any matching topic.  It
 should make life easier for you.  This also honors the /search switch.
 
 @node Mail comsystem guests master rooms etc,Comparisons of features,Organization of help and wizhelp,Comparison of modern MUSH servers
-@anchor{differences mail-comsystem-guests-master-rooms-etc}@anchor{76}
+@anchor{comparison mail-comsystem-guests-master-rooms-etc}@anchor{87}
 @section Mail, comsystem, guests, master rooms, etc..
 
 
@@ -3540,7 +3627,7 @@ Please see the other readme files on setting other things up like
 guests, master rooms, and so forth.
 
 @node Comparisons of features,@@commands with equivalents,Mail comsystem guests master rooms etc,Comparison of modern MUSH servers
-@anchor{differences comparisons-of-features}@anchor{77}
+@anchor{comparison comparisons-of-features}@anchor{88}
 @section Comparisons of features
 
 
@@ -3550,7 +3637,7 @@ MUX 2.12.0.2
 PennMUSH 1.8.6p0
 
 @node @@commands with equivalents,@@commands unique to RhostMUSH,Comparisons of features,Comparison of modern MUSH servers
-@anchor{differences commands-with-equivalents}@anchor{78}
+@anchor{comparison commands-with-equivalents}@anchor{89}
 @section @@commands with equivalents
 
 
@@ -3775,7 +3862,7 @@ WITH                    N/A                            N/A
 @end example
 
 @node @@commands unique to RhostMUSH,@@lock equivalents,@@commands with equivalents,Comparison of modern MUSH servers
-@anchor{differences commands-unique-to-rhostmush}@anchor{79}
+@anchor{comparison commands-unique-to-rhostmush}@anchor{8a}
 @section @@commands unique to RhostMUSH
 
 
@@ -3805,7 +3892,7 @@ wielded                      worn                          +players
 @end example
 
 @node @@lock equivalents,@@locks that exist in Rhost that have no PennMUSH equivelant,@@commands unique to RhostMUSH,Comparison of modern MUSH servers
-@anchor{differences lock-equivalents}@anchor{7a}
+@anchor{comparison lock-equivalents}@anchor{8b}
 @section @@lock equivalents
 
 
@@ -3851,7 +3938,7 @@ N/A                    DARK                                        VISIBLE
 @end example
 
 @node @@locks that exist in Rhost that have no PennMUSH equivelant,Flag and toggle equivalents,@@lock equivalents,Comparison of modern MUSH servers
-@anchor{differences locks-that-exist-in-rhost-that-have-no-pennmush-equivelant}@anchor{7b}
+@anchor{comparison locks-that-exist-in-rhost-that-have-no-pennmush-equivelant}@anchor{8c}
 @section @@locks that exist in Rhost that have no PennMUSH equivelant
 
 
@@ -3861,7 +3948,7 @@ ALTNAME                      CHOWN
 @end example
 
 @node Flag and toggle equivalents,Flags and toggles that only exist in RhostMUSH,@@locks that exist in Rhost that have no PennMUSH equivelant,Comparison of modern MUSH servers
-@anchor{differences flag-and-toggle-equivalents}@anchor{7c}
+@anchor{comparison flag-and-toggle-equivalents}@anchor{8d}
 @section Flag and toggle equivalents
 
 
@@ -3943,7 +4030,7 @@ XTERM256                XTERMCOLOR                             COLOR256
 @end example
 
 @node Flags and toggles that only exist in RhostMUSH,@@power equivalents,Flag and toggle equivalents,Comparison of modern MUSH servers
-@anchor{differences flags-and-toggles-that-only-exist-in-rhostmush}@anchor{7d}
+@anchor{comparison flags-and-toggles-that-only-exist-in-rhostmush}@anchor{8e}
 @section Flags and toggles that only exist in RhostMUSH
 
 
@@ -3988,7 +4075,7 @@ ZONECMDCHK                   ZONE_AUTOADD                  ZONE_AUTOADDALL
 @end example
 
 @node @@power equivalents,Functions equivalents,Flags and toggles that only exist in RhostMUSH,Comparison of modern MUSH servers
-@anchor{differences power-equivalents}@anchor{7e}
+@anchor{comparison power-equivalents}@anchor{8f}
 @section @@power equivalents
 
 
@@ -4048,7 +4135,7 @@ Unkillable              NOKILL                                             Unkil
 @end menu
 
 @node @@power unique to RhostMUSH,,,@@power equivalents
-@anchor{differences power-unique-to-rhostmush}@anchor{7f}
+@anchor{comparison power-unique-to-rhostmush}@anchor{90}
 @subsection @@power unique to RhostMUSH
 
 
@@ -4066,7 +4153,7 @@ HIDEBIT
 @end example
 
 @node Functions equivalents,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost,@@power equivalents,Comparison of modern MUSH servers
-@anchor{differences functions-equivalents}@anchor{80}
+@anchor{comparison functions-equivalents}@anchor{91}
 @section Functions equivalents
 
 
@@ -4637,7 +4724,7 @@ ZWHO                    ZWHO                         ZWHO
 @end menu
 
 @node Functions that only exist in RhostMUSH,,,Functions equivalents
-@anchor{differences functions-that-only-exist-in-rhostmush}@anchor{81}
+@anchor{comparison functions-that-only-exist-in-rhostmush}@anchor{92}
 @subsection Functions that only exist in RhostMUSH
 
 
@@ -4702,7 +4789,7 @@ ZFUNLDEFAULT                 ZFUNLOCAL
 @end example
 
 @node What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost,Things other mushes can do that Rhost can not and how to emulate it,Functions equivalents,Comparison of modern MUSH servers
-@anchor{differences what-may-need-to-be-modified-to-get-softcode-from-pennmush-tinymush2-tinymush3-or-mux2-to-work-on-rhost}@anchor{82}
+@anchor{comparison what-may-need-to-be-modified-to-get-softcode-from-pennmush-tinymush2-tinymush3-or-mux2-to-work-on-rhost}@anchor{93}
 @section What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost
 
 
@@ -4748,14 +4835,14 @@ Most changes will revolve around the ones listed in this document.
 @end menu
 
 @node Problematic functions between codebases,Problematic features between codebases,,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences problematic-functions-between-codebases}@anchor{83}
+@anchor{comparison problematic-functions-between-codebases}@anchor{94}
 @subsection Problematic functions between codebases
 
 
 lsearch()/search(), align()/printf(), *attrval()
 
 @node Problematic features between codebases,Problematic commands,Problematic functions between codebases,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences problematic-features-between-codebases}@anchor{84}
+@anchor{comparison problematic-features-between-codebases}@anchor{95}
 @subsection Problematic features between codebases
 
 
@@ -4763,14 +4850,14 @@ named variables for regexp patterns in $commands are not supported.
 @@aliases on non-players are not supported.  Frankly I find them redundant.
 
 @node Problematic commands,SIDEFX flag,Problematic features between codebases,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences problematic-commands}@anchor{85}
+@anchor{comparison problematic-commands}@anchor{96}
 @subsection Problematic commands
 
 
 @@mapsql, hardcoded required comssytem commands (some are redundant)
 
 @node SIDEFX flag,Variable exits,Problematic commands,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences sidefx-flag}@anchor{86}
+@anchor{comparison sidefx-flag}@anchor{97}
 @subsection SIDEFX flag
 
 
@@ -4782,7 +4869,7 @@ side-effect, does not require this flag as it is considered passive and safe.
 @end quotation
 
 @node Variable exits,Zones,SIDEFX flag,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences variable-exits}@anchor{87}
+@anchor{comparison variable-exits}@anchor{98}
 @subsection Variable exits
 
 
@@ -4796,7 +4883,7 @@ At that point you use @@exitto like you would any other codebase.
 @end quotation
 
 @node Zones,@@powers,Variable exits,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences zones}@anchor{88}
+@anchor{comparison zones}@anchor{99}
 @subsection Zones
 
 
@@ -4812,7 +4899,7 @@ ported to Rhost.
 @end quotation
 
 @node @@powers,Attribute length,Zones,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences powers}@anchor{89}
+@anchor{comparison powers}@anchor{9a}
 @subsection @@powers
 
 
@@ -4827,7 +4914,7 @@ that is the anti-thesis of @@power
 @end quotation
 
 @node Attribute length,Attribute contents,@@powers,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences attribute-length}@anchor{8a}
+@anchor{comparison attribute-length}@anchor{9b}
 @subsection Attribute length
 
 
@@ -4840,7 +4927,7 @@ that long you need to make sure they are cut down to the proper length.
 @end quotation
 
 @node Attribute contents,256 color,Attribute length,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences attribute-contents}@anchor{8b}
+@anchor{comparison attribute-contents}@anchor{9c}
 @subsection Attribute contents
 
 
@@ -4853,14 +4940,14 @@ with that value.
 @end quotation
 
 @node 256 color,Unicode/UTF8,Attribute contents,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences color}@anchor{8c}
+@anchor{comparison color}@anchor{9d}
 @subsection 256 color
 
 
 Yup!  We got it.
 
 @node Unicode/UTF8,Attributes per object,256 color,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences unicode-utf8}@anchor{8d}
+@anchor{comparison unicode-utf8}@anchor{9e}
 @subsection Unicode/UTF8
 
 
@@ -4872,7 +4959,7 @@ UTF8 in Rhost 4.0 when released.
 @end quotation
 
 @node Attributes per object,Destroying,Unicode/UTF8,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences attributes-per-object}@anchor{8e}
+@anchor{comparison attributes-per-object}@anchor{9f}
 @subsection Attributes per object
 
 
@@ -4886,7 +4973,7 @@ should never be a reason to exceed that.  If you need more, use
 @end quotation
 
 @node Destroying,object id's,Attributes per object,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences destroying}@anchor{8f}
+@anchor{comparison destroying}@anchor{a0}
 @subsection Destroying
 
 
@@ -4902,14 +4989,14 @@ days.  Groovy, eh?
 @end quotation
 
 @node object id's,lsearch and search,Destroying,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences object-id-s}@anchor{90}
+@anchor{comparison object-id-s}@anchor{a1}
 @subsection object id's
 
 
 Yup, we got them.  Even in searches, and, well, everything.
 
 @node lsearch and search,@@locks can be different,object id's,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences lsearch-and-search}@anchor{91}
+@anchor{comparison lsearch-and-search}@anchor{a2}
 @subsection lsearch() and search()
 
 
@@ -4921,7 +5008,7 @@ have to have special consideration for escaping out the evaled args.
 @end quotation
 
 @node @@locks can be different,Customer user-locks,lsearch and search,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences locks-can-be-different}@anchor{92}
+@anchor{comparison locks-can-be-different}@anchor{a3}
 @subsection @@locks can be different
 
 
@@ -4932,7 +5019,7 @@ so this should be a non-issue.
 @end quotation
 
 @node Customer user-locks,Attribute trees,@@locks can be different,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences customer-user-locks}@anchor{93}
+@anchor{comparison customer-user-locks}@anchor{a4}
 @subsection Customer user-locks
 
 
@@ -4945,7 +5032,7 @@ See: lockencode(), lockdecode(), and lockcheck()
 @end quotation
 
 @node Attribute trees,Prefix permission locking,Customer user-locks,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences attribute-trees}@anchor{94}
+@anchor{comparison attribute-trees}@anchor{a5}
 @subsection Attribute trees
 
 
@@ -4958,7 +5045,7 @@ Please see 'help attribute tree' for more information.
 @end quotation
 
 @node Prefix permission locking,align and printf,Attribute trees,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences prefix-permission-locking}@anchor{95}
+@anchor{comparison prefix-permission-locking}@anchor{a6}
 @subsection Prefix permission locking
 
 
@@ -4973,7 +5060,7 @@ of it.  Please see wizhelp on @@aflags for more information.
 @end quotation
 
 @node align and printf,MySQL,Prefix permission locking,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences align-and-printf}@anchor{96}
+@anchor{comparison align-and-printf}@anchor{a7}
 @subsection align() and printf()
 
 
@@ -4984,7 +5071,7 @@ be converted to our printf() (which is compatible but has different syntax)
 @end quotation
 
 @node MySQL,Mail System,align and printf,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences mysql}@anchor{97}
+@anchor{comparison mysql}@anchor{a8}
 @subsection MySQL
 
 
@@ -4995,7 +5082,7 @@ is just not possible, sorry.
 @end quotation
 
 @node Mail System,Comsystem,MySQL,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences mail-system}@anchor{98}
+@anchor{comparison mail-system}@anchor{a9}
 @subsection Mail System
 
 
@@ -5005,7 +5092,7 @@ There are mail wrappers to mimic MUX/TM3 and Penn mail systems.
 @end quotation
 
 @node Comsystem,Various Functions,Mail System,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences comsystem}@anchor{99}
+@anchor{comparison comsystem}@anchor{aa}
 @subsection Comsystem
 
 
@@ -5015,7 +5102,7 @@ The softcoded comsystem mimics MUX/TM3 and Penn's comsystem.
 @end quotation
 
 @node Various Functions,Empty Attributes,Comsystem,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences various-functions}@anchor{9a}
+@anchor{comparison various-functions}@anchor{ab}
 @subsection Various Functions
 
 
@@ -5030,7 +5117,7 @@ the native functions, but the @@function wrappers are there for lazyness :)
 @end quotation
 
 @node Empty Attributes,Player Stats,Various Functions,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences empty-attributes}@anchor{9b}
+@anchor{comparison empty-attributes}@anchor{ac}
 @subsection Empty Attributes
 
 
@@ -5042,7 +5129,7 @@ to hasattr instead.
 @end quotation
 
 @node Player Stats,Percent Substitutions,Empty Attributes,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences player-stats}@anchor{9c}
+@anchor{comparison player-stats}@anchor{ad}
 @subsection Player Stats
 
 
@@ -5054,7 +5141,7 @@ will have to be recoded.
 @end quotation
 
 @node Percent Substitutions,Switches,Player Stats,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences percent-substitutions}@anchor{9d}
+@anchor{comparison percent-substitutions}@anchor{ae}
 @subsection Percent Substitutions
 
 
@@ -5065,7 +5152,7 @@ allows the ability to remap or creaete new ones if this is a problem.
 @end quotation
 
 @node Switches,Adding Flags,Percent Substitutions,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences switches}@anchor{9e}
+@anchor{comparison switches}@anchor{af}
 @subsection Switches
 
 
@@ -5077,7 +5164,7 @@ softcoded switch to a hardcoded command and work around the limitation.
 @end quotation
 
 @node Adding Flags,Aliases,Switches,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences adding-flags}@anchor{9f}
+@anchor{comparison adding-flags}@anchor{b0}
 @subsection Adding Flags
 
 
@@ -5090,7 +5177,7 @@ it to the other name if you want.
 @end quotation
 
 @node Aliases,,Adding Flags,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost
-@anchor{differences aliases}@anchor{a0}
+@anchor{comparison aliases}@anchor{b1}
 @subsection Aliases
 
 
@@ -5100,7 +5187,7 @@ Multiple aliases are supported via @@protect.
 @end quotation
 
 @node Things other mushes can do that Rhost can not and how to emulate it,,What may need to be modified to get softcode from PennMUSH TinyMUSH2 TinyMUSH3 or MUX2 to work on Rhost,Comparison of modern MUSH servers
-@anchor{differences things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it}@anchor{a1}
+@anchor{comparison things-other-mushes-can-do-that-rhost-can-not-and-how-to-emulate-it}@anchor{b2}
 @section Things other mushes can do that Rhost can not and how to emulate it
 
 
@@ -5111,7 +5198,7 @@ Multiple aliases are supported via @@protect.
 @end menu
 
 @node PennMUSH,MUX,,Things other mushes can do that Rhost can not and how to emulate it
-@anchor{differences pennmush}@anchor{a2}
+@anchor{comparison pennmush}@anchor{b3}
 @subsection PennMUSH
 
 
@@ -5157,7 +5244,7 @@ This uses @@shutdown/restart, Rhost uses @@reboot
 @end itemize
 
 @node MUX,,PennMUSH,Things other mushes can do that Rhost can not and how to emulate it
-@anchor{differences mux}@anchor{a3}
+@anchor{comparison mux}@anchor{b4}
 @subsection MUX
 
 
@@ -5187,7 +5274,7 @@ This uses @@restart, Rhost uses @@reboot
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
 @node Database,Getting Started,Comparison of modern MUSH servers,Top
-@anchor{database doc}@anchor{a4}@anchor{database database}@anchor{a5}
+@anchor{database doc}@anchor{b5}@anchor{database database}@anchor{b6}
 @chapter Database
 
 
@@ -5199,7 +5286,7 @@ This uses @@restart, Rhost uses @@reboot
 @end menu
 
 @node Loading an existing Database,Converting a flatfile database for use in RhostMUSH,,Database
-@anchor{database loading-an-existing-database}@anchor{a6}
+@anchor{database loading-an-existing-database}@anchor{b7}
 @section Loading an existing Database
 
 
@@ -5238,7 +5325,7 @@ To make a flatfile in game, you just issue @@dump/flat.  You can specify
 a filename after it, otherwise it assumes the name 'netrhost.db.flat'.
 
 @node Converting a flatfile database for use in RhostMUSH,Note about Compiling,Loading an existing Database,Database
-@anchor{database converting-a-flatfile-database-for-use-in-rhostmush}@anchor{a7}
+@anchor{database converting-a-flatfile-database-for-use-in-rhostmush}@anchor{b8}
 @section Converting a flatfile database for use in RhostMUSH
 
 
@@ -5269,7 +5356,7 @@ what it is.
 Follow what it asks for and just let it do its thing.
 
 @node Note about Compiling,,Converting a flatfile database for use in RhostMUSH,Database
-@anchor{database note-about-compiling}@anchor{a8}
+@anchor{database note-about-compiling}@anchor{b9}
 @section Note about Compiling
 
 
@@ -5300,7 +5387,7 @@ Yes, you can use them in parallel without any issue.
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
 @node Getting Started,Ambrosia's Minimal Rhost DB,Database,Top
-@anchor{gettingstarted doc}@anchor{a9}@anchor{gettingstarted getting-started}@anchor{aa}
+@anchor{gettingstarted doc}@anchor{ba}@anchor{gettingstarted getting-started}@anchor{bb}
 @chapter Getting Started
 
 
@@ -5311,7 +5398,7 @@ Yes, you can use them in parallel without any issue.
 @end menu
 
 @node What to type to get the basics running if you did not choose a pre-existing flatfile,Minimal DB instructions,,Getting Started
-@anchor{gettingstarted what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile}@anchor{ab}
+@anchor{gettingstarted what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile}@anchor{bc}
 @section What to type to get the basics running if you did not choose a pre-existing flatfile
 
 
@@ -5339,7 +5426,7 @@ If you decided to get a bare-bone configuration, you will find your mush has jus
 @end menu
 
 @node Login to #1 from the connect screen,Change #1's password to something you'll remember but is hard to guess,,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted login-to-1-from-the-connect-screen}@anchor{ac}
+@anchor{gettingstarted login-to-1-from-the-connect-screen}@anchor{bd}
 @subsection Login to #1 from the connect screen
 
 
@@ -5350,7 +5437,7 @@ co #1 Nyctasia
 @end example
 
 @node Change #1's password to something you'll remember but is hard to guess,Master Room,Login to #1 from the connect screen,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess}@anchor{ad}
+@anchor{gettingstarted change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess}@anchor{be}
 @subsection Change #1's password to something you'll remember but is hard to guess
 
 
@@ -5361,7 +5448,7 @@ Note: yourpasswordgoeshere can be any password you choose.  Choose well:
 @end example
 
 @node Master Room,Flag and protect Master Room,Change #1's password to something you'll remember but is hard to guess,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted master-room}@anchor{ae}
+@anchor{gettingstarted master-room}@anchor{bf}
 @subsection Master Room
 
 
@@ -5379,7 +5466,7 @@ Reason: You need a master room to contain global $commands for players
 @end cartouche
 
 @node Flag and protect Master Room,Player Holder Characters,Master Room,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted flag-and-protect-master-room}@anchor{af}
+@anchor{gettingstarted flag-and-protect-master-room}@anchor{c0}
 @subsection Flag and protect Master Room
 
 
@@ -5390,7 +5477,7 @@ It will return a dbref#, it should be #2 if you've not created anything else:
 @end example
 
 @node Player Holder Characters,Chown #0 The starting room and #2 The Master room to immholder,Flag and protect Master Room,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted player-holder-characters}@anchor{b0}
+@anchor{gettingstarted player-holder-characters}@anchor{c1}
 @subsection Player Holder Characters
 
 
@@ -5413,7 +5500,7 @@ Note: wizhelp control will give you a complete breakdown of what each bit can do
 @end menu
 
 @node Immortal Holder,Royalty/Wizard Holder,,Player Holder Characters
-@anchor{gettingstarted immortal-holder}@anchor{b1}
+@anchor{gettingstarted immortal-holder}@anchor{c2}
 @subsubsection Immortal Holder
 
 
@@ -5424,7 +5511,7 @@ Note: wizhelp control will give you a complete breakdown of what each bit can do
 @end example
 
 @node Royalty/Wizard Holder,Councilor/Admin Holder,Immortal Holder,Player Holder Characters
-@anchor{gettingstarted royalty-wizard-holder}@anchor{b2}
+@anchor{gettingstarted royalty-wizard-holder}@anchor{c3}
 @subsubsection Royalty/Wizard Holder
 
 
@@ -5435,7 +5522,7 @@ Note: wizhelp control will give you a complete breakdown of what each bit can do
 @end example
 
 @node Councilor/Admin Holder,Architect/Staff Holder,Royalty/Wizard Holder,Player Holder Characters
-@anchor{gettingstarted councilor-admin-holder}@anchor{b3}
+@anchor{gettingstarted councilor-admin-holder}@anchor{c4}
 @subsubsection Councilor/Admin Holder
 
 
@@ -5446,7 +5533,7 @@ Note: wizhelp control will give you a complete breakdown of what each bit can do
 @end example
 
 @node Architect/Staff Holder,Guildmaster/Lead Holder,Councilor/Admin Holder,Player Holder Characters
-@anchor{gettingstarted architect-staff-holder}@anchor{b4}
+@anchor{gettingstarted architect-staff-holder}@anchor{c5}
 @subsubsection Architect/Staff Holder
 
 
@@ -5457,7 +5544,7 @@ Note: wizhelp control will give you a complete breakdown of what each bit can do
 @end example
 
 @node Guildmaster/Lead Holder,,Architect/Staff Holder,Player Holder Characters
-@anchor{gettingstarted guildmaster-lead-holder}@anchor{b5}
+@anchor{gettingstarted guildmaster-lead-holder}@anchor{c6}
 @subsubsection Guildmaster/Lead Holder
 
 
@@ -5468,7 +5555,7 @@ Note: wizhelp control will give you a complete breakdown of what each bit can do
 @end example
 
 @node Chown #0 The starting room and #2 The Master room to immholder,Create yourself your own immortal player then log off #1 and into this immortal player,Player Holder Characters,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted chown-0-the-starting-room-and-2-the-master-room-to-immholder}@anchor{b6}
+@anchor{gettingstarted chown-0-the-starting-room-and-2-the-master-room-to-immholder}@anchor{c7}
 @subsection Chown #0 (The starting room) and #2 (The Master room) to immholder
 
 
@@ -5484,7 +5571,7 @@ Note: wizhelp control will give you a complete breakdown of what each bit can do
 @end example
 
 @node Create yourself your own immortal player then log off #1 and into this immortal player,Log out of #1 and log into your immortal player,Chown #0 The starting room and #2 The Master room to immholder,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player}@anchor{b7}
+@anchor{gettingstarted create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player}@anchor{c8}
 @subsection Create yourself your own immortal player then log off #1 and into this immortal player
 
 
@@ -5500,7 +5587,7 @@ Pick what you want for playername and playerpassword
 @end example
 
 @node Log out of #1 and log into your immortal player,Create your guest characters,Create yourself your own immortal player then log off #1 and into this immortal player,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted log-out-of-1-and-log-into-your-immortal-player}@anchor{b8}
+@anchor{gettingstarted log-out-of-1-and-log-into-your-immortal-player}@anchor{c9}
 @subsection Log out of #1 and log into your immortal player
 
 
@@ -5516,7 +5603,7 @@ co PLAYERNAME PLAYERPASSWORD
 @end example
 
 @node Create your guest characters,Dig a closet to store important objects but non-master room,Log out of #1 and log into your immortal player,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted create-your-guest-characters}@anchor{b9}
+@anchor{gettingstarted create-your-guest-characters}@anchor{ca}
 @subsection Create your guest characters
 
 
@@ -5531,7 +5618,7 @@ Feel free to change the description if you want
 @end example
 
 @node Dig a closet to store important objects but non-master room,Set the flags on the closet and ownership of it,Create your guest characters,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted dig-a-closet-to-store-important-objects-but-non-master-room}@anchor{ba}
+@anchor{gettingstarted dig-a-closet-to-store-important-objects-but-non-master-room}@anchor{cb}
 @subsection Dig a closet to store important objects but non-master room
 
 
@@ -5546,7 +5633,7 @@ name it anything you want, just remember it.
 @end example
 
 @node Set the flags on the closet and ownership of it,Create an Admin object for future ease of customization,Dig a closet to store important objects but non-master room,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted set-the-flags-on-the-closet-and-ownership-of-it}@anchor{bb}
+@anchor{gettingstarted set-the-flags-on-the-closet-and-ownership-of-it}@anchor{cc}
 @subsection Set the flags on the closet and ownership of it
 
 
@@ -5562,7 +5649,7 @@ Use the dbref# that it returned when digging the closet and not #123
 @end example
 
 @node Create an Admin object for future ease of customization,Set the flags on the admin object and ownership and location,Set the flags on the closet and ownership of it,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted create-an-admin-object-for-future-ease-of-customization}@anchor{bc}
+@anchor{gettingstarted create-an-admin-object-for-future-ease-of-customization}@anchor{cd}
 @subsection Create an Admin object for future ease of customization
 
 
@@ -5571,7 +5658,7 @@ Use the dbref# that it returned when digging the closet and not #123
 @end example
 
 @node Set the flags on the admin object and ownership and location,Add admin object to configuration,Create an Admin object for future ease of customization,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted set-the-flags-on-the-admin-object-and-ownership-and-location}@anchor{bd}
+@anchor{gettingstarted set-the-flags-on-the-admin-object-and-ownership-and-location}@anchor{ce}
 @subsection Set the flags on the admin object and ownership and location
 
 
@@ -5594,7 +5681,7 @@ Use the closet dbref# instead of #234
 @end example
 
 @node Add admin object to configuration,Reboot your mush to load up the change for the admin object,Set the flags on the admin object and ownership and location,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted add-admin-object-to-configuration}@anchor{be}
+@anchor{gettingstarted add-admin-object-to-configuration}@anchor{cf}
 @subsection Add admin object to configuration
 
 
@@ -5605,7 +5692,7 @@ admin_object 123
 @end example
 
 @node Reboot your mush to load up the change for the admin object,Do @@admin/list to see if it shows the admin object,Add admin object to configuration,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted reboot-your-mush-to-load-up-the-change-for-the-admin-object}@anchor{bf}
+@anchor{gettingstarted reboot-your-mush-to-load-up-the-change-for-the-admin-object}@anchor{d0}
 @subsection Reboot your mush to load up the change for the admin object
 
 
@@ -5614,7 +5701,7 @@ admin_object 123
 @end example
 
 @node Do @@admin/list to see if it shows the admin object,Load in all the various softcode that you want,Reboot your mush to load up the change for the admin object,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted do-admin-list-to-see-if-it-shows-the-admin-object}@anchor{c0}
+@anchor{gettingstarted do-admin-list-to-see-if-it-shows-the-admin-object}@anchor{d1}
 @subsection Do @@admin/list to see if it shows the admin object
 
 
@@ -5629,7 +5716,7 @@ do wizhelp @@admin for more information on how to use this
 @end example
 
 @node Load in all the various softcode that you want,,Do @@admin/list to see if it shows the admin object,What to type to get the basics running if you did not choose a pre-existing flatfile
-@anchor{gettingstarted load-in-all-the-various-softcode-that-you-want}@anchor{c1}
+@anchor{gettingstarted load-in-all-the-various-softcode-that-you-want}@anchor{d2}
 @subsection Load in all the various softcode that you want
 
 
@@ -5645,7 +5732,7 @@ This is client dependant based on whatever method it uses to load softcode.
 @end menu
 
 @node Myrddin MushCron,AshCom,,Load in all the various softcode that you want
-@anchor{gettingstarted myrddin-mushcron}@anchor{c2}
+@anchor{gettingstarted myrddin-mushcron}@anchor{d3}
 @subsubsection Myrddin MushCron
 
 
@@ -5670,7 +5757,7 @@ The globalroom() function returns the dbref# of the master room.  Handy!
 @end example
 
 @node AshCom,Mail Wrappers,Myrddin MushCron,Load in all the various softcode that you want
-@anchor{gettingstarted ashcom}@anchor{c3}
+@anchor{gettingstarted ashcom}@anchor{d4}
 @subsubsection AshCom
 
 
@@ -5690,7 +5777,7 @@ Chown the Comsystem and everything inside it to immholder:
 @end example
 
 @node Mail Wrappers,Myrddin BBS,AshCom,Load in all the various softcode that you want
-@anchor{gettingstarted mail-wrappers}@anchor{c4}
+@anchor{gettingstarted mail-wrappers}@anchor{d5}
 @subsubsection Mail Wrappers
 
 
@@ -5716,7 +5803,7 @@ Chown to immholder:
 @end example
 
 @node Myrddin BBS,Other Mushcode,Mail Wrappers,Load in all the various softcode that you want
-@anchor{gettingstarted myrddin-bbs}@anchor{c5}
+@anchor{gettingstarted myrddin-bbs}@anchor{d6}
 @subsubsection Myrddin BBS
 
 
@@ -5736,7 +5823,7 @@ Chown to immholder and the contents of it as well:
 @end example
 
 @node Other Mushcode,,Myrddin BBS,Load in all the various softcode that you want
-@anchor{gettingstarted other-mushcode}@anchor{c6}
+@anchor{gettingstarted other-mushcode}@anchor{d7}
 @subsubsection Other Mushcode
 
 
@@ -5747,7 +5834,7 @@ Likewise, any softcode you find on the internet or on other mushes should be por
 no changes depending on the complexity of the code in question.
 
 @node Minimal DB instructions,,What to type to get the basics running if you did not choose a pre-existing flatfile,Getting Started
-@anchor{gettingstarted minimal-db-instructions}@anchor{c7}
+@anchor{gettingstarted minimal-db-instructions}@anchor{d8}
 @section Minimal DB instructions
 
 
@@ -5778,7 +5865,7 @@ cd ~/Rhost/Server/game/txt
 @end menu
 
 @node Startup Steps,,,Minimal DB instructions
-@anchor{gettingstarted startup-steps}@anchor{c8}
+@anchor{gettingstarted startup-steps}@anchor{d9}
 @subsection Startup Steps
 
 
@@ -5824,8 +5911,8 @@ Startmush as expected
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
-@node Ambrosia's Minimal Rhost DB,Multi-tiered bitlevel systems,Getting Started,Top
-@anchor{ambrosiadb doc}@anchor{c9}@anchor{ambrosiadb ambrosia-s-minimal-rhost-db}@anchor{ca}@anchor{ambrosiadb ambrosiadb-installation}@anchor{2f}
+@node Ambrosia's Minimal Rhost DB,Security,Getting Started,Top
+@anchor{ambrosiadb doc}@anchor{da}@anchor{ambrosiadb ambrosia-s-minimal-rhost-db}@anchor{db}@anchor{ambrosiadb ambrosiadb-installation}@anchor{2f}
 @chapter Ambrosia's Minimal Rhost DB
 
 
@@ -5844,7 +5931,7 @@ Version: 1.0.5          2020-01-31
 @end menu
 
 @node Version history,AmbrosiaDB Introduction,,Ambrosia's Minimal Rhost DB
-@anchor{ambrosiadb version-history}@anchor{cb}
+@anchor{ambrosiadb version-history}@anchor{dc}
 @section Version history
 
 
@@ -5965,7 +6052,7 @@ functions_max -> function_max. Thanks to @email{Bobbi@@COH}
 @end quotation
 
 @node AmbrosiaDB Introduction,AmbrosiaDB Features,Version history,Ambrosia's Minimal Rhost DB
-@anchor{ambrosiadb ambrosiadb-introduction}@anchor{cc}
+@anchor{ambrosiadb ambrosiadb-introduction}@anchor{dd}
 @section AmbrosiaDB Introduction
 
 
@@ -5981,7 +6068,7 @@ This minimal Rhost DB was made with a secure setup, and as a good base to start
 a new game off in mind.
 
 @node AmbrosiaDB Features,AmbrosiaDB Bitlevels,AmbrosiaDB Introduction,Ambrosia's Minimal Rhost DB
-@anchor{ambrosiadb ambrosiadb-features}@anchor{cd}
+@anchor{ambrosiadb ambrosiadb-features}@anchor{de}
 @section AmbrosiaDB Features
 
 
@@ -5993,7 +6080,7 @@ a new game off in mind.
 @end menu
 
 @node AmbrosiaDB Configuration,AmbrosiaDB Softcode,,AmbrosiaDB Features
-@anchor{ambrosiadb ambrosiadb-configuration}@anchor{ce}
+@anchor{ambrosiadb ambrosiadb-configuration}@anchor{df}
 @subsection AmbrosiaDB Configuration
 
 
@@ -6117,7 +6204,7 @@ Architects can set _Attributes
 @end itemize
 
 @node AmbrosiaDB Softcode,AmbrosiaDB Functions,AmbrosiaDB Configuration,AmbrosiaDB Features
-@anchor{ambrosiadb ambrosiadb-softcode}@anchor{cf}
+@anchor{ambrosiadb ambrosiadb-softcode}@anchor{e0}
 @subsection AmbrosiaDB Softcode
 
 
@@ -6159,7 +6246,7 @@ help .txt files and .indx files for the above.
 @end itemize
 
 @node AmbrosiaDB Functions,,AmbrosiaDB Softcode,AmbrosiaDB Features
-@anchor{ambrosiadb ambrosiadb-functions}@anchor{d0}
+@anchor{ambrosiadb ambrosiadb-functions}@anchor{e1}
 @subsection AmbrosiaDB Functions
 
 
@@ -6217,7 +6304,7 @@ one of the latter parameters.
 @end cartouche
 
 @node AmbrosiaDB Bitlevels,AmbrosiaDB Globals,AmbrosiaDB Features,Ambrosia's Minimal Rhost DB
-@anchor{ambrosiadb ambrosiadb-bitlevels}@anchor{d1}
+@anchor{ambrosiadb ambrosiadb-bitlevels}@anchor{e2}
 @section AmbrosiaDB Bitlevels
 
 
@@ -6245,14 +6332,14 @@ Here is my suggested list of powers and bittypes for staffers.
 @end menu
 
 @node AmbrosiaDB Storytellers,AmbrosiaDB Builder-BCs,,AmbrosiaDB Bitlevels
-@anchor{ambrosiadb ambrosiadb-storytellers}@anchor{d2}
+@anchor{ambrosiadb ambrosiadb-storytellers}@anchor{e3}
 @subsection AmbrosiaDB Storytellers
 
 
 @@powered TEL_ANYWHERE, JOIN_PLAYER and GRAB_PLAYER on Guildmaster level.
 
 @node AmbrosiaDB Builder-BCs,AmbrosiaDB Building Head,AmbrosiaDB Storytellers,AmbrosiaDB Bitlevels
-@anchor{ambrosiadb ambrosiadb-builder-bcs}@anchor{d3}
+@anchor{ambrosiadb ambrosiadb-builder-bcs}@anchor{e4}
 @subsection AmbrosiaDB Builder-BCs
 
 
@@ -6271,7 +6358,7 @@ Both the -powered and -admin BCs can have random passwords and
 be @@set NO_CONNECT.
 
 @node AmbrosiaDB Building Head,AmbrosiaDB Enforcers,AmbrosiaDB Builder-BCs,AmbrosiaDB Bitlevels
-@anchor{ambrosiadb ambrosiadb-building-head}@anchor{d4}
+@anchor{ambrosiadb ambrosiadb-building-head}@anchor{e5}
 @subsection AmbrosiaDB Building Head
 
 
@@ -6283,7 +6370,7 @@ it allows the Building Head to @@chown items between BCs- and
 to the BC-<location>-powered.
 
 @node AmbrosiaDB Enforcers,AmbrosiaDB Coders,AmbrosiaDB Building Head,AmbrosiaDB Bitlevels
-@anchor{ambrosiadb ambrosiadb-enforcers}@anchor{d5}
+@anchor{ambrosiadb ambrosiadb-enforcers}@anchor{e6}
 @subsection AmbrosiaDB Enforcers
 
 
@@ -6293,14 +6380,14 @@ Guildmaster level, in order to handle problem players.
 Optionally always given to Storytellers.
 
 @node AmbrosiaDB Coders,AmbrosiaDB Head Coder,AmbrosiaDB Enforcers,AmbrosiaDB Bitlevels
-@anchor{ambrosiadb ambrosiadb-coders}@anchor{d6}
+@anchor{ambrosiadb ambrosiadb-coders}@anchor{e7}
 @subsection AmbrosiaDB Coders
 
 
 @@set Architect
 
 @node AmbrosiaDB Head Coder,AmbrosiaDB MU* Head s,AmbrosiaDB Coders,AmbrosiaDB Bitlevels
-@anchor{ambrosiadb ambrosiadb-head-coder}@anchor{d7}
+@anchor{ambrosiadb ambrosiadb-head-coder}@anchor{e8}
 @subsection AmbrosiaDB Head Coder
 
 
@@ -6317,7 +6404,7 @@ banning/blacklisting +commands and other rare code that requires
 Royalty powers. Again, chown finished code to bc-admin-royalty.
 
 @node AmbrosiaDB MU* Head s,AmbrosiaDB Site Admins,AmbrosiaDB Head Coder,AmbrosiaDB Bitlevels
-@anchor{ambrosiadb ambrosiadb-mu-head-s}@anchor{d8}
+@anchor{ambrosiadb ambrosiadb-mu-head-s}@anchor{e9}
 @subsection AmbrosiaDB MU* Head(s)
 
 
@@ -6327,7 +6414,7 @@ And seriously avoid using either of them except for creating
 a Royalty bit or doing intricate DB maintenance.
 
 @node AmbrosiaDB Site Admins,,AmbrosiaDB MU* Head s,AmbrosiaDB Bitlevels
-@anchor{ambrosiadb ambrosiadb-site-admins}@anchor{d9}
+@anchor{ambrosiadb ambrosiadb-site-admins}@anchor{ea}
 @subsection AmbrosiaDB Site Admins
 
 
@@ -6341,7 +6428,7 @@ order to shut down the game for maintenance, up to being the
 only person with actual access to #1.
 
 @node AmbrosiaDB Globals,AmbrosiaDB Quota,AmbrosiaDB Bitlevels,Ambrosia's Minimal Rhost DB
-@anchor{ambrosiadb ambrosiadb-globals}@anchor{da}
+@anchor{ambrosiadb ambrosiadb-globals}@anchor{eb}
 @section AmbrosiaDB Globals
 
 
@@ -6380,7 +6467,7 @@ objects NO_MODIFY instead, keeping them at Architect-power but making them
 unmodifyable by Architects.
 
 @node AmbrosiaDB Quota,AmbrosiaDB Adding Functions,AmbrosiaDB Globals,Ambrosia's Minimal Rhost DB
-@anchor{ambrosiadb ambrosiadb-quota}@anchor{db}
+@anchor{ambrosiadb ambrosiadb-quota}@anchor{ec}
 @section AmbrosiaDB Quota
 
 
@@ -6390,7 +6477,7 @@ of them have a high amount of money for everyday operations. You should not give
 them free quota or money.
 
 @node AmbrosiaDB Adding Functions,AmbrosiaDB Compiling,AmbrosiaDB Quota,Ambrosia's Minimal Rhost DB
-@anchor{ambrosiadb ambrosiadb-adding-functions}@anchor{dc}
+@anchor{ambrosiadb ambrosiadb-adding-functions}@anchor{ed}
 @section AmbrosiaDB Adding Functions
 
 
@@ -6401,7 +6488,7 @@ WANDERER by default.
 Enjoy!
 
 @node AmbrosiaDB Compiling,,AmbrosiaDB Adding Functions,Ambrosia's Minimal Rhost DB
-@anchor{ambrosiadb ambrosiadb-compiling}@anchor{dd}
+@anchor{ambrosiadb ambrosiadb-compiling}@anchor{ee}
 @section AmbrosiaDB Compiling
 
 
@@ -6415,268 +6502,7 @@ substitution, are used in the DB.
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
-@node Multi-tiered bitlevel systems,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH,Ambrosia's Minimal Rhost DB,Top
-@anchor{bitlevels doc}@anchor{de}@anchor{bitlevels multi-tiered-bitlevel-systems}@anchor{df}
-@chapter Multi-tiered bitlevel systems
-
-
-@menu
-* Altering bitlevels:: 
-* ghod (#1) <bitlevel 7>: ghod #1 <bitlevel 7>. 
-* Immortal(i) <Level 6> - Basically #1: Immortal i <Level 6> - Basically #1. 
-* Royalty(W) <Level 5> - FULL wizbit level: Royalty W <Level 5> - FULL wizbit level. 
-* Councilor(a) <Level 4> - High wizbit level: Councilor a <Level 4> - High wizbit level. 
-* Architect(B) <Level 3> - Middle wizbit level: Architect B <Level 3> - Middle wizbit level. 
-* Guildmaster(g) <Level 2> - Lowest wizbit level: Guildmaster g <Level 2> - Lowest wizbit level. 
-* Wanderer <bitlevel 0>:: 
-* Guest <bitlevel 0 as well>:: 
-
-@end menu
-
-@node Altering bitlevels,ghod #1 <bitlevel 7>,,Multi-tiered bitlevel systems
-@anchor{bitlevels altering-bitlevels}@anchor{e0}
-@section Altering bitlevels
-
-
-Please keep in mind each of these bitlevels can be tweeked with the @@admin
-parameters and with the @@powers (accessable by royalty) or @@depowers (only
-by immortal and higher).
-
-RhostMUSH offers a multi-tier bitlevel system.  They go in order of presidence
-You do not have to use all these bits, only use what you want.
-
-@node ghod #1 <bitlevel 7>,Immortal i <Level 6> - Basically #1,Altering bitlevels,Multi-tiered bitlevel systems
-@anchor{bitlevels ghod-1-bitlevel-7}@anchor{e1}
-@section ghod (#1) <bitlevel 7>
-
-
-This bitlevel can do everything.  Only those who you trust with absolute power should have this.  Period.
-
-@node Immortal i <Level 6> - Basically #1,Royalty W <Level 5> - FULL wizbit level,ghod #1 <bitlevel 7>,Multi-tiered bitlevel systems
-@anchor{bitlevels immortal-i-level-6-basically-1}@anchor{e2}
-@section Immortal(i) <Level 6> - Basically #1
-
-
-The only thing this bitlevel can not do is directly effect #1,
-set/unset some internal flags/attributes, and set/unset the
-immortal flag.  These players can do EVERYTHING else.  Treat
-this bit as you would treat #1.  Only give it to those you know
-without a doubt you can trust.
-
-
-@itemize *
-
-@item 
-Can do everything except set some internal flags, effect #1, and set/remove the immortal flag.
-@end itemize
-
-@node Royalty W <Level 5> - FULL wizbit level,Councilor a <Level 4> - High wizbit level,Immortal i <Level 6> - Basically #1,Multi-tiered bitlevel systems
-@anchor{bitlevels royalty-w-level-5-full-wizbit-level}@anchor{e3}
-@section Royalty(W) <Level 5> - FULL wizbit level
-
-
-This is your standard wizard.  They can do everything you're
-used to on other mushes that wizards can do.  In addition, they
-also override all locks by default (this can be disabled), and
-they have an enhanced wizcloaking ability (which also can be
-disabled).  They can also set all the lower bitlevels.
-
-
-@itemize *
-
-@item 
-All things of Level 4 and lower
-
-@item 
-Ability to set more flags: STOP, NOSTOP, FUBAR
-
-@item 
-Ability to @@attribute,
-
-@item 
-Ability to WIZCLOAK
-@end itemize
-
-@node Councilor a <Level 4> - High wizbit level,Architect B <Level 3> - Middle wizbit level,Royalty W <Level 5> - FULL wizbit level,Multi-tiered bitlevel systems
-@anchor{bitlevels councilor-a-level-4-high-wizbit-level}@anchor{e4}
-@section Councilor(a) <Level 4> - High wizbit level
-
-
-This is your almost-but-not-quite wizard.  They have access to
-about 80% of the wizard commands.  This includes @@nuke, @@toad,
-@@newpassword and the like.  The only things they can't do that
-wizards can is cloak, override locks, and use some of the
-database manipulation tools in wizhelp.
-
-
-@itemize *
-
-@item 
-All things of Level 3 and lower
-
-@item 
-Ability to set more flags: NOCONNECT, WANDERER, FREE
-
-@item 
-Ability to @@nuke, @@toad, @@boot, @@chownall, @@dbck, @@poor, @@newpassword, @@pcreate, slay
-@end itemize
-
-@node Architect B <Level 3> - Middle wizbit level,Guildmaster g <Level 2> - Lowest wizbit level,Councilor a <Level 4> - High wizbit level,Multi-tiered bitlevel systems
-@anchor{bitlevels architect-b-level-3-middle-wizbit-level}@anchor{e5}
-@section Architect(B) <Level 3> - Middle wizbit level
-
-
-This is your sub-wizard.  They still have the ability to control
-anything their bitlevel and lower (including @@chown, @@destroy, etc)
-but do not have any control of other players (like @@nuke, @@toad, etc)
-but they can set the slave flag.  Otherwise, all things their level
-and lower they can treat as if they owned it.
-
-
-@itemize *
-
-@item 
-All things of Level 2
-
-@item 
-Ability to fully control and modify anything their level and lower (including @@cloning, @@destroying, etc)
-
-@item 
-Ability to use @@tel on anything their level and lower.
-
-@item 
-Ability to bypass jump_ok rooms on anything their level & lower.
-
-@item 
-Ability to set some restricted flags: SLAVE, NO_YELL
-
-@item 
-Has infinite quota and money
-
-@item 
-Able to give negative money (Steal)
-
-@item 
-Able to @@toggle the MONITOR
-@end itemize
-
-@node Guildmaster g <Level 2> - Lowest wizbit level,Wanderer <bitlevel 0>,Architect B <Level 3> - Middle wizbit level,Multi-tiered bitlevel systems
-@anchor{bitlevels guildmaster-g-level-2-lowest-wizbit-level}@anchor{e6}
-@section Guildmaster(g) <Level 2> - Lowest wizbit level
-
-
-This is the lowest wiz bit.  They only have moderate abilities.
-They can examine/decompile anything their level and lower, they can
-@@guild/@@quota people, and they have a few other minor abilities.
-They don't have free money however.
-
-
-@itemize *
-
-@item 
-Ability to access things remotely (long_fingers)
-
-@item 
-Things are FREE for them in the queue.
-
-@item 
-Can see dbref#'s of things their level and lower
-
-@item 
-Can examine/decompile things their level and lower.
-
-@item 
-Can set @@quota/@@guild on their level and lower.
-@end itemize
-
-@node Wanderer <bitlevel 0>,Guest <bitlevel 0 as well>,Guildmaster g <Level 2> - Lowest wizbit level,Multi-tiered bitlevel systems
-@anchor{bitlevels wanderer-bitlevel-0}@anchor{e7}
-@section Wanderer <bitlevel 0>
-
-
-This is a hinderance flag.  This flag is automatically set on new
-players that are created (which can be disabled).  This flag stops
-the player from creating/destroying any database information.   In
-effect it stops them from any type of building type commands.  They
-still are allowed to set/unset locks/attributes/etc though without
-hinderance.
-
-@node Guest <bitlevel 0 as well>,,Wanderer <bitlevel 0>,Multi-tiered bitlevel systems
-@anchor{bitlevels guest-bitlevel-0-as-well}@anchor{e8}
-@section Guest <bitlevel 0 as well>
-
-
-This is a bigger hinderance flag.  By default all guests should be
-set this.  This flag stops the player from ANY database manipulation
-along with @@teleporting, and many other advanced commands.  It's
-extreamly dehibilatating.
-
-@c These are replacement strings for non-ASCII characters used within the project
-@c using the same name as the html entity names (e.g., &copy;) for that character
-
-@node What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH,Security,Multi-tiered bitlevel systems,Top
-@anchor{toggles doc}@anchor{e9}@anchor{toggles what-flags-toggles-powers-and-depowers-mean-in-rhostmush}@anchor{ea}
-@chapter What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH
-
-
-@menu
-* What are Flags?:: 
-* What are Toggles?:: 
-* What is an @@power?:: 
-* What is an @@depower?:: 
-
-@end menu
-
-@node What are Flags?,What are Toggles?,,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH
-@anchor{toggles what-are-flags}@anchor{eb}
-@section What are Flags?
-
-
-Flags are pretty much exactly the same as any other mush.  It's a flag
-that you set or unset on a target which then enables/disables or
-alters something that target can do.  There's help on all the flags
-in help and wizhelp.
-
-@node What are Toggles?,What is an @@power?,What are Flags?,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH
-@anchor{toggles what-are-toggles}@anchor{ec}
-@section What are Toggles?
-
-
-Toggles were designed as a single point flag that immediately enables
-or disables a set ability or condition, thus a 'toggle'.  It works
-exactly like a flag and was originally designed for two reasons.  To
-distinguish from the multi-meaning of a 'flag', and because frankly
-we ran out of flag space :)
-
-@node What is an @@power?,What is an @@depower?,What are Toggles?,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH
-@anchor{toggles what-is-an-power}@anchor{ed}
-@section What is an @@power?
-
-
-A power is similar to a power on other mushes, but unlike them, our
-powers are multi-tier.  This means that they can be customized to
-empower something at a given bitlevel.  You may empower something
-from guildmaster up to councilor level.  There are some powers
-with a power level of N/A meaning they are a toggle power granting
-an absolute power level as specified in the help for that power.
-This requires the INHERIT flag for non-players to inherit powers,
-however, a specific object can be granted a power as well.
-
-@node What is an @@depower?,,What is an @@power?,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH
-@anchor{toggles what-is-an-depower}@anchor{ee}
-@section What is an @@depower?
-
-
-This is the anti-thesis of @@power.  Also, depowers do not require
-inheritance.  They also have priority over flags, toggles, and
-powers.  You can use depower to remove or lower abilities and
-control from a target, even a full wizard (royalty) can be
-depowered.
-
-@c These are replacement strings for non-ASCII characters used within the project
-@c using the same name as the html entity names (e.g., &copy;) for that character
-
-@node Security,Maintenance,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH,Top
+@node Security,Maintenance,Ambrosia's Minimal Rhost DB,Top
 @anchor{security doc}@anchor{ef}@anchor{security security}@anchor{f0}
 @chapter Security
 
@@ -10207,9 +10033,13 @@ that there are no more zones to add.
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{install/windows install-windows}@anchor{16d}
+@geindex Windows
+@geindex Microsoft Windows
+@geindex Install - Windows
 
 @node Requirements if Using Windows,Upgrading a Legacy RhostMUSH Installation,Format for image files,Top
-@anchor{windows doc}@anchor{16d}@anchor{windows requirements-if-using-windows}@anchor{16e}@anchor{windows windows-requirements}@anchor{16f}
+@anchor{install/windows doc}@anchor{16e}@anchor{install/windows requirements-if-using-windows}@anchor{16f}
 @chapter Requirements if Using Windows
 
 
@@ -10228,7 +10058,7 @@ that there are no more zones to add.
 @end menu
 
 @node Installing on Windows 10 with BASH,Installing on Windows with Cygwin,,Requirements if Using Windows
-@anchor{windows installing-on-windows-10-with-bash}@anchor{170}
+@anchor{install/windows installing-on-windows-10-with-bash}@anchor{170}
 @section Installing on Windows 10 with BASH
 
 
@@ -10236,10 +10066,12 @@ Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
 This has been tested with the Preview build 14342.
 
 
-@enumerate 
+@itemize *
 
 @item 
 After installing Bash you will need to install the following packages:
+
+@quotation
 
 
 @itemize -
@@ -10252,33 +10084,48 @@ git
 
 @item 
 make
-
-@item 
-libpcre3 (optional)
-
-@item 
-libpcre3-dev (optional)
-
-@item 
-openssl (optional)
 @end itemize
-@end enumerate
+@end quotation
 
-#. When configuring rhost (using confsource) select the Disable Debugmon
+@item 
+Optional packages:
+
+@quotation
+
+
+@itemize -
+
+@item 
+libpcre3
+
+@item 
+libpcre3-dev
+
+@item 
+openssl
+@end itemize
+@end quotation
+
+@item 
+When configuring rhost (using confsource) select the Disable Debugmon
+@end itemize
+
 option.
 
 @node Installing on Windows with Cygwin,Startig RhostMUSH on Windows,Installing on Windows 10 with BASH,Requirements if Using Windows
-@anchor{windows installing-on-windows-with-cygwin}@anchor{171}
+@anchor{install/windows installing-on-windows-with-cygwin}@anchor{171}
 @section Installing on Windows with Cygwin
 
 
 Rhost does work under windows using the cygwin package.
 
 
-@enumerate 
+@itemize *
 
 @item 
 When you do install cygwin, the following packages must be added:
+
+@quotation
 
 
 @itemize -
@@ -10300,17 +10147,28 @@ git
 
 @item 
 make
+@end itemize
+@end quotation
 
 @item 
-openssl (optional)
+Optional packages:
+
+@quotation
+
+
+@itemize -
+
+@item 
+openssl
 @end itemize
+@end quotation
 
 @item 
 The src/Makefile has to manually have the CYGWIN line uncommented.
-@end enumerate
+@end itemize
 
 @node Startig RhostMUSH on Windows,,Installing on Windows with Cygwin,Requirements if Using Windows
-@anchor{windows startig-rhostmush-on-windows}@anchor{172}
+@anchor{install/windows startig-rhostmush-on-windows}@anchor{172}
 @section Startig RhostMUSH on Windows
 
 
@@ -10900,9 +10758,12 @@ builder script to build in the mysql changes.
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{comparison/flags comparison-flags}@anchor{181}
+@geindex Comparison - Flags
+@geindex Flags - Comparison
 
 @node Comparison of Flags,Comparison of powers,Upgrading a Legacy RhostMUSH Installation,Top
-@anchor{flags doc}@anchor{181}@anchor{flags comparison-of-flags}@anchor{182}
+@anchor{comparison/flags doc}@anchor{182}@anchor{comparison/flags comparison-of-flags}@anchor{183}
 @chapter Comparison of Flags
 
 Comparison of Flags
@@ -11601,9 +11462,12 @@ MARKER0-MARKER9
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{comparison/powers comparison-powers}@anchor{184}
+@geindex Comparison - Powers
+@geindex Powers - Comparison
 
 @node Comparison of powers,Historical Non-Disclosure Agreement,Comparison of Flags,Top
-@anchor{powers doc}@anchor{183}@anchor{powers comparison-of-powers}@anchor{184}
+@anchor{comparison/powers doc}@anchor{185}@anchor{comparison/powers comparison-of-powers}@anchor{186}
 @chapter Comparison of powers
 
 
@@ -11705,21 +11569,25 @@ Rhost Equiv: MONITOR (@@toggle)
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
-@anchor{historical/nda historical-nda}@anchor{185}
+@anchor{historical/nda historical-nda}@anchor{187}
 @geindex NDA
 @geindex Non-Disclosure Agreement
 
-@node Historical Non-Disclosure Agreement,RhostMUSH Internal Help Files,Comparison of powers,Top
-@anchor{historical/nda doc}@anchor{186}@anchor{historical/nda historical-non-disclosure-agreement}@anchor{187}
+@node Historical Non-Disclosure Agreement,Copyright,Comparison of powers,Top
+@anchor{historical/nda doc}@anchor{188}@anchor{historical/nda historical-non-disclosure-agreement}@anchor{189}
 @chapter Historical Non-Disclosure Agreement
 
 
 The following NDA comes from the time when RhostMUSH was not publially
 available. It is preserved here for historical reasons. We are suckers for
 looking back at things. :)
---Ambrosia
 
 @quotation
+
+@quotation
+
+--Ambrosia
+@end quotation
 
 
 @enumerate 
@@ -11752,18 +11620,12 @@ rules are kept.
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{meta/copyright copyright}@anchor{18a}
+@geindex Copyright
 
-@node RhostMUSH Internal Help Files,RhostMUSH Internal WizHelp Files,Historical Non-Disclosure Agreement,Top
-@anchor{help doc}@anchor{188}@anchor{help rhostmush-internal-help-files}@anchor{189}
-@chapter RhostMUSH Internal Help Files
-
-
-@c These are replacement strings for non-ASCII characters used within the project
-@c using the same name as the html entity names (e.g., &copy;) for that character
-
-@node RhostMUSH Internal WizHelp Files,Index,RhostMUSH Internal Help Files,Top
-@anchor{wizhelp doc}@anchor{18a}@anchor{wizhelp rhostmush-internal-wizhelp-files}@anchor{18b}
-@chapter RhostMUSH Internal WizHelp Files
+@node Copyright,RhostMUSH Internal Help Files,Historical Non-Disclosure Agreement,Top
+@anchor{meta/copyright doc}@anchor{18b}@anchor{meta/copyright id1}@anchor{18c}
+@chapter Copyright
 
 
 Copyright© 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
@@ -11785,6 +11647,28 @@ the original writers of the code in writing.
 This copyright does not include the original code that was given as GNU freeware
 
 This copyright information may not be changed, altered, or omitted.
+
+@c These are replacement strings for non-ASCII characters used within the project
+@c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{txtfiles/help txtfiles-help}@anchor{18d}
+@geindex help.txt
+@geindex txtfiles - help.txt
+
+@node RhostMUSH Internal Help Files,RhostMUSH Internal WizHelp Files,Copyright,Top
+@anchor{txtfiles/help doc}@anchor{18e}@anchor{txtfiles/help rhostmush-internal-help-files}@anchor{18f}
+@chapter RhostMUSH Internal Help Files
+
+
+@c These are replacement strings for non-ASCII characters used within the project
+@c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{txtfiles/wizhelp txtfiles-wizhelp}@anchor{190}
+@geindex wizhelp.txt
+@geindex txtfiles - wizhelp.txt
+
+@node RhostMUSH Internal WizHelp Files,Index,RhostMUSH Internal Help Files,Top
+@anchor{txtfiles/wizhelp doc}@anchor{191}@anchor{txtfiles/wizhelp rhostmush-internal-wizhelp-files}@anchor{192}
+@chapter RhostMUSH Internal WizHelp Files
+
 
 @c changelog.rst
 

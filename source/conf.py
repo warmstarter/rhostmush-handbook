@@ -57,7 +57,7 @@ html_theme = 'nature'
 html_sidebars = {
         '**': ['searchbox.html', 'sourcelink.html', 'relations.html', 'localtoc.html'],
 }
-html_logo = "logo.jpg"
+html_logo = "_static/logo.jpg"
 html_style = "style.css"
 html_last_updated_fmt = '%b %d, %Y'
 

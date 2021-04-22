@@ -42,181 +42,141 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
             not limited to:</paragraph>
         <section ids="recycle-bin" names="recycle\ bin">
             <title>Recycle bin</title>
-            <block_quote>
-                <paragraph>Yup, you guessed it.  RhostMUSH has a windows like recycle bin.
-                    This means the objects you @nuke and @destroy become 'destroyed'
-                    but not recycled until they are @purged.  If you use the Myrddin
-                    CRON in the Mushcode directory, it by default sets up a job
-                    to purge anything over 30 days old, which should be more than
-                    sufficient for any needs.  The goodness of this?  You can recover
-                    nuked things from any period of time, as long as they were not
-                    @purged first.</paragraph>
-                <paragraph>Commands: @purge, @nuke, @destroy, @recover, @reclist</paragraph>
-            </block_quote>
+            <paragraph>Yup, you guessed it.  RhostMUSH has a windows like recycle bin.
+                This means the objects you @nuke and @destroy become 'destroyed'
+                but not recycled until they are @purged.  If you use the Myrddin
+                CRON in the Mushcode directory, it by default sets up a job
+                to purge anything over 30 days old, which should be more than
+                sufficient for any needs.  The goodness of this?  You can recover
+                nuked things from any period of time, as long as they were not
+                @purged first.</paragraph>
+            <paragraph>Commands: @purge, @nuke, @destroy, @recover, @reclist</paragraph>
         </section>
         <section ids="snapshot" names="@snapshot">
             <title>@snapshot</title>
-            <block_quote>
-                <paragraph>Live image snapshots to unload or load to and from
-                    disk.  As many snapshots as you want, as often as you want.
-                    It essentially does a flatfile dump of a dbref#.  Great for
-                    backups or cross-Rhost portability.</paragraph>
-                <paragraph>Command: @snapshot</paragraph>
-            </block_quote>
+            <paragraph>Live image snapshots to unload or load to and from
+                disk.  As many snapshots as you want, as often as you want.
+                It essentially does a flatfile dump of a dbref#.  Great for
+                backups or cross-Rhost portability.</paragraph>
+            <paragraph>Command: @snapshot</paragraph>
         </section>
         <section ids="wizard-and-immortals-by-default" names="wizard\ and\ immortals\ by\ default">
             <title>Wizard and Immortals by default</title>
-            <block_quote>
-                <bullet_list bullet="*">
-                    <list_item>
-                        <paragraph>are spoofable.  Meaning all their @pemits by default will not
-                            trigger NOSPOOF.  If you do not wish this, set the SPOOF flag
-                            this applies to anyone below their level.</paragraph>
-                    </list_item>
-                    <list_item>
-                        <paragraph>override all locks.  There's two flags to disable this.
-                            NO_OVERRIDE to stop overriding all locks (including attribs)
-                            and NO_USELOCK to just stop overriding uselocks.
-                            This applies to anything their level and lower.</paragraph>
-                    </list_item>
-                    <list_item>
-                        <paragraph>optionally cloak from all non-immortals/God player.
-                            This can be highly abused if not careful and there
-                            is a @depower to disable cloaking and/or dark that will
-                            disable this.</paragraph>
-                    </list_item>
-                    <list_item>
-                        <paragraph>immortals can optionally supercloak from even wizards.
-                            this can not be disabled, and you must consider that immortals
-                            should be treated as the God player (#1) since they are
-                            effectively #1 in nearly every way.</paragraph>
-                    </list_item>
-                </bullet_list>
-            </block_quote>
+            <bullet_list bullet="*">
+                <list_item>
+                    <paragraph>are spoofable.  Meaning all their @pemits by default will not
+                        trigger NOSPOOF.  If you do not wish this, set the SPOOF flag
+                        this applies to anyone below their level.</paragraph>
+                </list_item>
+                <list_item>
+                    <paragraph>override all locks.  There's two flags to disable this.
+                        NO_OVERRIDE to stop overriding all locks (including attribs)
+                        and NO_USELOCK to just stop overriding uselocks.
+                        This applies to anything their level and lower.</paragraph>
+                </list_item>
+                <list_item>
+                    <paragraph>optionally cloak from all non-immortals/God player.
+                        This can be highly abused if not careful and there
+                        is a @depower to disable cloaking and/or dark that will
+                        disable this.</paragraph>
+                </list_item>
+                <list_item>
+                    <paragraph>immortals can optionally supercloak from even wizards.
+                        this can not be disabled, and you must consider that immortals
+                        should be treated as the God player (#1) since they are
+                        effectively #1 in nearly every way.</paragraph>
+                </list_item>
+            </bullet_list>
         </section>
         <section ids="titles-and-captions-to-a-player-s-name" names="titles\ and\ captions\ to\ a\ player's\ name">
             <title>Titles and Captions to a player's name</title>
-            <block_quote>
-                <paragraph>@caption and @titlecaption</paragraph>
-            </block_quote>
+            <paragraph>@caption and @titlecaption</paragraph>
         </section>
         <section ids="have-an-alternate-name-with-locks-for-npc-obfuscation" names="have\ an\ alternate\ name\ with\ locks\ for\ npc\ obfuscation">
             <title>Have an alternate name with locks for NPC obfuscation</title>
-            <block_quote>
-                <paragraph>@altname
-                    @lock/altname</paragraph>
-            </block_quote>
+            <paragraph>@altname
+                @lock/altname</paragraph>
         </section>
         <section ids="have-multiple-player-aliases" names="have\ multiple\ player\ aliases">
             <title>Have multiple player aliases</title>
-            <block_quote>
-                <paragraph>As well as a method to reserve player names per player w/o revealing who has what name.</paragraph>
-                <paragraph>@protect</paragraph>
-            </block_quote>
+            <paragraph>As well as a method to reserve player names per player w/o revealing who has what name.</paragraph>
+            <paragraph>@protect</paragraph>
         </section>
         <section ids="actively-control-how-dark-works-both-game-wide-and-individually" names="actively\ control\ how\ dark\ works\ both\ game-wide\ and\ individually">
             <title>Actively control how dark works both game-wide and individually</title>
-            <block_quote>
-                <paragraph>@depower dark</paragraph>
-                <paragraph>@admin allow_whodark, sweep_dark, command_dark, lcon_checks_dark,
-                    secure_dark, see_owned_dark, idle_wiz_dark, player_dark</paragraph>
-                <paragraph>@toggle snuffdark</paragraph>
-                <paragraph>@flagdef to redefine who and what can set the DARK flag</paragraph>
-            </block_quote>
+            <paragraph>@depower dark</paragraph>
+            <paragraph>@admin allow_whodark, sweep_dark, command_dark, lcon_checks_dark,
+                secure_dark, see_owned_dark, idle_wiz_dark, player_dark</paragraph>
+            <paragraph>@toggle snuffdark</paragraph>
+            <paragraph>@flagdef to redefine who and what can set the DARK flag</paragraph>
         </section>
         <section ids="make-config-file-changes-in-game-without-having-to-reboot-or-have-shell-access" names="make\ config\ file\ changes\ in-game\ without\ having\ to\ reboot\ or\ have\ shell\ access">
             <title>Make config file changes in-game without having to reboot or have shell access</title>
-            <block_quote>
-                <paragraph>@admin admin_object</paragraph>
-            </block_quote>
+            <paragraph>@admin admin_object</paragraph>
         </section>
         <section ids="execute-any-binary-or-script-as-a-localized-function" names="execute\ any\ binary\ or\ script\ as\ a\ localized\ function">
             <title>Execute any binary or script as a localized function</title>
-            <block_quote>
-                <paragraph>EXECSCRIPT (power), SIDEFX (flag)</paragraph>
-            </block_quote>
+            <paragraph>EXECSCRIPT (power), SIDEFX (flag)</paragraph>
         </section>
         <section ids="customized-percent-substitutions-like-n-etc" names="customized\ percent\ substitutions\ (like\ %n,\ %#,\ etc)">
             <title>Customized percent substitutions (like %n, %#, etc)</title>
-            <block_quote>
-                <paragraph>@admin sub_include, @hook</paragraph>
-            </block_quote>
+            <paragraph>@admin sub_include, @hook</paragraph>
         </section>
         <section ids="redefine-percent-substitutions-like-n-etc" names="redefine\ percent\ substitutions\ (like\ %n,\ %#,\ etc)">
             <title>Redefine percent substitutions (like %n, %#, etc)</title>
-            <block_quote>
-                <paragraph>@admin sub_override, @hook</paragraph>
-            </block_quote>
+            <paragraph>@admin sub_override, @hook</paragraph>
         </section>
         <section ids="localize-command-and-function-overrides-in-a-sandbox" names="localize\ command\ and\ function\ overrides\ in\ a\ sandbox">
             <title>Localize command and function overrides in a sandbox</title>
-            <block_quote>
-                <paragraph>@icmd, @lfunction, subeval(), sandbox()</paragraph>
-            </block_quote>
+            <paragraph>@icmd, @lfunction, subeval(), sandbox()</paragraph>
         </section>
         <section ids="multiple-zones" names="multiple\ zones">
             <title>Multiple Zones</title>
-            <block_quote>
-                <paragraph>Have multiple zones which can optionally belong to multiple targets (multiple zones per target allowable!)</paragraph>
-                <paragraph>@zone, zones, lzone(), zonecmd()</paragraph>
-            </block_quote>
+            <paragraph>Have multiple zones which can optionally belong to multiple targets (multiple zones per target allowable!)</paragraph>
+            <paragraph>@zone, zones, lzone(), zonecmd()</paragraph>
         </section>
         <section ids="optionally-control-enable-or-disable-sideeffects" names="optionally\ control,\ enable,\ or\ disable\ sideeffects">
             <title>Optionally control, enable, or disable sideeffects</title>
-            <block_quote>
-                <paragraph>@admin sideeffects, SIDEFX (flag)</paragraph>
-            </block_quote>
+            <paragraph>@admin sideeffects, SIDEFX (flag)</paragraph>
         </section>
         <section ids="have-31-cross-interactive-realities-for-locations" names="have\ 31\ cross-interactive\ realities\ for\ locations">
             <title>Have 31 cross-interactive realities for locations</title>
-            <block_quote>
-                <paragraph>This works as a truly independant and self-contained environment.
-                    A room can have 31 'layers', each 'layer' is a reality in
-                    the same physical space.  These layers can work independently
-                    or allow interaction with other layers for vast customization.
-                    This affects all methods within the game including all matching,
-                    looking, $commands, listens, movement, interaction, pretty
-                    much every single aspect of mushing.</paragraph>
-                <paragraph>REALITY LEVELS</paragraph>
-            </block_quote>
+            <paragraph>This works as a truly independant and self-contained environment.
+                A room can have 31 'layers', each 'layer' is a reality in
+                the same physical space.  These layers can work independently
+                or allow interaction with other layers for vast customization.
+                This affects all methods within the game including all matching,
+                looking, $commands, listens, movement, interaction, pretty
+                much every single aspect of mushing.</paragraph>
+            <paragraph>REALITY LEVELS</paragraph>
         </section>
         <section ids="override-any-command-with-softcode" names="override\ any\ command\ with\ softcode">
             <title>Override any command with softcode</title>
-            <block_quote>
-                <paragraph>@admin access (check ignore)</paragraph>
-                <paragraph>Master room $commands to then override the hardcode</paragraph>
-            </block_quote>
+            <paragraph>@admin access (check ignore)</paragraph>
+            <paragraph>Master room $commands to then override the hardcode</paragraph>
         </section>
         <section ids="the-abilility-to-raise-or-lower-permissions-on-the-various" names="the\ abilility\ to\ raise\ or\ lower\ permissions\ on\ the\ various">
             <title>The abilility to raise or lower permissions on the various</title>
-            <block_quote>
-                <paragraph>staff bitlevels for each player.</paragraph>
-                <paragraph>@power, @depower, TOGGLES, FLAGS</paragraph>
-            </block_quote>
+            <paragraph>staff bitlevels for each player.</paragraph>
+            <paragraph>@power, @depower, TOGGLES, FLAGS</paragraph>
         </section>
         <section ids="customize-new-commands-on-the-connect-screen" names="customize\ new\ commands\ on\ the\ connect\ screen">
             <title>Customize new commands on the connect screen</title>
-            <block_quote>
-                <paragraph>@admin file_object2</paragraph>
-            </block_quote>
+            <paragraph>@admin file_object2</paragraph>
         </section>
         <section ids="softcode-any-txt-file-like-connect-txt" names="softcode\ any\ txt\ file\ (like\ connect.txt)">
             <title>Softcode any txt file (like connect.txt)</title>
-            <block_quote>
-                <paragraph>and have it evaluate in-game.  It evaluates as the object it is on.</paragraph>
-                <paragraph>@admin file_object</paragraph>
-            </block_quote>
+            <paragraph>and have it evaluate in-game.  It evaluates as the object it is on.</paragraph>
+            <paragraph>@admin file_object</paragraph>
         </section>
         <section ids="advanced-tracing-methods-for-debugging-your-code-including-labels" names="advanced\ tracing\ methods\ for\ debugging\ your\ code\ including\ labels!">
             <title>Advanced tracing methods for debugging your code including labels!</title>
-            <block_quote>
-                <paragraph>Commands: @label</paragraph>
-                <paragraph>Functions: parenmatch(), trace()</paragraph>
-                <paragraph>Toggles: CPUTIME</paragraph>
-                <paragraph>Flags: TRACE</paragraph>
-                <paragraph>Attributes: TRACE_GREP, TRACE, TRACE_COLOR, TRACE_COLOR_&lt;attr&gt;</paragraph>
-                <paragraph>Substitutions: %_</paragraph>
-            </block_quote>
+            <paragraph>Commands: @label</paragraph>
+            <paragraph>Functions: parenmatch(), trace()</paragraph>
+            <paragraph>Toggles: CPUTIME</paragraph>
+            <paragraph>Flags: TRACE</paragraph>
+            <paragraph>Attributes: TRACE_GREP, TRACE, TRACE_COLOR, TRACE_COLOR_&lt;attr&gt;</paragraph>
+            <paragraph>Substitutions: %_</paragraph>
         </section>
         <section ids="built-in-pretty-printing-of-attributes-with-the-parenmatch-function" names="built\ in\ pretty-printing\ of\ attributes\ with\ the\ parenmatch()\ function">
             <title>Built in pretty-printing of attributes with the parenmatch() function</title>
@@ -253,167 +213,159 @@ Example Pretty Print:
             <title>Advanced features of RhostMUSH</title>
             <section ids="debugging-tracing" names="debugging/tracing">
                 <title>Debugging/Tracing</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Debugging in Rhost allows for advanced features like expressing where and
-                                when to do debugging via a trace() function, with toggled labels, and the
-                                ability to grep content from trace output.  There also exists features to
-                                color-match parenthesis, braces, and brackets in-game as well as pretty print
-                                the output of commands and functions.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>help trace</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help %_</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help trace()</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help parenmatch()</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help parenstr()</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Debugging in Rhost allows for advanced features like expressing where and
+                            when to do debugging via a trace() function, with toggled labels, and the
+                            ability to grep content from trace output.  There also exists features to
+                            color-match parenthesis, braces, and brackets in-game as well as pretty print
+                            the output of commands and functions.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>help trace</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help %_</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help trace()</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help parenmatch()</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help parenstr()</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="zoning" names="zoning">
                 <title>Zoning</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Zoning in Rhost allows the same functionality of Penn and MUX, though the
-                                syntax is different.  It also allows the ability to belong to multiple
-                                zones at the same time and take advantage of mulitple zones at once.
-                                This allows for increased levels of complexity.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>help zones</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help @zone</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help zonecmd()</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help lzone()</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help @Lock type twink</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help @lock type zone</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Zoning in Rhost allows the same functionality of Penn and MUX, though the
+                            syntax is different.  It also allows the ability to belong to multiple
+                            zones at the same time and take advantage of mulitple zones at once.
+                            This allows for increased levels of complexity.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>help zones</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help @zone</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help zonecmd()</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help lzone()</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help @Lock type twink</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help @lock type zone</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="reality-levels" names="reality\ levels">
                 <title>Reality Levels</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Reality levels allows for the ability to have a sandboxed 'existance'
-                                in each physical location across the entirity of the mush.  Each
-                                reality is its own sandbox and can either stand alone or work
-                                dependently with other realities.  A person can belong to multiple
-                                realities at the same time, and realities is geared to a method for
-                                send and receive.  Each 'method' requires to be in the given reality
-                                to affect it.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>help reality levels</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp chkreality</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp reaity level</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help @Lock type user</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Reality levels allows for the ability to have a sandboxed 'existance'
+                            in each physical location across the entirity of the mush.  Each
+                            reality is its own sandbox and can either stand alone or work
+                            dependently with other realities.  A person can belong to multiple
+                            realities at the same time, and realities is geared to a method for
+                            send and receive.  Each 'method' requires to be in the given reality
+                            to affect it.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>help reality levels</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp chkreality</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp reaity level</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help @Lock type user</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="function-and-command-overriding" names="function\ and\ command\ overriding">
                 <title>Function and Command Overriding</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Functions and commands can both be overridden with softcode.  To
-                                override a hardcoded command you first set the command ignore.
-                                There are various levels of ignoring so that you could have it
-                                ignored from mortals but have it executed fine for non-mortals.
-                                This allows you to use the actual physical command within a
-                                softcode override.  You may also use @Hook for altering how
-                                a command works.   Functions are overridden by setting the
-                                function in question ignored, then writing a softcode alternative
-                                that is then executed and fetched appropriately.</paragraph>
-                            <paragraph>Commands:</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>wizhelp @admin</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp access</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp permissions</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp @Hook</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp hook setup</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                            <paragraph>Functions:</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>wizhelp @admin</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp function_access</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp @function</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>help @lfunction</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp bypass()</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Functions and commands can both be overridden with softcode.  To
+                            override a hardcoded command you first set the command ignore.
+                            There are various levels of ignoring so that you could have it
+                            ignored from mortals but have it executed fine for non-mortals.
+                            This allows you to use the actual physical command within a
+                            softcode override.  You may also use @Hook for altering how
+                            a command works.   Functions are overridden by setting the
+                            function in question ignored, then writing a softcode alternative
+                            that is then executed and fetched appropriately.</paragraph>
+                        <paragraph>Commands:</paragraph>
+                        <block_quote>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>wizhelp @admin</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>wizhelp access</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>wizhelp permissions</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>wizhelp @Hook</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>wizhelp hook setup</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </block_quote>
+                        <paragraph>Functions:</paragraph>
+                        <block_quote>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>wizhelp @admin</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>wizhelp function_access</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>wizhelp @function</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>help @lfunction</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>wizhelp bypass()</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </block_quote>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="the-recycle-bin" names="the\ recycle\ bin">
                 <title>The Recycle Bin</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Rhost has a recycle bin that works a bit like a windows recycle bin.
-                                Whenever you destroy something within the mush, it is stacked onto
-                                the recycle bin and marked unavailable within the mush.  This marks
-                                the dbref# as garbage in any sense of the word.  However, the object
-                                is not able to be reused until purged.  Once purged, it is put onto
-                                a free list that can then be reassigned to a new object.</paragraph>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Rhost has a recycle bin that works a bit like a windows recycle bin.
+                            Whenever you destroy something within the mush, it is stacked onto
+                            the recycle bin and marked unavailable within the mush.  This marks
+                            the dbref# as garbage in any sense of the word.  However, the object
+                            is not able to be reused until purged.  Once purged, it is put onto
+                            a free list that can then be reassigned to a new object.</paragraph>
+                        <block_quote>
                             <bullet_list bullet="-">
                                 <list_item>
                                     <paragraph>wizhelp @nuke</paragraph>
@@ -437,19 +389,19 @@ Example Pretty Print:
                                     <paragraph>wizhelp @reclist</paragraph>
                                 </list_item>
                             </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                        </block_quote>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="percent-substitution-adding-overriding" names="percent\ substitution\ adding/overriding">
                 <title>Percent Substitution Adding/Overriding</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Rhost allows the ability to both override percent substitutions as
-                                well as creating new ones.  This is done with @Hook and admin
-                                params and issues softcode overriding.  Due to how it is evaluated
-                                there is no risk of recursion.</paragraph>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Rhost allows the ability to both override percent substitutions as
+                            well as creating new ones.  This is done with @Hook and admin
+                            params and issues softcode overriding.  Due to how it is evaluated
+                            there is no risk of recursion.</paragraph>
+                        <block_quote>
                             <bullet_list bullet="-">
                                 <list_item>
                                     <paragraph>wizhelp @hook</paragraph>
@@ -464,17 +416,17 @@ Example Pretty Print:
                                     <paragraph>wizhelp sub_override</paragraph>
                                 </list_item>
                             </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                        </block_quote>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="hooking" names="hooking">
                 <title>Hooking</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Hooking allows you to have advanced methods to manipulate commands
-                                including adding customized switches to them via softcode.</paragraph>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Hooking allows you to have advanced methods to manipulate commands
+                            including adding customized switches to them via softcode.</paragraph>
+                        <block_quote>
                             <bullet_list bullet="-">
                                 <list_item>
                                     <paragraph>wizhelp @hook</paragraph>
@@ -489,673 +441,629 @@ Example Pretty Print:
                                     <paragraph>wizhelp hook setup</paragraph>
                                 </list_item>
                             </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                        </block_quote>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="command-based-uselocks" names="command\ based\ uselocks">
                 <title>Command based uselocks</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>This allows you to have unique uselocks per $command.  This is done
-                                through the use of the USELOCK attribute flag, then you set up
-                                a matching attribute name with a prefix of a ~ to specify how
-                                the lock is to be evaluated.  This works in the same manner
-                                as an evaluation lock.  To be able to use the USELOCK attribute flag
-                                you must be empowered to do so with the 'ATRUSE' @toggle.  You may
-                                also use the secure_atruselock config parameter to globally enable
-                                this and not require the toggle to be set.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>wizhelp atruse toggle</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help attribute uselocks</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>This allows you to have unique uselocks per $command.  This is done
+                            through the use of the USELOCK attribute flag, then you set up
+                            a matching attribute name with a prefix of a ~ to specify how
+                            the lock is to be evaluated.  This works in the same manner
+                            as an evaluation lock.  To be able to use the USELOCK attribute flag
+                            you must be empowered to do so with the 'ATRUSE' @toggle.  You may
+                            also use the secure_atruselock config parameter to globally enable
+                            this and not require the toggle to be set.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp atruse toggle</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help attribute uselocks</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="differentating-between-command-and-listen-locks" names="differentating\ between\ command\ and\ listen\ locks">
                 <title>Differentating between command and listen locks</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>We distinguish between commands and listens with uselocks by passing
-                                an optional argument to all locks that are uselocks.  This optional
-                                argument is 0 for a default lock, 1 for a command lock and 2 for
-                                a listen lock.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>help @lock type uselock</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>We distinguish between commands and listens with uselocks by passing
+                            an optional argument to all locks that are uselocks.  This optional
+                            argument is 0 for a default lock, 1 for a command lock and 2 for
+                            a listen lock.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>help @lock type uselock</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="wizard-auto-overiding-and-how-to-disable-it" names="wizard\ auto-overiding\ and\ how\ to\ disable\ it">
                 <title>Wizard auto-overiding and how to disable it</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>By default wizards override all locks, including attribute locks,
-                                can see all dark exits, and bypass pagelocks.  This can be
-                                troublesome, and even abusive, so there's ways to disable this.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>wizhelp @depower (for those abusing it)</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp no_override (disable overiding locks)</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp no_uselock (disable just uselock overriding)</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp pagelock toggle (disable pagelock overriding)</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>By default wizards override all locks, including attribute locks,
+                            can see all dark exits, and bypass pagelocks.  This can be
+                            troublesome, and even abusive, so there's ways to disable this.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp @depower (for those abusing it)</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp no_override (disable overiding locks)</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp no_uselock (disable just uselock overriding)</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp pagelock toggle (disable pagelock overriding)</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="advanced-flag-and-toggle-control" names="advanced\ flag\ and\ toggle\ control">
                 <title>Advanced FLAG and TOGGLE control</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Flags and toggles can be controlled to have multiple permissions
-                                and enable/disable targets of how the flags are allowed to be
-                                set.  This is done through commands in-game or you can use
-                                conf file options to do so.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>wizhelp @flagdef</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp @toggledef</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>@admin @flagdef alternatives</paragraph>
-                                    <bullet_list bullet="-">
-                                        <list_item>
-                                            <paragraph>wizhelp flag_access_set</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>wizhelp flag_access_unset</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>wizhelp flag_access_see</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>wizhelp flag_access_type</paragraph>
-                                        </list_item>
-                                    </bullet_list>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>@admin @toggledef alternatives</paragraph>
-                                    <bullet_list bullet="-">
-                                        <list_item>
-                                            <paragraph>wizhelp toggle_access_set</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>wizhelp toggle_access_unset</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>wizhelp toggle_access_see</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>wizhelp toggle_access_type</paragraph>
-                                        </list_item>
-                                    </bullet_list>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Flags and toggles can be controlled to have multiple permissions
+                            and enable/disable targets of how the flags are allowed to be
+                            set.  This is done through commands in-game or you can use
+                            conf file options to do so.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp @flagdef</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp @toggledef</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>@admin @flagdef alternatives</paragraph>
+                                <bullet_list bullet="-">
+                                    <list_item>
+                                        <paragraph>wizhelp flag_access_set</paragraph>
+                                    </list_item>
+                                    <list_item>
+                                        <paragraph>wizhelp flag_access_unset</paragraph>
+                                    </list_item>
+                                    <list_item>
+                                        <paragraph>wizhelp flag_access_see</paragraph>
+                                    </list_item>
+                                    <list_item>
+                                        <paragraph>wizhelp flag_access_type</paragraph>
+                                    </list_item>
+                                </bullet_list>
+                            </list_item>
+                            <list_item>
+                                <paragraph>@admin @toggledef alternatives</paragraph>
+                                <bullet_list bullet="-">
+                                    <list_item>
+                                        <paragraph>wizhelp toggle_access_set</paragraph>
+                                    </list_item>
+                                    <list_item>
+                                        <paragraph>wizhelp toggle_access_unset</paragraph>
+                                    </list_item>
+                                    <list_item>
+                                        <paragraph>wizhelp toggle_access_see</paragraph>
+                                    </list_item>
+                                    <list_item>
+                                        <paragraph>wizhelp toggle_access_type</paragraph>
+                                    </list_item>
+                                </bullet_list>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="advanced-site-control" names="advanced\ site\ control">
                 <title>Advanced site control</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>We allow advanced site control by not only blocking various sites
-                                but we can specify how many times a player can be connected at the
-                                same time as well as how many times sites are able to connect at
-                                the same time.  This is done through normal site manipulation.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>wizhelp forbid_host</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp register_host</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp noguest_host</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp @list (site option)</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>We allow advanced site control by not only blocking various sites
+                            but we can specify how many times a player can be connected at the
+                            same time as well as how many times sites are able to connect at
+                            the same time.  This is done through normal site manipulation.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp forbid_host</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp register_host</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp noguest_host</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp @list (site option)</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="auto-registration" names="auto-registration">
                 <title>Auto-Registration</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Autoregistration is the method that a player can auto-register
-                                by providing their email on the connect screen.  It will email
-                                them a password and an optional document that the administrator
-                                provides.  This is well described in the wizhelp.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>wizhelp autoregistration</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Autoregistration is the method that a player can auto-register
+                            by providing their email on the connect screen.  It will email
+                            them a password and an optional document that the administrator
+                            provides.  This is well described in the wizhelp.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp autoregistration</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="which-bit-level-is-best" names="which\ bit\ level\ is\ best?">
                 <title>Which bit level is best?</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>This is something that should be discussed by you and the staff
-                                of your game.  As a good rule of thumb, only provide the bitlevel
-                                that is required to do the job.  Too much power is always risky.
-                                In essence, each tier of bit can do everything the previous bitlevel
-                                can do, and then additional stuff on top of it.  The highest bitlevel
-                                is #1 itself, being bitlevel 7.  Then immortal, which should be
-                                considered the #1 character in most cases and is bitlevel 6.  Then
-                                the royalty character, which is equal to wizard on penn, mux, or
-                                other codebases.  For most things, this is the bitlevel you want
-                                to assign players.  The exception will likely be game owners or
-                                people who control the master room code.</paragraph>
-                            <paragraph>There's a bunch of readme files and online wizhelp that goes into
-                                detail of the various bitlevels and what each can do.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>wizhelp control</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>This is something that should be discussed by you and the staff
+                            of your game.  As a good rule of thumb, only provide the bitlevel
+                            that is required to do the job.  Too much power is always risky.
+                            In essence, each tier of bit can do everything the previous bitlevel
+                            can do, and then additional stuff on top of it.  The highest bitlevel
+                            is #1 itself, being bitlevel 7.  Then immortal, which should be
+                            considered the #1 character in most cases and is bitlevel 6.  Then
+                            the royalty character, which is equal to wizard on penn, mux, or
+                            other codebases.  For most things, this is the bitlevel you want
+                            to assign players.  The exception will likely be game owners or
+                            people who control the master room code.</paragraph>
+                        <paragraph>There's a bunch of readme files and online wizhelp that goes into
+                            detail of the various bitlevels and what each can do.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp control</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="what-are-the-limits-for-size-growth-for-rhostmush" names="what\ are\ the\ limits\ for\ size/growth\ for\ rhostmush?">
                 <title>What are the limits for size/growth for RhostMUSH?</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>While using QDBM, there's really no set limits for most things.
-                                The limits that we have are as followed:</paragraph>
-                        </list_item>
-                    </bullet_list>
-                    <block_quote>
+                <paragraph>While using QDBM, there's really no set limits for most things.
+                    The limits that we have are as followed:</paragraph>
+                <bullet_list bullet="*">
+                    <list_item>
                         <paragraph>LBUF - 64K.  It is recommended to only use 32K as there is some issues with networking with 64K lbufs.</paragraph>
-                        <block_quote>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>Compile time option with the menu configurator</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                            <paragraph>SBUF - 64 characters (if configured -- it's suggested you do).</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>Compile time option with the menu configurator</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                            <paragraph>MBUF - 200 characters.  Not able to be changed.</paragraph>
-                            <paragraph>MAX CONNECTIONS - Limited by the total number of open sockets and descriptors on the account and server running on.  There are various tools to limit connection DoS attemps and other such nastiness.  This is well documented in the netrhost.conf file.</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>wizhelp max_players</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>~/game/netrhost.conf</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                            <paragraph>MEMORY - no limit.  Generally runs between 8-50M depending on the size of the mush and the LBUF size specified.</paragraph>
-                            <paragraph>CPU  - no limit, but has built in cpu abort in code.  The netrhost.conf file documents this well for customizing.  the default values are usually good enough.</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>wizhelp max_cpu_cycles</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp cpuintervalchk</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp cputimechk</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp cpu_secure_lvl</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp heavy_cpu_max</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>~/game/netrhost.conf</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                            <paragraph>DISK - no limit.  Generally will be 75-200M depending on size, number of backups and if you leave your compiled object files in.</paragraph>
-                            <paragraph>DB Size - (20000 default) There is no limit on the number of objects the db can have.  By default it's soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem.</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>wizhelp maximum_size</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>help @quota</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp @quota</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp @limit</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                            <paragraph>Attribute Size - 10K as a hard limit.  750 as a soft limit.  You can increase this but it can't exceed 10000 attributes.  This is to avoid DoS style attacks.</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>wizhelp vlimit</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp @limit</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </block_quote>
-                    </block_quote>
-                </block_quote>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>Compile time option with the menu configurator</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                    <list_item>
+                        <paragraph>SBUF - 64 characters (if configured -- it's suggested you do).</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>Compile time option with the menu configurator</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                    <list_item>
+                        <paragraph>MBUF - 200 characters.  Not able to be changed.</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>MAX CONNECTIONS - Limited by the total number of open sockets and descriptors on the account and server running on.  There are various tools to limit connection DoS attemps and other such nastiness.  This is well documented in the netrhost.conf file.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp max_players</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>~/game/netrhost.conf</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                    <list_item>
+                        <paragraph>MEMORY - no limit.  Generally runs between 8-50M depending on the size of the mush and the LBUF size specified.</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>CPU  - no limit, but has built in cpu abort in code.  The netrhost.conf file documents this well for customizing.  the default values are usually good enough.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp max_cpu_cycles</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp cpuintervalchk</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp cputimechk</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp cpu_secure_lvl</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp heavy_cpu_max</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>~/game/netrhost.conf</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                    <list_item>
+                        <paragraph>DISK - no limit.  Generally will be 75-200M depending on size, number of backups and if you leave your compiled object files in.</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>DB Size - (20000 default) There is no limit on the number of objects the db can have.  By default it's soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp maximum_size</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help @quota</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp @quota</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp @limit</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Attribute Size - 10K as a hard limit.  750 as a soft limit.  You can increase this but it can't exceed 10000 attributes.  This is to avoid DoS style attacks.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp vlimit</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp @limit</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="sqlite-and-mysql-maria-setup-and-why-use-it" names="sqlite\ and\ mysql/maria\ setup\ and\ why\ use\ it?">
                 <title>Sqlite and MySQL/Maria setup and why use it?</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Both of these can be configured separately or conjointly to
-                                run in parallel.  This can be done through the RhostMUSH
-                                configuration utility.  You generally want to use SQL for
-                                external data storage or accessing a central repository
-                                of data to share between multiple projects.  Like, for
-                                example between a wiki, a forum, and the mush.</paragraph>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Both of these can be configured separately or conjointly to
+                            run in parallel.  This can be done through the RhostMUSH
+                            configuration utility.  You generally want to use SQL for
+                            external data storage or accessing a central repository
+                            of data to share between multiple projects.  Like, for
+                            example between a wiki, a forum, and the mush.</paragraph>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="executing-outside-scripts-and-binaries-within-rhostmush" names="executing\ outside\ scripts\ and\ binaries\ within\ rhostmush">
                 <title>Executing outside scripts and binaries within RhostMUSH</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Rhost has execscript() which allows executing outside binaries
-                                or scripts as a native function.  All effort has been done to
-                                avoid any type of DoS based issue or hang by doing this, however
-                                the guidelines presented should be followed before doing so.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>wizhelp execscript</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp power execscript</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>help sidefx</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp writing scripts</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Rhost has execscript() which allows executing outside binaries
+                            or scripts as a native function.  All effort has been done to
+                            avoid any type of DoS based issue or hang by doing this, however
+                            the guidelines presented should be followed before doing so.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp execscript</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp power execscript</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>help sidefx</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp writing scripts</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="pulling-external-data-into-rhostmush" names="pulling\ external\ data\ into\ rhostmush">
                 <title>Pulling external data into RhostMUSH</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>You are capable of pulling external data in to RhostMUSH using several methods.  These are by using:</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>SQL (mysql or sqlite)</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>execscript</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>cron (wizhelp signal)</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>You are capable of pulling external data in to RhostMUSH using several methods.  These are by using:</paragraph>
+                        <block_quote>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>SQL (mysql or sqlite)</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>execscript</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>cron (wizhelp signal)</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </block_quote>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="integrating-a-unix-cron-right-into-rhostmush" names="integrating\ a\ unix\ cron\ right\ into\ rhostmush">
                 <title>Integrating a unix cron right into RhostMUSH</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>The unix cron can be used to integrate with Rhost fairly
-                                easilly by use of signals.  By using SIGUSR1 you can specify
-                                Rhost to execute code in-game, which part of that could be
-                                to pick up a pre-designed list of commands that the unix cron
-                                has set up.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>wizhelp signal</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>wizhelp signal_cron</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>The unix cron can be used to integrate with Rhost fairly
+                            easilly by use of signals.  By using SIGUSR1 you can specify
+                            Rhost to execute code in-game, which part of that could be
+                            to pick up a pre-designed list of commands that the unix cron
+                            has set up.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp signal</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp signal_cron</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="signal-handling-how-it-works-and-when-and-why-use-it" names="signal\ handling,\ how\ it\ works,\ and\ when\ and\ why\ use\ it">
                 <title>Signal handling, how it works, and when and why use it</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Signals are used to do different things for the mush.  By default,
-                                the following signals are recognized by the mush and will do
-                                the following as defaults.</paragraph>
-                            <bullet_list bullet="-">
-                                <list_item>
-                                    <paragraph>SIGUSR1 - will do a reboot of the mush.  This is also customizable so that you can have it execute code in-mush if you want.</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>SIGUSR2 - will do a clean shutdown of the mush.</paragraph>
-                                </list_item>
-                                <list_item>
-                                    <paragraph>SIGTERM - will immediately scram the mush as cleanly and fast as possible.  It will avoid dumping anything to the database to speed up scramming, but write a TERM flat file to be loaded in if corruption.</paragraph>
-                                </list_item>
-                            </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Signals are used to do different things for the mush.  By default,
+                            the following signals are recognized by the mush and will do
+                            the following as defaults.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>SIGUSR1 - will do a reboot of the mush.  This is also customizable so that you can have it execute code in-mush if you want.</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>SIGUSR2 - will do a clean shutdown of the mush.</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>SIGTERM - will immediately scram the mush as cleanly and fast as possible.  It will avoid dumping anything to the database to speed up scramming, but write a TERM flat file to be loaded in if corruption.</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="setting-up-global-parents-global-parents-global-attribute-formatting-and-other-global-setups" names="setting\ up\ global\ parents,\ global\ @parents,\ global\ attribute\ formatting,\ and\ other\ global\ setups">
                 <title>Setting up global parents, global @parents, global attribute formatting, and other global setups</title>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Global parents are useful when you want to have a global 'parent'
+                            without actually having a defined <reference refuri="mailto:'@parent">'@parent</reference>'.  It always will be the
+                            highest tier in a lookup.  The way lookups will go will be:</paragraph>
+                        <literal_block force="False" language="default" linenos="False" xml:space="preserve">self-&gt;@parent(s)-&gt;@zone(s)-&gt;GlobalParent</literal_block>
+                    </list_item>
+                </bullet_list>
                 <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Global parents are useful when you want to have a global 'parent'
-                                without actually having a defined <reference refuri="mailto:'@parent">'@parent</reference>'.  It always will be the
-                                highest tier in a lookup.  The way lookups will go will be:</paragraph>
-                            <literal_block force="False" language="default" linenos="False" xml:space="preserve">self-&gt;@parent(s)-&gt;@zone(s)-&gt;GlobalParent</literal_block>
-                            <paragraph>The type of the parent does not have to match the target.</paragraph>
-                            <paragraph>These global parents can be defined either by using a global
-                                generic parent or by using the type.  If a type is specified it
-                                overrides the generic.  The following parameters are used:</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>global_parent_obj     - The generic global parent (if defined)</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>global_parent_room    - The room global parent</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>global_parent_exit    - The exit global parent</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>global_parent_thing   - The thing global parent</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>global_parent_player  - The player global parent</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                        <list_item>
-                            <paragraph>Global @parents are different than global parents in that any new
-                                item of similar type that is created is automatically assigned this
-                                physical @parent.  It's obviously more limiting since it sets
-                                the literal physical parent defined.</paragraph>
-                            <paragraph>The type of the parent does not have to match the target.</paragraph>
-                            <paragraph>The following parameters are used:</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>room_parent           - The target that new rooms are @parented</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>exit_parent           - The target that new exits are @parented</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>thing_parent          - The target that new things are @parented</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>player_parent         - The target that new players are @parented</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                        <list_item>
-                            <paragraph>Global attribute formatting is a method define a wrapper, of sorts,
-                                where attributes like @desc, @odesc, @succ, and anything similar
-                                can be processed through this.  All attributes will be either
-                                &amp;FORMAT&lt;attribute&gt; or &amp;&lt;attribute&gt;FORMAT based on the current
-                                configuration.  Example: &amp;FORMATDESC or &amp;DESCFORMAT localy, or
-                                use the following global objects for global formatting.  Local
-                                formatting has priority.</paragraph>
-                            <paragraph>The type of the parent does not have to match the target.</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>room_attr_default     - Target for room formatting</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>exit_attr_default     - Target for exit formatting</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>thing_attr_default    - Target for thing formatting</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>player_attr_default   - Target for player formatting</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                    </bullet_list>
+                    <paragraph>The type of the parent does not have to match the target.</paragraph>
+                    <paragraph>These global parents can be defined either by using a global
+                        generic parent or by using the type.  If a type is specified it
+                        overrides the generic.  The following parameters are used:</paragraph>
+                    <block_quote>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>global_parent_obj     - The generic global parent (if defined)</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>global_parent_room    - The room global parent</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>global_parent_exit    - The exit global parent</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>global_parent_thing   - The thing global parent</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>global_parent_player  - The player global parent</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </block_quote>
                 </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Global @parents are different than global parents in that any new
+                            item of similar type that is created is automatically assigned this
+                            physical @parent.  It's obviously more limiting since it sets
+                            the literal physical parent defined.</paragraph>
+                        <paragraph>The type of the parent does not have to match the target.</paragraph>
+                        <paragraph>The following parameters are used:</paragraph>
+                        <block_quote>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>room_parent           - The target that new rooms are @parented</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>exit_parent           - The target that new exits are @parented</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>thing_parent          - The target that new things are @parented</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>player_parent         - The target that new players are @parented</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </block_quote>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Global attribute formatting is a method define a wrapper, of sorts,
+                            where attributes like @desc, @odesc, @succ, and anything similar
+                            can be processed through this.  All attributes will be either
+                            &amp;FORMAT&lt;attribute&gt; or &amp;&lt;attribute&gt;FORMAT based on the current
+                            configuration.  Example: &amp;FORMATDESC or &amp;DESCFORMAT localy, or
+                            use the following global objects for global formatting.  Local
+                            formatting has priority.</paragraph>
+                        <paragraph>The type of the parent does not have to match the target.</paragraph>
+                        <block_quote>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>room_attr_default     - Target for room formatting</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>exit_attr_default     - Target for exit formatting</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>thing_attr_default    - Target for thing formatting</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>player_attr_default   - Target for player formatting</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </block_quote>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="rhostmush-limitations-and-how-to-get-around-them" names="rhostmush\ limitations\ and\ how\ to\ get\ around\ them">
                 <title>RhostMUSH limitations and how to get around them</title>
-                <block_quote>
-                    <paragraph>While Rhost is insanely configurable and quite powerful, there are
-                        limitations that exist within it.</paragraph>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Function invocations.  Sometimes you will hit a ceiling on evaluation.
-                                You may want to tweak values to allow more functions or commands
-                                to execute.  The following controls that:</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>function_invocation_limit [25000 default] - specifies the total functions you can execute per command.</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>function_recursion_limit [50] - specifies the total times a function can call itself over and over.  Rarely should this be increased and doing so can effect your stack depth.</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                        <list_item>
-                            <paragraph>Command queue limits.  Sometimes you want more to be queued up for
-                                players or wizards.</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>player_queue_limit  - Max number of entries a player can queue</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizard_queue_limit  - Max number of entries a wizard can queue</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                        <list_item>
-                            <paragraph>@limit is a wonderful way to lock down limitations per player or global.  Lots of power is available here.</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>@limit</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>vattr_limit_checkwiz - Enable @limit checks for wizards</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizmax_vattr_limit   - Set wizard global VATTR limits</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizmax_dest_limit    - Set wizard global @destroy limits</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>max_vattr_limit      - Set player global VATTR limits</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>max_dest_limit       - Set player global @destroy limits</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                        <list_item>
-                            <paragraph>Lots of trace output can be cut off.  You can modify this with:</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>trace_output_limit   - Set lines of trace output shown</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                        <list_item>
-                            <paragraph>To define how many commands a minute a player set SPAMMONITOR can use</paragraph>
+                <paragraph>While Rhost is insanely configurable and quite powerful, there are
+                    limitations that exist within it.</paragraph>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Function invocations.  Sometimes you will hit a ceiling on evaluation.
+                            You may want to tweak values to allow more functions or commands
+                            to execute.  The following controls that:</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>function_invocation_limit [25000 default] - specifies the total functions you can execute per command.</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>function_recursion_limit [50] - specifies the total times a function can call itself over and over.  Rarely should this be increased and doing so can effect your stack depth.</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Command queue limits.  Sometimes you want more to be queued up for
+                            players or wizards.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>player_queue_limit  - Max number of entries a player can queue</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizard_queue_limit  - Max number of entries a wizard can queue</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                    <list_item>
+                        <paragraph>@limit is a wonderful way to lock down limitations per player or global.  Lots of power is available here.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>@limit</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>vattr_limit_checkwiz - Enable @limit checks for wizards</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizmax_vattr_limit   - Set wizard global VATTR limits</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizmax_dest_limit    - Set wizard global @destroy limits</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>max_vattr_limit      - Set player global VATTR limits</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>max_dest_limit       - Set player global @destroy limits</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Lots of trace output can be cut off.  You can modify this with:</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>trace_output_limit   - Set lines of trace output shown</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                    <list_item>
+                        <paragraph>To define how many commands a minute a player set SPAMMONITOR can use</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>spam_limit -- default 120</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                    <list_item>
+                        <paragraph>If you examine things and see 'Output cut off' messages, you may want
+                            to increase your output limit, funny enough, the name of this is
+                            similar</paragraph>
+                        <block_quote>
                             <bullet_list bullet="-">
                                 <list_item>
-                                    <paragraph>spam_limit -- default 120</paragraph>
+                                    <paragraph>output_limit - You should set this no less than 4 times the current size of your LBUF.</paragraph>
                                 </list_item>
                             </bullet_list>
-                        </list_item>
-                        <list_item>
-                            <paragraph>If you examine things and see 'Output cut off' messages, you may want
-                                to increase your output limit, funny enough, the name of this is
-                                similar</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>output_limit - You should set this no less than 4 times the current size of your LBUF.</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                        <list_item>
-                            <paragraph>Attributes names can not exceed 64 characters.  Sorry, it's a hard limit</paragraph>
-                        </list_item>
-                        <list_item>
-                            <paragraph>Sometime you may find a single may not work for an escape.  You can
-                                in most cases use a % instead or double escape the to make it work.
-                                Also look at lit() as a solution.</paragraph>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                        </block_quote>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Attributes names can not exceed 64 characters.  Sorry, it's a hard limit</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Sometime you may find a single may not work for an escape.  You can
+                            in most cases use a % instead or double escape the to make it work.
+                            Also look at lit() as a solution.</paragraph>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="advanced-guest-setup" names="advanced\ guest\ setup">
                 <title>Advanced guest setup</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>After you set up your guests, you can set unique names to each guest
-                                if you so want after defining the dbref#'s your guests use.  This is
-                                done by defining them in the guest_namelist parameter.  You can also
-                                increase guests (or decrease them) between 0-31 guests.</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>wizhelp guest_namelist</paragraph>
-                                    </list_item>
-                                    <list_item>
-                                        <paragraph>wizhelp num_guests</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>After you set up your guests, you can set unique names to each guest
+                            if you so want after defining the dbref#'s your guests use.  This is
+                            done by defining them in the guest_namelist parameter.  You can also
+                            increase guests (or decrease them) between 0-31 guests.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>wizhelp guest_namelist</paragraph>
+                            </list_item>
+                            <list_item>
+                                <paragraph>wizhelp num_guests</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="attribute-permission-masking-and-the-joys-of-the-power-behind-it" names="attribute\ permission\ masking\ and\ the\ joys\ of\ the\ power\ behind\ it">
                 <title>Attribute permission masking and the joys of the power behind it</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Attribute contentlocks can be set up so you can lock the actual
-                                content that you can set (or even unset!) into an attribute.
-                                The beauty of this is that you can specify case sensitive
-                                information, lock different ways contents in attributes are set
-                                based on who is setting it, or even on where it's being set.
-                                The sky's the limit.</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>global_attrdefault    - Target for defining content locks</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Attribute contentlocks can be set up so you can lock the actual
+                            content that you can set (or even unset!) into an attribute.
+                            The beauty of this is that you can specify case sensitive
+                            information, lock different ways contents in attributes are set
+                            based on who is setting it, or even on where it's being set.
+                            The sky's the limit.</paragraph>
+                        <block_quote>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>global_attrdefault    - Target for defining content locks</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </block_quote>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="the-amazing-cluster-and-what-it-can-do-for-you" names="the\ amazing\ @cluster\ and\ what\ it\ can\ do\ for\ you">
                 <title>The amazing @cluster and what it can do for you</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Clusters is the way to virtually assign multiple objects into
-                                a single physical object.  It essentially chains together two
-                                or more objects to share attributes between them, so that any
-                                attribute set on any object in that cluster can be set or fetched
-                                as if it was a singular entity.  This allows some amazing ability
-                                to distribute attribute content or even have a farm of a massive
-                                amount of attributes without paying a hefty penalty on object bloat.</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>help cluster  -- Gives a fantastic overview of how clusters work.</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Clusters is the way to virtually assign multiple objects into
+                            a single physical object.  It essentially chains together two
+                            or more objects to share attributes between them, so that any
+                            attribute set on any object in that cluster can be set or fetched
+                            as if it was a singular entity.  This allows some amazing ability
+                            to distribute attribute content or even have a farm of a massive
+                            amount of attributes without paying a hefty penalty on object bloat.</paragraph>
+                        <bullet_list bullet="-">
+                            <list_item>
+                                <paragraph>help cluster  -- Gives a fantastic overview of how clusters work.</paragraph>
+                            </list_item>
+                        </bullet_list>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="what-we-plan-for-the-future" names="what\ we\ plan\ for\ the\ future">
                 <title>What we plan for the future</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>Things to look forward to the future with RhostMUSH.</paragraph>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>Things to look forward to the future with RhostMUSH.</paragraph>
+                        <block_quote>
                             <bullet_list bullet="-">
                                 <list_item>
                                     <paragraph>Full Unicode/UTF8 in Rhost 4.0</paragraph>
@@ -1176,33 +1084,31 @@ Example Pretty Print:
                                     <paragraph>More as we think about it :)</paragraph>
                                 </list_item>
                             </bullet_list>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                        </block_quote>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="additional-features-not-covered-otherwise" names="additional\ features\ not\ covered\ otherwise">
                 <title>Additional features not covered otherwise</title>
-                <block_quote>
-                    <bullet_list bullet="*">
-                        <list_item>
-                            <paragraph>+/- 5.4 million years can be utilized with the built in time functions
-                                which includes timefmt(), secs(), convtime(), convsecs(), and moon().  Party on!</paragraph>
-                        </list_item>
-                        <list_item>
-                            <paragraph>Changing permission levels in the middle of execution for evaluation.</paragraph>
-                            <block_quote>
-                                <bullet_list bullet="-">
-                                    <list_item>
-                                        <paragraph>see help on the streval and ueval function'</paragraph>
-                                    </list_item>
-                                </bullet_list>
-                            </block_quote>
-                        </list_item>
-                        <list_item>
-                            <paragraph>Full features in-game customization of near every aspect of the game.</paragraph>
-                        </list_item>
-                    </bullet_list>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>+/- 5.4 million years can be utilized with the built in time functions
+                            which includes timefmt(), secs(), convtime(), convsecs(), and moon().  Party on!</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Changing permission levels in the middle of execution for evaluation.</paragraph>
+                        <block_quote>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>see help on the streval and ueval function'</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </block_quote>
+                    </list_item>
+                    <list_item>
+                        <paragraph>Full features in-game customization of near every aspect of the game.</paragraph>
+                    </list_item>
+                </bullet_list>
             </section>
         </section>
         <section ids="random-notes-and-things-to-know-about-rhostmush" names="random\ notes\ and\ things\ to\ know\ about\ rhostmush">
@@ -1214,81 +1120,112 @@ Example Pretty Print:
                 README.AUTOCONF file.</paragraph>
             <section ids="note-on-bits-their-levels-and-things-they-do" names="note\ on\ bits,\ their\ levels,\ and\ things\ they\ do">
                 <title>Note on bits, their levels, and things they do</title>
-                <block_quote>
-                    <paragraph>IMMORTAL - They can do anything.  Treat this as #1 and only give to
-                        people you trust.  Period.   You don't have to use this bit
-                        if you do not want to and just assume #1.</paragraph>
-                    <paragraph>ROYALTY - Unlike PENN/MUX, this is <emphasis>not</emphasis> a sub-wizard, this is a
-                        FULL wizard.  Plus, they can do a bit more.</paragraph>
-                    <paragraph>COUNCILOR - Like royalty on PENN/MUX but they can modify.</paragraph>
-                    <paragraph>ARCHITECT - Can't do as much as councilor, but lot more than BUILDER.</paragraph>
-                    <paragraph>GUILDMASTER - Very limited.  Sees dbrief#'s, can ex things their
-                        level and lower and @quota players.</paragraph>
-                </block_quote>
+                <bullet_list bullet="*">
+                    <list_item>
+                        <paragraph>IMMORTAL - They can do anything.  Treat this as #1 and only give to
+                            people you trust.  Period.   You don't have to use this bit
+                            if you do not want to and just assume #1.</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>ROYALTY - Unlike PENN/MUX, this is <emphasis>not</emphasis> a sub-wizard, this is a
+                            FULL wizard.  Plus, they can do a bit more.</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>COUNCILOR - Like royalty on PENN/MUX but they can modify.</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>ARCHITECT - Can't do as much as councilor, but lot more than BUILDER.</paragraph>
+                    </list_item>
+                    <list_item>
+                        <paragraph>GUILDMASTER - Very limited.  Sees dbrief#'s, can ex things their
+                            level and lower and @quota players.</paragraph>
+                    </list_item>
+                </bullet_list>
             </section>
             <section ids="you-need-to-pcreate-your-guest-characters-and-set-them-guest" names="you\ need\ to\ @pcreate\ your\ guest\ characters\ and\ set\ them\ guest">
                 <title>You need to @pcreate your guest characters and set them GUEST</title>
-                <block_quote>
-                    <paragraph>It doesn't create them on the fly but we considered this better.
-                        You have 31 total you can have.  It defaults to 10 in the
-                        netrhost.conf file.  You can rename the guests anything you want,
-                        but before you do so, you must add the dbref#'s to the param
-                        guest_namelist</paragraph>
-                </block_quote>
+                <paragraph>It doesn't create them on the fly but we considered this better.
+                    You have 31 total you can have.  It defaults to 10 in the
+                    netrhost.conf file.  You can rename the guests anything you want,
+                    but before you do so, you must add the dbref#'s to the param
+                    guest_namelist</paragraph>
             </section>
             <section ids="powers-are-inherited" names="@powers\ are\ inherited">
                 <title>@powers are INHERITED</title>
-                <block_quote>
-                    <paragraph>Therefore, you need power_objects enabled (@admin)
-                        to make this work properly for non-plauyers.
-                        A power is taken before a bit level ONLY if higher than that bit.
-                        Yes, powers are multi-level.</paragraph>
-                </block_quote>
+                <paragraph>Therefore, you need power_objects enabled (@admin)
+                    to make this work properly for non-plauyers.
+                    A power is taken before a bit level ONLY if higher than that bit.
+                    Yes, powers are multi-level.</paragraph>
             </section>
             <section ids="depowers-are-automatically-checked-first-before-anything-else" names="@depowers\ are\ automatically\ checked\ first\ before\ anything\ else">
                 <title>@depowers are automatically checked first before anything else</title>
-                <block_quote>
-                    <paragraph>This is also meaningless on objects.</paragraph>
-                </block_quote>
+                <paragraph>This is also meaningless on objects.</paragraph>
             </section>
             <section ids="zones-are-unique" names="zones\ are\ unique">
                 <title>Zones are unique</title>
-                <block_quote>
-                    <paragraph>You can have things in multiple zones.</paragraph>
-                </block_quote>
+                <paragraph>You can have things in multiple zones.</paragraph>
             </section>
             <section ids="the-db-auto-repares-itself-when-it-can" names="the\ db\ auto-repares\ itself\ when\ it\ can">
                 <title>The db auto-repares itself when it can</title>
-                <block_quote>
-                    <paragraph>It does this by purging anything
-                        it can't identify.  Dataloss is better than unrecoverable data.
-                        Yes, any such 'repairing' is logged so you know if something is up.</paragraph>
-                </block_quote>
+                <paragraph>It does this by purging anything
+                    it can't identify.  Dataloss is better than unrecoverable data.
+                    Yes, any such 'repairing' is logged so you know if something is up.</paragraph>
             </section>
             <section ids="you-can-get-your-connect-txt-to-parse-ansi" names="you\ can\ get\ your\ connect.txt\ to\ parse\ ansi">
                 <title>You can get your connect.txt to parse ansi</title>
-                <block_quote>
-                    <paragraph>See ansi_txtfiles in wizhelp.</paragraph>
-                    <paragraph>You can also override it with softcode if you so wanted.</paragraph>
-                    <paragraph>See file_object in wizhelp for more information on this.</paragraph>
-                </block_quote>
+                <paragraph>See ansi_txtfiles in wizhelp.</paragraph>
+                <paragraph>You can also override it with softcode if you so wanted.</paragraph>
+                <paragraph>See file_object in wizhelp for more information on this.</paragraph>
             </section>
             <section ids="re-compiled-binaries-do-not-require-an-shutdown" names="re-compiled\ binaries\ do\ not\ require\ an\ @shutdown">
                 <title>Re-compiled binaries do not require an @shutdown</title>
-                <block_quote>
-                    <paragraph>When re-compiling the binaries, all you have to remember is when done, issue</paragraph>
-                    <paragraph>@reboot on the game and @readcache.</paragraph>
-                    <paragraph>You do not need to @shutdown.</paragraph>
-                </block_quote>
+                <paragraph>When re-compiling the binaries, all you have to remember is when done, issue</paragraph>
+                <paragraph>@reboot on the game and @readcache.</paragraph>
+                <paragraph>You do not need to @shutdown.</paragraph>
             </section>
             <section ids="softcode-emulations-of-functions-from-other-servers-are-included" names="softcode\ emulations\ of\ functions\ from\ other\ servers\ are\ included">
                 <title>Softcode emulations of functions from other servers are included</title>
-                <block_quote>
-                    <paragraph>Load the file softfunctions into the mush once it's set up.  This are
-                        @functions that will alias the functions that PENN, MUX, and TinyMUSH have
-                        that is either named differently or we don't have for one reason or another.</paragraph>
-                </block_quote>
+                <paragraph>Load the file softfunctions into the mush once it's set up.  This are
+                    @functions that will alias the functions that PENN, MUX, and TinyMUSH have
+                    that is either named differently or we don't have for one reason or another.</paragraph>
             </section>
+        </section>
+    </section>
+    <section ids="what-flags-toggles-powers-and-depowers-mean-in-rhostmush" names="what\ flags,\ toggles,\ powers,\ and\ depowers\ mean\ in\ rhostmush">
+        <title>What FLAGS, TOGGLES, POWERS, and DEPOWERS mean in RhostMUSH</title>
+        <section ids="what-are-flags" names="what\ are\ flags?">
+            <title>What are Flags?</title>
+            <paragraph>Flags are pretty much exactly the same as any other mush.  It's a flag
+                that you set or unset on a target which then enables/disables or
+                alters something that target can do.  There's help on all the flags
+                in help and wizhelp.</paragraph>
+        </section>
+        <section ids="what-are-toggles" names="what\ are\ toggles?">
+            <title>What are Toggles?</title>
+            <paragraph>Toggles were designed as a single point flag that immediately enables
+                or disables a set ability or condition, thus a 'toggle'.  It works
+                exactly like a flag and was originally designed for two reasons.  To
+                distinguish from the multi-meaning of a 'flag', and because frankly
+                we ran out of flag space :)</paragraph>
+        </section>
+        <section ids="what-is-an-power" names="what\ is\ an\ @power?">
+            <title>What is an @power?</title>
+            <paragraph>A power is similar to a power on other mushes, but unlike them, our
+                powers are multi-tier.  This means that they can be customized to
+                empower something at a given bitlevel.  You may empower something
+                from guildmaster up to councilor level.  There are some powers
+                with a power level of N/A meaning they are a toggle power granting
+                an absolute power level as specified in the help for that power.
+                This requires the INHERIT flag for non-players to inherit powers,
+                however, a specific object can be granted a power as well.</paragraph>
+        </section>
+        <section ids="what-is-an-depower" names="what\ is\ an\ @depower?">
+            <title>What is an @depower?</title>
+            <paragraph>This is the anti-thesis of @power.  Also, depowers do not require
+                inheritance.  They also have priority over flags, toggles, and
+                powers.  You can use depower to remove or lower abilities and
+                control from a target, even a full wizard (royalty) can be
+                depowered.</paragraph>
         </section>
     </section>
 </document>
