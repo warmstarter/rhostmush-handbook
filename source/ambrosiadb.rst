@@ -120,7 +120,7 @@ AmbrosiaDB Configuration
 * Guildmasters can see _Attributes
 * Architects can set _Attributes
 
-AmbeosiaDB Softcode
+AmbrosiaDB Softcode
 -------------------
 
 * Set-up compatibility SoftFunctions and @hook object.
@@ -155,7 +155,7 @@ AmbrosiaDB Functions
 
 ::
 
-  header(text,width,filler,fillercolor,outerpadding,paddingcolor,
+    header(text,width,filler,fillercolor,outerpadding,paddingcolor,
          leftinnerpadding,leftinnercolor,rightinnerpadding,rightinnercolor)
     text - Text to center
     width - Width of the header, defaults to width()

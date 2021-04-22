@@ -16,8 +16,10 @@ flag on an object would work, it's not recommended and it is instead recommended
 to chown the object in question to a wizard (like your wizard holder character)
 Then the object must be set inherit to actually inherit the wizard.
 
-Note: inherit is required to inherit anything from the player.  Flags, powers,
-      toggles.  The only thing that is inherited automatically is depowers.
+.. note::
+
+   inherit is required to inherit anything from the player.  Flags, powers,
+   toggles.  The only thing that is inherited automatically is depowers.
 
 Online: Blocking object abilities
 ---------------------------------
@@ -25,26 +27,30 @@ Online: Blocking object abilities
 We have various flag levels.  It is strongly recommanded you check wizhelp
 on 'control' for a detailed overview of what each bitlevel can or can not do
 prior to giving the ownership to the object.  Things useful for tweaking control
-on players and objects:
+on players and objects.
 
 FLAGS (access with @set)
 ++++++++++++++++++++++++
 
- IMMORTAL, ROYALTY, COUNCILOR, ARCHITECT, GUILDMASTER,
- FUBAR, SLAVE, SIDEFX, NO_CONNECT, WANDERER, SAFE,
- AUDITORIUM, BACKSTAGE, NOBACKSTAGE, INDESTRUCTIBLE,
- INHERIT, JUMP_OK, NO_TEL, NO_WALL, NO_EXAMINE, 
- NO_MODIFY, NO_CONNECT, NO_POSSESS, NO_PESTER, 
- NO_OVERRIDE, NO_USELOCK, NO_MOVE, NO_YELL, CLOAK,
- SCLOAK, DARK, UNFINDABLE, SEE_OEMIT, TELOK, SUSPECT,
- SPAMMONITOR
+::
+
+   IMMORTAL, ROYALTY, COUNCILOR, ARCHITECT, GUILDMASTER,
+   FUBAR, SLAVE, SIDEFX, NO_CONNECT, WANDERER, SAFE,
+   AUDITORIUM, BACKSTAGE, NOBACKSTAGE, INDESTRUCTIBLE,
+   INHERIT, JUMP_OK, NO_TEL, NO_WALL, NO_EXAMINE, 
+   NO_MODIFY, NO_CONNECT, NO_POSSESS, NO_PESTER, 
+   NO_OVERRIDE, NO_USELOCK, NO_MOVE, NO_YELL, CLOAK,
+   SCLOAK, DARK, UNFINDABLE, SEE_OEMIT, TELOK, SUSPECT,
+   SPAMMONITOR
 
 TOGGLES (@toggle)
 +++++++++++++++++
 
- BRANDY_MAIL, PENN_MAIL, MUXPAGE, VPAGE, NOISY,
- MONITOR* (all monitor toggles), MORTALREALITY,
- NODEFAULT, NO_FORMAT, PAGELOCK, SNUFFDARK, VARIABLE
+::
+
+   BRANDY_MAIL, PENN_MAIL, MUXPAGE, VPAGE, NOISY,
+   MONITOR* (all monitor toggles), MORTALREALITY,
+   NODEFAULT, NO_FORMAT, PAGELOCK, SNUFFDARK, VARIABLE
 
 @powers, @depowers, and @locks
 ++++++++++++++++++++++++++++++
@@ -55,12 +61,14 @@ a player, thing, exit, or room.  The help is quite verbose.
 Offline: Blocking twinks from being abusive on your game
 --------------------------------------------------------
 
-FLAGS                   : FUBAR, SLAVE, NO_CONNECT
-Commands:               : @boot, @nuke, @toad, @turtle
-Sitelocks: (@admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
-Sitelock by player      : @badsite, @goodsite, NO_CONNECT (flag)
-Monitoring player       : SUSPECT (flag), @snoop
-TOR/Proxy blocking:     : @blacklist (see shell's tor_pull.sh), @admin proxy_checker (see wizhelp), @tor (see wizhelp)
+::
+
+   FLAGS                   : FUBAR, SLAVE, NO_CONNECT
+   Commands:               : @boot, @nuke, @toad, @turtle
+   Sitelocks: (@admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
+   Sitelock by player      : @badsite, @goodsite, NO_CONNECT (flag)
+   Monitoring player       : SUSPECT (flag), @snoop
+   TOR/Proxy blocking:     : @blacklist (see shell's tor_pull.sh), @admin proxy_checker (see wizhelp), @tor (see wizhelp)
 
 Extended lockdown of the mush and considerations
 ================================================
@@ -72,28 +80,38 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 Attribute Restriction
 ---------------------
 
-  @attribute -- Used for user-defined attributes
-  @admin attr_access -- used for built in attributes (like desc)
-  @aflags -- Used to set up lovely delicious attribute permission masks
+::
+
+   @attribute -- Used for user-defined attributes
+   @admin attr_access -- used for built in attributes (like desc)
+   @aflags -- Used to set up lovely delicious attribute permission masks
 
 Command Restriction
 -------------------
 
-  @icmd    - Very useful.   Please see wizhelp on it.  It disallows commands from executing including overriding them with softcode alternatives
-  @admin access - Changes permissions, disables, or sets to be overridden a command.  Useful when you plan to override commands with softcode.
+::
+
+   @icmd    - Very useful.   Please see wizhelp on it.  It disallows commands from executing including overriding them with softcode alternatives
+   @admin access - Changes permissions, disables, or sets to be overridden a command.  Useful when you plan to override commands with softcode.
 
 Flag/Toggle Restriction
 -----------------------
+
+::
 
   @flagdef - Again, see wizhelp on this.  There are also netrhost.conf options so you can have them loaded at start.  This allows tweaking flags and toggles to who can set/unset/see as well as what type can use it or wha type it can be used on.
 
 Config restrictions
 -------------------
 
+::
+
   @admin config_access - Changes permission of who can set a config param
 
 Function Restrictions
 ---------------------
+
+::
 
   @function/@lfunction -- Allows softcoded functions that you can optionally lock down at your leasure
   @admin function_access -- You can use this even on softcoded functions if you so desired.

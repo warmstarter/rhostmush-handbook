@@ -4459,7 +4459,7 @@ Guildmasters can see _Attributes
 .IP \(bu 2
 Architects can set _Attributes
 .UNINDENT
-.SS AmbeosiaDB Softcode
+.SS AmbrosiaDB Softcode
 .INDENT 0.0
 .IP \(bu 2
 Set\-up compatibility SoftFunctions and @hook object.
@@ -4513,17 +4513,17 @@ instead of printf() for such things.
 .nf
 .ft C
 header(text,width,filler,fillercolor,outerpadding,paddingcolor,
-       leftinnerpadding,leftinnercolor,rightinnerpadding,rightinnercolor)
-  text \- Text to center
-  width \- Width of the header, defaults to width()
-  filler \- Character(s) to draw the line with. Default: =
-  fillercolor \- ansicode to color the line with
-  outerpadding \- Characters to frame the outer ends of the line with.
-  paddingcolor \- ansicode to color the outer characters with
-  leftinnerpadding \- characters to put at the left side of <text>
-  leftinnercolor \- ansicode to color the leftside characters with
-  rightinnerpadding \- characters to put at the right side of <text>
-  rightinnercolor \- ansicode to color the rightside characters with
+     leftinnerpadding,leftinnercolor,rightinnerpadding,rightinnercolor)
+text \- Text to center
+width \- Width of the header, defaults to width()
+filler \- Character(s) to draw the line with. Default: =
+fillercolor \- ansicode to color the line with
+outerpadding \- Characters to frame the outer ends of the line with.
+paddingcolor \- ansicode to color the outer characters with
+leftinnerpadding \- characters to put at the left side of <text>
+leftinnercolor \- ansicode to color the leftside characters with
+rightinnerpadding \- characters to put at the right side of <text>
+rightinnercolor \- ansicode to color the rightside characters with
 .ft P
 .fi
 .UNINDENT
@@ -4826,20 +4826,26 @@ dependant on permission level, it\(aqs ownership based.  While setting a wizard
 flag on an object would work, it\(aqs not recommended and it is instead recommended
 to chown the object in question to a wizard (like your wizard holder character)
 Then the object must be set inherit to actually inherit the wizard.
+.sp
+\fBNOTE:\fP
 .INDENT 0.0
-.TP
-.B Note: inherit is required to inherit anything from the player.  Flags, powers,
+.INDENT 3.5
+inherit is required to inherit anything from the player.  Flags, powers,
 toggles.  The only thing that is inherited automatically is depowers.
+.UNINDENT
 .UNINDENT
 .SS Online: Blocking object abilities
 .sp
 We have various flag levels.  It is strongly recommanded you check wizhelp
 on \(aqcontrol\(aq for a detailed overview of what each bitlevel can or can not do
 prior to giving the ownership to the object.  Things useful for tweaking control
-on players and objects:
+on players and objects.
 .SS FLAGS (access with @set)
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 IMMORTAL, ROYALTY, COUNCILOR, ARCHITECT, GUILDMASTER,
 FUBAR, SLAVE, SIDEFX, NO_CONNECT, WANDERER, SAFE,
 AUDITORIUM, BACKSTAGE, NOBACKSTAGE, INDESTRUCTIBLE,
@@ -4848,14 +4854,21 @@ NO_MODIFY, NO_CONNECT, NO_POSSESS, NO_PESTER,
 NO_OVERRIDE, NO_USELOCK, NO_MOVE, NO_YELL, CLOAK,
 SCLOAK, DARK, UNFINDABLE, SEE_OEMIT, TELOK, SUSPECT,
 SPAMMONITOR
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .SS TOGGLES (@toggle)
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 BRANDY_MAIL, PENN_MAIL, MUXPAGE, VPAGE, NOISY,
 MONITOR* (all monitor toggles), MORTALREALITY,
 NODEFAULT, NO_FORMAT, PAGELOCK, SNUFFDARK, VARIABLE
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .SS @powers, @depowers, and @locks
@@ -4863,13 +4876,21 @@ NODEFAULT, NO_FORMAT, PAGELOCK, SNUFFDARK, VARIABLE
 Please review help (and wizhelp) for each of these items on how it can affect
 a player, thing, exit, or room.  The help is quite verbose.
 .SS Offline: Blocking twinks from being abusive on your game
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 FLAGS                   : FUBAR, SLAVE, NO_CONNECT
 Commands:               : @boot, @nuke, @toad, @turtle
 Sitelocks: (@admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
 Sitelock by player      : @badsite, @goodsite, NO_CONNECT (flag)
 Monitoring player       : SUSPECT (flag), @snoop
 TOR/Proxy blocking:     : @blacklist (see shell\(aqs tor_pull.sh), @admin proxy_checker (see wizhelp), @tor (see wizhelp)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Extended lockdown of the mush and considerations
 .sp
 These are flags, powers, toggles, and various conditions for consideration
@@ -4878,35 +4899,60 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 .SS Attribute Restriction
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 @attribute \-\- Used for user\-defined attributes
 @admin attr_access \-\- used for built in attributes (like desc)
 @aflags \-\- Used to set up lovely delicious attribute permission masks
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .SS Command Restriction
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 @icmd    \- Very useful.   Please see wizhelp on it.  It disallows commands from executing including overriding them with softcode alternatives
 @admin access \- Changes permissions, disables, or sets to be overridden a command.  Useful when you plan to override commands with softcode.
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .SS Flag/Toggle Restriction
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 @flagdef \- Again, see wizhelp on this.  There are also netrhost.conf options so you can have them loaded at start.  This allows tweaking flags and toggles to who can set/unset/see as well as what type can use it or wha type it can be used on.
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .SS Config restrictions
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 @admin config_access \- Changes permission of who can set a config param
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .SS Function Restrictions
 .INDENT 0.0
 .INDENT 3.5
+.sp
+.nf
+.ft C
 @function/@lfunction \-\- Allows softcoded functions that you can optionally lock down at your leasure
 @admin function_access \-\- You can use this even on softcoded functions if you so desired.
+.ft P
+.fi
 .UNINDENT
 .UNINDENT
 .SS RhostMUSH Flags and Descriptions
@@ -5653,7 +5699,11 @@ newsdb/unload; @@ dump the news bbs database to flatfile
 .UNINDENT
 .UNINDENT
 .SS The following scripts are used in the game directory
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 Startmush               \-\- used to Start up the mush
 backup_flat.sh          \-\- Used to run backups with @dump/flat within the game (Started with Startmush automatically)
 backup_restart.sh       \-\- Restart the backup_flat.sh if changes are done
@@ -5665,8 +5715,23 @@ proxysnarf.sha          \-\- Internal script for the tor_pull.sh tor proxy black
 tor_pullit.sh           \-\- Internal script for the tor_pull.sh for proxy blacklist
 recovery.sh             \-\- If your db is corrupt, run this to auto\-revert to an earlier flatfile
 tor_pull.sh             \-\- Create a blacklist.txt file that can be loaded via the internal @blacklist command for proxy handling
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Textfiles for RhostMUSH
+.INDENT 0.0
+.INDENT 3.5
+.SS Todo
 .sp
+Notate which need mkindx
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 areghost.txt           \- file player gets when autoregistration on registered host.
 autoreg.txt            \- file player gets when autoregistration on non\-registered host.
 autoreg_include.txt    \- file player receives in email when they autoregister attached to login/passwd
@@ -5674,84 +5739,46 @@ badsite.txt            \- file player gets when site is not allowed.
 connect.txt            \- file player gets when connect
 create_reg.txt         \- file player gets when their site is register and they can\(aqt create.
 doorconf.txt           \- file that is searched for information regarding @door.
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Need to mkindx doorconf.txt doorconf.indx for this file
-.UNINDENT
-.UNINDENT
-.sp
 down.txt               \- file player gets when the mush has logins disabled (@disable login)
 error.txt              \- the \(aqHuh? (type help for help)\(aq messages.
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Need to mkindx error.txt error.indx for this file
-.UNINDENT
-.UNINDENT
-.sp
 full.txt               \- file player gets when the mush can\(aqt have any more players.
 guest.txt              \- file player gets when they connect as a guest.
 help.txt               \- your help file
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Need to mkindx help.txt help.indx for this file
-.UNINDENT
-.UNINDENT
-.sp
 motd.txt               \- your motd file
 news.txt               \- your news file
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Need to mkindx news.txt news.indx for this file
-.UNINDENT
-.UNINDENT
-.sp
 newuser.txt            \- file newly created players get when they connect for the first time.
 noguest.txt            \- file player gets when they are not allowed to connect to a guest.
 plushelp.txt           \- optional +help file. (needs compile time option)
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Need to mkindx plushelp.txt plushelp.indx for this file
-.UNINDENT
-.UNINDENT
-.sp
 quit.txt               \- file player gets when they disconnect.
 register.txt           \- file player gets when the site is locked down for registration.
 wizhelp.txt            \- your wizhelp file
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Need to mkindx wizhelp.txt wizhelp.indx for this file
-.UNINDENT
-.UNINDENT
-.sp
 wizmotd.txt            \- your wiz motd file
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Textfile Frequently Asked Questions
 .sp
 Q:  How do I put color in these files?
+.sp
 A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: ^[[0m (for ANSI_NORMAL).  That\(aqs <ESC>[
+.sp
 A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding for ansi, however you compiled your Rhost.
 .sp
 Q:  I want to design my own txt files to read in the mush.
+.sp
 A:  Easy.  Design them like help.txt would be set up, mkindx the file, then you can access it via @dynhelp online.
 .sp
 Q:  Do I have to mkindx these files whenever I make changes?
+.sp
 A:  Only the ones that have \(aq& \(aq index. (help.txt, wizhelp.txt, news.txt, etc)
 .sp
 Q:  Do I have to @readcache in the game whenever I make a change?
+.sp
 A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones you use with @dynhelp.
 .sp
 Q:  Can\(aqt I just make code in the mush that then is used for these silly txt files?
+.sp
 A:  Absolutely.  Check \(aqwizhelp file_object\(aq.
 .SH TROUBLESHOOTING
 .SS Reporting bugs or getting help

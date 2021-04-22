@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RhostMUSH Handbook 0.02a\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-22 06:20-0400\n"
+"POT-Creation-Date: 2021-04-22 07:07-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,326 +32,290 @@ msgstr ""
 msgid "One thing to keep in mind is that RhostMUSH, unlike PennMUSH is not flag dependant on permission level, it's ownership based.  While setting a wizard flag on an object would work, it's not recommended and it is instead recommended to chown the object in question to a wizard (like your wizard holder character) Then the object must be set inherit to actually inherit the wizard."
 msgstr ""
 
-#: ../../source/security.rst:20
-msgid "Note: inherit is required to inherit anything from the player.  Flags, powers,"
-msgstr ""
-
-#: ../../source/security.rst:20
-msgid "toggles.  The only thing that is inherited automatically is depowers."
-msgstr ""
-
-#: ../../source/security.rst:23
-msgid "Online: Blocking object abilities"
+#: ../../source/security.rst:21
+msgid "inherit is required to inherit anything from the player.  Flags, powers, toggles.  The only thing that is inherited automatically is depowers."
 msgstr ""
 
 #: ../../source/security.rst:25
-msgid "We have various flag levels.  It is strongly recommanded you check wizhelp on 'control' for a detailed overview of what each bitlevel can or can not do prior to giving the ownership to the object.  Things useful for tweaking control on players and objects:"
+msgid "Online: Blocking object abilities"
 msgstr ""
 
-#: ../../source/security.rst:31
-msgid "FLAGS (access with @set)"
+#: ../../source/security.rst:27
+msgid "We have various flag levels.  It is strongly recommanded you check wizhelp on 'control' for a detailed overview of what each bitlevel can or can not do prior to giving the ownership to the object.  Things useful for tweaking control on players and objects."
 msgstr ""
 
 #: ../../source/security.rst:33
-msgid "IMMORTAL, ROYALTY, COUNCILOR, ARCHITECT, GUILDMASTER, FUBAR, SLAVE, SIDEFX, NO_CONNECT, WANDERER, SAFE, AUDITORIUM, BACKSTAGE, NOBACKSTAGE, INDESTRUCTIBLE, INHERIT, JUMP_OK, NO_TEL, NO_WALL, NO_EXAMINE, NO_MODIFY, NO_CONNECT, NO_POSSESS, NO_PESTER, NO_OVERRIDE, NO_USELOCK, NO_MOVE, NO_YELL, CLOAK, SCLOAK, DARK, UNFINDABLE, SEE_OEMIT, TELOK, SUSPECT, SPAMMONITOR"
+msgid "FLAGS (access with @set)"
 msgstr ""
 
-#: ../../source/security.rst:43
+#: ../../source/security.rst:47
 msgid "TOGGLES (@toggle)"
 msgstr ""
 
-#: ../../source/security.rst:45
-msgid "BRANDY_MAIL, PENN_MAIL, MUXPAGE, VPAGE, NOISY, MONITOR* (all monitor toggles), MORTALREALITY, NODEFAULT, NO_FORMAT, PAGELOCK, SNUFFDARK, VARIABLE"
-msgstr ""
-
-#: ../../source/security.rst:50
+#: ../../source/security.rst:56
 msgid "@powers, @depowers, and @locks"
 msgstr ""
 
-#: ../../source/security.rst:52
+#: ../../source/security.rst:58
 msgid "Please review help (and wizhelp) for each of these items on how it can affect a player, thing, exit, or room.  The help is quite verbose."
 msgstr ""
 
-#: ../../source/security.rst:56
+#: ../../source/security.rst:62
 msgid "Offline: Blocking twinks from being abusive on your game"
 msgstr ""
 
-#: ../../source/security.rst:58
-msgid "FLAGS                   : FUBAR, SLAVE, NO_CONNECT Commands:               : @boot, @nuke, @toad, @turtle Sitelocks: (@admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site Sitelock by player      : @badsite, @goodsite, NO_CONNECT (flag) Monitoring player       : SUSPECT (flag), @snoop TOR/Proxy blocking:     : @blacklist (see shell's tor_pull.sh), @admin proxy_checker (see wizhelp), @tor (see wizhelp)"
-msgstr ""
-
-#: ../../source/security.rst:66
+#: ../../source/security.rst:74
 msgid "Extended lockdown of the mush and considerations"
 msgstr ""
 
-#: ../../source/security.rst:68
+#: ../../source/security.rst:76
 msgid "These are flags, powers, toggles, and various conditions for consideration when you decide to use some of the advanced features of RhostMUSH. These are not all that is availble, but tend to be the juicier ones to consider."
 msgstr ""
 
-#: ../../source/security.rst:73
+#: ../../source/security.rst:81
 msgid "Attribute Restriction"
 msgstr ""
 
-#: ../../source/security.rst:75
-msgid "@attribute -- Used for user-defined attributes @admin attr_access -- used for built in attributes (like desc) @aflags -- Used to set up lovely delicious attribute permission masks"
-msgstr ""
-
-#: ../../source/security.rst:80
+#: ../../source/security.rst:90
 msgid "Command Restriction"
 msgstr ""
 
-#: ../../source/security.rst:82
-msgid "@icmd    - Very useful.   Please see wizhelp on it.  It disallows commands from executing including overriding them with softcode alternatives @admin access - Changes permissions, disables, or sets to be overridden a command.  Useful when you plan to override commands with softcode."
-msgstr ""
-
-#: ../../source/security.rst:86
+#: ../../source/security.rst:98
 msgid "Flag/Toggle Restriction"
 msgstr ""
 
-#: ../../source/security.rst:88
-msgid "@flagdef - Again, see wizhelp on this.  There are also netrhost.conf options so you can have them loaded at start.  This allows tweaking flags and toggles to who can set/unset/see as well as what type can use it or wha type it can be used on."
-msgstr ""
-
-#: ../../source/security.rst:91
+#: ../../source/security.rst:105
 msgid "Config restrictions"
 msgstr ""
 
-#: ../../source/security.rst:93
-msgid "@admin config_access - Changes permission of who can set a config param"
-msgstr ""
-
-#: ../../source/security.rst:96
+#: ../../source/security.rst:112
 msgid "Function Restrictions"
 msgstr ""
 
-#: ../../source/security.rst:98
-msgid "@function/@lfunction -- Allows softcoded functions that you can optionally lock down at your leasure @admin function_access -- You can use this even on softcoded functions if you so desired."
-msgstr ""
-
-#: ../../source/security.rst:102
+#: ../../source/security.rst:120
 msgid "RhostMUSH Flags and Descriptions"
 msgstr ""
 
-#: ../../source/security.rst:128
+#: ../../source/security.rst:146
 msgid "RhostMUSH Toggles and Descriptions"
 msgstr ""
 
-#: ../../source/security.rst:165
+#: ../../source/security.rst:183
 msgid "RhostMUSH @powers and Descriptions"
 msgstr ""
 
-#: ../../source/security.rst:203
+#: ../../source/security.rst:221
 msgid "RhostMUSH @depowers and Descriptions"
 msgstr ""
 
-#: ../../source/security.rst:241
+#: ../../source/security.rst:259
 msgid "Site Restrictions"
 msgstr ""
 
-#: ../../source/security.rst:243
+#: ../../source/security.rst:261
 msgid "These are accessable via the @admin command, and the following options are allowable."
 msgstr ""
 
-#: ../../source/security.rst:246
+#: ../../source/security.rst:264
 msgid "You may see all site information at any time with: @list sites"
 msgstr ""
 
-#: ../../source/security.rst:249
+#: ../../source/security.rst:267
 msgid "IP based restrictions"
 msgstr ""
 
-#: ../../source/security.rst:251
+#: ../../source/security.rst:269
 msgid "You may use CIDR notation such as /32 instead of 255.255.255.255. Config file:  (see section on forbid_site as it describes and gives examples) Online Syntax: MASK::"
 msgstr ""
 
-#: ../../source/security.rst:286
+#: ../../source/security.rst:304
 msgid "DNS based restrictions"
 msgstr ""
 
-#: ../../source/security.rst:288
+#: ../../source/security.rst:306
 msgid "These allow globbing wildcard matches. The advanced feature is you can specify filtering on when the condition is matched, such as allowing 2 players from a site to be connected before disallowing anyone else to connect. Config File: (see section on forbid_host as it describes and gives examples) Online Syntax::"
 msgstr ""
 
-#: ../../source/security.rst:311
+#: ../../source/security.rst:329
 msgid "Methods to block anonymous connections and the pros and cons of doing so"
 msgstr ""
 
-#: ../../source/security.rst:313
+#: ../../source/security.rst:331
 msgid "Now let's assume you have some troll attempting to use proxies to connect. There's multiple ways to stop this."
 msgstr ""
 
-#: ../../source/security.rst:317
+#: ../../source/security.rst:335
 msgid "Blacklisting through external tor_pull.sh script"
 msgstr ""
 
-#: ../../source/security.rst:319
+#: ../../source/security.rst:337
 msgid "In ~/Rhost/Server/game you will see a script called tor_pull.sh Execute this by running (from the game directory) ./tor_pull.sh This populates the blacklist with registered proxies from various sites on the internet.  If you want specified ip's added, feel free to add them at the end of this file."
 msgstr ""
 
-#: ../../source/security.rst:326
+#: ../../source/security.rst:344
 msgid "Blacklisting through internal @blacklist command"
 msgstr ""
 
-#: ../../source/security.rst:328
+#: ../../source/security.rst:346
 msgid "On the mush, have as part of your startup @blacklist/load This will load in the generated blacklist file for automatic forbid sites based on the ip."
 msgstr ""
 
-#: ../../source/security.rst:333
+#: ../../source/security.rst:351
 msgid "Blacklisting through internal @tor command"
 msgstr ""
 
-#: ../../source/security.rst:335
+#: ../../source/security.rst:353
 msgid "@tor.  Please see 'wizhelp tor' on how to set this up.  It in effect will actively block all known exit nodes for TOR's annonymous proxy service.  It self-updates and will actively block TOR connections."
 msgstr ""
 
-#: ../../source/security.rst:340
+#: ../../source/security.rst:358
 msgid "Blacklisting through internal @admin command"
 msgstr ""
 
-#: ../../source/security.rst:342
+#: ../../source/security.rst:360
 msgid "@admin proxy_checker (please see wizhelp) This little doodad uses MTU checking against packet size which will detect most methods of proxies.  Sadly, this also has false positives because some situations require a differentating MTU value such as briged network connect with things like cloud services, docker, or similar encapsulated network services.  However, this option has several settings from just monitoring/alerting of possible proxies to downright forbidding them.  If you're being actively attacked, it may be worth considering adding this to add additional protection."
 msgstr ""
 
-#: ../../source/security.rst:353
+#: ../../source/security.rst:371
 msgid "Setting up an SSL tunnel for secure connection options"
 msgstr ""
 
-#: ../../source/security.rst:356
+#: ../../source/security.rst:374
 msgid "Quickstart for SSL setup with stunnel"
 msgstr ""
 
-#: ../../source/security.rst:358
+#: ../../source/security.rst:376
 msgid "Modify your netrhost.conf file and add/change the following parameters:"
 msgstr ""
 
-#: ../../source/security.rst:360
+#: ../../source/security.rst:378
 msgid "sconnect_reip 1"
 msgstr ""
 
-#: ../../source/security.rst:361
+#: ../../source/security.rst:379
 msgid "sconnect_cmd SECRET-MAGIC-COOKIE"
 msgstr ""
 
-#: ../../source/security.rst:363
+#: ../../source/security.rst:381
 msgid "SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the '#' character is allowable.  You may use up to 30 characters."
 msgstr ""
 
-#: ../../source/security.rst:364
+#: ../../source/security.rst:382
 msgid "Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address."
 msgstr ""
 
-#: ../../source/security.rst:366
+#: ../../source/security.rst:384
 msgid "sconnect_host localhost 127.0.0.1 othersite.goes.here"
 msgstr ""
 
-#: ../../source/security.rst:368
+#: ../../source/security.rst:386
 msgid "This is optional."
 msgstr ""
 
-#: ../../source/security.rst:369
+#: ../../source/security.rst:387
 msgid "If you do not specify it it defaults to 'localhost 127.0.0.1'.  If your domain has a unique name like 'localhost.localdomain' like some ubuntu distributions, then you should customize your stunnel_host."
 msgstr ""
 
-#: ../../source/security.rst:371
+#: ../../source/security.rst:389
 msgid "go into the stunnel directory"
 msgstr ""
 
-#: ../../source/security.rst:372
+#: ../../source/security.rst:390
 msgid "./stunnel_setup.sh"
 msgstr ""
 
-#: ../../source/security.rst:374
+#: ../../source/security.rst:392
 msgid "Choose the defaults or alter them based on preferences"
 msgstr ""
 
-#: ../../source/security.rst:375
+#: ../../source/security.rst:393
 msgid "Make sure to choose the warpbubble conf file"
 msgstr ""
 
-#: ../../source/security.rst:377
+#: ../../source/security.rst:395
 msgid "./stunnel_start.sh"
 msgstr ""
 
-#: ../../source/security.rst:378
+#: ../../source/security.rst:396
 msgid "Use ./stunnel_stop.sh to stop the SSL tunnel at any time"
 msgstr ""
 
-#: ../../source/security.rst:380
+#: ../../source/security.rst:398
 msgid "You do not need to shutdown the ssl handler if you shutdown the mush.  They are entirely separate processes."
 msgstr ""
 
-#: ../../source/security.rst:384
+#: ../../source/security.rst:402
 msgid "Detailed SSL setup with stunnel"
 msgstr ""
 
-#: ../../source/security.rst:386
+#: ../../source/security.rst:404
 msgid "To setup SSL connectivity, we use the STUNNEL application to tunnel SSL to the mush.  This acts a bit like a man in the middle but remains controlled by the game owner which would have access to the end point anyway."
 msgstr ""
 
-#: ../../source/security.rst:392
+#: ../../source/security.rst:410
 msgid "it is assumed you will have already initially set up your netrhost.conf."
 msgstr ""
 
-#: ../../source/security.rst:395
+#: ../../source/security.rst:413
 msgid "stunnel directory"
 msgstr ""
 
-#: ../../source/security.rst:397
+#: ../../source/security.rst:415
 msgid "You would set up the stunnel from the 'stunnel' directory.  There the following files are of relevance::"
 msgstr ""
 
-#: ../../source/security.rst:410
+#: ../../source/security.rst:428
 msgid "Modifying netrhost.conf"
 msgstr ""
 
-#: ../../source/security.rst:412
+#: ../../source/security.rst:430
 msgid "To be able to utilize SSL, you first must set your netrhost.conf file with the relevant information to enable SSL connectiions.  These three config options must be set to be able to use SSL, however, sconnect_host if not set will default to 'localhost 127.0.0.1'."
 msgstr ""
 
-#: ../../source/security.rst:425
+#: ../../source/security.rst:443
 msgid "the sconnect_host is optional.  If you do not specify it, it will default to two values:  'localhost' and '127.0.0.1'."
 msgstr ""
 
-#: ../../source/security.rst:428
+#: ../../source/security.rst:446
 msgid "Running the stunnel setup program"
 msgstr ""
 
-#: ../../source/security.rst:430
+#: ../../source/security.rst:448
 msgid "At this point you're ready to run the stunnel setup program.  So at this point type the following::"
 msgstr ""
 
-#: ../../source/security.rst:434
+#: ../../source/security.rst:452
 msgid "This will prompt you through settings.  Most you can select the defaults to. The SSL port you may need to change based on your administrative requirements. It will prompt you with whatever you set for your mush name.  If you have not selected a mush name at this point, you can select the defaults."
 msgstr ""
 
-#: ../../source/security.rst:439
+#: ../../source/security.rst:457
 msgid "You will want to use the config file for warpbubble as this hides the secret."
 msgstr ""
 
-#: ../../source/security.rst:441
+#: ../../source/security.rst:459
 msgid "Be aware that if you have DNS host lookups disabled on your mush, you MUST have 127.0.0.1 as an entry for your sconnect_host file."
 msgstr ""
 
-#: ../../source/security.rst:445
+#: ../../source/security.rst:463
 msgid "Starting the stunnel proxy"
 msgstr ""
 
-#: ../../source/security.rst:447
+#: ../../source/security.rst:465
 msgid "When you have your stunnel.conf file to the way you want, you then issue the following command to run your SSL layer::"
 msgstr ""
 
-#: ../../source/security.rst:453
+#: ../../source/security.rst:471
 msgid "Shutting down the stunnel proxy"
 msgstr ""
 
-#: ../../source/security.rst:455
+#: ../../source/security.rst:473
 msgid "If ever you need to bring down the SSL layer, you may kill it with the command::"
 msgstr ""
 
-#: ../../source/security.rst:460
+#: ../../source/security.rst:478
 msgid "Configuring firewall on the host"
 msgstr ""
 
-#: ../../source/security.rst:462
+#: ../../source/security.rst:480
 msgid "Please be aware that the port that the SSL layer is on must be opened in any firewall rule you specified to allow the connectivity.  This also must not be the port the mush is running on and requires a separate port."
 msgstr ""

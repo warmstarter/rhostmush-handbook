@@ -395,7 +395,7 @@ Ambrosia's Minimal Rhost DB
 AmbrosiaDB Features
 
 * AmbrosiaDB Configuration:: 
-* AmbeosiaDB Softcode:: 
+* AmbrosiaDB Softcode:: 
 * AmbrosiaDB Functions:: 
 
 AmbrosiaDB Bitlevels
@@ -5969,12 +5969,12 @@ a new game off in mind.
 
 @menu
 * AmbrosiaDB Configuration:: 
-* AmbeosiaDB Softcode:: 
+* AmbrosiaDB Softcode:: 
 * AmbrosiaDB Functions:: 
 
 @end menu
 
-@node AmbrosiaDB Configuration,AmbeosiaDB Softcode,,AmbrosiaDB Features
+@node AmbrosiaDB Configuration,AmbrosiaDB Softcode,,AmbrosiaDB Features
 @anchor{ambrosiadb ambrosiadb-configuration}@anchor{ce}
 @subsection AmbrosiaDB Configuration
 
@@ -6098,9 +6098,9 @@ Guildmasters can see _Attributes
 Architects can set _Attributes
 @end itemize
 
-@node AmbeosiaDB Softcode,AmbrosiaDB Functions,AmbrosiaDB Configuration,AmbrosiaDB Features
-@anchor{ambrosiadb ambeosiadb-softcode}@anchor{cf}
-@subsection AmbeosiaDB Softcode
+@node AmbrosiaDB Softcode,AmbrosiaDB Functions,AmbrosiaDB Configuration,AmbrosiaDB Features
+@anchor{ambrosiadb ambrosiadb-softcode}@anchor{cf}
+@subsection AmbrosiaDB Softcode
 
 
 
@@ -6140,7 +6140,7 @@ help .txt files and .indx files for the above.
 @@dynhelp access lowered to architect to call above helpfiles.
 @end itemize
 
-@node AmbrosiaDB Functions,,AmbeosiaDB Softcode,AmbrosiaDB Features
+@node AmbrosiaDB Functions,,AmbrosiaDB Softcode,AmbrosiaDB Features
 @anchor{ambrosiadb ambrosiadb-functions}@anchor{d0}
 @subsection AmbrosiaDB Functions
 
@@ -6177,17 +6177,17 @@ instead of printf() for such things.
 
 @example
 header(text,width,filler,fillercolor,outerpadding,paddingcolor,
-       leftinnerpadding,leftinnercolor,rightinnerpadding,rightinnercolor)
-  text - Text to center
-  width - Width of the header, defaults to width()
-  filler - Character(s) to draw the line with. Default: =
-  fillercolor - ansicode to color the line with
-  outerpadding - Characters to frame the outer ends of the line with.
-  paddingcolor - ansicode to color the outer characters with
-  leftinnerpadding - characters to put at the left side of <text>
-  leftinnercolor - ansicode to color the leftside characters with
-  rightinnerpadding - characters to put at the right side of <text>
-  rightinnercolor - ansicode to color the rightside characters with
+     leftinnerpadding,leftinnercolor,rightinnerpadding,rightinnercolor)
+text - Text to center
+width - Width of the header, defaults to width()
+filler - Character(s) to draw the line with. Default: =
+fillercolor - ansicode to color the line with
+outerpadding - Characters to frame the outer ends of the line with.
+paddingcolor - ansicode to color the outer characters with
+leftinnerpadding - characters to put at the left side of <text>
+leftinnercolor - ansicode to color the leftside characters with
+rightinnerpadding - characters to put at the right side of <text>
+rightinnercolor - ansicode to color the rightside characters with
 @end example
 
 @cartouche
@@ -6687,13 +6687,12 @@ flag on an object would work, it's not recommended and it is instead recommended
 to chown the object in question to a wizard (like your wizard holder character)
 Then the object must be set inherit to actually inherit the wizard.
 
-
-@table @asis
-
-@item Note: inherit is required to inherit anything from the player.  Flags, powers,
-
+@cartouche
+@quotation Note 
+inherit is required to inherit anything from the player.  Flags, powers,
 toggles.  The only thing that is inherited automatically is depowers.
-@end table
+@end quotation
+@end cartouche
 
 @menu
 * Online; Blocking object abilities: Online Blocking object abilities. 
@@ -6709,7 +6708,7 @@ toggles.  The only thing that is inherited automatically is depowers.
 We have various flag levels.  It is strongly recommanded you check wizhelp
 on 'control' for a detailed overview of what each bitlevel can or can not do
 prior to giving the ownership to the object.  Things useful for tweaking control
-on players and objects:
+on players and objects.
 
 @menu
 * FLAGS (access with @@set): FLAGS access with @@set. 
@@ -6723,8 +6722,7 @@ on players and objects:
 @subsubsection FLAGS (access with @@set)
 
 
-@quotation
-
+@example
 IMMORTAL, ROYALTY, COUNCILOR, ARCHITECT, GUILDMASTER,
 FUBAR, SLAVE, SIDEFX, NO_CONNECT, WANDERER, SAFE,
 AUDITORIUM, BACKSTAGE, NOBACKSTAGE, INDESTRUCTIBLE,
@@ -6733,19 +6731,18 @@ NO_MODIFY, NO_CONNECT, NO_POSSESS, NO_PESTER,
 NO_OVERRIDE, NO_USELOCK, NO_MOVE, NO_YELL, CLOAK,
 SCLOAK, DARK, UNFINDABLE, SEE_OEMIT, TELOK, SUSPECT,
 SPAMMONITOR
-@end quotation
+@end example
 
 @node TOGGLES @@toggle,@@powers @@depowers and @@locks,FLAGS access with @@set,Online Blocking object abilities
 @anchor{security toggles-toggle}@anchor{f4}
 @subsubsection TOGGLES (@@toggle)
 
 
-@quotation
-
+@example
 BRANDY_MAIL, PENN_MAIL, MUXPAGE, VPAGE, NOISY,
 MONITOR* (all monitor toggles), MORTALREALITY,
 NODEFAULT, NO_FORMAT, PAGELOCK, SNUFFDARK, VARIABLE
-@end quotation
+@end example
 
 @node @@powers @@depowers and @@locks,,TOGGLES @@toggle,Online Blocking object abilities
 @anchor{security powers-depowers-and-locks}@anchor{f5}
@@ -6760,12 +6757,14 @@ a player, thing, exit, or room.  The help is quite verbose.
 @subsection Offline: Blocking twinks from being abusive on your game
 
 
+@example
 FLAGS                   : FUBAR, SLAVE, NO_CONNECT
 Commands:               : @@boot, @@nuke, @@toad, @@turtle
 Sitelocks: (@@admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
 Sitelock by player      : @@badsite, @@goodsite, NO_CONNECT (flag)
 Monitoring player       : SUSPECT (flag), @@snoop
 TOR/Proxy blocking:     : @@blacklist (see shell's tor_pull.sh), @@admin proxy_checker (see wizhelp), @@tor (see wizhelp)
+@end example
 
 @node Extended lockdown of the mush and considerations,Methods to block anonymous connections and the pros and cons of doing so,Considerations to locking down restrictions in RhostMUSH,Security
 @anchor{security extended-lockdown-of-the-mush-and-considerations}@anchor{f7}
@@ -6795,54 +6794,49 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 @subsection Attribute Restriction
 
 
-@quotation
-
+@example
 @@attribute -- Used for user-defined attributes
 @@admin attr_access -- used for built in attributes (like desc)
 @@aflags -- Used to set up lovely delicious attribute permission masks
-@end quotation
+@end example
 
 @node Command Restriction,Flag/Toggle Restriction,Attribute Restriction,Extended lockdown of the mush and considerations
 @anchor{security command-restriction}@anchor{f9}
 @subsection Command Restriction
 
 
-@quotation
-
+@example
 @@icmd    - Very useful.   Please see wizhelp on it.  It disallows commands from executing including overriding them with softcode alternatives
 @@admin access - Changes permissions, disables, or sets to be overridden a command.  Useful when you plan to override commands with softcode.
-@end quotation
+@end example
 
 @node Flag/Toggle Restriction,Config restrictions,Command Restriction,Extended lockdown of the mush and considerations
 @anchor{security flag-toggle-restriction}@anchor{fa}
 @subsection Flag/Toggle Restriction
 
 
-@quotation
-
+@example
 @@flagdef - Again, see wizhelp on this.  There are also netrhost.conf options so you can have them loaded at start.  This allows tweaking flags and toggles to who can set/unset/see as well as what type can use it or wha type it can be used on.
-@end quotation
+@end example
 
 @node Config restrictions,Function Restrictions,Flag/Toggle Restriction,Extended lockdown of the mush and considerations
 @anchor{security config-restrictions}@anchor{fb}
 @subsection Config restrictions
 
 
-@quotation
-
+@example
 @@admin config_access - Changes permission of who can set a config param
-@end quotation
+@end example
 
 @node Function Restrictions,RhostMUSH Flags and Descriptions,Config restrictions,Extended lockdown of the mush and considerations
 @anchor{security function-restrictions}@anchor{fc}
 @subsection Function Restrictions
 
 
-@quotation
-
+@example
 @@function/@@lfunction -- Allows softcoded functions that you can optionally lock down at your leasure
 @@admin function_access -- You can use this even on softcoded functions if you so desired.
-@end quotation
+@end example
 
 @node RhostMUSH Flags and Descriptions,RhostMUSH Toggles and Descriptions,Function Restrictions,Extended lockdown of the mush and considerations
 @anchor{security rhostmush-flags-and-descriptions}@anchor{fd}
@@ -7712,6 +7706,7 @@ newsdb/unload; @@@@ dump the news bbs database to flatfile
 @section The following scripts are used in the game directory
 
 
+@example
 Startmush               -- used to Start up the mush
 backup_flat.sh          -- Used to run backups with @@dump/flat within the game (Started with Startmush automatically)
 backup_restart.sh       -- Restart the backup_flat.sh if changes are done
@@ -7723,12 +7718,20 @@ proxysnarf.sha          -- Internal script for the tor_pull.sh tor proxy blackli
 tor_pullit.sh           -- Internal script for the tor_pull.sh for proxy blacklist
 recovery.sh             -- If your db is corrupt, run this to auto-revert to an earlier flatfile
 tor_pull.sh             -- Create a blacklist.txt file that can be loaded via the internal @@blacklist command for proxy handling
+@end example
 
 @node Textfiles for RhostMUSH,,The following scripts are used in the game directory,Maintenance
 @anchor{maintenance textfiles-for-rhostmush}@anchor{123}
 @section Textfiles for RhostMUSH
 
 
+@cartouche
+@quotation Todo 
+Notate which need mkindx
+@end quotation
+@end cartouche
+
+@example
 areghost.txt           - file player gets when autoregistration on registered host.
 autoreg.txt            - file player gets when autoregistration on non-registered host.
 autoreg_include.txt    - file player receives in email when they autoregister attached to login/passwd
@@ -7736,62 +7739,21 @@ badsite.txt            - file player gets when site is not allowed.
 connect.txt            - file player gets when connect
 create_reg.txt         - file player gets when their site is register and they can't create.
 doorconf.txt           - file that is searched for information regarding @@door.
-
-@cartouche
-@quotation Note 
-Need to mkindx doorconf.txt doorconf.indx for this file
-@end quotation
-@end cartouche
-
 down.txt               - file player gets when the mush has logins disabled (@@disable login)
 error.txt              - the 'Huh? (type help for help)' messages.
-
-@cartouche
-@quotation Note 
-Need to mkindx error.txt error.indx for this file
-@end quotation
-@end cartouche
-
 full.txt               - file player gets when the mush can't have any more players.
 guest.txt              - file player gets when they connect as a guest.
 help.txt               - your help file
-
-@cartouche
-@quotation Note 
-Need to mkindx help.txt help.indx for this file
-@end quotation
-@end cartouche
-
 motd.txt               - your motd file
 news.txt               - your news file
-
-@cartouche
-@quotation Note 
-Need to mkindx news.txt news.indx for this file
-@end quotation
-@end cartouche
-
 newuser.txt            - file newly created players get when they connect for the first time.
 noguest.txt            - file player gets when they are not allowed to connect to a guest.
 plushelp.txt           - optional +help file. (needs compile time option)
-
-@cartouche
-@quotation Note 
-Need to mkindx plushelp.txt plushelp.indx for this file
-@end quotation
-@end cartouche
-
 quit.txt               - file player gets when they disconnect.
 register.txt           - file player gets when the site is locked down for registration.
 wizhelp.txt            - your wizhelp file
-
-@cartouche
-@quotation Note 
-Need to mkindx wizhelp.txt wizhelp.indx for this file
-@end quotation
-@end cartouche
-
 wizmotd.txt            - your wiz motd file
+@end example
 
 @menu
 * Textfile Frequently Asked Questions:: 
@@ -7804,19 +7766,25 @@ wizmotd.txt            - your wiz motd file
 
 
 Q:  How do I put color in these files?
+
 A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: ^[[0m (for ANSI_NORMAL).  That's <ESC>[
+
 A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding for ansi, however you compiled your Rhost.
 
 Q:  I want to design my own txt files to read in the mush.
+
 A:  Easy.  Design them like help.txt would be set up, mkindx the file, then you can access it via @@dynhelp online.
 
 Q:  Do I have to mkindx these files whenever I make changes?
+
 A:  Only the ones that have '& ' index. (help.txt, wizhelp.txt, news.txt, etc)
 
 Q:  Do I have to @@readcache in the game whenever I make a change?
+
 A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones you use with @@dynhelp.
 
 Q:  Can't I just make code in the mush that then is used for these silly txt files?
+
 A:  Absolutely.  Check 'wizhelp file_object'.
 
 @c These are replacement strings for non-ASCII characters used within the project
