@@ -466,7 +466,9 @@ You only need to do this if you received the RhostMUSH src.  If you received a b
 
 To compile the code, just type 'make confsource'.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run 'make source', if you so choose to hand-edit the Makefile.
 
-After the compile process is done, type 'make links'!
+After the compile process is done, type::
+
+   make links
 
 Loading a database for your MUSH
 ================================
@@ -508,9 +510,9 @@ Option: Things to do once you have connected if you did NOT use a provided datab
 Customtize the textfiles for your game
 --------------------------------------
 
-   All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a 
-   README file there that explains their purposes in more detail.  You can see more information on
-   all files and how they inter-relate with 'wizhelp file'.
+All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a 
+README file there that explains their purposes in more detail.  You can see more information on
+all files and how they inter-relate with 'wizhelp file'.
 
 ---------------------------------
 Three Options for Starting a MUSH
@@ -520,52 +522,24 @@ The RhostMUSH Git Repository comes with three options for starting your Mush.
 
 .. todo::
 
-   Well, there's also some other pre-existing DB or upgrading, so let's try to make this a little more coherent.
+   Well, there's also some other pre-existing DB, upgrading, and ansible so let's try to make this a little more coherent.
 
 Option 1: Creating a new game with a blank database
 ===================================================
 
-  Modify your ./game/netrhost.conf file or what settings you want.
-  Don't feel overwhelmed, it's all very well documented.
+Modify your ./game/netrhost.conf file or what settings you want.
+Don't feel overwhelmed, it's all very well documented.
 
-Options 2: Creating a new game with Ambrosia's default database
+Option 2: Creating a new game with the generic default database
 ===============================================================
 
-Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README
-  
-The netrhost.conf file you will copy is in minimal-DBs/Amb-MinimalRhost/game
-Copy this netrhost.conf file into your 'game' directory.
-
-You will want the custom txt files under Amb-MinimalRhost/txt in your game/txt directory and to mkindx all the txt files.  You can run ./Startmush -i to index.
-  
-When ./Startmush prompts you to load a flatfile, say 'yes' and hit <RETURN> to have it search for flatfiles, then select netrhost.db.flat from under the minimal-DBs/Amb-MinimalRhost directory.
-  
-The main steps to make sure you do for ~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat -- Ambrosia's secure and featured minimal db
-
-#. Use the matching netrhost.conf file under the Amb-MinimalRhost/game directory
-#. Load in the settings specified in the Amb-MinimalRhost/bin directory.
-
-   #. Copy this file into your ~/Server/bin directory
-   #. From 'Server' directory type: make clean
-   #. From 'Server' directory type: make confsource and 'l'oad option 0
-   #. Specify any -additional- options you want at this point.
-   #. Recompile your code
-#. Copy the files in Amb-MinimalRhost/game/txt into your ~/Server/game/txt directory
-#. from your ~/Server/game txt file run on each of the txt files::
-
-      ../mkindx <txtfile>.txt <txtfile>.indx
-
-.. note::
-
-      Where <txtfile> is the name of the file (minus the .txt extension)
-
-#. If running, @reboot your game.
-
-Option 3: Creating a new game with the generic default database
-===============================================================
-
-  Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory.
+Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory.
  
-  When ./Startmush prompts you to load a flatfile, say 'yes' and hit <RETURN>
-  to have it search for flatfiles, then select netrhost.db.flat from under
-  the minimal-DBs/minimal_db directory.
+When ./Startmush prompts you to load a flatfile, say 'yes' and hit <RETURN>
+to have it search for flatfiles, then select netrhost.db.flat from under
+the minimal-DBs/minimal_db directory.
+
+Option 3: Creating a new game with Ambrosia's default database
+==============================================================
+
+This option is covered in detail here: :ref:`ambrosiadb-installation`

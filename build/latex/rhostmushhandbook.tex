@@ -74,7 +74,7 @@
 
 
 \title{RhostMUSH Handbook}
-\date{Apr 20, 2021}
+\date{Apr 22, 2021}
 \release{}
 \author{wstarter}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -300,11 +300,11 @@ A lot more that could drag this document out for pages.
 
 \item {} 
 \sphinxAtStartPar
-\phantomsection\label{\detokenize{install:id42}}{\hyperref[\detokenize{install:options-2-creating-a-new-game-with-ambrosia-s-default-database}]{\sphinxcrossref{Options 2: Creating a new game with Ambrosia’s default database}}}
+\phantomsection\label{\detokenize{install:id42}}{\hyperref[\detokenize{install:option-2-creating-a-new-game-with-the-generic-default-database}]{\sphinxcrossref{Option 2: Creating a new game with the generic default database}}}
 
 \item {} 
 \sphinxAtStartPar
-\phantomsection\label{\detokenize{install:id43}}{\hyperref[\detokenize{install:option-3-creating-a-new-game-with-the-generic-default-database}]{\sphinxcrossref{Option 3: Creating a new game with the generic default database}}}
+\phantomsection\label{\detokenize{install:id43}}{\hyperref[\detokenize{install:option-3-creating-a-new-game-with-ambrosia-s-default-database}]{\sphinxcrossref{Option 3: Creating a new game with Ambrosia’s default database}}}
 
 \end{itemize}
 
@@ -988,7 +988,11 @@ You only need to do this if you received the RhostMUSH src.  If you received a b
 To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand\sphinxhyphen{}edit the Makefile.
 
 \sphinxAtStartPar
-After the compile process is done, type ‘make links’!
+After the compile process is done, type:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{make} \PYG{n}{links}
+\end{sphinxVerbatim}
 
 
 \subsection{Loading a database for your MUSH}
@@ -1060,13 +1064,11 @@ Figure out what they were trying to say by having those above two sentences righ
 
 
 \section{Customtize the textfiles for your game}
-\label{\detokenize{install:customtize-the-textfiles-for-your-game}}\begin{quote}
-
+\label{\detokenize{install:customtize-the-textfiles-for-your-game}}
 \sphinxAtStartPar
 All connect.txt and customized files can be found in the \textasciitilde{}/Server/game/txt directory.  There is a
 README file there that explains their purposes in more detail.  You can see more information on
 all files and how they inter\sphinxhyphen{}relate with ‘wizhelp file’.
-\end{quote}
 
 
 \section{Three Options for Starting a MUSH}
@@ -1076,99 +1078,19 @@ The RhostMUSH Git Repository comes with three options for starting your Mush.
 
 \begin{sphinxadmonition}{note}{\label{\detokenize{install:id8}}Todo:}
 \sphinxAtStartPar
-Well, there’s also some other pre\sphinxhyphen{}existing DB or upgrading, so let’s try to make this a little more coherent.
+Well, there’s also some other pre\sphinxhyphen{}existing DB, upgrading, and ansible so let’s try to make this a little more coherent.
 \end{sphinxadmonition}
 
 
 \subsection{Option 1: Creating a new game with a blank database}
-\label{\detokenize{install:option-1-creating-a-new-game-with-a-blank-database}}\begin{quote}
-
+\label{\detokenize{install:option-1-creating-a-new-game-with-a-blank-database}}
 \sphinxAtStartPar
 Modify your ./game/netrhost.conf file or what settings you want.
 Don’t feel overwhelmed, it’s all very well documented.
-\end{quote}
 
 
-\subsection{Options 2: Creating a new game with Ambrosia’s default database}
-\label{\detokenize{install:options-2-creating-a-new-game-with-ambrosia-s-default-database}}
-\sphinxAtStartPar
-Follow minimal\sphinxhyphen{}DBs/Amb\sphinxhyphen{}MinimalRhost/IMPORTANT\_README
-
-\sphinxAtStartPar
-The netrhost.conf file you will copy is in minimal\sphinxhyphen{}DBs/Amb\sphinxhyphen{}MinimalRhost/game
-Copy this netrhost.conf file into your ‘game’ directory.
-
-\sphinxAtStartPar
-You will want the custom txt files under Amb\sphinxhyphen{}MinimalRhost/txt in your game/txt directory and to mkindx all the txt files.  You can run ./Startmush \sphinxhyphen{}i to index.
-
-\sphinxAtStartPar
-When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit \textless{}RETURN\textgreater{} to have it search for flatfiles, then select netrhost.db.flat from under the minimal\sphinxhyphen{}DBs/Amb\sphinxhyphen{}MinimalRhost directory.
-
-\sphinxAtStartPar
-The main steps to make sure you do for \textasciitilde{}/Server/minimal\sphinxhyphen{}DBs/Amb\sphinxhyphen{}MinimalRhost/netrhost.db.flat \textendash{} Ambrosia’s secure and featured minimal db
-\begin{enumerate}
-\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
-\item {} 
-\sphinxAtStartPar
-Use the matching netrhost.conf file under the Amb\sphinxhyphen{}MinimalRhost/game directory
-
-\item {} 
-\sphinxAtStartPar
-Load in the settings specified in the Amb\sphinxhyphen{}MinimalRhost/bin directory.
-\begin{enumerate}
-\sphinxsetlistlabels{\arabic}{enumii}{enumiii}{}{.}%
-\item {} 
-\sphinxAtStartPar
-Copy this file into your \textasciitilde{}/Server/bin directory
-
-\item {} 
-\sphinxAtStartPar
-From ‘Server’ directory type: make clean
-
-\item {} 
-\sphinxAtStartPar
-From ‘Server’ directory type: make confsource and ‘l’oad option 0
-
-\item {} 
-\sphinxAtStartPar
-Specify any \sphinxhyphen{}additional\sphinxhyphen{} options you want at this point.
-
-\item {} 
-\sphinxAtStartPar
-Recompile your code
-
-\end{enumerate}
-
-\item {} 
-\sphinxAtStartPar
-Copy the files in Amb\sphinxhyphen{}MinimalRhost/game/txt into your \textasciitilde{}/Server/game/txt directory
-
-\item {} 
-\sphinxAtStartPar
-from your \textasciitilde{}/Server/game txt file run on each of the txt files:
-
-\begin{sphinxVerbatim}[commandchars=\\\{\}]
-\PYG{o}{.}\PYG{o}{.}\PYG{o}{/}\PYG{n}{mkindx} \PYG{o}{\PYGZlt{}}\PYG{n}{txtfile}\PYG{o}{\PYGZgt{}}\PYG{o}{.}\PYG{n}{txt} \PYG{o}{\PYGZlt{}}\PYG{n}{txtfile}\PYG{o}{\PYGZgt{}}\PYG{o}{.}\PYG{n}{indx}
-\end{sphinxVerbatim}
-
-\end{enumerate}
-
-\begin{sphinxadmonition}{note}{Note:}
-\sphinxAtStartPar
-Where \textless{}txtfile\textgreater{} is the name of the file (minus the .txt extension)
-\end{sphinxadmonition}
-\begin{enumerate}
-\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
-\item {} 
-\sphinxAtStartPar
-If running, @reboot your game.
-
-\end{enumerate}
-
-
-\subsection{Option 3: Creating a new game with the generic default database}
-\label{\detokenize{install:option-3-creating-a-new-game-with-the-generic-default-database}}\begin{quote}
-
+\subsection{Option 2: Creating a new game with the generic default database}
+\label{\detokenize{install:option-2-creating-a-new-game-with-the-generic-default-database}}
 \sphinxAtStartPar
 Copy the netrhost.conf from minimal\sphinxhyphen{}DBs/minimal\_db to your game directory.
 
@@ -1176,7 +1098,12 @@ Copy the netrhost.conf from minimal\sphinxhyphen{}DBs/minimal\_db to your game d
 When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit \textless{}RETURN\textgreater{}
 to have it search for flatfiles, then select netrhost.db.flat from under
 the minimal\sphinxhyphen{}DBs/minimal\_db directory.
-\end{quote}
+
+
+\subsection{Option 3: Creating a new game with Ambrosia’s default database}
+\label{\detokenize{install:option-3-creating-a-new-game-with-ambrosia-s-default-database}}
+\sphinxAtStartPar
+This option is covered in detail here: {\hyperref[\detokenize{ambrosiadb:ambrosiadb-installation}]{\sphinxcrossref{\DUrole{std,std-ref}{Ambrosia’s Minimal Rhost DB}}}}
 
 
 \chapter{What RhostMUSH is about and what’s so great about RhostMUSH}
@@ -4943,11 +4870,14 @@ Startmush as expected
 
 
 \chapter{Ambrosia’s Minimal Rhost DB}
-\label{\detokenize{ambrosiadb:ambrosia-s-minimal-rhost-db}}\label{\detokenize{ambrosiadb::doc}}
+\label{\detokenize{ambrosiadb:ambrosia-s-minimal-rhost-db}}\label{\detokenize{ambrosiadb:ambrosiadb-installation}}\label{\detokenize{ambrosiadb::doc}}
+\sphinxAtStartPar
+Version: 1.0.5          2020\sphinxhyphen{}01\sphinxhyphen{}31
 
-\section{Version: 1.0.5          2020\sphinxhyphen{}01\sphinxhyphen{}31}
-\label{\detokenize{ambrosiadb:version-1-0-5-2020-01-31}}\begin{description}
-\item[{Version history:}] \leavevmode\begin{description}
+
+\section{Version history}
+\label{\detokenize{ambrosiadb:version-history}}\begin{quote}
+\begin{description}
 \item[{1.0.0}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -5056,8 +4986,7 @@ functions\_max \sphinxhyphen{}\textgreater{} function\_max. Thanks to \sphinxhre
 \end{itemize}
 
 \end{description}
-
-\end{description}
+\end{quote}
 
 
 \section{AmbrosiaDB Introduction}
@@ -5431,7 +5360,7 @@ order to shut down the game for maintenance, up to being the
 only person with actual access to \#1.
 
 
-\subsection{AmbrosiaDB Globals}
+\section{AmbrosiaDB Globals}
 \label{\detokenize{ambrosiadb:ambrosiadb-globals}}
 \sphinxAtStartPar
 Handle necessary functionality for adminning through the admin\sphinxhyphen{}only globals and
@@ -10074,130 +10003,101 @@ MARKER0\sphinxhyphen{}MARKER9
 
 \chapter{Comparison of powers}
 \label{\detokenize{powers:comparison-of-powers}}\label{\detokenize{powers::doc}}
-\sphinxAtStartPar
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
 announce              Can use the @wall command.
-Rhost Equiv: \sphinxhyphen{} FREE\_WALL (@power)
+Rhost Equiv: \PYGZhy{} FREE\PYGZus{}WALL (@power)
 
-\sphinxAtStartPar
 boot                  Can use the @boot command.
 Rhost Equiv: BOOT (@power)
 
-\sphinxAtStartPar
 builder               Can build, if the builder power is enabled.
 Rhost Equiv: ARCHITECT (flag)
 
-\sphinxAtStartPar
-chown\_anything        Can @chown anything to anyone.
-Rhost Equiv: CHOWN\_OTHER (@power)
+chown\PYGZus{}anything        Can @chown anything to anyone.
+Rhost Equiv: CHOWN\PYGZus{}OTHER (@power)
 
-\sphinxAtStartPar
-comm\_all              Like a wizard with respect to channels.
+comm\PYGZus{}all              Like a wizard with respect to channels.
 Rhost has no hardcoded comsystem.  You can tweek the softcode.
 
-\sphinxAtStartPar
-control\_all           Can modify any object in the database. (God\sphinxhyphen{}set only.)
+control\PYGZus{}all           Can modify any object in the database. (God\PYGZhy{}set only.)
 Rhost Equiv: TwinkLock (@lock)
 
-\sphinxAtStartPar
-expanded\_who          Sees the wizard WHO, and SESSION commands.
-Rhost Equiv: WIZ\_WHO (@power)
+expanded\PYGZus{}who          Sees the wizard WHO, and SESSION commands.
+Rhost Equiv: WIZ\PYGZus{}WHO (@power)
 
-\sphinxAtStartPar
-find\_unfindable       Can locate unfindable people.
-see\_hidden            Can see hidden (DARK) players on WHO, etc.
-Rhost Equiv: WHO\_UNFIND (@power)
+find\PYGZus{}unfindable       Can locate unfindable people.
+see\PYGZus{}hidden            Can see hidden (DARK) players on WHO, etc.
+Rhost Equiv: WHO\PYGZus{}UNFIND (@power)
 
-\sphinxAtStartPar
-free\_money            Unlimited money.
+free\PYGZus{}money            Unlimited money.
 Rhost Equiv: FREE (flag)
 
-\sphinxAtStartPar
-free\_quota            Unlimited quota.
-Rhost Equiv: FREE\_QUOTA (@power)
+free\PYGZus{}quota            Unlimited quota.
+Rhost Equiv: FREE\PYGZus{}QUOTA (@power)
 
-\sphinxAtStartPar
 guest                 Is this a guest character?
 Rhost Equiv: GUEST (flag)
 
-\sphinxAtStartPar
 halt                  Can @halt anything, and @halt/all.
-Rhost Equiv: HALT\_QUEUE (@power) or HALT\_QUEUE\_ALL (@power)
+Rhost Equiv: HALT\PYGZus{}QUEUE (@power) or HALT\PYGZus{}QUEUE\PYGZus{}ALL (@power)
 
-\sphinxAtStartPar
 hide                  Can set themselves DARK.
 Rhost Equiv: NOWHO (@power)
 
-\sphinxAtStartPar
 idle                  No idle timeout.
-Rhost Equiv: @timeout *player=\sphinxhyphen{}1
+Rhost Equiv: @timeout \PYGZbs{}*player=\PYGZhy{}1
 
-\sphinxAtStartPar
-link\_variable         Can @link an exit to “variable”.
+link\PYGZus{}variable         Can @link an exit to \PYGZdq{}variable\PYGZdq{}.
 Rhost Equiv: Anyone can do this.  VARIABLE (@toggle)
 
-\sphinxAtStartPar
-link\_to\_anything      Can @link an exit to any (non\sphinxhyphen{}variable) destination.
+link\PYGZus{}to\PYGZus{}anything      Can @link an exit to any (non\PYGZhy{}variable) destination.
 Rhost Equiv: @lock/link (@lock)
 
-\sphinxAtStartPar
-long\_fingers          Can get, look, whisper, etc from a distance.
-Rhost Equiv: LONG\_FINGERS (@power)
+long\PYGZus{}fingers          Can get, look, whisper, etc from a distance.
+Rhost Equiv: LONG\PYGZus{}FINGERS (@power)
 
-\sphinxAtStartPar
-no\_destroy            Cannot be @toad’ed.
+no\PYGZus{}destroy            Cannot be @toad\PYGZsq{}ed.
 Rhost Equiv: INDESTRUCTABLE (flag)
 
-\sphinxAtStartPar
-open\_anywhere         Can @open an exit from any location.
+open\PYGZus{}anywhere         Can @open an exit from any location.
 Rhost Equiv: @lock/open (@lock)
 
-\sphinxAtStartPar
 poll                  Can set the @poll.
 Rhost has nothing equivelant.  Just softcode a +poll, or @hook it for permissions.
 
-\sphinxAtStartPar
 prog                  Can use @program on players other than themself.
 Rhost Equiv: PROG (@toggle)
 
-\sphinxAtStartPar
 search                Can @search anyone.
-Rhost Equiv: SEARCH\_ANY (@power)
+Rhost Equiv: SEARCH\PYGZus{}ANY (@power)
 
-\sphinxAtStartPar
-see\_all               Can examine and see attributes like a wizard.
-Rhost Equiv: EXAMINE\_FULL (@power) (and EXFULLWIZATTR (@toggle) for wiz only attribs)
+see\PYGZus{}all               Can examine and see attributes like a wizard.
+Rhost Equiv: EXAMINE\PYGZus{}FULL (@power) (and EXFULLWIZATTR (@toggle) for wiz only attribs)
 
-\sphinxAtStartPar
-see\_queue             Can @ps/all or @ps any player.
-Rhost Equiv: SEE\_QUEUE (@power) or SEE\_QUEUE\_ALL (@power)
+see\PYGZus{}queue             Can @ps/all or @ps any player.
+Rhost Equiv: SEE\PYGZus{}QUEUE (@power) or SEE\PYGZus{}QUEUE\PYGZus{}ALL (@power)
 
-\sphinxAtStartPar
-stat\_any              Can @stat any player.
-Rhost Equiv: STAT\_ANY (@power)
+stat\PYGZus{}any              Can @stat any player.
+Rhost Equiv: STAT\PYGZus{}ANY (@power)
 
-\sphinxAtStartPar
-steal\_money           Can give negative money.
+steal\PYGZus{}money           Can give negative money.
 Rhost Equiv: STEAL (@power)
 
-\sphinxAtStartPar
-tel\_anywhere          Can teleport anywhere.
-Rhost Equiv: TEL\_ANYWHERE (@power) or FULL\_TEL (@power)
+tel\PYGZus{}anywhere          Can teleport anywhere.
+Rhost Equiv: TEL\PYGZus{}ANYWHERE (@power) or FULL\PYGZus{}TEL (@power)
 
-\sphinxAtStartPar
-tel\_anything          Can teleport anything (includes tel\_anywhere)
-Rhost Equiv: TEL\_ANYTHING (@power)
+tel\PYGZus{}anything          Can teleport anything (includes tel\PYGZus{}anywhere)
+Rhost Equiv: TEL\PYGZus{}ANYTHING (@power)
 
-\sphinxAtStartPar
-unkillable            Cannot be killed with the ‘kill’ command.
+unkillable            Cannot be killed with the \PYGZsq{}kill\PYGZsq{} command.
 Rhost Equiv: NOKILL (@power)
 
-\sphinxAtStartPar
-use\_sql               Can call the SQL() function. (God\sphinxhyphen{}set only.)
+use\PYGZus{}sql               Can call the SQL() function. (God\PYGZhy{}set only.)
 Rhost Equiv: SQL is a 3rd party patch.
 
-\sphinxAtStartPar
-watch\_logins          Can set or reset the WATCHER flag on themselves.
+watch\PYGZus{}logins          Can set or reset the WATCHER flag on themselves.
 Rhost Equiv: MONITOR (@toggle)
+\end{sphinxVerbatim}
 
 
 \chapter{RhostMUSH Internal Help Files}

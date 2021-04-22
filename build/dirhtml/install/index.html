@@ -105,8 +105,8 @@
 <li><p><a class="reference internal" href="#three-options-for-starting-a-mush" id="id40">Three Options for Starting a MUSH</a></p>
 <ul>
 <li><p><a class="reference internal" href="#option-1-creating-a-new-game-with-a-blank-database" id="id41">Option 1: Creating a new game with a blank database</a></p></li>
-<li><p><a class="reference internal" href="#options-2-creating-a-new-game-with-ambrosia-s-default-database" id="id42">Options 2: Creating a new game with Ambrosia’s default database</a></p></li>
-<li><p><a class="reference internal" href="#option-3-creating-a-new-game-with-the-generic-default-database" id="id43">Option 3: Creating a new game with the generic default database</a></p></li>
+<li><p><a class="reference internal" href="#option-2-creating-a-new-game-with-the-generic-default-database" id="id42">Option 2: Creating a new game with the generic default database</a></p></li>
+<li><p><a class="reference internal" href="#option-3-creating-a-new-game-with-ambrosia-s-default-database" id="id43">Option 3: Creating a new game with Ambrosia’s default database</a></p></li>
 </ul>
 </li>
 </ul>
@@ -527,7 +527,10 @@ Manually:</p>
 </ol>
 <p>You only need to do this if you received the RhostMUSH src.  If you received a binary, continue on to the next part.</p>
 <p>To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand-edit the Makefile.</p>
-<p>After the compile process is done, type ‘make links’!</p>
+<p>After the compile process is done, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">links</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="loading-a-database-for-your-mush">
 <h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.7.2. </span>Loading a database for your MUSH</a><a class="headerlink" href="#loading-a-database-for-your-mush" title="Permalink to this headline">¶</a></h3>
@@ -569,68 +572,32 @@ Manually:</p>
 </div>
 <div class="section" id="customtize-the-textfiles-for-your-game">
 <h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.8. </span>Customtize the textfiles for your game</a><a class="headerlink" href="#customtize-the-textfiles-for-your-game" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a
+<p>All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a
 README file there that explains their purposes in more detail.  You can see more information on
 all files and how they inter-relate with ‘wizhelp file’.</p>
-</div></blockquote>
 </div>
 <div class="section" id="three-options-for-starting-a-mush">
 <h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9. </span>Three Options for Starting a MUSH</a><a class="headerlink" href="#three-options-for-starting-a-mush" title="Permalink to this headline">¶</a></h2>
 <p>The RhostMUSH Git Repository comes with three options for starting your Mush.</p>
 <div class="admonition-todo admonition" id="id8">
 <p class="admonition-title">Todo</p>
-<p>Well, there’s also some other pre-existing DB or upgrading, so let’s try to make this a little more coherent.</p>
+<p>Well, there’s also some other pre-existing DB, upgrading, and ansible so let’s try to make this a little more coherent.</p>
 </div>
 <div class="section" id="option-1-creating-a-new-game-with-a-blank-database">
 <h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.1. </span>Option 1: Creating a new game with a blank database</a><a class="headerlink" href="#option-1-creating-a-new-game-with-a-blank-database" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>Modify your ./game/netrhost.conf file or what settings you want.
+<p>Modify your ./game/netrhost.conf file or what settings you want.
 Don’t feel overwhelmed, it’s all very well documented.</p>
-</div></blockquote>
 </div>
-<div class="section" id="options-2-creating-a-new-game-with-ambrosia-s-default-database">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.2. </span>Options 2: Creating a new game with Ambrosia’s default database</a><a class="headerlink" href="#options-2-creating-a-new-game-with-ambrosia-s-default-database" title="Permalink to this headline">¶</a></h3>
-<p>Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README</p>
-<p>The netrhost.conf file you will copy is in minimal-DBs/Amb-MinimalRhost/game
-Copy this netrhost.conf file into your ‘game’ directory.</p>
-<p>You will want the custom txt files under Amb-MinimalRhost/txt in your game/txt directory and to mkindx all the txt files.  You can run ./Startmush -i to index.</p>
-<p>When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit &lt;RETURN&gt; to have it search for flatfiles, then select netrhost.db.flat from under the minimal-DBs/Amb-MinimalRhost directory.</p>
-<p>The main steps to make sure you do for ~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat – Ambrosia’s secure and featured minimal db</p>
-<ol class="arabic">
-<li><p>Use the matching netrhost.conf file under the Amb-MinimalRhost/game directory</p></li>
-<li><p>Load in the settings specified in the Amb-MinimalRhost/bin directory.</p>
-<ol class="arabic simple">
-<li><p>Copy this file into your ~/Server/bin directory</p></li>
-<li><p>From ‘Server’ directory type: make clean</p></li>
-<li><p>From ‘Server’ directory type: make confsource and ‘l’oad option 0</p></li>
-<li><p>Specify any -additional- options you want at this point.</p></li>
-<li><p>Recompile your code</p></li>
-</ol>
-</li>
-<li><p>Copy the files in Amb-MinimalRhost/game/txt into your ~/Server/game/txt directory</p></li>
-<li><p>from your ~/Server/game txt file run on each of the txt files:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">mkindx</span> <span class="o">&lt;</span><span class="n">txtfile</span><span class="o">&gt;.</span><span class="n">txt</span> <span class="o">&lt;</span><span class="n">txtfile</span><span class="o">&gt;.</span><span class="n">indx</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Where &lt;txtfile&gt; is the name of the file (minus the .txt extension)</p>
-</div>
-<ol class="arabic simple">
-<li><p>If running, &#64;reboot your game.</p></li>
-</ol>
-</div>
-<div class="section" id="option-3-creating-a-new-game-with-the-generic-default-database">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.3. </span>Option 3: Creating a new game with the generic default database</a><a class="headerlink" href="#option-3-creating-a-new-game-with-the-generic-default-database" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory.</p>
+<div class="section" id="option-2-creating-a-new-game-with-the-generic-default-database">
+<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.2. </span>Option 2: Creating a new game with the generic default database</a><a class="headerlink" href="#option-2-creating-a-new-game-with-the-generic-default-database" title="Permalink to this headline">¶</a></h3>
+<p>Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory.</p>
 <p>When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit &lt;RETURN&gt;
 to have it search for flatfiles, then select netrhost.db.flat from under
 the minimal-DBs/minimal_db directory.</p>
-</div></blockquote>
+</div>
+<div class="section" id="option-3-creating-a-new-game-with-ambrosia-s-default-database">
+<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.3. </span>Option 3: Creating a new game with Ambrosia’s default database</a><a class="headerlink" href="#option-3-creating-a-new-game-with-ambrosia-s-default-database" title="Permalink to this headline">¶</a></h3>
+<p>This option is covered in detail here: <a class="reference internal" href="../ambrosiadb/#ambrosiadb-installation"><span class="std std-ref">Ambrosia’s Minimal Rhost DB</span></a></p>
 </div>
 </div>
 </div>
@@ -701,8 +668,8 @@ the minimal-DBs/minimal_db directory.</p>
 <li><a class="reference internal" href="#customtize-the-textfiles-for-your-game">1.8. Customtize the textfiles for your game</a></li>
 <li><a class="reference internal" href="#three-options-for-starting-a-mush">1.9. Three Options for Starting a MUSH</a><ul>
 <li><a class="reference internal" href="#option-1-creating-a-new-game-with-a-blank-database">1.9.1. Option 1: Creating a new game with a blank database</a></li>
-<li><a class="reference internal" href="#options-2-creating-a-new-game-with-ambrosia-s-default-database">1.9.2. Options 2: Creating a new game with Ambrosia’s default database</a></li>
-<li><a class="reference internal" href="#option-3-creating-a-new-game-with-the-generic-default-database">1.9.3. Option 3: Creating a new game with the generic default database</a></li>
+<li><a class="reference internal" href="#option-2-creating-a-new-game-with-the-generic-default-database">1.9.2. Option 2: Creating a new game with the generic default database</a></li>
+<li><a class="reference internal" href="#option-3-creating-a-new-game-with-ambrosia-s-default-database">1.9.3. Option 3: Creating a new game with Ambrosia’s default database</a></li>
 </ul>
 </li>
 </ul>

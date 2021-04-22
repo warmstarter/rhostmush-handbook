@@ -1,6 +1,6 @@
 .\" Man page generated from reStructuredText.
 .
-.TH "RHOSTMUSHHANDBOOK" "1" "Apr 20, 2021" "0.01a" "RhostMUSH Handbook"
+.TH "RHOSTMUSHHANDBOOK" "1" "Apr 22, 2021" "0.01a" "RhostMUSH Handbook"
 .SH NAME
 rhostmushhandbook \- RhostMUSH Handbook 
 .
@@ -150,9 +150,9 @@ A lot more that could drag this document out for pages.
 .IP \(bu 2
 \fI\%Option 1: Creating a new game with a blank database\fP
 .IP \(bu 2
-\fI\%Options 2: Creating a new game with Ambrosia’s default database\fP
+\fI\%Option 2: Creating a new game with the generic default database\fP
 .IP \(bu 2
-\fI\%Option 3: Creating a new game with the generic default database\fP
+\fI\%Option 3: Creating a new game with Ambrosia’s default database\fP
 .UNINDENT
 .UNINDENT
 .SS RhostMUSH Requirements
@@ -732,7 +732,17 @@ You only need to do this if you received the RhostMUSH src.  If you received a b
 .sp
 To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand\-edit the Makefile.
 .sp
-After the compile process is done, type ‘make links’!
+After the compile process is done, type:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+make links
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Loading a database for your MUSH
 .sp
 You now have a choice of optionally starting at a provided database or starting from scratch.
@@ -791,13 +801,10 @@ Figure out what they were trying to say by having those above two sentences righ
 .UNINDENT
 .UNINDENT
 .SS Customtize the textfiles for your game
-.INDENT 0.0
-.INDENT 3.5
+.sp
 All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a
 README file there that explains their purposes in more detail.  You can see more information on
 all files and how they inter\-relate with ‘wizhelp file’.
-.UNINDENT
-.UNINDENT
 .SS Three Options for Starting a MUSH
 .sp
 The RhostMUSH Git Repository comes with three options for starting your Mush.
@@ -805,81 +812,23 @@ The RhostMUSH Git Repository comes with three options for starting your Mush.
 .INDENT 3.5
 .SS Todo
 .sp
-Well, there’s also some other pre\-existing DB or upgrading, so let’s try to make this a little more coherent.
+Well, there’s also some other pre\-existing DB, upgrading, and ansible so let’s try to make this a little more coherent.
 .UNINDENT
 .UNINDENT
 .SS Option 1: Creating a new game with a blank database
-.INDENT 0.0
-.INDENT 3.5
+.sp
 Modify your ./game/netrhost.conf file or what settings you want.
 Don’t feel overwhelmed, it’s all very well documented.
-.UNINDENT
-.UNINDENT
-.SS Options 2: Creating a new game with Ambrosia’s default database
+.SS Option 2: Creating a new game with the generic default database
 .sp
-Follow minimal\-DBs/Amb\-MinimalRhost/IMPORTANT_README
-.sp
-The netrhost.conf file you will copy is in minimal\-DBs/Amb\-MinimalRhost/game
-Copy this netrhost.conf file into your ‘game’ directory.
-.sp
-You will want the custom txt files under Amb\-MinimalRhost/txt in your game/txt directory and to mkindx all the txt files.  You can run ./Startmush \-i to index.
-.sp
-When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit <RETURN> to have it search for flatfiles, then select netrhost.db.flat from under the minimal\-DBs/Amb\-MinimalRhost directory.
-.sp
-The main steps to make sure you do for ~/Server/minimal\-DBs/Amb\-MinimalRhost/netrhost.db.flat – Ambrosia’s secure and featured minimal db
-.INDENT 0.0
-.IP 1. 3
-Use the matching netrhost.conf file under the Amb\-MinimalRhost/game directory
-.IP 2. 3
-Load in the settings specified in the Amb\-MinimalRhost/bin directory.
-.INDENT 3.0
-.IP 1. 3
-Copy this file into your ~/Server/bin directory
-.IP 2. 3
-From ‘Server’ directory type: make clean
-.IP 3. 3
-From ‘Server’ directory type: make confsource and ‘l’oad option 0
-.IP 4. 3
-Specify any \-additional\- options you want at this point.
-.IP 5. 3
-Recompile your code
-.UNINDENT
-.IP 3. 3
-Copy the files in Amb\-MinimalRhost/game/txt into your ~/Server/game/txt directory
-.IP 4. 3
-from your ~/Server/game txt file run on each of the txt files:
-.INDENT 3.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-\&../mkindx <txtfile>.txt <txtfile>.indx
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.UNINDENT
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Where <txtfile> is the name of the file (minus the .txt extension)
-.UNINDENT
-.UNINDENT
-.INDENT 0.0
-.IP 1. 3
-If running, @reboot your game.
-.UNINDENT
-.SS Option 3: Creating a new game with the generic default database
-.INDENT 0.0
-.INDENT 3.5
 Copy the netrhost.conf from minimal\-DBs/minimal_db to your game directory.
 .sp
 When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit <RETURN>
 to have it search for flatfiles, then select netrhost.db.flat from under
 the minimal\-DBs/minimal_db directory.
-.UNINDENT
-.UNINDENT
+.SS Option 3: Creating a new game with Ambrosia’s default database
+.sp
+This option is covered in detail here: ambrosiadb\-installation
 .SH WHAT RHOSTMUSH IS ABOUT AND WHAT’S SO GREAT ABOUT RHOSTMUSH
 .sp
 RhostMUSH was founded in 1989, originally by Natasha Davis (Nyctasia) and as
@@ -4320,11 +4269,12 @@ type:
 Startmush as expected
 .UNINDENT
 .SH AMBROSIA’S MINIMAL RHOST DB
-.SS Version: 1.0.5          2020\-01\-31
+.sp
+Version: 1.0.5          2020\-01\-31
+.SS Version history
 .INDENT 0.0
-.TP
-.B Version history:
-.INDENT 7.0
+.INDENT 3.5
+.INDENT 0.0
 .TP
 .B 1.0.0
 .INDENT 7.0
@@ -4400,6 +4350,7 @@ Made @dump and @dump/flat available to Councilors in netrhost.conf
 .IP \(bu 2
 A small typo fix in netrhost.conf. float_preciiosn \-> precision and
 functions_max \-> function_max. Thanks to \fI\%Bobbi@COH\fP
+.UNINDENT
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -9024,100 +8975,108 @@ T}
 _
 .TE
 .SH COMPARISON OF POWERS
+.INDENT 0.0
+.INDENT 3.5
 .sp
+.nf
+.ft C
 announce              Can use the @wall command.
 Rhost Equiv: \- FREE_WALL (@power)
-.sp
+
 boot                  Can use the @boot command.
 Rhost Equiv: BOOT (@power)
-.sp
+
 builder               Can build, if the builder power is enabled.
 Rhost Equiv: ARCHITECT (flag)
-.sp
+
 chown_anything        Can @chown anything to anyone.
 Rhost Equiv: CHOWN_OTHER (@power)
-.sp
+
 comm_all              Like a wizard with respect to channels.
 Rhost has no hardcoded comsystem.  You can tweek the softcode.
-.sp
+
 control_all           Can modify any object in the database. (God\-set only.)
 Rhost Equiv: TwinkLock (@lock)
-.sp
+
 expanded_who          Sees the wizard WHO, and SESSION commands.
 Rhost Equiv: WIZ_WHO (@power)
-.sp
+
 find_unfindable       Can locate unfindable people.
 see_hidden            Can see hidden (DARK) players on WHO, etc.
 Rhost Equiv: WHO_UNFIND (@power)
-.sp
+
 free_money            Unlimited money.
 Rhost Equiv: FREE (flag)
-.sp
+
 free_quota            Unlimited quota.
 Rhost Equiv: FREE_QUOTA (@power)
-.sp
+
 guest                 Is this a guest character?
 Rhost Equiv: GUEST (flag)
-.sp
+
 halt                  Can @halt anything, and @halt/all.
 Rhost Equiv: HALT_QUEUE (@power) or HALT_QUEUE_ALL (@power)
-.sp
+
 hide                  Can set themselves DARK.
 Rhost Equiv: NOWHO (@power)
-.sp
+
 idle                  No idle timeout.
-Rhost Equiv: @timeout *player=\-1
-.sp
-link_variable         Can @link an exit to “variable”.
+Rhost Equiv: @timeout \e*player=\-1
+
+link_variable         Can @link an exit to "variable".
 Rhost Equiv: Anyone can do this.  VARIABLE (@toggle)
-.sp
+
 link_to_anything      Can @link an exit to any (non\-variable) destination.
 Rhost Equiv: @lock/link (@lock)
-.sp
+
 long_fingers          Can get, look, whisper, etc from a distance.
 Rhost Equiv: LONG_FINGERS (@power)
-.sp
-no_destroy            Cannot be @toad’ed.
+
+no_destroy            Cannot be @toad\(aqed.
 Rhost Equiv: INDESTRUCTABLE (flag)
-.sp
+
 open_anywhere         Can @open an exit from any location.
 Rhost Equiv: @lock/open (@lock)
-.sp
+
 poll                  Can set the @poll.
 Rhost has nothing equivelant.  Just softcode a +poll, or @hook it for permissions.
-.sp
+
 prog                  Can use @program on players other than themself.
 Rhost Equiv: PROG (@toggle)
-.sp
+
 search                Can @search anyone.
 Rhost Equiv: SEARCH_ANY (@power)
-.sp
+
 see_all               Can examine and see attributes like a wizard.
 Rhost Equiv: EXAMINE_FULL (@power) (and EXFULLWIZATTR (@toggle) for wiz only attribs)
-.sp
+
 see_queue             Can @ps/all or @ps any player.
 Rhost Equiv: SEE_QUEUE (@power) or SEE_QUEUE_ALL (@power)
-.sp
+
 stat_any              Can @stat any player.
 Rhost Equiv: STAT_ANY (@power)
-.sp
+
 steal_money           Can give negative money.
 Rhost Equiv: STEAL (@power)
-.sp
+
 tel_anywhere          Can teleport anywhere.
 Rhost Equiv: TEL_ANYWHERE (@power) or FULL_TEL (@power)
-.sp
+
 tel_anything          Can teleport anything (includes tel_anywhere)
 Rhost Equiv: TEL_ANYTHING (@power)
-.sp
-unkillable            Cannot be killed with the ‘kill’ command.
+
+unkillable            Cannot be killed with the \(aqkill\(aq command.
 Rhost Equiv: NOKILL (@power)
-.sp
+
 use_sql               Can call the SQL() function. (God\-set only.)
 Rhost Equiv: SQL is a 3rd party patch.
-.sp
+
 watch_logins          Can set or reset the WATCHER flag on themselves.
 Rhost Equiv: MONITOR (@toggle)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SH RHOSTMUSH INTERNAL HELP FILES
 .SH RHOSTMUSH INTERNAL WIZHELP FILES
 .SH HISTORICAL NON-DISCLOSURE AGREEMENT

@@ -13,135 +13,132 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
     <substitution_definition names="plusminus" rtrim="1">±</substitution_definition>
     <substitution_definition names="micro" rtrim="1">µ</substitution_definition>
     <substitution_definition ltrim="1" names="sup2">²</substitution_definition>
-    <section ids="ambrosia-s-minimal-rhost-db" names="ambrosia's\ minimal\ rhost\ db">
+    <target refid="ambrosiadb-installation"></target>
+    <section ids="ambrosia-s-minimal-rhost-db ambrosiadb-installation" names="ambrosia's\ minimal\ rhost\ db ambrosiadb-installation">
         <title>Ambrosia’s Minimal Rhost DB</title>
-        <section ids="version-1-0-5-2020-01-31" names="version:\ 1.0.5\ 2020-01-31">
-            <title>Version: 1.0.5          2020-01-31</title>
-            <definition_list>
-                <definition_list_item>
-                    <term>Version history:</term>
-                    <definition>
-                        <definition_list>
-                            <definition_list_item>
-                                <term>1.0.0</term>
-                                <definition>
-                                    <bullet_list bullet="-">
-                                        <list_item>
-                                            <paragraph>Initial database setup.</paragraph>
-                                        </list_item>
-                                    </bullet_list>
-                                </definition>
-                            </definition_list_item>
-                            <definition_list_item>
-                                <term>1.0.1</term>
-                                <definition>
-                                    <bullet_list bullet="-">
-                                        <list_item>
-                                            <paragraph>Small fixes of objid(), isstaff() and bccheck() permissions and handling.</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>bittype() access lowered to Architect level</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>NO_CODE flag made visual to Architect</paragraph>
-                                        </list_item>
-                                    </bullet_list>
-                                </definition>
-                            </definition_list_item>
-                            <definition_list_item>
-                                <term>1.0.2</term>
-                                <definition>
-                                    <bullet_list bullet="-">
-                                        <list_item>
-                                            <paragraph>Several convenience changes and fixes: _ Attributes moved to @aflags
-                                                system, allowing Architects to set, Guildmasters to see them.</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>@flagdef lowered to Royalty level. @quota/max, @quota/unlock and @convert
-                                                moved to Architect level.</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>NO_CODE flag made settable/unsettable by Architects.</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>Fixed typo in conf file: ifselse -&gt; ifelse</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>Switched _Attributes to use the @aflags system
-                                                See: Guildmaster
-                                                Set: Architect</paragraph>
-                                        </list_item>
-                                    </bullet_list>
-                                </definition>
-                            </definition_list_item>
-                            <definition_list_item>
-                                <term>1.0.3</term>
-                                <definition>
-                                    <bullet_list bullet="-">
-                                        <list_item>
-                                            <paragraph>Removed @flagdefs from in-game softcode, converted to flag_access_*
-                                                config options</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>Lowered mailstatus() access to architect.</paragraph>
-                                        </list_item>
-                                    </bullet_list>
-                                </definition>
-                            </definition_list_item>
-                            <definition_list_item>
-                                <term>1.0.4</term>
-                                <definition>
-                                    <bullet_list bullet="-">
-                                        <list_item>
-                                            <paragraph>Changed softcoded objid() to tag(), due to Rhost’s new hardcoded
-                                                objid() which does perform a different functionality.</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>Added more staff recommendations to this file.</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>Added Reality TXLevel ‘Admin’ to all objects in the db except #1</paragraph>
-                                        </list_item>
-                                    </bullet_list>
-                                </definition>
-                            </definition_list_item>
-                            <definition_list_item>
-                                <term>1.0.5</term>
-                                <definition>
-                                    <bullet_list bullet="-">
-                                        <list_item>
-                                            <paragraph>Replaced softcoded tag() system with Rhost’s new hardcoded @tag/tag()
-                                                system. All previous tags are set on the database. The Tag Object
-                                                was removed.</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>@function startup on BC-Admin-Royalty fixed - @wait 1 workaround for
-                                                Tags in place.</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>Places System @startup integrated into BC-Admin-Royalty’s @startup</paragraph>
-                                        </list_item>
-                                        <list_item>
-                                            <paragraph>Made @dump and @dump/flat available to Councilors in netrhost.conf</paragraph>
-                                        </list_item>
-                                    </bullet_list>
-                                </definition>
-                            </definition_list_item>
-                            <definition_list_item>
-                                <term>1.0.6</term>
-                                <definition>
-                                    <bullet_list bullet="-">
-                                        <list_item>
-                                            <paragraph>A small typo fix in netrhost.conf. float_preciiosn -&gt; precision and
-                                                functions_max -&gt; function_max. Thanks to <reference refuri="mailto:Bobbi@COH">Bobbi@COH</reference></paragraph>
-                                        </list_item>
-                                    </bullet_list>
-                                </definition>
-                            </definition_list_item>
-                        </definition_list>
-                    </definition>
-                </definition_list_item>
-            </definition_list>
+        <paragraph>Version: 1.0.5          2020-01-31</paragraph>
+        <section ids="version-history" names="version\ history">
+            <title>Version history</title>
+            <block_quote>
+                <definition_list>
+                    <definition_list_item>
+                        <term>1.0.0</term>
+                        <definition>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>Initial database setup.</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </definition>
+                    </definition_list_item>
+                    <definition_list_item>
+                        <term>1.0.1</term>
+                        <definition>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>Small fixes of objid(), isstaff() and bccheck() permissions and handling.</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>bittype() access lowered to Architect level</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>NO_CODE flag made visual to Architect</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </definition>
+                    </definition_list_item>
+                    <definition_list_item>
+                        <term>1.0.2</term>
+                        <definition>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>Several convenience changes and fixes: _ Attributes moved to @aflags
+                                        system, allowing Architects to set, Guildmasters to see them.</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>@flagdef lowered to Royalty level. @quota/max, @quota/unlock and @convert
+                                        moved to Architect level.</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>NO_CODE flag made settable/unsettable by Architects.</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>Fixed typo in conf file: ifselse -&gt; ifelse</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>Switched _Attributes to use the @aflags system
+                                        See: Guildmaster
+                                        Set: Architect</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </definition>
+                    </definition_list_item>
+                    <definition_list_item>
+                        <term>1.0.3</term>
+                        <definition>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>Removed @flagdefs from in-game softcode, converted to flag_access_*
+                                        config options</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>Lowered mailstatus() access to architect.</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </definition>
+                    </definition_list_item>
+                    <definition_list_item>
+                        <term>1.0.4</term>
+                        <definition>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>Changed softcoded objid() to tag(), due to Rhost’s new hardcoded
+                                        objid() which does perform a different functionality.</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>Added more staff recommendations to this file.</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>Added Reality TXLevel ‘Admin’ to all objects in the db except #1</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </definition>
+                    </definition_list_item>
+                    <definition_list_item>
+                        <term>1.0.5</term>
+                        <definition>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>Replaced softcoded tag() system with Rhost’s new hardcoded @tag/tag()
+                                        system. All previous tags are set on the database. The Tag Object
+                                        was removed.</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>@function startup on BC-Admin-Royalty fixed - @wait 1 workaround for
+                                        Tags in place.</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>Places System @startup integrated into BC-Admin-Royalty’s @startup</paragraph>
+                                </list_item>
+                                <list_item>
+                                    <paragraph>Made @dump and @dump/flat available to Councilors in netrhost.conf</paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </definition>
+                    </definition_list_item>
+                    <definition_list_item>
+                        <term>1.0.6</term>
+                        <definition>
+                            <bullet_list bullet="-">
+                                <list_item>
+                                    <paragraph>A small typo fix in netrhost.conf. float_preciiosn -&gt; precision and
+                                        functions_max -&gt; function_max. Thanks to <reference refuri="mailto:Bobbi@COH">Bobbi@COH</reference></paragraph>
+                                </list_item>
+                            </bullet_list>
+                        </definition>
+                    </definition_list_item>
+                </definition_list>
+            </block_quote>
         </section>
         <section ids="ambrosiadb-introduction" names="ambrosiadb\ introduction">
             <title>AmbrosiaDB Introduction</title>
@@ -428,38 +425,38 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                     order to shut down the game for maintenance, up to being the
                     only person with actual access to #1.</paragraph>
             </section>
-            <section ids="ambrosiadb-globals" names="ambrosiadb\ globals">
-                <title>AmbrosiaDB Globals</title>
-                <paragraph>Handle necessary functionality for adminning through the admin-only globals and
-                    softcode.</paragraph>
-                <paragraph>The setup I personally suggest is to have ALL staffers be AT MAX Architect-level
-                    for everyday work and communication, with special coders that -really- require
-                    it having Councilor-characters available to log into for maintenance or special
-                    code setup. Technically if everything is done right, the Coder(s) of the game do
-                    not require higher privileges than Architect for the vast majority of things.
-                    Royalty-level code should be a rare exception, if at all necessary. The MU*
-                    Head(s) or site-admin should be the only one having access to #1, Immortals or
-                    perhaps even Royalty. The BC’s, Global Function objects and Function objects at
-                    level Royalty and higher have simply been provided as a if-necessary convenience.</paragraph>
-                <paragraph>Current objects are only @chowned to certain bitlevels if it is really required
-                    for them to function. Whenever possible, they have been @chowned to the mortal
-                    BC-Admin-Mortal. All custom global functions listed above are on the semi-
-                    -mortal Global Functions object. The Master Room and Auxiliary Room have been
-                    @chowned to BC-Admin-Architect.</paragraph>
-                <paragraph>The Comsystem and +bboard are owned by BC-Admin-Architect, which means that
-                    higher bitlevels might not be able to use those systems if they hide and set
-                    themselves DARK. This is intentional. The Architect bitlevel is enough to freely
-                    set attributes on players, so these systems did not need anything higher, and
-                    it prioritizes Councilor+ as mere mainenance-duty bitlevels. Even the MU* Head
-                    should log on as an Architect for everyday things.</paragraph>
-                <paragraph>The Comsystem and BBOARD have been modified to be configurable by Architect and
-                    higher. Both systems have a CANUSE attribute with the according code on them.
-                    Note that if you want both systems to be only configurable by Councilor+, that
-                    instead of @chowning them to a Councilor after changing those attribute for
-                    Councilor or higher, I suggest to simply @set the bboard and comsystem core
-                    objects NO_MODIFY instead, keeping them at Architect-power but making them
-                    unmodifyable by Architects.</paragraph>
-            </section>
+        </section>
+        <section ids="ambrosiadb-globals" names="ambrosiadb\ globals">
+            <title>AmbrosiaDB Globals</title>
+            <paragraph>Handle necessary functionality for adminning through the admin-only globals and
+                softcode.</paragraph>
+            <paragraph>The setup I personally suggest is to have ALL staffers be AT MAX Architect-level
+                for everyday work and communication, with special coders that -really- require
+                it having Councilor-characters available to log into for maintenance or special
+                code setup. Technically if everything is done right, the Coder(s) of the game do
+                not require higher privileges than Architect for the vast majority of things.
+                Royalty-level code should be a rare exception, if at all necessary. The MU*
+                Head(s) or site-admin should be the only one having access to #1, Immortals or
+                perhaps even Royalty. The BC’s, Global Function objects and Function objects at
+                level Royalty and higher have simply been provided as a if-necessary convenience.</paragraph>
+            <paragraph>Current objects are only @chowned to certain bitlevels if it is really required
+                for them to function. Whenever possible, they have been @chowned to the mortal
+                BC-Admin-Mortal. All custom global functions listed above are on the semi-
+                -mortal Global Functions object. The Master Room and Auxiliary Room have been
+                @chowned to BC-Admin-Architect.</paragraph>
+            <paragraph>The Comsystem and +bboard are owned by BC-Admin-Architect, which means that
+                higher bitlevels might not be able to use those systems if they hide and set
+                themselves DARK. This is intentional. The Architect bitlevel is enough to freely
+                set attributes on players, so these systems did not need anything higher, and
+                it prioritizes Councilor+ as mere mainenance-duty bitlevels. Even the MU* Head
+                should log on as an Architect for everyday things.</paragraph>
+            <paragraph>The Comsystem and BBOARD have been modified to be configurable by Architect and
+                higher. Both systems have a CANUSE attribute with the according code on them.
+                Note that if you want both systems to be only configurable by Councilor+, that
+                instead of @chowning them to a Councilor after changing those attribute for
+                Councilor or higher, I suggest to simply @set the bboard and comsystem core
+                objects NO_MODIFY instead, keeping them at Architect-power but making them
+                unmodifyable by Architects.</paragraph>
         </section>
         <section ids="ambrosiadb-quota" names="ambrosiadb\ quota">
             <title>AmbrosiaDB Quota</title>

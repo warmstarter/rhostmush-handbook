@@ -124,8 +124,8 @@ which, as you know, is the best part of setting up a mush.
 <li><p><a class="reference internal" href="#three-options-for-starting-a-mush" id="id40">Three Options for Starting a MUSH</a></p>
 <ul>
 <li><p><a class="reference internal" href="#option-1-creating-a-new-game-with-a-blank-database" id="id41">Option 1: Creating a new game with a blank database</a></p></li>
-<li><p><a class="reference internal" href="#options-2-creating-a-new-game-with-ambrosia-s-default-database" id="id42">Options 2: Creating a new game with Ambrosia’s default database</a></p></li>
-<li><p><a class="reference internal" href="#option-3-creating-a-new-game-with-the-generic-default-database" id="id43">Option 3: Creating a new game with the generic default database</a></p></li>
+<li><p><a class="reference internal" href="#option-2-creating-a-new-game-with-the-generic-default-database" id="id42">Option 2: Creating a new game with the generic default database</a></p></li>
+<li><p><a class="reference internal" href="#option-3-creating-a-new-game-with-ambrosia-s-default-database" id="id43">Option 3: Creating a new game with Ambrosia’s default database</a></p></li>
 </ul>
 </li>
 </ul>
@@ -546,7 +546,10 @@ Manually:</p>
 </ol>
 <p>You only need to do this if you received the RhostMUSH src.  If you received a binary, continue on to the next part.</p>
 <p>To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand-edit the Makefile.</p>
-<p>After the compile process is done, type ‘make links’!</p>
+<p>After the compile process is done, type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">links</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="loading-a-database-for-your-mush">
 <h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.7.2. </span>Loading a database for your MUSH</a><a class="headerlink" href="#loading-a-database-for-your-mush" title="Permalink to this headline">¶</a></h4>
@@ -588,68 +591,32 @@ Manually:</p>
 </div>
 <div class="section" id="customtize-the-textfiles-for-your-game">
 <h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.8. </span>Customtize the textfiles for your game</a><a class="headerlink" href="#customtize-the-textfiles-for-your-game" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a
+<p>All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a
 README file there that explains their purposes in more detail.  You can see more information on
 all files and how they inter-relate with ‘wizhelp file’.</p>
-</div></blockquote>
 </div>
 <div class="section" id="three-options-for-starting-a-mush">
 <h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9. </span>Three Options for Starting a MUSH</a><a class="headerlink" href="#three-options-for-starting-a-mush" title="Permalink to this headline">¶</a></h3>
 <p>The RhostMUSH Git Repository comes with three options for starting your Mush.</p>
 <div class="admonition-todo admonition" id="id8">
 <p class="admonition-title">Todo</p>
-<p>Well, there’s also some other pre-existing DB or upgrading, so let’s try to make this a little more coherent.</p>
+<p>Well, there’s also some other pre-existing DB, upgrading, and ansible so let’s try to make this a little more coherent.</p>
 </div>
 <div class="section" id="option-1-creating-a-new-game-with-a-blank-database">
 <h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.1. </span>Option 1: Creating a new game with a blank database</a><a class="headerlink" href="#option-1-creating-a-new-game-with-a-blank-database" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><p>Modify your ./game/netrhost.conf file or what settings you want.
+<p>Modify your ./game/netrhost.conf file or what settings you want.
 Don’t feel overwhelmed, it’s all very well documented.</p>
-</div></blockquote>
 </div>
-<div class="section" id="options-2-creating-a-new-game-with-ambrosia-s-default-database">
-<h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.2. </span>Options 2: Creating a new game with Ambrosia’s default database</a><a class="headerlink" href="#options-2-creating-a-new-game-with-ambrosia-s-default-database" title="Permalink to this headline">¶</a></h4>
-<p>Follow minimal-DBs/Amb-MinimalRhost/IMPORTANT_README</p>
-<p>The netrhost.conf file you will copy is in minimal-DBs/Amb-MinimalRhost/game
-Copy this netrhost.conf file into your ‘game’ directory.</p>
-<p>You will want the custom txt files under Amb-MinimalRhost/txt in your game/txt directory and to mkindx all the txt files.  You can run ./Startmush -i to index.</p>
-<p>When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit &lt;RETURN&gt; to have it search for flatfiles, then select netrhost.db.flat from under the minimal-DBs/Amb-MinimalRhost directory.</p>
-<p>The main steps to make sure you do for ~/Server/minimal-DBs/Amb-MinimalRhost/netrhost.db.flat – Ambrosia’s secure and featured minimal db</p>
-<ol class="arabic">
-<li><p>Use the matching netrhost.conf file under the Amb-MinimalRhost/game directory</p></li>
-<li><p>Load in the settings specified in the Amb-MinimalRhost/bin directory.</p>
-<ol class="arabic simple">
-<li><p>Copy this file into your ~/Server/bin directory</p></li>
-<li><p>From ‘Server’ directory type: make clean</p></li>
-<li><p>From ‘Server’ directory type: make confsource and ‘l’oad option 0</p></li>
-<li><p>Specify any -additional- options you want at this point.</p></li>
-<li><p>Recompile your code</p></li>
-</ol>
-</li>
-<li><p>Copy the files in Amb-MinimalRhost/game/txt into your ~/Server/game/txt directory</p></li>
-<li><p>from your ~/Server/game txt file run on each of the txt files:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">../</span><span class="n">mkindx</span> <span class="o">&lt;</span><span class="n">txtfile</span><span class="o">&gt;.</span><span class="n">txt</span> <span class="o">&lt;</span><span class="n">txtfile</span><span class="o">&gt;.</span><span class="n">indx</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Where &lt;txtfile&gt; is the name of the file (minus the .txt extension)</p>
-</div>
-<ol class="arabic simple">
-<li><p>If running, &#64;reboot your game.</p></li>
-</ol>
-</div>
-<div class="section" id="option-3-creating-a-new-game-with-the-generic-default-database">
-<h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.3. </span>Option 3: Creating a new game with the generic default database</a><a class="headerlink" href="#option-3-creating-a-new-game-with-the-generic-default-database" title="Permalink to this headline">¶</a></h4>
-<blockquote>
-<div><p>Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory.</p>
+<div class="section" id="option-2-creating-a-new-game-with-the-generic-default-database">
+<h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.2. </span>Option 2: Creating a new game with the generic default database</a><a class="headerlink" href="#option-2-creating-a-new-game-with-the-generic-default-database" title="Permalink to this headline">¶</a></h4>
+<p>Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory.</p>
 <p>When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit &lt;RETURN&gt;
 to have it search for flatfiles, then select netrhost.db.flat from under
 the minimal-DBs/minimal_db directory.</p>
-</div></blockquote>
+</div>
+<div class="section" id="option-3-creating-a-new-game-with-ambrosia-s-default-database">
+<h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.3. </span>Option 3: Creating a new game with Ambrosia’s default database</a><a class="headerlink" href="#option-3-creating-a-new-game-with-ambrosia-s-default-database" title="Permalink to this headline">¶</a></h4>
+<p>This option is covered in detail here: <a class="reference internal" href="index.html#ambrosiadb-installation"><span class="std std-ref">Ambrosia’s Minimal Rhost DB</span></a></p>
 </div>
 </div>
 </div>
@@ -3485,11 +3452,12 @@ no changes depending on the complexity of the code in question.</p>
 </div>
 </div>
 <span id="document-ambrosiadb"></span><div class="section" id="ambrosia-s-minimal-rhost-db">
-<h2><span class="section-number">6. </span>Ambrosia’s Minimal Rhost DB<a class="headerlink" href="#ambrosia-s-minimal-rhost-db" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="version-1-0-5-2020-01-31">
-<h3><span class="section-number">6.1. </span>Version: 1.0.5          2020-01-31<a class="headerlink" href="#version-1-0-5-2020-01-31" title="Permalink to this headline">¶</a></h3>
-<dl class="simple">
-<dt>Version history:</dt><dd><dl class="simple">
+<span id="ambrosiadb-installation"></span><h2><span class="section-number">6. </span>Ambrosia’s Minimal Rhost DB<a class="headerlink" href="#ambrosia-s-minimal-rhost-db" title="Permalink to this headline">¶</a></h2>
+<p>Version: 1.0.5          2020-01-31</p>
+<div class="section" id="version-history">
+<h3><span class="section-number">6.1. </span>Version history<a class="headerlink" href="#version-history" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="simple">
 <dt>1.0.0</dt><dd><ul class="simple">
 <li><p>Initial database setup.</p></li>
 </ul>
@@ -3541,8 +3509,7 @@ functions_max -&gt; function_max. Thanks to <a class="reference external" href="
 </ul>
 </dd>
 </dl>
-</dd>
-</dl>
+</div></blockquote>
 </div>
 <div class="section" id="ambrosiadb-introduction">
 <h3><span class="section-number">6.2. </span>AmbrosiaDB Introduction<a class="headerlink" href="#ambrosiadb-introduction" title="Permalink to this headline">¶</a></h3>
@@ -3752,8 +3719,9 @@ notifying players of downtimes and/or being &#64;powered shutdown in
 order to shut down the game for maintenance, up to being the
 only person with actual access to #1.</p>
 </div>
+</div>
 <div class="section" id="ambrosiadb-globals">
-<h4><span class="section-number">6.4.9. </span>AmbrosiaDB Globals<a class="headerlink" href="#ambrosiadb-globals" title="Permalink to this headline">¶</a></h4>
+<h3><span class="section-number">6.5. </span>AmbrosiaDB Globals<a class="headerlink" href="#ambrosiadb-globals" title="Permalink to this headline">¶</a></h3>
 <p>Handle necessary functionality for adminning through the admin-only globals and
 softcode.</p>
 <p>The setup I personally suggest is to have ALL staffers be AT MAX Architect-level
@@ -3784,23 +3752,22 @@ Councilor or higher, I suggest to simply &#64;set the bboard and comsystem core
 objects NO_MODIFY instead, keeping them at Architect-power but making them
 unmodifyable by Architects.</p>
 </div>
-</div>
 <div class="section" id="ambrosiadb-quota">
-<h3><span class="section-number">6.5. </span>AmbrosiaDB Quota<a class="headerlink" href="#ambrosiadb-quota" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.6. </span>AmbrosiaDB Quota<a class="headerlink" href="#ambrosiadb-quota" title="Permalink to this headline">¶</a></h3>
 <p>I highly recommend the use of the alternative &#64;quota system. BC-Admin-Mortal
 and BC-Admin-Guildmaster both have this &#64;quota system set up on themselves. Both
 of them have a high amount of money for everyday operations. You should not give
 them free quota or money.</p>
 </div>
 <div class="section" id="ambrosiadb-adding-functions">
-<h3><span class="section-number">6.6. </span>AmbrosiaDB Adding Functions<a class="headerlink" href="#ambrosiadb-adding-functions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.7. </span>AmbrosiaDB Adding Functions<a class="headerlink" href="#ambrosiadb-adding-functions" title="Permalink to this headline">¶</a></h3>
 <p>I also recommend to setup most global functions with /Privileged even if they
 are mortal-powered, to make them work even when players are set NO_CODE and
 WANDERER by default.</p>
 <p>Enjoy!</p>
 </div>
 <div class="section" id="ambrosiadb-compiling">
-<h3><span class="section-number">6.7. </span>AmbrosiaDB Compiling<a class="headerlink" href="#ambrosiadb-compiling" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">6.8. </span>AmbrosiaDB Compiling<a class="headerlink" href="#ambrosiadb-compiling" title="Permalink to this headline">¶</a></h3>
 <p>P.S. the ‘bin/asksource.save0’ file has been supplied for loading in the
 ‘make config’ or ‘make confsource’ step of Rhost installation. It provides the
 settings I have used when creating this database. Some settings, like the ANSI
@@ -6887,69 +6854,101 @@ builder script to build in the mysql changes.</p></li>
 </div>
 <span id="document-powers"></span><div class="section" id="comparison-of-powers">
 <h2><span class="section-number">17. </span>Comparison of powers<a class="headerlink" href="#comparison-of-powers" title="Permalink to this headline">¶</a></h2>
-<p>announce              Can use the &#64;wall command.
-Rhost Equiv: - FREE_WALL (&#64;power)</p>
-<p>boot                  Can use the &#64;boot command.
-Rhost Equiv: BOOT (&#64;power)</p>
-<p>builder               Can build, if the builder power is enabled.
-Rhost Equiv: ARCHITECT (flag)</p>
-<p>chown_anything        Can &#64;chown anything to anyone.
-Rhost Equiv: CHOWN_OTHER (&#64;power)</p>
-<p>comm_all              Like a wizard with respect to channels.
-Rhost has no hardcoded comsystem.  You can tweek the softcode.</p>
-<p>control_all           Can modify any object in the database. (God-set only.)
-Rhost Equiv: TwinkLock (&#64;lock)</p>
-<p>expanded_who          Sees the wizard WHO, and SESSION commands.
-Rhost Equiv: WIZ_WHO (&#64;power)</p>
-<p>find_unfindable       Can locate unfindable people.
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>announce              Can use the @wall command.
+Rhost Equiv: - FREE_WALL (@power)
+
+boot                  Can use the @boot command.
+Rhost Equiv: BOOT (@power)
+
+builder               Can build, if the builder power is enabled.
+Rhost Equiv: ARCHITECT (flag)
+
+chown_anything        Can @chown anything to anyone.
+Rhost Equiv: CHOWN_OTHER (@power)
+
+comm_all              Like a wizard with respect to channels.
+Rhost has no hardcoded comsystem.  You can tweek the softcode.
+
+control_all           Can modify any object in the database. (God-set only.)
+Rhost Equiv: TwinkLock (@lock)
+
+expanded_who          Sees the wizard WHO, and SESSION commands.
+Rhost Equiv: WIZ_WHO (@power)
+
+find_unfindable       Can locate unfindable people.
 see_hidden            Can see hidden (DARK) players on WHO, etc.
-Rhost Equiv: WHO_UNFIND (&#64;power)</p>
-<p>free_money            Unlimited money.
-Rhost Equiv: FREE (flag)</p>
-<p>free_quota            Unlimited quota.
-Rhost Equiv: FREE_QUOTA (&#64;power)</p>
-<p>guest                 Is this a guest character?
-Rhost Equiv: GUEST (flag)</p>
-<p>halt                  Can &#64;halt anything, and &#64;halt/all.
-Rhost Equiv: HALT_QUEUE (&#64;power) or HALT_QUEUE_ALL (&#64;power)</p>
-<p>hide                  Can set themselves DARK.
-Rhost Equiv: NOWHO (&#64;power)</p>
-<p>idle                  No idle timeout.
-Rhost Equiv: &#64;timeout *player=-1</p>
-<p>link_variable         Can &#64;link an exit to “variable”.
-Rhost Equiv: Anyone can do this.  VARIABLE (&#64;toggle)</p>
-<p>link_to_anything      Can &#64;link an exit to any (non-variable) destination.
-Rhost Equiv: &#64;lock/link (&#64;lock)</p>
-<p>long_fingers          Can get, look, whisper, etc from a distance.
-Rhost Equiv: LONG_FINGERS (&#64;power)</p>
-<p>no_destroy            Cannot be &#64;toad’ed.
-Rhost Equiv: INDESTRUCTABLE (flag)</p>
-<p>open_anywhere         Can &#64;open an exit from any location.
-Rhost Equiv: &#64;lock/open (&#64;lock)</p>
-<p>poll                  Can set the &#64;poll.
-Rhost has nothing equivelant.  Just softcode a +poll, or &#64;hook it for permissions.</p>
-<p>prog                  Can use &#64;program on players other than themself.
-Rhost Equiv: PROG (&#64;toggle)</p>
-<p>search                Can &#64;search anyone.
-Rhost Equiv: SEARCH_ANY (&#64;power)</p>
-<p>see_all               Can examine and see attributes like a wizard.
-Rhost Equiv: EXAMINE_FULL (&#64;power) (and EXFULLWIZATTR (&#64;toggle) for wiz only attribs)</p>
-<p>see_queue             Can &#64;ps/all or &#64;ps any player.
-Rhost Equiv: SEE_QUEUE (&#64;power) or SEE_QUEUE_ALL (&#64;power)</p>
-<p>stat_any              Can &#64;stat any player.
-Rhost Equiv: STAT_ANY (&#64;power)</p>
-<p>steal_money           Can give negative money.
-Rhost Equiv: STEAL (&#64;power)</p>
-<p>tel_anywhere          Can teleport anywhere.
-Rhost Equiv: TEL_ANYWHERE (&#64;power) or FULL_TEL (&#64;power)</p>
-<p>tel_anything          Can teleport anything (includes tel_anywhere)
-Rhost Equiv: TEL_ANYTHING (&#64;power)</p>
-<p>unkillable            Cannot be killed with the ‘kill’ command.
-Rhost Equiv: NOKILL (&#64;power)</p>
-<p>use_sql               Can call the SQL() function. (God-set only.)
-Rhost Equiv: SQL is a 3rd party patch.</p>
-<p>watch_logins          Can set or reset the WATCHER flag on themselves.
-Rhost Equiv: MONITOR (&#64;toggle)</p>
+Rhost Equiv: WHO_UNFIND (@power)
+
+free_money            Unlimited money.
+Rhost Equiv: FREE (flag)
+
+free_quota            Unlimited quota.
+Rhost Equiv: FREE_QUOTA (@power)
+
+guest                 Is this a guest character?
+Rhost Equiv: GUEST (flag)
+
+halt                  Can @halt anything, and @halt/all.
+Rhost Equiv: HALT_QUEUE (@power) or HALT_QUEUE_ALL (@power)
+
+hide                  Can set themselves DARK.
+Rhost Equiv: NOWHO (@power)
+
+idle                  No idle timeout.
+Rhost Equiv: @timeout \*player=-1
+
+link_variable         Can @link an exit to &quot;variable&quot;.
+Rhost Equiv: Anyone can do this.  VARIABLE (@toggle)
+
+link_to_anything      Can @link an exit to any (non-variable) destination.
+Rhost Equiv: @lock/link (@lock)
+
+long_fingers          Can get, look, whisper, etc from a distance.
+Rhost Equiv: LONG_FINGERS (@power)
+
+no_destroy            Cannot be @toad&#39;ed.
+Rhost Equiv: INDESTRUCTABLE (flag)
+
+open_anywhere         Can @open an exit from any location.
+Rhost Equiv: @lock/open (@lock)
+
+poll                  Can set the @poll.
+Rhost has nothing equivelant.  Just softcode a +poll, or @hook it for permissions.
+
+prog                  Can use @program on players other than themself.
+Rhost Equiv: PROG (@toggle)
+
+search                Can @search anyone.
+Rhost Equiv: SEARCH_ANY (@power)
+
+see_all               Can examine and see attributes like a wizard.
+Rhost Equiv: EXAMINE_FULL (@power) (and EXFULLWIZATTR (@toggle) for wiz only attribs)
+
+see_queue             Can @ps/all or @ps any player.
+Rhost Equiv: SEE_QUEUE (@power) or SEE_QUEUE_ALL (@power)
+
+stat_any              Can @stat any player.
+Rhost Equiv: STAT_ANY (@power)
+
+steal_money           Can give negative money.
+Rhost Equiv: STEAL (@power)
+
+tel_anywhere          Can teleport anywhere.
+Rhost Equiv: TEL_ANYWHERE (@power) or FULL_TEL (@power)
+
+tel_anything          Can teleport anything (includes tel_anywhere)
+Rhost Equiv: TEL_ANYTHING (@power)
+
+unkillable            Cannot be killed with the &#39;kill&#39; command.
+Rhost Equiv: NOKILL (@power)
+
+use_sql               Can call the SQL() function. (God-set only.)
+Rhost Equiv: SQL is a 3rd party patch.
+
+watch_logins          Can set or reset the WATCHER flag on themselves.
+Rhost Equiv: MONITOR (@toggle)
+</pre></div>
+</div>
 </div>
 <span id="document-help"></span><div class="section" id="rhostmush-internal-help-files">
 <h2><span class="section-number">18. </span>RhostMUSH Internal Help Files<a class="headerlink" href="#rhostmush-internal-help-files" title="Permalink to this headline">¶</a></h2>
@@ -79280,13 +79279,14 @@ the original writers of the code in writing.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#document-ambrosiadb">6. Ambrosia’s Minimal Rhost DB</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index.html#version-1-0-5-2020-01-31">6.1. Version: 1.0.5          2020-01-31</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#version-history">6.1. Version history</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ambrosiadb-introduction">6.2. AmbrosiaDB Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ambrosiadb-features">6.3. AmbrosiaDB Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="index.html#ambrosiadb-bitlevels">6.4. AmbrosiaDB Bitlevels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#ambrosiadb-quota">6.5. AmbrosiaDB Quota</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#ambrosiadb-adding-functions">6.6. AmbrosiaDB Adding Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#ambrosiadb-compiling">6.7. AmbrosiaDB Compiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ambrosiadb-globals">6.5. AmbrosiaDB Globals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ambrosiadb-quota">6.6. AmbrosiaDB Quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ambrosiadb-adding-functions">6.7. AmbrosiaDB Adding Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#ambrosiadb-compiling">6.8. AmbrosiaDB Compiling</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="index.html#document-bitlevels">7. Multi-tiered bitlevel systems</a><ul>
