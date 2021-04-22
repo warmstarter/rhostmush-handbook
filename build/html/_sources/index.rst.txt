@@ -1,4 +1,4 @@
-.. RhostMUSH Handbook documentation master file
+.. RhostMUSH Handbook documentation master file:
 
 RhostMUSH Handbook
 ==================

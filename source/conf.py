@@ -53,9 +53,12 @@ html_static_path = ['_static']
 #
 html_theme_path = ['_themes']
 html_theme = 'nature'
-html_sidebars = {'**':['localtoc.html','searchbox.html']}
+html_sidebars = {
+        '**': ['searchbox.html', 'sourcelink.html', 'relations.html', 'localtoc.html'],
+}
 html_style = "style.css"
 html_logo = "logo.jpg"
+html_last_updated_fmt = '%b %d, %Y'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
