@@ -1,5 +1,5 @@
 ================================
-RhostMUSH Internal Wizhelp Files
+RhostMUSH Internal WizHelp Files
 ================================
 
 .. raw:: html

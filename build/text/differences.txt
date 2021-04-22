@@ -17,13 +17,13 @@ should be looked at on how different it behaves.
 --------------------------------
 
 * The way the comsystem (hardcode) works with the latest PennMUSH has
-  some compatibility now with MUX’s comsystem.
+  some compatibility now with MUX's comsystem.
 
 * The @mail system is different to MUX and Rhost.
 
 * Debugging code uses DEBUG and has an indented format.
 
-* The parser for code doesn’t require nested escaping like other
+* The parser for code doesn't require nested escaping like other
   codebases, but has issues with the pre-parser and nesting.
 
 * All standard movement, attribute setting, other should be similar
@@ -95,16 +95,16 @@ Note:
 
 Note:
 
-  Rhost does support UNICODE/UTF8, but it’s currently not part of the
+  Rhost does support UNICODE/UTF8, but it's currently not part of the
   main branch as of this writing.  Please talk to Kage on the dev site
-  for more information on when it’ll be released.
+  for more information on when it'll be released.
 
 
 3.3. Organization of help and wizhelp
 =====================================
 
-First, on PennMUSH, help is separated into ‘help’ and ‘wizhelp’.  This
-can be confusing. If you want to ‘combine’ them, you may use the
+First, on PennMUSH, help is separated into 'help' and 'wizhelp'.  This
+can be confusing. If you want to 'combine' them, you may use the
 following snippit:
 
    $ahelp*:@pemit %#=[switch([!!words(%0)][match(/search,%0*)],0?,[setq(0,help)][setq(1,0)],11,[setq(0,rest(%0))][setq(1,2)],setq(0,trim(%0)))][setq(a,textfile(help,%q0,%q1))][setq(b,textfile(wizhelp,%q0,%q1))][setq(2,)][ifelse(!strmatch(%qa,No entry*),%qa[setq(2,%r)])][ifelse(!strmatch(%qb,No entry*),%q2%qb[setq(2,%r)])][ifelse(!$r(2),No topics found for '%q0'.)]
@@ -1278,7 +1278,7 @@ redundant.
 3.14.4. SIDEFX flag
 -------------------
 
-   Anything that uses sideeffects –DIRECTLY– requires this flag.
+   Anything that uses sideeffects --DIRECTLY-- requires this flag.
    Sideeffects are like set(), pemit(), and so forth.  list(), while a
    side-effect, does not require this flag as it is considered passive
    and safe.
@@ -1288,7 +1288,7 @@ redundant.
 ----------------------
 
    Rhost handles them slightly different.  You do not link exits to
-   #-4.  That’s an invalid destination.  I always found it, frankly,
+   #-4.  That's an invalid destination.  I always found it, frankly,
    stupid to save any data in the database that was literally invalid.
    So, you link the exit as you normally would, then @toggle the exit
    variable. At that point you use @exitto like you would any other
@@ -1302,7 +1302,7 @@ redundant.
    work on TinyMUSH, MUX, or Penn.  Either at once or at different
    times. We recognize multiple zones, zone masters, zone inheritance,
    zone parenting, zone command processing, and the ability to bypass
-   zones entirely.  There’s a ton of flexbility with this.  However,
+   zones entirely.  There's a ton of flexbility with this.  However,
    the syntax for adding/removing zones is different so the commands
    will have to be ported to Rhost.
 
@@ -1310,8 +1310,8 @@ redundant.
 3.14.7. @powers
 ---------------
 
-   Powers work a bit differently in Rhost and they’re named
-   differently, which should not be that big a surprise as they’re
+   Powers work a bit differently in Rhost and they're named
+   differently, which should not be that big a surprise as they're
    different between all the codebases anyway.  The big difference is
    our powers are tiered, meaning the can be limited or grown to a
    given bitlevel and are not just toggle powers like the other
@@ -1331,7 +1331,7 @@ redundant.
 3.14.9. Attribute contents
 --------------------------
 
-   You’ll be happy to know that Rhost allows upwards to 64,000 bytes
+   You'll be happy to know that Rhost allows upwards to 64,000 bytes
    of data to be assigned an LBUF.  We strongly recommand to cap at
    32,000 however as the various TCP socket protocols play nicer with
    that value.
@@ -1347,7 +1347,7 @@ Yup!  We got it.
 ---------------------
 
    Yup!  We got this too.  Not quiet yet in the main branch, but
-   download Kage’s branch, you won’t be dissapointed.  We will have
+   download Kage's branch, you won't be dissapointed.  We will have
    UTF8 in Rhost 4.0 when released.
 
 
@@ -1366,13 +1366,13 @@ Yup!  We got it.
    @nuke only works on players.  @destroy works on non-players. Never
    the two will meet.  We also have a built in recycle bin meaning
    anything destroyed will not be automatically recycled.  If you want
-   it recycled, you have to @purge it.  Yes, if you use  Myrddin’s
+   it recycled, you have to @purge it.  Yes, if you use  Myrddin's
    CRON, it has a built in entry to auto-purge anything older than 30
    days.  This also means you can on-line recover anything destroyed
    before that 30 days.  Groovy, eh?
 
 
-3.14.14. object id’s
+3.14.14. object id's
 --------------------
 
 Yup, we got them.  Even in searches, and, well, everything.
@@ -1406,10 +1406,10 @@ Yup, we got them.  Even in searches, and, well, everything.
 3.14.18. Attribute trees
 ------------------------
 
-   Unlike Penn, we don’t really have attribute trees.  We do support
+   Unlike Penn, we don't really have attribute trees.  We do support
    the basic capabilities of it for compatibility if you load in
-   softcode that uses it, but it doesn’t have the advanced features of
-   attribute trees. Please see ‘help attribute tree’ for more
+   softcode that uses it, but it doesn't have the advanced features of
+   attribute trees. Please see 'help attribute tree' for more
    information.
 
 
@@ -1446,13 +1446,13 @@ Yup, we got them.  Even in searches, and, well, everything.
 3.14.23. Comsystem
 ------------------
 
-   The softcoded comsystem mimics MUX/TM3 and Penn’s comsystem.
+   The softcoded comsystem mimics MUX/TM3 and Penn's comsystem.
 
 
 3.14.24. Various Functions
 --------------------------
 
-   There is a ‘softcode.minmax’ in the Mushcode directory that loads
+   There is a 'softcode.minmax' in the Mushcode directory that loads
    up a slew of @function wrappers that will emulate various functions
    that MUX, Penn, or TM3 has.  We have the functionality for nearly
    all of them, but either our functions have different syntax, or we
@@ -1473,7 +1473,7 @@ Yup, we got them.  Even in searches, and, well, everything.
 ---------------------
 
    MUX has some built in ways for player stats.  We do as well but
-   they’re either done via functions or attribute contents.  Code that
+   they're either done via functions or attribute contents.  Code that
    requires this will have to be recoded.
 
 
@@ -1497,8 +1497,8 @@ Yup, we got them.  Even in searches, and, well, everything.
 3.14.29. Adding Flags
 ---------------------
 
-   Some flags may be missing.  If it’s a dummy flag, feel free to use
-   the marker flags MARKER0 to MARKER9 to set them.  If it’s an
+   Some flags may be missing.  If it's a dummy flag, feel free to use
+   the marker flags MARKER0 to MARKER9 to set them.  If it's an
    existing flag that does similar features, feel free to flag_alias
    it or just flag_name it to the other name if you want.
 
@@ -1532,9 +1532,9 @@ Yup, we got them.  Even in searches, and, well, everything.
 
      @admin function_alias=hasattrval hasattr
 
-* Penn’s hardcoded comsystem is emulated with the softcode comsys
+* Penn's hardcoded comsystem is emulated with the softcode comsys
 
-* Penn’s @mail system is workable with mail wrappers
+* Penn's @mail system is workable with mail wrappers
 
 * Pueblo is not supported.
 
@@ -1549,13 +1549,13 @@ Yup, we got them.  Even in searches, and, well, everything.
 -----------
 
 * Mux has an async mysql database engine.  This is not possible with
-  Rhost.  You’ll have to use the sync method instead.
+  Rhost.  You'll have to use the sync method instead.
 
 * UTF8 is supported but internally passed differently.
 
-* Mux’s hardcoded comsystem is emulated with the softcode comsys
+* Mux's hardcoded comsystem is emulated with the softcode comsys
 
-* MUX’s @mail system is workable with mail wrappers
+* MUX's @mail system is workable with mail wrappers
 
 * Pueblo is not supported.
 

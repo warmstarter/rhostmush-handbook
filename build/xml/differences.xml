@@ -27,7 +27,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                 <bullet_list bullet="-">
                     <list_item>
                         <paragraph>The way the comsystem (hardcode) works with the latest PennMUSH has some
-                            compatibility now with MUX’s comsystem.</paragraph>
+                            compatibility now with MUX's comsystem.</paragraph>
                     </list_item>
                     <list_item>
                         <paragraph>The @mail system is different to MUX and Rhost.</paragraph>
@@ -36,7 +36,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                         <paragraph>Debugging code uses DEBUG and has an indented format.</paragraph>
                     </list_item>
                     <list_item>
-                        <paragraph>The parser for code doesn’t require nested escaping like other codebases, but has issues with the pre-parser and nesting.</paragraph>
+                        <paragraph>The parser for code doesn't require nested escaping like other codebases, but has issues with the pre-parser and nesting.</paragraph>
                     </list_item>
                     <list_item>
                         <paragraph>All standard movement, attribute setting, other should be similar</paragraph>
@@ -115,15 +115,15 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                     the target to use it</paragraph>
             </note>
             <note>
-                <paragraph>Rhost does support UNICODE/UTF8, but it’s currently not part of the main
+                <paragraph>Rhost does support UNICODE/UTF8, but it's currently not part of the main
                     branch as of this writing.  Please talk to Kage on the dev site for more
-                    information on when it’ll be released.</paragraph>
+                    information on when it'll be released.</paragraph>
             </note>
         </section>
         <section ids="organization-of-help-and-wizhelp" names="organization\ of\ help\ and\ wizhelp">
             <title>Organization of help and wizhelp</title>
-            <paragraph>First, on PennMUSH, help is separated into ‘help’ and ‘wizhelp’.  This can
-                be confusing. If you want to ‘combine’ them, you may use the following snippit:</paragraph>
+            <paragraph>First, on PennMUSH, help is separated into 'help' and 'wizhelp'.  This can
+                be confusing. If you want to 'combine' them, you may use the following snippit:</paragraph>
             <literal_block force="False" language="default" linenos="False" xml:space="preserve">$ahelp*:@pemit %#=[switch([!!words(%0)][match(/search,%0*)],0?,[setq(0,help)][setq(1,0)],11,[setq(0,rest(%0))][setq(1,2)],setq(0,trim(%0)))][setq(a,textfile(help,%q0,%q1))][setq(b,textfile(wizhelp,%q0,%q1))][setq(2,)][ifelse(!strmatch(%qa,No entry*),%qa[setq(2,%r)])][ifelse(!strmatch(%qb,No entry*),%q2%qb[setq(2,%r)])][ifelse(!$r(2),No topics found for '%q0'.)]</literal_block>
             <paragraph>This will display help from help and wizhelp for any matching topic.  It
                 should make life easier for you.  This also honors the /search switch.</paragraph>
@@ -1248,7 +1248,7 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
             <section ids="sidefx-flag" names="sidefx\ flag">
                 <title>SIDEFX flag</title>
                 <block_quote>
-                    <paragraph>Anything that uses sideeffects –DIRECTLY– requires this flag.
+                    <paragraph>Anything that uses sideeffects --DIRECTLY-- requires this flag.
                         Sideeffects are like set(), pemit(), and so forth.  list(), while a
                         side-effect, does not require this flag as it is considered passive and safe.</paragraph>
                 </block_quote>
@@ -1257,7 +1257,7 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
                 <title>Variable exits</title>
                 <block_quote>
                     <paragraph>Rhost handles them slightly different.  You do not link
-                        exits to #-4.  That’s an invalid destination.  I always found it, frankly,
+                        exits to #-4.  That's an invalid destination.  I always found it, frankly,
                         stupid to save any data in the database that was literally invalid.  So,
                         you link the exit as you normally would, then @toggle the exit variable.
                         At that point you use @exitto like you would any other codebase.</paragraph>
@@ -1270,7 +1270,7 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
                         work on TinyMUSH, MUX, or Penn.  Either at once or at different times.
                         We recognize multiple zones, zone masters, zone inheritance, zone
                         parenting, zone command processing, and the ability to bypass zones
-                        entirely.  There’s a ton of flexbility with this.  However, the syntax
+                        entirely.  There's a ton of flexbility with this.  However, the syntax
                         for adding/removing zones is different so the commands will have to be
                         ported to Rhost.</paragraph>
                 </block_quote>
@@ -1278,8 +1278,8 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
             <section ids="powers" names="@powers">
                 <title>@powers</title>
                 <block_quote>
-                    <paragraph>Powers work a bit differently in Rhost and they’re named
-                        differently, which should not be that big a surprise as they’re different
+                    <paragraph>Powers work a bit differently in Rhost and they're named
+                        differently, which should not be that big a surprise as they're different
                         between all the codebases anyway.  The big difference is our powers are
                         tiered, meaning the can be limited or grown to a given bitlevel and are
                         not just toggle powers like the other codebases.  We also have @depower
@@ -1298,7 +1298,7 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
             <section ids="attribute-contents" names="attribute\ contents">
                 <title>Attribute contents</title>
                 <block_quote>
-                    <paragraph>You’ll be happy to know that Rhost allows upwards
+                    <paragraph>You'll be happy to know that Rhost allows upwards
                         to 64,000 bytes of data to be assigned an LBUF.  We strongly recommand
                         to cap at 32,000 however as the various TCP socket protocols play nicer
                         with that value.</paragraph>
@@ -1312,7 +1312,7 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
                 <title>Unicode/UTF8</title>
                 <block_quote>
                     <paragraph>Yup!  We got this too.  Not quiet yet in the main branch,
-                        but download Kage’s branch, you won’t be dissapointed.  We will have
+                        but download Kage's branch, you won't be dissapointed.  We will have
                         UTF8 in Rhost 4.0 when released.</paragraph>
                 </block_quote>
             </section>
@@ -1332,14 +1332,14 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
                     <paragraph>@nuke only works on players.  @destroy works on non-players.
                         Never the two will meet.  We also have a built in recycle bin meaning
                         anything destroyed will not be automatically recycled.  If you want it
-                        recycled, you have to @purge it.  Yes, if you use  Myrddin’s CRON, it
+                        recycled, you have to @purge it.  Yes, if you use  Myrddin's CRON, it
                         has a built in entry to auto-purge anything older than 30 days.  This
                         also means you can on-line recover anything destroyed before that 30
                         days.  Groovy, eh?</paragraph>
                 </block_quote>
             </section>
             <section ids="object-id-s" names="object\ id's">
-                <title>object id’s</title>
+                <title>object id's</title>
                 <paragraph>Yup, we got them.  Even in searches, and, well, everything.</paragraph>
             </section>
             <section ids="lsearch-and-search" names="lsearch()\ and\ search()">
@@ -1369,10 +1369,10 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
             <section ids="attribute-trees" names="attribute\ trees">
                 <title>Attribute trees</title>
                 <block_quote>
-                    <paragraph>Unlike Penn, we don’t really have attribute trees.  We do support the
+                    <paragraph>Unlike Penn, we don't really have attribute trees.  We do support the
                         basic capabilities of it for compatibility if you load in softcode that
-                        uses it, but it doesn’t have the advanced features of attribute trees.
-                        Please see ‘help attribute tree’ for more information.</paragraph>
+                        uses it, but it doesn't have the advanced features of attribute trees.
+                        Please see 'help attribute tree' for more information.</paragraph>
                 </block_quote>
             </section>
             <section ids="prefix-permission-locking" names="prefix\ permission\ locking">
@@ -1409,13 +1409,13 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
             <section ids="comsystem" names="comsystem">
                 <title>Comsystem</title>
                 <block_quote>
-                    <paragraph>The softcoded comsystem mimics MUX/TM3 and Penn’s comsystem.</paragraph>
+                    <paragraph>The softcoded comsystem mimics MUX/TM3 and Penn's comsystem.</paragraph>
                 </block_quote>
             </section>
             <section ids="various-functions" names="various\ functions">
                 <title>Various Functions</title>
                 <block_quote>
-                    <paragraph>There is a ‘softcode.minmax’ in the Mushcode directory that loads up a slew
+                    <paragraph>There is a 'softcode.minmax' in the Mushcode directory that loads up a slew
                         of @function wrappers that will emulate various functions that MUX, Penn, or
                         TM3 has.  We have the functionality for nearly all of them, but either our
                         functions have different syntax, or we have different named functions that
@@ -1434,7 +1434,7 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
             <section ids="player-stats" names="player\ stats">
                 <title>Player Stats</title>
                 <block_quote>
-                    <paragraph>MUX has some built in ways for player stats.  We do as well but they’re
+                    <paragraph>MUX has some built in ways for player stats.  We do as well but they're
                         either done via functions or attribute contents.  Code that requires this
                         will have to be recoded.</paragraph>
                 </block_quote>
@@ -1457,8 +1457,8 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
             <section ids="adding-flags" names="adding\ flags">
                 <title>Adding Flags</title>
                 <block_quote>
-                    <paragraph>Some flags may be missing.  If it’s a dummy flag, feel free to use the
-                        marker flags MARKER0 to MARKER9 to set them.  If it’s an existing flag
+                    <paragraph>Some flags may be missing.  If it's a dummy flag, feel free to use the
+                        marker flags MARKER0 to MARKER9 to set them.  If it's an existing flag
                         that does similar features, feel free to flag_alias it or just flag_name
                         it to the other name if you want.</paragraph>
                 </block_quote>
@@ -1492,10 +1492,10 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
                         <literal_block force="False" language="default" linenos="False" xml:space="preserve">@admin function_alias=hasattrval hasattr</literal_block>
                     </list_item>
                     <list_item>
-                        <paragraph>Penn’s hardcoded comsystem is emulated with the softcode comsys</paragraph>
+                        <paragraph>Penn's hardcoded comsystem is emulated with the softcode comsys</paragraph>
                     </list_item>
                     <list_item>
-                        <paragraph>Penn’s @mail system is workable with mail wrappers</paragraph>
+                        <paragraph>Penn's @mail system is workable with mail wrappers</paragraph>
                     </list_item>
                     <list_item>
                         <paragraph>Pueblo is not supported.</paragraph>
@@ -1515,16 +1515,16 @@ ZFUNLDEFAULT                 ZFUNLOCAL</literal_block>
                 <title>MUX</title>
                 <bullet_list bullet="-">
                     <list_item>
-                        <paragraph>Mux has an async mysql database engine.  This is not possible with Rhost.  You’ll have to use the sync method instead.</paragraph>
+                        <paragraph>Mux has an async mysql database engine.  This is not possible with Rhost.  You'll have to use the sync method instead.</paragraph>
                     </list_item>
                     <list_item>
                         <paragraph>UTF8 is supported but internally passed differently.</paragraph>
                     </list_item>
                     <list_item>
-                        <paragraph>Mux’s hardcoded comsystem is emulated with the softcode comsys</paragraph>
+                        <paragraph>Mux's hardcoded comsystem is emulated with the softcode comsys</paragraph>
                     </list_item>
                     <list_item>
-                        <paragraph>MUX’s @mail system is workable with mail wrappers</paragraph>
+                        <paragraph>MUX's @mail system is workable with mail wrappers</paragraph>
                     </list_item>
                     <list_item>
                         <paragraph>Pueblo is not supported.</paragraph>

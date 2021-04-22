@@ -5,7 +5,7 @@
 10.1. Note about Patching
 =========================
 
-There’s two ways you can look to patch the source.  If you plan to run
+There's two ways you can look to patch the source.  If you plan to run
 the RhostMUSH source from a git repository, then please use the git
 repo to constantly update your code.  If you knew enough to want to
 set up a git repo then we expect knowledge on how to keep source trees
@@ -14,7 +14,7 @@ distribution.
 
 If, however, you have no idea what a git repo even is, or have no
 inclination of using git to manage your RhostMUSH source, or just
-don’t care one way or another, then you can use the included patch.sh
+don't care one way or another, then you can use the included patch.sh
 routine (from under the Server directory) to patch your source at any
 time.
 
@@ -24,7 +24,7 @@ From the server directory just type:
 
 That will auto-compile your source, auto make all your header files
 and essentially keep everything up to date to the latest source. Once
-that’s done, all you do from within the game is two commands:
+that's done, all you do from within the game is two commands:
 
    @reboot (or @reboot/silent)  -- This will load in the new binary
    @readcache  -- This will read in all the .txt file changes
@@ -151,7 +151,7 @@ The following signals are useful.
 Warning:
 
   Never kill -9 RhostMUSHUnder NO CIRCUMSTANCES should you kill -9
-  your mush unless you don’t care for the database.  The reason is if
+  your mush unless you don't care for the database.  The reason is if
   the mush happens to be saving, in any method, to the database,
   especially a QDBM database, you will likely have just corrupted your
   database, so pull out a flatfile to recover.Sadly, this also may
@@ -163,10 +163,10 @@ Warning:
 10.4.2. Autoshutdown script
 ---------------------------
 
-The makefile will ‘make’ the program that will STOP the mush. Please
-tweek ‘autolog.h’ with the proper parameters.
+The makefile will 'make' the program that will STOP the mush. Please
+tweek 'autolog.h' with the proper parameters.
 
-The ‘startup.sh’ will START the mush.
+The 'startup.sh' will START the mush.
 
 Both of these are intended to be used for automations (automated
 processes) like your rc.local file and/or startup scripts when you
@@ -182,12 +182,12 @@ type the following:
 
    cc portmsg.c -o portmsg
 
-if ‘cc’ is not defined, try the following:
+if 'cc' is not defined, try the following:
 
    gcc portmsg.c -o portmsg
 
-Once compiled, you would then modify the file ‘file’ to describe the
-mush, what was done, where it’s moved to, then specify the IP address
+Once compiled, you would then modify the file 'file' to describe the
+mush, what was done, where it's moved to, then specify the IP address
 and the PORT where specified.
 
 To launch the application, you would then type:
@@ -237,18 +237,18 @@ perform dumps of the mush.
 10.7. The following scripts are used in the game directory
 ==========================================================
 
-Startmush               – used to Start up the mush backup_flat.sh
-– Used to run backups with @dump/flat within the game (Started with
-Startmush automatically) backup_restart.sh       – Restart the
-backup_flat.sh if changes are done compress_logs.sh        – Compress
-logs in ‘oldlogs’.  Ran with Startmush findit.sh               –
+Startmush               -- used to Start up the mush backup_flat.sh
+-- Used to run backups with @dump/flat within the game (Started with
+Startmush automatically) backup_restart.sh       -- Restart the
+backup_flat.sh if changes are done compress_logs.sh        -- Compress
+logs in 'oldlogs'.  Ran with Startmush findit.sh               --
 Internal script used to check for flatfile validity mailhide.sh
-– Wrapper to hide from address using the ‘mail’ progam minimal.sh
-– Auto-load the minimal db into the mush proxysnarf.sha          –
+-- Wrapper to hide from address using the 'mail' progam minimal.sh
+-- Auto-load the minimal db into the mush proxysnarf.sha          --
 Internal script for the tor_pull.sh tor proxy blacklist tor_pullit.sh
-– Internal script for the tor_pull.sh for proxy blacklist recovery.sh
-– If your db is corrupt, run this to auto-revert to an earlier
-flatfile tor_pull.sh             – Create a blacklist.txt file that
+-- Internal script for the tor_pull.sh for proxy blacklist recovery.sh
+-- If your db is corrupt, run this to auto-revert to an earlier
+flatfile tor_pull.sh             -- Create a blacklist.txt file that
 can be loaded via the internal @blacklist command for proxy handling
 
 
@@ -262,7 +262,7 @@ player receives in email when they autoregister attached to
 login/passwd badsite.txt            - file player gets when site is
 not allowed. connect.txt            - file player gets when connect
 create_reg.txt         - file player gets when their site is register
-and they can’t create. doorconf.txt           - file that is searched
+and they can't create. doorconf.txt           - file that is searched
 for information regarding @door.
 
 Note:
@@ -270,14 +270,14 @@ Note:
   Need to mkindx doorconf.txt doorconf.indx for this file
 
 down.txt               - file player gets when the mush has logins
-disabled (@disable login) error.txt              - the ‘Huh? (type
-help for help)’ messages.
+disabled (@disable login) error.txt              - the 'Huh? (type
+help for help)' messages.
 
 Note:
 
   Need to mkindx error.txt error.indx for this file
 
-full.txt               - file player gets when the mush can’t have any
+full.txt               - file player gets when the mush can't have any
 more players. guest.txt              - file player gets when they
 connect as a guest. help.txt               - your help file
 
@@ -317,7 +317,7 @@ wizmotd.txt            - your wiz motd file
 
 Q:  How do I put color in these files? A1: Look at ansi.h and you need
 to put the literal ASCII codes.  They will look like: ^[[0m (for
-ANSI_NORMAL).  That’s <ESC>[ A2: You can enable ansi_txtfiles then use
+ANSI_NORMAL).  That's <ESC>[ A2: You can enable ansi_txtfiles then use
 %c (or %x/%m) encoding for ansi, however you compiled your Rhost.
 
 Q:  I want to design my own txt files to read in the mush. A:  Easy.
@@ -325,11 +325,11 @@ Design them like help.txt would be set up, mkindx the file, then you
 can access it via @dynhelp online.
 
 Q:  Do I have to mkindx these files whenever I make changes? A:  Only
-the ones that have ‘& ‘ index. (help.txt, wizhelp.txt, news.txt, etc)
+the ones that have '& ' index. (help.txt, wizhelp.txt, news.txt, etc)
 
 Q:  Do I have to @readcache in the game whenever I make a change? A:
 Only when you modify any of the files listed in README.TXTFILES.  Not
 the ones you use with @dynhelp.
 
-Q:  Can’t I just make code in the mush that then is used for these
-silly txt files? A:  Absolutely.  Check ‘wizhelp file_object’.
+Q:  Can't I just make code in the mush that then is used for these
+silly txt files? A:  Absolutely.  Check 'wizhelp file_object'.

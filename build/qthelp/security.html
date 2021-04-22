@@ -20,11 +20,11 @@
 <h2><span class="section-number">9.1. </span>Considerations to locking down restrictions in RhostMUSH</h2>
 <p>Sometimes, you want to have things run at various privilage levels and do not
 want to have things with too much access.  Weither that is online objects or
-players you want to block from connecting to your mush.  Here’s things you can
+players you want to block from connecting to your mush.  Here's things you can
 do.</p>
 <p>One thing to keep in mind is that RhostMUSH, unlike PennMUSH is not flag
-dependant on permission level, it’s ownership based.  While setting a wizard
-flag on an object would work, it’s not recommended and it is instead recommended
+dependant on permission level, it's ownership based.  While setting a wizard
+flag on an object would work, it's not recommended and it is instead recommended
 to chown the object in question to a wizard (like your wizard holder character)
 Then the object must be set inherit to actually inherit the wizard.</p>
 <dl class="simple">
@@ -34,7 +34,7 @@ Then the object must be set inherit to actually inherit the wizard.</p>
 <div class="section" id="online-blocking-object-abilities">
 <h3><span class="section-number">9.1.1. </span>Online: Blocking object abilities</h3>
 <p>We have various flag levels.  It is strongly recommanded you check wizhelp
-on ‘control’ for a detailed overview of what each bitlevel can or can not do
+on 'control' for a detailed overview of what each bitlevel can or can not do
 prior to giving the ownership to the object.  Things useful for tweaking control
 on players and objects:</p>
 <div class="section" id="flags-access-with-set">
@@ -71,7 +71,7 @@ Commands:               : &#64;boot, &#64;nuke, &#64;toad, &#64;turtle
 Sitelocks: (&#64;admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
 Sitelock by player      : &#64;badsite, &#64;goodsite, NO_CONNECT (flag)
 Monitoring player       : SUSPECT (flag), &#64;snoop
-TOR/Proxy blocking:     : &#64;blacklist (see shell’s tor_pull.sh), &#64;admin proxy_checker (see wizhelp), &#64;tor (see wizhelp)</p>
+TOR/Proxy blocking:     : &#64;blacklist (see shell's tor_pull.sh), &#64;admin proxy_checker (see wizhelp), &#64;tor (see wizhelp)</p>
 </div>
 </div>
 <div class="section" id="extended-lockdown-of-the-mush-and-considerations">
@@ -82,9 +82,9 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 <div class="section" id="attribute-restriction">
 <h3><span class="section-number">9.2.1. </span>Attribute Restriction</h3>
 <blockquote>
-<div><p>&#64;attribute – Used for user-defined attributes
-&#64;admin attr_access – used for built in attributes (like desc)
-&#64;aflags – Used to set up lovely delicious attribute permission masks</p>
+<div><p>&#64;attribute -- Used for user-defined attributes
+&#64;admin attr_access -- used for built in attributes (like desc)
+&#64;aflags -- Used to set up lovely delicious attribute permission masks</p>
 </div></blockquote>
 </div>
 <div class="section" id="command-restriction">
@@ -109,8 +109,8 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 <div class="section" id="function-restrictions">
 <h3><span class="section-number">9.2.5. </span>Function Restrictions</h3>
 <blockquote>
-<div><p>&#64;function/&#64;lfunction – Allows softcoded functions that you can optionally lock down at your leasure
-&#64;admin function_access – You can use this even on softcoded functions if you so desired.</p>
+<div><p>&#64;function/&#64;lfunction -- Allows softcoded functions that you can optionally lock down at your leasure
+&#64;admin function_access -- You can use this even on softcoded functions if you so desired.</p>
 </div></blockquote>
 </div>
 <div class="section" id="rhostmush-flags-and-descriptions">
@@ -324,8 +324,8 @@ ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at once only)
 <div class="section" id="methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so">
 <h2><span class="section-number">9.3. </span>Methods to block anonymous connections and the pros and cons of doing so</h2>
 <blockquote>
-<div><p>Now let’s assume you have some troll attempting to use proxies to connect.
-There’s multiple ways to stop this.</p>
+<div><p>Now let's assume you have some troll attempting to use proxies to connect.
+There's multiple ways to stop this.</p>
 </div></blockquote>
 <div class="section" id="blacklisting-through-external-tor-pull-sh-script">
 <h3><span class="section-number">9.3.1. </span>Blacklisting through external tor_pull.sh script</h3>
@@ -333,7 +333,7 @@ There’s multiple ways to stop this.</p>
 <div><p>In ~/Rhost/Server/game you will see a script called tor_pull.sh
 Execute this by running (from the game directory) ./tor_pull.sh
 This populates the blacklist with registered proxies from various sites
-on the internet.  If you want specified ip’s added, feel free to add
+on the internet.  If you want specified ip's added, feel free to add
 them at the end of this file.</p>
 </div></blockquote>
 </div>
@@ -348,8 +348,8 @@ sites based on the ip.</p>
 <div class="section" id="blacklisting-through-internal-tor-command">
 <h3><span class="section-number">9.3.3. </span>Blacklisting through internal &#64;tor command</h3>
 <blockquote>
-<div><p>&#64;tor.  Please see ‘wizhelp tor’ on how to set this up.  It in effect
-will actively block all known exit nodes for TOR’s annonymous proxy
+<div><p>&#64;tor.  Please see 'wizhelp tor' on how to set this up.  It in effect
+will actively block all known exit nodes for TOR's annonymous proxy
 service.  It self-updates and will actively block TOR connections.</p>
 </div></blockquote>
 </div>
@@ -363,7 +363,7 @@ because some situations require a differentating MTU value such as
 briged network connect with things like cloud services, docker, or
 similar encapsulated network services.  However, this option has
 several settings from just monitoring/alerting of possible proxies
-to downright forbidding them.  If you’re being actively attacked,
+to downright forbidding them.  If you're being actively attacked,
 it may be worth considering adding this to add additional protection.</p>
 </div></blockquote>
 </div>
@@ -379,7 +379,7 @@ it may be worth considering adding this to add additional protection.</p>
 <li><p>sconnect_cmd SECRET-MAGIC-COOKIE</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li><p>SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the ‘#’ character is allowable.  You may use up to 30 characters.</p></li>
+<li><p>SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the '#' character is allowable.  You may use up to 30 characters.</p></li>
 <li><p>Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address.</p></li>
 </ol>
 </div></blockquote>
@@ -388,7 +388,7 @@ it may be worth considering adding this to add additional protection.</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>This is optional.</p></li>
-<li><p>If you do not specify it it defaults to ‘localhost 127.0.0.1’.  If your domain has a unique name like ‘localhost.localdomain’ like some ubuntu distributions, then you should customize your stunnel_host.</p></li>
+<li><p>If you do not specify it it defaults to 'localhost 127.0.0.1'.  If your domain has a unique name like 'localhost.localdomain' like some ubuntu distributions, then you should customize your stunnel_host.</p></li>
 </ol>
 </div></blockquote>
 </li>
@@ -418,7 +418,7 @@ by the game owner which would have access to the end point anyway.</p>
 </div>
 <div class="section" id="stunnel-directory">
 <h4><span class="section-number">9.4.2.1. </span>stunnel directory</h4>
-<p>You would set up the stunnel from the ‘stunnel’ directory.  There the following
+<p>You would set up the stunnel from the 'stunnel' directory.  There the following
 files are of relevance:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">README</span>                     <span class="o">--</span> <span class="n">a</span> <span class="n">readme</span> <span class="n">explaining</span> <span class="n">the</span> <span class="n">points</span> <span class="n">of</span> <span class="n">stunnel</span>
 <span class="n">stunnel</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">example</span>       <span class="o">--</span> <span class="n">The</span> <span class="n">example</span> <span class="n">stunnel</span><span class="o">.</span><span class="n">conf</span> <span class="n">file</span><span class="o">.</span>  <span class="n">If</span> <span class="n">you</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">create</span> <span class="n">this</span> <span class="n">manually</span> <span class="n">you</span><span class="s1">&#39;re welcome to.  Just make sure the end file is stunnel.conf</span>
@@ -435,7 +435,7 @@ files are of relevance:</p>
 <p>To be able to utilize SSL, you first must set your netrhost.conf file with
 the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect_host if
-not set will default to ‘localhost 127.0.0.1’.</p>
+not set will default to 'localhost 127.0.0.1'.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sconnect_reip</span> <span class="mi">1</span>         <span class="o">--</span> <span class="n">This</span> <span class="n">enables</span> <span class="n">the</span> <span class="n">SSL</span> <span class="n">tunnel</span> <span class="n">layer</span> <span class="n">handler</span> <span class="n">within</span> <span class="n">rhost</span><span class="o">.</span>
 <span class="n">sconnect_cmd</span> <span class="n">XYZZY</span>      <span class="o">--</span> <span class="n">this</span> <span class="n">will</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">secret</span> <span class="n">SSL</span> <span class="n">command</span> <span class="n">handshake</span> <span class="n">command</span> <span class="n">to</span> <span class="n">XYZZY</span><span class="o">.</span>  <span class="n">This</span> <span class="ow">is</span> <span class="n">case</span> <span class="n">sensitive</span> <span class="ow">and</span> <span class="n">can</span> <span class="n">be</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">31</span> <span class="n">characters</span><span class="o">.</span>  <span class="n">Please</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">to</span> <span class="n">only</span> <span class="n">use</span> <span class="n">printable</span> <span class="n">non</span><span class="o">-</span><span class="n">whitespace</span> <span class="n">characters</span><span class="o">.</span>  <span class="n">Ergo</span><span class="p">:</span> <span class="n">one</span> <span class="n">word</span>
 <span class="n">sconnect_host</span> <span class="n">wildcards</span> <span class="o">--</span> <span class="n">This</span> <span class="n">allows</span> <span class="n">wildcarded</span> <span class="n">sites</span> <span class="p">(</span><span class="n">one</span> <span class="ow">or</span> <span class="n">more</span><span class="p">)</span> <span class="n">to</span> <span class="n">allow</span> <span class="n">to</span> <span class="n">access</span> <span class="n">the</span> <span class="n">sconnect</span><span class="o">/</span><span class="n">stunnel</span> <span class="n">handler</span><span class="o">.</span>  <span class="n">This</span> <span class="n">defaults</span> <span class="n">to</span> <span class="s1">&#39;localhost&#39;</span> <span class="ow">and</span> <span class="s1">&#39;127.0.0.1&#39;</span> <span class="n">so</span> <span class="k">if</span> <span class="n">you</span> <span class="n">have</span> <span class="s1">&#39;localhost.localdomain&#39;</span> <span class="n">instead</span> <span class="n">then</span> <span class="n">you</span> <span class="n">must</span> <span class="nb">set</span> <span class="n">this</span> <span class="n">to</span> <span class="n">whatever</span> <span class="ow">is</span> <span class="n">seen</span> <span class="k">as</span> <span class="s1">&#39;localhost&#39;</span> <span class="n">to</span> <span class="n">you</span><span class="o">.</span>  <span class="n">You</span> <span class="n">can</span> <span class="n">verify</span> <span class="n">this</span> <span class="n">by</span> <span class="n">checking</span> <span class="n">your</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hosts</span> <span class="n">file</span><span class="o">.</span>
@@ -443,12 +443,12 @@ not set will default to ‘localhost 127.0.0.1’.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>the sconnect_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.</p>
+<p>the sconnect_host is optional.  If you do not specify it, it will default to two values:  'localhost' and '127.0.0.1'.</p>
 </div>
 </div>
 <div class="section" id="running-the-stunnel-setup-program">
 <h4><span class="section-number">9.4.2.3. </span>Running the stunnel setup program</h4>
-<p>At this point you’re ready to run the stunnel setup program.  So at this point type the following:</p>
+<p>At this point you're ready to run the stunnel setup program.  So at this point type the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_setup</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>

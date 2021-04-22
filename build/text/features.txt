@@ -1,4 +1,4 @@
-2. What RhostMUSH is about and what’s so great about RhostMUSH
+2. What RhostMUSH is about and what's so great about RhostMUSH
 **************************************************************
 
 RhostMUSH was founded in 1989, originally by Natasha Davis (Nyctasia)
@@ -26,7 +26,7 @@ provided the UTF8/unicode port), Jeff/Loki, Rook, Noltar, and Odin.
 We also have had hundreds of people who have offered (and provided)
 help, patches, suggestions, bug fixes, and alternations all on their
 own and every single one will have had their name mentioned in the
-RHOST.CHANGES file in the readme directory.  It’s far too large to
+RHOST.CHANGES file in the readme directory.  It's far too large to
 have in the online help files.
 
 RhostMUSH today provides an amazing tool that allows nearly entire
@@ -39,7 +39,7 @@ but is not limited to:
 ================
 
    Yup, you guessed it.  RhostMUSH has a windows like recycle bin.
-   This means the objects you @nuke and @destroy become ‘destroyed’
+   This means the objects you @nuke and @destroy become 'destroyed'
    but not recycled until they are @purged.  If you use the Myrddin
    CRON in the Mushcode directory, it by default sets up a job to
    purge anything over 30 days old, which should be more than
@@ -68,7 +68,7 @@ but is not limited to:
      trigger NOSPOOF.  If you do not wish this, set the SPOOF flag
      this applies to anyone below their level.
 
-   * override all locks.  There’s two flags to disable this.
+   * override all locks.  There's two flags to disable this.
      NO_OVERRIDE to stop overriding all locks (including attribs) and
      NO_USELOCK to just stop overriding uselocks. This applies to
      anything their level and lower.
@@ -83,7 +83,7 @@ but is not limited to:
      nearly every way.
 
 
-2.4. Titles and Captions to a player’s name
+2.4. Titles and Captions to a player's name
 ===========================================
 
    @caption and @titlecaption
@@ -166,7 +166,7 @@ but is not limited to:
 =======================================================
 
    This works as a truly independant and self-contained environment. A
-   room can have 31 ‘layers’, each ‘layer’ is a reality in the same
+   room can have 31 'layers', each 'layer' is a reality in the same
    physical space.  These layers can work independently or allow
    interaction with other layers for vast customization. This affects
    all methods within the game including all matching, looking,
@@ -250,8 +250,8 @@ Example Code Output:
 2.22. Plenty more not mentioned!
 ================================
 
-The flexibility to customize RhostMUSH is what is most daunting. Don’t
-fret, you don’t need to do it to run RhostMUSH successfully. In fact,
+The flexibility to customize RhostMUSH is what is most daunting. Don't
+fret, you don't need to do it to run RhostMUSH successfully. In fact,
 the default configuration is mostly compatible with MUSH and will work
 correctly out of the box for most needs.  For those wishing to play,
 of course the sky is the limit of what you want to do.
@@ -308,11 +308,11 @@ of course the sky is the limit of what you want to do.
 ----------------------
 
    * Reality levels allows for the ability to have a sandboxed
-     ‘existance’ in each physical location across the entirity of the
+     'existance' in each physical location across the entirity of the
      mush.  Each reality is its own sandbox and can either stand alone
      or work dependently with other realities.  A person can belong to
      multiple realities at the same time, and realities is geared to a
-     method for send and receive.  Each ‘method’ requires to be in the
+     method for send and receive.  Each 'method' requires to be in the
      given reality to affect it.
 
      * help reality levels
@@ -429,7 +429,7 @@ of course the sky is the limit of what you want to do.
      up a matching attribute name with a prefix of a ~ to specify how
      the lock is to be evaluated.  This works in the same manner as an
      evaluation lock.  To be able to use the USELOCK attribute flag
-     you must be empowered to do so with the ‘ATRUSE’ @toggle.  You
+     you must be empowered to do so with the 'ATRUSE' @toggle.  You
      may also use the secure_atruselock config parameter to globally
      enable this and not require the toggle to be set.
 
@@ -454,7 +454,7 @@ of course the sky is the limit of what you want to do.
 
    * By default wizards override all locks, including attribute locks,
      can see all dark exits, and bypass pagelocks.  This can be
-     troublesome, and even abusive, so there’s ways to disable this.
+     troublesome, and even abusive, so there's ways to disable this.
 
      * wizhelp @depower (for those abusing it)
 
@@ -541,7 +541,7 @@ of course the sky is the limit of what you want to do.
      bitlevel you want to assign players.  The exception will likely
      be game owners or people who control the master room code.
 
-     There’s a bunch of readme files and online wizhelp that goes into
+     There's a bunch of readme files and online wizhelp that goes into
      detail of the various bitlevels and what each can do.
 
      * wizhelp control
@@ -550,7 +550,7 @@ of course the sky is the limit of what you want to do.
 2.23.15. What are the limits for size/growth for RhostMUSH?
 -----------------------------------------------------------
 
-   * While using QDBM, there’s really no set limits for most things.
+   * While using QDBM, there's really no set limits for most things.
      The limits that we have are as followed:
 
       LBUF - 64K.  It is recommended to only use 32K as there is some
@@ -558,7 +558,8 @@ of course the sky is the limit of what you want to do.
 
             * Compile time option with the menu configurator
 
-         SBUF - 64 characters (if configured – it’s suggested you do).
+         SBUF - 64 characters (if configured -- it's suggested you
+         do).
 
             * Compile time option with the menu configurator
 
@@ -598,7 +599,7 @@ of course the sky is the limit of what you want to do.
          files in.
 
          DB Size - (20000 default) There is no limit on the number of
-         objects the db can have.  By default it’s soft limited to 20K
+         objects the db can have.  By default it's soft limited to 20K
          objects, which can be changed by a netrhost.conf file change.
          We have had this up past 1.5 million objects, and other than
          a second or two of lag for complex searches we had no real
@@ -613,7 +614,7 @@ of course the sky is the limit of what you want to do.
             * wizhelp @limit
 
          Attribute Size - 10K as a hard limit.  750 as a soft limit.
-         You can increase this but it can’t exceed 10000 attributes.
+         You can increase this but it can't exceed 10000 attributes.
          This is to avoid DoS style attacks.
 
             * wizhelp vlimit
@@ -697,8 +698,8 @@ of course the sky is the limit of what you want to do.
 2.23.21. Setting up global parents, global @parents, global attribute formatting, and other global setups
 ---------------------------------------------------------------------------------------------------------
 
-   * Global parents are useful when you want to have a global ‘parent’
-     without actually having a defined ‘@parent’.  It always will be
+   * Global parents are useful when you want to have a global 'parent'
+     without actually having a defined '@parent'.  It always will be
      the highest tier in a lookup.  The way lookups will go will be:
 
         self->@parent(s)->@zone(s)->GlobalParent
@@ -722,7 +723,7 @@ of course the sky is the limit of what you want to do.
 
    * Global @parents are different than global parents in that any new
      item of similar type that is created is automatically assigned
-     this physical @parent.  It’s obviously more limiting since it
+     this physical @parent.  It's obviously more limiting since it
      sets the literal physical parent defined.
 
      The type of the parent does not have to match the target.
@@ -808,16 +809,16 @@ of course the sky is the limit of what you want to do.
    * To define how many commands a minute a player set SPAMMONITOR can
      use
 
-     * spam_limit – default 120
+     * spam_limit -- default 120
 
-   * If you examine things and see ‘Output cut off’ messages, you may
+   * If you examine things and see 'Output cut off' messages, you may
      want to increase your output limit, funny enough, the name of
      this is similar
 
         * output_limit - You should set this no less than 4 times the
           current size of your LBUF.
 
-   * Attributes names can not exceed 64 characters.  Sorry, it’s a
+   * Attributes names can not exceed 64 characters.  Sorry, it's a
      hard limit
 
    * Sometime you may find a single may not work for an escape.  You
@@ -829,7 +830,7 @@ of course the sky is the limit of what you want to do.
 -----------------------------
 
    * After you set up your guests, you can set unique names to each
-     guest if you so want after defining the dbref#’s your guests use.
+     guest if you so want after defining the dbref#'s your guests use.
      This is done by defining them in the guest_namelist parameter.
      You can also increase guests (or decrease them) between 0-31
      guests.
@@ -846,8 +847,8 @@ of course the sky is the limit of what you want to do.
      content that you can set (or even unset!) into an attribute. The
      beauty of this is that you can specify case sensitive
      information, lock different ways contents in attributes are set
-     based on who is setting it, or even on where it’s being set. The
-     sky’s the limit.
+     based on who is setting it, or even on where it's being set. The
+     sky's the limit.
 
         * global_attrdefault    - Target for defining content locks
 
@@ -864,7 +865,7 @@ of course the sky is the limit of what you want to do.
      amount of attributes without paying a hefty penalty on object
      bloat.
 
-        * help cluster  – Gives a fantastic overview of how clusters
+        * help cluster  -- Gives a fantastic overview of how clusters
           work.
 
 
@@ -896,7 +897,7 @@ of course the sky is the limit of what you want to do.
    * Changing permission levels in the middle of execution for
      evaluation.
 
-        * see help on the streval and ueval function’
+        * see help on the streval and ueval function'
 
    * Full features in-game customization of near every aspect of the
      game.
@@ -908,8 +909,8 @@ of course the sky is the limit of what you want to do.
 Here are some things to know about RhostMUSH and what you may or may
 not want to do.  Things here are not covered in other documents:
 
-Admin toggles to configure the WHO, various things you’re used to, etc
-is in the ‘netrhost.conf’ file.  descriptions Notes in the autoconf.h
+Admin toggles to configure the WHO, various things you're used to, etc
+is in the 'netrhost.conf' file.  descriptions Notes in the autoconf.h
 file is in the README.AUTOCONF file.
 
 
@@ -917,7 +918,7 @@ file is in the README.AUTOCONF file.
 ------------------------------------------------------
 
    IMMORTAL - They can do anything.  Treat this as #1 and only give to
-   people you trust.  Period.   You don’t have to use this bit if you
+   people you trust.  Period.   You don't have to use this bit if you
    do not want to and just assume #1.
 
    ROYALTY - Unlike PENN/MUX, this is *not* a sub-wizard, this is a
@@ -925,20 +926,20 @@ file is in the README.AUTOCONF file.
 
    COUNCILOR - Like royalty on PENN/MUX but they can modify.
 
-   ARCHITECT - Can’t do as much as councilor, but lot more than
+   ARCHITECT - Can't do as much as councilor, but lot more than
    BUILDER.
 
-   GUILDMASTER - Very limited.  Sees dbrief#’s, can ex things their
+   GUILDMASTER - Very limited.  Sees dbrief#'s, can ex things their
    level and lower and @quota players.
 
 
 2.24.2. You need to @pcreate your guest characters and set them GUEST
 ---------------------------------------------------------------------
 
-   It doesn’t create them on the fly but we considered this better.
+   It doesn't create them on the fly but we considered this better.
    You have 31 total you can have.  It defaults to 10 in the
    netrhost.conf file.  You can rename the guests anything you want,
-   but before you do so, you must add the dbref#’s to the param
+   but before you do so, you must add the dbref#'s to the param
    guest_namelist
 
 
@@ -965,8 +966,8 @@ file is in the README.AUTOCONF file.
 2.24.6. The db auto-repares itself when it can
 ----------------------------------------------
 
-   It does this by purging anything it can’t identify.  Dataloss is
-   better than unrecoverable data. Yes, any such ‘repairing’ is logged
+   It does this by purging anything it can't identify.  Dataloss is
+   better than unrecoverable data. Yes, any such 'repairing' is logged
    so you know if something is up.
 
 
@@ -994,7 +995,7 @@ file is in the README.AUTOCONF file.
 2.24.9. Softcode emulations of functions from other servers are included
 ------------------------------------------------------------------------
 
-   Load the file softfunctions into the mush once it’s set up.  This
+   Load the file softfunctions into the mush once it's set up.  This
    are @functions that will alias the functions that PENN, MUX, and
-   TinyMUSH have that is either named differently or we don’t have for
+   TinyMUSH have that is either named differently or we don't have for
    one reason or another.

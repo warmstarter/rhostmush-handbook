@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>6. Ambrosia’s Minimal Rhost DB</title>
+    <title>6. Ambrosia&#39;s Minimal Rhost DB</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/style.css" type="text/css" /> 
   </head><body>
@@ -15,7 +15,7 @@
           <div class="body" role="main">
             
   <div class="section" id="ambrosia-s-minimal-rhost-db">
-<span id="ambrosiadb-installation"></span><h1><span class="section-number">6. </span>Ambrosia’s Minimal Rhost DB</h1>
+<span id="ambrosiadb-installation"></span><h1><span class="section-number">6. </span>Ambrosia's Minimal Rhost DB</h1>
 <p>Version: 1.0.5          2020-01-31</p>
 <div class="section" id="version-history">
 <h2><span class="section-number">6.1. </span>Version history</h2>
@@ -50,19 +50,19 @@ config options</p></li>
 </ul>
 </dd>
 <dt>1.0.4</dt><dd><ul class="simple">
-<li><p>Changed softcoded objid() to tag(), due to Rhost’s new hardcoded
+<li><p>Changed softcoded objid() to tag(), due to Rhost's new hardcoded
 objid() which does perform a different functionality.</p></li>
 <li><p>Added more staff recommendations to this file.</p></li>
-<li><p>Added Reality TXLevel ‘Admin’ to all objects in the db except #1</p></li>
+<li><p>Added Reality TXLevel 'Admin' to all objects in the db except #1</p></li>
 </ul>
 </dd>
 <dt>1.0.5</dt><dd><ul class="simple">
-<li><p>Replaced softcoded tag() system with Rhost’s new hardcoded &#64;tag/tag()
+<li><p>Replaced softcoded tag() system with Rhost's new hardcoded &#64;tag/tag()
 system. All previous tags are set on the database. The Tag Object
 was removed.</p></li>
 <li><p>&#64;function startup on BC-Admin-Royalty fixed - &#64;wait 1 workaround for
 Tags in place.</p></li>
-<li><p>Places System &#64;startup integrated into BC-Admin-Royalty’s &#64;startup</p></li>
+<li><p>Places System &#64;startup integrated into BC-Admin-Royalty's &#64;startup</p></li>
 <li><p>Made &#64;dump and &#64;dump/flat available to Councilors in netrhost.conf</p></li>
 </ul>
 </dd>
@@ -106,16 +106,16 @@ immediate need for Royalty in many cases.</p></li>
 <li><p>&#64;startup on BC-Admin-Royalty to automatically load &#64;hooks and &#64;functions from
 the Global Function objects, based on attribute naming.</p></li>
 <li><p>Misc Data object to hold general data, like Staff lists etc.</p></li>
-<li><p>Reality levels ‘Real’ and ‘Admin’.</p></li>
+<li><p>Reality levels 'Real' and 'Admin'.</p></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>All created items and players by default are in Recieve-Level ‘Real’ and
-Transmit-Levels ‘Real’ and ‘Admin’.</p>
+<p>All created items and players by default are in Recieve-Level 'Real' and
+Transmit-Levels 'Real' and 'Admin'.</p>
 </div>
 <ul class="simple">
 <li><p>All globals, Master Room, BCs-*, and other staff/code-related objects
-currently have only ‘Admin’ as their Transmit-Level. This does not prevent
+currently have only 'Admin' as their Transmit-Level. This does not prevent
 them fromi working properly. The only exception is #1, who has empty reality
 levels.</p></li>
 <li><p>The supplied netrhost.conf offers a secure setup of options, allows Royalty
@@ -126,7 +126,7 @@ properly.</p></li>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
-The ‘Port’ configuration parameter is XXXX’d out. Set it first before starting
+The 'Port' configuration parameter is XXXX'd out. Set it first before starting
 your game.</p>
 </div>
 <ul class="simple">
@@ -167,16 +167,16 @@ Still invisible and unsettable by mortals.</p></li>
 <div class="section" id="ambrosiadb-functions">
 <h3><span class="section-number">6.3.3. </span>AmbrosiaDB Functions</h3>
 <ul class="simple">
-<li><p>isstaff() - Softcoded function that returns ‘1’ if its argument matches
-a #dbref in the ‘isstaff’ attribute on the Misc Data object.</p></li>
-<li><p>bccheck() - Softcoded function that returns ‘1’ if its argument matches
-a #dbref in the ‘bcs’ attribute on the Misc Data object.</p></li>
+<li><p>isstaff() - Softcoded function that returns '1' if its argument matches
+a #dbref in the 'isstaff' attribute on the Misc Data object.</p></li>
+<li><p>bccheck() - Softcoded function that returns '1' if its argument matches
+a #dbref in the 'bcs' attribute on the Misc Data object.</p></li>
 <li><p>width() - Softcoded function that returns 78 for now. For cross-MU*
 compatibility.</p></li>
 <li><p>pass() - Softcoded function that takes a number as its parameter, and return
 a random string of that length. Perfect for setting random passwords.</p></li>
 <li><p>cmdmessage() - Softcoded function that takes two strings as its parameters.
-Returns ‘&lt;&lt; STRING1 &gt;&gt; String2’. The &lt;&lt;&gt;&gt; part is highlighted red. Good for
+Returns '&lt;&lt; STRING1 &gt;&gt; String2'. The &lt;&lt;&gt;&gt; part is highlighted red. Good for
 all kinds of messages sent by game commands.</p></li>
 <li><p>header() - Highly versatile, and a buffer-saving alternative
 to using printf() for centering with ansi borders. HIGHLY recommended to use
@@ -198,8 +198,8 @@ instead of printf() for such things.</p></li>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>ALL of header()’s parameters are optional. By default, header() simply draws
-a 78-char wide line of =’s. Simply leave parameters empty if you want to set
+<p>ALL of header()'s parameters are optional. By default, header() simply draws
+a 78-char wide line of ='s. Simply leave parameters empty if you want to set
 one of the latter parameters.</p>
 </div>
 </div>
@@ -259,7 +259,7 @@ Guildmaster level, in order to handle problem players.</p>
 maintenance Councilor bit for special code projects. Finished
 code along those lines should get &#64;chowned to the
 bc-admin-councilor.</p>
-<p>If you as the MU* Head(s) don’t know Softcode well, or want to
+<p>If you as the MU* Head(s) don't know Softcode well, or want to
 leave anything Code to your Head Coder, also give them optional
 access to a maintenance Royalty bit in order to properly code
 banning/blacklisting +commands and other rare code that requires
@@ -267,7 +267,7 @@ Royalty powers. Again, chown finished code to bc-admin-royalty.</p>
 </div>
 <div class="section" id="ambrosiadb-mu-head-s">
 <h3><span class="section-number">6.4.7. </span>AmbrosiaDB MU* Head(s)</h3>
-<p>You’re the boss(es). But please use an Architect bit for your
+<p>You're the boss(es). But please use an Architect bit for your
 everyday things. Keep Immortal to yourself. Keep #1 to yourself.
 And seriously avoid using either of them except for creating
 a Royalty bit or doing intricate DB maintenance.</p>
@@ -294,7 +294,7 @@ code setup. Technically if everything is done right, the Coder(s) of the game do
 not require higher privileges than Architect for the vast majority of things.
 Royalty-level code should be a rare exception, if at all necessary. The MU*
 Head(s) or site-admin should be the only one having access to #1, Immortals or
-perhaps even Royalty. The BC’s, Global Function objects and Function objects at
+perhaps even Royalty. The BC's, Global Function objects and Function objects at
 level Royalty and higher have simply been provided as a if-necessary convenience.</p>
 <p>Current objects are only &#64;chowned to certain bitlevels if it is really required
 for them to function. Whenever possible, they have been &#64;chowned to the mortal
@@ -331,11 +331,11 @@ WANDERER by default.</p>
 </div>
 <div class="section" id="ambrosiadb-compiling">
 <h2><span class="section-number">6.8. </span>AmbrosiaDB Compiling</h2>
-<p>P.S. the ‘bin/asksource.save0’ file has been supplied for loading in the
-‘make config’ or ‘make confsource’ step of Rhost installation. It provides the
+<p>P.S. the 'bin/asksource.save0' file has been supplied for loading in the
+'make config' or 'make confsource' step of Rhost installation. It provides the
 settings I have used when creating this database. Some settings, like the ANSI
 substitution, are used in the DB.</p>
-<p><a class="reference external" href="mailto:--Ambrosia&#37;&#52;&#48;RhostMUSH">–Ambrosia<span>&#64;</span>RhostMUSH</a></p>
+<p><a class="reference external" href="mailto:--Ambrosia&#37;&#52;&#48;RhostMUSH">--Ambrosia<span>&#64;</span>RhostMUSH</a></p>
 </div>
 </div>
 

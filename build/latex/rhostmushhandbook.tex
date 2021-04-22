@@ -92,7 +92,7 @@
 
 \sphinxAtStartPar
 The RhostMUSH source tree offers many abilities and options
-not normally found in any other flavor of mush.  This doesn’t
+not normally found in any other flavor of mush.  This doesn\textquotesingle{}t
 make it better than other servers (though we think so \sphinxstyleemphasis{j/k})
 but it does give you a wider selection of configurability,
 which, as you know, is the best part of setting up a mush.
@@ -304,7 +304,7 @@ A lot more that could drag this document out for pages.
 
 \item {} 
 \sphinxAtStartPar
-\phantomsection\label{\detokenize{install:id43}}{\hyperref[\detokenize{install:option-3-creating-a-new-game-with-ambrosia-s-default-database}]{\sphinxcrossref{Option 3: Creating a new game with Ambrosia’s default database}}}
+\phantomsection\label{\detokenize{install:id43}}{\hyperref[\detokenize{install:option-3-creating-a-new-game-with-ambrosia-s-default-database}]{\sphinxcrossref{Option 3: Creating a new game with Ambrosia\textquotesingle{}s default database}}}
 
 \end{itemize}
 
@@ -367,7 +367,7 @@ Third\sphinxhyphen{}party applications can use considerably more resources
 \label{\detokenize{install:software-requirements}}\label{\detokenize{install:id4}}
 \sphinxAtStartPar
 RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.
-In order to build this software, you will need the bare minimum of the ability to run ‘make’ commands.
+In order to build this software, you will need the bare minimum of the ability to run \textquotesingle{}make\textquotesingle{} commands.
 
 \sphinxAtStartPar
 Package requirements are as follows:
@@ -454,13 +454,13 @@ The debug\_id is for use in the API daemon that runs Rhost as a container to kee
 \section{Obtaining RhostMUSH Source Code}
 \label{\detokenize{install:obtaining-rhostmush-source-code}}\label{\detokenize{install:obtaining-rhostmush}}
 \sphinxAtStartPar
-The only official source for obtaining RhostMUSH is through the ‘RhostMUSH’
+The only official source for obtaining RhostMUSH is through the \textquotesingle{}RhostMUSH\textquotesingle{}
 github account. If the source code was obtained in some other manner, there
 are potentially any number of unintentional or intentional issues that you
 might run into.
 
 \sphinxAtStartPar
-The recommended method of obtaing RhostMUSH is to clone it’s git reposistory:
+The recommended method of obtaing RhostMUSH is to clone it\textquotesingle{}s git reposistory:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{git} \PYG{n}{clone} \PYG{n}{https}\PYG{p}{:}\PYG{o}{/}\PYG{o}{/}\PYG{n}{github}\PYG{o}{.}\PYG{n}{com}\PYG{o}{/}\PYG{n}{RhostMUSH}\PYG{o}{/}\PYG{n}{trunk} \PYG{n}{Rhost}
@@ -476,12 +476,12 @@ It is possible, but not recommended to download RhostMUSH via a web browser:
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
 This documentation generally assumes that you obtained the RhostMUSH source
-code by cloning it’s git repository or at the very least downloading an
+code by cloning it\textquotesingle{}s git repository or at the very least downloading an
 archive of the source code from the GitHub website.
 
 \sphinxAtStartPar
 It also assumes that the base directory from which all commands are run
-and all files are looked for is that git repo’s \sphinxcode{\sphinxupquote{Server/}} directory,
+and all files are looked for is that git repo\textquotesingle{}s \sphinxcode{\sphinxupquote{Server/}} directory,
 unless specifically noted otherwise.
 \end{sphinxadmonition}
 
@@ -493,11 +493,11 @@ There is a \sphinxstyleemphasis{lot} of options once your start making your MUSH
 also a few big choices right as you get started making a MUSH. No matter which
 choices you ultimately make, there are certain things you will need to know how
 to do. This chapter is going to walk you through making the simplest possible
-version of RhostMUSH. It’s going to show you the things you would have to do
+version of RhostMUSH. It\textquotesingle{}s going to show you the things you would have to do
 no matter which choices you were making.
 
 \sphinxAtStartPar
-In the process of making that simplest possible RhostMUSH you’ll also learn
+In the process of making that simplest possible RhostMUSH you\textquotesingle{}ll also learn
 what the basics of those choices are and when and how you would make them.
 Later chapters will get much more into all of those choices, but they will also
 assume you know everything in this chapter already, or at least have it as a
@@ -512,13 +512,13 @@ make those choices.
 \label{\detokenize{install:compile-time-options}}
 \sphinxAtStartPar
 One of the first steps of making a MUSH or really any computer program is
-to compile the source code. This takes what’s basically text files full of code
+to compile the source code. This takes what\textquotesingle{}s basically text files full of code
 and turns them into a program you can run. Within that source code are a
 number of options to choose from, but any time you want to change one of them,
 you have to recompile the source code and then restart the MUSH.
 
 \sphinxAtStartPar
-These choices are typically made through the \sphinxcode{\sphinxupquote{confsource}} menu which you’ll
+These choices are typically made through the \sphinxcode{\sphinxupquote{confsource}} menu which you\textquotesingle{}ll
 be seeing momentarily. There are some pretty big choices here from whether or
 not you want hardcoded +help and comsys, deciding between a more secure server
 and certtain powerful but potentially dangerous MUSHcode options, and then
@@ -532,22 +532,22 @@ like databases, webservers, and even other programming languages.
 While there are some options in RhostMUSH that can only be changed through
 recompiling the source code, there are way more options that can be changed
 without having to recompile. These choices are mostly made through the
-\sphinxcode{\sphinxupquote{netrhost.conf}} file. Whenever a MUSH starts up or gets rebooted, it’s
-going to look to what’s in that file. A few of those choices relate to
+\sphinxcode{\sphinxupquote{netrhost.conf}} file. Whenever a MUSH starts up or gets rebooted, it\textquotesingle{}s
+going to look to what\textquotesingle{}s in that file. A few of those choices relate to
 further configuring the choices you made with \sphinxcode{\sphinxupquote{confsource}}
 
 \sphinxAtStartPar
 The \sphinxcode{\sphinxupquote{netrhost.conf}} file has some aesthetic options like what if anything
 it says when the database is being saved or whether or not your MUSH will
-allow ANSI color, both in general, but also in things like people’s names.
+allow ANSI color, both in general, but also in things like people\textquotesingle{}s names.
 It has a lot of very esoteric options for tuning the performance and safety
 of your MUSH. It also is where you define things that connect to your database
-like your master room and guests. It let’s you determine which powers your
-staff does or does not have, and it’s also where you have an option to change
+like your master room and guests. It let\textquotesingle{}s you determine which powers your
+staff does or does not have, and it\textquotesingle{}s also where you have an option to change
 the password for \#1 should you forget it. There are ways to change some of
 these options from within the MUSH and even have those changes become new
 defaults that survive a reboot. One thing you set there that you definitely
-can’t change from within the MUSH, is which port it runs on.
+can\textquotesingle{}t change from within the MUSH, is which port it runs on.
 
 
 \subsection{Starting database options}
@@ -556,27 +556,27 @@ can’t change from within the MUSH, is which port it runs on.
 This last big choice is one that you probably are well aware of at least some
 of the things it allows for, mostly because the database is basically where
 everyone on a MUSH lives. Most of the choices you ever make about your MUSH
-will happen in the database and it’s something that’s basically always going
+will happen in the database and it\textquotesingle{}s something that\textquotesingle{}s basically always going
 to be changing in more ways than any one person could follow. No matter how
-vast the database of a MUSH gets, they all started somewhere, and that’s the
+vast the database of a MUSH gets, they all started somewhere, and that\textquotesingle{}s the
 last big choice you have to make.
 
 \sphinxAtStartPar
-Depending on how you look at it, there’s somewhere between thousands of choices
+Depending on how you look at it, there\textquotesingle{}s somewhere between thousands of choices
 and two choices for a starting database. What I mean is that you have the
 choice of starting with a brand new database to populate, only a room (\#0) and
-you (\#1), even the Master Room is something you’d have to add to it. The other
-option is to import an existing database, though to choose that option you’d
+you (\#1), even the Master Room is something you\textquotesingle{}d have to add to it. The other
+option is to import an existing database, though to choose that option you\textquotesingle{}d
 also have to have access to an existing database.
 
 \sphinxAtStartPar
 Besides the brand new database that can be made on\sphinxhyphen{}demand, RhostMUSH comes with
-two databases that you can use to get your start. One is called ‘Minimal’ and
-the other is called ‘Ambrosia’ after the lead RhostMUSH developed that made it.
-Despite the name, they’re both fairly minimal, there’s no grid in either, but
+two databases that you can use to get your start. One is called \textquotesingle{}Minimal\textquotesingle{} and
+the other is called \textquotesingle{}Ambrosia\textquotesingle{} after the lead RhostMUSH developed that made it.
+Despite the name, they\textquotesingle{}re both fairly minimal, there\textquotesingle{}s no grid in either, but
 what you get is a lot of pre\sphinxhyphen{}installed softcode and security, as well as a
 \sphinxcode{\sphinxupquote{netrhost.conf\textasciigrave{}}} file that has been tuned to work well with it. Even if you
-don’t use those databases you can take ideas for the \sphinxcode{\sphinxupquote{netrhost.conf}} file for
+don\textquotesingle{}t use those databases you can take ideas for the \sphinxcode{\sphinxupquote{netrhost.conf}} file for
 tuning your MUSH or even use some RhostMUSH commands to import that softcode
 into your database.
 
@@ -584,9 +584,9 @@ into your database.
 \subsection{The Choices We Make}
 \label{\detokenize{install:the-choices-we-make}}
 \sphinxAtStartPar
-Well, not you’re aware of those three big choices, what they are, and where
-you’ll run across them. Later in this Handbook we’ll be going through those
-choices in\sphinxhyphen{}depth. In this chapter, what we’ll be doing is using the default
+Well, not you\textquotesingle{}re aware of those three big choices, what they are, and where
+you\textquotesingle{}ll run across them. Later in this Handbook we\textquotesingle{}ll be going through those
+choices in\sphinxhyphen{}depth. In this chapter, what we\textquotesingle{}ll be doing is using the default
 options for for \sphinxcode{\sphinxupquote{confsource}} and \sphinxcode{\sphinxupquote{netrhost.conf}} and a brand new database.
 Those options and that blank slate are necessary so that you have in front of
 you a working MUSH with only \#0 and \#1 and get shown the way of building it
@@ -594,17 +594,17 @@ into whatever is your dream MUSH, and I know we all have one.
 
 \sphinxAtStartPar
 There will be a chance to make all those other choices later, in fact that
-will be happening very soon. There’s a lot of very interesting choices that
+will be happening very soon. There\textquotesingle{}s a lot of very interesting choices that
 you can make with RhostMUSH, too many for anyone to ever be able to use them
-all. If you don’t start with mastering the basics, you’ll never end up knowing
-what are the most RhostMUSH options. I can’t tell you what they are, it’s truly
+all. If you don\textquotesingle{}t start with mastering the basics, you\textquotesingle{}ll never end up knowing
+what are the most RhostMUSH options. I can\textquotesingle{}t tell you what they are, it\textquotesingle{}s truly
 something you have to discover on your own. Remember, you want to build your
 dream MUSH, not mine.
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
 Unless you are intending to start with a brand new database, you must be
-aware of it’s needs and expectations for the settings of \sphinxcode{\sphinxupquote{confsource}} and
+aware of it\textquotesingle{}s needs and expectations for the settings of \sphinxcode{\sphinxupquote{confsource}} and
 \sphinxcode{\sphinxupquote{netrhost.conf}} Starter databases tend to distribute with them config
 files of at least the options they expect set or not set during the process
 of configuring and compiling the server.
@@ -633,7 +633,7 @@ is no harm in running it anyway:
 
 \sphinxAtStartPar
 If you did NOT obtain the source code directly from GitHub, it is possible that
-even the above script will fail to run with ‘permission denied’ or similar
+even the above script will fail to run with \textquotesingle{}permission denied\textquotesingle{} or similar
 errors. It is recommended that you obtain the source code from there, but if
 for whatever reason this is not an option, manually adjust your permissions
 and then re\sphinxhyphen{}run the automated permission script:
@@ -712,7 +712,7 @@ first issue a \sphinxcode{\sphinxupquote{make clean}} before re\sphinxhyphen{}is
 A failure to issue \sphinxcode{\sphinxupquote{make clean}} prior to re\sphinxhyphen{}compiling with \sphinxcode{\sphinxupquote{make confsource}}
 can potentially leave stale object files which may cause unforseen issues when
 running code, including but not limited to random crashes.  Generally whenever
-recompiling it’s good to always make clean first.
+recompiling it\textquotesingle{}s good to always make clean first.
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
@@ -728,7 +728,7 @@ whenever you alter the code or import new source code.
 \subsection{Persistent configurable game options}
 \label{\detokenize{install:persistent-configurable-game-options}}
 \sphinxAtStartPar
-Upon compiling a RhostMUSH server, if it doesn’t already exist, a
+Upon compiling a RhostMUSH server, if it doesn\textquotesingle{}t already exist, a
 \sphinxcode{\sphinxupquote{netrhost.conf}} is copied into the \sphinxcode{\sphinxupquote{game/}} directory for your game. It
 includes useful defaults for most compile\sphinxhyphen{}time options that will work well for
 most games, particularly ones using both the default \sphinxcode{\sphinxupquote{confsource}} options and
@@ -739,7 +739,7 @@ This configuration is derived from \sphinxcode{\sphinxupquote{defaults/game/netr
 
 \sphinxAtStartPar
 While this \sphinxcode{\sphinxupquote{netrhost.conf}} is very well documented and quite easy to change
-in some places, but there are also some rather technical options that you it’s
+in some places, but there are also some rather technical options that you it\textquotesingle{}s
 important to know the full implications of this.
 
 \begin{sphinxadmonition}{note}{Note:}
@@ -762,7 +762,7 @@ Once done, you start up the system with the following command:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-It will prompt you to start a new db if it doesn’t find one.
+It will prompt you to start a new db if it doesn\textquotesingle{}t find one.
 
 \sphinxAtStartPar
 You may also do the commands individually:
@@ -776,8 +776,8 @@ You may also do the commands individually:
 \subsection{First login to the game}
 \label{\detokenize{install:first-login-to-the-game}}
 \sphinxAtStartPar
-Once started, log in the \#1 character (Wizard) with it’s appropiate
-password (no, not ‘potrzebie’, but ‘Nyctasia’).  There were private
+Once started, log in the \#1 character (Wizard) with it\textquotesingle{}s appropiate
+password (no, not \textquotesingle{}potrzebie\textquotesingle{}, but \textquotesingle{}Nyctasia\textquotesingle{}).  There were private
 reasons for the password change.
 
 \sphinxAtStartPar
@@ -803,11 +803,11 @@ The stunnel directory contains TLS/SSL connectivity.  This has to be linked to a
 
 \item {} 
 \sphinxAtStartPar
-./patch.sh \textendash{} This makes sure you have the latest code.  If you got this by git clone \sphinxurl{https://github.com/RhostMUSH/trunk} then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.
+./patch.sh \sphinxhyphen{}\sphinxhyphen{} This makes sure you have the latest code.  If you got this by git clone \sphinxurl{https://github.com/RhostMUSH/trunk} then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.
 
 \item {} 
 \sphinxAtStartPar
-make confsource.  Yup, it’s menu driven, nifty eh?
+make confsource.  Yup, it\textquotesingle{}s menu driven, nifty eh?
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumii}{enumiii}{}{.}%
 \item {} 
@@ -828,7 +828,7 @@ Options you may want to select (other than the defaults):
 
 \item {} 
 \sphinxAtStartPar
-22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
+22 (if you\textquotesingle{}re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
 
 \item {} 
 \sphinxAtStartPar
@@ -854,7 +854,7 @@ B4 (if you have sqlite libraries and wish to use this)
 
 \item {} 
 \sphinxAtStartPar
-‘r’ to compile with the settings you selected.
+\textquotesingle{}r\textquotesingle{} to compile with the settings you selected.
 
 \item {} 
 \sphinxAtStartPar
@@ -881,7 +881,7 @@ You may auto\sphinxhyphen{}load the minimal db and corresponding netrhost.conf f
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-This is ran from within the ‘game’ directory.  Once this is ran, you will need
+This is ran from within the \textquotesingle{}game\textquotesingle{} directory.  Once this is ran, you will need
 to customize the netrhost.conf file for your purposes.  The port and debug\_id must
 be changed at the very least.  Keep the debug\_id coordinated to the port as described.
 
@@ -908,9 +908,9 @@ Copy the netrhost.conf file into your game directory:
 \item {} 
 \sphinxAtStartPar
 At this point you can modify your netrhost.conf file settings in your game directory.
-Using an editor modify the ‘port’ and ‘debug\_id’ respectively in your netrhost.conf as state.
-The ‘port’ will be the port the mush listens on, the debug\_id is for the debug\sphinxhyphen{}stack and is
-your port with a ‘5’ at the end.  So if your port is 4444, the debug\_id is 44445
+Using an editor modify the \textquotesingle{}port\textquotesingle{} and \textquotesingle{}debug\_id\textquotesingle{} respectively in your netrhost.conf as state.
+The \textquotesingle{}port\textquotesingle{} will be the port the mush listens on, the debug\_id is for the debug\sphinxhyphen{}stack and is
+your port with a \textquotesingle{}5\textquotesingle{} at the end.  So if your port is 4444, the debug\_id is 44445
 
 \item {} 
 \sphinxAtStartPar
@@ -935,7 +935,7 @@ Start your mush:
 This will load the db that you loaded.
 
 \sphinxAtStartPar
-—————OR——\sphinxhyphen{}
+\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}OR\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}
 
 \sphinxAtStartPar
 From Startmush when prompted, hit \textless{}RETURN\textgreater{} for searching then select the number of the netrhost.db.flat that is listed as \textasciitilde{}/minimal\sphinxhyphen{}DBs/minimal\_db/netrhost.db.flat:
@@ -985,7 +985,7 @@ TINY\_U, USE\_SIDEEFFECTS, MUX\_INCDEC, ATTR\_HACK
 You only need to do this if you received the RhostMUSH src.  If you received a binary, continue on to the next part.
 
 \sphinxAtStartPar
-To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand\sphinxhyphen{}edit the Makefile.
+To compile the code, just type \textquotesingle{}make confsource\textquotesingle{}.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run \textquotesingle{}make source\textquotesingle{}, if you so choose to hand\sphinxhyphen{}edit the Makefile.
 
 \sphinxAtStartPar
 After the compile process is done, type:
@@ -1068,7 +1068,7 @@ Figure out what they were trying to say by having those above two sentences righ
 \sphinxAtStartPar
 All connect.txt and customized files can be found in the \textasciitilde{}/Server/game/txt directory.  There is a
 README file there that explains their purposes in more detail.  You can see more information on
-all files and how they inter\sphinxhyphen{}relate with ‘wizhelp file’.
+all files and how they inter\sphinxhyphen{}relate with \textquotesingle{}wizhelp file\textquotesingle{}.
 
 
 \section{Three Options for Starting a MUSH}
@@ -1078,7 +1078,7 @@ The RhostMUSH Git Repository comes with three options for starting your Mush.
 
 \begin{sphinxadmonition}{note}{\label{\detokenize{install:id8}}Todo:}
 \sphinxAtStartPar
-Well, there’s also some other pre\sphinxhyphen{}existing DB, upgrading, and ansible so let’s try to make this a little more coherent.
+Well, there\textquotesingle{}s also some other pre\sphinxhyphen{}existing DB, upgrading, and ansible so let\textquotesingle{}s try to make this a little more coherent.
 \end{sphinxadmonition}
 
 
@@ -1086,7 +1086,7 @@ Well, there’s also some other pre\sphinxhyphen{}existing DB, upgrading, and an
 \label{\detokenize{install:option-1-creating-a-new-game-with-a-blank-database}}
 \sphinxAtStartPar
 Modify your ./game/netrhost.conf file or what settings you want.
-Don’t feel overwhelmed, it’s all very well documented.
+Don\textquotesingle{}t feel overwhelmed, it\textquotesingle{}s all very well documented.
 
 
 \subsection{Option 2: Creating a new game with the generic default database}
@@ -1095,18 +1095,18 @@ Don’t feel overwhelmed, it’s all very well documented.
 Copy the netrhost.conf from minimal\sphinxhyphen{}DBs/minimal\_db to your game directory.
 
 \sphinxAtStartPar
-When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit \textless{}RETURN\textgreater{}
+When ./Startmush prompts you to load a flatfile, say \textquotesingle{}yes\textquotesingle{} and hit \textless{}RETURN\textgreater{}
 to have it search for flatfiles, then select netrhost.db.flat from under
 the minimal\sphinxhyphen{}DBs/minimal\_db directory.
 
 
-\subsection{Option 3: Creating a new game with Ambrosia’s default database}
+\subsection{Option 3: Creating a new game with Ambrosia\textquotesingle{}s default database}
 \label{\detokenize{install:option-3-creating-a-new-game-with-ambrosia-s-default-database}}
 \sphinxAtStartPar
-This option is covered in detail here: {\hyperref[\detokenize{ambrosiadb:ambrosiadb-installation}]{\sphinxcrossref{\DUrole{std,std-ref}{Ambrosia’s Minimal Rhost DB}}}}
+This option is covered in detail here: {\hyperref[\detokenize{ambrosiadb:ambrosiadb-installation}]{\sphinxcrossref{\DUrole{std,std-ref}{Ambrosia\textquotesingle{}s Minimal Rhost DB}}}}
 
 
-\chapter{What RhostMUSH is about and what’s so great about RhostMUSH}
+\chapter{What RhostMUSH is about and what\textquotesingle{}s so great about RhostMUSH}
 \label{\detokenize{features:what-rhostmush-is-about-and-what-s-so-great-about-rhostmush}}\label{\detokenize{features::doc}}
 \sphinxAtStartPar
 RhostMUSH was founded in 1989, originally by Natasha Davis (Nyctasia) and as
@@ -1136,7 +1136,7 @@ UTF8/unicode port), Jeff/Loki, Rook, Noltar, and Odin.
 We also have had hundreds of people who have offered (and provided) help,
 patches, suggestions, bug fixes, and alternations all on their own and
 every single one will have had their name mentioned in the RHOST.CHANGES
-file in the readme directory.  It’s far too large to have in the online
+file in the readme directory.  It\textquotesingle{}s far too large to have in the online
 help files.
 
 \sphinxAtStartPar
@@ -1151,7 +1151,7 @@ not limited to:
 
 \sphinxAtStartPar
 Yup, you guessed it.  RhostMUSH has a windows like recycle bin.
-This means the objects you @nuke and @destroy become ‘destroyed’
+This means the objects you @nuke and @destroy become \textquotesingle{}destroyed\textquotesingle{}
 but not recycled until they are @purged.  If you use the Myrddin
 CRON in the Mushcode directory, it by default sets up a job
 to purge anything over 30 days old, which should be more than
@@ -1188,7 +1188,7 @@ this applies to anyone below their level.
 
 \item {} 
 \sphinxAtStartPar
-override all locks.  There’s two flags to disable this.
+override all locks.  There\textquotesingle{}s two flags to disable this.
 NO\_OVERRIDE to stop overriding all locks (including attribs)
 and NO\_USELOCK to just stop overriding uselocks.
 This applies to anything their level and lower.
@@ -1210,7 +1210,7 @@ effectively \#1 in nearly every way.
 \end{itemize}
 
 
-\section{Titles and Captions to a player’s name}
+\section{Titles and Captions to a player\textquotesingle{}s name}
 \label{\detokenize{features:titles-and-captions-to-a-player-s-name}}\begin{quote}
 
 \sphinxAtStartPar
@@ -1320,7 +1320,7 @@ Have multiple zones which can optionally belong to multiple targets (multiple zo
 
 \sphinxAtStartPar
 This works as a truly independant and self\sphinxhyphen{}contained environment.
-A room can have 31 ‘layers’, each ‘layer’ is a reality in
+A room can have 31 \textquotesingle{}layers\textquotesingle{}, each \textquotesingle{}layer\textquotesingle{} is a reality in
 the same physical space.  These layers can work independently
 or allow interaction with other layers for vast customization.
 This affects all methods within the game including all matching,
@@ -1427,7 +1427,7 @@ Example Code Output:
 \label{\detokenize{features:plenty-more-not-mentioned}}
 \sphinxAtStartPar
 The flexibility to customize RhostMUSH is what is most daunting.
-Don’t fret, you don’t need to do it to run RhostMUSH successfully.
+Don\textquotesingle{}t fret, you don\textquotesingle{}t need to do it to run RhostMUSH successfully.
 In fact, the default configuration is mostly compatible with
 MUSH and will work correctly out of the box for most needs.  For those
 wishing to play, of course the sky is the limit of what you want to
@@ -1514,12 +1514,12 @@ help @lock type zone
 \label{\detokenize{features:reality-levels}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-Reality levels allows for the ability to have a sandboxed ‘existance’
+Reality levels allows for the ability to have a sandboxed \textquotesingle{}existance\textquotesingle{}
 in each physical location across the entirity of the mush.  Each
 reality is its own sandbox and can either stand alone or work
 dependently with other realities.  A person can belong to multiple
 realities at the same time, and realities is geared to a method for
-send and receive.  Each ‘method’ requires to be in the given reality
+send and receive.  Each \textquotesingle{}method\textquotesingle{} requires to be in the given reality
 to affect it.
 \begin{itemize}
 \item {} 
@@ -1721,7 +1721,7 @@ through the use of the USELOCK attribute flag, then you set up
 a matching attribute name with a prefix of a \textasciitilde{} to specify how
 the lock is to be evaluated.  This works in the same manner
 as an evaluation lock.  To be able to use the USELOCK attribute flag
-you must be empowered to do so with the ‘ATRUSE’ @toggle.  You may
+you must be empowered to do so with the \textquotesingle{}ATRUSE\textquotesingle{} @toggle.  You may
 also use the secure\_atruselock config parameter to globally enable
 this and not require the toggle to be set.
 \begin{itemize}
@@ -1762,7 +1762,7 @@ help @lock type uselock
 \sphinxAtStartPar
 By default wizards override all locks, including attribute locks,
 can see all dark exits, and bypass pagelocks.  This can be
-troublesome, and even abusive, so there’s ways to disable this.
+troublesome, and even abusive, so there\textquotesingle{}s ways to disable this.
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -1916,7 +1916,7 @@ to assign players.  The exception will likely be game owners or
 people who control the master room code.
 
 \sphinxAtStartPar
-There’s a bunch of readme files and online wizhelp that goes into
+There\textquotesingle{}s a bunch of readme files and online wizhelp that goes into
 detail of the various bitlevels and what each can do.
 \begin{itemize}
 \item {} 
@@ -1933,7 +1933,7 @@ wizhelp control
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-While using QDBM, there’s really no set limits for most things.
+While using QDBM, there\textquotesingle{}s really no set limits for most things.
 The limits that we have are as followed:
 
 \end{itemize}
@@ -1950,7 +1950,7 @@ Compile time option with the menu configurator
 \end{itemize}
 
 \sphinxAtStartPar
-SBUF \sphinxhyphen{} 64 characters (if configured \textendash{} it’s suggested you do).
+SBUF \sphinxhyphen{} 64 characters (if configured \sphinxhyphen{}\sphinxhyphen{} it\textquotesingle{}s suggested you do).
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -2010,7 +2010,7 @@ wizhelp heavy\_cpu\_max
 DISK \sphinxhyphen{} no limit.  Generally will be 75\sphinxhyphen{}200M depending on size, number of backups and if you leave your compiled object files in.
 
 \sphinxAtStartPar
-DB Size \sphinxhyphen{} (20000 default) There is no limit on the number of objects the db can have.  By default it’s soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem.
+DB Size \sphinxhyphen{} (20000 default) There is no limit on the number of objects the db can have.  By default it\textquotesingle{}s soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem.
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -2031,7 +2031,7 @@ wizhelp @limit
 \end{itemize}
 
 \sphinxAtStartPar
-Attribute Size \sphinxhyphen{} 10K as a hard limit.  750 as a soft limit.  You can increase this but it can’t exceed 10000 attributes.  This is to avoid DoS style attacks.
+Attribute Size \sphinxhyphen{} 10K as a hard limit.  750 as a soft limit.  You can increase this but it can\textquotesingle{}t exceed 10000 attributes.  This is to avoid DoS style attacks.
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -2166,8 +2166,8 @@ SIGTERM \sphinxhyphen{} will immediately scram the mush as cleanly and fast as p
 \label{\detokenize{features:setting-up-global-parents-global-parents-global-attribute-formatting-and-other-global-setups}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-Global parents are useful when you want to have a global ‘parent’
-without actually having a defined \sphinxhref{mailto:'@parent}{‘@parent}’.  It always will be the
+Global parents are useful when you want to have a global \textquotesingle{}parent\textquotesingle{}
+without actually having a defined \sphinxhref{mailto:'@parent}{\textquotesingle{}@parent}\textquotesingle{}.  It always will be the
 highest tier in a lookup.  The way lookups will go will be:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -2208,7 +2208,7 @@ global\_parent\_player  \sphinxhyphen{} The player global parent
 \sphinxAtStartPar
 Global @parents are different than global parents in that any new
 item of similar type that is created is automatically assigned this
-physical @parent.  It’s obviously more limiting since it sets
+physical @parent.  It\textquotesingle{}s obviously more limiting since it sets
 the literal physical parent defined.
 
 \sphinxAtStartPar
@@ -2353,13 +2353,13 @@ To define how many commands a minute a player set SPAMMONITOR can use
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-spam\_limit \textendash{} default 120
+spam\_limit \sphinxhyphen{}\sphinxhyphen{} default 120
 
 \end{itemize}
 
 \item {} 
 \sphinxAtStartPar
-If you examine things and see ‘Output cut off’ messages, you may want
+If you examine things and see \textquotesingle{}Output cut off\textquotesingle{} messages, you may want
 to increase your output limit, funny enough, the name of this is
 similar
 \begin{itemize}
@@ -2371,7 +2371,7 @@ output\_limit \sphinxhyphen{} You should set this no less than 4 times the curre
 
 \item {} 
 \sphinxAtStartPar
-Attributes names can not exceed 64 characters.  Sorry, it’s a hard limit
+Attributes names can not exceed 64 characters.  Sorry, it\textquotesingle{}s a hard limit
 
 \item {} 
 \sphinxAtStartPar
@@ -2388,7 +2388,7 @@ Also look at lit() as a solution.
 \item {} 
 \sphinxAtStartPar
 After you set up your guests, you can set unique names to each guest
-if you so want after defining the dbref\#’s your guests use.  This is
+if you so want after defining the dbref\#\textquotesingle{}s your guests use.  This is
 done by defining them in the guest\_namelist parameter.  You can also
 increase guests (or decrease them) between 0\sphinxhyphen{}31 guests.
 \begin{itemize}
@@ -2413,8 +2413,8 @@ Attribute contentlocks can be set up so you can lock the actual
 content that you can set (or even unset!) into an attribute.
 The beauty of this is that you can specify case sensitive
 information, lock different ways contents in attributes are set
-based on who is setting it, or even on where it’s being set.
-The sky’s the limit.
+based on who is setting it, or even on where it\textquotesingle{}s being set.
+The sky\textquotesingle{}s the limit.
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -2439,7 +2439,7 @@ amount of attributes without paying a hefty penalty on object bloat.
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-help cluster  \textendash{} Gives a fantastic overview of how clusters work.
+help cluster  \sphinxhyphen{}\sphinxhyphen{} Gives a fantastic overview of how clusters work.
 
 \end{itemize}
 
@@ -2494,7 +2494,7 @@ Changing permission levels in the middle of execution for evaluation.
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
-see help on the streval and ueval function’
+see help on the streval and ueval function\textquotesingle{}
 
 \end{itemize}
 
@@ -2512,8 +2512,8 @@ Here are some things to know about RhostMUSH and what you may or may not
 want to do.  Things here are not covered in other documents:
 
 \sphinxAtStartPar
-Admin toggles to configure the WHO, various things you’re used to, etc is in the
-‘netrhost.conf’ file.  descriptions Notes in the autoconf.h file is in the
+Admin toggles to configure the WHO, various things you\textquotesingle{}re used to, etc is in the
+\textquotesingle{}netrhost.conf\textquotesingle{} file.  descriptions Notes in the autoconf.h file is in the
 README.AUTOCONF file.
 
 
@@ -2522,7 +2522,7 @@ README.AUTOCONF file.
 
 \sphinxAtStartPar
 IMMORTAL \sphinxhyphen{} They can do anything.  Treat this as \#1 and only give to
-people you trust.  Period.   You don’t have to use this bit
+people you trust.  Period.   You don\textquotesingle{}t have to use this bit
 if you do not want to and just assume \#1.
 
 \sphinxAtStartPar
@@ -2533,10 +2533,10 @@ FULL wizard.  Plus, they can do a bit more.
 COUNCILOR \sphinxhyphen{} Like royalty on PENN/MUX but they can modify.
 
 \sphinxAtStartPar
-ARCHITECT \sphinxhyphen{} Can’t do as much as councilor, but lot more than BUILDER.
+ARCHITECT \sphinxhyphen{} Can\textquotesingle{}t do as much as councilor, but lot more than BUILDER.
 
 \sphinxAtStartPar
-GUILDMASTER \sphinxhyphen{} Very limited.  Sees dbrief\#’s, can ex things their
+GUILDMASTER \sphinxhyphen{} Very limited.  Sees dbrief\#\textquotesingle{}s, can ex things their
 level and lower and @quota players.
 \end{quote}
 
@@ -2545,10 +2545,10 @@ level and lower and @quota players.
 \label{\detokenize{features:you-need-to-pcreate-your-guest-characters-and-set-them-guest}}\begin{quote}
 
 \sphinxAtStartPar
-It doesn’t create them on the fly but we considered this better.
+It doesn\textquotesingle{}t create them on the fly but we considered this better.
 You have 31 total you can have.  It defaults to 10 in the
 netrhost.conf file.  You can rename the guests anything you want,
-but before you do so, you must add the dbref\#’s to the param
+but before you do so, you must add the dbref\#\textquotesingle{}s to the param
 guest\_namelist
 \end{quote}
 
@@ -2585,8 +2585,8 @@ You can have things in multiple zones.
 
 \sphinxAtStartPar
 It does this by purging anything
-it can’t identify.  Dataloss is better than unrecoverable data.
-Yes, any such ‘repairing’ is logged so you know if something is up.
+it can\textquotesingle{}t identify.  Dataloss is better than unrecoverable data.
+Yes, any such \textquotesingle{}repairing\textquotesingle{} is logged so you know if something is up.
 \end{quote}
 
 
@@ -2622,9 +2622,9 @@ You do not need to @shutdown.
 \label{\detokenize{features:softcode-emulations-of-functions-from-other-servers-are-included}}\begin{quote}
 
 \sphinxAtStartPar
-Load the file softfunctions into the mush once it’s set up.  This are
+Load the file softfunctions into the mush once it\textquotesingle{}s set up.  This are
 @functions that will alias the functions that PENN, MUX, and TinyMUSH have
-that is either named differently or we don’t have for one reason or another.
+that is either named differently or we don\textquotesingle{}t have for one reason or another.
 \end{quote}
 
 
@@ -2646,7 +2646,7 @@ and some effort should be looked at on how different it behaves.
 \item {} 
 \sphinxAtStartPar
 The way the comsystem (hardcode) works with the latest PennMUSH has some
-compatibility now with MUX’s comsystem.
+compatibility now with MUX\textquotesingle{}s comsystem.
 
 \item {} 
 \sphinxAtStartPar
@@ -2658,7 +2658,7 @@ Debugging code uses DEBUG and has an indented format.
 
 \item {} 
 \sphinxAtStartPar
-The parser for code doesn’t require nested escaping like other codebases, but has issues with the pre\sphinxhyphen{}parser and nesting.
+The parser for code doesn\textquotesingle{}t require nested escaping like other codebases, but has issues with the pre\sphinxhyphen{}parser and nesting.
 
 \item {} 
 \sphinxAtStartPar
@@ -2762,17 +2762,17 @@ the target to use it
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Rhost does support UNICODE/UTF8, but it’s currently not part of the main
+Rhost does support UNICODE/UTF8, but it\textquotesingle{}s currently not part of the main
 branch as of this writing.  Please talk to Kage on the dev site for more
-information on when it’ll be released.
+information on when it\textquotesingle{}ll be released.
 \end{sphinxadmonition}
 
 
 \section{Organization of help and wizhelp}
 \label{\detokenize{differences:organization-of-help-and-wizhelp}}
 \sphinxAtStartPar
-First, on PennMUSH, help is separated into ‘help’ and ‘wizhelp’.  This can
-be confusing. If you want to ‘combine’ them, you may use the following snippit:
+First, on PennMUSH, help is separated into \textquotesingle{}help\textquotesingle{} and \textquotesingle{}wizhelp\textquotesingle{}.  This can
+be confusing. If you want to \textquotesingle{}combine\textquotesingle{} them, you may use the following snippit:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYGZdl{}ahelp*:@pemit \PYGZpc{}\PYGZsh{}=[switch([!!words(\PYGZpc{}0)][match(/search,\PYGZpc{}0*)],0?,[setq(0,help)][setq(1,0)],11,[setq(0,rest(\PYGZpc{}0))][setq(1,2)],setq(0,trim(\PYGZpc{}0)))][setq(a,textfile(help,\PYGZpc{}q0,\PYGZpc{}q1))][setq(b,textfile(wizhelp,\PYGZpc{}q0,\PYGZpc{}q1))][setq(2,)][ifelse(!strmatch(\PYGZpc{}qa,No entry*),\PYGZpc{}qa[setq(2,\PYGZpc{}r)])][ifelse(!strmatch(\PYGZpc{}qb,No entry*),\PYGZpc{}q2\PYGZpc{}qb[setq(2,\PYGZpc{}r)])][ifelse(!\PYGZdl{}r(2),No topics found for \PYGZsq{}\PYGZpc{}q0\PYGZsq{}.)]
@@ -3971,7 +3971,7 @@ named variables for regexp patterns in \$commands are not supported.
 \label{\detokenize{differences:sidefx-flag}}\begin{quote}
 
 \sphinxAtStartPar
-Anything that uses sideeffects \textendash{}DIRECTLY\textendash{} requires this flag.
+Anything that uses sideeffects \sphinxhyphen{}\sphinxhyphen{}DIRECTLY\sphinxhyphen{}\sphinxhyphen{} requires this flag.
 Sideeffects are like set(), pemit(), and so forth.  list(), while a
 side\sphinxhyphen{}effect, does not require this flag as it is considered passive and safe.
 \end{quote}
@@ -3982,7 +3982,7 @@ side\sphinxhyphen{}effect, does not require this flag as it is considered passiv
 
 \sphinxAtStartPar
 Rhost handles them slightly different.  You do not link
-exits to \#\sphinxhyphen{}4.  That’s an invalid destination.  I always found it, frankly,
+exits to \#\sphinxhyphen{}4.  That\textquotesingle{}s an invalid destination.  I always found it, frankly,
 stupid to save any data in the database that was literally invalid.  So,
 you link the exit as you normally would, then @toggle the exit variable.
 At that point you use @exitto like you would any other codebase.
@@ -3997,7 +3997,7 @@ Zones actually can work near exactly as you would expect them to
 work on TinyMUSH, MUX, or Penn.  Either at once or at different times.
 We recognize multiple zones, zone masters, zone inheritance, zone
 parenting, zone command processing, and the ability to bypass zones
-entirely.  There’s a ton of flexbility with this.  However, the syntax
+entirely.  There\textquotesingle{}s a ton of flexbility with this.  However, the syntax
 for adding/removing zones is different so the commands will have to be
 ported to Rhost.
 \end{quote}
@@ -4007,8 +4007,8 @@ ported to Rhost.
 \label{\detokenize{differences:powers}}\begin{quote}
 
 \sphinxAtStartPar
-Powers work a bit differently in Rhost and they’re named
-differently, which should not be that big a surprise as they’re different
+Powers work a bit differently in Rhost and they\textquotesingle{}re named
+differently, which should not be that big a surprise as they\textquotesingle{}re different
 between all the codebases anyway.  The big difference is our powers are
 tiered, meaning the can be limited or grown to a given bitlevel and are
 not just toggle powers like the other codebases.  We also have @depower
@@ -4031,7 +4031,7 @@ that long you need to make sure they are cut down to the proper length.
 \label{\detokenize{differences:attribute-contents}}\begin{quote}
 
 \sphinxAtStartPar
-You’ll be happy to know that Rhost allows upwards
+You\textquotesingle{}ll be happy to know that Rhost allows upwards
 to 64,000 bytes of data to be assigned an LBUF.  We strongly recommand
 to cap at 32,000 however as the various TCP socket protocols play nicer
 with that value.
@@ -4049,7 +4049,7 @@ Yup!  We got it.
 
 \sphinxAtStartPar
 Yup!  We got this too.  Not quiet yet in the main branch,
-but download Kage’s branch, you won’t be dissapointed.  We will have
+but download Kage\textquotesingle{}s branch, you won\textquotesingle{}t be dissapointed.  We will have
 UTF8 in Rhost 4.0 when released.
 \end{quote}
 
@@ -4073,14 +4073,14 @@ should never be a reason to exceed that.  If you need more, use
 @nuke only works on players.  @destroy works on non\sphinxhyphen{}players.
 Never the two will meet.  We also have a built in recycle bin meaning
 anything destroyed will not be automatically recycled.  If you want it
-recycled, you have to @purge it.  Yes, if you use  Myrddin’s CRON, it
+recycled, you have to @purge it.  Yes, if you use  Myrddin\textquotesingle{}s CRON, it
 has a built in entry to auto\sphinxhyphen{}purge anything older than 30 days.  This
 also means you can on\sphinxhyphen{}line recover anything destroyed before that 30
 days.  Groovy, eh?
 \end{quote}
 
 
-\subsection{object id’s}
+\subsection{object id\textquotesingle{}s}
 \label{\detokenize{differences:object-id-s}}
 \sphinxAtStartPar
 Yup, we got them.  Even in searches, and, well, everything.
@@ -4120,10 +4120,10 @@ See: lockencode(), lockdecode(), and lockcheck()
 \label{\detokenize{differences:attribute-trees}}\begin{quote}
 
 \sphinxAtStartPar
-Unlike Penn, we don’t really have attribute trees.  We do support the
+Unlike Penn, we don\textquotesingle{}t really have attribute trees.  We do support the
 basic capabilities of it for compatibility if you load in softcode that
-uses it, but it doesn’t have the advanced features of attribute trees.
-Please see ‘help attribute tree’ for more information.
+uses it, but it doesn\textquotesingle{}t have the advanced features of attribute trees.
+Please see \textquotesingle{}help attribute tree\textquotesingle{} for more information.
 \end{quote}
 
 
@@ -4170,7 +4170,7 @@ There are mail wrappers to mimic MUX/TM3 and Penn mail systems.
 \label{\detokenize{differences:comsystem}}\begin{quote}
 
 \sphinxAtStartPar
-The softcoded comsystem mimics MUX/TM3 and Penn’s comsystem.
+The softcoded comsystem mimics MUX/TM3 and Penn\textquotesingle{}s comsystem.
 \end{quote}
 
 
@@ -4178,7 +4178,7 @@ The softcoded comsystem mimics MUX/TM3 and Penn’s comsystem.
 \label{\detokenize{differences:various-functions}}\begin{quote}
 
 \sphinxAtStartPar
-There is a ‘softcode.minmax’ in the Mushcode directory that loads up a slew
+There is a \textquotesingle{}softcode.minmax\textquotesingle{} in the Mushcode directory that loads up a slew
 of @function wrappers that will emulate various functions that MUX, Penn, or
 TM3 has.  We have the functionality for nearly all of them, but either our
 functions have different syntax, or we have different named functions that
@@ -4201,7 +4201,7 @@ to hasattr instead.
 \label{\detokenize{differences:player-stats}}\begin{quote}
 
 \sphinxAtStartPar
-MUX has some built in ways for player stats.  We do as well but they’re
+MUX has some built in ways for player stats.  We do as well but they\textquotesingle{}re
 either done via functions or attribute contents.  Code that requires this
 will have to be recoded.
 \end{quote}
@@ -4230,8 +4230,8 @@ softcoded switch to a hardcoded command and work around the limitation.
 \label{\detokenize{differences:adding-flags}}\begin{quote}
 
 \sphinxAtStartPar
-Some flags may be missing.  If it’s a dummy flag, feel free to use the
-marker flags MARKER0 to MARKER9 to set them.  If it’s an existing flag
+Some flags may be missing.  If it\textquotesingle{}s a dummy flag, feel free to use the
+marker flags MARKER0 to MARKER9 to set them.  If it\textquotesingle{}s an existing flag
 that does similar features, feel free to flag\_alias it or just flag\_name
 it to the other name if you want.
 \end{quote}
@@ -4276,11 +4276,11 @@ All *val() functions in Penn that are used will have to be remapped to a non\sph
 
 \item {} 
 \sphinxAtStartPar
-Penn’s hardcoded comsystem is emulated with the softcode comsys
+Penn\textquotesingle{}s hardcoded comsystem is emulated with the softcode comsys
 
 \item {} 
 \sphinxAtStartPar
-Penn’s @mail system is workable with mail wrappers
+Penn\textquotesingle{}s @mail system is workable with mail wrappers
 
 \item {} 
 \sphinxAtStartPar
@@ -4305,7 +4305,7 @@ This uses @shutdown/restart, Rhost uses @reboot
 \label{\detokenize{differences:mux}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-Mux has an async mysql database engine.  This is not possible with Rhost.  You’ll have to use the sync method instead.
+Mux has an async mysql database engine.  This is not possible with Rhost.  You\textquotesingle{}ll have to use the sync method instead.
 
 \item {} 
 \sphinxAtStartPar
@@ -4313,11 +4313,11 @@ UTF8 is supported but internally passed differently.
 
 \item {} 
 \sphinxAtStartPar
-Mux’s hardcoded comsystem is emulated with the softcode comsys
+Mux\textquotesingle{}s hardcoded comsystem is emulated with the softcode comsys
 
 \item {} 
 \sphinxAtStartPar
-MUX’s @mail system is workable with mail wrappers
+MUX\textquotesingle{}s @mail system is workable with mail wrappers
 
 \item {} 
 \sphinxAtStartPar
@@ -4352,7 +4352,7 @@ Then you just follow the prompts to load in your flatfile there.
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-If you wish to have \#1’s password reset to ‘Nyctasia’ please add this
+If you wish to have \#1\textquotesingle{}s password reset to \textquotesingle{}Nyctasia\textquotesingle{} please add this
 to the bottom of your netrhost.conf file:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -4361,24 +4361,24 @@ to the bottom of your netrhost.conf file:
 
 \sphinxAtStartPar
 The caveat is that you must not have any netrhost.db* or netrhost.gdbm* files
-in your data directory prior to loading it in.  It’ll error out if previous
+in your data directory prior to loading it in.  It\textquotesingle{}ll error out if previous
 files exist.  So you will need to move all files that start with netrhost.db*
 and all files that start with netrhost.gdbm* to another directory.
 
 \sphinxAtStartPar
-Your flatfile tends to be named ‘netrhost.db.flat’ which is in your data
+Your flatfile tends to be named \textquotesingle{}netrhost.db.flat\textquotesingle{} which is in your data
 directory.  You can, however, name your flatfile anything you want and have
 it in any directory you want.
 
 \sphinxAtStartPar
 To make a flatfile in game, you just issue @dump/flat.  You can specify
-a filename after it, otherwise it assumes the name ‘netrhost.db.flat’.
+a filename after it, otherwise it assumes the name \textquotesingle{}netrhost.db.flat\textquotesingle{}.
 
 
 \section{Converting a flatfile database for use in RhostMUSH}
 \label{\detokenize{database:converting-a-flatfile-database-for-use-in-rhostmush}}
 \sphinxAtStartPar
-In the \textasciitilde{}/Server/convert directory there is a script called ‘doconvert.sh’
+In the \textasciitilde{}/Server/convert directory there is a script called \textquotesingle{}doconvert.sh\textquotesingle{}
 
 \sphinxAtStartPar
 This script will convert most flatfiles from existing mush engines to
@@ -4389,7 +4389,7 @@ the latest PennMUSH databases.  Our apologies.
 
 \sphinxAtStartPar
 To convert a non\sphinxhyphen{}pennmush game (or a pennmush 1.7.4 or earlier), you first
-need a valid flatfile of the game you’re wanting to convert.  Please refer
+need a valid flatfile of the game you\textquotesingle{}re wanting to convert.  Please refer
 to the documentatation of the mush engine in question (MUX, Penn 1.7, TM2/3)
 on how to do this.  Once you have it type::
 
@@ -4418,7 +4418,7 @@ mux passwords as a compatibility option, or you will NOT BE ABLE to log in
 to players as the password will not be recognizeable.
 
 \sphinxAtStartPar
-Make sure to keep QDBM selected as it’s a much more stable database engine
+Make sure to keep QDBM selected as it\textquotesingle{}s a much more stable database engine
 that does not have attribute limit restrictions like GDBM does.
 
 \sphinxAtStartPar
@@ -4435,7 +4435,7 @@ above 32K in lbuffer size.
 
 \sphinxAtStartPar
 Go ahead and select 64 char attributes.  It allows you to have 64 characters
-for attribute names.  It’s handy to have.
+for attribute names.  It\textquotesingle{}s handy to have.
 
 \sphinxAtStartPar
 If you wish at this point to set up mysql and/or sqlite, you  may do so.
@@ -4448,7 +4448,7 @@ Yes, you can use them in parallel without any issue.
 \section{What to type to get the basics running if you did not choose a pre\sphinxhyphen{}existing flatfile}
 \label{\detokenize{gettingstarted:what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile}}
 \sphinxAtStartPar
-If you decided to get a bare\sphinxhyphen{}bone configuration, you will find your mush has just two things.  The \#1 (God) player and the starting room \#0.  That’s it.
+If you decided to get a bare\sphinxhyphen{}bone configuration, you will find your mush has just two things.  The \#1 (God) player and the starting room \#0.  That\textquotesingle{}s it.
 
 
 \subsection{Login to \#1 from the connect screen}
@@ -4461,7 +4461,7 @@ Nyctasia is the default password:
 \end{sphinxVerbatim}
 
 
-\subsection{Change \#1’s password to something you’ll remember but is hard to guess}
+\subsection{Change \#1\textquotesingle{}s password to something you\textquotesingle{}ll remember but is hard to guess}
 \label{\detokenize{gettingstarted:change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess}}
 \sphinxAtStartPar
 Note: yourpasswordgoeshere can be any password you choose.  Choose well:
@@ -4483,14 +4483,14 @@ At this point you should create your master room:
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
 Reason: You need a master room to contain global \$commands for players
-\textasciicircum{}listens are not global for intentional reasons.  It’s far too much overhead for far too minimal gains that few people need or use.
+\textasciicircum{}listens are not global for intentional reasons.  It\textquotesingle{}s far too much overhead for far too minimal gains that few people need or use.
 \end{sphinxadmonition}
 
 
 \subsection{Flag and protect Master Room}
 \label{\detokenize{gettingstarted:flag-and-protect-master-room}}
 \sphinxAtStartPar
-It will return a dbref\#, it should be \#2 if you’ve not created anything else:
+It will return a dbref\#, it should be \#2 if you\textquotesingle{}ve not created anything else:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nd}{@set} \PYG{c+c1}{\PYGZsh{}2=safe ind halt float}
@@ -4659,7 +4659,7 @@ Use the closet dbref\# instead of \#234
 \subsection{Add admin object to configuration}
 \label{\detokenize{gettingstarted:add-admin-object-to-configuration}}
 \sphinxAtStartPar
-Modify the netrhost.conf file with the following line at the bottom after the line ‘\# define local alises here’ where you replace 123 with the dbref\# of the admin object that you made:
+Modify the netrhost.conf file with the following line at the bottom after the line \textquotesingle{}\# define local alises here\textquotesingle{} where you replace 123 with the dbref\# of the admin object that you made:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{admin\PYGZus{}object} \PYG{l+m+mi}{123}
@@ -4695,7 +4695,7 @@ This is client dependant based on whatever method it uses to load softcode.
 \label{\detokenize{gettingstarted:myrddin-mushcron}}
 \sphinxAtStartPar
 Load in the Myrddin Mush Cron.
-It’s a very handy piece of software and strongly suggested to do so.  You can find this in the ‘Mushcode’ directory off the main Rhost directory.
+It\textquotesingle{}s a very handy piece of software and strongly suggested to do so.  You can find this in the \textquotesingle{}Mushcode\textquotesingle{} directory off the main Rhost directory.
 Filename:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -4764,7 +4764,7 @@ Chown to immholder:
 \subsubsection{Myrddin BBS}
 \label{\detokenize{gettingstarted:myrddin-bbs}}
 \sphinxAtStartPar
-Load in Myrddin’s BBS
+Load in Myrddin\textquotesingle{}s BBS
 Filename:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -4784,7 +4784,7 @@ Chown to immholder and the contents of it as well:
 \subsubsection{Other Mushcode}
 \label{\detokenize{gettingstarted:other-mushcode}}
 \sphinxAtStartPar
-There’s other code in the Mushcode directory that you are welcome to install.  You would follow similar procedures
+There\textquotesingle{}s other code in the Mushcode directory that you are welcome to install.  You would follow similar procedures
 for loading it in, chowning it, and moving to the master room as you did above.
 
 \sphinxAtStartPar
@@ -4795,19 +4795,19 @@ no changes depending on the complexity of the code in question.
 \section{Minimal DB instructions}
 \label{\detokenize{gettingstarted:minimal-db-instructions}}
 \sphinxAtStartPar
-The ‘retired’ directory has older image files if you’re interested
+The \textquotesingle{}retired\textquotesingle{} directory has older image files if you\textquotesingle{}re interested
 
 \sphinxAtStartPar
-Please use the netrhost.conf file with the database as they’re linked.
+Please use the netrhost.conf file with the database as they\textquotesingle{}re linked.
 
 \sphinxAtStartPar
 The flatfile must be loaded in as a new db
 
 \sphinxAtStartPar
-This is a minimal db with basic ‘features’ built in.
+This is a minimal db with basic \textquotesingle{}features\textquotesingle{} built in.
 
 \sphinxAtStartPar
-Copy the txt files into the Rhost’s txt directory off game:
+Copy the txt files into the Rhost\textquotesingle{}s txt directory off game:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{cp} \PYG{n}{txt}\PYG{o}{/}\PYG{o}{*} \PYG{o}{\PYGZti{}}\PYG{o}{/}\PYG{n}{Rhost}\PYG{o}{/}\PYG{n}{Server}\PYG{o}{/}\PYG{n}{game}\PYG{o}{/}\PYG{n}{txt}
@@ -4832,7 +4832,7 @@ Using the Startmush utility for the first time, select the load db method
 \end{enumerate}
 
 \sphinxAtStartPar
-— or —
+\sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{} or \sphinxhyphen{}\sphinxhyphen{}\sphinxhyphen{}
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
@@ -4869,7 +4869,7 @@ Startmush as expected
 \end{enumerate}
 
 
-\chapter{Ambrosia’s Minimal Rhost DB}
+\chapter{Ambrosia\textquotesingle{}s Minimal Rhost DB}
 \label{\detokenize{ambrosiadb:ambrosia-s-minimal-rhost-db}}\label{\detokenize{ambrosiadb:ambrosiadb-installation}}\label{\detokenize{ambrosiadb::doc}}
 \sphinxAtStartPar
 Version: 1.0.5          2020\sphinxhyphen{}01\sphinxhyphen{}31
@@ -4942,7 +4942,7 @@ Lowered mailstatus() access to architect.
 \item[{1.0.4}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-Changed softcoded objid() to tag(), due to Rhost’s new hardcoded
+Changed softcoded objid() to tag(), due to Rhost\textquotesingle{}s new hardcoded
 objid() which does perform a different functionality.
 
 \item {} 
@@ -4951,14 +4951,14 @@ Added more staff recommendations to this file.
 
 \item {} 
 \sphinxAtStartPar
-Added Reality TXLevel ‘Admin’ to all objects in the db except \#1
+Added Reality TXLevel \textquotesingle{}Admin\textquotesingle{} to all objects in the db except \#1
 
 \end{itemize}
 
 \item[{1.0.5}] \leavevmode\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-Replaced softcoded tag() system with Rhost’s new hardcoded @tag/tag()
+Replaced softcoded tag() system with Rhost\textquotesingle{}s new hardcoded @tag/tag()
 system. All previous tags are set on the database. The Tag Object
 was removed.
 
@@ -4969,7 +4969,7 @@ Tags in place.
 
 \item {} 
 \sphinxAtStartPar
-Places System @startup integrated into BC\sphinxhyphen{}Admin\sphinxhyphen{}Royalty’s @startup
+Places System @startup integrated into BC\sphinxhyphen{}Admin\sphinxhyphen{}Royalty\textquotesingle{}s @startup
 
 \item {} 
 \sphinxAtStartPar
@@ -5061,20 +5061,20 @@ Misc Data object to hold general data, like Staff lists etc.
 
 \item {} 
 \sphinxAtStartPar
-Reality levels ‘Real’ and ‘Admin’.
+Reality levels \textquotesingle{}Real\textquotesingle{} and \textquotesingle{}Admin\textquotesingle{}.
 
 \end{itemize}
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-All created items and players by default are in Recieve\sphinxhyphen{}Level ‘Real’ and
-Transmit\sphinxhyphen{}Levels ‘Real’ and ‘Admin’.
+All created items and players by default are in Recieve\sphinxhyphen{}Level \textquotesingle{}Real\textquotesingle{} and
+Transmit\sphinxhyphen{}Levels \textquotesingle{}Real\textquotesingle{} and \textquotesingle{}Admin\textquotesingle{}.
 \end{sphinxadmonition}
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
 All globals, Master Room, BCs\sphinxhyphen{}*, and other staff/code\sphinxhyphen{}related objects
-currently have only ‘Admin’ as their Transmit\sphinxhyphen{}Level. This does not prevent
+currently have only \textquotesingle{}Admin\textquotesingle{} as their Transmit\sphinxhyphen{}Level. This does not prevent
 them fromi working properly. The only exception is \#1, who has empty reality
 levels.
 
@@ -5090,7 +5090,7 @@ properly.
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
 IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
-The ‘Port’ configuration parameter is XXXX’d out. Set it first before starting
+The \textquotesingle{}Port\textquotesingle{} configuration parameter is XXXX\textquotesingle{}d out. Set it first before starting
 your game.
 \end{sphinxadmonition}
 \begin{itemize}
@@ -5199,13 +5199,13 @@ help .txt files and .indx files for the above.
 \label{\detokenize{ambrosiadb:ambrosiadb-functions}}\begin{itemize}
 \item {} 
 \sphinxAtStartPar
-isstaff() \sphinxhyphen{} Softcoded function that returns ‘1’ if its argument matches
-a \#dbref in the ‘isstaff’ attribute on the Misc Data object.
+isstaff() \sphinxhyphen{} Softcoded function that returns \textquotesingle{}1\textquotesingle{} if its argument matches
+a \#dbref in the \textquotesingle{}isstaff\textquotesingle{} attribute on the Misc Data object.
 
 \item {} 
 \sphinxAtStartPar
-bccheck() \sphinxhyphen{} Softcoded function that returns ‘1’ if its argument matches
-a \#dbref in the ‘bcs’ attribute on the Misc Data object.
+bccheck() \sphinxhyphen{} Softcoded function that returns \textquotesingle{}1\textquotesingle{} if its argument matches
+a \#dbref in the \textquotesingle{}bcs\textquotesingle{} attribute on the Misc Data object.
 
 \item {} 
 \sphinxAtStartPar
@@ -5220,7 +5220,7 @@ a random string of that length. Perfect for setting random passwords.
 \item {} 
 \sphinxAtStartPar
 cmdmessage() \sphinxhyphen{} Softcoded function that takes two strings as its parameters.
-Returns ‘\textless{}\textless{} STRING1 \textgreater{}\textgreater{} String2’. The \textless{}\textless{}\textgreater{}\textgreater{} part is highlighted red. Good for
+Returns \textquotesingle{}\textless{}\textless{} STRING1 \textgreater{}\textgreater{} String2\textquotesingle{}. The \textless{}\textless{}\textgreater{}\textgreater{} part is highlighted red. Good for
 all kinds of messages sent by game commands.
 
 \item {} 
@@ -5248,8 +5248,8 @@ instead of printf() for such things.
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-ALL of header()’s parameters are optional. By default, header() simply draws
-a 78\sphinxhyphen{}char wide line of =’s. Simply leave parameters empty if you want to set
+ALL of header()\textquotesingle{}s parameters are optional. By default, header() simply draws
+a 78\sphinxhyphen{}char wide line of =\textquotesingle{}s. Simply leave parameters empty if you want to set
 one of the latter parameters.
 \end{sphinxadmonition}
 
@@ -5330,7 +5330,7 @@ code along those lines should get @chowned to the
 bc\sphinxhyphen{}admin\sphinxhyphen{}councilor.
 
 \sphinxAtStartPar
-If you as the MU* Head(s) don’t know Softcode well, or want to
+If you as the MU* Head(s) don\textquotesingle{}t know Softcode well, or want to
 leave anything Code to your Head Coder, also give them optional
 access to a maintenance Royalty bit in order to properly code
 banning/blacklisting +commands and other rare code that requires
@@ -5340,7 +5340,7 @@ Royalty powers. Again, chown finished code to bc\sphinxhyphen{}admin\sphinxhyphe
 \subsection{AmbrosiaDB MU* Head(s)}
 \label{\detokenize{ambrosiadb:ambrosiadb-mu-head-s}}
 \sphinxAtStartPar
-You’re the boss(es). But please use an Architect bit for your
+You\textquotesingle{}re the boss(es). But please use an Architect bit for your
 everyday things. Keep Immortal to yourself. Keep \#1 to yourself.
 And seriously avoid using either of them except for creating
 a Royalty bit or doing intricate DB maintenance.
@@ -5374,7 +5374,7 @@ code setup. Technically if everything is done right, the Coder(s) of the game do
 not require higher privileges than Architect for the vast majority of things.
 Royalty\sphinxhyphen{}level code should be a rare exception, if at all necessary. The MU*
 Head(s) or site\sphinxhyphen{}admin should be the only one having access to \#1, Immortals or
-perhaps even Royalty. The BC’s, Global Function objects and Function objects at
+perhaps even Royalty. The BC\textquotesingle{}s, Global Function objects and Function objects at
 level Royalty and higher have simply been provided as a if\sphinxhyphen{}necessary convenience.
 
 \sphinxAtStartPar
@@ -5425,13 +5425,13 @@ Enjoy!
 \section{AmbrosiaDB Compiling}
 \label{\detokenize{ambrosiadb:ambrosiadb-compiling}}
 \sphinxAtStartPar
-P.S. the ‘bin/asksource.save0’ file has been supplied for loading in the
-‘make config’ or ‘make confsource’ step of Rhost installation. It provides the
+P.S. the \textquotesingle{}bin/asksource.save0\textquotesingle{} file has been supplied for loading in the
+\textquotesingle{}make config\textquotesingle{} or \textquotesingle{}make confsource\textquotesingle{} step of Rhost installation. It provides the
 settings I have used when creating this database. Some settings, like the ANSI
 substitution, are used in the DB.
 
 \sphinxAtStartPar
-\sphinxhref{mailto:--Ambrosia@RhostMUSH}{\textendash{}Ambrosia@RhostMUSH}
+\sphinxhref{mailto:--Ambrosia@RhostMUSH}{\sphinxhyphen{}\sphinxhyphen{}Ambrosia@RhostMUSH}
 
 
 \chapter{Multi\sphinxhyphen{}tiered bitlevel systems}
@@ -5474,7 +5474,7 @@ Can do everything except set some internal flags, effect \#1, and set/remove the
 \section{Royalty(W) \textless{}Level 5\textgreater{} \sphinxhyphen{} FULL wizbit level}
 \label{\detokenize{bitlevels:royalty-w-level-5-full-wizbit-level}}
 \sphinxAtStartPar
-This is your standard wizard.  They can do everything you’re
+This is your standard wizard.  They can do everything you\textquotesingle{}re
 used to on other mushes that wizards can do.  In addition, they
 also override all locks by default (this can be disabled), and
 they have an enhanced wizcloaking ability (which also can be
@@ -5504,7 +5504,7 @@ Ability to WIZCLOAK
 \sphinxAtStartPar
 This is your almost\sphinxhyphen{}but\sphinxhyphen{}not\sphinxhyphen{}quite wizard.  They have access to
 about 80\% of the wizard commands.  This includes @nuke, @toad,
-@newpassword and the like.  The only things they can’t do that
+@newpassword and the like.  The only things they can\textquotesingle{}t do that
 wizards can is cloak, override locks, and use some of the
 database manipulation tools in wizhelp.
 \begin{itemize}
@@ -5573,7 +5573,7 @@ Able to @toggle the MONITOR
 This is the lowest wiz bit.  They only have moderate abilities.
 They can examine/decompile anything their level and lower, they can
 @guild/@quota people, and they have a few other minor abilities.
-They don’t have free money however.
+They don\textquotesingle{}t have free money however.
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
@@ -5585,7 +5585,7 @@ Things are FREE for them in the queue.
 
 \item {} 
 \sphinxAtStartPar
-Can see dbref\#’s of things their level and lower
+Can see dbref\#\textquotesingle{}s of things their level and lower
 
 \item {} 
 \sphinxAtStartPar
@@ -5614,7 +5614,7 @@ hinderance.
 \sphinxAtStartPar
 This is a bigger hinderance flag.  By default all guests should be
 set this.  This flag stops the player from ANY database manipulation
-along with @teleporting, and many other advanced commands.  It’s
+along with @teleporting, and many other advanced commands.  It\textquotesingle{}s
 extreamly dehibilatating.
 
 
@@ -5624,9 +5624,9 @@ extreamly dehibilatating.
 \section{What are Flags?}
 \label{\detokenize{toggles:what-are-flags}}
 \sphinxAtStartPar
-Flags are pretty much exactly the same as any other mush.  It’s a flag
+Flags are pretty much exactly the same as any other mush.  It\textquotesingle{}s a flag
 that you set or unset on a target which then enables/disables or
-alters something that target can do.  There’s help on all the flags
+alters something that target can do.  There\textquotesingle{}s help on all the flags
 in help and wizhelp.
 
 
@@ -5634,9 +5634,9 @@ in help and wizhelp.
 \label{\detokenize{toggles:what-are-toggles}}
 \sphinxAtStartPar
 Toggles were designed as a single point flag that immediately enables
-or disables a set ability or condition, thus a ‘toggle’.  It works
+or disables a set ability or condition, thus a \textquotesingle{}toggle\textquotesingle{}.  It works
 exactly like a flag and was originally designed for two reasons.  To
-distinguish from the multi\sphinxhyphen{}meaning of a ‘flag’, and because frankly
+distinguish from the multi\sphinxhyphen{}meaning of a \textquotesingle{}flag\textquotesingle{}, and because frankly
 we ran out of flag space :)
 
 
@@ -5671,13 +5671,13 @@ depowered.
 \sphinxAtStartPar
 Sometimes, you want to have things run at various privilage levels and do not
 want to have things with too much access.  Weither that is online objects or
-players you want to block from connecting to your mush.  Here’s things you can
+players you want to block from connecting to your mush.  Here\textquotesingle{}s things you can
 do.
 
 \sphinxAtStartPar
 One thing to keep in mind is that RhostMUSH, unlike PennMUSH is not flag
-dependant on permission level, it’s ownership based.  While setting a wizard
-flag on an object would work, it’s not recommended and it is instead recommended
+dependant on permission level, it\textquotesingle{}s ownership based.  While setting a wizard
+flag on an object would work, it\textquotesingle{}s not recommended and it is instead recommended
 to chown the object in question to a wizard (like your wizard holder character)
 Then the object must be set inherit to actually inherit the wizard.
 \begin{description}
@@ -5692,7 +5692,7 @@ toggles.  The only thing that is inherited automatically is depowers.
 \label{\detokenize{security:online-blocking-object-abilities}}
 \sphinxAtStartPar
 We have various flag levels.  It is strongly recommanded you check wizhelp
-on ‘control’ for a detailed overview of what each bitlevel can or can not do
+on \textquotesingle{}control\textquotesingle{} for a detailed overview of what each bitlevel can or can not do
 prior to giving the ownership to the object.  Things useful for tweaking control
 on players and objects:
 
@@ -5737,7 +5737,7 @@ Commands:               : @boot, @nuke, @toad, @turtle
 Sitelocks: (@admin)     : forbid\_host, forbid\_site, register\_host, register\_site, noguest\_host, noguest\_site
 Sitelock by player      : @badsite, @goodsite, NO\_CONNECT (flag)
 Monitoring player       : SUSPECT (flag), @snoop
-TOR/Proxy blocking:     : @blacklist (see shell’s tor\_pull.sh), @admin proxy\_checker (see wizhelp), @tor (see wizhelp)
+TOR/Proxy blocking:     : @blacklist (see shell\textquotesingle{}s tor\_pull.sh), @admin proxy\_checker (see wizhelp), @tor (see wizhelp)
 
 
 \section{Extended lockdown of the mush and considerations}
@@ -5752,9 +5752,9 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 \label{\detokenize{security:attribute-restriction}}\begin{quote}
 
 \sphinxAtStartPar
-@attribute \textendash{} Used for user\sphinxhyphen{}defined attributes
-@admin attr\_access \textendash{} used for built in attributes (like desc)
-@aflags \textendash{} Used to set up lovely delicious attribute permission masks
+@attribute \sphinxhyphen{}\sphinxhyphen{} Used for user\sphinxhyphen{}defined attributes
+@admin attr\_access \sphinxhyphen{}\sphinxhyphen{} used for built in attributes (like desc)
+@aflags \sphinxhyphen{}\sphinxhyphen{} Used to set up lovely delicious attribute permission masks
 \end{quote}
 
 
@@ -5787,8 +5787,8 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 \label{\detokenize{security:function-restrictions}}\begin{quote}
 
 \sphinxAtStartPar
-@function/@lfunction \textendash{} Allows softcoded functions that you can optionally lock down at your leasure
-@admin function\_access \textendash{} You can use this even on softcoded functions if you so desired.
+@function/@lfunction \sphinxhyphen{}\sphinxhyphen{} Allows softcoded functions that you can optionally lock down at your leasure
+@admin function\_access \sphinxhyphen{}\sphinxhyphen{} You can use this even on softcoded functions if you so desired.
 \end{quote}
 
 
@@ -6019,8 +6019,8 @@ ADVANCED: @admin forbid\PYGZus{}host=mudconnect.com|3 (allow 3 at once only)
 \label{\detokenize{security:methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so}}\begin{quote}
 
 \sphinxAtStartPar
-Now let’s assume you have some troll attempting to use proxies to connect.
-There’s multiple ways to stop this.
+Now let\textquotesingle{}s assume you have some troll attempting to use proxies to connect.
+There\textquotesingle{}s multiple ways to stop this.
 \end{quote}
 
 
@@ -6031,7 +6031,7 @@ There’s multiple ways to stop this.
 In \textasciitilde{}/Rhost/Server/game you will see a script called tor\_pull.sh
 Execute this by running (from the game directory) ./tor\_pull.sh
 This populates the blacklist with registered proxies from various sites
-on the internet.  If you want specified ip’s added, feel free to add
+on the internet.  If you want specified ip\textquotesingle{}s added, feel free to add
 them at the end of this file.
 \end{quote}
 
@@ -6050,8 +6050,8 @@ sites based on the ip.
 \label{\detokenize{security:blacklisting-through-internal-tor-command}}\begin{quote}
 
 \sphinxAtStartPar
-@tor.  Please see ‘wizhelp tor’ on how to set this up.  It in effect
-will actively block all known exit nodes for TOR’s annonymous proxy
+@tor.  Please see \textquotesingle{}wizhelp tor\textquotesingle{} on how to set this up.  It in effect
+will actively block all known exit nodes for TOR\textquotesingle{}s annonymous proxy
 service.  It self\sphinxhyphen{}updates and will actively block TOR connections.
 \end{quote}
 
@@ -6067,7 +6067,7 @@ because some situations require a differentating MTU value such as
 briged network connect with things like cloud services, docker, or
 similar encapsulated network services.  However, this option has
 several settings from just monitoring/alerting of possible proxies
-to downright forbidding them.  If you’re being actively attacked,
+to downright forbidding them.  If you\textquotesingle{}re being actively attacked,
 it may be worth considering adding this to add additional protection.
 \end{quote}
 
@@ -6094,7 +6094,7 @@ sconnect\_cmd SECRET\sphinxhyphen{}MAGIC\sphinxhyphen{}COOKIE
 \sphinxsetlistlabels{\arabic}{enumiii}{enumiv}{}{.}%
 \item {} 
 \sphinxAtStartPar
-SECRET\sphinxhyphen{}MAGIC\sphinxhyphen{}COOKIE is a case sensitive single word phrase. Any printable character other than the ‘\#’ character is allowable.  You may use up to 30 characters.
+SECRET\sphinxhyphen{}MAGIC\sphinxhyphen{}COOKIE is a case sensitive single word phrase. Any printable character other than the \textquotesingle{}\#\textquotesingle{} character is allowable.  You may use up to 30 characters.
 
 \item {} 
 \sphinxAtStartPar
@@ -6113,7 +6113,7 @@ This is optional.
 
 \item {} 
 \sphinxAtStartPar
-If you do not specify it it defaults to ‘localhost 127.0.0.1’.  If your domain has a unique name like ‘localhost.localdomain’ like some ubuntu distributions, then you should customize your stunnel\_host.
+If you do not specify it it defaults to \textquotesingle{}localhost 127.0.0.1\textquotesingle{}.  If your domain has a unique name like \textquotesingle{}localhost.localdomain\textquotesingle{} like some ubuntu distributions, then you should customize your stunnel\_host.
 
 \end{enumerate}
 
@@ -6169,7 +6169,7 @@ it is assumed you will have already initially set up your netrhost.conf.
 \subsubsection{stunnel directory}
 \label{\detokenize{security:stunnel-directory}}
 \sphinxAtStartPar
-You would set up the stunnel from the ‘stunnel’ directory.  There the following
+You would set up the stunnel from the \textquotesingle{}stunnel\textquotesingle{} directory.  There the following
 files are of relevance:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -6189,7 +6189,7 @@ files are of relevance:
 To be able to utilize SSL, you first must set your netrhost.conf file with
 the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect\_host if
-not set will default to ‘localhost 127.0.0.1’.
+not set will default to \textquotesingle{}localhost 127.0.0.1\textquotesingle{}.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{sconnect\PYGZus{}reip} \PYG{l+m+mi}{1}         \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{This} \PYG{n}{enables} \PYG{n}{the} \PYG{n}{SSL} \PYG{n}{tunnel} \PYG{n}{layer} \PYG{n}{handler} \PYG{n}{within} \PYG{n}{rhost}\PYG{o}{.}
@@ -6199,14 +6199,14 @@ not set will default to ‘localhost 127.0.0.1’.
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-the sconnect\_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.
+the sconnect\_host is optional.  If you do not specify it, it will default to two values:  \textquotesingle{}localhost\textquotesingle{} and \textquotesingle{}127.0.0.1\textquotesingle{}.
 \end{sphinxadmonition}
 
 
 \subsubsection{Running the stunnel setup program}
 \label{\detokenize{security:running-the-stunnel-setup-program}}
 \sphinxAtStartPar
-At this point you’re ready to run the stunnel setup program.  So at this point type the following:
+At this point you\textquotesingle{}re ready to run the stunnel setup program.  So at this point type the following:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{o}{.}\PYG{o}{/}\PYG{n}{stunnel\PYGZus{}setup}\PYG{o}{.}\PYG{n}{sh}
@@ -6261,7 +6261,7 @@ not be the port the mush is running on and requires a separate port.
 \section{Note about Patching}
 \label{\detokenize{maintenance:note-about-patching}}
 \sphinxAtStartPar
-There’s two ways you can look to patch the source.  If you plan to run the
+There\textquotesingle{}s two ways you can look to patch the source.  If you plan to run the
 RhostMUSH source from a git repository, then please use the git repo to
 constantly update your code.  If you knew enough to want to set up a git repo
 then we expect knowledge on how to keep source trees updated in the git repo
@@ -6269,7 +6269,7 @@ to be used the same as any other source distribution.
 
 \sphinxAtStartPar
 If, however, you have no idea what a git repo even is, or have no inclination
-of using git to manage your RhostMUSH source, or just don’t care one way
+of using git to manage your RhostMUSH source, or just don\textquotesingle{}t care one way
 or another, then you can use the included patch.sh routine (from under the
 Server directory) to patch your source at any time.
 
@@ -6283,7 +6283,7 @@ From the server directory just type:
 \sphinxAtStartPar
 That will auto\sphinxhyphen{}compile your source, auto make all your header files and
 essentially keep everything up to date to the latest source.
-Once that’s done, all you do from within the game is two commands:
+Once that\textquotesingle{}s done, all you do from within the game is two commands:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n+nd}{@reboot} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n+nd}{@reboot}\PYG{o}{/}\PYG{n}{silent}\PYG{p}{)}  \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{This} \PYG{n}{will} \PYG{n}{load} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{new} \PYG{n}{binary}
@@ -6430,7 +6430,7 @@ Through the Autoshutdown script
 Never kill \sphinxhyphen{}9 RhostMUSH
 
 \sphinxAtStartPar
-Under NO CIRCUMSTANCES should you kill \sphinxhyphen{}9 your mush unless you don’t care for the
+Under NO CIRCUMSTANCES should you kill \sphinxhyphen{}9 your mush unless you don\textquotesingle{}t care for the
 database.  The reason is if the mush happens to be saving, in any method, to the
 database, especially a QDBM database, you will likely have just corrupted your
 database, so pull out a flatfile to recover.
@@ -6445,11 +6445,11 @@ in the middle of a write, all bets are off. :)
 \subsection{Autoshutdown script}
 \label{\detokenize{maintenance:autoshutdown-script}}
 \sphinxAtStartPar
-The makefile will ‘make’ the program that will STOP the mush.
-Please tweek ‘autolog.h’ with the proper parameters.
+The makefile will \textquotesingle{}make\textquotesingle{} the program that will STOP the mush.
+Please tweek \textquotesingle{}autolog.h\textquotesingle{} with the proper parameters.
 
 \sphinxAtStartPar
-The ‘startup.sh’ will START the mush.
+The \textquotesingle{}startup.sh\textquotesingle{} will START the mush.
 
 \sphinxAtStartPar
 Both of these are intended to be used for automations (automated processes)
@@ -6468,15 +6468,15 @@ this you would type the following:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-if ‘cc’ is not defined, try the following:
+if \textquotesingle{}cc\textquotesingle{} is not defined, try the following:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{gcc} \PYG{n}{portmsg}\PYG{o}{.}\PYG{n}{c} \PYG{o}{\PYGZhy{}}\PYG{n}{o} \PYG{n}{portmsg}
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Once compiled, you would then modify the file ‘file’ to describe
-the mush, what was done, where it’s moved to, then specify the
+Once compiled, you would then modify the file \textquotesingle{}file\textquotesingle{} to describe
+the mush, what was done, where it\textquotesingle{}s moved to, then specify the
 IP address and the PORT where specified.
 
 \sphinxAtStartPar
@@ -6536,17 +6536,17 @@ This example will perform dumps of the mush.
 \section{The following scripts are used in the game directory}
 \label{\detokenize{maintenance:the-following-scripts-are-used-in-the-game-directory}}
 \sphinxAtStartPar
-Startmush               \textendash{} used to Start up the mush
-backup\_flat.sh          \textendash{} Used to run backups with @dump/flat within the game (Started with Startmush automatically)
-backup\_restart.sh       \textendash{} Restart the backup\_flat.sh if changes are done
-compress\_logs.sh        \textendash{} Compress logs in ‘oldlogs’.  Ran with Startmush
-findit.sh               \textendash{} Internal script used to check for flatfile validity
-mailhide.sh             \textendash{} Wrapper to hide from address using the ‘mail’ progam
-minimal.sh              \textendash{} Auto\sphinxhyphen{}load the minimal db into the mush
-proxysnarf.sha          \textendash{} Internal script for the tor\_pull.sh tor proxy blacklist
-tor\_pullit.sh           \textendash{} Internal script for the tor\_pull.sh for proxy blacklist
-recovery.sh             \textendash{} If your db is corrupt, run this to auto\sphinxhyphen{}revert to an earlier flatfile
-tor\_pull.sh             \textendash{} Create a blacklist.txt file that can be loaded via the internal @blacklist command for proxy handling
+Startmush               \sphinxhyphen{}\sphinxhyphen{} used to Start up the mush
+backup\_flat.sh          \sphinxhyphen{}\sphinxhyphen{} Used to run backups with @dump/flat within the game (Started with Startmush automatically)
+backup\_restart.sh       \sphinxhyphen{}\sphinxhyphen{} Restart the backup\_flat.sh if changes are done
+compress\_logs.sh        \sphinxhyphen{}\sphinxhyphen{} Compress logs in \textquotesingle{}oldlogs\textquotesingle{}.  Ran with Startmush
+findit.sh               \sphinxhyphen{}\sphinxhyphen{} Internal script used to check for flatfile validity
+mailhide.sh             \sphinxhyphen{}\sphinxhyphen{} Wrapper to hide from address using the \textquotesingle{}mail\textquotesingle{} progam
+minimal.sh              \sphinxhyphen{}\sphinxhyphen{} Auto\sphinxhyphen{}load the minimal db into the mush
+proxysnarf.sha          \sphinxhyphen{}\sphinxhyphen{} Internal script for the tor\_pull.sh tor proxy blacklist
+tor\_pullit.sh           \sphinxhyphen{}\sphinxhyphen{} Internal script for the tor\_pull.sh for proxy blacklist
+recovery.sh             \sphinxhyphen{}\sphinxhyphen{} If your db is corrupt, run this to auto\sphinxhyphen{}revert to an earlier flatfile
+tor\_pull.sh             \sphinxhyphen{}\sphinxhyphen{} Create a blacklist.txt file that can be loaded via the internal @blacklist command for proxy handling
 
 
 \section{Textfiles for RhostMUSH}
@@ -6557,7 +6557,7 @@ autoreg.txt            \sphinxhyphen{} file player gets when autoregistration on
 autoreg\_include.txt    \sphinxhyphen{} file player receives in email when they autoregister attached to login/passwd
 badsite.txt            \sphinxhyphen{} file player gets when site is not allowed.
 connect.txt            \sphinxhyphen{} file player gets when connect
-create\_reg.txt         \sphinxhyphen{} file player gets when their site is register and they can’t create.
+create\_reg.txt         \sphinxhyphen{} file player gets when their site is register and they can\textquotesingle{}t create.
 doorconf.txt           \sphinxhyphen{} file that is searched for information regarding @door.
 
 \begin{sphinxadmonition}{note}{Note:}
@@ -6567,7 +6567,7 @@ Need to mkindx doorconf.txt doorconf.indx for this file
 
 \sphinxAtStartPar
 down.txt               \sphinxhyphen{} file player gets when the mush has logins disabled (@disable login)
-error.txt              \sphinxhyphen{} the ‘Huh? (type help for help)’ messages.
+error.txt              \sphinxhyphen{} the \textquotesingle{}Huh? (type help for help)\textquotesingle{} messages.
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
@@ -6575,7 +6575,7 @@ Need to mkindx error.txt error.indx for this file
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
-full.txt               \sphinxhyphen{} file player gets when the mush can’t have any more players.
+full.txt               \sphinxhyphen{} file player gets when the mush can\textquotesingle{}t have any more players.
 guest.txt              \sphinxhyphen{} file player gets when they connect as a guest.
 help.txt               \sphinxhyphen{} your help file
 
@@ -6621,7 +6621,7 @@ wizmotd.txt            \sphinxhyphen{} your wiz motd file
 \label{\detokenize{maintenance:textfile-frequently-asked-questions}}
 \sphinxAtStartPar
 Q:  How do I put color in these files?
-A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: \textasciicircum{}{[}{[}0m (for ANSI\_NORMAL).  That’s \textless{}ESC\textgreater{}{[}
+A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: \textasciicircum{}{[}{[}0m (for ANSI\_NORMAL).  That\textquotesingle{}s \textless{}ESC\textgreater{}{[}
 A2: You can enable ansi\_txtfiles then use \%c (or \%x/\%m) encoding for ansi, however you compiled your Rhost.
 
 \sphinxAtStartPar
@@ -6630,15 +6630,15 @@ A:  Easy.  Design them like help.txt would be set up, mkindx the file, then you 
 
 \sphinxAtStartPar
 Q:  Do I have to mkindx these files whenever I make changes?
-A:  Only the ones that have ‘\& ‘ index. (help.txt, wizhelp.txt, news.txt, etc)
+A:  Only the ones that have \textquotesingle{}\& \textquotesingle{} index. (help.txt, wizhelp.txt, news.txt, etc)
 
 \sphinxAtStartPar
 Q:  Do I have to @readcache in the game whenever I make a change?
 A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones you use with @dynhelp.
 
 \sphinxAtStartPar
-Q:  Can’t I just make code in the mush that then is used for these silly txt files?
-A:  Absolutely.  Check ‘wizhelp file\_object’.
+Q:  Can\textquotesingle{}t I just make code in the mush that then is used for these silly txt files?
+A:  Absolutely.  Check \textquotesingle{}wizhelp file\_object\textquotesingle{}.
 
 
 \chapter{Troubleshooting}
@@ -6675,13 +6675,13 @@ A2: Force a start by running:
 A1: To rotate this use the @logrotate command. See wizhelp on @logrotate
 
 
-\subsubsection{Problem: The database flatfile you’re loading can’t load because a db is already defined}
+\subsubsection{Problem: The database flatfile you\textquotesingle{}re loading can\textquotesingle{}t load because a db is already defined}
 \label{\detokenize{troubleshooting:problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined}}
 \sphinxAtStartPar
 A1: remove netrhost.db* and netrhost.gdbm* from your data directory
 
 
-\subsubsection{Problem: The mail database won’t load and mail shows ‘offline’}
+\subsubsection{Problem: The mail database won\textquotesingle{}t load and mail shows \textquotesingle{}offline\textquotesingle{}}
 \label{\detokenize{troubleshooting:problem-the-mail-database-won-t-load-and-mail-shows-offline}}
 \sphinxAtStartPar
 A1: from within the MUSH run:
@@ -6724,7 +6724,7 @@ Type:
 
 \sphinxAtStartPar
 This will show you your shell stack limits.  Do NOT set the
-STACKMAX value higher than your shell’s stack value.
+STACKMAX value higher than your shell\textquotesingle{}s stack value.
 
 \sphinxAtStartPar
 The value in \textasciitilde{}/Rhost/Server/hdrs/debug.h is currently set as:
@@ -6766,7 +6766,7 @@ in your netrhost.conf file add:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-This will reset \#1’s password to the default ‘Nyctasia’.
+This will reset \#1\textquotesingle{}s password to the default \textquotesingle{}Nyctasia\textquotesingle{}.
 
 
 \subsection{Method 2: Increase Permissions of Immortals}
@@ -6816,7 +6816,7 @@ to:
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Replace 8 with the size of your CPU’s long integer. (4 for 32\sphinxhyphen{}bit,
+Replace 8 with the size of your CPU\textquotesingle{}s long integer. (4 for 32\sphinxhyphen{}bit,
 8 for 64\sphinxhyphen{}bit, 16 for 128\sphinxhyphen{}bit, etc etc)
 \end{sphinxadmonition}
 
@@ -6829,7 +6829,7 @@ reason to believe the same will not hold true for IA64.
 \label{\detokenize{troubleshooting:changes-to-autconf-for-certain-systems}}
 \sphinxAtStartPar
 You should not have to worry about this, but incase something really
-weird occurs, you may need to look into these changes…
+weird occurs, you may need to look into these changes...
 
 \sphinxAtStartPar
 The autoconfig.h file needs to have modifications to it by hand.
@@ -6838,8 +6838,8 @@ The autoconfig.h file needs to have modifications to it by hand.
 There are three manual entries:
 
 \sphinxAtStartPar
-This one sets how it defines the int to character pointer.  It’s safe
-to keep it as ‘unsigned int’ for 32 bit platforms.  For non 32\sphinxhyphen{}bit,
+This one sets how it defines the int to character pointer.  It\textquotesingle{}s safe
+to keep it as \textquotesingle{}unsigned int\textquotesingle{} for 32 bit platforms.  For non 32\sphinxhyphen{}bit,
 define it to  how an int is defined on that system:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -6872,7 +6872,7 @@ the mush will not compile.
 \section{Dealing with DB Corruption}
 \label{\detokenize{troubleshooting:dealing-with-db-corruption}}
 \sphinxAtStartPar
-Ok.  Your database won’t come up.
+Ok.  Your database won\textquotesingle{}t come up.
 
 \sphinxAtStartPar
 If you are reading this, then likely the scenerio is one of the following:
@@ -6880,15 +6880,15 @@ If you are reading this, then likely the scenerio is one of the following:
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
-The mush says it can’t find your database files.
+The mush says it can\textquotesingle{}t find your database files.
 
 \item {} 
 \sphinxAtStartPar
-The mush says it can’t read or load your database files.
+The mush says it can\textquotesingle{}t read or load your database files.
 
 \item {} 
 \sphinxAtStartPar
-The mush seems to load fine but I can’t log in anyone and when I do
+The mush seems to load fine but I can\textquotesingle{}t log in anyone and when I do
 all the names and attributes of things seem to be gone!
 
 \item {} 
@@ -6898,13 +6898,13 @@ Bringing up your mail database
 \end{enumerate}
 
 \sphinxAtStartPar
-First thing is first.  Don’t have a panic attack.
+First thing is first.  Don\textquotesingle{}t have a panic attack.
 
 
-\subsection{If the mush says it can’t find your database files}
+\subsection{If the mush says it can\textquotesingle{}t find your database files}
 \label{\detokenize{troubleshooting:if-the-mush-says-it-can-t-find-your-database-files}}
 
-\subsubsection{Check the names of the database files in your ‘data’ directory}
+\subsubsection{Check the names of the database files in your \textquotesingle{}data\textquotesingle{} directory}
 \label{\detokenize{troubleshooting:check-the-names-of-the-database-files-in-your-data-directory}}
 \sphinxAtStartPar
 They should be named something like:
@@ -6927,13 +6927,13 @@ And you may see a netrhost.db.flat
 If you never touched the *database or muddb\_name params, you should be good.
 
 \sphinxAtStartPar
-Verify your *database params (and muddb\_name) are still set to ‘netrhost’ as
-part of the name.  Ergo, the default values and you didn’t change them.
+Verify your *database params (and muddb\_name) are still set to \textquotesingle{}netrhost\textquotesingle{} as
+part of the name.  Ergo, the default values and you didn\textquotesingle{}t change them.
 These should match up with the filenames in your data directory.
 
 \sphinxAtStartPar
-If these names do not match up, it can’t find the database files to load.
-So you shouldn’t have to change these names, ever. :)
+If these names do not match up, it can\textquotesingle{}t find the database files to load.
+So you shouldn\textquotesingle{}t have to change these names, ever. :)
 
 
 \subsubsection{Check your mush.config file}
@@ -6942,13 +6942,13 @@ So you shouldn’t have to change these names, ever. :)
 If you never modified this file, you should be good.
 
 \sphinxAtStartPar
-The gamename should be ‘netrhost’ for this file.  This does NOT control
+The gamename should be \textquotesingle{}netrhost\textquotesingle{} for this file.  This does NOT control
 the name of your game.  This controls the name of all the files
 as associated to the mush.  So changing this means the netrhost.conf
-file, all your database files, and so forth.  Please don’t change this :)
+file, all your database files, and so forth.  Please don\textquotesingle{}t change this :)
 
 
-\subsection{If the mush says it can’t read or load your database files}
+\subsection{If the mush says it can\textquotesingle{}t read or load your database files}
 \label{\detokenize{troubleshooting:if-the-mush-says-it-can-t-read-or-load-your-database-files}}
 \sphinxAtStartPar
 Double check everything for the previous issue. Make sure everything is named properly.
@@ -6961,7 +6961,7 @@ Some account have a limited quota to run in.  If you reached or exceed
 your disk quota, you can have a corrupted database.  So always keep
 your eye on the size.  quota \sphinxhyphen{}s to see a human readable format to see
 how much quota you have left.  You want to make sure current in use is
-below the ‘grace’ and soft/hard limits shown.  If not, you’re out of
+below the \textquotesingle{}grace\textquotesingle{} and soft/hard limits shown.  If not, you\textquotesingle{}re out of
 space.
 
 \sphinxAtStartPar
@@ -6974,22 +6974,22 @@ plenty of wonderful growth space for the mush.
 \label{\detokenize{troubleshooting:verify-you-have-enough-disk-space-system}}
 \sphinxAtStartPar
 The second way you can run out of disk space is by the filesystem itself.
-do a df \sphinxhyphen{}h . in your ‘game’ directory’.  That is df \sphinxhyphen{}h \textless{}period\textgreater{}.
+do a df \sphinxhyphen{}h . in your \textquotesingle{}game\textquotesingle{} directory\textquotesingle{}.  That is df \sphinxhyphen{}h \textless{}period\textgreater{}.
 This will return how much disk space is being used and how much remains.
-If it shows 100\% used, you’re out of disk space and the db is corrupt.
+If it shows 100\% used, you\textquotesingle{}re out of disk space and the db is corrupt.
 
 \sphinxAtStartPar
-At this point, you’re pretty screwed.  You can see if anything exists
+At this point, you\textquotesingle{}re pretty screwed.  You can see if anything exists
 in your system to free up some space, but if the filesystem itself
 is filled, reach out to the owner of the server and let them know.
-It’s a much bigger deal than just your mush if that’s the case.
+It\textquotesingle{}s a much bigger deal than just your mush if that\textquotesingle{}s the case.
 
 \sphinxAtStartPar
 Until this issue is resolved, you can not repair and bring up your mush.
 No disk to run the game.
 
 
-\subsection{If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!}
+\subsection{If the mush seems to load fine but I can\textquotesingle{}t log in anyone and when I do all the names and attributes of things seem to be gone!}
 \label{\detokenize{troubleshooting:if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone}}
 \sphinxAtStartPar
 Ok, at this point you likely had your mush up when the physical server
@@ -7006,11 +7006,11 @@ So, to recover your database.
 \label{\detokenize{troubleshooting:the-bad-news}}
 \sphinxAtStartPar
 If you have no flatfile backup or never bothered with backups?
-I’m sorry, at this point you’re SOA.  There’s no easy way to
+I\textquotesingle{}m sorry, at this point you\textquotesingle{}re SOA.  There\textquotesingle{}s no easy way to
 recover a corrupted binary database.  If you absolutely need
 data out of it we may be able to help you to piece meal things
-out of it, but otherwise it’s a lost cause.  You’ll have to start
-over from scratch.  I’m sorry.
+out of it, but otherwise it\textquotesingle{}s a lost cause.  You\textquotesingle{}ll have to start
+over from scratch.  I\textquotesingle{}m sorry.
 
 
 \subsubsection{The good news}
@@ -7018,7 +7018,7 @@ over from scratch.  I’m sorry.
 \sphinxAtStartPar
 If you made backups, or if the server had a normal shutdown, you
 likely have a flatfile backup.  You will see a netrhost.db.flat
-in either the ‘data’ directory or ‘prevflat’ directory.  That
+in either the \textquotesingle{}data\textquotesingle{} directory or \textquotesingle{}prevflat\textquotesingle{} directory.  That
 is your manual flatfile backup.
 
 \sphinxAtStartPar
@@ -7035,7 +7035,7 @@ That shows you had a successful backup.
 \subsubsection{Now, to restore your database?}
 \label{\detokenize{troubleshooting:now-to-restore-your-database}}
 \sphinxAtStartPar
-Please refer to the file ‘README.DBLOADING’.
+Please refer to the file \textquotesingle{}README.DBLOADING\textquotesingle{}.
 
 
 \subsection{Bringing up your mail database}
@@ -7048,7 +7048,7 @@ Your mail db may or may not come up at this point.
 \label{\detokenize{troubleshooting:if-after-restoring-main-database-your-mail-database-works}}
 \sphinxAtStartPar
 If your mail database came up and does not show
-‘Mail: mail is currently off’ then you should be good to go.
+\textquotesingle{}Mail: mail is currently off\textquotesingle{} then you should be good to go.
 
 \sphinxAtStartPar
 Please issue on the MUSH:
@@ -7072,7 +7072,7 @@ wmail/lfix loads in the fixes.
 \subsubsection{If after restoring main database your mail database does not work}
 \label{\detokenize{troubleshooting:if-after-restoring-main-database-your-mail-database-does-not-work}}
 \sphinxAtStartPar
-If your mail database is not up and shows ‘Mail: mail is currently off’ then your mail db is currupt.
+If your mail database is not up and shows \textquotesingle{}Mail: mail is currently off\textquotesingle{} then your mail db is currupt.
 
 
 \section{Dealing with a corrupt mail database}
@@ -7119,16 +7119,16 @@ If you have a flatfile dump of your mail db, run this command on the MUSH:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Yup, that’s it.  It’ll take care of everything else.  Isn’t automation grand?
+Yup, that\textquotesingle{}s it.  It\textquotesingle{}ll take care of everything else.  Isn\textquotesingle{}t automation grand?
 
 \sphinxAtStartPar
-Doesn’t even require a reboot :)
+Doesn\textquotesingle{}t even require a reboot :)
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
 You may at this point wish to run the following:
-wmail/fix  \textendash{} this fixes the mail database and sync’s it to the mush db.
-wmail/lfix \textendash{} this loads in the fixed mail database
+wmail/fix  \sphinxhyphen{}\sphinxhyphen{} this fixes the mail database and sync\textquotesingle{}s it to the mush db.
+wmail/lfix \sphinxhyphen{}\sphinxhyphen{} this loads in the fixed mail database
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
@@ -7144,10 +7144,10 @@ If this is a new db that you have, you can skip the fixing.
 \sphinxAtStartPar
 To recover your mail manually, you need to delete your mail databases,
 reboot, then reload your mail flatfiles.  If you have no mail flatfiles,
-well, you’re going to have to start over with the mail database.  Sorry.
+well, you\textquotesingle{}re going to have to start over with the mail database.  Sorry.
 
 \sphinxAtStartPar
-First, go into the ‘game’ subdirectory.  Inside that directory is a ‘data’
+First, go into the \textquotesingle{}game\textquotesingle{} subdirectory.  Inside that directory is a \textquotesingle{}data\textquotesingle{}
 directory.
 
 \sphinxAtStartPar
@@ -7169,7 +7169,7 @@ This will unlock the mail system and load in a fresh db.
 
 \sphinxAtStartPar
 Now, if you have flatfiles of the old mail database, you will see in either
-the ‘data’ directory or the ‘prevflat’ directory files that are called:
+the \textquotesingle{}data\textquotesingle{} directory or the \textquotesingle{}prevflat\textquotesingle{} directory files that are called:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RhostMUSH}\PYG{o}{.}\PYG{n}{dump}\PYG{o}{.}\PYG{n}{folder}
@@ -7177,11 +7177,11 @@ the ‘data’ directory or the ‘prevflat’ directory files that are called:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Make sure these two files are in the ‘data’ subdirectory.  Copy them in
-if they exist in your ‘prevflat’ directory.
+Make sure these two files are in the \textquotesingle{}data\textquotesingle{} subdirectory.  Copy them in
+if they exist in your \textquotesingle{}prevflat\textquotesingle{} directory.
 
 \sphinxAtStartPar
-Once they are in the ‘data’ directory, within the mush type: wmail/load
+Once they are in the \textquotesingle{}data\textquotesingle{} directory, within the mush type: wmail/load
 
 \sphinxAtStartPar
 This loads in the flatfile and recover the mail database.
@@ -7190,13 +7190,13 @@ This loads in the flatfile and recover the mail database.
 Now, at this point the mail db may not be 100\% in\sphinxhyphen{}sync with the game db.
 
 \sphinxAtStartPar
-So let’s fix it.
+So let\textquotesingle{}s fix it.
 
 \sphinxAtStartPar
-wmail/fix   \textendash{} this will run a fix on the mail db and repair any issues.
+wmail/fix   \sphinxhyphen{}\sphinxhyphen{} this will run a fix on the mail db and repair any issues.
 
 \sphinxAtStartPar
-wmail/lfix  \textendash{} this will load the fixed flatfile back into the mush.
+wmail/lfix  \sphinxhyphen{}\sphinxhyphen{} this will load the fixed flatfile back into the mush.
 
 \sphinxAtStartPar
 At this point you should be good to go.
@@ -7296,19 +7296,19 @@ in the same location.
 Each object (player, room, exit, thing) has two lists of reality levels.
 An Rx list, which describe what it can see and a Tx list, which describe
 where it can be seen. Those are bitfields. In order for X to see Y a bitwise
-‘and’ is performed between X’s RxLevel and Y’s TxLevel. If the result is not
-0, then X sees Y. If the result is 0, as far as X is concerned, Y doesn’t
+\textquotesingle{}and\textquotesingle{} is performed between X\textquotesingle{}s RxLevel and Y\textquotesingle{}s TxLevel. If the result is not
+0, then X sees Y. If the result is 0, as far as X is concerned, Y doesn\textquotesingle{}t
 exist. This affects contents lists, exit lists, look, say, pose, @emit,
 @verb, connect/disconnect, has arrived/has left messages, exit and object
-matching. ‘here’ and ‘me’ match always.
+matching. \textquotesingle{}here\textquotesingle{} and \textquotesingle{}me\textquotesingle{} match always.
 
 \sphinxAtStartPar
-It doesn’t affect @remit, @pemit, page, WHO or channels.
+It doesn\textquotesingle{}t affect @remit, @pemit, page, WHO or channels.
 By default, all new objects are created with an RxLevel of 1 and TxLevel of
 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of
 0xFFFFFFFF. Those default levels can be changed with configuration
 parameters.
-An object is always visible to itself, even if its Rx and Tx levels don’t
+An object is always visible to itself, even if its Rx and Tx levels don\textquotesingle{}t
 match. (See examples below)
 
 
@@ -7317,13 +7317,13 @@ match. (See examples below)
 \sphinxAtStartPar
 For every reality level defined, you can define an attribute that serves as
 description. If you look at something and match more than one of its
-TxLevels, you’ll see all the corresponding descriptions on the target
-object. If the object doesn’t have any descriptions for the matching levels,
-you’ll see the regular @desc.
+TxLevels, you\textquotesingle{}ll see all the corresponding descriptions on the target
+object. If the object doesn\textquotesingle{}t have any descriptions for the matching levels,
+you\textquotesingle{}ll see the regular @desc.
 
 \sphinxAtStartPar
 The @adesc attribute on the target is only triggered if the target can see
-the looker in turn. It’s only triggered once, no matter how many descs the
+the looker in turn. It\textquotesingle{}s only triggered once, no matter how many descs the
 looker sees. The @odesc is shown only to those people that see /both/ the
 looker and the target.
 
@@ -7334,12 +7334,12 @@ affected.
 
 \sphinxAtStartPar
 Softcoded commands are only matched on the objects that can see the player.
-The player doesn’t have to see the object. This includes commands in the
+The player doesn\textquotesingle{}t have to see the object. This includes commands in the
 Master Room.
 
 \sphinxAtStartPar
 Exits are treated specially. In order to be able to use an exit name (or to
-use the ‘move \textless{}exit\textgreater{}’ command) the exit must be visible to the enactor. In
+use the \textquotesingle{}move \textless{}exit\textgreater{}\textquotesingle{} command) the exit must be visible to the enactor. In
 order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.
 
@@ -7389,7 +7389,7 @@ will always be 0xFFFFFFFF. Also settable in the config file and with the
 @admin command.
 
 \sphinxAtStartPar
-Compile with \sphinxhyphen{}DREALITY\_LEVELS compile time option to enable ‘Real’ needs to be ‘1’
+Compile with \sphinxhyphen{}DREALITY\_LEVELS compile time option to enable \textquotesingle{}Real\textquotesingle{} needs to be \textquotesingle{}1\textquotesingle{}
 This is an example file only to be added to the mush.conf file Format:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7456,7 +7456,7 @@ There are five functions that deal with reality levels:
 \sphinxAtStartPar
 These two functions check if an object has the specified Rx or Tx level.
 You must control \textless{}object\textgreater{}. They return 0 or 1 and \#\sphinxhyphen{}1 in case the object
-does not exist or you don’t have permissions:
+does not exist or you don\textquotesingle{}t have permissions:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{rxlevel}\PYG{p}{(}\PYG{o}{\PYGZlt{}}\PYG{n+nb}{object}\PYG{o}{\PYGZgt{}}\PYG{p}{)}
@@ -7464,7 +7464,7 @@ does not exist or you don’t have permissions:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-These two functions return a space\sphinxhyphen{}separated list of the object’s Rx or Tx
+These two functions return a space\sphinxhyphen{}separated list of the object\textquotesingle{}s Rx or Tx
 levels. Again, you must control the object:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7473,9 +7473,9 @@ levels. Again, you must control the object:
 
 \sphinxAtStartPar
 A wiz\sphinxhyphen{}only function, returns 1 of \textless{}obj1\textgreater{} can see \textless{}obj2\textgreater{} from a reality
-levels point of view. It doesn’t check if the objects are in the same
-location, the DARK/CLOAKED flags and so on. Just \textless{}obj1\textgreater{}’s Rx level against
-\textless{}obj2\textgreater{}’s Tx level.
+levels point of view. It doesn\textquotesingle{}t check if the objects are in the same
+location, the DARK/CLOAKED flags and so on. Just \textless{}obj1\textgreater{}\textquotesingle{}s Rx level against
+\textless{}obj2\textgreater{}\textquotesingle{}s Tx level.
 
 \begin{sphinxadmonition}{warning}{Warning:}
 \sphinxAtStartPar
@@ -7509,7 +7509,7 @@ ghosts to pass:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Note that def\_exit\_tx isn’t set. Why? Because ghosts see the mundane world
+Note that def\_exit\_tx isn\textquotesingle{}t set. Why? Because ghosts see the mundane world
 anyway, so a spirit character will have:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7518,7 +7518,7 @@ anyway, so a spirit character will have:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Let’s assume 3 players:
+Let\textquotesingle{}s assume 3 players:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{John} \PYG{o+ow}{is} \PYG{n}{a} \PYG{n}{Mundane}\PYG{o}{.} \PYG{n}{He} \PYG{n}{won}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{t see spirits.}
@@ -7543,7 +7543,7 @@ Jack is a Gifted. He will sense spirits, but is still made from flesh and blood 
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Frank is a ghost. He will see other spirits as well as mundanes, but won’t be visible to mundanes. He can also become visible to everybody:
+Frank is a ghost. He will see other spirits as well as mundanes, but won\textquotesingle{}t be visible to mundanes. He can also become visible to everybody:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{Frank}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s Rx: Real Ghost}
@@ -7555,7 +7555,7 @@ Frank is a ghost. He will see other spirits as well as mundanes, but won’t be 
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Following are commands that each of the players enter and what they see.  I’ll assume the +materialize command is defined like:
+Following are commands that each of the players enter and what they see.  I\textquotesingle{}ll assume the +materialize command is defined like:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYGZam{}CMD\PYGZus{}MATERIALIZE \PYGZlt{}cmdobject\PYGZgt{}=\PYGZdl{}+materialize:@txlevel \PYGZpc{}\PYGZsh{}=Real; @pemit \PYGZpc{}\PYGZsh{}=You are now material.
@@ -7631,9 +7631,9 @@ The reality levels will be defined like this:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-5 levels of Obfuscation, Umbra, Dreaming, Wraiths. ‘All’ is a handy
+5 levels of Obfuscation, Umbra, Dreaming, Wraiths. \textquotesingle{}All\textquotesingle{} is a handy
 replacement for all levels, useful for wizards and wizobjects that should
-be visible on all levels. Also useful when you want to set an object’s
+be visible on all levels. Also useful when you want to set an object\textquotesingle{}s
 levels to something without knowing what he had before:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -7663,7 +7663,7 @@ Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381:
 
 \sphinxAtStartPar
 Obf1 is not included since an Obfuscated vampire should not be able to move
-if it only has Obf1. Therefore they won’t see the exits. If you want them
+if it only has Obf1. Therefore they won\textquotesingle{}t see the exits. If you want them
 to be able to see the exits, but not to use them, change the default Tx of
 the exits:
 
@@ -7676,7 +7676,7 @@ the exits:
 Joe the Mortal will have an RxLevel: Real and a TxLevel: Real
 Jack the Malk, who likes to walk around Obfuscated and has Obfuscate 2 will
 have an RxLevel: Real (he sees what the mortals see) but a TxLevel: Obf2
-Jimmy the Nossie, who is using the Mask and has Obfuscate 4, but doesn’t
+Jimmy the Nossie, who is using the Mask and has Obfuscate 4, but doesn\textquotesingle{}t
 try to make himself invisible will have an RxLevel: Real (as Jack)
 and a TxLevel: Real Obf4. He will also set his @desc to what the mortals see and
 \&OBFDESC to his real slimy desc. Simply put, he will be visible to mortals,
@@ -7685,23 +7685,23 @@ but not with his real desc.
 \sphinxAtStartPar
 Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel
 will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So
-he can see Joe, Jack and Jimmy’s both descs.
-Joe, on the other hand, won’t see Jack at all. He will still see Jimmy, but
-only Jimmy’s @desc, not the OBFDESC
+he can see Joe, Jack and Jimmy\textquotesingle{}s both descs.
+Joe, on the other hand, won\textquotesingle{}t see Jack at all. He will still see Jimmy, but
+only Jimmy\textquotesingle{}s @desc, not the OBFDESC
 
 \sphinxAtStartPar
-Frida the Fae… will have RxLevel: Real Fae and TxLevel: Real Fae. @desc
+Frida the Fae... will have RxLevel: Real Fae and TxLevel: Real Fae. @desc
 set to the mundane desc, \&FAEDESC set to the Chimerical desc.
 Emily the Enchanted will have an RxLevel: Real Fae, but the TxLevel: Real.
-No \&FAEDESC on her, although she’ll be able to see it the one on Frida.
+No \&FAEDESC on her, although she\textquotesingle{}ll be able to see it the one on Frida.
 Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra
-and TxLevel: Umbra. \&UMBRADESC is his friend. He won’t see mortals or other
+and TxLevel: Umbra. \&UMBRADESC is his friend. He won\textquotesingle{}t see mortals or other
 characters who are not in the Umbra.
 
 \sphinxAtStartPar
-Barbie the Bastet, who’s only peeking in the Umbra, without going there,
+Barbie the Bastet, who\textquotesingle{}s only peeking in the Umbra, without going there,
 will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she
-can’t see the things that see her.
+can\textquotesingle{}t see the things that see her.
 
 \sphinxAtStartPar
 Deanna the Drake, who activates her spirit vision, will have
@@ -7726,7 +7726,7 @@ Global code objects that all characters should be able to use:
 \label{\detokenize{advanced:example-3-softcode}}
 \sphinxAtStartPar
 Considering the config directives from example 2 and assuming a function
-getstat(\textless{}dbref\textgreater{},\textless{}stat\textgreater{}) that will return the value of a player’s stat from
+getstat(\textless{}dbref\textgreater{},\textless{}stat\textgreater{}) that will return the value of a player\textquotesingle{}s stat from
 the sheet here are softcode examples that implement some of the WoD powers.
 In a real game you would have to use some more checks, of course.
 
@@ -7831,7 +7831,7 @@ MUSHL\_VARS
 &
 \sphinxAtStartPar
 space delimited list of MUSH attributes from player
-This is passed from the mush’s EXECSCRIPT\_VARS attr
+This is passed from the mush\textquotesingle{}s EXECSCRIPT\_VARS attr
 \\
 \hline
 \end{tabulary}
@@ -7913,7 +7913,7 @@ Note: they must be ASCII\sphinxhyphen{}7 clean and contain no white spaces
 \label{\detokenize{advanced:execsript-set-object}}
 \sphinxAtStartPar
 The script executed with execscript() will read in a file with the same name
-as the script ending in ‘.set’.  This is a loader object that will set attributes
+as the script ending in \textquotesingle{}.set\textquotesingle{}.  This is a loader object that will set attributes
 and registers back into the mush that you wish to pass from the script. The
 fields are SPACE SEPARATED.  The values are NOT evaluated.
 
@@ -8159,7 +8159,7 @@ NAME: of the target.  Verbatum, no quotes surround it
 123
 &
 \sphinxAtStartPar
-LOCATION: dbref\# of the target.  No prepending ‘\#’ used.
+LOCATION: dbref\# of the target.  No prepending \textquotesingle{}\#\textquotesingle{} used.
 \\
 \hline
 \sphinxAtStartPar
@@ -8189,7 +8189,7 @@ EXITS: The first exit in a linked list exit table (\sphinxhyphen{}1 if none)
 0
 &
 \sphinxAtStartPar
-LINK: This is the ‘home’ of the object or what it’s linked to (\sphinxhyphen{}1 for none)
+LINK: This is the \textquotesingle{}home\textquotesingle{} of the object or what it\textquotesingle{}s linked to (\sphinxhyphen{}1 for none)
 \\
 \hline
 \sphinxAtStartPar
@@ -8369,7 +8369,7 @@ INT
 \sphinxhyphen{}1
 &
 \sphinxAtStartPar
-ZONE(S): The list of zones starting here and ending with ‘\sphinxhyphen{}1’. (see ZONES)
+ZONE(S): The list of zones starting here and ending with \textquotesingle{}\sphinxhyphen{}1\textquotesingle{}. (see ZONES)
 \\
 \hline
 \sphinxAtStartPar
@@ -8419,7 +8419,7 @@ ATTRIBUTECONTENTS: Contents of the next attribute
 *Password
 &
 \sphinxAtStartPar
-PASSWORDATTRIB: Special password attribute.  Attribute name is ‘*Password’
+PASSWORDATTRIB: Special password attribute.  Attribute name is \textquotesingle{}*Password\textquotesingle{}
 \\
 \hline
 \sphinxAtStartPar
@@ -8446,7 +8446,7 @@ This is the marker to specify the end of the attribute contents.  This is always
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Any Data type starting with ‘*’ is ignored when @snapshot/loading.
+Any Data type starting with \textquotesingle{}*\textquotesingle{} is ignored when @snapshot/loading.
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
@@ -8705,7 +8705,7 @@ the flags above.  They are added together for each word type
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift
+POWERS:  Powers are handled a bit differently.  They\textquotesingle{}re used as BITWISE shift
 markers that you would have to compute the shift then add it after the fact.
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -8824,7 +8824,7 @@ will have to calculate then add
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-ZONES:  Zones are special.  If there are no zones, the value will be ‘\sphinxhyphen{}1’.
+ZONES:  Zones are special.  If there are no zones, the value will be \textquotesingle{}\sphinxhyphen{}1\textquotesingle{}.
 
 \sphinxAtStartPar
 So entering zones if there are no zones:
@@ -8971,12 +8971,12 @@ The databases are NOT COMPATIBLE to each other, at least in the binary form.
 \label{\detokenize{legacy:downgrading-qdbm-to-gdbm}}
 \begin{sphinxadmonition}{warning}{Warning:}
 \sphinxAtStartPar
-I would NEVER change from QDBM back to GDBM, but if you’re set on it these steps:
+I would NEVER change from QDBM back to GDBM, but if you\textquotesingle{}re set on it these steps:
 
 \sphinxAtStartPar
 You would use the same steps if you plan to move QDBM to GDBM.  I however would
 not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously,
-don’t do it unless you have absolutely no other recourse.
+don\textquotesingle{}t do it unless you have absolutely no other recourse.
 
 \sphinxAtStartPar
 IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify
@@ -9006,8 +9006,8 @@ Once you have that done, you may follow the procedures below on converting (upgr
 \subsection{Upgradging GDBM to QDBM}
 \label{\detokenize{legacy:upgradging-gdbm-to-qdbm}}
 \sphinxAtStartPar
-Now, if you’ve kept reading and plan to convert your GDBM database to QDBM great news!
-It’s more stable, it’s faster, and lets you have far more flexibility.
+Now, if you\textquotesingle{}ve kept reading and plan to convert your GDBM database to QDBM great news!
+It\textquotesingle{}s more stable, it\textquotesingle{}s faster, and lets you have far more flexibility.
 
 \sphinxAtStartPar
 So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
@@ -9018,19 +9018,19 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 \sphinxsetlistlabels{\Alph}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
-@dump/flat    \textendash{} This will make a flatfile dump of your MUSH database
+@dump/flat    \sphinxhyphen{}\sphinxhyphen{} This will make a flatfile dump of your MUSH database
 
 \item {} 
 \sphinxAtStartPar
-wmail/unload  \textendash{} This will make a flatfile dump of your MAIL database
+wmail/unload  \sphinxhyphen{}\sphinxhyphen{} This will make a flatfile dump of your MAIL database
 
 \item {} 
 \sphinxAtStartPar
-@areg/unload  \textendash{} If you use the AutoRegistration engine, this dumps it
+@areg/unload  \sphinxhyphen{}\sphinxhyphen{} If you use the AutoRegistration engine, this dumps it
 
 \item {} 
 \sphinxAtStartPar
-newsdb/unload \textendash{} If you use the hardcoded news/bbs engine.  This dumps it
+newsdb/unload \sphinxhyphen{}\sphinxhyphen{} If you use the hardcoded news/bbs engine.  This dumps it
 
 \end{enumerate}
 
@@ -9199,27 +9199,27 @@ Load in the mail database:
 Ok.
 
 \sphinxAtStartPar
-So you’re running an old RhostMUSH.
+So you\textquotesingle{}re running an old RhostMUSH.
 
 \sphinxAtStartPar
 One prior to 3.9.5p2 and want to take advantage of the new
 format of the Makefile and the automated mysql stuff and
-all the other goodies that isn’t really (easilly) done
+all the other goodies that isn\textquotesingle{}t really (easilly) done
 with just patch.sh.
 
 \sphinxAtStartPar
-Well, you’re in luck.  It is actually fairly easy to do.
+Well, you\textquotesingle{}re in luck.  It is actually fairly easy to do.
 
 \sphinxAtStartPar
 This is what you have to do.
 
 \sphinxAtStartPar
-First thing’s first.
+First thing\textquotesingle{}s first.
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
 \sphinxAtStartPar
-Log into your existing mush.  Let’s make current backups
+Log into your existing mush.  Let\textquotesingle{}s make current backups
 of all your flatfiles.  Issue:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
@@ -9249,14 +9249,14 @@ Make an image of all your current backed up files.  From The Server/game directo
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-Please remember the ‘\sphinxhyphen{}s’ to the ./backup\_flat.sh.
+Please remember the \textquotesingle{}\sphinxhyphen{}s\textquotesingle{} to the ./backup\_flat.sh.
 \end{sphinxadmonition}
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \setcounter{enumi}{3}
 \item {} 
 \sphinxAtStartPar
-Make note of the most recently created file in the directory Server/game/oldflat.  It’s usually named something like:
+Make note of the most recently created file in the directory Server/game/oldflat.  It\textquotesingle{}s usually named something like:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{RhostMUSH}\PYG{o}{.}\PYG{n}{dbflat1}\PYG{o}{.}\PYG{n}{tar}\PYG{o}{.}\PYG{n}{gz}
@@ -9273,7 +9273,7 @@ You will need this file later.
 \setcounter{enumi}{4}
 \item {} 
 \sphinxAtStartPar
-Rename your ‘Rhost’ directory to something else.  This is the directory that you have containing the ‘Server’ directory.  Name it anything you want other than ‘Rhost’.  For those not used to unix you would type:
+Rename your \textquotesingle{}Rhost\textquotesingle{} directory to something else.  This is the directory that you have containing the \textquotesingle{}Server\textquotesingle{} directory.  Name it anything you want other than \textquotesingle{}Rhost\textquotesingle{}.  For those not used to unix you would type:
 
 \begin{sphinxVerbatim}[commandchars=\\\{\}]
 \PYG{n}{mv} \PYG{n}{Rhost} \PYG{n}{Rhost\PYGZus{}old}
@@ -9291,7 +9291,7 @@ Pull in the latest Rhost.  You would type:
 
 \begin{sphinxadmonition}{note}{Note:}
 \sphinxAtStartPar
-You would type this in the same directory you have renamed your old ‘Rhost’ directory
+You would type this in the same directory you have renamed your old \textquotesingle{}Rhost\textquotesingle{} directory
 \end{sphinxadmonition}
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
@@ -9305,11 +9305,11 @@ go into the Rhost/Server directory.   Type:
 \end{sphinxVerbatim}
 
 \sphinxAtStartPar
-Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it’s the ‘r’ option).
+Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it\textquotesingle{}s the \textquotesingle{}r\textquotesingle{} option).
 
 \item {} 
 \sphinxAtStartPar
-Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step \#4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the ‘game’ directory of your current game you should be able to issue (if you named the old one Rhost\_old). Again this needs to be done FROM YOUR Server/game directory!!!
+Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step \#4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the \textquotesingle{}game\textquotesingle{} directory of your current game you should be able to issue (if you named the old one Rhost\_old). Again this needs to be done FROM YOUR Server/game directory!!!
 
 \end{enumerate}
 \begin{quote}
@@ -9329,7 +9329,7 @@ tar \sphinxhyphen{}zxvf RhostMUSH.dbflat1.tar.gz
 
 \item {} 
 \sphinxAtStartPar
-Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost\_ingame.conf and rhost\_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don’t port or other stuff you have already customized).
+Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost\_ingame.conf and rhost\_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don\textquotesingle{}t port or other stuff you have already customized).
 
 \item {} 
 \sphinxAtStartPar
@@ -9397,7 +9397,7 @@ MySQL is now native in RhostMUSH as of 3.9.5p2.
 
 \begin{sphinxadmonition}{warning}{Warning:}
 \sphinxAtStartPar
-To autodetect it, YOU MUST HAVE mysql\_config installed and running on your server.  Without this, even if you have mysql db installed it won’t be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql\_config.
+To autodetect it, YOU MUST HAVE mysql\_config installed and running on your server.  Without this, even if you have mysql db installed it won\textquotesingle{}t be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql\_config.
 \end{sphinxadmonition}
 
 \sphinxAtStartPar
@@ -9428,8 +9428,8 @@ update your bin/asksource.* files to the one in the 3.9.5p2+ repo
 
 \item {} 
 \sphinxAtStartPar
-append ‘include rhost\_mysql.conf’ BEFORE the rhost\_ingame.conf file
-and before the section that says ‘define local aliases’ toward the end of
+append \textquotesingle{}include rhost\_mysql.conf\textquotesingle{} BEFORE the rhost\_ingame.conf file
+and before the section that says \textquotesingle{}define local aliases\textquotesingle{} toward the end of
 your netrhost.conf file.
 ( edit your \textasciitilde{}/Rhost/Server/game/netrhost.conf file )
 
@@ -9490,7 +9490,7 @@ IF REPLACING/CHANGING local.c COPY BELOW
 \setcounter{enumi}{5}
 \item {} 
 \sphinxAtStartPar
-Issue ‘make clean’ then make confsource to rebuild using the latest
+Issue \textquotesingle{}make clean\textquotesingle{} then make confsource to rebuild using the latest
 builder script to build in the mysql changes.
 
 \end{enumerate}
@@ -9500,6 +9500,8 @@ builder script to build in the mysql changes.
 \label{\detokenize{flags:comparison-of-flags}}\label{\detokenize{flags::doc}}
 
 \begin{savenotes}\sphinxatlongtablestart\begin{longtable}[c]{|l|l|l|}
+\sphinxthelongtablecaptionisattop
+\caption{Comparison of Flags\strut}\label{\detokenize{flags:id1}}\\*[\sphinxlongtablecapskipadjust]
 \hline
 \sphinxstyletheadfamily 
 \sphinxAtStartPar
@@ -9763,7 +9765,7 @@ IMMORTAL
 GUILDMASTER
 &
 \sphinxAtStartPar
-You don’t want IMMORTAL
+You don\textquotesingle{}t want IMMORTAL
 \\
 \hline
 \sphinxAtStartPar
@@ -9928,7 +9930,7 @@ NOBLEED
 Not Needed
 &
 \sphinxAtStartPar
-Rhost doesn’t bleed ANSI
+Rhost doesn\textquotesingle{}t bleed ANSI
 \\
 \hline
 \sphinxAtStartPar
@@ -9968,7 +9970,7 @@ HTML
 Not Available
 &
 \sphinxAtStartPar
-Rhost doesn’t support Pueblo
+Rhost doesn\textquotesingle{}t support Pueblo
 \\
 \hline
 \sphinxAtStartPar
@@ -9978,7 +9980,7 @@ REDIR\_OK
 Not Available
 &
 \sphinxAtStartPar
-Rhost doesn’t support @redirect
+Rhost doesn\textquotesingle{}t support @redirect
 \\
 \hline
 \sphinxAtStartPar
@@ -9988,7 +9990,7 @@ SPEECHMOD
 Not Available
 &
 \sphinxAtStartPar
-Rhost doesn’t support @speechmod \sphinxhyphen{} use @icmd
+Rhost doesn\textquotesingle{}t support @speechmod \sphinxhyphen{} use @icmd
 \\
 \hline
 \sphinxAtStartPar
@@ -10106,7 +10108,7 @@ Rhost Equiv: MONITOR (@toggle)
 The following NDA comes from the time when RhostMUSH was not publially
 available. It is preserved here for historical reasons. We are suckers for
 looking back at things. :)
-\textendash{}Ambrosia
+\sphinxhyphen{}\sphinxhyphen{}Ambrosia
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{)}%
 \item {} 
@@ -10137,6 +10139,16 @@ you should be allowed to play with it fully as long as the first two
 rules are kept.
 \end{sphinxadmonition}
 
+
+\chapter{RhostMUSH Internal Help Files}
+\label{\detokenize{help:rhostmush-internal-help-files}}\label{\detokenize{help::doc}}
+
+
+
+\chapter{RhostMUSH Internal WizHelp Files}
+\label{\detokenize{wizhelp:rhostmush-internal-wizhelp-files}}\label{\detokenize{wizhelp::doc}}
+
+
 \sphinxAtStartPar
 Copyright© 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -10153,7 +10165,7 @@ The copyright includes but is not limited to all changes and modifications to
 the code, the help files, and all information included in this code.
 Copying of these changes is not permitted without prior approval.
 Borrowing of ideas require notification of where idea originated.
-Please use ‘RhostMUSH’ when identifying source. Modification of code is allowed
+Please use \textquotesingle{}RhostMUSH\textquotesingle{} when identifying source. Modification of code is allowed
 as long as contact and acceptance is made prior to changes with one (or more) of
 the original writers of the code in writing.
 
@@ -10162,19 +10174,6 @@ This copyright does not include the original code that was given as GNU freeware
 
 \sphinxAtStartPar
 This copyright information may not be changed, altered, or omitted.
-
-
-\chapter{Indices and tables}
-\label{\detokenize{index:indices-and-tables}}\begin{itemize}
-\item {} 
-\sphinxAtStartPar
-\DUrole{xref,std,std-ref}{genindex}
-
-\item {} 
-\sphinxAtStartPar
-\DUrole{xref,std,std-ref}{search}
-
-\end{itemize}
 
 
 

@@ -17,10 +17,10 @@ form.
 
 Warning:
 
-  I would NEVER change from QDBM back to GDBM, but if you’re set on it
+  I would NEVER change from QDBM back to GDBM, but if you're set on it
   these steps:You would use the same steps if you plan to move QDBM to
   GDBM.  I however would not do this.  Moving from QDBM to GDBM is a
-  huge step backwards.  Seriously, don’t do it unless you have
+  huge step backwards.  Seriously, don't do it unless you have
   absolutely no other recourse.IF you plan (for whatever reason) to
   move from QDBM to GDBM, you should verify the following
 
@@ -41,8 +41,8 @@ Warning:
 15.1.2. Upgradging GDBM to QDBM
 -------------------------------
 
-Now, if you’ve kept reading and plan to convert your GDBM database to
-QDBM great news! It’s more stable, it’s faster, and lets you have far
+Now, if you've kept reading and plan to convert your GDBM database to
+QDBM great news! It's more stable, it's faster, and lets you have far
 more flexibility.
 
 So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
@@ -51,16 +51,16 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 15.1.2.1. While logged in to your mush, issue the following commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   1. @dump/flat    – This will make a flatfile dump of your MUSH
+   1. @dump/flat    -- This will make a flatfile dump of your MUSH
       database
 
-   2. wmail/unload  – This will make a flatfile dump of your MAIL
+   2. wmail/unload  -- This will make a flatfile dump of your MAIL
       database
 
-   3. @areg/unload  – If you use the AutoRegistration engine, this
+   3. @areg/unload  -- If you use the AutoRegistration engine, this
       dumps it
 
-   4. newsdb/unload – If you use the hardcoded news/bbs engine.  This
+   4. newsdb/unload -- If you use the hardcoded news/bbs engine.  This
       dumps it
 
 
@@ -165,19 +165,19 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 
 Ok.
 
-So you’re running an old RhostMUSH.
+So you're running an old RhostMUSH.
 
 One prior to 3.9.5p2 and want to take advantage of the new format of
 the Makefile and the automated mysql stuff and all the other goodies
-that isn’t really (easilly) done with just patch.sh.
+that isn't really (easilly) done with just patch.sh.
 
-Well, you’re in luck.  It is actually fairly easy to do.
+Well, you're in luck.  It is actually fairly easy to do.
 
 This is what you have to do.
 
-First thing’s first.
+First thing's first.
 
-1. Log into your existing mush.  Let’s make current backups of all
+1. Log into your existing mush.  Let's make current backups of all
    your flatfiles.  Issue:
 
       @dump/flat
@@ -196,10 +196,10 @@ First thing’s first.
 
 Note:
 
-  Please remember the ‘-s’ to the ./backup_flat.sh.
+  Please remember the '-s' to the ./backup_flat.sh.
 
 4. Make note of the most recently created file in the directory
-   Server/game/oldflat.  It’s usually named something like:
+   Server/game/oldflat.  It's usually named something like:
 
       RhostMUSH.dbflat1.tar.gz
 
@@ -207,9 +207,9 @@ Note:
 
   You will need this file later.
 
-5. Rename your ‘Rhost’ directory to something else.  This is the
-   directory that you have containing the ‘Server’ directory.  Name it
-   anything you want other than ‘Rhost’.  For those not used to unix
+5. Rename your 'Rhost' directory to something else.  This is the
+   directory that you have containing the 'Server' directory.  Name it
+   anything you want other than 'Rhost'.  For those not used to unix
    you would type:
 
       mv Rhost Rhost_old
@@ -221,20 +221,20 @@ Note:
 Note:
 
   You would type this in the same directory you have renamed your old
-  ‘Rhost’ directory
+  'Rhost' directory
 
 7. go into the Rhost/Server directory.   Type:
 
       make confsource
 
    Select what options you want (including the mysql and other
-   goodies) then compile it (also within the menu, it’s the ‘r’
+   goodies) then compile it (also within the menu, it's the 'r'
    option).
 
 8. Once your game is compiled and ready to go you need to copy in the
    data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we
    mentioned in step #4 to the Server/game directory of your NEW GAME
-   DIRECTORY.  From within the ‘game’ directory of your current game
+   DIRECTORY.  From within the 'game' directory of your current game
    you should be able to issue (if you named the old one Rhost_old).
    Again this needs to be done FROM YOUR Server/game directory!!!
 
@@ -253,7 +253,7 @@ Note:
       your game is coming from you may need to add more options.  Any
       config option that is the same between the netrhost.conf files
       do not have to be copied over, and you want to keep your custom
-      settings (like don’t port or other stuff you have already
+      settings (like don't port or other stuff you have already
       customized).
 
    5. Load in your flatfile information:
@@ -292,7 +292,7 @@ Warning:
 
   To autodetect it, YOU MUST HAVE mysql_config installed and running
   on your server.  Without this, even if you have mysql db installed
-  it won’t be able to recognize the parameters you will need for it
+  it won't be able to recognize the parameters you will need for it
   and will thus fail.  Please check your linux distribution to see
   what packages are needed to install mysql_config.
 
@@ -312,8 +312,8 @@ following files:
 2. update your bin/asksource.* files to the one in the 3.9.5p2+ repo (
    cp ~/tmprho/Server/bin/asksource.* ~/Rhost/Server/bin/ )
 
-3. append ‘include rhost_mysql.conf’ BEFORE the rhost_ingame.conf file
-   and before the section that says ‘define local aliases’ toward the
+3. append 'include rhost_mysql.conf' BEFORE the rhost_ingame.conf file
+   and before the section that says 'define local aliases' toward the
    end of your netrhost.conf file. ( edit your
    ~/Rhost/Server/game/netrhost.conf file )
 
@@ -361,5 +361,5 @@ Note:
    #endif
    }
 
-6. Issue ‘make clean’ then make confsource to rebuild using the latest
+6. Issue 'make clean' then make confsource to rebuild using the latest
    builder script to build in the mysql changes.

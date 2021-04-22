@@ -13,7 +13,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="copyright" title="Copyright" href="copyright.html" />
     <link rel="next" title="4. Database" href="database.html" />
-    <link rel="prev" title="2. What RhostMUSH is about and what’s so great about RhostMUSH" href="features.html" /> 
+    <link rel="prev" title="2. What RhostMUSH is about and what&#39;s so great about RhostMUSH" href="features.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -45,10 +45,10 @@ and some effort should be looked at on how different it behaves.</p>
 <h3><span class="section-number">3.1.1. </span>Differences with PennMUSH</h3>
 <ul class="simple">
 <li>The way the comsystem (hardcode) works with the latest PennMUSH has some
-compatibility now with MUX’s comsystem.</li>
+compatibility now with MUX's comsystem.</li>
 <li>The &#64;mail system is different to MUX and Rhost.</li>
 <li>Debugging code uses DEBUG and has an indented format.</li>
-<li>The parser for code doesn’t require nested escaping like other codebases, but has issues with the pre-parser and nesting.</li>
+<li>The parser for code doesn't require nested escaping like other codebases, but has issues with the pre-parser and nesting.</li>
 <li>All standard movement, attribute setting, other should be similar</li>
 <li>Penn allows empty attributes.</li>
 <li>Penn supports attribute trees.</li>
@@ -92,15 +92,15 @@ the target to use it</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Rhost does support UNICODE/UTF8, but it’s currently not part of the main
+<p class="last">Rhost does support UNICODE/UTF8, but it's currently not part of the main
 branch as of this writing.  Please talk to Kage on the dev site for more
-information on when it’ll be released.</p>
+information on when it'll be released.</p>
 </div>
 </div>
 <div class="section" id="organization-of-help-and-wizhelp">
 <h2><span class="section-number">3.3. </span>Organization of help and wizhelp</h2>
-<p>First, on PennMUSH, help is separated into ‘help’ and ‘wizhelp’.  This can
-be confusing. If you want to ‘combine’ them, you may use the following snippit:</p>
+<p>First, on PennMUSH, help is separated into 'help' and 'wizhelp'.  This can
+be confusing. If you want to 'combine' them, you may use the following snippit:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ahelp*:@pemit %#=[switch([!!words(%0)][match(/search,%0*)],0?,[setq(0,help)][setq(1,0)],11,[setq(0,rest(%0))][setq(1,2)],setq(0,trim(%0)))][setq(a,textfile(help,%q0,%q1))][setq(b,textfile(wizhelp,%q0,%q1))][setq(2,)][ifelse(!strmatch(%qa,No entry*),%qa[setq(2,%r)])][ifelse(!strmatch(%qb,No entry*),%q2%qb[setq(2,%r)])][ifelse(!$r(2),No topics found for &#39;%q0&#39;.)]
 </pre></div>
 </div>
@@ -1251,7 +1251,7 @@ of arguments or switches to commands or functions, or required flags.</p>
 <div class="section" id="sidefx-flag">
 <h3><span class="section-number">3.14.4. </span>SIDEFX flag</h3>
 <blockquote>
-<div>Anything that uses sideeffects –DIRECTLY– requires this flag.
+<div>Anything that uses sideeffects --DIRECTLY-- requires this flag.
 Sideeffects are like set(), pemit(), and so forth.  list(), while a
 side-effect, does not require this flag as it is considered passive and safe.</div></blockquote>
 </div>
@@ -1259,7 +1259,7 @@ side-effect, does not require this flag as it is considered passive and safe.</d
 <h3><span class="section-number">3.14.5. </span>Variable exits</h3>
 <blockquote>
 <div>Rhost handles them slightly different.  You do not link
-exits to #-4.  That’s an invalid destination.  I always found it, frankly,
+exits to #-4.  That's an invalid destination.  I always found it, frankly,
 stupid to save any data in the database that was literally invalid.  So,
 you link the exit as you normally would, then &#64;toggle the exit variable.
 At that point you use &#64;exitto like you would any other codebase.</div></blockquote>
@@ -1271,15 +1271,15 @@ At that point you use &#64;exitto like you would any other codebase.</div></bloc
 work on TinyMUSH, MUX, or Penn.  Either at once or at different times.
 We recognize multiple zones, zone masters, zone inheritance, zone
 parenting, zone command processing, and the ability to bypass zones
-entirely.  There’s a ton of flexbility with this.  However, the syntax
+entirely.  There's a ton of flexbility with this.  However, the syntax
 for adding/removing zones is different so the commands will have to be
 ported to Rhost.</div></blockquote>
 </div>
 <div class="section" id="powers">
 <h3><span class="section-number">3.14.7. </span>&#64;powers</h3>
 <blockquote>
-<div>Powers work a bit differently in Rhost and they’re named
-differently, which should not be that big a surprise as they’re different
+<div>Powers work a bit differently in Rhost and they're named
+differently, which should not be that big a surprise as they're different
 between all the codebases anyway.  The big difference is our powers are
 tiered, meaning the can be limited or grown to a given bitlevel and are
 not just toggle powers like the other codebases.  We also have &#64;depower
@@ -1296,7 +1296,7 @@ that long you need to make sure they are cut down to the proper length.</div></b
 <div class="section" id="attribute-contents">
 <h3><span class="section-number">3.14.9. </span>Attribute contents</h3>
 <blockquote>
-<div>You’ll be happy to know that Rhost allows upwards
+<div>You'll be happy to know that Rhost allows upwards
 to 64,000 bytes of data to be assigned an LBUF.  We strongly recommand
 to cap at 32,000 however as the various TCP socket protocols play nicer
 with that value.</div></blockquote>
@@ -1309,7 +1309,7 @@ with that value.</div></blockquote>
 <h3><span class="section-number">3.14.11. </span>Unicode/UTF8</h3>
 <blockquote>
 <div>Yup!  We got this too.  Not quiet yet in the main branch,
-but download Kage’s branch, you won’t be dissapointed.  We will have
+but download Kage's branch, you won't be dissapointed.  We will have
 UTF8 in Rhost 4.0 when released.</div></blockquote>
 </div>
 <div class="section" id="attributes-per-object">
@@ -1327,13 +1327,13 @@ should never be a reason to exceed that.  If you need more, use
 <div>&#64;nuke only works on players.  &#64;destroy works on non-players.
 Never the two will meet.  We also have a built in recycle bin meaning
 anything destroyed will not be automatically recycled.  If you want it
-recycled, you have to &#64;purge it.  Yes, if you use  Myrddin’s CRON, it
+recycled, you have to &#64;purge it.  Yes, if you use  Myrddin's CRON, it
 has a built in entry to auto-purge anything older than 30 days.  This
 also means you can on-line recover anything destroyed before that 30
 days.  Groovy, eh?</div></blockquote>
 </div>
 <div class="section" id="object-id-s">
-<h3><span class="section-number">3.14.14. </span>object id’s</h3>
+<h3><span class="section-number">3.14.14. </span>object id's</h3>
 <p>Yup, we got them.  Even in searches, and, well, everything.</p>
 </div>
 <div class="section" id="lsearch-and-search">
@@ -1360,10 +1360,10 @@ See: lockencode(), lockdecode(), and lockcheck()</div></blockquote>
 <div class="section" id="attribute-trees">
 <h3><span class="section-number">3.14.18. </span>Attribute trees</h3>
 <blockquote>
-<div>Unlike Penn, we don’t really have attribute trees.  We do support the
+<div>Unlike Penn, we don't really have attribute trees.  We do support the
 basic capabilities of it for compatibility if you load in softcode that
-uses it, but it doesn’t have the advanced features of attribute trees.
-Please see ‘help attribute tree’ for more information.</div></blockquote>
+uses it, but it doesn't have the advanced features of attribute trees.
+Please see 'help attribute tree' for more information.</div></blockquote>
 </div>
 <div class="section" id="prefix-permission-locking">
 <h3><span class="section-number">3.14.19. </span>Prefix permission locking</h3>
@@ -1395,12 +1395,12 @@ is just not possible, sorry.</div></blockquote>
 <div class="section" id="comsystem">
 <h3><span class="section-number">3.14.23. </span>Comsystem</h3>
 <blockquote>
-<div>The softcoded comsystem mimics MUX/TM3 and Penn’s comsystem.</div></blockquote>
+<div>The softcoded comsystem mimics MUX/TM3 and Penn's comsystem.</div></blockquote>
 </div>
 <div class="section" id="various-functions">
 <h3><span class="section-number">3.14.24. </span>Various Functions</h3>
 <blockquote>
-<div>There is a ‘softcode.minmax’ in the Mushcode directory that loads up a slew
+<div>There is a 'softcode.minmax' in the Mushcode directory that loads up a slew
 of &#64;function wrappers that will emulate various functions that MUX, Penn, or
 TM3 has.  We have the functionality for nearly all of them, but either our
 functions have different syntax, or we have different named functions that
@@ -1417,7 +1417,7 @@ to hasattr instead.</div></blockquote>
 <div class="section" id="player-stats">
 <h3><span class="section-number">3.14.26. </span>Player Stats</h3>
 <blockquote>
-<div>MUX has some built in ways for player stats.  We do as well but they’re
+<div>MUX has some built in ways for player stats.  We do as well but they're
 either done via functions or attribute contents.  Code that requires this
 will have to be recoded.</div></blockquote>
 </div>
@@ -1437,8 +1437,8 @@ softcoded switch to a hardcoded command and work around the limitation.</div></b
 <div class="section" id="adding-flags">
 <h3><span class="section-number">3.14.29. </span>Adding Flags</h3>
 <blockquote>
-<div>Some flags may be missing.  If it’s a dummy flag, feel free to use the
-marker flags MARKER0 to MARKER9 to set them.  If it’s an existing flag
+<div>Some flags may be missing.  If it's a dummy flag, feel free to use the
+marker flags MARKER0 to MARKER9 to set them.  If it's an existing flag
 that does similar features, feel free to flag_alias it or just flag_name
 it to the other name if you want.</div></blockquote>
 </div>
@@ -1466,9 +1466,9 @@ it to the other name if you want.</div></blockquote>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Penn’s hardcoded comsystem is emulated with the softcode comsys</p>
+<li><p class="first">Penn's hardcoded comsystem is emulated with the softcode comsys</p>
 </li>
-<li><p class="first">Penn’s &#64;mail system is workable with mail wrappers</p>
+<li><p class="first">Penn's &#64;mail system is workable with mail wrappers</p>
 </li>
 <li><p class="first">Pueblo is not supported.</p>
 </li>
@@ -1483,10 +1483,10 @@ it to the other name if you want.</div></blockquote>
 <div class="section" id="mux">
 <h3><span class="section-number">3.15.2. </span>MUX</h3>
 <ul class="simple">
-<li>Mux has an async mysql database engine.  This is not possible with Rhost.  You’ll have to use the sync method instead.</li>
+<li>Mux has an async mysql database engine.  This is not possible with Rhost.  You'll have to use the sync method instead.</li>
 <li>UTF8 is supported but internally passed differently.</li>
-<li>Mux’s hardcoded comsystem is emulated with the softcode comsys</li>
-<li>MUX’s &#64;mail system is workable with mail wrappers</li>
+<li>Mux's hardcoded comsystem is emulated with the softcode comsys</li>
+<li>MUX's &#64;mail system is workable with mail wrappers</li>
 <li>Pueblo is not supported.</li>
 <li>This uses &#64;restart, Rhost uses &#64;reboot</li>
 </ul>

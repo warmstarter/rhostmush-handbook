@@ -32,7 +32,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 ..
 .sp
 The RhostMUSH source tree offers many abilities and options
-not normally found in any other flavor of mush.  This doesn’t
+not normally found in any other flavor of mush.  This doesn\(aqt
 make it better than other servers (though we think so \fIj/k\fP)
 but it does give you a wider selection of configurability,
 which, as you know, is the best part of setting up a mush.
@@ -152,7 +152,7 @@ A lot more that could drag this document out for pages.
 .IP \(bu 2
 \fI\%Option 2: Creating a new game with the generic default database\fP
 .IP \(bu 2
-\fI\%Option 3: Creating a new game with Ambrosia’s default database\fP
+\fI\%Option 3: Creating a new game with Ambrosia\(aqs default database\fP
 .UNINDENT
 .UNINDENT
 .SS RhostMUSH Requirements
@@ -191,7 +191,7 @@ Third\-party applications can use considerably more resources
 .SS Software Requirements
 .sp
 RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.
-In order to build this software, you will need the bare minimum of the ability to run ‘make’ commands.
+In order to build this software, you will need the bare minimum of the ability to run \(aqmake\(aq commands.
 .sp
 Package requirements are as follows:
 .INDENT 0.0
@@ -240,12 +240,12 @@ The debug_id is for use in the API daemon that runs Rhost as a container to keep
 .UNINDENT
 .SS Obtaining RhostMUSH Source Code
 .sp
-The only official source for obtaining RhostMUSH is through the ‘RhostMUSH’
+The only official source for obtaining RhostMUSH is through the \(aqRhostMUSH\(aq
 github account. If the source code was obtained in some other manner, there
 are potentially any number of unintentional or intentional issues that you
 might run into.
 .sp
-The recommended method of obtaing RhostMUSH is to clone it’s git reposistory:
+The recommended method of obtaing RhostMUSH is to clone it\(aqs git reposistory:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -273,11 +273,11 @@ https://github.com/RhostMUSH/trunk/archive/master.zip
 .INDENT 0.0
 .INDENT 3.5
 This documentation generally assumes that you obtained the RhostMUSH source
-code by cloning it’s git repository or at the very least downloading an
+code by cloning it\(aqs git repository or at the very least downloading an
 archive of the source code from the GitHub website.
 .sp
 It also assumes that the base directory from which all commands are run
-and all files are looked for is that git repo’s \fBServer/\fP directory,
+and all files are looked for is that git repo\(aqs \fBServer/\fP directory,
 unless specifically noted otherwise.
 .UNINDENT
 .UNINDENT
@@ -287,10 +287,10 @@ There is a \fIlot\fP of options once your start making your MUSH, but there are
 also a few big choices right as you get started making a MUSH. No matter which
 choices you ultimately make, there are certain things you will need to know how
 to do. This chapter is going to walk you through making the simplest possible
-version of RhostMUSH. It’s going to show you the things you would have to do
+version of RhostMUSH. It\(aqs going to show you the things you would have to do
 no matter which choices you were making.
 .sp
-In the process of making that simplest possible RhostMUSH you’ll also learn
+In the process of making that simplest possible RhostMUSH you\(aqll also learn
 what the basics of those choices are and when and how you would make them.
 Later chapters will get much more into all of those choices, but they will also
 assume you know everything in this chapter already, or at least have it as a
@@ -301,12 +301,12 @@ make those choices.
 .SS Compile time options
 .sp
 One of the first steps of making a MUSH or really any computer program is
-to compile the source code. This takes what’s basically text files full of code
+to compile the source code. This takes what\(aqs basically text files full of code
 and turns them into a program you can run. Within that source code are a
 number of options to choose from, but any time you want to change one of them,
 you have to recompile the source code and then restart the MUSH.
 .sp
-These choices are typically made through the \fBconfsource\fP menu which you’ll
+These choices are typically made through the \fBconfsource\fP menu which you\(aqll
 be seeing momentarily. There are some pretty big choices here from whether or
 not you want hardcoded +help and comsys, deciding between a more secure server
 and certtain powerful but potentially dangerous MUSHcode options, and then
@@ -317,62 +317,62 @@ like databases, webservers, and even other programming languages.
 While there are some options in RhostMUSH that can only be changed through
 recompiling the source code, there are way more options that can be changed
 without having to recompile. These choices are mostly made through the
-\fBnetrhost.conf\fP file. Whenever a MUSH starts up or gets rebooted, it’s
-going to look to what’s in that file. A few of those choices relate to
+\fBnetrhost.conf\fP file. Whenever a MUSH starts up or gets rebooted, it\(aqs
+going to look to what\(aqs in that file. A few of those choices relate to
 further configuring the choices you made with \fBconfsource\fP
 .sp
 The \fBnetrhost.conf\fP file has some aesthetic options like what if anything
 it says when the database is being saved or whether or not your MUSH will
-allow ANSI color, both in general, but also in things like people’s names.
+allow ANSI color, both in general, but also in things like people\(aqs names.
 It has a lot of very esoteric options for tuning the performance and safety
 of your MUSH. It also is where you define things that connect to your database
-like your master room and guests. It let’s you determine which powers your
-staff does or does not have, and it’s also where you have an option to change
+like your master room and guests. It let\(aqs you determine which powers your
+staff does or does not have, and it\(aqs also where you have an option to change
 the password for #1 should you forget it. There are ways to change some of
 these options from within the MUSH and even have those changes become new
 defaults that survive a reboot. One thing you set there that you definitely
-can’t change from within the MUSH, is which port it runs on.
+can\(aqt change from within the MUSH, is which port it runs on.
 .SS Starting database options
 .sp
 This last big choice is one that you probably are well aware of at least some
 of the things it allows for, mostly because the database is basically where
 everyone on a MUSH lives. Most of the choices you ever make about your MUSH
-will happen in the database and it’s something that’s basically always going
+will happen in the database and it\(aqs something that\(aqs basically always going
 to be changing in more ways than any one person could follow. No matter how
-vast the database of a MUSH gets, they all started somewhere, and that’s the
+vast the database of a MUSH gets, they all started somewhere, and that\(aqs the
 last big choice you have to make.
 .sp
-Depending on how you look at it, there’s somewhere between thousands of choices
+Depending on how you look at it, there\(aqs somewhere between thousands of choices
 and two choices for a starting database. What I mean is that you have the
 choice of starting with a brand new database to populate, only a room (#0) and
-you (#1), even the Master Room is something you’d have to add to it. The other
-option is to import an existing database, though to choose that option you’d
+you (#1), even the Master Room is something you\(aqd have to add to it. The other
+option is to import an existing database, though to choose that option you\(aqd
 also have to have access to an existing database.
 .sp
 Besides the brand new database that can be made on\-demand, RhostMUSH comes with
-two databases that you can use to get your start. One is called ‘Minimal’ and
-the other is called ‘Ambrosia’ after the lead RhostMUSH developed that made it.
-Despite the name, they’re both fairly minimal, there’s no grid in either, but
+two databases that you can use to get your start. One is called \(aqMinimal\(aq and
+the other is called \(aqAmbrosia\(aq after the lead RhostMUSH developed that made it.
+Despite the name, they\(aqre both fairly minimal, there\(aqs no grid in either, but
 what you get is a lot of pre\-installed softcode and security, as well as a
 \fBnetrhost.conf\(ga\fP file that has been tuned to work well with it. Even if you
-don’t use those databases you can take ideas for the \fBnetrhost.conf\fP file for
+don\(aqt use those databases you can take ideas for the \fBnetrhost.conf\fP file for
 tuning your MUSH or even use some RhostMUSH commands to import that softcode
 into your database.
 .SS The Choices We Make
 .sp
-Well, not you’re aware of those three big choices, what they are, and where
-you’ll run across them. Later in this Handbook we’ll be going through those
-choices in\-depth. In this chapter, what we’ll be doing is using the default
+Well, not you\(aqre aware of those three big choices, what they are, and where
+you\(aqll run across them. Later in this Handbook we\(aqll be going through those
+choices in\-depth. In this chapter, what we\(aqll be doing is using the default
 options for for \fBconfsource\fP and \fBnetrhost.conf\fP and a brand new database.
 Those options and that blank slate are necessary so that you have in front of
 you a working MUSH with only #0 and #1 and get shown the way of building it
 into whatever is your dream MUSH, and I know we all have one.
 .sp
 There will be a chance to make all those other choices later, in fact that
-will be happening very soon. There’s a lot of very interesting choices that
+will be happening very soon. There\(aqs a lot of very interesting choices that
 you can make with RhostMUSH, too many for anyone to ever be able to use them
-all. If you don’t start with mastering the basics, you’ll never end up knowing
-what are the most RhostMUSH options. I can’t tell you what they are, it’s truly
+all. If you don\(aqt start with mastering the basics, you\(aqll never end up knowing
+what are the most RhostMUSH options. I can\(aqt tell you what they are, it\(aqs truly
 something you have to discover on your own. Remember, you want to build your
 dream MUSH, not mine.
 .sp
@@ -380,7 +380,7 @@ dream MUSH, not mine.
 .INDENT 0.0
 .INDENT 3.5
 Unless you are intending to start with a brand new database, you must be
-aware of it’s needs and expectations for the settings of \fBconfsource\fP and
+aware of it\(aqs needs and expectations for the settings of \fBconfsource\fP and
 \fBnetrhost.conf\fP Starter databases tend to distribute with them config
 files of at least the options they expect set or not set during the process
 of configuring and compiling the server.
@@ -409,7 +409,7 @@ is no harm in running it anyway:
 .UNINDENT
 .sp
 If you did NOT obtain the source code directly from GitHub, it is possible that
-even the above script will fail to run with ‘permission denied’ or similar
+even the above script will fail to run with \(aqpermission denied\(aq or similar
 errors. It is recommended that you obtain the source code from there, but if
 for whatever reason this is not an option, manually adjust your permissions
 and then re\-run the automated permission script:
@@ -500,7 +500,7 @@ first issue a \fBmake clean\fP before re\-issuing a \fBmake confsource\fP
 A failure to issue \fBmake clean\fP prior to re\-compiling with \fBmake confsource\fP
 can potentially leave stale object files which may cause unforseen issues when
 running code, including but not limited to random crashes.  Generally whenever
-recompiling it’s good to always make clean first.
+recompiling it\(aqs good to always make clean first.
 .sp
 \fBNOTE:\fP
 .INDENT 0.0
@@ -513,7 +513,7 @@ whenever you alter the code or import new source code.
 .SS Configuring the game
 .SS Persistent configurable game options
 .sp
-Upon compiling a RhostMUSH server, if it doesn’t already exist, a
+Upon compiling a RhostMUSH server, if it doesn\(aqt already exist, a
 \fBnetrhost.conf\fP is copied into the \fBgame/\fP directory for your game. It
 includes useful defaults for most compile\-time options that will work well for
 most games, particularly ones using both the default \fBconfsource\fP options and
@@ -522,7 +522,7 @@ related database.
 This configuration is derived from \fBdefaults/game/netrhost.conf.default\fP
 .sp
 While this \fBnetrhost.conf\fP is very well documented and quite easy to change
-in some places, but there are also some rather technical options that you it’s
+in some places, but there are also some rather technical options that you it\(aqs
 important to know the full implications of this.
 .sp
 \fBNOTE:\fP
@@ -549,7 +549,7 @@ Once done, you start up the system with the following command:
 .UNINDENT
 .UNINDENT
 .sp
-It will prompt you to start a new db if it doesn’t find one.
+It will prompt you to start a new db if it doesn\(aqt find one.
 .sp
 You may also do the commands individually:
 .INDENT 0.0
@@ -565,8 +565,8 @@ You may also do the commands individually:
 .UNINDENT
 .SS First login to the game
 .sp
-Once started, log in the #1 character (Wizard) with it’s appropiate
-password (no, not ‘potrzebie’, but ‘Nyctasia’).  There were private
+Once started, log in the #1 character (Wizard) with it\(aqs appropiate
+password (no, not \(aqpotrzebie\(aq, but \(aqNyctasia\(aq).  There were private
 reasons for the password change.
 .sp
 Once in, do a @shutdown to save the database.  Then you can run Startup
@@ -582,9 +582,9 @@ The main parts of making your RhostMUSH, easy pleasy:
 .IP 1. 3
 The stunnel directory contains TLS/SSL connectivity.  This has to be linked to another port and will tunnel to the mush port.  The README file explains how to set up and configure your TLS/SSL connection.
 .IP 2. 3
-\&./patch.sh – This makes sure you have the latest code.  If you got this by git clone \fI\%https://github.com/RhostMUSH/trunk\fP then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.
+\&./patch.sh \-\- This makes sure you have the latest code.  If you got this by git clone \fI\%https://github.com/RhostMUSH/trunk\fP then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.
 .IP 3. 3
-make confsource.  Yup, it’s menu driven, nifty eh?
+make confsource.  Yup, it\(aqs menu driven, nifty eh?
 .INDENT 3.0
 .IP 1. 4
 Options you may want to select (other than the defaults):
@@ -595,7 +595,7 @@ Options you may want to select (other than the defaults):
 .IP 4. 4
 16 (if you want a wider WHO listing like older versions of MUX)
 .IP 5. 4
-22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
+22 (if you\(aqre converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
 .IP 6. 4
 24 (if you have issues with \-lssl not being found)
 .IP 7. 4
@@ -608,7 +608,7 @@ B5 (will be autoselected if you choose 8K or more.  Pick this anyway)
 B4 (if you have sqlite libraries and wish to use this)
 .UNINDENT
 .IP 4. 3
-‘r’ to compile with the settings you selected.
+\(aqr\(aq to compile with the settings you selected.
 .IP 5. 3
 Modify your netrhost.conf file as specified.  Make sure to align your port and debug_id as shown in the netrhost.conf file.
 .IP 6. 3
@@ -631,7 +631,7 @@ You may auto\-load the minimal db and corresponding netrhost.conf file with the 
 .UNINDENT
 .UNINDENT
 .sp
-This is ran from within the ‘game’ directory.  Once this is ran, you will need
+This is ran from within the \(aqgame\(aq directory.  Once this is ran, you will need
 to customize the netrhost.conf file for your purposes.  The port and debug_id must
 be changed at the very least.  Keep the debug_id coordinated to the port as described.
 .SS To load a prebuilt flatfile
@@ -662,9 +662,9 @@ cp \-f ./minimal\-DBs/minimal_db/netrhost.conf ./game/netrhost.conf
 .UNINDENT
 .IP 3. 3
 At this point you can modify your netrhost.conf file settings in your game directory.
-Using an editor modify the ‘port’ and ‘debug_id’ respectively in your netrhost.conf as state.
-The ‘port’ will be the port the mush listens on, the debug_id is for the debug\-stack and is
-your port with a ‘5’ at the end.  So if your port is 4444, the debug_id is 44445
+Using an editor modify the \(aqport\(aq and \(aqdebug_id\(aq respectively in your netrhost.conf as state.
+The \(aqport\(aq will be the port the mush listens on, the debug_id is for the debug\-stack and is
+your port with a \(aq5\(aq at the end.  So if your port is 4444, the debug_id is 44445
 .IP 4. 3
 Load in the flatfile into the mush (You could do this in the Startmush as well)
 Manually:
@@ -695,7 +695,7 @@ Start your mush:
 .sp
 This will load the db that you loaded.
 .sp
-—————OR——\-
+\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-OR\-\-\-\-\-\-\-
 .sp
 From Startmush when prompted, hit <RETURN> for searching then select the number of the netrhost.db.flat that is listed as ~/minimal\-DBs/minimal_db/netrhost.db.flat:
 .INDENT 3.0
@@ -730,7 +730,7 @@ TINY_U, USE_SIDEEFFECTS, MUX_INCDEC, ATTR_HACK
 .sp
 You only need to do this if you received the RhostMUSH src.  If you received a binary, continue on to the next part.
 .sp
-To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand\-edit the Makefile.
+To compile the code, just type \(aqmake confsource\(aq.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run \(aqmake source\(aq, if you so choose to hand\-edit the Makefile.
 .sp
 After the compile process is done, type:
 .INDENT 0.0
@@ -804,7 +804,7 @@ Figure out what they were trying to say by having those above two sentences righ
 .sp
 All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a
 README file there that explains their purposes in more detail.  You can see more information on
-all files and how they inter\-relate with ‘wizhelp file’.
+all files and how they inter\-relate with \(aqwizhelp file\(aq.
 .SS Three Options for Starting a MUSH
 .sp
 The RhostMUSH Git Repository comes with three options for starting your Mush.
@@ -812,24 +812,24 @@ The RhostMUSH Git Repository comes with three options for starting your Mush.
 .INDENT 3.5
 .SS Todo
 .sp
-Well, there’s also some other pre\-existing DB, upgrading, and ansible so let’s try to make this a little more coherent.
+Well, there\(aqs also some other pre\-existing DB, upgrading, and ansible so let\(aqs try to make this a little more coherent.
 .UNINDENT
 .UNINDENT
 .SS Option 1: Creating a new game with a blank database
 .sp
 Modify your ./game/netrhost.conf file or what settings you want.
-Don’t feel overwhelmed, it’s all very well documented.
+Don\(aqt feel overwhelmed, it\(aqs all very well documented.
 .SS Option 2: Creating a new game with the generic default database
 .sp
 Copy the netrhost.conf from minimal\-DBs/minimal_db to your game directory.
 .sp
-When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit <RETURN>
+When ./Startmush prompts you to load a flatfile, say \(aqyes\(aq and hit <RETURN>
 to have it search for flatfiles, then select netrhost.db.flat from under
 the minimal\-DBs/minimal_db directory.
-.SS Option 3: Creating a new game with Ambrosia’s default database
+.SS Option 3: Creating a new game with Ambrosia\(aqs default database
 .sp
 This option is covered in detail here: ambrosiadb\-installation
-.SH WHAT RHOSTMUSH IS ABOUT AND WHAT’S SO GREAT ABOUT RHOSTMUSH
+.SH WHAT RHOSTMUSH IS ABOUT AND WHAT'S SO GREAT ABOUT RHOSTMUSH
 .sp
 RhostMUSH was founded in 1989, originally by Natasha Davis (Nyctasia) and as
 a branch from the original release of TinyMUD code.  It was her desire to make
@@ -854,7 +854,7 @@ UTF8/unicode port), Jeff/Loki, Rook, Noltar, and Odin.
 We also have had hundreds of people who have offered (and provided) help,
 patches, suggestions, bug fixes, and alternations all on their own and
 every single one will have had their name mentioned in the RHOST.CHANGES
-file in the readme directory.  It’s far too large to have in the online
+file in the readme directory.  It\(aqs far too large to have in the online
 help files.
 .sp
 RhostMUSH today provides an amazing tool that allows nearly entire
@@ -865,7 +865,7 @@ not limited to:
 .INDENT 0.0
 .INDENT 3.5
 Yup, you guessed it.  RhostMUSH has a windows like recycle bin.
-This means the objects you @nuke and @destroy become ‘destroyed’
+This means the objects you @nuke and @destroy become \(aqdestroyed\(aq
 but not recycled until they are @purged.  If you use the Myrddin
 CRON in the Mushcode directory, it by default sets up a job
 to purge anything over 30 days old, which should be more than
@@ -896,7 +896,7 @@ are spoofable.  Meaning all their @pemits by default will not
 trigger NOSPOOF.  If you do not wish this, set the SPOOF flag
 this applies to anyone below their level.
 .IP \(bu 2
-override all locks.  There’s two flags to disable this.
+override all locks.  There\(aqs two flags to disable this.
 NO_OVERRIDE to stop overriding all locks (including attribs)
 and NO_USELOCK to just stop overriding uselocks.
 This applies to anything their level and lower.
@@ -913,7 +913,7 @@ effectively #1 in nearly every way.
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.SS Titles and Captions to a player’s name
+.SS Titles and Captions to a player\(aqs name
 .INDENT 0.0
 .INDENT 3.5
 @caption and @titlecaption
@@ -995,7 +995,7 @@ Have multiple zones which can optionally belong to multiple targets (multiple zo
 .INDENT 0.0
 .INDENT 3.5
 This works as a truly independant and self\-contained environment.
-A room can have 31 ‘layers’, each ‘layer’ is a reality in
+A room can have 31 \(aqlayers\(aq, each \(aqlayer\(aq is a reality in
 the same physical space.  These layers can work independently
 or allow interaction with other layers for vast customization.
 This affects all methods within the game including all matching,
@@ -1084,7 +1084,7 @@ Example Pretty Print:
 .SS Plenty more not mentioned!
 .sp
 The flexibility to customize RhostMUSH is what is most daunting.
-Don’t fret, you don’t need to do it to run RhostMUSH successfully.
+Don\(aqt fret, you don\(aqt need to do it to run RhostMUSH successfully.
 In fact, the default configuration is mostly compatible with
 MUSH and will work correctly out of the box for most needs.  For those
 wishing to play, of course the sky is the limit of what you want to
@@ -1146,12 +1146,12 @@ help @lock type zone
 .INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
-Reality levels allows for the ability to have a sandboxed ‘existance’
+Reality levels allows for the ability to have a sandboxed \(aqexistance\(aq
 in each physical location across the entirity of the mush.  Each
 reality is its own sandbox and can either stand alone or work
 dependently with other realities.  A person can belong to multiple
 realities at the same time, and realities is geared to a method for
-send and receive.  Each ‘method’ requires to be in the given reality
+send and receive.  Each \(aqmethod\(aq requires to be in the given reality
 to affect it.
 .INDENT 2.0
 .IP \(bu 2
@@ -1301,7 +1301,7 @@ through the use of the USELOCK attribute flag, then you set up
 a matching attribute name with a prefix of a ~ to specify how
 the lock is to be evaluated.  This works in the same manner
 as an evaluation lock.  To be able to use the USELOCK attribute flag
-you must be empowered to do so with the ‘ATRUSE’ @toggle.  You may
+you must be empowered to do so with the \(aqATRUSE\(aq @toggle.  You may
 also use the secure_atruselock config parameter to globally enable
 this and not require the toggle to be set.
 .INDENT 2.0
@@ -1336,7 +1336,7 @@ help @lock type uselock
 .IP \(bu 2
 By default wizards override all locks, including attribute locks,
 can see all dark exits, and bypass pagelocks.  This can be
-troublesome, and even abusive, so there’s ways to disable this.
+troublesome, and even abusive, so there\(aqs ways to disable this.
 .INDENT 2.0
 .IP \(bu 2
 wizhelp @depower (for those abusing it)
@@ -1447,7 +1447,7 @@ other codebases.  For most things, this is the bitlevel you want
 to assign players.  The exception will likely be game owners or
 people who control the master room code.
 .sp
-There’s a bunch of readme files and online wizhelp that goes into
+There\(aqs a bunch of readme files and online wizhelp that goes into
 detail of the various bitlevels and what each can do.
 .INDENT 2.0
 .IP \(bu 2
@@ -1461,7 +1461,7 @@ wizhelp control
 .INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
-While using QDBM, there’s really no set limits for most things.
+While using QDBM, there\(aqs really no set limits for most things.
 The limits that we have are as followed:
 .UNINDENT
 .INDENT 0.0
@@ -1478,7 +1478,7 @@ Compile time option with the menu configurator
 .UNINDENT
 .UNINDENT
 .sp
-SBUF \- 64 characters (if configured – it’s suggested you do).
+SBUF \- 64 characters (if configured \-\- it\(aqs suggested you do).
 .INDENT 0.0
 .INDENT 3.5
 .INDENT 0.0
@@ -1526,7 +1526,7 @@ wizhelp heavy_cpu_max
 .sp
 DISK \- no limit.  Generally will be 75\-200M depending on size, number of backups and if you leave your compiled object files in.
 .sp
-DB Size \- (20000 default) There is no limit on the number of objects the db can have.  By default it’s soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem.
+DB Size \- (20000 default) There is no limit on the number of objects the db can have.  By default it\(aqs soft limited to 20K objects, which can be changed by a netrhost.conf file change.  We have had this up past 1.5 million objects, and other than a second or two of lag for complex searches we had no real problem.
 .INDENT 0.0
 .INDENT 3.5
 .INDENT 0.0
@@ -1542,7 +1542,7 @@ wizhelp @limit
 .UNINDENT
 .UNINDENT
 .sp
-Attribute Size \- 10K as a hard limit.  750 as a soft limit.  You can increase this but it can’t exceed 10000 attributes.  This is to avoid DoS style attacks.
+Attribute Size \- 10K as a hard limit.  750 as a soft limit.  You can increase this but it can\(aqt exceed 10000 attributes.  This is to avoid DoS style attacks.
 .INDENT 0.0
 .INDENT 3.5
 .INDENT 0.0
@@ -1659,8 +1659,8 @@ SIGTERM \- will immediately scram the mush as cleanly and fast as possible.  It 
 .INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
-Global parents are useful when you want to have a global ‘parent’
-without actually having a defined \fI\%‘@parent\fP’.  It always will be the
+Global parents are useful when you want to have a global \(aqparent\(aq
+without actually having a defined \fI\%\(aq@parent\fP\(aq.  It always will be the
 highest tier in a lookup.  The way lookups will go will be:
 .INDENT 2.0
 .INDENT 3.5
@@ -1697,7 +1697,7 @@ global_parent_player  \- The player global parent
 .IP \(bu 2
 Global @parents are different than global parents in that any new
 item of similar type that is created is automatically assigned this
-physical @parent.  It’s obviously more limiting since it sets
+physical @parent.  It\(aqs obviously more limiting since it sets
 the literal physical parent defined.
 .sp
 The type of the parent does not have to match the target.
@@ -1811,10 +1811,10 @@ trace_output_limit   \- Set lines of trace output shown
 To define how many commands a minute a player set SPAMMONITOR can use
 .INDENT 2.0
 .IP \(bu 2
-spam_limit – default 120
+spam_limit \-\- default 120
 .UNINDENT
 .IP \(bu 2
-If you examine things and see ‘Output cut off’ messages, you may want
+If you examine things and see \(aqOutput cut off\(aq messages, you may want
 to increase your output limit, funny enough, the name of this is
 similar
 .INDENT 2.0
@@ -1826,7 +1826,7 @@ output_limit \- You should set this no less than 4 times the current size of you
 .UNINDENT
 .UNINDENT
 .IP \(bu 2
-Attributes names can not exceed 64 characters.  Sorry, it’s a hard limit
+Attributes names can not exceed 64 characters.  Sorry, it\(aqs a hard limit
 .IP \(bu 2
 Sometime you may find a single may not work for an escape.  You can
 in most cases use a % instead or double escape the to make it work.
@@ -1840,7 +1840,7 @@ Also look at lit() as a solution.
 .INDENT 0.0
 .IP \(bu 2
 After you set up your guests, you can set unique names to each guest
-if you so want after defining the dbref#’s your guests use.  This is
+if you so want after defining the dbref#\(aqs your guests use.  This is
 done by defining them in the guest_namelist parameter.  You can also
 increase guests (or decrease them) between 0\-31 guests.
 .INDENT 2.0
@@ -1865,8 +1865,8 @@ Attribute contentlocks can be set up so you can lock the actual
 content that you can set (or even unset!) into an attribute.
 The beauty of this is that you can specify case sensitive
 information, lock different ways contents in attributes are set
-based on who is setting it, or even on where it’s being set.
-The sky’s the limit.
+based on who is setting it, or even on where it\(aqs being set.
+The sky\(aqs the limit.
 .INDENT 2.0
 .INDENT 3.5
 .INDENT 0.0
@@ -1894,7 +1894,7 @@ amount of attributes without paying a hefty penalty on object bloat.
 .INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
-help cluster  – Gives a fantastic overview of how clusters work.
+help cluster  \-\- Gives a fantastic overview of how clusters work.
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -1937,7 +1937,7 @@ Changing permission levels in the middle of execution for evaluation.
 .INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
-see help on the streval and ueval function’
+see help on the streval and ueval function\(aq
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -1951,14 +1951,14 @@ Full features in\-game customization of near every aspect of the game.
 Here are some things to know about RhostMUSH and what you may or may not
 want to do.  Things here are not covered in other documents:
 .sp
-Admin toggles to configure the WHO, various things you’re used to, etc is in the
-‘netrhost.conf’ file.  descriptions Notes in the autoconf.h file is in the
+Admin toggles to configure the WHO, various things you\(aqre used to, etc is in the
+\(aqnetrhost.conf\(aq file.  descriptions Notes in the autoconf.h file is in the
 README.AUTOCONF file.
 .SS Note on bits, their levels, and things they do
 .INDENT 0.0
 .INDENT 3.5
 IMMORTAL \- They can do anything.  Treat this as #1 and only give to
-people you trust.  Period.   You don’t have to use this bit
+people you trust.  Period.   You don\(aqt have to use this bit
 if you do not want to and just assume #1.
 .sp
 ROYALTY \- Unlike PENN/MUX, this is \fInot\fP a sub\-wizard, this is a
@@ -1966,19 +1966,19 @@ FULL wizard.  Plus, they can do a bit more.
 .sp
 COUNCILOR \- Like royalty on PENN/MUX but they can modify.
 .sp
-ARCHITECT \- Can’t do as much as councilor, but lot more than BUILDER.
+ARCHITECT \- Can\(aqt do as much as councilor, but lot more than BUILDER.
 .sp
-GUILDMASTER \- Very limited.  Sees dbrief#’s, can ex things their
+GUILDMASTER \- Very limited.  Sees dbrief#\(aqs, can ex things their
 level and lower and @quota players.
 .UNINDENT
 .UNINDENT
 .SS You need to @pcreate your guest characters and set them GUEST
 .INDENT 0.0
 .INDENT 3.5
-It doesn’t create them on the fly but we considered this better.
+It doesn\(aqt create them on the fly but we considered this better.
 You have 31 total you can have.  It defaults to 10 in the
 netrhost.conf file.  You can rename the guests anything you want,
-but before you do so, you must add the dbref#’s to the param
+but before you do so, you must add the dbref#\(aqs to the param
 guest_namelist
 .UNINDENT
 .UNINDENT
@@ -2007,8 +2007,8 @@ You can have things in multiple zones.
 .INDENT 0.0
 .INDENT 3.5
 It does this by purging anything
-it can’t identify.  Dataloss is better than unrecoverable data.
-Yes, any such ‘repairing’ is logged so you know if something is up.
+it can\(aqt identify.  Dataloss is better than unrecoverable data.
+Yes, any such \(aqrepairing\(aq is logged so you know if something is up.
 .UNINDENT
 .UNINDENT
 .SS You can get your connect.txt to parse ansi
@@ -2034,9 +2034,9 @@ You do not need to @shutdown.
 .SS Softcode emulations of functions from other servers are included
 .INDENT 0.0
 .INDENT 3.5
-Load the file softfunctions into the mush once it’s set up.  This are
+Load the file softfunctions into the mush once it\(aqs set up.  This are
 @functions that will alias the functions that PENN, MUX, and TinyMUSH have
-that is either named differently or we don’t have for one reason or another.
+that is either named differently or we don\(aqt have for one reason or another.
 .UNINDENT
 .UNINDENT
 .SH COMPARISON OF MODERN MUSH SERVERS
@@ -2051,13 +2051,13 @@ and some effort should be looked at on how different it behaves.
 .INDENT 0.0
 .IP \(bu 2
 The way the comsystem (hardcode) works with the latest PennMUSH has some
-compatibility now with MUX’s comsystem.
+compatibility now with MUX\(aqs comsystem.
 .IP \(bu 2
 The @mail system is different to MUX and Rhost.
 .IP \(bu 2
 Debugging code uses DEBUG and has an indented format.
 .IP \(bu 2
-The parser for code doesn’t require nested escaping like other codebases, but has issues with the pre\-parser and nesting.
+The parser for code doesn\(aqt require nested escaping like other codebases, but has issues with the pre\-parser and nesting.
 .IP \(bu 2
 All standard movement, attribute setting, other should be similar
 .IP \(bu 2
@@ -2119,15 +2119,15 @@ the target to use it
 \fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-Rhost does support UNICODE/UTF8, but it’s currently not part of the main
+Rhost does support UNICODE/UTF8, but it\(aqs currently not part of the main
 branch as of this writing.  Please talk to Kage on the dev site for more
-information on when it’ll be released.
+information on when it\(aqll be released.
 .UNINDENT
 .UNINDENT
 .SS Organization of help and wizhelp
 .sp
-First, on PennMUSH, help is separated into ‘help’ and ‘wizhelp’.  This can
-be confusing. If you want to ‘combine’ them, you may use the following snippit:
+First, on PennMUSH, help is separated into \(aqhelp\(aq and \(aqwizhelp\(aq.  This can
+be confusing. If you want to \(aqcombine\(aq them, you may use the following snippit:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -3353,7 +3353,7 @@ named variables for regexp patterns in $commands are not supported.
 .SS SIDEFX flag
 .INDENT 0.0
 .INDENT 3.5
-Anything that uses sideeffects –DIRECTLY– requires this flag.
+Anything that uses sideeffects \-\-DIRECTLY\-\- requires this flag.
 Sideeffects are like set(), pemit(), and so forth.  list(), while a
 side\-effect, does not require this flag as it is considered passive and safe.
 .UNINDENT
@@ -3362,7 +3362,7 @@ side\-effect, does not require this flag as it is considered passive and safe.
 .INDENT 0.0
 .INDENT 3.5
 Rhost handles them slightly different.  You do not link
-exits to #\-4.  That’s an invalid destination.  I always found it, frankly,
+exits to #\-4.  That\(aqs an invalid destination.  I always found it, frankly,
 stupid to save any data in the database that was literally invalid.  So,
 you link the exit as you normally would, then @toggle the exit variable.
 At that point you use @exitto like you would any other codebase.
@@ -3375,7 +3375,7 @@ Zones actually can work near exactly as you would expect them to
 work on TinyMUSH, MUX, or Penn.  Either at once or at different times.
 We recognize multiple zones, zone masters, zone inheritance, zone
 parenting, zone command processing, and the ability to bypass zones
-entirely.  There’s a ton of flexbility with this.  However, the syntax
+entirely.  There\(aqs a ton of flexbility with this.  However, the syntax
 for adding/removing zones is different so the commands will have to be
 ported to Rhost.
 .UNINDENT
@@ -3383,8 +3383,8 @@ ported to Rhost.
 .SS @powers
 .INDENT 0.0
 .INDENT 3.5
-Powers work a bit differently in Rhost and they’re named
-differently, which should not be that big a surprise as they’re different
+Powers work a bit differently in Rhost and they\(aqre named
+differently, which should not be that big a surprise as they\(aqre different
 between all the codebases anyway.  The big difference is our powers are
 tiered, meaning the can be limited or grown to a given bitlevel and are
 not just toggle powers like the other codebases.  We also have @depower
@@ -3403,7 +3403,7 @@ that long you need to make sure they are cut down to the proper length.
 .SS Attribute contents
 .INDENT 0.0
 .INDENT 3.5
-You’ll be happy to know that Rhost allows upwards
+You\(aqll be happy to know that Rhost allows upwards
 to 64,000 bytes of data to be assigned an LBUF.  We strongly recommand
 to cap at 32,000 however as the various TCP socket protocols play nicer
 with that value.
@@ -3416,7 +3416,7 @@ Yup!  We got it.
 .INDENT 0.0
 .INDENT 3.5
 Yup!  We got this too.  Not quiet yet in the main branch,
-but download Kage’s branch, you won’t be dissapointed.  We will have
+but download Kage\(aqs branch, you won\(aqt be dissapointed.  We will have
 UTF8 in Rhost 4.0 when released.
 .UNINDENT
 .UNINDENT
@@ -3436,13 +3436,13 @@ should never be a reason to exceed that.  If you need more, use
 @nuke only works on players.  @destroy works on non\-players.
 Never the two will meet.  We also have a built in recycle bin meaning
 anything destroyed will not be automatically recycled.  If you want it
-recycled, you have to @purge it.  Yes, if you use  Myrddin’s CRON, it
+recycled, you have to @purge it.  Yes, if you use  Myrddin\(aqs CRON, it
 has a built in entry to auto\-purge anything older than 30 days.  This
 also means you can on\-line recover anything destroyed before that 30
 days.  Groovy, eh?
 .UNINDENT
 .UNINDENT
-.SS object id’s
+.SS object id\(aqs
 .sp
 Yup, we got them.  Even in searches, and, well, everything.
 .SS lsearch() and search()
@@ -3472,10 +3472,10 @@ See: lockencode(), lockdecode(), and lockcheck()
 .SS Attribute trees
 .INDENT 0.0
 .INDENT 3.5
-Unlike Penn, we don’t really have attribute trees.  We do support the
+Unlike Penn, we don\(aqt really have attribute trees.  We do support the
 basic capabilities of it for compatibility if you load in softcode that
-uses it, but it doesn’t have the advanced features of attribute trees.
-Please see ‘help attribute tree’ for more information.
+uses it, but it doesn\(aqt have the advanced features of attribute trees.
+Please see \(aqhelp attribute tree\(aq for more information.
 .UNINDENT
 .UNINDENT
 .SS Prefix permission locking
@@ -3512,13 +3512,13 @@ There are mail wrappers to mimic MUX/TM3 and Penn mail systems.
 .SS Comsystem
 .INDENT 0.0
 .INDENT 3.5
-The softcoded comsystem mimics MUX/TM3 and Penn’s comsystem.
+The softcoded comsystem mimics MUX/TM3 and Penn\(aqs comsystem.
 .UNINDENT
 .UNINDENT
 .SS Various Functions
 .INDENT 0.0
 .INDENT 3.5
-There is a ‘softcode.minmax’ in the Mushcode directory that loads up a slew
+There is a \(aqsoftcode.minmax\(aq in the Mushcode directory that loads up a slew
 of @function wrappers that will emulate various functions that MUX, Penn, or
 TM3 has.  We have the functionality for nearly all of them, but either our
 functions have different syntax, or we have different named functions that
@@ -3537,7 +3537,7 @@ to hasattr instead.
 .SS Player Stats
 .INDENT 0.0
 .INDENT 3.5
-MUX has some built in ways for player stats.  We do as well but they’re
+MUX has some built in ways for player stats.  We do as well but they\(aqre
 either done via functions or attribute contents.  Code that requires this
 will have to be recoded.
 .UNINDENT
@@ -3560,8 +3560,8 @@ softcoded switch to a hardcoded command and work around the limitation.
 .SS Adding Flags
 .INDENT 0.0
 .INDENT 3.5
-Some flags may be missing.  If it’s a dummy flag, feel free to use the
-marker flags MARKER0 to MARKER9 to set them.  If it’s an existing flag
+Some flags may be missing.  If it\(aqs a dummy flag, feel free to use the
+marker flags MARKER0 to MARKER9 to set them.  If it\(aqs an existing flag
 that does similar features, feel free to flag_alias it or just flag_name
 it to the other name if you want.
 .UNINDENT
@@ -3596,9 +3596,9 @@ All *val() functions in Penn that are used will have to be remapped to a non\-*v
 .UNINDENT
 .UNINDENT
 .IP \(bu 2
-Penn’s hardcoded comsystem is emulated with the softcode comsys
+Penn\(aqs hardcoded comsystem is emulated with the softcode comsys
 .IP \(bu 2
-Penn’s @mail system is workable with mail wrappers
+Penn\(aqs @mail system is workable with mail wrappers
 .IP \(bu 2
 Pueblo is not supported.
 .IP \(bu 2
@@ -3611,13 +3611,13 @@ This uses @shutdown/restart, Rhost uses @reboot
 .SS MUX
 .INDENT 0.0
 .IP \(bu 2
-Mux has an async mysql database engine.  This is not possible with Rhost.  You’ll have to use the sync method instead.
+Mux has an async mysql database engine.  This is not possible with Rhost.  You\(aqll have to use the sync method instead.
 .IP \(bu 2
 UTF8 is supported but internally passed differently.
 .IP \(bu 2
-Mux’s hardcoded comsystem is emulated with the softcode comsys
+Mux\(aqs hardcoded comsystem is emulated with the softcode comsys
 .IP \(bu 2
-MUX’s @mail system is workable with mail wrappers
+MUX\(aqs @mail system is workable with mail wrappers
 .IP \(bu 2
 Pueblo is not supported.
 .IP \(bu 2
@@ -3648,7 +3648,7 @@ Then you just follow the prompts to load in your flatfile there.
 .UNINDENT
 .UNINDENT
 .sp
-If you wish to have #1’s password reset to ‘Nyctasia’ please add this
+If you wish to have #1\(aqs password reset to \(aqNyctasia\(aq please add this
 to the bottom of your netrhost.conf file:
 .INDENT 0.0
 .INDENT 3.5
@@ -3662,19 +3662,19 @@ newpass_god 777
 .UNINDENT
 .sp
 The caveat is that you must not have any netrhost.db* or netrhost.gdbm* files
-in your data directory prior to loading it in.  It’ll error out if previous
+in your data directory prior to loading it in.  It\(aqll error out if previous
 files exist.  So you will need to move all files that start with netrhost.db*
 and all files that start with netrhost.gdbm* to another directory.
 .sp
-Your flatfile tends to be named ‘netrhost.db.flat’ which is in your data
+Your flatfile tends to be named \(aqnetrhost.db.flat\(aq which is in your data
 directory.  You can, however, name your flatfile anything you want and have
 it in any directory you want.
 .sp
 To make a flatfile in game, you just issue @dump/flat.  You can specify
-a filename after it, otherwise it assumes the name ‘netrhost.db.flat’.
+a filename after it, otherwise it assumes the name \(aqnetrhost.db.flat\(aq.
 .SS Converting a flatfile database for use in RhostMUSH
 .sp
-In the ~/Server/convert directory there is a script called ‘doconvert.sh’
+In the ~/Server/convert directory there is a script called \(aqdoconvert.sh\(aq
 .sp
 This script will convert most flatfiles from existing mush engines to
 RhostMUSH.  The exception is PennMUSH 1.8.0 and later.  For this there is a
@@ -3683,7 +3683,7 @@ with codebases between 1.8.0 and 1.8.2.  It has not been fully vetted with
 the latest PennMUSH databases.  Our apologies.
 .sp
 To convert a non\-pennmush game (or a pennmush 1.7.4 or earlier), you first
-need a valid flatfile of the game you’re wanting to convert.  Please refer
+need a valid flatfile of the game you\(aqre wanting to convert.  Please refer
 to the documentatation of the mush engine in question (MUX, Penn 1.7, TM2/3)
 on how to do this.  Once you have it type::
 .INDENT 0.0
@@ -3711,7 +3711,7 @@ If you are importing a MUX2 flatfile, make ABSOLUTELY SURE that you select
 mux passwords as a compatibility option, or you will NOT BE ABLE to log in
 to players as the password will not be recognizeable.
 .sp
-Make sure to keep QDBM selected as it’s a much more stable database engine
+Make sure to keep QDBM selected as it\(aqs a much more stable database engine
 that does not have attribute limit restrictions like GDBM does.
 .sp
 If you are converting from a Penn, TinyMUSH, or MUX database, make sure you
@@ -3725,14 +3725,14 @@ players not receiving their data.  So it is strongly recommended not to go
 above 32K in lbuffer size.
 .sp
 Go ahead and select 64 char attributes.  It allows you to have 64 characters
-for attribute names.  It’s handy to have.
+for attribute names.  It\(aqs handy to have.
 .sp
 If you wish at this point to set up mysql and/or sqlite, you  may do so.
 Yes, you can use them in parallel without any issue.
 .SH GETTING STARTED
 .SS What to type to get the basics running if you did not choose a pre\-existing flatfile
 .sp
-If you decided to get a bare\-bone configuration, you will find your mush has just two things.  The #1 (God) player and the starting room #0.  That’s it.
+If you decided to get a bare\-bone configuration, you will find your mush has just two things.  The #1 (God) player and the starting room #0.  That\(aqs it.
 .SS Login to #1 from the connect screen
 .sp
 Nyctasia is the default password:
@@ -3746,7 +3746,7 @@ co #1 Nyctasia
 .fi
 .UNINDENT
 .UNINDENT
-.SS Change #1’s password to something you’ll remember but is hard to guess
+.SS Change #1\(aqs password to something you\(aqll remember but is hard to guess
 .sp
 Note: yourpasswordgoeshere can be any password you choose.  Choose well:
 .INDENT 0.0
@@ -3777,12 +3777,12 @@ At this point you should create your master room:
 .INDENT 0.0
 .INDENT 3.5
 Reason: You need a master room to contain global $commands for players
-^listens are not global for intentional reasons.  It’s far too much overhead for far too minimal gains that few people need or use.
+^listens are not global for intentional reasons.  It\(aqs far too much overhead for far too minimal gains that few people need or use.
 .UNINDENT
 .UNINDENT
 .SS Flag and protect Master Room
 .sp
-It will return a dbref#, it should be #2 if you’ve not created anything else:
+It will return a dbref#, it should be #2 if you\(aqve not created anything else:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -4021,7 +4021,7 @@ Use the closet dbref# instead of #234
 .UNINDENT
 .SS Add admin object to configuration
 .sp
-Modify the netrhost.conf file with the following line at the bottom after the line ‘# define local alises here’ where you replace 123 with the dbref# of the admin object that you made:
+Modify the netrhost.conf file with the following line at the bottom after the line \(aq# define local alises here\(aq where you replace 123 with the dbref# of the admin object that you made:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -4067,7 +4067,7 @@ This is client dependant based on whatever method it uses to load softcode.
 .SS Myrddin MushCron
 .sp
 Load in the Myrddin Mush Cron.
-It’s a very handy piece of software and strongly suggested to do so.  You can find this in the ‘Mushcode’ directory off the main Rhost directory.
+It\(aqs a very handy piece of software and strongly suggested to do so.  You can find this in the \(aqMushcode\(aq directory off the main Rhost directory.
 Filename:
 .INDENT 0.0
 .INDENT 3.5
@@ -4168,7 +4168,7 @@ Chown to immholder:
 .UNINDENT
 .SS Myrddin BBS
 .sp
-Load in Myrddin’s BBS
+Load in Myrddin\(aqs BBS
 Filename:
 .INDENT 0.0
 .INDENT 3.5
@@ -4196,22 +4196,22 @@ Chown to immholder and the contents of it as well:
 .UNINDENT
 .SS Other Mushcode
 .sp
-There’s other code in the Mushcode directory that you are welcome to install.  You would follow similar procedures
+There\(aqs other code in the Mushcode directory that you are welcome to install.  You would follow similar procedures
 for loading it in, chowning it, and moving to the master room as you did above.
 .sp
 Likewise, any softcode you find on the internet or on other mushes should be portable to RhostMUSH with little to
 no changes depending on the complexity of the code in question.
 .SS Minimal DB instructions
 .sp
-The ‘retired’ directory has older image files if you’re interested
+The \(aqretired\(aq directory has older image files if you\(aqre interested
 .sp
-Please use the netrhost.conf file with the database as they’re linked.
+Please use the netrhost.conf file with the database as they\(aqre linked.
 .sp
 The flatfile must be loaded in as a new db
 .sp
-This is a minimal db with basic ‘features’ built in.
+This is a minimal db with basic \(aqfeatures\(aq built in.
 .sp
-Copy the txt files into the Rhost’s txt directory off game:
+Copy the txt files into the Rhost\(aqs txt directory off game:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -4241,7 +4241,7 @@ cd ~/Rhost/Server/game/txt
 Using the Startmush utility for the first time, select the load db method
 .UNINDENT
 .sp
-— or —
+\-\-\- or \-\-\-
 .INDENT 0.0
 .IP 1. 3
 copy the netrhost.conf file into the games directory
@@ -4268,7 +4268,7 @@ type:
 .IP 4. 3
 Startmush as expected
 .UNINDENT
-.SH AMBROSIA’S MINIMAL RHOST DB
+.SH AMBROSIA'S MINIMAL RHOST DB
 .sp
 Version: 1.0.5          2020\-01\-31
 .SS Version history
@@ -4322,25 +4322,25 @@ Lowered mailstatus() access to architect.
 .B 1.0.4
 .INDENT 7.0
 .IP \(bu 2
-Changed softcoded objid() to tag(), due to Rhost’s new hardcoded
+Changed softcoded objid() to tag(), due to Rhost\(aqs new hardcoded
 objid() which does perform a different functionality.
 .IP \(bu 2
 Added more staff recommendations to this file.
 .IP \(bu 2
-Added Reality TXLevel ‘Admin’ to all objects in the db except #1
+Added Reality TXLevel \(aqAdmin\(aq to all objects in the db except #1
 .UNINDENT
 .TP
 .B 1.0.5
 .INDENT 7.0
 .IP \(bu 2
-Replaced softcoded tag() system with Rhost’s new hardcoded @tag/tag()
+Replaced softcoded tag() system with Rhost\(aqs new hardcoded @tag/tag()
 system. All previous tags are set on the database. The Tag Object
 was removed.
 .IP \(bu 2
 @function startup on BC\-Admin\-Royalty fixed \- @wait 1 workaround for
 Tags in place.
 .IP \(bu 2
-Places System @startup integrated into BC\-Admin\-Royalty’s @startup
+Places System @startup integrated into BC\-Admin\-Royalty\(aqs @startup
 .IP \(bu 2
 Made @dump and @dump/flat available to Councilors in netrhost.conf
 .UNINDENT
@@ -4399,20 +4399,20 @@ the Global Function objects, based on attribute naming.
 .IP \(bu 2
 Misc Data object to hold general data, like Staff lists etc.
 .IP \(bu 2
-Reality levels ‘Real’ and ‘Admin’.
+Reality levels \(aqReal\(aq and \(aqAdmin\(aq.
 .UNINDENT
 .sp
 \fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-All created items and players by default are in Recieve\-Level ‘Real’ and
-Transmit\-Levels ‘Real’ and ‘Admin’.
+All created items and players by default are in Recieve\-Level \(aqReal\(aq and
+Transmit\-Levels \(aqReal\(aq and \(aqAdmin\(aq.
 .UNINDENT
 .UNINDENT
 .INDENT 0.0
 .IP \(bu 2
 All globals, Master Room, BCs\-*, and other staff/code\-related objects
-currently have only ‘Admin’ as their Transmit\-Level. This does not prevent
+currently have only \(aqAdmin\(aq as their Transmit\-Level. This does not prevent
 them fromi working properly. The only exception is #1, who has empty reality
 levels.
 .IP \(bu 2
@@ -4426,7 +4426,7 @@ properly.
 .INDENT 0.0
 .INDENT 3.5
 IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
-The ‘Port’ configuration parameter is XXXX’d out. Set it first before starting
+The \(aqPort\(aq configuration parameter is XXXX\(aqd out. Set it first before starting
 your game.
 .UNINDENT
 .UNINDENT
@@ -4487,11 +4487,11 @@ help .txt files and .indx files for the above.
 .SS AmbrosiaDB Functions
 .INDENT 0.0
 .IP \(bu 2
-isstaff() \- Softcoded function that returns ‘1’ if its argument matches
-a #dbref in the ‘isstaff’ attribute on the Misc Data object.
+isstaff() \- Softcoded function that returns \(aq1\(aq if its argument matches
+a #dbref in the \(aqisstaff\(aq attribute on the Misc Data object.
 .IP \(bu 2
-bccheck() \- Softcoded function that returns ‘1’ if its argument matches
-a #dbref in the ‘bcs’ attribute on the Misc Data object.
+bccheck() \- Softcoded function that returns \(aq1\(aq if its argument matches
+a #dbref in the \(aqbcs\(aq attribute on the Misc Data object.
 .IP \(bu 2
 width() \- Softcoded function that returns 78 for now. For cross\-MU*
 compatibility.
@@ -4500,7 +4500,7 @@ pass() \- Softcoded function that takes a number as its parameter, and return
 a random string of that length. Perfect for setting random passwords.
 .IP \(bu 2
 cmdmessage() \- Softcoded function that takes two strings as its parameters.
-Returns ‘<< STRING1 >> String2’. The <<>> part is highlighted red. Good for
+Returns \(aq<< STRING1 >> String2\(aq. The <<>> part is highlighted red. Good for
 all kinds of messages sent by game commands.
 .IP \(bu 2
 header() \- Highly versatile, and a buffer\-saving alternative
@@ -4532,8 +4532,8 @@ header(text,width,filler,fillercolor,outerpadding,paddingcolor,
 \fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-ALL of header()’s parameters are optional. By default, header() simply draws
-a 78\-char wide line of =’s. Simply leave parameters empty if you want to set
+ALL of header()\(aqs parameters are optional. By default, header() simply draws
+a 78\-char wide line of =\(aqs. Simply leave parameters empty if you want to set
 one of the latter parameters.
 .UNINDENT
 .UNINDENT
@@ -4593,14 +4593,14 @@ maintenance Councilor bit for special code projects. Finished
 code along those lines should get @chowned to the
 bc\-admin\-councilor.
 .sp
-If you as the MU* Head(s) don’t know Softcode well, or want to
+If you as the MU* Head(s) don\(aqt know Softcode well, or want to
 leave anything Code to your Head Coder, also give them optional
 access to a maintenance Royalty bit in order to properly code
 banning/blacklisting +commands and other rare code that requires
 Royalty powers. Again, chown finished code to bc\-admin\-royalty.
 .SS AmbrosiaDB MU* Head(s)
 .sp
-You’re the boss(es). But please use an Architect bit for your
+You\(aqre the boss(es). But please use an Architect bit for your
 everyday things. Keep Immortal to yourself. Keep #1 to yourself.
 And seriously avoid using either of them except for creating
 a Royalty bit or doing intricate DB maintenance.
@@ -4626,7 +4626,7 @@ code setup. Technically if everything is done right, the Coder(s) of the game do
 not require higher privileges than Architect for the vast majority of things.
 Royalty\-level code should be a rare exception, if at all necessary. The MU*
 Head(s) or site\-admin should be the only one having access to #1, Immortals or
-perhaps even Royalty. The BC’s, Global Function objects and Function objects at
+perhaps even Royalty. The BC\(aqs, Global Function objects and Function objects at
 level Royalty and higher have simply been provided as a if\-necessary convenience.
 .sp
 Current objects are only @chowned to certain bitlevels if it is really required
@@ -4664,12 +4664,12 @@ WANDERER by default.
 Enjoy!
 .SS AmbrosiaDB Compiling
 .sp
-P.S. the ‘bin/asksource.save0’ file has been supplied for loading in the
-‘make config’ or ‘make confsource’ step of Rhost installation. It provides the
+P.S. the \(aqbin/asksource.save0\(aq file has been supplied for loading in the
+\(aqmake config\(aq or \(aqmake confsource\(aq step of Rhost installation. It provides the
 settings I have used when creating this database. Some settings, like the ANSI
 substitution, are used in the DB.
 .sp
-\fI\%–Ambrosia@RhostMUSH\fP
+\fI\%\-\-Ambrosia@RhostMUSH\fP
 .SH MULTI-TIERED BITLEVEL SYSTEMS
 .SS Altering bitlevels
 .sp
@@ -4695,7 +4695,7 @@ Can do everything except set some internal flags, effect #1, and set/remove the 
 .UNINDENT
 .SS Royalty(W) <Level 5> \- FULL wizbit level
 .sp
-This is your standard wizard.  They can do everything you’re
+This is your standard wizard.  They can do everything you\(aqre
 used to on other mushes that wizards can do.  In addition, they
 also override all locks by default (this can be disabled), and
 they have an enhanced wizcloaking ability (which also can be
@@ -4714,7 +4714,7 @@ Ability to WIZCLOAK
 .sp
 This is your almost\-but\-not\-quite wizard.  They have access to
 about 80% of the wizard commands.  This includes @nuke, @toad,
-@newpassword and the like.  The only things they can’t do that
+@newpassword and the like.  The only things they can\(aqt do that
 wizards can is cloak, override locks, and use some of the
 database manipulation tools in wizhelp.
 .INDENT 0.0
@@ -4755,14 +4755,14 @@ Able to @toggle the MONITOR
 This is the lowest wiz bit.  They only have moderate abilities.
 They can examine/decompile anything their level and lower, they can
 @guild/@quota people, and they have a few other minor abilities.
-They don’t have free money however.
+They don\(aqt have free money however.
 .INDENT 0.0
 .IP \(bu 2
 Ability to access things remotely (long_fingers)
 .IP \(bu 2
 Things are FREE for them in the queue.
 .IP \(bu 2
-Can see dbref#’s of things their level and lower
+Can see dbref#\(aqs of things their level and lower
 .IP \(bu 2
 Can examine/decompile things their level and lower.
 .IP \(bu 2
@@ -4780,21 +4780,21 @@ hinderance.
 .sp
 This is a bigger hinderance flag.  By default all guests should be
 set this.  This flag stops the player from ANY database manipulation
-along with @teleporting, and many other advanced commands.  It’s
+along with @teleporting, and many other advanced commands.  It\(aqs
 extreamly dehibilatating.
 .SH WHAT FLAGS, TOGGLES, POWERS, AND DEPOWERS MEAN IN RHOSTMUSH
 .SS What are Flags?
 .sp
-Flags are pretty much exactly the same as any other mush.  It’s a flag
+Flags are pretty much exactly the same as any other mush.  It\(aqs a flag
 that you set or unset on a target which then enables/disables or
-alters something that target can do.  There’s help on all the flags
+alters something that target can do.  There\(aqs help on all the flags
 in help and wizhelp.
 .SS What are Toggles?
 .sp
 Toggles were designed as a single point flag that immediately enables
-or disables a set ability or condition, thus a ‘toggle’.  It works
+or disables a set ability or condition, thus a \(aqtoggle\(aq.  It works
 exactly like a flag and was originally designed for two reasons.  To
-distinguish from the multi\-meaning of a ‘flag’, and because frankly
+distinguish from the multi\-meaning of a \(aqflag\(aq, and because frankly
 we ran out of flag space :)
 .SS What is an @power?
 .sp
@@ -4818,12 +4818,12 @@ depowered.
 .sp
 Sometimes, you want to have things run at various privilage levels and do not
 want to have things with too much access.  Weither that is online objects or
-players you want to block from connecting to your mush.  Here’s things you can
+players you want to block from connecting to your mush.  Here\(aqs things you can
 do.
 .sp
 One thing to keep in mind is that RhostMUSH, unlike PennMUSH is not flag
-dependant on permission level, it’s ownership based.  While setting a wizard
-flag on an object would work, it’s not recommended and it is instead recommended
+dependant on permission level, it\(aqs ownership based.  While setting a wizard
+flag on an object would work, it\(aqs not recommended and it is instead recommended
 to chown the object in question to a wizard (like your wizard holder character)
 Then the object must be set inherit to actually inherit the wizard.
 .INDENT 0.0
@@ -4834,7 +4834,7 @@ toggles.  The only thing that is inherited automatically is depowers.
 .SS Online: Blocking object abilities
 .sp
 We have various flag levels.  It is strongly recommanded you check wizhelp
-on ‘control’ for a detailed overview of what each bitlevel can or can not do
+on \(aqcontrol\(aq for a detailed overview of what each bitlevel can or can not do
 prior to giving the ownership to the object.  Things useful for tweaking control
 on players and objects:
 .SS FLAGS (access with @set)
@@ -4869,7 +4869,7 @@ Commands:               : @boot, @nuke, @toad, @turtle
 Sitelocks: (@admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
 Sitelock by player      : @badsite, @goodsite, NO_CONNECT (flag)
 Monitoring player       : SUSPECT (flag), @snoop
-TOR/Proxy blocking:     : @blacklist (see shell’s tor_pull.sh), @admin proxy_checker (see wizhelp), @tor (see wizhelp)
+TOR/Proxy blocking:     : @blacklist (see shell\(aqs tor_pull.sh), @admin proxy_checker (see wizhelp), @tor (see wizhelp)
 .SS Extended lockdown of the mush and considerations
 .sp
 These are flags, powers, toggles, and various conditions for consideration
@@ -4878,9 +4878,9 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 .SS Attribute Restriction
 .INDENT 0.0
 .INDENT 3.5
-@attribute – Used for user\-defined attributes
-@admin attr_access – used for built in attributes (like desc)
-@aflags – Used to set up lovely delicious attribute permission masks
+@attribute \-\- Used for user\-defined attributes
+@admin attr_access \-\- used for built in attributes (like desc)
+@aflags \-\- Used to set up lovely delicious attribute permission masks
 .UNINDENT
 .UNINDENT
 .SS Command Restriction
@@ -4905,8 +4905,8 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 .SS Function Restrictions
 .INDENT 0.0
 .INDENT 3.5
-@function/@lfunction – Allows softcoded functions that you can optionally lock down at your leasure
-@admin function_access – You can use this even on softcoded functions if you so desired.
+@function/@lfunction \-\- Allows softcoded functions that you can optionally lock down at your leasure
+@admin function_access \-\- You can use this even on softcoded functions if you so desired.
 .UNINDENT
 .UNINDENT
 .SS RhostMUSH Flags and Descriptions
@@ -5168,8 +5168,8 @@ nobroadcast_host \- Snuff online site broadcasts via MONITOR for specified site
 .SS Methods to block anonymous connections and the pros and cons of doing so
 .INDENT 0.0
 .INDENT 3.5
-Now let’s assume you have some troll attempting to use proxies to connect.
-There’s multiple ways to stop this.
+Now let\(aqs assume you have some troll attempting to use proxies to connect.
+There\(aqs multiple ways to stop this.
 .UNINDENT
 .UNINDENT
 .SS Blacklisting through external tor_pull.sh script
@@ -5178,7 +5178,7 @@ There’s multiple ways to stop this.
 In ~/Rhost/Server/game you will see a script called tor_pull.sh
 Execute this by running (from the game directory) ./tor_pull.sh
 This populates the blacklist with registered proxies from various sites
-on the internet.  If you want specified ip’s added, feel free to add
+on the internet.  If you want specified ip\(aqs added, feel free to add
 them at the end of this file.
 .UNINDENT
 .UNINDENT
@@ -5193,8 +5193,8 @@ sites based on the ip.
 .SS Blacklisting through internal @tor command
 .INDENT 0.0
 .INDENT 3.5
-@tor.  Please see ‘wizhelp tor’ on how to set this up.  It in effect
-will actively block all known exit nodes for TOR’s annonymous proxy
+@tor.  Please see \(aqwizhelp tor\(aq on how to set this up.  It in effect
+will actively block all known exit nodes for TOR\(aqs annonymous proxy
 service.  It self\-updates and will actively block TOR connections.
 .UNINDENT
 .UNINDENT
@@ -5208,7 +5208,7 @@ because some situations require a differentating MTU value such as
 briged network connect with things like cloud services, docker, or
 similar encapsulated network services.  However, this option has
 several settings from just monitoring/alerting of possible proxies
-to downright forbidding them.  If you’re being actively attacked,
+to downright forbidding them.  If you\(aqre being actively attacked,
 it may be worth considering adding this to add additional protection.
 .UNINDENT
 .UNINDENT
@@ -5226,7 +5226,7 @@ sconnect_cmd SECRET\-MAGIC\-COOKIE
 .INDENT 3.5
 .INDENT 0.0
 .IP 1. 3
-SECRET\-MAGIC\-COOKIE is a case sensitive single word phrase. Any printable character other than the ‘#’ character is allowable.  You may use up to 30 characters.
+SECRET\-MAGIC\-COOKIE is a case sensitive single word phrase. Any printable character other than the \(aq#\(aq character is allowable.  You may use up to 30 characters.
 .IP 2. 3
 Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address.
 .UNINDENT
@@ -5240,7 +5240,7 @@ sconnect_host localhost 127.0.0.1 othersite.goes.here
 .IP 1. 3
 This is optional.
 .IP 2. 3
-If you do not specify it it defaults to ‘localhost 127.0.0.1’.  If your domain has a unique name like ‘localhost.localdomain’ like some ubuntu distributions, then you should customize your stunnel_host.
+If you do not specify it it defaults to \(aqlocalhost 127.0.0.1\(aq.  If your domain has a unique name like \(aqlocalhost.localdomain\(aq like some ubuntu distributions, then you should customize your stunnel_host.
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -5277,7 +5277,7 @@ it is assumed you will have already initially set up your netrhost.conf.
 .UNINDENT
 .SS stunnel directory
 .sp
-You would set up the stunnel from the ‘stunnel’ directory.  There the following
+You would set up the stunnel from the \(aqstunnel\(aq directory.  There the following
 files are of relevance:
 .INDENT 0.0
 .INDENT 3.5
@@ -5300,7 +5300,7 @@ stunnel_src                \-\- If you do not have stunnel, this directory will 
 To be able to utilize SSL, you first must set your netrhost.conf file with
 the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect_host if
-not set will default to ‘localhost 127.0.0.1’.
+not set will default to \(aqlocalhost 127.0.0.1\(aq.
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -5317,12 +5317,12 @@ sconnect_host wildcards \-\- This allows wildcarded sites (one or more) to allow
 \fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-the sconnect_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.
+the sconnect_host is optional.  If you do not specify it, it will default to two values:  \(aqlocalhost\(aq and \(aq127.0.0.1\(aq.
 .UNINDENT
 .UNINDENT
 .SS Running the stunnel setup program
 .sp
-At this point you’re ready to run the stunnel setup program.  So at this point type the following:
+At this point you\(aqre ready to run the stunnel setup program.  So at this point type the following:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -5378,14 +5378,14 @@ not be the port the mush is running on and requires a separate port.
 .SH MAINTENANCE
 .SS Note about Patching
 .sp
-There’s two ways you can look to patch the source.  If you plan to run the
+There\(aqs two ways you can look to patch the source.  If you plan to run the
 RhostMUSH source from a git repository, then please use the git repo to
 constantly update your code.  If you knew enough to want to set up a git repo
 then we expect knowledge on how to keep source trees updated in the git repo
 to be used the same as any other source distribution.
 .sp
 If, however, you have no idea what a git repo even is, or have no inclination
-of using git to manage your RhostMUSH source, or just don’t care one way
+of using git to manage your RhostMUSH source, or just don\(aqt care one way
 or another, then you can use the included patch.sh routine (from under the
 Server directory) to patch your source at any time.
 .sp
@@ -5403,7 +5403,7 @@ From the server directory just type:
 .sp
 That will auto\-compile your source, auto make all your header files and
 essentially keep everything up to date to the latest source.
-Once that’s done, all you do from within the game is two commands:
+Once that\(aqs done, all you do from within the game is two commands:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -5542,7 +5542,7 @@ Through the Autoshutdown script
 .INDENT 3.5
 Never kill \-9 RhostMUSH
 .sp
-Under NO CIRCUMSTANCES should you kill \-9 your mush unless you don’t care for the
+Under NO CIRCUMSTANCES should you kill \-9 your mush unless you don\(aqt care for the
 database.  The reason is if the mush happens to be saving, in any method, to the
 database, especially a QDBM database, you will likely have just corrupted your
 database, so pull out a flatfile to recover.
@@ -5554,10 +5554,10 @@ in the middle of a write, all bets are off. :)
 .UNINDENT
 .SS Autoshutdown script
 .sp
-The makefile will ‘make’ the program that will STOP the mush.
-Please tweek ‘autolog.h’ with the proper parameters.
+The makefile will \(aqmake\(aq the program that will STOP the mush.
+Please tweek \(aqautolog.h\(aq with the proper parameters.
 .sp
-The ‘startup.sh’ will START the mush.
+The \(aqstartup.sh\(aq will START the mush.
 .sp
 Both of these are intended to be used for automations (automated processes)
 like your rc.local file and/or startup scripts when you bring your server up.
@@ -5577,7 +5577,7 @@ cc portmsg.c \-o portmsg
 .UNINDENT
 .UNINDENT
 .sp
-if ‘cc’ is not defined, try the following:
+if \(aqcc\(aq is not defined, try the following:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -5589,8 +5589,8 @@ gcc portmsg.c \-o portmsg
 .UNINDENT
 .UNINDENT
 .sp
-Once compiled, you would then modify the file ‘file’ to describe
-the mush, what was done, where it’s moved to, then specify the
+Once compiled, you would then modify the file \(aqfile\(aq to describe
+the mush, what was done, where it\(aqs moved to, then specify the
 IP address and the PORT where specified.
 .sp
 To launch the application, you would then type:
@@ -5654,17 +5654,17 @@ newsdb/unload; @@ dump the news bbs database to flatfile
 .UNINDENT
 .SS The following scripts are used in the game directory
 .sp
-Startmush               – used to Start up the mush
-backup_flat.sh          – Used to run backups with @dump/flat within the game (Started with Startmush automatically)
-backup_restart.sh       – Restart the backup_flat.sh if changes are done
-compress_logs.sh        – Compress logs in ‘oldlogs’.  Ran with Startmush
-findit.sh               – Internal script used to check for flatfile validity
-mailhide.sh             – Wrapper to hide from address using the ‘mail’ progam
-minimal.sh              – Auto\-load the minimal db into the mush
-proxysnarf.sha          – Internal script for the tor_pull.sh tor proxy blacklist
-tor_pullit.sh           – Internal script for the tor_pull.sh for proxy blacklist
-recovery.sh             – If your db is corrupt, run this to auto\-revert to an earlier flatfile
-tor_pull.sh             – Create a blacklist.txt file that can be loaded via the internal @blacklist command for proxy handling
+Startmush               \-\- used to Start up the mush
+backup_flat.sh          \-\- Used to run backups with @dump/flat within the game (Started with Startmush automatically)
+backup_restart.sh       \-\- Restart the backup_flat.sh if changes are done
+compress_logs.sh        \-\- Compress logs in \(aqoldlogs\(aq.  Ran with Startmush
+findit.sh               \-\- Internal script used to check for flatfile validity
+mailhide.sh             \-\- Wrapper to hide from address using the \(aqmail\(aq progam
+minimal.sh              \-\- Auto\-load the minimal db into the mush
+proxysnarf.sha          \-\- Internal script for the tor_pull.sh tor proxy blacklist
+tor_pullit.sh           \-\- Internal script for the tor_pull.sh for proxy blacklist
+recovery.sh             \-\- If your db is corrupt, run this to auto\-revert to an earlier flatfile
+tor_pull.sh             \-\- Create a blacklist.txt file that can be loaded via the internal @blacklist command for proxy handling
 .SS Textfiles for RhostMUSH
 .sp
 areghost.txt           \- file player gets when autoregistration on registered host.
@@ -5672,7 +5672,7 @@ autoreg.txt            \- file player gets when autoregistration on non\-registe
 autoreg_include.txt    \- file player receives in email when they autoregister attached to login/passwd
 badsite.txt            \- file player gets when site is not allowed.
 connect.txt            \- file player gets when connect
-create_reg.txt         \- file player gets when their site is register and they can’t create.
+create_reg.txt         \- file player gets when their site is register and they can\(aqt create.
 doorconf.txt           \- file that is searched for information regarding @door.
 .sp
 \fBNOTE:\fP
@@ -5683,7 +5683,7 @@ Need to mkindx doorconf.txt doorconf.indx for this file
 .UNINDENT
 .sp
 down.txt               \- file player gets when the mush has logins disabled (@disable login)
-error.txt              \- the ‘Huh? (type help for help)’ messages.
+error.txt              \- the \(aqHuh? (type help for help)\(aq messages.
 .sp
 \fBNOTE:\fP
 .INDENT 0.0
@@ -5692,7 +5692,7 @@ Need to mkindx error.txt error.indx for this file
 .UNINDENT
 .UNINDENT
 .sp
-full.txt               \- file player gets when the mush can’t have any more players.
+full.txt               \- file player gets when the mush can\(aqt have any more players.
 guest.txt              \- file player gets when they connect as a guest.
 help.txt               \- your help file
 .sp
@@ -5739,20 +5739,20 @@ wizmotd.txt            \- your wiz motd file
 .SS Textfile Frequently Asked Questions
 .sp
 Q:  How do I put color in these files?
-A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: ^[[0m (for ANSI_NORMAL).  That’s <ESC>[
+A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: ^[[0m (for ANSI_NORMAL).  That\(aqs <ESC>[
 A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding for ansi, however you compiled your Rhost.
 .sp
 Q:  I want to design my own txt files to read in the mush.
 A:  Easy.  Design them like help.txt would be set up, mkindx the file, then you can access it via @dynhelp online.
 .sp
 Q:  Do I have to mkindx these files whenever I make changes?
-A:  Only the ones that have ‘& ‘ index. (help.txt, wizhelp.txt, news.txt, etc)
+A:  Only the ones that have \(aq& \(aq index. (help.txt, wizhelp.txt, news.txt, etc)
 .sp
 Q:  Do I have to @readcache in the game whenever I make a change?
 A:  Only when you modify any of the files listed in README.TXTFILES.  Not the ones you use with @dynhelp.
 .sp
-Q:  Can’t I just make code in the mush that then is used for these silly txt files?
-A:  Absolutely.  Check ‘wizhelp file_object’.
+Q:  Can\(aqt I just make code in the mush that then is used for these silly txt files?
+A:  Absolutely.  Check \(aqwizhelp file_object\(aq.
 .SH TROUBLESHOOTING
 .SS Reporting bugs or getting help
 .sp
@@ -5779,10 +5779,10 @@ A2: Force a start by running:
 .SS Problem: Your log file is massive and your mush is running
 .sp
 A1: To rotate this use the @logrotate command. See wizhelp on @logrotate
-.SS Problem: The database flatfile you’re loading can’t load because a db is already defined
+.SS Problem: The database flatfile you\(aqre loading can\(aqt load because a db is already defined
 .sp
 A1: remove netrhost.db* and netrhost.gdbm* from your data directory
-.SS Problem: The mail database won’t load and mail shows ‘offline’
+.SS Problem: The mail database won\(aqt load and mail shows \(aqoffline\(aq
 .sp
 A1: from within the MUSH run:
 .INDENT 0.0
@@ -5827,7 +5827,7 @@ ulimit \-a
 .UNINDENT
 .sp
 This will show you your shell stack limits.  Do NOT set the
-STACKMAX value higher than your shell’s stack value.
+STACKMAX value higher than your shell\(aqs stack value.
 .sp
 The value in ~/Rhost/Server/hdrs/debug.h is currently set as:
 .INDENT 0.0
@@ -5872,7 +5872,7 @@ newpass_god 777
 .UNINDENT
 .UNINDENT
 .sp
-This will reset #1’s password to the default ‘Nyctasia’.
+This will reset #1\(aqs password to the default \(aqNyctasia\(aq.
 .SS Method 2: Increase Permissions of Immortals
 .sp
 in your netrhost.conf file add:
@@ -5929,7 +5929,7 @@ typedef long            pmath2;
 \fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-Replace 8 with the size of your CPU’s long integer. (4 for 32\-bit,
+Replace 8 with the size of your CPU\(aqs long integer. (4 for 32\-bit,
 8 for 64\-bit, 16 for 128\-bit, etc etc)
 .UNINDENT
 .UNINDENT
@@ -5939,14 +5939,14 @@ reason to believe the same will not hold true for IA64.
 .SS Changes to autconf for certain systems
 .sp
 You should not have to worry about this, but incase something really
-weird occurs, you may need to look into these changes…
+weird occurs, you may need to look into these changes...
 .sp
 The autoconfig.h file needs to have modifications to it by hand.
 .sp
 There are three manual entries:
 .sp
-This one sets how it defines the int to character pointer.  It’s safe
-to keep it as ‘unsigned int’ for 32 bit platforms.  For non 32\-bit,
+This one sets how it defines the int to character pointer.  It\(aqs safe
+to keep it as \(aqunsigned int\(aq for 32 bit platforms.  For non 32\-bit,
 define it to  how an int is defined on that system:
 .INDENT 0.0
 .INDENT 3.5
@@ -5994,24 +5994,24 @@ the mush will not compile.
 .UNINDENT
 .SS Dealing with DB Corruption
 .sp
-Ok.  Your database won’t come up.
+Ok.  Your database won\(aqt come up.
 .sp
 If you are reading this, then likely the scenerio is one of the following:
 .INDENT 0.0
 .IP 1. 3
-The mush says it can’t find your database files.
+The mush says it can\(aqt find your database files.
 .IP 2. 3
-The mush says it can’t read or load your database files.
+The mush says it can\(aqt read or load your database files.
 .IP 3. 3
-The mush seems to load fine but I can’t log in anyone and when I do
+The mush seems to load fine but I can\(aqt log in anyone and when I do
 all the names and attributes of things seem to be gone!
 .IP 4. 3
 Bringing up your mail database
 .UNINDENT
 .sp
-First thing is first.  Don’t have a panic attack.
-.SS If the mush says it can’t find your database files
-.SS Check the names of the database files in your ‘data’ directory
+First thing is first.  Don\(aqt have a panic attack.
+.SS If the mush says it can\(aqt find your database files
+.SS Check the names of the database files in your \(aqdata\(aq directory
 .sp
 They should be named something like:
 .INDENT 0.0
@@ -6034,21 +6034,21 @@ And you may see a netrhost.db.flat
 .sp
 If you never touched the *database or muddb_name params, you should be good.
 .sp
-Verify your *database params (and muddb_name) are still set to ‘netrhost’ as
-part of the name.  Ergo, the default values and you didn’t change them.
+Verify your *database params (and muddb_name) are still set to \(aqnetrhost\(aq as
+part of the name.  Ergo, the default values and you didn\(aqt change them.
 These should match up with the filenames in your data directory.
 .sp
-If these names do not match up, it can’t find the database files to load.
-So you shouldn’t have to change these names, ever. :)
+If these names do not match up, it can\(aqt find the database files to load.
+So you shouldn\(aqt have to change these names, ever. :)
 .SS Check your mush.config file
 .sp
 If you never modified this file, you should be good.
 .sp
-The gamename should be ‘netrhost’ for this file.  This does NOT control
+The gamename should be \(aqnetrhost\(aq for this file.  This does NOT control
 the name of your game.  This controls the name of all the files
 as associated to the mush.  So changing this means the netrhost.conf
-file, all your database files, and so forth.  Please don’t change this :)
-.SS If the mush says it can’t read or load your database files
+file, all your database files, and so forth.  Please don\(aqt change this :)
+.SS If the mush says it can\(aqt read or load your database files
 .sp
 Double check everything for the previous issue. Make sure everything is named properly.
 .SS Verify you have enough disk space. (quota)
@@ -6057,7 +6057,7 @@ Some account have a limited quota to run in.  If you reached or exceed
 your disk quota, you can have a corrupted database.  So always keep
 your eye on the size.  quota \-s to see a human readable format to see
 how much quota you have left.  You want to make sure current in use is
-below the ‘grace’ and soft/hard limits shown.  If not, you’re out of
+below the \(aqgrace\(aq and soft/hard limits shown.  If not, you\(aqre out of
 space.
 .sp
 You will need to remove some files before you repair and bring up your
@@ -6066,18 +6066,18 @@ plenty of wonderful growth space for the mush.
 .SS Verify you have enough disk space.  (system)
 .sp
 The second way you can run out of disk space is by the filesystem itself.
-do a df \-h . in your ‘game’ directory’.  That is df \-h <period>.
+do a df \-h . in your \(aqgame\(aq directory\(aq.  That is df \-h <period>.
 This will return how much disk space is being used and how much remains.
-If it shows 100% used, you’re out of disk space and the db is corrupt.
+If it shows 100% used, you\(aqre out of disk space and the db is corrupt.
 .sp
-At this point, you’re pretty screwed.  You can see if anything exists
+At this point, you\(aqre pretty screwed.  You can see if anything exists
 in your system to free up some space, but if the filesystem itself
 is filled, reach out to the owner of the server and let them know.
-It’s a much bigger deal than just your mush if that’s the case.
+It\(aqs a much bigger deal than just your mush if that\(aqs the case.
 .sp
 Until this issue is resolved, you can not repair and bring up your mush.
 No disk to run the game.
-.SS If the mush seems to load fine but I can’t log in anyone and when I do all the names and attributes of things seem to be gone!
+.SS If the mush seems to load fine but I can\(aqt log in anyone and when I do all the names and attributes of things seem to be gone!
 .sp
 Ok, at this point you likely had your mush up when the physical server
 went down hard.  Weither through an emergency shutdown or a physical
@@ -6089,16 +6089,16 @@ So, to recover your database.
 .SS The bad news
 .sp
 If you have no flatfile backup or never bothered with backups?
-I’m sorry, at this point you’re SOA.  There’s no easy way to
+I\(aqm sorry, at this point you\(aqre SOA.  There\(aqs no easy way to
 recover a corrupted binary database.  If you absolutely need
 data out of it we may be able to help you to piece meal things
-out of it, but otherwise it’s a lost cause.  You’ll have to start
-over from scratch.  I’m sorry.
+out of it, but otherwise it\(aqs a lost cause.  You\(aqll have to start
+over from scratch.  I\(aqm sorry.
 .SS The good news
 .sp
 If you made backups, or if the server had a normal shutdown, you
 likely have a flatfile backup.  You will see a netrhost.db.flat
-in either the ‘data’ directory or ‘prevflat’ directory.  That
+in either the \(aqdata\(aq directory or \(aqprevflat\(aq directory.  That
 is your manual flatfile backup.
 .sp
 If the server had a normal shutdown, you will see a file called
@@ -6111,14 +6111,14 @@ that the very last line shows something like ** END OF DUMP **.
 That shows you had a successful backup.
 .SS Now, to restore your database?
 .sp
-Please refer to the file ‘README.DBLOADING’.
+Please refer to the file \(aqREADME.DBLOADING\(aq.
 .SS Bringing up your mail database
 .sp
 Your mail db may or may not come up at this point.
 .SS If after restoring main database your mail database works
 .sp
 If your mail database came up and does not show
-‘Mail: mail is currently off’ then you should be good to go.
+\(aqMail: mail is currently off\(aq then you should be good to go.
 .sp
 Please issue on the MUSH:
 .INDENT 0.0
@@ -6141,7 +6141,7 @@ wmail/fix fixes the mail.
 wmail/lfix loads in the fixes.
 .SS If after restoring main database your mail database does not work
 .sp
-If your mail database is not up and shows ‘Mail: mail is currently off’ then your mail db is currupt.
+If your mail database is not up and shows \(aqMail: mail is currently off\(aq then your mail db is currupt.
 .SS Dealing with a corrupt mail database
 .sp
 It says when you try to access mail that mail is disabled and/or off.
@@ -6186,16 +6186,16 @@ wmail/load
 .UNINDENT
 .UNINDENT
 .sp
-Yup, that’s it.  It’ll take care of everything else.  Isn’t automation grand?
+Yup, that\(aqs it.  It\(aqll take care of everything else.  Isn\(aqt automation grand?
 .sp
-Doesn’t even require a reboot :)
+Doesn\(aqt even require a reboot :)
 .sp
 \fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
 You may at this point wish to run the following:
-wmail/fix  – this fixes the mail database and sync’s it to the mush db.
-wmail/lfix – this loads in the fixed mail database
+wmail/fix  \-\- this fixes the mail database and sync\(aqs it to the mush db.
+wmail/lfix \-\- this loads in the fixed mail database
 .UNINDENT
 .UNINDENT
 .sp
@@ -6207,9 +6207,9 @@ If this is a new db that you have, you can skip the fixing.
 .sp
 To recover your mail manually, you need to delete your mail databases,
 reboot, then reload your mail flatfiles.  If you have no mail flatfiles,
-well, you’re going to have to start over with the mail database.  Sorry.
+well, you\(aqre going to have to start over with the mail database.  Sorry.
 .sp
-First, go into the ‘game’ subdirectory.  Inside that directory is a ‘data’
+First, go into the \(aqgame\(aq subdirectory.  Inside that directory is a \(aqdata\(aq
 directory.
 .sp
 You will be deleting all the files with the following names:
@@ -6236,7 +6236,7 @@ Once these files are deleted, you may issue a @reboot to restart the mush.
 This will unlock the mail system and load in a fresh db.
 .sp
 Now, if you have flatfiles of the old mail database, you will see in either
-the ‘data’ directory or the ‘prevflat’ directory files that are called:
+the \(aqdata\(aq directory or the \(aqprevflat\(aq directory files that are called:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -6249,20 +6249,20 @@ RhostMUSH.dump.mail
 .UNINDENT
 .UNINDENT
 .sp
-Make sure these two files are in the ‘data’ subdirectory.  Copy them in
-if they exist in your ‘prevflat’ directory.
+Make sure these two files are in the \(aqdata\(aq subdirectory.  Copy them in
+if they exist in your \(aqprevflat\(aq directory.
 .sp
-Once they are in the ‘data’ directory, within the mush type: wmail/load
+Once they are in the \(aqdata\(aq directory, within the mush type: wmail/load
 .sp
 This loads in the flatfile and recover the mail database.
 .sp
 Now, at this point the mail db may not be 100% in\-sync with the game db.
 .sp
-So let’s fix it.
+So let\(aqs fix it.
 .sp
-wmail/fix   – this will run a fix on the mail db and repair any issues.
+wmail/fix   \-\- this will run a fix on the mail db and repair any issues.
 .sp
-wmail/lfix  – this will load the fixed flatfile back into the mush.
+wmail/lfix  \-\- this will load the fixed flatfile back into the mush.
 .sp
 At this point you should be good to go.
 .SH ADVANCED FEATURES
@@ -6351,29 +6351,29 @@ in the same location.
 Each object (player, room, exit, thing) has two lists of reality levels.
 An Rx list, which describe what it can see and a Tx list, which describe
 where it can be seen. Those are bitfields. In order for X to see Y a bitwise
-‘and’ is performed between X’s RxLevel and Y’s TxLevel. If the result is not
-0, then X sees Y. If the result is 0, as far as X is concerned, Y doesn’t
+\(aqand\(aq is performed between X\(aqs RxLevel and Y\(aqs TxLevel. If the result is not
+0, then X sees Y. If the result is 0, as far as X is concerned, Y doesn\(aqt
 exist. This affects contents lists, exit lists, look, say, pose, @emit,
 @verb, connect/disconnect, has arrived/has left messages, exit and object
-matching. ‘here’ and ‘me’ match always.
+matching. \(aqhere\(aq and \(aqme\(aq match always.
 .sp
-It doesn’t affect @remit, @pemit, page, WHO or channels.
+It doesn\(aqt affect @remit, @pemit, page, WHO or channels.
 By default, all new objects are created with an RxLevel of 1 and TxLevel of
 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of
 0xFFFFFFFF. Those default levels can be changed with configuration
 parameters.
-An object is always visible to itself, even if its Rx and Tx levels don’t
+An object is always visible to itself, even if its Rx and Tx levels don\(aqt
 match. (See examples below)
 .SS Reality Levels Descriptions
 .sp
 For every reality level defined, you can define an attribute that serves as
 description. If you look at something and match more than one of its
-TxLevels, you’ll see all the corresponding descriptions on the target
-object. If the object doesn’t have any descriptions for the matching levels,
-you’ll see the regular @desc.
+TxLevels, you\(aqll see all the corresponding descriptions on the target
+object. If the object doesn\(aqt have any descriptions for the matching levels,
+you\(aqll see the regular @desc.
 .sp
 The @adesc attribute on the target is only triggered if the target can see
-the looker in turn. It’s only triggered once, no matter how many descs the
+the looker in turn. It\(aqs only triggered once, no matter how many descs the
 looker sees. The @odesc is shown only to those people that see /both/ the
 looker and the target.
 .sp
@@ -6382,11 +6382,11 @@ Through extension, @afail/@ofail and similar pairs (@adrop/@odrop,
 affected.
 .sp
 Softcoded commands are only matched on the objects that can see the player.
-The player doesn’t have to see the object. This includes commands in the
+The player doesn\(aqt have to see the object. This includes commands in the
 Master Room.
 .sp
 Exits are treated specially. In order to be able to use an exit name (or to
-use the ‘move <exit>’ command) the exit must be visible to the enactor. In
+use the \(aqmove <exit>\(aq command) the exit must be visible to the enactor. In
 order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.
 .SS Reality Levels Configuration parameters
@@ -6447,7 +6447,7 @@ everything and will be visible to everyone. Their effective Rx and Tx levels
 will always be 0xFFFFFFFF. Also settable in the config file and with the
 @admin command.
 .sp
-Compile with \-DREALITY_LEVELS compile time option to enable ‘Real’ needs to be ‘1’
+Compile with \-DREALITY_LEVELS compile time option to enable \(aqReal\(aq needs to be \(aq1\(aq
 This is an example file only to be added to the mush.conf file Format:
 .INDENT 0.0
 .INDENT 3.5
@@ -6530,7 +6530,7 @@ hastxlevel(<object>,<level>)
 .sp
 These two functions check if an object has the specified Rx or Tx level.
 You must control <object>. They return 0 or 1 and #\-1 in case the object
-does not exist or you don’t have permissions:
+does not exist or you don\(aqt have permissions:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -6543,7 +6543,7 @@ txlevel(<object>)
 .UNINDENT
 .UNINDENT
 .sp
-These two functions return a space\-separated list of the object’s Rx or Tx
+These two functions return a space\-separated list of the object\(aqs Rx or Tx
 levels. Again, you must control the object:
 .INDENT 0.0
 .INDENT 3.5
@@ -6557,9 +6557,9 @@ cansee(<obj1>,<obj2>)
 .UNINDENT
 .sp
 A wiz\-only function, returns 1 of <obj1> can see <obj2> from a reality
-levels point of view. It doesn’t check if the objects are in the same
-location, the DARK/CLOAKED flags and so on. Just <obj1>’s Rx level against
-<obj2>’s Tx level.
+levels point of view. It doesn\(aqt check if the objects are in the same
+location, the DARK/CLOAKED flags and so on. Just <obj1>\(aqs Rx level against
+<obj2>\(aqs Tx level.
 .sp
 \fBWARNING:\fP
 .INDENT 0.0
@@ -6602,7 +6602,7 @@ def_exit_rx 3
 .UNINDENT
 .UNINDENT
 .sp
-Note that def_exit_tx isn’t set. Why? Because ghosts see the mundane world
+Note that def_exit_tx isn\(aqt set. Why? Because ghosts see the mundane world
 anyway, so a spirit character will have:
 .INDENT 0.0
 .INDENT 3.5
@@ -6616,7 +6616,7 @@ anyway, so a spirit character will have:
 .UNINDENT
 .UNINDENT
 .sp
-Let’s assume 3 players:
+Let\(aqs assume 3 players:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -6651,7 +6651,7 @@ Jack\(aqs @odesc: has looked at Jack.
 .UNINDENT
 .UNINDENT
 .sp
-Frank is a ghost. He will see other spirits as well as mundanes, but won’t be visible to mundanes. He can also become visible to everybody:
+Frank is a ghost. He will see other spirits as well as mundanes, but won\(aqt be visible to mundanes. He can also become visible to everybody:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -6668,7 +6668,7 @@ Frank\(aqs Rx: Real Ghost
 .UNINDENT
 .UNINDENT
 .sp
-Following are commands that each of the players enter and what they see.  I’ll assume the +materialize command is defined like:
+Following are commands that each of the players enter and what they see.  I\(aqll assume the +materialize command is defined like:
 .INDENT 0.0
 .INDENT 3.5
 .sp
@@ -6758,9 +6758,9 @@ reality_level         All 511
 .UNINDENT
 .UNINDENT
 .sp
-5 levels of Obfuscation, Umbra, Dreaming, Wraiths. ‘All’ is a handy
+5 levels of Obfuscation, Umbra, Dreaming, Wraiths. \(aqAll\(aq is a handy
 replacement for all levels, useful for wizards and wizobjects that should
-be visible on all levels. Also useful when you want to set an object’s
+be visible on all levels. Also useful when you want to set an object\(aqs
 levels to something without knowing what he had before:
 .INDENT 0.0
 .INDENT 3.5
@@ -6798,7 +6798,7 @@ def_exit_tx 381
 .UNINDENT
 .sp
 Obf1 is not included since an Obfuscated vampire should not be able to move
-if it only has Obf1. Therefore they won’t see the exits. If you want them
+if it only has Obf1. Therefore they won\(aqt see the exits. If you want them
 to be able to see the exits, but not to use them, change the default Tx of
 the exits:
 .INDENT 0.0
@@ -6816,7 +6816,7 @@ def_exit_tx 383
 Joe the Mortal will have an RxLevel: Real and a TxLevel: Real
 Jack the Malk, who likes to walk around Obfuscated and has Obfuscate 2 will
 have an RxLevel: Real (he sees what the mortals see) but a TxLevel: Obf2
-Jimmy the Nossie, who is using the Mask and has Obfuscate 4, but doesn’t
+Jimmy the Nossie, who is using the Mask and has Obfuscate 4, but doesn\(aqt
 try to make himself invisible will have an RxLevel: Real (as Jack)
 and a TxLevel: Real Obf4. He will also set his @desc to what the mortals see and
 &OBFDESC to his real slimy desc. Simply put, he will be visible to mortals,
@@ -6824,21 +6824,21 @@ but not with his real desc.
 .sp
 Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel
 will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So
-he can see Joe, Jack and Jimmy’s both descs.
-Joe, on the other hand, won’t see Jack at all. He will still see Jimmy, but
-only Jimmy’s @desc, not the OBFDESC
+he can see Joe, Jack and Jimmy\(aqs both descs.
+Joe, on the other hand, won\(aqt see Jack at all. He will still see Jimmy, but
+only Jimmy\(aqs @desc, not the OBFDESC
 .sp
-Frida the Fae… will have RxLevel: Real Fae and TxLevel: Real Fae. @desc
+Frida the Fae... will have RxLevel: Real Fae and TxLevel: Real Fae. @desc
 set to the mundane desc, &FAEDESC set to the Chimerical desc.
 Emily the Enchanted will have an RxLevel: Real Fae, but the TxLevel: Real.
-No &FAEDESC on her, although she’ll be able to see it the one on Frida.
+No &FAEDESC on her, although she\(aqll be able to see it the one on Frida.
 Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra
-and TxLevel: Umbra. &UMBRADESC is his friend. He won’t see mortals or other
+and TxLevel: Umbra. &UMBRADESC is his friend. He won\(aqt see mortals or other
 characters who are not in the Umbra.
 .sp
-Barbie the Bastet, who’s only peeking in the Umbra, without going there,
+Barbie the Bastet, who\(aqs only peeking in the Umbra, without going there,
 will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she
-can’t see the things that see her.
+can\(aqt see the things that see her.
 .sp
 Deanna the Drake, who activates her spirit vision, will have
 RxLevel: Real Umbra and TxLevel: Real. She will see characters in Umbra and
@@ -6863,7 +6863,7 @@ RxLevel: All, TxLevel: All
 .SS Example 3: Softcode
 .sp
 Considering the config directives from example 2 and assuming a function
-getstat(<dbref>,<stat>) that will return the value of a player’s stat from
+getstat(<dbref>,<stat>) that will return the value of a player\(aqs stat from
 the sheet here are softcode examples that implement some of the WoD powers.
 In a real game you would have to use some more checks, of course.
 .INDENT 0.0
@@ -6955,7 +6955,7 @@ T{
 MUSHL_VARS
 T}	T{
 space delimited list of MUSH attributes from player
-This is passed from the mush’s EXECSCRIPT_VARS attr
+This is passed from the mush\(aqs EXECSCRIPT_VARS attr
 T}
 _
 .TE
@@ -7012,7 +7012,7 @@ _
 .SS Execsript set object
 .sp
 The script executed with execscript() will read in a file with the same name
-as the script ending in ‘.set’.  This is a loader object that will set attributes
+as the script ending in \(aq.set\(aq.  This is a loader object that will set attributes
 and registers back into the mush that you wish to pass from the script. The
 fields are SPACE SEPARATED.  The values are NOT evaluated.
 .SS Execscript set object field format
@@ -7251,7 +7251,7 @@ T{
 T}	T{
 123
 T}	T{
-LOCATION: dbref# of the target.  No prepending ‘#’ used.
+LOCATION: dbref# of the target.  No prepending \(aq#\(aq used.
 T}
 _
 T{
@@ -7275,7 +7275,7 @@ T{
 T}	T{
 0
 T}	T{
-LINK: This is the ‘home’ of the object or what it’s linked to (\-1 for none)
+LINK: This is the \(aqhome\(aq of the object or what it\(aqs linked to (\-1 for none)
 T}
 _
 T{
@@ -7419,7 +7419,7 @@ INT
 T}	T{
 \-1
 T}	T{
-ZONE(S): The list of zones starting here and ending with ‘\-1’. (see ZONES)
+ZONE(S): The list of zones starting here and ending with \(aq\-1\(aq. (see ZONES)
 T}
 _
 T{
@@ -7459,7 +7459,7 @@ T{
 T}	T{
 *Password
 T}	T{
-PASSWORDATTRIB: Special password attribute.  Attribute name is ‘*Password’
+PASSWORDATTRIB: Special password attribute.  Attribute name is \(aq*Password\(aq
 T}
 _
 T{
@@ -7483,7 +7483,7 @@ _
 \fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-Any Data type starting with ‘*’ is ignored when @snapshot/loading.
+Any Data type starting with \(aq*\(aq is ignored when @snapshot/loading.
 .UNINDENT
 .UNINDENT
 .sp
@@ -7755,7 +7755,7 @@ the flags above.  They are added together for each word type
 .UNINDENT
 .UNINDENT
 .sp
-POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift
+POWERS:  Powers are handled a bit differently.  They\(aqre used as BITWISE shift
 markers that you would have to compute the shift then add it after the fact.
 .INDENT 0.0
 .INDENT 3.5
@@ -7884,7 +7884,7 @@ will have to calculate then add
 .UNINDENT
 .UNINDENT
 .sp
-ZONES:  Zones are special.  If there are no zones, the value will be ‘\-1’.
+ZONES:  Zones are special.  If there are no zones, the value will be \(aq\-1\(aq.
 .sp
 So entering zones if there are no zones:
 .INDENT 0.0
@@ -7985,11 +7985,11 @@ The databases are NOT COMPATIBLE to each other, at least in the binary form.
 \fBWARNING:\fP
 .INDENT 0.0
 .INDENT 3.5
-I would NEVER change from QDBM back to GDBM, but if you’re set on it these steps:
+I would NEVER change from QDBM back to GDBM, but if you\(aqre set on it these steps:
 .sp
 You would use the same steps if you plan to move QDBM to GDBM.  I however would
 not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously,
-don’t do it unless you have absolutely no other recourse.
+don\(aqt do it unless you have absolutely no other recourse.
 .sp
 IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify
 the following
@@ -8007,8 +8007,8 @@ Once you have that done, you may follow the procedures below on converting (upgr
 .UNINDENT
 .SS Upgradging GDBM to QDBM
 .sp
-Now, if you’ve kept reading and plan to convert your GDBM database to QDBM great news!
-It’s more stable, it’s faster, and lets you have far more flexibility.
+Now, if you\(aqve kept reading and plan to convert your GDBM database to QDBM great news!
+It\(aqs more stable, it\(aqs faster, and lets you have far more flexibility.
 .sp
 So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 .SS While logged in to your mush, issue the following commands
@@ -8016,13 +8016,13 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 .INDENT 3.5
 .INDENT 0.0
 .IP A. 3
-@dump/flat    – This will make a flatfile dump of your MUSH database
+@dump/flat    \-\- This will make a flatfile dump of your MUSH database
 .IP B. 3
-wmail/unload  – This will make a flatfile dump of your MAIL database
+wmail/unload  \-\- This will make a flatfile dump of your MAIL database
 .IP C. 3
-@areg/unload  – If you use the AutoRegistration engine, this dumps it
+@areg/unload  \-\- If you use the AutoRegistration engine, this dumps it
 .IP D. 3
-newsdb/unload – If you use the hardcoded news/bbs engine.  This dumps it
+newsdb/unload \-\- If you use the hardcoded news/bbs engine.  This dumps it
 .UNINDENT
 .UNINDENT
 .UNINDENT
@@ -8206,21 +8206,21 @@ newsdb/load
 .sp
 Ok.
 .sp
-So you’re running an old RhostMUSH.
+So you\(aqre running an old RhostMUSH.
 .sp
 One prior to 3.9.5p2 and want to take advantage of the new
 format of the Makefile and the automated mysql stuff and
-all the other goodies that isn’t really (easilly) done
+all the other goodies that isn\(aqt really (easilly) done
 with just patch.sh.
 .sp
-Well, you’re in luck.  It is actually fairly easy to do.
+Well, you\(aqre in luck.  It is actually fairly easy to do.
 .sp
 This is what you have to do.
 .sp
-First thing’s first.
+First thing\(aqs first.
 .INDENT 0.0
 .IP 1. 3
-Log into your existing mush.  Let’s make current backups
+Log into your existing mush.  Let\(aqs make current backups
 of all your flatfiles.  Issue:
 .INDENT 3.0
 .INDENT 3.5
@@ -8264,12 +8264,12 @@ Make an image of all your current backed up files.  From The Server/game directo
 \fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-Please remember the ‘\-s’ to the ./backup_flat.sh.
+Please remember the \(aq\-s\(aq to the ./backup_flat.sh.
 .UNINDENT
 .UNINDENT
 .INDENT 0.0
 .IP 4. 3
-Make note of the most recently created file in the directory Server/game/oldflat.  It’s usually named something like:
+Make note of the most recently created file in the directory Server/game/oldflat.  It\(aqs usually named something like:
 .INDENT 3.0
 .INDENT 3.5
 .sp
@@ -8290,7 +8290,7 @@ You will need this file later.
 .UNINDENT
 .INDENT 0.0
 .IP 5. 3
-Rename your ‘Rhost’ directory to something else.  This is the directory that you have containing the ‘Server’ directory.  Name it anything you want other than ‘Rhost’.  For those not used to unix you would type:
+Rename your \(aqRhost\(aq directory to something else.  This is the directory that you have containing the \(aqServer\(aq directory.  Name it anything you want other than \(aqRhost\(aq.  For those not used to unix you would type:
 .INDENT 3.0
 .INDENT 3.5
 .sp
@@ -8318,7 +8318,7 @@ git clone https://github.com/RhostMUSH/trunk Rhost
 \fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-You would type this in the same directory you have renamed your old ‘Rhost’ directory
+You would type this in the same directory you have renamed your old \(aqRhost\(aq directory
 .UNINDENT
 .UNINDENT
 .INDENT 0.0
@@ -8335,9 +8335,9 @@ make confsource
 .UNINDENT
 .UNINDENT
 .sp
-Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it’s the ‘r’ option).
+Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it\(aqs the \(aqr\(aq option).
 .IP 8. 3
-Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the ‘game’ directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!
+Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the \(aqgame\(aq directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!
 .UNINDENT
 .INDENT 0.0
 .INDENT 3.5
@@ -8349,7 +8349,7 @@ cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .
 .IP C. 3
 tar \-zxvf RhostMUSH.dbflat1.tar.gz
 .IP D. 3
-Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don’t port or other stuff you have already customized).
+Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don\(aqt port or other stuff you have already customized).
 .IP E. 3
 Load in your flatfile information:
 .INDENT 3.0
@@ -8432,7 +8432,7 @@ MySQL is now native in RhostMUSH as of 3.9.5p2.
 \fBWARNING:\fP
 .INDENT 0.0
 .INDENT 3.5
-To autodetect it, YOU MUST HAVE mysql_config installed and running on your server.  Without this, even if you have mysql db installed it won’t be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql_config.
+To autodetect it, YOU MUST HAVE mysql_config installed and running on your server.  Without this, even if you have mysql db installed it won\(aqt be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql_config.
 .UNINDENT
 .UNINDENT
 .sp
@@ -8461,8 +8461,8 @@ update your src/Makefile to the one in the 3.9.5p2+ repo
 update your bin/asksource.* files to the one in the 3.9.5p2+ repo
 ( cp ~/tmprho/Server/bin/asksource.* ~/Rhost/Server/bin/ )
 .IP 3. 3
-append ‘include rhost_mysql.conf’ BEFORE the rhost_ingame.conf file
-and before the section that says ‘define local aliases’ toward the end of
+append \(aqinclude rhost_mysql.conf\(aq BEFORE the rhost_ingame.conf file
+and before the section that says \(aqdefine local aliases\(aq toward the end of
 your netrhost.conf file.
 ( edit your ~/Rhost/Server/game/netrhost.conf file )
 .IP 4. 3
@@ -8523,9 +8523,10 @@ void local_shutdown(void) {
 .UNINDENT
 .INDENT 0.0
 .IP 6. 3
-Issue ‘make clean’ then make confsource to rebuild using the latest
+Issue \(aqmake clean\(aq then make confsource to rebuild using the latest
 builder script to build in the mysql changes.
 .UNINDENT
+.SH COMPARISON OF FLAGS
 .SH COMPARISON OF FLAGS
 .TS
 center;
@@ -8762,7 +8763,7 @@ IMMORTAL
 T}	T{
 GUILDMASTER
 T}	T{
-You don’t want IMMORTAL
+You don\(aqt want IMMORTAL
 T}
 _
 T{
@@ -8915,7 +8916,7 @@ NOBLEED
 T}	T{
 Not Needed
 T}	T{
-Rhost doesn’t bleed ANSI
+Rhost doesn\(aqt bleed ANSI
 T}
 _
 T{
@@ -8947,7 +8948,7 @@ HTML
 T}	T{
 Not Available
 T}	T{
-Rhost doesn’t support Pueblo
+Rhost doesn\(aqt support Pueblo
 T}
 _
 T{
@@ -8955,7 +8956,7 @@ REDIR_OK
 T}	T{
 Not Available
 T}	T{
-Rhost doesn’t support @redirect
+Rhost doesn\(aqt support @redirect
 T}
 _
 T{
@@ -8963,7 +8964,7 @@ SPEECHMOD
 T}	T{
 Not Available
 T}	T{
-Rhost doesn’t support @speechmod \- use @icmd
+Rhost doesn\(aqt support @speechmod \- use @icmd
 T}
 _
 T{
@@ -9082,7 +9083,7 @@ Rhost Equiv: MONITOR (@toggle)
 The following NDA comes from the time when RhostMUSH was not publially
 available. It is preserved here for historical reasons. We are suckers for
 looking back at things. :)
-–Ambrosia
+\-\-Ambrosia
 .INDENT 0.0
 .INDENT 3.5
 .INDENT 0.0
@@ -9111,6 +9112,8 @@ you should be allowed to play with it fully as long as the first two
 rules are kept.
 .UNINDENT
 .UNINDENT
+.SH RHOSTMUSH INTERNAL HELP FILES
+.SH RHOSTMUSH INTERNAL WIZHELP FILES
 .sp
 Copyright© 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
@@ -9124,19 +9127,13 @@ The copyright includes but is not limited to all changes and modifications to
 the code, the help files, and all information included in this code.
 Copying of these changes is not permitted without prior approval.
 Borrowing of ideas require notification of where idea originated.
-Please use ‘RhostMUSH’ when identifying source. Modification of code is allowed
+Please use \(aqRhostMUSH\(aq when identifying source. Modification of code is allowed
 as long as contact and acceptance is made prior to changes with one (or more) of
 the original writers of the code in writing.
 .sp
 This copyright does not include the original code that was given as GNU freeware
 .sp
 This copyright information may not be changed, altered, or omitted.
-.INDENT 0.0
-.IP \(bu 2
-genindex
-.IP \(bu 2
-search
-.UNINDENT
 .SH AUTHOR
 wstarter
 .SH COPYRIGHT

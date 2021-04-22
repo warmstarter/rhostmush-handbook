@@ -1,5 +1,6 @@
-.. RhostMUSH Handbook documentation master file:
+.. _RhostMUSH Handbook documentation master file:
 
+==================
 RhostMUSH Handbook
 ==================
 
@@ -47,13 +48,18 @@ which, as you know, is the best part of setting up a mush.
    powers.rst
    nda.rst
 
+   help.rst
+   wizhelp.rst
+
 .. include:: copyright.rst
 
 ..
    changelog.rst
 
-Indices and tables
-==================
+.. only:: builder_html
 
-* :ref:`genindex`
-* :ref:`search`
+   Indices and tables
+   ==================
+
+   * :ref:`genindex`
+   * :ref:`search`

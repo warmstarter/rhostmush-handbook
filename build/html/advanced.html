@@ -92,38 +92,38 @@ in the same location.</p>
 <p>Each object (player, room, exit, thing) has two lists of reality levels.
 An Rx list, which describe what it can see and a Tx list, which describe
 where it can be seen. Those are bitfields. In order for X to see Y a bitwise
-‘and’ is performed between X’s RxLevel and Y’s TxLevel. If the result is not
-0, then X sees Y. If the result is 0, as far as X is concerned, Y doesn’t
+'and' is performed between X's RxLevel and Y's TxLevel. If the result is not
+0, then X sees Y. If the result is 0, as far as X is concerned, Y doesn't
 exist. This affects contents lists, exit lists, look, say, pose, &#64;emit,
 &#64;verb, connect/disconnect, has arrived/has left messages, exit and object
-matching. ‘here’ and ‘me’ match always.</p>
-<p>It doesn’t affect &#64;remit, &#64;pemit, page, WHO or channels.
+matching. 'here' and 'me' match always.</p>
+<p>It doesn't affect &#64;remit, &#64;pemit, page, WHO or channels.
 By default, all new objects are created with an RxLevel of 1 and TxLevel of
 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of
 0xFFFFFFFF. Those default levels can be changed with configuration
 parameters.
-An object is always visible to itself, even if its Rx and Tx levels don’t
+An object is always visible to itself, even if its Rx and Tx levels don't
 match. (See examples below)</p>
 </div>
 <div class="section" id="reality-levels-descriptions">
 <h3><span class="section-number">12.3.2. </span>Reality Levels Descriptions<a class="headerlink" href="#reality-levels-descriptions" title="Permalink to this headline">¶</a></h3>
 <p>For every reality level defined, you can define an attribute that serves as
 description. If you look at something and match more than one of its
-TxLevels, you’ll see all the corresponding descriptions on the target
-object. If the object doesn’t have any descriptions for the matching levels,
-you’ll see the regular &#64;desc.</p>
+TxLevels, you'll see all the corresponding descriptions on the target
+object. If the object doesn't have any descriptions for the matching levels,
+you'll see the regular &#64;desc.</p>
 <p>The &#64;adesc attribute on the target is only triggered if the target can see
-the looker in turn. It’s only triggered once, no matter how many descs the
+the looker in turn. It's only triggered once, no matter how many descs the
 looker sees. The &#64;odesc is shown only to those people that see /both/ the
 looker and the target.</p>
 <p>Through extension, &#64;afail/&#64;ofail and similar pairs (&#64;adrop/&#64;odrop,
 &#64;asucc/&#64;osucc etc) work in the same way. &#64;verb commands are similary
 affected.</p>
 <p>Softcoded commands are only matched on the objects that can see the player.
-The player doesn’t have to see the object. This includes commands in the
+The player doesn't have to see the object. This includes commands in the
 Master Room.</p>
 <p>Exits are treated specially. In order to be able to use an exit name (or to
-use the ‘move &lt;exit&gt;’ command) the exit must be visible to the enactor. In
+use the 'move &lt;exit&gt;' command) the exit must be visible to the enactor. In
 order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.</p>
 </div>
@@ -160,7 +160,7 @@ Like above, &lt;value&gt; must be a decimal number:</p>
 everything and will be visible to everyone. Their effective Rx and Tx levels
 will always be 0xFFFFFFFF. Also settable in the config file and with the
 &#64;admin command.</p>
-<p>Compile with -DREALITY_LEVELS compile time option to enable ‘Real’ needs to be ‘1’
+<p>Compile with -DREALITY_LEVELS compile time option to enable 'Real' needs to be '1'
 This is an example file only to be added to the mush.conf file Format:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="o">&lt;</span><span class="mi">8</span> <span class="n">char</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">hex</span><span class="o">-</span><span class="n">byte</span><span class="o">-</span><span class="n">mask</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">optional</span><span class="o">-</span><span class="n">desc</span><span class="p">:</span> <span class="n">DESC</span> <span class="n">default</span><span class="o">&gt;</span>
 </pre></div>
@@ -214,20 +214,20 @@ for players).</p>
 </div>
 <p>These two functions check if an object has the specified Rx or Tx level.
 You must control &lt;object&gt;. They return 0 or 1 and #-1 in case the object
-does not exist or you don’t have permissions:</p>
+does not exist or you don't have permissions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="n">txlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>These two functions return a space-separated list of the object’s Rx or Tx
+<p>These two functions return a space-separated list of the object's Rx or Tx
 levels. Again, you must control the object:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cansee</span><span class="p">(</span><span class="o">&lt;</span><span class="n">obj1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">obj2</span><span class="o">&gt;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>A wiz-only function, returns 1 of &lt;obj1&gt; can see &lt;obj2&gt; from a reality
-levels point of view. It doesn’t check if the objects are in the same
-location, the DARK/CLOAKED flags and so on. Just &lt;obj1&gt;’s Rx level against
-&lt;obj2&gt;’s Tx level.</p>
+levels point of view. It doesn't check if the objects are in the same
+location, the DARK/CLOAKED flags and so on. Just &lt;obj1&gt;'s Rx level against
+&lt;obj2&gt;'s Tx level.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If you are using it on MUX2.0 with /both/ reality levels and Wod
@@ -252,13 +252,13 @@ ghosts to pass:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">def_exit_rx</span> <span class="mi">3</span>
 </pre></div>
 </div>
-<p>Note that def_exit_tx isn’t set. Why? Because ghosts see the mundane world
+<p>Note that def_exit_tx isn't set. Why? Because ghosts see the mundane world
 anyway, so a spirit character will have:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@txlevel &lt;player&gt;=!Real Ghost
 @rxlevel &lt;player&gt;=Real Ghost
 </pre></div>
 </div>
-<p>Let’s assume 3 players:</p>
+<p>Let's assume 3 players:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">John</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">Mundane</span><span class="o">.</span> <span class="n">He</span> <span class="n">won</span><span class="s1">&#39;t see spirits.</span>
 <span class="n">John</span><span class="s1">&#39;s Rx: Real</span>
 <span class="n">John</span><span class="s1">&#39;s Tx: Real</span>
@@ -277,7 +277,7 @@ anyway, so a spirit character will have:</p>
 <span class="n">Jack</span><span class="s1">&#39;s @odesc: has looked at Jack.</span>
 </pre></div>
 </div>
-<p>Frank is a ghost. He will see other spirits as well as mundanes, but won’t be visible to mundanes. He can also become visible to everybody:</p>
+<p>Frank is a ghost. He will see other spirits as well as mundanes, but won't be visible to mundanes. He can also become visible to everybody:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Frank</span><span class="s1">&#39;s Rx: Real Ghost</span>
  <span class="n">Frank</span><span class="s1">&#39;s Tx: Ghost</span>
  <span class="n">Frank</span><span class="s1">&#39;s @desc: This is Frank, looking human.</span>
@@ -286,7 +286,7 @@ anyway, so a spirit character will have:</p>
  <span class="n">Frank</span><span class="s1">&#39;s @odesc: has looked at Frank.</span>
 </pre></div>
 </div>
-<p>Following are commands that each of the players enter and what they see.  I’ll assume the +materialize command is defined like:</p>
+<p>Following are commands that each of the players enter and what they see.  I'll assume the +materialize command is defined like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&amp;CMD_MATERIALIZE &lt;cmdobject&gt;=$+materialize:@txlevel %#=Real; @pemit %#=You are now material.
 </pre></div>
 </div>
@@ -355,9 +355,9 @@ anyway, so a spirit character will have:</p>
 <span class="n">reality_level</span>         <span class="n">All</span> <span class="mi">511</span>
 </pre></div>
 </div>
-<p>5 levels of Obfuscation, Umbra, Dreaming, Wraiths. ‘All’ is a handy
+<p>5 levels of Obfuscation, Umbra, Dreaming, Wraiths. 'All' is a handy
 replacement for all levels, useful for wizards and wizobjects that should
-be visible on all levels. Also useful when you want to set an object’s
+be visible on all levels. Also useful when you want to set an object's
 levels to something without knowing what he had before:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@rxlevel</span> <span class="c1">#276=!All Real</span>
 </pre></div>
@@ -377,7 +377,7 @@ Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381:</p>
 </pre></div>
 </div>
 <p>Obf1 is not included since an Obfuscated vampire should not be able to move
-if it only has Obf1. Therefore they won’t see the exits. If you want them
+if it only has Obf1. Therefore they won't see the exits. If you want them
 to be able to see the exits, but not to use them, change the default Tx of
 the exits:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">def_exit_rx</span> <span class="mi">381</span>
@@ -387,26 +387,26 @@ the exits:</p>
 <p>Joe the Mortal will have an RxLevel: Real and a TxLevel: Real
 Jack the Malk, who likes to walk around Obfuscated and has Obfuscate 2 will
 have an RxLevel: Real (he sees what the mortals see) but a TxLevel: Obf2
-Jimmy the Nossie, who is using the Mask and has Obfuscate 4, but doesn’t
+Jimmy the Nossie, who is using the Mask and has Obfuscate 4, but doesn't
 try to make himself invisible will have an RxLevel: Real (as Jack)
 and a TxLevel: Real Obf4. He will also set his &#64;desc to what the mortals see and
 &amp;OBFDESC to his real slimy desc. Simply put, he will be visible to mortals,
 but not with his real desc.</p>
 <p>Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel
 will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So
-he can see Joe, Jack and Jimmy’s both descs.
-Joe, on the other hand, won’t see Jack at all. He will still see Jimmy, but
-only Jimmy’s &#64;desc, not the OBFDESC</p>
-<p>Frida the Fae… will have RxLevel: Real Fae and TxLevel: Real Fae. &#64;desc
+he can see Joe, Jack and Jimmy's both descs.
+Joe, on the other hand, won't see Jack at all. He will still see Jimmy, but
+only Jimmy's &#64;desc, not the OBFDESC</p>
+<p>Frida the Fae... will have RxLevel: Real Fae and TxLevel: Real Fae. &#64;desc
 set to the mundane desc, &amp;FAEDESC set to the Chimerical desc.
 Emily the Enchanted will have an RxLevel: Real Fae, but the TxLevel: Real.
-No &amp;FAEDESC on her, although she’ll be able to see it the one on Frida.
+No &amp;FAEDESC on her, although she'll be able to see it the one on Frida.
 Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra
-and TxLevel: Umbra. &amp;UMBRADESC is his friend. He won’t see mortals or other
+and TxLevel: Umbra. &amp;UMBRADESC is his friend. He won't see mortals or other
 characters who are not in the Umbra.</p>
-<p>Barbie the Bastet, who’s only peeking in the Umbra, without going there,
+<p>Barbie the Bastet, who's only peeking in the Umbra, without going there,
 will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she
-can’t see the things that see her.</p>
+can't see the things that see her.</p>
 <p>Deanna the Drake, who activates her spirit vision, will have
 RxLevel: Real Umbra and TxLevel: Real. She will see characters in Umbra and
 real world at the same time and perceive the desc appropiate to the realm
@@ -422,7 +422,7 @@ Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</p>
 <div class="section" id="example-3-softcode">
 <h3><span class="section-number">12.3.9. </span>Example 3: Softcode<a class="headerlink" href="#example-3-softcode" title="Permalink to this headline">¶</a></h3>
 <p>Considering the config directives from example 2 and assuming a function
-getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player’s stat from
+getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player's stat from
 the sheet here are softcode examples that implement some of the WoD powers.
 In a real game you would have to use some more checks, of course.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@create Reality Levels Commands (RLS)
@@ -487,7 +487,7 @@ In a real game you would have to use some more checks, of course.</p>
 </tr>
 <tr class="row-even"><td><p>MUSHL_VARS</p></td>
 <td><p>space delimited list of MUSH attributes from player
-This is passed from the mush’s EXECSCRIPT_VARS attr</p></td>
+This is passed from the mush's EXECSCRIPT_VARS attr</p></td>
 </tr>
 </tbody>
 </table>
@@ -542,7 +542,7 @@ Note: they must be ASCII-7 clean and contain no white spaces</p></td>
 <div class="section" id="execsript-set-object">
 <h3><span class="section-number">12.4.2. </span>Execsript set object<a class="headerlink" href="#execsript-set-object" title="Permalink to this headline">¶</a></h3>
 <p>The script executed with execscript() will read in a file with the same name
-as the script ending in ‘.set’.  This is a loader object that will set attributes
+as the script ending in '.set'.  This is a loader object that will set attributes
 and registers back into the mush that you wish to pass from the script. The
 fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 <div class="section" id="execscript-set-object-field-format">
@@ -729,7 +729,7 @@ blah blah blah blah blah blah blah                                    END!
 </tr>
 <tr class="row-even"><td><p>*INT</p></td>
 <td><p>123</p></td>
-<td><p>LOCATION: dbref# of the target.  No prepending ‘#’ used.</p></td>
+<td><p>LOCATION: dbref# of the target.  No prepending '#' used.</p></td>
 </tr>
 <tr class="row-odd"><td><p>*INT</p></td>
 <td><p>234</p></td>
@@ -741,7 +741,7 @@ blah blah blah blah blah blah blah                                    END!
 </tr>
 <tr class="row-odd"><td><p>*INT</p></td>
 <td><p>0</p></td>
-<td><p>LINK: This is the ‘home’ of the object or what it’s linked to (-1 for none)</p></td>
+<td><p>LINK: This is the 'home' of the object or what it's linked to (-1 for none)</p></td>
 </tr>
 <tr class="row-even"><td><p>*INT</p></td>
 <td><p>123</p></td>
@@ -813,7 +813,7 @@ blah blah blah blah blah blah blah                                    END!
 </tr>
 <tr class="row-odd"><td><p>INT</p></td>
 <td><p>-1</p></td>
-<td><p>ZONE(S): The list of zones starting here and ending with ‘-1’. (see ZONES)</p></td>
+<td><p>ZONE(S): The list of zones starting here and ending with '-1'. (see ZONES)</p></td>
 </tr>
 <tr class="row-even"><td><p>&gt;STRING</p></td>
 <td><p>&gt;VA</p></td>
@@ -833,7 +833,7 @@ blah blah blah blah blah blah blah                                    END!
 </tr>
 <tr class="row-even"><td><p>&gt;STRING</p></td>
 <td><p>*Password</p></td>
-<td><p>PASSWORDATTRIB: Special password attribute.  Attribute name is ‘*Password’</p></td>
+<td><p>PASSWORDATTRIB: Special password attribute.  Attribute name is '*Password'</p></td>
 </tr>
 <tr class="row-odd"><td><p>STRING</p></td>
 <td><p>$6$xy$xy</p></td>
@@ -847,7 +847,7 @@ blah blah blah blah blah blah blah                                    END!
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Any Data type starting with ‘*’ is ignored when &#64;snapshot/loading.</p>
+<p>Any Data type starting with '*' is ignored when &#64;snapshot/loading.</p>
 </div>
 <p>The structure above with the examples would look like this in the file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>3
@@ -1094,7 +1094,7 @@ the flags above.  They are added together for each word type</p>
 <span class="cp">#define TOG_NOGLOBPARENT        0x80000000      </span><span class="cm">/* Target does not inherit global attributes */</span><span class="cp"></span>
 </pre></div>
 </div>
-<p>POWERS:  Powers are handled a bit differently.  They’re used as BITWISE shift
+<p>POWERS:  Powers are handled a bit differently.  They're used as BITWISE shift
 markers that you would have to compute the shift then add it after the fact.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* First word of power positions.  Each position is 2 bits so the</span>
 <span class="cm">   number here is how far over to shift the 2 bit pattern         */</span>
@@ -1207,7 +1207,7 @@ will have to calculate then add</p>
 <span class="cm">/* 30 free */</span>
 </pre></div>
 </div>
-<p>ZONES:  Zones are special.  If there are no zones, the value will be ‘-1’.</p>
+<p>ZONES:  Zones are special.  If there are no zones, the value will be '-1'.</p>
 <p>So entering zones if there are no zones:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">1</span>
 </pre></div>

@@ -19,11 +19,11 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
             <title>Considerations to locking down restrictions in RhostMUSH</title>
             <paragraph>Sometimes, you want to have things run at various privilage levels and do not
                 want to have things with too much access.  Weither that is online objects or
-                players you want to block from connecting to your mush.  Here’s things you can
+                players you want to block from connecting to your mush.  Here's things you can
                 do.</paragraph>
             <paragraph>One thing to keep in mind is that RhostMUSH, unlike PennMUSH is not flag
-                dependant on permission level, it’s ownership based.  While setting a wizard
-                flag on an object would work, it’s not recommended and it is instead recommended
+                dependant on permission level, it's ownership based.  While setting a wizard
+                flag on an object would work, it's not recommended and it is instead recommended
                 to chown the object in question to a wizard (like your wizard holder character)
                 Then the object must be set inherit to actually inherit the wizard.</paragraph>
             <definition_list>
@@ -37,7 +37,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
             <section ids="online-blocking-object-abilities" names="online:\ blocking\ object\ abilities">
                 <title>Online: Blocking object abilities</title>
                 <paragraph>We have various flag levels.  It is strongly recommanded you check wizhelp
-                    on ‘control’ for a detailed overview of what each bitlevel can or can not do
+                    on 'control' for a detailed overview of what each bitlevel can or can not do
                     prior to giving the ownership to the object.  Things useful for tweaking control
                     on players and objects:</paragraph>
                 <section ids="flags-access-with-set" names="flags\ (access\ with\ @set)">
@@ -74,7 +74,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                     Sitelocks: (@admin)     : forbid_host, forbid_site, register_host, register_site, noguest_host, noguest_site
                     Sitelock by player      : @badsite, @goodsite, NO_CONNECT (flag)
                     Monitoring player       : SUSPECT (flag), @snoop
-                    TOR/Proxy blocking:     : @blacklist (see shell’s tor_pull.sh), @admin proxy_checker (see wizhelp), @tor (see wizhelp)</paragraph>
+                    TOR/Proxy blocking:     : @blacklist (see shell's tor_pull.sh), @admin proxy_checker (see wizhelp), @tor (see wizhelp)</paragraph>
             </section>
         </section>
         <section ids="extended-lockdown-of-the-mush-and-considerations" names="extended\ lockdown\ of\ the\ mush\ and\ considerations">
@@ -85,9 +85,9 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
             <section ids="attribute-restriction" names="attribute\ restriction">
                 <title>Attribute Restriction</title>
                 <block_quote>
-                    <paragraph>@attribute – Used for user-defined attributes
-                        @admin attr_access – used for built in attributes (like desc)
-                        @aflags – Used to set up lovely delicious attribute permission masks</paragraph>
+                    <paragraph>@attribute -- Used for user-defined attributes
+                        @admin attr_access -- used for built in attributes (like desc)
+                        @aflags -- Used to set up lovely delicious attribute permission masks</paragraph>
                 </block_quote>
             </section>
             <section ids="command-restriction" names="command\ restriction">
@@ -112,8 +112,8 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
             <section ids="function-restrictions" names="function\ restrictions">
                 <title>Function Restrictions</title>
                 <block_quote>
-                    <paragraph>@function/@lfunction – Allows softcoded functions that you can optionally lock down at your leasure
-                        @admin function_access – You can use this even on softcoded functions if you so desired.</paragraph>
+                    <paragraph>@function/@lfunction -- Allows softcoded functions that you can optionally lock down at your leasure
+                        @admin function_access -- You can use this even on softcoded functions if you so desired.</paragraph>
                 </block_quote>
             </section>
             <section ids="rhostmush-flags-and-descriptions" names="rhostmush\ flags\ and\ descriptions">
@@ -311,8 +311,8 @@ nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site</
         <section ids="methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so" names="methods\ to\ block\ anonymous\ connections\ and\ the\ pros\ and\ cons\ of\ doing\ so">
             <title>Methods to block anonymous connections and the pros and cons of doing so</title>
             <block_quote>
-                <paragraph>Now let’s assume you have some troll attempting to use proxies to connect.
-                    There’s multiple ways to stop this.</paragraph>
+                <paragraph>Now let's assume you have some troll attempting to use proxies to connect.
+                    There's multiple ways to stop this.</paragraph>
             </block_quote>
             <section ids="blacklisting-through-external-tor-pull-sh-script" names="blacklisting\ through\ external\ tor_pull.sh\ script">
                 <title>Blacklisting through external tor_pull.sh script</title>
@@ -320,7 +320,7 @@ nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site</
                     <paragraph>In ~/Rhost/Server/game you will see a script called tor_pull.sh
                         Execute this by running (from the game directory) ./tor_pull.sh
                         This populates the blacklist with registered proxies from various sites
-                        on the internet.  If you want specified ip’s added, feel free to add
+                        on the internet.  If you want specified ip's added, feel free to add
                         them at the end of this file.</paragraph>
                 </block_quote>
             </section>
@@ -335,8 +335,8 @@ nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site</
             <section ids="blacklisting-through-internal-tor-command" names="blacklisting\ through\ internal\ @tor\ command">
                 <title>Blacklisting through internal @tor command</title>
                 <block_quote>
-                    <paragraph>@tor.  Please see ‘wizhelp tor’ on how to set this up.  It in effect
-                        will actively block all known exit nodes for TOR’s annonymous proxy
+                    <paragraph>@tor.  Please see 'wizhelp tor' on how to set this up.  It in effect
+                        will actively block all known exit nodes for TOR's annonymous proxy
                         service.  It self-updates and will actively block TOR connections.</paragraph>
                 </block_quote>
             </section>
@@ -350,7 +350,7 @@ nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site</
                         briged network connect with things like cloud services, docker, or
                         similar encapsulated network services.  However, this option has
                         several settings from just monitoring/alerting of possible proxies
-                        to downright forbidding them.  If you’re being actively attacked,
+                        to downright forbidding them.  If you're being actively attacked,
                         it may be worth considering adding this to add additional protection.</paragraph>
                 </block_quote>
             </section>
@@ -371,7 +371,7 @@ nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site</
                                 <block_quote>
                                     <enumerated_list enumtype="arabic" prefix="" suffix=".">
                                         <list_item>
-                                            <paragraph>SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the ‘#’ character is allowable.  You may use up to 30 characters.</paragraph>
+                                            <paragraph>SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the '#' character is allowable.  You may use up to 30 characters.</paragraph>
                                         </list_item>
                                         <list_item>
                                             <paragraph>Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address.</paragraph>
@@ -387,7 +387,7 @@ nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site</
                                             <paragraph>This is optional.</paragraph>
                                         </list_item>
                                         <list_item>
-                                            <paragraph>If you do not specify it it defaults to ‘localhost 127.0.0.1’.  If your domain has a unique name like ‘localhost.localdomain’ like some ubuntu distributions, then you should customize your stunnel_host.</paragraph>
+                                            <paragraph>If you do not specify it it defaults to 'localhost 127.0.0.1'.  If your domain has a unique name like 'localhost.localdomain' like some ubuntu distributions, then you should customize your stunnel_host.</paragraph>
                                         </list_item>
                                     </enumerated_list>
                                 </block_quote>
@@ -428,7 +428,7 @@ nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site</
                 </note>
                 <section ids="stunnel-directory" names="stunnel\ directory">
                     <title>stunnel directory</title>
-                    <paragraph>You would set up the stunnel from the ‘stunnel’ directory.  There the following
+                    <paragraph>You would set up the stunnel from the 'stunnel' directory.  There the following
                         files are of relevance:</paragraph>
                     <literal_block force="False" language="default" linenos="False" xml:space="preserve">README                     -- a readme explaining the points of stunnel
 stunnel.conf.example       -- The example stunnel.conf file.  If you wish to create this manually you're welcome to.  Just make sure the end file is stunnel.conf
@@ -443,17 +443,17 @@ stunnel_src                -- If you do not have stunnel, this directory will al
                     <paragraph>To be able to utilize SSL, you first must set your netrhost.conf file with
                         the relevant information to enable SSL connectiions.  These three config
                         options must be set to be able to use SSL, however, sconnect_host if
-                        not set will default to ‘localhost 127.0.0.1’.</paragraph>
+                        not set will default to 'localhost 127.0.0.1'.</paragraph>
                     <literal_block force="False" language="default" linenos="False" xml:space="preserve">sconnect_reip 1         -- This enables the SSL tunnel layer handler within rhost.
 sconnect_cmd XYZZY      -- this will set the secret SSL command handshake command to XYZZY.  This is case sensitive and can be up to 31 characters.  Please make sure to only use printable non-whitespace characters.  Ergo: one word
 sconnect_host wildcards -- This allows wildcarded sites (one or more) to allow to access the sconnect/stunnel handler.  This defaults to 'localhost' and '127.0.0.1' so if you have 'localhost.localdomain' instead then you must set this to whatever is seen as 'localhost' to you.  You can verify this by checking your /etc/hosts file.</literal_block>
                     <note>
-                        <paragraph>the sconnect_host is optional.  If you do not specify it, it will default to two values:  ‘localhost’ and ‘127.0.0.1’.</paragraph>
+                        <paragraph>the sconnect_host is optional.  If you do not specify it, it will default to two values:  'localhost' and '127.0.0.1'.</paragraph>
                     </note>
                 </section>
                 <section ids="running-the-stunnel-setup-program" names="running\ the\ stunnel\ setup\ program">
                     <title>Running the stunnel setup program</title>
-                    <paragraph>At this point you’re ready to run the stunnel setup program.  So at this point type the following:</paragraph>
+                    <paragraph>At this point you're ready to run the stunnel setup program.  So at this point type the following:</paragraph>
                     <literal_block force="False" language="default" linenos="False" xml:space="preserve">./stunnel_setup.sh</literal_block>
                     <paragraph>This will prompt you through settings.  Most you can select the defaults to.
                         The SSL port you may need to change based on your administrative requirements.

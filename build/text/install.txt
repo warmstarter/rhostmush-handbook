@@ -74,7 +74,7 @@ Table of Contents
 
   * Option 2: Creating a new game with the generic default database
 
-  * Option 3: Creating a new game with Ambrosia’s default database
+  * Option 3: Creating a new game with Ambrosia's default database
 
 
 1.1. RhostMUSH Requirements
@@ -112,7 +112,7 @@ Note:
 
 RhostMUSH is a Linux or Unix based server software that runs as a
 daemon on the host. In order to build this software, you will need the
-bare minimum of the ability to run ‘make’ commands.
+bare minimum of the ability to run 'make' commands.
 
 Package requirements are as follows:
 
@@ -170,11 +170,11 @@ Optional packages are as follows:
 ====================================
 
 The only official source for obtaining RhostMUSH is through the
-‘RhostMUSH’ github account. If the source code was obtained in some
+'RhostMUSH' github account. If the source code was obtained in some
 other manner, there are potentially any number of unintentional or
 intentional issues that you might run into.
 
-The recommended method of obtaing RhostMUSH is to clone it’s git
+The recommended method of obtaing RhostMUSH is to clone it's git
 reposistory:
 
    git clone https://github.com/RhostMUSH/trunk Rhost
@@ -187,10 +187,10 @@ browser:
 Note:
 
   This documentation generally assumes that you obtained the RhostMUSH
-  source code by cloning it’s git repository or at the very least
+  source code by cloning it's git repository or at the very least
   downloading an archive of the source code from the GitHub website.It
   also assumes that the base directory from which all commands are run
-  and all files are looked for is that git repo’s "Server/" directory,
+  and all files are looked for is that git repo's "Server/" directory,
   unless specifically noted otherwise.
 
 
@@ -201,11 +201,11 @@ There is a *lot* of options once your start making your MUSH, but
 there are also a few big choices right as you get started making a
 MUSH. No matter which choices you ultimately make, there are certain
 things you will need to know how to do. This chapter is going to walk
-you through making the simplest possible version of RhostMUSH. It’s
+you through making the simplest possible version of RhostMUSH. It's
 going to show you the things you would have to do no matter which
 choices you were making.
 
-In the process of making that simplest possible RhostMUSH you’ll also
+In the process of making that simplest possible RhostMUSH you'll also
 learn what the basics of those choices are and when and how you would
 make them. Later chapters will get much more into all of those
 choices, but they will also assume you know everything in this chapter
@@ -219,14 +219,14 @@ where you make those choices.
 ---------------------------
 
 One of the first steps of making a MUSH or really any computer program
-is to compile the source code. This takes what’s basically text files
+is to compile the source code. This takes what's basically text files
 full of code and turns them into a program you can run. Within that
 source code are a number of options to choose from, but any time you
 want to change one of them, you have to recompile the source code and
 then restart the MUSH.
 
 These choices are typically made through the "confsource" menu which
-you’ll be seeing momentarily. There are some pretty big choices here
+you'll be seeing momentarily. There are some pretty big choices here
 from whether or not you want hardcoded +help and comsys, deciding
 between a more secure server and certtain powerful but potentially
 dangerous MUSHcode options, and then whether or not you want to be
@@ -241,22 +241,22 @@ While there are some options in RhostMUSH that can only be changed
 through recompiling the source code, there are way more options that
 can be changed without having to recompile. These choices are mostly
 made through the "netrhost.conf" file. Whenever a MUSH starts up or
-gets rebooted, it’s going to look to what’s in that file. A few of
+gets rebooted, it's going to look to what's in that file. A few of
 those choices relate to further configuring the choices you made with
 "confsource"
 
 The "netrhost.conf" file has some aesthetic options like what if
 anything it says when the database is being saved or whether or not
 your MUSH will allow ANSI color, both in general, but also in things
-like people’s names. It has a lot of very esoteric options for tuning
+like people's names. It has a lot of very esoteric options for tuning
 the performance and safety of your MUSH. It also is where you define
 things that connect to your database like your master room and guests.
-It let’s you determine which powers your staff does or does not have,
-and it’s also where you have an option to change the password for #1
+It let's you determine which powers your staff does or does not have,
+and it's also where you have an option to change the password for #1
 should you forget it. There are ways to change some of these options
 from within the MUSH and even have those changes become new defaults
 that survive a reboot. One thing you set there that you definitely
-can’t change from within the MUSH, is which port it runs on.
+can't change from within the MUSH, is which port it runs on.
 
 
 1.3.3. Starting database options
@@ -265,27 +265,27 @@ can’t change from within the MUSH, is which port it runs on.
 This last big choice is one that you probably are well aware of at
 least some of the things it allows for, mostly because the database is
 basically where everyone on a MUSH lives. Most of the choices you ever
-make about your MUSH will happen in the database and it’s something
-that’s basically always going to be changing in more ways than any one
+make about your MUSH will happen in the database and it's something
+that's basically always going to be changing in more ways than any one
 person could follow. No matter how vast the database of a MUSH gets,
-they all started somewhere, and that’s the last big choice you have to
+they all started somewhere, and that's the last big choice you have to
 make.
 
-Depending on how you look at it, there’s somewhere between thousands
+Depending on how you look at it, there's somewhere between thousands
 of choices and two choices for a starting database. What I mean is
 that you have the choice of starting with a brand new database to
 populate, only a room (#0) and you (#1), even the Master Room is
-something you’d have to add to it. The other option is to import an
-existing database, though to choose that option you’d also have to
+something you'd have to add to it. The other option is to import an
+existing database, though to choose that option you'd also have to
 have access to an existing database.
 
 Besides the brand new database that can be made on-demand, RhostMUSH
 comes with two databases that you can use to get your start. One is
-called ‘Minimal’ and the other is called ‘Ambrosia’ after the lead
-RhostMUSH developed that made it. Despite the name, they’re both
-fairly minimal, there’s no grid in either, but what you get is a lot
+called 'Minimal' and the other is called 'Ambrosia' after the lead
+RhostMUSH developed that made it. Despite the name, they're both
+fairly minimal, there's no grid in either, but what you get is a lot
 of pre-installed softcode and security, as well as a "netrhost.conf`"
-file that has been tuned to work well with it. Even if you don’t use
+file that has been tuned to work well with it. Even if you don't use
 those databases you can take ideas for the "netrhost.conf" file for
 tuning your MUSH or even use some RhostMUSH commands to import that
 softcode into your database.
@@ -294,9 +294,9 @@ softcode into your database.
 1.3.4. The Choices We Make
 --------------------------
 
-Well, not you’re aware of those three big choices, what they are, and
-where you’ll run across them. Later in this Handbook we’ll be going
-through those choices in-depth. In this chapter, what we’ll be doing
+Well, not you're aware of those three big choices, what they are, and
+where you'll run across them. Later in this Handbook we'll be going
+through those choices in-depth. In this chapter, what we'll be doing
 is using the default options for for "confsource" and "netrhost.conf"
 and a brand new database. Those options and that blank slate are
 necessary so that you have in front of you a working MUSH with only #0
@@ -304,18 +304,18 @@ and #1 and get shown the way of building it into whatever is your
 dream MUSH, and I know we all have one.
 
 There will be a chance to make all those other choices later, in fact
-that will be happening very soon. There’s a lot of very interesting
+that will be happening very soon. There's a lot of very interesting
 choices that you can make with RhostMUSH, too many for anyone to ever
-be able to use them all. If you don’t start with mastering the basics,
-you’ll never end up knowing what are the most RhostMUSH options. I
-can’t tell you what they are, it’s truly something you have to
+be able to use them all. If you don't start with mastering the basics,
+you'll never end up knowing what are the most RhostMUSH options. I
+can't tell you what they are, it's truly something you have to
 discover on your own. Remember, you want to build your dream MUSH, not
 mine.
 
 Note:
 
   Unless you are intending to start with a brand new database, you
-  must be aware of it’s needs and expectations for the settings of
+  must be aware of it's needs and expectations for the settings of
   "confsource" and "netrhost.conf" Starter databases tend to
   distribute with them config files of at least the options they
   expect set or not set during the process of configuring and
@@ -339,8 +339,8 @@ not required, but there is no harm in running it anyway:
    ./dirsetup.sh
 
 If you did NOT obtain the source code directly from GitHub, it is
-possible that even the above script will fail to run with ‘permission
-denied’ or similar errors. It is recommended that you obtain the
+possible that even the above script will fail to run with 'permission
+denied' or similar errors. It is recommended that you obtain the
 source code from there, but if for whatever reason this is not an
 option, manually adjust your permissions and then re-run the automated
 permission script:
@@ -412,7 +412,7 @@ confsource"
 A failure to issue "make clean" prior to re-compiling with "make
 confsource" can potentially leave stale object files which may cause
 unforseen issues when running code, including but not limited to
-random crashes.  Generally whenever recompiling it’s good to always
+random crashes.  Generally whenever recompiling it's good to always
 make clean first.
 
 Note:
@@ -430,7 +430,7 @@ Note:
 1.5.1. Persistent configurable game options
 -------------------------------------------
 
-Upon compiling a RhostMUSH server, if it doesn’t already exist, a
+Upon compiling a RhostMUSH server, if it doesn't already exist, a
 "netrhost.conf" is copied into the "game/" directory for your game. It
 includes useful defaults for most compile-time options that will work
 well for most games, particularly ones using both the default
@@ -441,7 +441,7 @@ This configuration is derived from
 
 While this "netrhost.conf" is very well documented and quite easy to
 change in some places, but there are also some rather technical
-options that you it’s important to know the full implications of this.
+options that you it's important to know the full implications of this.
 
 Note:
 
@@ -459,7 +459,7 @@ Once done, you start up the system with the following command:
 
    ./Startmush
 
-It will prompt you to start a new db if it doesn’t find one.
+It will prompt you to start a new db if it doesn't find one.
 
 You may also do the commands individually:
 
@@ -470,8 +470,8 @@ You may also do the commands individually:
 1.5.3. First login to the game
 ------------------------------
 
-Once started, log in the #1 character (Wizard) with it’s appropiate
-password (no, not ‘potrzebie’, but ‘Nyctasia’).  There were private
+Once started, log in the #1 character (Wizard) with it's appropiate
+password (no, not 'potrzebie', but 'Nyctasia').  There were private
 reasons for the password change.
 
 Once in, do a @shutdown to save the database.  Then you can run
@@ -495,12 +495,12 @@ The main parts of making your RhostMUSH, easy pleasy:
    README file explains how to set up and configure your TLS/SSL
    connection.
 
-2. ./patch.sh – This makes sure you have the latest code.  If you got
+2. ./patch.sh -- This makes sure you have the latest code.  If you got
    this by git clone https://github.com/RhostMUSH/trunk then you can
    ignore patching.  You can use ./patch.sh at any time to update your
    code.  It ignores local.c incase you make your own modules.
 
-3. make confsource.  Yup, it’s menu driven, nifty eh?
+3. make confsource.  Yup, it's menu driven, nifty eh?
 
    1. Options you may want to select (other than the defaults):
 
@@ -511,7 +511,7 @@ The main parts of making your RhostMUSH, easy pleasy:
 
    4. 16 (if you want a wider WHO listing like older versions of MUX)
 
-   5. 22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
+   5. 22 (if you're converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)
 
    6. 24 (if you have issues with -lssl not being found)
 
@@ -525,7 +525,7 @@ The main parts of making your RhostMUSH, easy pleasy:
 
    10. B4 (if you have sqlite libraries and wish to use this)
 
-4. ‘r’ to compile with the settings you selected.
+4. 'r' to compile with the settings you selected.
 
 5. Modify your netrhost.conf file as specified.  Make sure to align
    your port and debug_id as shown in the netrhost.conf file.
@@ -546,7 +546,7 @@ with the command:
 
    ./minimal.sh
 
-This is ran from within the ‘game’ directory.  Once this is ran, you
+This is ran from within the 'game' directory.  Once this is ran, you
 will need to customize the netrhost.conf file for your purposes.  The
 port and debug_id must be changed at the very least.  Keep the
 debug_id coordinated to the port as described.
@@ -564,10 +564,10 @@ debug_id coordinated to the port as described.
       cp -f ./minimal-DBs/minimal_db/netrhost.conf ./game/netrhost.conf
 
 3. At this point you can modify your netrhost.conf file settings in
-   your game directory. Using an editor modify the ‘port’ and
-   ‘debug_id’ respectively in your netrhost.conf as state. The ‘port’
+   your game directory. Using an editor modify the 'port' and
+   'debug_id' respectively in your netrhost.conf as state. The 'port'
    will be the port the mush listens on, the debug_id is for the
-   debug-stack and is your port with a ‘5’ at the end.  So if your
+   debug-stack and is your port with a '5' at the end.  So if your
    port is 4444, the debug_id is 44445
 
 4. Load in the flatfile into the mush (You could do this in the
@@ -584,7 +584,7 @@ debug_id coordinated to the port as described.
 
    This will load the db that you loaded.
 
-   —————OR——-
+   ---------------OR-------
 
    From Startmush when prompted, hit <RETURN> for searching then
    select the number of the netrhost.db.flat that is listed as
@@ -619,10 +619,10 @@ You need the following definitions defined to make this work:
 You only need to do this if you received the RhostMUSH src.  If you
 received a binary, continue on to the next part.
 
-To compile the code, just type ‘make confsource’.  It will prompt you
+To compile the code, just type 'make confsource'.  It will prompt you
 with settings on what you need to do.  If you just want to quickly
 hand edit the Makefile, it is in the directory src (full path
-src/Makefile).  Then you may just run ‘make source’, if you so choose
+src/Makefile).  Then you may just run 'make source', if you so choose
 to hand-edit the Makefile.
 
 After the compile process is done, type:
@@ -693,7 +693,7 @@ two sentences right after each other.
 All connect.txt and customized files can be found in the
 ~/Server/game/txt directory.  There is a README file there that
 explains their purposes in more detail.  You can see more information
-on all files and how they inter-relate with ‘wizhelp file’.
+on all files and how they inter-relate with 'wizhelp file'.
 
 
 1.9. Three Options for Starting a MUSH
@@ -702,15 +702,15 @@ on all files and how they inter-relate with ‘wizhelp file’.
 The RhostMUSH Git Repository comes with three options for starting
 your Mush.
 
-Todo: Well, there’s also some other pre-existing DB, upgrading, and
-ansible so let’s try to make this a little more coherent.
+Todo: Well, there's also some other pre-existing DB, upgrading, and
+ansible so let's try to make this a little more coherent.
 
 
 1.9.1. Option 1: Creating a new game with a blank database
 ----------------------------------------------------------
 
-Modify your ./game/netrhost.conf file or what settings you want. Don’t
-feel overwhelmed, it’s all very well documented.
+Modify your ./game/netrhost.conf file or what settings you want. Don't
+feel overwhelmed, it's all very well documented.
 
 
 1.9.2. Option 2: Creating a new game with the generic default database
@@ -719,12 +719,12 @@ feel overwhelmed, it’s all very well documented.
 Copy the netrhost.conf from minimal-DBs/minimal_db to your game
 directory.
 
-When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit
+When ./Startmush prompts you to load a flatfile, say 'yes' and hit
 <RETURN> to have it search for flatfiles, then select netrhost.db.flat
 from under the minimal-DBs/minimal_db directory.
 
 
-1.9.3. Option 3: Creating a new game with Ambrosia’s default database
+1.9.3. Option 3: Creating a new game with Ambrosia's default database
 ---------------------------------------------------------------------
 
-This option is covered in detail here: Ambrosia’s Minimal Rhost DB
+This option is covered in detail here: Ambrosia's Minimal Rhost DB

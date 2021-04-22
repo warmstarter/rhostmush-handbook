@@ -23,10 +23,10 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
             <section ids="downgrading-qdbm-to-gdbm" names="downgrading\ qdbm\ to\ gdbm">
                 <title>Downgrading QDBM to GDBM</title>
                 <warning>
-                    <paragraph>I would NEVER change from QDBM back to GDBM, but if you’re set on it these steps:</paragraph>
+                    <paragraph>I would NEVER change from QDBM back to GDBM, but if you're set on it these steps:</paragraph>
                     <paragraph>You would use the same steps if you plan to move QDBM to GDBM.  I however would
                         not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously,
-                        don’t do it unless you have absolutely no other recourse.</paragraph>
+                        don't do it unless you have absolutely no other recourse.</paragraph>
                     <paragraph>IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify
                         the following</paragraph>
                 </warning>
@@ -47,24 +47,24 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
             </section>
             <section ids="upgradging-gdbm-to-qdbm" names="upgradging\ gdbm\ to\ qdbm">
                 <title>Upgradging GDBM to QDBM</title>
-                <paragraph>Now, if you’ve kept reading and plan to convert your GDBM database to QDBM great news!
-                    It’s more stable, it’s faster, and lets you have far more flexibility.</paragraph>
+                <paragraph>Now, if you've kept reading and plan to convert your GDBM database to QDBM great news!
+                    It's more stable, it's faster, and lets you have far more flexibility.</paragraph>
                 <paragraph>So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.</paragraph>
                 <section ids="while-logged-in-to-your-mush-issue-the-following-commands" names="while\ logged\ in\ to\ your\ mush,\ issue\ the\ following\ commands">
                     <title>While logged in to your mush, issue the following commands</title>
                     <block_quote>
                         <enumerated_list enumtype="upperalpha" prefix="" suffix=".">
                             <list_item>
-                                <paragraph>@dump/flat    – This will make a flatfile dump of your MUSH database</paragraph>
+                                <paragraph>@dump/flat    -- This will make a flatfile dump of your MUSH database</paragraph>
                             </list_item>
                             <list_item>
-                                <paragraph>wmail/unload  – This will make a flatfile dump of your MAIL database</paragraph>
+                                <paragraph>wmail/unload  -- This will make a flatfile dump of your MAIL database</paragraph>
                             </list_item>
                             <list_item>
-                                <paragraph>@areg/unload  – If you use the AutoRegistration engine, this dumps it</paragraph>
+                                <paragraph>@areg/unload  -- If you use the AutoRegistration engine, this dumps it</paragraph>
                             </list_item>
                             <list_item>
-                                <paragraph>newsdb/unload – If you use the hardcoded news/bbs engine.  This dumps it</paragraph>
+                                <paragraph>newsdb/unload -- If you use the hardcoded news/bbs engine.  This dumps it</paragraph>
                             </list_item>
                         </enumerated_list>
                     </block_quote>
@@ -189,17 +189,17 @@ RhostMUSH.news.pag</literal_block>
         <section ids="updating-rhostmush-prior-to-3-9-5p2" names="updating\ rhostmush\ prior\ to\ 3.9.5p2">
             <title>Updating RhostMUSH prior to 3.9.5p2</title>
             <paragraph>Ok.</paragraph>
-            <paragraph>So you’re running an old RhostMUSH.</paragraph>
+            <paragraph>So you're running an old RhostMUSH.</paragraph>
             <paragraph>One prior to 3.9.5p2 and want to take advantage of the new
                 format of the Makefile and the automated mysql stuff and
-                all the other goodies that isn’t really (easilly) done
+                all the other goodies that isn't really (easilly) done
                 with just patch.sh.</paragraph>
-            <paragraph>Well, you’re in luck.  It is actually fairly easy to do.</paragraph>
+            <paragraph>Well, you're in luck.  It is actually fairly easy to do.</paragraph>
             <paragraph>This is what you have to do.</paragraph>
-            <paragraph>First thing’s first.</paragraph>
+            <paragraph>First thing's first.</paragraph>
             <enumerated_list enumtype="arabic" prefix="" suffix=".">
                 <list_item>
-                    <paragraph>Log into your existing mush.  Let’s make current backups
+                    <paragraph>Log into your existing mush.  Let's make current backups
                         of all your flatfiles.  Issue:</paragraph>
                     <literal_block force="False" language="default" linenos="False" xml:space="preserve">@dump/flat
 wmail/unload
@@ -216,11 +216,11 @@ newsdb/unload</literal_block>
                 </list_item>
             </enumerated_list>
             <note>
-                <paragraph>Please remember the ‘-s’ to the ./backup_flat.sh.</paragraph>
+                <paragraph>Please remember the '-s' to the ./backup_flat.sh.</paragraph>
             </note>
             <enumerated_list enumtype="arabic" prefix="" start="4" suffix=".">
                 <list_item>
-                    <paragraph>Make note of the most recently created file in the directory Server/game/oldflat.  It’s usually named something like:</paragraph>
+                    <paragraph>Make note of the most recently created file in the directory Server/game/oldflat.  It's usually named something like:</paragraph>
                     <literal_block force="False" language="default" linenos="False" xml:space="preserve">RhostMUSH.dbflat1.tar.gz</literal_block>
                 </list_item>
             </enumerated_list>
@@ -229,7 +229,7 @@ newsdb/unload</literal_block>
             </note>
             <enumerated_list enumtype="arabic" prefix="" start="5" suffix=".">
                 <list_item>
-                    <paragraph>Rename your ‘Rhost’ directory to something else.  This is the directory that you have containing the ‘Server’ directory.  Name it anything you want other than ‘Rhost’.  For those not used to unix you would type:</paragraph>
+                    <paragraph>Rename your 'Rhost' directory to something else.  This is the directory that you have containing the 'Server' directory.  Name it anything you want other than 'Rhost'.  For those not used to unix you would type:</paragraph>
                     <literal_block force="False" language="default" linenos="False" xml:space="preserve">mv Rhost Rhost_old</literal_block>
                 </list_item>
                 <list_item>
@@ -238,16 +238,16 @@ newsdb/unload</literal_block>
                 </list_item>
             </enumerated_list>
             <note>
-                <paragraph>You would type this in the same directory you have renamed your old ‘Rhost’ directory</paragraph>
+                <paragraph>You would type this in the same directory you have renamed your old 'Rhost' directory</paragraph>
             </note>
             <enumerated_list enumtype="arabic" prefix="" start="7" suffix=".">
                 <list_item>
                     <paragraph>go into the Rhost/Server directory.   Type:</paragraph>
                     <literal_block force="False" language="default" linenos="False" xml:space="preserve">make confsource</literal_block>
-                    <paragraph>Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it’s the ‘r’ option).</paragraph>
+                    <paragraph>Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it's the 'r' option).</paragraph>
                 </list_item>
                 <list_item>
-                    <paragraph>Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the ‘game’ directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!</paragraph>
+                    <paragraph>Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the 'game' directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!</paragraph>
                 </list_item>
             </enumerated_list>
             <block_quote>
@@ -262,7 +262,7 @@ newsdb/unload</literal_block>
                         <paragraph>tar -zxvf RhostMUSH.dbflat1.tar.gz</paragraph>
                     </list_item>
                     <list_item>
-                        <paragraph>Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don’t port or other stuff you have already customized).</paragraph>
+                        <paragraph>Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don't port or other stuff you have already customized).</paragraph>
                     </list_item>
                     <list_item>
                         <paragraph>Load in your flatfile information:</paragraph>
@@ -303,7 +303,7 @@ newsdb/unload</literal_block>
             <title>Adding MySQL to RhostMUSH older than 3.9.5p2</title>
             <paragraph>MySQL is now native in RhostMUSH as of 3.9.5p2.</paragraph>
             <warning>
-                <paragraph>To autodetect it, YOU MUST HAVE mysql_config installed and running on your server.  Without this, even if you have mysql db installed it won’t be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql_config.</paragraph>
+                <paragraph>To autodetect it, YOU MUST HAVE mysql_config installed and running on your server.  Without this, even if you have mysql db installed it won't be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql_config.</paragraph>
             </warning>
             <paragraph>Download the git repository to a seperate directory so that you can
                 copy over the files that it requires you to.</paragraph>
@@ -321,8 +321,8 @@ newsdb/unload</literal_block>
                         ( cp ~/tmprho/Server/bin/asksource.* ~/Rhost/Server/bin/ )</paragraph>
                 </list_item>
                 <list_item>
-                    <paragraph>append ‘include rhost_mysql.conf’ BEFORE the rhost_ingame.conf file
-                        and before the section that says ‘define local aliases’ toward the end of
+                    <paragraph>append 'include rhost_mysql.conf' BEFORE the rhost_ingame.conf file
+                        and before the section that says 'define local aliases' toward the end of
                         your netrhost.conf file.
                         ( edit your ~/Rhost/Server/game/netrhost.conf file )</paragraph>
                 </list_item>
@@ -373,7 +373,7 @@ void local_shutdown(void) {
 }</literal_block>
             <enumerated_list enumtype="arabic" prefix="" start="6" suffix=".">
                 <list_item>
-                    <paragraph>Issue ‘make clean’ then make confsource to rebuild using the latest
+                    <paragraph>Issue 'make clean' then make confsource to rebuild using the latest
                         builder script to build in the mysql changes.</paragraph>
                 </list_item>
             </enumerated_list>

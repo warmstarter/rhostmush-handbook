@@ -1,4 +1,4 @@
-6. Ambrosia’s Minimal Rhost DB
+6. Ambrosia's Minimal Rhost DB
 ******************************
 
 Version: 1.0.5          2020-01-31
@@ -40,24 +40,24 @@ Version: 1.0.5          2020-01-31
       * Lowered mailstatus() access to architect.
 
    1.0.4
-      * Changed softcoded objid() to tag(), due to Rhost’s new
+      * Changed softcoded objid() to tag(), due to Rhost's new
         hardcoded objid() which does perform a different
         functionality.
 
       * Added more staff recommendations to this file.
 
-      * Added Reality TXLevel ‘Admin’ to all objects in the db except
+      * Added Reality TXLevel 'Admin' to all objects in the db except
         #1
 
    1.0.5
-      * Replaced softcoded tag() system with Rhost’s new hardcoded
+      * Replaced softcoded tag() system with Rhost's new hardcoded
         @tag/tag() system. All previous tags are set on the database.
         The Tag Object was removed.
 
       * @function startup on BC-Admin-Royalty fixed - @wait 1
         workaround for Tags in place.
 
-      * Places System @startup integrated into BC-Admin-Royalty’s
+      * Places System @startup integrated into BC-Admin-Royalty's
         @startup
 
       * Made @dump and @dump/flat available to Councilors in
@@ -119,15 +119,15 @@ to start a new game off in mind.
 
 * Misc Data object to hold general data, like Staff lists etc.
 
-* Reality levels ‘Real’ and ‘Admin’.
+* Reality levels 'Real' and 'Admin'.
 
 Note:
 
-  All created items and players by default are in Recieve-Level ‘Real’
-  and Transmit-Levels ‘Real’ and ‘Admin’.
+  All created items and players by default are in Recieve-Level 'Real'
+  and Transmit-Levels 'Real' and 'Admin'.
 
 * All globals, Master Room, BCs-*, and other staff/code-related
-  objects currently have only ‘Admin’ as their Transmit-Level. This
+  objects currently have only 'Admin' as their Transmit-Level. This
   does not prevent them fromi working properly. The only exception is
   #1, who has empty reality levels.
 
@@ -139,7 +139,7 @@ Note:
 Note:
 
   IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
-  The ‘Port’ configuration parameter is XXXX’d out. Set it first
+  The 'Port' configuration parameter is XXXX'd out. Set it first
   before starting your game.
 
 * All existing objects have been @set SAFE and INDESTRUCTABLE.
@@ -202,11 +202,11 @@ Note:
 6.3.3. AmbrosiaDB Functions
 ---------------------------
 
-* isstaff() - Softcoded function that returns ‘1’ if its argument
-  matches a #dbref in the ‘isstaff’ attribute on the Misc Data object.
+* isstaff() - Softcoded function that returns '1' if its argument
+  matches a #dbref in the 'isstaff' attribute on the Misc Data object.
 
-* bccheck() - Softcoded function that returns ‘1’ if its argument
-  matches a #dbref in the ‘bcs’ attribute on the Misc Data object.
+* bccheck() - Softcoded function that returns '1' if its argument
+  matches a #dbref in the 'bcs' attribute on the Misc Data object.
 
 * width() - Softcoded function that returns 78 for now. For cross-MU*
   compatibility.
@@ -216,7 +216,7 @@ Note:
   random passwords.
 
 * cmdmessage() - Softcoded function that takes two strings as its
-  parameters. Returns ‘<< STRING1 >> String2’. The <<>> part is
+  parameters. Returns '<< STRING1 >> String2'. The <<>> part is
   highlighted red. Good for all kinds of messages sent by game
   commands.
 
@@ -239,8 +239,8 @@ Note:
 
 Note:
 
-  ALL of header()’s parameters are optional. By default, header()
-  simply draws a 78-char wide line of =’s. Simply leave parameters
+  ALL of header()'s parameters are optional. By default, header()
+  simply draws a 78-char wide line of ='s. Simply leave parameters
   empty if you want to set one of the latter parameters.
 
 
@@ -314,7 +314,7 @@ Give access to a maintenance Councilor bit for special code projects.
 Finished code along those lines should get @chowned to the bc-admin-
 councilor.
 
-If you as the MU* Head(s) don’t know Softcode well, or want to leave
+If you as the MU* Head(s) don't know Softcode well, or want to leave
 anything Code to your Head Coder, also give them optional access to a
 maintenance Royalty bit in order to properly code banning/blacklisting
 +commands and other rare code that requires Royalty powers. Again,
@@ -324,7 +324,7 @@ chown finished code to bc-admin-royalty.
 6.4.7. AmbrosiaDB MU* Head(s)
 -----------------------------
 
-You’re the boss(es). But please use an Architect bit for your everyday
+You're the boss(es). But please use an Architect bit for your everyday
 things. Keep Immortal to yourself. Keep #1 to yourself. And seriously
 avoid using either of them except for creating a Royalty bit or doing
 intricate DB maintenance.
@@ -356,7 +356,7 @@ everything is done right, the Coder(s) of the game do not require
 higher privileges than Architect for the vast majority of things.
 Royalty-level code should be a rare exception, if at all necessary.
 The MU* Head(s) or site-admin should be the only one having access to
-#1, Immortals or perhaps even Royalty. The BC’s, Global Function
+#1, Immortals or perhaps even Royalty. The BC's, Global Function
 objects and Function objects at level Royalty and higher have simply
 been provided as a if-necessary convenience.
 
@@ -407,9 +407,9 @@ Enjoy!
 6.8. AmbrosiaDB Compiling
 =========================
 
-P.S. the ‘bin/asksource.save0’ file has been supplied for loading in
-the ‘make config’ or ‘make confsource’ step of Rhost installation. It
+P.S. the 'bin/asksource.save0' file has been supplied for loading in
+the 'make config' or 'make confsource' step of Rhost installation. It
 provides the settings I have used when creating this database. Some
 settings, like the ANSI substitution, are used in the DB.
 
-–Ambrosia@RhostMUSH
+--Ambrosia@RhostMUSH

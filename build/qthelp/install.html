@@ -84,7 +84,7 @@
 <ul>
 <li><p><a class="reference internal" href="#option-1-creating-a-new-game-with-a-blank-database" id="id41">Option 1: Creating a new game with a blank database</a></p></li>
 <li><p><a class="reference internal" href="#option-2-creating-a-new-game-with-the-generic-default-database" id="id42">Option 2: Creating a new game with the generic default database</a></p></li>
-<li><p><a class="reference internal" href="#option-3-creating-a-new-game-with-ambrosia-s-default-database" id="id43">Option 3: Creating a new game with Ambrosia’s default database</a></p></li>
+<li><p><a class="reference internal" href="#option-3-creating-a-new-game-with-ambrosia-s-default-database" id="id43">Option 3: Creating a new game with Ambrosia's default database</a></p></li>
 </ul>
 </li>
 </ul>
@@ -120,7 +120,7 @@
 <div class="section" id="software-requirements">
 <span id="id4"></span><h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.1.2. </span>Software Requirements</a></h3>
 <p>RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.
-In order to build this software, you will need the bare minimum of the ability to run ‘make’ commands.</p>
+In order to build this software, you will need the bare minimum of the ability to run 'make' commands.</p>
 <p>Package requirements are as follows:</p>
 <ul class="simple">
 <li><p>bash/ksh/dash (or compatible shell - for use with build menu)</p></li>
@@ -159,11 +159,11 @@ but in a worse case scenario, there exists override hashes in the menu to disabl
 </div>
 <div class="section" id="obtaining-rhostmush-source-code">
 <span id="obtaining-rhostmush"></span><h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.2. </span>Obtaining RhostMUSH Source Code</a></h2>
-<p>The only official source for obtaining RhostMUSH is through the ‘RhostMUSH’
+<p>The only official source for obtaining RhostMUSH is through the 'RhostMUSH'
 github account. If the source code was obtained in some other manner, there
 are potentially any number of unintentional or intentional issues that you
 might run into.</p>
-<p>The recommended method of obtaing RhostMUSH is to clone it’s git reposistory:</p>
+<p>The recommended method of obtaing RhostMUSH is to clone it's git reposistory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RhostMUSH</span><span class="o">/</span><span class="n">trunk</span> <span class="n">Rhost</span>
 </pre></div>
 </div>
@@ -174,10 +174,10 @@ might run into.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This documentation generally assumes that you obtained the RhostMUSH source
-code by cloning it’s git repository or at the very least downloading an
+code by cloning it's git repository or at the very least downloading an
 archive of the source code from the GitHub website.</p>
 <p>It also assumes that the base directory from which all commands are run
-and all files are looked for is that git repo’s <code class="docutils literal notranslate"><span class="pre">Server/</span></code> directory,
+and all files are looked for is that git repo's <code class="docutils literal notranslate"><span class="pre">Server/</span></code> directory,
 unless specifically noted otherwise.</p>
 </div>
 </div>
@@ -187,9 +187,9 @@ unless specifically noted otherwise.</p>
 also a few big choices right as you get started making a MUSH. No matter which
 choices you ultimately make, there are certain things you will need to know how
 to do. This chapter is going to walk you through making the simplest possible
-version of RhostMUSH. It’s going to show you the things you would have to do
+version of RhostMUSH. It's going to show you the things you would have to do
 no matter which choices you were making.</p>
-<p>In the process of making that simplest possible RhostMUSH you’ll also learn
+<p>In the process of making that simplest possible RhostMUSH you'll also learn
 what the basics of those choices are and when and how you would make them.
 Later chapters will get much more into all of those choices, but they will also
 assume you know everything in this chapter already, or at least have it as a
@@ -199,11 +199,11 @@ make those choices.</p>
 <div class="section" id="compile-time-options">
 <h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.3.1. </span>Compile time options</a></h3>
 <p>One of the first steps of making a MUSH or really any computer program is
-to compile the source code. This takes what’s basically text files full of code
+to compile the source code. This takes what's basically text files full of code
 and turns them into a program you can run. Within that source code are a
 number of options to choose from, but any time you want to change one of them,
 you have to recompile the source code and then restart the MUSH.</p>
-<p>These choices are typically made through the <code class="docutils literal notranslate"><span class="pre">confsource</span></code> menu which you’ll
+<p>These choices are typically made through the <code class="docutils literal notranslate"><span class="pre">confsource</span></code> menu which you'll
 be seeing momentarily. There are some pretty big choices here from whether or
 not you want hardcoded +help and comsys, deciding between a more secure server
 and certtain powerful but potentially dangerous MUSHcode options, and then
@@ -215,66 +215,66 @@ like databases, webservers, and even other programming languages.</p>
 <p>While there are some options in RhostMUSH that can only be changed through
 recompiling the source code, there are way more options that can be changed
 without having to recompile. These choices are mostly made through the
-<code class="docutils literal notranslate"><span class="pre">netrhost.conf</span></code> file. Whenever a MUSH starts up or gets rebooted, it’s
-going to look to what’s in that file. A few of those choices relate to
+<code class="docutils literal notranslate"><span class="pre">netrhost.conf</span></code> file. Whenever a MUSH starts up or gets rebooted, it's
+going to look to what's in that file. A few of those choices relate to
 further configuring the choices you made with <code class="docutils literal notranslate"><span class="pre">confsource</span></code></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">netrhost.conf</span></code> file has some aesthetic options like what if anything
 it says when the database is being saved or whether or not your MUSH will
-allow ANSI color, both in general, but also in things like people’s names.
+allow ANSI color, both in general, but also in things like people's names.
 It has a lot of very esoteric options for tuning the performance and safety
 of your MUSH. It also is where you define things that connect to your database
-like your master room and guests. It let’s you determine which powers your
-staff does or does not have, and it’s also where you have an option to change
+like your master room and guests. It let's you determine which powers your
+staff does or does not have, and it's also where you have an option to change
 the password for #1 should you forget it. There are ways to change some of
 these options from within the MUSH and even have those changes become new
 defaults that survive a reboot. One thing you set there that you definitely
-can’t change from within the MUSH, is which port it runs on.</p>
+can't change from within the MUSH, is which port it runs on.</p>
 </div>
 <div class="section" id="starting-database-options">
 <h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.3.3. </span>Starting database options</a></h3>
 <p>This last big choice is one that you probably are well aware of at least some
 of the things it allows for, mostly because the database is basically where
 everyone on a MUSH lives. Most of the choices you ever make about your MUSH
-will happen in the database and it’s something that’s basically always going
+will happen in the database and it's something that's basically always going
 to be changing in more ways than any one person could follow. No matter how
-vast the database of a MUSH gets, they all started somewhere, and that’s the
+vast the database of a MUSH gets, they all started somewhere, and that's the
 last big choice you have to make.</p>
-<p>Depending on how you look at it, there’s somewhere between thousands of choices
+<p>Depending on how you look at it, there's somewhere between thousands of choices
 and two choices for a starting database. What I mean is that you have the
 choice of starting with a brand new database to populate, only a room (#0) and
-you (#1), even the Master Room is something you’d have to add to it. The other
-option is to import an existing database, though to choose that option you’d
+you (#1), even the Master Room is something you'd have to add to it. The other
+option is to import an existing database, though to choose that option you'd
 also have to have access to an existing database.</p>
 <p>Besides the brand new database that can be made on-demand, RhostMUSH comes with
-two databases that you can use to get your start. One is called ‘Minimal’ and
-the other is called ‘Ambrosia’ after the lead RhostMUSH developed that made it.
-Despite the name, they’re both fairly minimal, there’s no grid in either, but
+two databases that you can use to get your start. One is called 'Minimal' and
+the other is called 'Ambrosia' after the lead RhostMUSH developed that made it.
+Despite the name, they're both fairly minimal, there's no grid in either, but
 what you get is a lot of pre-installed softcode and security, as well as a
 <code class="docutils literal notranslate"><span class="pre">netrhost.conf`</span></code> file that has been tuned to work well with it. Even if you
-don’t use those databases you can take ideas for the <code class="docutils literal notranslate"><span class="pre">netrhost.conf</span></code> file for
+don't use those databases you can take ideas for the <code class="docutils literal notranslate"><span class="pre">netrhost.conf</span></code> file for
 tuning your MUSH or even use some RhostMUSH commands to import that softcode
 into your database.</p>
 </div>
 <div class="section" id="the-choices-we-make">
 <h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.3.4. </span>The Choices We Make</a></h3>
-<p>Well, not you’re aware of those three big choices, what they are, and where
-you’ll run across them. Later in this Handbook we’ll be going through those
-choices in-depth. In this chapter, what we’ll be doing is using the default
+<p>Well, not you're aware of those three big choices, what they are, and where
+you'll run across them. Later in this Handbook we'll be going through those
+choices in-depth. In this chapter, what we'll be doing is using the default
 options for for <code class="docutils literal notranslate"><span class="pre">confsource</span></code> and <code class="docutils literal notranslate"><span class="pre">netrhost.conf</span></code> and a brand new database.
 Those options and that blank slate are necessary so that you have in front of
 you a working MUSH with only #0 and #1 and get shown the way of building it
 into whatever is your dream MUSH, and I know we all have one.</p>
 <p>There will be a chance to make all those other choices later, in fact that
-will be happening very soon. There’s a lot of very interesting choices that
+will be happening very soon. There's a lot of very interesting choices that
 you can make with RhostMUSH, too many for anyone to ever be able to use them
-all. If you don’t start with mastering the basics, you’ll never end up knowing
-what are the most RhostMUSH options. I can’t tell you what they are, it’s truly
+all. If you don't start with mastering the basics, you'll never end up knowing
+what are the most RhostMUSH options. I can't tell you what they are, it's truly
 something you have to discover on your own. Remember, you want to build your
 dream MUSH, not mine.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Unless you are intending to start with a brand new database, you must be
-aware of it’s needs and expectations for the settings of <code class="docutils literal notranslate"><span class="pre">confsource</span></code> and
+aware of it's needs and expectations for the settings of <code class="docutils literal notranslate"><span class="pre">confsource</span></code> and
 <code class="docutils literal notranslate"><span class="pre">netrhost.conf</span></code> Starter databases tend to distribute with them config
 files of at least the options they expect set or not set during the process
 of configuring and compiling the server.</p>
@@ -296,7 +296,7 @@ is no harm in running it anyway:</p>
 </pre></div>
 </div>
 <p>If you did NOT obtain the source code directly from GitHub, it is possible that
-even the above script will fail to run with ‘permission denied’ or similar
+even the above script will fail to run with 'permission denied' or similar
 errors. It is recommended that you obtain the source code from there, but if
 for whatever reason this is not an option, manually adjust your permissions
 and then re-run the automated permission script:</p>
@@ -357,7 +357,7 @@ first issue a <code class="docutils literal notranslate"><span class="pre">make<
 <p>A failure to issue <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> prior to re-compiling with <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">confsource</span></code>
 can potentially leave stale object files which may cause unforseen issues when
 running code, including but not limited to random crashes.  Generally whenever
-recompiling it’s good to always make clean first.</p>
+recompiling it's good to always make clean first.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You may also issue <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">source</span></code> if the <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> is already defined how
@@ -371,14 +371,14 @@ whenever you alter the code or import new source code.</p>
 <h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.5. </span>Configuring the game</a></h2>
 <div class="section" id="persistent-configurable-game-options">
 <h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.5.1. </span>Persistent configurable game options</a></h3>
-<p>Upon compiling a RhostMUSH server, if it doesn’t already exist, a
+<p>Upon compiling a RhostMUSH server, if it doesn't already exist, a
 <code class="docutils literal notranslate"><span class="pre">netrhost.conf</span></code> is copied into the <code class="docutils literal notranslate"><span class="pre">game/</span></code> directory for your game. It
 includes useful defaults for most compile-time options that will work well for
 most games, particularly ones using both the default <code class="docutils literal notranslate"><span class="pre">confsource</span></code> options and
 related database.</p>
 <p>This configuration is derived from <code class="docutils literal notranslate"><span class="pre">defaults/game/netrhost.conf.default</span></code></p>
 <p>While this <code class="docutils literal notranslate"><span class="pre">netrhost.conf</span></code> is very well documented and quite easy to change
-in some places, but there are also some rather technical options that you it’s
+in some places, but there are also some rather technical options that you it's
 important to know the full implications of this.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -395,7 +395,7 @@ this purpose.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">Startmush</span>
 </pre></div>
 </div>
-<p>It will prompt you to start a new db if it doesn’t find one.</p>
+<p>It will prompt you to start a new db if it doesn't find one.</p>
 <p>You may also do the commands individually:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">csh</span><span class="p">]</span> <span class="n">netrhost</span> <span class="o">-</span><span class="n">s</span> <span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span> <span class="o">&gt;&amp;</span> <span class="n">netrhost</span><span class="o">.</span><span class="n">log</span> <span class="o">&amp;</span>
 <span class="p">[</span><span class="n">sh</span><span class="p">]</span>  <span class="n">netrhost</span> <span class="o">-</span><span class="n">s</span> <span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span> <span class="o">&gt;</span> <span class="n">netrhost</span><span class="o">.</span><span class="n">log</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span> <span class="o">&amp;</span>
@@ -404,8 +404,8 @@ this purpose.</p>
 </div>
 <div class="section" id="first-login-to-the-game">
 <h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.5.3. </span>First login to the game</a></h3>
-<p>Once started, log in the #1 character (Wizard) with it’s appropiate
-password (no, not ‘potrzebie’, but ‘Nyctasia’).  There were private
+<p>Once started, log in the #1 character (Wizard) with it's appropiate
+password (no, not 'potrzebie', but 'Nyctasia').  There were private
 reasons for the password change.</p>
 <p>Once in, do a &#64;shutdown to save the database.  Then you can run Startup
 normally.   You may make a backup of your database at anytime on-line by
@@ -421,14 +421,14 @@ number of backups.</p>
 <p>The main parts of making your RhostMUSH, easy pleasy:</p>
 <ol class="arabic simple">
 <li><p>The stunnel directory contains TLS/SSL connectivity.  This has to be linked to another port and will tunnel to the mush port.  The README file explains how to set up and configure your TLS/SSL connection.</p></li>
-<li><p>./patch.sh – This makes sure you have the latest code.  If you got this by git clone <a class="reference external" href="https://github.com/RhostMUSH/trunk">https://github.com/RhostMUSH/trunk</a> then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.</p></li>
-<li><p>make confsource.  Yup, it’s menu driven, nifty eh?</p>
+<li><p>./patch.sh -- This makes sure you have the latest code.  If you got this by git clone <a class="reference external" href="https://github.com/RhostMUSH/trunk">https://github.com/RhostMUSH/trunk</a> then you can ignore patching.  You can use ./patch.sh at any time to update your code.  It ignores local.c incase you make your own modules.</p></li>
+<li><p>make confsource.  Yup, it's menu driven, nifty eh?</p>
 <ol class="arabic simple">
 <li><p>Options you may want to select (other than the defaults):</p></li>
 <li><p>5  (%c is selected by default, but choose %x as well for MUX/TM3 compat)</p></li>
 <li><p>9  (if you want $commands to require the COMMAND flag)</p></li>
 <li><p>16 (if you want a wider WHO listing like older versions of MUX)</p></li>
-<li><p>22 (if you’re converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)</p></li>
+<li><p>22 (if you're converting a TinyMUSH3 or TinyMUX/MUX2 flatfile)</p></li>
 <li><p>24 (if you have issues with -lssl not being found)</p></li>
 <li><p>B3 (for 64 character attribute names)</p></li>
 <li><p>B6 (select 8K for Penn/MUX2/TM3 default, up to 32K.  64K is network intensive)</p></li>
@@ -436,7 +436,7 @@ number of backups.</p>
 <li><p>B4 (if you have sqlite libraries and wish to use this)</p></li>
 </ol>
 </li>
-<li><p>‘r’ to compile with the settings you selected.</p></li>
+<li><p>'r' to compile with the settings you selected.</p></li>
 <li><p>Modify your netrhost.conf file as specified.  Make sure to align your port and debug_id as shown in the netrhost.conf file.</p></li>
 <li><p>If you wish to port in an old flatfile, please refer to the readme directory on how to port your flatfile in (README.DBLOADING).</p></li>
 </ol>
@@ -449,7 +449,7 @@ and corrisponding netrhost.conf file will be located in the minimal-DBs/minimal_
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">minimal</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-<p>This is ran from within the ‘game’ directory.  Once this is ran, you will need
+<p>This is ran from within the 'game' directory.  Once this is ran, you will need
 to customize the netrhost.conf file for your purposes.  The port and debug_id must
 be changed at the very least.  Keep the debug_id coordinated to the port as described.</p>
 <div class="section" id="to-load-a-prebuilt-flatfile">
@@ -466,9 +466,9 @@ be changed at the very least.  Keep the debug_id coordinated to the port as desc
 </div>
 </li>
 <li><p>At this point you can modify your netrhost.conf file settings in your game directory.
-Using an editor modify the ‘port’ and ‘debug_id’ respectively in your netrhost.conf as state.
-The ‘port’ will be the port the mush listens on, the debug_id is for the debug-stack and is
-your port with a ‘5’ at the end.  So if your port is 4444, the debug_id is 44445</p></li>
+Using an editor modify the 'port' and 'debug_id' respectively in your netrhost.conf as state.
+The 'port' will be the port the mush listens on, the debug_id is for the debug-stack and is
+your port with a '5' at the end.  So if your port is 4444, the debug_id is 44445</p></li>
 <li><p>Load in the flatfile into the mush (You could do this in the Startmush as well)
 Manually:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">game</span>
@@ -480,7 +480,7 @@ Manually:</p>
 </pre></div>
 </div>
 <p>This will load the db that you loaded.</p>
-<p>—————OR——-</p>
+<p>---------------OR-------</p>
 <p>From Startmush when prompted, hit &lt;RETURN&gt; for searching then select the number of the netrhost.db.flat that is listed as ~/minimal-DBs/minimal_db/netrhost.db.flat:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">Startmush</span>
 </pre></div>
@@ -504,7 +504,7 @@ Manually:</p>
 <li><p>(support for _/~ attribs)</p></li>
 </ol>
 <p>You only need to do this if you received the RhostMUSH src.  If you received a binary, continue on to the next part.</p>
-<p>To compile the code, just type ‘make confsource’.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run ‘make source’, if you so choose to hand-edit the Makefile.</p>
+<p>To compile the code, just type 'make confsource'.  It will prompt you with settings on what you need to do.  If you just want to quickly hand edit the Makefile, it is in the directory src (full path src/Makefile).  Then you may just run 'make source', if you so choose to hand-edit the Makefile.</p>
 <p>After the compile process is done, type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">links</span>
 </pre></div>
@@ -552,30 +552,30 @@ Manually:</p>
 <h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.8. </span>Customtize the textfiles for your game</a></h2>
 <p>All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a
 README file there that explains their purposes in more detail.  You can see more information on
-all files and how they inter-relate with ‘wizhelp file’.</p>
+all files and how they inter-relate with 'wizhelp file'.</p>
 </div>
 <div class="section" id="three-options-for-starting-a-mush">
 <h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9. </span>Three Options for Starting a MUSH</a></h2>
 <p>The RhostMUSH Git Repository comes with three options for starting your Mush.</p>
 <div class="admonition-todo admonition" id="id8">
 <p class="admonition-title">Todo</p>
-<p>Well, there’s also some other pre-existing DB, upgrading, and ansible so let’s try to make this a little more coherent.</p>
+<p>Well, there's also some other pre-existing DB, upgrading, and ansible so let's try to make this a little more coherent.</p>
 </div>
 <div class="section" id="option-1-creating-a-new-game-with-a-blank-database">
 <h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.1. </span>Option 1: Creating a new game with a blank database</a></h3>
 <p>Modify your ./game/netrhost.conf file or what settings you want.
-Don’t feel overwhelmed, it’s all very well documented.</p>
+Don't feel overwhelmed, it's all very well documented.</p>
 </div>
 <div class="section" id="option-2-creating-a-new-game-with-the-generic-default-database">
 <h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.2. </span>Option 2: Creating a new game with the generic default database</a></h3>
 <p>Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory.</p>
-<p>When ./Startmush prompts you to load a flatfile, say ‘yes’ and hit &lt;RETURN&gt;
+<p>When ./Startmush prompts you to load a flatfile, say 'yes' and hit &lt;RETURN&gt;
 to have it search for flatfiles, then select netrhost.db.flat from under
 the minimal-DBs/minimal_db directory.</p>
 </div>
 <div class="section" id="option-3-creating-a-new-game-with-ambrosia-s-default-database">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.3. </span>Option 3: Creating a new game with Ambrosia’s default database</a></h3>
-<p>This option is covered in detail here: <a class="reference internal" href="ambrosiadb.html#ambrosiadb-installation"><span class="std std-ref">Ambrosia’s Minimal Rhost DB</span></a></p>
+<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.3. </span>Option 3: Creating a new game with Ambrosia's default database</a></h3>
+<p>This option is covered in detail here: <a class="reference internal" href="ambrosiadb.html#ambrosiadb-installation"><span class="std std-ref">Ambrosia's Minimal Rhost DB</span></a></p>
 </div>
 </div>
 </div>

@@ -15,7 +15,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
     <substitution_definition ltrim="1" names="sup2">²</substitution_definition>
     <target refid="ambrosiadb-installation"></target>
     <section ids="ambrosia-s-minimal-rhost-db ambrosiadb-installation" names="ambrosia's\ minimal\ rhost\ db ambrosiadb-installation">
-        <title>Ambrosia’s Minimal Rhost DB</title>
+        <title>Ambrosia's Minimal Rhost DB</title>
         <paragraph>Version: 1.0.5          2020-01-31</paragraph>
         <section ids="version-history" names="version\ history">
             <title>Version history</title>
@@ -92,14 +92,14 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                         <definition>
                             <bullet_list bullet="-">
                                 <list_item>
-                                    <paragraph>Changed softcoded objid() to tag(), due to Rhost’s new hardcoded
+                                    <paragraph>Changed softcoded objid() to tag(), due to Rhost's new hardcoded
                                         objid() which does perform a different functionality.</paragraph>
                                 </list_item>
                                 <list_item>
                                     <paragraph>Added more staff recommendations to this file.</paragraph>
                                 </list_item>
                                 <list_item>
-                                    <paragraph>Added Reality TXLevel ‘Admin’ to all objects in the db except #1</paragraph>
+                                    <paragraph>Added Reality TXLevel 'Admin' to all objects in the db except #1</paragraph>
                                 </list_item>
                             </bullet_list>
                         </definition>
@@ -109,7 +109,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                         <definition>
                             <bullet_list bullet="-">
                                 <list_item>
-                                    <paragraph>Replaced softcoded tag() system with Rhost’s new hardcoded @tag/tag()
+                                    <paragraph>Replaced softcoded tag() system with Rhost's new hardcoded @tag/tag()
                                         system. All previous tags are set on the database. The Tag Object
                                         was removed.</paragraph>
                                 </list_item>
@@ -118,7 +118,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                                         Tags in place.</paragraph>
                                 </list_item>
                                 <list_item>
-                                    <paragraph>Places System @startup integrated into BC-Admin-Royalty’s @startup</paragraph>
+                                    <paragraph>Places System @startup integrated into BC-Admin-Royalty's @startup</paragraph>
                                 </list_item>
                                 <list_item>
                                     <paragraph>Made @dump and @dump/flat available to Councilors in netrhost.conf</paragraph>
@@ -194,17 +194,17 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                         <paragraph>Misc Data object to hold general data, like Staff lists etc.</paragraph>
                     </list_item>
                     <list_item>
-                        <paragraph>Reality levels ‘Real’ and ‘Admin’.</paragraph>
+                        <paragraph>Reality levels 'Real' and 'Admin'.</paragraph>
                     </list_item>
                 </bullet_list>
                 <note>
-                    <paragraph>All created items and players by default are in Recieve-Level ‘Real’ and
-                        Transmit-Levels ‘Real’ and ‘Admin’.</paragraph>
+                    <paragraph>All created items and players by default are in Recieve-Level 'Real' and
+                        Transmit-Levels 'Real' and 'Admin'.</paragraph>
                 </note>
                 <bullet_list bullet="*">
                     <list_item>
                         <paragraph>All globals, Master Room, BCs-*, and other staff/code-related objects
-                            currently have only ‘Admin’ as their Transmit-Level. This does not prevent
+                            currently have only 'Admin' as their Transmit-Level. This does not prevent
                             them fromi working properly. The only exception is #1, who has empty reality
                             levels.</paragraph>
                     </list_item>
@@ -217,7 +217,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                 </bullet_list>
                 <note>
                     <paragraph>IT IS HIGHLY RECOMMENDED to use this .conf as a base for this DB.
-                        The ‘Port’ configuration parameter is XXXX’d out. Set it first before starting
+                        The 'Port' configuration parameter is XXXX'd out. Set it first before starting
                         your game.</paragraph>
                 </note>
                 <bullet_list bullet="*">
@@ -303,12 +303,12 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                 <title>AmbrosiaDB Functions</title>
                 <bullet_list bullet="*">
                     <list_item>
-                        <paragraph>isstaff() - Softcoded function that returns ‘1’ if its argument matches
-                            a #dbref in the ‘isstaff’ attribute on the Misc Data object.</paragraph>
+                        <paragraph>isstaff() - Softcoded function that returns '1' if its argument matches
+                            a #dbref in the 'isstaff' attribute on the Misc Data object.</paragraph>
                     </list_item>
                     <list_item>
-                        <paragraph>bccheck() - Softcoded function that returns ‘1’ if its argument matches
-                            a #dbref in the ‘bcs’ attribute on the Misc Data object.</paragraph>
+                        <paragraph>bccheck() - Softcoded function that returns '1' if its argument matches
+                            a #dbref in the 'bcs' attribute on the Misc Data object.</paragraph>
                     </list_item>
                     <list_item>
                         <paragraph>width() - Softcoded function that returns 78 for now. For cross-MU*
@@ -320,7 +320,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                     </list_item>
                     <list_item>
                         <paragraph>cmdmessage() - Softcoded function that takes two strings as its parameters.
-                            Returns ‘&lt;&lt; STRING1 &gt;&gt; String2’. The &lt;&lt;&gt;&gt; part is highlighted red. Good for
+                            Returns '&lt;&lt; STRING1 &gt;&gt; String2'. The &lt;&lt;&gt;&gt; part is highlighted red. Good for
                             all kinds of messages sent by game commands.</paragraph>
                     </list_item>
                     <list_item>
@@ -342,8 +342,8 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
   rightinnerpadding - characters to put at the right side of &lt;text&gt;
   rightinnercolor - ansicode to color the rightside characters with</literal_block>
                 <note>
-                    <paragraph>ALL of header()’s parameters are optional. By default, header() simply draws
-                        a 78-char wide line of =’s. Simply leave parameters empty if you want to set
+                    <paragraph>ALL of header()'s parameters are optional. By default, header() simply draws
+                        a 78-char wide line of ='s. Simply leave parameters empty if you want to set
                         one of the latter parameters.</paragraph>
                 </note>
             </section>
@@ -402,7 +402,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                     maintenance Councilor bit for special code projects. Finished
                     code along those lines should get @chowned to the
                     bc-admin-councilor.</paragraph>
-                <paragraph>If you as the MU* Head(s) don’t know Softcode well, or want to
+                <paragraph>If you as the MU* Head(s) don't know Softcode well, or want to
                     leave anything Code to your Head Coder, also give them optional
                     access to a maintenance Royalty bit in order to properly code
                     banning/blacklisting +commands and other rare code that requires
@@ -410,7 +410,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
             </section>
             <section ids="ambrosiadb-mu-head-s" names="ambrosiadb\ mu*\ head(s)">
                 <title>AmbrosiaDB MU* Head(s)</title>
-                <paragraph>You’re the boss(es). But please use an Architect bit for your
+                <paragraph>You're the boss(es). But please use an Architect bit for your
                     everyday things. Keep Immortal to yourself. Keep #1 to yourself.
                     And seriously avoid using either of them except for creating
                     a Royalty bit or doing intricate DB maintenance.</paragraph>
@@ -437,7 +437,7 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
                 not require higher privileges than Architect for the vast majority of things.
                 Royalty-level code should be a rare exception, if at all necessary. The MU*
                 Head(s) or site-admin should be the only one having access to #1, Immortals or
-                perhaps even Royalty. The BC’s, Global Function objects and Function objects at
+                perhaps even Royalty. The BC's, Global Function objects and Function objects at
                 level Royalty and higher have simply been provided as a if-necessary convenience.</paragraph>
             <paragraph>Current objects are only @chowned to certain bitlevels if it is really required
                 for them to function. Whenever possible, they have been @chowned to the mortal
@@ -474,11 +474,11 @@ using the same name as the html entity names (e.g., &amp;copy;) for that charact
         </section>
         <section ids="ambrosiadb-compiling" names="ambrosiadb\ compiling">
             <title>AmbrosiaDB Compiling</title>
-            <paragraph>P.S. the ‘bin/asksource.save0’ file has been supplied for loading in the
-                ‘make config’ or ‘make confsource’ step of Rhost installation. It provides the
+            <paragraph>P.S. the 'bin/asksource.save0' file has been supplied for loading in the
+                'make config' or 'make confsource' step of Rhost installation. It provides the
                 settings I have used when creating this database. Some settings, like the ANSI
                 substitution, are used in the DB.</paragraph>
-            <paragraph><reference refuri="mailto:--Ambrosia@RhostMUSH">–Ambrosia@RhostMUSH</reference></paragraph>
+            <paragraph><reference refuri="mailto:--Ambrosia@RhostMUSH">--Ambrosia@RhostMUSH</reference></paragraph>
         </section>
     </section>
 </document>
