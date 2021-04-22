@@ -52,8 +52,8 @@ Contributing your module back to Rhost
 
 If you wish your modules to be part of the main Rhost distribution you have two options:
 
-1.  Attempt to hack the bin/asksource.sh and bin/asksource.blank files.
-2.  Ask one of the Rhost devs to do it for you :)
+#.  Attempt to hack the bin/asksource.sh and bin/asksource.blank files.
+#.  Ask one of the Rhost devs to do it for you :)
 
 Reality Levels Setup
 ====================
@@ -78,6 +78,7 @@ By default, all new objects are created with an RxLevel of 1 and TxLevel of
 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of 
 0xFFFFFFFF. Those default levels can be changed with configuration
 parameters.
+
 An object is always visible to itself, even if its Rx and Tx levels don't 
 match. (See examples below)
 

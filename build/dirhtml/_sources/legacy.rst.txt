@@ -16,22 +16,19 @@ Downgrading QDBM to GDBM
 
 .. warning::
 
-  I would NEVER change from QDBM back to GDBM, but if you're set on it these steps:
+   I would NEVER change from QDBM back to GDBM, but if you're set on it these steps:
 
-  You would use the same steps if you plan to move QDBM to GDBM.  I however would
-  not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously,
-  don't do it unless you have absolutely no other recourse.
+   You would use the same steps if you plan to move QDBM to GDBM.  I however would
+   not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously,
+   don't do it unless you have absolutely no other recourse.
 
-  IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify
-  the following
+   IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify
+   the following
 
-1.  You have on a 64 bit system, no object that has more than 400 attributes on it.
-
-2.  You have on a 32 bit system, no object that has more than 750 attributes on it.
-
-3.  Any CONTENT of any attribute must be below 4000 characters in length.
-
-4.  Once you have that done, you may follow the procedures below on converting (upgrade) from GDBM to QDBM.  This works the same as converting (downgrading) QDBM back down to GDBM
+#.  You have on a 64 bit system, no object that has more than 400 attributes on it.
+#.  You have on a 32 bit system, no object that has more than 750 attributes on it.
+#.  Any CONTENT of any attribute must be below 4000 characters in length.
+#.  Once you have that done, you may follow the procedures below on converting (upgrade) from GDBM to QDBM.  This works the same as converting (downgrading) QDBM back down to GDBM
 
 Upgradging GDBM to QDBM
 =======================
@@ -44,19 +41,19 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 While logged in to your mush, issue the following commands
 ----------------------------------------------------------
 
-    A.  @dump/flat    -- This will make a flatfile dump of your MUSH database
-    B.  wmail/unload  -- This will make a flatfile dump of your MAIL database
-    C.  @areg/unload  -- If you use the AutoRegistration engine, this dumps it
-    D.  newsdb/unload -- If you use the hardcoded news/bbs engine.  This dumps it
+ #.  @dump/flat    -- This will make a flatfile dump of your MUSH database
+ #.  wmail/unload  -- This will make a flatfile dump of your MAIL database
+ #.  @areg/unload  -- If you use the AutoRegistration engine, this dumps it
+ #.  newsdb/unload -- If you use the hardcoded news/bbs engine.  This dumps it
 
 Verify the files exist
 ----------------------
 
-    A.  Server/game/data/netrhost.db.flat
-    B.  Server/game/data/RhostMUSH.dump.folder
-    C.  Server/game/data/RhostMUSH.dump.mail
-    D.  (Optional) Server/game/data/RhostMUSH.areg.dump
-    E.  (Optional) Server/game/data/RhostMUSH.news.flat
+ #.  Server/game/data/netrhost.db.flat
+ #.  Server/game/data/RhostMUSH.dump.folder
+ #.  Server/game/data/RhostMUSH.dump.mail
+ #.  (Optional) Server/game/data/RhostMUSH.areg.dump
+ #.  (Optional) Server/game/data/RhostMUSH.news.flat
 
 Shutdown the MUSH
 -----------------
@@ -66,66 +63,74 @@ Shutdown the MUSH
 From the Server directory
 -------------------------
 
-    A.  make clean
-    B.  make confsource
-        1.  Select QDBM and if you wish at this time increase your LBUF size
-        2.  Select any other options you may want
-    C.  (r)un and let it compile.
-    D.  Main DB: Delete (rm) the following files (from Rhost/Server/game/data)::
+#.  make clean
 
-           netrhost.gdbm*
-           netrhost.db
-           netrhost.db.new
-           netrhost.db.new.prev
+#.  make confsource
 
-    E.  Mail DB: Delete (rm) the following files (from Rhost/Server/game/data)::
+   #.  Select QDBM and if you wish at this time increase your LBUF size
 
-           RhostMUSH.folder.dir  
-           RhostMUSH.folder.pag  
-           RhostMUSH.mail.dir  
-           RhostMUSH.mail.pag  
+   #.  Select any other options you may want
 
-    F.  (Optional) AutoReg DB: Delete (rm) the following files (from Rhost/Server/game/data)::
+#.  (r)un and let it compile.
 
-           RhostMUSH.areg.dir  
-           RhostMUSH.areg.pag  
+.. todo::
 
-    G.  (Optional) News/BBS DB: Delete (rm) the following files (from Rhost/Server/game/data)::
+   Figure out why that asterisk is there.
 
-           RhostMUSH.news.dir
-           RhostMUSH.news.pag
+#.  Main DB: Delete (rm) the following files (from Rhost/Server/game/data)::
+
+     netrhost.gdbm*
+     netrhost.db
+     netrhost.db.new
+     netrhost.db.new.prev
+
+#.  Mail DB: Delete (rm) the following files (from Rhost/Server/game/data)::
+
+     RhostMUSH.folder.dir  
+     RhostMUSH.folder.pag  
+     RhostMUSH.mail.dir  
+     RhostMUSH.mail.pag  
+
+#.  (Optional) AutoReg DB: Delete (rm) the following files (from Rhost/Server/game/data)::
+
+     RhostMUSH.areg.dir  
+     RhostMUSH.areg.pag  
+
+#.  (Optional) News/BBS DB: Delete (rm) the following files (from Rhost/Server/game/data)::
+
+     RhostMUSH.news.dir
+     RhostMUSH.news.pag
 
 From the Server/game directory
 ------------------------------
 
-    A.  Load the database::
+#.  Load the database::
     
-        ./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
+    ./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
 
-    B.  Start the MUSH back::
+#.  Start the MUSH back::
     
-         ./Startmush
+    ./Startmush
 
 While logged into the mush issue the following commands
 -------------------------------------------------------
 
-    A.  Load in the mail database::
+#.  Load in the mail database::
 
-           wmail/load
+     wmail/load
 
-    B.  (optional) Load in the autoreg database::
+#.  (optional) Load in the autoreg database::
 
-           @areg/load
+     @areg/load
 
-    C.  (optional) Load in the news/bbs database::
+#.  (optional) Load in the news/bbs database::
 
-           newsdb/load
+     newsdb/load
 
 Verify that you have QDBM running and your valid values
 -------------------------------------------------------
 
-    A.  @list options system
-    B.  @list options (spammy)
+#.  @list options system#.  @list options (spammy)
 
 -----------------------------------
 Updating RhostMUSH prior to 3.9.5p2
@@ -146,85 +151,87 @@ This is what you have to do.
 
 First thing's first.
 
-1.  Log into your existing mush.  Let's make current backups
+#.  Log into your existing mush.  Let's make current backups
     of all your flatfiles.  Issue::
 
-       @dump/flat
-       wmail/unload
-       @areg/unload
-       newsdb/unload
+     @dump/flat
+     wmail/unload
+     @areg/unload
+     newsdb/unload
 
-2.  Shutdown your game::
+#.  Shutdown your game::
    
-       @shutdown
+     @shutdown
 
-3.  Make an image of all your current backed up files.  From The Server/game directory you would type::
+#.  Make an image of all your current backed up files.  From The Server/game directory you would type::
 
-       ./backup_flat.sh -s
-
-.. note::
-
-    Please remember the '-s' to the ./backup_flat.sh.
-
-4.  Make note of the most recently created file in the directory Server/game/oldflat.  It's usually named something like::
-
-         RhostMUSH.dbflat1.tar.gz
+    ./backup_flat.sh -s
 
 .. note::
 
-      You will need this file later.
+   Please remember the '-s' to the ./backup_flat.sh.
 
-5.  Rename your 'Rhost' directory to something else.  This is the directory that you have containing the 'Server' directory.  Name it anything you want other than 'Rhost'.  For those not used to unix you would type::
+#.  Make note of the most recently created file in the directory Server/game/oldflat.  It's usually named something like::
 
-        mv Rhost Rhost_old
-
-6.  Pull in the latest Rhost.  You would type::
-
-        git clone https://github.com/RhostMUSH/trunk Rhost
+     RhostMUSH.dbflat1.tar.gz
 
 .. note::
 
-      You would type this in the same directory you have renamed your old 'Rhost' directory
+   You will need this file later.
 
-7.  go into the Rhost/Server directory.   Type::
+#.  Rename your 'Rhost' directory to something else.  This is the directory that you have containing the 'Server' directory.  Name it anything you want other than 'Rhost'.  For those not used to unix you would type::
 
-        make confsource
+     mv Rhost Rhost_old
 
-    Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it's the 'r' option).
+#.  Pull in the latest Rhost.  You would type::
 
-8.   Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the 'game' directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!
+     git clone https://github.com/RhostMUSH/trunk Rhost
 
-    A. cp netrhost.conf netrhost.conf.orig
+.. note::
 
-    B. cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .
+   You would type this in the same directory you have renamed your old 'Rhost' directory
 
-    C. tar -zxvf RhostMUSH.dbflat1.tar.gz 
+#.  go into the Rhost/Server directory.   Type::
 
-    D. Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don't port or other stuff you have already customized).
+     make confsource
 
-    E. Load in your flatfile information::
+.. note::
 
-        ./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
+   Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it's the 'r' option).
 
-    F. Your ./Startmush should re-index all your txt files you originally made::
+#.   Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the 'game' directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!
 
-         ./Startmush
+   #. cp netrhost.conf netrhost.conf.orig
 
-    G.  In your game type the following as an immortal or as #1.
+   #. cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .
 
-       1.  Load in your mail flatfile::
+   #. tar -zxvf RhostMUSH.dbflat1.tar.gz 
 
-            wmail/load
+   #. Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don't port or other stuff you have already customized).
 
-       2.  Load in your autoregistration flatfile (if available)::
+   #. Load in your flatfile information::
 
-            @areg/load
+       ./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
 
-       3.  Load in your hardcoded bbs flatfile (if available)::
+   #. Your ./Startmush should re-index all your txt files you originally made::
 
-            newsdb/load
+       ./Startmush
 
-9.  You should be good to go on a current directory structure for Rhost.  Enjoy!
+   #.  In your game type the following as an immortal or as #1.
+
+      #.  Load in your mail flatfile::
+
+           wmail/load
+
+      #.  Load in your autoregistration flatfile (if available)::
+
+           @areg/load
+
+      #.  Load in your hardcoded bbs flatfile (if available)::
+
+           newsdb/load
+
+#.  You should be good to go on a current directory structure for Rhost.  Enjoy!
 
 
 --------------------------------------------
@@ -247,17 +254,17 @@ Suggestion::
 If you are patching UP from an older version, you need to update
 the following files:
 
-1.  update your src/Makefile to the one in the 3.9.5p2+ repo
+#.  update your src/Makefile to the one in the 3.9.5p2+ repo
     ( cp ~/tmprho/Server/src/Makefile ~/Rhost/Server/src/Makefile )
-2.  update your bin/asksource.* files to the one in the 3.9.5p2+ repo
+#.  update your bin/asksource.* files to the one in the 3.9.5p2+ repo
     ( cp ~/tmprho/Server/bin/asksource.* ~/Rhost/Server/bin/ )
-3.  append 'include rhost_mysql.conf' BEFORE the rhost_ingame.conf file
+#.  append 'include rhost_mysql.conf' BEFORE the rhost_ingame.conf file
     and before the section that says 'define local aliases' toward the end of
     your netrhost.conf file.
     ( edit your ~/Rhost/Server/game/netrhost.conf file )
-4.  copy the game/rhost_mysql.conf file from the 3.9.5p2+ repo 
+#.  copy the game/rhost_mysql.conf file from the 3.9.5p2+ repo 
     ( cp ~/tmprho/Server/game/rhost_mysql.conf ~/Rhost/Server/game/ )
-5.  The following lines have to be REPLACED/CHANGED in local.c ( toward the top ):
+#.  The following lines have to be REPLACED/CHANGED in local.c ( toward the top ):
     ( you may edit this or copy the one from the other distro )
     ( do either:  edit ~/Rhost/Server/src/local.c )
     (        or:  cp ~/tmprho/Server/src/local.c ~/Rhost/Server/src/local.c )
@@ -268,38 +275,38 @@ the following files:
 
 .. code-block:: c
 
-    /* Called when the mush starts up, immediatly prior to the main game
-     * loop being entered. By this point all databases are loaded and
-     * all variables configured.
-     */
-    #ifdef MYSQL_VERSION
-       extern void local_mysql_init(void);
-       extern int sql_shutdown(dbref player);
-    #endif
-    
-    #ifdef SQLITE
-       extern void local_sqlite_init(void);
-    #endif /* SQLITE */
-    
-    void local_startup(void) {
-    #ifdef SQLITE
-       local_sqlite_init();
-    #endif /* SQLITE */
-    #ifdef MYSQL_VERSION
-       local_mysql_init();
-    #endif
-       load_regexp_functions();
-    }
+   /* Called when the mush starts up, immediatly prior to the main game
+   * loop being entered. By this point all databases are loaded and
+   * all variables configured.
+   */
+   #ifdef MYSQL_VERSION
+    extern void local_mysql_init(void);
+    extern int sql_shutdown(dbref player);
+   #endif
 
-    /* Called immediatly after the main game loop exits. At this point
-     * all databases and variables are still configured
-     */
-    void local_shutdown(void) {
-    #ifdef MYSQL_VERSION
-       sql_shutdown(-1);
-    #endif
-    }
+   #ifdef SQLITE
+    extern void local_sqlite_init(void);
+   #endif /* SQLITE */
+
+   void local_startup(void) {
+   #ifdef SQLITE
+    local_sqlite_init();
+   #endif /* SQLITE */
+   #ifdef MYSQL_VERSION
+    local_mysql_init();
+   #endif
+    load_regexp_functions();
+   }
+
+   /* Called immediatly after the main game loop exits. At this point
+   * all databases and variables are still configured
+   */
+   void local_shutdown(void) {
+   #ifdef MYSQL_VERSION
+    sql_shutdown(-1);
+   #endif
+   }
 
 
-6.  Issue 'make clean' then make confsource to rebuild using the latest
+#.  Issue 'make clean' then make confsource to rebuild using the latest
     builder script to build in the mysql changes.

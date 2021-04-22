@@ -87,77 +87,79 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 15.1.2.4. From the Server directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   1. make clean
+1. make clean
 
-   2. make confsource 1.  Select QDBM and if you wish at this time
-      increase your LBUF size 2.  Select any other options you may
-      want
+2. make confsource
 
-   3. (r)un and let it compile.
+   1. Select QDBM and if you wish at this time increase your LBUF size
 
-   4. Main DB: Delete (rm) the following files (from
-      Rhost/Server/game/data):
+   2. Select any other options you may want
 
-         netrhost.gdbm*
-         netrhost.db
-         netrhost.db.new
-         netrhost.db.new.prev
+1. (r)un and let it compile.
 
-   5. Mail DB: Delete (rm) the following files (from
-      Rhost/Server/game/data):
+Todo: Figure out why that asterisk is there.
 
-         RhostMUSH.folder.dir
-         RhostMUSH.folder.pag
-         RhostMUSH.mail.dir
-         RhostMUSH.mail.pag
+1. Main DB: Delete (rm) the following files (from
+   Rhost/Server/game/data):
 
-   6. (Optional) AutoReg DB: Delete (rm) the following files (from
-      Rhost/Server/game/data):
+      netrhost.gdbm*
+      netrhost.db
+      netrhost.db.new
+      netrhost.db.new.prev
 
-         RhostMUSH.areg.dir
-         RhostMUSH.areg.pag
+2. Mail DB: Delete (rm) the following files (from
+   Rhost/Server/game/data):
 
-   7. (Optional) News/BBS DB: Delete (rm) the following files (from
-      Rhost/Server/game/data):
+      RhostMUSH.folder.dir
+      RhostMUSH.folder.pag
+      RhostMUSH.mail.dir
+      RhostMUSH.mail.pag
 
-         RhostMUSH.news.dir
-         RhostMUSH.news.pag
+3. (Optional) AutoReg DB: Delete (rm) the following files (from
+   Rhost/Server/game/data):
+
+      RhostMUSH.areg.dir
+      RhostMUSH.areg.pag
+
+4. (Optional) News/BBS DB: Delete (rm) the following files (from
+   Rhost/Server/game/data):
+
+      RhostMUSH.news.dir
+      RhostMUSH.news.pag
 
 
 15.1.2.5. From the Server/game directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   1. Load the database:
+1. Load the database:
 
-         ./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
+      ./db_load data/netrhost.gdbm data/netrhost.db.flat data/netrhost.db.new
 
-   2. Start the MUSH back:
+2. Start the MUSH back:
 
-         ./Startmush
+      ./Startmush
 
 
 15.1.2.6. While logged into the mush issue the following commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   1. Load in the mail database:
+1. Load in the mail database:
 
-         wmail/load
+      wmail/load
 
-   2. (optional) Load in the autoreg database:
+2. (optional) Load in the autoreg database:
 
-         @areg/load
+      @areg/load
 
-   3. (optional) Load in the news/bbs database:
+3. (optional) Load in the news/bbs database:
 
-         newsdb/load
+      newsdb/load
 
 
 15.1.2.7. Verify that you have QDBM running and your valid values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   1. @list options system
-
-   2. @list options (spammy)
+1. @list options system#.  @list options (spammy)
 
 
 15.2. Updating RhostMUSH prior to 3.9.5p2
@@ -198,7 +200,7 @@ Note:
 
   Please remember the '-s' to the ./backup_flat.sh.
 
-4. Make note of the most recently created file in the directory
+1. Make note of the most recently created file in the directory
    Server/game/oldflat.  It's usually named something like:
 
       RhostMUSH.dbflat1.tar.gz
@@ -207,14 +209,14 @@ Note:
 
   You will need this file later.
 
-5. Rename your 'Rhost' directory to something else.  This is the
+1. Rename your 'Rhost' directory to something else.  This is the
    directory that you have containing the 'Server' directory.  Name it
    anything you want other than 'Rhost'.  For those not used to unix
    you would type:
 
       mv Rhost Rhost_old
 
-6. Pull in the latest Rhost.  You would type:
+2. Pull in the latest Rhost.  You would type:
 
       git clone https://github.com/RhostMUSH/trunk Rhost
 
@@ -223,15 +225,16 @@ Note:
   You would type this in the same directory you have renamed your old
   'Rhost' directory
 
-7. go into the Rhost/Server directory.   Type:
+1. go into the Rhost/Server directory.   Type:
 
       make confsource
 
-   Select what options you want (including the mysql and other
-   goodies) then compile it (also within the menu, it's the 'r'
-   option).
+Note:
 
-8. Once your game is compiled and ready to go you need to copy in the
+  Select what options you want (including the mysql and other goodies)
+  then compile it (also within the menu, it's the 'r' option).
+
+1. Once your game is compiled and ready to go you need to copy in the
    data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we
    mentioned in step #4 to the Server/game directory of your NEW GAME
    DIRECTORY.  From within the 'game' directory of your current game
@@ -279,7 +282,7 @@ Note:
 
             newsdb/load
 
-9. You should be good to go on a current directory structure for
+1. You should be good to go on a current directory structure for
    Rhost.  Enjoy!
 
 
@@ -330,36 +333,36 @@ Note:
   IF REPLACING/CHANGING local.c COPY BELOW
 
    /* Called when the mush starts up, immediatly prior to the main game
-    * loop being entered. By this point all databases are loaded and
-    * all variables configured.
-    */
+   * loop being entered. By this point all databases are loaded and
+   * all variables configured.
+   */
    #ifdef MYSQL_VERSION
-      extern void local_mysql_init(void);
-      extern int sql_shutdown(dbref player);
+    extern void local_mysql_init(void);
+    extern int sql_shutdown(dbref player);
    #endif
 
    #ifdef SQLITE
-      extern void local_sqlite_init(void);
+    extern void local_sqlite_init(void);
    #endif /* SQLITE */
 
    void local_startup(void) {
    #ifdef SQLITE
-      local_sqlite_init();
+    local_sqlite_init();
    #endif /* SQLITE */
    #ifdef MYSQL_VERSION
-      local_mysql_init();
+    local_mysql_init();
    #endif
-      load_regexp_functions();
+    load_regexp_functions();
    }
 
    /* Called immediatly after the main game loop exits. At this point
-    * all databases and variables are still configured
-    */
+   * all databases and variables are still configured
+   */
    void local_shutdown(void) {
    #ifdef MYSQL_VERSION
-      sql_shutdown(-1);
+    sql_shutdown(-1);
    #endif
    }
 
-6. Issue 'make clean' then make confsource to rebuild using the latest
+1. Issue 'make clean' then make confsource to rebuild using the latest
    builder script to build in the mysql changes.

@@ -570,13 +570,13 @@ debug_id coordinated to the port as described.
    debug-stack and is your port with a '5' at the end.  So if your
    port is 4444, the debug_id is 44445
 
-4. Load in the flatfile into the mush (You could do this in the
+Todo: Clean up the below section
+
+1. Load in the flatfile into the mush (You could do this in the
    Startmush as well) Manually:
 
       cd game
-
-   ./db_load data/netrhost.gdbm ../minimal-
-   DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF
+      ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF
 
    Start your mush:
 
@@ -669,18 +669,21 @@ provied example:
 
       @dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@desc *Guest##=A guest player.;@adisconnect *Guest##=home;@lock *Guest##=*Guest##}
 
-      @list guest will show your guest characters and if they're set up properly.
+Note:
 
-6. Any master room code you load in from your immholder character (or
+  @list guest will show your guest characters and if they're set up
+  properly.
+
+1. Any master room code you load in from your immholder character (or
    @chown/preserve to it) The readme directory has
    softfunctions.minmax that has MUX/Penn compatability functions and
    comsys.  All other softcode (like mail wrappers) can be found on
    https://github.com/RhostMUSH/trunk in Mushcode.
 
-7. Setup new character, staff, and take tasks that can only be
+2. Setup new character, staff, and take tasks that can only be
    accomplished by #1
 
-8. Set up any other characters you want.  Anyone immortal can issue
+3. Set up any other characters you want.  Anyone immortal can issue
    @function, @admin, or anything #1 can do.
 
 Todo: Figure out what they were trying to say by having those above

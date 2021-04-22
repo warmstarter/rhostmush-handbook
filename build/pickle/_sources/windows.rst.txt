@@ -13,7 +13,7 @@ Installing on Windows 10 with BASH
 Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
 This has been tested with the Preview build 14342.
 
-1. After installing Bash you will need to install the following packages:
+#. After installing Bash you will need to install the following packages:
 
    - gcc
    - git
@@ -22,7 +22,7 @@ This has been tested with the Preview build 14342.
    - libpcre3-dev (optional)
    - openssl (optional)
 
-2. When configuring rhost (using confsource) select the Disable Debugmon 
+#. When configuring rhost (using confsource) select the Disable Debugmon 
 option.
 
 ---------------------------------
@@ -31,7 +31,7 @@ Installing on Windows with Cygwin
 
 Rhost does work under windows using the cygwin package.
 
-1. When you do install cygwin, the following packages must be added:
+#. When you do install cygwin, the following packages must be added:
 
    - bash
    - crypt
@@ -41,7 +41,7 @@ Rhost does work under windows using the cygwin package.
    - make
    - openssl (optional)
 
-2. The src/Makefile has to manually have the CYGWIN line uncommented.
+#. The src/Makefile has to manually have the CYGWIN line uncommented.
 
 ----------------------------
 Startig RhostMUSH on Windows

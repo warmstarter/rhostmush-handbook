@@ -46,7 +46,8 @@ which, as you know, is the best part of setting up a mush.
 
    flags.rst
    powers.rst
-   nda.rst
+
+   historical/nda.rst
 
    help.rst
    wizhelp.rst

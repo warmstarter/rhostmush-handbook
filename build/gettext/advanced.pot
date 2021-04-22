@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: RhostMUSH Handbook 0.02a\n"
+"Project-Id-Version: RhostMUSH Handbook 0.03a\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-22 07:07-0400\n"
+"POT-Creation-Date: 2021-04-22 08:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,425 +109,428 @@ msgid "Each object (player, room, exit, thing) has two lists of reality levels. 
 msgstr ""
 
 #: ../../source/advanced.rst:76
-msgid "It doesn't affect @remit, @pemit, page, WHO or channels. By default, all new objects are created with an RxLevel of 1 and TxLevel of 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of 0xFFFFFFFF. Those default levels can be changed with configuration parameters. An object is always visible to itself, even if its Rx and Tx levels don't match. (See examples below)"
+msgid "It doesn't affect @remit, @pemit, page, WHO or channels. By default, all new objects are created with an RxLevel of 1 and TxLevel of 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of 0xFFFFFFFF. Those default levels can be changed with configuration parameters."
 msgstr ""
 
-#: ../../source/advanced.rst:85
+#: ../../source/advanced.rst:82
+msgid "An object is always visible to itself, even if its Rx and Tx levels don't match. (See examples below)"
+msgstr ""
+
+#: ../../source/advanced.rst:86
 msgid "Reality Levels Descriptions"
 msgstr ""
 
-#: ../../source/advanced.rst:87
+#: ../../source/advanced.rst:88
 msgid "For every reality level defined, you can define an attribute that serves as description. If you look at something and match more than one of its TxLevels, you'll see all the corresponding descriptions on the target object. If the object doesn't have any descriptions for the matching levels, you'll see the regular @desc."
 msgstr ""
 
-#: ../../source/advanced.rst:93
+#: ../../source/advanced.rst:94
 msgid "The @adesc attribute on the target is only triggered if the target can see the looker in turn. It's only triggered once, no matter how many descs the looker sees. The @odesc is shown only to those people that see /both/ the looker and the target."
 msgstr ""
 
-#: ../../source/advanced.rst:98
+#: ../../source/advanced.rst:99
 msgid "Through extension, @afail/@ofail and similar pairs (@adrop/@odrop, @asucc/@osucc etc) work in the same way. @verb commands are similary affected."
 msgstr ""
 
-#: ../../source/advanced.rst:102
+#: ../../source/advanced.rst:103
 msgid "Softcoded commands are only matched on the objects that can see the player. The player doesn't have to see the object. This includes commands in the Master Room."
 msgstr ""
 
-#: ../../source/advanced.rst:106
+#: ../../source/advanced.rst:107
 msgid "Exits are treated specially. In order to be able to use an exit name (or to use the 'move <exit>' command) the exit must be visible to the enactor. In order to pass through the exit, the exit must see the enactor in turn. There are reasons for this, which will become evident in the examples below."
 msgstr ""
 
-#: ../../source/advanced.rst:112
+#: ../../source/advanced.rst:113
 msgid "Reality Levels Configuration parameters"
 msgstr ""
 
-#: ../../source/advanced.rst:114
+#: ../../source/advanced.rst:115
 msgid "A few configuration parameters have been introduced to deal with the reality levels::"
 msgstr ""
 
-#: ../../source/advanced.rst:119
+#: ../../source/advanced.rst:120
 msgid "This directive can only be used in the config file (not with the @admin command) and should be repeated for each reality level you want to define. It defines a new level named <name> with a bitvalue of <value> and an optional desc attribute. There is a limit of 8 characters on <name>, a 32-bit value on <value> (basically an unsigned long) and 32 characters on the attribute name. A maximum of 32 reality levels can be defined::"
 msgstr ""
 
-#: ../../source/advanced.rst:135
+#: ../../source/advanced.rst:136
 msgid "These 8 directives define the default reality levels of newly created objects. They can be set in the config file or with the @admin command. Like above, <value> must be a decimal number::"
 msgstr ""
 
-#: ../../source/advanced.rst:141
+#: ../../source/advanced.rst:142
 msgid "If this parameter is set to 1 then wizards (and immortals on Rhost) will see everything and will be visible to everyone. Their effective Rx and Tx levels will always be 0xFFFFFFFF. Also settable in the config file and with the @admin command."
 msgstr ""
 
-#: ../../source/advanced.rst:146
+#: ../../source/advanced.rst:147
 msgid "Compile with -DREALITY_LEVELS compile time option to enable 'Real' needs to be '1' This is an example file only to be added to the mush.conf file Format::"
 msgstr ""
 
-#: ../../source/advanced.rst:152
+#: ../../source/advanced.rst:153
 msgid "Reality Levels Example mush.conf"
 msgstr ""
 
-#: ../../source/advanced.rst:175
+#: ../../source/advanced.rst:176
 msgid "Reality Levels Commands"
 msgstr ""
 
-#: ../../source/advanced.rst:177
+#: ../../source/advanced.rst:178
 msgid "Two wiz-only commands are used to set the reality levels of an object::"
 msgstr ""
 
-#: ../../source/advanced.rst:182
+#: ../../source/advanced.rst:183
 msgid "<list> is a space-separated list of level names that have to be set on the object. If a level name is prefixed with an exclamation mark (!) that level will be cleared from the object."
 msgstr ""
 
-#: ../../source/advanced.rst:189
+#: ../../source/advanced.rst:190
 msgid "Changing the Tx levels of an object might make it invisible to you. In this case, you can still manipulate it by using his #dbref (or \\*player for players)."
 msgstr ""
 
-#: ../../source/advanced.rst:194
+#: ../../source/advanced.rst:195
 msgid "Functions"
 msgstr ""
 
-#: ../../source/advanced.rst:196
+#: ../../source/advanced.rst:197
 msgid "There are five functions that deal with reality levels::"
 msgstr ""
 
-#: ../../source/advanced.rst:201
+#: ../../source/advanced.rst:202
 msgid "These two functions check if an object has the specified Rx or Tx level. You must control <object>. They return 0 or 1 and #-1 in case the object does not exist or you don't have permissions::"
 msgstr ""
 
-#: ../../source/advanced.rst:208
+#: ../../source/advanced.rst:209
 msgid "These two functions return a space-separated list of the object's Rx or Tx levels. Again, you must control the object::"
 msgstr ""
 
-#: ../../source/advanced.rst:213
+#: ../../source/advanced.rst:214
 msgid "A wiz-only function, returns 1 of <obj1> can see <obj2> from a reality levels point of view. It doesn't check if the objects are in the same location, the DARK/CLOAKED flags and so on. Just <obj1>'s Rx level against <obj2>'s Tx level."
 msgstr ""
 
-#: ../../source/advanced.rst:220
+#: ../../source/advanced.rst:221
 msgid "If you are using it on MUX2.0 with /both/ reality levels and Wod Realms enabled, the function will perform both checks and the Wod Realms version checks against the DARK flag."
 msgstr ""
 
-#: ../../source/advanced.rst:225
+#: ../../source/advanced.rst:226
 msgid "Example 1: A simplified Witchcraft setup"
 msgstr ""
 
-#: ../../source/advanced.rst:227
+#: ../../source/advanced.rst:228
 msgid "In Witchcraft, besides the various Gifted classes, characters can be spirits There are spirit realms to which the mundane can not travel. Therefore we will use 2 reality levels: Real and Ghost. Since some spirits can become solid for a limited period of time, we will also use an additional desc for the Ghost level, called GHOSTDESC. Therefore in the config file we will have::"
 msgstr ""
 
-#: ../../source/advanced.rst:237
+#: ../../source/advanced.rst:238
 msgid "Ghosts can pass through most mundane locks, so the exists should allows the ghosts to pass::"
 msgstr ""
 
-#: ../../source/advanced.rst:242
+#: ../../source/advanced.rst:243
 msgid "Note that def_exit_tx isn't set. Why? Because ghosts see the mundane world anyway, so a spirit character will have::"
 msgstr ""
 
-#: ../../source/advanced.rst:248
+#: ../../source/advanced.rst:249
 msgid "Let's assume 3 players::"
 msgstr ""
 
-#: ../../source/advanced.rst:258
+#: ../../source/advanced.rst:259
 msgid "Jack is a Gifted. He will sense spirits, but is still made from flesh and blood so visible to mundanes::"
 msgstr ""
 
-#: ../../source/advanced.rst:267
+#: ../../source/advanced.rst:268
 msgid "Frank is a ghost. He will see other spirits as well as mundanes, but won't be visible to mundanes. He can also become visible to everybody::"
 msgstr ""
 
-#: ../../source/advanced.rst:276
+#: ../../source/advanced.rst:277
 msgid "Following are commands that each of the players enter and what they see.  I'll assume the +materialize command is defined like::"
 msgstr ""
 
-#: ../../source/advanced.rst:333
+#: ../../source/advanced.rst:334
 msgid "Example 2: A WoD setup"
 msgstr ""
 
-#: ../../source/advanced.rst:335
+#: ../../source/advanced.rst:336
 msgid "The reality levels will be defined like this::"
 msgstr ""
 
-#: ../../source/advanced.rst:348
+#: ../../source/advanced.rst:349
 msgid "5 levels of Obfuscation, Umbra, Dreaming, Wraiths. 'All' is a handy replacement for all levels, useful for wizards and wizobjects that should be visible on all levels. Also useful when you want to set an object's levels to something without knowing what he had before::"
 msgstr ""
 
-#: ../../source/advanced.rst:355
+#: ../../source/advanced.rst:356
 msgid "!All will clear all levels, then the object will gain the Real level. There is more than one Obfuscation level because of the relation between Auspex and Obfuscation."
 msgstr ""
 
-#: ../../source/advanced.rst:359
+#: ../../source/advanced.rst:360
 msgid "A vampire with Obfuscate 2, should not be visible by one with Auspex 1. However one with Auspex 3 should see another vampire with Obfuscate 1, 2 /or/ 3."
 msgstr ""
 
-#: ../../source/advanced.rst:363
+#: ../../source/advanced.rst:364
 msgid "Obfuscated players can move if they have Obf > 1. Umbral and Shadow players should also be able to see most of the exits. So the exits at creation should have default levels of Real + Obf2 + Obf3 + Obf4 + Obf5 + Umbra + Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381::"
 msgstr ""
 
-#: ../../source/advanced.rst:371
+#: ../../source/advanced.rst:372
 msgid "Obf1 is not included since an Obfuscated vampire should not be able to move if it only has Obf1. Therefore they won't see the exits. If you want them to be able to see the exits, but not to use them, change the default Tx of the exits::"
 msgstr ""
 
-#: ../../source/advanced.rst:379
+#: ../../source/advanced.rst:380
 msgid "Joe the Mortal will have an RxLevel: Real and a TxLevel: Real Jack the Malk, who likes to walk around Obfuscated and has Obfuscate 2 will have an RxLevel: Real (he sees what the mortals see) but a TxLevel: Obf2 Jimmy the Nossie, who is using the Mask and has Obfuscate 4, but doesn't try to make himself invisible will have an RxLevel: Real (as Jack) and a TxLevel: Real Obf4. He will also set his @desc to what the mortals see and &OBFDESC to his real slimy desc. Simply put, he will be visible to mortals, but not with his real desc."
 msgstr ""
 
-#: ../../source/advanced.rst:388
+#: ../../source/advanced.rst:389
 msgid "Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So he can see Joe, Jack and Jimmy's both descs. Joe, on the other hand, won't see Jack at all. He will still see Jimmy, but only Jimmy's @desc, not the OBFDESC"
 msgstr ""
 
-#: ../../source/advanced.rst:394
+#: ../../source/advanced.rst:395
 msgid "Frida the Fae... will have RxLevel: Real Fae and TxLevel: Real Fae. @desc set to the mundane desc, &FAEDESC set to the Chimerical desc. Emily the Enchanted will have an RxLevel: Real Fae, but the TxLevel: Real. No &FAEDESC on her, although she'll be able to see it the one on Frida. Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra and TxLevel: Umbra. &UMBRADESC is his friend. He won't see mortals or other characters who are not in the Umbra."
 msgstr ""
 
-#: ../../source/advanced.rst:402
+#: ../../source/advanced.rst:403
 msgid "Barbie the Bastet, who's only peeking in the Umbra, without going there, will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she can't see the things that see her."
 msgstr ""
 
-#: ../../source/advanced.rst:406
+#: ../../source/advanced.rst:407
 msgid "Deanna the Drake, who activates her spirit vision, will have RxLevel: Real Umbra and TxLevel: Real. She will see characters in Umbra and real world at the same time and perceive the desc appropiate to the realm the ohter character is in."
 msgstr ""
 
-#: ../../source/advanced.rst:411
+#: ../../source/advanced.rst:412
 msgid "Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her @desc would be empty, but the &SHADOWDESC should be set. Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real"
 msgstr ""
 
-#: ../../source/advanced.rst:415
+#: ../../source/advanced.rst:416
 msgid "Global code objects that all characters should be able to use::"
 msgstr ""
 
-#: ../../source/advanced.rst:420
+#: ../../source/advanced.rst:421
 msgid "Example 3: Softcode"
 msgstr ""
 
-#: ../../source/advanced.rst:422
+#: ../../source/advanced.rst:423
 msgid "Considering the config directives from example 2 and assuming a function getstat(<dbref>,<stat>) that will return the value of a player's stat from the sheet here are softcode examples that implement some of the WoD powers. In a real game you would have to use some more checks, of course."
 msgstr ""
 
-#: ../../source/advanced.rst:446
+#: ../../source/advanced.rst:447
 msgid "Execscript and external programs and scripts"
 msgstr ""
 
-#: ../../source/advanced.rst:449
+#: ../../source/advanced.rst:450
 msgid "Execscript variables"
 msgstr ""
 
-#: ../../source/advanced.rst:452
+#: ../../source/advanced.rst:453
 msgid "Execscript Built in variables"
 msgstr ""
 
-#: ../../source/advanced.rst:455
-#: ../../source/advanced.rst:473
-#: ../../source/advanced.rst:483
+#: ../../source/advanced.rst:456
+#: ../../source/advanced.rst:474
+#: ../../source/advanced.rst:484
 msgid "Variable"
 msgstr ""
 
-#: ../../source/advanced.rst:455
-#: ../../source/advanced.rst:473
-#: ../../source/advanced.rst:483
-#: ../../source/advanced.rst:678
+#: ../../source/advanced.rst:456
+#: ../../source/advanced.rst:474
+#: ../../source/advanced.rst:484
+#: ../../source/advanced.rst:679
 msgid "Description"
 msgstr ""
 
-#: ../../source/advanced.rst:457
+#: ../../source/advanced.rst:458
 msgid "MUSH_PLAYER"
 msgstr ""
 
-#: ../../source/advanced.rst:457
+#: ../../source/advanced.rst:458
 msgid "player dbref#"
 msgstr ""
 
-#: ../../source/advanced.rst:458
+#: ../../source/advanced.rst:459
 msgid "MUSH_CAUSE"
 msgstr ""
 
-#: ../../source/advanced.rst:458
+#: ../../source/advanced.rst:459
 msgid "cause dbref#"
 msgstr ""
 
-#: ../../source/advanced.rst:459
+#: ../../source/advanced.rst:460
 msgid "MUSH_CALLER"
 msgstr ""
 
-#: ../../source/advanced.rst:459
+#: ../../source/advanced.rst:460
 msgid "caller dbref#"
 msgstr ""
 
-#: ../../source/advanced.rst:460
+#: ../../source/advanced.rst:461
 msgid "MUSH_OWNER"
 msgstr ""
 
-#: ../../source/advanced.rst:460
+#: ../../source/advanced.rst:461
 msgid "owner of player dbref#"
 msgstr ""
 
-#: ../../source/advanced.rst:461
+#: ../../source/advanced.rst:462
 msgid "MUSH_FLAGS"
 msgstr ""
 
-#: ../../source/advanced.rst:461
+#: ../../source/advanced.rst:462
 msgid "space delimited list of flags on player"
 msgstr ""
 
-#: ../../source/advanced.rst:462
+#: ../../source/advanced.rst:463
 msgid "MUSH_TOGGLES"
 msgstr ""
 
-#: ../../source/advanced.rst:462
+#: ../../source/advanced.rst:463
 msgid "space delimited list of toggles on player"
 msgstr ""
 
-#: ../../source/advanced.rst:463
+#: ../../source/advanced.rst:464
 msgid "MUSH_OFLAGS"
 msgstr ""
 
-#: ../../source/advanced.rst:463
+#: ../../source/advanced.rst:464
 msgid "space delimited list of flags of player owner"
 msgstr ""
 
-#: ../../source/advanced.rst:464
+#: ../../source/advanced.rst:465
 msgid "MUSH_OTOGGLES"
 msgstr ""
 
-#: ../../source/advanced.rst:464
+#: ../../source/advanced.rst:465
 msgid "space delimited list of toggles of player owner"
 msgstr ""
 
-#: ../../source/advanced.rst:465
+#: ../../source/advanced.rst:466
 msgid "MUSHL_VARS"
 msgstr ""
 
-#: ../../source/advanced.rst:465
+#: ../../source/advanced.rst:466
 msgid "space delimited list of MUSH attributes from player This is passed from the mush's EXECSCRIPT_VARS attr"
 msgstr ""
 
-#: ../../source/advanced.rst:470
+#: ../../source/advanced.rst:471
 msgid "Execscript Dynamic variables"
 msgstr ""
 
-#: ../../source/advanced.rst:475
+#: ../../source/advanced.rst:476
 msgid "MUSHV_<arg>"
 msgstr ""
 
-#: ../../source/advanced.rst:475
+#: ../../source/advanced.rst:476
 msgid "<arg> variable passed from MUSHL_VARS These are the attributes from EXECSCRIPT_VARS"
 msgstr ""
 
-#: ../../source/advanced.rst:480
+#: ../../source/advanced.rst:481
 msgid "Execscript Register variables"
 msgstr ""
 
-#: ../../source/advanced.rst:485
+#: ../../source/advanced.rst:486
 msgid "MUSHQ_<arg>"
 msgstr ""
 
-#: ../../source/advanced.rst:485
+#: ../../source/advanced.rst:486
 msgid "setq registers 0-9 and a-z"
 msgstr ""
 
-#: ../../source/advanced.rst:486
+#: ../../source/advanced.rst:487
 msgid "MUSHQN_<arg>"
 msgstr ""
 
-#: ../../source/advanced.rst:486
+#: ../../source/advanced.rst:487
 msgid "labels that are assigned the setq vars"
 msgstr ""
 
-#: ../../source/advanced.rst:487
+#: ../../source/advanced.rst:488
 msgid "MUSHN_<arg>"
 msgstr ""
 
-#: ../../source/advanced.rst:487
+#: ../../source/advanced.rst:488
 msgid "The labels that were defined by any register Note: they must be ASCII-7 clean and contain no white spaces"
 msgstr ""
 
-#: ../../source/advanced.rst:493
+#: ../../source/advanced.rst:494
 msgid "Execsript set object"
 msgstr ""
 
-#: ../../source/advanced.rst:495
+#: ../../source/advanced.rst:496
 msgid "The script executed with execscript() will read in a file with the same name as the script ending in '.set'.  This is a loader object that will set attributes and registers back into the mush that you wish to pass from the script. The fields are SPACE SEPARATED.  The values are NOT evaluated."
 msgstr ""
 
-#: ../../source/advanced.rst:501
+#: ../../source/advanced.rst:502
 msgid "Execscript set object field format"
 msgstr ""
 
-#: ../../source/advanced.rst:504
+#: ../../source/advanced.rst:505
 msgid "Execscript set object Dynamic variables"
 msgstr ""
 
-#: ../../source/advanced.rst:511
+#: ../../source/advanced.rst:512
 msgid "Execscript set object Dynamic variables Examples"
 msgstr ""
 
-#: ../../source/advanced.rst:524
+#: ../../source/advanced.rst:525
 msgid "Execscript set object Register variables"
 msgstr ""
 
-#: ../../source/advanced.rst:531
+#: ../../source/advanced.rst:532
 msgid "Execscript set object Register variables Examples"
 msgstr ""
 
-#: ../../source/advanced.rst:535
+#: ../../source/advanced.rst:536
 msgid "The last exammple clears register 0"
 msgstr ""
 
-#: ../../source/advanced.rst:547
+#: ../../source/advanced.rst:548
 msgid "Execscript Example bash script"
 msgstr ""
 
-#: ../../source/advanced.rst:567
+#: ../../source/advanced.rst:568
 msgid "Exescript Notes and warnings"
 msgstr ""
 
-#: ../../source/advanced.rst:569
+#: ../../source/advanced.rst:570
 msgid "While MUSHL_VARS are sanitized on what is allowable as a mush variable, this is not necessarilly sanitized on what the calling script can fetch as a valid variable.  Of note, you can not set environment variables that contain an equals sign.  Be aware of this limitation."
 msgstr ""
 
-#: ../../source/advanced.rst:574
+#: ../../source/advanced.rst:575
 msgid "Remember, MUSHL_VARS is the environment variable seen by the script. This is EXECSCRIPT_VARS on the mush itself, that is the attribute set on the target that contains the execscript() that is being executed."
 msgstr ""
 
-#: ../../source/advanced.rst:579
+#: ../../source/advanced.rst:580
 msgid "Scripts to be used with execscript"
 msgstr ""
 
-#: ../../source/advanced.rst:615
+#: ../../source/advanced.rst:616
 msgid "Using printf() for advanced text output"
 msgstr ""
 
-#: ../../source/advanced.rst:617
+#: ../../source/advanced.rst:618
 msgid "The function printf() in Rhost can be used to greatly reduce coding in efforts for outputs, screens and data display.  It can automatically center, justify and wrap the text parameters given to it."
 msgstr ""
 
-#: ../../source/advanced.rst:621
+#: ../../source/advanced.rst:622
 msgid "Printf Example one"
 msgstr ""
 
-#: ../../source/advanced.rst:635
+#: ../../source/advanced.rst:636
 msgid "Printf Example two"
 msgstr ""
 
-#: ../../source/advanced.rst:654
+#: ../../source/advanced.rst:655
 msgid "Printf Example three"
 msgstr ""
 
-#: ../../source/advanced.rst:673
+#: ../../source/advanced.rst:674
 msgid "Format for image files"
 msgstr ""
 
-#: ../../source/advanced.rst:675
+#: ../../source/advanced.rst:676
 msgid "The image format goes like this:"
 msgstr ""
 
-#: ../../source/advanced.rst:678
+#: ../../source/advanced.rst:679
 msgid "Data Type"
 msgstr ""
 
-#: ../../source/advanced.rst:678
+#: ../../source/advanced.rst:679
 msgid "Example"
 msgstr ""
 
-#: ../../source/advanced.rst:680
-#: ../../source/advanced.rst:689
-#: ../../source/advanced.rst:691
+#: ../../source/advanced.rst:681
+#: ../../source/advanced.rst:690
 #: ../../source/advanced.rst:692
 #: ../../source/advanced.rst:693
 #: ../../source/advanced.rst:694
@@ -540,301 +543,302 @@ msgstr ""
 #: ../../source/advanced.rst:701
 #: ../../source/advanced.rst:702
 #: ../../source/advanced.rst:703
+#: ../../source/advanced.rst:704
 msgid "INT"
 msgstr ""
 
-#: ../../source/advanced.rst:680
+#: ../../source/advanced.rst:681
 msgid "3"
 msgstr ""
 
-#: ../../source/advanced.rst:680
+#: ../../source/advanced.rst:681
 msgid "TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5"
 msgstr ""
 
-#: ../../source/advanced.rst:681
-#: ../../source/advanced.rst:687
-#: ../../source/advanced.rst:705
-#: ../../source/advanced.rst:707
-#: ../../source/advanced.rst:709
+#: ../../source/advanced.rst:682
+#: ../../source/advanced.rst:688
+#: ../../source/advanced.rst:706
+#: ../../source/advanced.rst:708
+#: ../../source/advanced.rst:710
 msgid "STRING"
 msgstr ""
 
-#: ../../source/advanced.rst:681
+#: ../../source/advanced.rst:682
 msgid "Wizard"
 msgstr ""
 
-#: ../../source/advanced.rst:681
+#: ../../source/advanced.rst:682
 msgid "NAME: of the target.  Verbatum, no quotes surround it"
 msgstr ""
 
-#: ../../source/advanced.rst:682
 #: ../../source/advanced.rst:683
 #: ../../source/advanced.rst:684
 #: ../../source/advanced.rst:685
 #: ../../source/advanced.rst:686
-#: ../../source/advanced.rst:688
-#: ../../source/advanced.rst:690
+#: ../../source/advanced.rst:687
+#: ../../source/advanced.rst:689
+#: ../../source/advanced.rst:691
 msgid "\\*INT"
 msgstr ""
 
-#: ../../source/advanced.rst:682
-#: ../../source/advanced.rst:686
+#: ../../source/advanced.rst:683
+#: ../../source/advanced.rst:687
 msgid "123"
 msgstr ""
 
-#: ../../source/advanced.rst:682
+#: ../../source/advanced.rst:683
 msgid "LOCATION: dbref# of the target.  No prepending '#' used."
 msgstr ""
 
-#: ../../source/advanced.rst:683
+#: ../../source/advanced.rst:684
 msgid "234"
 msgstr ""
 
-#: ../../source/advanced.rst:683
+#: ../../source/advanced.rst:684
 msgid "CONTENTS: The first content in a linked list content table (-1 if none)"
 msgstr ""
 
-#: ../../source/advanced.rst:684
+#: ../../source/advanced.rst:685
 msgid "345"
 msgstr ""
 
-#: ../../source/advanced.rst:684
+#: ../../source/advanced.rst:685
 msgid "EXITS: The first exit in a linked list exit table (-1 if none)"
 msgstr ""
 
-#: ../../source/advanced.rst:685
+#: ../../source/advanced.rst:686
 msgid "0"
 msgstr ""
 
-#: ../../source/advanced.rst:685
+#: ../../source/advanced.rst:686
 msgid "LINK: This is the 'home' of the object or what it's linked to (-1 for none)"
 msgstr ""
 
-#: ../../source/advanced.rst:686
+#: ../../source/advanced.rst:687
 msgid "NEXT: The next thing after this item for a content holder"
 msgstr ""
 
-#: ../../source/advanced.rst:687
+#: ../../source/advanced.rst:688
 msgid "#123"
 msgstr ""
 
-#: ../../source/advanced.rst:687
+#: ../../source/advanced.rst:688
 msgid "LOCK: The boolean string lock if it exists.  (empty if no lock)"
 msgstr ""
 
-#: ../../source/advanced.rst:688
+#: ../../source/advanced.rst:689
 msgid "1"
 msgstr ""
 
-#: ../../source/advanced.rst:688
+#: ../../source/advanced.rst:689
 msgid "OWNER: The dbref# owner of the target.  For players same dbref as player."
 msgstr ""
 
-#: ../../source/advanced.rst:689
+#: ../../source/advanced.rst:690
 msgid "789"
 msgstr ""
 
-#: ../../source/advanced.rst:689
+#: ../../source/advanced.rst:690
 msgid "PARENT: The parent of the target.  (-1 if none)"
 msgstr ""
 
-#: ../../source/advanced.rst:690
+#: ../../source/advanced.rst:691
 msgid "99999"
 msgstr ""
 
-#: ../../source/advanced.rst:690
+#: ../../source/advanced.rst:691
 msgid "MONEY: The int value of the money the players has."
 msgstr ""
 
-#: ../../source/advanced.rst:691
+#: ../../source/advanced.rst:692
 msgid "194592"
 msgstr ""
 
-#: ../../source/advanced.rst:691
+#: ../../source/advanced.rst:692
 msgid "FLAGS1: The first word of flags (@set flags) on a player      (see FLAGS)"
 msgstr ""
 
-#: ../../source/advanced.rst:692
+#: ../../source/advanced.rst:693
 msgid "194222"
 msgstr ""
 
-#: ../../source/advanced.rst:692
+#: ../../source/advanced.rst:693
 msgid "FLAGS2: The second word of flags (@set flags) on a player     (see FLAGS)"
 msgstr ""
 
-#: ../../source/advanced.rst:693
+#: ../../source/advanced.rst:694
 msgid "199999"
 msgstr ""
 
-#: ../../source/advanced.rst:693
+#: ../../source/advanced.rst:694
 msgid "FLAGS3: The third word of flags (@set flags []) on a player   (see FLAGS)"
 msgstr ""
 
-#: ../../source/advanced.rst:694
+#: ../../source/advanced.rst:695
 msgid "1582958"
 msgstr ""
 
-#: ../../source/advanced.rst:694
+#: ../../source/advanced.rst:695
 msgid "FLAGS4: The forth word of flags (@set flags []) on a player   (see FLAGS)"
 msgstr ""
 
-#: ../../source/advanced.rst:695
+#: ../../source/advanced.rst:696
 msgid "159955"
 msgstr ""
 
-#: ../../source/advanced.rst:695
+#: ../../source/advanced.rst:696
 msgid "TOGGLES1: The first word of toggles (@toggle) on a player    (see TOGGLES)"
 msgstr ""
 
-#: ../../source/advanced.rst:696
 #: ../../source/advanced.rst:697
 #: ../../source/advanced.rst:698
 #: ../../source/advanced.rst:699
 #: ../../source/advanced.rst:700
 #: ../../source/advanced.rst:701
 #: ../../source/advanced.rst:702
+#: ../../source/advanced.rst:703
 msgid "159958"
 msgstr ""
 
-#: ../../source/advanced.rst:696
+#: ../../source/advanced.rst:697
 msgid "TOGGLES2: The second word of toggles (@toggle) on a player   (see TOGGLES)"
 msgstr ""
 
-#: ../../source/advanced.rst:697
+#: ../../source/advanced.rst:698
 msgid "POWER1: The first word of powers (@power) on a player         (see POWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:698
+#: ../../source/advanced.rst:699
 msgid "POWER2: The second word of powers (@power) on a player        (see POWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:699
+#: ../../source/advanced.rst:700
 msgid "POWER3: The third word of powers (@power) on a player         (see POWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:700
+#: ../../source/advanced.rst:701
 msgid "DEPOWER1: The first word of depowers (@depower) on a player  (see DEPOWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:701
+#: ../../source/advanced.rst:702
 msgid "DEPOWER2: The second word of depowers (@depower) on a player (see DEPOWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:702
+#: ../../source/advanced.rst:703
 msgid "DEPOWER3: The third word of depowers (@depower) on a player  (see DEPOWERS)"
 msgstr ""
 
-#: ../../source/advanced.rst:703
+#: ../../source/advanced.rst:704
 msgid "-1"
 msgstr ""
 
-#: ../../source/advanced.rst:703
+#: ../../source/advanced.rst:704
 msgid "ZONE(S): The list of zones starting here and ending with '-1'. (see ZONES)"
 msgstr ""
 
-#: ../../source/advanced.rst:704
-#: ../../source/advanced.rst:706
-#: ../../source/advanced.rst:708
+#: ../../source/advanced.rst:705
+#: ../../source/advanced.rst:707
+#: ../../source/advanced.rst:709
 msgid ">STRING"
 msgstr ""
 
-#: ../../source/advanced.rst:704
+#: ../../source/advanced.rst:705
 msgid ">VA"
 msgstr ""
 
-#: ../../source/advanced.rst:704
+#: ../../source/advanced.rst:705
 msgid "ATTRIBUTENAME: Attribute name to store, starts with > identifier"
 msgstr ""
 
-#: ../../source/advanced.rst:705
+#: ../../source/advanced.rst:706
 msgid "Wheee"
 msgstr ""
 
-#: ../../source/advanced.rst:705
+#: ../../source/advanced.rst:706
 msgid "ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)"
 msgstr ""
 
-#: ../../source/advanced.rst:706
+#: ../../source/advanced.rst:707
 msgid ">Desc"
 msgstr ""
 
-#: ../../source/advanced.rst:706
+#: ../../source/advanced.rst:707
 msgid "ATTRIBUTENAME: Another attribute to chain in"
 msgstr ""
 
-#: ../../source/advanced.rst:707
+#: ../../source/advanced.rst:708
 msgid "Ugly"
 msgstr ""
 
-#: ../../source/advanced.rst:707
+#: ../../source/advanced.rst:708
 msgid "ATTRIBUTECONTENTS: Contents of the next attribute"
 msgstr ""
 
-#: ../../source/advanced.rst:708
+#: ../../source/advanced.rst:709
 msgid "\\*Password"
 msgstr ""
 
-#: ../../source/advanced.rst:708
+#: ../../source/advanced.rst:709
 msgid "PASSWORDATTRIB: Special password attribute.  Attribute name is '\\*Password'"
 msgstr ""
 
-#: ../../source/advanced.rst:709
+#: ../../source/advanced.rst:710
 msgid "$6$xy$xy"
 msgstr ""
 
-#: ../../source/advanced.rst:709
+#: ../../source/advanced.rst:710
 msgid "PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)"
 msgstr ""
 
-#: ../../source/advanced.rst:710
-#: ../../source/advanced.rst:710
+#: ../../source/advanced.rst:711
+#: ../../source/advanced.rst:711
 msgid "<"
 msgstr ""
 
-#: ../../source/advanced.rst:710
+#: ../../source/advanced.rst:711
 msgid "This is the marker to specify the end of the attribute contents.  This is always the last line"
 msgstr ""
 
-#: ../../source/advanced.rst:716
+#: ../../source/advanced.rst:717
 msgid "Any Data type starting with '*' is ignored when @snapshot/loading."
 msgstr ""
 
-#: ../../source/advanced.rst:718
+#: ../../source/advanced.rst:719
 msgid "The structure above with the examples would look like this in the file::"
 msgstr ""
 
-#: ../../source/advanced.rst:753
+#: ../../source/advanced.rst:754
 msgid "HELP key indexes for the values"
 msgstr ""
 
-#: ../../source/advanced.rst:756
+#: ../../source/advanced.rst:757
 msgid "FLAGS: The following flags are to be used.  They are BITWISE masks that you need to add together for the values that you apply"
 msgstr ""
 
-#: ../../source/advanced.rst:895
+#: ../../source/advanced.rst:896
 msgid "TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like the flags above.  They are added together for each word type"
 msgstr ""
 
-#: ../../source/advanced.rst:972
+#: ../../source/advanced.rst:973
 msgid "POWERS:  Powers are handled a bit differently.  They're used as BITWISE shift markers that you would have to compute the shift then add it after the fact."
 msgstr ""
 
-#: ../../source/advanced.rst:1031
+#: ../../source/advanced.rst:1032
 msgid "DEPOWERS:  like @powers they are handled with a BITWISE offshift that you will have to calculate then add"
 msgstr ""
 
-#: ../../source/advanced.rst:1090
+#: ../../source/advanced.rst:1091
 msgid "ZONES:  Zones are special.  If there are no zones, the value will be '-1'."
 msgstr ""
 
-#: ../../source/advanced.rst:1092
+#: ../../source/advanced.rst:1093
 msgid "So entering zones if there are no zones::"
 msgstr ""
 
-#: ../../source/advanced.rst:1097
+#: ../../source/advanced.rst:1098
 msgid "Entering zones if it has three zones (#123, #456, and #789)::"
 msgstr ""
 
-#: ../../source/advanced.rst:1104
+#: ../../source/advanced.rst:1105
 msgid "As you see, the last value of the zone *MUST* be -1.  This tells it that there are no more zones to add."
 msgstr ""

@@ -1,6 +1,6 @@
 .\" Man page generated from reStructuredText.
 .
-.TH "RHOSTMUSHHANDBOOK" "1" "Apr 22, 2021" "0.02a" "RhostMUSH Handbook"
+.TH "RHOSTMUSHHANDBOOK" "1" "Apr 22, 2021" "0.03a" "RhostMUSH Handbook"
 .SH NAME
 rhostmushhandbook \- RhostMUSH Handbook 
 .
@@ -665,7 +665,16 @@ At this point you can modify your netrhost.conf file settings in your game direc
 Using an editor modify the \(aqport\(aq and \(aqdebug_id\(aq respectively in your netrhost.conf as state.
 The \(aqport\(aq will be the port the mush listens on, the debug_id is for the debug\-stack and is
 your port with a \(aq5\(aq at the end.  So if your port is 4444, the debug_id is 44445
-.IP 4. 3
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.SS Todo
+.sp
+Clean up the below section
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 1. 3
 Load in the flatfile into the mush (You could do this in the Startmush as well)
 Manually:
 .INDENT 3.0
@@ -674,12 +683,11 @@ Manually:
 .nf
 .ft C
 cd game
+\&./db_load data/netrhost.gdbm ../minimal\-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF
 .ft P
 .fi
 .UNINDENT
 .UNINDENT
-.sp
-\&./db_load data/netrhost.gdbm ../minimal\-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF
 .sp
 Start your mush:
 .INDENT 3.0
@@ -780,17 +788,24 @@ Log into the immortal character
 .nf
 .ft C
 @dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@desc *Guest##=A guest player.;@adisconnect *Guest##=home;@lock *Guest##=*Guest##}
-
-@list guest will show your guest characters and if they\(aqre set up properly.
 .ft P
 .fi
 .UNINDENT
 .UNINDENT
-.IP 6. 3
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+@list guest will show your guest characters and if they\(aqre set up properly.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 1. 3
 Any master room code you load in from your immholder character (or @chown/preserve to it) The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.  All other softcode (like mail wrappers) can be found on \fI\%https://github.com/RhostMUSH/trunk\fP in Mushcode.
-.IP 7. 3
+.IP 2. 3
 Setup new character, staff, and take tasks that can only be accomplished by #1
-.IP 8. 3
+.IP 3. 3
 Set up any other characters you want.  Anyone immortal can issue @function, @admin, or anything #1 can do.
 .UNINDENT
 .INDENT 0.0
@@ -6389,6 +6404,7 @@ By default, all new objects are created with an RxLevel of 1 and TxLevel of
 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of
 0xFFFFFFFF. Those default levels can be changed with configuration
 parameters.
+.sp
 An object is always visible to itself, even if its Rx and Tx levels don\(aqt
 match. (See examples below)
 .SS Reality Levels Descriptions
@@ -7970,7 +7986,7 @@ openssl (optional)
 .UNINDENT
 .UNINDENT
 .sp
-2. When configuring rhost (using confsource) select the Disable Debugmon
+#. When configuring rhost (using confsource) select the Disable Debugmon
 option.
 .SS Installing on Windows with Cygwin
 .sp
@@ -8042,13 +8058,13 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 .INDENT 0.0
 .INDENT 3.5
 .INDENT 0.0
-.IP A. 3
+.IP 1. 3
 @dump/flat    \-\- This will make a flatfile dump of your MUSH database
-.IP B. 3
+.IP 2. 3
 wmail/unload  \-\- This will make a flatfile dump of your MAIL database
-.IP C. 3
+.IP 3. 3
 @areg/unload  \-\- If you use the AutoRegistration engine, this dumps it
-.IP D. 3
+.IP 4. 3
 newsdb/unload \-\- If you use the hardcoded news/bbs engine.  This dumps it
 .UNINDENT
 .UNINDENT
@@ -8057,15 +8073,15 @@ newsdb/unload \-\- If you use the hardcoded news/bbs engine.  This dumps it
 .INDENT 0.0
 .INDENT 3.5
 .INDENT 0.0
-.IP A. 3
+.IP 1. 3
 Server/game/data/netrhost.db.flat
-.IP B. 3
+.IP 2. 3
 Server/game/data/RhostMUSH.dump.folder
-.IP C. 3
+.IP 3. 3
 Server/game/data/RhostMUSH.dump.mail
-.IP D. 3
+.IP 4. 3
 (Optional) Server/game/data/RhostMUSH.areg.dump
-.IP E. 3
+.IP 5. 3
 (Optional) Server/game/data/RhostMUSH.news.flat
 .UNINDENT
 .UNINDENT
@@ -8075,17 +8091,34 @@ Server/game/data/RhostMUSH.dump.mail
 @shutdown your mush
 .SS From the Server directory
 .INDENT 0.0
+.IP 1. 3
+make clean
+.IP 2. 3
+make confsource
+.UNINDENT
+.INDENT 0.0
 .INDENT 3.5
 .INDENT 0.0
-.IP A. 3
-make clean
-.IP B. 3
-make confsource
-1.  Select QDBM and if you wish at this time increase your LBUF size
-2.  Select any other options you may want
-.IP C. 3
+.IP 1. 3
+Select QDBM and if you wish at this time increase your LBUF size
+.IP 2. 3
+Select any other options you may want
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 1. 3
 (r)un and let it compile.
-.IP D. 3
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.SS Todo
+.sp
+Figure out why that asterisk is there.
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 1. 3
 Main DB: Delete (rm) the following files (from Rhost/Server/game/data):
 .INDENT 3.0
 .INDENT 3.5
@@ -8100,7 +8133,7 @@ netrhost.db.new.prev
 .fi
 .UNINDENT
 .UNINDENT
-.IP E. 3
+.IP 2. 3
 Mail DB: Delete (rm) the following files (from Rhost/Server/game/data):
 .INDENT 3.0
 .INDENT 3.5
@@ -8115,7 +8148,7 @@ RhostMUSH.mail.pag
 .fi
 .UNINDENT
 .UNINDENT
-.IP F. 3
+.IP 3. 3
 (Optional) AutoReg DB: Delete (rm) the following files (from Rhost/Server/game/data):
 .INDENT 3.0
 .INDENT 3.5
@@ -8128,7 +8161,7 @@ RhostMUSH.areg.pag
 .fi
 .UNINDENT
 .UNINDENT
-.IP G. 3
+.IP 4. 3
 (Optional) News/BBS DB: Delete (rm) the following files (from Rhost/Server/game/data):
 .INDENT 3.0
 .INDENT 3.5
@@ -8142,13 +8175,9 @@ RhostMUSH.news.pag
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS From the Server/game directory
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP A. 3
+.IP 1. 3
 Load the database:
 .INDENT 3.0
 .INDENT 3.5
@@ -8160,7 +8189,7 @@ Load the database:
 .fi
 .UNINDENT
 .UNINDENT
-.IP B. 3
+.IP 2. 3
 Start the MUSH back:
 .INDENT 3.0
 .INDENT 3.5
@@ -8173,13 +8202,9 @@ Start the MUSH back:
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS While logged into the mush issue the following commands
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP A. 3
+.IP 1. 3
 Load in the mail database:
 .INDENT 3.0
 .INDENT 3.5
@@ -8191,7 +8216,7 @@ wmail/load
 .fi
 .UNINDENT
 .UNINDENT
-.IP B. 3
+.IP 2. 3
 (optional) Load in the autoreg database:
 .INDENT 3.0
 .INDENT 3.5
@@ -8203,7 +8228,7 @@ wmail/load
 .fi
 .UNINDENT
 .UNINDENT
-.IP C. 3
+.IP 3. 3
 (optional) Load in the news/bbs database:
 .INDENT 3.0
 .INDENT 3.5
@@ -8216,18 +8241,10 @@ newsdb/load
 .UNINDENT
 .UNINDENT
 .UNINDENT
-.UNINDENT
-.UNINDENT
 .SS Verify that you have QDBM running and your valid values
 .INDENT 0.0
-.INDENT 3.5
-.INDENT 0.0
-.IP A. 3
-@list options system
-.IP B. 3
-@list options (spammy)
-.UNINDENT
-.UNINDENT
+.IP 1. 3
+@list options system#.  @list options (spammy)
 .UNINDENT
 .SS Updating RhostMUSH prior to 3.9.5p2
 .sp
@@ -8295,7 +8312,7 @@ Please remember the \(aq\-s\(aq to the ./backup_flat.sh.
 .UNINDENT
 .UNINDENT
 .INDENT 0.0
-.IP 4. 3
+.IP 1. 3
 Make note of the most recently created file in the directory Server/game/oldflat.  It\(aqs usually named something like:
 .INDENT 3.0
 .INDENT 3.5
@@ -8316,7 +8333,7 @@ You will need this file later.
 .UNINDENT
 .UNINDENT
 .INDENT 0.0
-.IP 5. 3
+.IP 1. 3
 Rename your \(aqRhost\(aq directory to something else.  This is the directory that you have containing the \(aqServer\(aq directory.  Name it anything you want other than \(aqRhost\(aq.  For those not used to unix you would type:
 .INDENT 3.0
 .INDENT 3.5
@@ -8328,7 +8345,7 @@ mv Rhost Rhost_old
 .fi
 .UNINDENT
 .UNINDENT
-.IP 6. 3
+.IP 2. 3
 Pull in the latest Rhost.  You would type:
 .INDENT 3.0
 .INDENT 3.5
@@ -8349,7 +8366,7 @@ You would type this in the same directory you have renamed your old \(aqRhost\(a
 .UNINDENT
 .UNINDENT
 .INDENT 0.0
-.IP 7. 3
+.IP 1. 3
 go into the Rhost/Server directory.   Type:
 .INDENT 3.0
 .INDENT 3.5
@@ -8361,23 +8378,30 @@ make confsource
 .fi
 .UNINDENT
 .UNINDENT
+.UNINDENT
 .sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
 Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it\(aqs the \(aqr\(aq option).
-.IP 8. 3
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.IP 1. 3
 Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the \(aqgame\(aq directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!
 .UNINDENT
 .INDENT 0.0
 .INDENT 3.5
 .INDENT 0.0
-.IP A. 3
+.IP 1. 3
 cp netrhost.conf netrhost.conf.orig
-.IP B. 3
+.IP 2. 3
 cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .
-.IP C. 3
+.IP 3. 3
 tar \-zxvf RhostMUSH.dbflat1.tar.gz
-.IP D. 3
+.IP 4. 3
 Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don\(aqt port or other stuff you have already customized).
-.IP E. 3
+.IP 5. 3
 Load in your flatfile information:
 .INDENT 3.0
 .INDENT 3.5
@@ -8389,7 +8413,7 @@ Load in your flatfile information:
 .fi
 .UNINDENT
 .UNINDENT
-.IP F. 3
+.IP 6. 3
 Your ./Startmush should re\-index all your txt files you originally made:
 .INDENT 3.0
 .INDENT 3.5
@@ -8401,7 +8425,7 @@ Your ./Startmush should re\-index all your txt files you originally made:
 .fi
 .UNINDENT
 .UNINDENT
-.IP G. 3
+.IP 7. 3
 In your game type the following as an immortal or as #1.
 .UNINDENT
 .INDENT 0.0
@@ -8449,7 +8473,7 @@ newsdb/load
 .UNINDENT
 .UNINDENT
 .INDENT 0.0
-.IP 9. 3
+.IP 1. 3
 You should be good to go on a current directory structure for Rhost.  Enjoy!
 .UNINDENT
 .SS Adding MySQL to RhostMUSH older than 3.9.5p2
@@ -8514,34 +8538,34 @@ IF REPLACING/CHANGING local.c COPY BELOW
 .nf
 .ft C
 /* Called when the mush starts up, immediatly prior to the main game
- * loop being entered. By this point all databases are loaded and
- * all variables configured.
- */
+* loop being entered. By this point all databases are loaded and
+* all variables configured.
+*/
 #ifdef MYSQL_VERSION
-   extern void local_mysql_init(void);
-   extern int sql_shutdown(dbref player);
+ extern void local_mysql_init(void);
+ extern int sql_shutdown(dbref player);
 #endif
 
 #ifdef SQLITE
-   extern void local_sqlite_init(void);
+ extern void local_sqlite_init(void);
 #endif /* SQLITE */
 
 void local_startup(void) {
 #ifdef SQLITE
-   local_sqlite_init();
+ local_sqlite_init();
 #endif /* SQLITE */
 #ifdef MYSQL_VERSION
-   local_mysql_init();
+ local_mysql_init();
 #endif
-   load_regexp_functions();
+ load_regexp_functions();
 }
 
 /* Called immediatly after the main game loop exits. At this point
- * all databases and variables are still configured
- */
+* all databases and variables are still configured
+*/
 void local_shutdown(void) {
 #ifdef MYSQL_VERSION
-   sql_shutdown(\-1);
+ sql_shutdown(\-1);
 #endif
 }
 .ft P
@@ -8549,7 +8573,7 @@ void local_shutdown(void) {
 .UNINDENT
 .UNINDENT
 .INDENT 0.0
-.IP 6. 3
+.IP 1. 3
 Issue \(aqmake clean\(aq then make confsource to rebuild using the latest
 builder script to build in the mysql changes.
 .UNINDENT

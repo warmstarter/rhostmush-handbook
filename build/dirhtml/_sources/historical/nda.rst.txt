@@ -1,6 +1,9 @@
-===================================
+.. _historical-nda:
+.. index:: NDA, Non-Disclosure Agreement
+
+***********************************
 Historical Non-Disclosure Agreement
-===================================
+***********************************
 
 The following NDA comes from the time when RhostMUSH was not publially
 available. It is preserved here for historical reasons. We are suckers for
@@ -8,14 +11,14 @@ looking back at things. :)
 --Ambrosia
 
 
- 1) I agree, to not give out the code, in part or in full, in any form of
+ #. I agree, to not give out the code, in part or in full, in any form of
     medium, to anyone or anything not previously allowed by the developers.
 
- 2) I agree, to not let others look at the code, in part or in full, in
+ #. I agree, to not let others look at the code, in part or in full, in
     any form of medium, to anyone or anything not previously allowed by the
     developers.
 
- 3) I am aware that any modifications I make to the code is _FULLY_
+ #. I am aware that any modifications I make to the code is _FULLY_
     permitted, and that I do _NOT_ have to return said patches to the
     developers.
 

@@ -239,7 +239,7 @@ need to have the proper permissions set. If you obtained the source code
 directly from GitHub, it is likely that this step is not required, but there
 is no harm in running it anyway::
 
- ./dirsetup.sh
+    ./dirsetup.sh
  
 If you did NOT obtain the source code directly from GitHub, it is possible that
 even the above script will fail to run with 'permission denied' or similar
@@ -247,8 +247,8 @@ errors. It is recommended that you obtain the source code from there, but if
 for whatever reason this is not an option, manually adjust your permissions
 and then re-run the automated permission script::
 
-  chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
-  ./dirsetup.sh
+    chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
+    ./dirsetup.sh
 
 Compile the source code
 =======================
@@ -258,7 +258,7 @@ permissions have been set, the RhostMUSH source code is ready to be compiled.
 This is typically done through an interactive program where you configure the
 options you want to have available to your installation::
 
-  make confsource
+    make confsource
 
 .. note::
 
@@ -287,15 +287,15 @@ Troubleshooting compile errors
 Should this result in an error, a script has been included to correct the most
 common errors, after which you can once more try to compile::
 
-  ./bin/script_setup.sh
-  make confsource
+    ./bin/script_setup.sh
+    make confsource
 
 Once the compile process successfully complete, you should be able to start-up
 your new RhostMUSH server. If it complains about missing binaries make sure
 they are linked. The provided script will fix this issue, and is not harmful
 to run in any situation::
 
-   make links
+    make links
 
 Recompiling the source code
 ---------------------------
@@ -346,7 +346,7 @@ Starting the game
 
 Once done, you start up the system with the following command::
 
-   ./Startmush
+    ./Startmush
   
 It will prompt you to start a new db if it doesn't find one.
   
@@ -413,29 +413,30 @@ be changed at the very least.  Keep the debug_id coordinated to the port as desc
 To load a prebuilt flatfile
 ---------------------------
 
-1.  Make a backup of your existing netrhost.conf file::
+#.  Make a backup of your existing netrhost.conf file::
     
-       cp game/netrhost.conf game/netrhost.conf.backup
+     cp game/netrhost.conf game/netrhost.conf.backup
 
-2.  Copy the netrhost.conf file into your game directory::
+#.  Copy the netrhost.conf file into your game directory::
 
-       cp -f ./minimal-DBs/minimal_db/netrhost.conf ./game/netrhost.conf
+     cp -f ./minimal-DBs/minimal_db/netrhost.conf ./game/netrhost.conf
 
-3.  At this point you can modify your netrhost.conf file settings in your game directory.
+#.  At this point you can modify your netrhost.conf file settings in your game directory.
     Using an editor modify the 'port' and 'debug_id' respectively in your netrhost.conf as state.
     The 'port' will be the port the mush listens on, the debug_id is for the debug-stack and is
     your port with a '5' at the end.  So if your port is 4444, the debug_id is 44445
 
-4.  Load in the flatfile into the mush (You could do this in the Startmush as well)
+.. todo:: Clean up the below section
+
+#.  Load in the flatfile into the mush (You could do this in the Startmush as well)
     Manually::
 
-       cd game
-      
-    ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF
+     cd game
+     ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF
      
     Start your mush::
 
-       ./Startmush
+        ./Startmush
 
     This will load the db that you loaded. 
 
@@ -443,7 +444,7 @@ To load a prebuilt flatfile
 
     From Startmush when prompted, hit <RETURN> for searching then select the number of the netrhost.db.flat that is listed as ~/minimal-DBs/minimal_db/netrhost.db.flat::
 
-        ./Startmush
+     ./Startmush
 
 -----------------------------------------------
 Basic Instructions for starting a new RhostMUSH
@@ -468,7 +469,7 @@ To compile the code, just type 'make confsource'.  It will prompt you with setti
 
 After the compile process is done, type::
 
-   make links
+    make links
 
 Loading a database for your MUSH
 ================================
@@ -480,10 +481,10 @@ Option: Only perform these steps if using a provided database
 
 Copy an existing flatfile and corresponding netrhost.conf file Default provied example::
 
-   cp game/netrhost.conf game/netrhost.conf.backup
-   cp -f minimal-DBs/minimal_db/netrhost.conf game/netrhost.conf
-   cd game
-   ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
+    cp game/netrhost.conf game/netrhost.conf.backup
+    cp -f minimal-DBs/minimal_db/netrhost.conf game/netrhost.conf
+    cd game
+    ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
 
 Option: Things to do once you have connected if you did NOT use a provided database
 ===================================================================================
@@ -494,9 +495,11 @@ Option: Things to do once you have connected if you did NOT use a provided datab
 #.  Log into the immortal character
 #.  @pcreate all your guest characters and set them up properly.  My suggestion::
 
-       @dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@desc *Guest##=A guest player.;@adisconnect *Guest##=home;@lock *Guest##=*Guest##}
-       
-       @list guest will show your guest characters and if they're set up properly.
+    @dolist lnum(1,10)={@pcreate Guest##=guest;@set *Guest##=guest;@desc *Guest##=A guest player.;@adisconnect *Guest##=home;@lock *Guest##=*Guest##}
+
+.. note::
+
+    @list guest will show your guest characters and if they're set up properly.
 
 #.  Any master room code you load in from your immholder character (or @chown/preserve to it) The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.  All other softcode (like mail wrappers) can be found on https://github.com/RhostMUSH/trunk in Mushcode.
 #. Setup new character, staff, and take tasks that can only be accomplished by #1

@@ -20,7 +20,7 @@
 project = 'RhostMUSH Handbook'
 author = 'wstarter'
 copyright = '2021, wstarter'
-version = '0.02a'
+version = '0.03a'
 master_doc = 'index'
 
 # -- General configuration ---------------------------------------------------
@@ -72,7 +72,7 @@ source_suffix = {
 
 # Include at the beginning of every file.
 rst_prolog = """
-.. include:: .substitutions
+.. include:: /.substitutions
 """
 
 # Include at the end of every file.

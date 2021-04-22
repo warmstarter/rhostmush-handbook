@@ -116,6 +116,7 @@ A lot more that could drag this document out for pages.
 * Historical Non-Disclosure Agreement:: 
 * RhostMUSH Internal Help Files:: 
 * RhostMUSH Internal WizHelp Files:: 
+* Index:: 
 
 @detailmenu
  --- The Detailed Node Listing ---
@@ -1345,6 +1346,16 @@ At this point you can modify your netrhost.conf file settings in your game direc
 Using an editor modify the 'port' and 'debug_id' respectively in your netrhost.conf as state.
 The 'port' will be the port the mush listens on, the debug_id is for the debug-stack and is
 your port with a '5' at the end.  So if your port is 4444, the debug_id is 44445
+@end enumerate
+
+@cartouche
+@quotation Todo 
+Clean up the below section
+@end quotation
+@end cartouche
+
+
+@enumerate 
 
 @item 
 Load in the flatfile into the mush (You could do this in the Startmush as well)
@@ -1352,9 +1363,8 @@ Manually:
 
 @example
 cd game
-@end example
-
 ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new dwF
+@end example
 
 Start your mush:
 
@@ -1474,9 +1484,17 @@ Log into the immortal character
 
 @example
 @@dolist lnum(1,10)=@{@@pcreate Guest##=guest;@@set *Guest##=guest;@@desc *Guest##=A guest player.;@@adisconnect *Guest##=home;@@lock *Guest##=*Guest##@}
-
-@@list guest will show your guest characters and if they're set up properly.
 @end example
+@end enumerate
+
+@cartouche
+@quotation Note 
+@@list guest will show your guest characters and if they're set up properly.
+@end quotation
+@end cartouche
+
+
+@enumerate 
 
 @item 
 Any master room code you load in from your immholder character (or @@chown/preserve to it) The readme directory has softfunctions.minmax that has MUX/Penn compatability functions and comsys.  All other softcode (like mail wrappers) can be found on @indicateurl{https://github.com/RhostMUSH/trunk} in Mushcode.
@@ -8549,6 +8567,7 @@ By default, all new objects are created with an RxLevel of 1 and TxLevel of
 1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of
 0xFFFFFFFF. Those default levels can be changed with configuration
 parameters.
+
 An object is always visible to itself, even if its Rx and Tx levels don't
 match. (See examples below)
 
@@ -10245,7 +10264,7 @@ openssl (optional)
 @end itemize
 @end enumerate
 
-2. When configuring rhost (using confsource) select the Disable Debugmon
+#. When configuring rhost (using confsource) select the Disable Debugmon
 option.
 
 @node Installing on Windows with Cygwin,Startig RhostMUSH on Windows,Installing on Windows 10 with BASH,Requirements if Using Windows
@@ -10391,7 +10410,7 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 @quotation
 
 
-@enumerate A
+@enumerate 
 
 @item 
 @@dump/flat    -- This will make a flatfile dump of your MUSH database
@@ -10415,7 +10434,7 @@ newsdb/unload -- If you use the hardcoded news/bbs engine.  This dumps it
 @quotation
 
 
-@enumerate A
+@enumerate 
 
 @item 
 Server/game/data/netrhost.db.flat
@@ -10446,21 +10465,44 @@ Server/game/data/RhostMUSH.dump.mail
 @subsubsection From the Server directory
 
 
-@quotation
 
-
-@enumerate A
+@enumerate 
 
 @item 
 make clean
 
 @item 
 make confsource
-1.  Select QDBM and if you wish at this time increase your LBUF size
-2.  Select any other options you may want
+@end enumerate
+
+@quotation
+
+
+@enumerate 
+
+@item 
+Select QDBM and if you wish at this time increase your LBUF size
+
+@item 
+Select any other options you may want
+@end enumerate
+@end quotation
+
+
+@enumerate 
 
 @item 
 (r)un and let it compile.
+@end enumerate
+
+@cartouche
+@quotation Todo 
+Figure out why that asterisk is there.
+@end quotation
+@end cartouche
+
+
+@enumerate 
 
 @item 
 Main DB: Delete (rm) the following files (from Rhost/Server/game/data):
@@ -10498,17 +10540,14 @@ RhostMUSH.news.dir
 RhostMUSH.news.pag
 @end example
 @end enumerate
-@end quotation
 
 @node From the Server/game directory,While logged into the mush issue the following commands,From the Server directory,Upgradging GDBM to QDBM
 @anchor{legacy from-the-server-game-directory}@anchor{17c}
 @subsubsection From the Server/game directory
 
 
-@quotation
 
-
-@enumerate A
+@enumerate 
 
 @item 
 Load the database:
@@ -10524,17 +10563,14 @@ Start the MUSH back:
 ./Startmush
 @end example
 @end enumerate
-@end quotation
 
 @node While logged into the mush issue the following commands,Verify that you have QDBM running and your valid values,From the Server/game directory,Upgradging GDBM to QDBM
 @anchor{legacy while-logged-into-the-mush-issue-the-following-commands}@anchor{17d}
 @subsubsection While logged into the mush issue the following commands
 
 
-@quotation
 
-
-@enumerate A
+@enumerate 
 
 @item 
 Load in the mail database:
@@ -10557,25 +10593,18 @@ wmail/load
 newsdb/load
 @end example
 @end enumerate
-@end quotation
 
 @node Verify that you have QDBM running and your valid values,,While logged into the mush issue the following commands,Upgradging GDBM to QDBM
 @anchor{legacy verify-that-you-have-qdbm-running-and-your-valid-values}@anchor{17e}
 @subsubsection Verify that you have QDBM running and your valid values
 
 
-@quotation
 
-
-@enumerate A
+@enumerate 
 
 @item 
-@@list options system
-
-@item 
-@@list options (spammy)
+@@list options system#.  @@list options (spammy)
 @end enumerate
-@end quotation
 
 @node Updating RhostMUSH prior to 3 9 5p2,Adding MySQL to RhostMUSH older than 3 9 5p2,Converting database betwen GDBM and QDBM,Upgrading a Legacy RhostMUSH Installation
 @anchor{legacy updating-rhostmush-prior-to-3-9-5p2}@anchor{17f}
@@ -10633,7 +10662,7 @@ Please remember the '-s' to the ./backup_flat.sh.
 @end cartouche
 
 
-@enumerate 4
+@enumerate 
 
 @item 
 Make note of the most recently created file in the directory Server/game/oldflat.  It's usually named something like:
@@ -10650,7 +10679,7 @@ You will need this file later.
 @end cartouche
 
 
-@enumerate 5
+@enumerate 
 
 @item 
 Rename your 'Rhost' directory to something else.  This is the directory that you have containing the 'Server' directory.  Name it anything you want other than 'Rhost'.  For those not used to unix you would type:
@@ -10674,7 +10703,7 @@ You would type this in the same directory you have renamed your old 'Rhost' dire
 @end cartouche
 
 
-@enumerate 7
+@enumerate 
 
 @item 
 go into the Rhost/Server directory.   Type:
@@ -10682,8 +10711,16 @@ go into the Rhost/Server directory.   Type:
 @example
 make confsource
 @end example
+@end enumerate
 
+@cartouche
+@quotation Note 
 Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it's the 'r' option).
+@end quotation
+@end cartouche
+
+
+@enumerate 
 
 @item 
 Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the 'game' directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!
@@ -10692,7 +10729,7 @@ Once your game is compiled and ready to go you need to copy in the data from you
 @quotation
 
 
-@enumerate A
+@enumerate 
 
 @item 
 cp netrhost.conf netrhost.conf.orig
@@ -10754,7 +10791,7 @@ newsdb/load
 @end quotation
 
 
-@enumerate 9
+@enumerate 
 
 @item 
 You should be good to go on a current directory structure for Rhost.  Enjoy!
@@ -10821,40 +10858,40 @@ IF REPLACING/CHANGING local.c COPY BELOW
 
 @example
 /* Called when the mush starts up, immediatly prior to the main game
- * loop being entered. By this point all databases are loaded and
- * all variables configured.
- */
+* loop being entered. By this point all databases are loaded and
+* all variables configured.
+*/
 #ifdef MYSQL_VERSION
-   extern void local_mysql_init(void);
-   extern int sql_shutdown(dbref player);
+ extern void local_mysql_init(void);
+ extern int sql_shutdown(dbref player);
 #endif
 
 #ifdef SQLITE
-   extern void local_sqlite_init(void);
+ extern void local_sqlite_init(void);
 #endif /* SQLITE */
 
 void local_startup(void) @{
 #ifdef SQLITE
-   local_sqlite_init();
+ local_sqlite_init();
 #endif /* SQLITE */
 #ifdef MYSQL_VERSION
-   local_mysql_init();
+ local_mysql_init();
 #endif
-   load_regexp_functions();
+ load_regexp_functions();
 @}
 
 /* Called immediatly after the main game loop exits. At this point
- * all databases and variables are still configured
- */
+* all databases and variables are still configured
+*/
 void local_shutdown(void) @{
 #ifdef MYSQL_VERSION
-   sql_shutdown(-1);
+ sql_shutdown(-1);
 #endif
 @}
 @end example
 
 
-@enumerate 6
+@enumerate 
 
 @item 
 Issue 'make clean' then make confsource to rebuild using the latest
@@ -11668,9 +11705,12 @@ Rhost Equiv: MONITOR (@@toggle)
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{historical/nda historical-nda}@anchor{185}
+@geindex NDA
+@geindex Non-Disclosure Agreement
 
 @node Historical Non-Disclosure Agreement,RhostMUSH Internal Help Files,Comparison of powers,Top
-@anchor{nda doc}@anchor{185}@anchor{nda historical-non-disclosure-agreement}@anchor{186}
+@anchor{historical/nda doc}@anchor{186}@anchor{historical/nda historical-non-disclosure-agreement}@anchor{187}
 @chapter Historical Non-Disclosure Agreement
 
 
@@ -11714,15 +11754,15 @@ rules are kept.
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
 @node RhostMUSH Internal Help Files,RhostMUSH Internal WizHelp Files,Historical Non-Disclosure Agreement,Top
-@anchor{help doc}@anchor{187}@anchor{help rhostmush-internal-help-files}@anchor{188}
+@anchor{help doc}@anchor{188}@anchor{help rhostmush-internal-help-files}@anchor{189}
 @chapter RhostMUSH Internal Help Files
 
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
-@node RhostMUSH Internal WizHelp Files,,RhostMUSH Internal Help Files,Top
-@anchor{wizhelp doc}@anchor{189}@anchor{wizhelp rhostmush-internal-wizhelp-files}@anchor{18a}
+@node RhostMUSH Internal WizHelp Files,Index,RhostMUSH Internal Help Files,Top
+@anchor{wizhelp doc}@anchor{18a}@anchor{wizhelp rhostmush-internal-wizhelp-files}@anchor{18b}
 @chapter RhostMUSH Internal WizHelp Files
 
 
@@ -11747,6 +11787,13 @@ This copyright does not include the original code that was given as GNU freeware
 This copyright information may not be changed, altered, or omitted.
 
 @c changelog.rst
+
+
+@node Index,,RhostMUSH Internal WizHelp Files,Top
+@unnumbered Index
+
+
+@printindex ge
 
 
 @c %**end of body
