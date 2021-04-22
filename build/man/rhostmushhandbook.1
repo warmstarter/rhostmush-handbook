@@ -59,103 +59,7 @@ Many new functions and commands not seen anywhere else.
 .IP \(bu 2
 A lot more that could drag this document out for pages.
 .UNINDENT
-.SH INSTALLING RHOSTMUSH
-.SS Table of Contents
-.INDENT 0.0
-.IP \(bu 2
-\fI\%RhostMUSH Requirements\fP
-.INDENT 2.0
-.IP \(bu 2
-\fI\%System Requirements\fP
-.IP \(bu 2
-\fI\%Software Requirements\fP
-.INDENT 2.0
-.IP \(bu 2
-\fI\%Optional Packages\fP
-.UNINDENT
-.IP \(bu 2
-\fI\%Hosting Requirements\fP
-.UNINDENT
-.IP \(bu 2
-\fI\%Obtaining RhostMUSH Source Code\fP
-.IP \(bu 2
-\fI\%Options for making a MUSH\fP
-.INDENT 2.0
-.IP \(bu 2
-\fI\%Compile time options\fP
-.IP \(bu 2
-\fI\%Configuration file options\fP
-.IP \(bu 2
-\fI\%Starting database options\fP
-.IP \(bu 2
-\fI\%The Choices We Make\fP
-.UNINDENT
-.IP \(bu 2
-\fI\%Compiling RhostMush\fP
-.INDENT 2.0
-.IP \(bu 2
-\fI\%Setup directory permissions\fP
-.IP \(bu 2
-\fI\%Compile the source code\fP
-.INDENT 2.0
-.IP \(bu 2
-\fI\%Saving your compile options\fP
-.IP \(bu 2
-\fI\%Troubleshooting compile errors\fP
-.IP \(bu 2
-\fI\%Recompiling the source code\fP
-.UNINDENT
-.UNINDENT
-.IP \(bu 2
-\fI\%Configuring the game\fP
-.INDENT 2.0
-.IP \(bu 2
-\fI\%Persistent configurable game options\fP
-.IP \(bu 2
-\fI\%Starting the game\fP
-.IP \(bu 2
-\fI\%First login to the game\fP
-.UNINDENT
-.IP \(bu 2
-\fI\%Creating RHostMUSH with a Provided DB\fP
-.INDENT 2.0
-.IP \(bu 2
-\fI\%Important before you actually start building\fP
-.IP \(bu 2
-\fI\%Using the prebuilt flatfile\fP
-.INDENT 2.0
-.IP \(bu 2
-\fI\%To load a prebuilt flatfile\fP
-.UNINDENT
-.UNINDENT
-.IP \(bu 2
-\fI\%Basic Instructions for starting a new RhostMUSH\fP
-.INDENT 2.0
-.IP \(bu 2
-\fI\%Manual configuration of source code\fP
-.IP \(bu 2
-\fI\%Loading a database for your MUSH\fP
-.INDENT 2.0
-.IP \(bu 2
-\fI\%Option: Only perform these steps if using a provided database\fP
-.UNINDENT
-.IP \(bu 2
-\fI\%Option: Things to do once you have connected if you did NOT use a provided database\fP
-.UNINDENT
-.IP \(bu 2
-\fI\%Customtize the textfiles for your game\fP
-.IP \(bu 2
-\fI\%Three Options for Starting a MUSH\fP
-.INDENT 2.0
-.IP \(bu 2
-\fI\%Option 1: Creating a new game with a blank database\fP
-.IP \(bu 2
-\fI\%Option 2: Creating a new game with the generic default database\fP
-.IP \(bu 2
-\fI\%Option 3: Creating a new game with Ambrosia\(aqs default database\fP
-.UNINDENT
-.UNINDENT
-.SS RhostMUSH Requirements
+.SH RHOSTMUSH REQUIREMENTS
 .SS System Requirements
 .INDENT 0.0
 .IP \(bu 2
@@ -195,6 +99,8 @@ In order to build this software, you will need the bare minimum of the ability t
 .sp
 Package requirements are as follows:
 .INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
 .IP \(bu 2
 bash/ksh/dash (or compatible shell \- for use with build menu)
 .IP \(bu 2
@@ -204,6 +110,8 @@ git (to clone the source and maintain patches)
 .IP \(bu 2
 libcrypt (for password encryption \- this is usually standard on unix based systems)
 .UNINDENT
+.UNINDENT
+.UNINDENT
 .SS Optional Packages
 .sp
 RhostMUSH also offers optional linking and library attachments.
@@ -211,6 +119,8 @@ For some of these libraries it will attempt to do auto\-detection,
 but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.
 .sp
 Optional packages are as follows:
+.INDENT 0.0
+.INDENT 3.5
 .INDENT 0.0
 .IP \(bu 2
 libpcre (if you wish to use system pcre libraries instead of the built\-in ones)
@@ -222,6 +132,8 @@ openssl dev libraries/headers (for MUX password compatibility, and digest() and 
 ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
 .IP \(bu 2
 sqlite3 libraries (required for sqlite capabilities)
+.UNINDENT
+.UNINDENT
 .UNINDENT
 .SS Hosting Requirements
 .INDENT 0.0
@@ -238,6 +150,7 @@ So if your port is 4201, your debug_id will be 42015.
 The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.
 .UNINDENT
 .UNINDENT
+.SH INSTALLING RHOSTMUSH
 .SS Obtaining RhostMUSH Source Code
 .sp
 The only official source for obtaining RhostMUSH is through the \(aqRhostMUSH\(aq
@@ -844,6 +757,32 @@ the minimal\-DBs/minimal_db directory.
 .SS Option 3: Creating a new game with Ambrosia\(aqs default database
 .sp
 This option is covered in detail here: ambrosiadb\-installation
+.SH INSTALLING USING AN ANSIBLE PLAYBOOK
+.sp
+To begin, you will run the following command in a directory that will house your game:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+git clone https://github.com/RhostMUSH/trunk Rhost
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+You may also just run the yml file and ansible (ansible\-playbook) to install your RhostMUSH engine:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml
+ansible\-playbook rhostinstall.yml
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SH WHAT RHOSTMUSH IS ABOUT AND WHAT'S SO GREAT ABOUT RHOSTMUSH
 .sp
 RhostMUSH was founded in 1989, originally by Natasha Davis (Nyctasia) and as
@@ -5046,7 +4985,7 @@ to downright forbidding them.  If you\(aqre being actively attacked,
 it may be worth considering adding this to add additional protection.
 .UNINDENT
 .UNINDENT
-.SS Setting up an SSL tunnel for secure connection options
+.SH SETTING UP AN SSL TUNNEL FOR SECURE CONNECTION OPTIONS
 .SS Quickstart for SSL setup with stunnel
 .INDENT 0.0
 .IP 1. 3
@@ -6081,34 +6020,6 @@ wmail/lfix  \-\- this will load the fixed flatfile back into the mush.
 .sp
 At this point you should be good to go.
 .SH ADVANCED FEATURES
-.SS Installing using an ansible playbook
-.sp
-To begin, you will run the following command in a directory that will house your game:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-git clone https://github.com/RhostMUSH/trunk Rhost
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-You may also just run the yml file and ansible (ansible\-playbook) to install your RhostMUSH engine:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml
-ansible\-playbook rhostinstall.yml
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-This downloads the latest stable version of the code, bringing with it all patches and scripts, documentation and support tools that you will need.
 .SS Adding hardcoded modules
 .sp
 RhostMUSH does support module writing.
@@ -7770,10 +7681,8 @@ openssl
 .UNINDENT
 .UNINDENT
 .IP \(bu 2
-When configuring rhost (using confsource) select the Disable Debugmon
+When configuring rhost (using confsource) select the Disable Debugmon option.
 .UNINDENT
-.sp
-option.
 .SS Installing on Windows with Cygwin
 .sp
 Rhost does work under windows using the cygwin package.

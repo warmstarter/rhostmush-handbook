@@ -94,9 +94,14 @@ A lot more that could drag this document out for pages.
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{install/requirements install-requirements}@anchor{1}
+@geindex Install - Requirements
+@geindex Requirements - Install
 
 @menu
+* RhostMUSH Requirements:: 
 * Installing RhostMUSH:: 
+* Installing using an ansible playbook:: 
 * What RhostMUSH is about and what's so great about RhostMUSH:: 
 * What FLAGS@comma{} TOGGLES@comma{} POWERS@comma{} and DEPOWERS mean in RhostMUSH: What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH. 
 * Multi-tiered bitlevel systems:: 
@@ -105,6 +110,7 @@ A lot more that could drag this document out for pages.
 * Getting Started:: 
 * Ambrosia's Minimal Rhost DB:: 
 * Security:: 
+* Setting up an SSL tunnel for secure connection options:: 
 * Maintenance:: 
 * Troubleshooting:: 
 * Advanced Features:: 
@@ -122,18 +128,6 @@ A lot more that could drag this document out for pages.
 @detailmenu
  --- The Detailed Node Listing ---
 
-Installing RhostMUSH
-
-* RhostMUSH Requirements:: 
-* Obtaining RhostMUSH Source Code:: 
-* Options for making a MUSH:: 
-* Compiling RhostMush:: 
-* Configuring the game:: 
-* Creating RHostMUSH with a Provided DB:: 
-* Basic Instructions for starting a new RhostMUSH:: 
-* Customtize the textfiles for your game:: 
-* Three Options for Starting a MUSH:: 
-
 RhostMUSH Requirements
 
 * System Requirements:: 
@@ -143,6 +137,17 @@ RhostMUSH Requirements
 Software Requirements
 
 * Optional Packages:: 
+
+Installing RhostMUSH
+
+* Obtaining RhostMUSH Source Code:: 
+* Options for making a MUSH:: 
+* Compiling RhostMush:: 
+* Configuring the game:: 
+* Creating RHostMUSH with a Provided DB:: 
+* Basic Instructions for starting a new RhostMUSH:: 
+* Customtize the textfiles for your game:: 
+* Three Options for Starting a MUSH:: 
 
 Options for making a MUSH
 
@@ -435,7 +440,6 @@ Security
 * Considerations to locking down restrictions in RhostMUSH:: 
 * Extended lockdown of the mush and considerations:: 
 * Methods to block anonymous connections and the pros and cons of doing so:: 
-* Setting up an SSL tunnel for secure connection options:: 
 
 Considerations to locking down restrictions in RhostMUSH
 
@@ -589,7 +593,6 @@ Dealing with a corrupt mail database
 
 Advanced Features
 
-* Installing using an ansible playbook:: 
 * Adding hardcoded modules:: 
 * Reality Levels Setup:: 
 * Execscript and external programs and scripts:: 
@@ -684,27 +687,9 @@ Upgradging GDBM to QDBM
 @end detailmenu
 @end menu
 
-@node Installing RhostMUSH,What RhostMUSH is about and what's so great about RhostMUSH,Top,Top
-@anchor{install doc}@anchor{1}@anchor{install id1}@anchor{2}@anchor{install installing-rhostmush}@anchor{3}@anchor{install rhostmush-handbook}@anchor{4}@anchor{install rhostmush-handbook-documentation-master-file}@anchor{5}
-@chapter Installing RhostMUSH
-
-
-@menu
-* RhostMUSH Requirements:: 
-* Obtaining RhostMUSH Source Code:: 
-* Options for making a MUSH:: 
-* Compiling RhostMush:: 
-* Configuring the game:: 
-* Creating RHostMUSH with a Provided DB:: 
-* Basic Instructions for starting a new RhostMUSH:: 
-* Customtize the textfiles for your game:: 
-* Three Options for Starting a MUSH:: 
-
-@end menu
-
-@node RhostMUSH Requirements,Obtaining RhostMUSH Source Code,,Installing RhostMUSH
-@anchor{install id2}@anchor{6}@anchor{install rhostmush-requirements}@anchor{7}
-@section RhostMUSH Requirements
+@node RhostMUSH Requirements,Installing RhostMUSH,Top,Top
+@anchor{install/requirements doc}@anchor{2}@anchor{install/requirements rhostmush-handbook}@anchor{3}@anchor{install/requirements rhostmush-handbook-documentation-master-file}@anchor{4}@anchor{install/requirements rhostmush-requirements}@anchor{5}
+@chapter RhostMUSH Requirements
 
 
 @menu
@@ -715,8 +700,8 @@ Upgradging GDBM to QDBM
 @end menu
 
 @node System Requirements,Software Requirements,,RhostMUSH Requirements
-@anchor{install id3}@anchor{8}@anchor{install system-requirements}@anchor{9}
-@subsection System Requirements
+@anchor{install/requirements system-requirements}@anchor{6}
+@section System Requirements
 
 
 
@@ -766,14 +751,16 @@ Third-party applications can use considerably more resources
 @end cartouche
 
 @node Software Requirements,Hosting Requirements,System Requirements,RhostMUSH Requirements
-@anchor{install id4}@anchor{a}@anchor{install software-requirements}@anchor{b}
-@subsection Software Requirements
+@anchor{install/requirements software-requirements}@anchor{7}
+@section Software Requirements
 
 
 RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.
 In order to build this software, you will need the bare minimum of the ability to run 'make' commands.
 
 Package requirements are as follows:
+
+@quotation
 
 
 @itemize *
@@ -790,6 +777,7 @@ git (to clone the source and maintain patches)
 @item 
 libcrypt (for password encryption - this is usually standard on unix based systems)
 @end itemize
+@end quotation
 
 @menu
 * Optional Packages:: 
@@ -797,8 +785,8 @@ libcrypt (for password encryption - this is usually standard on unix based syste
 @end menu
 
 @node Optional Packages,,,Software Requirements
-@anchor{install optional-packages}@anchor{c}
-@subsubsection Optional Packages
+@anchor{install/requirements optional-packages}@anchor{8}
+@subsection Optional Packages
 
 
 RhostMUSH also offers optional linking and library attachments.
@@ -806,6 +794,8 @@ For some of these libraries it will attempt to do auto-detection,
 but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.
 
 Optional packages are as follows:
+
+@quotation
 
 
 @itemize *
@@ -825,10 +815,11 @@ ruby/perl/python/etc (for custom interactive dynamic custom functions with the e
 @item 
 sqlite3 libraries (required for sqlite capabilities)
 @end itemize
+@end quotation
 
 @node Hosting Requirements,,Software Requirements,RhostMUSH Requirements
-@anchor{install hosting-requirements}@anchor{d}@anchor{install id5}@anchor{e}
-@subsection Hosting Requirements
+@anchor{install/requirements hosting-requirements}@anchor{9}
+@section Hosting Requirements
 
 
 
@@ -854,8 +845,28 @@ The debug_id is for use in the API daemon that runs Rhost as a container to keep
 @end itemize
 @end itemize
 
-@node Obtaining RhostMUSH Source Code,Options for making a MUSH,RhostMUSH Requirements,Installing RhostMUSH
-@anchor{install obtaining-rhostmush}@anchor{f}@anchor{install obtaining-rhostmush-source-code}@anchor{10}
+@c These are replacement strings for non-ASCII characters used within the project
+@c using the same name as the html entity names (e.g., &copy;) for that character
+
+@node Installing RhostMUSH,Installing using an ansible playbook,RhostMUSH Requirements,Top
+@anchor{install doc}@anchor{a}@anchor{install id1}@anchor{b}@anchor{install installing-rhostmush}@anchor{c}
+@chapter Installing RhostMUSH
+
+
+@menu
+* Obtaining RhostMUSH Source Code:: 
+* Options for making a MUSH:: 
+* Compiling RhostMush:: 
+* Configuring the game:: 
+* Creating RHostMUSH with a Provided DB:: 
+* Basic Instructions for starting a new RhostMUSH:: 
+* Customtize the textfiles for your game:: 
+* Three Options for Starting a MUSH:: 
+
+@end menu
+
+@node Obtaining RhostMUSH Source Code,Options for making a MUSH,,Installing RhostMUSH
+@anchor{install obtaining-rhostmush-source-code}@anchor{d}
 @section Obtaining RhostMUSH Source Code
 
 
@@ -889,7 +900,7 @@ unless specifically noted otherwise.
 @end cartouche
 
 @node Options for making a MUSH,Compiling RhostMush,Obtaining RhostMUSH Source Code,Installing RhostMUSH
-@anchor{install options-for-making-a-mush}@anchor{11}
+@anchor{install options-for-making-a-mush}@anchor{e}
 @section Options for making a MUSH
 
 
@@ -918,7 +929,7 @@ make those choices.
 @end menu
 
 @node Compile time options,Configuration file options,,Options for making a MUSH
-@anchor{install compile-time-options}@anchor{12}
+@anchor{install compile-time-options}@anchor{f}
 @subsection Compile time options
 
 
@@ -936,7 +947,7 @@ whether or not you want to be able to connect to a variety of external programs
 like databases, webservers, and even other programming languages.
 
 @node Configuration file options,Starting database options,Compile time options,Options for making a MUSH
-@anchor{install configuration-file-options}@anchor{13}
+@anchor{install configuration-file-options}@anchor{10}
 @subsection Configuration file options
 
 
@@ -960,7 +971,7 @@ defaults that survive a reboot. One thing you set there that you definitely
 can't change from within the MUSH, is which port it runs on.
 
 @node Starting database options,The Choices We Make,Configuration file options,Options for making a MUSH
-@anchor{install starting-database-options}@anchor{14}
+@anchor{install starting-database-options}@anchor{11}
 @subsection Starting database options
 
 
@@ -990,7 +1001,7 @@ tuning your MUSH or even use some RhostMUSH commands to import that softcode
 into your database.
 
 @node The Choices We Make,,Starting database options,Options for making a MUSH
-@anchor{install the-choices-we-make}@anchor{15}
+@anchor{install the-choices-we-make}@anchor{12}
 @subsection The Choices We Make
 
 
@@ -1025,7 +1036,7 @@ MUSH.
 @end cartouche
 
 @node Compiling RhostMush,Configuring the game,Options for making a MUSH,Installing RhostMUSH
-@anchor{install compiling-rhostmush}@anchor{16}@anchor{install id6}@anchor{17}
+@anchor{install compiling-rhostmush}@anchor{13}@anchor{install id2}@anchor{14}
 @section Compiling RhostMush
 
 
@@ -1036,7 +1047,7 @@ MUSH.
 @end menu
 
 @node Setup directory permissions,Compile the source code,,Compiling RhostMush
-@anchor{install setup-directory-permissions}@anchor{18}
+@anchor{install setup-directory-permissions}@anchor{15}
 @subsection Setup directory permissions
 
 
@@ -1061,7 +1072,7 @@ chmod +rx bin/*.sh src/*.sh game/*.sh game/Startmush game/db_*
 @end example
 
 @node Compile the source code,,Setup directory permissions,Compiling RhostMush
-@anchor{install compile-the-source-code}@anchor{19}
+@anchor{install compile-the-source-code}@anchor{16}
 @subsection Compile the source code
 
 
@@ -1094,7 +1105,7 @@ servers, as well as waste system resources.
 @end menu
 
 @node Saving your compile options,Troubleshooting compile errors,,Compile the source code
-@anchor{install saving-your-compile-options}@anchor{1a}
+@anchor{install saving-your-compile-options}@anchor{17}
 @subsubsection Saving your compile options
 
 
@@ -1107,7 +1118,7 @@ option to save your current settings to a file. If you choose to do this,
 you will find the the save file in the @code{bin/} directory.
 
 @node Troubleshooting compile errors,Recompiling the source code,Saving your compile options,Compile the source code
-@anchor{install troubleshooting-compile-errors}@anchor{1b}
+@anchor{install troubleshooting-compile-errors}@anchor{18}
 @subsubsection Troubleshooting compile errors
 
 
@@ -1129,7 +1140,7 @@ make links
 @end example
 
 @node Recompiling the source code,,Troubleshooting compile errors,Compile the source code
-@anchor{install recompiling-the-source-code}@anchor{1c}
+@anchor{install recompiling-the-source-code}@anchor{19}
 @subsubsection Recompiling the source code
 
 
@@ -1150,7 +1161,7 @@ whenever you alter the code or import new source code.
 @end cartouche
 
 @node Configuring the game,Creating RHostMUSH with a Provided DB,Compiling RhostMush,Installing RhostMUSH
-@anchor{install configuring-the-game}@anchor{1d}
+@anchor{install configuring-the-game}@anchor{1a}
 @section Configuring the game
 
 
@@ -1162,7 +1173,7 @@ whenever you alter the code or import new source code.
 @end menu
 
 @node Persistent configurable game options,Starting the game,,Configuring the game
-@anchor{install persistent-configurable-game-options}@anchor{1e}
+@anchor{install persistent-configurable-game-options}@anchor{1b}
 @subsection Persistent configurable game options
 
 
@@ -1189,7 +1200,7 @@ this purpose.
 @end cartouche
 
 @node Starting the game,First login to the game,Persistent configurable game options,Configuring the game
-@anchor{install starting-the-game}@anchor{1f}
+@anchor{install starting-the-game}@anchor{1c}
 @subsection Starting the game
 
 
@@ -1209,7 +1220,7 @@ You may also do the commands individually:
 @end example
 
 @node First login to the game,,Starting the game,Configuring the game
-@anchor{install first-login-to-the-game}@anchor{20}
+@anchor{install first-login-to-the-game}@anchor{1d}
 @subsection First login to the game
 
 
@@ -1224,7 +1235,7 @@ that allows the ability of auto-archiving your database for a configurable
 number of backups.
 
 @node Creating RHostMUSH with a Provided DB,Basic Instructions for starting a new RhostMUSH,Configuring the game,Installing RhostMUSH
-@anchor{install creating-rhostmush-with-a-provided-db}@anchor{21}
+@anchor{install creating-rhostmush-with-a-provided-db}@anchor{1e}
 @section Creating RHostMUSH with a Provided DB
 
 
@@ -1235,7 +1246,7 @@ number of backups.
 @end menu
 
 @node Important before you actually start building,Using the prebuilt flatfile,,Creating RHostMUSH with a Provided DB
-@anchor{install important-before-you-actually-start-building}@anchor{22}
+@anchor{install important-before-you-actually-start-building}@anchor{1f}
 @subsection Important before you actually start building
 
 
@@ -1298,7 +1309,7 @@ If you wish to port in an old flatfile, please refer to the readme directory on 
 @end enumerate
 
 @node Using the prebuilt flatfile,,Important before you actually start building,Creating RHostMUSH with a Provided DB
-@anchor{install using-the-prebuilt-flatfile}@anchor{23}
+@anchor{install using-the-prebuilt-flatfile}@anchor{20}
 @subsection Using the prebuilt flatfile
 
 
@@ -1321,7 +1332,7 @@ be changed at the very least.  Keep the debug_id coordinated to the port as desc
 @end menu
 
 @node To load a prebuilt flatfile,,,Using the prebuilt flatfile
-@anchor{install to-load-a-prebuilt-flatfile}@anchor{24}
+@anchor{install to-load-a-prebuilt-flatfile}@anchor{21}
 @subsubsection To load a prebuilt flatfile
 
 
@@ -1385,7 +1396,7 @@ From Startmush when prompted, hit <RETURN> for searching then select the number 
 @end enumerate
 
 @node Basic Instructions for starting a new RhostMUSH,Customtize the textfiles for your game,Creating RHostMUSH with a Provided DB,Installing RhostMUSH
-@anchor{install basic-instructions-for-starting-a-new-rhostmush}@anchor{25}
+@anchor{install basic-instructions-for-starting-a-new-rhostmush}@anchor{22}
 @section Basic Instructions for starting a new RhostMUSH
 
 
@@ -1397,7 +1408,7 @@ From Startmush when prompted, hit <RETURN> for searching then select the number 
 @end menu
 
 @node Manual configuration of source code,Loading a database for your MUSH,,Basic Instructions for starting a new RhostMUSH
-@anchor{install manual-configuration-of-source-code}@anchor{26}
+@anchor{install manual-configuration-of-source-code}@anchor{23}
 @subsection Manual configuration of source code
 
 
@@ -1435,7 +1446,7 @@ make links
 @end example
 
 @node Loading a database for your MUSH,Option Things to do once you have connected if you did NOT use a provided database,Manual configuration of source code,Basic Instructions for starting a new RhostMUSH
-@anchor{install loading-a-database-for-your-mush}@anchor{27}
+@anchor{install loading-a-database-for-your-mush}@anchor{24}
 @subsection Loading a database for your MUSH
 
 
@@ -1447,7 +1458,7 @@ You now have a choice of optionally starting at a provided database or starting 
 @end menu
 
 @node Option Only perform these steps if using a provided database,,,Loading a database for your MUSH
-@anchor{install option-only-perform-these-steps-if-using-a-provided-database}@anchor{28}
+@anchor{install option-only-perform-these-steps-if-using-a-provided-database}@anchor{25}
 @subsubsection Option: Only perform these steps if using a provided database
 
 
@@ -1461,7 +1472,7 @@ cd game
 @end example
 
 @node Option Things to do once you have connected if you did NOT use a provided database,,Loading a database for your MUSH,Basic Instructions for starting a new RhostMUSH
-@anchor{install option-things-to-do-once-you-have-connected-if-you-did-not-use-a-provided-database}@anchor{29}
+@anchor{install option-things-to-do-once-you-have-connected-if-you-did-not-use-a-provided-database}@anchor{26}
 @subsection Option: Things to do once you have connected if you did NOT use a provided database
 
 
@@ -1514,7 +1525,7 @@ Figure out what they were trying to say by having those above two sentences righ
 @end cartouche
 
 @node Customtize the textfiles for your game,Three Options for Starting a MUSH,Basic Instructions for starting a new RhostMUSH,Installing RhostMUSH
-@anchor{install customtize-the-textfiles-for-your-game}@anchor{2a}
+@anchor{install customtize-the-textfiles-for-your-game}@anchor{27}
 @section Customtize the textfiles for your game
 
 
@@ -1523,7 +1534,7 @@ README file there that explains their purposes in more detail.  You can see more
 all files and how they inter-relate with 'wizhelp file'.
 
 @node Three Options for Starting a MUSH,,Customtize the textfiles for your game,Installing RhostMUSH
-@anchor{install three-options-for-starting-a-mush}@anchor{2b}
+@anchor{install three-options-for-starting-a-mush}@anchor{28}
 @section Three Options for Starting a MUSH
 
 
@@ -1543,7 +1554,7 @@ Well, there's also some other pre-existing DB, upgrading, and ansible so let's t
 @end menu
 
 @node Option 1 Creating a new game with a blank database,Option 2 Creating a new game with the generic default database,,Three Options for Starting a MUSH
-@anchor{install option-1-creating-a-new-game-with-a-blank-database}@anchor{2c}
+@anchor{install option-1-creating-a-new-game-with-a-blank-database}@anchor{29}
 @subsection Option 1: Creating a new game with a blank database
 
 
@@ -1551,7 +1562,7 @@ Modify your ./game/netrhost.conf file or what settings you want.
 Don't feel overwhelmed, it's all very well documented.
 
 @node Option 2 Creating a new game with the generic default database,Option 3 Creating a new game with Ambrosia's default database,Option 1 Creating a new game with a blank database,Three Options for Starting a MUSH
-@anchor{install option-2-creating-a-new-game-with-the-generic-default-database}@anchor{2d}
+@anchor{install option-2-creating-a-new-game-with-the-generic-default-database}@anchor{2a}
 @subsection Option 2: Creating a new game with the generic default database
 
 
@@ -1562,16 +1573,40 @@ to have it search for flatfiles, then select netrhost.db.flat from under
 the minimal-DBs/minimal_db directory.
 
 @node Option 3 Creating a new game with Ambrosia's default database,,Option 2 Creating a new game with the generic default database,Three Options for Starting a MUSH
-@anchor{install option-3-creating-a-new-game-with-ambrosia-s-default-database}@anchor{2e}
+@anchor{install option-3-creating-a-new-game-with-ambrosia-s-default-database}@anchor{2b}
 @subsection Option 3: Creating a new game with Ambrosia's default database
 
 
-This option is covered in detail here: @ref{2f,,Ambrosia's Minimal Rhost DB}
+This option is covered in detail here: @ref{2c,,Ambrosia's Minimal Rhost DB}
+
+@c These are replacement strings for non-ASCII characters used within the project
+@c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{install/ansible install-ansible}@anchor{2d}
+@geindex Ansible - Install
+@geindex Install - Ansible
+
+@node Installing using an ansible playbook,What RhostMUSH is about and what's so great about RhostMUSH,Installing RhostMUSH,Top
+@anchor{install/ansible doc}@anchor{2e}@anchor{install/ansible installing-using-an-ansible-playbook}@anchor{2f}
+@chapter Installing using an ansible playbook
+
+
+To begin, you will run the following command in a directory that will house your game:
+
+@example
+git clone https://github.com/RhostMUSH/trunk Rhost
+@end example
+
+You may also just run the yml file and ansible (ansible-playbook) to install your RhostMUSH engine:
+
+@example
+wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml
+ansible-playbook rhostinstall.yml
+@end example
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
-@node What RhostMUSH is about and what's so great about RhostMUSH,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH,Installing RhostMUSH,Top
+@node What RhostMUSH is about and what's so great about RhostMUSH,What FLAGS TOGGLES POWERS and DEPOWERS mean in RhostMUSH,Installing using an ansible playbook,Top
 @anchor{features doc}@anchor{30}@anchor{features what-rhostmush-is-about-and-what-s-so-great-about-rhostmush}@anchor{31}
 @chapter What RhostMUSH is about and what's so great about RhostMUSH
 
@@ -5912,7 +5947,7 @@ Startmush as expected
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
 @node Ambrosia's Minimal Rhost DB,Security,Getting Started,Top
-@anchor{ambrosiadb doc}@anchor{da}@anchor{ambrosiadb ambrosia-s-minimal-rhost-db}@anchor{db}@anchor{ambrosiadb ambrosiadb-installation}@anchor{2f}
+@anchor{ambrosiadb doc}@anchor{da}@anchor{ambrosiadb ambrosia-s-minimal-rhost-db}@anchor{db}@anchor{ambrosiadb ambrosiadb-installation}@anchor{2c}
 @chapter Ambrosia's Minimal Rhost DB
 
 
@@ -6502,7 +6537,7 @@ substitution, are used in the DB.
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
-@node Security,Maintenance,Ambrosia's Minimal Rhost DB,Top
+@node Security,Setting up an SSL tunnel for secure connection options,Ambrosia's Minimal Rhost DB,Top
 @anchor{security doc}@anchor{ef}@anchor{security security}@anchor{f0}
 @chapter Security
 
@@ -6511,7 +6546,6 @@ substitution, are used in the DB.
 * Considerations to locking down restrictions in RhostMUSH:: 
 * Extended lockdown of the mush and considerations:: 
 * Methods to block anonymous connections and the pros and cons of doing so:: 
-* Setting up an SSL tunnel for secure connection options:: 
 
 @end menu
 
@@ -6924,7 +6958,7 @@ goodmail_host   - Always allow autoregistration from emails matching site
 nobroadcast_host - Snuff online site broadcasts via MONITOR for specified site
 @end example
 
-@node Methods to block anonymous connections and the pros and cons of doing so,Setting up an SSL tunnel for secure connection options,Extended lockdown of the mush and considerations,Security
+@node Methods to block anonymous connections and the pros and cons of doing so,,Extended lockdown of the mush and considerations,Security
 @anchor{security methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so}@anchor{104}
 @section Methods to block anonymous connections and the pros and cons of doing so
 
@@ -6999,9 +7033,15 @@ to downright forbidding them.  If you're being actively attacked,
 it may be worth considering adding this to add additional protection.
 @end quotation
 
-@node Setting up an SSL tunnel for secure connection options,,Methods to block anonymous connections and the pros and cons of doing so,Security
-@anchor{security setting-up-an-ssl-tunnel-for-secure-connection-options}@anchor{109}
-@section Setting up an SSL tunnel for secure connection options
+@c These are replacement strings for non-ASCII characters used within the project
+@c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{utilities/ssl utilities-ssl}@anchor{109}
+@geindex Utilities - SSL
+@geindex SSL - Utilities
+
+@node Setting up an SSL tunnel for secure connection options,Maintenance,Security,Top
+@anchor{utilities/ssl doc}@anchor{10a}@anchor{utilities/ssl setting-up-an-ssl-tunnel-for-secure-connection-options}@anchor{10b}
+@chapter Setting up an SSL tunnel for secure connection options
 
 
 @menu
@@ -7011,8 +7051,8 @@ it may be worth considering adding this to add additional protection.
 @end menu
 
 @node Quickstart for SSL setup with stunnel,Detailed SSL setup with stunnel,,Setting up an SSL tunnel for secure connection options
-@anchor{security quickstart-for-ssl-setup-with-stunnel}@anchor{10a}
-@subsection Quickstart for SSL setup with stunnel
+@anchor{utilities/ssl quickstart-for-ssl-setup-with-stunnel}@anchor{10c}
+@section Quickstart for SSL setup with stunnel
 
 
 
@@ -7087,8 +7127,8 @@ You do not need to shutdown the ssl handler if you shutdown the mush.  They
 are entirely separate processes.
 
 @node Detailed SSL setup with stunnel,,Quickstart for SSL setup with stunnel,Setting up an SSL tunnel for secure connection options
-@anchor{security detailed-ssl-setup-with-stunnel}@anchor{10b}
-@subsection Detailed SSL setup with stunnel
+@anchor{utilities/ssl detailed-ssl-setup-with-stunnel}@anchor{10d}
+@section Detailed SSL setup with stunnel
 
 
 To setup SSL connectivity, we use the STUNNEL application to tunnel SSL to
@@ -7112,8 +7152,8 @@ it is assumed you will have already initially set up your netrhost.conf.
 @end menu
 
 @node stunnel directory,Modifying netrhost conf,,Detailed SSL setup with stunnel
-@anchor{security stunnel-directory}@anchor{10c}
-@subsubsection stunnel directory
+@anchor{utilities/ssl stunnel-directory}@anchor{10e}
+@subsection stunnel directory
 
 
 You would set up the stunnel from the 'stunnel' directory.  There the following
@@ -7130,8 +7170,8 @@ stunnel_src                -- If you do not have stunnel, this directory will al
 @end example
 
 @node Modifying netrhost conf,Running the stunnel setup program,stunnel directory,Detailed SSL setup with stunnel
-@anchor{security modifying-netrhost-conf}@anchor{10d}
-@subsubsection Modifying netrhost.conf
+@anchor{utilities/ssl modifying-netrhost-conf}@anchor{10f}
+@subsection Modifying netrhost.conf
 
 
 To be able to utilize SSL, you first must set your netrhost.conf file with
@@ -7152,8 +7192,8 @@ the sconnect_host is optional.  If you do not specify it, it will default to two
 @end cartouche
 
 @node Running the stunnel setup program,Starting the stunnel proxy,Modifying netrhost conf,Detailed SSL setup with stunnel
-@anchor{security running-the-stunnel-setup-program}@anchor{10e}
-@subsubsection Running the stunnel setup program
+@anchor{utilities/ssl running-the-stunnel-setup-program}@anchor{110}
+@subsection Running the stunnel setup program
 
 
 At this point you're ready to run the stunnel setup program.  So at this point type the following:
@@ -7173,8 +7213,8 @@ Be aware that if you have DNS host lookups disabled on your mush, you
 MUST have 127.0.0.1 as an entry for your sconnect_host file.
 
 @node Starting the stunnel proxy,Shutting down the stunnel proxy,Running the stunnel setup program,Detailed SSL setup with stunnel
-@anchor{security starting-the-stunnel-proxy}@anchor{10f}
-@subsubsection Starting the stunnel proxy
+@anchor{utilities/ssl starting-the-stunnel-proxy}@anchor{111}
+@subsection Starting the stunnel proxy
 
 
 When you have your stunnel.conf file to the way you want, you then
@@ -7185,8 +7225,8 @@ issue the following command to run your SSL layer:
 @end example
 
 @node Shutting down the stunnel proxy,Configuring firewall on the host,Starting the stunnel proxy,Detailed SSL setup with stunnel
-@anchor{security shutting-down-the-stunnel-proxy}@anchor{110}
-@subsubsection Shutting down the stunnel proxy
+@anchor{utilities/ssl shutting-down-the-stunnel-proxy}@anchor{112}
+@subsection Shutting down the stunnel proxy
 
 
 If ever you need to bring down the SSL layer, you may kill it with the command:
@@ -7196,8 +7236,8 @@ If ever you need to bring down the SSL layer, you may kill it with the command:
 @end example
 
 @node Configuring firewall on the host,,Shutting down the stunnel proxy,Detailed SSL setup with stunnel
-@anchor{security configuring-firewall-on-the-host}@anchor{111}
-@subsubsection Configuring firewall on the host
+@anchor{utilities/ssl configuring-firewall-on-the-host}@anchor{113}
+@subsection Configuring firewall on the host
 
 
 Please be aware that the port that the SSL layer is on must be opened
@@ -7207,8 +7247,8 @@ not be the port the mush is running on and requires a separate port.
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
-@node Maintenance,Troubleshooting,Security,Top
-@anchor{maintenance doc}@anchor{112}@anchor{maintenance maintenance}@anchor{113}
+@node Maintenance,Troubleshooting,Setting up an SSL tunnel for secure connection options,Top
+@anchor{maintenance doc}@anchor{114}@anchor{maintenance maintenance}@anchor{115}
 @chapter Maintenance
 
 
@@ -7225,7 +7265,7 @@ not be the port the mush is running on and requires a separate port.
 @end menu
 
 @node Note about Patching,Daily Backups for RhostMUSH,,Maintenance
-@anchor{maintenance note-about-patching}@anchor{114}
+@anchor{maintenance note-about-patching}@anchor{116}
 @section Note about Patching
 
 
@@ -7256,7 +7296,7 @@ Once that's done, all you do from within the game is two commands:
 @end example
 
 @node Daily Backups for RhostMUSH,Signals and why you need them for control,Note about Patching,Maintenance
-@anchor{maintenance daily-backups-for-rhostmush}@anchor{115}
+@anchor{maintenance daily-backups-for-rhostmush}@anchor{117}
 @section Daily Backups for RhostMUSH
 
 
@@ -7303,7 +7343,7 @@ just issue::
 @end example
 
 @node Signals and why you need them for control,Shutting down RhostMUSH gracefully,Daily Backups for RhostMUSH,Maintenance
-@anchor{maintenance signals-and-why-you-need-them-for-control}@anchor{116}
+@anchor{maintenance signals-and-why-you-need-them-for-control}@anchor{118}
 @section Signals and why you need them for control
 
 
@@ -7320,7 +7360,7 @@ The following signals are useful.
 @end menu
 
 @node TERM kill -TERM or kill -15,USR1 kill -USR1,,Signals and why you need them for control
-@anchor{maintenance term-kill-term-or-kill-15}@anchor{117}
+@anchor{maintenance term-kill-term-or-kill-15}@anchor{119}
 @subsection TERM (kill -TERM or kill -15)
 
 
@@ -7339,7 +7379,7 @@ a TERM signal is common during a server shutdown, so time is paramount.
 @end quotation
 
 @node USR1 kill -USR1,USR2 kill -USR2,TERM kill -TERM or kill -15,Signals and why you need them for control
-@anchor{maintenance usr1-kill-usr1}@anchor{118}
+@anchor{maintenance usr1-kill-usr1}@anchor{11a}
 @subsection USR1 (kill -USR1)
 
 
@@ -7357,7 +7397,7 @@ the default behavior or if the method for USR1 is doing something else.
 @end quotation
 
 @node USR2 kill -USR2,KILL kill -KILL or kill -9,USR1 kill -USR1,Signals and why you need them for control
-@anchor{maintenance usr2-kill-usr2}@anchor{119}
+@anchor{maintenance usr2-kill-usr2}@anchor{11b}
 @subsection USR2 (kill -USR2)
 
 
@@ -7376,7 +7416,7 @@ from the shell.
 @end quotation
 
 @node KILL kill -KILL or kill -9,,USR2 kill -USR2,Signals and why you need them for control
-@anchor{maintenance kill-kill-kill-or-kill-9}@anchor{11a}
+@anchor{maintenance kill-kill-kill-or-kill-9}@anchor{11c}
 @subsection KILL (kill -KILL or kill -9)
 
 
@@ -7399,7 +7439,7 @@ Startmush -f to bring it back up.
 @end quotation
 
 @node Shutting down RhostMUSH gracefully,Network Port redirector,Signals and why you need them for control,Maintenance
-@anchor{maintenance shutting-down-rhostmush-gracefully}@anchor{11b}
+@anchor{maintenance shutting-down-rhostmush-gracefully}@anchor{11d}
 @section Shutting down RhostMUSH gracefully
 
 
@@ -7410,7 +7450,7 @@ Startmush -f to bring it back up.
 @end menu
 
 @node RhostMUSH has many ways to shutdown the game cleanly,Autoshutdown script,,Shutting down RhostMUSH gracefully
-@anchor{maintenance rhostmush-has-many-ways-to-shutdown-the-game-cleanly}@anchor{11c}
+@anchor{maintenance rhostmush-has-many-ways-to-shutdown-the-game-cleanly}@anchor{11e}
 @subsection RhostMUSH has many ways to shutdown the game cleanly
 
 
@@ -7446,7 +7486,7 @@ in the middle of a write, all bets are off. :)
 @end cartouche
 
 @node Autoshutdown script,,RhostMUSH has many ways to shutdown the game cleanly,Shutting down RhostMUSH gracefully
-@anchor{maintenance autoshutdown-script}@anchor{11d}
+@anchor{maintenance autoshutdown-script}@anchor{11f}
 @subsection Autoshutdown script
 
 
@@ -7459,7 +7499,7 @@ Both of these are intended to be used for automations (automated processes)
 like your rc.local file and/or startup scripts when you bring your server up.
 
 @node Network Port redirector,Using the built-in cron system for periodically running commands,Shutting down RhostMUSH gracefully,Maintenance
-@anchor{maintenance network-port-redirector}@anchor{11e}
+@anchor{maintenance network-port-redirector}@anchor{120}
 @section Network Port redirector
 
 
@@ -7490,7 +7530,7 @@ To launch the application, you would then type:
 Where <port> is the port where the mush used to run at.
 
 @node Using the built-in cron system for periodically running commands,The following scripts are used in the game directory,Network Port redirector,Maintenance
-@anchor{maintenance using-the-built-in-cron-system-for-periodically-running-commands}@anchor{11f}
+@anchor{maintenance using-the-built-in-cron-system-for-periodically-running-commands}@anchor{121}
 @section Using the built-in cron system for periodically running commands
 
 
@@ -7500,7 +7540,7 @@ Where <port> is the port where the mush used to run at.
 @end menu
 
 @node Syntax for rhost cron,,,Using the built-in cron system for periodically running commands
-@anchor{maintenance syntax-for-rhost-cron}@anchor{120}
+@anchor{maintenance syntax-for-rhost-cron}@anchor{122}
 @subsection Syntax for rhost.cron
 
 
@@ -7533,7 +7573,7 @@ This example will perform dumps of the mush.
 @end menu
 
 @node Example syntaxt for rhost cron,,,Syntax for rhost cron
-@anchor{maintenance example-syntaxt-for-rhost-cron}@anchor{121}
+@anchor{maintenance example-syntaxt-for-rhost-cron}@anchor{123}
 @subsubsection Example syntaxt for rhost.cron
 
 
@@ -7546,7 +7586,7 @@ newsdb/unload; @@@@ dump the news bbs database to flatfile
 @end example
 
 @node The following scripts are used in the game directory,Textfiles for RhostMUSH,Using the built-in cron system for periodically running commands,Maintenance
-@anchor{maintenance the-following-scripts-are-used-in-the-game-directory}@anchor{122}
+@anchor{maintenance the-following-scripts-are-used-in-the-game-directory}@anchor{124}
 @section The following scripts are used in the game directory
 
 
@@ -7565,7 +7605,7 @@ tor_pull.sh             -- Create a blacklist.txt file that can be loaded via th
 @end example
 
 @node Textfiles for RhostMUSH,,The following scripts are used in the game directory,Maintenance
-@anchor{maintenance textfiles-for-rhostmush}@anchor{123}
+@anchor{maintenance textfiles-for-rhostmush}@anchor{125}
 @section Textfiles for RhostMUSH
 
 
@@ -7605,7 +7645,7 @@ wizmotd.txt            - your wiz motd file
 @end menu
 
 @node Textfile Frequently Asked Questions,,,Textfiles for RhostMUSH
-@anchor{maintenance textfile-frequently-asked-questions}@anchor{124}
+@anchor{maintenance textfile-frequently-asked-questions}@anchor{126}
 @subsection Textfile Frequently Asked Questions
 
 
@@ -7635,7 +7675,7 @@ A:  Absolutely.  Check 'wizhelp file_object'.
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
 @node Troubleshooting,Advanced Features,Maintenance,Top
-@anchor{troubleshooting doc}@anchor{125}@anchor{troubleshooting troubleshooting}@anchor{126}
+@anchor{troubleshooting doc}@anchor{127}@anchor{troubleshooting troubleshooting}@anchor{128}
 @chapter Troubleshooting
 
 
@@ -7650,7 +7690,7 @@ A:  Absolutely.  Check 'wizhelp file_object'.
 @end menu
 
 @node Reporting bugs or getting help,Stack limit and debugging,,Troubleshooting
-@anchor{troubleshooting reporting-bugs-or-getting-help}@anchor{127}
+@anchor{troubleshooting reporting-bugs-or-getting-help}@anchor{129}
 @section Reporting bugs or getting help
 
 
@@ -7665,7 +7705,7 @@ Ambrosia, Amos, and Morgan.  They can be found around the net.
 @end menu
 
 @node Troubleshooting issues with starting up,,,Reporting bugs or getting help
-@anchor{troubleshooting troubleshooting-issues-with-starting-up}@anchor{128}
+@anchor{troubleshooting troubleshooting-issues-with-starting-up}@anchor{12a}
 @subsection Troubleshooting issues with starting up
 
 
@@ -7678,7 +7718,7 @@ Ambrosia, Amos, and Morgan.  They can be found around the net.
 @end menu
 
 @node Problem If it says the shared ID is already in use,Problem Your log file is massive and your mush is running,,Troubleshooting issues with starting up
-@anchor{troubleshooting problem-if-it-says-the-shared-id-is-already-in-use}@anchor{129}
+@anchor{troubleshooting problem-if-it-says-the-shared-id-is-already-in-use}@anchor{12b}
 @subsubsection Problem: If it says the shared ID is already in use
 
 
@@ -7691,21 +7731,21 @@ A2: Force a start by running:
 @end example
 
 @node Problem Your log file is massive and your mush is running,Problem The database flatfile you're loading can't load because a db is already defined,Problem If it says the shared ID is already in use,Troubleshooting issues with starting up
-@anchor{troubleshooting problem-your-log-file-is-massive-and-your-mush-is-running}@anchor{12a}
+@anchor{troubleshooting problem-your-log-file-is-massive-and-your-mush-is-running}@anchor{12c}
 @subsubsection Problem: Your log file is massive and your mush is running
 
 
 A1: To rotate this use the @@logrotate command. See wizhelp on @@logrotate
 
 @node Problem The database flatfile you're loading can't load because a db is already defined,Problem The mail database won't load and mail shows 'offline',Problem Your log file is massive and your mush is running,Troubleshooting issues with starting up
-@anchor{troubleshooting problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined}@anchor{12b}
+@anchor{troubleshooting problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined}@anchor{12d}
 @subsubsection Problem: The database flatfile you're loading can't load because a db is already defined
 
 
 A1: remove netrhost.db* and netrhost.gdbm* from your data directory
 
 @node Problem The mail database won't load and mail shows 'offline',,Problem The database flatfile you're loading can't load because a db is already defined,Troubleshooting issues with starting up
-@anchor{troubleshooting problem-the-mail-database-won-t-load-and-mail-shows-offline}@anchor{12c}
+@anchor{troubleshooting problem-the-mail-database-won-t-load-and-mail-shows-offline}@anchor{12e}
 @subsubsection Problem: The mail database won't load and mail shows 'offline'
 
 
@@ -7716,7 +7756,7 @@ wmail/load
 @end example
 
 @node Stack limit and debugging,How to reset the password for #1,Reporting bugs or getting help,Troubleshooting
-@anchor{troubleshooting stack-limit-and-debugging}@anchor{12d}
+@anchor{troubleshooting stack-limit-and-debugging}@anchor{12f}
 @section Stack limit and debugging
 
 
@@ -7763,7 +7803,7 @@ A @@reboot WILL NOT LOAD IN A NEW DEBUG MONITOR!!!!
 You can issue @@list stack to see the current stack ceiling ingame.
 
 @node How to reset the password for #1,Troubleshooting difficulties compiling RhostMUSH,Stack limit and debugging,Troubleshooting
-@anchor{troubleshooting how-to-reset-the-password-for-1}@anchor{12e}
+@anchor{troubleshooting how-to-reset-the-password-for-1}@anchor{130}
 @section How to reset the password for #1
 
 
@@ -7780,7 +7820,7 @@ You can only use one of these options at a time. Make sure to change back your n
 @end menu
 
 @node Method 1 Reset to Default Password,Method 2 Increase Permissions of Immortals,,How to reset the password for #1
-@anchor{troubleshooting method-1-reset-to-default-password}@anchor{12f}
+@anchor{troubleshooting method-1-reset-to-default-password}@anchor{131}
 @subsection Method 1: Reset to Default Password
 
 
@@ -7793,7 +7833,7 @@ newpass_god 777
 This will reset #1's password to the default 'Nyctasia'.
 
 @node Method 2 Increase Permissions of Immortals,,Method 1 Reset to Default Password,How to reset the password for #1
-@anchor{troubleshooting method-2-increase-permissions-of-immortals}@anchor{130}
+@anchor{troubleshooting method-2-increase-permissions-of-immortals}@anchor{132}
 @subsection Method 2: Increase Permissions of Immortals
 
 
@@ -7806,7 +7846,7 @@ newpass_god 1
 This will allow IMMORTAL players to @@newpassword #1 upon reboot.
 
 @node Troubleshooting difficulties compiling RhostMUSH,Dealing with DB Corruption,How to reset the password for #1,Troubleshooting
-@anchor{troubleshooting troubleshooting-difficulties-compiling-rhostmush}@anchor{131}
+@anchor{troubleshooting troubleshooting-difficulties-compiling-rhostmush}@anchor{133}
 @section Troubleshooting difficulties compiling RhostMUSH
 
 
@@ -7817,7 +7857,7 @@ This will allow IMMORTAL players to @@newpassword #1 upon reboot.
 @end menu
 
 @node Changes to conf for high-bit CPUs,Changes to autconf for certain systems,,Troubleshooting difficulties compiling RhostMUSH
-@anchor{troubleshooting changes-to-conf-for-high-bit-cpus}@anchor{132}
+@anchor{troubleshooting changes-to-conf-for-high-bit-cpus}@anchor{134}
 @subsection Changes to conf for high-bit CPUs
 
 
@@ -7855,7 +7895,7 @@ RhostMUSH has only been tested to work on the AMD64, but there is no
 reason to believe the same will not hold true for IA64.
 
 @node Changes to autconf for certain systems,,Changes to conf for high-bit CPUs,Troubleshooting difficulties compiling RhostMUSH
-@anchor{troubleshooting changes-to-autconf-for-certain-systems}@anchor{133}
+@anchor{troubleshooting changes-to-autconf-for-certain-systems}@anchor{135}
 @subsection Changes to autconf for certain systems
 
 
@@ -7896,7 +7936,7 @@ the mush will not compile.
 @end cartouche
 
 @node Dealing with DB Corruption,Dealing with a corrupt mail database,Troubleshooting difficulties compiling RhostMUSH,Troubleshooting
-@anchor{troubleshooting dealing-with-db-corruption}@anchor{134}
+@anchor{troubleshooting dealing-with-db-corruption}@anchor{136}
 @section Dealing with DB Corruption
 
 
@@ -7932,7 +7972,7 @@ First thing is first.  Don't have a panic attack.
 @end menu
 
 @node If the mush says it can't find your database files,If the mush says it can't read or load your database files,,Dealing with DB Corruption
-@anchor{troubleshooting if-the-mush-says-it-can-t-find-your-database-files}@anchor{135}
+@anchor{troubleshooting if-the-mush-says-it-can-t-find-your-database-files}@anchor{137}
 @subsection If the mush says it can't find your database files
 
 
@@ -7944,7 +7984,7 @@ First thing is first.  Don't have a panic attack.
 @end menu
 
 @node Check the names of the database files in your 'data' directory,Check your netrhost conf file,,If the mush says it can't find your database files
-@anchor{troubleshooting check-the-names-of-the-database-files-in-your-data-directory}@anchor{136}
+@anchor{troubleshooting check-the-names-of-the-database-files-in-your-data-directory}@anchor{138}
 @subsubsection Check the names of the database files in your 'data' directory
 
 
@@ -7961,7 +8001,7 @@ netrhost.gdbm.pag
 And you may see a netrhost.db.flat
 
 @node Check your netrhost conf file,Check your mush config file,Check the names of the database files in your 'data' directory,If the mush says it can't find your database files
-@anchor{troubleshooting check-your-netrhost-conf-file}@anchor{137}
+@anchor{troubleshooting check-your-netrhost-conf-file}@anchor{139}
 @subsubsection Check your netrhost.conf file
 
 
@@ -7975,7 +8015,7 @@ If these names do not match up, it can't find the database files to load.
 So you shouldn't have to change these names, ever. :)
 
 @node Check your mush config file,,Check your netrhost conf file,If the mush says it can't find your database files
-@anchor{troubleshooting check-your-mush-config-file}@anchor{138}
+@anchor{troubleshooting check-your-mush-config-file}@anchor{13a}
 @subsubsection Check your mush.config file
 
 
@@ -7987,7 +8027,7 @@ as associated to the mush.  So changing this means the netrhost.conf
 file, all your database files, and so forth.  Please don't change this :)
 
 @node If the mush says it can't read or load your database files,If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!,If the mush says it can't find your database files,Dealing with DB Corruption
-@anchor{troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files}@anchor{139}
+@anchor{troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files}@anchor{13b}
 @subsection If the mush says it can't read or load your database files
 
 
@@ -8000,7 +8040,7 @@ Double check everything for the previous issue. Make sure everything is named pr
 @end menu
 
 @node Verify you have enough disk space quota,Verify you have enough disk space system,,If the mush says it can't read or load your database files
-@anchor{troubleshooting verify-you-have-enough-disk-space-quota}@anchor{13a}
+@anchor{troubleshooting verify-you-have-enough-disk-space-quota}@anchor{13c}
 @subsubsection Verify you have enough disk space. (quota)
 
 
@@ -8016,7 +8056,7 @@ mush again.  Try to keep your quota at least 200 megs free to allow
 plenty of wonderful growth space for the mush.
 
 @node Verify you have enough disk space system,,Verify you have enough disk space quota,If the mush says it can't read or load your database files
-@anchor{troubleshooting verify-you-have-enough-disk-space-system}@anchor{13b}
+@anchor{troubleshooting verify-you-have-enough-disk-space-system}@anchor{13d}
 @subsubsection Verify you have enough disk space.  (system)
 
 
@@ -8034,7 +8074,7 @@ Until this issue is resolved, you can not repair and bring up your mush.
 No disk to run the game.
 
 @node If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!,Bringing up your mail database,If the mush says it can't read or load your database files,Dealing with DB Corruption
-@anchor{troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone}@anchor{13c}
+@anchor{troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone}@anchor{13e}
 @subsection If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!
 
 
@@ -8054,7 +8094,7 @@ So, to recover your database.
 @end menu
 
 @node The bad news,The good news,,If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!
-@anchor{troubleshooting the-bad-news}@anchor{13d}
+@anchor{troubleshooting the-bad-news}@anchor{13f}
 @subsubsection The bad news
 
 
@@ -8066,7 +8106,7 @@ out of it, but otherwise it's a lost cause.  You'll have to start
 over from scratch.  I'm sorry.
 
 @node The good news,Now to restore your database?,The bad news,If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!
-@anchor{troubleshooting the-good-news}@anchor{13e}
+@anchor{troubleshooting the-good-news}@anchor{140}
 @subsubsection The good news
 
 
@@ -8085,14 +8125,14 @@ that the very last line shows something like ** END OF DUMP **.
 That shows you had a successful backup.
 
 @node Now to restore your database?,,The good news,If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!
-@anchor{troubleshooting now-to-restore-your-database}@anchor{13f}
+@anchor{troubleshooting now-to-restore-your-database}@anchor{141}
 @subsubsection Now, to restore your database?
 
 
 Please refer to the file 'README.DBLOADING'.
 
 @node Bringing up your mail database,,If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!,Dealing with DB Corruption
-@anchor{troubleshooting bringing-up-your-mail-database}@anchor{140}
+@anchor{troubleshooting bringing-up-your-mail-database}@anchor{142}
 @subsection Bringing up your mail database
 
 
@@ -8105,7 +8145,7 @@ Your mail db may or may not come up at this point.
 @end menu
 
 @node If after restoring main database your mail database works,If after restoring main database your mail database does not work,,Bringing up your mail database
-@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-works}@anchor{141}
+@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-works}@anchor{143}
 @subsubsection If after restoring main database your mail database works
 
 
@@ -8127,14 +8167,14 @@ wmail/fix fixes the mail.
 wmail/lfix loads in the fixes.
 
 @node If after restoring main database your mail database does not work,,If after restoring main database your mail database works,Bringing up your mail database
-@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work}@anchor{142}
+@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work}@anchor{144}
 @subsubsection If after restoring main database your mail database does not work
 
 
 If your mail database is not up and shows 'Mail: mail is currently off' then your mail db is currupt.
 
 @node Dealing with a corrupt mail database,,Dealing with DB Corruption,Troubleshooting
-@anchor{troubleshooting dealing-with-a-corrupt-mail-database}@anchor{143}
+@anchor{troubleshooting dealing-with-a-corrupt-mail-database}@anchor{145}
 @section Dealing with a corrupt mail database
 
 
@@ -8157,7 +8197,7 @@ which would include the mail database.
 @end menu
 
 @node Backing up your mail database,Automatically recovering your mail database,,Dealing with a corrupt mail database
-@anchor{troubleshooting backing-up-your-mail-database}@anchor{144}
+@anchor{troubleshooting backing-up-your-mail-database}@anchor{146}
 @subsection Backing up your mail database
 
 
@@ -8173,7 +8213,7 @@ latter directory is used in junction to the backup_flat.sh and will always
 house the latest flatfile if not one recently dumped in your data directory.
 
 @node Automatically recovering your mail database,Manually recovering your mail database,Backing up your mail database,Dealing with a corrupt mail database
-@anchor{troubleshooting automatically-recovering-your-mail-database}@anchor{145}
+@anchor{troubleshooting automatically-recovering-your-mail-database}@anchor{147}
 @subsection Automatically recovering your mail database
 
 
@@ -8201,7 +8241,7 @@ to sync against nuked players and other changes to the game since the flatfile.
 If this is a new db that you have, you can skip the fixing.
 
 @node Manually recovering your mail database,,Automatically recovering your mail database,Dealing with a corrupt mail database
-@anchor{troubleshooting manually-recovering-your-mail-database}@anchor{146}
+@anchor{troubleshooting manually-recovering-your-mail-database}@anchor{148}
 @subsection Manually recovering your mail database
 
 
@@ -8257,12 +8297,11 @@ At this point you should be good to go.
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
 @node Advanced Features,Format for image files,Troubleshooting,Top
-@anchor{advanced doc}@anchor{147}@anchor{advanced advanced-features}@anchor{148}
+@anchor{advanced doc}@anchor{149}@anchor{advanced advanced-features}@anchor{14a}
 @chapter Advanced Features
 
 
 @menu
-* Installing using an ansible playbook:: 
 * Adding hardcoded modules:: 
 * Reality Levels Setup:: 
 * Execscript and external programs and scripts:: 
@@ -8270,27 +8309,7 @@ At this point you should be good to go.
 
 @end menu
 
-@node Installing using an ansible playbook,Adding hardcoded modules,,Advanced Features
-@anchor{advanced ansible-install}@anchor{149}@anchor{advanced installing-using-an-ansible-playbook}@anchor{14a}
-@section Installing using an ansible playbook
-
-
-To begin, you will run the following command in a directory that will house your game:
-
-@example
-git clone https://github.com/RhostMUSH/trunk Rhost
-@end example
-
-You may also just run the yml file and ansible (ansible-playbook) to install your RhostMUSH engine:
-
-@example
-wget https://raw.githubusercontent.com/RhostMUSH/trunk/master/rhostinstall.yml
-ansible-playbook rhostinstall.yml
-@end example
-
-This downloads the latest stable version of the code, bringing with it all patches and scripts, documentation and support tools that you will need.
-
-@node Adding hardcoded modules,Reality Levels Setup,Installing using an ansible playbook,Advanced Features
+@node Adding hardcoded modules,Reality Levels Setup,,Advanced Features
 @anchor{advanced adding-hardcoded-modules}@anchor{14b}
 @section Adding hardcoded modules
 
@@ -10107,10 +10126,8 @@ openssl
 @end quotation
 
 @item 
-When configuring rhost (using confsource) select the Disable Debugmon
+When configuring rhost (using confsource) select the Disable Debugmon option.
 @end itemize
-
-option.
 
 @node Installing on Windows with Cygwin,Startig RhostMUSH on Windows,Installing on Windows 10 with BASH,Requirements if Using Windows
 @anchor{install/windows installing-on-windows-with-cygwin}@anchor{171}

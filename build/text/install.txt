@@ -1,172 +1,8 @@
-1. Installing RhostMUSH
+2. Installing RhostMUSH
 ***********************
 
 
-Table of Contents
-^^^^^^^^^^^^^^^^^
-
-* RhostMUSH Requirements
-
-  * System Requirements
-
-  * Software Requirements
-
-    * Optional Packages
-
-  * Hosting Requirements
-
-* Obtaining RhostMUSH Source Code
-
-* Options for making a MUSH
-
-  * Compile time options
-
-  * Configuration file options
-
-  * Starting database options
-
-  * The Choices We Make
-
-* Compiling RhostMush
-
-  * Setup directory permissions
-
-  * Compile the source code
-
-    * Saving your compile options
-
-    * Troubleshooting compile errors
-
-    * Recompiling the source code
-
-* Configuring the game
-
-  * Persistent configurable game options
-
-  * Starting the game
-
-  * First login to the game
-
-* Creating RHostMUSH with a Provided DB
-
-  * Important before you actually start building
-
-  * Using the prebuilt flatfile
-
-    * To load a prebuilt flatfile
-
-* Basic Instructions for starting a new RhostMUSH
-
-  * Manual configuration of source code
-
-  * Loading a database for your MUSH
-
-    * Option: Only perform these steps if using a provided database
-
-  * Option: Things to do once you have connected if you did NOT use a
-    provided database
-
-* Customtize the textfiles for your game
-
-* Three Options for Starting a MUSH
-
-  * Option 1: Creating a new game with a blank database
-
-  * Option 2: Creating a new game with the generic default database
-
-  * Option 3: Creating a new game with Ambrosia's default database
-
-
-1.1. RhostMUSH Requirements
-===========================
-
-
-1.1.1. System Requirements
---------------------------
-
-* Operating System: Unix-like
-
-  * Almost any variant of Unix or Linux should compile cleanly and run
-
-  * Preliminary support for Windows with an equivalent development
-    environment
-
-* Memory: 12-100 MB
-
-  * Depending on size of database and buffers, as well as selected
-    options
-
-  * 1 GB (memory and swap combined) is the minimum required to compile
-
-* Storage: 100 MB and up
-
-  * Depending on size of database and backup retention policy
-
-Note:
-
-  Third-party applications can use considerably more resources
-
-
-1.1.2. Software Requirements
-----------------------------
-
-RhostMUSH is a Linux or Unix based server software that runs as a
-daemon on the host. In order to build this software, you will need the
-bare minimum of the ability to run 'make' commands.
-
-Package requirements are as follows:
-
-* bash/ksh/dash (or compatible shell - for use with build menu)
-
-* glibc and gcc/clang (compiling the code)
-
-* git (to clone the source and maintain patches)
-
-* libcrypt (for password encryption - this is usually standard on unix
-  based systems)
-
-
-1.1.2.1. Optional Packages
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-RhostMUSH also offers optional linking and library attachments. For
-some of these libraries it will attempt to do auto-detection, but in a
-worse case scenario, there exists override hashes in the menu to
-disable options it thinks exist that do not.
-
-Optional packages are as follows:
-
-* libpcre (if you wish to use system pcre libraries instead of the
-  built-in ones)
-
-* mysql client & mysql_config (required for mysql capabilities)
-
-* openssl dev libraries/headers (for MUX password compatibility, and
-  digest() and advanced cryptology functionality.
-
-* ruby/perl/python/etc (for custom interactive dynamic custom
-  functions with the execscript() feature)
-
-* sqlite3 libraries (required for sqlite capabilities)
-
-
-1.1.3. Hosting Requirements
----------------------------
-
-* You will need a stable host and access to open a single port number
-  of your choice on the firewall.
-
-* Most games choose a number between 1025 and 9999, by convention.
-
-* Please make sure your debug_id matches the port number + 5.
-
-  * So if your port is 4201, your debug_id will be 42015.
-
-  * The debug_id is for use in the API daemon that runs Rhost as a
-    container to keep track of heap, stack, and execution location.
-
-
-1.2. Obtaining RhostMUSH Source Code
+2.1. Obtaining RhostMUSH Source Code
 ====================================
 
 The only official source for obtaining RhostMUSH is through the
@@ -194,7 +30,7 @@ Note:
   unless specifically noted otherwise.
 
 
-1.3. Options for making a MUSH
+2.2. Options for making a MUSH
 ==============================
 
 There is a *lot* of options once your start making your MUSH, but
@@ -215,7 +51,7 @@ While there are lots of little options, there are three big areas
 where you make those choices.
 
 
-1.3.1. Compile time options
+2.2.1. Compile time options
 ---------------------------
 
 One of the first steps of making a MUSH or really any computer program
@@ -234,7 +70,7 @@ able to connect to a variety of external programs like databases,
 webservers, and even other programming languages.
 
 
-1.3.2. Configuration file options
+2.2.2. Configuration file options
 ---------------------------------
 
 While there are some options in RhostMUSH that can only be changed
@@ -259,7 +95,7 @@ that survive a reboot. One thing you set there that you definitely
 can't change from within the MUSH, is which port it runs on.
 
 
-1.3.3. Starting database options
+2.2.3. Starting database options
 --------------------------------
 
 This last big choice is one that you probably are well aware of at
@@ -291,7 +127,7 @@ tuning your MUSH or even use some RhostMUSH commands to import that
 softcode into your database.
 
 
-1.3.4. The Choices We Make
+2.2.4. The Choices We Make
 --------------------------
 
 Well, not you're aware of those three big choices, what they are, and
@@ -324,11 +160,11 @@ Note:
   that last that is made part of the MUSH.
 
 
-1.4. Compiling RhostMush
+2.3. Compiling RhostMush
 ========================
 
 
-1.4.1. Setup directory permissions
+2.3.1. Setup directory permissions
 ----------------------------------
 
 In order to both compile and run, all of the RhostMUSH files and
@@ -349,7 +185,7 @@ permission script:
    ./dirsetup.sh
 
 
-1.4.2. Compile the source code
+2.3.2. Compile the source code
 ------------------------------
 
 Once the source code has been obtained and the proper file and
@@ -372,7 +208,7 @@ Note:
   as waste system resources.
 
 
-1.4.2.1. Saving your compile options
+2.3.2.1. Saving your compile options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 "make confsource" will remember the most recent options you used to
@@ -385,7 +221,7 @@ file. If you choose to do this, you will find the the save file in the
 "bin/" directory.
 
 
-1.4.2.2. Troubleshooting compile errors
+2.3.2.2. Troubleshooting compile errors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Should this result in an error, a script has been included to correct
@@ -402,7 +238,7 @@ issue, and is not harmful to run in any situation:
    make links
 
 
-1.4.2.3. Recompiling the source code
+2.3.2.3. Recompiling the source code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you plan to use "make confsource" to recompile your source, you
@@ -423,11 +259,11 @@ Note:
   source code.
 
 
-1.5. Configuring the game
+2.4. Configuring the game
 =========================
 
 
-1.5.1. Persistent configurable game options
+2.4.1. Persistent configurable game options
 -------------------------------------------
 
 Upon compiling a RhostMUSH server, if it doesn't already exist, a
@@ -452,7 +288,7 @@ Note:
   priviliged ports and can not be used for this purpose.
 
 
-1.5.2. Starting the game
+2.4.2. Starting the game
 ------------------------
 
 Once done, you start up the system with the following command:
@@ -467,7 +303,7 @@ You may also do the commands individually:
    [sh]  netrhost -s netrhost.conf > netrhost.log 2>&1 &
 
 
-1.5.3. First login to the game
+2.4.3. First login to the game
 ------------------------------
 
 Once started, log in the #1 character (Wizard) with it's appropiate
@@ -481,11 +317,11 @@ distribution that allows the ability of auto-archiving your database
 for a configurable number of backups.
 
 
-1.6. Creating RHostMUSH with a Provided DB
+2.5. Creating RHostMUSH with a Provided DB
 ==========================================
 
 
-1.6.1. Important before you actually start building
+2.5.1. Important before you actually start building
 ---------------------------------------------------
 
 The main parts of making your RhostMUSH, easy pleasy:
@@ -534,7 +370,7 @@ The main parts of making your RhostMUSH, easy pleasy:
    directory on how to port your flatfile in (README.DBLOADING).
 
 
-1.6.2. Using the prebuilt flatfile
+2.5.2. Using the prebuilt flatfile
 ----------------------------------
 
 There are pre-loaded flatfile databases you can use at this point.
@@ -552,7 +388,7 @@ port and debug_id must be changed at the very least.  Keep the
 debug_id coordinated to the port as described.
 
 
-1.6.2.1. To load a prebuilt flatfile
+2.5.2.1. To load a prebuilt flatfile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Make a backup of your existing netrhost.conf file:
@@ -593,11 +429,11 @@ Todo: Clean up the below section
       ./Startmush
 
 
-1.7. Basic Instructions for starting a new RhostMUSH
+2.6. Basic Instructions for starting a new RhostMUSH
 ====================================================
 
 
-1.7.1. Manual configuration of source code
+2.6.1. Manual configuration of source code
 ------------------------------------------
 
 To do manual configuration (skip if the previous step worked for you)
@@ -630,14 +466,14 @@ After the compile process is done, type:
    make links
 
 
-1.7.2. Loading a database for your MUSH
+2.6.2. Loading a database for your MUSH
 ---------------------------------------
 
 You now have a choice of optionally starting at a provided database or
 starting from scratch.
 
 
-1.7.2.1. Option: Only perform these steps if using a provided database
+2.6.2.1. Option: Only perform these steps if using a provided database
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Copy an existing flatfile and corresponding netrhost.conf file Default
@@ -649,7 +485,7 @@ provied example:
    ./db_load data/netrhost.gdbm ../minimal-DBs/minimal_db/netrhost.db.flat data/netrhost.db.new
 
 
-1.7.3. Option: Things to do once you have connected if you did NOT use a provided database
+2.6.3. Option: Things to do once you have connected if you did NOT use a provided database
 ------------------------------------------------------------------------------------------
 
 1. @dig your master room and in your netrhost.conf file define
@@ -690,7 +526,7 @@ Todo: Figure out what they were trying to say by having those above
 two sentences right after each other.
 
 
-1.8. Customtize the textfiles for your game
+2.7. Customtize the textfiles for your game
 ===========================================
 
 All connect.txt and customized files can be found in the
@@ -699,7 +535,7 @@ explains their purposes in more detail.  You can see more information
 on all files and how they inter-relate with 'wizhelp file'.
 
 
-1.9. Three Options for Starting a MUSH
+2.8. Three Options for Starting a MUSH
 ======================================
 
 The RhostMUSH Git Repository comes with three options for starting
@@ -709,14 +545,14 @@ Todo: Well, there's also some other pre-existing DB, upgrading, and
 ansible so let's try to make this a little more coherent.
 
 
-1.9.1. Option 1: Creating a new game with a blank database
+2.8.1. Option 1: Creating a new game with a blank database
 ----------------------------------------------------------
 
 Modify your ./game/netrhost.conf file or what settings you want. Don't
 feel overwhelmed, it's all very well documented.
 
 
-1.9.2. Option 2: Creating a new game with the generic default database
+2.8.2. Option 2: Creating a new game with the generic default database
 ----------------------------------------------------------------------
 
 Copy the netrhost.conf from minimal-DBs/minimal_db to your game
@@ -727,7 +563,7 @@ When ./Startmush prompts you to load a flatfile, say 'yes' and hit
 from under the minimal-DBs/minimal_db directory.
 
 
-1.9.3. Option 3: Creating a new game with Ambrosia's default database
+2.8.3. Option 3: Creating a new game with Ambrosia's default database
 ---------------------------------------------------------------------
 
 This option is covered in detail here: Ambrosia's Minimal Rhost DB

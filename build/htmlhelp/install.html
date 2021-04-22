@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=cp1252" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Installing RhostMUSH</title>
+    <title>2. Installing RhostMUSH</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/style.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="next" title="2. What RhostMUSH is about and what&#39;s so great about RhostMUSH" href="features.html" />
-    <link rel="prev" title="RhostMUSH Handbook" href="index.html" /> 
+    <link rel="next" title="3. Installing using an ansible playbook" href="install/ansible.html" />
+    <link rel="prev" title="1. RhostMUSH Requirements" href="install/requirements.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -23,7 +23,7 @@
     <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
     <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
     <li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Installing RhostMUSH</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Installing RhostMUSH</a></li> 
       </ul>
     </div>  
 
@@ -32,135 +32,9 @@
           <div class="body" role="main">
             
   <div class="section" id="installing-rhostmush">
-<span id="id1"></span><h1><span class="section-number">1. </span>Installing RhostMUSH</h1>
-<div class="contents local topic" id="table-of-contents">
-<p class="topic-title">Table of Contents</p>
-<ul class="simple">
-<li><a class="reference internal" href="#rhostmush-requirements" id="id10">RhostMUSH Requirements</a><ul>
-<li><a class="reference internal" href="#system-requirements" id="id11">System Requirements</a></li>
-<li><a class="reference internal" href="#software-requirements" id="id12">Software Requirements</a><ul>
-<li><a class="reference internal" href="#optional-packages" id="id13">Optional Packages</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#hosting-requirements" id="id14">Hosting Requirements</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#obtaining-rhostmush-source-code" id="id15">Obtaining RhostMUSH Source Code</a></li>
-<li><a class="reference internal" href="#options-for-making-a-mush" id="id16">Options for making a MUSH</a><ul>
-<li><a class="reference internal" href="#compile-time-options" id="id17">Compile time options</a></li>
-<li><a class="reference internal" href="#configuration-file-options" id="id18">Configuration file options</a></li>
-<li><a class="reference internal" href="#starting-database-options" id="id19">Starting database options</a></li>
-<li><a class="reference internal" href="#the-choices-we-make" id="id20">The Choices We Make</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#compiling-rhostmush" id="id21">Compiling RhostMush</a><ul>
-<li><a class="reference internal" href="#setup-directory-permissions" id="id22">Setup directory permissions</a></li>
-<li><a class="reference internal" href="#compile-the-source-code" id="id23">Compile the source code</a><ul>
-<li><a class="reference internal" href="#saving-your-compile-options" id="id24">Saving your compile options</a></li>
-<li><a class="reference internal" href="#troubleshooting-compile-errors" id="id25">Troubleshooting compile errors</a></li>
-<li><a class="reference internal" href="#recompiling-the-source-code" id="id26">Recompiling the source code</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#configuring-the-game" id="id27">Configuring the game</a><ul>
-<li><a class="reference internal" href="#persistent-configurable-game-options" id="id28">Persistent configurable game options</a></li>
-<li><a class="reference internal" href="#starting-the-game" id="id29">Starting the game</a></li>
-<li><a class="reference internal" href="#first-login-to-the-game" id="id30">First login to the game</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#creating-rhostmush-with-a-provided-db" id="id31">Creating RHostMUSH with a Provided DB</a><ul>
-<li><a class="reference internal" href="#important-before-you-actually-start-building" id="id32">Important before you actually start building</a></li>
-<li><a class="reference internal" href="#using-the-prebuilt-flatfile" id="id33">Using the prebuilt flatfile</a><ul>
-<li><a class="reference internal" href="#to-load-a-prebuilt-flatfile" id="id34">To load a prebuilt flatfile</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#basic-instructions-for-starting-a-new-rhostmush" id="id35">Basic Instructions for starting a new RhostMUSH</a><ul>
-<li><a class="reference internal" href="#manual-configuration-of-source-code" id="id36">Manual configuration of source code</a></li>
-<li><a class="reference internal" href="#loading-a-database-for-your-mush" id="id37">Loading a database for your MUSH</a><ul>
-<li><a class="reference internal" href="#option-only-perform-these-steps-if-using-a-provided-database" id="id38">Option: Only perform these steps if using a provided database</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#option-things-to-do-once-you-have-connected-if-you-did-not-use-a-provided-database" id="id39">Option: Things to do once you have connected if you did NOT use a provided database</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#customtize-the-textfiles-for-your-game" id="id40">Customtize the textfiles for your game</a></li>
-<li><a class="reference internal" href="#three-options-for-starting-a-mush" id="id41">Three Options for Starting a MUSH</a><ul>
-<li><a class="reference internal" href="#option-1-creating-a-new-game-with-a-blank-database" id="id42">Option 1: Creating a new game with a blank database</a></li>
-<li><a class="reference internal" href="#option-2-creating-a-new-game-with-the-generic-default-database" id="id43">Option 2: Creating a new game with the generic default database</a></li>
-<li><a class="reference internal" href="#option-3-creating-a-new-game-with-ambrosia-s-default-database" id="id44">Option 3: Creating a new game with Ambrosia's default database</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="rhostmush-requirements">
-<span id="id2"></span><h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.1. </span>RhostMUSH Requirements</a></h2>
-<div class="section" id="system-requirements">
-<span id="id3"></span><h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.1.1. </span>System Requirements</a></h3>
-<ul class="simple">
-<li>Operating System: Unix-like<ul>
-<li>Almost any variant of Unix or Linux should compile cleanly and run</li>
-<li>Preliminary support for Windows with an equivalent development environment</li>
-</ul>
-</li>
-<li>Memory: 12-100 MB<ul>
-<li>Depending on size of database and buffers, as well as selected options</li>
-<li>1 GB (memory and swap combined) is the minimum required to compile</li>
-</ul>
-</li>
-<li>Storage: 100 MB and up<ul>
-<li>Depending on size of database and backup retention policy</li>
-</ul>
-</li>
-</ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Third-party applications can use considerably more resources</p>
-</div>
-</div>
-<div class="section" id="software-requirements">
-<span id="id4"></span><h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.1.2. </span>Software Requirements</a></h3>
-<p>RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.
-In order to build this software, you will need the bare minimum of the ability to run 'make' commands.</p>
-<p>Package requirements are as follows:</p>
-<ul class="simple">
-<li>bash/ksh/dash (or compatible shell - for use with build menu)</li>
-<li>glibc and gcc/clang (compiling the code)</li>
-<li>git (to clone the source and maintain patches)</li>
-<li>libcrypt (for password encryption - this is usually standard on unix based systems)</li>
-</ul>
-<div class="section" id="optional-packages">
-<h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.1.2.1. </span>Optional Packages</a></h4>
-<p>RhostMUSH also offers optional linking and library attachments.
-For some of these libraries it will attempt to do auto-detection,
-but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.</p>
-<p>Optional packages are as follows:</p>
-<ul class="simple">
-<li>libpcre (if you wish to use system pcre libraries instead of the built-in ones)</li>
-<li>mysql client &amp; mysql_config (required for mysql capabilities)</li>
-<li>openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.</li>
-<li>ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)</li>
-<li>sqlite3 libraries (required for sqlite capabilities)</li>
-</ul>
-</div>
-</div>
-<div class="section" id="hosting-requirements">
-<span id="id5"></span><h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.1.3. </span>Hosting Requirements</a></h3>
-<ul class="simple">
-<li>You will need a stable host and access to open a single port number of your choice on the firewall.</li>
-<li>Most games choose a number between 1025 and 9999, by convention.</li>
-<li>Please make sure your debug_id matches the port number + 5.<ul>
-<li>So if your port is 4201, your debug_id will be 42015.</li>
-<li>The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
+<span id="id1"></span><h1><span class="section-number">2. </span>Installing RhostMUSH</h1>
 <div class="section" id="obtaining-rhostmush-source-code">
-<span id="obtaining-rhostmush"></span><h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.2. </span>Obtaining RhostMUSH Source Code</a></h2>
+<h2><span class="section-number">2.1. </span>Obtaining RhostMUSH Source Code</h2>
 <p>The only official source for obtaining RhostMUSH is through the 'RhostMUSH'
 github account. If the source code was obtained in some other manner, there
 are potentially any number of unintentional or intentional issues that you
@@ -184,7 +58,7 @@ unless specifically noted otherwise.</p>
 </div>
 </div>
 <div class="section" id="options-for-making-a-mush">
-<h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.3. </span>Options for making a MUSH</a></h2>
+<h2><span class="section-number">2.2. </span>Options for making a MUSH</h2>
 <p>There is a <em>lot</em> of options once your start making your MUSH, but there are
 also a few big choices right as you get started making a MUSH. No matter which
 choices you ultimately make, there are certain things you will need to know how
@@ -199,7 +73,7 @@ handy point of reference.</p>
 <p>While there are lots of little options, there are three big areas where you
 make those choices.</p>
 <div class="section" id="compile-time-options">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.3.1. </span>Compile time options</a></h3>
+<h3><span class="section-number">2.2.1. </span>Compile time options</h3>
 <p>One of the first steps of making a MUSH or really any computer program is
 to compile the source code. This takes what's basically text files full of code
 and turns them into a program you can run. Within that source code are a
@@ -213,7 +87,7 @@ whether or not you want to be able to connect to a variety of external programs
 like databases, webservers, and even other programming languages.</p>
 </div>
 <div class="section" id="configuration-file-options">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.3.2. </span>Configuration file options</a></h3>
+<h3><span class="section-number">2.2.2. </span>Configuration file options</h3>
 <p>While there are some options in RhostMUSH that can only be changed through
 recompiling the source code, there are way more options that can be changed
 without having to recompile. These choices are mostly made through the
@@ -233,7 +107,7 @@ defaults that survive a reboot. One thing you set there that you definitely
 can't change from within the MUSH, is which port it runs on.</p>
 </div>
 <div class="section" id="starting-database-options">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.3.3. </span>Starting database options</a></h3>
+<h3><span class="section-number">2.2.3. </span>Starting database options</h3>
 <p>This last big choice is one that you probably are well aware of at least some
 of the things it allows for, mostly because the database is basically where
 everyone on a MUSH lives. Most of the choices you ever make about your MUSH
@@ -258,7 +132,7 @@ tuning your MUSH or even use some RhostMUSH commands to import that softcode
 into your database.</p>
 </div>
 <div class="section" id="the-choices-we-make">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.3.4. </span>The Choices We Make</a></h3>
+<h3><span class="section-number">2.2.4. </span>The Choices We Make</h3>
 <p>Well, not you're aware of those three big choices, what they are, and where
 you'll run across them. Later in this Handbook we'll be going through those
 choices in-depth. In this chapter, what we'll be doing is using the default
@@ -287,9 +161,9 @@ MUSH.</p>
 </div>
 </div>
 <div class="section" id="compiling-rhostmush">
-<span id="id6"></span><h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.4. </span>Compiling RhostMush</a></h2>
+<span id="id2"></span><h2><span class="section-number">2.3. </span>Compiling RhostMush</h2>
 <div class="section" id="setup-directory-permissions">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.4.1. </span>Setup directory permissions</a></h3>
+<h3><span class="section-number">2.3.1. </span>Setup directory permissions</h3>
 <p>In order to both compile and run, all of the RhostMUSH files and directories
 need to have the proper permissions set. If you obtained the source code
 directly from GitHub, it is likely that this step is not required, but there
@@ -308,7 +182,7 @@ and then re-run the automated permission script:</p>
 </div>
 </div>
 <div class="section" id="compile-the-source-code">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.4.2. </span>Compile the source code</a></h3>
+<h3><span class="section-number">2.3.2. </span>Compile the source code</h3>
 <p>Once the source code has been obtained and the proper file and directory
 permissions have been set, the RhostMUSH source code is ready to be compiled.
 This is typically done through an interactive program where you configure the
@@ -327,7 +201,7 @@ security issues, reduce compatibility with softcode rom other types of MUSH
 servers, as well as waste system resources.</p>
 </div>
 <div class="section" id="saving-your-compile-options">
-<h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.4.2.1. </span>Saving your compile options</a></h4>
+<h4><span class="section-number">2.3.2.1. </span>Saving your compile options</h4>
 <p><code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">confsource</span></code> will remember the most recent options you used to compile
 the source code for the next time you use <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">confsource</span></code> It might still
 be a good idea to more permanently save the options you used to attempt to
@@ -337,7 +211,7 @@ option to save your current settings to a file. If you choose to do this,
 you will find the the save file in the <code class="docutils literal notranslate"><span class="pre">bin/</span></code> directory.</p>
 </div>
 <div class="section" id="troubleshooting-compile-errors">
-<h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.4.2.2. </span>Troubleshooting compile errors</a></h4>
+<h4><span class="section-number">2.3.2.2. </span>Troubleshooting compile errors</h4>
 <p>Should this result in an error, a script has been included to correct the most
 common errors, after which you can once more try to compile:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="nb">bin</span><span class="o">/</span><span class="n">script_setup</span><span class="o">.</span><span class="n">sh</span>
@@ -353,7 +227,7 @@ to run in any situation:</p>
 </div>
 </div>
 <div class="section" id="recompiling-the-source-code">
-<h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.4.2.3. </span>Recompiling the source code</a></h4>
+<h4><span class="section-number">2.3.2.3. </span>Recompiling the source code</h4>
 <p>If you plan to use <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">confsource</span></code> to recompile your source, you should
 first issue a <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> before re-issuing a <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">confsource</span></code></p>
 <p>A failure to issue <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code> prior to re-compiling with <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">confsource</span></code>
@@ -370,9 +244,9 @@ whenever you alter the code or import new source code.</p>
 </div>
 </div>
 <div class="section" id="configuring-the-game">
-<h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.5. </span>Configuring the game</a></h2>
+<h2><span class="section-number">2.4. </span>Configuring the game</h2>
 <div class="section" id="persistent-configurable-game-options">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.5.1. </span>Persistent configurable game options</a></h3>
+<h3><span class="section-number">2.4.1. </span>Persistent configurable game options</h3>
 <p>Upon compiling a RhostMUSH server, if it doesn't already exist, a
 <code class="docutils literal notranslate"><span class="pre">netrhost.conf</span></code> is copied into the <code class="docutils literal notranslate"><span class="pre">game/</span></code> directory for your game. It
 includes useful defaults for most compile-time options that will work well for
@@ -392,7 +266,7 @@ this purpose.</p>
 </div>
 </div>
 <div class="section" id="starting-the-game">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.5.2. </span>Starting the game</a></h3>
+<h3><span class="section-number">2.4.2. </span>Starting the game</h3>
 <p>Once done, you start up the system with the following command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">Startmush</span>
 </pre></div>
@@ -405,7 +279,7 @@ this purpose.</p>
 </div>
 </div>
 <div class="section" id="first-login-to-the-game">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.5.3. </span>First login to the game</a></h3>
+<h3><span class="section-number">2.4.3. </span>First login to the game</h3>
 <p>Once started, log in the #1 character (Wizard) with it's appropiate
 password (no, not 'potrzebie', but 'Nyctasia').  There were private
 reasons for the password change.</p>
@@ -417,9 +291,9 @@ number of backups.</p>
 </div>
 </div>
 <div class="section" id="creating-rhostmush-with-a-provided-db">
-<h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.6. </span>Creating RHostMUSH with a Provided DB</a></h2>
+<h2><span class="section-number">2.5. </span>Creating RHostMUSH with a Provided DB</h2>
 <div class="section" id="important-before-you-actually-start-building">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.6.1. </span>Important before you actually start building</a></h3>
+<h3><span class="section-number">2.5.1. </span>Important before you actually start building</h3>
 <p>The main parts of making your RhostMUSH, easy pleasy:</p>
 <ol class="arabic simple">
 <li>The stunnel directory contains TLS/SSL connectivity.  This has to be linked to another port and will tunnel to the mush port.  The README file explains how to set up and configure your TLS/SSL connection.</li>
@@ -443,7 +317,7 @@ number of backups.</p>
 </ol>
 </div>
 <div class="section" id="using-the-prebuilt-flatfile">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.6.2. </span>Using the prebuilt flatfile</a></h3>
+<h3><span class="section-number">2.5.2. </span>Using the prebuilt flatfile</h3>
 <p>There are pre-loaded flatfile databases you can use at this point.  The netrhost.db.flat
 and corrisponding netrhost.conf file will be located in the minimal-DBs/minimal_db directory.</p>
 <p>You may auto-load the minimal db and corresponding netrhost.conf file with the command:</p>
@@ -454,7 +328,7 @@ and corrisponding netrhost.conf file will be located in the minimal-DBs/minimal_
 to customize the netrhost.conf file for your purposes.  The port and debug_id must
 be changed at the very least.  Keep the debug_id coordinated to the port as described.</p>
 <div class="section" id="to-load-a-prebuilt-flatfile">
-<h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.6.2.1. </span>To load a prebuilt flatfile</a></h4>
+<h4><span class="section-number">2.5.2.1. </span>To load a prebuilt flatfile</h4>
 <ol class="arabic">
 <li><p class="first">Make a backup of your existing netrhost.conf file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">game</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span> <span class="n">game</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">backup</span>
@@ -472,7 +346,7 @@ The 'port' will be the port the mush listens on, the debug_id is for the debug-s
 your port with a '5' at the end.  So if your port is 4444, the debug_id is 44445</p>
 </li>
 </ol>
-<div class="admonition-todo admonition" id="id7">
+<div class="admonition-todo admonition" id="id3">
 <p class="first admonition-title">Todo</p>
 <p class="last">Clean up the below section</p>
 </div>
@@ -499,9 +373,9 @@ Manually:</p>
 </div>
 </div>
 <div class="section" id="basic-instructions-for-starting-a-new-rhostmush">
-<h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.7. </span>Basic Instructions for starting a new RhostMUSH</a></h2>
+<h2><span class="section-number">2.6. </span>Basic Instructions for starting a new RhostMUSH</h2>
 <div class="section" id="manual-configuration-of-source-code">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.7.1. </span>Manual configuration of source code</a></h3>
+<h3><span class="section-number">2.6.1. </span>Manual configuration of source code</h3>
 <p>To do manual configuration (skip if the previous step worked for you) And yes, this is a bit of a pain in the bottom, hopefully you will not need this.</p>
 <p>You need the following definitions defined to make this work:</p>
 <ol class="arabic simple">
@@ -519,10 +393,10 @@ Manually:</p>
 </div>
 </div>
 <div class="section" id="loading-a-database-for-your-mush">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.7.2. </span>Loading a database for your MUSH</a></h3>
+<h3><span class="section-number">2.6.2. </span>Loading a database for your MUSH</h3>
 <p>You now have a choice of optionally starting at a provided database or starting from scratch.</p>
 <div class="section" id="option-only-perform-these-steps-if-using-a-provided-database">
-<h4><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.7.2.1. </span>Option: Only perform these steps if using a provided database</a></h4>
+<h4><span class="section-number">2.6.2.1. </span>Option: Only perform these steps if using a provided database</h4>
 <p>Copy an existing flatfile and corresponding netrhost.conf file Default provied example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">game</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span> <span class="n">game</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">backup</span>
 <span class="n">cp</span> <span class="o">-</span><span class="n">f</span> <span class="n">minimal</span><span class="o">-</span><span class="n">DBs</span><span class="o">/</span><span class="n">minimal_db</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span> <span class="n">game</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span>
@@ -533,7 +407,7 @@ Manually:</p>
 </div>
 </div>
 <div class="section" id="option-things-to-do-once-you-have-connected-if-you-did-not-use-a-provided-database">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.7.3. </span>Option: Things to do once you have connected if you did NOT use a provided database</a></h3>
+<h3><span class="section-number">2.6.3. </span>Option: Things to do once you have connected if you did NOT use a provided database</h3>
 <ol class="arabic">
 <li><p class="first">&#64;dig your master room and in your netrhost.conf file define master_room to this dbref (without the #.  So like master_room 2)</p>
 </li>
@@ -558,39 +432,39 @@ Manually:</p>
 <li>Setup new character, staff, and take tasks that can only be accomplished by #1</li>
 <li>Set up any other characters you want.  Anyone immortal can issue &#64;function, &#64;admin, or anything #1 can do.</li>
 </ol>
-<div class="admonition-todo admonition" id="id8">
+<div class="admonition-todo admonition" id="id4">
 <p class="first admonition-title">Todo</p>
 <p class="last">Figure out what they were trying to say by having those above two sentences right after each other.</p>
 </div>
 </div>
 </div>
 <div class="section" id="customtize-the-textfiles-for-your-game">
-<h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.8. </span>Customtize the textfiles for your game</a></h2>
+<h2><span class="section-number">2.7. </span>Customtize the textfiles for your game</h2>
 <p>All connect.txt and customized files can be found in the ~/Server/game/txt directory.  There is a
 README file there that explains their purposes in more detail.  You can see more information on
 all files and how they inter-relate with 'wizhelp file'.</p>
 </div>
 <div class="section" id="three-options-for-starting-a-mush">
-<h2><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9. </span>Three Options for Starting a MUSH</a></h2>
+<h2><span class="section-number">2.8. </span>Three Options for Starting a MUSH</h2>
 <p>The RhostMUSH Git Repository comes with three options for starting your Mush.</p>
-<div class="admonition-todo admonition" id="id9">
+<div class="admonition-todo admonition" id="id5">
 <p class="first admonition-title">Todo</p>
 <p class="last">Well, there's also some other pre-existing DB, upgrading, and ansible so let's try to make this a little more coherent.</p>
 </div>
 <div class="section" id="option-1-creating-a-new-game-with-a-blank-database">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.1. </span>Option 1: Creating a new game with a blank database</a></h3>
+<h3><span class="section-number">2.8.1. </span>Option 1: Creating a new game with a blank database</h3>
 <p>Modify your ./game/netrhost.conf file or what settings you want.
 Don't feel overwhelmed, it's all very well documented.</p>
 </div>
 <div class="section" id="option-2-creating-a-new-game-with-the-generic-default-database">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.2. </span>Option 2: Creating a new game with the generic default database</a></h3>
+<h3><span class="section-number">2.8.2. </span>Option 2: Creating a new game with the generic default database</h3>
 <p>Copy the netrhost.conf from minimal-DBs/minimal_db to your game directory.</p>
 <p>When ./Startmush prompts you to load a flatfile, say 'yes' and hit &lt;RETURN&gt;
 to have it search for flatfiles, then select netrhost.db.flat from under
 the minimal-DBs/minimal_db directory.</p>
 </div>
 <div class="section" id="option-3-creating-a-new-game-with-ambrosia-s-default-database">
-<h3><a class="toc-backref" href="#table-of-contents"><span class="section-number">1.9.3. </span>Option 3: Creating a new game with Ambrosia's default database</a></h3>
+<h3><span class="section-number">2.8.3. </span>Option 3: Creating a new game with Ambrosia's default database</h3>
 <p>This option is covered in detail here: <a class="reference internal" href="ambrosiadb.html#ambrosiadb-installation"><span class="std std-ref">Ambrosia's Minimal Rhost DB</span></a></p>
 </div>
 </div>

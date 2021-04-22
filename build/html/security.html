@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>9. Security &#8212; RhostMUSH Handbook</title>
+    <title>11. Security &#8212; RhostMUSH Handbook</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/style.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -14,8 +14,8 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="10. Maintenance" href="maintenance.html" />
-    <link rel="prev" title="8. Ambrosia&#39;s Minimal Rhost DB" href="ambrosiadb.html" /> 
+    <link rel="next" title="12. Setting up an SSL tunnel for secure connection options" href="utilities/ssl.html" />
+    <link rel="prev" title="10. Ambrosia&#39;s Minimal Rhost DB" href="ambrosiadb.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -26,7 +26,7 @@
     <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
     <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
     <li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">9. </span>Security</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">11. </span>Security</a></li> 
       </ul>
     </div>  
 
@@ -36,9 +36,9 @@
           <div class="body" role="main">
             
   <div class="section" id="security">
-<h1><span class="section-number">9. </span>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">11. </span>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="considerations-to-locking-down-restrictions-in-rhostmush">
-<h2><span class="section-number">9.1. </span>Considerations to locking down restrictions in RhostMUSH<a class="headerlink" href="#considerations-to-locking-down-restrictions-in-rhostmush" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.1. </span>Considerations to locking down restrictions in RhostMUSH<a class="headerlink" href="#considerations-to-locking-down-restrictions-in-rhostmush" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes, you want to have things run at various privilage levels and do not
 want to have things with too much access.  Weither that is online objects or
 players you want to block from connecting to your mush.  Here's things you can
@@ -54,13 +54,13 @@ Then the object must be set inherit to actually inherit the wizard.</p>
 toggles.  The only thing that is inherited automatically is depowers.</p>
 </div>
 <div class="section" id="online-blocking-object-abilities">
-<h3><span class="section-number">9.1.1. </span>Online: Blocking object abilities<a class="headerlink" href="#online-blocking-object-abilities" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.1. </span>Online: Blocking object abilities<a class="headerlink" href="#online-blocking-object-abilities" title="Permalink to this headline">¶</a></h3>
 <p>We have various flag levels.  It is strongly recommanded you check wizhelp
 on 'control' for a detailed overview of what each bitlevel can or can not do
 prior to giving the ownership to the object.  Things useful for tweaking control
 on players and objects.</p>
 <div class="section" id="flags-access-with-set">
-<h4><span class="section-number">9.1.1.1. </span>FLAGS (access with &#64;set)<a class="headerlink" href="#flags-access-with-set" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.1.1. </span>FLAGS (access with &#64;set)<a class="headerlink" href="#flags-access-with-set" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IMMORTAL</span><span class="p">,</span> <span class="n">ROYALTY</span><span class="p">,</span> <span class="n">COUNCILOR</span><span class="p">,</span> <span class="n">ARCHITECT</span><span class="p">,</span> <span class="n">GUILDMASTER</span><span class="p">,</span>
 <span class="n">FUBAR</span><span class="p">,</span> <span class="n">SLAVE</span><span class="p">,</span> <span class="n">SIDEFX</span><span class="p">,</span> <span class="n">NO_CONNECT</span><span class="p">,</span> <span class="n">WANDERER</span><span class="p">,</span> <span class="n">SAFE</span><span class="p">,</span>
 <span class="n">AUDITORIUM</span><span class="p">,</span> <span class="n">BACKSTAGE</span><span class="p">,</span> <span class="n">NOBACKSTAGE</span><span class="p">,</span> <span class="n">INDESTRUCTIBLE</span><span class="p">,</span>
@@ -73,7 +73,7 @@ on players and objects.</p>
 </div>
 </div>
 <div class="section" id="toggles-toggle">
-<h4><span class="section-number">9.1.1.2. </span>TOGGLES (&#64;toggle)<a class="headerlink" href="#toggles-toggle" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.1.2. </span>TOGGLES (&#64;toggle)<a class="headerlink" href="#toggles-toggle" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">BRANDY_MAIL</span><span class="p">,</span> <span class="n">PENN_MAIL</span><span class="p">,</span> <span class="n">MUXPAGE</span><span class="p">,</span> <span class="n">VPAGE</span><span class="p">,</span> <span class="n">NOISY</span><span class="p">,</span>
 <span class="n">MONITOR</span><span class="o">*</span> <span class="p">(</span><span class="nb">all</span> <span class="n">monitor</span> <span class="n">toggles</span><span class="p">),</span> <span class="n">MORTALREALITY</span><span class="p">,</span>
 <span class="n">NODEFAULT</span><span class="p">,</span> <span class="n">NO_FORMAT</span><span class="p">,</span> <span class="n">PAGELOCK</span><span class="p">,</span> <span class="n">SNUFFDARK</span><span class="p">,</span> <span class="n">VARIABLE</span>
@@ -81,13 +81,13 @@ on players and objects.</p>
 </div>
 </div>
 <div class="section" id="powers-depowers-and-locks">
-<h4><span class="section-number">9.1.1.3. </span>&#64;powers, &#64;depowers, and &#64;locks<a class="headerlink" href="#powers-depowers-and-locks" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.1.1.3. </span>&#64;powers, &#64;depowers, and &#64;locks<a class="headerlink" href="#powers-depowers-and-locks" title="Permalink to this headline">¶</a></h4>
 <p>Please review help (and wizhelp) for each of these items on how it can affect
 a player, thing, exit, or room.  The help is quite verbose.</p>
 </div>
 </div>
 <div class="section" id="offline-blocking-twinks-from-being-abusive-on-your-game">
-<h3><span class="section-number">9.1.2. </span>Offline: Blocking twinks from being abusive on your game<a class="headerlink" href="#offline-blocking-twinks-from-being-abusive-on-your-game" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.2. </span>Offline: Blocking twinks from being abusive on your game<a class="headerlink" href="#offline-blocking-twinks-from-being-abusive-on-your-game" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FLAGS</span>                   <span class="p">:</span> <span class="n">FUBAR</span><span class="p">,</span> <span class="n">SLAVE</span><span class="p">,</span> <span class="n">NO_CONNECT</span>
 <span class="n">Commands</span><span class="p">:</span>               <span class="p">:</span> <span class="nd">@boot</span><span class="p">,</span> <span class="nd">@nuke</span><span class="p">,</span> <span class="nd">@toad</span><span class="p">,</span> <span class="nd">@turtle</span>
 <span class="n">Sitelocks</span><span class="p">:</span> <span class="p">(</span><span class="nd">@admin</span><span class="p">)</span>     <span class="p">:</span> <span class="n">forbid_host</span><span class="p">,</span> <span class="n">forbid_site</span><span class="p">,</span> <span class="n">register_host</span><span class="p">,</span> <span class="n">register_site</span><span class="p">,</span> <span class="n">noguest_host</span><span class="p">,</span> <span class="n">noguest_site</span>
@@ -99,12 +99,12 @@ a player, thing, exit, or room.  The help is quite verbose.</p>
 </div>
 </div>
 <div class="section" id="extended-lockdown-of-the-mush-and-considerations">
-<h2><span class="section-number">9.2. </span>Extended lockdown of the mush and considerations<a class="headerlink" href="#extended-lockdown-of-the-mush-and-considerations" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.2. </span>Extended lockdown of the mush and considerations<a class="headerlink" href="#extended-lockdown-of-the-mush-and-considerations" title="Permalink to this headline">¶</a></h2>
 <p>These are flags, powers, toggles, and various conditions for consideration
 when you decide to use some of the advanced features of RhostMUSH.
 These are not all that is availble, but tend to be the juicier ones to consider.</p>
 <div class="section" id="attribute-restriction">
-<h3><span class="section-number">9.2.1. </span>Attribute Restriction<a class="headerlink" href="#attribute-restriction" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.1. </span>Attribute Restriction<a class="headerlink" href="#attribute-restriction" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@attribute</span> <span class="o">--</span> <span class="n">Used</span> <span class="k">for</span> <span class="n">user</span><span class="o">-</span><span class="n">defined</span> <span class="n">attributes</span>
 <span class="nd">@admin</span> <span class="n">attr_access</span> <span class="o">--</span> <span class="n">used</span> <span class="k">for</span> <span class="n">built</span> <span class="ow">in</span> <span class="n">attributes</span> <span class="p">(</span><span class="n">like</span> <span class="n">desc</span><span class="p">)</span>
 <span class="nd">@aflags</span> <span class="o">--</span> <span class="n">Used</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">lovely</span> <span class="n">delicious</span> <span class="n">attribute</span> <span class="n">permission</span> <span class="n">masks</span>
@@ -112,33 +112,33 @@ These are not all that is availble, but tend to be the juicier ones to consider.
 </div>
 </div>
 <div class="section" id="command-restriction">
-<h3><span class="section-number">9.2.2. </span>Command Restriction<a class="headerlink" href="#command-restriction" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.2. </span>Command Restriction<a class="headerlink" href="#command-restriction" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@icmd</span>    <span class="o">-</span> <span class="n">Very</span> <span class="n">useful</span><span class="o">.</span>   <span class="n">Please</span> <span class="n">see</span> <span class="n">wizhelp</span> <span class="n">on</span> <span class="n">it</span><span class="o">.</span>  <span class="n">It</span> <span class="n">disallows</span> <span class="n">commands</span> <span class="kn">from</span> <span class="nn">executing</span> <span class="n">including</span> <span class="n">overriding</span> <span class="n">them</span> <span class="k">with</span> <span class="n">softcode</span> <span class="n">alternatives</span>
 <span class="nd">@admin</span> <span class="n">access</span> <span class="o">-</span> <span class="n">Changes</span> <span class="n">permissions</span><span class="p">,</span> <span class="n">disables</span><span class="p">,</span> <span class="ow">or</span> <span class="n">sets</span> <span class="n">to</span> <span class="n">be</span> <span class="n">overridden</span> <span class="n">a</span> <span class="n">command</span><span class="o">.</span>  <span class="n">Useful</span> <span class="n">when</span> <span class="n">you</span> <span class="n">plan</span> <span class="n">to</span> <span class="n">override</span> <span class="n">commands</span> <span class="k">with</span> <span class="n">softcode</span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="flag-toggle-restriction">
-<h3><span class="section-number">9.2.3. </span>Flag/Toggle Restriction<a class="headerlink" href="#flag-toggle-restriction" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.3. </span>Flag/Toggle Restriction<a class="headerlink" href="#flag-toggle-restriction" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@flagdef</span> <span class="o">-</span> <span class="n">Again</span><span class="p">,</span> <span class="n">see</span> <span class="n">wizhelp</span> <span class="n">on</span> <span class="n">this</span><span class="o">.</span>  <span class="n">There</span> <span class="n">are</span> <span class="n">also</span> <span class="n">netrhost</span><span class="o">.</span><span class="n">conf</span> <span class="n">options</span> <span class="n">so</span> <span class="n">you</span> <span class="n">can</span> <span class="n">have</span> <span class="n">them</span> <span class="n">loaded</span> <span class="n">at</span> <span class="n">start</span><span class="o">.</span>  <span class="n">This</span> <span class="n">allows</span> <span class="n">tweaking</span> <span class="n">flags</span> <span class="ow">and</span> <span class="n">toggles</span> <span class="n">to</span> <span class="n">who</span> <span class="n">can</span> <span class="nb">set</span><span class="o">/</span><span class="n">unset</span><span class="o">/</span><span class="n">see</span> <span class="k">as</span> <span class="n">well</span> <span class="k">as</span> <span class="n">what</span> <span class="nb">type</span> <span class="n">can</span> <span class="n">use</span> <span class="n">it</span> <span class="ow">or</span> <span class="n">wha</span> <span class="nb">type</span> <span class="n">it</span> <span class="n">can</span> <span class="n">be</span> <span class="n">used</span> <span class="n">on</span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="config-restrictions">
-<h3><span class="section-number">9.2.4. </span>Config restrictions<a class="headerlink" href="#config-restrictions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.4. </span>Config restrictions<a class="headerlink" href="#config-restrictions" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span> <span class="n">config_access</span> <span class="o">-</span> <span class="n">Changes</span> <span class="n">permission</span> <span class="n">of</span> <span class="n">who</span> <span class="n">can</span> <span class="nb">set</span> <span class="n">a</span> <span class="n">config</span> <span class="n">param</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="function-restrictions">
-<h3><span class="section-number">9.2.5. </span>Function Restrictions<a class="headerlink" href="#function-restrictions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.5. </span>Function Restrictions<a class="headerlink" href="#function-restrictions" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@function</span><span class="o">/</span><span class="nd">@lfunction</span> <span class="o">--</span> <span class="n">Allows</span> <span class="n">softcoded</span> <span class="n">functions</span> <span class="n">that</span> <span class="n">you</span> <span class="n">can</span> <span class="n">optionally</span> <span class="n">lock</span> <span class="n">down</span> <span class="n">at</span> <span class="n">your</span> <span class="n">leasure</span>
 <span class="nd">@admin</span> <span class="n">function_access</span> <span class="o">--</span> <span class="n">You</span> <span class="n">can</span> <span class="n">use</span> <span class="n">this</span> <span class="n">even</span> <span class="n">on</span> <span class="n">softcoded</span> <span class="n">functions</span> <span class="k">if</span> <span class="n">you</span> <span class="n">so</span> <span class="n">desired</span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="rhostmush-flags-and-descriptions">
-<h3><span class="section-number">9.2.6. </span>RhostMUSH Flags and Descriptions<a class="headerlink" href="#rhostmush-flags-and-descriptions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.6. </span>RhostMUSH Flags and Descriptions<a class="headerlink" href="#rhostmush-flags-and-descriptions" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GUEST       - This is your guest flag, it should only be set on guests
 WANDERER    - the WANDERER flag is default on new players.  This flag disables all building abilitites of the player.
 NO_COMMAND  - You can use this to stop a player from being able to connect without worrying about changing their password
@@ -163,7 +163,7 @@ FREE        - Stop costing money for day to day processing of commands/building
 </div>
 </div>
 <div class="section" id="rhostmush-toggles-and-descriptions">
-<h3><span class="section-number">9.2.7. </span>RhostMUSH Toggles and Descriptions<a class="headerlink" href="#rhostmush-toggles-and-descriptions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.7. </span>RhostMUSH Toggles and Descriptions<a class="headerlink" href="#rhostmush-toggles-and-descriptions" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MONITOR</span>            <span class="o">-</span> <span class="n">Enables</span> <span class="n">site</span> <span class="n">monitoring</span><span class="o">.</span>  <span class="n">This</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">main</span> <span class="n">toggle</span>
 <span class="n">MONITOR_SITE</span>       <span class="o">-</span> <span class="n">Adds</span> <span class="n">site</span> <span class="n">information</span> <span class="n">to</span> <span class="n">site</span> <span class="n">monitoring</span>
 <span class="n">MONITOR_USERID</span>     <span class="o">-</span> <span class="n">Adds</span> <span class="n">the</span> <span class="n">userid</span> <span class="n">to</span> <span class="n">site</span> <span class="n">monitoring</span>
@@ -199,7 +199,7 @@ FREE        - Stop costing money for day to day processing of commands/building
 </div>
 </div>
 <div class="section" id="rhostmush-powers-and-descriptions">
-<h3><span class="section-number">9.2.8. </span>RhostMUSH &#64;powers and Descriptions<a class="headerlink" href="#rhostmush-powers-and-descriptions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.8. </span>RhostMUSH &#64;powers and Descriptions<a class="headerlink" href="#rhostmush-powers-and-descriptions" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WIZ_WHO</span>            <span class="o">-</span> <span class="n">Allows</span> <span class="n">target</span> <span class="n">to</span> <span class="n">see</span> <span class="n">sites</span> <span class="n">ala</span> <span class="n">wizard</span> <span class="n">who</span>
 <span class="n">NOFORCE</span>            <span class="o">-</span> <span class="n">target</span> <span class="n">an</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">forced</span> <span class="p">(</span><span class="k">except</span> <span class="n">by</span> <span class="n">immortal</span><span class="o">/</span><span class="c1">#1)</span>
 <span class="n">FREE_QUOTA</span>         <span class="o">-</span> <span class="n">Allow</span> <span class="n">target</span> <span class="n">to</span> <span class="n">have</span> <span class="n">unlimited</span> <span class="n">quota</span>
@@ -236,7 +236,7 @@ FREE        - Stop costing money for day to day processing of commands/building
 </div>
 </div>
 <div class="section" id="rhostmush-depowers-and-descriptions">
-<h3><span class="section-number">9.2.9. </span>RhostMUSH &#64;depowers and Descriptions<a class="headerlink" href="#rhostmush-depowers-and-descriptions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.9. </span>RhostMUSH &#64;depowers and Descriptions<a class="headerlink" href="#rhostmush-depowers-and-descriptions" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WALL               - Disables the ability to @wall
 LONG_FINGERS       - Disables remote access to things
 STEAL              - Can not steal money
@@ -273,14 +273,14 @@ PERSONAL_COMMAND   - Disables all $commands on anything they own
 </div>
 </div>
 <div class="section" id="site-restrictions">
-<h3><span class="section-number">9.2.10. </span>Site Restrictions<a class="headerlink" href="#site-restrictions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.10. </span>Site Restrictions<a class="headerlink" href="#site-restrictions" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>These are accessable via the &#64;admin command, and the following options are
 allowable.</p>
 <p>You may see all site information at any time with: &#64;list sites</p>
 </div></blockquote>
 <div class="section" id="ip-based-restrictions">
-<h4><span class="section-number">9.2.10.1. </span>IP based restrictions<a class="headerlink" href="#ip-based-restrictions" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.2.10.1. </span>IP based restrictions<a class="headerlink" href="#ip-based-restrictions" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><p>You may use CIDR notation such as /32 instead of 255.255.255.255.
 Config file:  (see section on forbid_site as it describes and gives examples)
@@ -318,7 +318,7 @@ Online Syntax: MASK:</p>
 </div>
 </div>
 <div class="section" id="dns-based-restrictions">
-<h4><span class="section-number">9.2.10.2. </span>DNS based restrictions<a class="headerlink" href="#dns-based-restrictions" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">11.2.10.2. </span>DNS based restrictions<a class="headerlink" href="#dns-based-restrictions" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><p>These allow globbing wildcard matches.
 The advanced feature is you can specify filtering on
@@ -346,13 +346,13 @@ ADVANCED: @admin forbid_host=mudconnect.com|3 (allow 3 at once only)
 </div>
 </div>
 <div class="section" id="methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so">
-<h2><span class="section-number">9.3. </span>Methods to block anonymous connections and the pros and cons of doing so<a class="headerlink" href="#methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.3. </span>Methods to block anonymous connections and the pros and cons of doing so<a class="headerlink" href="#methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>Now let's assume you have some troll attempting to use proxies to connect.
 There's multiple ways to stop this.</p>
 </div></blockquote>
 <div class="section" id="blacklisting-through-external-tor-pull-sh-script">
-<h3><span class="section-number">9.3.1. </span>Blacklisting through external tor_pull.sh script<a class="headerlink" href="#blacklisting-through-external-tor-pull-sh-script" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.3.1. </span>Blacklisting through external tor_pull.sh script<a class="headerlink" href="#blacklisting-through-external-tor-pull-sh-script" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>In ~/Rhost/Server/game you will see a script called tor_pull.sh
 Execute this by running (from the game directory) ./tor_pull.sh
@@ -362,7 +362,7 @@ them at the end of this file.</p>
 </div></blockquote>
 </div>
 <div class="section" id="blacklisting-through-internal-blacklist-command">
-<h3><span class="section-number">9.3.2. </span>Blacklisting through internal &#64;blacklist command<a class="headerlink" href="#blacklisting-through-internal-blacklist-command" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.3.2. </span>Blacklisting through internal &#64;blacklist command<a class="headerlink" href="#blacklisting-through-internal-blacklist-command" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>On the mush, have as part of your startup &#64;blacklist/load
 This will load in the generated blacklist file for automatic forbid
@@ -370,7 +370,7 @@ sites based on the ip.</p>
 </div></blockquote>
 </div>
 <div class="section" id="blacklisting-through-internal-tor-command">
-<h3><span class="section-number">9.3.3. </span>Blacklisting through internal &#64;tor command<a class="headerlink" href="#blacklisting-through-internal-tor-command" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.3.3. </span>Blacklisting through internal &#64;tor command<a class="headerlink" href="#blacklisting-through-internal-tor-command" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>&#64;tor.  Please see 'wizhelp tor' on how to set this up.  It in effect
 will actively block all known exit nodes for TOR's annonymous proxy
@@ -378,7 +378,7 @@ service.  It self-updates and will actively block TOR connections.</p>
 </div></blockquote>
 </div>
 <div class="section" id="blacklisting-through-internal-admin-command">
-<h3><span class="section-number">9.3.4. </span>Blacklisting through internal &#64;admin command<a class="headerlink" href="#blacklisting-through-internal-admin-command" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.3.4. </span>Blacklisting through internal &#64;admin command<a class="headerlink" href="#blacklisting-through-internal-admin-command" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>&#64;admin proxy_checker (please see wizhelp)
 This little doodad uses MTU checking against packet size which will
@@ -390,121 +390,6 @@ several settings from just monitoring/alerting of possible proxies
 to downright forbidding them.  If you're being actively attacked,
 it may be worth considering adding this to add additional protection.</p>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="setting-up-an-ssl-tunnel-for-secure-connection-options">
-<h2><span class="section-number">9.4. </span>Setting up an SSL tunnel for secure connection options<a class="headerlink" href="#setting-up-an-ssl-tunnel-for-secure-connection-options" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="quickstart-for-ssl-setup-with-stunnel">
-<h3><span class="section-number">9.4.1. </span>Quickstart for SSL setup with stunnel<a class="headerlink" href="#quickstart-for-ssl-setup-with-stunnel" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic">
-<li><p>Modify your netrhost.conf file and add/change the following parameters:</p>
-<ol class="arabic">
-<li><p>sconnect_reip 1</p></li>
-<li><p>sconnect_cmd SECRET-MAGIC-COOKIE</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>SECRET-MAGIC-COOKIE is a case sensitive single word phrase. Any printable character other than the '#' character is allowable.  You may use up to 30 characters.</p></li>
-<li><p>Make sure the secret is a hard to guess phrase.  This is used by stunnel to forward on the originating IP address.</p></li>
-</ol>
-</div></blockquote>
-</li>
-<li><p>sconnect_host localhost 127.0.0.1 othersite.goes.here</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>This is optional.</p></li>
-<li><p>If you do not specify it it defaults to 'localhost 127.0.0.1'.  If your domain has a unique name like 'localhost.localdomain' like some ubuntu distributions, then you should customize your stunnel_host.</p></li>
-</ol>
-</div></blockquote>
-</li>
-</ol>
-</li>
-<li><p>go into the stunnel directory</p></li>
-<li><p>./stunnel_setup.sh</p>
-<ol class="arabic simple">
-<li><p>Choose the defaults or alter them based on preferences</p></li>
-<li><p>Make sure to choose the warpbubble conf file</p></li>
-</ol>
-</li>
-<li><p>./stunnel_start.sh</p></li>
-<li><p>Use ./stunnel_stop.sh to stop the SSL tunnel at any time</p></li>
-</ol>
-<p>You do not need to shutdown the ssl handler if you shutdown the mush.  They
-are entirely separate processes.</p>
-</div>
-<div class="section" id="detailed-ssl-setup-with-stunnel">
-<h3><span class="section-number">9.4.2. </span>Detailed SSL setup with stunnel<a class="headerlink" href="#detailed-ssl-setup-with-stunnel" title="Permalink to this headline">¶</a></h3>
-<p>To setup SSL connectivity, we use the STUNNEL application to tunnel SSL to
-the mush.  This acts a bit like a man in the middle but remains controlled
-by the game owner which would have access to the end point anyway.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>it is assumed you will have already initially set up your netrhost.conf.</p>
-</div>
-<div class="section" id="stunnel-directory">
-<h4><span class="section-number">9.4.2.1. </span>stunnel directory<a class="headerlink" href="#stunnel-directory" title="Permalink to this headline">¶</a></h4>
-<p>You would set up the stunnel from the 'stunnel' directory.  There the following
-files are of relevance:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">README</span>                     <span class="o">--</span> <span class="n">a</span> <span class="n">readme</span> <span class="n">explaining</span> <span class="n">the</span> <span class="n">points</span> <span class="n">of</span> <span class="n">stunnel</span>
-<span class="n">stunnel</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">example</span>       <span class="o">--</span> <span class="n">The</span> <span class="n">example</span> <span class="n">stunnel</span><span class="o">.</span><span class="n">conf</span> <span class="n">file</span><span class="o">.</span>  <span class="n">If</span> <span class="n">you</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">create</span> <span class="n">this</span> <span class="n">manually</span> <span class="n">you</span><span class="s1">&#39;re welcome to.  Just make sure the end file is stunnel.conf</span>
-<span class="n">stunnel_setup</span><span class="o">.</span><span class="n">sh</span>           <span class="o">--</span> <span class="n">the</span> <span class="n">script</span> <span class="n">to</span> <span class="n">build</span> <span class="n">a</span> <span class="n">stunnel</span><span class="o">.</span><span class="n">conf</span> <span class="n">file</span> <span class="k">for</span> <span class="n">you</span> <span class="n">which</span> <span class="n">will</span> <span class="n">be</span> <span class="n">dropped</span> <span class="n">at</span> <span class="n">your</span> <span class="n">specified</span> <span class="n">location</span><span class="o">.</span>
-<span class="n">stunnel_kill</span><span class="o">.</span><span class="n">sh</span>            <span class="o">--</span> <span class="n">Stop</span><span class="o">/</span><span class="n">terminate</span> <span class="n">the</span> <span class="n">stunnel</span> <span class="n">process</span><span class="o">.</span>
-<span class="n">stunnel_start</span><span class="o">.</span><span class="n">sh</span>           <span class="o">--</span> <span class="n">Start</span> <span class="n">the</span> <span class="n">stunnel</span> <span class="n">process</span><span class="o">.</span>
-<span class="n">warpbubble</span><span class="o">.</span><span class="n">pl</span>              <span class="o">--</span> <span class="n">the</span> <span class="n">perl</span> <span class="n">script</span> <span class="n">that</span> <span class="n">handles</span> <span class="n">stunnel</span> <span class="n">to</span> <span class="n">mush</span> <span class="n">connectivity</span><span class="o">.</span>
-<span class="n">stunnel_src</span>                <span class="o">--</span> <span class="n">If</span> <span class="n">you</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">have</span> <span class="n">stunnel</span><span class="p">,</span> <span class="n">this</span> <span class="n">directory</span> <span class="n">will</span> <span class="n">allow</span> <span class="n">you</span> <span class="n">to</span> <span class="n">download</span><span class="p">,</span> <span class="nb">compile</span> <span class="ow">and</span> <span class="n">locally</span> <span class="n">install</span><span class="o">.</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="modifying-netrhost-conf">
-<h4><span class="section-number">9.4.2.2. </span>Modifying netrhost.conf<a class="headerlink" href="#modifying-netrhost-conf" title="Permalink to this headline">¶</a></h4>
-<p>To be able to utilize SSL, you first must set your netrhost.conf file with
-the relevant information to enable SSL connectiions.  These three config
-options must be set to be able to use SSL, however, sconnect_host if
-not set will default to 'localhost 127.0.0.1'.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sconnect_reip</span> <span class="mi">1</span>         <span class="o">--</span> <span class="n">This</span> <span class="n">enables</span> <span class="n">the</span> <span class="n">SSL</span> <span class="n">tunnel</span> <span class="n">layer</span> <span class="n">handler</span> <span class="n">within</span> <span class="n">rhost</span><span class="o">.</span>
-<span class="n">sconnect_cmd</span> <span class="n">XYZZY</span>      <span class="o">--</span> <span class="n">this</span> <span class="n">will</span> <span class="nb">set</span> <span class="n">the</span> <span class="n">secret</span> <span class="n">SSL</span> <span class="n">command</span> <span class="n">handshake</span> <span class="n">command</span> <span class="n">to</span> <span class="n">XYZZY</span><span class="o">.</span>  <span class="n">This</span> <span class="ow">is</span> <span class="n">case</span> <span class="n">sensitive</span> <span class="ow">and</span> <span class="n">can</span> <span class="n">be</span> <span class="n">up</span> <span class="n">to</span> <span class="mi">31</span> <span class="n">characters</span><span class="o">.</span>  <span class="n">Please</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">to</span> <span class="n">only</span> <span class="n">use</span> <span class="n">printable</span> <span class="n">non</span><span class="o">-</span><span class="n">whitespace</span> <span class="n">characters</span><span class="o">.</span>  <span class="n">Ergo</span><span class="p">:</span> <span class="n">one</span> <span class="n">word</span>
-<span class="n">sconnect_host</span> <span class="n">wildcards</span> <span class="o">--</span> <span class="n">This</span> <span class="n">allows</span> <span class="n">wildcarded</span> <span class="n">sites</span> <span class="p">(</span><span class="n">one</span> <span class="ow">or</span> <span class="n">more</span><span class="p">)</span> <span class="n">to</span> <span class="n">allow</span> <span class="n">to</span> <span class="n">access</span> <span class="n">the</span> <span class="n">sconnect</span><span class="o">/</span><span class="n">stunnel</span> <span class="n">handler</span><span class="o">.</span>  <span class="n">This</span> <span class="n">defaults</span> <span class="n">to</span> <span class="s1">&#39;localhost&#39;</span> <span class="ow">and</span> <span class="s1">&#39;127.0.0.1&#39;</span> <span class="n">so</span> <span class="k">if</span> <span class="n">you</span> <span class="n">have</span> <span class="s1">&#39;localhost.localdomain&#39;</span> <span class="n">instead</span> <span class="n">then</span> <span class="n">you</span> <span class="n">must</span> <span class="nb">set</span> <span class="n">this</span> <span class="n">to</span> <span class="n">whatever</span> <span class="ow">is</span> <span class="n">seen</span> <span class="k">as</span> <span class="s1">&#39;localhost&#39;</span> <span class="n">to</span> <span class="n">you</span><span class="o">.</span>  <span class="n">You</span> <span class="n">can</span> <span class="n">verify</span> <span class="n">this</span> <span class="n">by</span> <span class="n">checking</span> <span class="n">your</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">hosts</span> <span class="n">file</span><span class="o">.</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>the sconnect_host is optional.  If you do not specify it, it will default to two values:  'localhost' and '127.0.0.1'.</p>
-</div>
-</div>
-<div class="section" id="running-the-stunnel-setup-program">
-<h4><span class="section-number">9.4.2.3. </span>Running the stunnel setup program<a class="headerlink" href="#running-the-stunnel-setup-program" title="Permalink to this headline">¶</a></h4>
-<p>At this point you're ready to run the stunnel setup program.  So at this point type the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_setup</span><span class="o">.</span><span class="n">sh</span>
-</pre></div>
-</div>
-<p>This will prompt you through settings.  Most you can select the defaults to.
-The SSL port you may need to change based on your administrative requirements.
-It will prompt you with whatever you set for your mush name.  If you have not
-selected a mush name at this point, you can select the defaults.</p>
-<p>You will want to use the config file for warpbubble as this hides the secret.</p>
-<p>Be aware that if you have DNS host lookups disabled on your mush, you
-MUST have 127.0.0.1 as an entry for your sconnect_host file.</p>
-</div>
-<div class="section" id="starting-the-stunnel-proxy">
-<h4><span class="section-number">9.4.2.4. </span>Starting the stunnel proxy<a class="headerlink" href="#starting-the-stunnel-proxy" title="Permalink to this headline">¶</a></h4>
-<p>When you have your stunnel.conf file to the way you want, you then
-issue the following command to run your SSL layer:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_start</span><span class="o">.</span><span class="n">sh</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="shutting-down-the-stunnel-proxy">
-<h4><span class="section-number">9.4.2.5. </span>Shutting down the stunnel proxy<a class="headerlink" href="#shutting-down-the-stunnel-proxy" title="Permalink to this headline">¶</a></h4>
-<p>If ever you need to bring down the SSL layer, you may kill it with the command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_stop</span><span class="o">.</span><span class="n">sh</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="configuring-firewall-on-the-host">
-<h4><span class="section-number">9.4.2.6. </span>Configuring firewall on the host<a class="headerlink" href="#configuring-firewall-on-the-host" title="Permalink to this headline">¶</a></h4>
-<p>Please be aware that the port that the SSL layer is on must be opened
-in any firewall rule you specified to allow the connectivity.  This also must
-not be the port the mush is running on and requires a separate port.</p>
-</div>
 </div>
 </div>
 </div>
@@ -538,58 +423,45 @@ not be the port the mush is running on and requires a separate port.</p>
    </div>
   <h4>Previous topic</h4>
   <p class="topless"><a href="ambrosiadb.html"
-                        title="previous chapter"><span class="section-number">8. </span>Ambrosia's Minimal Rhost DB</a></p>
+                        title="previous chapter"><span class="section-number">10. </span>Ambrosia's Minimal Rhost DB</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="maintenance.html"
-                        title="next chapter"><span class="section-number">10. </span>Maintenance</a></p>
+  <p class="topless"><a href="utilities/ssl.html"
+                        title="next chapter"><span class="section-number">12. </span>Setting up an SSL tunnel for secure connection options</a></p>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">9. Security</a><ul>
-<li><a class="reference internal" href="#considerations-to-locking-down-restrictions-in-rhostmush">9.1. Considerations to locking down restrictions in RhostMUSH</a><ul>
-<li><a class="reference internal" href="#online-blocking-object-abilities">9.1.1. Online: Blocking object abilities</a><ul>
-<li><a class="reference internal" href="#flags-access-with-set">9.1.1.1. FLAGS (access with &#64;set)</a></li>
-<li><a class="reference internal" href="#toggles-toggle">9.1.1.2. TOGGLES (&#64;toggle)</a></li>
-<li><a class="reference internal" href="#powers-depowers-and-locks">9.1.1.3. &#64;powers, &#64;depowers, and &#64;locks</a></li>
+<li><a class="reference internal" href="#">11. Security</a><ul>
+<li><a class="reference internal" href="#considerations-to-locking-down-restrictions-in-rhostmush">11.1. Considerations to locking down restrictions in RhostMUSH</a><ul>
+<li><a class="reference internal" href="#online-blocking-object-abilities">11.1.1. Online: Blocking object abilities</a><ul>
+<li><a class="reference internal" href="#flags-access-with-set">11.1.1.1. FLAGS (access with &#64;set)</a></li>
+<li><a class="reference internal" href="#toggles-toggle">11.1.1.2. TOGGLES (&#64;toggle)</a></li>
+<li><a class="reference internal" href="#powers-depowers-and-locks">11.1.1.3. &#64;powers, &#64;depowers, and &#64;locks</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#offline-blocking-twinks-from-being-abusive-on-your-game">9.1.2. Offline: Blocking twinks from being abusive on your game</a></li>
+<li><a class="reference internal" href="#offline-blocking-twinks-from-being-abusive-on-your-game">11.1.2. Offline: Blocking twinks from being abusive on your game</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#extended-lockdown-of-the-mush-and-considerations">9.2. Extended lockdown of the mush and considerations</a><ul>
-<li><a class="reference internal" href="#attribute-restriction">9.2.1. Attribute Restriction</a></li>
-<li><a class="reference internal" href="#command-restriction">9.2.2. Command Restriction</a></li>
-<li><a class="reference internal" href="#flag-toggle-restriction">9.2.3. Flag/Toggle Restriction</a></li>
-<li><a class="reference internal" href="#config-restrictions">9.2.4. Config restrictions</a></li>
-<li><a class="reference internal" href="#function-restrictions">9.2.5. Function Restrictions</a></li>
-<li><a class="reference internal" href="#rhostmush-flags-and-descriptions">9.2.6. RhostMUSH Flags and Descriptions</a></li>
-<li><a class="reference internal" href="#rhostmush-toggles-and-descriptions">9.2.7. RhostMUSH Toggles and Descriptions</a></li>
-<li><a class="reference internal" href="#rhostmush-powers-and-descriptions">9.2.8. RhostMUSH &#64;powers and Descriptions</a></li>
-<li><a class="reference internal" href="#rhostmush-depowers-and-descriptions">9.2.9. RhostMUSH &#64;depowers and Descriptions</a></li>
-<li><a class="reference internal" href="#site-restrictions">9.2.10. Site Restrictions</a><ul>
-<li><a class="reference internal" href="#ip-based-restrictions">9.2.10.1. IP based restrictions</a></li>
-<li><a class="reference internal" href="#dns-based-restrictions">9.2.10.2. DNS based restrictions</a></li>
+<li><a class="reference internal" href="#extended-lockdown-of-the-mush-and-considerations">11.2. Extended lockdown of the mush and considerations</a><ul>
+<li><a class="reference internal" href="#attribute-restriction">11.2.1. Attribute Restriction</a></li>
+<li><a class="reference internal" href="#command-restriction">11.2.2. Command Restriction</a></li>
+<li><a class="reference internal" href="#flag-toggle-restriction">11.2.3. Flag/Toggle Restriction</a></li>
+<li><a class="reference internal" href="#config-restrictions">11.2.4. Config restrictions</a></li>
+<li><a class="reference internal" href="#function-restrictions">11.2.5. Function Restrictions</a></li>
+<li><a class="reference internal" href="#rhostmush-flags-and-descriptions">11.2.6. RhostMUSH Flags and Descriptions</a></li>
+<li><a class="reference internal" href="#rhostmush-toggles-and-descriptions">11.2.7. RhostMUSH Toggles and Descriptions</a></li>
+<li><a class="reference internal" href="#rhostmush-powers-and-descriptions">11.2.8. RhostMUSH &#64;powers and Descriptions</a></li>
+<li><a class="reference internal" href="#rhostmush-depowers-and-descriptions">11.2.9. RhostMUSH &#64;depowers and Descriptions</a></li>
+<li><a class="reference internal" href="#site-restrictions">11.2.10. Site Restrictions</a><ul>
+<li><a class="reference internal" href="#ip-based-restrictions">11.2.10.1. IP based restrictions</a></li>
+<li><a class="reference internal" href="#dns-based-restrictions">11.2.10.2. DNS based restrictions</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so">9.3. Methods to block anonymous connections and the pros and cons of doing so</a><ul>
-<li><a class="reference internal" href="#blacklisting-through-external-tor-pull-sh-script">9.3.1. Blacklisting through external tor_pull.sh script</a></li>
-<li><a class="reference internal" href="#blacklisting-through-internal-blacklist-command">9.3.2. Blacklisting through internal &#64;blacklist command</a></li>
-<li><a class="reference internal" href="#blacklisting-through-internal-tor-command">9.3.3. Blacklisting through internal &#64;tor command</a></li>
-<li><a class="reference internal" href="#blacklisting-through-internal-admin-command">9.3.4. Blacklisting through internal &#64;admin command</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#setting-up-an-ssl-tunnel-for-secure-connection-options">9.4. Setting up an SSL tunnel for secure connection options</a><ul>
-<li><a class="reference internal" href="#quickstart-for-ssl-setup-with-stunnel">9.4.1. Quickstart for SSL setup with stunnel</a></li>
-<li><a class="reference internal" href="#detailed-ssl-setup-with-stunnel">9.4.2. Detailed SSL setup with stunnel</a><ul>
-<li><a class="reference internal" href="#stunnel-directory">9.4.2.1. stunnel directory</a></li>
-<li><a class="reference internal" href="#modifying-netrhost-conf">9.4.2.2. Modifying netrhost.conf</a></li>
-<li><a class="reference internal" href="#running-the-stunnel-setup-program">9.4.2.3. Running the stunnel setup program</a></li>
-<li><a class="reference internal" href="#starting-the-stunnel-proxy">9.4.2.4. Starting the stunnel proxy</a></li>
-<li><a class="reference internal" href="#shutting-down-the-stunnel-proxy">9.4.2.5. Shutting down the stunnel proxy</a></li>
-<li><a class="reference internal" href="#configuring-firewall-on-the-host">9.4.2.6. Configuring firewall on the host</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so">11.3. Methods to block anonymous connections and the pros and cons of doing so</a><ul>
+<li><a class="reference internal" href="#blacklisting-through-external-tor-pull-sh-script">11.3.1. Blacklisting through external tor_pull.sh script</a></li>
+<li><a class="reference internal" href="#blacklisting-through-internal-blacklist-command">11.3.2. Blacklisting through internal &#64;blacklist command</a></li>
+<li><a class="reference internal" href="#blacklisting-through-internal-tor-command">11.3.3. Blacklisting through internal &#64;tor command</a></li>
+<li><a class="reference internal" href="#blacklisting-through-internal-admin-command">11.3.4. Blacklisting through internal &#64;admin command</a></li>
 </ul>
 </li>
 </ul>

@@ -1,8 +1,8 @@
-5. Comparison of modern MUSH servers
+7. Comparison of modern MUSH servers
 ************************************
 
 
-5.1. Differences to expect to the end user between PennMUSH, MUX, and RhostMUSH
+7.1. Differences to expect to the end user between PennMUSH, MUX, and RhostMUSH
 ===============================================================================
 
 The largest end user experience will mostly resolve around some look
@@ -13,7 +13,7 @@ somewhat differently between the three codebases and some effort
 should be looked at on how different it behaves.
 
 
-5.1.1. Differences with PennMUSH
+7.1.1. Differences with PennMUSH
 --------------------------------
 
 * The way the comsystem (hardcode) works with the latest PennMUSH has
@@ -35,7 +35,7 @@ should be looked at on how different it behaves.
 * Penn has the standard set of bitlevel flags with on/off @powers
 
 
-5.1.2. Differences with MUX
+7.1.2. Differences with MUX
 ---------------------------
 
 * The comsystem (hardcode) is unique to MUX/TinyMUSH3 and is not
@@ -56,7 +56,7 @@ should be looked at on how different it behaves.
 * MUX has the standard set of bitlevel flags with on/off @powers
 
 
-5.1.3. Differences with RhostMUSH
+7.1.3. Differences with RhostMUSH
 ---------------------------------
 
 * The comsystem (softcode) is in the Mushcode directory and is
@@ -79,7 +79,7 @@ should be looked at on how different it behaves.
   @powers, @depowers, and varying other tools for permissions.
 
 
-5.2. Comparison of features between RhostMUSH, PennMUSH, and MUX2
+7.2. Comparison of features between RhostMUSH, PennMUSH, and MUX2
 =================================================================
 
 There are differences in the initial set up from Rhost to PennMUSH
@@ -100,7 +100,7 @@ Note:
   for more information on when it'll be released.
 
 
-5.3. Organization of help and wizhelp
+7.3. Organization of help and wizhelp
 =====================================
 
 First, on PennMUSH, help is separated into 'help' and 'wizhelp'.  This
@@ -114,7 +114,7 @@ It should make life easier for you.  This also honors the /search
 switch.
 
 
-5.4. Mail, comsystem, guests, master rooms, etc..
+7.4. Mail, comsystem, guests, master rooms, etc..
 =================================================
 
 The comsystem is softcode and included in the readme directory.
@@ -126,14 +126,14 @@ Please see the other readme files on setting other things up like
 guests, master rooms, and so forth.
 
 
-5.5. Comparisons of features
+7.5. Comparisons of features
 ============================
 
 Comparisons were done based on the following: RhostMUSH 3.9.5p2 MUX
 2.12.0.2 PennMUSH 1.8.6p0
 
 
-5.6. @commands with equivalents
+7.6. @commands with equivalents
 ===============================
 
 The following are used for compatibility to keep in mind:
@@ -355,7 +355,7 @@ The following are used for compatibility to keep in mind:
    WITH                    N/A                            N/A
 
 
-5.7. @commands unique to RhostMUSH
+7.7. @commands unique to RhostMUSH
 ==================================
 
 Commands that exist in Rhost that have no PennMUSH equivelant:
@@ -382,7 +382,7 @@ Commands that exist in Rhost that have no PennMUSH equivelant:
    wielded                      worn                          +players
 
 
-5.8. @lock equivalents
+7.8. @lock equivalents
 ======================
 
    PennMUSH               RhostMUSH                                   MUX2
@@ -425,14 +425,14 @@ Commands that exist in Rhost that have no PennMUSH equivelant:
    N/A                    DARK                                        VISIBLE
 
 
-5.9. @locks that exist in Rhost that have no PennMUSH equivelant
+7.9. @locks that exist in Rhost that have no PennMUSH equivelant
 ================================================================
 
    TELOUTLOCK                   TWINKLOCK                     DARKLOCK
    ALTNAME                      CHOWN
 
 
-5.10. Flag and toggle equivalents
+7.10. Flag and toggle equivalents
 =================================
 
    Pennmush                RhostMUSH                              MUX2
@@ -511,7 +511,7 @@ Commands that exist in Rhost that have no PennMUSH equivelant:
    XTERM256                XTERMCOLOR                             COLOR256
 
 
-5.11. Flags and toggles that only exist in RhostMUSH
+7.11. Flags and toggles that only exist in RhostMUSH
 ====================================================
 
 Flags:
@@ -551,7 +551,7 @@ Toggles:
    ZONECMDCHK                   ZONE_AUTOADD                  ZONE_AUTOADDALL
 
 
-5.12. @power equivalents
+7.12. @power equivalents
 ========================
 
    Pennmush                RhostMUSH                                          MUX2
@@ -603,7 +603,7 @@ Toggles:
    Unkillable              NOKILL                                             Unkillable
 
 
-5.12.1. @power unique to RhostMUSH
+7.12.1. @power unique to RhostMUSH
 ----------------------------------
 
 Depowers are unique in Rhost and PennMUSH has no equivelant.
@@ -618,7 +618,7 @@ Powers that exist in RhostMUSH that have no match in PennMUSH:
    HIDEBIT
 
 
-5.13. Functions equivalents
+7.13. Functions equivalents
 ===========================
 
    Pennmush                RhostMUSH                    MUX
@@ -1181,7 +1181,7 @@ Powers that exist in RhostMUSH that have no match in PennMUSH:
    ZWHO                    ZWHO                         ZWHO
 
 
-5.13.1. Functions that only exist in RhostMUSH
+7.13.1. Functions that only exist in RhostMUSH
 ----------------------------------------------
 
 Functions that exist in Rhost that do not have a match in PennMUSH:
@@ -1243,7 +1243,7 @@ Functions that exist in Rhost that do not have a match in PennMUSH:
    ZFUNLDEFAULT                 ZFUNLOCAL
 
 
-5.14. What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost
+7.14. What may need to be modified to get softcode from PennMUSH, TinyMUSH2, TinyMUSH3, or MUX2 to work on Rhost
 ================================================================================================================
 
 RhostMUSH, for the most part, will work out of the box with most
@@ -1255,13 +1255,13 @@ or functions, or required flags.
 Most changes will revolve around the ones listed in this document.
 
 
-5.14.1. Problematic functions between codebases
+7.14.1. Problematic functions between codebases
 -----------------------------------------------
 
 lsearch()/search(), align()/printf(), *attrval()
 
 
-5.14.2. Problematic features between codebases
+7.14.2. Problematic features between codebases
 ----------------------------------------------
 
 named variables for regexp patterns in $commands are not supported.
@@ -1269,13 +1269,13 @@ named variables for regexp patterns in $commands are not supported.
 redundant.
 
 
-5.14.3. Problematic commands
+7.14.3. Problematic commands
 ----------------------------
 
 @mapsql, hardcoded required comssytem commands (some are redundant)
 
 
-5.14.4. SIDEFX flag
+7.14.4. SIDEFX flag
 -------------------
 
    Anything that uses sideeffects --DIRECTLY-- requires this flag.
@@ -1284,7 +1284,7 @@ redundant.
    and safe.
 
 
-5.14.5. Variable exits
+7.14.5. Variable exits
 ----------------------
 
    Rhost handles them slightly different.  You do not link exits to
@@ -1295,7 +1295,7 @@ redundant.
    codebase.
 
 
-5.14.6. Zones
+7.14.6. Zones
 -------------
 
    Zones actually can work near exactly as you would expect them to
@@ -1307,7 +1307,7 @@ redundant.
    will have to be ported to Rhost.
 
 
-5.14.7. @powers
+7.14.7. @powers
 ---------------
 
    Powers work a bit differently in Rhost and they're named
@@ -1318,7 +1318,7 @@ redundant.
    codebases.  We also have @depower that is the anti-thesis of @power
 
 
-5.14.8. Attribute length
+7.14.8. Attribute length
 ------------------------
 
    While we have 64 character attribute capabilities like most other
@@ -1328,7 +1328,7 @@ redundant.
    length.
 
 
-5.14.9. Attribute contents
+7.14.9. Attribute contents
 --------------------------
 
    You'll be happy to know that Rhost allows upwards to 64,000 bytes
@@ -1337,13 +1337,13 @@ redundant.
    that value.
 
 
-5.14.10. 256 color
+7.14.10. 256 color
 ------------------
 
 Yup!  We got it.
 
 
-5.14.11. Unicode/UTF8
+7.14.11. Unicode/UTF8
 ---------------------
 
    Yup!  We got this too.  Not quiet yet in the main branch, but
@@ -1351,7 +1351,7 @@ Yup!  We got it.
    UTF8 in Rhost 4.0 when released.
 
 
-5.14.12. Attributes per object
+7.14.12. Attributes per object
 ------------------------------
 
    This is configurable with the VLIMIT @admin command, however, it is
@@ -1360,7 +1360,7 @@ Yup!  We got it.
    to exceed that.  If you need more, use @clusters.
 
 
-5.14.13. Destroying
+7.14.13. Destroying
 -------------------
 
    @nuke only works on players.  @destroy works on non-players. Never
@@ -1372,13 +1372,13 @@ Yup!  We got it.
    before that 30 days.  Groovy, eh?
 
 
-5.14.14. object id's
+7.14.14. object id's
 --------------------
 
 Yup, we got them.  Even in searches, and, well, everything.
 
 
-5.14.15. lsearch() and search()
+7.14.15. lsearch() and search()
 -------------------------------
 
    lsearch() in Penn is not syntacically similar to non-Penn search().
@@ -1387,14 +1387,14 @@ Yup, we got them.  Even in searches, and, well, everything.
    evaled args.
 
 
-5.14.16. @locks can be different
+7.14.16. @locks can be different
 --------------------------------
 
    We have many more lock capabilities and options so this should be a
    non-issue.
 
 
-5.14.17. Customer user-locks
+7.14.17. Customer user-locks
 ----------------------------
 
    We do not have custom user-locks like Penn.  We do, however, have
@@ -1403,7 +1403,7 @@ Yup, we got them.  Even in searches, and, well, everything.
    See: lockencode(), lockdecode(), and lockcheck()
 
 
-5.14.18. Attribute trees
+7.14.18. Attribute trees
 ------------------------
 
    Unlike Penn, we don't really have attribute trees.  We do support
@@ -1413,7 +1413,7 @@ Yup, we got them.  Even in searches, and, well, everything.
    information.
 
 
-5.14.19. Prefix permission locking
+7.14.19. Prefix permission locking
 ----------------------------------
 
    We do allow prefix permission locking, and some very advanced
@@ -1422,7 +1422,7 @@ Yup, we got them.  Even in searches, and, well, everything.
    atrlock - wizhelp atrperms
 
 
-5.14.20. align() and printf()
+7.14.20. align() and printf()
 -----------------------------
 
    We do not have align().  Most of the code that uses align() will
@@ -1430,26 +1430,26 @@ Yup, we got them.  Even in searches, and, well, everything.
    different syntax)
 
 
-5.14.21. MySQL
+7.14.21. MySQL
 --------------
 
    While we support MySQL, we do not have an async method like MUX2.
    This is just not possible, sorry.
 
 
-5.14.22. Mail System
+7.14.22. Mail System
 --------------------
 
    There are mail wrappers to mimic MUX/TM3 and Penn mail systems.
 
 
-5.14.23. Comsystem
+7.14.23. Comsystem
 ------------------
 
    The softcoded comsystem mimics MUX/TM3 and Penn's comsystem.
 
 
-5.14.24. Various Functions
+7.14.24. Various Functions
 --------------------------
 
    There is a 'softcode.minmax' in the Mushcode directory that loads
@@ -1461,7 +1461,7 @@ Yup, we got them.  Even in searches, and, well, everything.
    but the @function wrappers are there for lazyness :)
 
 
-5.14.25. Empty Attributes
+7.14.25. Empty Attributes
 -------------------------
 
    Penn allows you to have empty attributes.  Non-penn codebases do
@@ -1469,7 +1469,7 @@ Yup, we got them.  Even in searches, and, well, everything.
    just point to hasattr instead.
 
 
-5.14.26. Player Stats
+7.14.26. Player Stats
 ---------------------
 
    MUX has some built in ways for player stats.  We do as well but
@@ -1477,7 +1477,7 @@ Yup, we got them.  Even in searches, and, well, everything.
    requires this will have to be recoded.
 
 
-5.14.27. Percent Substitutions
+7.14.27. Percent Substitutions
 ------------------------------
 
    Some percent substitutions may differ between codebases.  Luckily,
@@ -1485,7 +1485,7 @@ Yup, we got them.  Even in searches, and, well, everything.
    problem.
 
 
-5.14.28. Switches
+7.14.28. Switches
 -----------------
 
    Some switches may not exist in Rhost that do in other codebases, in
@@ -1494,7 +1494,7 @@ Yup, we got them.  Even in searches, and, well, everything.
    around the limitation.
 
 
-5.14.29. Adding Flags
+7.14.29. Adding Flags
 ---------------------
 
    Some flags may be missing.  If it's a dummy flag, feel free to use
@@ -1503,17 +1503,17 @@ Yup, we got them.  Even in searches, and, well, everything.
    it or just flag_name it to the other name if you want.
 
 
-5.14.30. Aliases
+7.14.30. Aliases
 ----------------
 
    Multiple aliases are supported via @protect.
 
 
-5.15. Things other mushes can do that Rhost can not and how to emulate it
+7.15. Things other mushes can do that Rhost can not and how to emulate it
 =========================================================================
 
 
-5.15.1. PennMUSH
+7.15.1. PennMUSH
 ----------------
 
 * Attribute trees.  These are emulated as a base set and can be
@@ -1545,7 +1545,7 @@ Yup, we got them.  Even in searches, and, well, everything.
 * This uses @shutdown/restart, Rhost uses @reboot
 
 
-5.15.2. MUX
+7.15.2. MUX
 -----------
 
 * Mux has an async mysql database engine.  This is not possible with

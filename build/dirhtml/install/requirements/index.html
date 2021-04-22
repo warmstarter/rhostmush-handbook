@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. RhostMUSH Requirements &#8212; RhostMUSH Handbook</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="next" title="2. Installing RhostMUSH" href="../" />
+    <link rel="prev" title="RhostMUSH Handbook" href="../../" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul></pre>
+<ul>
+    <li><a href="index.html">Home</a> |</li>
+    <li><a href="help.html">RhostMUSH Help File</a> |</li>
+    <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
+    <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
+    <li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>RhostMUSH Requirements</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="install-requirements"></span><div class="section" id="rhostmush-requirements">
+<span id="index-0"></span><h1><span class="section-number">1. </span>RhostMUSH Requirements<a class="headerlink" href="#rhostmush-requirements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="system-requirements">
+<h2><span class="section-number">1.1. </span>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Operating System: Unix-like</p>
+<ul>
+<li><p>Almost any variant of Unix or Linux should compile cleanly and run</p></li>
+<li><p>Preliminary support for Windows with an equivalent development environment</p></li>
+</ul>
+</li>
+<li><p>Memory: 12-100 MB</p>
+<ul>
+<li><p>Depending on size of database and buffers, as well as selected options</p></li>
+<li><p>1 GB (memory and swap combined) is the minimum required to compile</p></li>
+</ul>
+</li>
+<li><p>Storage: 100 MB and up</p>
+<ul>
+<li><p>Depending on size of database and backup retention policy</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Third-party applications can use considerably more resources</p>
+</div>
+</div>
+<div class="section" id="software-requirements">
+<h2><span class="section-number">1.2. </span>Software Requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline">¶</a></h2>
+<p>RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.
+In order to build this software, you will need the bare minimum of the ability to run 'make' commands.</p>
+<p>Package requirements are as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>bash/ksh/dash (or compatible shell - for use with build menu)</p></li>
+<li><p>glibc and gcc/clang (compiling the code)</p></li>
+<li><p>git (to clone the source and maintain patches)</p></li>
+<li><p>libcrypt (for password encryption - this is usually standard on unix based systems)</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="optional-packages">
+<h3><span class="section-number">1.2.1. </span>Optional Packages<a class="headerlink" href="#optional-packages" title="Permalink to this headline">¶</a></h3>
+<p>RhostMUSH also offers optional linking and library attachments.
+For some of these libraries it will attempt to do auto-detection,
+but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.</p>
+<p>Optional packages are as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>libpcre (if you wish to use system pcre libraries instead of the built-in ones)</p></li>
+<li><p>mysql client &amp; mysql_config (required for mysql capabilities)</p></li>
+<li><p>openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.</p></li>
+<li><p>ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)</p></li>
+<li><p>sqlite3 libraries (required for sqlite capabilities)</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="hosting-requirements">
+<h2><span class="section-number">1.3. </span>Hosting Requirements<a class="headerlink" href="#hosting-requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>You will need a stable host and access to open a single port number of your choice on the firewall.</p></li>
+<li><p>Most games choose a number between 1025 and 9999, by convention.</p></li>
+<li><p>Please make sure your debug_id matches the port number + 5.</p>
+<ul>
+<li><p>So if your port is 4201, your debug_id will be 42015.</p></li>
+<li><p>The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../../">
+              <img class="logo" src="../../_static/logo.jpg" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/install/requirements.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../../"
+                        title="previous chapter">RhostMUSH Handbook</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../"
+                        title="next chapter"><span class="section-number">2. </span>Installing RhostMUSH</a></p>
+  <h3><a href="../../">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. RhostMUSH Requirements</a><ul>
+<li><a class="reference internal" href="#system-requirements">1.1. System Requirements</a></li>
+<li><a class="reference internal" href="#software-requirements">1.2. Software Requirements</a><ul>
+<li><a class="reference internal" href="#optional-packages">1.2.1. Optional Packages</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hosting-requirements">1.3. Hosting Requirements</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, wstarter.
+      Last updated on Apr 22, 2021.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
+</html>

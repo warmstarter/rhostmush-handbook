@@ -1,0 +1,116 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=cp1252" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. RhostMUSH Requirements</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="next" title="2. Installing RhostMUSH" href="../install.html" />
+    <link rel="prev" title="RhostMUSH Handbook" href="../index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul></pre>
+<ul>
+    <li><a href="index.html">Home</a> |</li>
+    <li><a href="help.html">RhostMUSH Help File</a> |</li>
+    <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
+    <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
+    <li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>RhostMUSH Requirements</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="install-requirements"></span><div class="section" id="rhostmush-requirements">
+<span id="index-0"></span><h1><span class="section-number">1. </span>RhostMUSH Requirements</h1>
+<div class="section" id="system-requirements">
+<h2><span class="section-number">1.1. </span>System Requirements</h2>
+<ul class="simple">
+<li>Operating System: Unix-like<ul>
+<li>Almost any variant of Unix or Linux should compile cleanly and run</li>
+<li>Preliminary support for Windows with an equivalent development environment</li>
+</ul>
+</li>
+<li>Memory: 12-100 MB<ul>
+<li>Depending on size of database and buffers, as well as selected options</li>
+<li>1 GB (memory and swap combined) is the minimum required to compile</li>
+</ul>
+</li>
+<li>Storage: 100 MB and up<ul>
+<li>Depending on size of database and backup retention policy</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Third-party applications can use considerably more resources</p>
+</div>
+</div>
+<div class="section" id="software-requirements">
+<h2><span class="section-number">1.2. </span>Software Requirements</h2>
+<p>RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.
+In order to build this software, you will need the bare minimum of the ability to run 'make' commands.</p>
+<p>Package requirements are as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li>bash/ksh/dash (or compatible shell - for use with build menu)</li>
+<li>glibc and gcc/clang (compiling the code)</li>
+<li>git (to clone the source and maintain patches)</li>
+<li>libcrypt (for password encryption - this is usually standard on unix based systems)</li>
+</ul>
+</div></blockquote>
+<div class="section" id="optional-packages">
+<h3><span class="section-number">1.2.1. </span>Optional Packages</h3>
+<p>RhostMUSH also offers optional linking and library attachments.
+For some of these libraries it will attempt to do auto-detection,
+but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.</p>
+<p>Optional packages are as follows:</p>
+<blockquote>
+<div><ul class="simple">
+<li>libpcre (if you wish to use system pcre libraries instead of the built-in ones)</li>
+<li>mysql client &amp; mysql_config (required for mysql capabilities)</li>
+<li>openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.</li>
+<li>ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)</li>
+<li>sqlite3 libraries (required for sqlite capabilities)</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="hosting-requirements">
+<h2><span class="section-number">1.3. </span>Hosting Requirements</h2>
+<ul class="simple">
+<li>You will need a stable host and access to open a single port number of your choice on the firewall.</li>
+<li>Most games choose a number between 1025 and 9999, by convention.</li>
+<li>Please make sure your debug_id matches the port number + 5.<ul>
+<li>So if your port is 4201, your debug_id will be 42015.</li>
+<li>The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, wstarter.
+      Last updated on Apr 22, 2021.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
+</html>

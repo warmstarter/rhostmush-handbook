@@ -29,7 +29,9 @@ which, as you know, is the best part of setting up a mush.
    :caption: Table of Contents
    :name: mastertoc
 
+   install/requirements.rst
    install.rst
+   install/ansible.rst
    features.rst
    features/bitlevels.rst
    comparison.rst
@@ -37,6 +39,7 @@ which, as you know, is the best part of setting up a mush.
    gettingstarted.rst
    ambrosiadb.rst
    security.rst
+   utilities/ssl.rst
    maintenance.rst
    troubleshooting.rst
    advanced.rst

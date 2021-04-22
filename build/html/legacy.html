@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>15. Upgrading a Legacy RhostMUSH Installation &#8212; RhostMUSH Handbook</title>
+    <title>18. Upgrading a Legacy RhostMUSH Installation &#8212; RhostMUSH Handbook</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/style.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -14,8 +14,8 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="16. Comparison of Flags" href="comparison/flags.html" />
-    <link rel="prev" title="14. Requirements if Using Windows" href="install/windows.html" /> 
+    <link rel="next" title="19. Comparison of Flags" href="comparison/flags.html" />
+    <link rel="prev" title="17. Requirements if Using Windows" href="install/windows.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -26,7 +26,7 @@
     <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
     <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
     <li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">15. </span>Upgrading a Legacy RhostMUSH Installation</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">18. </span>Upgrading a Legacy RhostMUSH Installation</a></li> 
       </ul>
     </div>  
 
@@ -36,14 +36,14 @@
           <div class="body" role="main">
             
   <div class="section" id="upgrading-a-legacy-rhostmush-installation">
-<h1><span class="section-number">15. </span>Upgrading a Legacy RhostMUSH Installation<a class="headerlink" href="#upgrading-a-legacy-rhostmush-installation" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">18. </span>Upgrading a Legacy RhostMUSH Installation<a class="headerlink" href="#upgrading-a-legacy-rhostmush-installation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="converting-database-betwen-gdbm-and-qdbm">
-<h2><span class="section-number">15.1. </span>Converting database betwen GDBM and QDBM<a class="headerlink" href="#converting-database-betwen-gdbm-and-qdbm" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.1. </span>Converting database betwen GDBM and QDBM<a class="headerlink" href="#converting-database-betwen-gdbm-and-qdbm" title="Permalink to this headline">¶</a></h2>
 <p>Ok, if you plan to recompile your game that is using GDBM to QDBM, or visa versa
 some bad news.</p>
 <p>The databases are NOT COMPATIBLE to each other, at least in the binary form.</p>
 <div class="section" id="downgrading-qdbm-to-gdbm">
-<h3><span class="section-number">15.1.1. </span>Downgrading QDBM to GDBM<a class="headerlink" href="#downgrading-qdbm-to-gdbm" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.1.1. </span>Downgrading QDBM to GDBM<a class="headerlink" href="#downgrading-qdbm-to-gdbm" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>I would NEVER change from QDBM back to GDBM, but if you're set on it these steps:</p>
@@ -61,12 +61,12 @@ the following</p>
 </ol>
 </div>
 <div class="section" id="upgradging-gdbm-to-qdbm">
-<h3><span class="section-number">15.1.2. </span>Upgradging GDBM to QDBM<a class="headerlink" href="#upgradging-gdbm-to-qdbm" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.1.2. </span>Upgradging GDBM to QDBM<a class="headerlink" href="#upgradging-gdbm-to-qdbm" title="Permalink to this headline">¶</a></h3>
 <p>Now, if you've kept reading and plan to convert your GDBM database to QDBM great news!
 It's more stable, it's faster, and lets you have far more flexibility.</p>
 <p>So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.</p>
 <div class="section" id="while-logged-in-to-your-mush-issue-the-following-commands">
-<h4><span class="section-number">15.1.2.1. </span>While logged in to your mush, issue the following commands<a class="headerlink" href="#while-logged-in-to-your-mush-issue-the-following-commands" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.2.1. </span>While logged in to your mush, issue the following commands<a class="headerlink" href="#while-logged-in-to-your-mush-issue-the-following-commands" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>&#64;dump/flat    -- This will make a flatfile dump of your MUSH database</p></li>
@@ -77,7 +77,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </div></blockquote>
 </div>
 <div class="section" id="verify-the-files-exist">
-<h4><span class="section-number">15.1.2.2. </span>Verify the files exist<a class="headerlink" href="#verify-the-files-exist" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.2.2. </span>Verify the files exist<a class="headerlink" href="#verify-the-files-exist" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Server/game/data/netrhost.db.flat</p></li>
@@ -89,11 +89,11 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </div></blockquote>
 </div>
 <div class="section" id="shutdown-the-mush">
-<h4><span class="section-number">15.1.2.3. </span>Shutdown the MUSH<a class="headerlink" href="#shutdown-the-mush" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.2.3. </span>Shutdown the MUSH<a class="headerlink" href="#shutdown-the-mush" title="Permalink to this headline">¶</a></h4>
 <p>&#64;shutdown your mush</p>
 </div>
 <div class="section" id="from-the-server-directory">
-<h4><span class="section-number">15.1.2.4. </span>From the Server directory<a class="headerlink" href="#from-the-server-directory" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.2.4. </span>From the Server directory<a class="headerlink" href="#from-the-server-directory" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li><p>make clean</p></li>
 <li><p>make confsource</p></li>
@@ -143,7 +143,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </ol>
 </div>
 <div class="section" id="from-the-server-game-directory">
-<h4><span class="section-number">15.1.2.5. </span>From the Server/game directory<a class="headerlink" href="#from-the-server-game-directory" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.2.5. </span>From the Server/game directory<a class="headerlink" href="#from-the-server-game-directory" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic">
 <li><p>Load the database:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">db_load</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">gdbm</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">flat</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">new</span>
@@ -158,7 +158,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </ol>
 </div>
 <div class="section" id="while-logged-into-the-mush-issue-the-following-commands">
-<h4><span class="section-number">15.1.2.6. </span>While logged into the mush issue the following commands<a class="headerlink" href="#while-logged-into-the-mush-issue-the-following-commands" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.2.6. </span>While logged into the mush issue the following commands<a class="headerlink" href="#while-logged-into-the-mush-issue-the-following-commands" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic">
 <li><p>Load in the mail database:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">load</span>
@@ -178,7 +178,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </ol>
 </div>
 <div class="section" id="verify-that-you-have-qdbm-running-and-your-valid-values">
-<h4><span class="section-number">15.1.2.7. </span>Verify that you have QDBM running and your valid values<a class="headerlink" href="#verify-that-you-have-qdbm-running-and-your-valid-values" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">18.1.2.7. </span>Verify that you have QDBM running and your valid values<a class="headerlink" href="#verify-that-you-have-qdbm-running-and-your-valid-values" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li><p>&#64;list options system#.  &#64;list options (spammy)</p></li>
 </ol>
@@ -186,7 +186,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </div>
 </div>
 <div class="section" id="updating-rhostmush-prior-to-3-9-5p2">
-<h2><span class="section-number">15.2. </span>Updating RhostMUSH prior to 3.9.5p2<a class="headerlink" href="#updating-rhostmush-prior-to-3-9-5p2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.2. </span>Updating RhostMUSH prior to 3.9.5p2<a class="headerlink" href="#updating-rhostmush-prior-to-3-9-5p2" title="Permalink to this headline">¶</a></h2>
 <p>Ok.</p>
 <p>So you're running an old RhostMUSH.</p>
 <p>One prior to 3.9.5p2 and want to take advantage of the new
@@ -305,7 +305,7 @@ of all your flatfiles.  Issue:</p>
 </ol>
 </div>
 <div class="section" id="adding-mysql-to-rhostmush-older-than-3-9-5p2">
-<h2><span class="section-number">15.3. </span>Adding MySQL to RhostMUSH older than 3.9.5p2<a class="headerlink" href="#adding-mysql-to-rhostmush-older-than-3-9-5p2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">18.3. </span>Adding MySQL to RhostMUSH older than 3.9.5p2<a class="headerlink" href="#adding-mysql-to-rhostmush-older-than-3-9-5p2" title="Permalink to this headline">¶</a></h2>
 <p>MySQL is now native in RhostMUSH as of 3.9.5p2.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -408,29 +408,29 @@ builder script to build in the mysql changes.</p></li>
    </div>
   <h4>Previous topic</h4>
   <p class="topless"><a href="install/windows.html"
-                        title="previous chapter"><span class="section-number">14. </span>Requirements if Using Windows</a></p>
+                        title="previous chapter"><span class="section-number">17. </span>Requirements if Using Windows</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="comparison/flags.html"
-                        title="next chapter"><span class="section-number">16. </span>Comparison of Flags</a></p>
+                        title="next chapter"><span class="section-number">19. </span>Comparison of Flags</a></p>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">15. Upgrading a Legacy RhostMUSH Installation</a><ul>
-<li><a class="reference internal" href="#converting-database-betwen-gdbm-and-qdbm">15.1. Converting database betwen GDBM and QDBM</a><ul>
-<li><a class="reference internal" href="#downgrading-qdbm-to-gdbm">15.1.1. Downgrading QDBM to GDBM</a></li>
-<li><a class="reference internal" href="#upgradging-gdbm-to-qdbm">15.1.2. Upgradging GDBM to QDBM</a><ul>
-<li><a class="reference internal" href="#while-logged-in-to-your-mush-issue-the-following-commands">15.1.2.1. While logged in to your mush, issue the following commands</a></li>
-<li><a class="reference internal" href="#verify-the-files-exist">15.1.2.2. Verify the files exist</a></li>
-<li><a class="reference internal" href="#shutdown-the-mush">15.1.2.3. Shutdown the MUSH</a></li>
-<li><a class="reference internal" href="#from-the-server-directory">15.1.2.4. From the Server directory</a></li>
-<li><a class="reference internal" href="#from-the-server-game-directory">15.1.2.5. From the Server/game directory</a></li>
-<li><a class="reference internal" href="#while-logged-into-the-mush-issue-the-following-commands">15.1.2.6. While logged into the mush issue the following commands</a></li>
-<li><a class="reference internal" href="#verify-that-you-have-qdbm-running-and-your-valid-values">15.1.2.7. Verify that you have QDBM running and your valid values</a></li>
+<li><a class="reference internal" href="#">18. Upgrading a Legacy RhostMUSH Installation</a><ul>
+<li><a class="reference internal" href="#converting-database-betwen-gdbm-and-qdbm">18.1. Converting database betwen GDBM and QDBM</a><ul>
+<li><a class="reference internal" href="#downgrading-qdbm-to-gdbm">18.1.1. Downgrading QDBM to GDBM</a></li>
+<li><a class="reference internal" href="#upgradging-gdbm-to-qdbm">18.1.2. Upgradging GDBM to QDBM</a><ul>
+<li><a class="reference internal" href="#while-logged-in-to-your-mush-issue-the-following-commands">18.1.2.1. While logged in to your mush, issue the following commands</a></li>
+<li><a class="reference internal" href="#verify-the-files-exist">18.1.2.2. Verify the files exist</a></li>
+<li><a class="reference internal" href="#shutdown-the-mush">18.1.2.3. Shutdown the MUSH</a></li>
+<li><a class="reference internal" href="#from-the-server-directory">18.1.2.4. From the Server directory</a></li>
+<li><a class="reference internal" href="#from-the-server-game-directory">18.1.2.5. From the Server/game directory</a></li>
+<li><a class="reference internal" href="#while-logged-into-the-mush-issue-the-following-commands">18.1.2.6. While logged into the mush issue the following commands</a></li>
+<li><a class="reference internal" href="#verify-that-you-have-qdbm-running-and-your-valid-values">18.1.2.7. Verify that you have QDBM running and your valid values</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#updating-rhostmush-prior-to-3-9-5p2">15.2. Updating RhostMUSH prior to 3.9.5p2</a></li>
-<li><a class="reference internal" href="#adding-mysql-to-rhostmush-older-than-3-9-5p2">15.3. Adding MySQL to RhostMUSH older than 3.9.5p2</a></li>
+<li><a class="reference internal" href="#updating-rhostmush-prior-to-3-9-5p2">18.2. Updating RhostMUSH prior to 3.9.5p2</a></li>
+<li><a class="reference internal" href="#adding-mysql-to-rhostmush-older-than-3-9-5p2">18.3. Adding MySQL to RhostMUSH older than 3.9.5p2</a></li>
 </ul>
 </li>
 </ul>

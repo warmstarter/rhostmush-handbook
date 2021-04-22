@@ -26,8 +26,7 @@ This has been tested with the Preview build 14342.
    - libpcre3-dev
    - openssl
 
-* When configuring rhost (using confsource) select the Disable Debugmon 
-option.
+* When configuring rhost (using confsource) select the Disable Debugmon option.
 
 ---------------------------------
 Installing on Windows with Cygwin

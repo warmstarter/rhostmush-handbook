@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>15. Upgrading a Legacy RhostMUSH Installation</title>
+    <title>18. Upgrading a Legacy RhostMUSH Installation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/style.css" type="text/css" /> 
   </head><body>
@@ -15,14 +15,14 @@
           <div class="body" role="main">
             
   <div class="section" id="upgrading-a-legacy-rhostmush-installation">
-<h1><span class="section-number">15. </span>Upgrading a Legacy RhostMUSH Installation</h1>
+<h1><span class="section-number">18. </span>Upgrading a Legacy RhostMUSH Installation</h1>
 <div class="section" id="converting-database-betwen-gdbm-and-qdbm">
-<h2><span class="section-number">15.1. </span>Converting database betwen GDBM and QDBM</h2>
+<h2><span class="section-number">18.1. </span>Converting database betwen GDBM and QDBM</h2>
 <p>Ok, if you plan to recompile your game that is using GDBM to QDBM, or visa versa
 some bad news.</p>
 <p>The databases are NOT COMPATIBLE to each other, at least in the binary form.</p>
 <div class="section" id="downgrading-qdbm-to-gdbm">
-<h3><span class="section-number">15.1.1. </span>Downgrading QDBM to GDBM</h3>
+<h3><span class="section-number">18.1.1. </span>Downgrading QDBM to GDBM</h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>I would NEVER change from QDBM back to GDBM, but if you're set on it these steps:</p>
@@ -40,12 +40,12 @@ the following</p>
 </ol>
 </div>
 <div class="section" id="upgradging-gdbm-to-qdbm">
-<h3><span class="section-number">15.1.2. </span>Upgradging GDBM to QDBM</h3>
+<h3><span class="section-number">18.1.2. </span>Upgradging GDBM to QDBM</h3>
 <p>Now, if you've kept reading and plan to convert your GDBM database to QDBM great news!
 It's more stable, it's faster, and lets you have far more flexibility.</p>
 <p>So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.</p>
 <div class="section" id="while-logged-in-to-your-mush-issue-the-following-commands">
-<h4><span class="section-number">15.1.2.1. </span>While logged in to your mush, issue the following commands</h4>
+<h4><span class="section-number">18.1.2.1. </span>While logged in to your mush, issue the following commands</h4>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>&#64;dump/flat    -- This will make a flatfile dump of your MUSH database</p></li>
@@ -56,7 +56,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </div></blockquote>
 </div>
 <div class="section" id="verify-the-files-exist">
-<h4><span class="section-number">15.1.2.2. </span>Verify the files exist</h4>
+<h4><span class="section-number">18.1.2.2. </span>Verify the files exist</h4>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Server/game/data/netrhost.db.flat</p></li>
@@ -68,11 +68,11 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </div></blockquote>
 </div>
 <div class="section" id="shutdown-the-mush">
-<h4><span class="section-number">15.1.2.3. </span>Shutdown the MUSH</h4>
+<h4><span class="section-number">18.1.2.3. </span>Shutdown the MUSH</h4>
 <p>&#64;shutdown your mush</p>
 </div>
 <div class="section" id="from-the-server-directory">
-<h4><span class="section-number">15.1.2.4. </span>From the Server directory</h4>
+<h4><span class="section-number">18.1.2.4. </span>From the Server directory</h4>
 <ol class="arabic simple">
 <li><p>make clean</p></li>
 <li><p>make confsource</p></li>
@@ -122,7 +122,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </ol>
 </div>
 <div class="section" id="from-the-server-game-directory">
-<h4><span class="section-number">15.1.2.5. </span>From the Server/game directory</h4>
+<h4><span class="section-number">18.1.2.5. </span>From the Server/game directory</h4>
 <ol class="arabic">
 <li><p>Load the database:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">db_load</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">gdbm</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">flat</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">new</span>
@@ -137,7 +137,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </ol>
 </div>
 <div class="section" id="while-logged-into-the-mush-issue-the-following-commands">
-<h4><span class="section-number">15.1.2.6. </span>While logged into the mush issue the following commands</h4>
+<h4><span class="section-number">18.1.2.6. </span>While logged into the mush issue the following commands</h4>
 <ol class="arabic">
 <li><p>Load in the mail database:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">load</span>
@@ -157,7 +157,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </ol>
 </div>
 <div class="section" id="verify-that-you-have-qdbm-running-and-your-valid-values">
-<h4><span class="section-number">15.1.2.7. </span>Verify that you have QDBM running and your valid values</h4>
+<h4><span class="section-number">18.1.2.7. </span>Verify that you have QDBM running and your valid values</h4>
 <ol class="arabic simple">
 <li><p>&#64;list options system#.  &#64;list options (spammy)</p></li>
 </ol>
@@ -165,7 +165,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </div>
 </div>
 <div class="section" id="updating-rhostmush-prior-to-3-9-5p2">
-<h2><span class="section-number">15.2. </span>Updating RhostMUSH prior to 3.9.5p2</h2>
+<h2><span class="section-number">18.2. </span>Updating RhostMUSH prior to 3.9.5p2</h2>
 <p>Ok.</p>
 <p>So you're running an old RhostMUSH.</p>
 <p>One prior to 3.9.5p2 and want to take advantage of the new
@@ -284,7 +284,7 @@ of all your flatfiles.  Issue:</p>
 </ol>
 </div>
 <div class="section" id="adding-mysql-to-rhostmush-older-than-3-9-5p2">
-<h2><span class="section-number">15.3. </span>Adding MySQL to RhostMUSH older than 3.9.5p2</h2>
+<h2><span class="section-number">18.3. </span>Adding MySQL to RhostMUSH older than 3.9.5p2</h2>
 <p>MySQL is now native in RhostMUSH as of 3.9.5p2.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
