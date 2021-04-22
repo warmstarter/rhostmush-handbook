@@ -20,7 +20,7 @@
 project = 'RhostMUSH Handbook'
 author = 'wstarter'
 copyright = '2021, wstarter'
-version = '0.01a'
+version = '0.02a'
 master_doc = 'index'
 
 # -- General configuration ---------------------------------------------------
@@ -53,18 +53,9 @@ html_static_path = ['_static']
 #
 html_theme_path = ['_themes']
 html_theme = 'nature'
-#html_theme_options = {
-#    "sidebar_width": '240px',
-#    "stickysidebar": True,
-#    "stickysidebarscrollable": True,
-#    "contribute": False,
-#    "github_fork": "useblocks/groundwork",
-#    "github_user": "useblocks",
-#}
 html_sidebars = {'**':['localtoc.html','searchbox.html']}
 html_style = "style.css"
 html_logo = "logo.jpg"
-
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
