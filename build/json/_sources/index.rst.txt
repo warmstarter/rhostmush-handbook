@@ -52,8 +52,8 @@ which, as you know, is the best part of setting up a mush.
    historical/nda.rst
    meta/copyright.rst
 
-   txtfiles/help.rst
-   txtfiles/wizhelp.rst
+   help.rst
+   wizhelp.rst
 
 ..
    changelog.rst

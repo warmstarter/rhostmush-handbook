@@ -1,592 +1,592 @@
 <HTML><HEAD><TITLE>RhostMUSH Help File [HTML Version]</TITLE></HEAD><BODY>
 <H1>RhostMUSH Help File [HTML Version]</H1>
-Generated: Mon Mar 15 08:33:40 2021
+Generated: Thu Apr 22 20:31:34 2021
 <HR><A NAME="topic index"><H2>Topic Index</H2></A><PRE>
-<A HREF="#QUOTE">&quot;</A>                         <A HREF="##">#</A>                         <A HREF="##lambda">#LAMBDA</A>
-<A HREF="#DOLARMINUScommands">$-commands</A>                <A HREF="#%">%</A>                         <A HREF="#%BANG">%!</A>
-<A HREF="#%#">%#</A>                        <A HREF="#%%">%%</A>                        <A HREF="#%PLUS">%+</A>
-<A HREF="#%MINUS">%-</A>                        <A HREF="#%0">%0</A>                        <A HREF="#%1">%1</A>
-<A HREF="#%2">%2</A>                        <A HREF="#%3">%3</A>                        <A HREF="#%4">%4</A>
-<A HREF="#%5">%5</A>                        <A HREF="#%6">%6</A>                        <A HREF="#%7">%7</A>
-<A HREF="#%8">%8</A>                        <A HREF="#%9">%9</A>                        <A HREF="#%:">%:</A>
-<A HREF="#%LT">%&lt;</A>                        <A HREF="#%?">%?</A>                        <A HREF="#%@">%@</A>
-<A HREF="#%_">%_</A>                        <A HREF="#%_2">%_2</A>                       <A HREF="#%_vars">%_vars</A>
-<A HREF="#%a">%a</A>                        <A HREF="#%b">%b</A>                        <A HREF="#%c">%c</A>
-<A HREF="#%d">%d</A>                        <A HREF="#%f">%f</A>                        <A HREF="#%i">%i</A>
-<A HREF="#%k">%k</A>                        <A HREF="#%l">%l</A>                        <A HREF="#%m">%m</A>
-<A HREF="#%n">%n</A>                        <A HREF="#%o">%o</A>                        <A HREF="#%p">%p</A>
-<A HREF="#%q">%q</A>                        <A HREF="#%qLT">%q&lt;</A>                       <A HREF="#%r">%r</A>
-<A HREF="#%s">%s</A>                        <A HREF="#%t">%t</A>                        <A HREF="#%v">%v</A>
-<A HREF="#%w">%w</A>                        <A HREF="#%x">%x</A>                        <A HREF="#AMPER">&amp;</A>
-<A HREF="#AMPERmailfilter">&amp;MAILFILTER</A>               <A HREF="#AMPERmailnotify">&amp;MAILNOTIFY</A>               <A HREF="#AMPERoutpageformat">&amp;OUTPAGEFORMAT</A>
-<A HREF="#AMPERpageformat">&amp;PAGEFORMAT</A>               <A HREF="#AMPERpageformat2">&amp;pageformat2</A>              <A HREF="#PLUSchannel">+channel</A>
-<A HREF="#PLUSchannel2">+channel2</A>                 <A HREF="#PLUShelp">+help</A>                     <A HREF="#PLUSuptime">+uptime</A>
-<A HREF="#MINUS">-</A>                         <A HREF="#1.0.0p0">1.0.0p0</A>                   <A HREF="#1.5.0p0">1.5.0p0</A>
-<A HREF="#2.0.0p0">2.0.0p0</A>                   <A HREF="#3.0.0p0">3.0.0p0</A>                   <A HREF="#3.2.0p0">3.2.0p0</A>
-<A HREF="#3.2.4p0">3.2.4p0</A>                   <A HREF="#3.2.4p1">3.2.4p1</A>                   <A HREF="#3.2.4p10">3.2.4p10</A>
-<A HREF="#3.2.4p11">3.2.4p11</A>                  <A HREF="#3.2.4p12">3.2.4p12</A>                  <A HREF="#3.2.4p13">3.2.4p13</A>
-<A HREF="#3.2.4p14">3.2.4p14</A>                  <A HREF="#3.2.4p15">3.2.4p15</A>                  <A HREF="#3.2.4p16">3.2.4p16</A>
-<A HREF="#3.2.4p17">3.2.4p17</A>                  <A HREF="#3.2.4p18">3.2.4p18</A>                  <A HREF="#3.2.4p2">3.2.4p2</A>
-<A HREF="#3.2.4p3">3.2.4p3</A>                   <A HREF="#3.2.4p4">3.2.4p4</A>                   <A HREF="#3.2.4p5">3.2.4p5</A>
-<A HREF="#3.2.4p6">3.2.4p6</A>                   <A HREF="#3.2.4p7">3.2.4p7</A>                   <A HREF="#3.2.4p8">3.2.4p8</A>
-<A HREF="#3.2.4p9">3.2.4p9</A>                   <A HREF="#3.9.0p0">3.9.0p0</A>                   <A HREF="#3.9.0p1">3.9.0p1</A>
-<A HREF="#3.9.0p2">3.9.0p2</A>                   <A HREF="#3.9.1p0">3.9.1p0</A>                   <A HREF="#3.9.1p1">3.9.1p1</A>
-<A HREF="#3.9.1p2">3.9.1p2</A>                   <A HREF="#3.9.2p0">3.9.2p0</A>                   <A HREF="#3.9.2p1">3.9.2p1</A>
-<A HREF="#3.9.3p0">3.9.3p0</A>                   <A HREF="#3.9.3p1">3.9.3p1</A>                   <A HREF="#3.9.3p2">3.9.3p2</A>
-<A HREF="#3.9.3p3">3.9.3p3</A>                   <A HREF="#3.9.4p0">3.9.4p0</A>                   <A HREF="#3.9.4p1">3.9.4p1</A>
-<A HREF="#3.9.4p2">3.9.4p2</A>                   <A HREF="#3.9.4p3">3.9.4p3</A>                   <A HREF="#3.9.4p4">3.9.4p4</A>
-<A HREF="#3.9.4p5">3.9.4p5</A>                   <A HREF="#3.9.5p0">3.9.5p0</A>                   <A HREF="#3.9.5p1">3.9.5p1</A>
-<A HREF="#3.9.5p2">3.9.5p2</A>                   <A HREF="#3.9.5p3">3.9.5p3</A>                   <A HREF="#3.9.5p4">3.9.5p4</A>
-<A HREF="#4.0.0p0">4.0.0p0</A>                   <A HREF="#4.0.0p1">4.0.0p1</A>                   <A HREF="#4.0.0p2">4.0.0p2</A>
-<A HREF="#4.0.0p3">4.0.0p3</A>                   <A HREF="#4.0.0p4">4.0.0p4</A>                   <A HREF="#4.1.0p0">4.1.0p0</A>
-<A HREF="#4.1.0p1">4.1.0p1</A>                   <A HREF="#4.1.0p2">4.1.0p2</A>                   <A HREF="#:">:</A>
-<A HREF="#;">;</A>                         <A HREF="#GT">&gt;</A>                         <A HREF="#@@">@@</A>
-<A HREF="#@@()">@@()</A>                      <A HREF="#@aahear">@aahear</A>                   <A HREF="#@aclone">@aclone</A>
-<A HREF="#@aconnect">@aconnect</A>                 <A HREF="#@adescribe">@adescribe</A>                <A HREF="#@adfail">@adfail</A>
-<A HREF="#@adisconnect">@adisconnect</A>              <A HREF="#@adrop">@adrop</A>                    <A HREF="#@aefail">@aefail</A>
-<A HREF="#@aenter">@aenter</A>                   <A HREF="#@afail">@afail</A>                    <A HREF="#@agfail">@agfail</A>
-<A HREF="#@ahear">@ahear</A>                    <A HREF="#@akill">@akill</A>                    <A HREF="#@aleave">@aleave</A>
-<A HREF="#@alfail">@alfail</A>                   <A HREF="#@alias">@alias</A>                    <A HREF="#@amhear">@amhear</A>
-<A HREF="#@amove">@amove</A>                    <A HREF="#@ansiname">@ansiname</A>                 <A HREF="#@apay">@apay</A>
-<A HREF="#@arfail">@arfail</A>                   <A HREF="#@asfail">@asfail</A>                   <A HREF="#@assert">@assert</A>
-<A HREF="#@asuccess">@asuccess</A>                 <A HREF="#@atfail">@atfail</A>                   <A HREF="#@atofail">@atofail</A>
-<A HREF="#@atport">@atport</A>                   <A HREF="#@attach">@attach</A>                   <A HREF="#@aufail">@aufail</A>
-<A HREF="#@ause">@ause</A>                     <A HREF="#@away">@away</A>                     <A HREF="#@break">@break</A>
-<A HREF="#@caption">@caption</A>                  <A HREF="#@channel">@channel</A>                  <A HREF="#@channel2">@channel2</A>
-<A HREF="#@charges">@charges</A>                  <A HREF="#@chown">@chown</A>                    <A HREF="#@clone">@clone</A>
-<A HREF="#@clone2">@clone2</A>                   <A HREF="#@cluster">@cluster</A>                  <A HREF="#@cluster action">@cluster action</A>
-<A HREF="#@cluster action func">@cluster action func</A>      <A HREF="#@cluster add">@cluster add</A>              <A HREF="#@cluster clear">@cluster clear</A>
-<A HREF="#@cluster cut">@cluster cut</A>              <A HREF="#@cluster del">@cluster del</A>              <A HREF="#@cluster edit">@cluster edit</A>
-<A HREF="#@cluster func">@cluster func</A>             <A HREF="#@cluster func action">@cluster func action</A>      <A HREF="#@cluster grep">@cluster grep</A>
-<A HREF="#@cluster list">@cluster list</A>             <A HREF="#@cluster new">@cluster new</A>              <A HREF="#@cluster owner">@cluster owner</A>
-<A HREF="#@cluster preserve">@cluster preserve</A>         <A HREF="#@cluster reaction">@cluster reaction</A>         <A HREF="#@cluster regexp">@cluster regexp</A>
-<A HREF="#@cluster repair">@cluster repair</A>           <A HREF="#@cluster set">@cluster set</A>              <A HREF="#@cluster threshhold">@cluster threshhold</A>
-<A HREF="#@cluster trigger">@cluster trigger</A>          <A HREF="#@cluster wipe">@cluster wipe</A>             <A HREF="#@conformat">@conformat</A>
-<A HREF="#@cost">@cost</A>                     <A HREF="#@cpattr">@CPATTR</A>                   <A HREF="#@cpattr2">@CPATTR2</A>
-<A HREF="#@cpattr3">@CPATTR3</A>                  <A HREF="#@create">@create</A>                   <A HREF="#@decompile">@decompile</A>
-<A HREF="#@descformat">@descformat</A>               <A HREF="#@describe">@describe</A>                 <A HREF="#@destroy">@destroy</A>
-<A HREF="#@dfail">@dfail</A>                    <A HREF="#@dig">@dig</A>                      <A HREF="#@doing">@doing</A>
-<A HREF="#@dolist">@dolist</A>                   <A HREF="#@dolist2 ">@dolist2 </A>                 <A HREF="#@door">@door</A>
-<A HREF="#@drain">@drain</A>                    <A HREF="#@drop">@drop</A>                     <A HREF="#@ealias">@ealias</A>
-<A HREF="#@edit">@edit</A>                     <A HREF="#@efail">@efail</A>                    <A HREF="#@emit">@emit</A>
-<A HREF="#@enter">@enter</A>                    <A HREF="#@entrances">@entrances</A>                <A HREF="#@eval">@eval</A>
-<A HREF="#@exitformat">@exitformat</A>               <A HREF="#@exitto">@exitto</A>                   <A HREF="#@extansi">@extansi</A>
-<A HREF="#@fail">@fail</A>                     <A HREF="#@femit">@femit</A>                    <A HREF="#@filter">@filter</A>
-<A HREF="#@find">@find</A>                     <A HREF="#@force">@force</A>                    <A HREF="#@forwardlist">@forwardlist</A>
-<A HREF="#@fpose">@fpose</A>                    <A HREF="#@fsay">@fsay</A>                     <A HREF="#@gfail">@gfail</A>
-<A HREF="#@goto">@goto</A>                     <A HREF="#@grep">@GREP</A>                     <A HREF="#@guild">@guild</A>
-<A HREF="#@halt">@halt</A>                     <A HREF="#@hide">@hide</A>                     <A HREF="#@idesc">@idesc</A>
-<A HREF="#@idle">@idle</A>                     <A HREF="#@if">@if</A>                       <A HREF="#@ifelse">@ifelse</A>
-<A HREF="#@include">@include</A>                  <A HREF="#@include2 ">@include2 </A>                <A HREF="#@infilter">@infilter</A>
-<A HREF="#@inprefix">@inprefix</A>                 <A HREF="#@invformat">@invformat</A>                <A HREF="#@jump">@jump</A>
-<A HREF="#@kill">@kill</A>                     <A HREF="#@label">@label</A>                    <A HREF="#@labelMINUSexample">@label-example</A>
-<A HREF="#@labelMINUSexample2">@label-example2</A>           <A HREF="#@labelMINUSexample3">@label-example3</A>           <A HREF="#@label2">@label2</A>
-<A HREF="#@label3">@label3</A>                   <A HREF="#@label4">@label4</A>                   <A HREF="#@lalias">@Lalias</A>
-<A HREF="#@last">@last</A>                     <A HREF="#@leave">@leave</A>                    <A HREF="#@lemit">@lemit</A>
-<A HREF="#@lfail">@lfail</A>                    <A HREF="#@lfunction">@lfunction</A>                <A HREF="#@lfunction2">@lfunction2</A>
-<A HREF="#@link">@link</A>                     <A HREF="#@link2">@link2</A>                    <A HREF="#@list">@list</A>
-<A HREF="#@list2 ">@list2 </A>                   <A HREF="#@listen">@listen</A>                   <A HREF="#@listmotd">@listmotd</A>
-<A HREF="#@lock">@lock</A>                     <A HREF="#@lock attribute">@lock attribute</A>           <A HREF="#@lock attribute2">@lock attribute2</A>
-<A HREF="#@lock carry">@lock carry</A>               <A HREF="#@lock compound">@lock compound</A>            <A HREF="#@lock evaluation">@lock evaluation</A>
-<A HREF="#@lock evaluation2">@lock evaluation2</A>         <A HREF="#@lock indirect">@lock indirect</A>            <A HREF="#@lock is">@lock is</A>
-<A HREF="#@lock keys">@Lock keys</A>                <A HREF="#@lock locks">@lock locks</A>               <A HREF="#@lock locks2">@lock locks2</A>
-<A HREF="#@lock locks3">@lock locks3</A>              <A HREF="#@lock normal">@lock normal</A>              <A HREF="#@lock ownership">@lock ownership</A>
-<A HREF="#@lock type chownlock">@lock type ChownLock</A>      <A HREF="#@lock type darklock">@lock type DarkLock</A>       <A HREF="#@lock type defaultlock">@lock type DefaultLock</A>
-<A HREF="#@lock type droplock">@lock type DropLock</A>       <A HREF="#@lock type droptolock">@lock type DropToLock</A>     <A HREF="#@lock type enterlock">@lock type EnterLock</A>
-<A HREF="#@lock type getfromlock">@lock type GetFromLock</A>    <A HREF="#@lock type givelock">@lock type GiveLock</A>       <A HREF="#@lock type givetolock">@lock type GiveToLock</A>
-<A HREF="#@lock type leavelock">@lock type LeaveLock</A>      <A HREF="#@lock type linklock">@lock type LinkLock</A>       <A HREF="#@lock type openlock">@lock type OpenLock</A>
-<A HREF="#@lock type pagelock">@lock type PageLock</A>       <A HREF="#@lock type parentlock">@lock type ParentLock</A>     <A HREF="#@lock type receivelock">@lock type ReceiveLock</A>
-<A HREF="#@lock type speechlock">@lock type SpeechLock</A>     <A HREF="#@lock type teloutlock">@lock type TeloutLock</A>     <A HREF="#@lock type tportlock">@lock type TportLock</A>
-<A HREF="#@lock type twinklock">@lock type TwinkLock</A>      <A HREF="#@lock type uselock">@lock type UseLock</A>        <A HREF="#@lock type userlock">@lock type UserLock</A>
-<A HREF="#@lock type zonetolock">@lock type ZoneToLock</A>     <A HREF="#@lock type zonewizlock">@lock type ZoneWizLock</A>    <A HREF="#@lock/chownlock">@lock/chownlock</A>
-<A HREF="#@lock/darklock">@lock/darklock</A>            <A HREF="#@lock/defaultlock">@lock/defaultlock</A>         <A HREF="#@lock/droplock">@lock/droplock</A>
-<A HREF="#@lock/droptolock">@lock/droptolock</A>          <A HREF="#@lock/enterlock">@lock/enterlock</A>           <A HREF="#@lock/getfromlock">@lock/getfromlock</A>
-<A HREF="#@lock/givelock">@lock/givelock</A>            <A HREF="#@lock/givetolock">@lock/givetolock</A>          <A HREF="#@lock/leavelock">@lock/leavelock</A>
-<A HREF="#@lock/linklock">@lock/linklock</A>            <A HREF="#@lock/openlock">@lock/openlock</A>            <A HREF="#@lock/pagelock">@lock/pagelock</A>
-<A HREF="#@lock/parentlock">@lock/parentlock</A>          <A HREF="#@lock/receivelock">@lock/receivelock</A>         <A HREF="#@lock/speechlock">@lock/speechlock</A>
-<A HREF="#@lock/teloutlock">@lock/teloutlock</A>          <A HREF="#@lock/tportlock">@lock/tportlock</A>           <A HREF="#@lock/twinklock">@lock/twinklock</A>
-<A HREF="#@lock/uselock">@lock/uselock</A>             <A HREF="#@lock/userlock">@lock/userlock</A>            <A HREF="#@lock/zonetolock">@lock/zonetolock</A>
-<A HREF="#@lock/zonewizlock">@lock/zonewizlock</A>         <A HREF="#@lset">@lset</A>                     <A HREF="#@ltag">@ltag</A>
-<A HREF="#@mail">@mail</A>                     <A HREF="#@mailfilter">@MAILFILTER</A>               <A HREF="#@mailnotify">@MAILNOTIFY</A>
-<A HREF="#@mailsig">@mailsig</A>                  <A HREF="#@moniker">@moniker</A>                  <A HREF="#@move">@move</A>
-<A HREF="#@mvattr">@mvattr</A>                   <A HREF="#@name">@name</A>                     <A HREF="#@nameformat">@nameformat</A>
-<A HREF="#@notify">@notify</A>                   <A HREF="#@odescribe">@odescribe</A>                <A HREF="#@odfail">@odfail</A>
-<A HREF="#@odrop">@odrop</A>                    <A HREF="#@oefail">@oefail</A>                   <A HREF="#@oemit">@oemit</A>
-<A HREF="#@oenter">@oenter</A>                   <A HREF="#@ofail">@ofail</A>                    <A HREF="#@ogfail">@ogfail</A>
-<A HREF="#@okill">@okill</A>                    <A HREF="#@oleave">@oleave</A>                   <A HREF="#@olfail">@olfail</A>
-<A HREF="#@omove">@omove</A>                    <A HREF="#@opay">@opay</A>                     <A HREF="#@open">@open</A>
-<A HREF="#@orfail">@orfail</A>                   <A HREF="#@osuccess">@osuccess</A>                 <A HREF="#@otfail">@otfail</A>
-<A HREF="#@otofail">@otofail</A>                  <A HREF="#@otport">@otport</A>                   <A HREF="#@oufail">@oufail</A>
-<A HREF="#@ouse">@ouse</A>                     <A HREF="#@outpageformat">@OUTPAGEFORMAT</A>            <A HREF="#@oxenter">@oxenter</A>
-<A HREF="#@oxleave">@oxleave</A>                  <A HREF="#@oxtport">@oxtport</A>                  <A HREF="#@pageformat">@PAGEFORMAT</A>
-<A HREF="#@pageformat2">@pageformat2</A>              <A HREF="#@parent">@parent</A>                   <A HREF="#@password">@password</A>
-<A HREF="#@pay">@pay</A>                      <A HREF="#@pcreate">@pcreate</A>                  <A HREF="#@pemit">@pemit</A>
-<A HREF="#@pemit2">@pemit2</A>                   <A HREF="#@pipe">@pipe</A>                     <A HREF="#@prefix">@prefix</A>
-<A HREF="#@progprompt">@progprompt</A>               <A HREF="#@program">@program</A>                  <A HREF="#@program2 ">@program2 </A>
-<A HREF="#@program3">@program3</A>                 <A HREF="#@protect">@protect</A>                  <A HREF="#@protect2">@protect2</A>
-<A HREF="#@ps">@ps</A>                       <A HREF="#@quitprogram">@quitprogram</A>              <A HREF="#@quota">@quota</A>
-<A HREF="#@quota alternate">@quota alternate</A>          <A HREF="#@quota standard">@quota standard</A>           <A HREF="#@race">@race</A>
-<A HREF="#@register">@register</A>                 <A HREF="#@reject">@reject</A>                   <A HREF="#@remit">@remit</A>
-<A HREF="#@retry">@retry</A>                    <A HREF="#@rfail">@rfail</A>                    <A HREF="#@robot">@robot</A>
-<A HREF="#@rollback">@rollback</A>                 <A HREF="#@rollback2">@rollback2</A>                <A HREF="#@rollback3">@rollback3</A>
-<A HREF="#@rollback4">@rollback4</A>                <A HREF="#@rollback5">@rollback5</A>                <A HREF="#@rollback6">@rollback6</A>
-<A HREF="#@runout">@runout</A>                   <A HREF="#@salisten">@salisten</A>                 <A HREF="#@sasmell">@sasmell</A>
-<A HREF="#@sataste">@sataste</A>                  <A HREF="#@satouch">@satouch</A>                  <A HREF="#@saystring">@saystring</A>
-<A HREF="#@search">@search</A>                   <A HREF="#@selfboot">@SELFBOOT</A>                 <A HREF="#@set">@set</A>
-<A HREF="#@set2">@set2</A>                     <A HREF="#@sex">@sex</A>                      <A HREF="#@sfail">@sfail</A>
-<A HREF="#@skip">@skip</A>                     <A HREF="#@slisten">@slisten</A>                  <A HREF="#@solisten">@solisten</A>
-<A HREF="#@sosmell">@sosmell</A>                  <A HREF="#@sotaste">@sotaste</A>                  <A HREF="#@sotouch">@sotouch</A>
-<A HREF="#@sql">@sql</A>                      <A HREF="#@sqlconnect">@sqlconnect</A>               <A HREF="#@sqldisconnect">@sqldisconnect</A>
-<A HREF="#@ssmell">@ssmell</A>                   <A HREF="#@startup">@startup</A>                  <A HREF="#@staste">@staste</A>
-<A HREF="#@stats">@stats</A>                    <A HREF="#@stouch">@stouch</A>                   <A HREF="#@success">@success</A>
-<A HREF="#@sudo">@sudo</A>                     <A HREF="#@sweep">@sweep</A>                    <A HREF="#@switch">@switch</A>
-<A HREF="#@switch2">@switch2</A>                  <A HREF="#@teleport">@teleport</A>                 <A HREF="#@teleport2">@teleport2</A>
-<A HREF="#@tfail">@tfail</A>                    <A HREF="#@titlecaption">@titlecaption</A>             <A HREF="#@tofail">@tofail</A>
-<A HREF="#@toggle">@toggle</A>                   <A HREF="#@totem">@totem</A>                    <A HREF="#@tport">@tport</A>
-<A HREF="#@trigger">@trigger</A>                  <A HREF="#@ufail">@ufail</A>                    <A HREF="#@unlink">@unlink</A>
-<A HREF="#@unlock">@unlock</A>                   <A HREF="#@uptime">@uptime</A>                   <A HREF="#@use">@use</A>
-<A HREF="#@verb">@verb</A>                     <A HREF="#@verb2">@verb2</A>                    <A HREF="#@verb3">@verb3</A>
-<A HREF="#@version">@version</A>                  <A HREF="#@wait">@wait</A>                     <A HREF="#@wait2">@wait2</A>
-<A HREF="#@wall">@wall</A>                     <A HREF="#@whereall">@whereall</A>                 <A HREF="#@whereis">@whereis</A>
-<A HREF="#@wipe">@wipe</A>                     <A HREF="#@zone">@zone</A>                     <A HREF="#\*">\*</A>
-<A HREF="#\?">\?</A>                        <A HREF="#\\">\\</A>                        <A HREF="#]">]</A>
-<A HREF="#^MINUScommand">^-command</A>                 <A HREF="#^MINUSlisten">^-listen</A>                  <A HREF="#_">_</A>
-<A HREF="#abode">ABODE</A>                     <A HREF="#abs()">ABS()</A>                     <A HREF="#accent()">ACCENT()</A>
-<A HREF="#accent2">ACCENT2</A>                   <A HREF="#accent3">ACCENT3</A>                   <A HREF="#accent4">ACCENT4</A>
-<A HREF="#accents toggle">ACCENTS TOGGLE</A>            <A HREF="#acos()">ACOS()</A>                    <A HREF="#add()">ADD()</A>
-<A HREF="#after()">AFTER()</A>                   <A HREF="#aiindex()">AIINDEX()</A>                 <A HREF="#aindex()">AINDEX()</A>
-<A HREF="#aliased functions">aliased functions</A>         <A HREF="#align()">ALIGN()</A>                   <A HREF="#allof()">ALLOF()</A>
-<A HREF="#alphamax()">ALPHAMAX()</A>                <A HREF="#alphamin()">ALPHAMIN()</A>                <A HREF="#alt inventories">ALT INVENTORIES</A>
-<A HREF="#altnames">ALTNAMES</A>                  <A HREF="#ancestors">ANCESTORS</A>                 <A HREF="#and()">AND()</A>
-<A HREF="#andchr()">ANDCHR()</A>                  <A HREF="#andflag()">ANDFLAG()</A>                 <A HREF="#andflags()">ANDFLAGS()</A>
-<A HREF="#andtotem()">ANDTOTEM()</A>                <A HREF="#andtotems()">ANDTOTEMS()</A>               <A HREF="#ansi">ANSI</A>
-<A HREF="#ansi functions">ansi functions</A>            <A HREF="#ansi quirks">ANSI QUIRKS</A>               <A HREF="#ansi usage">ANSI USAGE</A>
-<A HREF="#ansi()">ANSI()</A>                    <A HREF="#ansi2">ANSI2</A>                     <A HREF="#ansi3">ANSI3</A>
-<A HREF="#ansi4">ANSI4</A>                     <A HREF="#ansicolor">ANSICOLOR</A>                 <A HREF="#ansinames">ANSINAMES</A>
-<A HREF="#ansipos()">ANSIPOS()</A>                 <A HREF="#api">API</A>                       <A HREF="#api return">API RETURN</A>
-<A HREF="#aposs()">APOSS()</A>                   <A HREF="#arbitrary commands">ARBITRARY COMMANDS</A>        <A HREF="#arbitrary2">arbitrary2</A>
-<A HREF="#architect">ARCHITECT</A>                 <A HREF="#arithmetic functions">arithmetic functions</A>      <A HREF="#array()">ARRAY()</A>
-<A HREF="#array2">array2</A>                    <A HREF="#art()">ART()</A>                     <A HREF="#asc()">ASC()</A>
-<A HREF="#asin()">ASIN()</A>                    <A HREF="#atan()">ATAN()</A>                    <A HREF="#atan2()">ATAN2()</A>
-<A HREF="#attrcnt()">ATTRCNT()</A>                 <A HREF="#attrib formatting">ATTRIB FORMATTING</A>         <A HREF="#attribute flag architect">ATTRIBUTE FLAG ARCHITECT</A>
-<A HREF="#attribute flag atrlock">ATTRIBUTE FLAG ATRLOCK</A>    <A HREF="#attribute flag councilor">ATTRIBUTE FLAG COUNCILOR</A>  <A HREF="#attribute flag dark">ATTRIBUTE FLAG DARK</A>
-<A HREF="#attribute flag default">ATTRIBUTE FLAG DEFAULT</A>    <A HREF="#attribute flag god">ATTRIBUTE FLAG GOD</A>        <A HREF="#attribute flag guildmaster">ATTRIBUTE FLAG GUILDMASTER</A>
-<A HREF="#attribute flag hidden">ATTRIBUTE FLAG HIDDEN</A>     <A HREF="#attribute flag immortal">ATTRIBUTE FLAG IMMORTAL</A>   <A HREF="#attribute flag lock">ATTRIBUTE FLAG LOCK</A>
-<A HREF="#attribute flag logged">ATTRIBUTE FLAG LOGGED</A>     <A HREF="#attribute flag mdark">ATTRIBUTE FLAG MDARK</A>      <A HREF="#attribute flag no_clone">ATTRIBUTE FLAG NO_CLONE</A>
-<A HREF="#attribute flag no_command">ATTRIBUTE FLAG NO_COMMAND</A> <A HREF="#attribute flag no_inherit">ATTRIBUTE FLAG NO_INHERIT</A> <A HREF="#attribute flag no_parse">ATTRIBUTE FLAG NO_PARSE</A>
-<A HREF="#attribute flag noprog">ATTRIBUTE FLAG NOPROG</A>     <A HREF="#attribute flag pinvisible">ATTRIBUTE FLAG PINVISIBLE</A> <A HREF="#attribute flag private">ATTRIBUTE FLAG PRIVATE</A>
-<A HREF="#attribute flag regexp">ATTRIBUTE FLAG REGEXP</A>     <A HREF="#attribute flag royalty">ATTRIBUTE FLAG ROYALTY</A>    <A HREF="#attribute flag safe">ATTRIBUTE FLAG SAFE</A>
-<A HREF="#attribute flag singlethread">ATTRIBUTE FLAG SINGLETHREAD</A><A HREF="#attribute flag uselock">ATTRIBUTE FLAG USELOCK</A>    <A HREF="#attribute flag visual">ATTRIBUTE FLAG VISUAL</A>
-<A HREF="#attribute flag wizard">ATTRIBUTE FLAG WIZARD</A>     <A HREF="#attribute flags">ATTRIBUTE FLAGS</A>           <A HREF="#attribute flags2">ATTRIBUTE FLAGS2</A>
-<A HREF="#attribute formatting">ATTRIBUTE FORMATTING</A>      <A HREF="#attribute ownership">ATTRIBUTE OWNERSHIP</A>       <A HREF="#attribute ownership2">attribute ownership2</A>
-<A HREF="#attribute ownership3">attribute ownership3</A>      <A HREF="#attribute tree limitations">ATTRIBUTE TREE LIMITATIONS</A><A HREF="#attribute tree permission">ATTRIBUTE TREE PERMISSION</A>
-<A HREF="#attribute tree setting">ATTRIBUTE TREE SETTING</A>    <A HREF="#attribute tree viewing">ATTRIBUTE TREE VIEWING</A>    <A HREF="#attribute trees">ATTRIBUTE TREES</A>
-<A HREF="#attribute uselock2">ATTRIBUTE USELOCK2</A>        <A HREF="#attribute uselocks">ATTRIBUTE USELOCKS</A>        <A HREF="#attributeMINUScommands">attribute-commands</A>
-<A HREF="#attributes">attributes</A>                <A HREF="#attrpass()">ATTRPASS()</A>                <A HREF="#audible">AUDIBLE</A>
-<A HREF="#auditorium">AUDITORIUM</A>                <A HREF="#avg()">AVG()</A>                     <A HREF="#band()">BAND()</A>
-<A HREF="#bang notation">BANG NOTATION</A>             <A HREF="#bangs notation">BANGS NOTATION</A>            <A HREF="#before()">BEFORE()</A>
-<A HREF="#being killed">BEING KILLED</A>              <A HREF="#between()">BETWEEN()</A>                 <A HREF="#bittype()">BITTYPE()</A>
-<A HREF="#blind">BLIND</A>                     <A HREF="#bnand()">BNAND()</A>                   <A HREF="#bnot()">BNOT()</A>
-<A HREF="#bogus commands">BOGUS COMMANDS</A>            <A HREF="#boolean values">BOOLEAN VALUES</A>            <A HREF="#bor()">BOR()</A>
-<A HREF="#bounce">BOUNCE</A>                    <A HREF="#bounceforward">BOUNCEFORWARD</A>             <A HREF="#bound()">BOUND()</A>
-<A HREF="#brackets()">BRACKETS()</A>                <A HREF="#brandy_mail toggle">BRANDY_MAIL TOGGLE</A>        <A HREF="#bxor()">BXOR()</A>
-<A HREF="#byeroom">BYEROOM</A>                   <A HREF="#cand()">CAND()</A>                    <A HREF="#caplist()">CAPLIST()</A>
-<A HREF="#capstr()">CAPSTR()</A>                  <A HREF="#case()">case()</A>                    <A HREF="#caseall()">caseall()</A>
-<A HREF="#cat()">cat()</A>                     <A HREF="#cdark">cdark</A>                     <A HREF="#ceil()">CEIL()</A>
-<A HREF="#center()">CENTER()</A>                  <A HREF="#changes">changes</A>                   <A HREF="#channel">channel</A>
-<A HREF="#channel2">channel2</A>                  <A HREF="#charin()">CHARIN()</A>                  <A HREF="#charout()">CHAROUT()</A>
-<A HREF="#chidden">chidden</A>                   <A HREF="#children()">CHILDREN()</A>                <A HREF="#chkreality()">CHKREALITY()</A>
-<A HREF="#chkreality()">CHKREALITY()</A>              <A HREF="#chktrace()">CHKTRACE()</A>                <A HREF="#chomp()">CHOMP()</A>
-<A HREF="#chown_ok">CHOWN_OK</A>                  <A HREF="#chr()">CHR()</A>                     <A HREF="#citer()">CITER()</A>
-<A HREF="#cloak">CLOAK</A>                     <A HREF="#clone()">CLONE()</A>                   <A HREF="#cluster commands">CLUSTER COMMANDS</A>
-<A HREF="#cluster functions">cluster functions</A>         <A HREF="#cluster_add()">CLUSTER_ADD()</A>             <A HREF="#cluster_attrcnt()">CLUSTER_ATTRCNT()</A>
-<A HREF="#cluster_default()">CLUSTER_DEFAULT()</A>         <A HREF="#cluster_edefault()">CLUSTER_EDEFAULT()</A>        <A HREF="#cluster_flags()">CLUSTER_FLAGS()</A>
-<A HREF="#cluster_get()">CLUSTER_GET()</A>             <A HREF="#cluster_get_eval()">CLUSTER_GET_EVAL()</A>        <A HREF="#cluster_grep()">CLUSTER_GREP()</A>
-<A HREF="#cluster_hasattr()">CLUSTER_HASATTR()</A>         <A HREF="#cluster_hasflag()">CLUSTER_HASFLAG()</A>         <A HREF="#cluster_lattr()">CLUSTER_LATTR()</A>
-<A HREF="#cluster_lattr2 ">CLUSTER_LATTR2 </A>           <A HREF="#cluster_regrep()">CLUSTER_REGREP()</A>          <A HREF="#cluster_regrepi()">CLUSTER_REGREPI()</A>
-<A HREF="#cluster_set()">CLUSTER_SET()</A>             <A HREF="#cluster_stats()">CLUSTER_STATS()</A>           <A HREF="#cluster_u()">CLUSTER_U()</A>
-<A HREF="#cluster_u2()">CLUSTER_U2()</A>              <A HREF="#cluster_u2default()">CLUSTER_U2DEFAULT()</A>       <A HREF="#cluster_u2ldefault()">CLUSTER_U2LDEFAULT()</A>
-<A HREF="#cluster_u2local()">CLUSTER_U2LOCAL()</A>         <A HREF="#cluster_u2local2">CLUSTER_U2LOCAL2</A>          <A HREF="#cluster_udefault()">CLUSTER_UDEFAULT()</A>
-<A HREF="#cluster_ueval()">CLUSTER_UEVAL()</A>           <A HREF="#cluster_uldefault()">CLUSTER_ULDEFAULT()</A>       <A HREF="#cluster_ulocal()">CLUSTER_ULOCAL()</A>
-<A HREF="#cluster_ulocal2">CLUSTER_ULOCAL2</A>           <A HREF="#cluster_vattrcnt()">CLUSTER_VATTRCNT()</A>        <A HREF="#cluster_wipe()">CLUSTER_WIPE()</A>
-<A HREF="#cluster_xget()">CLUSTER_XGET()</A>            <A HREF="#clusters">CLUSTERS</A>                  <A HREF="#cmds()">CMDS()</A>
-<A HREF="#cname()">CNAME()</A>                   <A HREF="#coding">CODING</A>                    <A HREF="#coding attrib">CODING ATTRIB</A>
-<A HREF="#coding attrib2">CODING ATTRIB2</A>            <A HREF="#coding command">CODING COMMAND</A>            <A HREF="#coding funct">CODING FUNCT</A>
-<A HREF="#coding nest">CODING NEST</A>               <A HREF="#coding queue">CODING QUEUE</A>              <A HREF="#coding regs">CODING REGS</A>
-<A HREF="#coding subs">CODING SUBS</A>               <A HREF="#coding2">CODING2</A>                   <A HREF="#coding3">CODING3</A>
-<A HREF="#colors">colors</A>                    <A HREF="#colors()">COLORS()</A>                  <A HREF="#columns()">COLUMNS()</A>
-<A HREF="#columns2">COLUMNS2</A>                  <A HREF="#columns3">COLUMNS3</A>                  <A HREF="#combat">COMBAT</A>
-<A HREF="#command evaluation">COMMAND EVALUATION</A>        <A HREF="#command evaluation2">command evaluation2</A>       <A HREF="#commands">commands</A>
-<A HREF="#commands flag">COMMANDS FLAG</A>             <A HREF="#commands2">commands2</A>                 <A HREF="#comp()">COMP()</A>
-<A HREF="#con()">CON()</A>                     <A HREF="#config()">CONFIG()</A>                  <A HREF="#conn()">CONN()</A>
-<A HREF="#connect">connect</A>                   <A HREF="#connected">CONNECTED</A>                 <A HREF="#control">CONTROL</A>
-<A HREF="#control_ok">CONTROL_OK</A>                <A HREF="#controls()">controls()</A>                <A HREF="#convsecs()">CONVSECS()</A>
-<A HREF="#convtime()">CONVTIME()</A>                <A HREF="#copyright">COPYRIGHT</A>                 <A HREF="#cor()">COR()</A>
-<A HREF="#cos()">COS()</A>                     <A HREF="#cosh()">COSH()</A>                    <A HREF="#costs ">COSTS </A>
-<A HREF="#councilor">COUNCILOR</A>                 <A HREF="#cpattr2">CPATTR2</A>                   <A HREF="#cpattr3">CPATTR3</A>
-<A HREF="#cputime toggle">CPUTIME TOGGLE</A>            <A HREF="#cputime2">CPUTIME2</A>                  <A HREF="#crc32()">CRC32()</A>
-<A HREF="#create">create</A>                    <A HREF="#create()">CREATE()</A>                  <A HREF="#createtime()">CREATETIME()</A>
-<A HREF="#credits">CREDITS</A>                   <A HREF="#credits2">credits2</A>                  <A HREF="#credits3">credits3</A>
-<A HREF="#credits4">credits4</A>                  <A HREF="#credits5">credits5</A>                  <A HREF="#creplace()">CREPLACE()</A>
-<A HREF="#ctu()">CTU()</A>                     <A HREF="#dark">DARK</A>                      <A HREF="#database information functions">database information functions</A>
-<A HREF="#debug">DEBUG</A>                     <A HREF="#dec()">DEC()</A>                     <A HREF="#decode64()">DECODE64()</A>
-<A HREF="#decrypt()">DECRYPT()</A>                 <A HREF="#default()">default()</A>                 <A HREF="#delete()">DELETE()</A>
-<A HREF="#delextract()">delextract()</A>              <A HREF="#descformat">descformat</A>                <A HREF="#destroy()">DESTROY()</A>
-<A HREF="#destroy_ok">DESTROY_OK</A>                <A HREF="#dice()">DICE()</A>                    <A HREF="#die()">DIE()</A>
-<A HREF="#differences">DIFFERENCES</A>               <A HREF="#differences2">DIFFERENCES2</A>              <A HREF="#dig()">DIG()</A>
-<A HREF="#digest()">DIGEST()</A>                  <A HREF="#dist2d()">DIST2D()</A>                  <A HREF="#dist3d()">DIST3D()</A>
-<A HREF="#div()">DIV()</A>                     <A HREF="#doing">doing</A>                     <A HREF="#door syntax">DOOR SYNTAX</A>
-<A HREF="#door_close">DOOR_CLOSE</A>                <A HREF="#door_kick">DOOR_KICK</A>                 <A HREF="#door_list">DOOR_LIST</A>
-<A HREF="#door_list2">DOOR_LIST2</A>                <A HREF="#door_open">DOOR_OPEN</A>                 <A HREF="#door_push">DOOR_PUSH</A>
-<A HREF="#door_status">DOOR_STATUS</A>               <A HREF="#door_writing">DOOR_WRITING</A>              <A HREF="#door_writing2">DOOR_WRITING2</A>
-<A HREF="#door_writing3">DOOR_WRITING3</A>             <A HREF="#doored">DOORED</A>                    <A HREF="#drop">drop</A>
-<A HREF="#dropMINUStos">DROP-TOS</A>                  <A HREF="#e()">E()</A>                       <A HREF="#edefault()">edefault()</A>
-<A HREF="#edit()">EDIT()</A>                    <A HREF="#editansi()">EDITANSI()</A>                <A HREF="#ee()">EE()</A>
-<A HREF="#elementpos()">ELEMENTPOS()</A>              <A HREF="#elements()">elements()</A>                <A HREF="#elementsmux()">elementsmux()</A>
-<A HREF="#elist()">elist()</A>                   <A HREF="#elock()">elock()</A>                   <A HREF="#emit()">EMIT()</A>
-<A HREF="#enactor">ENACTOR</A>                   <A HREF="#encode64()">ENCODE64()</A>                <A HREF="#encrypt()">ENCRYPT()</A>
-<A HREF="#enter">enter</A>                     <A HREF="#enter_ok">ENTER_OK</A>                  <A HREF="#entrances()">ENTRANCES()</A>
-<A HREF="#eq()">eq()</A>                      <A HREF="#error()">ERROR()</A>                   <A HREF="#escape()">ESCAPE()</A>
-<A HREF="#escapex()">ESCAPEX()</A>                 <A HREF="#esclist()">ESCLIST()</A>                 <A HREF="#eval()">EVAL()</A>
-<A HREF="#examine">examine</A>                   <A HREF="#examine2">examine2</A>                  <A HREF="#examine3">examine3</A>
-<A HREF="#examine4">examine4</A>                  <A HREF="#exit()">EXIT()</A>                    <A HREF="#exits">EXITS</A>
-<A HREF="#exp()">EXP()</A>                     <A HREF="#extansi toggle">EXTANSI TOGGLE</A>            <A HREF="#extract()">EXTRACT()</A>
-<A HREF="#extractword()">EXTRACTWORD()</A>             <A HREF="#failure">FAILURE</A>                   <A HREF="#fbetween()">FBETWEEN()</A>
-<A HREF="#fbound()">FBOUND()</A>                  <A HREF="#fdiv()">FDIV()</A>                    <A HREF="#filter()">filter()</A>
-<A HREF="#findable()">findable()</A>                <A HREF="#first()">FIRST()</A>                   <A HREF="#firstof()">FIRSTOF()</A>
-<A HREF="#flag aliases">FLAG ALIASES</A>              <A HREF="#flag list">FLAG LIST</A>                 <A HREF="#flag list2">FLAG LIST2</A>
-<A HREF="#flags">FLAGS</A>                     <A HREF="#flags()">FLAGS()</A>                   <A HREF="#flip()">FLIP()</A>
-<A HREF="#floating">FLOATING</A>                  <A HREF="#floor()">FLOOR()</A>                   <A HREF="#floordiv()">FLOORDIV()</A>
-<A HREF="#fmod()">FMOD()</A>                    <A HREF="#fold()">fold()</A>                    <A HREF="#folder">folder</A>
-<A HREF="#folder change">folder change</A>             <A HREF="#folder cmdlist">folder cmdlist</A>            <A HREF="#folder create">folder create</A>
-<A HREF="#folder cshare">folder cshare</A>             <A HREF="#folder current">folder current</A>            <A HREF="#folder delete">folder delete</A>
-<A HREF="#folder list">folder list</A>               <A HREF="#folder move">folder move</A>               <A HREF="#folder quicklist">folder quicklist</A>
-<A HREF="#folder rename">folder rename</A>             <A HREF="#folder share">folder share</A>              <A HREF="#folder/change">folder/change</A>
-<A HREF="#folder/create">folder/create</A>             <A HREF="#folder/cshare">folder/cshare</A>             <A HREF="#folder/current">folder/current</A>
-<A HREF="#folder/delete">folder/delete</A>             <A HREF="#folder/list">folder/list</A>               <A HREF="#folder/move">folder/move</A>
-<A HREF="#folder/rename">folder/rename</A>             <A HREF="#folder/share">folder/share</A>              <A HREF="#foldercurrent()">FOLDERCURRENT()</A>
-<A HREF="#folderlist()">FOLDERLIST()</A>              <A HREF="#foreach()">FOREACH()</A>                 <A HREF="#formatdesc">formatdesc</A>
-<A HREF="#free">FREE</A>                      <A HREF="#fubar">FUBAR</A>                     <A HREF="#fullname()">FULLNAME()</A>
-<A HREF="#function aliases">FUNCTION ALIASES</A>          <A HREF="#function classes">FUNCTION CLASSES</A>          <A HREF="#function classes2">FUNCTION CLASSES2</A>
-<A HREF="#function classes3">FUNCTION CLASSES3</A>         <A HREF="#function classes4">FUNCTION CLASSES4</A>         <A HREF="#function classes5">FUNCTION CLASSES5</A>
-<A HREF="#function classes6">FUNCTION CLASSES6</A>         <A HREF="#function classes7">FUNCTION CLASSES7</A>         <A HREF="#function list">FUNCTION LIST</A>
-<A HREF="#function list2">FUNCTION LIST2</A>            <A HREF="#function list3">FUNCTION LIST3</A>            <A HREF="#function list4">FUNCTION LIST4</A>
-<A HREF="#function list5">FUNCTION LIST5</A>            <A HREF="#function types">FUNCTION TYPES</A>            <A HREF="#functions">FUNCTIONS</A>
-<A HREF="#game information functions">game information functions</A><A HREF="#garble()">GARBLE()</A>                  <A HREF="#gender">GENDER</A>
-<A HREF="#get">get</A>                       <A HREF="#get()">GET()</A>                     <A HREF="#get2">get2</A>
-<A HREF="#get_eval()">GET_EVAL()</A>                <A HREF="#give">give</A>                      <A HREF="#globalroom()">GLOBALROOM()</A>
-<A HREF="#globbing">GLOBBING</A>                  <A HREF="#goals">GOALS</A>                     <A HREF="#going">GOING</A>
-<A HREF="#goto">goto</A>                      <A HREF="#grab">grab</A>                      <A HREF="#grab()">GRAB()</A>
-<A HREF="#graball()">GRABALL()</A>                 <A HREF="#grep()">GREP()</A>                    <A HREF="#gt()">gt()</A>
-<A HREF="#gte()">gte()</A>                     <A HREF="#guests">GUESTS</A>                    <A HREF="#guild()">GUILD()</A>
-<A HREF="#guildmaster">GUILDMASTER</A>               <A HREF="#halted">HALTED</A>                    <A HREF="#hasattr()">hasattr()</A>
-<A HREF="#hasattrp()">hasattrp()</A>                <A HREF="#hasflag()">hasflag()</A>                 <A HREF="#hasquota()">hasquota()</A>
-<A HREF="#hasrxlevel()">HASRXLEVEL()</A>              <A HREF="#hastoggle()">HASTOGGLE()</A>               <A HREF="#hastotem()">HASTOTEM()</A>
-<A HREF="#hastxlevel()">HASTXLEVEL()</A>              <A HREF="#hastype()">hastype()</A>                 <A HREF="#haven">HAVEN</A>
-<A HREF="#help">help</A>                      <A HREF="#here">HERE</A>                      <A HREF="#historical">historical</A>
-<A HREF="#home()">HOME()</A>                    <A HREF="#homes">HOMES</A>                     <A HREF="#ibreak()">IBREAK()</A>
-<A HREF="#ic">IC</A>                        <A HREF="#idiv()">IDIV()</A>                    <A HREF="#idle">IDLE</A>
-<A HREF="#idle()">IDLE()</A>                    <A HREF="#if()">if()</A>                      <A HREF="#ifelse()">ifelse()</A>
-<A HREF="#iindex()">IINDEX()</A>                  <A HREF="#ilev()">ILEV()</A>                    <A HREF="#immortal">IMMORTAL</A>
-<A HREF="#inc()">INC()</A>                     <A HREF="#indestructible">INDESTRUCTIBLE</A>            <A HREF="#index()">INDEX()</A>
-<A HREF="#inf()">INF()</A>                     <A HREF="#info">INFO</A>                      <A HREF="#inherit">INHERIT</A>
-<A HREF="#inprogram()">INPROGRAM()</A>               <A HREF="#insert()">INSERT()</A>                  <A HREF="#insert2 ">INSERT2 </A>
-<A HREF="#internal_doors">INTERNAL_DOORS</A>            <A HREF="#inum()">INUM()</A>                    <A HREF="#inventory">inventory</A>
-<A HREF="#invformat">invformat</A>                 <A HREF="#inzone()">INZONE()</A>                  <A HREF="#isalnum()">ISALNUM()</A>
-<A HREF="#isalpha()">ISALPHA()</A>                 <A HREF="#iscluster()">ISCLUSTER()</A>               <A HREF="#isdbref()">ISDBREF()</A>
-<A HREF="#isdigit()">ISDIGIT()</A>                 <A HREF="#ishidden()">ISHIDDEN()</A>                <A HREF="#isint()">ISINT()</A>
-<A HREF="#islower()">ISLOWER()</A>                 <A HREF="#isnum()">ISNUM()</A>                   <A HREF="#isobjid()">ISOBJID()</A>
-<A HREF="#ispunct()">ISPUNCT()</A>                 <A HREF="#isspace()">ISSPACE()</A>                 <A HREF="#istag()">ISTAG()</A>
-<A HREF="#isupper()">ISUPPER()</A>                 <A HREF="#isword()">ISWORD()</A>                  <A HREF="#isxdigit()">ISXDIGIT()</A>
-<A HREF="#iter()">ITER()</A>                    <A HREF="#itext()">ITEXT()</A>                   <A HREF="#join">join</A>
-<A HREF="#jump_ok">JUMP_OK</A>                   <A HREF="#keepalive toggle">KEEPALIVE TOGGLE</A>          <A HREF="#keepflags()">KEEPFLAGS()</A>
-<A HREF="#keeptype()">KEEPTYPE()</A>                <A HREF="#key">KEY</A>                       <A HREF="#kill">kill</A>
-<A HREF="#ladd()">LADD()</A>                    <A HREF="#land()">LAND()</A>                    <A HREF="#last()">LAST()</A>
-<A HREF="#lastcreate()">LASTCREATE()</A>              <A HREF="#lattr()">LATTR()</A>                   <A HREF="#lattr2 ">LATTR2 </A>
-<A HREF="#lavg()">LAVG()</A>                    <A HREF="#lcmds()">LCMDS()</A>                   <A HREF="#lcon()">LCON()</A>
-<A HREF="#lcstr()">LCSTR()</A>                   <A HREF="#ldelete()">LDELETE()</A>                 <A HREF="#ldiv()">LDIV()</A>
-<A HREF="#leave">leave</A>                     <A HREF="#left()">LEFT()</A>                    <A HREF="#lemit()">LEMIT()</A>
-<A HREF="#lexits()">LEXITS()</A>                  <A HREF="#lflags()">LFLAGS()</A>                  <A HREF="#light">LIGHT</A>
-<A HREF="#link()">LINK()</A>                    <A HREF="#link_ok">LINK_OK</A>                   <A HREF="#linking ">LINKING </A>
-<A HREF="#list functions">list functions</A>            <A HREF="#list functions2">list functions2</A>           <A HREF="#list functions3">list functions3</A>
-<A HREF="#list functions4">list functions4</A>           <A HREF="#list()">LIST()</A>                    <A HREF="#list2">LIST2</A>
-<A HREF="#listcommands()">LISTCOMMANDS()</A>            <A HREF="#listdiff()">LISTDIFF()</A>                <A HREF="#listen">listen</A>
-<A HREF="#listening">LISTENING</A>                 <A HREF="#listflags()">LISTFLAGS()</A>               <A HREF="#listfunctions()">LISTFUNCTIONS()</A>
-<A HREF="#listinter()">LISTINTER()</A>               <A HREF="#listmatch()">LISTMATCH()</A>               <A HREF="#listnewsgroups()">LISTNEWSGROUPS()</A>
-<A HREF="#listprotection()">LISTPROTECTION()</A>          <A HREF="#listrlevels()">LISTRLEVELS()</A>             <A HREF="#lists">LISTS</A>
-<A HREF="#listtoggles()">LISTTOGGLES()</A>             <A HREF="#listtotems()">LISTTOTEMS()</A>              <A HREF="#listunion()">LISTUNION()</A>
-<A HREF="#lit()">LIT()</A>                     <A HREF="#lj()">LJ()</A>                      <A HREF="#ljc()">LJC()</A>
-<A HREF="#ljust()">LJUST()</A>                   <A HREF="#lloc()">LLOC()</A>                    <A HREF="#lmath()">LMATH()</A>
-<A HREF="#lmax()">LMAX()</A>                    <A HREF="#lmin()">LMIN()</A>                    <A HREF="#lmul()">LMUL()</A>
-<A HREF="#ln()">LN()</A>                      <A HREF="#lnor()">LNOR()</A>                    <A HREF="#lnum()">LNUM()</A>
-<A HREF="#lnum2()">LNUM2()</A>                   <A HREF="#loc()">LOC()</A>                     <A HREF="#localfunc()">LOCALFUNC()</A>
-<A HREF="#localize()">LOCALIZE()</A>                <A HREF="#locate()">LOCATE()</A>                  <A HREF="#locate2">locate2</A>
-<A HREF="#locate3">locate3</A>                   <A HREF="#lock()">lock()</A>                    <A HREF="#lockcheck()">lockcheck()</A>
-<A HREF="#lockdecode()">lockdecode()</A>              <A HREF="#lockencode()">lockencode()</A>              <A HREF="#locks">locks</A>
-<A HREF="#log()">LOG()</A>                     <A HREF="#logarithmic functions">logarithmic functions</A>     <A HREF="#logical functions">logical functions</A>
-<A HREF="#logout">LOGOUT</A>                    <A HREF="#look">look</A>                      <A HREF="#looping">LOOPING</A>
-<A HREF="#lor()">LOR()</A>                     <A HREF="#lpage">lpage</A>                     <A HREF="#lparent()">LPARENT()</A>
-<A HREF="#lrand()">lrand()</A>                   <A HREF="#lreplace()">LREPLACE()</A>                <A HREF="#lrooms()">lrooms()</A>
-<A HREF="#lset()">LSET()</A>                    <A HREF="#lsub()">LSUB()</A>                    <A HREF="#lt()">lt()</A>
-<A HREF="#lte()">lte()</A>                     <A HREF="#ltoggles()">LTOGGLES()</A>                <A HREF="#ltotems()">LTOTEMS()</A>
-<A HREF="#lwho()">LWHO()</A>                    <A HREF="#lxnor()">LXNOR()</A>                   <A HREF="#lxor()">LXOR()</A>
-<A HREF="#lzone()">LZONE()</A>                   <A HREF="#mail">mail</A>                      <A HREF="#mail PLUSall">mail +all</A>
-<A HREF="#mail alias">mail alias</A>                <A HREF="#mail anonymous">mail anonymous</A>            <A HREF="#mail attributes">mail attributes</A>
-<A HREF="#mail autofor">mail autofor</A>              <A HREF="#mail autopurges">mail autopurges</A>           <A HREF="#mail ball">mail ball</A>
-<A HREF="#mail basics">mail basics</A>               <A HREF="#mail basics2">mail basics2</A>              <A HREF="#mail both">mail both</A>
-<A HREF="#mail btutor">mail btutor</A>               <A HREF="#mail changes">mail changes</A>              <A HREF="#mail changes2">mail changes2</A>
-<A HREF="#mail check">mail check</A>                <A HREF="#mail cmdlist">mail cmdlist</A>              <A HREF="#mail cmdlist2">mail cmdlist2</A>
-<A HREF="#mail cmdlist3">mail cmdlist3</A>             <A HREF="#mail creating">mail creating</A>             <A HREF="#mail credits">mail credits</A>
-<A HREF="#mail delete">mail delete</A>               <A HREF="#mail dtutor">mail dtutor</A>               <A HREF="#mail dtutor notes">mail dtutor notes</A>
-<A HREF="#mail dtutor1">mail dtutor1</A>              <A HREF="#mail dtutor2">mail dtutor2</A>              <A HREF="#mail dtutor3">mail dtutor3</A>
-<A HREF="#mail dtutor4">mail dtutor4</A>              <A HREF="#mail dtutor5">mail dtutor5</A>              <A HREF="#mail dtutor6">mail dtutor6</A>
-<A HREF="#mail dtutor7">mail dtutor7</A>              <A HREF="#mail folders">mail folders</A>              <A HREF="#mail forward">mail forward</A>
-<A HREF="#mail line">mail line</A>                 <A HREF="#mail line examples">mail line examples</A>        <A HREF="#mail lineeditor">mail lineeditor</A>
-<A HREF="#mail list_aliases">mail list_aliases</A>         <A HREF="#mail lock">mail lock</A>                 <A HREF="#mail main">mail main</A>
-<A HREF="#mail mark">mail mark</A>                 <A HREF="#mail massmail">mail massmail</A>             <A HREF="#mail nall">mail nall</A>
-<A HREF="#mail new">mail new</A>                  <A HREF="#mail next">mail next</A>                 <A HREF="#mail number">mail number</A>
-<A HREF="#mail page">mail page</A>                 <A HREF="#mail password">mail password</A>             <A HREF="#mail previous">mail previous</A>
-<A HREF="#mail ptutor">mail ptutor</A>               <A HREF="#mail quick">mail quick</A>                <A HREF="#mail quicklist">mail quicklist</A>
-<A HREF="#mail quota">mail quota</A>                <A HREF="#mail read">mail read</A>                 <A HREF="#mail recall">mail recall</A>
-<A HREF="#mail recall2">mail recall2</A>              <A HREF="#mail recall3">mail recall3</A>              <A HREF="#mail reject">mail reject</A>
-<A HREF="#mail reply">mail reply</A>                <A HREF="#mail save">mail save</A>                 <A HREF="#mail send brandy">mail send brandy</A>
-<A HREF="#mail send examples">mail send examples</A>        <A HREF="#mail send quick">mail send quick</A>           <A HREF="#mail send2">mail send2</A>
-<A HREF="#mail sending">mail sending</A>              <A HREF="#mail setup_aliases">mail setup_aliases</A>        <A HREF="#mail share">mail share</A>
-<A HREF="#mail signature">mail signature</A>            <A HREF="#mail status">mail status</A>               <A HREF="#mail status2">mail status2</A>
-<A HREF="#mail technical">mail technical</A>            <A HREF="#mail topics">mail topics</A>               <A HREF="#mail tutorial">mail tutorial</A>
-<A HREF="#mail uall">mail uall</A>                 <A HREF="#mail unmark">mail unmark</A>               <A HREF="#mail unread">mail unread</A>
-<A HREF="#mail version">mail version</A>              <A HREF="#mail write">mail write</A>                <A HREF="#mail write PLUSacc">mail write +acc</A>
-<A HREF="#mail write PLUSbcc">mail write +bcc</A>           <A HREF="#mail write PLUScc">mail write +cc</A>            <A HREF="#mail write PLUSdel">mail write +del</A>
-<A HREF="#mail write PLUSedit">mail write +edit</A>          <A HREF="#mail write PLUSeditall">mail write +editall</A>       <A HREF="#mail write PLUSfedit">mail write +fedit</A>
-<A HREF="#mail write PLUSfeditall">mail write +feditall</A>      <A HREF="#mail write PLUSforget">mail write +forget</A>        <A HREF="#mail write PLUSforward">mail write +forward</A>
-<A HREF="#mail write PLUSinsert">mail write +insert</A>        <A HREF="#mail write PLUSjoin">mail write +join</A>          <A HREF="#mail write PLUSjustify">mail write +justify</A>
-<A HREF="#mail write PLUSlist">mail write +list</A>          <A HREF="#mail write PLUSproof">mail write +proof</A>         <A HREF="#mail write PLUSreply">mail write +reply</A>
-<A HREF="#mail write PLUSsend">mail write +send</A>          <A HREF="#mail write PLUSsplit">mail write +split</A>         <A HREF="#mail write PLUSsubject">mail write +subject</A>
-<A HREF="#mail write MINUS">mail write -</A>              <A HREF="#mail write adding">mail write adding</A>         <A HREF="#mail write autonotify">mail write autonotify</A>
-<A HREF="#mail write cmdlist">mail write cmdlist</A>        <A HREF="#mail write cmdlist2">mail write cmdlist2</A>       <A HREF="#mail write examples">mail write examples</A>
-<A HREF="#mail write forwarding">mail write forwarding</A>     <A HREF="#mail write quicksending">mail write quicksending</A>   <A HREF="#mail writing">mail writing</A>
-<A HREF="#mail zap">mail zap</A>                  <A HREF="#mailMINUSadmin">mail-admin</A>                <A HREF="#mailMINUSaliases">mail-aliases</A>
-<A HREF="#mailMINUSaliases2">mail-aliases2</A>             <A HREF="#mailMINUSattributes">mail-attributes</A>           <A HREF="#mailMINUSdeleting">mail-deleting</A>
-<A HREF="#mailMINUSexamples">mail-examples</A>             <A HREF="#mailMINUSfiltering">mail-filtering</A>            <A HREF="#mailMINUSfolders">mail-folders</A>
-<A HREF="#mailMINUSother">mail-other</A>                <A HREF="#mailMINUSreading">mail-reading</A>              <A HREF="#mailMINUSreviewing">mail-reviewing</A>
-<A HREF="#mailMINUSsharing">mail-sharing</A>              <A HREF="#mailMINUSwriting">mail-writing</A>              <A HREF="#mail/alias">mail/alias</A>
-<A HREF="#mail/anonymous">mail/anonymous</A>            <A HREF="#mail/autofor">mail/autofor</A>              <A HREF="#mail/check">mail/check</A>
-<A HREF="#mail/delete">mail/delete</A>               <A HREF="#mail/forward">mail/forward</A>              <A HREF="#mail/lock">mail/lock</A>
-<A HREF="#mail/mark">mail/mark</A>                 <A HREF="#mail/mark/save">mail/mark/save</A>            <A HREF="#mail/next">mail/next</A>
-<A HREF="#mail/number">mail/number</A>               <A HREF="#mail/page">mail/page</A>                 <A HREF="#mail/password">mail/password</A>
-<A HREF="#mail/previous">mail/previous</A>             <A HREF="#mail/quick">mail/quick</A>                <A HREF="#mail/quota">mail/quota</A>
-<A HREF="#mail/read">mail/read</A>                 <A HREF="#mail/read/save">mail/read/save</A>            <A HREF="#mail/recall">mail/recall</A>
-<A HREF="#mail/reject">mail/reject</A>               <A HREF="#mail/reply">mail/reply</A>                <A HREF="#mail/save">mail/save</A>
-<A HREF="#mail/save/read">mail/save/read</A>            <A HREF="#mail/send">mail/send</A>                 <A HREF="#mail/share">mail/share</A>
-<A HREF="#mail/status">mail/status</A>               <A HREF="#mail/unmark">mail/unmark</A>               <A HREF="#mail/version">mail/version</A>
-<A HREF="#mail/write">mail/write</A>                <A HREF="#mail/write PLUSacc">mail/write +acc</A>           <A HREF="#mail/write PLUSbcc">mail/write +bcc</A>
-<A HREF="#mail/write PLUScc">mail/write +cc</A>            <A HREF="#mail/write PLUSdel">mail/write +del</A>           <A HREF="#mail/write PLUSedit">mail/write +edit</A>
-<A HREF="#mail/write PLUSeditall">mail/write +editall</A>       <A HREF="#mail/write PLUSfedit">mail/write +fedit</A>         <A HREF="#mail/write PLUSfeditall">mail/write +feditall</A>
-<A HREF="#mail/write PLUSforget">mail/write +forget</A>        <A HREF="#mail/write PLUSforward">mail/write +forward</A>       <A HREF="#mail/write PLUSinsert">mail/write +insert</A>
-<A HREF="#mail/write PLUSjoin">mail/write +join</A>          <A HREF="#mail/write PLUSjustify">mail/write +justify</A>       <A HREF="#mail/write PLUSlist">mail/write +list</A>
-<A HREF="#mail/write PLUSproof">mail/write +proof</A>         <A HREF="#mail/write PLUSreply">mail/write +reply</A>         <A HREF="#mail/write PLUSsend">mail/write +send</A>
-<A HREF="#mail/write PLUSsplit">mail/write +split</A>         <A HREF="#mail/write PLUSsubject">mail/write +subject</A>       <A HREF="#mail/zap">mail/zap</A>
-<A HREF="#mail_noparse toggle">MAIL_NOPARSE TOGGLE</A>       <A HREF="#mail_stripreturn toggle">MAIL_STRIPRETURN TOGGLE</A>   <A HREF="#mailfilter">MAILFILTER</A>
-<A HREF="#mailnotify">MAILNOTIFY</A>                <A HREF="#mailquick()">MAILQUICK()</A>               <A HREF="#mailvalidate toggle">MAILVALIDATE TOGGLE</A>
-<A HREF="#map()">map()</A>                     <A HREF="#marker0">MARKER0</A>                   <A HREF="#marker1">MARKER1</A>
-<A HREF="#marker2">MARKER2</A>                   <A HREF="#marker3">MARKER3</A>                   <A HREF="#marker4">MARKER4</A>
-<A HREF="#marker5">MARKER5</A>                   <A HREF="#marker6">MARKER6</A>                   <A HREF="#marker7">MARKER7</A>
-<A HREF="#marker8">MARKER8</A>                   <A HREF="#marker9">MARKER9</A>                   <A HREF="#mask()">MASK()</A>
-<A HREF="#match()">MATCH()</A>                   <A HREF="#max args">MAX ARGS</A>                  <A HREF="#max()">MAX()</A>
-<A HREF="#max_name_protect">max_name_protect</A>          <A HREF="#me">ME</A>                        <A HREF="#member()">member()</A>
-<A HREF="#merge()">MERGE()</A>                   <A HREF="#mid()">MID()</A>                     <A HREF="#min()">MIN()</A>
-<A HREF="#miscellaneous functions">miscellaneous functions</A>   <A HREF="#mix()">MIX()</A>                     <A HREF="#mod()">MOD()</A>
-<A HREF="#modifytime()">MODIFYTIME()</A>              <A HREF="#modulo()">MODULO()</A>                  <A HREF="#money">MONEY</A>
-<A HREF="#money()">MONEY()</A>                   <A HREF="#moneyname()">MONEYNAME()</A>               <A HREF="#monitor">MONITOR</A>
-<A HREF="#monitor toggle">MONITOR TOGGLE</A>            <A HREF="#moon()">MOON()</A>                    <A HREF="#move">move</A>
-<A HREF="#move()">MOVE()</A>                    <A HREF="#moving">MOVING</A>                    <A HREF="#moving2">moving2</A>
-<A HREF="#moving3">moving3</A>                   <A HREF="#mrpage">mrpage</A>                    <A HREF="#msecs()">MSECS()</A>
-<A HREF="#muddiff">MUDDIFF</A>                   <A HREF="#mudname()">MUDNAME()</A>                 <A HREF="#mul()">MUL()</A>
-<A HREF="#munge()">MUNGE()</A>                   <A HREF="#munge2">MUNGE2</A>                    <A HREF="#muxpage toggle">MUXPAGE TOGGLE</A>
-<A HREF="#mwords()">MWORDS()</A>                  <A HREF="#myopic">MYOPIC</A>                    <A HREF="#name()">NAME()</A>
-<A HREF="#nameq()">NAMEQ()</A>                   <A HREF="#nand()">NAND()</A>                    <A HREF="#ncomp()">NCOMP()</A>
-<A HREF="#nearby()">NEARBY()</A>                  <A HREF="#neq()">neq()</A>                     <A HREF="#new users">NEW USERS</A>
-<A HREF="#news">news</A>                      <A HREF="#news changes">news changes</A>              <A HREF="#news check">news check</A>
-<A HREF="#news cmdlist">news cmdlist</A>              <A HREF="#news default group">news default group</A>        <A HREF="#news description">news description</A>
-<A HREF="#news description2">news description2</A>         <A HREF="#news extend">news extend</A>               <A HREF="#news general">news general</A>
-<A HREF="#news groupinfo">news groupinfo</A>            <A HREF="#news grouplist">news grouplist</A>            <A HREF="#news groupmem">news groupmem</A>
-<A HREF="#news info">news info</A>                 <A HREF="#news jump">news jump</A>                 <A HREF="#news login">news login</A>
-<A HREF="#news mailto">news mailto</A>               <A HREF="#news new user">news new user</A>             <A HREF="#news old news">news old news</A>
-<A HREF="#news post">news post</A>                 <A HREF="#news postlist">news postlist</A>             <A HREF="#news postlock">news postlock</A>
-<A HREF="#news read">news read</A>                 <A HREF="#news readall">news readall</A>              <A HREF="#news readlock">news readlock</A>
-<A HREF="#news repost">news repost</A>               <A HREF="#news status">news status</A>               <A HREF="#news subscribe">news subscribe</A>
-<A HREF="#news technical">news technical</A>            <A HREF="#news unsubscribe">news unsubscribe</A>          <A HREF="#news userinfo">news userinfo</A>
-<A HREF="#news verbose">news verbose</A>              <A HREF="#news yank">news yank</A>                 <A HREF="#next()">NEXT()</A>
-<A HREF="#no_ansi_ex toggle">NO_ANSI_EX TOGGLE</A>         <A HREF="#no_ansi_exit toggle">NO_ANSI_EXIT TOGGLE</A>       <A HREF="#no_ansi_player toggle">NO_ANSI_PLAYER TOGGLE</A>
-<A HREF="#no_ansi_room toggle">NO_ANSI_ROOM TOGGLE</A>       <A HREF="#no_ansi_thing toggle">NO_ANSI_THING TOGGLE</A>      <A HREF="#no_command">NO_COMMAND</A>
-<A HREF="#no_flash">NO_FLASH</A>                  <A HREF="#no_spoof">NO_SPOOF</A>                  <A HREF="#no_tel">NO_TEL</A>
-<A HREF="#no_underline">NO_UNDERLINE</A>              <A HREF="#no_walls">NO_WALLS</A>                  <A HREF="#no_yell">NO_YELL</A>
-<A HREF="#nocommand">NOCOMMAND</A>                 <A HREF="#noflash">NOFLASH</A>                   <A HREF="#noglobparent toggle">NOGLOBPARENT TOGGLE</A>
-<A HREF="#noisy">NOISY</A>                     <A HREF="#nor()">NOR()</A>                     <A HREF="#nospoof">NOSPOOF</A>
-<A HREF="#nostr()">NOSTR()</A>                   <A HREF="#not()">NOT()</A>                     <A HREF="#notchr()">NOTCHR()</A>
-<A HREF="#notel">NOTEL</A>                     <A HREF="#notify_link toggle">NOTIFY_LINK TOGGLE</A>        <A HREF="#nounderline">NOUNDERLINE</A>
-<A HREF="#nowalls">NOWALLS</A>                   <A HREF="#noyell">NOYELL</A>                    <A HREF="#nozoneparent toggle">NOZONEPARENT TOGGLE</A>
-<A HREF="#npemit()">NPEMIT()</A>                  <A HREF="#nsiter()">NSITER()</A>                  <A HREF="#null()">NULL()</A>
-<A HREF="#num()">NUM()</A>                     <A HREF="#numerical conversion functions">numerical conversion functions</A><A HREF="#nummatch()">NUMMATCH()</A>
-<A HREF="#nummember()">NUMMEMBER()</A>               <A HREF="#numpos()">NUMPOS()</A>                  <A HREF="#numwildmatch()">numwildmatch()</A>
-<A HREF="#obj()">OBJ()</A>                     <A HREF="#object information functions">object information functions</A><A HREF="#object information functions2">object information functions2</A>
-<A HREF="#object types">OBJECT TYPES</A>              <A HREF="#objeval()">OBJEVAL()</A>                 <A HREF="#objid()">OBJID()</A>
-<A HREF="#oemit()">OEMIT()</A>                   <A HREF="#ofparse()">OFPARSE()</A>                 <A HREF="#ofparse2">OFPARSE2</A>
-<A HREF="#opaque">OPAQUE</A>                    <A HREF="#open()">OPEN()</A>                    <A HREF="#or()">OR()</A>
-<A HREF="#orchr()">ORCHR()</A>                   <A HREF="#orflag()">ORFLAG()</A>                  <A HREF="#orflags()">ORFLAGS()</A>
-<A HREF="#ortotem()">ORTOTEM()</A>                 <A HREF="#ortotems()">ORTOTEMS()</A>                <A HREF="#outpageformat">OUTPAGEFORMAT</A>
-<A HREF="#outputprefix">OUTPUTPREFIX</A>              <A HREF="#outputsuffix">OUTPUTSUFFIX</A>              <A HREF="#owner()">OWNER()</A>
-<A HREF="#pack()">PACK()</A>                    <A HREF="#packmath()">PACKMATH()</A>                <A HREF="#page">page</A>
-<A HREF="#page2 ">page2 </A>                    <A HREF="#pageformat">PAGEFORMAT</A>                <A HREF="#pageformat2">pageformat2</A>
-<A HREF="#parenmatch()">PARENMATCH()</A>              <A HREF="#parenstr()">PARENSTR()</A>                <A HREF="#parent objects">PARENT OBJECTS</A>
-<A HREF="#parent()">PARENT()</A>                  <A HREF="#parent2 ">PARENT2 </A>                  <A HREF="#parent_ok">PARENT_OK</A>
-<A HREF="#parents()">PARENTS()</A>                 <A HREF="#parse()">PARSE()</A>                   <A HREF="#parsestr()">PARSESTR()</A>
-<A HREF="#parsestr2">PARSESTR2</A>                 <A HREF="#parsestr3">PARSESTR3</A>                 <A HREF="#parsestr4">PARSESTR4</A>
-<A HREF="#pedit()">PEDIT()</A>                   <A HREF="#pemit()">PEMIT()</A>                   <A HREF="#penn_mail toggle">PENN_MAIL TOGGLE</A>
-<A HREF="#pfind()">PFIND()</A>                   <A HREF="#pgrep()">PGREP()</A>                   <A HREF="#pi()">PI()</A>
-<A HREF="#pickrand()">pickrand()</A>                <A HREF="#pid()">PID()</A>                     <A HREF="#pid2">PID2</A>
-<A HREF="#player">PLAYER</A>                    <A HREF="#player information functions">player information functions</A><A HREF="#plushelp">plushelp</A>
-<A HREF="#pmatch()">PMATCH()</A>                  <A HREF="#port()">PORT()</A>                    <A HREF="#pos()">POS()</A>
-<A HREF="#pose">pose</A>                      <A HREF="#poss()">POSS()</A>                    <A HREF="#power()">POWER()</A>
-<A HREF="#power10()">POWER10()</A>                 <A HREF="#printf borders">PRINTF BORDERS</A>            <A HREF="#printf borders2">PRINTF BORDERS2</A>
-<A HREF="#printf codelist">PRINTF CODELIST</A>           <A HREF="#printf examples">PRINTF EXAMPLES</A>           <A HREF="#printf examples2">PRINTF EXAMPLES2</A>
-<A HREF="#printf examples3">PRINTF EXAMPLES3</A>          <A HREF="#printf examples4">PRINTF EXAMPLES4</A>          <A HREF="#printf examples5">PRINTF EXAMPLES5</A>
-<A HREF="#printf examples6">PRINTF EXAMPLES6</A>          <A HREF="#printf penn">PRINTF PENN</A>               <A HREF="#printf penn2">PRINTF PENN2</A>
-<A HREF="#printf syntax ">PRINTF SYNTAX </A>            <A HREF="#printf()">PRINTF()</A>                  <A HREF="#private">PRIVATE</A>
-<A HREF="#privatize()">PRIVATIZE()</A>               <A HREF="#privatize2">PRIVATIZE2</A>                <A HREF="#programmer()">PROGRAMMER()</A>
-<A HREF="#protect_addenh">protect_addenh</A>            <A HREF="#ptimefmt()">PTIMEFMT()</A>                <A HREF="#ptimefmt2">PTIMEFMT2</A>
-<A HREF="#puppet">PUPPET</A>                    <A HREF="#puppets">PUPPETS</A>                   <A HREF="#pushregs()">PUSHREGS()</A>
-<A HREF="#quickreference">QUICKREFERENCE</A>            <A HREF="#quiet">QUIET</A>                     <A HREF="#quit ">quit </A>
-<A HREF="#quota alternate2">quota alternate2</A>          <A HREF="#quota alternate3">quota alternate3</A>          <A HREF="#quota()">quota()</A>
-<A HREF="#r()">R()</A>                       <A HREF="#race()">RACE()</A>                    <A HREF="#rand()">RAND()</A>
-<A HREF="#randextract()">randextract()</A>             <A HREF="#randmatch()">randmatch()</A>               <A HREF="#randpos()">randpos()</A>
-<A HREF="#read">read</A>                      <A HREF="#reality level functions">reality level functions</A>   <A HREF="#reality levels">REALITY LEVELS</A>
-<A HREF="#rebootsecs()">REBOOTSECS()</A>              <A HREF="#reboottime()">REBOOTTIME()</A>              <A HREF="#regedit()">REGEDIT()</A>
-<A HREF="#regeditall()">REGEDITALL()</A>              <A HREF="#regeditalli()">REGEDITALLI()</A>             <A HREF="#regeditallilit()">REGEDITALLILIT()</A>
-<A HREF="#regeditalllit()">REGEDITALLLIT()</A>           <A HREF="#regediti()">REGEDITI()</A>                <A HREF="#regeditilit()">REGEDITILIT()</A>
-<A HREF="#regeditlit()">REGEDITLIT()</A>              <A HREF="#regexp casesensitive">REGEXP CASESENSITIVE</A>      <A HREF="#regexp casesensitivity">REGEXP CASESENSITIVITY</A>
-<A HREF="#regexp classes">REGEXP CLASSES</A>            <A HREF="#regexp classes2">REGEXP CLASSES2</A>           <A HREF="#regexp examples">REGEXP EXAMPLES</A>
-<A HREF="#regexp syntax">REGEXP SYNTAX</A>             <A HREF="#regexp syntax2">REGEXP SYNTAX2</A>            <A HREF="#regexp syntax3">REGEXP SYNTAX3</A>
-<A HREF="#regexp syntax4">REGEXP SYNTAX4</A>            <A HREF="#regexp syntax5">REGEXP SYNTAX5</A>            <A HREF="#regexp syntax6">REGEXP SYNTAX6</A>
-<A HREF="#regexp syntax7">REGEXP SYNTAX7</A>            <A HREF="#regexp syntax8">REGEXP SYNTAX8</A>            <A HREF="#regexps">REGEXPS</A>
-<A HREF="#regexps2">REGEXPS2</A>                  <A HREF="#register">register</A>                  <A HREF="#reglmatch()">REGLMATCH()</A>
-<A HREF="#reglmatchall()">REGLMATCHALL()</A>            <A HREF="#reglmatchalli()">REGLMATCHALLI()</A>           <A HREF="#reglmatchi()">REGLMATCHI()</A>
-<A HREF="#regmatch()">REGMATCH()</A>                <A HREF="#regmatchi()">REGMATCHI()</A>               <A HREF="#regnummatch()">REGNUMMATCH()</A>
-<A HREF="#regnummatchi()">REGNUMMATCHI()</A>            <A HREF="#regrab()">REGRAB()</A>                  <A HREF="#regraball()">REGRABALL()</A>
-<A HREF="#regraballi()">REGRABALLI()</A>              <A HREF="#regrabi()">REGRABI()</A>                 <A HREF="#regrep()">REGREP()</A>
-<A HREF="#regrepi()">REGREPI()</A>                 <A HREF="#regular expression functions">regular expression functions</A><A HREF="#relational functions">relational functions</A>
-<A HREF="#remainder()">REMAINDER()</A>               <A HREF="#remflags()">REMFLAGS()</A>                <A HREF="#remit()">REMIT()</A>
-<A HREF="#remove()">remove()</A>                  <A HREF="#remtype()">REMTYPE()</A>                 <A HREF="#repeat()">REPEAT()</A>
-<A HREF="#replace()">REPLACE()</A>                 <A HREF="#require_trees">REQUIRE_TREES</A>             <A HREF="#rest()">REST()</A>
-<A HREF="#reswitch()">RESWITCH()</A>                <A HREF="#reswitchall()">RESWITCHALL()</A>             <A HREF="#reswitchalli()">RESWITCHALLI()</A>
-<A HREF="#reswitchi()">RESWITCHI()</A>               <A HREF="#reverse()">REVERSE()</A>                 <A HREF="#revisions">revisions</A>
-<A HREF="#revwords()">REVWORDS()</A>                <A HREF="#right()">RIGHT()</A>                   <A HREF="#rindex()">RINDEX()</A>
-<A HREF="#rj()">RJ()</A>                      <A HREF="#rjc()">RJC()</A>                     <A HREF="#rjust()">RJUST()</A>
-<A HREF="#rloc()">RLOC()</A>                    <A HREF="#rnum()">RNUM()</A>                    <A HREF="#robbery">ROBBERY</A>
-<A HREF="#robot">ROBOT</A>                     <A HREF="#roman()">ROMAN()</A>                   <A HREF="#room">ROOM</A>
-<A HREF="#room()">ROOM()</A>                    <A HREF="#rotl()">rotl()</A>                    <A HREF="#rotr()">rotr()</A>
-<A HREF="#round()">ROUND()</A>                   <A HREF="#royalty">ROYALTY</A>                   <A HREF="#rpage">rpage</A>
-<A HREF="#rset()">RSET()</A>                    <A HREF="#ruler()">RULER()</A>                   <A HREF="#rxdesc()">RXDESC()</A>
-<A HREF="#rxlevel()">RXLEVEL()</A>                 <A HREF="#s()">S()</A>                       <A HREF="#safe">SAFE</A>
-<A HREF="#safebuff()">SAFEBUFF()</A>                <A HREF="#safelog toggle">SAFELOG TOGGLE</A>            <A HREF="#sandbox()">SANDBOX()</A>
-<A HREF="#sandbox2">SANDBOX2</A>                  <A HREF="#save">save</A>                      <A HREF="#say">say</A>
-<A HREF="#score">score</A>                     <A HREF="#scramble()">scramble()</A>                <A HREF="#search classes">search classes</A>
-<A HREF="#search()">SEARCH()</A>                  <A HREF="#searchng()">SEARCHNG()</A>                <A HREF="#searchngobjid()">SEARCHNGOBJID()</A>
-<A HREF="#searchobjid()">SEARCHOBJID()</A>             <A HREF="#secs()">SECS()</A>                    <A HREF="#secure()">SECURE()</A>
-<A HREF="#securex()">SECUREX()</A>                 <A HREF="#sees()">sees()</A>                    <A HREF="#semaphores">SEMAPHORES</A>
-<A HREF="#semaphores2">semaphores2</A>               <A HREF="#senses">SENSES</A>                    <A HREF="#session">SESSION</A>
-<A HREF="#set()">SET()</A>                     <A HREF="#setdiff()">SETDIFF()</A>                 <A HREF="#setinter()">SETINTER()</A>
-<A HREF="#setq()">SETQ()</A>                    <A HREF="#setq_old()">SETQ_OLD()</A>                <A HREF="#setq_templates">SETQ_TEMPLATES</A>
-<A HREF="#setqmatch()">SETQMATCH()</A>               <A HREF="#setr()">SETR()</A>                    <A HREF="#setr_old()">SETR_OLD()</A>
-<A HREF="#setunion()">SETUNION()</A>                <A HREF="#shift()">SHIFT()</A>                   <A HREF="#shl()">shl()</A>
-<A HREF="#showfailcmd">SHOWFAILCMD</A>               <A HREF="#shr()">shr()</A>                     <A HREF="#shuffle()">shuffle()</A>
-<A HREF="#side effect functions">side effect functions</A>     <A HREF="#sideeffects">SIDEEFFECTS</A>               <A HREF="#sidefx">SIDEFX</A>
-<A HREF="#sign()">SIGN()</A>                    <A HREF="#sin()">SIN()</A>                     <A HREF="#singlethreading">SINGLETHREADING</A>
-<A HREF="#singletime()">SINGLETIME()</A>              <A HREF="#sinh()">SINH()</A>                    <A HREF="#slave">SLAVE</A>
-<A HREF="#smell">smell</A>                     <A HREF="#sort()">SORT()</A>                    <A HREF="#sortby()">SORTBY()</A>
-<A HREF="#sortlist()">SORTLIST()</A>                <A HREF="#sortlist2">SORTLIST2</A>                 <A HREF="#soundex()">SOUNDEX()</A>
-<A HREF="#soundex2">SOUNDEX2</A>                  <A HREF="#soundlike()">SOUNDLIKE()</A>               <A HREF="#soundslike()">SOUNDSLIKE()</A>
-<A HREF="#space()">SPACE()</A>                   <A HREF="#speak()">SPEAK()</A>                   <A HREF="#special characters">SPECIAL CHARACTERS</A>
-<A HREF="#speech_prefix">SPEECH_PREFIX</A>             <A HREF="#speech_suffix">SPEECH_SUFFIX</A>             <A HREF="#spellnum()">SPELLNUM()</A>
-<A HREF="#splice()">SPLICE()</A>                  <A HREF="#spoofing">SPOOFING</A>                  <A HREF="#sql">SQL</A>
-<A HREF="#sql()">SQL()</A>                     <A HREF="#sqlescape()">SQLESCAPE()</A>               <A HREF="#sqlite_query()">SQLITE_QUERY()</A>
-<A HREF="#sqlite_query2">SQLITE_QUERY2</A>             <A HREF="#sqloff()">SQLOFF()</A>                  <A HREF="#sqlon()">SQLON()</A>
-<A HREF="#sqlping()">SQLPING()</A>                 <A HREF="#sqrt()">SQRT()</A>                    <A HREF="#squish()">SQUISH()</A>
-<A HREF="#squish()">SQUISH()</A>                  <A HREF="#stack">STACK</A>                     <A HREF="#startsecs()">STARTSECS()</A>
-<A HREF="#starttime()">STARTTIME()</A>               <A HREF="#stats()">STATS()</A>                   <A HREF="#stderr()">STDERR()</A>
-<A HREF="#step()">STEP()</A>                    <A HREF="#sticky">STICKY</A>                    <A HREF="#str()">STR()</A>
-<A HREF="#strallof()">STRALLOF()</A>                <A HREF="#strcat()">STRCAT()</A>                  <A HREF="#strdistance()">STRDISTANCE()</A>
-<A HREF="#streq()">STREQ()</A>                   <A HREF="#streval()">STREVAL()</A>                 <A HREF="#strfirstof()">STRFIRSTOF()</A>
-<A HREF="#strfunc()">STRFUNC()</A>                 <A HREF="#string functions">string functions</A>          <A HREF="#string functions2">string functions2</A>
-<A HREF="#string functions3">string functions3</A>         <A HREF="#strip()">STRIP()</A>                   <A HREF="#stripaccents()">STRIPACCENTS()</A>
-<A HREF="#stripansi()">STRIPANSI()</A>               <A HREF="#strlen()">STRLEN()</A>                  <A HREF="#strlenraw()">STRLENRAW()</A>
-<A HREF="#strlenvis()">STRLENVIS()</A>               <A HREF="#strmatch()">STRMATCH()</A>                <A HREF="#strmath()">strmath()</A>
-<A HREF="#strmath2">strmath2</A>                  <A HREF="#strtrunc()">STRTRUNC()</A>                <A HREF="#sub()">SUB()</A>
-<A HREF="#subeval()">SUBEVAL()</A>                 <A HREF="#subj()">SUBJ()</A>                    <A HREF="#subnetmatch()">SUBNETMATCH()</A>
-<A HREF="#substitutions">SUBSTITUTIONS</A>             <A HREF="#substitutions2">substitutions2</A>            <A HREF="#success">SUCCESS</A>
-<A HREF="#superMINUSroyalty">SUPER-ROYALTY</A>             <A HREF="#switch()">SWITCH()</A>                  <A HREF="#switchall()">SWITCHALL()</A>
-<A HREF="#switches">SWITCHES</A>                  <A HREF="#t()">T()</A>                       <A HREF="#tag()">TAG()</A>
-<A HREF="#take">take</A>                      <A HREF="#take2">take2</A>                     <A HREF="#tan()">TAN()</A>
-<A HREF="#tanh()">TANH()</A>                    <A HREF="#taste">taste</A>                     <A HREF="#tel()">TEL()</A>
-<A HREF="#telok">TELOK</A>                     <A HREF="#template()">TEMPLATE()</A>                <A HREF="#temple">TEMPLE</A>
-<A HREF="#terse">TERSE</A>                     <A HREF="#testlock()">TESTLOCK()</A>                <A HREF="#thing">THING</A>
-<A HREF="#think">think</A>                     <A HREF="#throw">throw</A>                     <A HREF="#time functions">time functions</A>
-<A HREF="#time()">TIME()</A>                    <A HREF="#timefmt advanced">TIMEFMT ADVANCED</A>          <A HREF="#timefmt advanced example">TIMEFMT ADVANCED EXAMPLE</A>
-<A HREF="#timefmt advanced2">TIMEFMT ADVANCED2</A>         <A HREF="#timefmt codelist">TIMEFMT CODELIST</A>          <A HREF="#timefmt codelist2">TIMEFMT CODELIST2</A>
-<A HREF="#timefmt date">TIMEFMT DATE</A>              <A HREF="#timefmt elapsed">TIMEFMT ELAPSED</A>           <A HREF="#timefmt escapes">TIMEFMT ESCAPES</A>
-<A HREF="#timefmt examples">TIMEFMT EXAMPLES</A>          <A HREF="#timefmt syntax">TIMEFMT SYNTAX</A>            <A HREF="#timefmt syntax2">TIMEFMT SYNTAX2</A>
-<A HREF="#timefmt time">TIMEFMT TIME</A>              <A HREF="#timefmt timezone">TIMEFMT TIMEZONE</A>          <A HREF="#timefmt()">TIMEFMT()</A>
-<A HREF="#timezone list">timezone list</A>             <A HREF="#timezone list10">timezone list10</A>           <A HREF="#timezone list11">timezone list11</A>
-<A HREF="#timezone list12">timezone list12</A>           <A HREF="#timezone list2">timezone list2</A>            <A HREF="#timezone list3">timezone list3</A>
-<A HREF="#timezone list4">timezone list4</A>            <A HREF="#timezone list5">timezone list5</A>            <A HREF="#timezone list6">timezone list6</A>
-<A HREF="#timezone list7">timezone list7</A>            <A HREF="#timezone list8">timezone list8</A>            <A HREF="#timezone list9">timezone list9</A>
-<A HREF="#tobin()">TOBIN()</A>                   <A HREF="#todec()">TODEC()</A>                   <A HREF="#toggle list">TOGGLE LIST</A>
-<A HREF="#toggle()">toggle()</A>                  <A HREF="#toggles">TOGGLES</A>                   <A HREF="#tohex()">TOHEX()</A>
-<A HREF="#tooct()">TOOCT()</A>                   <A HREF="#topics">topics</A>                    <A HREF="#totcmds()">TOTCMDS()</A>
-<A HREF="#totems()">TOTEMS()</A>                  <A HREF="#totemset()">TOTEMSET()</A>                <A HREF="#totmatch()">TOTMATCH()</A>
-<A HREF="#totmember()">TOTMEMBER()</A>               <A HREF="#totpos()">TOTPOS()</A>                  <A HREF="#totwildmatch()">totwildmatch()</A>
-<A HREF="#touch">touch</A>                     <A HREF="#tr()">TR()</A>                      <A HREF="#trace">TRACE</A>
-<A HREF="#trace()">TRACE()</A>                   <A HREF="#trace2">trace2</A>                    <A HREF="#trace_color">TRACE_COLOR</A>
-<A HREF="#trace_grep">TRACE_GREP</A>                <A HREF="#tracetab">TRACETAB</A>                  <A HREF="#train">train</A>
-<A HREF="#translate()">TRANSLATE()</A>               <A HREF="#transparent">TRANSPARENT</A>               <A HREF="#trigonometry functions">trigonometry functions</A>
-<A HREF="#trim()">TRIM()</A>                    <A HREF="#trreverse()">TRREVERSE()</A>               <A HREF="#trunc()">TRUNC()</A>
-<A HREF="#txlevel()">TXLEVEL()</A>                 <A HREF="#type()">type()</A>                    <A HREF="#u()">U()</A>
-<A HREF="#u2()">U2()</A>                      <A HREF="#u2default()">u2default()</A>               <A HREF="#u2ldefault()">u2ldefault()</A>
-<A HREF="#u2local()">U2LOCAL()</A>                 <A HREF="#u2local2">U2LOCAL2</A>                  <A HREF="#ucstr()">UCSTR()</A>
-<A HREF="#udefault()">udefault()</A>                <A HREF="#ueval()">UEVAL()</A>                   <A HREF="#uldefault()">uldefault()</A>
-<A HREF="#ulocal()">ULOCAL()</A>                  <A HREF="#ulocal2">ULOCAL2</A>                   <A HREF="#unesclist()">UNESCLIST()</A>
-<A HREF="#unfindable">UNFINDABLE</A>                <A HREF="#unicode support">UNICODE SUPPORT</A>           <A HREF="#unpack()">UNPACK()</A>
-<A HREF="#use">use</A>                       <A HREF="#useful">USEFUL</A>                    <A HREF="#user attributes">USER ATTRIBUTES</A>
-<A HREF="#userlocks">userlocks</A>                 <A HREF="#utf8 support">UTF8 SUPPORT</A>              <A HREF="#utf8 toggle">UTF8 TOGGLE</A>
-<A HREF="#v()">V()</A>                       <A HREF="#vadd()">VADD()</A>                    <A HREF="#valid()">VALID()</A>
-<A HREF="#vanilla_errors toggle">VANILLA_ERRORS TOGGLE</A>     <A HREF="#variable exits">VARIABLE EXITS</A>            <A HREF="#variable toggle">VARIABLE TOGGLE</A>
-<A HREF="#vatovz">VATOVZ</A>                    <A HREF="#vattrcnt()">VATTRCNT()</A>                <A HREF="#vcross()">VCROSS()</A>
-<A HREF="#vdim()">VDIM()</A>                    <A HREF="#vdot()">VDOT()</A>                    <A HREF="#verbose">VERBOSE</A>
-<A HREF="#verbs">VERBS</A>                     <A HREF="#version">version</A>                   <A HREF="#version()">VERSION()</A>
-<A HREF="#visible()">visible()</A>                 <A HREF="#visiblemux()">visiblemux()</A>              <A HREF="#visual">VISUAL</A>
-<A HREF="#vmag()">VMAG()</A>                    <A HREF="#vmul()">VMUL()</A>                    <A HREF="#vpage toggle">VPAGE TOGGLE</A>
-<A HREF="#vsub()">VSUB()</A>                    <A HREF="#vunit()">VUNIT()</A>                   <A HREF="#wanderer">wanderer</A>
-<A HREF="#where()">WHERE()</A>                   <A HREF="#while()">WHILE()</A>                   <A HREF="#while2">WHILE2</A>
-<A HREF="#whisper">whisper</A>                   <A HREF="#who">who</A>                       <A HREF="#wielded">wielded</A>
-<A HREF="#wildcards">WILDCARDS</A>                 <A HREF="#wildcards2">WILDCARDS2</A>                <A HREF="#wildmatch()">wildmatch()</A>
-<A HREF="#wipe()">WIPE()</A>                    <A HREF="#wizard attributes">WIZARD ATTRIBUTES</A>         <A HREF="#wizards">WIZARDS</A>
-<A HREF="#wordpos()">wordpos()</A>                 <A HREF="#words()">WORDS()</A>                   <A HREF="#worn">worn</A>
-<A HREF="#wrap()">WRAP()</A>                    <A HREF="#wrap2">WRAP2</A>                     <A HREF="#wrapcolumns()">WRAPCOLUMNS()</A>
-<A HREF="#wrapcolumns2">WRAPCOLUMNS2</A>              <A HREF="#wrapcolumns3">WRAPCOLUMNS3</A>              <A HREF="#writable()">WRITABLE()</A>
-<A HREF="#xcon()">XCON()</A>                    <A HREF="#xcon2">XCON2</A>                     <A HREF="#xdec()">XDEC()</A>
-<A HREF="#xget()">XGET()</A>                    <A HREF="#xinc()">XINC()</A>                    <A HREF="#xnor()">XNOR()</A>
-<A HREF="#xor()">XOR()</A>                     <A HREF="#xorchr()">XORCHR()</A>                  <A HREF="#xtermcolor">XTERMCOLOR</A>
-<A HREF="#xtermcolor list">XTERMCOLOR LIST</A>           <A HREF="#xtermcolor list2">XTERMCOLOR LIST2</A>          <A HREF="#xtermcolor list3">XTERMCOLOR LIST3</A>
-<A HREF="#xtermcolor list4">XTERMCOLOR LIST4</A>          <A HREF="#xtermcolor syntax">XTERMCOLOR SYNTAX</A>         <A HREF="#zatozz">ZATOZZ</A>
-<A HREF="#zemit()">ZEMIT()</A>                   <A HREF="#zfun()">ZFUN()</A>                    <A HREF="#zfun2()">ZFUN2()</A>
-<A HREF="#zfun2default()">zfun2default()</A>            <A HREF="#zfun2ldefault()">zfun2ldefault()</A>           <A HREF="#zfun2local()">ZFUN2LOCAL()</A>
-<A HREF="#zfun2local2">ZFUN2LOCAL2</A>               <A HREF="#zfundefault()">zfundefault()</A>             <A HREF="#zfuneval()">ZFUNEVAL()</A>
-<A HREF="#zfunldefault()">zfunldefault()</A>            <A HREF="#zfunlocal()">ZFUNLOCAL()</A>               <A HREF="#zfunlocal2">ZFUNLOCAL2</A>
-<A HREF="#zone functions">zone functions</A>            <A HREF="#zone_autoadd toggle">ZONE_AUTOADD TOGGLE</A>       <A HREF="#zone_autoaddall toggle">ZONE_AUTOADDALL TOGGLE</A>
-<A HREF="#zonecmd()">ZONECMD()</A>                 <A HREF="#zonecmd2 ">ZONECMD2 </A>                 <A HREF="#zonecmdchk">ZONECMDCHK</A>
-<A HREF="#zonecontents">ZONECONTENTS</A>              <A HREF="#zonemaster">ZONEMASTER</A>                <A HREF="#zoneparent ">ZONEPARENT </A>
-<A HREF="#zones">zones</A>                     <A HREF="#zones2">zones2</A>                    <A HREF="#zwho()">ZWHO()</A>
-<HR><A NAME="QUOTE"><H3>&quot;</H3></A><PRE>
+<A HREF="#QUOTE">&quot;</A>                               <A HREF="##">#</A>                               <A HREF="##lambda">#LAMBDA</A>
+<A HREF="#DOLARMINUScommands">$-commands</A>                      <A HREF="#%">%</A>                               <A HREF="#%BANG">%!</A>
+<A HREF="#%#">%#</A>                              <A HREF="#%%">%%</A>                              <A HREF="#%PLUS">%+</A>
+<A HREF="#%MINUS">%-</A>                              <A HREF="#%0">%0</A>                              <A HREF="#%1">%1</A>
+<A HREF="#%2">%2</A>                              <A HREF="#%3">%3</A>                              <A HREF="#%4">%4</A>
+<A HREF="#%5">%5</A>                              <A HREF="#%6">%6</A>                              <A HREF="#%7">%7</A>
+<A HREF="#%8">%8</A>                              <A HREF="#%9">%9</A>                              <A HREF="#%:">%:</A>
+<A HREF="#%LT">%&lt;</A>                              <A HREF="#%?">%?</A>                              <A HREF="#%@">%@</A>
+<A HREF="#%_">%_</A>                              <A HREF="#%_2">%_2</A>                             <A HREF="#%_vars">%_vars</A>
+<A HREF="#%a">%a</A>                              <A HREF="#%b">%b</A>                              <A HREF="#%c">%c</A>
+<A HREF="#%d">%d</A>                              <A HREF="#%f">%f</A>                              <A HREF="#%i">%i</A>
+<A HREF="#%k">%k</A>                              <A HREF="#%l">%l</A>                              <A HREF="#%m">%m</A>
+<A HREF="#%n">%n</A>                              <A HREF="#%o">%o</A>                              <A HREF="#%p">%p</A>
+<A HREF="#%q">%q</A>                              <A HREF="#%qLT">%q&lt;</A>                             <A HREF="#%r">%r</A>
+<A HREF="#%s">%s</A>                              <A HREF="#%t">%t</A>                              <A HREF="#%v">%v</A>
+<A HREF="#%w">%w</A>                              <A HREF="#%x">%x</A>                              <A HREF="#AMPER">&amp;</A>
+<A HREF="#AMPERmailfilter">&amp;MAILFILTER</A>                     <A HREF="#AMPERmailnotify">&amp;MAILNOTIFY</A>                     <A HREF="#AMPERoutpageformat">&amp;OUTPAGEFORMAT</A>
+<A HREF="#AMPERpageformat">&amp;PAGEFORMAT</A>                     <A HREF="#AMPERpageformat2">&amp;pageformat2</A>                    <A HREF="#PLUSchannel">+channel</A>
+<A HREF="#PLUSchannel2">+channel2</A>                       <A HREF="#PLUShelp">+help</A>                           <A HREF="#PLUSuptime">+uptime</A>
+<A HREF="#MINUS">-</A>                               <A HREF="#1.0.0p0">1.0.0p0</A>                         <A HREF="#1.5.0p0">1.5.0p0</A>
+<A HREF="#2.0.0p0">2.0.0p0</A>                         <A HREF="#3.0.0p0">3.0.0p0</A>                         <A HREF="#3.2.0p0">3.2.0p0</A>
+<A HREF="#3.2.4p0">3.2.4p0</A>                         <A HREF="#3.2.4p1">3.2.4p1</A>                         <A HREF="#3.2.4p10">3.2.4p10</A>
+<A HREF="#3.2.4p11">3.2.4p11</A>                        <A HREF="#3.2.4p12">3.2.4p12</A>                        <A HREF="#3.2.4p13">3.2.4p13</A>
+<A HREF="#3.2.4p14">3.2.4p14</A>                        <A HREF="#3.2.4p15">3.2.4p15</A>                        <A HREF="#3.2.4p16">3.2.4p16</A>
+<A HREF="#3.2.4p17">3.2.4p17</A>                        <A HREF="#3.2.4p18">3.2.4p18</A>                        <A HREF="#3.2.4p2">3.2.4p2</A>
+<A HREF="#3.2.4p3">3.2.4p3</A>                         <A HREF="#3.2.4p4">3.2.4p4</A>                         <A HREF="#3.2.4p5">3.2.4p5</A>
+<A HREF="#3.2.4p6">3.2.4p6</A>                         <A HREF="#3.2.4p7">3.2.4p7</A>                         <A HREF="#3.2.4p8">3.2.4p8</A>
+<A HREF="#3.2.4p9">3.2.4p9</A>                         <A HREF="#3.9.0p0">3.9.0p0</A>                         <A HREF="#3.9.0p1">3.9.0p1</A>
+<A HREF="#3.9.0p2">3.9.0p2</A>                         <A HREF="#3.9.1p0">3.9.1p0</A>                         <A HREF="#3.9.1p1">3.9.1p1</A>
+<A HREF="#3.9.1p2">3.9.1p2</A>                         <A HREF="#3.9.2p0">3.9.2p0</A>                         <A HREF="#3.9.2p1">3.9.2p1</A>
+<A HREF="#3.9.3p0">3.9.3p0</A>                         <A HREF="#3.9.3p1">3.9.3p1</A>                         <A HREF="#3.9.3p2">3.9.3p2</A>
+<A HREF="#3.9.3p3">3.9.3p3</A>                         <A HREF="#3.9.4p0">3.9.4p0</A>                         <A HREF="#3.9.4p1">3.9.4p1</A>
+<A HREF="#3.9.4p2">3.9.4p2</A>                         <A HREF="#3.9.4p3">3.9.4p3</A>                         <A HREF="#3.9.4p4">3.9.4p4</A>
+<A HREF="#3.9.4p5">3.9.4p5</A>                         <A HREF="#3.9.5p0">3.9.5p0</A>                         <A HREF="#3.9.5p1">3.9.5p1</A>
+<A HREF="#3.9.5p2">3.9.5p2</A>                         <A HREF="#3.9.5p3">3.9.5p3</A>                         <A HREF="#3.9.5p4">3.9.5p4</A>
+<A HREF="#4.0.0p0">4.0.0p0</A>                         <A HREF="#4.0.0p1">4.0.0p1</A>                         <A HREF="#4.0.0p2">4.0.0p2</A>
+<A HREF="#4.0.0p3">4.0.0p3</A>                         <A HREF="#4.0.0p4">4.0.0p4</A>                         <A HREF="#4.1.0p0">4.1.0p0</A>
+<A HREF="#4.1.0p1">4.1.0p1</A>                         <A HREF="#4.1.0p2">4.1.0p2</A>                         <A HREF="#4.2.0">4.2.0</A>
+<A HREF="#:">:</A>                               <A HREF="#;">;</A>                               <A HREF="#GT">&gt;</A>
+<A HREF="#@@">@@</A>                              <A HREF="#@@()">@@()</A>                            <A HREF="#@aahear">@aahear</A>
+<A HREF="#@aclone">@aclone</A>                         <A HREF="#@aconnect">@aconnect</A>                       <A HREF="#@adescribe">@adescribe</A>
+<A HREF="#@adfail">@adfail</A>                         <A HREF="#@adisconnect">@adisconnect</A>                    <A HREF="#@adrop">@adrop</A>
+<A HREF="#@aefail">@aefail</A>                         <A HREF="#@aenter">@aenter</A>                         <A HREF="#@afail">@afail</A>
+<A HREF="#@agfail">@agfail</A>                         <A HREF="#@ahear">@ahear</A>                          <A HREF="#@akill">@akill</A>
+<A HREF="#@aleave">@aleave</A>                         <A HREF="#@alfail">@alfail</A>                         <A HREF="#@alias">@alias</A>
+<A HREF="#@amhear">@amhear</A>                         <A HREF="#@amove">@amove</A>                          <A HREF="#@ansiname">@ansiname</A>
+<A HREF="#@apay">@apay</A>                           <A HREF="#@arfail">@arfail</A>                         <A HREF="#@asfail">@asfail</A>
+<A HREF="#@assert">@assert</A>                         <A HREF="#@asuccess">@asuccess</A>                       <A HREF="#@atfail">@atfail</A>
+<A HREF="#@atofail">@atofail</A>                        <A HREF="#@atport">@atport</A>                         <A HREF="#@attach">@attach</A>
+<A HREF="#@aufail">@aufail</A>                         <A HREF="#@ause">@ause</A>                           <A HREF="#@away">@away</A>
+<A HREF="#@break">@break</A>                          <A HREF="#@caption">@caption</A>                        <A HREF="#@channel">@channel</A>
+<A HREF="#@channel2">@channel2</A>                       <A HREF="#@charges">@charges</A>                        <A HREF="#@chown">@chown</A>
+<A HREF="#@clone">@clone</A>                          <A HREF="#@clone2">@clone2</A>                         <A HREF="#@cluster">@cluster</A>
+<A HREF="#@cluster action">@cluster action</A>                 <A HREF="#@cluster action func">@cluster action func</A>            <A HREF="#@cluster add">@cluster add</A>
+<A HREF="#@cluster clear">@cluster clear</A>                  <A HREF="#@cluster cut">@cluster cut</A>                    <A HREF="#@cluster del">@cluster del</A>
+<A HREF="#@cluster edit">@cluster edit</A>                   <A HREF="#@cluster func">@cluster func</A>                   <A HREF="#@cluster func action">@cluster func action</A>
+<A HREF="#@cluster grep">@cluster grep</A>                   <A HREF="#@cluster list">@cluster list</A>                   <A HREF="#@cluster new">@cluster new</A>
+<A HREF="#@cluster owner">@cluster owner</A>                  <A HREF="#@cluster preserve">@cluster preserve</A>               <A HREF="#@cluster reaction">@cluster reaction</A>
+<A HREF="#@cluster regexp">@cluster regexp</A>                 <A HREF="#@cluster repair">@cluster repair</A>                 <A HREF="#@cluster set">@cluster set</A>
+<A HREF="#@cluster threshhold">@cluster threshhold</A>             <A HREF="#@cluster trigger">@cluster trigger</A>                <A HREF="#@cluster wipe">@cluster wipe</A>
+<A HREF="#@conformat">@conformat</A>                      <A HREF="#@cost">@cost</A>                           <A HREF="#@cpattr">@CPATTR</A>
+<A HREF="#@cpattr2">@CPATTR2</A>                        <A HREF="#@cpattr3">@CPATTR3</A>                        <A HREF="#@create">@create</A>
+<A HREF="#@decompile">@decompile</A>                      <A HREF="#@descformat">@descformat</A>                     <A HREF="#@describe">@describe</A>
+<A HREF="#@destroy">@destroy</A>                        <A HREF="#@dfail">@dfail</A>                          <A HREF="#@dig">@dig</A>
+<A HREF="#@doing">@doing</A>                          <A HREF="#@dolist">@dolist</A>                         <A HREF="#@dolist2 ">@dolist2 </A>
+<A HREF="#@door">@door</A>                           <A HREF="#@drain">@drain</A>                          <A HREF="#@drop">@drop</A>
+<A HREF="#@ealias">@ealias</A>                         <A HREF="#@edit">@edit</A>                           <A HREF="#@efail">@efail</A>
+<A HREF="#@emit">@emit</A>                           <A HREF="#@enter">@enter</A>                          <A HREF="#@entrances">@entrances</A>
+<A HREF="#@eval">@eval</A>                           <A HREF="#@exitformat">@exitformat</A>                     <A HREF="#@exitto">@exitto</A>
+<A HREF="#@extansi">@extansi</A>                        <A HREF="#@fail">@fail</A>                           <A HREF="#@femit">@femit</A>
+<A HREF="#@filter">@filter</A>                         <A HREF="#@find">@find</A>                           <A HREF="#@force">@force</A>
+<A HREF="#@forwardlist">@forwardlist</A>                    <A HREF="#@fpose">@fpose</A>                          <A HREF="#@fsay">@fsay</A>
+<A HREF="#@gfail">@gfail</A>                          <A HREF="#@goto">@goto</A>                           <A HREF="#@grep">@GREP</A>
+<A HREF="#@guild">@guild</A>                          <A HREF="#@halt">@halt</A>                           <A HREF="#@hide">@hide</A>
+<A HREF="#@idesc">@idesc</A>                          <A HREF="#@idle">@idle</A>                           <A HREF="#@if">@if</A>
+<A HREF="#@ifelse">@ifelse</A>                         <A HREF="#@include">@include</A>                        <A HREF="#@include2 ">@include2 </A>
+<A HREF="#@infilter">@infilter</A>                       <A HREF="#@inprefix">@inprefix</A>                       <A HREF="#@invformat">@invformat</A>
+<A HREF="#@jump">@jump</A>                           <A HREF="#@kill">@kill</A>                           <A HREF="#@label">@label</A>
+<A HREF="#@labelMINUSexample">@label-example</A>                  <A HREF="#@labelMINUSexample2">@label-example2</A>                 <A HREF="#@labelMINUSexample3">@label-example3</A>
+<A HREF="#@label2">@label2</A>                         <A HREF="#@label3">@label3</A>                         <A HREF="#@label4">@label4</A>
+<A HREF="#@lalias">@Lalias</A>                         <A HREF="#@last">@last</A>                           <A HREF="#@leave">@leave</A>
+<A HREF="#@lemit">@lemit</A>                          <A HREF="#@lfail">@lfail</A>                          <A HREF="#@lfunction">@lfunction</A>
+<A HREF="#@lfunction2">@lfunction2</A>                     <A HREF="#@link">@link</A>                           <A HREF="#@link2">@link2</A>
+<A HREF="#@list">@list</A>                           <A HREF="#@list2 ">@list2 </A>                         <A HREF="#@listen">@listen</A>
+<A HREF="#@listmotd">@listmotd</A>                       <A HREF="#@lock">@lock</A>                           <A HREF="#@lock attribute">@lock attribute</A>
+<A HREF="#@lock attribute2">@lock attribute2</A>                <A HREF="#@lock carry">@lock carry</A>                     <A HREF="#@lock compound">@lock compound</A>
+<A HREF="#@lock evaluation">@lock evaluation</A>                <A HREF="#@lock evaluation2">@lock evaluation2</A>               <A HREF="#@lock indirect">@lock indirect</A>
+<A HREF="#@lock is">@lock is</A>                        <A HREF="#@lock keys">@Lock keys</A>                      <A HREF="#@lock locks">@lock locks</A>
+<A HREF="#@lock locks2">@lock locks2</A>                    <A HREF="#@lock locks3">@lock locks3</A>                    <A HREF="#@lock normal">@lock normal</A>
+<A HREF="#@lock ownership">@lock ownership</A>                 <A HREF="#@lock type chownlock">@lock type ChownLock</A>            <A HREF="#@lock type darklock">@lock type DarkLock</A>
+<A HREF="#@lock type defaultlock">@lock type DefaultLock</A>          <A HREF="#@lock type droplock">@lock type DropLock</A>             <A HREF="#@lock type droptolock">@lock type DropToLock</A>
+<A HREF="#@lock type enterlock">@lock type EnterLock</A>            <A HREF="#@lock type getfromlock">@lock type GetFromLock</A>          <A HREF="#@lock type givelock">@lock type GiveLock</A>
+<A HREF="#@lock type givetolock">@lock type GiveToLock</A>           <A HREF="#@lock type leavelock">@lock type LeaveLock</A>            <A HREF="#@lock type linklock">@lock type LinkLock</A>
+<A HREF="#@lock type openlock">@lock type OpenLock</A>             <A HREF="#@lock type pagelock">@lock type PageLock</A>             <A HREF="#@lock type parentlock">@lock type ParentLock</A>
+<A HREF="#@lock type receivelock">@lock type ReceiveLock</A>          <A HREF="#@lock type speechlock">@lock type SpeechLock</A>           <A HREF="#@lock type teloutlock">@lock type TeloutLock</A>
+<A HREF="#@lock type tportlock">@lock type TportLock</A>            <A HREF="#@lock type twinklock">@lock type TwinkLock</A>            <A HREF="#@lock type uselock">@lock type UseLock</A>
+<A HREF="#@lock type userlock">@lock type UserLock</A>             <A HREF="#@lock type zonetolock">@lock type ZoneToLock</A>           <A HREF="#@lock type zonewizlock">@lock type ZoneWizLock</A>
+<A HREF="#@lock/chownlock">@lock/chownlock</A>                 <A HREF="#@lock/darklock">@lock/darklock</A>                  <A HREF="#@lock/defaultlock">@lock/defaultlock</A>
+<A HREF="#@lock/droplock">@lock/droplock</A>                  <A HREF="#@lock/droptolock">@lock/droptolock</A>                <A HREF="#@lock/enterlock">@lock/enterlock</A>
+<A HREF="#@lock/getfromlock">@lock/getfromlock</A>               <A HREF="#@lock/givelock">@lock/givelock</A>                  <A HREF="#@lock/givetolock">@lock/givetolock</A>
+<A HREF="#@lock/leavelock">@lock/leavelock</A>                 <A HREF="#@lock/linklock">@lock/linklock</A>                  <A HREF="#@lock/openlock">@lock/openlock</A>
+<A HREF="#@lock/pagelock">@lock/pagelock</A>                  <A HREF="#@lock/parentlock">@lock/parentlock</A>                <A HREF="#@lock/receivelock">@lock/receivelock</A>
+<A HREF="#@lock/speechlock">@lock/speechlock</A>                <A HREF="#@lock/teloutlock">@lock/teloutlock</A>                <A HREF="#@lock/tportlock">@lock/tportlock</A>
+<A HREF="#@lock/twinklock">@lock/twinklock</A>                 <A HREF="#@lock/uselock">@lock/uselock</A>                   <A HREF="#@lock/userlock">@lock/userlock</A>
+<A HREF="#@lock/zonetolock">@lock/zonetolock</A>                <A HREF="#@lock/zonewizlock">@lock/zonewizlock</A>               <A HREF="#@lset">@lset</A>
+<A HREF="#@ltag">@ltag</A>                           <A HREF="#@mail">@mail</A>                           <A HREF="#@mailfilter">@MAILFILTER</A>
+<A HREF="#@mailnotify">@MAILNOTIFY</A>                     <A HREF="#@mailsig">@mailsig</A>                        <A HREF="#@moniker">@moniker</A>
+<A HREF="#@move">@move</A>                           <A HREF="#@mvattr">@mvattr</A>                         <A HREF="#@name">@name</A>
+<A HREF="#@nameformat">@nameformat</A>                     <A HREF="#@notify">@notify</A>                         <A HREF="#@odescribe">@odescribe</A>
+<A HREF="#@odfail">@odfail</A>                         <A HREF="#@odrop">@odrop</A>                          <A HREF="#@oefail">@oefail</A>
+<A HREF="#@oemit">@oemit</A>                          <A HREF="#@oenter">@oenter</A>                         <A HREF="#@ofail">@ofail</A>
+<A HREF="#@ogfail">@ogfail</A>                         <A HREF="#@okill">@okill</A>                          <A HREF="#@oleave">@oleave</A>
+<A HREF="#@olfail">@olfail</A>                         <A HREF="#@omove">@omove</A>                          <A HREF="#@opay">@opay</A>
+<A HREF="#@open">@open</A>                           <A HREF="#@orfail">@orfail</A>                         <A HREF="#@osuccess">@osuccess</A>
+<A HREF="#@otfail">@otfail</A>                         <A HREF="#@otofail">@otofail</A>                        <A HREF="#@otport">@otport</A>
+<A HREF="#@oufail">@oufail</A>                         <A HREF="#@ouse">@ouse</A>                           <A HREF="#@outpageformat">@OUTPAGEFORMAT</A>
+<A HREF="#@oxenter">@oxenter</A>                        <A HREF="#@oxleave">@oxleave</A>                        <A HREF="#@oxtport">@oxtport</A>
+<A HREF="#@pageformat">@PAGEFORMAT</A>                     <A HREF="#@pageformat2">@pageformat2</A>                    <A HREF="#@parent">@parent</A>
+<A HREF="#@password">@password</A>                       <A HREF="#@pay">@pay</A>                            <A HREF="#@pcreate">@pcreate</A>
+<A HREF="#@pemit">@pemit</A>                          <A HREF="#@pemit2">@pemit2</A>                         <A HREF="#@pipe">@pipe</A>
+<A HREF="#@prefix">@prefix</A>                         <A HREF="#@progprompt">@progprompt</A>                     <A HREF="#@program">@program</A>
+<A HREF="#@program2 ">@program2 </A>                      <A HREF="#@program3">@program3</A>                       <A HREF="#@protect">@protect</A>
+<A HREF="#@protect2">@protect2</A>                       <A HREF="#@ps">@ps</A>                             <A HREF="#@quitprogram">@quitprogram</A>
+<A HREF="#@quota">@quota</A>                          <A HREF="#@quota alternate">@quota alternate</A>                <A HREF="#@quota standard">@quota standard</A>
+<A HREF="#@race">@race</A>                           <A HREF="#@register">@register</A>                       <A HREF="#@reject">@reject</A>
+<A HREF="#@remit">@remit</A>                          <A HREF="#@retry">@retry</A>                          <A HREF="#@rfail">@rfail</A>
+<A HREF="#@robot">@robot</A>                          <A HREF="#@rollback">@rollback</A>                       <A HREF="#@rollback2">@rollback2</A>
+<A HREF="#@rollback3">@rollback3</A>                      <A HREF="#@rollback4">@rollback4</A>                      <A HREF="#@rollback5">@rollback5</A>
+<A HREF="#@rollback6">@rollback6</A>                      <A HREF="#@runout">@runout</A>                         <A HREF="#@salisten">@salisten</A>
+<A HREF="#@sasmell">@sasmell</A>                        <A HREF="#@sataste">@sataste</A>                        <A HREF="#@satouch">@satouch</A>
+<A HREF="#@saystring">@saystring</A>                      <A HREF="#@search">@search</A>                         <A HREF="#@selfboot">@SELFBOOT</A>
+<A HREF="#@set">@set</A>                            <A HREF="#@set2">@set2</A>                           <A HREF="#@sex">@sex</A>
+<A HREF="#@sfail">@sfail</A>                          <A HREF="#@skip">@skip</A>                           <A HREF="#@slisten">@slisten</A>
+<A HREF="#@solisten">@solisten</A>                       <A HREF="#@sosmell">@sosmell</A>                        <A HREF="#@sotaste">@sotaste</A>
+<A HREF="#@sotouch">@sotouch</A>                        <A HREF="#@sql">@sql</A>                            <A HREF="#@sqlconnect">@sqlconnect</A>
+<A HREF="#@sqldisconnect">@sqldisconnect</A>                  <A HREF="#@ssmell">@ssmell</A>                         <A HREF="#@startup">@startup</A>
+<A HREF="#@staste">@staste</A>                         <A HREF="#@stats">@stats</A>                          <A HREF="#@stouch">@stouch</A>
+<A HREF="#@success">@success</A>                        <A HREF="#@sudo">@sudo</A>                           <A HREF="#@sweep">@sweep</A>
+<A HREF="#@switch">@switch</A>                         <A HREF="#@switch2">@switch2</A>                        <A HREF="#@teleport">@teleport</A>
+<A HREF="#@teleport2">@teleport2</A>                      <A HREF="#@tfail">@tfail</A>                          <A HREF="#@titlecaption">@titlecaption</A>
+<A HREF="#@tofail">@tofail</A>                         <A HREF="#@toggle">@toggle</A>                         <A HREF="#@totem">@totem</A>
+<A HREF="#@tport">@tport</A>                          <A HREF="#@trigger">@trigger</A>                        <A HREF="#@ufail">@ufail</A>
+<A HREF="#@unlink">@unlink</A>                         <A HREF="#@unlock">@unlock</A>                         <A HREF="#@uptime">@uptime</A>
+<A HREF="#@use">@use</A>                            <A HREF="#@verb">@verb</A>                           <A HREF="#@verb2">@verb2</A>
+<A HREF="#@verb3">@verb3</A>                          <A HREF="#@version">@version</A>                        <A HREF="#@wait">@wait</A>
+<A HREF="#@wait2">@wait2</A>                          <A HREF="#@wall">@wall</A>                           <A HREF="#@whereall">@whereall</A>
+<A HREF="#@whereis">@whereis</A>                        <A HREF="#@wipe">@wipe</A>                           <A HREF="#@zone">@zone</A>
+<A HREF="#\*">\*</A>                              <A HREF="#\?">\?</A>                              <A HREF="#\\">\\</A>
+<A HREF="#]">]</A>                               <A HREF="#^MINUScommand">^-command</A>                       <A HREF="#^MINUSlisten">^-listen</A>
+<A HREF="#_">_</A>                               <A HREF="#abode">ABODE</A>                           <A HREF="#abs()">ABS()</A>
+<A HREF="#accent()">ACCENT()</A>                        <A HREF="#accent2">ACCENT2</A>                         <A HREF="#accent3">ACCENT3</A>
+<A HREF="#accent4">ACCENT4</A>                         <A HREF="#accents toggle">ACCENTS TOGGLE</A>                  <A HREF="#acos()">ACOS()</A>
+<A HREF="#add()">ADD()</A>                           <A HREF="#after()">AFTER()</A>                         <A HREF="#aiindex()">AIINDEX()</A>
+<A HREF="#aindex()">AINDEX()</A>                        <A HREF="#aliased functions">aliased functions</A>               <A HREF="#align()">ALIGN()</A>
+<A HREF="#allof()">ALLOF()</A>                         <A HREF="#alphamax()">ALPHAMAX()</A>                      <A HREF="#alphamin()">ALPHAMIN()</A>
+<A HREF="#alt inventories">ALT INVENTORIES</A>                 <A HREF="#altnames">ALTNAMES</A>                        <A HREF="#ancestors">ANCESTORS</A>
+<A HREF="#and()">AND()</A>                           <A HREF="#andchr()">ANDCHR()</A>                        <A HREF="#andflag()">ANDFLAG()</A>
+<A HREF="#andflags()">ANDFLAGS()</A>                      <A HREF="#andtotem()">ANDTOTEM()</A>                      <A HREF="#andtotems()">ANDTOTEMS()</A>
+<A HREF="#ansi">ANSI</A>                            <A HREF="#ansi functions">ansi functions</A>                  <A HREF="#ansi quirks">ANSI QUIRKS</A>
+<A HREF="#ansi usage">ANSI USAGE</A>                      <A HREF="#ansi()">ANSI()</A>                          <A HREF="#ansi2">ANSI2</A>
+<A HREF="#ansi3">ANSI3</A>                           <A HREF="#ansi4">ANSI4</A>                           <A HREF="#ansicolor">ANSICOLOR</A>
+<A HREF="#ansinames">ANSINAMES</A>                       <A HREF="#ansipos()">ANSIPOS()</A>                       <A HREF="#api">API</A>
+<A HREF="#api return">API RETURN</A>                      <A HREF="#aposs()">APOSS()</A>                         <A HREF="#arbitrary commands">ARBITRARY COMMANDS</A>
+<A HREF="#arbitrary2">arbitrary2</A>                      <A HREF="#architect">ARCHITECT</A>                       <A HREF="#arithmetic functions">arithmetic functions</A>
+<A HREF="#array()">ARRAY()</A>                         <A HREF="#array2">array2</A>                          <A HREF="#art()">ART()</A>
+<A HREF="#asc()">ASC()</A>                           <A HREF="#asin()">ASIN()</A>                          <A HREF="#atan()">ATAN()</A>
+<A HREF="#atan2()">ATAN2()</A>                         <A HREF="#attrcnt()">ATTRCNT()</A>                       <A HREF="#attrib formatting">ATTRIB FORMATTING</A>
+<A HREF="#attribute flag architect">ATTRIBUTE FLAG ARCHITECT</A>        <A HREF="#attribute flag atrlock">ATTRIBUTE FLAG ATRLOCK</A>          <A HREF="#attribute flag councilor">ATTRIBUTE FLAG COUNCILOR</A>
+<A HREF="#attribute flag dark">ATTRIBUTE FLAG DARK</A>             <A HREF="#attribute flag default">ATTRIBUTE FLAG DEFAULT</A>          <A HREF="#attribute flag god">ATTRIBUTE FLAG GOD</A>
+<A HREF="#attribute flag guildmaster">ATTRIBUTE FLAG GUILDMASTER</A>      <A HREF="#attribute flag hidden">ATTRIBUTE FLAG HIDDEN</A>           <A HREF="#attribute flag immortal">ATTRIBUTE FLAG IMMORTAL</A>
+<A HREF="#attribute flag lock">ATTRIBUTE FLAG LOCK</A>             <A HREF="#attribute flag logged">ATTRIBUTE FLAG LOGGED</A>           <A HREF="#attribute flag mdark">ATTRIBUTE FLAG MDARK</A>
+<A HREF="#attribute flag no_clone">ATTRIBUTE FLAG NO_CLONE</A>         <A HREF="#attribute flag no_command">ATTRIBUTE FLAG NO_COMMAND</A>       <A HREF="#attribute flag no_inherit">ATTRIBUTE FLAG NO_INHERIT</A>
+<A HREF="#attribute flag no_parse">ATTRIBUTE FLAG NO_PARSE</A>         <A HREF="#attribute flag noprog">ATTRIBUTE FLAG NOPROG</A>           <A HREF="#attribute flag pinvisible">ATTRIBUTE FLAG PINVISIBLE</A>
+<A HREF="#attribute flag private">ATTRIBUTE FLAG PRIVATE</A>          <A HREF="#attribute flag regexp">ATTRIBUTE FLAG REGEXP</A>           <A HREF="#attribute flag royalty">ATTRIBUTE FLAG ROYALTY</A>
+<A HREF="#attribute flag safe">ATTRIBUTE FLAG SAFE</A>             <A HREF="#attribute flag singlethread">ATTRIBUTE FLAG SINGLETHREAD</A>     <A HREF="#attribute flag uselock">ATTRIBUTE FLAG USELOCK</A>
+<A HREF="#attribute flag visual">ATTRIBUTE FLAG VISUAL</A>           <A HREF="#attribute flag wizard">ATTRIBUTE FLAG WIZARD</A>           <A HREF="#attribute flags">ATTRIBUTE FLAGS</A>
+<A HREF="#attribute flags2">ATTRIBUTE FLAGS2</A>                <A HREF="#attribute formatting">ATTRIBUTE FORMATTING</A>            <A HREF="#attribute ownership">ATTRIBUTE OWNERSHIP</A>
+<A HREF="#attribute ownership2">attribute ownership2</A>            <A HREF="#attribute ownership3">attribute ownership3</A>            <A HREF="#attribute tree limitations">ATTRIBUTE TREE LIMITATIONS</A>
+<A HREF="#attribute tree permission">ATTRIBUTE TREE PERMISSION</A>       <A HREF="#attribute tree setting">ATTRIBUTE TREE SETTING</A>          <A HREF="#attribute tree viewing">ATTRIBUTE TREE VIEWING</A>
+<A HREF="#attribute trees">ATTRIBUTE TREES</A>                 <A HREF="#attribute uselock2">ATTRIBUTE USELOCK2</A>              <A HREF="#attribute uselocks">ATTRIBUTE USELOCKS</A>
+<A HREF="#attributeMINUScommands">attribute-commands</A>              <A HREF="#attributes">attributes</A>                      <A HREF="#attrpass()">ATTRPASS()</A>
+<A HREF="#audible">AUDIBLE</A>                         <A HREF="#auditorium">AUDITORIUM</A>                      <A HREF="#avg()">AVG()</A>
+<A HREF="#band()">BAND()</A>                          <A HREF="#bang notation">BANG NOTATION</A>                   <A HREF="#bangs notation">BANGS NOTATION</A>
+<A HREF="#before()">BEFORE()</A>                        <A HREF="#being killed">BEING KILLED</A>                    <A HREF="#between()">BETWEEN()</A>
+<A HREF="#bittype()">BITTYPE()</A>                       <A HREF="#blind">BLIND</A>                           <A HREF="#bnand()">BNAND()</A>
+<A HREF="#bnot()">BNOT()</A>                          <A HREF="#bogus commands">BOGUS COMMANDS</A>                  <A HREF="#boolean values">BOOLEAN VALUES</A>
+<A HREF="#bor()">BOR()</A>                           <A HREF="#bounce">BOUNCE</A>                          <A HREF="#bounceforward">BOUNCEFORWARD</A>
+<A HREF="#bound()">BOUND()</A>                         <A HREF="#brackets()">BRACKETS()</A>                      <A HREF="#brandy_mail toggle">BRANDY_MAIL TOGGLE</A>
+<A HREF="#bxor()">BXOR()</A>                          <A HREF="#byeroom">BYEROOM</A>                         <A HREF="#cand()">CAND()</A>
+<A HREF="#caplist()">CAPLIST()</A>                       <A HREF="#capstr()">CAPSTR()</A>                        <A HREF="#case()">case()</A>
+<A HREF="#caseall()">caseall()</A>                       <A HREF="#cat()">cat()</A>                           <A HREF="#cdark">cdark</A>
+<A HREF="#ceil()">CEIL()</A>                          <A HREF="#center()">CENTER()</A>                        <A HREF="#changes">changes</A>
+<A HREF="#channel">channel</A>                         <A HREF="#channel2">channel2</A>                        <A HREF="#charin()">CHARIN()</A>
+<A HREF="#charout()">CHAROUT()</A>                       <A HREF="#chidden">chidden</A>                         <A HREF="#children()">CHILDREN()</A>
+<A HREF="#chkreality()">CHKREALITY()</A>                    <A HREF="#chkreality()">CHKREALITY()</A>                    <A HREF="#chktrace()">CHKTRACE()</A>
+<A HREF="#chomp()">CHOMP()</A>                         <A HREF="#chown_ok">CHOWN_OK</A>                        <A HREF="#chr()">CHR()</A>
+<A HREF="#citer()">CITER()</A>                         <A HREF="#cloak">CLOAK</A>                           <A HREF="#clone()">CLONE()</A>
+<A HREF="#cluster commands">CLUSTER COMMANDS</A>                <A HREF="#cluster functions">cluster functions</A>               <A HREF="#cluster_add()">CLUSTER_ADD()</A>
+<A HREF="#cluster_attrcnt()">CLUSTER_ATTRCNT()</A>               <A HREF="#cluster_default()">CLUSTER_DEFAULT()</A>               <A HREF="#cluster_edefault()">CLUSTER_EDEFAULT()</A>
+<A HREF="#cluster_flags()">CLUSTER_FLAGS()</A>                 <A HREF="#cluster_get()">CLUSTER_GET()</A>                   <A HREF="#cluster_get_eval()">CLUSTER_GET_EVAL()</A>
+<A HREF="#cluster_grep()">CLUSTER_GREP()</A>                  <A HREF="#cluster_hasattr()">CLUSTER_HASATTR()</A>               <A HREF="#cluster_hasflag()">CLUSTER_HASFLAG()</A>
+<A HREF="#cluster_lattr()">CLUSTER_LATTR()</A>                 <A HREF="#cluster_lattr2 ">CLUSTER_LATTR2 </A>                 <A HREF="#cluster_regrep()">CLUSTER_REGREP()</A>
+<A HREF="#cluster_regrepi()">CLUSTER_REGREPI()</A>               <A HREF="#cluster_set()">CLUSTER_SET()</A>                   <A HREF="#cluster_stats()">CLUSTER_STATS()</A>
+<A HREF="#cluster_u()">CLUSTER_U()</A>                     <A HREF="#cluster_u2()">CLUSTER_U2()</A>                    <A HREF="#cluster_u2default()">CLUSTER_U2DEFAULT()</A>
+<A HREF="#cluster_u2ldefault()">CLUSTER_U2LDEFAULT()</A>            <A HREF="#cluster_u2local()">CLUSTER_U2LOCAL()</A>               <A HREF="#cluster_u2local2">CLUSTER_U2LOCAL2</A>
+<A HREF="#cluster_udefault()">CLUSTER_UDEFAULT()</A>              <A HREF="#cluster_ueval()">CLUSTER_UEVAL()</A>                 <A HREF="#cluster_uldefault()">CLUSTER_ULDEFAULT()</A>
+<A HREF="#cluster_ulocal()">CLUSTER_ULOCAL()</A>                <A HREF="#cluster_ulocal2">CLUSTER_ULOCAL2</A>                 <A HREF="#cluster_vattrcnt()">CLUSTER_VATTRCNT()</A>
+<A HREF="#cluster_wipe()">CLUSTER_WIPE()</A>                  <A HREF="#cluster_xget()">CLUSTER_XGET()</A>                  <A HREF="#clusters">CLUSTERS</A>
+<A HREF="#cmds()">CMDS()</A>                          <A HREF="#cname()">CNAME()</A>                         <A HREF="#coding">CODING</A>
+<A HREF="#coding attrib">CODING ATTRIB</A>                   <A HREF="#coding attrib2">CODING ATTRIB2</A>                  <A HREF="#coding command">CODING COMMAND</A>
+<A HREF="#coding funct">CODING FUNCT</A>                    <A HREF="#coding nest">CODING NEST</A>                     <A HREF="#coding queue">CODING QUEUE</A>
+<A HREF="#coding regs">CODING REGS</A>                     <A HREF="#coding subs">CODING SUBS</A>                     <A HREF="#coding2">CODING2</A>
+<A HREF="#coding3">CODING3</A>                         <A HREF="#colors">colors</A>                          <A HREF="#colors()">COLORS()</A>
+<A HREF="#columns()">COLUMNS()</A>                       <A HREF="#columns2">COLUMNS2</A>                        <A HREF="#columns3">COLUMNS3</A>
+<A HREF="#combat">COMBAT</A>                          <A HREF="#command evaluation">COMMAND EVALUATION</A>              <A HREF="#command evaluation2">command evaluation2</A>
+<A HREF="#commands">commands</A>                        <A HREF="#commands flag">COMMANDS FLAG</A>                   <A HREF="#commands2">commands2</A>
+<A HREF="#comp()">COMP()</A>                          <A HREF="#con()">CON()</A>                           <A HREF="#config()">CONFIG()</A>
+<A HREF="#conn()">CONN()</A>                          <A HREF="#connect">connect</A>                         <A HREF="#connected">CONNECTED</A>
+<A HREF="#control">CONTROL</A>                         <A HREF="#control_ok">CONTROL_OK</A>                      <A HREF="#controls()">controls()</A>
+<A HREF="#convsecs()">CONVSECS()</A>                      <A HREF="#convtime()">CONVTIME()</A>                      <A HREF="#copyright">COPYRIGHT</A>
+<A HREF="#cor()">COR()</A>                           <A HREF="#cos()">COS()</A>                           <A HREF="#cosh()">COSH()</A>
+<A HREF="#costs ">COSTS </A>                          <A HREF="#councilor">COUNCILOR</A>                       <A HREF="#cpattr2">CPATTR2</A>
+<A HREF="#cpattr3">CPATTR3</A>                         <A HREF="#cputime toggle">CPUTIME TOGGLE</A>                  <A HREF="#cputime2">CPUTIME2</A>
+<A HREF="#crc32()">CRC32()</A>                         <A HREF="#create">create</A>                          <A HREF="#create()">CREATE()</A>
+<A HREF="#createtime()">CREATETIME()</A>                    <A HREF="#credits">CREDITS</A>                         <A HREF="#credits2">credits2</A>
+<A HREF="#credits3">credits3</A>                        <A HREF="#credits4">credits4</A>                        <A HREF="#credits5">credits5</A>
+<A HREF="#creplace()">CREPLACE()</A>                      <A HREF="#ctu()">CTU()</A>                           <A HREF="#dark">DARK</A>
+<A HREF="#database information functions">database information functions</A>  <A HREF="#debug">DEBUG</A>                           <A HREF="#dec()">DEC()</A>
+<A HREF="#decode64()">DECODE64()</A>                      <A HREF="#decrypt()">DECRYPT()</A>                       <A HREF="#default()">default()</A>
+<A HREF="#delete()">DELETE()</A>                        <A HREF="#delextract()">delextract()</A>                    <A HREF="#descformat">descformat</A>
+<A HREF="#destroy()">DESTROY()</A>                       <A HREF="#destroy_ok">DESTROY_OK</A>                      <A HREF="#dice()">DICE()</A>
+<A HREF="#die()">DIE()</A>                           <A HREF="#differences">DIFFERENCES</A>                     <A HREF="#differences2">DIFFERENCES2</A>
+<A HREF="#dig()">DIG()</A>                           <A HREF="#digest()">DIGEST()</A>                        <A HREF="#dist2d()">DIST2D()</A>
+<A HREF="#dist3d()">DIST3D()</A>                        <A HREF="#div()">DIV()</A>                           <A HREF="#doing">doing</A>
+<A HREF="#door syntax">DOOR SYNTAX</A>                     <A HREF="#door_close">DOOR_CLOSE</A>                      <A HREF="#door_kick">DOOR_KICK</A>
+<A HREF="#door_list">DOOR_LIST</A>                       <A HREF="#door_list2">DOOR_LIST2</A>                      <A HREF="#door_open">DOOR_OPEN</A>
+<A HREF="#door_push">DOOR_PUSH</A>                       <A HREF="#door_status">DOOR_STATUS</A>                     <A HREF="#door_writing">DOOR_WRITING</A>
+<A HREF="#door_writing2">DOOR_WRITING2</A>                   <A HREF="#door_writing3">DOOR_WRITING3</A>                   <A HREF="#doored">DOORED</A>
+<A HREF="#drop">drop</A>                            <A HREF="#dropMINUStos">DROP-TOS</A>                        <A HREF="#e()">E()</A>
+<A HREF="#edefault()">edefault()</A>                      <A HREF="#edit()">EDIT()</A>                          <A HREF="#editansi()">EDITANSI()</A>
+<A HREF="#ee()">EE()</A>                            <A HREF="#elementpos()">ELEMENTPOS()</A>                    <A HREF="#elements()">elements()</A>
+<A HREF="#elementsmux()">elementsmux()</A>                   <A HREF="#elist()">elist()</A>                         <A HREF="#elock()">elock()</A>
+<A HREF="#emit()">EMIT()</A>                          <A HREF="#enactor">ENACTOR</A>                         <A HREF="#encode64()">ENCODE64()</A>
+<A HREF="#encrypt()">ENCRYPT()</A>                       <A HREF="#enter">enter</A>                           <A HREF="#enter_ok">ENTER_OK</A>
+<A HREF="#entrances()">ENTRANCES()</A>                     <A HREF="#eq()">eq()</A>                            <A HREF="#error()">ERROR()</A>
+<A HREF="#escape()">ESCAPE()</A>                        <A HREF="#escapex()">ESCAPEX()</A>                       <A HREF="#esclist()">ESCLIST()</A>
+<A HREF="#eval()">EVAL()</A>                          <A HREF="#examine">examine</A>                         <A HREF="#examine2">examine2</A>
+<A HREF="#examine3">examine3</A>                        <A HREF="#examine4">examine4</A>                        <A HREF="#exit()">EXIT()</A>
+<A HREF="#exits">EXITS</A>                           <A HREF="#exp()">EXP()</A>                           <A HREF="#extansi toggle">EXTANSI TOGGLE</A>
+<A HREF="#extract()">EXTRACT()</A>                       <A HREF="#extractword()">EXTRACTWORD()</A>                   <A HREF="#failure">FAILURE</A>
+<A HREF="#fbetween()">FBETWEEN()</A>                      <A HREF="#fbound()">FBOUND()</A>                        <A HREF="#fdiv()">FDIV()</A>
+<A HREF="#filter()">filter()</A>                        <A HREF="#findable()">findable()</A>                      <A HREF="#first()">FIRST()</A>
+<A HREF="#firstof()">FIRSTOF()</A>                       <A HREF="#flag aliases">FLAG ALIASES</A>                    <A HREF="#flag list">FLAG LIST</A>
+<A HREF="#flag list2">FLAG LIST2</A>                      <A HREF="#flags">FLAGS</A>                           <A HREF="#flags()">FLAGS()</A>
+<A HREF="#flip()">FLIP()</A>                          <A HREF="#floating">FLOATING</A>                        <A HREF="#floor()">FLOOR()</A>
+<A HREF="#floordiv()">FLOORDIV()</A>                      <A HREF="#fmod()">FMOD()</A>                          <A HREF="#fold()">fold()</A>
+<A HREF="#folder">folder</A>                          <A HREF="#folder change">folder change</A>                   <A HREF="#folder cmdlist">folder cmdlist</A>
+<A HREF="#folder create">folder create</A>                   <A HREF="#folder cshare">folder cshare</A>                   <A HREF="#folder current">folder current</A>
+<A HREF="#folder delete">folder delete</A>                   <A HREF="#folder list">folder list</A>                     <A HREF="#folder move">folder move</A>
+<A HREF="#folder quicklist">folder quicklist</A>                <A HREF="#folder rename">folder rename</A>                   <A HREF="#folder share">folder share</A>
+<A HREF="#folder/change">folder/change</A>                   <A HREF="#folder/create">folder/create</A>                   <A HREF="#folder/cshare">folder/cshare</A>
+<A HREF="#folder/current">folder/current</A>                  <A HREF="#folder/delete">folder/delete</A>                   <A HREF="#folder/list">folder/list</A>
+<A HREF="#folder/move">folder/move</A>                     <A HREF="#folder/rename">folder/rename</A>                   <A HREF="#folder/share">folder/share</A>
+<A HREF="#foldercurrent()">FOLDERCURRENT()</A>                 <A HREF="#folderlist()">FOLDERLIST()</A>                    <A HREF="#foreach()">FOREACH()</A>
+<A HREF="#formatdesc">formatdesc</A>                      <A HREF="#free">FREE</A>                            <A HREF="#fubar">FUBAR</A>
+<A HREF="#fullname()">FULLNAME()</A>                      <A HREF="#function aliases">FUNCTION ALIASES</A>                <A HREF="#function classes">FUNCTION CLASSES</A>
+<A HREF="#function classes2">FUNCTION CLASSES2</A>               <A HREF="#function classes3">FUNCTION CLASSES3</A>               <A HREF="#function classes4">FUNCTION CLASSES4</A>
+<A HREF="#function classes5">FUNCTION CLASSES5</A>               <A HREF="#function classes6">FUNCTION CLASSES6</A>               <A HREF="#function classes7">FUNCTION CLASSES7</A>
+<A HREF="#function list">FUNCTION LIST</A>                   <A HREF="#function list2">FUNCTION LIST2</A>                  <A HREF="#function list3">FUNCTION LIST3</A>
+<A HREF="#function list4">FUNCTION LIST4</A>                  <A HREF="#function list5">FUNCTION LIST5</A>                  <A HREF="#function types">FUNCTION TYPES</A>
+<A HREF="#functions">FUNCTIONS</A>                       <A HREF="#game information functions">game information functions</A>      <A HREF="#garble()">GARBLE()</A>
+<A HREF="#gender">GENDER</A>                          <A HREF="#get">get</A>                             <A HREF="#get()">GET()</A>
+<A HREF="#get2">get2</A>                            <A HREF="#get_eval()">GET_EVAL()</A>                      <A HREF="#give">give</A>
+<A HREF="#globalroom()">GLOBALROOM()</A>                    <A HREF="#globbing">GLOBBING</A>                        <A HREF="#goals">GOALS</A>
+<A HREF="#going">GOING</A>                           <A HREF="#goto">goto</A>                            <A HREF="#grab">grab</A>
+<A HREF="#grab()">GRAB()</A>                          <A HREF="#graball()">GRABALL()</A>                       <A HREF="#grep()">GREP()</A>
+<A HREF="#gt()">gt()</A>                            <A HREF="#gte()">gte()</A>                           <A HREF="#guests">GUESTS</A>
+<A HREF="#guild()">GUILD()</A>                         <A HREF="#guildmaster">GUILDMASTER</A>                     <A HREF="#halted">HALTED</A>
+<A HREF="#hasattr()">hasattr()</A>                       <A HREF="#hasattrp()">hasattrp()</A>                      <A HREF="#hasflag()">hasflag()</A>
+<A HREF="#hasquota()">hasquota()</A>                      <A HREF="#hasrxlevel()">HASRXLEVEL()</A>                    <A HREF="#hastoggle()">HASTOGGLE()</A>
+<A HREF="#hastotem()">HASTOTEM()</A>                      <A HREF="#hastxlevel()">HASTXLEVEL()</A>                    <A HREF="#hastype()">hastype()</A>
+<A HREF="#haven">HAVEN</A>                           <A HREF="#help">help</A>                            <A HREF="#here">HERE</A>
+<A HREF="#historical">historical</A>                      <A HREF="#home()">HOME()</A>                          <A HREF="#homes">HOMES</A>
+<A HREF="#ibreak()">IBREAK()</A>                        <A HREF="#ic">IC</A>                              <A HREF="#idiv()">IDIV()</A>
+<A HREF="#idle">IDLE</A>                            <A HREF="#idle()">IDLE()</A>                          <A HREF="#if()">if()</A>
+<A HREF="#ifelse()">ifelse()</A>                        <A HREF="#iindex()">IINDEX()</A>                        <A HREF="#ilev()">ILEV()</A>
+<A HREF="#immortal">IMMORTAL</A>                        <A HREF="#inc()">INC()</A>                           <A HREF="#indestructible">INDESTRUCTIBLE</A>
+<A HREF="#index()">INDEX()</A>                         <A HREF="#inf()">INF()</A>                           <A HREF="#info">INFO</A>
+<A HREF="#inherit">INHERIT</A>                         <A HREF="#inprogram()">INPROGRAM()</A>                     <A HREF="#insert()">INSERT()</A>
+<A HREF="#insert2 ">INSERT2 </A>                        <A HREF="#internal_doors">INTERNAL_DOORS</A>                  <A HREF="#inum()">INUM()</A>
+<A HREF="#inventory">inventory</A>                       <A HREF="#invformat">invformat</A>                       <A HREF="#inzone()">INZONE()</A>
+<A HREF="#isalnum()">ISALNUM()</A>                       <A HREF="#isalpha()">ISALPHA()</A>                       <A HREF="#iscluster()">ISCLUSTER()</A>
+<A HREF="#isdbref()">ISDBREF()</A>                       <A HREF="#isdigit()">ISDIGIT()</A>                       <A HREF="#ishidden()">ISHIDDEN()</A>
+<A HREF="#isint()">ISINT()</A>                         <A HREF="#islower()">ISLOWER()</A>                       <A HREF="#isnum()">ISNUM()</A>
+<A HREF="#isobjid()">ISOBJID()</A>                       <A HREF="#ispunct()">ISPUNCT()</A>                       <A HREF="#isspace()">ISSPACE()</A>
+<A HREF="#istag()">ISTAG()</A>                         <A HREF="#isupper()">ISUPPER()</A>                       <A HREF="#isword()">ISWORD()</A>
+<A HREF="#isxdigit()">ISXDIGIT()</A>                      <A HREF="#iter()">ITER()</A>                          <A HREF="#itext()">ITEXT()</A>
+<A HREF="#join">join</A>                            <A HREF="#jump_ok">JUMP_OK</A>                         <A HREF="#keepalive toggle">KEEPALIVE TOGGLE</A>
+<A HREF="#keepflags()">KEEPFLAGS()</A>                     <A HREF="#keeptype()">KEEPTYPE()</A>                      <A HREF="#key">KEY</A>
+<A HREF="#kill">kill</A>                            <A HREF="#ladd()">LADD()</A>                          <A HREF="#land()">LAND()</A>
+<A HREF="#last()">LAST()</A>                          <A HREF="#lastcreate()">LASTCREATE()</A>                    <A HREF="#lattr()">LATTR()</A>
+<A HREF="#lattr2 ">LATTR2 </A>                         <A HREF="#lavg()">LAVG()</A>                          <A HREF="#lcmds()">LCMDS()</A>
+<A HREF="#lcon()">LCON()</A>                          <A HREF="#lcstr()">LCSTR()</A>                         <A HREF="#ldelete()">LDELETE()</A>
+<A HREF="#ldiv()">LDIV()</A>                          <A HREF="#leave">leave</A>                           <A HREF="#left()">LEFT()</A>
+<A HREF="#lemit()">LEMIT()</A>                         <A HREF="#lexits()">LEXITS()</A>                        <A HREF="#lflags()">LFLAGS()</A>
+<A HREF="#light">LIGHT</A>                           <A HREF="#link()">LINK()</A>                          <A HREF="#link_ok">LINK_OK</A>
+<A HREF="#linking ">LINKING </A>                        <A HREF="#list functions">list functions</A>                  <A HREF="#list functions2">list functions2</A>
+<A HREF="#list functions3">list functions3</A>                 <A HREF="#list functions4">list functions4</A>                 <A HREF="#list()">LIST()</A>
+<A HREF="#list2">LIST2</A>                           <A HREF="#listcommands()">LISTCOMMANDS()</A>                  <A HREF="#listdiff()">LISTDIFF()</A>
+<A HREF="#listen">listen</A>                          <A HREF="#listening">LISTENING</A>                       <A HREF="#listflags()">LISTFLAGS()</A>
+<A HREF="#listfunctions()">LISTFUNCTIONS()</A>                 <A HREF="#listinter()">LISTINTER()</A>                     <A HREF="#listmatch()">LISTMATCH()</A>
+<A HREF="#listnewsgroups()">LISTNEWSGROUPS()</A>                <A HREF="#listprotection()">LISTPROTECTION()</A>                <A HREF="#listrlevels()">LISTRLEVELS()</A>
+<A HREF="#lists">LISTS</A>                           <A HREF="#listtoggles()">LISTTOGGLES()</A>                   <A HREF="#listtotems()">LISTTOTEMS()</A>
+<A HREF="#listunion()">LISTUNION()</A>                     <A HREF="#lit()">LIT()</A>                           <A HREF="#lj()">LJ()</A>
+<A HREF="#ljc()">LJC()</A>                           <A HREF="#ljust()">LJUST()</A>                         <A HREF="#lloc()">LLOC()</A>
+<A HREF="#lmath()">LMATH()</A>                         <A HREF="#lmax()">LMAX()</A>                          <A HREF="#lmin()">LMIN()</A>
+<A HREF="#lmul()">LMUL()</A>                          <A HREF="#ln()">LN()</A>                            <A HREF="#lnor()">LNOR()</A>
+<A HREF="#lnum()">LNUM()</A>                          <A HREF="#lnum2()">LNUM2()</A>                         <A HREF="#loc()">LOC()</A>
+<A HREF="#localfunc()">LOCALFUNC()</A>                     <A HREF="#localize()">LOCALIZE()</A>                      <A HREF="#locate()">LOCATE()</A>
+<A HREF="#locate2">locate2</A>                         <A HREF="#locate3">locate3</A>                         <A HREF="#lock()">lock()</A>
+<A HREF="#lockcheck()">lockcheck()</A>                     <A HREF="#lockdecode()">lockdecode()</A>                    <A HREF="#lockencode()">lockencode()</A>
+<A HREF="#locks">locks</A>                           <A HREF="#log()">LOG()</A>                           <A HREF="#logarithmic functions">logarithmic functions</A>
+<A HREF="#logical functions">logical functions</A>               <A HREF="#logout">LOGOUT</A>                          <A HREF="#look">look</A>
+<A HREF="#looping">LOOPING</A>                         <A HREF="#lor()">LOR()</A>                           <A HREF="#lpage">lpage</A>
+<A HREF="#lparent()">LPARENT()</A>                       <A HREF="#lrand()">lrand()</A>                         <A HREF="#lreplace()">LREPLACE()</A>
+<A HREF="#lrooms()">lrooms()</A>                        <A HREF="#lset()">LSET()</A>                          <A HREF="#lsub()">LSUB()</A>
+<A HREF="#lt()">lt()</A>                            <A HREF="#lte()">lte()</A>                           <A HREF="#ltoggles()">LTOGGLES()</A>
+<A HREF="#ltotems()">LTOTEMS()</A>                       <A HREF="#lwho()">LWHO()</A>                          <A HREF="#lxnor()">LXNOR()</A>
+<A HREF="#lxor()">LXOR()</A>                          <A HREF="#lzone()">LZONE()</A>                         <A HREF="#mail">mail</A>
+<A HREF="#mail PLUSall">mail +all</A>                       <A HREF="#mail alias">mail alias</A>                      <A HREF="#mail anonymous">mail anonymous</A>
+<A HREF="#mail attributes">mail attributes</A>                 <A HREF="#mail autofor">mail autofor</A>                    <A HREF="#mail autopurges">mail autopurges</A>
+<A HREF="#mail ball">mail ball</A>                       <A HREF="#mail basics">mail basics</A>                     <A HREF="#mail basics2">mail basics2</A>
+<A HREF="#mail both">mail both</A>                       <A HREF="#mail btutor">mail btutor</A>                     <A HREF="#mail changes">mail changes</A>
+<A HREF="#mail changes2">mail changes2</A>                   <A HREF="#mail check">mail check</A>                      <A HREF="#mail cmdlist">mail cmdlist</A>
+<A HREF="#mail cmdlist2">mail cmdlist2</A>                   <A HREF="#mail cmdlist3">mail cmdlist3</A>                   <A HREF="#mail creating">mail creating</A>
+<A HREF="#mail credits">mail credits</A>                    <A HREF="#mail delete">mail delete</A>                     <A HREF="#mail dtutor">mail dtutor</A>
+<A HREF="#mail dtutor notes">mail dtutor notes</A>               <A HREF="#mail dtutor1">mail dtutor1</A>                    <A HREF="#mail dtutor2">mail dtutor2</A>
+<A HREF="#mail dtutor3">mail dtutor3</A>                    <A HREF="#mail dtutor4">mail dtutor4</A>                    <A HREF="#mail dtutor5">mail dtutor5</A>
+<A HREF="#mail dtutor6">mail dtutor6</A>                    <A HREF="#mail dtutor7">mail dtutor7</A>                    <A HREF="#mail folders">mail folders</A>
+<A HREF="#mail forward">mail forward</A>                    <A HREF="#mail line">mail line</A>                       <A HREF="#mail line examples">mail line examples</A>
+<A HREF="#mail lineeditor">mail lineeditor</A>                 <A HREF="#mail list_aliases">mail list_aliases</A>               <A HREF="#mail lock">mail lock</A>
+<A HREF="#mail main">mail main</A>                       <A HREF="#mail mark">mail mark</A>                       <A HREF="#mail massmail">mail massmail</A>
+<A HREF="#mail nall">mail nall</A>                       <A HREF="#mail new">mail new</A>                        <A HREF="#mail next">mail next</A>
+<A HREF="#mail number">mail number</A>                     <A HREF="#mail page">mail page</A>                       <A HREF="#mail password">mail password</A>
+<A HREF="#mail previous">mail previous</A>                   <A HREF="#mail ptutor">mail ptutor</A>                     <A HREF="#mail quick">mail quick</A>
+<A HREF="#mail quicklist">mail quicklist</A>                  <A HREF="#mail quota">mail quota</A>                      <A HREF="#mail read">mail read</A>
+<A HREF="#mail recall">mail recall</A>                     <A HREF="#mail recall2">mail recall2</A>                    <A HREF="#mail recall3">mail recall3</A>
+<A HREF="#mail reject">mail reject</A>                     <A HREF="#mail reply">mail reply</A>                      <A HREF="#mail save">mail save</A>
+<A HREF="#mail send brandy">mail send brandy</A>                <A HREF="#mail send examples">mail send examples</A>              <A HREF="#mail send quick">mail send quick</A>
+<A HREF="#mail send2">mail send2</A>                      <A HREF="#mail sending">mail sending</A>                    <A HREF="#mail setup_aliases">mail setup_aliases</A>
+<A HREF="#mail share">mail share</A>                      <A HREF="#mail signature">mail signature</A>                  <A HREF="#mail status">mail status</A>
+<A HREF="#mail status2">mail status2</A>                    <A HREF="#mail technical">mail technical</A>                  <A HREF="#mail topics">mail topics</A>
+<A HREF="#mail tutorial">mail tutorial</A>                   <A HREF="#mail uall">mail uall</A>                       <A HREF="#mail unmark">mail unmark</A>
+<A HREF="#mail unread">mail unread</A>                     <A HREF="#mail version">mail version</A>                    <A HREF="#mail write">mail write</A>
+<A HREF="#mail write PLUSacc">mail write +acc</A>                 <A HREF="#mail write PLUSbcc">mail write +bcc</A>                 <A HREF="#mail write PLUScc">mail write +cc</A>
+<A HREF="#mail write PLUSdel">mail write +del</A>                 <A HREF="#mail write PLUSedit">mail write +edit</A>                <A HREF="#mail write PLUSeditall">mail write +editall</A>
+<A HREF="#mail write PLUSfedit">mail write +fedit</A>               <A HREF="#mail write PLUSfeditall">mail write +feditall</A>            <A HREF="#mail write PLUSforget">mail write +forget</A>
+<A HREF="#mail write PLUSforward">mail write +forward</A>             <A HREF="#mail write PLUSinsert">mail write +insert</A>              <A HREF="#mail write PLUSjoin">mail write +join</A>
+<A HREF="#mail write PLUSjustify">mail write +justify</A>             <A HREF="#mail write PLUSlist">mail write +list</A>                <A HREF="#mail write PLUSproof">mail write +proof</A>
+<A HREF="#mail write PLUSreply">mail write +reply</A>               <A HREF="#mail write PLUSsend">mail write +send</A>                <A HREF="#mail write PLUSsplit">mail write +split</A>
+<A HREF="#mail write PLUSsubject">mail write +subject</A>             <A HREF="#mail write MINUS">mail write -</A>                    <A HREF="#mail write adding">mail write adding</A>
+<A HREF="#mail write autonotify">mail write autonotify</A>           <A HREF="#mail write cmdlist">mail write cmdlist</A>              <A HREF="#mail write cmdlist2">mail write cmdlist2</A>
+<A HREF="#mail write examples">mail write examples</A>             <A HREF="#mail write forwarding">mail write forwarding</A>           <A HREF="#mail write quicksending">mail write quicksending</A>
+<A HREF="#mail writing">mail writing</A>                    <A HREF="#mail zap">mail zap</A>                        <A HREF="#mailMINUSadmin">mail-admin</A>
+<A HREF="#mailMINUSaliases">mail-aliases</A>                    <A HREF="#mailMINUSaliases2">mail-aliases2</A>                   <A HREF="#mailMINUSattributes">mail-attributes</A>
+<A HREF="#mailMINUSdeleting">mail-deleting</A>                   <A HREF="#mailMINUSexamples">mail-examples</A>                   <A HREF="#mailMINUSfiltering">mail-filtering</A>
+<A HREF="#mailMINUSfolders">mail-folders</A>                    <A HREF="#mailMINUSother">mail-other</A>                      <A HREF="#mailMINUSreading">mail-reading</A>
+<A HREF="#mailMINUSreviewing">mail-reviewing</A>                  <A HREF="#mailMINUSsharing">mail-sharing</A>                    <A HREF="#mailMINUSwriting">mail-writing</A>
+<A HREF="#mail/alias">mail/alias</A>                      <A HREF="#mail/anonymous">mail/anonymous</A>                  <A HREF="#mail/autofor">mail/autofor</A>
+<A HREF="#mail/check">mail/check</A>                      <A HREF="#mail/delete">mail/delete</A>                     <A HREF="#mail/forward">mail/forward</A>
+<A HREF="#mail/lock">mail/lock</A>                       <A HREF="#mail/mark">mail/mark</A>                       <A HREF="#mail/mark/save">mail/mark/save</A>
+<A HREF="#mail/next">mail/next</A>                       <A HREF="#mail/number">mail/number</A>                     <A HREF="#mail/page">mail/page</A>
+<A HREF="#mail/password">mail/password</A>                   <A HREF="#mail/previous">mail/previous</A>                   <A HREF="#mail/quick">mail/quick</A>
+<A HREF="#mail/quota">mail/quota</A>                      <A HREF="#mail/read">mail/read</A>                       <A HREF="#mail/read/save">mail/read/save</A>
+<A HREF="#mail/recall">mail/recall</A>                     <A HREF="#mail/reject">mail/reject</A>                     <A HREF="#mail/reply">mail/reply</A>
+<A HREF="#mail/save">mail/save</A>                       <A HREF="#mail/save/read">mail/save/read</A>                  <A HREF="#mail/send">mail/send</A>
+<A HREF="#mail/share">mail/share</A>                      <A HREF="#mail/status">mail/status</A>                     <A HREF="#mail/unmark">mail/unmark</A>
+<A HREF="#mail/version">mail/version</A>                    <A HREF="#mail/write">mail/write</A>                      <A HREF="#mail/write PLUSacc">mail/write +acc</A>
+<A HREF="#mail/write PLUSbcc">mail/write +bcc</A>                 <A HREF="#mail/write PLUScc">mail/write +cc</A>                  <A HREF="#mail/write PLUSdel">mail/write +del</A>
+<A HREF="#mail/write PLUSedit">mail/write +edit</A>                <A HREF="#mail/write PLUSeditall">mail/write +editall</A>             <A HREF="#mail/write PLUSfedit">mail/write +fedit</A>
+<A HREF="#mail/write PLUSfeditall">mail/write +feditall</A>            <A HREF="#mail/write PLUSforget">mail/write +forget</A>              <A HREF="#mail/write PLUSforward">mail/write +forward</A>
+<A HREF="#mail/write PLUSinsert">mail/write +insert</A>              <A HREF="#mail/write PLUSjoin">mail/write +join</A>                <A HREF="#mail/write PLUSjustify">mail/write +justify</A>
+<A HREF="#mail/write PLUSlist">mail/write +list</A>                <A HREF="#mail/write PLUSproof">mail/write +proof</A>               <A HREF="#mail/write PLUSreply">mail/write +reply</A>
+<A HREF="#mail/write PLUSsend">mail/write +send</A>                <A HREF="#mail/write PLUSsplit">mail/write +split</A>               <A HREF="#mail/write PLUSsubject">mail/write +subject</A>
+<A HREF="#mail/zap">mail/zap</A>                        <A HREF="#mail_noparse toggle">MAIL_NOPARSE TOGGLE</A>             <A HREF="#mail_stripreturn toggle">MAIL_STRIPRETURN TOGGLE</A>
+<A HREF="#mailfilter">MAILFILTER</A>                      <A HREF="#mailnotify">MAILNOTIFY</A>                      <A HREF="#mailquick()">MAILQUICK()</A>
+<A HREF="#mailvalidate toggle">MAILVALIDATE TOGGLE</A>             <A HREF="#map()">map()</A>                           <A HREF="#marker0">MARKER0</A>
+<A HREF="#marker1">MARKER1</A>                         <A HREF="#marker2">MARKER2</A>                         <A HREF="#marker3">MARKER3</A>
+<A HREF="#marker4">MARKER4</A>                         <A HREF="#marker5">MARKER5</A>                         <A HREF="#marker6">MARKER6</A>
+<A HREF="#marker7">MARKER7</A>                         <A HREF="#marker8">MARKER8</A>                         <A HREF="#marker9">MARKER9</A>
+<A HREF="#mask()">MASK()</A>                          <A HREF="#match()">MATCH()</A>                         <A HREF="#max args">MAX ARGS</A>
+<A HREF="#max()">MAX()</A>                           <A HREF="#max_name_protect">max_name_protect</A>                <A HREF="#me">ME</A>
+<A HREF="#member()">member()</A>                        <A HREF="#merge()">MERGE()</A>                         <A HREF="#mid()">MID()</A>
+<A HREF="#min()">MIN()</A>                           <A HREF="#miscellaneous functions">miscellaneous functions</A>         <A HREF="#mix()">MIX()</A>
+<A HREF="#mod()">MOD()</A>                           <A HREF="#modifytime()">MODIFYTIME()</A>                    <A HREF="#modulo()">MODULO()</A>
+<A HREF="#money">MONEY</A>                           <A HREF="#money()">MONEY()</A>                         <A HREF="#moneyname()">MONEYNAME()</A>
+<A HREF="#monitor">MONITOR</A>                         <A HREF="#monitor toggle">MONITOR TOGGLE</A>                  <A HREF="#moon()">MOON()</A>
+<A HREF="#move">move</A>                            <A HREF="#move()">MOVE()</A>                          <A HREF="#moving">MOVING</A>
+<A HREF="#moving2">moving2</A>                         <A HREF="#moving3">moving3</A>                         <A HREF="#mrpage">mrpage</A>
+<A HREF="#msecs()">MSECS()</A>                         <A HREF="#muddiff">MUDDIFF</A>                         <A HREF="#mudname()">MUDNAME()</A>
+<A HREF="#mul()">MUL()</A>                           <A HREF="#munge()">MUNGE()</A>                         <A HREF="#munge2">MUNGE2</A>
+<A HREF="#muxpage toggle">MUXPAGE TOGGLE</A>                  <A HREF="#mwords()">MWORDS()</A>                        <A HREF="#myopic">MYOPIC</A>
+<A HREF="#name()">NAME()</A>                          <A HREF="#nameq()">NAMEQ()</A>                         <A HREF="#nand()">NAND()</A>
+<A HREF="#ncomp()">NCOMP()</A>                         <A HREF="#nearby()">NEARBY()</A>                        <A HREF="#neq()">neq()</A>
+<A HREF="#new users">NEW USERS</A>                       <A HREF="#news">news</A>                            <A HREF="#news changes">news changes</A>
+<A HREF="#news check">news check</A>                      <A HREF="#news cmdlist">news cmdlist</A>                    <A HREF="#news default group">news default group</A>
+<A HREF="#news description">news description</A>                <A HREF="#news description2">news description2</A>               <A HREF="#news extend">news extend</A>
+<A HREF="#news general">news general</A>                    <A HREF="#news groupinfo">news groupinfo</A>                  <A HREF="#news grouplist">news grouplist</A>
+<A HREF="#news groupmem">news groupmem</A>                   <A HREF="#news info">news info</A>                       <A HREF="#news jump">news jump</A>
+<A HREF="#news login">news login</A>                      <A HREF="#news mailto">news mailto</A>                     <A HREF="#news new user">news new user</A>
+<A HREF="#news old news">news old news</A>                   <A HREF="#news post">news post</A>                       <A HREF="#news postlist">news postlist</A>
+<A HREF="#news postlock">news postlock</A>                   <A HREF="#news read">news read</A>                       <A HREF="#news readall">news readall</A>
+<A HREF="#news readlock">news readlock</A>                   <A HREF="#news repost">news repost</A>                     <A HREF="#news status">news status</A>
+<A HREF="#news subscribe">news subscribe</A>                  <A HREF="#news technical">news technical</A>                  <A HREF="#news unsubscribe">news unsubscribe</A>
+<A HREF="#news userinfo">news userinfo</A>                   <A HREF="#news verbose">news verbose</A>                    <A HREF="#news yank">news yank</A>
+<A HREF="#next()">NEXT()</A>                          <A HREF="#no_ansi_ex toggle">NO_ANSI_EX TOGGLE</A>               <A HREF="#no_ansi_exit toggle">NO_ANSI_EXIT TOGGLE</A>
+<A HREF="#no_ansi_player toggle">NO_ANSI_PLAYER TOGGLE</A>           <A HREF="#no_ansi_room toggle">NO_ANSI_ROOM TOGGLE</A>             <A HREF="#no_ansi_thing toggle">NO_ANSI_THING TOGGLE</A>
+<A HREF="#no_command">NO_COMMAND</A>                      <A HREF="#no_flash">NO_FLASH</A>                        <A HREF="#no_spoof">NO_SPOOF</A>
+<A HREF="#no_tel">NO_TEL</A>                          <A HREF="#no_underline">NO_UNDERLINE</A>                    <A HREF="#no_walls">NO_WALLS</A>
+<A HREF="#no_yell">NO_YELL</A>                         <A HREF="#nocommand">NOCOMMAND</A>                       <A HREF="#noflash">NOFLASH</A>
+<A HREF="#noglobparent toggle">NOGLOBPARENT TOGGLE</A>             <A HREF="#noisy">NOISY</A>                           <A HREF="#nor()">NOR()</A>
+<A HREF="#nospoof">NOSPOOF</A>                         <A HREF="#nostr()">NOSTR()</A>                         <A HREF="#not()">NOT()</A>
+<A HREF="#notchr()">NOTCHR()</A>                        <A HREF="#notel">NOTEL</A>                           <A HREF="#notify_link toggle">NOTIFY_LINK TOGGLE</A>
+<A HREF="#nounderline">NOUNDERLINE</A>                     <A HREF="#nowalls">NOWALLS</A>                         <A HREF="#noyell">NOYELL</A>
+<A HREF="#nozoneparent toggle">NOZONEPARENT TOGGLE</A>             <A HREF="#npemit()">NPEMIT()</A>                        <A HREF="#nsiter()">NSITER()</A>
+<A HREF="#null()">NULL()</A>                          <A HREF="#num()">NUM()</A>                           <A HREF="#numerical conversion functions">numerical conversion functions</A>
+<A HREF="#nummatch()">NUMMATCH()</A>                      <A HREF="#nummember()">NUMMEMBER()</A>                     <A HREF="#numpos()">NUMPOS()</A>
+<A HREF="#numwildmatch()">numwildmatch()</A>                  <A HREF="#obj()">OBJ()</A>                           <A HREF="#object information functions">object information functions</A>
+<A HREF="#object information functions2">object information functions2</A>   <A HREF="#object types">OBJECT TYPES</A>                    <A HREF="#objeval()">OBJEVAL()</A>
+<A HREF="#objid()">OBJID()</A>                         <A HREF="#oemit()">OEMIT()</A>                         <A HREF="#ofparse()">OFPARSE()</A>
+<A HREF="#ofparse2">OFPARSE2</A>                        <A HREF="#opaque">OPAQUE</A>                          <A HREF="#open()">OPEN()</A>
+<A HREF="#or()">OR()</A>                            <A HREF="#orchr()">ORCHR()</A>                         <A HREF="#orflag()">ORFLAG()</A>
+<A HREF="#orflags()">ORFLAGS()</A>                       <A HREF="#ortotem()">ORTOTEM()</A>                       <A HREF="#ortotems()">ORTOTEMS()</A>
+<A HREF="#outpageformat">OUTPAGEFORMAT</A>                   <A HREF="#outputprefix">OUTPUTPREFIX</A>                    <A HREF="#outputsuffix">OUTPUTSUFFIX</A>
+<A HREF="#owner()">OWNER()</A>                         <A HREF="#pack()">PACK()</A>                          <A HREF="#packmath()">PACKMATH()</A>
+<A HREF="#page">page</A>                            <A HREF="#page2 ">page2 </A>                          <A HREF="#pageformat">PAGEFORMAT</A>
+<A HREF="#pageformat2">pageformat2</A>                     <A HREF="#parenmatch()">PARENMATCH()</A>                    <A HREF="#parenstr()">PARENSTR()</A>
+<A HREF="#parent objects">PARENT OBJECTS</A>                  <A HREF="#parent()">PARENT()</A>                        <A HREF="#parent2 ">PARENT2 </A>
+<A HREF="#parent_ok">PARENT_OK</A>                       <A HREF="#parents()">PARENTS()</A>                       <A HREF="#parse()">PARSE()</A>
+<A HREF="#parsestr()">PARSESTR()</A>                      <A HREF="#parsestr2">PARSESTR2</A>                       <A HREF="#parsestr3">PARSESTR3</A>
+<A HREF="#parsestr4">PARSESTR4</A>                       <A HREF="#pedit()">PEDIT()</A>                         <A HREF="#pemit()">PEMIT()</A>
+<A HREF="#penn_mail toggle">PENN_MAIL TOGGLE</A>                <A HREF="#pfind()">PFIND()</A>                         <A HREF="#pgrep()">PGREP()</A>
+<A HREF="#pi()">PI()</A>                            <A HREF="#pickrand()">pickrand()</A>                      <A HREF="#pid()">PID()</A>
+<A HREF="#pid2">PID2</A>                            <A HREF="#player">PLAYER</A>                          <A HREF="#player information functions">player information functions</A>
+<A HREF="#plushelp">plushelp</A>                        <A HREF="#pmatch()">PMATCH()</A>                        <A HREF="#port()">PORT()</A>
+<A HREF="#pos()">POS()</A>                           <A HREF="#pose">pose</A>                            <A HREF="#poss()">POSS()</A>
+<A HREF="#power()">POWER()</A>                         <A HREF="#power10()">POWER10()</A>                       <A HREF="#printf borders">PRINTF BORDERS</A>
+<A HREF="#printf borders2">PRINTF BORDERS2</A>                 <A HREF="#printf codelist">PRINTF CODELIST</A>                 <A HREF="#printf examples">PRINTF EXAMPLES</A>
+<A HREF="#printf examples2">PRINTF EXAMPLES2</A>                <A HREF="#printf examples3">PRINTF EXAMPLES3</A>                <A HREF="#printf examples4">PRINTF EXAMPLES4</A>
+<A HREF="#printf examples5">PRINTF EXAMPLES5</A>                <A HREF="#printf examples6">PRINTF EXAMPLES6</A>                <A HREF="#printf penn">PRINTF PENN</A>
+<A HREF="#printf penn2">PRINTF PENN2</A>                    <A HREF="#printf syntax ">PRINTF SYNTAX </A>                  <A HREF="#printf()">PRINTF()</A>
+<A HREF="#private">PRIVATE</A>                         <A HREF="#privatize()">PRIVATIZE()</A>                     <A HREF="#privatize2">PRIVATIZE2</A>
+<A HREF="#programmer()">PROGRAMMER()</A>                    <A HREF="#protect_addenh">protect_addenh</A>                  <A HREF="#ptimefmt()">PTIMEFMT()</A>
+<A HREF="#ptimefmt2">PTIMEFMT2</A>                       <A HREF="#puppet">PUPPET</A>                          <A HREF="#puppets">PUPPETS</A>
+<A HREF="#pushregs()">PUSHREGS()</A>                      <A HREF="#quickreference">QUICKREFERENCE</A>                  <A HREF="#quiet">QUIET</A>
+<A HREF="#quit ">quit </A>                           <A HREF="#quota alternate2">quota alternate2</A>                <A HREF="#quota alternate3">quota alternate3</A>
+<A HREF="#quota()">quota()</A>                         <A HREF="#r()">R()</A>                             <A HREF="#race()">RACE()</A>
+<A HREF="#rand()">RAND()</A>                          <A HREF="#randextract()">randextract()</A>                   <A HREF="#randmatch()">randmatch()</A>
+<A HREF="#randpos()">randpos()</A>                       <A HREF="#read">read</A>                            <A HREF="#reality level functions">reality level functions</A>
+<A HREF="#reality levels">REALITY LEVELS</A>                  <A HREF="#rebootsecs()">REBOOTSECS()</A>                    <A HREF="#reboottime()">REBOOTTIME()</A>
+<A HREF="#regedit()">REGEDIT()</A>                       <A HREF="#regeditall()">REGEDITALL()</A>                    <A HREF="#regeditalli()">REGEDITALLI()</A>
+<A HREF="#regeditallilit()">REGEDITALLILIT()</A>                <A HREF="#regeditalllit()">REGEDITALLLIT()</A>                 <A HREF="#regediti()">REGEDITI()</A>
+<A HREF="#regeditilit()">REGEDITILIT()</A>                   <A HREF="#regeditlit()">REGEDITLIT()</A>                    <A HREF="#regexp casesensitive">REGEXP CASESENSITIVE</A>
+<A HREF="#regexp casesensitivity">REGEXP CASESENSITIVITY</A>          <A HREF="#regexp classes">REGEXP CLASSES</A>                  <A HREF="#regexp classes2">REGEXP CLASSES2</A>
+<A HREF="#regexp examples">REGEXP EXAMPLES</A>                 <A HREF="#regexp syntax">REGEXP SYNTAX</A>                   <A HREF="#regexp syntax2">REGEXP SYNTAX2</A>
+<A HREF="#regexp syntax3">REGEXP SYNTAX3</A>                  <A HREF="#regexp syntax4">REGEXP SYNTAX4</A>                  <A HREF="#regexp syntax5">REGEXP SYNTAX5</A>
+<A HREF="#regexp syntax6">REGEXP SYNTAX6</A>                  <A HREF="#regexp syntax7">REGEXP SYNTAX7</A>                  <A HREF="#regexp syntax8">REGEXP SYNTAX8</A>
+<A HREF="#regexps">REGEXPS</A>                         <A HREF="#regexps2">REGEXPS2</A>                        <A HREF="#register">register</A>
+<A HREF="#reglmatch()">REGLMATCH()</A>                     <A HREF="#reglmatchall()">REGLMATCHALL()</A>                  <A HREF="#reglmatchalli()">REGLMATCHALLI()</A>
+<A HREF="#reglmatchi()">REGLMATCHI()</A>                    <A HREF="#regmatch()">REGMATCH()</A>                      <A HREF="#regmatchi()">REGMATCHI()</A>
+<A HREF="#regnummatch()">REGNUMMATCH()</A>                   <A HREF="#regnummatchi()">REGNUMMATCHI()</A>                  <A HREF="#regrab()">REGRAB()</A>
+<A HREF="#regraball()">REGRABALL()</A>                     <A HREF="#regraballi()">REGRABALLI()</A>                    <A HREF="#regrabi()">REGRABI()</A>
+<A HREF="#regrep()">REGREP()</A>                        <A HREF="#regrepi()">REGREPI()</A>                       <A HREF="#regular expression functions">regular expression functions</A>
+<A HREF="#relational functions">relational functions</A>            <A HREF="#remainder()">REMAINDER()</A>                     <A HREF="#remflags()">REMFLAGS()</A>
+<A HREF="#remit()">REMIT()</A>                         <A HREF="#remove()">remove()</A>                        <A HREF="#remtype()">REMTYPE()</A>
+<A HREF="#repeat()">REPEAT()</A>                        <A HREF="#replace()">REPLACE()</A>                       <A HREF="#require_trees">REQUIRE_TREES</A>
+<A HREF="#rest()">REST()</A>                          <A HREF="#reswitch()">RESWITCH()</A>                      <A HREF="#reswitchall()">RESWITCHALL()</A>
+<A HREF="#reswitchalli()">RESWITCHALLI()</A>                  <A HREF="#reswitchi()">RESWITCHI()</A>                     <A HREF="#reverse()">REVERSE()</A>
+<A HREF="#revisions">revisions</A>                       <A HREF="#revwords()">REVWORDS()</A>                      <A HREF="#right()">RIGHT()</A>
+<A HREF="#rindex()">RINDEX()</A>                        <A HREF="#rj()">RJ()</A>                            <A HREF="#rjc()">RJC()</A>
+<A HREF="#rjust()">RJUST()</A>                         <A HREF="#rloc()">RLOC()</A>                          <A HREF="#rnum()">RNUM()</A>
+<A HREF="#robbery">ROBBERY</A>                         <A HREF="#robot">ROBOT</A>                           <A HREF="#roman()">ROMAN()</A>
+<A HREF="#room">ROOM</A>                            <A HREF="#room()">ROOM()</A>                          <A HREF="#rotl()">rotl()</A>
+<A HREF="#rotr()">rotr()</A>                          <A HREF="#round()">ROUND()</A>                         <A HREF="#royalty">ROYALTY</A>
+<A HREF="#rpage">rpage</A>                           <A HREF="#rset()">RSET()</A>                          <A HREF="#ruler()">RULER()</A>
+<A HREF="#rxdesc()">RXDESC()</A>                        <A HREF="#rxlevel()">RXLEVEL()</A>                       <A HREF="#s()">S()</A>
+<A HREF="#safe">SAFE</A>                            <A HREF="#safebuff()">SAFEBUFF()</A>                      <A HREF="#safelog toggle">SAFELOG TOGGLE</A>
+<A HREF="#sandbox()">SANDBOX()</A>                       <A HREF="#sandbox2">SANDBOX2</A>                        <A HREF="#save">save</A>
+<A HREF="#say">say</A>                             <A HREF="#score">score</A>                           <A HREF="#scramble()">scramble()</A>
+<A HREF="#search classes">search classes</A>                  <A HREF="#search()">SEARCH()</A>                        <A HREF="#searchng()">SEARCHNG()</A>
+<A HREF="#searchngobjid()">SEARCHNGOBJID()</A>                 <A HREF="#searchobjid()">SEARCHOBJID()</A>                   <A HREF="#secs()">SECS()</A>
+<A HREF="#secure()">SECURE()</A>                        <A HREF="#securex()">SECUREX()</A>                       <A HREF="#sees()">sees()</A>
+<A HREF="#semaphores">SEMAPHORES</A>                      <A HREF="#semaphores2">semaphores2</A>                     <A HREF="#senses">SENSES</A>
+<A HREF="#session">SESSION</A>                         <A HREF="#set()">SET()</A>                           <A HREF="#setdiff()">SETDIFF()</A>
+<A HREF="#setinter()">SETINTER()</A>                      <A HREF="#setq()">SETQ()</A>                          <A HREF="#setq_old()">SETQ_OLD()</A>
+<A HREF="#setq_templates">SETQ_TEMPLATES</A>                  <A HREF="#setqmatch()">SETQMATCH()</A>                     <A HREF="#setr()">SETR()</A>
+<A HREF="#setr_old()">SETR_OLD()</A>                      <A HREF="#setunion()">SETUNION()</A>                      <A HREF="#shift()">SHIFT()</A>
+<A HREF="#shl()">shl()</A>                           <A HREF="#showfailcmd">SHOWFAILCMD</A>                     <A HREF="#shr()">shr()</A>
+<A HREF="#shuffle()">shuffle()</A>                       <A HREF="#side effect functions">side effect functions</A>           <A HREF="#sideeffects">SIDEEFFECTS</A>
+<A HREF="#sidefx">SIDEFX</A>                          <A HREF="#sign()">SIGN()</A>                          <A HREF="#sin()">SIN()</A>
+<A HREF="#singlethreading">SINGLETHREADING</A>                 <A HREF="#singletime()">SINGLETIME()</A>                    <A HREF="#sinh()">SINH()</A>
+<A HREF="#slave">SLAVE</A>                           <A HREF="#smell">smell</A>                           <A HREF="#sort()">SORT()</A>
+<A HREF="#sortby()">SORTBY()</A>                        <A HREF="#sortlist()">SORTLIST()</A>                      <A HREF="#sortlist2">SORTLIST2</A>
+<A HREF="#soundex()">SOUNDEX()</A>                       <A HREF="#soundex2">SOUNDEX2</A>                        <A HREF="#soundlike()">SOUNDLIKE()</A>
+<A HREF="#soundslike()">SOUNDSLIKE()</A>                    <A HREF="#space()">SPACE()</A>                         <A HREF="#speak()">SPEAK()</A>
+<A HREF="#special characters">SPECIAL CHARACTERS</A>              <A HREF="#speech_prefix">SPEECH_PREFIX</A>                   <A HREF="#speech_suffix">SPEECH_SUFFIX</A>
+<A HREF="#spellnum()">SPELLNUM()</A>                      <A HREF="#splice()">SPLICE()</A>                        <A HREF="#spoofing">SPOOFING</A>
+<A HREF="#sql">SQL</A>                             <A HREF="#sql()">SQL()</A>                           <A HREF="#sqlescape()">SQLESCAPE()</A>
+<A HREF="#sqlite_query()">SQLITE_QUERY()</A>                  <A HREF="#sqlite_query2">SQLITE_QUERY2</A>                   <A HREF="#sqloff()">SQLOFF()</A>
+<A HREF="#sqlon()">SQLON()</A>                         <A HREF="#sqlping()">SQLPING()</A>                       <A HREF="#sqrt()">SQRT()</A>
+<A HREF="#squish()">SQUISH()</A>                        <A HREF="#squish()">SQUISH()</A>                        <A HREF="#stack">STACK</A>
+<A HREF="#startsecs()">STARTSECS()</A>                     <A HREF="#starttime()">STARTTIME()</A>                     <A HREF="#stats()">STATS()</A>
+<A HREF="#stderr()">STDERR()</A>                        <A HREF="#step()">STEP()</A>                          <A HREF="#sticky">STICKY</A>
+<A HREF="#str()">STR()</A>                           <A HREF="#strallof()">STRALLOF()</A>                      <A HREF="#strcat()">STRCAT()</A>
+<A HREF="#strdistance()">STRDISTANCE()</A>                   <A HREF="#streq()">STREQ()</A>                         <A HREF="#streval()">STREVAL()</A>
+<A HREF="#strfirstof()">STRFIRSTOF()</A>                    <A HREF="#strfunc()">STRFUNC()</A>                       <A HREF="#string functions">string functions</A>
+<A HREF="#string functions2">string functions2</A>               <A HREF="#string functions3">string functions3</A>               <A HREF="#strip()">STRIP()</A>
+<A HREF="#stripaccents()">STRIPACCENTS()</A>                  <A HREF="#stripansi()">STRIPANSI()</A>                     <A HREF="#strlen()">STRLEN()</A>
+<A HREF="#strlenraw()">STRLENRAW()</A>                     <A HREF="#strlenvis()">STRLENVIS()</A>                     <A HREF="#strmatch()">STRMATCH()</A>
+<A HREF="#strmath()">strmath()</A>                       <A HREF="#strmath2">strmath2</A>                        <A HREF="#strtrunc()">STRTRUNC()</A>
+<A HREF="#sub()">SUB()</A>                           <A HREF="#subeval()">SUBEVAL()</A>                       <A HREF="#subj()">SUBJ()</A>
+<A HREF="#subnetmatch()">SUBNETMATCH()</A>                   <A HREF="#substitutions">SUBSTITUTIONS</A>                   <A HREF="#substitutions2">substitutions2</A>
+<A HREF="#success">SUCCESS</A>                         <A HREF="#superMINUSroyalty">SUPER-ROYALTY</A>                   <A HREF="#switch()">SWITCH()</A>
+<A HREF="#switchall()">SWITCHALL()</A>                     <A HREF="#switches">SWITCHES</A>                        <A HREF="#t()">T()</A>
+<A HREF="#tag()">TAG()</A>                           <A HREF="#take">take</A>                            <A HREF="#take2">take2</A>
+<A HREF="#tan()">TAN()</A>                           <A HREF="#tanh()">TANH()</A>                          <A HREF="#taste">taste</A>
+<A HREF="#tel()">TEL()</A>                           <A HREF="#telok">TELOK</A>                           <A HREF="#template()">TEMPLATE()</A>
+<A HREF="#temple">TEMPLE</A>                          <A HREF="#terse">TERSE</A>                           <A HREF="#testlock()">TESTLOCK()</A>
+<A HREF="#thing">THING</A>                           <A HREF="#think">think</A>                           <A HREF="#throw">throw</A>
+<A HREF="#time functions">time functions</A>                  <A HREF="#time()">TIME()</A>                          <A HREF="#timefmt advanced">TIMEFMT ADVANCED</A>
+<A HREF="#timefmt advanced example">TIMEFMT ADVANCED EXAMPLE</A>        <A HREF="#timefmt advanced2">TIMEFMT ADVANCED2</A>               <A HREF="#timefmt codelist">TIMEFMT CODELIST</A>
+<A HREF="#timefmt codelist2">TIMEFMT CODELIST2</A>               <A HREF="#timefmt date">TIMEFMT DATE</A>                    <A HREF="#timefmt elapsed">TIMEFMT ELAPSED</A>
+<A HREF="#timefmt escapes">TIMEFMT ESCAPES</A>                 <A HREF="#timefmt examples">TIMEFMT EXAMPLES</A>                <A HREF="#timefmt syntax">TIMEFMT SYNTAX</A>
+<A HREF="#timefmt syntax2">TIMEFMT SYNTAX2</A>                 <A HREF="#timefmt time">TIMEFMT TIME</A>                    <A HREF="#timefmt timezone">TIMEFMT TIMEZONE</A>
+<A HREF="#timefmt()">TIMEFMT()</A>                       <A HREF="#timezone list">timezone list</A>                   <A HREF="#timezone list10">timezone list10</A>
+<A HREF="#timezone list11">timezone list11</A>                 <A HREF="#timezone list12">timezone list12</A>                 <A HREF="#timezone list2">timezone list2</A>
+<A HREF="#timezone list3">timezone list3</A>                  <A HREF="#timezone list4">timezone list4</A>                  <A HREF="#timezone list5">timezone list5</A>
+<A HREF="#timezone list6">timezone list6</A>                  <A HREF="#timezone list7">timezone list7</A>                  <A HREF="#timezone list8">timezone list8</A>
+<A HREF="#timezone list9">timezone list9</A>                  <A HREF="#tobin()">TOBIN()</A>                         <A HREF="#todec()">TODEC()</A>
+<A HREF="#toggle list">TOGGLE LIST</A>                     <A HREF="#toggle()">toggle()</A>                        <A HREF="#toggles">TOGGLES</A>
+<A HREF="#tohex()">TOHEX()</A>                         <A HREF="#tooct()">TOOCT()</A>                         <A HREF="#topics">topics</A>
+<A HREF="#totcmds()">TOTCMDS()</A>                       <A HREF="#totems()">TOTEMS()</A>                        <A HREF="#totemset()">TOTEMSET()</A>
+<A HREF="#totmatch()">TOTMATCH()</A>                      <A HREF="#totmember()">TOTMEMBER()</A>                     <A HREF="#totpos()">TOTPOS()</A>
+<A HREF="#totwildmatch()">totwildmatch()</A>                  <A HREF="#touch">touch</A>                           <A HREF="#tr()">TR()</A>
+<A HREF="#trace">TRACE</A>                           <A HREF="#trace()">TRACE()</A>                         <A HREF="#trace2">trace2</A>
+<A HREF="#trace_color">TRACE_COLOR</A>                     <A HREF="#trace_grep">TRACE_GREP</A>                      <A HREF="#tracetab">TRACETAB</A>
+<A HREF="#train">train</A>                           <A HREF="#translate()">TRANSLATE()</A>                     <A HREF="#transparent">TRANSPARENT</A>
+<A HREF="#trigonometry functions">trigonometry functions</A>          <A HREF="#trim()">TRIM()</A>                          <A HREF="#trreverse()">TRREVERSE()</A>
+<A HREF="#trunc()">TRUNC()</A>                         <A HREF="#txlevel()">TXLEVEL()</A>                       <A HREF="#type()">type()</A>
+<A HREF="#u()">U()</A>                             <A HREF="#u2()">U2()</A>                            <A HREF="#u2default()">u2default()</A>
+<A HREF="#u2ldefault()">u2ldefault()</A>                    <A HREF="#u2local()">U2LOCAL()</A>                       <A HREF="#u2local2">U2LOCAL2</A>
+<A HREF="#ucstr()">UCSTR()</A>                         <A HREF="#udefault()">udefault()</A>                      <A HREF="#ueval()">UEVAL()</A>
+<A HREF="#uldefault()">uldefault()</A>                     <A HREF="#ulocal()">ULOCAL()</A>                        <A HREF="#ulocal2">ULOCAL2</A>
+<A HREF="#unesclist()">UNESCLIST()</A>                     <A HREF="#unfindable">UNFINDABLE</A>                      <A HREF="#unicode support">UNICODE SUPPORT</A>
+<A HREF="#unpack()">UNPACK()</A>                        <A HREF="#use">use</A>                             <A HREF="#useful">USEFUL</A>
+<A HREF="#user attributes">USER ATTRIBUTES</A>                 <A HREF="#userlocks">userlocks</A>                       <A HREF="#utf8 support">UTF8 SUPPORT</A>
+<A HREF="#utf8 toggle">UTF8 TOGGLE</A>                     <A HREF="#v()">V()</A>                             <A HREF="#vadd()">VADD()</A>
+<A HREF="#valid()">VALID()</A>                         <A HREF="#vanilla_errors toggle">VANILLA_ERRORS TOGGLE</A>           <A HREF="#variable exits">VARIABLE EXITS</A>
+<A HREF="#variable toggle">VARIABLE TOGGLE</A>                 <A HREF="#vatovz">VATOVZ</A>                          <A HREF="#vattrcnt()">VATTRCNT()</A>
+<A HREF="#vcross()">VCROSS()</A>                        <A HREF="#vdim()">VDIM()</A>                          <A HREF="#vdot()">VDOT()</A>
+<A HREF="#verbose">VERBOSE</A>                         <A HREF="#verbs">VERBS</A>                           <A HREF="#version">version</A>
+<A HREF="#version()">VERSION()</A>                       <A HREF="#visible()">visible()</A>                       <A HREF="#visiblemux()">visiblemux()</A>
+<A HREF="#visual">VISUAL</A>                          <A HREF="#vmag()">VMAG()</A>                          <A HREF="#vmul()">VMUL()</A>
+<A HREF="#vpage toggle">VPAGE TOGGLE</A>                    <A HREF="#vsub()">VSUB()</A>                          <A HREF="#vunit()">VUNIT()</A>
+<A HREF="#wanderer">wanderer</A>                        <A HREF="#where()">WHERE()</A>                         <A HREF="#while()">WHILE()</A>
+<A HREF="#while2">WHILE2</A>                          <A HREF="#whisper">whisper</A>                         <A HREF="#who">who</A>
+<A HREF="#wielded">wielded</A>                         <A HREF="#wildcards">WILDCARDS</A>                       <A HREF="#wildcards2">WILDCARDS2</A>
+<A HREF="#wildmatch()">wildmatch()</A>                     <A HREF="#wipe()">WIPE()</A>                          <A HREF="#wizard attributes">WIZARD ATTRIBUTES</A>
+<A HREF="#wizards">WIZARDS</A>                         <A HREF="#wordpos()">wordpos()</A>                       <A HREF="#words()">WORDS()</A>
+<A HREF="#worn">worn</A>                            <A HREF="#wrap()">WRAP()</A>                          <A HREF="#wrap2">WRAP2</A>
+<A HREF="#wrapcolumns()">WRAPCOLUMNS()</A>                   <A HREF="#wrapcolumns2">WRAPCOLUMNS2</A>                    <A HREF="#wrapcolumns3">WRAPCOLUMNS3</A>
+<A HREF="#writable()">WRITABLE()</A>                      <A HREF="#xcon()">XCON()</A>                          <A HREF="#xcon2">XCON2</A>
+<A HREF="#xdec()">XDEC()</A>                          <A HREF="#xget()">XGET()</A>                          <A HREF="#xinc()">XINC()</A>
+<A HREF="#xnor()">XNOR()</A>                          <A HREF="#xor()">XOR()</A>                           <A HREF="#xorchr()">XORCHR()</A>
+<A HREF="#xtermcolor">XTERMCOLOR</A>                      <A HREF="#xtermcolor list">XTERMCOLOR LIST</A>                 <A HREF="#xtermcolor list2">XTERMCOLOR LIST2</A>
+<A HREF="#xtermcolor list3">XTERMCOLOR LIST3</A>                <A HREF="#xtermcolor list4">XTERMCOLOR LIST4</A>                <A HREF="#xtermcolor syntax">XTERMCOLOR SYNTAX</A>
+<A HREF="#zatozz">ZATOZZ</A>                          <A HREF="#zemit()">ZEMIT()</A>                         <A HREF="#zfun()">ZFUN()</A>
+<A HREF="#zfun2()">ZFUN2()</A>                         <A HREF="#zfun2default()">zfun2default()</A>                  <A HREF="#zfun2ldefault()">zfun2ldefault()</A>
+<A HREF="#zfun2local()">ZFUN2LOCAL()</A>                    <A HREF="#zfun2local2">ZFUN2LOCAL2</A>                     <A HREF="#zfundefault()">zfundefault()</A>
+<A HREF="#zfuneval()">ZFUNEVAL()</A>                      <A HREF="#zfunldefault()">zfunldefault()</A>                  <A HREF="#zfunlocal()">ZFUNLOCAL()</A>
+<A HREF="#zfunlocal2">ZFUNLOCAL2</A>                      <A HREF="#zone functions">zone functions</A>                  <A HREF="#zone_autoadd toggle">ZONE_AUTOADD TOGGLE</A>
+<A HREF="#zone_autoaddall toggle">ZONE_AUTOADDALL TOGGLE</A>          <A HREF="#zonecmd()">ZONECMD()</A>                       <A HREF="#zonecmd2 ">ZONECMD2 </A>
+<A HREF="#zonecmdchk">ZONECMDCHK</A>                      <A HREF="#zonecontents">ZONECONTENTS</A>                    <A HREF="#zonemaster">ZONEMASTER</A>
+<A HREF="#zoneparent ">ZONEPARENT </A>                     <A HREF="#zones">zones</A>                           <A HREF="#zones2">zones2</A>
+<A HREF="#zwho()">ZWHO()</A>                          <HR><A NAME="QUOTE"><H3>&quot;</H3></A><PRE>
   Command: &quot;&lt;message&gt;
   
   Says &lt;message&gt; out loud to everyone in your current room.  
@@ -6150,6 +6150,9 @@ Generated: Mon Mar 15 08:33:40 2021
   * Port binder will now attempt 5 times for port connects to allow slow
     kernels and/or cached I/O and/or swapped games time to rebind [ASH]
   * @exec callback for execscript() to push to the queue any command [ASH]
+  * hastype_always_zero option to make hastype() return 0 on invalid objects.
+    An invalid type still returns #-1 [AMB]
+  * elements_compat will make elements() work like elementsmux [ASH]
   
   Changes
   ------------
@@ -6164,6 +6167,8 @@ Generated: Mon Mar 15 08:33:40 2021
     Code all softcoded connect screens accordingly!!!! [ASH]
   * Add MUSH_VERSION environment variable to execscript [ASH]
   * Totems of player and owner of player passed to execscript [ASH]
+  * @name/name() if using ANSI option and a null name now clears ansi [ASH]
+  * removed warnings from alloc.c on compiling with latest compilers [ASH]
   
   Bug Fixes
   ------------
@@ -6177,8 +6182,35 @@ Generated: Mon Mar 15 08:33:40 2021
   * rloc had SIGSEGV bug with argument checks [ASH]
   * parse_ansi (internal) didn't initialize values passed to it [ASH]
   * DOING/WHO didn't initialize values passed to it [ASH]
+  * API would not process queries if process-quueue set to 0 [ASH]
+  * MAX sockets should choose port or api port whatever is greater [ASH]
+  * ANSI splitter (internal) had a hierarchy issue with ANSI [ASH]
+  * the /eval and /eroom of @icmd was significantly broken [ASH]
+
 </PRE>
 <A HREF="#4.1.0p1">[PREV]</A>
+<A HREF="#topic index">[TOP]</A>
+<A HREF="#4.2.0">[NEXT]</A>
+<BR>
+<HR><A NAME="4.2.0"><H3>4.2.0</H3></A><PRE>
+  Release Date: 04/20/21
+  Status: Alpha
+
+  New Features
+  ------------
+  * @include/break to have @break/@assert local to the @include only.
+  
+  Changes
+  -------
+  * Version change due to upcoming general change in versioning. Preparation
+    for GIT-Integrated replacement of p&lt;patchlevel&gt; with commit number since
+    last MAJOR.MINOR.PATCH Tag.
+  
+  Bug Fixes
+  ------------
+  
+</PRE>
+<A HREF="#4.1.0p2">[PREV]</A>
 <A HREF="#topic index">[TOP]</A>
 <A HREF="#:">[NEXT]</A>
 <BR>
@@ -6210,7 +6242,7 @@ Generated: Mon Mar 15 08:33:40 2021
   See Also: page, pose, say, whisper, ;, &quot;
   
 </PRE>
-<A HREF="#4.1.0p2">[PREV]</A>
+<A HREF="#4.2.0">[PREV]</A>
 <A HREF="#topic index">[TOP]</A>
 <A HREF="#;">[NEXT]</A>
 <BR>
@@ -6976,10 +7008,13 @@ Generated: Mon Mar 15 08:33:40 2021
                  Note: this automatically sets the localize option.
     /localize  - localizes the registers for the include duration.
     /nobreak   - disregard @break/@assert inside the includes from outside.
+                 Not useable with /break.
     /target    - Use the target as executor instead of executor of @include
                  Note: You must control target to use this.
     /override  - If any arguments are passed to @include to override the
                  default, this will disable all default arguments.
+    /break     - Treat @break/@assert inside an @include as local to
+                 that @include only.  Not useable with /nobreak.
     
   {see @include2 for examples}
 
@@ -9118,10 +9153,13 @@ Generated: Mon Mar 15 08:33:40 2021
                  Note: this automatically sets the localize option.
     /localize  - localizes the registers for the include duration.
     /nobreak   - disregard @break/@assert inside the includes from outside.
+                 Not useable with /break.
     /target    - Use the target as executor instead of executor of @include
                  Note: You must control target to use this.
     /override  - If any arguments are passed to @include to override the
                  default, this will disable all default arguments.
+    /break     - Treat @break/@assert inside an @include as local to
+                 that @include only.  Not useable with /nobreak.
     
   {see @include2 for examples}
 
@@ -11574,6 +11612,9 @@ Generated: Mon Mar 15 08:33:40 2021
   See '@list options' as to whether or not a player name may contain 
   spaces.  The default for RhostMUSH is to disallow spaces in player names.
   
+  When using the /ansi switch if &lt;new name&gt; is empty, it will clear the ansi
+  of the name but not set/change the name of the target.
+    
   The following switches exist for name:
     /ansi - combine @name and @extansi to both (re)name the item and
             set the specified ansiname for it at the same time.
@@ -18339,6 +18380,7 @@ Generated: Mon Mar 15 08:33:40 2021
     3.9.5: 3.9.5p0, 3.9.5p1, 3.9.5p2, 3.9.5p3, 3.9.5p4
     4.0.0: 4.0.0p0, 4.0.0p1, 4.0.0p2, 4.0.0p3, 4.0.0p4
     4.1.0: 4.1.0p0, 4.1.0p1, 4.1.0p2
+      4.2: 4.2.0
   
   See Also: historical, credits
 
@@ -18518,22 +18560,6 @@ Generated: Mon Mar 15 08:33:40 2021
 <A HREF="#chkreality()">[NEXT]</A>
 <BR>
 <HR><A NAME="chkreality()"><H3>CHKREALITY()</H3></A><PRE>
-  Function: chkreality(&lt;victom&gt;, &lt;target&gt;)
-  
-  This checks if &lt;victom&gt; is able to see &lt;target&gt; through the reality.
-  Reality Levels must be enabled for this function to work.  This also
-  takes into account the @lock/user Reality Level Lock enhancement.
-  You must control both the &lt;victom&gt; and the &lt;target&gt; to be able to get
-  the reality, otherwise, it will return #-1.
-  
-  See Also: txlevel(), rxlevel(), rxdesc()
-  
-</PRE>
-<A HREF="#children()">[PREV]</A>
-<A HREF="#topic index">[TOP]</A>
-<A HREF="#chkreality()">[NEXT]</A>
-<BR>
-<HR><A NAME="chkreality()"><H3>CHKREALITY()</H3></A><PRE>
   Function: chkreality(&lt;victim&gt;,&lt;target&gt;)
   
   Returns '1' if &lt;victim&gt; can see &lt;target&gt; in the reality.  This takes into
@@ -18544,6 +18570,22 @@ Generated: Mon Mar 15 08:33:40 2021
   Reality levels must be enabled for this function to be of use.
   
   See Also: hasrxlevel(), hastxlevel(), rxlevel(), txlevel(), rxdesc()
+  
+</PRE>
+<A HREF="#children()">[PREV]</A>
+<A HREF="#topic index">[TOP]</A>
+<A HREF="#chkreality()">[NEXT]</A>
+<BR>
+<HR><A NAME="chkreality()"><H3>CHKREALITY()</H3></A><PRE>
+  Function: chkreality(&lt;victom&gt;, &lt;target&gt;)
+  
+  This checks if &lt;victom&gt; is able to see &lt;target&gt; through the reality.
+  Reality Levels must be enabled for this function to work.  This also
+  takes into account the @lock/user Reality Level Lock enhancement.
+  You must control both the &lt;victom&gt; and the &lt;target&gt; to be able to get
+  the reality, otherwise, it will return #-1.
+  
+  See Also: txlevel(), rxlevel(), rxdesc()
   
 </PRE>
 <A HREF="#chkreality()">[PREV]</A>
@@ -22611,6 +22653,8 @@ Generated: Mon Mar 15 08:33:40 2021
 <HR><A NAME="elements()"><H3>elements()</H3></A><PRE>
   Function: elements(&lt;list of words&gt;,&lt;list of numbers&gt;[[,&lt;delim&gt;][,&lt;sep&gt;]])
    
+  Note: '@list options system' to see if this behaves like elementsmux()
+  
   This function returns the words in &lt;list of words&gt; that are in the
   positions specified by &lt;list of numbers&gt;. Optionally, a list delimiter
   other than a space can be separated.  This function does not assume a null
@@ -22618,7 +22662,7 @@ Generated: Mon Mar 15 08:33:40 2021
   
   If you specify &lt;list of numbers&gt; as negative, it takes from the end starting
   at -1.
-   
+  
   Examples:
     &gt; say elements(Foo Ack Beep Moo Zot,2 4)
     You say &quot;Ack Moo&quot;
@@ -25539,6 +25583,9 @@ Generated: Mon Mar 15 08:33:40 2021
   Returns 1 if the object is of the named type, otherwise 0.
   Valid types are: ROOM, EXIT, PLAYER, THING.
   If an invalid type is given, #-1 is returned.
+
+  NOTE: The function will return #-1 for invalid objects as well, unless
+  the configuration parameter 'hastype_always_zero' is set to 1.
   
   Examples:
     &gt; say hastype(me,PLAYER)
@@ -25547,6 +25594,7 @@ Generated: Mon Mar 15 08:33:40 2021
     You say &quot;0&quot;
   
   See Also: type(), hasflag()
+  See Also: wizhelp hastype_always_zero
   
 </PRE>
 <A HREF="#hastxlevel()">[PREV]</A>
@@ -34908,6 +34956,9 @@ Generated: Mon Mar 15 08:33:40 2021
   If &lt;key&gt; is specified as '1', then name() will behave like @name/ansi and
   combine @extansi and @name effectively colorzing the target name.
   
+  If &lt;key&gt; is specified as '1' and &lt;newname&gt; is left blank, it will clear
+  the ansi of the target but leave the name alone.
+    
   Example:
     &gt; say name(me)
     You say &quot;TinyPlayer&quot;
@@ -40791,6 +40842,7 @@ Generated: Mon Mar 15 08:33:40 2021
     3.9.5: 3.9.5p0, 3.9.5p1, 3.9.5p2, 3.9.5p3, 3.9.5p4
     4.0.0: 4.0.0p0, 4.0.0p1, 4.0.0p2, 4.0.0p3, 4.0.0p4
     4.1.0: 4.1.0p0, 4.1.0p1, 4.1.0p2
+      4.2: 4.2.0
   
   See Also: historical, credits
 
@@ -43337,6 +43389,23 @@ Generated: Mon Mar 15 08:33:40 2021
 <A HREF="#squish()">[NEXT]</A>
 <BR>
 <HR><A NAME="squish()"><H3>SQUISH()</H3></A><PRE>
+  Function: squish(string)
+  
+  This function takes out all leading and ending spaces and reduces all spaces
+  in-between to only one space.
+  
+  Example:
+   &gt;say squish([space(10)]hi![space(10)]Bye![space(10)])
+    You say &quot;hi! Bye!&quot;
+  
+  See Also: s(), trim(), edit(), tr()
+  
+</PRE>
+<A HREF="#sqrt()">[PREV]</A>
+<A HREF="#topic index">[TOP]</A>
+<A HREF="#squish()">[NEXT]</A>
+<BR>
+<HR><A NAME="squish()"><H3>SQUISH()</H3></A><PRE>
   Function squish(&lt;string&gt;[,&lt;delimeter&gt; [,&lt;count&gt;])
   
   This function will remove multiple spaces (or specified delimiter) from
@@ -43365,23 +43434,6 @@ Generated: Mon Mar 15 08:33:40 2021
     You say &quot;TestaaaaaTest&quot;
   
   See Also: s(), strip(), creplace(), trim()
-  
-</PRE>
-<A HREF="#sqrt()">[PREV]</A>
-<A HREF="#topic index">[TOP]</A>
-<A HREF="#squish()">[NEXT]</A>
-<BR>
-<HR><A NAME="squish()"><H3>SQUISH()</H3></A><PRE>
-  Function: squish(string)
-  
-  This function takes out all leading and ending spaces and reduces all spaces
-  in-between to only one space.
-  
-  Example:
-   &gt;say squish([space(10)]hi![space(10)]Bye![space(10)])
-    You say &quot;hi! Bye!&quot;
-  
-  See Also: s(), trim(), edit(), tr()
   
 </PRE>
 <A HREF="#squish()">[PREV]</A>
@@ -45894,7 +45946,7 @@ Generated: Mon Mar 15 08:33:40 2021
   SUCCESS             SWITCHES           TOGGLES             USEFUL          
   UNICODE SUPPORT     USER ATTRIBUTES    VARIABLE EXITS      VATOVZ         
   VERBS               WANDERER           WILDCARDS           WIZARD ATTRIBUTES
-  ZATOZZ              ZONES               $-COMMANDS         #LAMBDA          
+  ZATOZZ              ZONES              $-COMMANDS          #LAMBDA          
   
 </PRE>
 <A HREF="#tooct()">[PREV]</A>
