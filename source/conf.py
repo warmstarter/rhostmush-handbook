@@ -49,6 +49,8 @@ exclude_patterns = []
 html_title = "RhostMUSH Handbook"
 html_static_path = ['_static']
 
+
+
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
@@ -58,6 +60,7 @@ html_sidebars = {
         '**': ['searchbox.html', 'sourcelink.html', 'relations.html', 'localtoc.html'],
 }
 html_logo = "_static/logo.jpg"
+html_favicon = '_static/favicon.ico'
 html_style = "style.css"
 html_last_updated_fmt = '%b %d, %Y'
 
