@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>8. Database &#8212; RhostMUSH Handbook</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="9. Getting Started" href="../gettingstarted/" />
+    <link rel="prev" title="7. Comparison of modern MUSH servers" href="../comparison/" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul></pre>
+<ul>
+    <li><a href="index.html">Home</a> |</li>
+    <li><a href="help.html">RhostMUSH Help File</a> |</li>
+    <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
+    <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
+    <li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>Database</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="database">
+<h1><span class="section-number">8. </span>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="loading-an-existing-database">
+<h2><span class="section-number">8.1. </span>Loading an existing Database<a class="headerlink" href="#loading-an-existing-database" title="Permalink to this headline">¶</a></h2>
+<p>To load in a previous database, you run the db_load script.</p>
+<p>From the game directory you would type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">db_load</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">gdbm</span> <span class="n">yourflatfilehere</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may also do: ./Startmush
+Then you just follow the prompts to load in your flatfile there.</p>
+</div>
+<p>If you wish to have #1's password reset to 'Nyctasia' please add this
+to the bottom of your netrhost.conf file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newpass_god</span> <span class="mi">777</span>
+</pre></div>
+</div>
+<p>The caveat is that you must not have any netrhost.db* or netrhost.gdbm* files
+in your data directory prior to loading it in.  It'll error out if previous
+files exist.  So you will need to move all files that start with netrhost.db*
+and all files that start with netrhost.gdbm* to another directory.</p>
+<p>Your flatfile tends to be named 'netrhost.db.flat' which is in your data
+directory.  You can, however, name your flatfile anything you want and have
+it in any directory you want.</p>
+<p>To make a flatfile in game, you just issue &#64;dump/flat.  You can specify
+a filename after it, otherwise it assumes the name 'netrhost.db.flat'.</p>
+</div>
+<div class="section" id="converting-a-flatfile-database-for-use-in-rhostmush">
+<h2><span class="section-number">8.2. </span>Converting a flatfile database for use in RhostMUSH<a class="headerlink" href="#converting-a-flatfile-database-for-use-in-rhostmush" title="Permalink to this headline">¶</a></h2>
+<p>In the ~/Server/convert directory there is a script called 'doconvert.sh'</p>
+<p>This script will convert most flatfiles from existing mush engines to
+RhostMUSH.  The exception is PennMUSH 1.8.0 and later.  For this there is a
+BETA converter penn18x_converter.tgz.  This is proven to work, most of the time,
+with codebases between 1.8.0 and 1.8.2.  It has not been fully vetted with
+the latest PennMUSH databases.  Our apologies.</p>
+<p>To convert a non-pennmush game (or a pennmush 1.7.4 or earlier), you first
+need a valid flatfile of the game you're wanting to convert.  Please refer
+to the documentatation of the mush engine in question (MUX, Penn 1.7, TM2/3)
+on how to do this.  Once you have it type::</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">doconvert</span><span class="o">.</span><span class="n">sh</span> <span class="n">FLATFILETOCONVERT</span> <span class="n">FLATFILEOUTPUT</span>
+</pre></div>
+</div>
+<p>In this instance, FLATFILETOCONVERT will be the filename (with full path) to
+the flatfile you are wishing to convert.</p>
+<p>The FLATFILEOUTPUT is anyfilename you wish to name the RhostMUSH converted
+flatfile.  I suggest netrhost_converted.db.flat so you know by the name
+what it is.</p>
+<p>Follow what it asks for and just let it do its thing.</p>
+</div>
+<div class="section" id="note-about-compiling">
+<h2><span class="section-number">8.3. </span>Note about Compiling<a class="headerlink" href="#note-about-compiling" title="Permalink to this headline">¶</a></h2>
+<p>If you are importing a MUX2 flatfile, make ABSOLUTELY SURE that you select
+mux passwords as a compatibility option, or you will NOT BE ABLE to log in
+to players as the password will not be recognizeable.</p>
+<p>Make sure to keep QDBM selected as it's a much more stable database engine
+that does not have attribute limit restrictions like GDBM does.</p>
+<p>If you are converting from a Penn, TinyMUSH, or MUX database, make sure you
+drill down into the LBUF section and select, at minimum, 8K lbufs.  You likely
+want that anyway as it gives you far more room for attribute content storage.</p>
+<p>You can go up to 32K safely.  While 64k is safe and does work, there are issues
+with networking and older routers that use a 32K TCP buffer size that can
+at times cut off the data as overflow resulting in output to the end-point
+players not receiving their data.  So it is strongly recommended not to go
+above 32K in lbuffer size.</p>
+<p>Go ahead and select 64 char attributes.  It allows you to have 64 characters
+for attribute names.  It's handy to have.</p>
+<p>If you wish at this point to set up mysql and/or sqlite, you  may do so.
+Yes, you can use them in parallel without any issue.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../">
+              <img class="logo" src="../_static/logo.jpg" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/database.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../comparison/"
+                        title="previous chapter"><span class="section-number">7. </span>Comparison of modern MUSH servers</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../gettingstarted/"
+                        title="next chapter"><span class="section-number">9. </span>Getting Started</a></p>
+  <h3><a href="../">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">8. Database</a><ul>
+<li><a class="reference internal" href="#loading-an-existing-database">8.1. Loading an existing Database</a></li>
+<li><a class="reference internal" href="#converting-a-flatfile-database-for-use-in-rhostmush">8.2. Converting a flatfile database for use in RhostMUSH</a></li>
+<li><a class="reference internal" href="#note-about-compiling">8.3. Note about Compiling</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, wstarter.
+      Last updated on Apr 23, 2021.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
+</html>

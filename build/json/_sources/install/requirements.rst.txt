@@ -1,0 +1,68 @@
+.. _install-requirements:
+.. index:: Install - Requirements, Requirements - Install
+
+======================
+RhostMUSH Requirements
+======================
+
+-------------------
+System Requirements
+-------------------
+
+* Operating System: Unix-like
+
+  - Almost any variant of Unix or Linux should compile cleanly and run
+  - Preliminary support for Windows with an equivalent development environment
+
+* Memory: 12-100 MB
+
+  - Depending on size of database and buffers, as well as selected options
+  - 1 GB (memory and swap combined) is the minimum required to compile
+
+* Storage: 100 MB and up
+
+  - Depending on size of database and backup retention policy
+
+.. note::
+
+  Third-party applications can use considerably more resources
+
+---------------------
+Software Requirements
+---------------------
+
+RhostMUSH is a Linux or Unix based server software that runs as a daemon on the host.
+In order to build this software, you will need the bare minimum of the ability to run 'make' commands.
+
+Package requirements are as follows:
+
+  * bash/ksh/dash (or compatible shell - for use with build menu)
+  * glibc and gcc/clang (compiling the code)
+  * git (to clone the source and maintain patches)
+  * libcrypt (for password encryption - this is usually standard on unix based systems)
+
+Optional Packages
+=================
+
+RhostMUSH also offers optional linking and library attachments.
+For some of these libraries it will attempt to do auto-detection,
+but in a worse case scenario, there exists override hashes in the menu to disable options it thinks exist that do not.
+
+Optional packages are as follows:
+
+  * libpcre (if you wish to use system pcre libraries instead of the built-in ones)
+  * mysql client & mysql_config (required for mysql capabilities)
+  * openssl dev libraries/headers (for MUX password compatibility, and digest() and advanced cryptology functionality.
+  * ruby/perl/python/etc (for custom interactive dynamic custom functions with the execscript() feature)
+  * sqlite3 libraries (required for sqlite capabilities)
+
+--------------------
+Hosting Requirements
+--------------------
+
+* You will need a stable host and access to open a single port number of your choice on the firewall.
+* Most games choose a number between 1025 and 9999, by convention.
+* Please make sure your debug_id matches the port number + 5.
+
+  - So if your port is 4201, your debug_id will be 42015.
+  - The debug_id is for use in the API daemon that runs Rhost as a container to keep track of heap, stack, and execution location.

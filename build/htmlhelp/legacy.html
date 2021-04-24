@@ -1,0 +1,396 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=cp1252" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>18. Upgrading a Legacy RhostMUSH Installation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="next" title="19. Comparison of Flags" href="comparison/flags.html" />
+    <link rel="prev" title="17. Requirements if Using Windows" href="install/windows.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul></pre>
+<ul>
+    <li><a href="index.html">Home</a> |</li>
+    <li><a href="help.html">RhostMUSH Help File</a> |</li>
+    <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
+    <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
+    <li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">18. </span>Upgrading a Legacy RhostMUSH Installation</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="upgrading-a-legacy-rhostmush-installation">
+<h1><span class="section-number">18. </span>Upgrading a Legacy RhostMUSH Installation</h1>
+<div class="section" id="converting-database-betwen-gdbm-and-qdbm">
+<h2><span class="section-number">18.1. </span>Converting database betwen GDBM and QDBM</h2>
+<p>Ok, if you plan to recompile your game that is using GDBM to QDBM, or visa versa
+some bad news.</p>
+<p>The databases are NOT COMPATIBLE to each other, at least in the binary form.</p>
+<div class="section" id="downgrading-qdbm-to-gdbm">
+<h3><span class="section-number">18.1.1. </span>Downgrading QDBM to GDBM</h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>I would NEVER change from QDBM back to GDBM, but if you're set on it these steps:</p>
+<p>You would use the same steps if you plan to move QDBM to GDBM.  I however would
+not do this.  Moving from QDBM to GDBM is a huge step backwards.  Seriously,
+don't do it unless you have absolutely no other recourse.</p>
+<p class="last">IF you plan (for whatever reason) to move from QDBM to GDBM, you should verify
+the following</p>
+</div>
+<ol class="arabic simple">
+<li>You have on a 64 bit system, no object that has more than 400 attributes on it.</li>
+<li>You have on a 32 bit system, no object that has more than 750 attributes on it.</li>
+<li>Any CONTENT of any attribute must be below 4000 characters in length.</li>
+<li>Once you have that done, you may follow the procedures below on converting (upgrade) from GDBM to QDBM.  This works the same as converting (downgrading) QDBM back down to GDBM</li>
+</ol>
+</div>
+<div class="section" id="upgradging-gdbm-to-qdbm">
+<h3><span class="section-number">18.1.2. </span>Upgradging GDBM to QDBM</h3>
+<p>Now, if you've kept reading and plan to convert your GDBM database to QDBM great news!
+It's more stable, it's faster, and lets you have far more flexibility.</p>
+<p>So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.</p>
+<div class="section" id="while-logged-in-to-your-mush-issue-the-following-commands">
+<h4><span class="section-number">18.1.2.1. </span>While logged in to your mush, issue the following commands</h4>
+<blockquote>
+<div><ol class="arabic simple">
+<li>&#64;dump/flat    -- This will make a flatfile dump of your MUSH database</li>
+<li>wmail/unload  -- This will make a flatfile dump of your MAIL database</li>
+<li>&#64;areg/unload  -- If you use the AutoRegistration engine, this dumps it</li>
+<li>newsdb/unload -- If you use the hardcoded news/bbs engine.  This dumps it</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="verify-the-files-exist">
+<h4><span class="section-number">18.1.2.2. </span>Verify the files exist</h4>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Server/game/data/netrhost.db.flat</li>
+<li>Server/game/data/RhostMUSH.dump.folder</li>
+<li>Server/game/data/RhostMUSH.dump.mail</li>
+<li>(Optional) Server/game/data/RhostMUSH.areg.dump</li>
+<li>(Optional) Server/game/data/RhostMUSH.news.flat</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="shutdown-the-mush">
+<h4><span class="section-number">18.1.2.3. </span>Shutdown the MUSH</h4>
+<p>&#64;shutdown your mush</p>
+</div>
+<div class="section" id="from-the-server-directory">
+<h4><span class="section-number">18.1.2.4. </span>From the Server directory</h4>
+<ol class="arabic simple">
+<li>make clean</li>
+<li>make confsource</li>
+</ol>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Select QDBM and if you wish at this time increase your LBUF size</li>
+<li>Select any other options you may want</li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple">
+<li>(r)un and let it compile.</li>
+</ol>
+<div class="admonition-todo admonition" id="id1">
+<p class="first admonition-title">Todo</p>
+<p class="last">Figure out why that asterisk is there.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">Main DB: Delete (rm) the following files (from Rhost/Server/game/data):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">netrhost</span><span class="o">.</span><span class="n">gdbm</span><span class="o">*</span>
+<span class="n">netrhost</span><span class="o">.</span><span class="n">db</span>
+<span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">new</span>
+<span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">prev</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Mail DB: Delete (rm) the following files (from Rhost/Server/game/data):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RhostMUSH</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">dir</span>
+<span class="n">RhostMUSH</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">pag</span>
+<span class="n">RhostMUSH</span><span class="o">.</span><span class="n">mail</span><span class="o">.</span><span class="n">dir</span>
+<span class="n">RhostMUSH</span><span class="o">.</span><span class="n">mail</span><span class="o">.</span><span class="n">pag</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">(Optional) AutoReg DB: Delete (rm) the following files (from Rhost/Server/game/data):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RhostMUSH</span><span class="o">.</span><span class="n">areg</span><span class="o">.</span><span class="n">dir</span>
+<span class="n">RhostMUSH</span><span class="o">.</span><span class="n">areg</span><span class="o">.</span><span class="n">pag</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">(Optional) News/BBS DB: Delete (rm) the following files (from Rhost/Server/game/data):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RhostMUSH</span><span class="o">.</span><span class="n">news</span><span class="o">.</span><span class="n">dir</span>
+<span class="n">RhostMUSH</span><span class="o">.</span><span class="n">news</span><span class="o">.</span><span class="n">pag</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="from-the-server-game-directory">
+<h4><span class="section-number">18.1.2.5. </span>From the Server/game directory</h4>
+<ol class="arabic">
+<li><p class="first">Load the database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">db_load</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">gdbm</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">flat</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Start the MUSH back:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">Startmush</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="while-logged-into-the-mush-issue-the-following-commands">
+<h4><span class="section-number">18.1.2.6. </span>While logged into the mush issue the following commands</h4>
+<ol class="arabic">
+<li><p class="first">Load in the mail database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">load</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">(optional) Load in the autoreg database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@areg</span><span class="o">/</span><span class="n">load</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">(optional) Load in the news/bbs database:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newsdb</span><span class="o">/</span><span class="n">load</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="verify-that-you-have-qdbm-running-and-your-valid-values">
+<h4><span class="section-number">18.1.2.7. </span>Verify that you have QDBM running and your valid values</h4>
+<ol class="arabic simple">
+<li>&#64;list options system#.  &#64;list options (spammy)</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="updating-rhostmush-prior-to-3-9-5p2">
+<h2><span class="section-number">18.2. </span>Updating RhostMUSH prior to 3.9.5p2</h2>
+<p>Ok.</p>
+<p>So you're running an old RhostMUSH.</p>
+<p>One prior to 3.9.5p2 and want to take advantage of the new
+format of the Makefile and the automated mysql stuff and
+all the other goodies that isn't really (easilly) done
+with just patch.sh.</p>
+<p>Well, you're in luck.  It is actually fairly easy to do.</p>
+<p>This is what you have to do.</p>
+<p>First thing's first.</p>
+<ol class="arabic">
+<li><p class="first">Log into your existing mush.  Let's make current backups
+of all your flatfiles.  Issue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@dump</span><span class="o">/</span><span class="n">flat</span>
+<span class="n">wmail</span><span class="o">/</span><span class="n">unload</span>
+<span class="nd">@areg</span><span class="o">/</span><span class="n">unload</span>
+<span class="n">newsdb</span><span class="o">/</span><span class="n">unload</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Shutdown your game:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@shutdown</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Make an image of all your current backed up files.  From The Server/game directory you would type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">backup_flat</span><span class="o">.</span><span class="n">sh</span> <span class="o">-</span><span class="n">s</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please remember the '-s' to the ./backup_flat.sh.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">Make note of the most recently created file in the directory Server/game/oldflat.  It's usually named something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RhostMUSH</span><span class="o">.</span><span class="n">dbflat1</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You will need this file later.</p>
+</div>
+<ol class="arabic">
+<li><p class="first">Rename your 'Rhost' directory to something else.  This is the directory that you have containing the 'Server' directory.  Name it anything you want other than 'Rhost'.  For those not used to unix you would type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">Rhost</span> <span class="n">Rhost_old</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Pull in the latest Rhost.  You would type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RhostMUSH</span><span class="o">/</span><span class="n">trunk</span> <span class="n">Rhost</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You would type this in the same directory you have renamed your old 'Rhost' directory</p>
+</div>
+<ol class="arabic">
+<li><p class="first">go into the Rhost/Server directory.   Type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">confsource</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Select what options you want (including the mysql and other goodies) then compile it (also within the menu, it's the 'r' option).</p>
+</div>
+<ol class="arabic simple">
+<li>Once your game is compiled and ready to go you need to copy in the data from your old game.  Copy the RhostMUSH.dbflat1.tar.gz we mentioned in step #4 to the Server/game directory of your NEW GAME DIRECTORY.  From within the 'game' directory of your current game you should be able to issue (if you named the old one Rhost_old). Again this needs to be done FROM YOUR Server/game directory!!!</li>
+</ol>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">cp netrhost.conf netrhost.conf.orig</p>
+</li>
+<li><p class="first">cp ../../Rhost_old/Server/game/RhostMUSH.dbflat1.tar.gz .</p>
+</li>
+<li><p class="first">tar -zxvf RhostMUSH.dbflat1.tar.gz</p>
+</li>
+<li><p class="first">Compare your current netrhost.conf to the default one that came with the source (that you renamed to netrhost.conf.orig).  Likely the only sections you have to add to your current netrhost.conf (that came with your RhostMUSH.dbflat1.tar.gz archive), will be toward the end, with the include rhost_ingame.conf and rhost_mysql.conf.  Depending on how old your game is coming from you may need to add more options.  Any config option that is the same between the netrhost.conf files do not have to be copied over, and you want to keep your custom settings (like don't port or other stuff you have already customized).</p>
+</li>
+<li><p class="first">Load in your flatfile information:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">db_load</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">gdbm</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">flat</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Your ./Startmush should re-index all your txt files you originally made:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">Startmush</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">In your game type the following as an immortal or as #1.</p>
+</li>
+</ol>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">Load in your mail flatfile:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">load</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Load in your autoregistration flatfile (if available):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@areg</span><span class="o">/</span><span class="n">load</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Load in your hardcoded bbs flatfile (if available):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newsdb</span><span class="o">/</span><span class="n">load</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+<ol class="arabic simple">
+<li>You should be good to go on a current directory structure for Rhost.  Enjoy!</li>
+</ol>
+</div>
+<div class="section" id="adding-mysql-to-rhostmush-older-than-3-9-5p2">
+<h2><span class="section-number">18.3. </span>Adding MySQL to RhostMUSH older than 3.9.5p2</h2>
+<p>MySQL is now native in RhostMUSH as of 3.9.5p2.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">To autodetect it, YOU MUST HAVE mysql_config installed and running on your server.  Without this, even if you have mysql db installed it won't be able to recognize the parameters you will need for it and will thus fail.  Please check your linux distribution to see what packages are needed to install mysql_config.</p>
+</div>
+<p>Download the git repository to a seperate directory so that you can
+copy over the files that it requires you to.</p>
+<p>Suggestion:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">RhostMUSH</span><span class="o">/</span><span class="n">trunk</span> <span class="o">~/</span><span class="n">tmprho</span>
+</pre></div>
+</div>
+<p>If you are patching UP from an older version, you need to update
+the following files:</p>
+<ol class="arabic simple">
+<li>update your src/Makefile to the one in the 3.9.5p2+ repo
+( cp ~/tmprho/Server/src/Makefile ~/Rhost/Server/src/Makefile )</li>
+<li>update your bin/asksource.* files to the one in the 3.9.5p2+ repo
+( cp ~/tmprho/Server/bin/asksource.* ~/Rhost/Server/bin/ )</li>
+<li>append 'include rhost_mysql.conf' BEFORE the rhost_ingame.conf file
+and before the section that says 'define local aliases' toward the end of
+your netrhost.conf file.
+( edit your ~/Rhost/Server/game/netrhost.conf file )</li>
+<li>copy the game/rhost_mysql.conf file from the 3.9.5p2+ repo
+( cp ~/tmprho/Server/game/rhost_mysql.conf ~/Rhost/Server/game/ )</li>
+<li>The following lines have to be REPLACED/CHANGED in local.c ( toward the top ):
+( you may edit this or copy the one from the other distro )
+( do either:  edit ~/Rhost/Server/src/local.c )
+(        or:  cp ~/tmprho/Server/src/local.c ~/Rhost/Server/src/local.c )</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">IF REPLACING/CHANGING local.c COPY BELOW</p>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Called when the mush starts up, immediatly prior to the main game</span>
+<span class="cm">* loop being entered. By this point all databases are loaded and</span>
+<span class="cm">* all variables configured.</span>
+<span class="cm">*/</span>
+<span class="cp">#ifdef MYSQL_VERSION</span>
+ <span class="k">extern</span> <span class="kt">void</span> <span class="n">local_mysql_init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+ <span class="k">extern</span> <span class="kt">int</span> <span class="n">sql_shutdown</span><span class="p">(</span><span class="n">dbref</span> <span class="n">player</span><span class="p">);</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifdef SQLITE</span>
+ <span class="k">extern</span> <span class="kt">void</span> <span class="n">local_sqlite_init</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="cp">#endif </span><span class="cm">/* SQLITE */</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">local_startup</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#ifdef SQLITE</span>
+ <span class="n">local_sqlite_init</span><span class="p">();</span>
+<span class="cp">#endif </span><span class="cm">/* SQLITE */</span><span class="cp"></span>
+<span class="cp">#ifdef MYSQL_VERSION</span>
+ <span class="n">local_mysql_init</span><span class="p">();</span>
+<span class="cp">#endif</span>
+ <span class="n">load_regexp_functions</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="cm">/* Called immediatly after the main game loop exits. At this point</span>
+<span class="cm">* all databases and variables are still configured</span>
+<span class="cm">*/</span>
+<span class="kt">void</span> <span class="nf">local_shutdown</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+<span class="cp">#ifdef MYSQL_VERSION</span>
+ <span class="n">sql_shutdown</span><span class="p">(</span><span class="mi">-1</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>Issue 'make clean' then make confsource to rebuild using the latest
+builder script to build in the mysql changes.</li>
+</ol>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, wstarter.
+      Last updated on Apr 23, 2021.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
+</html>

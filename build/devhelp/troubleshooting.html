@@ -1,0 +1,401 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14. Troubleshooting</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="15. Advanced Features" href="advanced.html" />
+    <link rel="prev" title="13. Maintenance" href="maintenance.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul></pre>
+<ul>
+    <li><a href="index.html">Home</a> |</li>
+    <li><a href="help.html">RhostMUSH Help File</a> |</li>
+    <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
+    <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
+    <li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">14. </span>Troubleshooting</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="troubleshooting">
+<h1><span class="section-number">14. </span>Troubleshooting</h1>
+<div class="section" id="reporting-bugs-or-getting-help">
+<h2><span class="section-number">14.1. </span>Reporting bugs or getting help</h2>
+<p>If you find any bugs or problems, notify one of the developers of RhostMUSH and
+a patch or workaround will be made available as soon as possible.  Current
+developers are:  Seawolf, Thorin, Ashen-Shugar, Lensman, Kale, Mac, Zenty,
+Ambrosia, Amos, and Morgan.  They can be found around the net.</p>
+<div class="section" id="troubleshooting-issues-with-starting-up">
+<h3><span class="section-number">14.1.1. </span>Troubleshooting issues with starting up</h3>
+<div class="section" id="problem-if-it-says-the-shared-id-is-already-in-use">
+<h4><span class="section-number">14.1.1.1. </span>Problem: If it says the shared ID is already in use</h4>
+<p>A1: please verify that it is the right shared debug_id in your netrhost.conf file</p>
+<p>A2: Force a start by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">Startmush</span> <span class="o">-</span><span class="n">f</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="problem-your-log-file-is-massive-and-your-mush-is-running">
+<h4><span class="section-number">14.1.1.2. </span>Problem: Your log file is massive and your mush is running</h4>
+<p>A1: To rotate this use the &#64;logrotate command. See wizhelp on &#64;logrotate</p>
+</div>
+<div class="section" id="problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined">
+<h4><span class="section-number">14.1.1.3. </span>Problem: The database flatfile you're loading can't load because a db is already defined</h4>
+<p>A1: remove netrhost.db* and netrhost.gdbm* from your data directory</p>
+</div>
+<div class="section" id="problem-the-mail-database-won-t-load-and-mail-shows-offline">
+<h4><span class="section-number">14.1.1.4. </span>Problem: The mail database won't load and mail shows 'offline'</h4>
+<p>A1: from within the MUSH run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">load</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stack-limit-and-debugging">
+<h2><span class="section-number">14.2. </span>Stack limit and debugging</h2>
+<p>Rhost uses a stack limit in the debug monitor.</p>
+<p>This stack limit is set to a reasonable amount of 1000.
+This is defined in the debug.h file in the hdrs directory.</p>
+<p>This will directly impact the function_recursion_limit from being
+set above 100.  If, for whatever reason, you really must have
+a ridiculously high recursion limit, then it is a suggestion to
+manually modify the stack limit in debug.h to a higher number.</p>
+<p>We have reasonably set it to 10000 without too much issue, but keep
+in mind, the overhead is higher for every stack you throw on the
+process table.  Higher stack means more memory used.</p>
+<p>Also be aware that your shell stack limit directly is affected
+to this value.</p>
+<p>Type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ulimit</span> <span class="o">-</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>This will show you your shell stack limits.  Do NOT set the
+STACKMAX value higher than your shell's stack value.</p>
+<p>The value in ~/Rhost/Server/hdrs/debug.h is currently set as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define STACKMAX 1000</span>
+</pre></div>
+</div>
+<p>Feel free to change this to a higher value if you wish.</p>
+<p>The caveat.  This effects the debug stack daemon.  Meaning,
+the only way for this to be updated is through &#64;shutdown and
+then a fresh ./Startmush.</p>
+<p>A &#64;reboot WILL NOT LOAD IN A NEW DEBUG MONITOR!!!!</p>
+<p>You can issue &#64;list stack to see the current stack ceiling ingame.</p>
+</div>
+<div class="section" id="how-to-reset-the-password-for-1">
+<h2><span class="section-number">14.3. </span>How to reset the password for #1</h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You can only use one of these options at a time. Make sure to change back your nerhost.conf and then reboot after making the changes.</p>
+</div>
+<div class="section" id="method-1-reset-to-default-password">
+<h3><span class="section-number">14.3.1. </span>Method 1: Reset to Default Password</h3>
+<p>in your netrhost.conf file add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newpass_god</span> <span class="mi">777</span>
+</pre></div>
+</div>
+<p>This will reset #1's password to the default 'Nyctasia'.</p>
+</div>
+<div class="section" id="method-2-increase-permissions-of-immortals">
+<h3><span class="section-number">14.3.2. </span>Method 2: Increase Permissions of Immortals</h3>
+<p>in your netrhost.conf file add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newpass_god</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>This will allow IMMORTAL players to &#64;newpassword #1 upon reboot.</p>
+</div>
+</div>
+<div class="section" id="troubleshooting-difficulties-compiling-rhostmush">
+<h2><span class="section-number">14.4. </span>Troubleshooting difficulties compiling RhostMUSH</h2>
+<div class="section" id="changes-to-conf-for-high-bit-cpus">
+<h3><span class="section-number">14.4.1. </span>Changes to conf for high-bit CPUs</h3>
+<p>RhostMUSH automatically detects 64-bit platforms, and should compile
+cleanly on these.</p>
+<p>In case you are trying to compile Rhost on some other crazy-wide CPUs
+such as the PS2, PS3 or other 128 or 256 bit CPUs, you can easily do
+so by changing a few lines of code in conf.c.</p>
+<p>change:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">unsigned</span> <span class="nb">int</span>    <span class="n">pmath1</span><span class="p">;</span>
+<span class="n">typedef</span> <span class="nb">int</span>             <span class="n">pmath2</span><span class="p">;</span>
+<span class="c1">#define ALLIGN1 4</span>
+</pre></div>
+</div>
+<p>to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">unsigned</span> <span class="n">long</span>   <span class="n">pmath1</span><span class="p">;</span>
+<span class="n">typedef</span> <span class="n">long</span>            <span class="n">pmath2</span><span class="p">;</span>
+<span class="c1">#define ALLIGN1 8</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace 8 with the size of your CPU's long integer. (4 for 32-bit,
+8 for 64-bit, 16 for 128-bit, etc etc)</p>
+</div>
+<p>RhostMUSH has only been tested to work on the AMD64, but there is no
+reason to believe the same will not hold true for IA64.</p>
+</div>
+<div class="section" id="changes-to-autconf-for-certain-systems">
+<h3><span class="section-number">14.4.2. </span>Changes to autconf for certain systems</h3>
+<p>You should not have to worry about this, but incase something really
+weird occurs, you may need to look into these changes...</p>
+<p>The autoconfig.h file needs to have modifications to it by hand.</p>
+<p>There are three manual entries:</p>
+<p>This one sets how it defines the int to character pointer.  It's safe
+to keep it as 'unsigned int' for 32 bit platforms.  For non 32-bit,
+define it to  how an int is defined on that system:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">unsigned</span> <span class="nb">int</span>    <span class="n">pmath1</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This one sets how it defines the signed int to character pointer.  Same
+restrictions apply as above for unsigned int:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="nb">int</span>     <span class="n">pmath2</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This sets the allignment for the given platform.  4 represents a 32 bit
+platform.  8 would represent a 64 bit platform, etc.  Change accordingly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define ALLIGN1 4</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure these three entries are defined in your autoconf.h file else
+the mush will not compile.</p>
+</div>
+</div>
+</div>
+<div class="section" id="dealing-with-db-corruption">
+<h2><span class="section-number">14.5. </span>Dealing with DB Corruption</h2>
+<p>Ok.  Your database won't come up.</p>
+<p>If you are reading this, then likely the scenerio is one of the following:</p>
+<ol class="arabic simple">
+<li><p>The mush says it can't find your database files.</p></li>
+<li><p>The mush says it can't read or load your database files.</p></li>
+<li><p>The mush seems to load fine but I can't log in anyone and when I do
+all the names and attributes of things seem to be gone!</p></li>
+<li><p>Bringing up your mail database</p></li>
+</ol>
+<p>First thing is first.  Don't have a panic attack.</p>
+<div class="section" id="if-the-mush-says-it-can-t-find-your-database-files">
+<h3><span class="section-number">14.5.1. </span>If the mush says it can't find your database files</h3>
+<div class="section" id="check-the-names-of-the-database-files-in-your-data-directory">
+<h4><span class="section-number">14.5.1.1. </span>Check the names of the database files in your 'data' directory</h4>
+<p>They should be named something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span>
+<span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">old</span>
+<span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">old</span><span class="o">.</span><span class="n">prev</span>
+<span class="n">netrhost</span><span class="o">.</span><span class="n">gdbm</span><span class="o">.</span><span class="n">dir</span>
+<span class="n">netrhost</span><span class="o">.</span><span class="n">gdbm</span><span class="o">.</span><span class="n">pag</span>
+</pre></div>
+</div>
+<p>And you may see a netrhost.db.flat</p>
+</div>
+<div class="section" id="check-your-netrhost-conf-file">
+<h4><span class="section-number">14.5.1.2. </span>Check your netrhost.conf file</h4>
+<p>If you never touched the *database or muddb_name params, you should be good.</p>
+<p>Verify your *database params (and muddb_name) are still set to 'netrhost' as
+part of the name.  Ergo, the default values and you didn't change them.
+These should match up with the filenames in your data directory.</p>
+<p>If these names do not match up, it can't find the database files to load.
+So you shouldn't have to change these names, ever. :)</p>
+</div>
+<div class="section" id="check-your-mush-config-file">
+<h4><span class="section-number">14.5.1.3. </span>Check your mush.config file</h4>
+<p>If you never modified this file, you should be good.</p>
+<p>The gamename should be 'netrhost' for this file.  This does NOT control
+the name of your game.  This controls the name of all the files
+as associated to the mush.  So changing this means the netrhost.conf
+file, all your database files, and so forth.  Please don't change this :)</p>
+</div>
+</div>
+<div class="section" id="if-the-mush-says-it-can-t-read-or-load-your-database-files">
+<h3><span class="section-number">14.5.2. </span>If the mush says it can't read or load your database files</h3>
+<p>Double check everything for the previous issue. Make sure everything is named properly.</p>
+<div class="section" id="verify-you-have-enough-disk-space-quota">
+<h4><span class="section-number">14.5.2.1. </span>Verify you have enough disk space. (quota)</h4>
+<p>Some account have a limited quota to run in.  If you reached or exceed
+your disk quota, you can have a corrupted database.  So always keep
+your eye on the size.  quota -s to see a human readable format to see
+how much quota you have left.  You want to make sure current in use is
+below the 'grace' and soft/hard limits shown.  If not, you're out of
+space.</p>
+<p>You will need to remove some files before you repair and bring up your
+mush again.  Try to keep your quota at least 200 megs free to allow
+plenty of wonderful growth space for the mush.</p>
+</div>
+<div class="section" id="verify-you-have-enough-disk-space-system">
+<h4><span class="section-number">14.5.2.2. </span>Verify you have enough disk space.  (system)</h4>
+<p>The second way you can run out of disk space is by the filesystem itself.
+do a df -h . in your 'game' directory'.  That is df -h &lt;period&gt;.
+This will return how much disk space is being used and how much remains.
+If it shows 100% used, you're out of disk space and the db is corrupt.</p>
+<p>At this point, you're pretty screwed.  You can see if anything exists
+in your system to free up some space, but if the filesystem itself
+is filled, reach out to the owner of the server and let them know.
+It's a much bigger deal than just your mush if that's the case.</p>
+<p>Until this issue is resolved, you can not repair and bring up your mush.
+No disk to run the game.</p>
+</div>
+</div>
+<div class="section" id="if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone">
+<h3><span class="section-number">14.5.3. </span>If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!</h3>
+<p>Ok, at this point you likely had your mush up when the physical server
+went down hard.  Weither through an emergency shutdown or a physical
+power outage, your db likely was brought down hard during a write,
+so it left it in a corrupt state.  These things happen.  This is
+why we always strongly request you make daily flatfile dumps.</p>
+<p>So, to recover your database.</p>
+<div class="section" id="the-bad-news">
+<h4><span class="section-number">14.5.3.1. </span>The bad news</h4>
+<p>If you have no flatfile backup or never bothered with backups?
+I'm sorry, at this point you're SOA.  There's no easy way to
+recover a corrupted binary database.  If you absolutely need
+data out of it we may be able to help you to piece meal things
+out of it, but otherwise it's a lost cause.  You'll have to start
+over from scratch.  I'm sorry.</p>
+</div>
+<div class="section" id="the-good-news">
+<h4><span class="section-number">14.5.3.2. </span>The good news</h4>
+<p>If you made backups, or if the server had a normal shutdown, you
+likely have a flatfile backup.  You will see a netrhost.db.flat
+in either the 'data' directory or 'prevflat' directory.  That
+is your manual flatfile backup.</p>
+<p>If the server had a normal shutdown, you will see a file called
+netrhost.db.TERMFLAT.  This is a scram-emergency db flatfile.
+It attempts to write this at the time of server shutdown to
+hopefully keep a clean backup in the case of issues since
+it identifies the server is coming down hard.  Make sure
+if you plan to use the TERMFLAT as your recovery flatfile
+that the very last line shows something like ** END OF DUMP **.
+That shows you had a successful backup.</p>
+</div>
+<div class="section" id="now-to-restore-your-database">
+<h4><span class="section-number">14.5.3.3. </span>Now, to restore your database?</h4>
+<p>Please refer to the file 'README.DBLOADING'.</p>
+</div>
+</div>
+<div class="section" id="bringing-up-your-mail-database">
+<h3><span class="section-number">14.5.4. </span>Bringing up your mail database</h3>
+<p>Your mail db may or may not come up at this point.</p>
+<div class="section" id="if-after-restoring-main-database-your-mail-database-works">
+<h4><span class="section-number">14.5.4.1. </span>If after restoring main database your mail database works</h4>
+<p>If your mail database came up and does not show
+'Mail: mail is currently off' then you should be good to go.</p>
+<p>Please issue on the MUSH:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">fix</span>
+<span class="n">wmail</span><span class="o">/</span><span class="n">lfix</span>
+</pre></div>
+</div>
+<p>This will put your mail system in sync with your current database and
+fix up any errors that may exist.</p>
+<p>wmail/fix fixes the mail.</p>
+<p>wmail/lfix loads in the fixes.</p>
+</div>
+<div class="section" id="if-after-restoring-main-database-your-mail-database-does-not-work">
+<h4><span class="section-number">14.5.4.2. </span>If after restoring main database your mail database does not work</h4>
+<p>If your mail database is not up and shows 'Mail: mail is currently off' then your mail db is currupt.</p>
+</div>
+</div>
+</div>
+<div class="section" id="dealing-with-a-corrupt-mail-database">
+<h2><span class="section-number">14.6. </span>Dealing with a corrupt mail database</h2>
+<p>It says when you try to access mail that mail is disabled and/or off.</p>
+<p>Nothing you do can bring it on line.  Well, this is bad, but not horrible.</p>
+<p>The mail db is totally separate from the main game database.  This means
+that it in no way damaged or corrupted your main mush database.</p>
+<p>The bad news?  Yes.  Your mail database is corrupt.  To bring it back,
+is it hopes that you read ahead of time about how to backup your mush,
+which would include the mail database.</p>
+<div class="section" id="backing-up-your-mail-database">
+<h3><span class="section-number">14.6.1. </span>Backing up your mail database</h3>
+<p>You should be making a flatifile dump of mail db daily by running on the MUSH:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">unload</span>
+</pre></div>
+</div>
+<p>To recover your mail, it assumes you have a mail flatfile in either the
+~/Server/game/data directory or the ~/Server/game/prevflat directory.  The
+latter directory is used in junction to the backup_flat.sh and will always
+house the latest flatfile if not one recently dumped in your data directory.</p>
+</div>
+<div class="section" id="automatically-recovering-your-mail-database">
+<h3><span class="section-number">14.6.2. </span>Automatically recovering your mail database</h3>
+<p>If you have a flatfile dump of your mail db, run this command on the MUSH:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">load</span>
+</pre></div>
+</div>
+<p>Yup, that's it.  It'll take care of everything else.  Isn't automation grand?</p>
+<p>Doesn't even require a reboot :)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may at this point wish to run the following:
+wmail/fix  -- this fixes the mail database and sync's it to the mush db.
+wmail/lfix -- this loads in the fixed mail database</p>
+</div>
+<p>If you have a very old mail database, this is likely going to be required
+to sync against nuked players and other changes to the game since the flatfile.</p>
+<p>If this is a new db that you have, you can skip the fixing.</p>
+</div>
+<div class="section" id="manually-recovering-your-mail-database">
+<h3><span class="section-number">14.6.3. </span>Manually recovering your mail database</h3>
+<p>To recover your mail manually, you need to delete your mail databases,
+reboot, then reload your mail flatfiles.  If you have no mail flatfiles,
+well, you're going to have to start over with the mail database.  Sorry.</p>
+<p>First, go into the 'game' subdirectory.  Inside that directory is a 'data'
+directory.</p>
+<p>You will be deleting all the files with the following names:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RhostMUSH</span><span class="o">.</span><span class="n">mail</span><span class="o">.*</span>                <span class="p">(</span><span class="n">like</span> <span class="n">RhostMUSH</span><span class="o">.</span><span class="n">mail</span><span class="o">.</span><span class="n">dir</span><span class="o">/</span><span class="n">RhostMUSH</span><span class="o">.</span><span class="n">mail</span><span class="o">.</span><span class="n">pag</span><span class="p">)</span>
+<span class="n">RhostMUSH</span><span class="o">.</span><span class="n">folder</span><span class="o">.*</span>              <span class="p">(</span><span class="n">like</span> <span class="n">RhostMUSH</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">dir</span><span class="o">/</span><span class="n">RhostMUSH</span><span class="o">.</span><span class="n">folder</span><span class="o">.</span><span class="n">pag</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>DO NOT DELETE OTHER NAMED FILES!!!</p>
+</div>
+<p>Once these files are deleted, you may issue a &#64;reboot to restart the mush.
+This will unlock the mail system and load in a fresh db.</p>
+<p>Now, if you have flatfiles of the old mail database, you will see in either
+the 'data' directory or the 'prevflat' directory files that are called:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RhostMUSH</span><span class="o">.</span><span class="n">dump</span><span class="o">.</span><span class="n">folder</span>
+<span class="n">RhostMUSH</span><span class="o">.</span><span class="n">dump</span><span class="o">.</span><span class="n">mail</span>
+</pre></div>
+</div>
+<p>Make sure these two files are in the 'data' subdirectory.  Copy them in
+if they exist in your 'prevflat' directory.</p>
+<p>Once they are in the 'data' directory, within the mush type: wmail/load</p>
+<p>This loads in the flatfile and recover the mail database.</p>
+<p>Now, at this point the mail db may not be 100% in-sync with the game db.</p>
+<p>So let's fix it.</p>
+<p>wmail/fix   -- this will run a fix on the mail db and repair any issues.</p>
+<p>wmail/lfix  -- this will load the fixed flatfile back into the mush.</p>
+<p>At this point you should be good to go.</p>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, wstarter.
+      Last updated on Apr 23, 2021.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
+</html>

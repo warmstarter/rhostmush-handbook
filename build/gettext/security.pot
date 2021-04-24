@@ -1,0 +1,177 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2021, wstarter
+# This file is distributed under the same license as the RhostMUSH Handbook package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RhostMUSH Handbook 0.03a\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-23 20:25-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/security.rst:3
+msgid "Security"
+msgstr ""
+
+#: ../../source/security.rst:6
+msgid "Considerations to locking down restrictions in RhostMUSH"
+msgstr ""
+
+#: ../../source/security.rst:8
+msgid "Sometimes, you want to have things run at various privilage levels and do not want to have things with too much access.  Weither that is online objects or players you want to block from connecting to your mush.  Here's things you can do."
+msgstr ""
+
+#: ../../source/security.rst:13
+msgid "One thing to keep in mind is that RhostMUSH, unlike PennMUSH is not flag dependant on permission level, it's ownership based.  While setting a wizard flag on an object would work, it's not recommended and it is instead recommended to chown the object in question to a wizard (like your wizard holder character) Then the object must be set inherit to actually inherit the wizard."
+msgstr ""
+
+#: ../../source/security.rst:21
+msgid "inherit is required to inherit anything from the player.  Flags, powers, toggles.  The only thing that is inherited automatically is depowers."
+msgstr ""
+
+#: ../../source/security.rst:25
+msgid "Online: Blocking object abilities"
+msgstr ""
+
+#: ../../source/security.rst:27
+msgid "We have various flag levels.  It is strongly recommanded you check wizhelp on 'control' for a detailed overview of what each bitlevel can or can not do prior to giving the ownership to the object.  Things useful for tweaking control on players and objects."
+msgstr ""
+
+#: ../../source/security.rst:33
+msgid "FLAGS (access with @set)"
+msgstr ""
+
+#: ../../source/security.rst:47
+msgid "TOGGLES (@toggle)"
+msgstr ""
+
+#: ../../source/security.rst:56
+msgid "@powers, @depowers, and @locks"
+msgstr ""
+
+#: ../../source/security.rst:58
+msgid "Please review help (and wizhelp) for each of these items on how it can affect a player, thing, exit, or room.  The help is quite verbose."
+msgstr ""
+
+#: ../../source/security.rst:62
+msgid "Offline: Blocking twinks from being abusive on your game"
+msgstr ""
+
+#: ../../source/security.rst:74
+msgid "Extended lockdown of the mush and considerations"
+msgstr ""
+
+#: ../../source/security.rst:76
+msgid "These are flags, powers, toggles, and various conditions for consideration when you decide to use some of the advanced features of RhostMUSH. These are not all that is availble, but tend to be the juicier ones to consider."
+msgstr ""
+
+#: ../../source/security.rst:81
+msgid "Attribute Restriction"
+msgstr ""
+
+#: ../../source/security.rst:90
+msgid "Command Restriction"
+msgstr ""
+
+#: ../../source/security.rst:98
+msgid "Flag/Toggle Restriction"
+msgstr ""
+
+#: ../../source/security.rst:105
+msgid "Config restrictions"
+msgstr ""
+
+#: ../../source/security.rst:112
+msgid "Function Restrictions"
+msgstr ""
+
+#: ../../source/security.rst:120
+msgid "RhostMUSH Flags and Descriptions"
+msgstr ""
+
+#: ../../source/security.rst:146
+msgid "RhostMUSH Toggles and Descriptions"
+msgstr ""
+
+#: ../../source/security.rst:183
+msgid "RhostMUSH @powers and Descriptions"
+msgstr ""
+
+#: ../../source/security.rst:221
+msgid "RhostMUSH @depowers and Descriptions"
+msgstr ""
+
+#: ../../source/security.rst:259
+msgid "Site Restrictions"
+msgstr ""
+
+#: ../../source/security.rst:261
+msgid "These are accessable via the @admin command, and the following options are allowable."
+msgstr ""
+
+#: ../../source/security.rst:264
+msgid "You may see all site information at any time with: @list sites"
+msgstr ""
+
+#: ../../source/security.rst:267
+msgid "IP based restrictions"
+msgstr ""
+
+#: ../../source/security.rst:269
+msgid "You may use CIDR notation such as /32 instead of 255.255.255.255. Config file:  (see section on forbid_site as it describes and gives examples) Online Syntax: MASK::"
+msgstr ""
+
+#: ../../source/security.rst:304
+msgid "DNS based restrictions"
+msgstr ""
+
+#: ../../source/security.rst:306
+msgid "These allow globbing wildcard matches. The advanced feature is you can specify filtering on when the condition is matched, such as allowing 2 players from a site to be connected before disallowing anyone else to connect. Config File: (see section on forbid_host as it describes and gives examples) Online Syntax::"
+msgstr ""
+
+#: ../../source/security.rst:329
+msgid "Methods to block anonymous connections and the pros and cons of doing so"
+msgstr ""
+
+#: ../../source/security.rst:331
+msgid "Now let's assume you have some troll attempting to use proxies to connect. There's multiple ways to stop this."
+msgstr ""
+
+#: ../../source/security.rst:335
+msgid "Blacklisting through external tor_pull.sh script"
+msgstr ""
+
+#: ../../source/security.rst:337
+msgid "In ~/Rhost/Server/game you will see a script called tor_pull.sh Execute this by running (from the game directory) ./tor_pull.sh This populates the blacklist with registered proxies from various sites on the internet.  If you want specified ip's added, feel free to add them at the end of this file."
+msgstr ""
+
+#: ../../source/security.rst:344
+msgid "Blacklisting through internal @blacklist command"
+msgstr ""
+
+#: ../../source/security.rst:346
+msgid "On the mush, have as part of your startup @blacklist/load This will load in the generated blacklist file for automatic forbid sites based on the ip."
+msgstr ""
+
+#: ../../source/security.rst:351
+msgid "Blacklisting through internal @tor command"
+msgstr ""
+
+#: ../../source/security.rst:353
+msgid "@tor.  Please see 'wizhelp tor' on how to set this up.  It in effect will actively block all known exit nodes for TOR's annonymous proxy service.  It self-updates and will actively block TOR connections."
+msgstr ""
+
+#: ../../source/security.rst:358
+msgid "Blacklisting through internal @admin command"
+msgstr ""
+
+#: ../../source/security.rst:360
+msgid "@admin proxy_checker (please see wizhelp) This little doodad uses MTU checking against packet size which will detect most methods of proxies.  Sadly, this also has false positives because some situations require a differentating MTU value such as briged network connect with things like cloud services, docker, or similar encapsulated network services.  However, this option has several settings from just monitoring/alerting of possible proxies to downright forbidding them.  If you're being actively attacked, it may be worth considering adding this to add additional protection."
+msgstr ""

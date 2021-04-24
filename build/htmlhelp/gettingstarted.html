@@ -1,0 +1,363 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=cp1252" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>9. Getting Started</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/style.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="next" title="10. Ambrosia&#39;s Minimal Rhost DB" href="ambrosiadb.html" />
+    <link rel="prev" title="8. Database" href="database.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul></pre>
+<ul>
+    <li><a href="index.html">Home</a> |</li>
+    <li><a href="help.html">RhostMUSH Help File</a> |</li>
+    <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
+    <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
+    <li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">9. </span>Getting Started</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="getting-started">
+<h1><span class="section-number">9. </span>Getting Started</h1>
+<div class="section" id="what-to-type-to-get-the-basics-running-if-you-did-not-choose-a-pre-existing-flatfile">
+<h2><span class="section-number">9.1. </span>What to type to get the basics running if you did not choose a pre-existing flatfile</h2>
+<p>If you decided to get a bare-bone configuration, you will find your mush has just two things.  The #1 (God) player and the starting room #0.  That's it.</p>
+<div class="section" id="login-to-1-from-the-connect-screen">
+<h3><span class="section-number">9.1.1. </span>Login to #1 from the connect screen</h3>
+<p>Nyctasia is the default password:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">co</span> <span class="c1">#1 Nyctasia</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="change-1-s-password-to-something-you-ll-remember-but-is-hard-to-guess">
+<h3><span class="section-number">9.1.2. </span>Change #1's password to something you'll remember but is hard to guess</h3>
+<p>Note: yourpasswordgoeshere can be any password you choose.  Choose well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@password</span> <span class="n">Nyctasia</span><span class="o">=</span><span class="n">YOURPASSWORDGOESHERE</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="master-room">
+<h3><span class="section-number">9.1.3. </span>Master Room</h3>
+<p>At this point you should create your master room:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@dig</span> <span class="n">Master</span> <span class="n">Room</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Reason: You need a master room to contain global $commands for players
+^listens are not global for intentional reasons.  It's far too much overhead for far too minimal gains that few people need or use.</p>
+</div>
+</div>
+<div class="section" id="flag-and-protect-master-room">
+<h3><span class="section-number">9.1.4. </span>Flag and protect Master Room</h3>
+<p>It will return a dbref#, it should be #2 if you've not created anything else:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@set</span> <span class="c1">#2=safe ind halt float</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="player-holder-characters">
+<h3><span class="section-number">9.1.5. </span>Player Holder Characters</h3>
+<p>Feel free to change the password to what you want</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Reason: You will want to chown global room or global areas to a given bitlevel and a method to keep organized.
+Note: wizhelp control will give you a complete breakdown of what each bit can do.</p>
+</div>
+<div class="section" id="immortal-holder">
+<h4><span class="section-number">9.1.5.1. </span>Immortal Holder</h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@pcreate ImmHolder=abc123
+@set *Immholder=no_connect !wanderer immortal
+@badsite *immholder=*
+</pre></div>
+</div>
+</div>
+<div class="section" id="royalty-wizard-holder">
+<h4><span class="section-number">9.1.5.2. </span>Royalty/Wizard Holder</h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@pcreate WizHolder=abc123
+@set *wizholder=no_connect !wanderer royalty
+@badsite *wizholder=*
+</pre></div>
+</div>
+</div>
+<div class="section" id="councilor-admin-holder">
+<h4><span class="section-number">9.1.5.3. </span>Councilor/Admin Holder</h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@pcreate AdminHolder=abc123
+@set *adminholder=no_connect !wanderer councilor
+@badsite *adminholder=*
+</pre></div>
+</div>
+</div>
+<div class="section" id="architect-staff-holder">
+<h4><span class="section-number">9.1.5.4. </span>Architect/Staff Holder</h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@pcreate StaffHolder=abc123
+@set *staffholder=no_connect !wanderer architect
+@badsite *staffholder=*
+</pre></div>
+</div>
+</div>
+<div class="section" id="guildmaster-lead-holder">
+<h4><span class="section-number">9.1.5.5. </span>Guildmaster/Lead Holder</h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@pcreate GuildHolder=abc123
+@set *guildholder=no_connect !wanderer guildmaster
+@badsite *guildholder=*
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="chown-0-the-starting-room-and-2-the-master-room-to-immholder">
+<h3><span class="section-number">9.1.6. </span>Chown #0 (The starting room) and #2 (The Master room) to immholder</h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">#0 you can chown to a different bitlevel if you want, but the master room should always be owned by an immortal</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@chown</span><span class="o">/</span><span class="n">preserve</span> <span class="c1">#0=*immholder</span>
+<span class="nd">@chown</span><span class="o">/</span><span class="n">preserve</span> <span class="c1">#2=*immholder</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-yourself-your-own-immortal-player-then-log-off-1-and-into-this-immortal-player">
+<h3><span class="section-number">9.1.7. </span>Create yourself your own immortal player then log off #1 and into this immortal player</h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Pick what you want for playername and playerpassword</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@pcreate PLAYERNAME=PLAYERPASSWORD
+@set *playername=!wanderer immortal
+</pre></div>
+</div>
+</div>
+<div class="section" id="log-out-of-1-and-log-into-your-immortal-player">
+<h3><span class="section-number">9.1.8. </span>Log out of #1 and log into your immortal player</h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Use the playername and password you created in the step before</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOGOUT</span>
+<span class="n">co</span> <span class="n">PLAYERNAME</span> <span class="n">PLAYERPASSWORD</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-your-guest-characters">
+<h3><span class="section-number">9.1.9. </span>Create your guest characters</h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Feel free to change the description if you want</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@dolist</span> <span class="n">lnum</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span><span class="o">=</span><span class="p">{</span><span class="nd">@pcreate</span> <span class="n">Guest</span><span class="c1">##=guest;@set *Guest##=guest;@adisconnect *Guest##=home;@lock *Guest##=*Guest##;@desc *Guest##=A Stranger in a strange land.}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="dig-a-closet-to-store-important-objects-but-non-master-room">
+<h3><span class="section-number">9.1.10. </span>Dig a closet to store important objects but non-master room</h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">name it anything you want, just remember it.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@dig</span> <span class="n">Closet</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-the-flags-on-the-closet-and-ownership-of-it">
+<h3><span class="section-number">9.1.11. </span>Set the flags on the closet and ownership of it</h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Use the dbref# that it returned when digging the closet and not #123</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@set</span> <span class="c1">#123=inh safe ind float</span>
+<span class="nd">@chown</span><span class="o">/</span><span class="n">pres</span> <span class="c1">#123=*immholder</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-an-admin-object-for-future-ease-of-customization">
+<h3><span class="section-number">9.1.12. </span>Create an Admin object for future ease of customization</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@create</span> <span class="n">AdminObject</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set-the-flags-on-the-admin-object-and-ownership-and-location">
+<h3><span class="section-number">9.1.13. </span>Set the flags on the admin object and ownership and location</h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">this object must be immortal owned.  Use the dbref# returned previously instead of #123</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Use the closet dbref# instead of #234</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@set</span> <span class="n">AdminObject</span><span class="o">=</span><span class="n">halt</span> <span class="n">safe</span> <span class="n">ind</span>
+<span class="nd">@chown</span><span class="o">/</span><span class="n">pres</span> <span class="c1">#123=*immholder</span>
+<span class="nd">@tel</span> <span class="n">adminobject</span><span class="o">=</span><span class="c1">#234</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-admin-object-to-configuration">
+<h3><span class="section-number">9.1.14. </span>Add admin object to configuration</h3>
+<p>Modify the netrhost.conf file with the following line at the bottom after the line '# define local alises here' where you replace 123 with the dbref# of the admin object that you made:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">admin_object</span> <span class="mi">123</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reboot-your-mush-to-load-up-the-change-for-the-admin-object">
+<h3><span class="section-number">9.1.15. </span>Reboot your mush to load up the change for the admin object</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@reboot</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="do-admin-list-to-see-if-it-shows-the-admin-object">
+<h3><span class="section-number">9.1.16. </span>Do &#64;admin/list to see if it shows the admin object</h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">do wizhelp &#64;admin for more information on how to use this</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span><span class="o">/</span><span class="nb">list</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-in-all-the-various-softcode-that-you-want">
+<h3><span class="section-number">9.1.17. </span>Load in all the various softcode that you want</h3>
+<p>This is client dependant based on whatever method it uses to load softcode.</p>
+<div class="section" id="myrddin-mushcron">
+<h4><span class="section-number">9.1.17.1. </span>Myrddin MushCron</h4>
+<p>Load in the Myrddin Mush Cron.
+It's a very handy piece of software and strongly suggested to do so.  You can find this in the 'Mushcode' directory off the main Rhost directory.
+Filename:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">Rhost</span><span class="o">/</span><span class="n">Mushcode</span><span class="o">/</span><span class="n">MyrddinCRON</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The globalroom() function returns the dbref# of the master room.  Handy!</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@chown</span><span class="o">/</span><span class="n">preserve</span> <span class="n">the</span> <span class="n">myrddin</span> <span class="n">mush</span> <span class="n">cron</span> <span class="n">to</span> <span class="n">immholder</span><span class="p">,</span> <span class="n">then</span> <span class="n">move</span> <span class="n">to</span> <span class="n">maste</span> <span class="n">room</span><span class="o">.</span>
+<span class="nd">@chown</span><span class="o">/</span><span class="n">pres</span> <span class="n">Myrddin</span><span class="o">=*</span><span class="n">Immholder</span>
+<span class="nd">@tel</span> <span class="n">Myrddin</span><span class="o">=</span><span class="c1">#234 (where #234 is the dbref# of your code closet)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ashcom">
+<h4><span class="section-number">9.1.17.2. </span>AshCom</h4>
+<p>Load in default softcoded comsystem.  This is PennMUSH and MUX/TM3 compatible.
+Filename:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">Rhost</span><span class="o">/</span><span class="n">Mushcode</span><span class="o">/</span><span class="n">comsys</span>
+</pre></div>
+</div>
+<p>Chown the Comsystem and everything inside it to immholder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@chown</span><span class="o">/</span><span class="n">pres</span> <span class="n">ChanSys</span><span class="o">=*</span><span class="n">Immholder</span>
+<span class="nd">@dolist</span> <span class="n">lcon</span><span class="p">(</span><span class="n">chansys</span><span class="p">)</span><span class="o">=</span><span class="nd">@chown</span><span class="o">/</span><span class="n">pres</span> <span class="c1">##=*immholder</span>
+<span class="nd">@tel</span> <span class="n">Chansys</span><span class="o">=</span><span class="n">globalroom</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mail-wrappers">
+<h4><span class="section-number">9.1.17.3. </span>Mail Wrappers</h4>
+<p>Load in mail wrappers if you want MUX/TM3 and/or Penn mail wrapping.
+Filename (MUX/TM3):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">Rhost</span><span class="o">/</span><span class="n">Mushcode</span><span class="o">/</span><span class="n">mailwrappers</span><span class="o">/</span><span class="n">muxmail</span><span class="o">.</span><span class="n">wrap</span>
+</pre></div>
+</div>
+<p>Filename (Penn):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">Rhost</span><span class="o">/</span><span class="n">Mushcode</span><span class="o">/</span><span class="n">mailwrappers</span><span class="o">/</span><span class="n">pennmail</span><span class="o">.</span><span class="n">wrap</span>
+</pre></div>
+</div>
+<p>Chown to immholder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@chown</span><span class="o">/</span><span class="n">pres</span> <span class="n">MUX</span><span class="o">=*</span><span class="n">Immholder</span>
+<span class="nd">@chown</span><span class="o">/</span><span class="n">pres</span> <span class="n">Penn</span><span class="o">=*</span><span class="n">Immholder</span>
+<span class="nd">@tel</span><span class="o">/</span><span class="nb">list</span> <span class="n">mux</span> <span class="n">penn</span><span class="o">=</span><span class="n">globalroom</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="myrddin-bbs">
+<h4><span class="section-number">9.1.17.4. </span>Myrddin BBS</h4>
+<p>Load in Myrddin's BBS
+Filename:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/</span><span class="n">Rhost</span><span class="o">/</span><span class="n">Mushcode</span><span class="o">/</span><span class="n">MyrddinBBS</span>
+</pre></div>
+</div>
+<p>Chown to immholder and the contents of it as well:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@chown</span><span class="o">/</span><span class="n">pres</span> <span class="n">Myrddin</span><span class="o">=*</span><span class="n">Immholder</span>
+<span class="nd">@dolist</span> <span class="n">lcon</span><span class="p">(</span><span class="n">myrddin</span><span class="p">)</span><span class="o">=</span><span class="nd">@chown</span><span class="o">/</span><span class="n">pres</span> <span class="c1">##=*immholder</span>
+<span class="nd">@tel</span> <span class="n">myrddin</span><span class="o">=</span><span class="n">globalroom</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-mushcode">
+<h4><span class="section-number">9.1.17.5. </span>Other Mushcode</h4>
+<p>There's other code in the Mushcode directory that you are welcome to install.  You would follow similar procedures
+for loading it in, chowning it, and moving to the master room as you did above.</p>
+<p>Likewise, any softcode you find on the internet or on other mushes should be portable to RhostMUSH with little to
+no changes depending on the complexity of the code in question.</p>
+</div>
+</div>
+</div>
+<div class="section" id="minimal-db-instructions">
+<h2><span class="section-number">9.2. </span>Minimal DB instructions</h2>
+<p>The 'retired' directory has older image files if you're interested</p>
+<p>Please use the netrhost.conf file with the database as they're linked.</p>
+<p>The flatfile must be loaded in as a new db</p>
+<p>This is a minimal db with basic 'features' built in.</p>
+<p>Copy the txt files into the Rhost's txt directory off game:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">txt</span><span class="o">/*</span> <span class="o">~/</span><span class="n">Rhost</span><span class="o">/</span><span class="n">Server</span><span class="o">/</span><span class="n">game</span><span class="o">/</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>mkindx the files (substitute FILENAME with the filename):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">Rhost</span><span class="o">/</span><span class="n">Server</span><span class="o">/</span><span class="n">game</span><span class="o">/</span><span class="n">txt</span>
+<span class="o">../</span><span class="n">mkindx</span> <span class="n">FILENAME</span><span class="o">.</span><span class="n">txt</span> <span class="n">FILENAME</span><span class="o">.</span><span class="n">indx</span>
+</pre></div>
+</div>
+<div class="section" id="startup-steps">
+<h3><span class="section-number">9.2.1. </span>Startup Steps</h3>
+<ol class="arabic simple">
+<li>Using the Startmush utility for the first time, select the load db method</li>
+</ol>
+<p>--- or ---</p>
+<ol class="arabic">
+<li><p class="first">copy the netrhost.conf file into the games directory</p>
+</li>
+<li><p class="first">make any relevant changes you wish</p>
+</li>
+<li><p class="first">db_load the flatfile</p>
+<ol class="arabic">
+<li><p class="first">go into the game directory</p>
+</li>
+<li><p class="first">type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">db_load</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">gdbm</span> <span class="o">../</span><span class="n">minimal</span><span class="o">-</span><span class="n">DBs</span><span class="o">/</span><span class="n">minimal_db</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">flat</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p class="first">Startmush as expected</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, wstarter.
+      Last updated on Apr 23, 2021.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
+</html>

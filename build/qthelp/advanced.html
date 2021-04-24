@@ -1,0 +1,1200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>15. Advanced Features</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/style.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="advanced-features">
+<h1><span class="section-number">15. </span>Advanced Features</h1>
+<div class="section" id="adding-hardcoded-modules">
+<h2><span class="section-number">15.1. </span>Adding hardcoded modules</h2>
+<p>RhostMUSH does support module writing.</p>
+<div class="section" id="modifying-sourcode-to-add-a-module">
+<h3><span class="section-number">15.1.1. </span>Modifying sourcode to add a module</h3>
+<p>This requires hooking your changes into local.c, then modifying the Makefile (in the src directory)
+for any new source files that you wish to add.</p>
+<p>Something to be aware of is that all localized data is ran after the system cache subroutine.</p>
+</div>
+<div class="section" id="adding-an-startup-to-make-use-of-modules">
+<h3><span class="section-number">15.1.2. </span>Adding an &#64;startup to make use of modules</h3>
+<p>This means that if your code is depending on &#64;startups, you need to put a delay in the &#64;startup
+so that your local code can be loaded in as modules prior to the &#64;startup execution.</p>
+<p>Something that will not work:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@startup</span> <span class="n">me</span><span class="o">=</span><span class="nd">@superhappyfuncommand</span> <span class="n">loadmeup</span><span class="o">=</span><span class="n">now</span>
+</pre></div>
+</div>
+<p>A small alteration that will likely make this work fine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@startup</span> <span class="n">me</span><span class="o">=</span><span class="nd">@wait</span> <span class="mi">1</span><span class="o">=</span><span class="nd">@superhappyfuncommand</span> <span class="n">loadmeup</span><span class="o">=</span><span class="n">now</span>
+</pre></div>
+</div>
+<p>That 1 second delay for the queue will give the game engine time to load in your module code.</p>
+</div>
+<div class="section" id="contributing-your-module-back-to-rhost">
+<h3><span class="section-number">15.1.3. </span>Contributing your module back to Rhost</h3>
+<p>If you wish your modules to be part of the main Rhost distribution you have two options:</p>
+<ol class="arabic simple">
+<li><p>Attempt to hack the bin/asksource.sh and bin/asksource.blank files.</p></li>
+<li><p>Ask one of the Rhost devs to do it for you :)</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="reality-levels-setup">
+<h2><span class="section-number">15.2. </span>Reality Levels Setup</h2>
+<p>Reality levels are a means to forbid (or allow) interaction between objects
+in the same location.</p>
+<div class="section" id="reality-levels-visibility">
+<h3><span class="section-number">15.2.1. </span>Reality Levels Visibility</h3>
+<p>Each object (player, room, exit, thing) has two lists of reality levels.
+An Rx list, which describe what it can see and a Tx list, which describe
+where it can be seen. Those are bitfields. In order for X to see Y a bitwise
+'and' is performed between X's RxLevel and Y's TxLevel. If the result is not
+0, then X sees Y. If the result is 0, as far as X is concerned, Y doesn't
+exist. This affects contents lists, exit lists, look, say, pose, &#64;emit,
+&#64;verb, connect/disconnect, has arrived/has left messages, exit and object
+matching. 'here' and 'me' match always.</p>
+<p>It doesn't affect &#64;remit, &#64;pemit, page, WHO or channels.
+By default, all new objects are created with an RxLevel of 1 and TxLevel of
+1. Rooms are an exception, created with an RxLevel of 1 and a TxLevel of
+0xFFFFFFFF. Those default levels can be changed with configuration
+parameters.</p>
+<p>An object is always visible to itself, even if its Rx and Tx levels don't
+match. (See examples below)</p>
+</div>
+<div class="section" id="reality-levels-descriptions">
+<h3><span class="section-number">15.2.2. </span>Reality Levels Descriptions</h3>
+<p>For every reality level defined, you can define an attribute that serves as
+description. If you look at something and match more than one of its
+TxLevels, you'll see all the corresponding descriptions on the target
+object. If the object doesn't have any descriptions for the matching levels,
+you'll see the regular &#64;desc.</p>
+<p>The &#64;adesc attribute on the target is only triggered if the target can see
+the looker in turn. It's only triggered once, no matter how many descs the
+looker sees. The &#64;odesc is shown only to those people that see /both/ the
+looker and the target.</p>
+<p>Through extension, &#64;afail/&#64;ofail and similar pairs (&#64;adrop/&#64;odrop,
+&#64;asucc/&#64;osucc etc) work in the same way. &#64;verb commands are similary
+affected.</p>
+<p>Softcoded commands are only matched on the objects that can see the player.
+The player doesn't have to see the object. This includes commands in the
+Master Room.</p>
+<p>Exits are treated specially. In order to be able to use an exit name (or to
+use the 'move &lt;exit&gt;' command) the exit must be visible to the enactor. In
+order to pass through the exit, the exit must see the enactor in turn. There
+are reasons for this, which will become evident in the examples below.</p>
+</div>
+<div class="section" id="reality-levels-configuration-parameters">
+<h3><span class="section-number">15.2.3. </span>Reality Levels Configuration parameters</h3>
+<p>A few configuration parameters have been introduced to deal with the reality
+levels:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">desc</span> <span class="n">attribute</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This directive can only be used in the config file (not with the &#64;admin
+command) and should be repeated for each reality level you want to define.
+It defines a new level named &lt;name&gt; with a bitvalue of &lt;value&gt; and an
+optional desc attribute. There is a limit of 8 characters on &lt;name&gt;, a
+32-bit value on &lt;value&gt; (basically an unsigned long) and 32 characters on
+the attribute name. A maximum of 32 reality levels can be defined:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">def_exit_tx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_exit_rx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_room_tx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_room_rx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_player_rx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_player_tx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_thing_rx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="n">def_thing_tx</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>These 8 directives define the default reality levels of newly created
+objects. They can be set in the config file or with the &#64;admin command.
+Like above, &lt;value&gt; must be a decimal number:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wiz_always_real</span> <span class="o">&lt;</span><span class="mi">0</span><span class="o">|</span><span class="mi">1</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>If this parameter is set to 1 then wizards (and immortals on Rhost) will see
+everything and will be visible to everyone. Their effective Rx and Tx levels
+will always be 0xFFFFFFFF. Also settable in the config file and with the
+&#64;admin command.</p>
+<p>Compile with -DREALITY_LEVELS compile time option to enable 'Real' needs to be '1'
+This is an example file only to be added to the mush.conf file Format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="o">&lt;</span><span class="mi">8</span> <span class="n">char</span> <span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="nb">hex</span><span class="o">-</span><span class="n">byte</span><span class="o">-</span><span class="n">mask</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">optional</span><span class="o">-</span><span class="n">desc</span><span class="p">:</span> <span class="n">DESC</span> <span class="n">default</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reality-levels-example-mush-conf">
+<h3><span class="section-number">15.2.4. </span>Reality Levels Example mush.conf</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="n">Real</span> <span class="mi">1</span>
+<span class="n">reality_level</span> <span class="n">Obf1</span> <span class="mi">2</span>
+<span class="n">reality_level</span> <span class="n">Obf2</span> <span class="mi">4</span>
+<span class="n">reality_level</span> <span class="n">Obf3</span> <span class="mi">8</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf4</span> <span class="mi">16</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf5</span> <span class="mi">32</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf6</span> <span class="mi">64</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf7</span> <span class="mi">128</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf8</span> <span class="mi">256</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf9</span> <span class="mi">512</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Obf10</span> <span class="mi">1024</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span> <span class="n">Umbra</span> <span class="mi">2048</span> <span class="n">UMBRADESC</span>
+<span class="n">reality_level</span> <span class="n">Fae</span> <span class="mi">4096</span> <span class="n">FAEDESC</span>
+<span class="n">reality_level</span> <span class="n">Shadow</span> <span class="mi">8192</span> <span class="n">SHADOWDESC</span>
+<span class="n">reality_level</span> <span class="n">Spy</span> <span class="mi">16384</span>
+<span class="n">reality_level</span> <span class="n">Death</span> <span class="mi">32768</span> <span class="n">DEATHDESC</span>
+<span class="n">reality_level</span> <span class="n">All</span> <span class="mi">4294967295</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reality-levels-commands">
+<h3><span class="section-number">15.2.5. </span>Reality Levels Commands</h3>
+<p>Two wiz-only commands are used to set the reality levels of an object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@rxlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
+<span class="nd">@txlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>&lt;list&gt; is a space-separated list of level names that have to be set on the
+object. If a level name is prefixed with an exclamation mark (!) that level
+will be cleared from the object.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Changing the Tx levels of an object might make it invisible to you.
+In this case, you can still manipulate it by using his #dbref (or *player
+for players).</p>
+</div>
+</div>
+<div class="section" id="functions">
+<h3><span class="section-number">15.2.6. </span>Functions</h3>
+<p>There are five functions that deal with reality levels:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hasrxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">hastxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These two functions check if an object has the specified Rx or Tx level.
+You must control &lt;object&gt;. They return 0 or 1 and #-1 in case the object
+does not exist or you don't have permissions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">txlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>These two functions return a space-separated list of the object's Rx or Tx
+levels. Again, you must control the object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cansee</span><span class="p">(</span><span class="o">&lt;</span><span class="n">obj1</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">obj2</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A wiz-only function, returns 1 of &lt;obj1&gt; can see &lt;obj2&gt; from a reality
+levels point of view. It doesn't check if the objects are in the same
+location, the DARK/CLOAKED flags and so on. Just &lt;obj1&gt;'s Rx level against
+&lt;obj2&gt;'s Tx level.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are using it on MUX2.0 with /both/ reality levels and Wod
+Realms enabled, the function will perform both checks and the Wod Realms
+version checks against the DARK flag.</p>
+</div>
+</div>
+<div class="section" id="example-1-a-simplified-witchcraft-setup">
+<h3><span class="section-number">15.2.7. </span>Example 1: A simplified Witchcraft setup</h3>
+<p>In Witchcraft, besides the various Gifted classes, characters can be spirits
+There are spirit realms to which the mundane can not travel. Therefore we
+will use 2 reality levels: Real and Ghost. Since some spirits can become
+solid for a limited period of time, we will also use an additional desc for
+the Ghost level, called GHOSTDESC. Therefore in the config file we will
+have:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="n">Real</span> <span class="mi">1</span>
+<span class="n">reality_level</span> <span class="n">Ghost</span> <span class="mi">2</span> <span class="n">GHOSTDESC</span>
+</pre></div>
+</div>
+<p>Ghosts can pass through most mundane locks, so the exists should allows the
+ghosts to pass:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">def_exit_rx</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>Note that def_exit_tx isn't set. Why? Because ghosts see the mundane world
+anyway, so a spirit character will have:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@txlevel &lt;player&gt;=!Real Ghost
+@rxlevel &lt;player&gt;=Real Ghost
+</pre></div>
+</div>
+<p>Let's assume 3 players:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">John</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">Mundane</span><span class="o">.</span> <span class="n">He</span> <span class="n">won</span><span class="s1">&#39;t see spirits.</span>
+<span class="n">John</span><span class="s1">&#39;s Rx: Real</span>
+<span class="n">John</span><span class="s1">&#39;s Tx: Real</span>
+<span class="n">John</span><span class="s1">&#39;s @desc: This is John.</span>
+<span class="n">John</span><span class="s1">&#39;s &amp;GHOSTDESC: (Not important, since it&#39;</span><span class="n">s</span> <span class="n">never</span> <span class="n">visible</span><span class="p">)</span>
+<span class="n">Johh</span><span class="s1">&#39;s @adesc: %N has looked at you.</span>
+<span class="n">John</span><span class="s1">&#39;s @odesc: has looked at John.</span>
+</pre></div>
+</div>
+<p>Jack is a Gifted. He will sense spirits, but is still made from flesh and blood so visible to mundanes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Jack</span><span class="s1">&#39;s Rx: Real Ghost</span>
+<span class="n">Jack</span><span class="s1">&#39;s Tx: Real</span>
+<span class="n">Jack</span><span class="s1">&#39;s @desc: This is Jack.</span>
+<span class="n">Jack</span><span class="s1">&#39;s &amp;GHOSTDESC: (Not important, since it&#39;</span><span class="n">s</span> <span class="n">never</span> <span class="n">visible</span><span class="p">)</span>
+<span class="n">Jack</span><span class="s1">&#39;s @adesc: %N has looked at you.</span>
+<span class="n">Jack</span><span class="s1">&#39;s @odesc: has looked at Jack.</span>
+</pre></div>
+</div>
+<p>Frank is a ghost. He will see other spirits as well as mundanes, but won't be visible to mundanes. He can also become visible to everybody:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Frank</span><span class="s1">&#39;s Rx: Real Ghost</span>
+ <span class="n">Frank</span><span class="s1">&#39;s Tx: Ghost</span>
+ <span class="n">Frank</span><span class="s1">&#39;s @desc: This is Frank, looking human.</span>
+ <span class="n">Frank</span><span class="s1">&#39;s &amp;GHOSTDESC: This is Frank&#39;</span><span class="n">s</span> <span class="n">ghostly</span> <span class="n">shape</span><span class="o">.</span>
+ <span class="n">Frank</span><span class="s1">&#39;s @adesc: %N has looked at you.</span>
+ <span class="n">Frank</span><span class="s1">&#39;s @odesc: has looked at Frank.</span>
+</pre></div>
+</div>
+<p>Following are commands that each of the players enter and what they see.  I'll assume the +materialize command is defined like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&amp;CMD_MATERIALIZE &lt;cmdobject&gt;=$+materialize:@txlevel %#=Real; @pemit %#=You are now material.
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">|</span>         <span class="n">John</span>           <span class="o">|</span>         <span class="n">Jack</span>          <span class="o">|</span>         <span class="n">Frank</span>
+                         <span class="o">|</span>                       <span class="o">|</span>
+ <span class="o">&gt;</span> <span class="n">l</span>                     <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">A</span> <span class="n">room</span>                  <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">bare</span> <span class="n">room</span><span class="o">.</span>    <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Contents</span><span class="p">:</span>               <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Jack</span>                    <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Obvious</span> <span class="n">exits</span><span class="p">:</span>          <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Out</span> <span class="o">&lt;</span><span class="n">O</span><span class="o">&gt;</span>                 <span class="o">|</span>                       <span class="o">|</span>
+                         <span class="o">|&gt;</span> <span class="n">l</span>                    <span class="o">|</span>
+                         <span class="o">|</span><span class="n">A</span> <span class="n">room</span>                 <span class="o">|</span>
+                         <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">bare</span> <span class="n">room</span><span class="o">.</span>   <span class="o">|</span>
+                         <span class="o">|</span><span class="n">Contents</span><span class="p">:</span>              <span class="o">|</span>
+                         <span class="o">|</span><span class="n">John</span> <span class="n">Frank</span>             <span class="o">|</span>
+                         <span class="o">|</span><span class="n">Obvious</span> <span class="n">exits</span><span class="p">:</span>         <span class="o">|</span>
+                         <span class="o">|</span><span class="n">Out</span> <span class="o">&lt;</span><span class="n">O</span><span class="o">&gt;</span>                <span class="o">|</span>
+                         <span class="o">|</span>                       <span class="o">|&gt;</span> <span class="n">l</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">A</span> <span class="n">room</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">bare</span> <span class="n">room</span><span class="o">.</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">Contents</span><span class="p">:</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">John</span> <span class="n">Jack</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">Obvious</span> <span class="n">exits</span><span class="p">:</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">Out</span> <span class="o">&lt;</span><span class="n">O</span><span class="o">&gt;</span>
+ <span class="o">&gt;</span><span class="n">l</span> <span class="n">Jack</span>                 <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Jack</span>                    <span class="o">|</span><span class="n">John</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span> <span class="n">you</span><span class="o">.|</span><span class="n">John</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span> <span class="n">Jack</span><span class="o">.</span>
+ <span class="n">This</span> <span class="ow">is</span> <span class="n">Jack</span><span class="o">.</span>           <span class="o">|</span>                       <span class="o">|</span>
+ <span class="o">&gt;</span><span class="n">l</span> <span class="n">Frank</span>                <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">I</span> <span class="n">don</span><span class="s1">&#39;t see that here.  |                       |</span>
+                         <span class="o">|&gt;</span><span class="n">l</span> <span class="n">Frank</span>               <span class="o">|</span>
+                         <span class="o">|</span><span class="n">Frank</span>                  <span class="o">|</span><span class="n">Jack</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span> <span class="n">you</span><span class="o">.</span>
+                         <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">Frank</span><span class="s1">&#39;s ghostly|</span>
+                         <span class="o">|</span><span class="n">shape</span><span class="o">.</span>                 <span class="o">|</span>
+                         <span class="o">|</span>                       <span class="o">|&gt;</span><span class="n">l</span> <span class="n">John</span>
+                         <span class="o">|</span><span class="n">Frank</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span>    <span class="o">|</span><span class="n">John</span>
+                         <span class="o">|</span><span class="n">John</span><span class="o">.</span>                  <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">John</span><span class="o">.</span>
+                         <span class="o">|</span>                       <span class="o">|&gt;+</span><span class="n">materialize</span>
+                         <span class="o">|</span>                       <span class="o">|</span><span class="n">You</span> <span class="n">are</span> <span class="n">now</span> <span class="n">material</span><span class="o">.</span>
+ <span class="o">&gt;</span><span class="n">l</span> <span class="n">Frank</span>                <span class="o">|</span>                       <span class="o">|</span>
+ <span class="n">Frank</span>                   <span class="o">|</span><span class="n">John</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span>     <span class="o">|</span><span class="n">Frank</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span> <span class="n">you</span><span class="o">.</span>
+ <span class="n">This</span> <span class="ow">is</span> <span class="n">Frank</span><span class="p">,</span> <span class="n">looking</span>  <span class="o">|</span><span class="n">Frank</span><span class="o">.</span>                 <span class="o">|</span>
+ <span class="n">human</span><span class="o">.</span>                  <span class="o">|</span>                       <span class="o">|</span>
+                         <span class="o">|&gt;</span><span class="n">l</span> <span class="n">Frank</span>               <span class="o">|</span>
+ <span class="n">Jack</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span>      <span class="o">|</span><span class="n">Frank</span>                  <span class="o">|</span><span class="n">John</span> <span class="n">has</span> <span class="n">looked</span> <span class="n">at</span> <span class="n">you</span><span class="o">.</span>
+ <span class="n">Frank</span><span class="o">.</span>                  <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">Frank</span><span class="p">,</span> <span class="n">looking</span> <span class="o">|</span>
+                         <span class="o">|</span><span class="n">human</span><span class="o">.</span>                 <span class="o">|</span>
+                         <span class="o">|</span><span class="n">This</span> <span class="ow">is</span> <span class="n">Frank</span><span class="s1">&#39;s ghostly|</span>
+                         <span class="o">|</span><span class="n">shape</span><span class="o">.</span>                 <span class="o">|</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-2-a-wod-setup">
+<h3><span class="section-number">15.2.8. </span>Example 2: A WoD setup</h3>
+<p>The reality levels will be defined like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span>         <span class="n">Real</span> <span class="mi">1</span>
+<span class="n">reality_level</span>         <span class="n">Obf1</span> <span class="mi">2</span>
+<span class="n">reality_level</span>         <span class="n">Obf2</span> <span class="mi">4</span>
+<span class="n">reality_level</span>         <span class="n">Obf3</span> <span class="mi">8</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span>         <span class="n">Obf4</span> <span class="mi">16</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span>         <span class="n">Obf5</span> <span class="mi">32</span> <span class="n">OBFDESC</span>
+<span class="n">reality_level</span>         <span class="n">Umbra</span> <span class="mi">64</span> <span class="n">UMBRADESC</span>
+<span class="n">reality_level</span>         <span class="n">Fae</span> <span class="mi">128</span> <span class="n">FAEDESC</span>
+<span class="n">reality_level</span>         <span class="n">Shadow</span> <span class="mi">256</span> <span class="n">SHADOWDESC</span>
+<span class="n">reality_level</span>         <span class="n">All</span> <span class="mi">511</span>
+</pre></div>
+</div>
+<p>5 levels of Obfuscation, Umbra, Dreaming, Wraiths. 'All' is a handy
+replacement for all levels, useful for wizards and wizobjects that should
+be visible on all levels. Also useful when you want to set an object's
+levels to something without knowing what he had before:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@rxlevel</span> <span class="c1">#276=!All Real</span>
+</pre></div>
+</div>
+<p>!All will clear all levels, then the object will gain the Real level.
+There is more than one Obfuscation level because of the relation between
+Auspex and Obfuscation.</p>
+<p>A vampire with Obfuscate 2, should not be visible by one with Auspex 1.
+However one with Auspex 3 should see another vampire with Obfuscate 1, 2
+/or/ 3.</p>
+<p>Obfuscated players can move if they have Obf &gt; 1. Umbral and Shadow players
+should also be able to see most of the exits. So the exits at creation
+should have default levels of Real + Obf2 + Obf3 + Obf4 + Obf5 + Umbra +
+Shadow = 1 + 4 + 8 + 16 + 32 + 64 + 256 = 381:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">def_exit_rx</span> <span class="mi">381</span>
+<span class="n">def_exit_tx</span> <span class="mi">381</span>
+</pre></div>
+</div>
+<p>Obf1 is not included since an Obfuscated vampire should not be able to move
+if it only has Obf1. Therefore they won't see the exits. If you want them
+to be able to see the exits, but not to use them, change the default Tx of
+the exits:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">def_exit_rx</span> <span class="mi">381</span>
+<span class="n">def_exit_tx</span> <span class="mi">383</span>
+</pre></div>
+</div>
+<p>Joe the Mortal will have an RxLevel: Real and a TxLevel: Real
+Jack the Malk, who likes to walk around Obfuscated and has Obfuscate 2 will
+have an RxLevel: Real (he sees what the mortals see) but a TxLevel: Obf2
+Jimmy the Nossie, who is using the Mask and has Obfuscate 4, but doesn't
+try to make himself invisible will have an RxLevel: Real (as Jack)
+and a TxLevel: Real Obf4. He will also set his &#64;desc to what the mortals see and
+&amp;OBFDESC to his real slimy desc. Simply put, he will be visible to mortals,
+but not with his real desc.</p>
+<p>Aldrin the Gangrel, has Auspex 4 and activates it. Therefore, his TxLevel
+will still be Real, but RxLevel: Real Obf1 Obf2 Obf3 Obf4 (all of them). So
+he can see Joe, Jack and Jimmy's both descs.
+Joe, on the other hand, won't see Jack at all. He will still see Jimmy, but
+only Jimmy's &#64;desc, not the OBFDESC</p>
+<p>Frida the Fae... will have RxLevel: Real Fae and TxLevel: Real Fae. &#64;desc
+set to the mundane desc, &amp;FAEDESC set to the Chimerical desc.
+Emily the Enchanted will have an RxLevel: Real Fae, but the TxLevel: Real.
+No &amp;FAEDESC on her, although she'll be able to see it the one on Frida.
+Gil the Garou, while travelling through the Umbra, will have RxLevel: Umbra
+and TxLevel: Umbra. &amp;UMBRADESC is his friend. He won't see mortals or other
+characters who are not in the Umbra.</p>
+<p>Barbie the Bastet, who's only peeking in the Umbra, without going there,
+will have RxLevel: Umbra, TxLevel: Real. Dangerous position since she
+can't see the things that see her.</p>
+<p>Deanna the Drake, who activates her spirit vision, will have
+RxLevel: Real Umbra and TxLevel: Real. She will see characters in Umbra and
+real world at the same time and perceive the desc appropiate to the realm
+the ohter character is in.</p>
+<p>Wanda the Wraith: RxLevel: Real Shadow, TxLevel: Shadow. Her &#64;desc
+would be empty, but the &amp;SHADOWDESC should be set.
+Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</p>
+<p>Global code objects that all characters should be able to use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RxLevel</span><span class="p">:</span> <span class="n">All</span><span class="p">,</span> <span class="n">TxLevel</span><span class="p">:</span> <span class="n">All</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-3-softcode">
+<h3><span class="section-number">15.2.9. </span>Example 3: Softcode</h3>
+<p>Considering the config directives from example 2 and assuming a function
+getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player's stat from
+the sheet here are softcode examples that implement some of the WoD powers.
+In a real game you would have to use some more checks, of course.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@create Reality Levels Commands (RLS)
+&amp;CMD_OBFON rls=$+obf/on:@switch [setr(0, getstat(%#,Obfuscate))]=0, @pemit %#=You don&#39;t have Obfuscate!, {@txlevel %#=!All Obf%q0; @pemit %#=You are now invisible.}
+&amp;CMD_OBFOFF rls=$+obf/off:@txlevel %#=Real; @pemit %#=You are now visible.
+@@ Note: +obf/on clears all TxLevels before setting the appropiate Obf
+@@ This is necesary, because a character might advance from Obf2 to
+@@ Obf3 and he should be visible /only/ on the Obf3 level.
+@@ +obf/off simply sets the Real Tx level, without clearing the Obf. The
+@@ reason is the Mask. Players with Obf3 or higher who use the Mask should
+@@ +obf/on, then +obf/off after approval and everything is set.
+&amp;CMD_AUSPEXON rls=$+auspex/on:@switch [setr(0, getstat(%#, Auspex))]=0, @pemit %#=You don&#39;t have Auspex!, {@rxlevel %#=[iter(lnum(1, %q0), Obf##)]; @pemit %#=Auspex enabled.}
+&amp;CMD_AUSPEXOFF rls=$+auspex/off:@switch [hasrxlevel(%#, Obf1)]=0, @pemit %#= You don&#39;t have Auspex enabled!, {@rxlevel %#=[iter(lnum(1, 5), !Obf##)]; @pemit %#=Auspex disabled.}
+&amp;CMD_UMBRAENTER rls=$+umbra/enter:@rxlevel %#=!Real Umbra; @txlevel %#= !Real Umbra; @pemit %#=You are now in the Umbra.
+&amp;CMD_UMBRALEAVE rls=$+umbra/leave:@rxlevel %#=Real !Umbra; @txlevel %#= Real !Umbra; @pemit %#=You left the Umbra.
+&amp;CMD_PEEKON rls=$+peek/on:@switch hastxlevel(%#,Umbra)=1, {@rxlevel %#=Real !Umbra; @pemit %#=You are now peeking in the real world}, {@rxlevel %#=!Real Umbra; @pemit %#=You are now peeking into the Umbra}
+&amp;CMD_PEEKOFF rls=$+peek/off:@rxlevel %#=!Real !Umbra [setinter(Real Umbra, txlevel(%#))]; @pemit %#=You are no longer peeking.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="execscript-and-external-programs-and-scripts">
+<h2><span class="section-number">15.3. </span>Execscript and external programs and scripts</h2>
+<div class="section" id="execscript-variables">
+<h3><span class="section-number">15.3.1. </span>Execscript variables</h3>
+<div class="section" id="execscript-built-in-variables">
+<h4><span class="section-number">15.3.1.1. </span>Execscript Built in variables</h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MUSH_PLAYER</p></td>
+<td><p>player dbref#</p></td>
+</tr>
+<tr class="row-odd"><td><p>MUSH_CAUSE</p></td>
+<td><p>cause dbref#</p></td>
+</tr>
+<tr class="row-even"><td><p>MUSH_CALLER</p></td>
+<td><p>caller dbref#</p></td>
+</tr>
+<tr class="row-odd"><td><p>MUSH_OWNER</p></td>
+<td><p>owner of player dbref#</p></td>
+</tr>
+<tr class="row-even"><td><p>MUSH_FLAGS</p></td>
+<td><p>space delimited list of flags on player</p></td>
+</tr>
+<tr class="row-odd"><td><p>MUSH_TOGGLES</p></td>
+<td><p>space delimited list of toggles on player</p></td>
+</tr>
+<tr class="row-even"><td><p>MUSH_OFLAGS</p></td>
+<td><p>space delimited list of flags of player owner</p></td>
+</tr>
+<tr class="row-odd"><td><p>MUSH_OTOGGLES</p></td>
+<td><p>space delimited list of toggles of player owner</p></td>
+</tr>
+<tr class="row-even"><td><p>MUSHL_VARS</p></td>
+<td><p>space delimited list of MUSH attributes from player
+This is passed from the mush's EXECSCRIPT_VARS attr</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="execscript-dynamic-variables">
+<h4><span class="section-number">15.3.1.2. </span>Execscript Dynamic variables</h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MUSHV_&lt;arg&gt;</p></td>
+<td><p>&lt;arg&gt; variable passed from MUSHL_VARS
+These are the attributes from EXECSCRIPT_VARS</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="execscript-register-variables">
+<h4><span class="section-number">15.3.1.3. </span>Execscript Register variables</h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MUSHQ_&lt;arg&gt;</p></td>
+<td><p>setq registers 0-9 and a-z</p></td>
+</tr>
+<tr class="row-odd"><td><p>MUSHQN_&lt;arg&gt;</p></td>
+<td><p>labels that are assigned the setq vars</p></td>
+</tr>
+<tr class="row-even"><td><p>MUSHN_&lt;arg&gt;</p></td>
+<td><p>The labels that were defined by any register
+Note: they must be ASCII-7 clean and contain no white spaces</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="execsript-set-object">
+<h3><span class="section-number">15.3.2. </span>Execsript set object</h3>
+<p>The script executed with execscript() will read in a file with the same name
+as the script ending in '.set'.  This is a loader object that will set attributes
+and registers back into the mush that you wish to pass from the script. The
+fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
+<div class="section" id="execscript-set-object-field-format">
+<h4><span class="section-number">15.3.2.1. </span>Execscript set object field format</h4>
+<div class="section" id="execscript-set-object-dynamic-variables">
+<h5><span class="section-number">15.3.2.1.1. </span>Execscript set object Dynamic variables</h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VARNAME</span>        <span class="n">OWNER</span>        <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="execscript-set-object-dynamic-variables-examples">
+<h6><span class="section-number">15.3.2.1.1.1. </span>Execscript set object Dynamic variables Examples</h6>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SEX</span> <span class="c1">#123 Male</span>
+<span class="n">DESC</span> <span class="c1">#123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.</span>
+<span class="n">RED</span> <span class="c1">#123 This is the color %ch%crred%cn.</span>
+<span class="n">WIPETHISATTR</span> <span class="c1">#123</span>
+<span class="n">MULTILINE</span> <span class="c1">#123 This is a line</span>
+<span class="n">that</span> <span class="n">continues</span> <span class="n">on</span>
+<span class="n">because</span> <span class="n">of</span> <span class="n">the</span> <span class="n">line</span> <span class="n">feed</span> <span class="p">(</span><span class="n">a</span> <span class="n">control</span><span class="o">-</span><span class="n">M</span><span class="p">)</span> <span class="n">on</span> <span class="n">each</span> <span class="n">line</span>
+<span class="n">on</span> <span class="n">the</span> <span class="n">lines</span> <span class="n">above</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="execscript-set-object-register-variables">
+<h5><span class="section-number">15.3.2.1.2. </span>Execscript set object Register variables</h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REGISTER</span>       <span class="n">Q</span>            <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="execscript-set-object-register-variables-examples">
+<h6><span class="section-number">15.3.2.1.2.1. </span>Execscript set object Register variables Examples</h6>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The last exammple clears register 0</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">W</span> <span class="n">Q</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">stored</span> <span class="ow">in</span> <span class="n">register</span> <span class="n">W</span>
+<span class="mi">1</span> <span class="n">Q</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">stored</span> <span class="ow">in</span> <span class="n">register</span> <span class="mi">1</span>
+<span class="mi">0</span> <span class="n">Q</span>
+<span class="n">foo</span> <span class="n">QN</span> <span class="n">this</span> <span class="n">sets</span> <span class="n">register</span> <span class="k">with</span> <span class="n">label</span> <span class="s1">&#39;foo&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="execscript-example-bash-script">
+<h3><span class="section-number">15.3.3. </span>Execscript Example bash script</h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="s2">&quot;This was called by player </span><span class="si">${</span><span class="nv">MUSH_PLAYER</span><span class="si">}</span><span class="s2"> that is owned by </span><span class="si">${</span><span class="nv">MUSH_OWNER</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;Displaying Registers:&quot;</span>
+<span class="nv">regs</span><span class="o">=</span><span class="s2">&quot;0 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z&quot;</span>
+<span class="k">for</span> list <span class="k">in</span> <span class="si">${</span><span class="nv">regs</span><span class="si">}</span>
+<span class="k">do</span>
+    <span class="nb">eval</span> <span class="nb">echo</span> <span class="s2">&quot;Register </span><span class="si">${</span><span class="nv">list</span><span class="si">}</span><span class="s2">: \${MUSHQ_</span><span class="si">${</span><span class="nv">list</span><span class="si">}</span><span class="s2">}&quot;</span>
+<span class="k">done</span>
+<span class="nb">echo</span> <span class="s2">&quot;Displaying variables:&quot;</span>
+<span class="k">for</span> vars <span class="k">in</span> <span class="si">${</span><span class="nv">MUSHL_VARS</span><span class="si">}</span>
+<span class="k">do</span>
+    <span class="nb">eval</span> <span class="nb">echo</span> <span class="s2">&quot;Variable </span><span class="si">${</span><span class="nv">vars</span><span class="si">}</span><span class="s2">: \${MUSHV_</span><span class="si">${</span><span class="nv">vars</span><span class="si">}</span><span class="s2">}&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="exescript-notes-and-warnings">
+<h3><span class="section-number">15.3.4. </span>Exescript Notes and warnings</h3>
+<p>While MUSHL_VARS are sanitized on what is allowable as a mush variable, this
+is not necessarilly sanitized on what the calling script can fetch as a valid
+variable.  Of note, you can not set environment variables that contain an
+equals sign.  Be aware of this limitation.</p>
+<p>Remember, MUSHL_VARS is the environment variable seen by the script.
+This is EXECSCRIPT_VARS on the mush itself, that is the attribute set
+on the target that contains the execscript() that is being executed.</p>
+</div>
+<div class="section" id="scripts-to-be-used-with-execscript">
+<h3><span class="section-number">15.3.5. </span>Scripts to be used with execscript</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">account</span><span class="o">/</span>                       <span class="o">--</span> <span class="n">Directory</span> <span class="k">for</span> <span class="n">execscripts</span> <span class="n">relating</span> <span class="n">to</span> <span class="n">account</span> <span class="n">creation</span>
+<span class="n">compile39</span><span class="o">.</span><span class="n">sh</span>                   <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span> <span class="mf">3.9</span>
+<span class="nb">compile</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span>
+<span class="n">config</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">setting</span> <span class="nb">compile</span> <span class="n">time</span> <span class="n">options</span> <span class="k">for</span> <span class="n">RhostMUSH</span>
+<span class="n">debug</span><span class="o">.</span><span class="n">sh</span>                       <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">debugging</span> <span class="n">RhostMUSH</span>
+<span class="nb">dict</span><span class="o">.</span><span class="n">sh</span>                        <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">a</span> <span class="n">dictionary</span>
+<span class="n">diff</span><span class="o">.</span><span class="n">sh</span>                        <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">differences</span> <span class="n">between</span> <span class="n">two</span> <span class="n">arguments</span>
+<span class="n">fortune</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">fortune</span> <span class="n">program</span>
+<span class="n">fullweather</span><span class="o">.</span><span class="n">sh</span>                 <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">a</span> <span class="n">graphical</span> <span class="n">weather</span> <span class="n">forecast</span> <span class="p">(</span><span class="n">alternative</span><span class="p">)</span>
+<span class="n">git</span><span class="o">.</span><span class="n">sh</span>                         <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">git</span> <span class="n">version</span> <span class="n">of</span> <span class="n">RhostMUSH</span>
+<span class="n">hello</span><span class="o">.</span><span class="n">sh</span>                       <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">teaching</span> <span class="n">execscript</span> <span class="k">for</span> <span class="s1">&#39;Hello World&#39;</span>
+<span class="n">iostat</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">server</span> <span class="n">stats</span> <span class="n">of</span> <span class="n">RhostMUSH</span>
+<span class="n">jsonvalidate</span><span class="o">.</span><span class="n">sh</span>                <span class="o">--</span> <span class="n">Python</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">validating</span> <span class="n">JSON</span>
+<span class="n">logsearch</span><span class="o">.</span><span class="n">sh</span>                   <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">searching</span> <span class="n">throgh</span> <span class="n">logfiles</span> <span class="k">for</span> <span class="n">RhostMUSH</span>
+<span class="n">math_example</span><span class="o">.</span><span class="n">sh</span>                <span class="o">--</span> <span class="n">Examples</span> <span class="n">of</span> <span class="n">math</span> <span class="n">operations</span> <span class="n">to</span> <span class="n">be</span> <span class="n">used</span> <span class="k">with</span> <span class="n">math</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">math</span><span class="o">.</span><span class="n">sh</span>                        <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">mathematical</span> <span class="n">operations</span>
+<span class="n">memory</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">memory</span> <span class="n">usage</span> <span class="n">of</span> <span class="n">RhostMUSH</span>
+<span class="n">mkindx</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">indexing</span> <span class="n">RhostMSH</span> <span class="n">helpfiles</span>
+<span class="n">pastebinread</span><span class="o">.</span><span class="n">sh</span>                <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">reading</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">pastebin</span> <span class="n">URL</span>
+<span class="n">pastebinwrite</span><span class="o">.</span><span class="n">sh</span>               <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">writing</span> <span class="n">data</span> <span class="n">to</span> <span class="n">a</span> <span class="n">pastebin</span>
+<span class="n">qspell</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">checking</span> <span class="n">spelling</span> <span class="p">(</span><span class="n">alternative</span><span class="p">)</span>
+<span class="n">quota</span><span class="o">.</span><span class="n">sh</span>                       <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">checking</span> <span class="n">disk</span> <span class="n">quote</span> <span class="ow">and</span> <span class="n">usage</span>
+<span class="n">random</span><span class="o">.</span><span class="n">sh</span>                      <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">getting</span> <span class="n">a</span> <span class="n">random</span> <span class="n">number</span>
+<span class="n">roomlog</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">viewing</span> <span class="n">logs</span> <span class="ow">in</span> <span class="n">roomlog</span> <span class="n">directory</span>
+<span class="n">spell</span><span class="o">.</span><span class="n">sh</span>                       <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">checking</span> <span class="n">spelling</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">sh</span>                       <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">server</span> <span class="ow">and</span> <span class="n">process</span> <span class="n">stats</span> <span class="k">for</span> <span class="n">RhostMUSH</span>
+<span class="n">thes</span><span class="o">.</span><span class="n">sh</span>                        <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">adding</span> <span class="n">a</span> <span class="n">word</span> <span class="n">to</span> <span class="n">the</span> <span class="n">dictionary</span> <span class="k">for</span> <span class="n">spell</span> <span class="n">scripts</span>
+<span class="n">tinyurl</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">shortening</span> <span class="n">a</span> <span class="n">URL</span>
+<span class="n">weather</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">a</span> <span class="n">graphical</span> <span class="n">weather</span> <span class="n">forecast</span>
+<span class="n">web</span><span class="o">.</span><span class="n">sh</span>                         <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">querying</span> <span class="n">an</span> <span class="n">arbitary</span> <span class="n">website</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-printf-for-advanced-text-output">
+<h2><span class="section-number">15.4. </span>Using printf() for advanced text output</h2>
+<p>The function printf() in Rhost can be used to greatly reduce coding in efforts for outputs,
+screens and data display.  It can automatically center, justify and wrap the text parameters given to it.</p>
+<div class="section" id="printf-example-one">
+<h3><span class="section-number">15.4.1. </span>Printf Example one</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf(|$-12s|$12s|$^12s$&amp;14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
+
+|a b c       |       d e f|   g h i    |0 1 2 3 4 5 |j     k    l|
+                                       |6 7 8 9 10  |
+                                       |11 12 13 14 |
+                                       |15 16 17 18 |
+                                       |19          |
+</pre></div>
+</div>
+</div>
+<div class="section" id="printf-example-two">
+<h3><span class="section-number">15.4.2. </span>Printf Example two</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
+iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
+iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
+* Aggravated%RX Lethal%R/ Bashing)
+
+         Bruised      [ ]    * Aggravated
+            Hurt  -1  [ ]        X Lethal
+         Injured  -1  [ ]       / Bashing
+         Wounded  -2  [ ]
+          Mauled  -2  [ ]
+        Crippled  -5  [ ]
+   Incapacitated      [ ]
+</pre></div>
+</div>
+</div>
+<div class="section" id="printf-example-three">
+<h3><span class="section-number">15.4.3. </span>Printf Example three</h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit [printf($-10|&quot;&#39;s$-60|&quot;s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
+this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!
+
+a b c d e this is a test a groovy test blah blah blah blah blah blah
+f g h i j blah blah blah blah blah blah blah blah blah blah blah blah
+k l m n o blah blah blah blah blah blah blah blah blah blah blah blah
+p q r s t blah blah blah blah blah blah blah blah blah blah blah blah
+u v w x y blah blah blah blah blah blah blah blah blah blah blah blah
+z         blah blah blah blah blah blah blah blah blah blah blah blah
+blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+blah blah blah blah blah blah blah                                    END!
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="format-for-image-files">
+<h1><span class="section-number">16. </span>Format for image files</h1>
+<p>The image format goes like this:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 82%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Data Type</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>3</p></td>
+<td><p>TYPE: room 0, thing 1, exit 2, player 3, zone 4, garbage 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRING</p></td>
+<td><p>Wizard</p></td>
+<td><p>NAME: of the target.  Verbatum, no quotes surround it</p></td>
+</tr>
+<tr class="row-even"><td><p>*INT</p></td>
+<td><p>123</p></td>
+<td><p>LOCATION: dbref# of the target.  No prepending '#' used.</p></td>
+</tr>
+<tr class="row-odd"><td><p>*INT</p></td>
+<td><p>234</p></td>
+<td><p>CONTENTS: The first content in a linked list content table (-1 if none)</p></td>
+</tr>
+<tr class="row-even"><td><p>*INT</p></td>
+<td><p>345</p></td>
+<td><p>EXITS: The first exit in a linked list exit table (-1 if none)</p></td>
+</tr>
+<tr class="row-odd"><td><p>*INT</p></td>
+<td><p>0</p></td>
+<td><p>LINK: This is the 'home' of the object or what it's linked to (-1 for none)</p></td>
+</tr>
+<tr class="row-even"><td><p>*INT</p></td>
+<td><p>123</p></td>
+<td><p>NEXT: The next thing after this item for a content holder</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRING</p></td>
+<td><p>#123</p></td>
+<td><p>LOCK: The boolean string lock if it exists.  (empty if no lock)</p></td>
+</tr>
+<tr class="row-even"><td><p>*INT</p></td>
+<td><p>1</p></td>
+<td><p>OWNER: The dbref# owner of the target.  For players same dbref as player.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>789</p></td>
+<td><p>PARENT: The parent of the target.  (-1 if none)</p></td>
+</tr>
+<tr class="row-even"><td><p>*INT</p></td>
+<td><p>99999</p></td>
+<td><p>MONEY: The int value of the money the players has.</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>194592</p></td>
+<td><p>FLAGS1: The first word of flags (&#64;set flags) on a player      (see FLAGS)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>194222</p></td>
+<td><p>FLAGS2: The second word of flags (&#64;set flags) on a player     (see FLAGS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>199999</p></td>
+<td><p>FLAGS3: The third word of flags (&#64;set flags []) on a player   (see FLAGS)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>1582958</p></td>
+<td><p>FLAGS4: The forth word of flags (&#64;set flags []) on a player   (see FLAGS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>159955</p></td>
+<td><p>TOGGLES1: The first word of toggles (&#64;toggle) on a player    (see TOGGLES)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>TOGGLES2: The second word of toggles (&#64;toggle) on a player   (see TOGGLES)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>POWER1: The first word of powers (&#64;power) on a player         (see POWERS)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>POWER2: The second word of powers (&#64;power) on a player        (see POWERS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>POWER3: The third word of powers (&#64;power) on a player         (see POWERS)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>DEPOWER1: The first word of depowers (&#64;depower) on a player  (see DEPOWERS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>DEPOWER2: The second word of depowers (&#64;depower) on a player (see DEPOWERS)</p></td>
+</tr>
+<tr class="row-even"><td><p>INT</p></td>
+<td><p>159958</p></td>
+<td><p>DEPOWER3: The third word of depowers (&#64;depower) on a player  (see DEPOWERS)</p></td>
+</tr>
+<tr class="row-odd"><td><p>INT</p></td>
+<td><p>-1</p></td>
+<td><p>ZONE(S): The list of zones starting here and ending with '-1'. (see ZONES)</p></td>
+</tr>
+<tr class="row-even"><td><p>&gt;STRING</p></td>
+<td><p>&gt;VA</p></td>
+<td><p>ATTRIBUTENAME: Attribute name to store, starts with &gt; identifier</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRING</p></td>
+<td><p>Wheee</p></td>
+<td><p>ATTRIBUTECONTENTS: Contents of attribute.  Multi-lines seperate with ^M (control-M)</p></td>
+</tr>
+<tr class="row-even"><td><p>&gt;STRING</p></td>
+<td><p>&gt;Desc</p></td>
+<td><p>ATTRIBUTENAME: Another attribute to chain in</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRING</p></td>
+<td><p>Ugly</p></td>
+<td><p>ATTRIBUTECONTENTS: Contents of the next attribute</p></td>
+</tr>
+<tr class="row-even"><td><p>&gt;STRING</p></td>
+<td><p>*Password</p></td>
+<td><p>PASSWORDATTRIB: Special password attribute.  Attribute name is '*Password'</p></td>
+</tr>
+<tr class="row-odd"><td><p>STRING</p></td>
+<td><p>$6$xy$xy</p></td>
+<td><p>PASSWORDCONTENTS: The SHA512 password (if glibc 2.7+ supported on system) (see PASS)</p></td>
+</tr>
+<tr class="row-even"><td><p>&lt;</p></td>
+<td><p>&lt;</p></td>
+<td><p>This is the marker to specify the end of the attribute contents.  This is always the last line</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Any Data type starting with '*' is ignored when &#64;snapshot/loading.</p>
+</div>
+<p>The structure above with the examples would look like this in the file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>3
+Wizard
+123
+234
+345
+0
+123
+#123
+1
+789
+99999
+194592
+194222
+199999
+1582958
+159955
+159958
+159958
+159958
+159958
+159958
+159958
+159958
+-1
+&gt;VA
+Wheee
+&gt;Desc
+Ugly
+&gt;*Password
+$6$xy$xy
+&lt;
+</pre></div>
+</div>
+<div class="section" id="help-key-indexes-for-the-values">
+<h2><span class="section-number">16.1. </span>HELP key indexes for the values</h2>
+<p>FLAGS: The following flags are to be used.  They are BITWISE masks that you
+need to add together for the values that you apply</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* First word of flags */</span>
+<span class="cp">#define SEETHRU         0x00000008      </span><span class="cm">/* Can see through to the other side */</span><span class="cp"></span>
+<span class="cp">#define WIZARD          0x00000010      </span><span class="cm">/* gets automatic control */</span><span class="cp"></span>
+<span class="cp">#define LINK_OK         0x00000020      </span><span class="cm">/* anybody can link to this room */</span><span class="cp"></span>
+<span class="cp">#define DARK            0x00000040      </span><span class="cm">/* Don&#39;t show contents or presence */</span><span class="cp"></span>
+<span class="cp">#define JUMP_OK         0x00000080      </span><span class="cm">/* Others may @tel here */</span><span class="cp"></span>
+<span class="cp">#define STICKY          0x00000100      </span><span class="cm">/* Object goes home when dropped */</span><span class="cp"></span>
+<span class="cp">#define DESTROY_OK      0x00000200      </span><span class="cm">/* Others may @destroy */</span><span class="cp"></span>
+<span class="cp">#define HAVEN           0x00000400      </span><span class="cm">/* No killing here, or no pages */</span><span class="cp"></span>
+<span class="cp">#define QUIET           0x00000800      </span><span class="cm">/* Prevent &#39;feelgood&#39; messages */</span><span class="cp"></span>
+<span class="cp">#define HALT            0x00001000      </span><span class="cm">/* object cannot perform actions */</span><span class="cp"></span>
+<span class="cp">#define TRACE           0x00002000      </span><span class="cm">/* Generate evaluation trace output */</span><span class="cp"></span>
+<span class="cp">#define GOING           0x00004000      </span><span class="cm">/* object is available for recycling */</span><span class="cp"></span>
+<span class="cp">#define MONITOR         0x00008000      </span><span class="cm">/* Process ^x:action listens on obj? */</span><span class="cp"></span>
+<span class="cp">#define MYOPIC          0x00010000      </span><span class="cm">/* See things as nonowner/nonwizard */</span><span class="cp"></span>
+<span class="cp">#define PUPPET          0x00020000      </span><span class="cm">/* Relays ALL messages to owner */</span><span class="cp"></span>
+<span class="cp">#define CHOWN_OK        0x00040000      </span><span class="cm">/* Object may be @chowned freely */</span><span class="cp"></span>
+<span class="cp">#define ENTER_OK        0x00080000      </span><span class="cm">/* Object may be ENTERed */</span><span class="cp"></span>
+<span class="cp">#define VISUAL          0x00100000      </span><span class="cm">/* Everyone can see properties */</span><span class="cp"></span>
+<span class="cp">#define IMMORTAL        0x00200000      </span><span class="cm">/* Object can&#39;t be killed */</span><span class="cp"></span>
+<span class="cp">#define HAS_STARTUP     0x00400000      </span><span class="cm">/* Load some attrs at startup */</span><span class="cp"></span>
+<span class="cp">#define OPAQUE          0x00800000      </span><span class="cm">/* Can&#39;t see inside */</span><span class="cp"></span>
+<span class="cp">#define VERBOSE         0x01000000      </span><span class="cm">/* Tells owner everything it does. */</span><span class="cp"></span>
+<span class="cp">#define INHERIT         0x02000000      </span><span class="cm">/* Gets owner&#39;s privs. (i.e. Wiz) */</span><span class="cp"></span>
+<span class="cp">#define NOSPOOF         0x04000000      </span><span class="cm">/* Report originator of all actions. */</span><span class="cp"></span>
+<span class="cp">#define ROBOT           0x08000000      </span><span class="cm">/* Player is a ROBOT */</span><span class="cp"></span>
+<span class="cp">#define SAFE            0x10000000      </span><span class="cm">/* Need /override to @destroy */</span><span class="cp"></span>
+<span class="cp">#define CONTROL_OK      0x20000000      </span><span class="cm">/* ControlLk specifies who ctrls me */</span><span class="cp"></span>
+<span class="cp">#define HEARTHRU        0x40000000      </span><span class="cm">/* Can hear out of this obj or exit */</span><span class="cp"></span>
+<span class="cp">#define TERSE           0x80000000      </span><span class="cm">/* Only show room name on look */</span><span class="cp"></span>
+
+<span class="cm">/* Second word of flags */</span>
+<span class="cp">#define KEY             0x00000001      </span><span class="cm">/* No puppets */</span><span class="cp"></span>
+<span class="cp">#define ABODE           0x00000002      </span><span class="cm">/* May @set home here */</span><span class="cp"></span>
+<span class="cp">#define FLOATING        0x00000004      </span><span class="cm">/* Inhibit Floating room.. msgs */</span><span class="cp"></span>
+<span class="cp">#define UNFINDABLE      0x00000008      </span><span class="cm">/* Cant loc() from afar */</span><span class="cp"></span>
+<span class="cp">#define PARENT_OK       0x00000010      </span><span class="cm">/* Others may @parent to me */</span><span class="cp"></span>
+<span class="cp">#define LIGHT           0x00000020      </span><span class="cm">/* Visible in dark places */</span><span class="cp"></span>
+<span class="cp">#define HAS_LISTEN      0x00000040      </span><span class="cm">/* Internal: LISTEN attr set */</span><span class="cp"></span>
+<span class="cp">#define HAS_FWDLIST     0x00000080      </span><span class="cm">/* Internal: FORWARDLIST attr set */</span><span class="cp"></span>
+<span class="cp">#define ADMIN           0x00000100      </span><span class="cm">/* Player has admin privs */</span><span class="cp"></span>
+<span class="cp">#define GUILDOBJ        0x00000200</span>
+<span class="cp">#define GUILDMASTER     0x00000400      </span><span class="cm">/* Player has gm privs */</span><span class="cp"></span>
+<span class="cp">#define NO_WALLS        0x00000800      </span><span class="cm">/* So to stop normal walls */</span><span class="cp"></span>
+<span class="cp">#define REQUIRE_TREES   0x00001000      </span><span class="cm">/* Trees are required on this target for attrib sets */</span><span class="cp"></span>
+<span class="cm">/* ----FREE----         0x00002000 */</span>   <span class="cm">/* #define OLD_NOROBOT  0x00002000 */</span>
+<span class="cp">#define SCLOAK          0x00004000</span>
+<span class="cp">#define CLOAK           0x00008000</span>
+<span class="cp">#define FUBAR           0x00010000</span>
+<span class="cp">#define INDESTRUCTABLE  0x00020000      </span><span class="cm">/* object can&#39;t be nuked */</span><span class="cp"></span>
+<span class="cp">#define NO_YELL         0x00040000      </span><span class="cm">/* player can&#39;t @wall */</span><span class="cp"></span>
+<span class="cp">#define NO_TEL          0x00080000      </span><span class="cm">/* player can&#39;t @tel or be @tel&#39;d */</span><span class="cp"></span>
+<span class="cp">#define FREE            0x00100000      </span><span class="cm">/* object/player has unlim money */</span><span class="cp"></span>
+<span class="cp">#define GUEST_FLAG      0x00200000</span>
+<span class="cp">#define RECOVER         0x00400000</span>
+<span class="cp">#define BYEROOM         0x00800000</span>
+<span class="cp">#define WANDERER        0x01000000</span>
+<span class="cp">#define ANSI            0x02000000</span>
+<span class="cp">#define ANSICOLOR       0x04000000</span>
+<span class="cp">#define NOFLASH         0x08000000</span>
+<span class="cp">#define SUSPECT         0x10000000      </span><span class="cm">/* Report some activities to wizards */</span><span class="cp"></span>
+<span class="cp">#define BUILDER         0x20000000      </span><span class="cm">/* Player has architect privs */</span><span class="cp"></span>
+<span class="cp">#define CONNECTED       0x40000000      </span><span class="cm">/* Player is connected */</span><span class="cp"></span>
+<span class="cp">#define SLAVE           0x80000000      </span><span class="cm">/* Disallow most commands */</span><span class="cp"></span>
+
+<span class="cm">/* Third word of flags - Thorin 3/95 */</span>
+<span class="cp">#define NOCONNECT       0x00000001</span>
+<span class="cp">#define DPSHIFT         0x00000002</span>
+<span class="cp">#define NOPOSSESS       0x00000004</span>
+<span class="cp">#define COMBAT          0x00000008</span>
+<span class="cp">#define IC              0x00000010</span>
+<span class="cp">#define ZONEMASTER      0x00000020</span>
+<span class="cp">#define ALTQUOTA        0x00000040</span>
+<span class="cp">#define NOEXAMINE       0x00000080</span>
+<span class="cp">#define NOMODIFY        0x00000100</span>
+<span class="cp">#define CMDCHECK        0x00000200</span>
+<span class="cp">#define DOORRED         0x00000400</span>
+<span class="cp">#define PRIVATE         0x00000800      </span><span class="cm">/* For exits only */</span><span class="cp"></span>
+<span class="cp">#define NOMOVE          0x00001000</span>
+<span class="cp">#define STOP            0x00002000</span>
+<span class="cp">#define NOSTOP          0x00004000</span>
+<span class="cp">#define NOCOMMAND       0x00008000</span>
+<span class="cp">#define AUDIT           0x00010000</span>
+<span class="cp">#define SEE_OEMIT       0x00020000</span>
+<span class="cp">#define NO_GOBJ         0x00040000</span>
+<span class="cp">#define NO_PESTER       0x00080000</span>
+<span class="cp">#define LRFLAG          0x00100000</span>
+<span class="cp">#define TELOK           0x00200000</span>
+<span class="cp">#define NO_OVERRIDE     0x00400000</span>
+<span class="cp">#define NO_USELOCK      0x00800000</span>
+<span class="cp">#define DR_PURGE        0x01000000      </span><span class="cm">/* For rooms only...internal */</span><span class="cp"></span>
+<span class="cp">#define NO_ANSINAME     0x02000000      </span><span class="cm">/* Remove the ability to set @ansiname */</span><span class="cp"></span>
+<span class="cp">#define SPOOF           0x04000000</span>
+<span class="cp">#define SIDEFX          0x08000000      </span><span class="cm">/* Allow enactor to use side-effects */</span><span class="cp"></span>
+<span class="cp">#define ZONECONTENTS    0x10000000      </span><span class="cm">/* Search contents of zonemaster for $commands */</span><span class="cp"></span>
+<span class="cp">#define NOWHO           0x20000000      </span><span class="cm">/* Player in WHO doesn&#39;t show up - use with @hide */</span><span class="cp"></span>
+<span class="cp">#define ANONYMOUS       0x40000000      </span><span class="cm">/* Player set shows up as &#39;Someone&#39; when talking */</span><span class="cp"></span>
+<span class="cp">#define BACKSTAGE       0x80000000      </span><span class="cm">/* Immortal toggle for items on control */</span><span class="cp"></span>
+
+<span class="cm">/* Forth word of flags - Thorin 3/95 */</span>
+<span class="cp">#define NOBACKSTAGE     0x00000001      </span><span class="cm">/* Immortal toggle to control no-backstage */</span><span class="cp"></span>
+<span class="cp">#define LOGIN           0x00000002      </span><span class="cm">/* Enable player to login past @disable logins */</span><span class="cp"></span>
+<span class="cp">#define INPROGRAM       0x00000004      </span><span class="cm">/* Player is inside a program */</span><span class="cp"></span>
+<span class="cp">#define COMMANDS        0x00000008      </span><span class="cm">/* Optional define for $commands */</span><span class="cp"></span>
+<span class="cp">#define MARKER0         0x00000010      </span><span class="cm">/* TM 3.0 marker flags */</span><span class="cp"></span>
+<span class="cp">#define MARKER1         0x00000020</span>
+<span class="cp">#define MARKER2         0x00000040</span>
+<span class="cp">#define MARKER3         0x00000080</span>
+<span class="cp">#define MARKER4         0x00000100</span>
+<span class="cp">#define MARKER5         0x00000200</span>
+<span class="cp">#define MARKER6         0x00000400</span>
+<span class="cp">#define MARKER7         0x00000800</span>
+<span class="cp">#define MARKER8         0x00001000</span>
+<span class="cp">#define MARKER9         0x00002000</span>
+<span class="cp">#define BOUNCE          0x00004000      </span><span class="cm">/* That lovly TM 3.0 Bouncey thingy */</span><span class="cp"></span>
+<span class="cp">#define SHOWFAILCMD     0x00008000      </span><span class="cm">/* Show failed $commands defauilt error */</span><span class="cp"></span>
+<span class="cp">#define NOUNDERLINE     0x00010000      </span><span class="cm">/* Strip UNDERLINE character from ANSI */</span><span class="cp"></span>
+<span class="cp">#define NONAME          0x00020000      </span><span class="cm">/* Target does not display name with look */</span><span class="cp"></span>
+<span class="cp">#define ZONEPARENT      0x00040000      </span><span class="cm">/* Target zone allows inheritance of attribs */</span><span class="cp"></span>
+<span class="cp">#define SPAMMONITOR     0x00080000      </span><span class="cm">/* Monitor the target for spam */</span><span class="cp"></span>
+<span class="cp">#define BLIND           0x00100000      </span><span class="cm">/* Exits and locations snuff arrived/left */</span><span class="cp"></span>
+<span class="cp">#define NOCODE          0x00200000      </span><span class="cm">/* Players may not code */</span><span class="cp"></span>
+<span class="cp">#define HAS_PROTECT     0x00400000      </span><span class="cm">/* Player target has protect name data */</span><span class="cp"></span>
+<span class="cp">#define XTERMCOLOR      0x00800000      </span><span class="cm">/* Extended AnSI Xterm colors */</span><span class="cp"></span>
+<span class="cp">#define HAS_ATTRPIPE    0x01000000      </span><span class="cm">/* Attribute piping via @pipe */</span><span class="cp"></span>
+<span class="cm">/* 0x02000000 free */</span>
+<span class="cm">/* 0x04000000 free */</span>
+<span class="cm">/* 0x08000000 free */</span>
+<span class="cm">/* 0x10000000 free */</span>
+<span class="cm">/* 0x20000000 free */</span>
+<span class="cm">/* 0x40000000 free */</span>
+<span class="cm">/* 0x80000000 free */</span>
+</pre></div>
+</div>
+<p>TOGGLES: Toggles are BITWISE masks taht need to be applied for each word like
+the flags above.  They are added together for each word type</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* First word of toggles - Thorin 3/95 */</span>
+<span class="cp">#define TOG_MONITOR             0x00000001      </span><span class="cm">/* Active monitor on player */</span><span class="cp"></span>
+<span class="cp">#define TOG_MONITOR_USERID      0x00000002      </span><span class="cm">/* show userid */</span><span class="cp"></span>
+<span class="cp">#define TOG_MONITOR_SITE        0x00000004      </span><span class="cm">/* show site */</span><span class="cp"></span>
+<span class="cp">#define TOG_MONITOR_STATS       0x00000008      </span><span class="cm">/* show stats */</span><span class="cp"></span>
+<span class="cp">#define TOG_MONITOR_FAIL        0x00000010      </span><span class="cm">/* show fails */</span><span class="cp"></span>
+<span class="cp">#define TOG_MONITOR_CONN        0x00000020</span>
+<span class="cp">#define TOG_VANILLA_ERRORS      0x00000040      </span><span class="cm">/* show normal error msg */</span><span class="cp"></span>
+<span class="cp">#define TOG_NO_ANSI_EX          0x00000080      </span><span class="cm">/* supress ansi stuff in ex */</span><span class="cp"></span>
+<span class="cp">#define TOG_CPUTIME             0x00000100      </span><span class="cm">/* show cpu time for cmds */</span><span class="cp"></span>
+<span class="cp">#define TOG_MONITOR_DISREASON   0x00000200</span>
+<span class="cp">#define TOG_MONITOR_VLIMIT      0x00000400</span>
+<span class="cp">#define TOG_NOTIFY_LINK         0x00000800</span>
+<span class="cp">#define TOG_MONITOR_AREG        0x00001000</span>
+<span class="cp">#define TOG_MONITOR_TIME        0x00002000</span>
+<span class="cp">#define TOG_CLUSTER             0x00004000      </span><span class="cm">/* Object is part of a cluster */</span><span class="cp"></span>
+<span class="cp">#define TOG_SNUFFDARK           0x00008000      </span><span class="cm">/* Snuff Dark Exit Viewing */</span><span class="cp"></span>
+<span class="cp">#define TOG_NOANSI_PLAYER       0x00010000      </span><span class="cm">/* Do not show ansi player names */</span><span class="cp"></span>
+<span class="cp">#define TOG_NOANSI_THING        0x00020000      </span><span class="cm">/* ... things */</span><span class="cp"></span>
+<span class="cp">#define TOG_NOANSI_ROOM         0x00040000      </span><span class="cm">/* ... rooms */</span><span class="cp"></span>
+<span class="cp">#define TOG_NOANSI_EXIT         0x00080000      </span><span class="cm">/* ... exits */</span><span class="cp"></span>
+<span class="cp">#define TOG_NO_TIMESTAMP        0x00100000      </span><span class="cm">/* Do not modify timestamps on target */</span><span class="cp"></span>
+<span class="cp">#define TOG_NO_FORMAT           0x00200000      </span><span class="cm">/* Override @conformat/@exitformat */</span><span class="cp"></span>
+<span class="cp">#define TOG_ZONE_AUTOADD        0x00400000      </span><span class="cm">/* Automatically add FIRST zone in list */</span><span class="cp"></span>
+<span class="cp">#define TOG_ZONE_AUTOADDALL     0x00800000      </span><span class="cm">/* Automatically add ALL zones in list */</span><span class="cp"></span>
+<span class="cp">#define TOG_WIELDABLE           0x01000000      </span><span class="cm">/* Marker to specify if object is wieldable */</span><span class="cp"></span>
+<span class="cp">#define TOG_WEARABLE            0x02000000      </span><span class="cm">/* Marker to specify if object is wearable */</span><span class="cp"></span>
+<span class="cp">#define TOG_SEE_SUSPECT         0x04000000      </span><span class="cm">/* Specify who sees suspect in WHO/MONITOR */</span><span class="cp"></span>
+<span class="cp">#define TOG_MONITOR_CPU         0x08000000      </span><span class="cm">/* Specify who sees CPU overflow allerts */</span><span class="cp"></span>
+<span class="cp">#define TOG_BRANDY_MAIL         0x10000000      </span><span class="cm">/* Define brandy like mail interface */</span><span class="cp"></span>
+<span class="cp">#define TOG_FORCEHALTED         0x20000000      </span><span class="cm">/* The item toggled can @force halted things */</span><span class="cp"></span>
+<span class="cp">#define TOG_PROG                0x40000000      </span><span class="cm">/* Can use @program on other people/things */</span><span class="cp"></span>
+<span class="cp">#define TOG_NOSHELLPROG         0x80000000      </span><span class="cm">/* Target can not issue commands inside a prog */</span><span class="cp"></span>
+
+<span class="cm">/* Second word of toggles -- Ash */</span>
+<span class="cp">#define TOG_EXTANSI             0x00000001      </span><span class="cm">/* Specify if target can used extended ansi naming */</span><span class="cp"></span>
+<span class="cp">#define TOG_IMMPROG             0x00000002      </span><span class="cm">/* Only an immortal can @quitprogram them */</span><span class="cp"></span>
+<span class="cp">#define TOG_MONITOR_BFAIL       0x00000004      </span><span class="cm">/* Monitor if a failed connect on bad character */</span><span class="cp"></span>
+<span class="cp">#define TOG_PROG_ON_CONNECT     0x00000008      </span><span class="cm">/* Reverse logic of program on connect */</span><span class="cp"></span>
+<span class="cp">#define TOG_MAIL_STRIPRETURN    0x00000010      </span><span class="cm">/* Strip carrage return in mail combining */</span><span class="cp"></span>
+<span class="cp">#define TOG_PENN_MAIL           0x00000020      </span><span class="cm">/* Use PENN style syntax */</span><span class="cp"></span>
+<span class="cp">#define TOG_SILENTEFFECTS       0x00000040      </span><span class="cm">/* Silents did_it() functionality on target */</span><span class="cp"></span>
+<span class="cp">#define TOG_IGNOREZONE          0x00000080      </span><span class="cm">/* Target is set to @icmd zones */</span><span class="cp"></span>
+<span class="cp">#define TOG_VPAGE               0x00000100      </span><span class="cm">/* Target sees alias in pages */</span><span class="cp"></span>
+<span class="cp">#define TOG_PAGELOCK            0x00000200      </span><span class="cm">/* Target issues pagelocks as normal */</span><span class="cp"></span>
+<span class="cp">#define TOG_MAIL_NOPARSE        0x00000400      </span><span class="cm">/* Don&#39;t parse %t/%b/%r in mail */</span><span class="cp"></span>
+<span class="cp">#define TOG_MAIL_LOCKDOWN       0x00000800      </span><span class="cm">/* Mortal-accessed mail/number and mail/check */</span><span class="cp"></span>
+<span class="cp">#define TOG_MUXPAGE             0x00001000      </span><span class="cm">/* Have &#39;page&#39; work like MUX */</span><span class="cp"></span>
+<span class="cp">#define TOG_NOZONEPARENT        0x00002000      </span><span class="cm">/* Zone Child does NOT inherit parent attribs */</span><span class="cp"></span>
+<span class="cp">#define TOG_ATRUSE              0x00004000      </span><span class="cm">/* Enactor can use Attribute based USELOCKS */</span><span class="cp"></span>
+<span class="cp">#define TOG_VARIABLE            0x00008000      </span><span class="cm">/* Set exit to be variable */</span><span class="cp"></span>
+<span class="cp">#define TOG_KEEPALIVE           0x00010000      </span><span class="cm">/* Send &#39;keepalives&#39; to the target player */</span><span class="cp"></span>
+<span class="cp">#define TOG_CHKREALITY          0x00020000      </span><span class="cm">/* Target checks @lock/user for Reality passes */</span><span class="cp"></span>
+<span class="cp">#define TOG_NOISY               0x00040000      </span><span class="cm">/* Always do noisy sets */</span><span class="cp"></span>
+<span class="cp">#define TOG_ZONECMDCHK          0x00080000      </span><span class="cm">/* Zone commands checked on target like @parent */</span><span class="cp"></span>
+<span class="cp">#define TOG_HIDEIDLE            0x00100000      </span><span class="cm">/* Allow wizards/immortals to hide their idle time */</span><span class="cp"></span>
+<span class="cp">#define TOG_MORTALREALITY       0x00200000      </span><span class="cm">/* Override the wiz_always_real setting */</span><span class="cp"></span>
+<span class="cp">#define TOG_ACCENTS             0x00400000      </span><span class="cm">/* Accents being displayed */</span><span class="cp"></span>
+<span class="cp">#define TOG_PREMAILVALIDATE     0x00800000      </span><span class="cm">/* Pre-Validate the mail send list before sending mail */</span><span class="cp"></span>
+<span class="cp">#define TOG_SAFELOG             0x01000000      </span><span class="cm">/* Allow &#39;clean logging&#39; by the player */</span><span class="cp"></span>
+<span class="cp">#define TOG_UTF8                0x02000000      </span><span class="cm">/* UTF8 being displayed */</span><span class="cp"></span>
+<span class="cm">/* 0x04000000 free */</span>
+<span class="cp">#define TOG_NODEFAULT           0x08000000      </span><span class="cm">/* Allow target to inherit default attribs */</span><span class="cp"></span>
+<span class="cp">#define TOG_EXFULLWIZATTR       0x10000000      </span><span class="cm">/* Examine Wiz attribs */</span><span class="cp"></span>
+<span class="cp">#ifdef ENH_LOGROOM</span>
+<span class="cp">#define TOG_LOGROOMENH          0x20000000      </span><span class="cm">/* Enhanced Room Logging */</span><span class="cp"></span>
+<span class="cp">#endif</span>
+<span class="cp">#define TOG_LOGROOM             0x40000000      </span><span class="cm">/* Log Room&#39;s location/contents */</span><span class="cp"></span>
+<span class="cp">#define TOG_NOGLOBPARENT        0x80000000      </span><span class="cm">/* Target does not inherit global attributes */</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>POWERS:  Powers are handled a bit differently.  They're used as BITWISE shift
+markers that you would have to compute the shift then add it after the fact.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* First word of power positions.  Each position is 2 bits so the</span>
+<span class="cm">   number here is how far over to shift the 2 bit pattern         */</span>
+<span class="cp">#define POWER_CHANGE_QUOTAS     0</span>
+<span class="cp">#define POWER_CHOWN_ME          2</span>
+<span class="cp">#define POWER_CHOWN_ANYWHERE    4</span>
+<span class="cp">#define POWER_CHOWN_OTHER       6</span>
+<span class="cp">#define POWER_WIZ_WHO           8</span>
+<span class="cp">#define POWER_EX_ALL            10</span>
+<span class="cp">#define POWER_NOFORCE           12</span>
+<span class="cp">#define POWER_SEE_QUEUE_ALL     14</span>
+<span class="cp">#define POWER_FREE_QUOTA        16</span>
+<span class="cp">#define POWER_GRAB_PLAYER       18</span>
+<span class="cp">#define POWER_JOIN_PLAYER       20</span>
+<span class="cp">#define POWER_LONG_FINGERS      22</span>
+<span class="cp">#define POWER_NO_BOOT           24</span>
+<span class="cp">#define POWER_BOOT              26</span>
+<span class="cp">#define POWER_STEAL             28</span>
+<span class="cp">#define POWER_SEE_QUEUE         30</span>
+
+<span class="cm">/* Second word of power positions. */</span>
+<span class="cp">#define POWER_SHUTDOWN          0</span>
+<span class="cp">#define POWER_TEL_ANYWHERE      2</span>
+<span class="cp">#define POWER_TEL_ANYTHING      4</span>
+<span class="cp">#define POWER_PCREATE           6</span>
+<span class="cp">#define POWER_STAT_ANY          8</span>
+<span class="cp">#define POWER_FREE_WALL         10</span>
+<span class="cp">#define POWER_EXECSCRIPT        12</span>
+<span class="cp">#define POWER_FREE_PAGE         14</span>
+<span class="cp">#define POWER_HALT_QUEUE        16</span>
+<span class="cp">#define POWER_HALT_QUEUE_ALL    18</span>
+<span class="cp">#define POWER_FORMATTING        20</span>
+<span class="cp">#define POWER_NOKILL            22</span>
+<span class="cp">#define POWER_SEARCH_ANY        24</span>
+<span class="cp">#define POWER_SECURITY          26</span>
+<span class="cp">#define POWER_WHO_UNFIND        28</span>
+
+<span class="cm">/* Third word of power positions. */</span>
+<span class="cp">#define POWER_OPURGE            0</span>
+<span class="cp">#define POWER_HIDEBIT           2</span>
+<span class="cp">#define POWER_NOWHO             4</span>
+<span class="cp">#define POWER_FULLTEL_ANYWHERE  6</span>
+<span class="cp">#define POWER_EX_FULL           8</span>
+<span class="cp">#define POWER_API               10</span>
+<span class="cp">#define POWER_MONITORAPI        12</span>
+<span class="cp">#define POWER_WIZ_IDLE          14</span>
+<span class="cp">#define POWER_WIZ_SPOOF         16</span>
+<span class="cm">/* 18 free */</span>
+<span class="cm">/* 20 free */</span>
+<span class="cm">/* 22 free */</span>
+<span class="cm">/* 24 free */</span>
+<span class="cm">/* 26 free */</span>
+<span class="cm">/* 28 free */</span>
+<span class="cm">/* 30 free */</span>
+</pre></div>
+</div>
+<p>DEPOWERS:  like &#64;powers they are handled with a BITWISE offshift that you
+will have to calculate then add</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* First word */</span>
+<span class="cp">#define DP_WALL                 0</span>
+<span class="cp">#define DP_LONG_FINGERS         2</span>
+<span class="cp">#define DP_STEAL                4</span>
+<span class="cp">#define DP_CREATE               6</span>
+<span class="cp">#define DP_WIZ_WHO              8</span>
+<span class="cp">#define DP_CLOAK                10</span>
+<span class="cp">#define DP_BOOT                 12</span>
+<span class="cp">#define DP_PAGE                 14</span>
+<span class="cp">#define DP_FORCE                16</span>
+<span class="cp">#define DP_LOCKS                18</span>
+<span class="cp">#define DP_COM                  20</span>
+<span class="cp">#define DP_COMMAND              22</span>
+<span class="cp">#define DP_MASTER               24</span>
+<span class="cp">#define DP_EXAMINE              26</span>
+<span class="cp">#define DP_NUKE                 28</span>
+<span class="cp">#define DP_FREE                 30</span>
+
+<span class="cm">/* Second word */</span>
+<span class="cp">#define DP_OVERRIDE             0</span>
+<span class="cp">#define DP_TEL_ANYWHERE         2</span>
+<span class="cp">#define DP_TEL_ANYTHING         4</span>
+<span class="cp">#define DP_PCREATE              6</span>
+<span class="cp">#define DP_POWER                8</span>
+<span class="cp">#define DP_QUOTA                10</span>
+<span class="cp">#define DP_MODIFY               12</span>
+<span class="cp">#define DP_CHOWN_ME             14</span>
+<span class="cp">#define DP_CHOWN_OTHER          16</span>
+<span class="cp">#define DP_ABUSE                18</span>
+<span class="cp">#define DP_UNL_QUOTA            20</span>
+<span class="cp">#define DP_SEARCH_ANY           22</span>
+<span class="cp">#define DP_GIVE                 24</span>
+<span class="cp">#define DP_RECEIVE              26</span>
+<span class="cp">#define DP_NOGOLD               28</span>
+<span class="cp">#define DP_NOSTEAL              30</span>
+<span class="cm">/* Third word...and there was much rejoicing */</span>
+<span class="cp">#define DP_PASSWORD             0</span>
+<span class="cp">#define DP_MORTAL_EXAMINE       2</span>
+<span class="cp">#define DP_PERSONAL_COMMANDS    4</span>
+<span class="cm">/* 6  free */</span>
+<span class="cp">#define DP_DARK                 8</span>
+<span class="cm">/* 10 free */</span>
+<span class="cm">/* 12 free */</span>
+<span class="cm">/* 14 free */</span>
+<span class="cm">/* 16 free */</span>
+<span class="cm">/* 18 free */</span>
+<span class="cm">/* 20 free */</span>
+<span class="cm">/* 22 free */</span>
+<span class="cm">/* 24 free */</span>
+<span class="cm">/* 26 free */</span>
+<span class="cm">/* 28 free */</span>
+<span class="cm">/* 30 free */</span>
+</pre></div>
+</div>
+<p>ZONES:  Zones are special.  If there are no zones, the value will be '-1'.</p>
+<p>So entering zones if there are no zones:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Entering zones if it has three zones (#123, #456, and #789):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">123</span>
+<span class="mi">456</span>
+<span class="mi">789</span>
+<span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>As you see, the last value of the zone <em>MUST</em> be -1.  This tells it
+that there are no more zones to add.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+  </body>
+</html>

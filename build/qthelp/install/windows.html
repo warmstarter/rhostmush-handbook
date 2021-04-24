@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>17. Requirements if Using Windows</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" /> 
+  </head><body>
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body" role="main">
+            
+  <span class="target" id="install-windows"></span><div class="section" id="requirements-if-using-windows">
+<span id="index-0"></span><h1><span class="section-number">17. </span>Requirements if Using Windows</h1>
+<ul class="simple">
+<li><p>(BETA ONLY) cygwin under Windows.  It requires the entire base development set and Requirements below.</p></li>
+</ul>
+<div class="section" id="installing-on-windows-10-with-bash">
+<h2><span class="section-number">17.1. </span>Installing on Windows 10 with BASH</h2>
+<p>Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
+This has been tested with the Preview build 14342.</p>
+<ul>
+<li><p>After installing Bash you will need to install the following packages:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>gcc</p></li>
+<li><p>git</p></li>
+<li><p>make</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Optional packages:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>libpcre3</p></li>
+<li><p>libpcre3-dev</p></li>
+<li><p>openssl</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>When configuring rhost (using confsource) select the Disable Debugmon option.</p></li>
+</ul>
+</div>
+<div class="section" id="installing-on-windows-with-cygwin">
+<h2><span class="section-number">17.2. </span>Installing on Windows with Cygwin</h2>
+<p>Rhost does work under windows using the cygwin package.</p>
+<ul>
+<li><p>When you do install cygwin, the following packages must be added:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>bash</p></li>
+<li><p>crypt</p></li>
+<li><p>gcc</p></li>
+<li><p>gdbm</p></li>
+<li><p>git</p></li>
+<li><p>make</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Optional packages:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>openssl</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>The src/Makefile has to manually have the CYGWIN line uncommented.</p></li>
+</ul>
+</div>
+<div class="section" id="startig-rhostmush-on-windows">
+<h2><span class="section-number">17.3. </span>Startig RhostMUSH on Windows</h2>
+<p>When you issue Startmush, you must pass it the -cyg option.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+  </body>
+</html>
