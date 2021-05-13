@@ -21,7 +21,7 @@
 
 @copying
 @quotation
-RhostMUSH Handbook , Apr 23, 2021
+RhostMUSH Handbook , May 13, 2021
 
 wstarter
 
@@ -110,6 +110,7 @@ A lot more that could drag this document out for pages.
 * Getting Started:: 
 * Ambrosia's Minimal Rhost DB:: 
 * Security:: 
+* What to Do if your MUSH is Attacked:: 
 * Setting up an SSL tunnel for secure connection options:: 
 * Maintenance:: 
 * Troubleshooting:: 
@@ -6537,7 +6538,7 @@ substitution, are used in the DB.
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
-@node Security,Setting up an SSL tunnel for secure connection options,Ambrosia's Minimal Rhost DB,Top
+@node Security,What to Do if your MUSH is Attacked,Ambrosia's Minimal Rhost DB,Top
 @anchor{security doc}@anchor{ef}@anchor{security security}@anchor{f0}
 @chapter Security
 
@@ -7035,12 +7036,326 @@ it may be worth considering adding this to add additional protection.
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
-@anchor{utilities/ssl utilities-ssl}@anchor{109}
+
+@node What to Do if your MUSH is Attacked,Setting up an SSL tunnel for secure connection options,Security,Top
+@anchor{attack doc}@anchor{109}@anchor{attack what-to-do-if-your-mush-is-attacked}@anchor{10a}
+@chapter What to Do if your MUSH is Attacked
+
+
+RhostMUSH is an combination of, well, everything. And because of the flexibility and customizations, can be daunting, but here we go:
+
+Rhost allows two ways for site restrictions.
+### Site Restrictions:
+
+@example
+@@admin PARAM=SITE IP
+@@admin PARAM2=WILDCARDHOST
+@end example
+
+NOTE: Since Rhost 3.2.4p13 Rhost allows CIDR notation (/24 instead of 255.255.255.0)
+
+#### The first method:
+
+@example
+@@admin forbid_site=12.12.20.0 255.255.255.0
+@@admin forbid_site=12.12.20.0 255.255.255.0 3
+@@admin forbid_site=12.12.20.0 /24 3
+@end example
+
+The first example hardforbids the site from connecting.
+
+The second example forbids the site from connecting after 3 connects have already been allowed. This allows connections but stops spamming.
+
+Both options are available for all site parameters.
+
+> Site related config parameters:
+
+@example
+forbid_site -- forbid site from connecting
+register_site -- disallow player creation from site (set to 0.0.0.0 0.0.0.0 to disable player creation entirely)
+suspect_site -- set site suspect
+noguest_site -- disallow guest from connecting.
+noauth_site -- disallow AUTH IDENT lookups
+noautoreg_site -- disallow site from auto-registration on connect screen
+passproxy_site -- allow IP to bypass auto-proxy blocking
+nodns_site -- don't do DNS/RDNS lookups
+forbidapi_site -- don't allow API connections from site
+@end example
+
+### Second method we have: (wildcards optional):
+
+@example
+@@admin forbid_host=*.buttclown.com *.bob.com !*.foo.com
+@@admin forbid_host=*.buttclown.com|3
+@end example
+
+First example blocks wildcard buttclown.com, bob.com, and removes foo.com
+
+Second example adds buttclown.com and forbids after 3 connections.
+
+> host related config parameters:
+
+@example
+tor_localhost -- the hosting server that will monitor and block TOR connections
+noautoreg_host -- the hostname for blocking autoregistration
+passproxy_host -- the hostname to bypass proxy blocking
+validate_host -- disallow email from autoregistration
+forbidapi_host -- hostname to forbid api
+mysql_host -- hostname for the MySQL server
+register_host -- hostname to stop player creation
+forbid_host -- hostname to stop connections
+suspect_host -- hostname to set suspect
+noguest_host -- stop guests from connection
+nobroadcast_host -- stop site monitor chatter for site (still logs)
+@end example
+
+### Special Site Restrictions
+
+> The following specific other options are useful for site restrictions:
+
+@example
+@@goodsite -- attribute to set on target player to specify what wildcard IP's -are- allowed to connect from (IP only, no hostname)
+@@badsite -- attribute to set on target to specify what wildcard IP's are not allowed to connect from (IP only, no hostname)
+NOCONNECT -- flag to set on player to stop connections
+@end example
+
+> Examples:
+
+@example
+@@goodsite #1=127.0.0.1
+@@badsite *twink=12.12.20.*
+@end example
+
+# Config Parameters
+
+> Example of issuing ingame:
+
+@example
+@@admin function_invocation_limit=25000
+@end example
+
+> Example in netrhost.conf file:
+
+@example
+function_invocation_limit 2500
+@end example
+
+### Suggested config parameters:
+
+@example
+authenticate -- toggle to specify authentication (AUTH) lookups
+max_players -- max players allowed to connect to the mush at any time. The default for this is 40 less than the current maximum allowed based on server specifications to avoid DoS/DDoS. This ceiling is impossible to go past.
+cpu_secure_lvl -- define how the mush will treat those who hit the CPU limit. 0 is just stop 1 is halt the owner, 2 sets FUBAR, 3 sets NOCONNECT and boots, 4 does all of 3 and sets register, 5 does all of 3 and sets forbid
+cpuintervalchk CPU load before engaging CPU protection (default 5% system load)
+cputimechk CPU time in seconds before CPU protection (default 5 seconds)
+heavy_cpu_max (default 50) heavy cpu intensive features are auto-tagged this for additional cpu protection. This is how many times it can be called per 'command'
+max_cpu_cycles (default 3) number of times a target can hit the CPU alert before restrictive measures via cpu_secure_lvl is enacted
+max_lastsite_cnt (default 20) number of connections from a site allowed a minute
+min_con_attempt (default 60) seconds to check for max_lastsite_cnt
+lastsite_paranoia (0-3) sets restrictive level to use if max_lastsite_cnt is reached. 0 is take no action. 3 is forbid
+max_sitecons -- (default 50) absolute maximum number of connections a specific site can have online at any time.
+max_pcreate_lim -- number of connect creates allowed per minute
+max_pcreate_time -- time allotted between pcreate lim checks
+pcreate_paranoia -- (0-3) sets restrictive level to use if max_pcreate_lim is reached.
+spam_limit -- maximum number of commands allowed by a player per minute if set SPAMMONITOR (default 60)
+player_queue_limit -- maximum queues allowed per player at any time (default 100)
+wizard_queue_limit -- maximum queues allowed for a wizard at any time (default 1000)
+function_invocation_limit -- (default 2500) maximum functions allowed per command
+function_recursion_limit -- (default 50) maximum number of times a function can call itself.
+secure_functions -- switches internal permissions of old-processing functions to be more secure, but breaks backward compatibility
+fascist_teleport -- players can't teleport out of anything they don't control or isn't set JUMP_OK
+restrict_home -- lock down the 'home' command to specific bitlevel
+restrict_home2 -- toggle enable/disable 'home' from those set NO_CODE
+restrict_sidefx -- specify what bitlevel SIDEEFFECT functions will work
+sideeffects -- specify what sideeffects are allowed
+sidefx_maxcalls -- how many sideeffects are allowed per command
+max_vattr_limit -- maximum unique user-attributes a player can create for his lifetime
+wizmax_vattr_limit -- maximum unique user-attributes a wizard can create for his lifetime
+vlimit -- maximum attributes allowed per object
+wildmatch_limit -- maximum number of wildmatches allowed per command
+lock_recursion_limit -- maximum lock recursion per command
+notify_recursion_limit -- maximum notify's allowed (internal notify call)
+nonindxtxt_maxlines -- maximum number of lines allowed to be read from @@log
+max_percentsubs -- maximum percent substitutions allowed per command
+max_dest_limit -- maximum number of items that can be @@destroyed by a player for a lifetime
+wizmax_dest_limit -- maximum number of items that can be @@destroyed by a wizard for a lifetime
+safer_passwords -- enforce strict @@passwords
+newpass_god -- allow newpasswording #1
+nospam_connect -- consolidates logs on people who attempt to keep trying to connect while forbidden
+examine_restrictive -- lockdown who can examine/@@decompile
+ahear_maxtime -- maximum ceiling in seconds an @@ahear is allowed to process
+ahear_maxcnt -- maximum recursions @@hears are allowed
+cluster_cap -- ceiling on the number of cluster members allowed
+cluster_func_cap -- recursion ceiling on the cluster function handler
+includecnt -- number of times @@include is allowed per command set
+includenest -- number of recursions @@include is allowed
+lfunction_max -- maximum number of @@lfunctions allowed a player
+safer_ufun -- make u() become protected in evaluation
+max_name_protect -- maximum number of @@protect alises a player can have
+float_precision -- floating point precision you want allowed. from 0 to 48
+functions_max -- maximum number of @@functions allowed to be defined
+parent_nest_limit -- maximum parents allowed in a parent chain
+imm_nomod -- is the NOMODIFY flag only allowed to immortals?
+start_build -- specifies if new players will or will not start with the WANDERER flag -- This defaults to '0' meaning they have the WANDERER flag which restricts all building.
+admin_object -- the @@admin object that you can use to set permanent config settings in-game
+file_object -- the master override for all .txt files. this allows you to either set softcode to all those .txt files (like connect.txt) or design custom commands at the connect screen.
+access -- change access of various commands
+func_access -- change access of various functions
+config_access -- change access of various config options
+flag_access_set -- set who can set flags
+flag_access_unset -- set who can unset flags
+flag_access_see -- set who can see flags
+flag_access_type -- typecast permissions on flags
+toggle_access_set -- set who can set toggles
+toggle_access_unset -- set who can unset toggles
+toggle_access_see -- set who can see toggles
+toggle_access_type -- typecast permission on toggles
+proxy_checker -- set permission restriction level on dynamic proxy detection. Please note, use this sparringly and only if you absolutely have to. The Good news: this will detect most proxies, most of the time. It does this by scanning and comparing the MTUand MSS values and scraping the TCP header for overhead. most proxies require this padding to actually, well, proxy the information out. This means that MSS and MTU values will almost always be a different size for anyone and anything that uses a proxy. Now, the Bad News. Anyone coming out from a business SOCKS server, Firewall, DMZ, or, well, just coming out of a business will likely be identified by a proxy. You use your android device to mush? That's a proxy as well since the android TCP layer is ontop of a java stack. IPhone? Same beast. Pretty much any mobile device will be seen as a proxy, which is accurate, but likely not the type of people you want to block. Sooo, again, use this sparringly. I suggest enabling it to a level to allow monitoring, and only crank it up to deny if you're being directly attacked.
+@end example
+
+# Commands
+
+### Special commands to monitor/set security:
+
+@example
+@@snoop -- Yup, it exists. This is an optional log or real-time monitor of a player
+@@newpassword -- change target's password
+@@aflags -- list permissions of attributes or set up global prefix restrictions based globally, by target, by enactor, or by sub-group
+@@log -- control system logs
+@@logrotate -- rotate logs real-time or verify current status of log file
+@@api -- control who can set/unset/config/use the restful-like API interface
+@@blacklist -- load in the blacklist which is created with the script tor_pull.sh that queries and pulls down the majority of public proxy IP's
+@@tor -- control real time TOR proxy protection
+@@freeze/@@thaw -- real time queue freezing and thawing for sandboxing queues live
+@@icmd -- control individual, room, or zone based access control of all commands a player can access
+@@nuke/@@toad/@@turtle -- destroy and/or convert a player to a non-player.
+@@recover -- recover a @@nuked or @@destroyed item from the database. This can be done until the object is @@purged. Works like a recycle bin.
+@@snapshot -- make a live snapshot image dump of the targetted dbref# for safe keeping
+@@boot -- boot the player
+@@disable -- disable logins to all but staff
+@@flagdef/@@toggledef -- in-game alter permissions of flags and toggles
+@@site -- remove site permissions set via @@admin foo_site (like forbid_site, suspect_site, etc)
+@@limit -- assign limits (@@destroy, user-attribute, or @@lfunction) to target player. This has the effect of enabling, disabling, or overriding the global values for max values. so you can use this, for example, to disable a player's ability to set any user-defined attributes requiring them to only use @@va-vz, @@desc, and so forth.
+@end example
+
+# Toggles
+
+### Example:
+
+@example
+@@toggle *player=forcehalted
+@end example
+
+> Suggested Toggle List:
+
+@example
+CPUTIME -- returns extremely useful data on runtime values of a command that executes
+FORCEHALTED -- allows you to @@force something even if it's halted
+LOGROOM -- log everything the room sees. This is intended for IC purposes and will notify the player that logging is going into the room
+MAIL_LOCKDOWN -- stop wizards from being able to see other people's mail.
+MONITOR/MONITOR_AREG/MONITOR_SITE/MONITOR_CPU/MONITOR_VLIMIT/MONITOR_etcetc -- drilldown of all the in-game broadcasts for most of the built-in game RhostMUSH monitoring. CPU overloads, attribute caps being reached, success/failed connect attempts, and so forth. Ergo, day to day monitoring needs. The MONITOR foo in Rhost is very beefy, so please refer to the wizhelp on all the MONITOR @@toggles for more information.
+@end example
+
+# Flags:
+
+### Example:
+
+@example
+@@set *player=slave
+@end example
+
+### Suggested Flags:
+
+@example
+WANDERER -- restrictive flag. Set on all new players by default unless configured otherwise. Stops all building/creating and requires removal before building allowed.
+GUILDMASTER -- first tier of staff bit
+ARCHITECT -- second tier of staff bit
+COUNCILOR -- third tier of staff bit
+ROYALTY -- this is your vanilla Wizard on other mushes
+IMMORTAL -- this is essentially #1 and 'all powerful'
+BACKSTAGE/NOBACKSTAGE control flags specifying who can control things set BACKSTAGE
+FUBAR -- stop from doing absolutely everything except ':' and '"'. Nothing else.
+SLAVE -- this also stops ':' and '"'. Used in combination with FUBAR to make a statue.
+INDESTRUCTIBLE -- nothing can destroy the target, not even #1
+NO_CODE -- stops target from doing all but the most basic commands and functions
+NO_CONNECT -- target can not log in
+NO_EXAMINE -- target can not be examined/@@decompiled except by wizards
+NO_MODIFY -- target can not be modified except by wizards (or optionally just immortals)
+NO_MOVE -- target can not be moved by any means
+NO_TEL -- target can not be teleported, use teleport, or use home
+NO_PESTER -- target can not use whisper or @@pemit
+NO_POSSESS -- target can not log into their player more than twice
+SPAMMONITOR -- target can not issue more than 60 commands a minute
+@end example
+
+# @@depowers
+
+> These are tiered and inheritable from the player. Meaning permission levels can be decreased or removed entirely.
+
+### Example:
+
+@example
+@@depower/councilor *player=wall
+@end example
+
+### Suggested Depowers:
+
+@example
+WALL -- disable walling
+STEAL -- disable getting items/gold
+WIZ_WHO -- disable wiz who
+BOOT -- disable boot
+FORCE -- disable @@force/@@sudo
+MASTER -- disable access to the master room
+NUKE -- disable @@nuke/@@toad/@@turtle
+OVERRIDE -- disable overiding locks (wizards do this by default)
+TEL_ANYTHING -- disable teleporting anything
+POWER -- disable access to @@power
+MODIFY -- disable ability to modify things
+CHOWN_OTHER -- disable ability to chown things you don't own
+UNL_QUOTA -- disable unlimited quota (useful on staff)
+GIVE -- disable the ability to give... anything...
+NOGOLD -- disable the ability to give or take gold
+PASSWORD -- disable ability to change passwords
+PERSONAL_COMMAND -- disable the ability to use any $commands on anything you own
+LONG_FINGERS -- disable all remote access features
+CREATE -- disable the ability to create anything
+CLOAK -- disable the overpowered wizcloaking ability from wizards
+PAGE -- no page for you!!!
+LOCK -- you can't pass locks. Ever. At all. Sucks to be you.
+COMMAND -- you can't use any $command. Anywhere. Only hardcoded commands for you!
+EXAMINE -- you can't examine/decompile or use any method to list attribs
+FREE -- everything is going to cost you gold
+TEL_ANYWHERE -- you can't teleport anywhere
+PCREATE -- disable wizards ability to create players
+QUOTA -- more more quota control for you
+CHOWN_ME -- you can't chown anything to yourself
+ABUSE -- you can only use $commands on things you own. Nothing else, including master room.
+SEARCH_ANY -- disable all db searching tools
+RECEIVE -- you can't receive anything
+DARK -- you can't go dark, and even if you miraculously were set DARK it'd not work for you.
+@end example
+
+@cartouche
+@quotation Note 
+Wizards in RhostMUSH by default override all locks and have a unique ability called 'wizcloaking'. If a wizard is set DARK and UNFINDABLE then they become cloaked (like a Romulan bird of pray) and will be undetectable by any means except by another wizard. Immortals have a super-cloak ability that makes them invisible to Wizards in addition. As shown above, there is a @@depower to disable cloaking if it's abused.
+@end quotation
+@end cartouche
+
+@cartouche
+@quotation Note 
+ABOUT IMMORTALS: Immortals treat as #1. Seriously. They can do anything and everything. They have commands at their fingertips to literally hack and edit the database live, and naturally if they don't know what they're doing, can crash the mush, because of all this raw editing capabilities. Only set Immortal those who absolutely need it or you absolutely trust. Head coders, for example, should likely have an Immortal bit. Also, Immortals by default override pretty much every restriction in the game. A player set NO_TEL? Um yea, immortal can still @@teleport them. This is intentional, because it's assumed Immortal's code should just work. So keep that in mind while coding. Cheers.
+@end quotation
+@end cartouche
+
+@c These are replacement strings for non-ASCII characters used within the project
+@c using the same name as the html entity names (e.g., &copy;) for that character
+@anchor{utilities/ssl utilities-ssl}@anchor{10b}
 @geindex Utilities - SSL
 @geindex SSL - Utilities
 
-@node Setting up an SSL tunnel for secure connection options,Maintenance,Security,Top
-@anchor{utilities/ssl doc}@anchor{10a}@anchor{utilities/ssl setting-up-an-ssl-tunnel-for-secure-connection-options}@anchor{10b}
+@node Setting up an SSL tunnel for secure connection options,Maintenance,What to Do if your MUSH is Attacked,Top
+@anchor{utilities/ssl doc}@anchor{10c}@anchor{utilities/ssl setting-up-an-ssl-tunnel-for-secure-connection-options}@anchor{10d}
 @chapter Setting up an SSL tunnel for secure connection options
 
 
@@ -7051,7 +7366,7 @@ it may be worth considering adding this to add additional protection.
 @end menu
 
 @node Quickstart for SSL setup with stunnel,Detailed SSL setup with stunnel,,Setting up an SSL tunnel for secure connection options
-@anchor{utilities/ssl quickstart-for-ssl-setup-with-stunnel}@anchor{10c}
+@anchor{utilities/ssl quickstart-for-ssl-setup-with-stunnel}@anchor{10e}
 @section Quickstart for SSL setup with stunnel
 
 
@@ -7127,7 +7442,7 @@ You do not need to shutdown the ssl handler if you shutdown the mush.  They
 are entirely separate processes.
 
 @node Detailed SSL setup with stunnel,,Quickstart for SSL setup with stunnel,Setting up an SSL tunnel for secure connection options
-@anchor{utilities/ssl detailed-ssl-setup-with-stunnel}@anchor{10d}
+@anchor{utilities/ssl detailed-ssl-setup-with-stunnel}@anchor{10f}
 @section Detailed SSL setup with stunnel
 
 
@@ -7152,7 +7467,7 @@ it is assumed you will have already initially set up your netrhost.conf.
 @end menu
 
 @node stunnel directory,Modifying netrhost conf,,Detailed SSL setup with stunnel
-@anchor{utilities/ssl stunnel-directory}@anchor{10e}
+@anchor{utilities/ssl stunnel-directory}@anchor{110}
 @subsection stunnel directory
 
 
@@ -7170,7 +7485,7 @@ stunnel_src                -- If you do not have stunnel, this directory will al
 @end example
 
 @node Modifying netrhost conf,Running the stunnel setup program,stunnel directory,Detailed SSL setup with stunnel
-@anchor{utilities/ssl modifying-netrhost-conf}@anchor{10f}
+@anchor{utilities/ssl modifying-netrhost-conf}@anchor{111}
 @subsection Modifying netrhost.conf
 
 
@@ -7192,7 +7507,7 @@ the sconnect_host is optional.  If you do not specify it, it will default to two
 @end cartouche
 
 @node Running the stunnel setup program,Starting the stunnel proxy,Modifying netrhost conf,Detailed SSL setup with stunnel
-@anchor{utilities/ssl running-the-stunnel-setup-program}@anchor{110}
+@anchor{utilities/ssl running-the-stunnel-setup-program}@anchor{112}
 @subsection Running the stunnel setup program
 
 
@@ -7213,7 +7528,7 @@ Be aware that if you have DNS host lookups disabled on your mush, you
 MUST have 127.0.0.1 as an entry for your sconnect_host file.
 
 @node Starting the stunnel proxy,Shutting down the stunnel proxy,Running the stunnel setup program,Detailed SSL setup with stunnel
-@anchor{utilities/ssl starting-the-stunnel-proxy}@anchor{111}
+@anchor{utilities/ssl starting-the-stunnel-proxy}@anchor{113}
 @subsection Starting the stunnel proxy
 
 
@@ -7225,7 +7540,7 @@ issue the following command to run your SSL layer:
 @end example
 
 @node Shutting down the stunnel proxy,Configuring firewall on the host,Starting the stunnel proxy,Detailed SSL setup with stunnel
-@anchor{utilities/ssl shutting-down-the-stunnel-proxy}@anchor{112}
+@anchor{utilities/ssl shutting-down-the-stunnel-proxy}@anchor{114}
 @subsection Shutting down the stunnel proxy
 
 
@@ -7236,7 +7551,7 @@ If ever you need to bring down the SSL layer, you may kill it with the command:
 @end example
 
 @node Configuring firewall on the host,,Shutting down the stunnel proxy,Detailed SSL setup with stunnel
-@anchor{utilities/ssl configuring-firewall-on-the-host}@anchor{113}
+@anchor{utilities/ssl configuring-firewall-on-the-host}@anchor{115}
 @subsection Configuring firewall on the host
 
 
@@ -7248,7 +7563,7 @@ not be the port the mush is running on and requires a separate port.
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
 @node Maintenance,Troubleshooting,Setting up an SSL tunnel for secure connection options,Top
-@anchor{maintenance doc}@anchor{114}@anchor{maintenance maintenance}@anchor{115}
+@anchor{maintenance doc}@anchor{116}@anchor{maintenance maintenance}@anchor{117}
 @chapter Maintenance
 
 
@@ -7265,7 +7580,7 @@ not be the port the mush is running on and requires a separate port.
 @end menu
 
 @node Note about Patching,Daily Backups for RhostMUSH,,Maintenance
-@anchor{maintenance note-about-patching}@anchor{116}
+@anchor{maintenance note-about-patching}@anchor{118}
 @section Note about Patching
 
 
@@ -7296,7 +7611,7 @@ Once that's done, all you do from within the game is two commands:
 @end example
 
 @node Daily Backups for RhostMUSH,Signals and why you need them for control,Note about Patching,Maintenance
-@anchor{maintenance daily-backups-for-rhostmush}@anchor{117}
+@anchor{maintenance daily-backups-for-rhostmush}@anchor{119}
 @section Daily Backups for RhostMUSH
 
 
@@ -7343,7 +7658,7 @@ just issue::
 @end example
 
 @node Signals and why you need them for control,Shutting down RhostMUSH gracefully,Daily Backups for RhostMUSH,Maintenance
-@anchor{maintenance signals-and-why-you-need-them-for-control}@anchor{118}
+@anchor{maintenance signals-and-why-you-need-them-for-control}@anchor{11a}
 @section Signals and why you need them for control
 
 
@@ -7360,7 +7675,7 @@ The following signals are useful.
 @end menu
 
 @node TERM kill -TERM or kill -15,USR1 kill -USR1,,Signals and why you need them for control
-@anchor{maintenance term-kill-term-or-kill-15}@anchor{119}
+@anchor{maintenance term-kill-term-or-kill-15}@anchor{11b}
 @subsection TERM (kill -TERM or kill -15)
 
 
@@ -7379,7 +7694,7 @@ a TERM signal is common during a server shutdown, so time is paramount.
 @end quotation
 
 @node USR1 kill -USR1,USR2 kill -USR2,TERM kill -TERM or kill -15,Signals and why you need them for control
-@anchor{maintenance usr1-kill-usr1}@anchor{11a}
+@anchor{maintenance usr1-kill-usr1}@anchor{11c}
 @subsection USR1 (kill -USR1)
 
 
@@ -7397,7 +7712,7 @@ the default behavior or if the method for USR1 is doing something else.
 @end quotation
 
 @node USR2 kill -USR2,KILL kill -KILL or kill -9,USR1 kill -USR1,Signals and why you need them for control
-@anchor{maintenance usr2-kill-usr2}@anchor{11b}
+@anchor{maintenance usr2-kill-usr2}@anchor{11d}
 @subsection USR2 (kill -USR2)
 
 
@@ -7416,7 +7731,7 @@ from the shell.
 @end quotation
 
 @node KILL kill -KILL or kill -9,,USR2 kill -USR2,Signals and why you need them for control
-@anchor{maintenance kill-kill-kill-or-kill-9}@anchor{11c}
+@anchor{maintenance kill-kill-kill-or-kill-9}@anchor{11e}
 @subsection KILL (kill -KILL or kill -9)
 
 
@@ -7439,7 +7754,7 @@ Startmush -f to bring it back up.
 @end quotation
 
 @node Shutting down RhostMUSH gracefully,Network Port redirector,Signals and why you need them for control,Maintenance
-@anchor{maintenance shutting-down-rhostmush-gracefully}@anchor{11d}
+@anchor{maintenance shutting-down-rhostmush-gracefully}@anchor{11f}
 @section Shutting down RhostMUSH gracefully
 
 
@@ -7450,7 +7765,7 @@ Startmush -f to bring it back up.
 @end menu
 
 @node RhostMUSH has many ways to shutdown the game cleanly,Autoshutdown script,,Shutting down RhostMUSH gracefully
-@anchor{maintenance rhostmush-has-many-ways-to-shutdown-the-game-cleanly}@anchor{11e}
+@anchor{maintenance rhostmush-has-many-ways-to-shutdown-the-game-cleanly}@anchor{120}
 @subsection RhostMUSH has many ways to shutdown the game cleanly
 
 
@@ -7486,7 +7801,7 @@ in the middle of a write, all bets are off. :)
 @end cartouche
 
 @node Autoshutdown script,,RhostMUSH has many ways to shutdown the game cleanly,Shutting down RhostMUSH gracefully
-@anchor{maintenance autoshutdown-script}@anchor{11f}
+@anchor{maintenance autoshutdown-script}@anchor{121}
 @subsection Autoshutdown script
 
 
@@ -7499,7 +7814,7 @@ Both of these are intended to be used for automations (automated processes)
 like your rc.local file and/or startup scripts when you bring your server up.
 
 @node Network Port redirector,Using the built-in cron system for periodically running commands,Shutting down RhostMUSH gracefully,Maintenance
-@anchor{maintenance network-port-redirector}@anchor{120}
+@anchor{maintenance network-port-redirector}@anchor{122}
 @section Network Port redirector
 
 
@@ -7530,7 +7845,7 @@ To launch the application, you would then type:
 Where <port> is the port where the mush used to run at.
 
 @node Using the built-in cron system for periodically running commands,The following scripts are used in the game directory,Network Port redirector,Maintenance
-@anchor{maintenance using-the-built-in-cron-system-for-periodically-running-commands}@anchor{121}
+@anchor{maintenance using-the-built-in-cron-system-for-periodically-running-commands}@anchor{123}
 @section Using the built-in cron system for periodically running commands
 
 
@@ -7540,7 +7855,7 @@ Where <port> is the port where the mush used to run at.
 @end menu
 
 @node Syntax for rhost cron,,,Using the built-in cron system for periodically running commands
-@anchor{maintenance syntax-for-rhost-cron}@anchor{122}
+@anchor{maintenance syntax-for-rhost-cron}@anchor{124}
 @subsection Syntax for rhost.cron
 
 
@@ -7573,7 +7888,7 @@ This example will perform dumps of the mush.
 @end menu
 
 @node Example syntaxt for rhost cron,,,Syntax for rhost cron
-@anchor{maintenance example-syntaxt-for-rhost-cron}@anchor{123}
+@anchor{maintenance example-syntaxt-for-rhost-cron}@anchor{125}
 @subsubsection Example syntaxt for rhost.cron
 
 
@@ -7586,7 +7901,7 @@ newsdb/unload; @@@@ dump the news bbs database to flatfile
 @end example
 
 @node The following scripts are used in the game directory,Textfiles for RhostMUSH,Using the built-in cron system for periodically running commands,Maintenance
-@anchor{maintenance the-following-scripts-are-used-in-the-game-directory}@anchor{124}
+@anchor{maintenance the-following-scripts-are-used-in-the-game-directory}@anchor{126}
 @section The following scripts are used in the game directory
 
 
@@ -7605,7 +7920,7 @@ tor_pull.sh             -- Create a blacklist.txt file that can be loaded via th
 @end example
 
 @node Textfiles for RhostMUSH,,The following scripts are used in the game directory,Maintenance
-@anchor{maintenance textfiles-for-rhostmush}@anchor{125}
+@anchor{maintenance textfiles-for-rhostmush}@anchor{127}
 @section Textfiles for RhostMUSH
 
 
@@ -7645,7 +7960,7 @@ wizmotd.txt            - your wiz motd file
 @end menu
 
 @node Textfile Frequently Asked Questions,,,Textfiles for RhostMUSH
-@anchor{maintenance textfile-frequently-asked-questions}@anchor{126}
+@anchor{maintenance textfile-frequently-asked-questions}@anchor{128}
 @subsection Textfile Frequently Asked Questions
 
 
@@ -7675,7 +7990,7 @@ A:  Absolutely.  Check 'wizhelp file_object'.
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
 @node Troubleshooting,Advanced Features,Maintenance,Top
-@anchor{troubleshooting doc}@anchor{127}@anchor{troubleshooting troubleshooting}@anchor{128}
+@anchor{troubleshooting doc}@anchor{129}@anchor{troubleshooting troubleshooting}@anchor{12a}
 @chapter Troubleshooting
 
 
@@ -7690,7 +8005,7 @@ A:  Absolutely.  Check 'wizhelp file_object'.
 @end menu
 
 @node Reporting bugs or getting help,Stack limit and debugging,,Troubleshooting
-@anchor{troubleshooting reporting-bugs-or-getting-help}@anchor{129}
+@anchor{troubleshooting reporting-bugs-or-getting-help}@anchor{12b}
 @section Reporting bugs or getting help
 
 
@@ -7705,7 +8020,7 @@ Ambrosia, Amos, and Morgan.  They can be found around the net.
 @end menu
 
 @node Troubleshooting issues with starting up,,,Reporting bugs or getting help
-@anchor{troubleshooting troubleshooting-issues-with-starting-up}@anchor{12a}
+@anchor{troubleshooting troubleshooting-issues-with-starting-up}@anchor{12c}
 @subsection Troubleshooting issues with starting up
 
 
@@ -7718,7 +8033,7 @@ Ambrosia, Amos, and Morgan.  They can be found around the net.
 @end menu
 
 @node Problem If it says the shared ID is already in use,Problem Your log file is massive and your mush is running,,Troubleshooting issues with starting up
-@anchor{troubleshooting problem-if-it-says-the-shared-id-is-already-in-use}@anchor{12b}
+@anchor{troubleshooting problem-if-it-says-the-shared-id-is-already-in-use}@anchor{12d}
 @subsubsection Problem: If it says the shared ID is already in use
 
 
@@ -7731,21 +8046,21 @@ A2: Force a start by running:
 @end example
 
 @node Problem Your log file is massive and your mush is running,Problem The database flatfile you're loading can't load because a db is already defined,Problem If it says the shared ID is already in use,Troubleshooting issues with starting up
-@anchor{troubleshooting problem-your-log-file-is-massive-and-your-mush-is-running}@anchor{12c}
+@anchor{troubleshooting problem-your-log-file-is-massive-and-your-mush-is-running}@anchor{12e}
 @subsubsection Problem: Your log file is massive and your mush is running
 
 
 A1: To rotate this use the @@logrotate command. See wizhelp on @@logrotate
 
 @node Problem The database flatfile you're loading can't load because a db is already defined,Problem The mail database won't load and mail shows 'offline',Problem Your log file is massive and your mush is running,Troubleshooting issues with starting up
-@anchor{troubleshooting problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined}@anchor{12d}
+@anchor{troubleshooting problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined}@anchor{12f}
 @subsubsection Problem: The database flatfile you're loading can't load because a db is already defined
 
 
 A1: remove netrhost.db* and netrhost.gdbm* from your data directory
 
 @node Problem The mail database won't load and mail shows 'offline',,Problem The database flatfile you're loading can't load because a db is already defined,Troubleshooting issues with starting up
-@anchor{troubleshooting problem-the-mail-database-won-t-load-and-mail-shows-offline}@anchor{12e}
+@anchor{troubleshooting problem-the-mail-database-won-t-load-and-mail-shows-offline}@anchor{130}
 @subsubsection Problem: The mail database won't load and mail shows 'offline'
 
 
@@ -7756,7 +8071,7 @@ wmail/load
 @end example
 
 @node Stack limit and debugging,How to reset the password for #1,Reporting bugs or getting help,Troubleshooting
-@anchor{troubleshooting stack-limit-and-debugging}@anchor{12f}
+@anchor{troubleshooting stack-limit-and-debugging}@anchor{131}
 @section Stack limit and debugging
 
 
@@ -7803,7 +8118,7 @@ A @@reboot WILL NOT LOAD IN A NEW DEBUG MONITOR!!!!
 You can issue @@list stack to see the current stack ceiling ingame.
 
 @node How to reset the password for #1,Troubleshooting difficulties compiling RhostMUSH,Stack limit and debugging,Troubleshooting
-@anchor{troubleshooting how-to-reset-the-password-for-1}@anchor{130}
+@anchor{troubleshooting how-to-reset-the-password-for-1}@anchor{132}
 @section How to reset the password for #1
 
 
@@ -7820,7 +8135,7 @@ You can only use one of these options at a time. Make sure to change back your n
 @end menu
 
 @node Method 1 Reset to Default Password,Method 2 Increase Permissions of Immortals,,How to reset the password for #1
-@anchor{troubleshooting method-1-reset-to-default-password}@anchor{131}
+@anchor{troubleshooting method-1-reset-to-default-password}@anchor{133}
 @subsection Method 1: Reset to Default Password
 
 
@@ -7833,7 +8148,7 @@ newpass_god 777
 This will reset #1's password to the default 'Nyctasia'.
 
 @node Method 2 Increase Permissions of Immortals,,Method 1 Reset to Default Password,How to reset the password for #1
-@anchor{troubleshooting method-2-increase-permissions-of-immortals}@anchor{132}
+@anchor{troubleshooting method-2-increase-permissions-of-immortals}@anchor{134}
 @subsection Method 2: Increase Permissions of Immortals
 
 
@@ -7846,7 +8161,7 @@ newpass_god 1
 This will allow IMMORTAL players to @@newpassword #1 upon reboot.
 
 @node Troubleshooting difficulties compiling RhostMUSH,Dealing with DB Corruption,How to reset the password for #1,Troubleshooting
-@anchor{troubleshooting troubleshooting-difficulties-compiling-rhostmush}@anchor{133}
+@anchor{troubleshooting troubleshooting-difficulties-compiling-rhostmush}@anchor{135}
 @section Troubleshooting difficulties compiling RhostMUSH
 
 
@@ -7857,7 +8172,7 @@ This will allow IMMORTAL players to @@newpassword #1 upon reboot.
 @end menu
 
 @node Changes to conf for high-bit CPUs,Changes to autconf for certain systems,,Troubleshooting difficulties compiling RhostMUSH
-@anchor{troubleshooting changes-to-conf-for-high-bit-cpus}@anchor{134}
+@anchor{troubleshooting changes-to-conf-for-high-bit-cpus}@anchor{136}
 @subsection Changes to conf for high-bit CPUs
 
 
@@ -7895,7 +8210,7 @@ RhostMUSH has only been tested to work on the AMD64, but there is no
 reason to believe the same will not hold true for IA64.
 
 @node Changes to autconf for certain systems,,Changes to conf for high-bit CPUs,Troubleshooting difficulties compiling RhostMUSH
-@anchor{troubleshooting changes-to-autconf-for-certain-systems}@anchor{135}
+@anchor{troubleshooting changes-to-autconf-for-certain-systems}@anchor{137}
 @subsection Changes to autconf for certain systems
 
 
@@ -7936,7 +8251,7 @@ the mush will not compile.
 @end cartouche
 
 @node Dealing with DB Corruption,Dealing with a corrupt mail database,Troubleshooting difficulties compiling RhostMUSH,Troubleshooting
-@anchor{troubleshooting dealing-with-db-corruption}@anchor{136}
+@anchor{troubleshooting dealing-with-db-corruption}@anchor{138}
 @section Dealing with DB Corruption
 
 
@@ -7972,7 +8287,7 @@ First thing is first.  Don't have a panic attack.
 @end menu
 
 @node If the mush says it can't find your database files,If the mush says it can't read or load your database files,,Dealing with DB Corruption
-@anchor{troubleshooting if-the-mush-says-it-can-t-find-your-database-files}@anchor{137}
+@anchor{troubleshooting if-the-mush-says-it-can-t-find-your-database-files}@anchor{139}
 @subsection If the mush says it can't find your database files
 
 
@@ -7984,7 +8299,7 @@ First thing is first.  Don't have a panic attack.
 @end menu
 
 @node Check the names of the database files in your 'data' directory,Check your netrhost conf file,,If the mush says it can't find your database files
-@anchor{troubleshooting check-the-names-of-the-database-files-in-your-data-directory}@anchor{138}
+@anchor{troubleshooting check-the-names-of-the-database-files-in-your-data-directory}@anchor{13a}
 @subsubsection Check the names of the database files in your 'data' directory
 
 
@@ -8001,7 +8316,7 @@ netrhost.gdbm.pag
 And you may see a netrhost.db.flat
 
 @node Check your netrhost conf file,Check your mush config file,Check the names of the database files in your 'data' directory,If the mush says it can't find your database files
-@anchor{troubleshooting check-your-netrhost-conf-file}@anchor{139}
+@anchor{troubleshooting check-your-netrhost-conf-file}@anchor{13b}
 @subsubsection Check your netrhost.conf file
 
 
@@ -8015,7 +8330,7 @@ If these names do not match up, it can't find the database files to load.
 So you shouldn't have to change these names, ever. :)
 
 @node Check your mush config file,,Check your netrhost conf file,If the mush says it can't find your database files
-@anchor{troubleshooting check-your-mush-config-file}@anchor{13a}
+@anchor{troubleshooting check-your-mush-config-file}@anchor{13c}
 @subsubsection Check your mush.config file
 
 
@@ -8027,7 +8342,7 @@ as associated to the mush.  So changing this means the netrhost.conf
 file, all your database files, and so forth.  Please don't change this :)
 
 @node If the mush says it can't read or load your database files,If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!,If the mush says it can't find your database files,Dealing with DB Corruption
-@anchor{troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files}@anchor{13b}
+@anchor{troubleshooting if-the-mush-says-it-can-t-read-or-load-your-database-files}@anchor{13d}
 @subsection If the mush says it can't read or load your database files
 
 
@@ -8040,7 +8355,7 @@ Double check everything for the previous issue. Make sure everything is named pr
 @end menu
 
 @node Verify you have enough disk space quota,Verify you have enough disk space system,,If the mush says it can't read or load your database files
-@anchor{troubleshooting verify-you-have-enough-disk-space-quota}@anchor{13c}
+@anchor{troubleshooting verify-you-have-enough-disk-space-quota}@anchor{13e}
 @subsubsection Verify you have enough disk space. (quota)
 
 
@@ -8056,7 +8371,7 @@ mush again.  Try to keep your quota at least 200 megs free to allow
 plenty of wonderful growth space for the mush.
 
 @node Verify you have enough disk space system,,Verify you have enough disk space quota,If the mush says it can't read or load your database files
-@anchor{troubleshooting verify-you-have-enough-disk-space-system}@anchor{13d}
+@anchor{troubleshooting verify-you-have-enough-disk-space-system}@anchor{13f}
 @subsubsection Verify you have enough disk space.  (system)
 
 
@@ -8074,7 +8389,7 @@ Until this issue is resolved, you can not repair and bring up your mush.
 No disk to run the game.
 
 @node If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!,Bringing up your mail database,If the mush says it can't read or load your database files,Dealing with DB Corruption
-@anchor{troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone}@anchor{13e}
+@anchor{troubleshooting if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone}@anchor{140}
 @subsection If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!
 
 
@@ -8094,7 +8409,7 @@ So, to recover your database.
 @end menu
 
 @node The bad news,The good news,,If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!
-@anchor{troubleshooting the-bad-news}@anchor{13f}
+@anchor{troubleshooting the-bad-news}@anchor{141}
 @subsubsection The bad news
 
 
@@ -8106,7 +8421,7 @@ out of it, but otherwise it's a lost cause.  You'll have to start
 over from scratch.  I'm sorry.
 
 @node The good news,Now to restore your database?,The bad news,If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!
-@anchor{troubleshooting the-good-news}@anchor{140}
+@anchor{troubleshooting the-good-news}@anchor{142}
 @subsubsection The good news
 
 
@@ -8125,14 +8440,14 @@ that the very last line shows something like ** END OF DUMP **.
 That shows you had a successful backup.
 
 @node Now to restore your database?,,The good news,If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!
-@anchor{troubleshooting now-to-restore-your-database}@anchor{141}
+@anchor{troubleshooting now-to-restore-your-database}@anchor{143}
 @subsubsection Now, to restore your database?
 
 
 Please refer to the file 'README.DBLOADING'.
 
 @node Bringing up your mail database,,If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!,Dealing with DB Corruption
-@anchor{troubleshooting bringing-up-your-mail-database}@anchor{142}
+@anchor{troubleshooting bringing-up-your-mail-database}@anchor{144}
 @subsection Bringing up your mail database
 
 
@@ -8145,7 +8460,7 @@ Your mail db may or may not come up at this point.
 @end menu
 
 @node If after restoring main database your mail database works,If after restoring main database your mail database does not work,,Bringing up your mail database
-@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-works}@anchor{143}
+@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-works}@anchor{145}
 @subsubsection If after restoring main database your mail database works
 
 
@@ -8167,14 +8482,14 @@ wmail/fix fixes the mail.
 wmail/lfix loads in the fixes.
 
 @node If after restoring main database your mail database does not work,,If after restoring main database your mail database works,Bringing up your mail database
-@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work}@anchor{144}
+@anchor{troubleshooting if-after-restoring-main-database-your-mail-database-does-not-work}@anchor{146}
 @subsubsection If after restoring main database your mail database does not work
 
 
 If your mail database is not up and shows 'Mail: mail is currently off' then your mail db is currupt.
 
 @node Dealing with a corrupt mail database,,Dealing with DB Corruption,Troubleshooting
-@anchor{troubleshooting dealing-with-a-corrupt-mail-database}@anchor{145}
+@anchor{troubleshooting dealing-with-a-corrupt-mail-database}@anchor{147}
 @section Dealing with a corrupt mail database
 
 
@@ -8197,7 +8512,7 @@ which would include the mail database.
 @end menu
 
 @node Backing up your mail database,Automatically recovering your mail database,,Dealing with a corrupt mail database
-@anchor{troubleshooting backing-up-your-mail-database}@anchor{146}
+@anchor{troubleshooting backing-up-your-mail-database}@anchor{148}
 @subsection Backing up your mail database
 
 
@@ -8213,7 +8528,7 @@ latter directory is used in junction to the backup_flat.sh and will always
 house the latest flatfile if not one recently dumped in your data directory.
 
 @node Automatically recovering your mail database,Manually recovering your mail database,Backing up your mail database,Dealing with a corrupt mail database
-@anchor{troubleshooting automatically-recovering-your-mail-database}@anchor{147}
+@anchor{troubleshooting automatically-recovering-your-mail-database}@anchor{149}
 @subsection Automatically recovering your mail database
 
 
@@ -8241,7 +8556,7 @@ to sync against nuked players and other changes to the game since the flatfile.
 If this is a new db that you have, you can skip the fixing.
 
 @node Manually recovering your mail database,,Automatically recovering your mail database,Dealing with a corrupt mail database
-@anchor{troubleshooting manually-recovering-your-mail-database}@anchor{148}
+@anchor{troubleshooting manually-recovering-your-mail-database}@anchor{14a}
 @subsection Manually recovering your mail database
 
 
@@ -8297,7 +8612,7 @@ At this point you should be good to go.
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
 @node Advanced Features,Format for image files,Troubleshooting,Top
-@anchor{advanced doc}@anchor{149}@anchor{advanced advanced-features}@anchor{14a}
+@anchor{advanced doc}@anchor{14b}@anchor{advanced advanced-features}@anchor{14c}
 @chapter Advanced Features
 
 
@@ -8310,7 +8625,7 @@ At this point you should be good to go.
 @end menu
 
 @node Adding hardcoded modules,Reality Levels Setup,,Advanced Features
-@anchor{advanced adding-hardcoded-modules}@anchor{14b}
+@anchor{advanced adding-hardcoded-modules}@anchor{14d}
 @section Adding hardcoded modules
 
 
@@ -8324,7 +8639,7 @@ RhostMUSH does support module writing.
 @end menu
 
 @node Modifying sourcode to add a module,Adding an @@startup to make use of modules,,Adding hardcoded modules
-@anchor{advanced modifying-sourcode-to-add-a-module}@anchor{14c}
+@anchor{advanced modifying-sourcode-to-add-a-module}@anchor{14e}
 @subsection Modifying sourcode to add a module
 
 
@@ -8334,7 +8649,7 @@ for any new source files that you wish to add.
 Something to be aware of is that all localized data is ran after the system cache subroutine.
 
 @node Adding an @@startup to make use of modules,Contributing your module back to Rhost,Modifying sourcode to add a module,Adding hardcoded modules
-@anchor{advanced adding-an-startup-to-make-use-of-modules}@anchor{14d}
+@anchor{advanced adding-an-startup-to-make-use-of-modules}@anchor{14f}
 @subsection Adding an @@startup to make use of modules
 
 
@@ -8356,7 +8671,7 @@ A small alteration that will likely make this work fine:
 That 1 second delay for the queue will give the game engine time to load in your module code.
 
 @node Contributing your module back to Rhost,,Adding an @@startup to make use of modules,Adding hardcoded modules
-@anchor{advanced contributing-your-module-back-to-rhost}@anchor{14e}
+@anchor{advanced contributing-your-module-back-to-rhost}@anchor{150}
 @subsection Contributing your module back to Rhost
 
 
@@ -8373,7 +8688,7 @@ Ask one of the Rhost devs to do it for you :)
 @end enumerate
 
 @node Reality Levels Setup,Execscript and external programs and scripts,Adding hardcoded modules,Advanced Features
-@anchor{advanced reality-levels-setup}@anchor{14f}
+@anchor{advanced reality-levels-setup}@anchor{151}
 @section Reality Levels Setup
 
 
@@ -8394,7 +8709,7 @@ in the same location.
 @end menu
 
 @node Reality Levels Visibility,Reality Levels Descriptions,,Reality Levels Setup
-@anchor{advanced reality-levels-visibility}@anchor{150}
+@anchor{advanced reality-levels-visibility}@anchor{152}
 @subsection Reality Levels Visibility
 
 
@@ -8417,7 +8732,7 @@ An object is always visible to itself, even if its Rx and Tx levels don't
 match. (See examples below)
 
 @node Reality Levels Descriptions,Reality Levels Configuration parameters,Reality Levels Visibility,Reality Levels Setup
-@anchor{advanced reality-levels-descriptions}@anchor{151}
+@anchor{advanced reality-levels-descriptions}@anchor{153}
 @subsection Reality Levels Descriptions
 
 
@@ -8446,7 +8761,7 @@ order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.
 
 @node Reality Levels Configuration parameters,Reality Levels Example mush conf,Reality Levels Descriptions,Reality Levels Setup
-@anchor{advanced reality-levels-configuration-parameters}@anchor{152}
+@anchor{advanced reality-levels-configuration-parameters}@anchor{154}
 @subsection Reality Levels Configuration parameters
 
 
@@ -8496,7 +8811,7 @@ reality_level <8 char name> <hex-byte-mask> <optional-desc: DESC default>
 @end example
 
 @node Reality Levels Example mush conf,Reality Levels Commands,Reality Levels Configuration parameters,Reality Levels Setup
-@anchor{advanced reality-levels-example-mush-conf}@anchor{153}
+@anchor{advanced reality-levels-example-mush-conf}@anchor{155}
 @subsection Reality Levels Example mush.conf
 
 
@@ -8521,7 +8836,7 @@ reality_level All 4294967295
 @end example
 
 @node Reality Levels Commands,Functions,Reality Levels Example mush conf,Reality Levels Setup
-@anchor{advanced reality-levels-commands}@anchor{154}
+@anchor{advanced reality-levels-commands}@anchor{156}
 @subsection Reality Levels Commands
 
 
@@ -8545,7 +8860,7 @@ for players).
 @end cartouche
 
 @node Functions,Example 1 A simplified Witchcraft setup,Reality Levels Commands,Reality Levels Setup
-@anchor{advanced functions}@anchor{155}
+@anchor{advanced functions}@anchor{157}
 @subsection Functions
 
 
@@ -8586,7 +8901,7 @@ version checks against the DARK flag.
 @end cartouche
 
 @node Example 1 A simplified Witchcraft setup,Example 2 A WoD setup,Functions,Reality Levels Setup
-@anchor{advanced example-1-a-simplified-witchcraft-setup}@anchor{156}
+@anchor{advanced example-1-a-simplified-witchcraft-setup}@anchor{158}
 @subsection Example 1: A simplified Witchcraft setup
 
 
@@ -8708,7 +9023,7 @@ Following are commands that each of the players enter and what they see.  I'll a
 @end example
 
 @node Example 2 A WoD setup,Example 3 Softcode,Example 1 A simplified Witchcraft setup,Reality Levels Setup
-@anchor{advanced example-2-a-wod-setup}@anchor{157}
+@anchor{advanced example-2-a-wod-setup}@anchor{159}
 @subsection Example 2: A WoD setup
 
 
@@ -8807,7 +9122,7 @@ RxLevel: All, TxLevel: All
 @end example
 
 @node Example 3 Softcode,,Example 2 A WoD setup,Reality Levels Setup
-@anchor{advanced example-3-softcode}@anchor{158}
+@anchor{advanced example-3-softcode}@anchor{15a}
 @subsection Example 3: Softcode
 
 
@@ -8835,7 +9150,7 @@ In a real game you would have to use some more checks, of course.
 @end example
 
 @node Execscript and external programs and scripts,Using printf for advanced text output,Reality Levels Setup,Advanced Features
-@anchor{advanced execscript-and-external-programs-and-scripts}@anchor{159}
+@anchor{advanced execscript-and-external-programs-and-scripts}@anchor{15b}
 @section Execscript and external programs and scripts
 
 
@@ -8849,7 +9164,7 @@ In a real game you would have to use some more checks, of course.
 @end menu
 
 @node Execscript variables,Execsript set object,,Execscript and external programs and scripts
-@anchor{advanced execscript-variables}@anchor{15a}
+@anchor{advanced execscript-variables}@anchor{15c}
 @subsection Execscript variables
 
 
@@ -8861,7 +9176,7 @@ In a real game you would have to use some more checks, of course.
 @end menu
 
 @node Execscript Built in variables,Execscript Dynamic variables,,Execscript variables
-@anchor{advanced execscript-built-in-variables}@anchor{15b}
+@anchor{advanced execscript-built-in-variables}@anchor{15d}
 @subsubsection Execscript Built in variables
 
 
@@ -8952,7 +9267,7 @@ This is passed from the mush's EXECSCRIPT_VARS attr
 
 
 @node Execscript Dynamic variables,Execscript Register variables,Execscript Built in variables,Execscript variables
-@anchor{advanced execscript-dynamic-variables}@anchor{15c}
+@anchor{advanced execscript-dynamic-variables}@anchor{15e}
 @subsubsection Execscript Dynamic variables
 
 
@@ -8979,7 +9294,7 @@ These are the attributes from EXECSCRIPT_VARS
 
 
 @node Execscript Register variables,,Execscript Dynamic variables,Execscript variables
-@anchor{advanced execscript-register-variables}@anchor{15d}
+@anchor{advanced execscript-register-variables}@anchor{15f}
 @subsubsection Execscript Register variables
 
 
@@ -9022,7 +9337,7 @@ Note: they must be ASCII-7 clean and contain no white spaces
 
 
 @node Execsript set object,Execscript Example bash script,Execscript variables,Execscript and external programs and scripts
-@anchor{advanced execsript-set-object}@anchor{15e}
+@anchor{advanced execsript-set-object}@anchor{160}
 @subsection Execsript set object
 
 
@@ -9037,7 +9352,7 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.
 @end menu
 
 @node Execscript set object field format,,,Execsript set object
-@anchor{advanced execscript-set-object-field-format}@anchor{15f}
+@anchor{advanced execscript-set-object-field-format}@anchor{161}
 @subsubsection Execscript set object field format
 
 
@@ -9048,7 +9363,7 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.
 @end menu
 
 @node Execscript set object Dynamic variables,Execscript set object Register variables,,Execscript set object field format
-@anchor{advanced execscript-set-object-dynamic-variables}@anchor{160}
+@anchor{advanced execscript-set-object-dynamic-variables}@anchor{162}
 @subsubsection Execscript set object Dynamic variables
 
 
@@ -9062,7 +9377,7 @@ VARNAME        OWNER        CONTENTS (or leave null to clear)
 @end menu
 
 @node Execscript set object Dynamic variables Examples,,,Execscript set object Dynamic variables
-@anchor{advanced execscript-set-object-dynamic-variables-examples}@anchor{161}
+@anchor{advanced execscript-set-object-dynamic-variables-examples}@anchor{163}
 @subsubsection Execscript set object Dynamic variables Examples
 
 
@@ -9078,7 +9393,7 @@ on the lines above
 @end example
 
 @node Execscript set object Register variables,,Execscript set object Dynamic variables,Execscript set object field format
-@anchor{advanced execscript-set-object-register-variables}@anchor{162}
+@anchor{advanced execscript-set-object-register-variables}@anchor{164}
 @subsubsection Execscript set object Register variables
 
 
@@ -9092,7 +9407,7 @@ REGISTER       Q            CONTENTS (or leave null to clear)
 @end menu
 
 @node Execscript set object Register variables Examples,,,Execscript set object Register variables
-@anchor{advanced execscript-set-object-register-variables-examples}@anchor{163}
+@anchor{advanced execscript-set-object-register-variables-examples}@anchor{165}
 @subsubsection Execscript set object Register variables Examples
 
 
@@ -9110,7 +9425,7 @@ foo QN this sets register with label 'foo'
 @end example
 
 @node Execscript Example bash script,Exescript Notes and warnings,Execsript set object,Execscript and external programs and scripts
-@anchor{advanced execscript-example-bash-script}@anchor{164}
+@anchor{advanced execscript-example-bash-script}@anchor{166}
 @subsection Execscript Example bash script
 
 
@@ -9131,7 +9446,7 @@ done
 @end example
 
 @node Exescript Notes and warnings,Scripts to be used with execscript,Execscript Example bash script,Execscript and external programs and scripts
-@anchor{advanced exescript-notes-and-warnings}@anchor{165}
+@anchor{advanced exescript-notes-and-warnings}@anchor{167}
 @subsection Exescript Notes and warnings
 
 
@@ -9145,7 +9460,7 @@ This is EXECSCRIPT_VARS on the mush itself, that is the attribute set
 on the target that contains the execscript() that is being executed.
 
 @node Scripts to be used with execscript,,Exescript Notes and warnings,Execscript and external programs and scripts
-@anchor{advanced scripts-to-be-used-with-execscript}@anchor{166}
+@anchor{advanced scripts-to-be-used-with-execscript}@anchor{168}
 @subsection Scripts to be used with execscript
 
 
@@ -9183,7 +9498,7 @@ web.sh                         -- Script for querying an arbitary website
 @end example
 
 @node Using printf for advanced text output,,Execscript and external programs and scripts,Advanced Features
-@anchor{advanced using-printf-for-advanced-text-output}@anchor{167}
+@anchor{advanced using-printf-for-advanced-text-output}@anchor{169}
 @section Using printf() for advanced text output
 
 
@@ -9198,7 +9513,7 @@ screens and data display.  It can automatically center, justify and wrap the tex
 @end menu
 
 @node Printf Example one,Printf Example two,,Using printf for advanced text output
-@anchor{advanced printf-example-one}@anchor{168}
+@anchor{advanced printf-example-one}@anchor{16a}
 @subsection Printf Example one
 
 
@@ -9213,7 +9528,7 @@ screens and data display.  It can automatically center, justify and wrap the tex
 @end example
 
 @node Printf Example two,Printf Example three,Printf Example one,Using printf for advanced text output
-@anchor{advanced printf-example-two}@anchor{169}
+@anchor{advanced printf-example-two}@anchor{16b}
 @subsection Printf Example two
 
 
@@ -9233,7 +9548,7 @@ iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)
 @end example
 
 @node Printf Example three,,Printf Example two,Using printf for advanced text output
-@anchor{advanced printf-example-three}@anchor{16a}
+@anchor{advanced printf-example-three}@anchor{16c}
 @subsection Printf Example three
 
 
@@ -9253,7 +9568,7 @@ blah blah blah blah blah blah blah                                    END!
 @end example
 
 @node Format for image files,Requirements if Using Windows,Advanced Features,Top
-@anchor{advanced format-for-image-files}@anchor{16b}
+@anchor{advanced format-for-image-files}@anchor{16d}
 @chapter Format for image files
 
 
@@ -9696,7 +10011,7 @@ $6$xy$xy
 @end menu
 
 @node HELP key indexes for the values,,,Format for image files
-@anchor{advanced help-key-indexes-for-the-values}@anchor{16c}
+@anchor{advanced help-key-indexes-for-the-values}@anchor{16e}
 @section HELP key indexes for the values
 
 
@@ -10052,13 +10367,13 @@ that there are no more zones to add.
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
-@anchor{install/windows install-windows}@anchor{16d}
+@anchor{install/windows install-windows}@anchor{16f}
 @geindex Windows
 @geindex Microsoft Windows
 @geindex Install - Windows
 
 @node Requirements if Using Windows,Upgrading a Legacy RhostMUSH Installation,Format for image files,Top
-@anchor{install/windows doc}@anchor{16e}@anchor{install/windows requirements-if-using-windows}@anchor{16f}
+@anchor{install/windows doc}@anchor{170}@anchor{install/windows requirements-if-using-windows}@anchor{171}
 @chapter Requirements if Using Windows
 
 
@@ -10077,7 +10392,7 @@ that there are no more zones to add.
 @end menu
 
 @node Installing on Windows 10 with BASH,Installing on Windows with Cygwin,,Requirements if Using Windows
-@anchor{install/windows installing-on-windows-10-with-bash}@anchor{170}
+@anchor{install/windows installing-on-windows-10-with-bash}@anchor{172}
 @section Installing on Windows 10 with BASH
 
 
@@ -10130,7 +10445,7 @@ When configuring rhost (using confsource) select the Disable Debugmon option.
 @end itemize
 
 @node Installing on Windows with Cygwin,Startig RhostMUSH on Windows,Installing on Windows 10 with BASH,Requirements if Using Windows
-@anchor{install/windows installing-on-windows-with-cygwin}@anchor{171}
+@anchor{install/windows installing-on-windows-with-cygwin}@anchor{173}
 @section Installing on Windows with Cygwin
 
 
@@ -10185,7 +10500,7 @@ The src/Makefile has to manually have the CYGWIN line uncommented.
 @end itemize
 
 @node Startig RhostMUSH on Windows,,Installing on Windows with Cygwin,Requirements if Using Windows
-@anchor{install/windows startig-rhostmush-on-windows}@anchor{172}
+@anchor{install/windows startig-rhostmush-on-windows}@anchor{174}
 @section Startig RhostMUSH on Windows
 
 
@@ -10195,7 +10510,7 @@ When you issue Startmush, you must pass it the -cyg option.
 @c using the same name as the html entity names (e.g., &copy;) for that character
 
 @node Upgrading a Legacy RhostMUSH Installation,Comparison of Flags,Requirements if Using Windows,Top
-@anchor{legacy doc}@anchor{173}@anchor{legacy upgrading-a-legacy-rhostmush-installation}@anchor{174}
+@anchor{legacy doc}@anchor{175}@anchor{legacy upgrading-a-legacy-rhostmush-installation}@anchor{176}
 @chapter Upgrading a Legacy RhostMUSH Installation
 
 
@@ -10207,7 +10522,7 @@ When you issue Startmush, you must pass it the -cyg option.
 @end menu
 
 @node Converting database betwen GDBM and QDBM,Updating RhostMUSH prior to 3 9 5p2,,Upgrading a Legacy RhostMUSH Installation
-@anchor{legacy converting-database-betwen-gdbm-and-qdbm}@anchor{175}
+@anchor{legacy converting-database-betwen-gdbm-and-qdbm}@anchor{177}
 @section Converting database betwen GDBM and QDBM
 
 
@@ -10223,7 +10538,7 @@ The databases are NOT COMPATIBLE to each other, at least in the binary form.
 @end menu
 
 @node Downgrading QDBM to GDBM,Upgradging GDBM to QDBM,,Converting database betwen GDBM and QDBM
-@anchor{legacy downgrading-qdbm-to-gdbm}@anchor{176}
+@anchor{legacy downgrading-qdbm-to-gdbm}@anchor{178}
 @subsection Downgrading QDBM to GDBM
 
 
@@ -10257,7 +10572,7 @@ Once you have that done, you may follow the procedures below on converting (upgr
 @end enumerate
 
 @node Upgradging GDBM to QDBM,,Downgrading QDBM to GDBM,Converting database betwen GDBM and QDBM
-@anchor{legacy upgradging-gdbm-to-qdbm}@anchor{177}
+@anchor{legacy upgradging-gdbm-to-qdbm}@anchor{179}
 @subsection Upgradging GDBM to QDBM
 
 
@@ -10278,7 +10593,7 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 @end menu
 
 @node While logged in to your mush issue the following commands,Verify the files exist,,Upgradging GDBM to QDBM
-@anchor{legacy while-logged-in-to-your-mush-issue-the-following-commands}@anchor{178}
+@anchor{legacy while-logged-in-to-your-mush-issue-the-following-commands}@anchor{17a}
 @subsubsection While logged in to your mush, issue the following commands
 
 
@@ -10302,7 +10617,7 @@ newsdb/unload -- If you use the hardcoded news/bbs engine.  This dumps it
 @end quotation
 
 @node Verify the files exist,Shutdown the MUSH,While logged in to your mush issue the following commands,Upgradging GDBM to QDBM
-@anchor{legacy verify-the-files-exist}@anchor{179}
+@anchor{legacy verify-the-files-exist}@anchor{17b}
 @subsubsection Verify the files exist
 
 
@@ -10329,14 +10644,14 @@ Server/game/data/RhostMUSH.dump.mail
 @end quotation
 
 @node Shutdown the MUSH,From the Server directory,Verify the files exist,Upgradging GDBM to QDBM
-@anchor{legacy shutdown-the-mush}@anchor{17a}
+@anchor{legacy shutdown-the-mush}@anchor{17c}
 @subsubsection Shutdown the MUSH
 
 
 @@shutdown your mush
 
 @node From the Server directory,From the Server/game directory,Shutdown the MUSH,Upgradging GDBM to QDBM
-@anchor{legacy from-the-server-directory}@anchor{17b}
+@anchor{legacy from-the-server-directory}@anchor{17d}
 @subsubsection From the Server directory
 
 
@@ -10417,7 +10732,7 @@ RhostMUSH.news.pag
 @end enumerate
 
 @node From the Server/game directory,While logged into the mush issue the following commands,From the Server directory,Upgradging GDBM to QDBM
-@anchor{legacy from-the-server-game-directory}@anchor{17c}
+@anchor{legacy from-the-server-game-directory}@anchor{17e}
 @subsubsection From the Server/game directory
 
 
@@ -10440,7 +10755,7 @@ Start the MUSH back:
 @end enumerate
 
 @node While logged into the mush issue the following commands,Verify that you have QDBM running and your valid values,From the Server/game directory,Upgradging GDBM to QDBM
-@anchor{legacy while-logged-into-the-mush-issue-the-following-commands}@anchor{17d}
+@anchor{legacy while-logged-into-the-mush-issue-the-following-commands}@anchor{17f}
 @subsubsection While logged into the mush issue the following commands
 
 
@@ -10470,7 +10785,7 @@ newsdb/load
 @end enumerate
 
 @node Verify that you have QDBM running and your valid values,,While logged into the mush issue the following commands,Upgradging GDBM to QDBM
-@anchor{legacy verify-that-you-have-qdbm-running-and-your-valid-values}@anchor{17e}
+@anchor{legacy verify-that-you-have-qdbm-running-and-your-valid-values}@anchor{180}
 @subsubsection Verify that you have QDBM running and your valid values
 
 
@@ -10482,7 +10797,7 @@ newsdb/load
 @end enumerate
 
 @node Updating RhostMUSH prior to 3 9 5p2,Adding MySQL to RhostMUSH older than 3 9 5p2,Converting database betwen GDBM and QDBM,Upgrading a Legacy RhostMUSH Installation
-@anchor{legacy updating-rhostmush-prior-to-3-9-5p2}@anchor{17f}
+@anchor{legacy updating-rhostmush-prior-to-3-9-5p2}@anchor{181}
 @section Updating RhostMUSH prior to 3.9.5p2
 
 
@@ -10673,7 +10988,7 @@ You should be good to go on a current directory structure for Rhost.  Enjoy!
 @end enumerate
 
 @node Adding MySQL to RhostMUSH older than 3 9 5p2,,Updating RhostMUSH prior to 3 9 5p2,Upgrading a Legacy RhostMUSH Installation
-@anchor{legacy adding-mysql-to-rhostmush-older-than-3-9-5p2}@anchor{180}
+@anchor{legacy adding-mysql-to-rhostmush-older-than-3-9-5p2}@anchor{182}
 @section Adding MySQL to RhostMUSH older than 3.9.5p2
 
 
@@ -10775,12 +11090,12 @@ builder script to build in the mysql changes.
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
-@anchor{comparison/flags comparison-flags}@anchor{181}
+@anchor{comparison/flags comparison-flags}@anchor{183}
 @geindex Comparison - Flags
 @geindex Flags - Comparison
 
 @node Comparison of Flags,Comparison of powers,Upgrading a Legacy RhostMUSH Installation,Top
-@anchor{comparison/flags doc}@anchor{182}@anchor{comparison/flags comparison-of-flags}@anchor{183}
+@anchor{comparison/flags doc}@anchor{184}@anchor{comparison/flags comparison-of-flags}@anchor{185}
 @chapter Comparison of Flags
 
 Comparison of Flags
@@ -11479,12 +11794,12 @@ MARKER0-MARKER9
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
-@anchor{comparison/powers comparison-powers}@anchor{184}
+@anchor{comparison/powers comparison-powers}@anchor{186}
 @geindex Comparison - Powers
 @geindex Powers - Comparison
 
 @node Comparison of powers,Historical Non-Disclosure Agreement,Comparison of Flags,Top
-@anchor{comparison/powers doc}@anchor{185}@anchor{comparison/powers comparison-of-powers}@anchor{186}
+@anchor{comparison/powers doc}@anchor{187}@anchor{comparison/powers comparison-of-powers}@anchor{188}
 @chapter Comparison of powers
 
 
@@ -11586,12 +11901,12 @@ Rhost Equiv: MONITOR (@@toggle)
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
-@anchor{historical/nda historical-nda}@anchor{187}
+@anchor{historical/nda historical-nda}@anchor{189}
 @geindex NDA
 @geindex Non-Disclosure Agreement
 
 @node Historical Non-Disclosure Agreement,Copyright,Comparison of powers,Top
-@anchor{historical/nda doc}@anchor{188}@anchor{historical/nda historical-non-disclosure-agreement}@anchor{189}
+@anchor{historical/nda doc}@anchor{18a}@anchor{historical/nda historical-non-disclosure-agreement}@anchor{18b}
 @chapter Historical Non-Disclosure Agreement
 
 
@@ -11637,11 +11952,11 @@ rules are kept.
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
-@anchor{meta/copyright copyright}@anchor{18a}
+@anchor{meta/copyright copyright}@anchor{18c}
 @geindex Copyright
 
 @node Copyright,RhostMUSH Internal Help Files,Historical Non-Disclosure Agreement,Top
-@anchor{meta/copyright doc}@anchor{18b}@anchor{meta/copyright id1}@anchor{18c}
+@anchor{meta/copyright doc}@anchor{18d}@anchor{meta/copyright id1}@anchor{18e}
 @chapter Copyright
 
 
@@ -11667,23 +11982,23 @@ This copyright information may not be changed, altered, or omitted.
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
-@anchor{help txtfiles-help}@anchor{18d}
+@anchor{help txtfiles-help}@anchor{18f}
 @geindex help.txt
 @geindex txtfiles - help.txt
 
 @node RhostMUSH Internal Help Files,RhostMUSH Internal WizHelp Files,Copyright,Top
-@anchor{help doc}@anchor{18e}@anchor{help rhostmush-internal-help-files}@anchor{18f}
+@anchor{help doc}@anchor{190}@anchor{help rhostmush-internal-help-files}@anchor{191}
 @chapter RhostMUSH Internal Help Files
 
 
 @c These are replacement strings for non-ASCII characters used within the project
 @c using the same name as the html entity names (e.g., &copy;) for that character
-@anchor{wizhelp txtfiles-wizhelp}@anchor{190}
+@anchor{wizhelp txtfiles-wizhelp}@anchor{192}
 @geindex wizhelp.txt
 @geindex txtfiles - wizhelp.txt
 
 @node RhostMUSH Internal WizHelp Files,Index,RhostMUSH Internal Help Files,Top
-@anchor{wizhelp doc}@anchor{191}@anchor{wizhelp rhostmush-internal-wizhelp-files}@anchor{192}
+@anchor{wizhelp doc}@anchor{193}@anchor{wizhelp rhostmush-internal-wizhelp-files}@anchor{194}
 @chapter RhostMUSH Internal WizHelp Files
 
 

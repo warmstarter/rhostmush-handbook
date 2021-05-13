@@ -1,8 +1,8 @@
-12. Setting up an SSL tunnel for secure connection options
+13. Setting up an SSL tunnel for secure connection options
 **********************************************************
 
 
-12.1. Quickstart for SSL setup with stunnel
+13.1. Quickstart for SSL setup with stunnel
 ===========================================
 
 1. Modify your netrhost.conf file and add/change the following
@@ -44,7 +44,7 @@ You do not need to shutdown the ssl handler if you shutdown the mush.
 They are entirely separate processes.
 
 
-12.2. Detailed SSL setup with stunnel
+13.2. Detailed SSL setup with stunnel
 =====================================
 
 To setup SSL connectivity, we use the STUNNEL application to tunnel
@@ -58,7 +58,7 @@ Note:
   netrhost.conf.
 
 
-12.2.1. stunnel directory
+13.2.1. stunnel directory
 -------------------------
 
 You would set up the stunnel from the 'stunnel' directory.  There the
@@ -73,7 +73,7 @@ following files are of relevance:
    stunnel_src                -- If you do not have stunnel, this directory will allow you to download, compile and locally install.
 
 
-12.2.2. Modifying netrhost.conf
+13.2.2. Modifying netrhost.conf
 -------------------------------
 
 To be able to utilize SSL, you first must set your netrhost.conf file
@@ -91,7 +91,7 @@ Note:
   default to two values:  'localhost' and '127.0.0.1'.
 
 
-12.2.3. Running the stunnel setup program
+13.2.3. Running the stunnel setup program
 -----------------------------------------
 
 At this point you're ready to run the stunnel setup program.  So at
@@ -112,7 +112,7 @@ Be aware that if you have DNS host lookups disabled on your mush, you
 MUST have 127.0.0.1 as an entry for your sconnect_host file.
 
 
-12.2.4. Starting the stunnel proxy
+13.2.4. Starting the stunnel proxy
 ----------------------------------
 
 When you have your stunnel.conf file to the way you want, you then
@@ -121,7 +121,7 @@ issue the following command to run your SSL layer:
    ./stunnel_start.sh
 
 
-12.2.5. Shutting down the stunnel proxy
+13.2.5. Shutting down the stunnel proxy
 ---------------------------------------
 
 If ever you need to bring down the SSL layer, you may kill it with the
@@ -130,7 +130,7 @@ command:
    ./stunnel_stop.sh
 
 
-12.2.6. Configuring firewall on the host
+13.2.6. Configuring firewall on the host
 ----------------------------------------
 
 Please be aware that the port that the SSL layer is on must be opened

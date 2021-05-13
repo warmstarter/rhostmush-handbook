@@ -74,7 +74,7 @@
 
 
 \title{RhostMUSH Handbook}
-\date{Apr 23, 2021}
+\date{May 13, 2021}
 \release{}
 \author{wstarter}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -5884,6 +5884,344 @@ several settings from just monitoring/alerting of possible proxies
 to downright forbidding them.  If you\textquotesingle{}re being actively attacked,
 it may be worth considering adding this to add additional protection.
 \end{quote}
+
+
+\chapter{What to Do if your MUSH is Attacked}
+\label{\detokenize{attack:what-to-do-if-your-mush-is-attacked}}\label{\detokenize{attack::doc}}
+\sphinxAtStartPar
+RhostMUSH is an combination of, well, everything. And because of the flexibility and customizations, can be daunting, but here we go:
+
+\sphinxAtStartPar
+Rhost allows two ways for site restrictions.
+\#\#\# Site Restrictions:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@admin} \PYG{n}{PARAM}\PYG{o}{=}\PYG{n}{SITE} \PYG{n}{IP}
+\PYG{n+nd}{@admin} \PYG{n}{PARAM2}\PYG{o}{=}\PYG{n}{WILDCARDHOST}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+NOTE: Since Rhost 3.2.4p13 Rhost allows CIDR notation (/24 instead of 255.255.255.0)
+
+\sphinxAtStartPar
+\#\#\#\# The first method:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@admin} \PYG{n}{forbid\PYGZus{}site}\PYG{o}{=}\PYG{l+m+mf}{12.12}\PYG{o}{.}\PYG{l+m+mf}{20.0} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.0}
+\PYG{n+nd}{@admin} \PYG{n}{forbid\PYGZus{}site}\PYG{o}{=}\PYG{l+m+mf}{12.12}\PYG{o}{.}\PYG{l+m+mf}{20.0} \PYG{l+m+mf}{255.255}\PYG{o}{.}\PYG{l+m+mf}{255.0} \PYG{l+m+mi}{3}
+\PYG{n+nd}{@admin} \PYG{n}{forbid\PYGZus{}site}\PYG{o}{=}\PYG{l+m+mf}{12.12}\PYG{o}{.}\PYG{l+m+mf}{20.0} \PYG{o}{/}\PYG{l+m+mi}{24} \PYG{l+m+mi}{3}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+The first example hardforbids the site from connecting.
+
+\sphinxAtStartPar
+The second example forbids the site from connecting after 3 connects have already been allowed. This allows connections but stops spamming.
+
+\sphinxAtStartPar
+Both options are available for all site parameters.
+
+\sphinxAtStartPar
+\textgreater{} Site related config parameters:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{forbid\PYGZus{}site} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{forbid} \PYG{n}{site} \PYG{k+kn}{from} \PYG{n+nn}{connecting}
+\PYG{n}{register\PYGZus{}site} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{disallow} \PYG{n}{player} \PYG{n}{creation} \PYG{k+kn}{from} \PYG{n+nn}{site} \PYG{p}{(}\PYG{n+nb}{set} \PYG{n}{to} \PYG{l+m+mf}{0.0}\PYG{o}{.}\PYG{l+m+mf}{0.0} \PYG{l+m+mf}{0.0}\PYG{o}{.}\PYG{l+m+mf}{0.0} \PYG{n}{to} \PYG{n}{disable} \PYG{n}{player} \PYG{n}{creation} \PYG{n}{entirely}\PYG{p}{)}
+\PYG{n}{suspect\PYGZus{}site} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n+nb}{set} \PYG{n}{site} \PYG{n}{suspect}
+\PYG{n}{noguest\PYGZus{}site} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{disallow} \PYG{n}{guest} \PYG{k+kn}{from} \PYG{n+nn}{connecting}\PYG{n+nn}{.}
+\PYG{n}{noauth\PYGZus{}site} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{disallow} \PYG{n}{AUTH} \PYG{n}{IDENT} \PYG{n}{lookups}
+\PYG{n}{noautoreg\PYGZus{}site} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{disallow} \PYG{n}{site} \PYG{k+kn}{from} \PYG{n+nn}{auto}\PYG{o}{\PYGZhy{}}\PYG{n}{registration} \PYG{n}{on} \PYG{n}{connect} \PYG{n}{screen}
+\PYG{n}{passproxy\PYGZus{}site} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{allow} \PYG{n}{IP} \PYG{n}{to} \PYG{n}{bypass} \PYG{n}{auto}\PYG{o}{\PYGZhy{}}\PYG{n}{proxy} \PYG{n}{blocking}
+\PYG{n}{nodns\PYGZus{}site} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{don}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{t do DNS/RDNS lookups}
+\PYG{n}{forbidapi\PYGZus{}site} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{don}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{t allow API connections from site}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\#\#\# Second method we have: (wildcards optional):
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+@admin forbid\PYGZus{}host=*.buttclown.com *.bob.com !*.foo.com
+@admin forbid\PYGZus{}host=*.buttclown.com|3
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+First example blocks wildcard buttclown.com, bob.com, and removes foo.com
+
+\sphinxAtStartPar
+Second example adds buttclown.com and forbids after 3 connections.
+
+\sphinxAtStartPar
+\textgreater{} host related config parameters:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{tor\PYGZus{}localhost} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{the} \PYG{n}{hosting} \PYG{n}{server} \PYG{n}{that} \PYG{n}{will} \PYG{n}{monitor} \PYG{o+ow}{and} \PYG{n}{block} \PYG{n}{TOR} \PYG{n}{connections}
+\PYG{n}{noautoreg\PYGZus{}host} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{the} \PYG{n}{hostname} \PYG{k}{for} \PYG{n}{blocking} \PYG{n}{autoregistration}
+\PYG{n}{passproxy\PYGZus{}host} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{the} \PYG{n}{hostname} \PYG{n}{to} \PYG{n}{bypass} \PYG{n}{proxy} \PYG{n}{blocking}
+\PYG{n}{validate\PYGZus{}host} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{disallow} \PYG{n}{email} \PYG{k+kn}{from} \PYG{n+nn}{autoregistration}
+\PYG{n}{forbidapi\PYGZus{}host} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{hostname} \PYG{n}{to} \PYG{n}{forbid} \PYG{n}{api}
+\PYG{n}{mysql\PYGZus{}host} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{hostname} \PYG{k}{for} \PYG{n}{the} \PYG{n}{MySQL} \PYG{n}{server}
+\PYG{n}{register\PYGZus{}host} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{hostname} \PYG{n}{to} \PYG{n}{stop} \PYG{n}{player} \PYG{n}{creation}
+\PYG{n}{forbid\PYGZus{}host} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{hostname} \PYG{n}{to} \PYG{n}{stop} \PYG{n}{connections}
+\PYG{n}{suspect\PYGZus{}host} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{hostname} \PYG{n}{to} \PYG{n+nb}{set} \PYG{n}{suspect}
+\PYG{n}{noguest\PYGZus{}host} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{stop} \PYG{n}{guests} \PYG{k+kn}{from} \PYG{n+nn}{connection}
+\PYG{n}{nobroadcast\PYGZus{}host} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{stop} \PYG{n}{site} \PYG{n}{monitor} \PYG{n}{chatter} \PYG{k}{for} \PYG{n}{site} \PYG{p}{(}\PYG{n}{still} \PYG{n}{logs}\PYG{p}{)}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\#\#\# Special Site Restrictions
+
+\sphinxAtStartPar
+\textgreater{} The following specific other options are useful for site restrictions:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@goodsite} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{attribute} \PYG{n}{to} \PYG{n+nb}{set} \PYG{n}{on} \PYG{n}{target} \PYG{n}{player} \PYG{n}{to} \PYG{n}{specify} \PYG{n}{what} \PYG{n}{wildcard} \PYG{n}{IP}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s \PYGZhy{}are\PYGZhy{} allowed to connect from (IP only, no hostname)}
+\PYG{n+nd}{@badsite} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{attribute} \PYG{n}{to} \PYG{n+nb}{set} \PYG{n}{on} \PYG{n}{target} \PYG{n}{to} \PYG{n}{specify} \PYG{n}{what} \PYG{n}{wildcard} \PYG{n}{IP}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s are not allowed to connect from (IP only, no hostname)}
+\PYG{n}{NOCONNECT} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{flag} \PYG{n}{to} \PYG{n+nb}{set} \PYG{n}{on} \PYG{n}{player} \PYG{n}{to} \PYG{n}{stop} \PYG{n}{connections}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\textgreater{} Examples:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@goodsite} \PYG{c+c1}{\PYGZsh{}1=127.0.0.1}
+\PYG{n+nd}{@badsite} \PYG{o}{*}\PYG{n}{twink}\PYG{o}{=}\PYG{l+m+mf}{12.12}\PYG{o}{.}\PYG{l+m+mf}{20.}\PYG{o}{*}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\# Config Parameters
+
+\sphinxAtStartPar
+\textgreater{} Example of issuing ingame:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@admin} \PYG{n}{function\PYGZus{}invocation\PYGZus{}limit}\PYG{o}{=}\PYG{l+m+mi}{25000}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\textgreater{} Example in netrhost.conf file:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{function\PYGZus{}invocation\PYGZus{}limit} \PYG{l+m+mi}{2500}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\#\#\# Suggested config parameters:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+authenticate \PYGZhy{}\PYGZhy{} toggle to specify authentication (AUTH) lookups
+max\PYGZus{}players \PYGZhy{}\PYGZhy{} max players allowed to connect to the mush at any time. The default for this is 40 less than the current maximum allowed based on server specifications to avoid DoS/DDoS. This ceiling is impossible to go past.
+cpu\PYGZus{}secure\PYGZus{}lvl \PYGZhy{}\PYGZhy{} define how the mush will treat those who hit the CPU limit. 0 is just stop 1 is halt the owner, 2 sets FUBAR, 3 sets NOCONNECT and boots, 4 does all of 3 and sets register, 5 does all of 3 and sets forbid
+cpuintervalchk CPU load before engaging CPU protection (default 5\PYGZpc{} system load)
+cputimechk CPU time in seconds before CPU protection (default 5 seconds)
+heavy\PYGZus{}cpu\PYGZus{}max (default 50) heavy cpu intensive features are auto\PYGZhy{}tagged this for additional cpu protection. This is how many times it can be called per \PYGZsq{}command\PYGZsq{}
+max\PYGZus{}cpu\PYGZus{}cycles (default 3) number of times a target can hit the CPU alert before restrictive measures via cpu\PYGZus{}secure\PYGZus{}lvl is enacted
+max\PYGZus{}lastsite\PYGZus{}cnt (default 20) number of connections from a site allowed a minute
+min\PYGZus{}con\PYGZus{}attempt (default 60) seconds to check for max\PYGZus{}lastsite\PYGZus{}cnt
+lastsite\PYGZus{}paranoia (0\PYGZhy{}3) sets restrictive level to use if max\PYGZus{}lastsite\PYGZus{}cnt is reached. 0 is take no action. 3 is forbid
+max\PYGZus{}sitecons \PYGZhy{}\PYGZhy{} (default 50) absolute maximum number of connections a specific site can have online at any time.
+max\PYGZus{}pcreate\PYGZus{}lim \PYGZhy{}\PYGZhy{} number of connect creates allowed per minute
+max\PYGZus{}pcreate\PYGZus{}time \PYGZhy{}\PYGZhy{} time allotted between pcreate lim checks
+pcreate\PYGZus{}paranoia \PYGZhy{}\PYGZhy{} (0\PYGZhy{}3) sets restrictive level to use if max\PYGZus{}pcreate\PYGZus{}lim is reached.
+spam\PYGZus{}limit \PYGZhy{}\PYGZhy{} maximum number of commands allowed by a player per minute if set SPAMMONITOR (default 60)
+player\PYGZus{}queue\PYGZus{}limit \PYGZhy{}\PYGZhy{} maximum queues allowed per player at any time (default 100)
+wizard\PYGZus{}queue\PYGZus{}limit \PYGZhy{}\PYGZhy{} maximum queues allowed for a wizard at any time (default 1000)
+function\PYGZus{}invocation\PYGZus{}limit \PYGZhy{}\PYGZhy{} (default 2500) maximum functions allowed per command
+function\PYGZus{}recursion\PYGZus{}limit \PYGZhy{}\PYGZhy{} (default 50) maximum number of times a function can call itself.
+secure\PYGZus{}functions \PYGZhy{}\PYGZhy{} switches internal permissions of old\PYGZhy{}processing functions to be more secure, but breaks backward compatibility
+fascist\PYGZus{}teleport \PYGZhy{}\PYGZhy{} players can\PYGZsq{}t teleport out of anything they don\PYGZsq{}t control or isn\PYGZsq{}t set JUMP\PYGZus{}OK
+restrict\PYGZus{}home \PYGZhy{}\PYGZhy{} lock down the \PYGZsq{}home\PYGZsq{} command to specific bitlevel
+restrict\PYGZus{}home2 \PYGZhy{}\PYGZhy{} toggle enable/disable \PYGZsq{}home\PYGZsq{} from those set NO\PYGZus{}CODE
+restrict\PYGZus{}sidefx \PYGZhy{}\PYGZhy{} specify what bitlevel SIDEEFFECT functions will work
+sideeffects \PYGZhy{}\PYGZhy{} specify what sideeffects are allowed
+sidefx\PYGZus{}maxcalls \PYGZhy{}\PYGZhy{} how many sideeffects are allowed per command
+max\PYGZus{}vattr\PYGZus{}limit \PYGZhy{}\PYGZhy{} maximum unique user\PYGZhy{}attributes a player can create for his lifetime
+wizmax\PYGZus{}vattr\PYGZus{}limit \PYGZhy{}\PYGZhy{} maximum unique user\PYGZhy{}attributes a wizard can create for his lifetime
+vlimit \PYGZhy{}\PYGZhy{} maximum attributes allowed per object
+wildmatch\PYGZus{}limit \PYGZhy{}\PYGZhy{} maximum number of wildmatches allowed per command
+lock\PYGZus{}recursion\PYGZus{}limit \PYGZhy{}\PYGZhy{} maximum lock recursion per command
+notify\PYGZus{}recursion\PYGZus{}limit \PYGZhy{}\PYGZhy{} maximum notify\PYGZsq{}s allowed (internal notify call)
+nonindxtxt\PYGZus{}maxlines \PYGZhy{}\PYGZhy{} maximum number of lines allowed to be read from @log
+max\PYGZus{}percentsubs \PYGZhy{}\PYGZhy{} maximum percent substitutions allowed per command
+max\PYGZus{}dest\PYGZus{}limit \PYGZhy{}\PYGZhy{} maximum number of items that can be @destroyed by a player for a lifetime
+wizmax\PYGZus{}dest\PYGZus{}limit \PYGZhy{}\PYGZhy{} maximum number of items that can be @destroyed by a wizard for a lifetime
+safer\PYGZus{}passwords \PYGZhy{}\PYGZhy{} enforce strict @passwords
+newpass\PYGZus{}god \PYGZhy{}\PYGZhy{} allow newpasswording \PYGZsh{}1
+nospam\PYGZus{}connect \PYGZhy{}\PYGZhy{} consolidates logs on people who attempt to keep trying to connect while forbidden
+examine\PYGZus{}restrictive \PYGZhy{}\PYGZhy{} lockdown who can examine/@decompile
+ahear\PYGZus{}maxtime \PYGZhy{}\PYGZhy{} maximum ceiling in seconds an @ahear is allowed to process
+ahear\PYGZus{}maxcnt \PYGZhy{}\PYGZhy{} maximum recursions @hears are allowed
+cluster\PYGZus{}cap \PYGZhy{}\PYGZhy{} ceiling on the number of cluster members allowed
+cluster\PYGZus{}func\PYGZus{}cap \PYGZhy{}\PYGZhy{} recursion ceiling on the cluster function handler
+includecnt \PYGZhy{}\PYGZhy{} number of times @include is allowed per command set
+includenest \PYGZhy{}\PYGZhy{} number of recursions @include is allowed
+lfunction\PYGZus{}max \PYGZhy{}\PYGZhy{} maximum number of @lfunctions allowed a player
+safer\PYGZus{}ufun \PYGZhy{}\PYGZhy{} make u() become protected in evaluation
+max\PYGZus{}name\PYGZus{}protect \PYGZhy{}\PYGZhy{} maximum number of @protect alises a player can have
+float\PYGZus{}precision \PYGZhy{}\PYGZhy{} floating point precision you want allowed. from 0 to 48
+functions\PYGZus{}max \PYGZhy{}\PYGZhy{} maximum number of @functions allowed to be defined
+parent\PYGZus{}nest\PYGZus{}limit \PYGZhy{}\PYGZhy{} maximum parents allowed in a parent chain
+imm\PYGZus{}nomod \PYGZhy{}\PYGZhy{} is the NOMODIFY flag only allowed to immortals?
+start\PYGZus{}build \PYGZhy{}\PYGZhy{} specifies if new players will or will not start with the WANDERER flag \PYGZhy{}\PYGZhy{} This defaults to \PYGZsq{}0\PYGZsq{} meaning they have the WANDERER flag which restricts all building.
+admin\PYGZus{}object \PYGZhy{}\PYGZhy{} the @admin object that you can use to set permanent config settings in\PYGZhy{}game
+file\PYGZus{}object \PYGZhy{}\PYGZhy{} the master override for all .txt files. this allows you to either set softcode to all those .txt files (like connect.txt) or design custom commands at the connect screen.
+access \PYGZhy{}\PYGZhy{} change access of various commands
+func\PYGZus{}access \PYGZhy{}\PYGZhy{} change access of various functions
+config\PYGZus{}access \PYGZhy{}\PYGZhy{} change access of various config options
+flag\PYGZus{}access\PYGZus{}set \PYGZhy{}\PYGZhy{} set who can set flags
+flag\PYGZus{}access\PYGZus{}unset \PYGZhy{}\PYGZhy{} set who can unset flags
+flag\PYGZus{}access\PYGZus{}see \PYGZhy{}\PYGZhy{} set who can see flags
+flag\PYGZus{}access\PYGZus{}type \PYGZhy{}\PYGZhy{} typecast permissions on flags
+toggle\PYGZus{}access\PYGZus{}set \PYGZhy{}\PYGZhy{} set who can set toggles
+toggle\PYGZus{}access\PYGZus{}unset \PYGZhy{}\PYGZhy{} set who can unset toggles
+toggle\PYGZus{}access\PYGZus{}see \PYGZhy{}\PYGZhy{} set who can see toggles
+toggle\PYGZus{}access\PYGZus{}type \PYGZhy{}\PYGZhy{} typecast permission on toggles
+proxy\PYGZus{}checker \PYGZhy{}\PYGZhy{} set permission restriction level on dynamic proxy detection. Please note, use this sparringly and only if you absolutely have to. The Good news: this will detect most proxies, most of the time. It does this by scanning and comparing the MTUand MSS values and scraping the TCP header for overhead. most proxies require this padding to actually, well, proxy the information out. This means that MSS and MTU values will almost always be a different size for anyone and anything that uses a proxy. Now, the Bad News. Anyone coming out from a business SOCKS server, Firewall, DMZ, or, well, just coming out of a business will likely be identified by a proxy. You use your android device to mush? That\PYGZsq{}s a proxy as well since the android TCP layer is ontop of a java stack. IPhone? Same beast. Pretty much any mobile device will be seen as a proxy, which is accurate, but likely not the type of people you want to block. Sooo, again, use this sparringly. I suggest enabling it to a level to allow monitoring, and only crank it up to deny if you\PYGZsq{}re being directly attacked.
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\# Commands
+
+\sphinxAtStartPar
+\#\#\# Special commands to monitor/set security:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@snoop} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{Yup}\PYG{p}{,} \PYG{n}{it} \PYG{n}{exists}\PYG{o}{.} \PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{an} \PYG{n}{optional} \PYG{n}{log} \PYG{o+ow}{or} \PYG{n}{real}\PYG{o}{\PYGZhy{}}\PYG{n}{time} \PYG{n}{monitor} \PYG{n}{of} \PYG{n}{a} \PYG{n}{player}
+\PYG{n+nd}{@newpassword} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{change} \PYG{n}{target}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s password}
+\PYG{n+nd}{@aflags} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n+nb}{list} \PYG{n}{permissions} \PYG{n}{of} \PYG{n}{attributes} \PYG{o+ow}{or} \PYG{n+nb}{set} \PYG{n}{up} \PYG{k}{global} \PYG{n}{prefix} \PYG{n}{restrictions} \PYG{n}{based} \PYG{n}{globally}\PYG{p}{,} \PYG{n}{by} \PYG{n}{target}\PYG{p}{,} \PYG{n}{by} \PYG{n}{enactor}\PYG{p}{,} \PYG{o+ow}{or} \PYG{n}{by} \PYG{n}{sub}\PYG{o}{\PYGZhy{}}\PYG{n}{group}
+\PYG{n+nd}{@log} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{control} \PYG{n}{system} \PYG{n}{logs}
+\PYG{n+nd}{@logrotate} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{rotate} \PYG{n}{logs} \PYG{n}{real}\PYG{o}{\PYGZhy{}}\PYG{n}{time} \PYG{o+ow}{or} \PYG{n}{verify} \PYG{n}{current} \PYG{n}{status} \PYG{n}{of} \PYG{n}{log} \PYG{n}{file}
+\PYG{n+nd}{@api} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{control} \PYG{n}{who} \PYG{n}{can} \PYG{n+nb}{set}\PYG{o}{/}\PYG{n}{unset}\PYG{o}{/}\PYG{n}{config}\PYG{o}{/}\PYG{n}{use} \PYG{n}{the} \PYG{n}{restful}\PYG{o}{\PYGZhy{}}\PYG{n}{like} \PYG{n}{API} \PYG{n}{interface}
+\PYG{n+nd}{@blacklist} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{load} \PYG{o+ow}{in} \PYG{n}{the} \PYG{n}{blacklist} \PYG{n}{which} \PYG{o+ow}{is} \PYG{n}{created} \PYG{k}{with} \PYG{n}{the} \PYG{n}{script} \PYG{n}{tor\PYGZus{}pull}\PYG{o}{.}\PYG{n}{sh} \PYG{n}{that} \PYG{n}{queries} \PYG{o+ow}{and} \PYG{n}{pulls} \PYG{n}{down} \PYG{n}{the} \PYG{n}{majority} \PYG{n}{of} \PYG{n}{public} \PYG{n}{proxy} \PYG{n}{IP}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s}
+\PYG{n+nd}{@tor} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{control} \PYG{n}{real} \PYG{n}{time} \PYG{n}{TOR} \PYG{n}{proxy} \PYG{n}{protection}
+\PYG{n+nd}{@freeze}\PYG{o}{/}\PYG{n+nd}{@thaw} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{real} \PYG{n}{time} \PYG{n}{queue} \PYG{n}{freezing} \PYG{o+ow}{and} \PYG{n}{thawing} \PYG{k}{for} \PYG{n}{sandboxing} \PYG{n}{queues} \PYG{n}{live}
+\PYG{n+nd}{@icmd} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{control} \PYG{n}{individual}\PYG{p}{,} \PYG{n}{room}\PYG{p}{,} \PYG{o+ow}{or} \PYG{n}{zone} \PYG{n}{based} \PYG{n}{access} \PYG{n}{control} \PYG{n}{of} \PYG{n+nb}{all} \PYG{n}{commands} \PYG{n}{a} \PYG{n}{player} \PYG{n}{can} \PYG{n}{access}
+\PYG{n+nd}{@nuke}\PYG{o}{/}\PYG{n+nd}{@toad}\PYG{o}{/}\PYG{n+nd}{@turtle} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{destroy} \PYG{o+ow}{and}\PYG{o}{/}\PYG{o+ow}{or} \PYG{n}{convert} \PYG{n}{a} \PYG{n}{player} \PYG{n}{to} \PYG{n}{a} \PYG{n}{non}\PYG{o}{\PYGZhy{}}\PYG{n}{player}\PYG{o}{.}
+\PYG{n+nd}{@recover} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{recover} \PYG{n}{a} \PYG{n+nd}{@nuked} \PYG{o+ow}{or} \PYG{n+nd}{@destroyed} \PYG{n}{item} \PYG{k+kn}{from} \PYG{n+nn}{the} \PYG{n}{database}\PYG{o}{.} \PYG{n}{This} \PYG{n}{can} \PYG{n}{be} \PYG{n}{done} \PYG{n}{until} \PYG{n}{the} \PYG{n+nb}{object} \PYG{o+ow}{is} \PYG{n+nd}{@purged}\PYG{o}{.} \PYG{n}{Works} \PYG{n}{like} \PYG{n}{a} \PYG{n}{recycle} \PYG{n+nb}{bin}\PYG{o}{.}
+\PYG{n+nd}{@snapshot} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{make} \PYG{n}{a} \PYG{n}{live} \PYG{n}{snapshot} \PYG{n}{image} \PYG{n}{dump} \PYG{n}{of} \PYG{n}{the} \PYG{n}{targetted} \PYG{n}{dbref}\PYG{c+c1}{\PYGZsh{} for safe keeping}
+\PYG{n+nd}{@boot} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{boot} \PYG{n}{the} \PYG{n}{player}
+\PYG{n+nd}{@disable} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{disable} \PYG{n}{logins} \PYG{n}{to} \PYG{n+nb}{all} \PYG{n}{but} \PYG{n}{staff}
+\PYG{n+nd}{@flagdef}\PYG{o}{/}\PYG{n+nd}{@toggledef} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{o+ow}{in}\PYG{o}{\PYGZhy{}}\PYG{n}{game} \PYG{n}{alter} \PYG{n}{permissions} \PYG{n}{of} \PYG{n}{flags} \PYG{o+ow}{and} \PYG{n}{toggles}
+\PYG{n+nd}{@site} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{remove} \PYG{n}{site} \PYG{n}{permissions} \PYG{n+nb}{set} \PYG{n}{via} \PYG{n+nd}{@admin} \PYG{n}{foo\PYGZus{}site} \PYG{p}{(}\PYG{n}{like} \PYG{n}{forbid\PYGZus{}site}\PYG{p}{,} \PYG{n}{suspect\PYGZus{}site}\PYG{p}{,} \PYG{n}{etc}\PYG{p}{)}
+\PYG{n+nd}{@limit} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{assign} \PYG{n}{limits} \PYG{p}{(}\PYG{n+nd}{@destroy}\PYG{p}{,} \PYG{n}{user}\PYG{o}{\PYGZhy{}}\PYG{n}{attribute}\PYG{p}{,} \PYG{o+ow}{or} \PYG{n+nd}{@lfunction}\PYG{p}{)} \PYG{n}{to} \PYG{n}{target} \PYG{n}{player}\PYG{o}{.} \PYG{n}{This} \PYG{n}{has} \PYG{n}{the} \PYG{n}{effect} \PYG{n}{of} \PYG{n}{enabling}\PYG{p}{,} \PYG{n}{disabling}\PYG{p}{,} \PYG{o+ow}{or} \PYG{n}{overriding} \PYG{n}{the} \PYG{k}{global} \PYG{n}{values} \PYG{k}{for} \PYG{n+nb}{max} \PYG{n}{values}\PYG{o}{.} \PYG{n}{so} \PYG{n}{you} \PYG{n}{can} \PYG{n}{use} \PYG{n}{this}\PYG{p}{,} \PYG{k}{for} \PYG{n}{example}\PYG{p}{,} \PYG{n}{to} \PYG{n}{disable} \PYG{n}{a} \PYG{n}{player}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s ability to set any user\PYGZhy{}defined attributes requiring them to only use @va\PYGZhy{}vz, @desc, and so forth.}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\# Toggles
+
+\sphinxAtStartPar
+\#\#\# Example:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@toggle} \PYG{o}{*}\PYG{n}{player}\PYG{o}{=}\PYG{n}{forcehalted}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\textgreater{} Suggested Toggle List:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{CPUTIME} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{returns} \PYG{n}{extremely} \PYG{n}{useful} \PYG{n}{data} \PYG{n}{on} \PYG{n}{runtime} \PYG{n}{values} \PYG{n}{of} \PYG{n}{a} \PYG{n}{command} \PYG{n}{that} \PYG{n}{executes}
+\PYG{n}{FORCEHALTED} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{allows} \PYG{n}{you} \PYG{n}{to} \PYG{n+nd}{@force} \PYG{n}{something} \PYG{n}{even} \PYG{k}{if} \PYG{n}{it}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s halted}
+\PYG{n}{LOGROOM} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{log} \PYG{n}{everything} \PYG{n}{the} \PYG{n}{room} \PYG{n}{sees}\PYG{o}{.} \PYG{n}{This} \PYG{o+ow}{is} \PYG{n}{intended} \PYG{k}{for} \PYG{n}{IC} \PYG{n}{purposes} \PYG{o+ow}{and} \PYG{n}{will} \PYG{n}{notify} \PYG{n}{the} \PYG{n}{player} \PYG{n}{that} \PYG{n}{logging} \PYG{o+ow}{is} \PYG{n}{going} \PYG{n}{into} \PYG{n}{the} \PYG{n}{room}
+\PYG{n}{MAIL\PYGZus{}LOCKDOWN} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{stop} \PYG{n}{wizards} \PYG{k+kn}{from} \PYG{n+nn}{being} \PYG{n}{able} \PYG{n}{to} \PYG{n}{see} \PYG{n}{other} \PYG{n}{people}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{s mail.}
+\PYG{n}{MONITOR}\PYG{o}{/}\PYG{n}{MONITOR\PYGZus{}AREG}\PYG{o}{/}\PYG{n}{MONITOR\PYGZus{}SITE}\PYG{o}{/}\PYG{n}{MONITOR\PYGZus{}CPU}\PYG{o}{/}\PYG{n}{MONITOR\PYGZus{}VLIMIT}\PYG{o}{/}\PYG{n}{MONITOR\PYGZus{}etcetc} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{drilldown} \PYG{n}{of} \PYG{n+nb}{all} \PYG{n}{the} \PYG{o+ow}{in}\PYG{o}{\PYGZhy{}}\PYG{n}{game} \PYG{n}{broadcasts} \PYG{k}{for} \PYG{n}{most} \PYG{n}{of} \PYG{n}{the} \PYG{n}{built}\PYG{o}{\PYGZhy{}}\PYG{o+ow}{in} \PYG{n}{game} \PYG{n}{RhostMUSH} \PYG{n}{monitoring}\PYG{o}{.} \PYG{n}{CPU} \PYG{n}{overloads}\PYG{p}{,} \PYG{n}{attribute} \PYG{n}{caps} \PYG{n}{being} \PYG{n}{reached}\PYG{p}{,} \PYG{n}{success}\PYG{o}{/}\PYG{n}{failed} \PYG{n}{connect} \PYG{n}{attempts}\PYG{p}{,} \PYG{o+ow}{and} \PYG{n}{so} \PYG{n}{forth}\PYG{o}{.} \PYG{n}{Ergo}\PYG{p}{,} \PYG{n}{day} \PYG{n}{to} \PYG{n}{day} \PYG{n}{monitoring} \PYG{n}{needs}\PYG{o}{.} \PYG{n}{The} \PYG{n}{MONITOR} \PYG{n}{foo} \PYG{o+ow}{in} \PYG{n}{Rhost} \PYG{o+ow}{is} \PYG{n}{very} \PYG{n}{beefy}\PYG{p}{,} \PYG{n}{so} \PYG{n}{please} \PYG{n}{refer} \PYG{n}{to} \PYG{n}{the} \PYG{n}{wizhelp} \PYG{n}{on} \PYG{n+nb}{all} \PYG{n}{the} \PYG{n}{MONITOR} \PYG{n+nd}{@toggles} \PYG{k}{for} \PYG{n}{more} \PYG{n}{information}\PYG{o}{.}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\# Flags:
+
+\sphinxAtStartPar
+\#\#\# Example:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@set} \PYG{o}{*}\PYG{n}{player}\PYG{o}{=}\PYG{n}{slave}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\#\#\# Suggested Flags:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n}{WANDERER} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{restrictive} \PYG{n}{flag}\PYG{o}{.} \PYG{n}{Set} \PYG{n}{on} \PYG{n+nb}{all} \PYG{n}{new} \PYG{n}{players} \PYG{n}{by} \PYG{n}{default} \PYG{n}{unless} \PYG{n}{configured} \PYG{n}{otherwise}\PYG{o}{.} \PYG{n}{Stops} \PYG{n+nb}{all} \PYG{n}{building}\PYG{o}{/}\PYG{n}{creating} \PYG{o+ow}{and} \PYG{n}{requires} \PYG{n}{removal} \PYG{n}{before} \PYG{n}{building} \PYG{n}{allowed}\PYG{o}{.}
+\PYG{n}{GUILDMASTER} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{first} \PYG{n}{tier} \PYG{n}{of} \PYG{n}{staff} \PYG{n}{bit}
+\PYG{n}{ARCHITECT} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{second} \PYG{n}{tier} \PYG{n}{of} \PYG{n}{staff} \PYG{n}{bit}
+\PYG{n}{COUNCILOR} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{third} \PYG{n}{tier} \PYG{n}{of} \PYG{n}{staff} \PYG{n}{bit}
+\PYG{n}{ROYALTY} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{this} \PYG{o+ow}{is} \PYG{n}{your} \PYG{n}{vanilla} \PYG{n}{Wizard} \PYG{n}{on} \PYG{n}{other} \PYG{n}{mushes}
+\PYG{n}{IMMORTAL} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{this} \PYG{o+ow}{is} \PYG{n}{essentially} \PYG{c+c1}{\PYGZsh{}1 and \PYGZsq{}all powerful\PYGZsq{}}
+\PYG{n}{BACKSTAGE}\PYG{o}{/}\PYG{n}{NOBACKSTAGE} \PYG{n}{control} \PYG{n}{flags} \PYG{n}{specifying} \PYG{n}{who} \PYG{n}{can} \PYG{n}{control} \PYG{n}{things} \PYG{n+nb}{set} \PYG{n}{BACKSTAGE}
+\PYG{n}{FUBAR} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{stop} \PYG{k+kn}{from} \PYG{n+nn}{doing} \PYG{n}{absolutely} \PYG{n}{everything} \PYG{k}{except} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{:}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o+ow}{and} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZdq{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{.} \PYG{n}{Nothing} \PYG{k}{else}\PYG{o}{.}
+\PYG{n}{SLAVE} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{this} \PYG{n}{also} \PYG{n}{stops} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{:}\PYG{l+s+s1}{\PYGZsq{}} \PYG{o+ow}{and} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+s1}{\PYGZdq{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{o}{.} \PYG{n}{Used} \PYG{o+ow}{in} \PYG{n}{combination} \PYG{k}{with} \PYG{n}{FUBAR} \PYG{n}{to} \PYG{n}{make} \PYG{n}{a} \PYG{n}{statue}\PYG{o}{.}
+\PYG{n}{INDESTRUCTIBLE} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{nothing} \PYG{n}{can} \PYG{n}{destroy} \PYG{n}{the} \PYG{n}{target}\PYG{p}{,} \PYG{o+ow}{not} \PYG{n}{even} \PYG{c+c1}{\PYGZsh{}1}
+\PYG{n}{NO\PYGZus{}CODE} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{stops} \PYG{n}{target} \PYG{k+kn}{from} \PYG{n+nn}{doing} \PYG{n+nb}{all} \PYG{n}{but} \PYG{n}{the} \PYG{n}{most} \PYG{n}{basic} \PYG{n}{commands} \PYG{o+ow}{and} \PYG{n}{functions}
+\PYG{n}{NO\PYGZus{}CONNECT} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{target} \PYG{n}{can} \PYG{o+ow}{not} \PYG{n}{log} \PYG{o+ow}{in}
+\PYG{n}{NO\PYGZus{}EXAMINE} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{target} \PYG{n}{can} \PYG{o+ow}{not} \PYG{n}{be} \PYG{n}{examined}\PYG{o}{/}\PYG{n+nd}{@decompiled} \PYG{k}{except} \PYG{n}{by} \PYG{n}{wizards}
+\PYG{n}{NO\PYGZus{}MODIFY} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{target} \PYG{n}{can} \PYG{o+ow}{not} \PYG{n}{be} \PYG{n}{modified} \PYG{k}{except} \PYG{n}{by} \PYG{n}{wizards} \PYG{p}{(}\PYG{o+ow}{or} \PYG{n}{optionally} \PYG{n}{just} \PYG{n}{immortals}\PYG{p}{)}
+\PYG{n}{NO\PYGZus{}MOVE} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{target} \PYG{n}{can} \PYG{o+ow}{not} \PYG{n}{be} \PYG{n}{moved} \PYG{n}{by} \PYG{n+nb}{any} \PYG{n}{means}
+\PYG{n}{NO\PYGZus{}TEL} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{target} \PYG{n}{can} \PYG{o+ow}{not} \PYG{n}{be} \PYG{n}{teleported}\PYG{p}{,} \PYG{n}{use} \PYG{n}{teleport}\PYG{p}{,} \PYG{o+ow}{or} \PYG{n}{use} \PYG{n}{home}
+\PYG{n}{NO\PYGZus{}PESTER} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{target} \PYG{n}{can} \PYG{o+ow}{not} \PYG{n}{use} \PYG{n}{whisper} \PYG{o+ow}{or} \PYG{n+nd}{@pemit}
+\PYG{n}{NO\PYGZus{}POSSESS} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{target} \PYG{n}{can} \PYG{o+ow}{not} \PYG{n}{log} \PYG{n}{into} \PYG{n}{their} \PYG{n}{player} \PYG{n}{more} \PYG{n}{than} \PYG{n}{twice}
+\PYG{n}{SPAMMONITOR} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{target} \PYG{n}{can} \PYG{o+ow}{not} \PYG{n}{issue} \PYG{n}{more} \PYG{n}{than} \PYG{l+m+mi}{60} \PYG{n}{commands} \PYG{n}{a} \PYG{n}{minute}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\# @depowers
+
+\sphinxAtStartPar
+\textgreater{} These are tiered and inheritable from the player. Meaning permission levels can be decreased or removed entirely.
+
+\sphinxAtStartPar
+\#\#\# Example:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@depower}\PYG{o}{/}\PYG{n}{councilor} \PYG{o}{*}\PYG{n}{player}\PYG{o}{=}\PYG{n}{wall}
+\end{sphinxVerbatim}
+
+\sphinxAtStartPar
+\#\#\# Suggested Depowers:
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+WALL \PYGZhy{}\PYGZhy{} disable walling
+STEAL \PYGZhy{}\PYGZhy{} disable getting items/gold
+WIZ\PYGZus{}WHO \PYGZhy{}\PYGZhy{} disable wiz who
+BOOT \PYGZhy{}\PYGZhy{} disable boot
+FORCE \PYGZhy{}\PYGZhy{} disable @force/@sudo
+MASTER \PYGZhy{}\PYGZhy{} disable access to the master room
+NUKE \PYGZhy{}\PYGZhy{} disable @nuke/@toad/@turtle
+OVERRIDE \PYGZhy{}\PYGZhy{} disable overiding locks (wizards do this by default)
+TEL\PYGZus{}ANYTHING \PYGZhy{}\PYGZhy{} disable teleporting anything
+POWER \PYGZhy{}\PYGZhy{} disable access to @power
+MODIFY \PYGZhy{}\PYGZhy{} disable ability to modify things
+CHOWN\PYGZus{}OTHER \PYGZhy{}\PYGZhy{} disable ability to chown things you don\PYGZsq{}t own
+UNL\PYGZus{}QUOTA \PYGZhy{}\PYGZhy{} disable unlimited quota (useful on staff)
+GIVE \PYGZhy{}\PYGZhy{} disable the ability to give... anything...
+NOGOLD \PYGZhy{}\PYGZhy{} disable the ability to give or take gold
+PASSWORD \PYGZhy{}\PYGZhy{} disable ability to change passwords
+PERSONAL\PYGZus{}COMMAND \PYGZhy{}\PYGZhy{} disable the ability to use any \PYGZdl{}commands on anything you own
+LONG\PYGZus{}FINGERS \PYGZhy{}\PYGZhy{} disable all remote access features
+CREATE \PYGZhy{}\PYGZhy{} disable the ability to create anything
+CLOAK \PYGZhy{}\PYGZhy{} disable the overpowered wizcloaking ability from wizards
+PAGE \PYGZhy{}\PYGZhy{} no page for you!!!
+LOCK \PYGZhy{}\PYGZhy{} you can\PYGZsq{}t pass locks. Ever. At all. Sucks to be you.
+COMMAND \PYGZhy{}\PYGZhy{} you can\PYGZsq{}t use any \PYGZdl{}command. Anywhere. Only hardcoded commands for you!
+EXAMINE \PYGZhy{}\PYGZhy{} you can\PYGZsq{}t examine/decompile or use any method to list attribs
+FREE \PYGZhy{}\PYGZhy{} everything is going to cost you gold
+TEL\PYGZus{}ANYWHERE \PYGZhy{}\PYGZhy{} you can\PYGZsq{}t teleport anywhere
+PCREATE \PYGZhy{}\PYGZhy{} disable wizards ability to create players
+QUOTA \PYGZhy{}\PYGZhy{} more more quota control for you
+CHOWN\PYGZus{}ME \PYGZhy{}\PYGZhy{} you can\PYGZsq{}t chown anything to yourself
+ABUSE \PYGZhy{}\PYGZhy{} you can only use \PYGZdl{}commands on things you own. Nothing else, including master room.
+SEARCH\PYGZus{}ANY \PYGZhy{}\PYGZhy{} disable all db searching tools
+RECEIVE \PYGZhy{}\PYGZhy{} you can\PYGZsq{}t receive anything
+DARK \PYGZhy{}\PYGZhy{} you can\PYGZsq{}t go dark, and even if you miraculously were set DARK it\PYGZsq{}d not work for you.
+\end{sphinxVerbatim}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+Wizards in RhostMUSH by default override all locks and have a unique ability called \textquotesingle{}wizcloaking\textquotesingle{}. If a wizard is set DARK and UNFINDABLE then they become cloaked (like a Romulan bird of pray) and will be undetectable by any means except by another wizard. Immortals have a super\sphinxhyphen{}cloak ability that makes them invisible to Wizards in addition. As shown above, there is a @depower to disable cloaking if it\textquotesingle{}s abused.
+\end{sphinxadmonition}
+
+\begin{sphinxadmonition}{note}{Note:}
+\sphinxAtStartPar
+ABOUT IMMORTALS: Immortals treat as \#1. Seriously. They can do anything and everything. They have commands at their fingertips to literally hack and edit the database live, and naturally if they don\textquotesingle{}t know what they\textquotesingle{}re doing, can crash the mush, because of all this raw editing capabilities. Only set Immortal those who absolutely need it or you absolutely trust. Head coders, for example, should likely have an Immortal bit. Also, Immortals by default override pretty much every restriction in the game. A player set NO\_TEL? Um yea, immortal can still @teleport them. This is intentional, because it\textquotesingle{}s assumed Immortal\textquotesingle{}s code should just work. So keep that in mind while coding. Cheers.
+\end{sphinxadmonition}
 \phantomsection\label{\detokenize{utilities/ssl:utilities-ssl}}
 \index{Utilities \sphinxhyphen{} SSL@\spxentry{Utilities \sphinxhyphen{} SSL}}\index{SSL \sphinxhyphen{} Utilities@\spxentry{SSL \sphinxhyphen{} Utilities}}\ignorespaces 
 

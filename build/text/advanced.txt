@@ -1,14 +1,14 @@
-15. Advanced Features
+16. Advanced Features
 *********************
 
 
-15.1. Adding hardcoded modules
+16.1. Adding hardcoded modules
 ==============================
 
 RhostMUSH does support module writing.
 
 
-15.1.1. Modifying sourcode to add a module
+16.1.1. Modifying sourcode to add a module
 ------------------------------------------
 
 This requires hooking your changes into local.c, then modifying the
@@ -19,7 +19,7 @@ Something to be aware of is that all localized data is ran after the
 system cache subroutine.
 
 
-15.1.2. Adding an @startup to make use of modules
+16.1.2. Adding an @startup to make use of modules
 -------------------------------------------------
 
 This means that if your code is depending on @startups, you need to
@@ -38,7 +38,7 @@ That 1 second delay for the queue will give the game engine time to
 load in your module code.
 
 
-15.1.3. Contributing your module back to Rhost
+16.1.3. Contributing your module back to Rhost
 ----------------------------------------------
 
 If you wish your modules to be part of the main Rhost distribution you
@@ -49,14 +49,14 @@ have two options:
 2. Ask one of the Rhost devs to do it for you :)
 
 
-15.2. Reality Levels Setup
+16.2. Reality Levels Setup
 ==========================
 
 Reality levels are a means to forbid (or allow) interaction between
 objects in the same location.
 
 
-15.2.1. Reality Levels Visibility
+16.2.1. Reality Levels Visibility
 ---------------------------------
 
 Each object (player, room, exit, thing) has two lists of reality
@@ -79,7 +79,7 @@ An object is always visible to itself, even if its Rx and Tx levels
 don't match. (See examples below)
 
 
-15.2.2. Reality Levels Descriptions
+16.2.2. Reality Levels Descriptions
 -----------------------------------
 
 For every reality level defined, you can define an attribute that
@@ -108,7 +108,7 @@ enactor in turn. There are reasons for this, which will become evident
 in the examples below.
 
 
-15.2.3. Reality Levels Configuration parameters
+16.2.3. Reality Levels Configuration parameters
 -----------------------------------------------
 
 A few configuration parameters have been introduced to deal with the
@@ -151,7 +151,7 @@ mush.conf file Format:
    reality_level <8 char name> <hex-byte-mask> <optional-desc: DESC default>
 
 
-15.2.4. Reality Levels Example mush.conf
+16.2.4. Reality Levels Example mush.conf
 ----------------------------------------
 
    reality_level Real 1
@@ -173,7 +173,7 @@ mush.conf file Format:
    reality_level All 4294967295
 
 
-15.2.5. Reality Levels Commands
+16.2.5. Reality Levels Commands
 -------------------------------
 
 Two wiz-only commands are used to set the reality levels of an object:
@@ -192,7 +192,7 @@ Warning:
   *player for players).
 
 
-15.2.6. Functions
+16.2.6. Functions
 -----------------
 
 There are five functions that deal with reality levels:
@@ -224,7 +224,7 @@ Warning:
   Realms version checks against the DARK flag.
 
 
-15.2.7. Example 1: A simplified Witchcraft setup
+16.2.7. Example 1: A simplified Witchcraft setup
 ------------------------------------------------
 
 In Witchcraft, besides the various Gifted classes, characters can be
@@ -332,7 +332,7 @@ see.  I'll assume the +materialize command is defined like:
                             |shape.                 |
 
 
-15.2.8. Example 2: A WoD setup
+16.2.8. Example 2: A WoD setup
 ------------------------------
 
 The reality levels will be defined like this:
@@ -420,7 +420,7 @@ Global code objects that all characters should be able to use:
    RxLevel: All, TxLevel: All
 
 
-15.2.9. Example 3: Softcode
+16.2.9. Example 3: Softcode
 ---------------------------
 
 Considering the config directives from example 2 and assuming a
@@ -446,15 +446,15 @@ checks, of course.
    &CMD_PEEKOFF rls=$+peek/off:@rxlevel %#=!Real !Umbra [setinter(Real Umbra, txlevel(%#))]; @pemit %#=You are no longer peeking.
 
 
-15.3. Execscript and external programs and scripts
+16.3. Execscript and external programs and scripts
 ==================================================
 
 
-15.3.1. Execscript variables
+16.3.1. Execscript variables
 ----------------------------
 
 
-15.3.1.1. Execscript Built in variables
+16.3.1.1. Execscript Built in variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +----------------------------+-----------------------------------------------------+
@@ -481,7 +481,7 @@ checks, of course.
 +----------------------------+-----------------------------------------------------+
 
 
-15.3.1.2. Execscript Dynamic variables
+16.3.1.2. Execscript Dynamic variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +----------------------------+-----------------------------------------------+
@@ -492,7 +492,7 @@ checks, of course.
 +----------------------------+-----------------------------------------------+
 
 
-15.3.1.3. Execscript Register variables
+16.3.1.3. Execscript Register variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 +----------------------------+--------------------------------------------------------------+
@@ -507,7 +507,7 @@ checks, of course.
 +----------------------------+--------------------------------------------------------------+
 
 
-15.3.2. Execsript set object
+16.3.2. Execsript set object
 ----------------------------
 
 The script executed with execscript() will read in a file with the
@@ -517,17 +517,17 @@ wish to pass from the script. The fields are SPACE SEPARATED.  The
 values are NOT evaluated.
 
 
-15.3.2.1. Execscript set object field format
+16.3.2.1. Execscript set object field format
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-15.3.2.1.1. Execscript set object Dynamic variables
+16.3.2.1.1. Execscript set object Dynamic variables
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
    VARNAME        OWNER        CONTENTS (or leave null to clear)
 
 
-15.3.2.1.1.1. Execscript set object Dynamic variables Examples
+16.3.2.1.1.1. Execscript set object Dynamic variables Examples
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
    SEX #123 Male
@@ -540,13 +540,13 @@ values are NOT evaluated.
    on the lines above
 
 
-15.3.2.1.2. Execscript set object Register variables
+16.3.2.1.2. Execscript set object Register variables
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
    REGISTER       Q            CONTENTS (or leave null to clear)
 
 
-15.3.2.1.2.1. Execscript set object Register variables Examples
+16.3.2.1.2.1. Execscript set object Register variables Examples
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Note:
@@ -559,7 +559,7 @@ Note:
    foo QN this sets register with label 'foo'
 
 
-15.3.3. Execscript Example bash script
+16.3.3. Execscript Example bash script
 --------------------------------------
 
    #!/bin/bash
@@ -577,7 +577,7 @@ Note:
    done
 
 
-15.3.4. Exescript Notes and warnings
+16.3.4. Exescript Notes and warnings
 ------------------------------------
 
 While MUSHL_VARS are sanitized on what is allowable as a mush
@@ -591,7 +591,7 @@ This is EXECSCRIPT_VARS on the mush itself, that is the attribute set
 on the target that contains the execscript() that is being executed.
 
 
-15.3.5. Scripts to be used with execscript
+16.3.5. Scripts to be used with execscript
 ------------------------------------------
 
    account/                       -- Directory for execscripts relating to account creation
@@ -626,7 +626,7 @@ on the target that contains the execscript() that is being executed.
    web.sh                         -- Script for querying an arbitary website
 
 
-15.4. Using printf() for advanced text output
+16.4. Using printf() for advanced text output
 =============================================
 
 The function printf() in Rhost can be used to greatly reduce coding in
@@ -634,7 +634,7 @@ efforts for outputs, screens and data display.  It can automatically
 center, justify and wrap the text parameters given to it.
 
 
-15.4.1. Printf Example one
+16.4.1. Printf Example one
 --------------------------
 
    @emit printf(|$-12s|$12s|$^12s$&14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
@@ -646,7 +646,7 @@ center, justify and wrap the text parameters given to it.
                                           |19          |
 
 
-15.4.2. Printf Example two
+16.4.2. Printf Example two
 --------------------------
 
    @emit printf($14&s $^4&s $-3&s $15&s,
@@ -663,7 +663,7 @@ center, justify and wrap the text parameters given to it.
       Incapacitated      [ ]
 
 
-15.4.3. Printf Example three
+16.4.3. Printf Example three
 ----------------------------
 
    @emit [printf($-10|"'s$-60|"s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
@@ -680,7 +680,7 @@ center, justify and wrap the text parameters given to it.
    blah blah blah blah blah blah blah                                    END!
 
 
-16. Format for image files
+17. Format for image files
 **************************
 
 The image format goes like this:
@@ -791,7 +791,7 @@ file:
    <
 
 
-16.1. HELP key indexes for the values
+17.1. HELP key indexes for the values
 =====================================
 
 FLAGS: The following flags are to be used.  They are BITWISE masks

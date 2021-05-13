@@ -39,6 +39,7 @@ which, as you know, is the best part of setting up a mush.
    gettingstarted.rst
    ambrosiadb.rst
    security.rst
+   attack.rst
    utilities/ssl.rst
    maintenance.rst
    troubleshooting.rst

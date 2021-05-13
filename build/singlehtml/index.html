@@ -4104,10 +4104,267 @@ it may be worth considering adding this to add additional protection.</p>
 </div>
 </div>
 </div>
+<span id="document-attack"></span><div class="section" id="what-to-do-if-your-mush-is-attacked">
+<h2><span class="section-number">12. </span>What to Do if your MUSH is Attacked<a class="headerlink" href="#what-to-do-if-your-mush-is-attacked" title="Permalink to this headline">¶</a></h2>
+<p>RhostMUSH is an combination of, well, everything. And because of the flexibility and customizations, can be daunting, but here we go:</p>
+<p>Rhost allows two ways for site restrictions.
+### Site Restrictions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span> <span class="n">PARAM</span><span class="o">=</span><span class="n">SITE</span> <span class="n">IP</span>
+<span class="nd">@admin</span> <span class="n">PARAM2</span><span class="o">=</span><span class="n">WILDCARDHOST</span>
+</pre></div>
+</div>
+<p>NOTE: Since Rhost 3.2.4p13 Rhost allows CIDR notation (/24 instead of 255.255.255.0)</p>
+<p>#### The first method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">12.12</span><span class="o">.</span><span class="mf">20.0</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span>
+<span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">12.12</span><span class="o">.</span><span class="mf">20.0</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mi">3</span>
+<span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">12.12</span><span class="o">.</span><span class="mf">20.0</span> <span class="o">/</span><span class="mi">24</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>The first example hardforbids the site from connecting.</p>
+<p>The second example forbids the site from connecting after 3 connects have already been allowed. This allows connections but stops spamming.</p>
+<p>Both options are available for all site parameters.</p>
+<p>&gt; Site related config parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">forbid_site</span> <span class="o">--</span> <span class="n">forbid</span> <span class="n">site</span> <span class="kn">from</span> <span class="nn">connecting</span>
+<span class="n">register_site</span> <span class="o">--</span> <span class="n">disallow</span> <span class="n">player</span> <span class="n">creation</span> <span class="kn">from</span> <span class="nn">site</span> <span class="p">(</span><span class="nb">set</span> <span class="n">to</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">player</span> <span class="n">creation</span> <span class="n">entirely</span><span class="p">)</span>
+<span class="n">suspect_site</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">site</span> <span class="n">suspect</span>
+<span class="n">noguest_site</span> <span class="o">--</span> <span class="n">disallow</span> <span class="n">guest</span> <span class="kn">from</span> <span class="nn">connecting.</span>
+<span class="n">noauth_site</span> <span class="o">--</span> <span class="n">disallow</span> <span class="n">AUTH</span> <span class="n">IDENT</span> <span class="n">lookups</span>
+<span class="n">noautoreg_site</span> <span class="o">--</span> <span class="n">disallow</span> <span class="n">site</span> <span class="kn">from</span> <span class="nn">auto</span><span class="o">-</span><span class="n">registration</span> <span class="n">on</span> <span class="n">connect</span> <span class="n">screen</span>
+<span class="n">passproxy_site</span> <span class="o">--</span> <span class="n">allow</span> <span class="n">IP</span> <span class="n">to</span> <span class="n">bypass</span> <span class="n">auto</span><span class="o">-</span><span class="n">proxy</span> <span class="n">blocking</span>
+<span class="n">nodns_site</span> <span class="o">--</span> <span class="n">don</span><span class="s1">&#39;t do DNS/RDNS lookups</span>
+<span class="n">forbidapi_site</span> <span class="o">--</span> <span class="n">don</span><span class="s1">&#39;t allow API connections from site</span>
+</pre></div>
+</div>
+<p>### Second method we have: (wildcards optional):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@admin forbid_host=*.buttclown.com *.bob.com !*.foo.com
+@admin forbid_host=*.buttclown.com|3
+</pre></div>
+</div>
+<p>First example blocks wildcard buttclown.com, bob.com, and removes foo.com</p>
+<p>Second example adds buttclown.com and forbids after 3 connections.</p>
+<p>&gt; host related config parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tor_localhost</span> <span class="o">--</span> <span class="n">the</span> <span class="n">hosting</span> <span class="n">server</span> <span class="n">that</span> <span class="n">will</span> <span class="n">monitor</span> <span class="ow">and</span> <span class="n">block</span> <span class="n">TOR</span> <span class="n">connections</span>
+<span class="n">noautoreg_host</span> <span class="o">--</span> <span class="n">the</span> <span class="n">hostname</span> <span class="k">for</span> <span class="n">blocking</span> <span class="n">autoregistration</span>
+<span class="n">passproxy_host</span> <span class="o">--</span> <span class="n">the</span> <span class="n">hostname</span> <span class="n">to</span> <span class="n">bypass</span> <span class="n">proxy</span> <span class="n">blocking</span>
+<span class="n">validate_host</span> <span class="o">--</span> <span class="n">disallow</span> <span class="n">email</span> <span class="kn">from</span> <span class="nn">autoregistration</span>
+<span class="n">forbidapi_host</span> <span class="o">--</span> <span class="n">hostname</span> <span class="n">to</span> <span class="n">forbid</span> <span class="n">api</span>
+<span class="n">mysql_host</span> <span class="o">--</span> <span class="n">hostname</span> <span class="k">for</span> <span class="n">the</span> <span class="n">MySQL</span> <span class="n">server</span>
+<span class="n">register_host</span> <span class="o">--</span> <span class="n">hostname</span> <span class="n">to</span> <span class="n">stop</span> <span class="n">player</span> <span class="n">creation</span>
+<span class="n">forbid_host</span> <span class="o">--</span> <span class="n">hostname</span> <span class="n">to</span> <span class="n">stop</span> <span class="n">connections</span>
+<span class="n">suspect_host</span> <span class="o">--</span> <span class="n">hostname</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">suspect</span>
+<span class="n">noguest_host</span> <span class="o">--</span> <span class="n">stop</span> <span class="n">guests</span> <span class="kn">from</span> <span class="nn">connection</span>
+<span class="n">nobroadcast_host</span> <span class="o">--</span> <span class="n">stop</span> <span class="n">site</span> <span class="n">monitor</span> <span class="n">chatter</span> <span class="k">for</span> <span class="n">site</span> <span class="p">(</span><span class="n">still</span> <span class="n">logs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>### Special Site Restrictions</p>
+<p>&gt; The following specific other options are useful for site restrictions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@goodsite</span> <span class="o">--</span> <span class="n">attribute</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">on</span> <span class="n">target</span> <span class="n">player</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">what</span> <span class="n">wildcard</span> <span class="n">IP</span><span class="s1">&#39;s -are- allowed to connect from (IP only, no hostname)</span>
+<span class="nd">@badsite</span> <span class="o">--</span> <span class="n">attribute</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">on</span> <span class="n">target</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">what</span> <span class="n">wildcard</span> <span class="n">IP</span><span class="s1">&#39;s are not allowed to connect from (IP only, no hostname)</span>
+<span class="n">NOCONNECT</span> <span class="o">--</span> <span class="n">flag</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">on</span> <span class="n">player</span> <span class="n">to</span> <span class="n">stop</span> <span class="n">connections</span>
+</pre></div>
+</div>
+<p>&gt; Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@goodsite</span> <span class="c1">#1=127.0.0.1</span>
+<span class="nd">@badsite</span> <span class="o">*</span><span class="n">twink</span><span class="o">=</span><span class="mf">12.12</span><span class="o">.</span><span class="mf">20.</span><span class="o">*</span>
+</pre></div>
+</div>
+<p># Config Parameters</p>
+<p>&gt; Example of issuing ingame:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span> <span class="n">function_invocation_limit</span><span class="o">=</span><span class="mi">25000</span>
+</pre></div>
+</div>
+<p>&gt; Example in netrhost.conf file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function_invocation_limit</span> <span class="mi">2500</span>
+</pre></div>
+</div>
+<p>### Suggested config parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>authenticate -- toggle to specify authentication (AUTH) lookups
+max_players -- max players allowed to connect to the mush at any time. The default for this is 40 less than the current maximum allowed based on server specifications to avoid DoS/DDoS. This ceiling is impossible to go past.
+cpu_secure_lvl -- define how the mush will treat those who hit the CPU limit. 0 is just stop 1 is halt the owner, 2 sets FUBAR, 3 sets NOCONNECT and boots, 4 does all of 3 and sets register, 5 does all of 3 and sets forbid
+cpuintervalchk CPU load before engaging CPU protection (default 5% system load)
+cputimechk CPU time in seconds before CPU protection (default 5 seconds)
+heavy_cpu_max (default 50) heavy cpu intensive features are auto-tagged this for additional cpu protection. This is how many times it can be called per &#39;command&#39;
+max_cpu_cycles (default 3) number of times a target can hit the CPU alert before restrictive measures via cpu_secure_lvl is enacted
+max_lastsite_cnt (default 20) number of connections from a site allowed a minute
+min_con_attempt (default 60) seconds to check for max_lastsite_cnt
+lastsite_paranoia (0-3) sets restrictive level to use if max_lastsite_cnt is reached. 0 is take no action. 3 is forbid
+max_sitecons -- (default 50) absolute maximum number of connections a specific site can have online at any time.
+max_pcreate_lim -- number of connect creates allowed per minute
+max_pcreate_time -- time allotted between pcreate lim checks
+pcreate_paranoia -- (0-3) sets restrictive level to use if max_pcreate_lim is reached.
+spam_limit -- maximum number of commands allowed by a player per minute if set SPAMMONITOR (default 60)
+player_queue_limit -- maximum queues allowed per player at any time (default 100)
+wizard_queue_limit -- maximum queues allowed for a wizard at any time (default 1000)
+function_invocation_limit -- (default 2500) maximum functions allowed per command
+function_recursion_limit -- (default 50) maximum number of times a function can call itself.
+secure_functions -- switches internal permissions of old-processing functions to be more secure, but breaks backward compatibility
+fascist_teleport -- players can&#39;t teleport out of anything they don&#39;t control or isn&#39;t set JUMP_OK
+restrict_home -- lock down the &#39;home&#39; command to specific bitlevel
+restrict_home2 -- toggle enable/disable &#39;home&#39; from those set NO_CODE
+restrict_sidefx -- specify what bitlevel SIDEEFFECT functions will work
+sideeffects -- specify what sideeffects are allowed
+sidefx_maxcalls -- how many sideeffects are allowed per command
+max_vattr_limit -- maximum unique user-attributes a player can create for his lifetime
+wizmax_vattr_limit -- maximum unique user-attributes a wizard can create for his lifetime
+vlimit -- maximum attributes allowed per object
+wildmatch_limit -- maximum number of wildmatches allowed per command
+lock_recursion_limit -- maximum lock recursion per command
+notify_recursion_limit -- maximum notify&#39;s allowed (internal notify call)
+nonindxtxt_maxlines -- maximum number of lines allowed to be read from @log
+max_percentsubs -- maximum percent substitutions allowed per command
+max_dest_limit -- maximum number of items that can be @destroyed by a player for a lifetime
+wizmax_dest_limit -- maximum number of items that can be @destroyed by a wizard for a lifetime
+safer_passwords -- enforce strict @passwords
+newpass_god -- allow newpasswording #1
+nospam_connect -- consolidates logs on people who attempt to keep trying to connect while forbidden
+examine_restrictive -- lockdown who can examine/@decompile
+ahear_maxtime -- maximum ceiling in seconds an @ahear is allowed to process
+ahear_maxcnt -- maximum recursions @hears are allowed
+cluster_cap -- ceiling on the number of cluster members allowed
+cluster_func_cap -- recursion ceiling on the cluster function handler
+includecnt -- number of times @include is allowed per command set
+includenest -- number of recursions @include is allowed
+lfunction_max -- maximum number of @lfunctions allowed a player
+safer_ufun -- make u() become protected in evaluation
+max_name_protect -- maximum number of @protect alises a player can have
+float_precision -- floating point precision you want allowed. from 0 to 48
+functions_max -- maximum number of @functions allowed to be defined
+parent_nest_limit -- maximum parents allowed in a parent chain
+imm_nomod -- is the NOMODIFY flag only allowed to immortals?
+start_build -- specifies if new players will or will not start with the WANDERER flag -- This defaults to &#39;0&#39; meaning they have the WANDERER flag which restricts all building.
+admin_object -- the @admin object that you can use to set permanent config settings in-game
+file_object -- the master override for all .txt files. this allows you to either set softcode to all those .txt files (like connect.txt) or design custom commands at the connect screen.
+access -- change access of various commands
+func_access -- change access of various functions
+config_access -- change access of various config options
+flag_access_set -- set who can set flags
+flag_access_unset -- set who can unset flags
+flag_access_see -- set who can see flags
+flag_access_type -- typecast permissions on flags
+toggle_access_set -- set who can set toggles
+toggle_access_unset -- set who can unset toggles
+toggle_access_see -- set who can see toggles
+toggle_access_type -- typecast permission on toggles
+proxy_checker -- set permission restriction level on dynamic proxy detection. Please note, use this sparringly and only if you absolutely have to. The Good news: this will detect most proxies, most of the time. It does this by scanning and comparing the MTUand MSS values and scraping the TCP header for overhead. most proxies require this padding to actually, well, proxy the information out. This means that MSS and MTU values will almost always be a different size for anyone and anything that uses a proxy. Now, the Bad News. Anyone coming out from a business SOCKS server, Firewall, DMZ, or, well, just coming out of a business will likely be identified by a proxy. You use your android device to mush? That&#39;s a proxy as well since the android TCP layer is ontop of a java stack. IPhone? Same beast. Pretty much any mobile device will be seen as a proxy, which is accurate, but likely not the type of people you want to block. Sooo, again, use this sparringly. I suggest enabling it to a level to allow monitoring, and only crank it up to deny if you&#39;re being directly attacked.
+</pre></div>
+</div>
+<p># Commands</p>
+<p>### Special commands to monitor/set security:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@snoop</span> <span class="o">--</span> <span class="n">Yup</span><span class="p">,</span> <span class="n">it</span> <span class="n">exists</span><span class="o">.</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">optional</span> <span class="n">log</span> <span class="ow">or</span> <span class="n">real</span><span class="o">-</span><span class="n">time</span> <span class="n">monitor</span> <span class="n">of</span> <span class="n">a</span> <span class="n">player</span>
+<span class="nd">@newpassword</span> <span class="o">--</span> <span class="n">change</span> <span class="n">target</span><span class="s1">&#39;s password</span>
+<span class="nd">@aflags</span> <span class="o">--</span> <span class="nb">list</span> <span class="n">permissions</span> <span class="n">of</span> <span class="n">attributes</span> <span class="ow">or</span> <span class="nb">set</span> <span class="n">up</span> <span class="k">global</span> <span class="n">prefix</span> <span class="n">restrictions</span> <span class="n">based</span> <span class="n">globally</span><span class="p">,</span> <span class="n">by</span> <span class="n">target</span><span class="p">,</span> <span class="n">by</span> <span class="n">enactor</span><span class="p">,</span> <span class="ow">or</span> <span class="n">by</span> <span class="n">sub</span><span class="o">-</span><span class="n">group</span>
+<span class="nd">@log</span> <span class="o">--</span> <span class="n">control</span> <span class="n">system</span> <span class="n">logs</span>
+<span class="nd">@logrotate</span> <span class="o">--</span> <span class="n">rotate</span> <span class="n">logs</span> <span class="n">real</span><span class="o">-</span><span class="n">time</span> <span class="ow">or</span> <span class="n">verify</span> <span class="n">current</span> <span class="n">status</span> <span class="n">of</span> <span class="n">log</span> <span class="n">file</span>
+<span class="nd">@api</span> <span class="o">--</span> <span class="n">control</span> <span class="n">who</span> <span class="n">can</span> <span class="nb">set</span><span class="o">/</span><span class="n">unset</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">use</span> <span class="n">the</span> <span class="n">restful</span><span class="o">-</span><span class="n">like</span> <span class="n">API</span> <span class="n">interface</span>
+<span class="nd">@blacklist</span> <span class="o">--</span> <span class="n">load</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">blacklist</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">created</span> <span class="k">with</span> <span class="n">the</span> <span class="n">script</span> <span class="n">tor_pull</span><span class="o">.</span><span class="n">sh</span> <span class="n">that</span> <span class="n">queries</span> <span class="ow">and</span> <span class="n">pulls</span> <span class="n">down</span> <span class="n">the</span> <span class="n">majority</span> <span class="n">of</span> <span class="n">public</span> <span class="n">proxy</span> <span class="n">IP</span><span class="s1">&#39;s</span>
+<span class="nd">@tor</span> <span class="o">--</span> <span class="n">control</span> <span class="n">real</span> <span class="n">time</span> <span class="n">TOR</span> <span class="n">proxy</span> <span class="n">protection</span>
+<span class="nd">@freeze</span><span class="o">/</span><span class="nd">@thaw</span> <span class="o">--</span> <span class="n">real</span> <span class="n">time</span> <span class="n">queue</span> <span class="n">freezing</span> <span class="ow">and</span> <span class="n">thawing</span> <span class="k">for</span> <span class="n">sandboxing</span> <span class="n">queues</span> <span class="n">live</span>
+<span class="nd">@icmd</span> <span class="o">--</span> <span class="n">control</span> <span class="n">individual</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="ow">or</span> <span class="n">zone</span> <span class="n">based</span> <span class="n">access</span> <span class="n">control</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">commands</span> <span class="n">a</span> <span class="n">player</span> <span class="n">can</span> <span class="n">access</span>
+<span class="nd">@nuke</span><span class="o">/</span><span class="nd">@toad</span><span class="o">/</span><span class="nd">@turtle</span> <span class="o">--</span> <span class="n">destroy</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">convert</span> <span class="n">a</span> <span class="n">player</span> <span class="n">to</span> <span class="n">a</span> <span class="n">non</span><span class="o">-</span><span class="n">player</span><span class="o">.</span>
+<span class="nd">@recover</span> <span class="o">--</span> <span class="n">recover</span> <span class="n">a</span> <span class="nd">@nuked</span> <span class="ow">or</span> <span class="nd">@destroyed</span> <span class="n">item</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">database</span><span class="o">.</span> <span class="n">This</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="n">until</span> <span class="n">the</span> <span class="nb">object</span> <span class="ow">is</span> <span class="nd">@purged</span><span class="o">.</span> <span class="n">Works</span> <span class="n">like</span> <span class="n">a</span> <span class="n">recycle</span> <span class="nb">bin</span><span class="o">.</span>
+<span class="nd">@snapshot</span> <span class="o">--</span> <span class="n">make</span> <span class="n">a</span> <span class="n">live</span> <span class="n">snapshot</span> <span class="n">image</span> <span class="n">dump</span> <span class="n">of</span> <span class="n">the</span> <span class="n">targetted</span> <span class="n">dbref</span><span class="c1"># for safe keeping</span>
+<span class="nd">@boot</span> <span class="o">--</span> <span class="n">boot</span> <span class="n">the</span> <span class="n">player</span>
+<span class="nd">@disable</span> <span class="o">--</span> <span class="n">disable</span> <span class="n">logins</span> <span class="n">to</span> <span class="nb">all</span> <span class="n">but</span> <span class="n">staff</span>
+<span class="nd">@flagdef</span><span class="o">/</span><span class="nd">@toggledef</span> <span class="o">--</span> <span class="ow">in</span><span class="o">-</span><span class="n">game</span> <span class="n">alter</span> <span class="n">permissions</span> <span class="n">of</span> <span class="n">flags</span> <span class="ow">and</span> <span class="n">toggles</span>
+<span class="nd">@site</span> <span class="o">--</span> <span class="n">remove</span> <span class="n">site</span> <span class="n">permissions</span> <span class="nb">set</span> <span class="n">via</span> <span class="nd">@admin</span> <span class="n">foo_site</span> <span class="p">(</span><span class="n">like</span> <span class="n">forbid_site</span><span class="p">,</span> <span class="n">suspect_site</span><span class="p">,</span> <span class="n">etc</span><span class="p">)</span>
+<span class="nd">@limit</span> <span class="o">--</span> <span class="n">assign</span> <span class="n">limits</span> <span class="p">(</span><span class="nd">@destroy</span><span class="p">,</span> <span class="n">user</span><span class="o">-</span><span class="n">attribute</span><span class="p">,</span> <span class="ow">or</span> <span class="nd">@lfunction</span><span class="p">)</span> <span class="n">to</span> <span class="n">target</span> <span class="n">player</span><span class="o">.</span> <span class="n">This</span> <span class="n">has</span> <span class="n">the</span> <span class="n">effect</span> <span class="n">of</span> <span class="n">enabling</span><span class="p">,</span> <span class="n">disabling</span><span class="p">,</span> <span class="ow">or</span> <span class="n">overriding</span> <span class="n">the</span> <span class="k">global</span> <span class="n">values</span> <span class="k">for</span> <span class="nb">max</span> <span class="n">values</span><span class="o">.</span> <span class="n">so</span> <span class="n">you</span> <span class="n">can</span> <span class="n">use</span> <span class="n">this</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span><span class="p">,</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">a</span> <span class="n">player</span><span class="s1">&#39;s ability to set any user-defined attributes requiring them to only use @va-vz, @desc, and so forth.</span>
+</pre></div>
+</div>
+<p># Toggles</p>
+<p>### Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@toggle</span> <span class="o">*</span><span class="n">player</span><span class="o">=</span><span class="n">forcehalted</span>
+</pre></div>
+</div>
+<p>&gt; Suggested Toggle List:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CPUTIME</span> <span class="o">--</span> <span class="n">returns</span> <span class="n">extremely</span> <span class="n">useful</span> <span class="n">data</span> <span class="n">on</span> <span class="n">runtime</span> <span class="n">values</span> <span class="n">of</span> <span class="n">a</span> <span class="n">command</span> <span class="n">that</span> <span class="n">executes</span>
+<span class="n">FORCEHALTED</span> <span class="o">--</span> <span class="n">allows</span> <span class="n">you</span> <span class="n">to</span> <span class="nd">@force</span> <span class="n">something</span> <span class="n">even</span> <span class="k">if</span> <span class="n">it</span><span class="s1">&#39;s halted</span>
+<span class="n">LOGROOM</span> <span class="o">--</span> <span class="n">log</span> <span class="n">everything</span> <span class="n">the</span> <span class="n">room</span> <span class="n">sees</span><span class="o">.</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">intended</span> <span class="k">for</span> <span class="n">IC</span> <span class="n">purposes</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">notify</span> <span class="n">the</span> <span class="n">player</span> <span class="n">that</span> <span class="n">logging</span> <span class="ow">is</span> <span class="n">going</span> <span class="n">into</span> <span class="n">the</span> <span class="n">room</span>
+<span class="n">MAIL_LOCKDOWN</span> <span class="o">--</span> <span class="n">stop</span> <span class="n">wizards</span> <span class="kn">from</span> <span class="nn">being</span> <span class="n">able</span> <span class="n">to</span> <span class="n">see</span> <span class="n">other</span> <span class="n">people</span><span class="s1">&#39;s mail.</span>
+<span class="n">MONITOR</span><span class="o">/</span><span class="n">MONITOR_AREG</span><span class="o">/</span><span class="n">MONITOR_SITE</span><span class="o">/</span><span class="n">MONITOR_CPU</span><span class="o">/</span><span class="n">MONITOR_VLIMIT</span><span class="o">/</span><span class="n">MONITOR_etcetc</span> <span class="o">--</span> <span class="n">drilldown</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">the</span> <span class="ow">in</span><span class="o">-</span><span class="n">game</span> <span class="n">broadcasts</span> <span class="k">for</span> <span class="n">most</span> <span class="n">of</span> <span class="n">the</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">game</span> <span class="n">RhostMUSH</span> <span class="n">monitoring</span><span class="o">.</span> <span class="n">CPU</span> <span class="n">overloads</span><span class="p">,</span> <span class="n">attribute</span> <span class="n">caps</span> <span class="n">being</span> <span class="n">reached</span><span class="p">,</span> <span class="n">success</span><span class="o">/</span><span class="n">failed</span> <span class="n">connect</span> <span class="n">attempts</span><span class="p">,</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">forth</span><span class="o">.</span> <span class="n">Ergo</span><span class="p">,</span> <span class="n">day</span> <span class="n">to</span> <span class="n">day</span> <span class="n">monitoring</span> <span class="n">needs</span><span class="o">.</span> <span class="n">The</span> <span class="n">MONITOR</span> <span class="n">foo</span> <span class="ow">in</span> <span class="n">Rhost</span> <span class="ow">is</span> <span class="n">very</span> <span class="n">beefy</span><span class="p">,</span> <span class="n">so</span> <span class="n">please</span> <span class="n">refer</span> <span class="n">to</span> <span class="n">the</span> <span class="n">wizhelp</span> <span class="n">on</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">MONITOR</span> <span class="nd">@toggles</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+</pre></div>
+</div>
+<p># Flags:</p>
+<p>### Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@set</span> <span class="o">*</span><span class="n">player</span><span class="o">=</span><span class="n">slave</span>
+</pre></div>
+</div>
+<p>### Suggested Flags:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WANDERER</span> <span class="o">--</span> <span class="n">restrictive</span> <span class="n">flag</span><span class="o">.</span> <span class="n">Set</span> <span class="n">on</span> <span class="nb">all</span> <span class="n">new</span> <span class="n">players</span> <span class="n">by</span> <span class="n">default</span> <span class="n">unless</span> <span class="n">configured</span> <span class="n">otherwise</span><span class="o">.</span> <span class="n">Stops</span> <span class="nb">all</span> <span class="n">building</span><span class="o">/</span><span class="n">creating</span> <span class="ow">and</span> <span class="n">requires</span> <span class="n">removal</span> <span class="n">before</span> <span class="n">building</span> <span class="n">allowed</span><span class="o">.</span>
+<span class="n">GUILDMASTER</span> <span class="o">--</span> <span class="n">first</span> <span class="n">tier</span> <span class="n">of</span> <span class="n">staff</span> <span class="n">bit</span>
+<span class="n">ARCHITECT</span> <span class="o">--</span> <span class="n">second</span> <span class="n">tier</span> <span class="n">of</span> <span class="n">staff</span> <span class="n">bit</span>
+<span class="n">COUNCILOR</span> <span class="o">--</span> <span class="n">third</span> <span class="n">tier</span> <span class="n">of</span> <span class="n">staff</span> <span class="n">bit</span>
+<span class="n">ROYALTY</span> <span class="o">--</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">your</span> <span class="n">vanilla</span> <span class="n">Wizard</span> <span class="n">on</span> <span class="n">other</span> <span class="n">mushes</span>
+<span class="n">IMMORTAL</span> <span class="o">--</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">essentially</span> <span class="c1">#1 and &#39;all powerful&#39;</span>
+<span class="n">BACKSTAGE</span><span class="o">/</span><span class="n">NOBACKSTAGE</span> <span class="n">control</span> <span class="n">flags</span> <span class="n">specifying</span> <span class="n">who</span> <span class="n">can</span> <span class="n">control</span> <span class="n">things</span> <span class="nb">set</span> <span class="n">BACKSTAGE</span>
+<span class="n">FUBAR</span> <span class="o">--</span> <span class="n">stop</span> <span class="kn">from</span> <span class="nn">doing</span> <span class="n">absolutely</span> <span class="n">everything</span> <span class="k">except</span> <span class="s1">&#39;:&#39;</span> <span class="ow">and</span> <span class="s1">&#39;&quot;&#39;</span><span class="o">.</span> <span class="n">Nothing</span> <span class="k">else</span><span class="o">.</span>
+<span class="n">SLAVE</span> <span class="o">--</span> <span class="n">this</span> <span class="n">also</span> <span class="n">stops</span> <span class="s1">&#39;:&#39;</span> <span class="ow">and</span> <span class="s1">&#39;&quot;&#39;</span><span class="o">.</span> <span class="n">Used</span> <span class="ow">in</span> <span class="n">combination</span> <span class="k">with</span> <span class="n">FUBAR</span> <span class="n">to</span> <span class="n">make</span> <span class="n">a</span> <span class="n">statue</span><span class="o">.</span>
+<span class="n">INDESTRUCTIBLE</span> <span class="o">--</span> <span class="n">nothing</span> <span class="n">can</span> <span class="n">destroy</span> <span class="n">the</span> <span class="n">target</span><span class="p">,</span> <span class="ow">not</span> <span class="n">even</span> <span class="c1">#1</span>
+<span class="n">NO_CODE</span> <span class="o">--</span> <span class="n">stops</span> <span class="n">target</span> <span class="kn">from</span> <span class="nn">doing</span> <span class="nb">all</span> <span class="n">but</span> <span class="n">the</span> <span class="n">most</span> <span class="n">basic</span> <span class="n">commands</span> <span class="ow">and</span> <span class="n">functions</span>
+<span class="n">NO_CONNECT</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">log</span> <span class="ow">in</span>
+<span class="n">NO_EXAMINE</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">examined</span><span class="o">/</span><span class="nd">@decompiled</span> <span class="k">except</span> <span class="n">by</span> <span class="n">wizards</span>
+<span class="n">NO_MODIFY</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">modified</span> <span class="k">except</span> <span class="n">by</span> <span class="n">wizards</span> <span class="p">(</span><span class="ow">or</span> <span class="n">optionally</span> <span class="n">just</span> <span class="n">immortals</span><span class="p">)</span>
+<span class="n">NO_MOVE</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">moved</span> <span class="n">by</span> <span class="nb">any</span> <span class="n">means</span>
+<span class="n">NO_TEL</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">teleported</span><span class="p">,</span> <span class="n">use</span> <span class="n">teleport</span><span class="p">,</span> <span class="ow">or</span> <span class="n">use</span> <span class="n">home</span>
+<span class="n">NO_PESTER</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">use</span> <span class="n">whisper</span> <span class="ow">or</span> <span class="nd">@pemit</span>
+<span class="n">NO_POSSESS</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">log</span> <span class="n">into</span> <span class="n">their</span> <span class="n">player</span> <span class="n">more</span> <span class="n">than</span> <span class="n">twice</span>
+<span class="n">SPAMMONITOR</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">issue</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">60</span> <span class="n">commands</span> <span class="n">a</span> <span class="n">minute</span>
+</pre></div>
+</div>
+<p># &#64;depowers</p>
+<p>&gt; These are tiered and inheritable from the player. Meaning permission levels can be decreased or removed entirely.</p>
+<p>### Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@depower</span><span class="o">/</span><span class="n">councilor</span> <span class="o">*</span><span class="n">player</span><span class="o">=</span><span class="n">wall</span>
+</pre></div>
+</div>
+<p>### Suggested Depowers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WALL -- disable walling
+STEAL -- disable getting items/gold
+WIZ_WHO -- disable wiz who
+BOOT -- disable boot
+FORCE -- disable @force/@sudo
+MASTER -- disable access to the master room
+NUKE -- disable @nuke/@toad/@turtle
+OVERRIDE -- disable overiding locks (wizards do this by default)
+TEL_ANYTHING -- disable teleporting anything
+POWER -- disable access to @power
+MODIFY -- disable ability to modify things
+CHOWN_OTHER -- disable ability to chown things you don&#39;t own
+UNL_QUOTA -- disable unlimited quota (useful on staff)
+GIVE -- disable the ability to give... anything...
+NOGOLD -- disable the ability to give or take gold
+PASSWORD -- disable ability to change passwords
+PERSONAL_COMMAND -- disable the ability to use any $commands on anything you own
+LONG_FINGERS -- disable all remote access features
+CREATE -- disable the ability to create anything
+CLOAK -- disable the overpowered wizcloaking ability from wizards
+PAGE -- no page for you!!!
+LOCK -- you can&#39;t pass locks. Ever. At all. Sucks to be you.
+COMMAND -- you can&#39;t use any $command. Anywhere. Only hardcoded commands for you!
+EXAMINE -- you can&#39;t examine/decompile or use any method to list attribs
+FREE -- everything is going to cost you gold
+TEL_ANYWHERE -- you can&#39;t teleport anywhere
+PCREATE -- disable wizards ability to create players
+QUOTA -- more more quota control for you
+CHOWN_ME -- you can&#39;t chown anything to yourself
+ABUSE -- you can only use $commands on things you own. Nothing else, including master room.
+SEARCH_ANY -- disable all db searching tools
+RECEIVE -- you can&#39;t receive anything
+DARK -- you can&#39;t go dark, and even if you miraculously were set DARK it&#39;d not work for you.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wizards in RhostMUSH by default override all locks and have a unique ability called 'wizcloaking'. If a wizard is set DARK and UNFINDABLE then they become cloaked (like a Romulan bird of pray) and will be undetectable by any means except by another wizard. Immortals have a super-cloak ability that makes them invisible to Wizards in addition. As shown above, there is a &#64;depower to disable cloaking if it's abused.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ABOUT IMMORTALS: Immortals treat as #1. Seriously. They can do anything and everything. They have commands at their fingertips to literally hack and edit the database live, and naturally if they don't know what they're doing, can crash the mush, because of all this raw editing capabilities. Only set Immortal those who absolutely need it or you absolutely trust. Head coders, for example, should likely have an Immortal bit. Also, Immortals by default override pretty much every restriction in the game. A player set NO_TEL? Um yea, immortal can still &#64;teleport them. This is intentional, because it's assumed Immortal's code should just work. So keep that in mind while coding. Cheers.</p>
+</div>
+</div>
 <span id="document-utilities/ssl"></span><span class="target" id="utilities-ssl"></span><div class="section" id="setting-up-an-ssl-tunnel-for-secure-connection-options">
-<span id="index-0"></span><h2><span class="section-number">12. </span>Setting up an SSL tunnel for secure connection options<a class="headerlink" href="#setting-up-an-ssl-tunnel-for-secure-connection-options" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h2><span class="section-number">13. </span>Setting up an SSL tunnel for secure connection options<a class="headerlink" href="#setting-up-an-ssl-tunnel-for-secure-connection-options" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="quickstart-for-ssl-setup-with-stunnel">
-<h3><span class="section-number">12.1. </span>Quickstart for SSL setup with stunnel<a class="headerlink" href="#quickstart-for-ssl-setup-with-stunnel" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.1. </span>Quickstart for SSL setup with stunnel<a class="headerlink" href="#quickstart-for-ssl-setup-with-stunnel" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>Modify your netrhost.conf file and add/change the following parameters:</p>
 <ol class="arabic">
@@ -4144,7 +4401,7 @@ it may be worth considering adding this to add additional protection.</p>
 are entirely separate processes.</p>
 </div>
 <div class="section" id="detailed-ssl-setup-with-stunnel">
-<h3><span class="section-number">12.2. </span>Detailed SSL setup with stunnel<a class="headerlink" href="#detailed-ssl-setup-with-stunnel" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">13.2. </span>Detailed SSL setup with stunnel<a class="headerlink" href="#detailed-ssl-setup-with-stunnel" title="Permalink to this headline">¶</a></h3>
 <p>To setup SSL connectivity, we use the STUNNEL application to tunnel SSL to
 the mush.  This acts a bit like a man in the middle but remains controlled
 by the game owner which would have access to the end point anyway.</p>
@@ -4153,7 +4410,7 @@ by the game owner which would have access to the end point anyway.</p>
 <p>it is assumed you will have already initially set up your netrhost.conf.</p>
 </div>
 <div class="section" id="stunnel-directory">
-<h4><span class="section-number">12.2.1. </span>stunnel directory<a class="headerlink" href="#stunnel-directory" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">13.2.1. </span>stunnel directory<a class="headerlink" href="#stunnel-directory" title="Permalink to this headline">¶</a></h4>
 <p>You would set up the stunnel from the 'stunnel' directory.  There the following
 files are of relevance:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">README</span>                     <span class="o">--</span> <span class="n">a</span> <span class="n">readme</span> <span class="n">explaining</span> <span class="n">the</span> <span class="n">points</span> <span class="n">of</span> <span class="n">stunnel</span>
@@ -4167,7 +4424,7 @@ files are of relevance:</p>
 </div>
 </div>
 <div class="section" id="modifying-netrhost-conf">
-<h4><span class="section-number">12.2.2. </span>Modifying netrhost.conf<a class="headerlink" href="#modifying-netrhost-conf" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">13.2.2. </span>Modifying netrhost.conf<a class="headerlink" href="#modifying-netrhost-conf" title="Permalink to this headline">¶</a></h4>
 <p>To be able to utilize SSL, you first must set your netrhost.conf file with
 the relevant information to enable SSL connectiions.  These three config
 options must be set to be able to use SSL, however, sconnect_host if
@@ -4183,7 +4440,7 @@ not set will default to 'localhost 127.0.0.1'.</p>
 </div>
 </div>
 <div class="section" id="running-the-stunnel-setup-program">
-<h4><span class="section-number">12.2.3. </span>Running the stunnel setup program<a class="headerlink" href="#running-the-stunnel-setup-program" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">13.2.3. </span>Running the stunnel setup program<a class="headerlink" href="#running-the-stunnel-setup-program" title="Permalink to this headline">¶</a></h4>
 <p>At this point you're ready to run the stunnel setup program.  So at this point type the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_setup</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
@@ -4197,7 +4454,7 @@ selected a mush name at this point, you can select the defaults.</p>
 MUST have 127.0.0.1 as an entry for your sconnect_host file.</p>
 </div>
 <div class="section" id="starting-the-stunnel-proxy">
-<h4><span class="section-number">12.2.4. </span>Starting the stunnel proxy<a class="headerlink" href="#starting-the-stunnel-proxy" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">13.2.4. </span>Starting the stunnel proxy<a class="headerlink" href="#starting-the-stunnel-proxy" title="Permalink to this headline">¶</a></h4>
 <p>When you have your stunnel.conf file to the way you want, you then
 issue the following command to run your SSL layer:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_start</span><span class="o">.</span><span class="n">sh</span>
@@ -4205,14 +4462,14 @@ issue the following command to run your SSL layer:</p>
 </div>
 </div>
 <div class="section" id="shutting-down-the-stunnel-proxy">
-<h4><span class="section-number">12.2.5. </span>Shutting down the stunnel proxy<a class="headerlink" href="#shutting-down-the-stunnel-proxy" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">13.2.5. </span>Shutting down the stunnel proxy<a class="headerlink" href="#shutting-down-the-stunnel-proxy" title="Permalink to this headline">¶</a></h4>
 <p>If ever you need to bring down the SSL layer, you may kill it with the command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">stunnel_stop</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="configuring-firewall-on-the-host">
-<h4><span class="section-number">12.2.6. </span>Configuring firewall on the host<a class="headerlink" href="#configuring-firewall-on-the-host" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">13.2.6. </span>Configuring firewall on the host<a class="headerlink" href="#configuring-firewall-on-the-host" title="Permalink to this headline">¶</a></h4>
 <p>Please be aware that the port that the SSL layer is on must be opened
 in any firewall rule you specified to allow the connectivity.  This also must
 not be the port the mush is running on and requires a separate port.</p>
@@ -4220,9 +4477,9 @@ not be the port the mush is running on and requires a separate port.</p>
 </div>
 </div>
 <span id="document-maintenance"></span><div class="section" id="maintenance">
-<h2><span class="section-number">13. </span>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">14. </span>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="note-about-patching">
-<h3><span class="section-number">13.1. </span>Note about Patching<a class="headerlink" href="#note-about-patching" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">14.1. </span>Note about Patching<a class="headerlink" href="#note-about-patching" title="Permalink to this headline">¶</a></h3>
 <p>There's two ways you can look to patch the source.  If you plan to run the
 RhostMUSH source from a git repository, then please use the git repo to
 constantly update your code.  If you knew enough to want to set up a git repo
@@ -4245,7 +4502,7 @@ Once that's done, all you do from within the game is two commands:</p>
 </div>
 </div>
 <div class="section" id="daily-backups-for-rhostmush">
-<h3><span class="section-number">13.2. </span>Daily Backups for RhostMUSH<a class="headerlink" href="#daily-backups-for-rhostmush" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">14.2. </span>Daily Backups for RhostMUSH<a class="headerlink" href="#daily-backups-for-rhostmush" title="Permalink to this headline">¶</a></h3>
 <p>Make SURE YOU RUN DAILY Backups.  Rhost is very stable, but things outside the mush can damage the game. paranoia is fine, especially when they really are out to get you.  TO make the backups, do the following:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="nd">@dump</span><span class="o">/</span><span class="n">flat</span>      <span class="o">--</span> <span class="n">This</span> <span class="n">makes</span> <span class="n">a</span> <span class="n">flatfile</span> <span class="n">dump</span> <span class="n">of</span> <span class="n">the</span> <span class="n">main</span> <span class="n">database</span><span class="o">.</span>  <span class="n">You</span> <span class="n">want</span> <span class="n">to</span> <span class="n">run</span> <span class="n">this</span> <span class="n">daily</span><span class="o">.</span>
  <span class="n">wmail</span><span class="o">/</span><span class="n">unload</span>    <span class="o">--</span> <span class="n">This</span> <span class="n">makes</span> <span class="n">a</span> <span class="n">flatfile</span> <span class="n">dump</span> <span class="n">of</span> <span class="n">the</span> <span class="n">mail</span> <span class="n">database</span><span class="o">.</span>  <span class="n">You</span> <span class="n">want</span> <span class="n">to</span> <span class="n">run</span> <span class="n">this</span> <span class="n">daily</span><span class="o">.</span>
@@ -4288,11 +4545,11 @@ Once that's done, all you do from within the game is two commands:</p>
 </div>
 </div>
 <div class="section" id="signals-and-why-you-need-them-for-control">
-<h3><span class="section-number">13.3. </span>Signals and why you need them for control<a class="headerlink" href="#signals-and-why-you-need-them-for-control" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">14.3. </span>Signals and why you need them for control<a class="headerlink" href="#signals-and-why-you-need-them-for-control" title="Permalink to this headline">¶</a></h3>
 <p>Rhost by default allows signals at the shell to handle various processes in-game.</p>
 <p>The following signals are useful.</p>
 <div class="section" id="term-kill-term-or-kill-15">
-<h4><span class="section-number">13.3.1. </span>TERM (kill -TERM or kill -15)<a class="headerlink" href="#term-kill-term-or-kill-15" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">14.3.1. </span>TERM (kill -TERM or kill -15)<a class="headerlink" href="#term-kill-term-or-kill-15" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>This will immediately terminate the mush, dumping a special flatfile called
@@ -4304,7 +4561,7 @@ a TERM signal is common during a server shutdown, so time is paramount.</p></li>
 </div></blockquote>
 </div>
 <div class="section" id="usr1-kill-usr1">
-<h4><span class="section-number">13.3.2. </span>USR1 (kill -USR1)<a class="headerlink" href="#usr1-kill-usr1" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">14.3.2. </span>USR1 (kill -USR1)<a class="headerlink" href="#usr1-kill-usr1" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>This by default issues a reboot on the server.  This is a special parameter
@@ -4315,7 +4572,7 @@ the default behavior or if the method for USR1 is doing something else.</p></li>
 </div></blockquote>
 </div>
 <div class="section" id="usr2-kill-usr2">
-<h4><span class="section-number">13.3.3. </span>USR2 (kill -USR2)<a class="headerlink" href="#usr2-kill-usr2" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">14.3.3. </span>USR2 (kill -USR2)<a class="headerlink" href="#usr2-kill-usr2" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>This will shutdown (cleanly) the mush.  This behaves as if you issued
@@ -4327,7 +4584,7 @@ from the shell.</p></li>
 </div></blockquote>
 </div>
 <div class="section" id="kill-kill-kill-or-kill-9">
-<h4><span class="section-number">13.3.4. </span>KILL (kill -KILL or kill -9)<a class="headerlink" href="#kill-kill-kill-or-kill-9" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">14.3.4. </span>KILL (kill -KILL or kill -9)<a class="headerlink" href="#kill-kill-kill-or-kill-9" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><ul class="simple">
 <li><p>This signal can not be caught and will immediately terminate the game
@@ -4344,9 +4601,9 @@ Startmush -f to bring it back up.</p></li>
 </div>
 </div>
 <div class="section" id="shutting-down-rhostmush-gracefully">
-<h3><span class="section-number">13.4. </span>Shutting down RhostMUSH gracefully<a class="headerlink" href="#shutting-down-rhostmush-gracefully" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">14.4. </span>Shutting down RhostMUSH gracefully<a class="headerlink" href="#shutting-down-rhostmush-gracefully" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="rhostmush-has-many-ways-to-shutdown-the-game-cleanly">
-<h4><span class="section-number">13.4.1. </span>RhostMUSH has many ways to shutdown the game cleanly<a class="headerlink" href="#rhostmush-has-many-ways-to-shutdown-the-game-cleanly" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">14.4.1. </span>RhostMUSH has many ways to shutdown the game cleanly<a class="headerlink" href="#rhostmush-has-many-ways-to-shutdown-the-game-cleanly" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li><p>Log into the mush and issue &#64;shutdown</p></li>
 <li><p>Issue a kill -USR2 to the mush which issues an emergency &#64;shutdown</p></li>
@@ -4366,7 +4623,7 @@ in the middle of a write, all bets are off. :)</p>
 </div>
 </div>
 <div class="section" id="autoshutdown-script">
-<h4><span class="section-number">13.4.2. </span>Autoshutdown script<a class="headerlink" href="#autoshutdown-script" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">14.4.2. </span>Autoshutdown script<a class="headerlink" href="#autoshutdown-script" title="Permalink to this headline">¶</a></h4>
 <p>The makefile will 'make' the program that will STOP the mush.
 Please tweek 'autolog.h' with the proper parameters.</p>
 <p>The 'startup.sh' will START the mush.</p>
@@ -4375,7 +4632,7 @@ like your rc.local file and/or startup scripts when you bring your server up.</p
 </div>
 </div>
 <div class="section" id="network-port-redirector">
-<h3><span class="section-number">13.5. </span>Network Port redirector<a class="headerlink" href="#network-port-redirector" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">14.5. </span>Network Port redirector<a class="headerlink" href="#network-port-redirector" title="Permalink to this headline">¶</a></h3>
 <p>This is a port redirector incase you decide to move your mush
 to a new site/port.  To use, first, compile the code.  To do
 this you would type the following:</p>
@@ -4396,9 +4653,9 @@ IP address and the PORT where specified.</p>
 <p>Where &lt;port&gt; is the port where the mush used to run at.</p>
 </div>
 <div class="section" id="using-the-built-in-cron-system-for-periodically-running-commands">
-<h3><span class="section-number">13.6. </span>Using the built-in cron system for periodically running commands<a class="headerlink" href="#using-the-built-in-cron-system-for-periodically-running-commands" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">14.6. </span>Using the built-in cron system for periodically running commands<a class="headerlink" href="#using-the-built-in-cron-system-for-periodically-running-commands" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="syntax-for-rhost-cron">
-<h4><span class="section-number">13.6.1. </span>Syntax for rhost.cron<a class="headerlink" href="#syntax-for-rhost-cron" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">14.6.1. </span>Syntax for rhost.cron<a class="headerlink" href="#syntax-for-rhost-cron" title="Permalink to this headline">¶</a></h4>
 <p>The rhost.cron file will be in the syntax as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">username</span> <span class="p">(</span><span class="ow">or</span> <span class="n">dbref</span><span class="c1">#)</span>
 <span class="n">command1</span><span class="p">;</span><span class="n">command2</span><span class="p">;</span><span class="n">command3</span><span class="p">;</span><span class="o">...</span><span class="p">;</span><span class="n">commandN</span>
@@ -4419,7 +4676,7 @@ in the netrhost.gamelog.</p>
 <p>Here is a working example of the code cron file.
 This example will perform dumps of the mush.</p>
 <div class="section" id="example-syntaxt-for-rhost-cron">
-<h5><span class="section-number">13.6.1.1. </span>Example syntaxt for rhost.cron<a class="headerlink" href="#example-syntaxt-for-rhost-cron" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">14.6.1.1. </span>Example syntaxt for rhost.cron<a class="headerlink" href="#example-syntaxt-for-rhost-cron" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#1</span>
 <span class="nd">@dump</span><span class="o">/</span><span class="n">flat</span><span class="p">;</span> <span class="o">@@</span> <span class="n">dump</span> <span class="n">the</span> <span class="n">main</span> <span class="n">game</span> <span class="n">database</span> <span class="n">to</span> <span class="n">flatfile</span>
 <span class="n">wmail</span><span class="o">/</span><span class="n">unload</span><span class="p">;</span> <span class="o">@@</span> <span class="n">dump</span> <span class="n">the</span> <span class="n">mail</span> <span class="n">database</span> <span class="n">to</span> <span class="n">flatfile</span>
@@ -4431,7 +4688,7 @@ This example will perform dumps of the mush.</p>
 </div>
 </div>
 <div class="section" id="the-following-scripts-are-used-in-the-game-directory">
-<h3><span class="section-number">13.7. </span>The following scripts are used in the game directory<a class="headerlink" href="#the-following-scripts-are-used-in-the-game-directory" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">14.7. </span>The following scripts are used in the game directory<a class="headerlink" href="#the-following-scripts-are-used-in-the-game-directory" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Startmush</span>               <span class="o">--</span> <span class="n">used</span> <span class="n">to</span> <span class="n">Start</span> <span class="n">up</span> <span class="n">the</span> <span class="n">mush</span>
 <span class="n">backup_flat</span><span class="o">.</span><span class="n">sh</span>          <span class="o">--</span> <span class="n">Used</span> <span class="n">to</span> <span class="n">run</span> <span class="n">backups</span> <span class="k">with</span> <span class="nd">@dump</span><span class="o">/</span><span class="n">flat</span> <span class="n">within</span> <span class="n">the</span> <span class="n">game</span> <span class="p">(</span><span class="n">Started</span> <span class="k">with</span> <span class="n">Startmush</span> <span class="n">automatically</span><span class="p">)</span>
 <span class="n">backup_restart</span><span class="o">.</span><span class="n">sh</span>       <span class="o">--</span> <span class="n">Restart</span> <span class="n">the</span> <span class="n">backup_flat</span><span class="o">.</span><span class="n">sh</span> <span class="k">if</span> <span class="n">changes</span> <span class="n">are</span> <span class="n">done</span>
@@ -4447,7 +4704,7 @@ This example will perform dumps of the mush.</p>
 </div>
 </div>
 <div class="section" id="textfiles-for-rhostmush">
-<h3><span class="section-number">13.8. </span>Textfiles for RhostMUSH<a class="headerlink" href="#textfiles-for-rhostmush" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">14.8. </span>Textfiles for RhostMUSH<a class="headerlink" href="#textfiles-for-rhostmush" title="Permalink to this headline">¶</a></h3>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p>Notate which need mkindx</p>
@@ -4476,7 +4733,7 @@ This example will perform dumps of the mush.</p>
 </pre></div>
 </div>
 <div class="section" id="textfile-frequently-asked-questions">
-<h4><span class="section-number">13.8.1. </span>Textfile Frequently Asked Questions<a class="headerlink" href="#textfile-frequently-asked-questions" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">14.8.1. </span>Textfile Frequently Asked Questions<a class="headerlink" href="#textfile-frequently-asked-questions" title="Permalink to this headline">¶</a></h4>
 <p>Q:  How do I put color in these files?</p>
 <p>A1: Look at ansi.h and you need to put the literal ASCII codes.  They will look like: ^[[0m (for ANSI_NORMAL).  That's &lt;ESC&gt;[</p>
 <p>A2: You can enable ansi_txtfiles then use %c (or %x/%m) encoding for ansi, however you compiled your Rhost.</p>
@@ -4492,17 +4749,17 @@ This example will perform dumps of the mush.</p>
 </div>
 </div>
 <span id="document-troubleshooting"></span><div class="section" id="troubleshooting">
-<h2><span class="section-number">14. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">15. </span>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="reporting-bugs-or-getting-help">
-<h3><span class="section-number">14.1. </span>Reporting bugs or getting help<a class="headerlink" href="#reporting-bugs-or-getting-help" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.1. </span>Reporting bugs or getting help<a class="headerlink" href="#reporting-bugs-or-getting-help" title="Permalink to this headline">¶</a></h3>
 <p>If you find any bugs or problems, notify one of the developers of RhostMUSH and
 a patch or workaround will be made available as soon as possible.  Current
 developers are:  Seawolf, Thorin, Ashen-Shugar, Lensman, Kale, Mac, Zenty,
 Ambrosia, Amos, and Morgan.  They can be found around the net.</p>
 <div class="section" id="troubleshooting-issues-with-starting-up">
-<h4><span class="section-number">14.1.1. </span>Troubleshooting issues with starting up<a class="headerlink" href="#troubleshooting-issues-with-starting-up" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.1.1. </span>Troubleshooting issues with starting up<a class="headerlink" href="#troubleshooting-issues-with-starting-up" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="problem-if-it-says-the-shared-id-is-already-in-use">
-<h5><span class="section-number">14.1.1.1. </span>Problem: If it says the shared ID is already in use<a class="headerlink" href="#problem-if-it-says-the-shared-id-is-already-in-use" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.1. </span>Problem: If it says the shared ID is already in use<a class="headerlink" href="#problem-if-it-says-the-shared-id-is-already-in-use" title="Permalink to this headline">¶</a></h5>
 <p>A1: please verify that it is the right shared debug_id in your netrhost.conf file</p>
 <p>A2: Force a start by running:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">Startmush</span> <span class="o">-</span><span class="n">f</span>
@@ -4510,15 +4767,15 @@ Ambrosia, Amos, and Morgan.  They can be found around the net.</p>
 </div>
 </div>
 <div class="section" id="problem-your-log-file-is-massive-and-your-mush-is-running">
-<h5><span class="section-number">14.1.1.2. </span>Problem: Your log file is massive and your mush is running<a class="headerlink" href="#problem-your-log-file-is-massive-and-your-mush-is-running" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.2. </span>Problem: Your log file is massive and your mush is running<a class="headerlink" href="#problem-your-log-file-is-massive-and-your-mush-is-running" title="Permalink to this headline">¶</a></h5>
 <p>A1: To rotate this use the &#64;logrotate command. See wizhelp on &#64;logrotate</p>
 </div>
 <div class="section" id="problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined">
-<h5><span class="section-number">14.1.1.3. </span>Problem: The database flatfile you're loading can't load because a db is already defined<a class="headerlink" href="#problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.3. </span>Problem: The database flatfile you're loading can't load because a db is already defined<a class="headerlink" href="#problem-the-database-flatfile-you-re-loading-can-t-load-because-a-db-is-already-defined" title="Permalink to this headline">¶</a></h5>
 <p>A1: remove netrhost.db* and netrhost.gdbm* from your data directory</p>
 </div>
 <div class="section" id="problem-the-mail-database-won-t-load-and-mail-shows-offline">
-<h5><span class="section-number">14.1.1.4. </span>Problem: The mail database won't load and mail shows 'offline'<a class="headerlink" href="#problem-the-mail-database-won-t-load-and-mail-shows-offline" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.1.1.4. </span>Problem: The mail database won't load and mail shows 'offline'<a class="headerlink" href="#problem-the-mail-database-won-t-load-and-mail-shows-offline" title="Permalink to this headline">¶</a></h5>
 <p>A1: from within the MUSH run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">load</span>
 </pre></div>
@@ -4527,7 +4784,7 @@ Ambrosia, Amos, and Morgan.  They can be found around the net.</p>
 </div>
 </div>
 <div class="section" id="stack-limit-and-debugging">
-<h3><span class="section-number">14.2. </span>Stack limit and debugging<a class="headerlink" href="#stack-limit-and-debugging" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.2. </span>Stack limit and debugging<a class="headerlink" href="#stack-limit-and-debugging" title="Permalink to this headline">¶</a></h3>
 <p>Rhost uses a stack limit in the debug monitor.</p>
 <p>This stack limit is set to a reasonable amount of 1000.
 This is defined in the debug.h file in the hdrs directory.</p>
@@ -4558,13 +4815,13 @@ then a fresh ./Startmush.</p>
 <p>You can issue &#64;list stack to see the current stack ceiling ingame.</p>
 </div>
 <div class="section" id="how-to-reset-the-password-for-1">
-<h3><span class="section-number">14.3. </span>How to reset the password for #1<a class="headerlink" href="#how-to-reset-the-password-for-1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.3. </span>How to reset the password for #1<a class="headerlink" href="#how-to-reset-the-password-for-1" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>You can only use one of these options at a time. Make sure to change back your nerhost.conf and then reboot after making the changes.</p>
 </div>
 <div class="section" id="method-1-reset-to-default-password">
-<h4><span class="section-number">14.3.1. </span>Method 1: Reset to Default Password<a class="headerlink" href="#method-1-reset-to-default-password" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.3.1. </span>Method 1: Reset to Default Password<a class="headerlink" href="#method-1-reset-to-default-password" title="Permalink to this headline">¶</a></h4>
 <p>in your netrhost.conf file add:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newpass_god</span> <span class="mi">777</span>
 </pre></div>
@@ -4572,7 +4829,7 @@ then a fresh ./Startmush.</p>
 <p>This will reset #1's password to the default 'Nyctasia'.</p>
 </div>
 <div class="section" id="method-2-increase-permissions-of-immortals">
-<h4><span class="section-number">14.3.2. </span>Method 2: Increase Permissions of Immortals<a class="headerlink" href="#method-2-increase-permissions-of-immortals" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.3.2. </span>Method 2: Increase Permissions of Immortals<a class="headerlink" href="#method-2-increase-permissions-of-immortals" title="Permalink to this headline">¶</a></h4>
 <p>in your netrhost.conf file add:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">newpass_god</span> <span class="mi">1</span>
 </pre></div>
@@ -4581,9 +4838,9 @@ then a fresh ./Startmush.</p>
 </div>
 </div>
 <div class="section" id="troubleshooting-difficulties-compiling-rhostmush">
-<h3><span class="section-number">14.4. </span>Troubleshooting difficulties compiling RhostMUSH<a class="headerlink" href="#troubleshooting-difficulties-compiling-rhostmush" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.4. </span>Troubleshooting difficulties compiling RhostMUSH<a class="headerlink" href="#troubleshooting-difficulties-compiling-rhostmush" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="changes-to-conf-for-high-bit-cpus">
-<h4><span class="section-number">14.4.1. </span>Changes to conf for high-bit CPUs<a class="headerlink" href="#changes-to-conf-for-high-bit-cpus" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.4.1. </span>Changes to conf for high-bit CPUs<a class="headerlink" href="#changes-to-conf-for-high-bit-cpus" title="Permalink to this headline">¶</a></h4>
 <p>RhostMUSH automatically detects 64-bit platforms, and should compile
 cleanly on these.</p>
 <p>In case you are trying to compile Rhost on some other crazy-wide CPUs
@@ -4610,7 +4867,7 @@ so by changing a few lines of code in conf.c.</p>
 reason to believe the same will not hold true for IA64.</p>
 </div>
 <div class="section" id="changes-to-autconf-for-certain-systems">
-<h4><span class="section-number">14.4.2. </span>Changes to autconf for certain systems<a class="headerlink" href="#changes-to-autconf-for-certain-systems" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.4.2. </span>Changes to autconf for certain systems<a class="headerlink" href="#changes-to-autconf-for-certain-systems" title="Permalink to this headline">¶</a></h4>
 <p>You should not have to worry about this, but incase something really
 weird occurs, you may need to look into these changes...</p>
 <p>The autoconfig.h file needs to have modifications to it by hand.</p>
@@ -4639,7 +4896,7 @@ the mush will not compile.</p>
 </div>
 </div>
 <div class="section" id="dealing-with-db-corruption">
-<h3><span class="section-number">14.5. </span>Dealing with DB Corruption<a class="headerlink" href="#dealing-with-db-corruption" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.5. </span>Dealing with DB Corruption<a class="headerlink" href="#dealing-with-db-corruption" title="Permalink to this headline">¶</a></h3>
 <p>Ok.  Your database won't come up.</p>
 <p>If you are reading this, then likely the scenerio is one of the following:</p>
 <ol class="arabic simple">
@@ -4651,9 +4908,9 @@ all the names and attributes of things seem to be gone!</p></li>
 </ol>
 <p>First thing is first.  Don't have a panic attack.</p>
 <div class="section" id="if-the-mush-says-it-can-t-find-your-database-files">
-<h4><span class="section-number">14.5.1. </span>If the mush says it can't find your database files<a class="headerlink" href="#if-the-mush-says-it-can-t-find-your-database-files" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.5.1. </span>If the mush says it can't find your database files<a class="headerlink" href="#if-the-mush-says-it-can-t-find-your-database-files" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="check-the-names-of-the-database-files-in-your-data-directory">
-<h5><span class="section-number">14.5.1.1. </span>Check the names of the database files in your 'data' directory<a class="headerlink" href="#check-the-names-of-the-database-files-in-your-data-directory" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.5.1.1. </span>Check the names of the database files in your 'data' directory<a class="headerlink" href="#check-the-names-of-the-database-files-in-your-data-directory" title="Permalink to this headline">¶</a></h5>
 <p>They should be named something like:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span>
 <span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">old</span>
@@ -4665,7 +4922,7 @@ all the names and attributes of things seem to be gone!</p></li>
 <p>And you may see a netrhost.db.flat</p>
 </div>
 <div class="section" id="check-your-netrhost-conf-file">
-<h5><span class="section-number">14.5.1.2. </span>Check your netrhost.conf file<a class="headerlink" href="#check-your-netrhost-conf-file" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.5.1.2. </span>Check your netrhost.conf file<a class="headerlink" href="#check-your-netrhost-conf-file" title="Permalink to this headline">¶</a></h5>
 <p>If you never touched the *database or muddb_name params, you should be good.</p>
 <p>Verify your *database params (and muddb_name) are still set to 'netrhost' as
 part of the name.  Ergo, the default values and you didn't change them.
@@ -4674,7 +4931,7 @@ These should match up with the filenames in your data directory.</p>
 So you shouldn't have to change these names, ever. :)</p>
 </div>
 <div class="section" id="check-your-mush-config-file">
-<h5><span class="section-number">14.5.1.3. </span>Check your mush.config file<a class="headerlink" href="#check-your-mush-config-file" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.5.1.3. </span>Check your mush.config file<a class="headerlink" href="#check-your-mush-config-file" title="Permalink to this headline">¶</a></h5>
 <p>If you never modified this file, you should be good.</p>
 <p>The gamename should be 'netrhost' for this file.  This does NOT control
 the name of your game.  This controls the name of all the files
@@ -4683,10 +4940,10 @@ file, all your database files, and so forth.  Please don't change this :)</p>
 </div>
 </div>
 <div class="section" id="if-the-mush-says-it-can-t-read-or-load-your-database-files">
-<h4><span class="section-number">14.5.2. </span>If the mush says it can't read or load your database files<a class="headerlink" href="#if-the-mush-says-it-can-t-read-or-load-your-database-files" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.5.2. </span>If the mush says it can't read or load your database files<a class="headerlink" href="#if-the-mush-says-it-can-t-read-or-load-your-database-files" title="Permalink to this headline">¶</a></h4>
 <p>Double check everything for the previous issue. Make sure everything is named properly.</p>
 <div class="section" id="verify-you-have-enough-disk-space-quota">
-<h5><span class="section-number">14.5.2.1. </span>Verify you have enough disk space. (quota)<a class="headerlink" href="#verify-you-have-enough-disk-space-quota" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.5.2.1. </span>Verify you have enough disk space. (quota)<a class="headerlink" href="#verify-you-have-enough-disk-space-quota" title="Permalink to this headline">¶</a></h5>
 <p>Some account have a limited quota to run in.  If you reached or exceed
 your disk quota, you can have a corrupted database.  So always keep
 your eye on the size.  quota -s to see a human readable format to see
@@ -4698,7 +4955,7 @@ mush again.  Try to keep your quota at least 200 megs free to allow
 plenty of wonderful growth space for the mush.</p>
 </div>
 <div class="section" id="verify-you-have-enough-disk-space-system">
-<h5><span class="section-number">14.5.2.2. </span>Verify you have enough disk space.  (system)<a class="headerlink" href="#verify-you-have-enough-disk-space-system" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.5.2.2. </span>Verify you have enough disk space.  (system)<a class="headerlink" href="#verify-you-have-enough-disk-space-system" title="Permalink to this headline">¶</a></h5>
 <p>The second way you can run out of disk space is by the filesystem itself.
 do a df -h . in your 'game' directory'.  That is df -h &lt;period&gt;.
 This will return how much disk space is being used and how much remains.
@@ -4712,7 +4969,7 @@ No disk to run the game.</p>
 </div>
 </div>
 <div class="section" id="if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone">
-<h4><span class="section-number">14.5.3. </span>If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!<a class="headerlink" href="#if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.5.3. </span>If the mush seems to load fine but I can't log in anyone and when I do all the names and attributes of things seem to be gone!<a class="headerlink" href="#if-the-mush-seems-to-load-fine-but-i-can-t-log-in-anyone-and-when-i-do-all-the-names-and-attributes-of-things-seem-to-be-gone" title="Permalink to this headline">¶</a></h4>
 <p>Ok, at this point you likely had your mush up when the physical server
 went down hard.  Weither through an emergency shutdown or a physical
 power outage, your db likely was brought down hard during a write,
@@ -4720,7 +4977,7 @@ so it left it in a corrupt state.  These things happen.  This is
 why we always strongly request you make daily flatfile dumps.</p>
 <p>So, to recover your database.</p>
 <div class="section" id="the-bad-news">
-<h5><span class="section-number">14.5.3.1. </span>The bad news<a class="headerlink" href="#the-bad-news" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.5.3.1. </span>The bad news<a class="headerlink" href="#the-bad-news" title="Permalink to this headline">¶</a></h5>
 <p>If you have no flatfile backup or never bothered with backups?
 I'm sorry, at this point you're SOA.  There's no easy way to
 recover a corrupted binary database.  If you absolutely need
@@ -4729,7 +4986,7 @@ out of it, but otherwise it's a lost cause.  You'll have to start
 over from scratch.  I'm sorry.</p>
 </div>
 <div class="section" id="the-good-news">
-<h5><span class="section-number">14.5.3.2. </span>The good news<a class="headerlink" href="#the-good-news" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.5.3.2. </span>The good news<a class="headerlink" href="#the-good-news" title="Permalink to this headline">¶</a></h5>
 <p>If you made backups, or if the server had a normal shutdown, you
 likely have a flatfile backup.  You will see a netrhost.db.flat
 in either the 'data' directory or 'prevflat' directory.  That
@@ -4744,15 +5001,15 @@ that the very last line shows something like ** END OF DUMP **.
 That shows you had a successful backup.</p>
 </div>
 <div class="section" id="now-to-restore-your-database">
-<h5><span class="section-number">14.5.3.3. </span>Now, to restore your database?<a class="headerlink" href="#now-to-restore-your-database" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.5.3.3. </span>Now, to restore your database?<a class="headerlink" href="#now-to-restore-your-database" title="Permalink to this headline">¶</a></h5>
 <p>Please refer to the file 'README.DBLOADING'.</p>
 </div>
 </div>
 <div class="section" id="bringing-up-your-mail-database">
-<h4><span class="section-number">14.5.4. </span>Bringing up your mail database<a class="headerlink" href="#bringing-up-your-mail-database" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.5.4. </span>Bringing up your mail database<a class="headerlink" href="#bringing-up-your-mail-database" title="Permalink to this headline">¶</a></h4>
 <p>Your mail db may or may not come up at this point.</p>
 <div class="section" id="if-after-restoring-main-database-your-mail-database-works">
-<h5><span class="section-number">14.5.4.1. </span>If after restoring main database your mail database works<a class="headerlink" href="#if-after-restoring-main-database-your-mail-database-works" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.5.4.1. </span>If after restoring main database your mail database works<a class="headerlink" href="#if-after-restoring-main-database-your-mail-database-works" title="Permalink to this headline">¶</a></h5>
 <p>If your mail database came up and does not show
 'Mail: mail is currently off' then you should be good to go.</p>
 <p>Please issue on the MUSH:</p>
@@ -4766,13 +5023,13 @@ fix up any errors that may exist.</p>
 <p>wmail/lfix loads in the fixes.</p>
 </div>
 <div class="section" id="if-after-restoring-main-database-your-mail-database-does-not-work">
-<h5><span class="section-number">14.5.4.2. </span>If after restoring main database your mail database does not work<a class="headerlink" href="#if-after-restoring-main-database-your-mail-database-does-not-work" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">15.5.4.2. </span>If after restoring main database your mail database does not work<a class="headerlink" href="#if-after-restoring-main-database-your-mail-database-does-not-work" title="Permalink to this headline">¶</a></h5>
 <p>If your mail database is not up and shows 'Mail: mail is currently off' then your mail db is currupt.</p>
 </div>
 </div>
 </div>
 <div class="section" id="dealing-with-a-corrupt-mail-database">
-<h3><span class="section-number">14.6. </span>Dealing with a corrupt mail database<a class="headerlink" href="#dealing-with-a-corrupt-mail-database" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">15.6. </span>Dealing with a corrupt mail database<a class="headerlink" href="#dealing-with-a-corrupt-mail-database" title="Permalink to this headline">¶</a></h3>
 <p>It says when you try to access mail that mail is disabled and/or off.</p>
 <p>Nothing you do can bring it on line.  Well, this is bad, but not horrible.</p>
 <p>The mail db is totally separate from the main game database.  This means
@@ -4781,7 +5038,7 @@ that it in no way damaged or corrupted your main mush database.</p>
 is it hopes that you read ahead of time about how to backup your mush,
 which would include the mail database.</p>
 <div class="section" id="backing-up-your-mail-database">
-<h4><span class="section-number">14.6.1. </span>Backing up your mail database<a class="headerlink" href="#backing-up-your-mail-database" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.6.1. </span>Backing up your mail database<a class="headerlink" href="#backing-up-your-mail-database" title="Permalink to this headline">¶</a></h4>
 <p>You should be making a flatifile dump of mail db daily by running on the MUSH:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">unload</span>
 </pre></div>
@@ -4792,7 +5049,7 @@ latter directory is used in junction to the backup_flat.sh and will always
 house the latest flatfile if not one recently dumped in your data directory.</p>
 </div>
 <div class="section" id="automatically-recovering-your-mail-database">
-<h4><span class="section-number">14.6.2. </span>Automatically recovering your mail database<a class="headerlink" href="#automatically-recovering-your-mail-database" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.6.2. </span>Automatically recovering your mail database<a class="headerlink" href="#automatically-recovering-your-mail-database" title="Permalink to this headline">¶</a></h4>
 <p>If you have a flatfile dump of your mail db, run this command on the MUSH:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">load</span>
 </pre></div>
@@ -4810,7 +5067,7 @@ to sync against nuked players and other changes to the game since the flatfile.<
 <p>If this is a new db that you have, you can skip the fixing.</p>
 </div>
 <div class="section" id="manually-recovering-your-mail-database">
-<h4><span class="section-number">14.6.3. </span>Manually recovering your mail database<a class="headerlink" href="#manually-recovering-your-mail-database" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">15.6.3. </span>Manually recovering your mail database<a class="headerlink" href="#manually-recovering-your-mail-database" title="Permalink to this headline">¶</a></h4>
 <p>To recover your mail manually, you need to delete your mail databases,
 reboot, then reload your mail flatfiles.  If you have no mail flatfiles,
 well, you're going to have to start over with the mail database.  Sorry.</p>
@@ -4846,18 +5103,18 @@ if they exist in your 'prevflat' directory.</p>
 </div>
 </div>
 <span id="document-advanced"></span><div class="section" id="advanced-features">
-<h2><span class="section-number">15. </span>Advanced Features<a class="headerlink" href="#advanced-features" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16. </span>Advanced Features<a class="headerlink" href="#advanced-features" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="adding-hardcoded-modules">
-<h3><span class="section-number">15.1. </span>Adding hardcoded modules<a class="headerlink" href="#adding-hardcoded-modules" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.1. </span>Adding hardcoded modules<a class="headerlink" href="#adding-hardcoded-modules" title="Permalink to this headline">¶</a></h3>
 <p>RhostMUSH does support module writing.</p>
 <div class="section" id="modifying-sourcode-to-add-a-module">
-<h4><span class="section-number">15.1.1. </span>Modifying sourcode to add a module<a class="headerlink" href="#modifying-sourcode-to-add-a-module" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.1.1. </span>Modifying sourcode to add a module<a class="headerlink" href="#modifying-sourcode-to-add-a-module" title="Permalink to this headline">¶</a></h4>
 <p>This requires hooking your changes into local.c, then modifying the Makefile (in the src directory)
 for any new source files that you wish to add.</p>
 <p>Something to be aware of is that all localized data is ran after the system cache subroutine.</p>
 </div>
 <div class="section" id="adding-an-startup-to-make-use-of-modules">
-<h4><span class="section-number">15.1.2. </span>Adding an &#64;startup to make use of modules<a class="headerlink" href="#adding-an-startup-to-make-use-of-modules" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.1.2. </span>Adding an &#64;startup to make use of modules<a class="headerlink" href="#adding-an-startup-to-make-use-of-modules" title="Permalink to this headline">¶</a></h4>
 <p>This means that if your code is depending on &#64;startups, you need to put a delay in the &#64;startup
 so that your local code can be loaded in as modules prior to the &#64;startup execution.</p>
 <p>Something that will not work:</p>
@@ -4871,7 +5128,7 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 <p>That 1 second delay for the queue will give the game engine time to load in your module code.</p>
 </div>
 <div class="section" id="contributing-your-module-back-to-rhost">
-<h4><span class="section-number">15.1.3. </span>Contributing your module back to Rhost<a class="headerlink" href="#contributing-your-module-back-to-rhost" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.1.3. </span>Contributing your module back to Rhost<a class="headerlink" href="#contributing-your-module-back-to-rhost" title="Permalink to this headline">¶</a></h4>
 <p>If you wish your modules to be part of the main Rhost distribution you have two options:</p>
 <ol class="arabic simple">
 <li><p>Attempt to hack the bin/asksource.sh and bin/asksource.blank files.</p></li>
@@ -4880,11 +5137,11 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 </div>
 </div>
 <div class="section" id="reality-levels-setup">
-<h3><span class="section-number">15.2. </span>Reality Levels Setup<a class="headerlink" href="#reality-levels-setup" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.2. </span>Reality Levels Setup<a class="headerlink" href="#reality-levels-setup" title="Permalink to this headline">¶</a></h3>
 <p>Reality levels are a means to forbid (or allow) interaction between objects
 in the same location.</p>
 <div class="section" id="reality-levels-visibility">
-<h4><span class="section-number">15.2.1. </span>Reality Levels Visibility<a class="headerlink" href="#reality-levels-visibility" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.2.1. </span>Reality Levels Visibility<a class="headerlink" href="#reality-levels-visibility" title="Permalink to this headline">¶</a></h4>
 <p>Each object (player, room, exit, thing) has two lists of reality levels.
 An Rx list, which describe what it can see and a Tx list, which describe
 where it can be seen. Those are bitfields. In order for X to see Y a bitwise
@@ -4902,7 +5159,7 @@ parameters.</p>
 match. (See examples below)</p>
 </div>
 <div class="section" id="reality-levels-descriptions">
-<h4><span class="section-number">15.2.2. </span>Reality Levels Descriptions<a class="headerlink" href="#reality-levels-descriptions" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.2.2. </span>Reality Levels Descriptions<a class="headerlink" href="#reality-levels-descriptions" title="Permalink to this headline">¶</a></h4>
 <p>For every reality level defined, you can define an attribute that serves as
 description. If you look at something and match more than one of its
 TxLevels, you'll see all the corresponding descriptions on the target
@@ -4924,7 +5181,7 @@ order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.</p>
 </div>
 <div class="section" id="reality-levels-configuration-parameters">
-<h4><span class="section-number">15.2.3. </span>Reality Levels Configuration parameters<a class="headerlink" href="#reality-levels-configuration-parameters" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.2.3. </span>Reality Levels Configuration parameters<a class="headerlink" href="#reality-levels-configuration-parameters" title="Permalink to this headline">¶</a></h4>
 <p>A few configuration parameters have been introduced to deal with the reality
 levels:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">desc</span> <span class="n">attribute</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
@@ -4963,7 +5220,7 @@ This is an example file only to be added to the mush.conf file Format:</p>
 </div>
 </div>
 <div class="section" id="reality-levels-example-mush-conf">
-<h4><span class="section-number">15.2.4. </span>Reality Levels Example mush.conf<a class="headerlink" href="#reality-levels-example-mush-conf" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.2.4. </span>Reality Levels Example mush.conf<a class="headerlink" href="#reality-levels-example-mush-conf" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="n">Real</span> <span class="mi">1</span>
 <span class="n">reality_level</span> <span class="n">Obf1</span> <span class="mi">2</span>
 <span class="n">reality_level</span> <span class="n">Obf2</span> <span class="mi">4</span>
@@ -4985,7 +5242,7 @@ This is an example file only to be added to the mush.conf file Format:</p>
 </div>
 </div>
 <div class="section" id="reality-levels-commands">
-<h4><span class="section-number">15.2.5. </span>Reality Levels Commands<a class="headerlink" href="#reality-levels-commands" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.2.5. </span>Reality Levels Commands<a class="headerlink" href="#reality-levels-commands" title="Permalink to this headline">¶</a></h4>
 <p>Two wiz-only commands are used to set the reality levels of an object:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@rxlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
 <span class="nd">@txlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
@@ -5002,7 +5259,7 @@ for players).</p>
 </div>
 </div>
 <div class="section" id="functions">
-<h4><span class="section-number">15.2.6. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.2.6. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h4>
 <p>There are five functions that deal with reality levels:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hasrxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="n">hastxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
@@ -5032,7 +5289,7 @@ version checks against the DARK flag.</p>
 </div>
 </div>
 <div class="section" id="example-1-a-simplified-witchcraft-setup">
-<h4><span class="section-number">15.2.7. </span>Example 1: A simplified Witchcraft setup<a class="headerlink" href="#example-1-a-simplified-witchcraft-setup" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.2.7. </span>Example 1: A simplified Witchcraft setup<a class="headerlink" href="#example-1-a-simplified-witchcraft-setup" title="Permalink to this headline">¶</a></h4>
 <p>In Witchcraft, besides the various Gifted classes, characters can be spirits
 There are spirit realms to which the mundane can not travel. Therefore we
 will use 2 reality levels: Real and Ghost. Since some spirits can become
@@ -5137,7 +5394,7 @@ anyway, so a spirit character will have:</p>
 </div>
 </div>
 <div class="section" id="example-2-a-wod-setup">
-<h4><span class="section-number">15.2.8. </span>Example 2: A WoD setup<a class="headerlink" href="#example-2-a-wod-setup" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.2.8. </span>Example 2: A WoD setup<a class="headerlink" href="#example-2-a-wod-setup" title="Permalink to this headline">¶</a></h4>
 <p>The reality levels will be defined like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span>         <span class="n">Real</span> <span class="mi">1</span>
 <span class="n">reality_level</span>         <span class="n">Obf1</span> <span class="mi">2</span>
@@ -5216,7 +5473,7 @@ Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</p>
 </div>
 </div>
 <div class="section" id="example-3-softcode">
-<h4><span class="section-number">15.2.9. </span>Example 3: Softcode<a class="headerlink" href="#example-3-softcode" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.2.9. </span>Example 3: Softcode<a class="headerlink" href="#example-3-softcode" title="Permalink to this headline">¶</a></h4>
 <p>Considering the config directives from example 2 and assuming a function
 getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player's stat from
 the sheet here are softcode examples that implement some of the WoD powers.
@@ -5241,11 +5498,11 @@ In a real game you would have to use some more checks, of course.</p>
 </div>
 </div>
 <div class="section" id="execscript-and-external-programs-and-scripts">
-<h3><span class="section-number">15.3. </span>Execscript and external programs and scripts<a class="headerlink" href="#execscript-and-external-programs-and-scripts" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3. </span>Execscript and external programs and scripts<a class="headerlink" href="#execscript-and-external-programs-and-scripts" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="execscript-variables">
-<h4><span class="section-number">15.3.1. </span>Execscript variables<a class="headerlink" href="#execscript-variables" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.3.1. </span>Execscript variables<a class="headerlink" href="#execscript-variables" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="execscript-built-in-variables">
-<h5><span class="section-number">15.3.1.1. </span>Execscript Built in variables<a class="headerlink" href="#execscript-built-in-variables" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">16.3.1.1. </span>Execscript Built in variables<a class="headerlink" href="#execscript-built-in-variables" title="Permalink to this headline">¶</a></h5>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
@@ -5289,7 +5546,7 @@ This is passed from the mush's EXECSCRIPT_VARS attr</p></td>
 </table>
 </div>
 <div class="section" id="execscript-dynamic-variables">
-<h5><span class="section-number">15.3.1.2. </span>Execscript Dynamic variables<a class="headerlink" href="#execscript-dynamic-variables" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">16.3.1.2. </span>Execscript Dynamic variables<a class="headerlink" href="#execscript-dynamic-variables" title="Permalink to this headline">¶</a></h5>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 37%" />
@@ -5309,7 +5566,7 @@ These are the attributes from EXECSCRIPT_VARS</p></td>
 </table>
 </div>
 <div class="section" id="execscript-register-variables">
-<h5><span class="section-number">15.3.1.3. </span>Execscript Register variables<a class="headerlink" href="#execscript-register-variables" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">16.3.1.3. </span>Execscript Register variables<a class="headerlink" href="#execscript-register-variables" title="Permalink to this headline">¶</a></h5>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
@@ -5336,20 +5593,20 @@ Note: they must be ASCII-7 clean and contain no white spaces</p></td>
 </div>
 </div>
 <div class="section" id="execsript-set-object">
-<h4><span class="section-number">15.3.2. </span>Execsript set object<a class="headerlink" href="#execsript-set-object" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.3.2. </span>Execsript set object<a class="headerlink" href="#execsript-set-object" title="Permalink to this headline">¶</a></h4>
 <p>The script executed with execscript() will read in a file with the same name
 as the script ending in '.set'.  This is a loader object that will set attributes
 and registers back into the mush that you wish to pass from the script. The
 fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 <div class="section" id="execscript-set-object-field-format">
-<h5><span class="section-number">15.3.2.1. </span>Execscript set object field format<a class="headerlink" href="#execscript-set-object-field-format" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">16.3.2.1. </span>Execscript set object field format<a class="headerlink" href="#execscript-set-object-field-format" title="Permalink to this headline">¶</a></h5>
 <div class="section" id="execscript-set-object-dynamic-variables">
-<h6><span class="section-number">15.3.2.1.1. </span>Execscript set object Dynamic variables<a class="headerlink" href="#execscript-set-object-dynamic-variables" title="Permalink to this headline">¶</a></h6>
+<h6><span class="section-number">16.3.2.1.1. </span>Execscript set object Dynamic variables<a class="headerlink" href="#execscript-set-object-dynamic-variables" title="Permalink to this headline">¶</a></h6>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VARNAME</span>        <span class="n">OWNER</span>        <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="execscript-set-object-dynamic-variables-examples">
-<h7><span class="section-number">15.3.2.1.1.1. </span>Execscript set object Dynamic variables Examples<a class="headerlink" href="#execscript-set-object-dynamic-variables-examples" title="Permalink to this headline">¶</a></h7>
+<h7><span class="section-number">16.3.2.1.1.1. </span>Execscript set object Dynamic variables Examples<a class="headerlink" href="#execscript-set-object-dynamic-variables-examples" title="Permalink to this headline">¶</a></h7>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SEX</span> <span class="c1">#123 Male</span>
 <span class="n">DESC</span> <span class="c1">#123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.</span>
 <span class="n">RED</span> <span class="c1">#123 This is the color %ch%crred%cn.</span>
@@ -5363,12 +5620,12 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 </div>
 </div>
 <div class="section" id="execscript-set-object-register-variables">
-<h6><span class="section-number">15.3.2.1.2. </span>Execscript set object Register variables<a class="headerlink" href="#execscript-set-object-register-variables" title="Permalink to this headline">¶</a></h6>
+<h6><span class="section-number">16.3.2.1.2. </span>Execscript set object Register variables<a class="headerlink" href="#execscript-set-object-register-variables" title="Permalink to this headline">¶</a></h6>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REGISTER</span>       <span class="n">Q</span>            <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="execscript-set-object-register-variables-examples">
-<h7><span class="section-number">15.3.2.1.2.1. </span>Execscript set object Register variables Examples<a class="headerlink" href="#execscript-set-object-register-variables-examples" title="Permalink to this headline">¶</a></h7>
+<h7><span class="section-number">16.3.2.1.2.1. </span>Execscript set object Register variables Examples<a class="headerlink" href="#execscript-set-object-register-variables-examples" title="Permalink to this headline">¶</a></h7>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The last exammple clears register 0</p>
@@ -5384,7 +5641,7 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 </div>
 </div>
 <div class="section" id="execscript-example-bash-script">
-<h4><span class="section-number">15.3.3. </span>Execscript Example bash script<a class="headerlink" href="#execscript-example-bash-script" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.3.3. </span>Execscript Example bash script<a class="headerlink" href="#execscript-example-bash-script" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s2">&quot;This was called by player </span><span class="si">${</span><span class="nv">MUSH_PLAYER</span><span class="si">}</span><span class="s2"> that is owned by </span><span class="si">${</span><span class="nv">MUSH_OWNER</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="nb">echo</span> <span class="s2">&quot;Displaying Registers:&quot;</span>
@@ -5402,7 +5659,7 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 </div>
 </div>
 <div class="section" id="exescript-notes-and-warnings">
-<h4><span class="section-number">15.3.4. </span>Exescript Notes and warnings<a class="headerlink" href="#exescript-notes-and-warnings" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.3.4. </span>Exescript Notes and warnings<a class="headerlink" href="#exescript-notes-and-warnings" title="Permalink to this headline">¶</a></h4>
 <p>While MUSHL_VARS are sanitized on what is allowable as a mush variable, this
 is not necessarilly sanitized on what the calling script can fetch as a valid
 variable.  Of note, you can not set environment variables that contain an
@@ -5412,7 +5669,7 @@ This is EXECSCRIPT_VARS on the mush itself, that is the attribute set
 on the target that contains the execscript() that is being executed.</p>
 </div>
 <div class="section" id="scripts-to-be-used-with-execscript">
-<h4><span class="section-number">15.3.5. </span>Scripts to be used with execscript<a class="headerlink" href="#scripts-to-be-used-with-execscript" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.3.5. </span>Scripts to be used with execscript<a class="headerlink" href="#scripts-to-be-used-with-execscript" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">account</span><span class="o">/</span>                       <span class="o">--</span> <span class="n">Directory</span> <span class="k">for</span> <span class="n">execscripts</span> <span class="n">relating</span> <span class="n">to</span> <span class="n">account</span> <span class="n">creation</span>
 <span class="n">compile39</span><span class="o">.</span><span class="n">sh</span>                   <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span> <span class="mf">3.9</span>
 <span class="nb">compile</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span>
@@ -5448,11 +5705,11 @@ on the target that contains the execscript() that is being executed.</p>
 </div>
 </div>
 <div class="section" id="using-printf-for-advanced-text-output">
-<h3><span class="section-number">15.4. </span>Using printf() for advanced text output<a class="headerlink" href="#using-printf-for-advanced-text-output" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.4. </span>Using printf() for advanced text output<a class="headerlink" href="#using-printf-for-advanced-text-output" title="Permalink to this headline">¶</a></h3>
 <p>The function printf() in Rhost can be used to greatly reduce coding in efforts for outputs,
 screens and data display.  It can automatically center, justify and wrap the text parameters given to it.</p>
 <div class="section" id="printf-example-one">
-<h4><span class="section-number">15.4.1. </span>Printf Example one<a class="headerlink" href="#printf-example-one" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.4.1. </span>Printf Example one<a class="headerlink" href="#printf-example-one" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf(|$-12s|$12s|$^12s$&amp;14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
 
 |a b c       |       d e f|   g h i    |0 1 2 3 4 5 |j     k    l|
@@ -5464,7 +5721,7 @@ screens and data display.  It can automatically center, justify and wrap the tex
 </div>
 </div>
 <div class="section" id="printf-example-two">
-<h4><span class="section-number">15.4.2. </span>Printf Example two<a class="headerlink" href="#printf-example-two" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.4.2. </span>Printf Example two<a class="headerlink" href="#printf-example-two" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
 iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
 iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
@@ -5481,7 +5738,7 @@ iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)
 </div>
 </div>
 <div class="section" id="printf-example-three">
-<h4><span class="section-number">15.4.3. </span>Printf Example three<a class="headerlink" href="#printf-example-three" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.4.3. </span>Printf Example three<a class="headerlink" href="#printf-example-three" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit [printf($-10|&quot;&#39;s$-60|&quot;s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
 this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!
 
@@ -5500,7 +5757,7 @@ blah blah blah blah blah blah blah                                    END!
 </div>
 </div>
 <div class="section" id="format-for-image-files">
-<h2><span class="section-number">16. </span>Format for image files<a class="headerlink" href="#format-for-image-files" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17. </span>Format for image files<a class="headerlink" href="#format-for-image-files" title="Permalink to this headline">¶</a></h2>
 <p>The image format goes like this:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -5680,7 +5937,7 @@ $6$xy$xy
 </pre></div>
 </div>
 <div class="section" id="help-key-indexes-for-the-values">
-<h3><span class="section-number">16.1. </span>HELP key indexes for the values<a class="headerlink" href="#help-key-indexes-for-the-values" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">17.1. </span>HELP key indexes for the values<a class="headerlink" href="#help-key-indexes-for-the-values" title="Permalink to this headline">¶</a></h3>
 <p>FLAGS: The following flags are to be used.  They are BITWISE masks that you
 need to add together for the values that you apply</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* First word of flags */</span>
@@ -6020,12 +6277,12 @@ that there are no more zones to add.</p>
 </div>
 </div>
 <span id="document-install/windows"></span><span class="target" id="install-windows"></span><div class="section" id="requirements-if-using-windows">
-<span id="index-0"></span><h2><span class="section-number">17. </span>Requirements if Using Windows<a class="headerlink" href="#requirements-if-using-windows" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h2><span class="section-number">18. </span>Requirements if Using Windows<a class="headerlink" href="#requirements-if-using-windows" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>(BETA ONLY) cygwin under Windows.  It requires the entire base development set and Requirements below.</p></li>
 </ul>
 <div class="section" id="installing-on-windows-10-with-bash">
-<h3><span class="section-number">17.1. </span>Installing on Windows 10 with BASH<a class="headerlink" href="#installing-on-windows-10-with-bash" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.1. </span>Installing on Windows 10 with BASH<a class="headerlink" href="#installing-on-windows-10-with-bash" title="Permalink to this headline">¶</a></h3>
 <p>Rhost can be compiled and run under the new Bash on Ubuntu on Windows.
 This has been tested with the Preview build 14342.</p>
 <ul>
@@ -6051,7 +6308,7 @@ This has been tested with the Preview build 14342.</p>
 </ul>
 </div>
 <div class="section" id="installing-on-windows-with-cygwin">
-<h3><span class="section-number">17.2. </span>Installing on Windows with Cygwin<a class="headerlink" href="#installing-on-windows-with-cygwin" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.2. </span>Installing on Windows with Cygwin<a class="headerlink" href="#installing-on-windows-with-cygwin" title="Permalink to this headline">¶</a></h3>
 <p>Rhost does work under windows using the cygwin package.</p>
 <ul>
 <li><p>When you do install cygwin, the following packages must be added:</p>
@@ -6077,19 +6334,19 @@ This has been tested with the Preview build 14342.</p>
 </ul>
 </div>
 <div class="section" id="startig-rhostmush-on-windows">
-<h3><span class="section-number">17.3. </span>Startig RhostMUSH on Windows<a class="headerlink" href="#startig-rhostmush-on-windows" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">18.3. </span>Startig RhostMUSH on Windows<a class="headerlink" href="#startig-rhostmush-on-windows" title="Permalink to this headline">¶</a></h3>
 <p>When you issue Startmush, you must pass it the -cyg option.</p>
 </div>
 </div>
 <span id="document-legacy"></span><div class="section" id="upgrading-a-legacy-rhostmush-installation">
-<h2><span class="section-number">18. </span>Upgrading a Legacy RhostMUSH Installation<a class="headerlink" href="#upgrading-a-legacy-rhostmush-installation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">19. </span>Upgrading a Legacy RhostMUSH Installation<a class="headerlink" href="#upgrading-a-legacy-rhostmush-installation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="converting-database-betwen-gdbm-and-qdbm">
-<h3><span class="section-number">18.1. </span>Converting database betwen GDBM and QDBM<a class="headerlink" href="#converting-database-betwen-gdbm-and-qdbm" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">19.1. </span>Converting database betwen GDBM and QDBM<a class="headerlink" href="#converting-database-betwen-gdbm-and-qdbm" title="Permalink to this headline">¶</a></h3>
 <p>Ok, if you plan to recompile your game that is using GDBM to QDBM, or visa versa
 some bad news.</p>
 <p>The databases are NOT COMPATIBLE to each other, at least in the binary form.</p>
 <div class="section" id="downgrading-qdbm-to-gdbm">
-<h4><span class="section-number">18.1.1. </span>Downgrading QDBM to GDBM<a class="headerlink" href="#downgrading-qdbm-to-gdbm" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">19.1.1. </span>Downgrading QDBM to GDBM<a class="headerlink" href="#downgrading-qdbm-to-gdbm" title="Permalink to this headline">¶</a></h4>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>I would NEVER change from QDBM back to GDBM, but if you're set on it these steps:</p>
@@ -6107,12 +6364,12 @@ the following</p>
 </ol>
 </div>
 <div class="section" id="upgradging-gdbm-to-qdbm">
-<h4><span class="section-number">18.1.2. </span>Upgradging GDBM to QDBM<a class="headerlink" href="#upgradging-gdbm-to-qdbm" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">19.1.2. </span>Upgradging GDBM to QDBM<a class="headerlink" href="#upgradging-gdbm-to-qdbm" title="Permalink to this headline">¶</a></h4>
 <p>Now, if you've kept reading and plan to convert your GDBM database to QDBM great news!
 It's more stable, it's faster, and lets you have far more flexibility.</p>
 <p>So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.</p>
 <div class="section" id="while-logged-in-to-your-mush-issue-the-following-commands">
-<h5><span class="section-number">18.1.2.1. </span>While logged in to your mush, issue the following commands<a class="headerlink" href="#while-logged-in-to-your-mush-issue-the-following-commands" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">19.1.2.1. </span>While logged in to your mush, issue the following commands<a class="headerlink" href="#while-logged-in-to-your-mush-issue-the-following-commands" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>&#64;dump/flat    -- This will make a flatfile dump of your MUSH database</p></li>
@@ -6123,7 +6380,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </div></blockquote>
 </div>
 <div class="section" id="verify-the-files-exist">
-<h5><span class="section-number">18.1.2.2. </span>Verify the files exist<a class="headerlink" href="#verify-the-files-exist" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">19.1.2.2. </span>Verify the files exist<a class="headerlink" href="#verify-the-files-exist" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>Server/game/data/netrhost.db.flat</p></li>
@@ -6135,11 +6392,11 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </div></blockquote>
 </div>
 <div class="section" id="shutdown-the-mush">
-<h5><span class="section-number">18.1.2.3. </span>Shutdown the MUSH<a class="headerlink" href="#shutdown-the-mush" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">19.1.2.3. </span>Shutdown the MUSH<a class="headerlink" href="#shutdown-the-mush" title="Permalink to this headline">¶</a></h5>
 <p>&#64;shutdown your mush</p>
 </div>
 <div class="section" id="from-the-server-directory">
-<h5><span class="section-number">18.1.2.4. </span>From the Server directory<a class="headerlink" href="#from-the-server-directory" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">19.1.2.4. </span>From the Server directory<a class="headerlink" href="#from-the-server-directory" title="Permalink to this headline">¶</a></h5>
 <ol class="arabic simple">
 <li><p>make clean</p></li>
 <li><p>make confsource</p></li>
@@ -6189,7 +6446,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </ol>
 </div>
 <div class="section" id="from-the-server-game-directory">
-<h5><span class="section-number">18.1.2.5. </span>From the Server/game directory<a class="headerlink" href="#from-the-server-game-directory" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">19.1.2.5. </span>From the Server/game directory<a class="headerlink" href="#from-the-server-game-directory" title="Permalink to this headline">¶</a></h5>
 <ol class="arabic">
 <li><p>Load the database:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">db_load</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">gdbm</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">flat</span> <span class="n">data</span><span class="o">/</span><span class="n">netrhost</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">new</span>
@@ -6204,7 +6461,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </ol>
 </div>
 <div class="section" id="while-logged-into-the-mush-issue-the-following-commands">
-<h5><span class="section-number">18.1.2.6. </span>While logged into the mush issue the following commands<a class="headerlink" href="#while-logged-into-the-mush-issue-the-following-commands" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">19.1.2.6. </span>While logged into the mush issue the following commands<a class="headerlink" href="#while-logged-into-the-mush-issue-the-following-commands" title="Permalink to this headline">¶</a></h5>
 <ol class="arabic">
 <li><p>Load in the mail database:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmail</span><span class="o">/</span><span class="n">load</span>
@@ -6224,7 +6481,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </ol>
 </div>
 <div class="section" id="verify-that-you-have-qdbm-running-and-your-valid-values">
-<h5><span class="section-number">18.1.2.7. </span>Verify that you have QDBM running and your valid values<a class="headerlink" href="#verify-that-you-have-qdbm-running-and-your-valid-values" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">19.1.2.7. </span>Verify that you have QDBM running and your valid values<a class="headerlink" href="#verify-that-you-have-qdbm-running-and-your-valid-values" title="Permalink to this headline">¶</a></h5>
 <ol class="arabic simple">
 <li><p>&#64;list options system#.  &#64;list options (spammy)</p></li>
 </ol>
@@ -6232,7 +6489,7 @@ It's more stable, it's faster, and lets you have far more flexibility.</p>
 </div>
 </div>
 <div class="section" id="updating-rhostmush-prior-to-3-9-5p2">
-<h3><span class="section-number">18.2. </span>Updating RhostMUSH prior to 3.9.5p2<a class="headerlink" href="#updating-rhostmush-prior-to-3-9-5p2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">19.2. </span>Updating RhostMUSH prior to 3.9.5p2<a class="headerlink" href="#updating-rhostmush-prior-to-3-9-5p2" title="Permalink to this headline">¶</a></h3>
 <p>Ok.</p>
 <p>So you're running an old RhostMUSH.</p>
 <p>One prior to 3.9.5p2 and want to take advantage of the new
@@ -6351,7 +6608,7 @@ of all your flatfiles.  Issue:</p>
 </ol>
 </div>
 <div class="section" id="adding-mysql-to-rhostmush-older-than-3-9-5p2">
-<h3><span class="section-number">18.3. </span>Adding MySQL to RhostMUSH older than 3.9.5p2<a class="headerlink" href="#adding-mysql-to-rhostmush-older-than-3-9-5p2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">19.3. </span>Adding MySQL to RhostMUSH older than 3.9.5p2<a class="headerlink" href="#adding-mysql-to-rhostmush-older-than-3-9-5p2" title="Permalink to this headline">¶</a></h3>
 <p>MySQL is now native in RhostMUSH as of 3.9.5p2.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -6425,7 +6682,7 @@ builder script to build in the mysql changes.</p></li>
 </div>
 </div>
 <span id="document-comparison/flags"></span><span class="target" id="comparison-flags"></span><div class="section" id="comparison-of-flags">
-<span id="index-0"></span><h2><span class="section-number">19. </span>Comparison of Flags<a class="headerlink" href="#comparison-of-flags" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h2><span class="section-number">20. </span>Comparison of Flags<a class="headerlink" href="#comparison-of-flags" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default" id="id1">
 <caption><span class="caption-text">Comparison of Flags</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -6684,7 +6941,7 @@ builder script to build in the mysql changes.</p></li>
 </table>
 </div>
 <span id="document-comparison/powers"></span><span class="target" id="comparison-powers"></span><div class="section" id="comparison-of-powers">
-<span id="index-0"></span><h2><span class="section-number">20. </span>Comparison of powers<a class="headerlink" href="#comparison-of-powers" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h2><span class="section-number">21. </span>Comparison of powers<a class="headerlink" href="#comparison-of-powers" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>announce              Can use the @wall command.
 Rhost Equiv: - FREE_WALL (@power)
 
@@ -6782,7 +7039,7 @@ Rhost Equiv: MONITOR (@toggle)
 </div>
 </div>
 <span id="document-historical/nda"></span><span class="target" id="historical-nda"></span><div class="section" id="historical-non-disclosure-agreement">
-<span id="index-0"></span><h2><span class="section-number">21. </span>Historical Non-Disclosure Agreement<a class="headerlink" href="#historical-non-disclosure-agreement" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h2><span class="section-number">22. </span>Historical Non-Disclosure Agreement<a class="headerlink" href="#historical-non-disclosure-agreement" title="Permalink to this headline">¶</a></h2>
 <p>The following NDA comes from the time when RhostMUSH was not publially
 available. It is preserved here for historical reasons. We are suckers for
 looking back at things. :)</p>
@@ -6811,7 +7068,7 @@ rules are kept.</p>
 </div>
 </div>
 <span id="document-meta/copyright"></span><span class="target" id="copyright"></span><div class="section" id="index-0">
-<span id="id1"></span><h2><span class="section-number">22. </span>Copyright<a class="headerlink" href="#index-0" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2><span class="section-number">23. </span>Copyright<a class="headerlink" href="#index-0" title="Permalink to this headline">¶</a></h2>
 <p>Copyright© 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012,
 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021</p>
@@ -6828,33 +7085,18 @@ the original writers of the code in writing.</p>
 <p>This copyright information may not be changed, altered, or omitted.</p>
 </div>
 <span id="document-help"></span><span class="target" id="txtfiles-help"></span><div class="section" id="rhostmush-internal-help-files">
-<span id="index-0"></span><h2><span class="section-number">23. </span>RhostMUSH Internal Help Files<a class="headerlink" href="#rhostmush-internal-help-files" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h2><span class="section-number">24. </span>RhostMUSH Internal Help Files<a class="headerlink" href="#rhostmush-internal-help-files" title="Permalink to this headline">¶</a></h2>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<style type="text/css">
-code {
-	white-space: pre;
-}
-
-#help-toc,
-	.help-topic,
-	.help-navigation {
-	width: 60em;
-}
-
-#help-toc ul {
-	columns: 3;
-}
-</style>
 <title>RhostMUSH Help File [HTML Version]</title>
 </head>
 
 <body>
 <h1>RhostMUSH Help File [HTML Version]</h1>
 
-Generated: Fri Apr 23 20:16:04 2021
+Generated: Fri Apr 23 22:02:26 2021
 
 <div id="help-toc">
 	<h2>Topic Index</h2>
@@ -67901,12 +68143,28 @@ Generated: Fri Apr 23 20:16:04 2021
 </html>
 </div>
 <span id="document-wizhelp"></span><span class="target" id="txtfiles-wizhelp"></span><div class="section" id="rhostmush-internal-wizhelp-files">
-<span id="index-0"></span><h2><span class="section-number">24. </span>RhostMUSH Internal WizHelp Files<a class="headerlink" href="#rhostmush-internal-wizhelp-files" title="Permalink to this headline">¶</a></h2>
+<span id="index-0"></span><h2><span class="section-number">25. </span>RhostMUSH Internal WizHelp Files<a class="headerlink" href="#rhostmush-internal-wizhelp-files" title="Permalink to this headline">¶</a></h2>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <style type="text/css">
+body {
+	background: #000000;
+	color: #ffffff;
+	font-family: monospace;
+}
+
+a, a:hover, a:visited {
+	color: #ffff00;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	}
+
 code {
 	white-space: pre;
 }
@@ -67914,7 +68172,7 @@ code {
 #help-toc,
 	.help-topic,
 	.help-navigation {
-	width: 60em;
+	width: 80em;
 }
 
 #help-toc ul {
@@ -67927,7 +68185,7 @@ code {
 <body>
 <h1>RhostMUSH Help File [HTML Version]</h1>
 
-Generated: Fri Apr 23 20:15:59 2021
+Generated: Fri Apr 23 20:49:23 2021
 
 <div id="help-toc">
 	<h2>Topic Index</h2>
@@ -98656,60 +98914,61 @@ Generated: Fri Apr 23 20:15:59 2021
 <li class="toctree-l2"><a class="reference internal" href="index.html#methods-to-block-anonymous-connections-and-the-pros-and-cons-of-doing-so">11.3. Methods to block anonymous connections and the pros and cons of doing so</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-utilities/ssl">12. Setting up an SSL tunnel for secure connection options</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index.html#quickstart-for-ssl-setup-with-stunnel">12.1. Quickstart for SSL setup with stunnel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#detailed-ssl-setup-with-stunnel">12.2. Detailed SSL setup with stunnel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-attack">12. What to Do if your MUSH is Attacked</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-utilities/ssl">13. Setting up an SSL tunnel for secure connection options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#quickstart-for-ssl-setup-with-stunnel">13.1. Quickstart for SSL setup with stunnel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#detailed-ssl-setup-with-stunnel">13.2. Detailed SSL setup with stunnel</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-maintenance">13. Maintenance</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index.html#note-about-patching">13.1. Note about Patching</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#daily-backups-for-rhostmush">13.2. Daily Backups for RhostMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#signals-and-why-you-need-them-for-control">13.3. Signals and why you need them for control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#shutting-down-rhostmush-gracefully">13.4. Shutting down RhostMUSH gracefully</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#network-port-redirector">13.5. Network Port redirector</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#using-the-built-in-cron-system-for-periodically-running-commands">13.6. Using the built-in cron system for periodically running commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#the-following-scripts-are-used-in-the-game-directory">13.7. The following scripts are used in the game directory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#textfiles-for-rhostmush">13.8. Textfiles for RhostMUSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-maintenance">14. Maintenance</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#note-about-patching">14.1. Note about Patching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#daily-backups-for-rhostmush">14.2. Daily Backups for RhostMUSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#signals-and-why-you-need-them-for-control">14.3. Signals and why you need them for control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#shutting-down-rhostmush-gracefully">14.4. Shutting down RhostMUSH gracefully</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#network-port-redirector">14.5. Network Port redirector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#using-the-built-in-cron-system-for-periodically-running-commands">14.6. Using the built-in cron system for periodically running commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#the-following-scripts-are-used-in-the-game-directory">14.7. The following scripts are used in the game directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#textfiles-for-rhostmush">14.8. Textfiles for RhostMUSH</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-troubleshooting">14. Troubleshooting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index.html#reporting-bugs-or-getting-help">14.1. Reporting bugs or getting help</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#stack-limit-and-debugging">14.2. Stack limit and debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#how-to-reset-the-password-for-1">14.3. How to reset the password for #1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#troubleshooting-difficulties-compiling-rhostmush">14.4. Troubleshooting difficulties compiling RhostMUSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#dealing-with-db-corruption">14.5. Dealing with DB Corruption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#dealing-with-a-corrupt-mail-database">14.6. Dealing with a corrupt mail database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-troubleshooting">15. Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reporting-bugs-or-getting-help">15.1. Reporting bugs or getting help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#stack-limit-and-debugging">15.2. Stack limit and debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#how-to-reset-the-password-for-1">15.3. How to reset the password for #1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#troubleshooting-difficulties-compiling-rhostmush">15.4. Troubleshooting difficulties compiling RhostMUSH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#dealing-with-db-corruption">15.5. Dealing with DB Corruption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#dealing-with-a-corrupt-mail-database">15.6. Dealing with a corrupt mail database</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-advanced">15. Advanced Features</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index.html#adding-hardcoded-modules">15.1. Adding hardcoded modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#reality-levels-setup">15.2. Reality Levels Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#execscript-and-external-programs-and-scripts">15.3. Execscript and external programs and scripts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#using-printf-for-advanced-text-output">15.4. Using printf() for advanced text output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-advanced">16. Advanced Features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#adding-hardcoded-modules">16.1. Adding hardcoded modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#reality-levels-setup">16.2. Reality Levels Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#execscript-and-external-programs-and-scripts">16.3. Execscript and external programs and scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#using-printf-for-advanced-text-output">16.4. Using printf() for advanced text output</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#format-for-image-files">16. Format for image files</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index.html#help-key-indexes-for-the-values">16.1. HELP key indexes for the values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#format-for-image-files">17. Format for image files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#help-key-indexes-for-the-values">17.1. HELP key indexes for the values</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-install/windows">17. Requirements if Using Windows</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index.html#installing-on-windows-10-with-bash">17.1. Installing on Windows 10 with BASH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#installing-on-windows-with-cygwin">17.2. Installing on Windows with Cygwin</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#startig-rhostmush-on-windows">17.3. Startig RhostMUSH on Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-install/windows">18. Requirements if Using Windows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#installing-on-windows-10-with-bash">18.1. Installing on Windows 10 with BASH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#installing-on-windows-with-cygwin">18.2. Installing on Windows with Cygwin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#startig-rhostmush-on-windows">18.3. Startig RhostMUSH on Windows</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-legacy">18. Upgrading a Legacy RhostMUSH Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="index.html#converting-database-betwen-gdbm-and-qdbm">18.1. Converting database betwen GDBM and QDBM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#updating-rhostmush-prior-to-3-9-5p2">18.2. Updating RhostMUSH prior to 3.9.5p2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#adding-mysql-to-rhostmush-older-than-3-9-5p2">18.3. Adding MySQL to RhostMUSH older than 3.9.5p2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-legacy">19. Upgrading a Legacy RhostMUSH Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="index.html#converting-database-betwen-gdbm-and-qdbm">19.1. Converting database betwen GDBM and QDBM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#updating-rhostmush-prior-to-3-9-5p2">19.2. Updating RhostMUSH prior to 3.9.5p2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#adding-mysql-to-rhostmush-older-than-3-9-5p2">19.3. Adding MySQL to RhostMUSH older than 3.9.5p2</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-comparison/flags">19. Comparison of Flags</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-comparison/powers">20. Comparison of powers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-historical/nda">21. Historical Non-Disclosure Agreement</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-meta/copyright">22. Copyright</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-help">23. RhostMUSH Internal Help Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="index.html#document-wizhelp">24. RhostMUSH Internal WizHelp Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-comparison/flags">20. Comparison of Flags</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-comparison/powers">21. Comparison of powers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-historical/nda">22. Historical Non-Disclosure Agreement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-meta/copyright">23. Copyright</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-help">24. RhostMUSH Internal Help Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-wizhelp">25. RhostMUSH Internal WizHelp Files</a></li>
 </ul>
 
         </div>
@@ -98719,7 +98978,7 @@ Generated: Fri Apr 23 20:15:59 2021
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, wstarter.
-      Last updated on Apr 23, 2021.
+      Last updated on May 13, 2021.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
     </div>
   </body>

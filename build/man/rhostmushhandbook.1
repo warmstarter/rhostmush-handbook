@@ -1,6 +1,6 @@
 .\" Man page generated from reStructuredText.
 .
-.TH "RHOSTMUSHHANDBOOK" "1" "Apr 23, 2021" "0.03a" "RhostMUSH Handbook"
+.TH "RHOSTMUSHHANDBOOK" "1" "May 13, 2021" "0.03a" "RhostMUSH Handbook"
 .SH NAME
 rhostmushhandbook \- RhostMUSH Handbook 
 .
@@ -4983,6 +4983,417 @@ similar encapsulated network services.  However, this option has
 several settings from just monitoring/alerting of possible proxies
 to downright forbidding them.  If you\(aqre being actively attacked,
 it may be worth considering adding this to add additional protection.
+.UNINDENT
+.UNINDENT
+.SH WHAT TO DO IF YOUR MUSH IS ATTACKED
+.sp
+RhostMUSH is an combination of, well, everything. And because of the flexibility and customizations, can be daunting, but here we go:
+.sp
+Rhost allows two ways for site restrictions.
+### Site Restrictions:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@admin PARAM=SITE IP
+@admin PARAM2=WILDCARDHOST
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+NOTE: Since Rhost 3.2.4p13 Rhost allows CIDR notation (/24 instead of 255.255.255.0)
+.sp
+#### The first method:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@admin forbid_site=12.12.20.0 255.255.255.0
+@admin forbid_site=12.12.20.0 255.255.255.0 3
+@admin forbid_site=12.12.20.0 /24 3
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+The first example hardforbids the site from connecting.
+.sp
+The second example forbids the site from connecting after 3 connects have already been allowed. This allows connections but stops spamming.
+.sp
+Both options are available for all site parameters.
+.sp
+> Site related config parameters:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+forbid_site \-\- forbid site from connecting
+register_site \-\- disallow player creation from site (set to 0.0.0.0 0.0.0.0 to disable player creation entirely)
+suspect_site \-\- set site suspect
+noguest_site \-\- disallow guest from connecting.
+noauth_site \-\- disallow AUTH IDENT lookups
+noautoreg_site \-\- disallow site from auto\-registration on connect screen
+passproxy_site \-\- allow IP to bypass auto\-proxy blocking
+nodns_site \-\- don\(aqt do DNS/RDNS lookups
+forbidapi_site \-\- don\(aqt allow API connections from site
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+### Second method we have: (wildcards optional):
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@admin forbid_host=*.buttclown.com *.bob.com !*.foo.com
+@admin forbid_host=*.buttclown.com|3
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+First example blocks wildcard buttclown.com, bob.com, and removes foo.com
+.sp
+Second example adds buttclown.com and forbids after 3 connections.
+.sp
+> host related config parameters:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+tor_localhost \-\- the hosting server that will monitor and block TOR connections
+noautoreg_host \-\- the hostname for blocking autoregistration
+passproxy_host \-\- the hostname to bypass proxy blocking
+validate_host \-\- disallow email from autoregistration
+forbidapi_host \-\- hostname to forbid api
+mysql_host \-\- hostname for the MySQL server
+register_host \-\- hostname to stop player creation
+forbid_host \-\- hostname to stop connections
+suspect_host \-\- hostname to set suspect
+noguest_host \-\- stop guests from connection
+nobroadcast_host \-\- stop site monitor chatter for site (still logs)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+### Special Site Restrictions
+.sp
+> The following specific other options are useful for site restrictions:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@goodsite \-\- attribute to set on target player to specify what wildcard IP\(aqs \-are\- allowed to connect from (IP only, no hostname)
+@badsite \-\- attribute to set on target to specify what wildcard IP\(aqs are not allowed to connect from (IP only, no hostname)
+NOCONNECT \-\- flag to set on player to stop connections
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+> Examples:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@goodsite #1=127.0.0.1
+@badsite *twink=12.12.20.*
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+# Config Parameters
+.sp
+> Example of issuing ingame:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@admin function_invocation_limit=25000
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+> Example in netrhost.conf file:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+function_invocation_limit 2500
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+### Suggested config parameters:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+authenticate \-\- toggle to specify authentication (AUTH) lookups
+max_players \-\- max players allowed to connect to the mush at any time. The default for this is 40 less than the current maximum allowed based on server specifications to avoid DoS/DDoS. This ceiling is impossible to go past.
+cpu_secure_lvl \-\- define how the mush will treat those who hit the CPU limit. 0 is just stop 1 is halt the owner, 2 sets FUBAR, 3 sets NOCONNECT and boots, 4 does all of 3 and sets register, 5 does all of 3 and sets forbid
+cpuintervalchk CPU load before engaging CPU protection (default 5% system load)
+cputimechk CPU time in seconds before CPU protection (default 5 seconds)
+heavy_cpu_max (default 50) heavy cpu intensive features are auto\-tagged this for additional cpu protection. This is how many times it can be called per \(aqcommand\(aq
+max_cpu_cycles (default 3) number of times a target can hit the CPU alert before restrictive measures via cpu_secure_lvl is enacted
+max_lastsite_cnt (default 20) number of connections from a site allowed a minute
+min_con_attempt (default 60) seconds to check for max_lastsite_cnt
+lastsite_paranoia (0\-3) sets restrictive level to use if max_lastsite_cnt is reached. 0 is take no action. 3 is forbid
+max_sitecons \-\- (default 50) absolute maximum number of connections a specific site can have online at any time.
+max_pcreate_lim \-\- number of connect creates allowed per minute
+max_pcreate_time \-\- time allotted between pcreate lim checks
+pcreate_paranoia \-\- (0\-3) sets restrictive level to use if max_pcreate_lim is reached.
+spam_limit \-\- maximum number of commands allowed by a player per minute if set SPAMMONITOR (default 60)
+player_queue_limit \-\- maximum queues allowed per player at any time (default 100)
+wizard_queue_limit \-\- maximum queues allowed for a wizard at any time (default 1000)
+function_invocation_limit \-\- (default 2500) maximum functions allowed per command
+function_recursion_limit \-\- (default 50) maximum number of times a function can call itself.
+secure_functions \-\- switches internal permissions of old\-processing functions to be more secure, but breaks backward compatibility
+fascist_teleport \-\- players can\(aqt teleport out of anything they don\(aqt control or isn\(aqt set JUMP_OK
+restrict_home \-\- lock down the \(aqhome\(aq command to specific bitlevel
+restrict_home2 \-\- toggle enable/disable \(aqhome\(aq from those set NO_CODE
+restrict_sidefx \-\- specify what bitlevel SIDEEFFECT functions will work
+sideeffects \-\- specify what sideeffects are allowed
+sidefx_maxcalls \-\- how many sideeffects are allowed per command
+max_vattr_limit \-\- maximum unique user\-attributes a player can create for his lifetime
+wizmax_vattr_limit \-\- maximum unique user\-attributes a wizard can create for his lifetime
+vlimit \-\- maximum attributes allowed per object
+wildmatch_limit \-\- maximum number of wildmatches allowed per command
+lock_recursion_limit \-\- maximum lock recursion per command
+notify_recursion_limit \-\- maximum notify\(aqs allowed (internal notify call)
+nonindxtxt_maxlines \-\- maximum number of lines allowed to be read from @log
+max_percentsubs \-\- maximum percent substitutions allowed per command
+max_dest_limit \-\- maximum number of items that can be @destroyed by a player for a lifetime
+wizmax_dest_limit \-\- maximum number of items that can be @destroyed by a wizard for a lifetime
+safer_passwords \-\- enforce strict @passwords
+newpass_god \-\- allow newpasswording #1
+nospam_connect \-\- consolidates logs on people who attempt to keep trying to connect while forbidden
+examine_restrictive \-\- lockdown who can examine/@decompile
+ahear_maxtime \-\- maximum ceiling in seconds an @ahear is allowed to process
+ahear_maxcnt \-\- maximum recursions @hears are allowed
+cluster_cap \-\- ceiling on the number of cluster members allowed
+cluster_func_cap \-\- recursion ceiling on the cluster function handler
+includecnt \-\- number of times @include is allowed per command set
+includenest \-\- number of recursions @include is allowed
+lfunction_max \-\- maximum number of @lfunctions allowed a player
+safer_ufun \-\- make u() become protected in evaluation
+max_name_protect \-\- maximum number of @protect alises a player can have
+float_precision \-\- floating point precision you want allowed. from 0 to 48
+functions_max \-\- maximum number of @functions allowed to be defined
+parent_nest_limit \-\- maximum parents allowed in a parent chain
+imm_nomod \-\- is the NOMODIFY flag only allowed to immortals?
+start_build \-\- specifies if new players will or will not start with the WANDERER flag \-\- This defaults to \(aq0\(aq meaning they have the WANDERER flag which restricts all building.
+admin_object \-\- the @admin object that you can use to set permanent config settings in\-game
+file_object \-\- the master override for all .txt files. this allows you to either set softcode to all those .txt files (like connect.txt) or design custom commands at the connect screen.
+access \-\- change access of various commands
+func_access \-\- change access of various functions
+config_access \-\- change access of various config options
+flag_access_set \-\- set who can set flags
+flag_access_unset \-\- set who can unset flags
+flag_access_see \-\- set who can see flags
+flag_access_type \-\- typecast permissions on flags
+toggle_access_set \-\- set who can set toggles
+toggle_access_unset \-\- set who can unset toggles
+toggle_access_see \-\- set who can see toggles
+toggle_access_type \-\- typecast permission on toggles
+proxy_checker \-\- set permission restriction level on dynamic proxy detection. Please note, use this sparringly and only if you absolutely have to. The Good news: this will detect most proxies, most of the time. It does this by scanning and comparing the MTUand MSS values and scraping the TCP header for overhead. most proxies require this padding to actually, well, proxy the information out. This means that MSS and MTU values will almost always be a different size for anyone and anything that uses a proxy. Now, the Bad News. Anyone coming out from a business SOCKS server, Firewall, DMZ, or, well, just coming out of a business will likely be identified by a proxy. You use your android device to mush? That\(aqs a proxy as well since the android TCP layer is ontop of a java stack. IPhone? Same beast. Pretty much any mobile device will be seen as a proxy, which is accurate, but likely not the type of people you want to block. Sooo, again, use this sparringly. I suggest enabling it to a level to allow monitoring, and only crank it up to deny if you\(aqre being directly attacked.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+# Commands
+.sp
+### Special commands to monitor/set security:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@snoop \-\- Yup, it exists. This is an optional log or real\-time monitor of a player
+@newpassword \-\- change target\(aqs password
+@aflags \-\- list permissions of attributes or set up global prefix restrictions based globally, by target, by enactor, or by sub\-group
+@log \-\- control system logs
+@logrotate \-\- rotate logs real\-time or verify current status of log file
+@api \-\- control who can set/unset/config/use the restful\-like API interface
+@blacklist \-\- load in the blacklist which is created with the script tor_pull.sh that queries and pulls down the majority of public proxy IP\(aqs
+@tor \-\- control real time TOR proxy protection
+@freeze/@thaw \-\- real time queue freezing and thawing for sandboxing queues live
+@icmd \-\- control individual, room, or zone based access control of all commands a player can access
+@nuke/@toad/@turtle \-\- destroy and/or convert a player to a non\-player.
+@recover \-\- recover a @nuked or @destroyed item from the database. This can be done until the object is @purged. Works like a recycle bin.
+@snapshot \-\- make a live snapshot image dump of the targetted dbref# for safe keeping
+@boot \-\- boot the player
+@disable \-\- disable logins to all but staff
+@flagdef/@toggledef \-\- in\-game alter permissions of flags and toggles
+@site \-\- remove site permissions set via @admin foo_site (like forbid_site, suspect_site, etc)
+@limit \-\- assign limits (@destroy, user\-attribute, or @lfunction) to target player. This has the effect of enabling, disabling, or overriding the global values for max values. so you can use this, for example, to disable a player\(aqs ability to set any user\-defined attributes requiring them to only use @va\-vz, @desc, and so forth.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+# Toggles
+.sp
+### Example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@toggle *player=forcehalted
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+> Suggested Toggle List:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+CPUTIME \-\- returns extremely useful data on runtime values of a command that executes
+FORCEHALTED \-\- allows you to @force something even if it\(aqs halted
+LOGROOM \-\- log everything the room sees. This is intended for IC purposes and will notify the player that logging is going into the room
+MAIL_LOCKDOWN \-\- stop wizards from being able to see other people\(aqs mail.
+MONITOR/MONITOR_AREG/MONITOR_SITE/MONITOR_CPU/MONITOR_VLIMIT/MONITOR_etcetc \-\- drilldown of all the in\-game broadcasts for most of the built\-in game RhostMUSH monitoring. CPU overloads, attribute caps being reached, success/failed connect attempts, and so forth. Ergo, day to day monitoring needs. The MONITOR foo in Rhost is very beefy, so please refer to the wizhelp on all the MONITOR @toggles for more information.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+# Flags:
+.sp
+### Example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@set *player=slave
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+### Suggested Flags:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+WANDERER \-\- restrictive flag. Set on all new players by default unless configured otherwise. Stops all building/creating and requires removal before building allowed.
+GUILDMASTER \-\- first tier of staff bit
+ARCHITECT \-\- second tier of staff bit
+COUNCILOR \-\- third tier of staff bit
+ROYALTY \-\- this is your vanilla Wizard on other mushes
+IMMORTAL \-\- this is essentially #1 and \(aqall powerful\(aq
+BACKSTAGE/NOBACKSTAGE control flags specifying who can control things set BACKSTAGE
+FUBAR \-\- stop from doing absolutely everything except \(aq:\(aq and \(aq"\(aq. Nothing else.
+SLAVE \-\- this also stops \(aq:\(aq and \(aq"\(aq. Used in combination with FUBAR to make a statue.
+INDESTRUCTIBLE \-\- nothing can destroy the target, not even #1
+NO_CODE \-\- stops target from doing all but the most basic commands and functions
+NO_CONNECT \-\- target can not log in
+NO_EXAMINE \-\- target can not be examined/@decompiled except by wizards
+NO_MODIFY \-\- target can not be modified except by wizards (or optionally just immortals)
+NO_MOVE \-\- target can not be moved by any means
+NO_TEL \-\- target can not be teleported, use teleport, or use home
+NO_PESTER \-\- target can not use whisper or @pemit
+NO_POSSESS \-\- target can not log into their player more than twice
+SPAMMONITOR \-\- target can not issue more than 60 commands a minute
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+# @depowers
+.sp
+> These are tiered and inheritable from the player. Meaning permission levels can be decreased or removed entirely.
+.sp
+### Example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+@depower/councilor *player=wall
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+### Suggested Depowers:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+WALL \-\- disable walling
+STEAL \-\- disable getting items/gold
+WIZ_WHO \-\- disable wiz who
+BOOT \-\- disable boot
+FORCE \-\- disable @force/@sudo
+MASTER \-\- disable access to the master room
+NUKE \-\- disable @nuke/@toad/@turtle
+OVERRIDE \-\- disable overiding locks (wizards do this by default)
+TEL_ANYTHING \-\- disable teleporting anything
+POWER \-\- disable access to @power
+MODIFY \-\- disable ability to modify things
+CHOWN_OTHER \-\- disable ability to chown things you don\(aqt own
+UNL_QUOTA \-\- disable unlimited quota (useful on staff)
+GIVE \-\- disable the ability to give... anything...
+NOGOLD \-\- disable the ability to give or take gold
+PASSWORD \-\- disable ability to change passwords
+PERSONAL_COMMAND \-\- disable the ability to use any $commands on anything you own
+LONG_FINGERS \-\- disable all remote access features
+CREATE \-\- disable the ability to create anything
+CLOAK \-\- disable the overpowered wizcloaking ability from wizards
+PAGE \-\- no page for you!!!
+LOCK \-\- you can\(aqt pass locks. Ever. At all. Sucks to be you.
+COMMAND \-\- you can\(aqt use any $command. Anywhere. Only hardcoded commands for you!
+EXAMINE \-\- you can\(aqt examine/decompile or use any method to list attribs
+FREE \-\- everything is going to cost you gold
+TEL_ANYWHERE \-\- you can\(aqt teleport anywhere
+PCREATE \-\- disable wizards ability to create players
+QUOTA \-\- more more quota control for you
+CHOWN_ME \-\- you can\(aqt chown anything to yourself
+ABUSE \-\- you can only use $commands on things you own. Nothing else, including master room.
+SEARCH_ANY \-\- disable all db searching tools
+RECEIVE \-\- you can\(aqt receive anything
+DARK \-\- you can\(aqt go dark, and even if you miraculously were set DARK it\(aqd not work for you.
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Wizards in RhostMUSH by default override all locks and have a unique ability called \(aqwizcloaking\(aq. If a wizard is set DARK and UNFINDABLE then they become cloaked (like a Romulan bird of pray) and will be undetectable by any means except by another wizard. Immortals have a super\-cloak ability that makes them invisible to Wizards in addition. As shown above, there is a @depower to disable cloaking if it\(aqs abused.
+.UNINDENT
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+ABOUT IMMORTALS: Immortals treat as #1. Seriously. They can do anything and everything. They have commands at their fingertips to literally hack and edit the database live, and naturally if they don\(aqt know what they\(aqre doing, can crash the mush, because of all this raw editing capabilities. Only set Immortal those who absolutely need it or you absolutely trust. Head coders, for example, should likely have an Immortal bit. Also, Immortals by default override pretty much every restriction in the game. A player set NO_TEL? Um yea, immortal can still @teleport them. This is intentional, because it\(aqs assumed Immortal\(aqs code should just work. So keep that in mind while coding. Cheers.
 .UNINDENT
 .UNINDENT
 .SH SETTING UP AN SSL TUNNEL FOR SECURE CONNECTION OPTIONS

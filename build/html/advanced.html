@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>15. Advanced Features &#8212; RhostMUSH Handbook</title>
+    <title>16. Advanced Features &#8212; RhostMUSH Handbook</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/style.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -15,8 +15,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="17. Requirements if Using Windows" href="install/windows.html" />
-    <link rel="prev" title="14. Troubleshooting" href="troubleshooting.html" /> 
+    <link rel="next" title="18. Requirements if Using Windows" href="install/windows.html" />
+    <link rel="prev" title="15. Troubleshooting" href="troubleshooting.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -27,7 +27,7 @@
     <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
     <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
     <li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">15. </span>Advanced Features</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">16. </span>Advanced Features</a></li> 
       </ul>
     </div>  
 
@@ -37,18 +37,18 @@
           <div class="body" role="main">
             
   <div class="section" id="advanced-features">
-<h1><span class="section-number">15. </span>Advanced Features<a class="headerlink" href="#advanced-features" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">16. </span>Advanced Features<a class="headerlink" href="#advanced-features" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="adding-hardcoded-modules">
-<h2><span class="section-number">15.1. </span>Adding hardcoded modules<a class="headerlink" href="#adding-hardcoded-modules" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.1. </span>Adding hardcoded modules<a class="headerlink" href="#adding-hardcoded-modules" title="Permalink to this headline">¶</a></h2>
 <p>RhostMUSH does support module writing.</p>
 <div class="section" id="modifying-sourcode-to-add-a-module">
-<h3><span class="section-number">15.1.1. </span>Modifying sourcode to add a module<a class="headerlink" href="#modifying-sourcode-to-add-a-module" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.1.1. </span>Modifying sourcode to add a module<a class="headerlink" href="#modifying-sourcode-to-add-a-module" title="Permalink to this headline">¶</a></h3>
 <p>This requires hooking your changes into local.c, then modifying the Makefile (in the src directory)
 for any new source files that you wish to add.</p>
 <p>Something to be aware of is that all localized data is ran after the system cache subroutine.</p>
 </div>
 <div class="section" id="adding-an-startup-to-make-use-of-modules">
-<h3><span class="section-number">15.1.2. </span>Adding an &#64;startup to make use of modules<a class="headerlink" href="#adding-an-startup-to-make-use-of-modules" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.1.2. </span>Adding an &#64;startup to make use of modules<a class="headerlink" href="#adding-an-startup-to-make-use-of-modules" title="Permalink to this headline">¶</a></h3>
 <p>This means that if your code is depending on &#64;startups, you need to put a delay in the &#64;startup
 so that your local code can be loaded in as modules prior to the &#64;startup execution.</p>
 <p>Something that will not work:</p>
@@ -62,7 +62,7 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 <p>That 1 second delay for the queue will give the game engine time to load in your module code.</p>
 </div>
 <div class="section" id="contributing-your-module-back-to-rhost">
-<h3><span class="section-number">15.1.3. </span>Contributing your module back to Rhost<a class="headerlink" href="#contributing-your-module-back-to-rhost" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.1.3. </span>Contributing your module back to Rhost<a class="headerlink" href="#contributing-your-module-back-to-rhost" title="Permalink to this headline">¶</a></h3>
 <p>If you wish your modules to be part of the main Rhost distribution you have two options:</p>
 <ol class="arabic simple">
 <li><p>Attempt to hack the bin/asksource.sh and bin/asksource.blank files.</p></li>
@@ -71,11 +71,11 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 </div>
 </div>
 <div class="section" id="reality-levels-setup">
-<h2><span class="section-number">15.2. </span>Reality Levels Setup<a class="headerlink" href="#reality-levels-setup" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.2. </span>Reality Levels Setup<a class="headerlink" href="#reality-levels-setup" title="Permalink to this headline">¶</a></h2>
 <p>Reality levels are a means to forbid (or allow) interaction between objects
 in the same location.</p>
 <div class="section" id="reality-levels-visibility">
-<h3><span class="section-number">15.2.1. </span>Reality Levels Visibility<a class="headerlink" href="#reality-levels-visibility" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.2.1. </span>Reality Levels Visibility<a class="headerlink" href="#reality-levels-visibility" title="Permalink to this headline">¶</a></h3>
 <p>Each object (player, room, exit, thing) has two lists of reality levels.
 An Rx list, which describe what it can see and a Tx list, which describe
 where it can be seen. Those are bitfields. In order for X to see Y a bitwise
@@ -93,7 +93,7 @@ parameters.</p>
 match. (See examples below)</p>
 </div>
 <div class="section" id="reality-levels-descriptions">
-<h3><span class="section-number">15.2.2. </span>Reality Levels Descriptions<a class="headerlink" href="#reality-levels-descriptions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.2.2. </span>Reality Levels Descriptions<a class="headerlink" href="#reality-levels-descriptions" title="Permalink to this headline">¶</a></h3>
 <p>For every reality level defined, you can define an attribute that serves as
 description. If you look at something and match more than one of its
 TxLevels, you'll see all the corresponding descriptions on the target
@@ -115,7 +115,7 @@ order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.</p>
 </div>
 <div class="section" id="reality-levels-configuration-parameters">
-<h3><span class="section-number">15.2.3. </span>Reality Levels Configuration parameters<a class="headerlink" href="#reality-levels-configuration-parameters" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.2.3. </span>Reality Levels Configuration parameters<a class="headerlink" href="#reality-levels-configuration-parameters" title="Permalink to this headline">¶</a></h3>
 <p>A few configuration parameters have been introduced to deal with the reality
 levels:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">desc</span> <span class="n">attribute</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
@@ -154,7 +154,7 @@ This is an example file only to be added to the mush.conf file Format:</p>
 </div>
 </div>
 <div class="section" id="reality-levels-example-mush-conf">
-<h3><span class="section-number">15.2.4. </span>Reality Levels Example mush.conf<a class="headerlink" href="#reality-levels-example-mush-conf" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.2.4. </span>Reality Levels Example mush.conf<a class="headerlink" href="#reality-levels-example-mush-conf" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="n">Real</span> <span class="mi">1</span>
 <span class="n">reality_level</span> <span class="n">Obf1</span> <span class="mi">2</span>
 <span class="n">reality_level</span> <span class="n">Obf2</span> <span class="mi">4</span>
@@ -176,7 +176,7 @@ This is an example file only to be added to the mush.conf file Format:</p>
 </div>
 </div>
 <div class="section" id="reality-levels-commands">
-<h3><span class="section-number">15.2.5. </span>Reality Levels Commands<a class="headerlink" href="#reality-levels-commands" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.2.5. </span>Reality Levels Commands<a class="headerlink" href="#reality-levels-commands" title="Permalink to this headline">¶</a></h3>
 <p>Two wiz-only commands are used to set the reality levels of an object:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@rxlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
 <span class="nd">@txlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
@@ -193,7 +193,7 @@ for players).</p>
 </div>
 </div>
 <div class="section" id="functions">
-<h3><span class="section-number">15.2.6. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.2.6. </span>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h3>
 <p>There are five functions that deal with reality levels:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hasrxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="n">hastxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
@@ -223,7 +223,7 @@ version checks against the DARK flag.</p>
 </div>
 </div>
 <div class="section" id="example-1-a-simplified-witchcraft-setup">
-<h3><span class="section-number">15.2.7. </span>Example 1: A simplified Witchcraft setup<a class="headerlink" href="#example-1-a-simplified-witchcraft-setup" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.2.7. </span>Example 1: A simplified Witchcraft setup<a class="headerlink" href="#example-1-a-simplified-witchcraft-setup" title="Permalink to this headline">¶</a></h3>
 <p>In Witchcraft, besides the various Gifted classes, characters can be spirits
 There are spirit realms to which the mundane can not travel. Therefore we
 will use 2 reality levels: Real and Ghost. Since some spirits can become
@@ -328,7 +328,7 @@ anyway, so a spirit character will have:</p>
 </div>
 </div>
 <div class="section" id="example-2-a-wod-setup">
-<h3><span class="section-number">15.2.8. </span>Example 2: A WoD setup<a class="headerlink" href="#example-2-a-wod-setup" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.2.8. </span>Example 2: A WoD setup<a class="headerlink" href="#example-2-a-wod-setup" title="Permalink to this headline">¶</a></h3>
 <p>The reality levels will be defined like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span>         <span class="n">Real</span> <span class="mi">1</span>
 <span class="n">reality_level</span>         <span class="n">Obf1</span> <span class="mi">2</span>
@@ -407,7 +407,7 @@ Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</p>
 </div>
 </div>
 <div class="section" id="example-3-softcode">
-<h3><span class="section-number">15.2.9. </span>Example 3: Softcode<a class="headerlink" href="#example-3-softcode" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.2.9. </span>Example 3: Softcode<a class="headerlink" href="#example-3-softcode" title="Permalink to this headline">¶</a></h3>
 <p>Considering the config directives from example 2 and assuming a function
 getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player's stat from
 the sheet here are softcode examples that implement some of the WoD powers.
@@ -432,11 +432,11 @@ In a real game you would have to use some more checks, of course.</p>
 </div>
 </div>
 <div class="section" id="execscript-and-external-programs-and-scripts">
-<h2><span class="section-number">15.3. </span>Execscript and external programs and scripts<a class="headerlink" href="#execscript-and-external-programs-and-scripts" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.3. </span>Execscript and external programs and scripts<a class="headerlink" href="#execscript-and-external-programs-and-scripts" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="execscript-variables">
-<h3><span class="section-number">15.3.1. </span>Execscript variables<a class="headerlink" href="#execscript-variables" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.1. </span>Execscript variables<a class="headerlink" href="#execscript-variables" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="execscript-built-in-variables">
-<h4><span class="section-number">15.3.1.1. </span>Execscript Built in variables<a class="headerlink" href="#execscript-built-in-variables" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.3.1.1. </span>Execscript Built in variables<a class="headerlink" href="#execscript-built-in-variables" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
@@ -480,7 +480,7 @@ This is passed from the mush's EXECSCRIPT_VARS attr</p></td>
 </table>
 </div>
 <div class="section" id="execscript-dynamic-variables">
-<h4><span class="section-number">15.3.1.2. </span>Execscript Dynamic variables<a class="headerlink" href="#execscript-dynamic-variables" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.3.1.2. </span>Execscript Dynamic variables<a class="headerlink" href="#execscript-dynamic-variables" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 37%" />
@@ -500,7 +500,7 @@ These are the attributes from EXECSCRIPT_VARS</p></td>
 </table>
 </div>
 <div class="section" id="execscript-register-variables">
-<h4><span class="section-number">15.3.1.3. </span>Execscript Register variables<a class="headerlink" href="#execscript-register-variables" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.3.1.3. </span>Execscript Register variables<a class="headerlink" href="#execscript-register-variables" title="Permalink to this headline">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
@@ -527,20 +527,20 @@ Note: they must be ASCII-7 clean and contain no white spaces</p></td>
 </div>
 </div>
 <div class="section" id="execsript-set-object">
-<h3><span class="section-number">15.3.2. </span>Execsript set object<a class="headerlink" href="#execsript-set-object" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.2. </span>Execsript set object<a class="headerlink" href="#execsript-set-object" title="Permalink to this headline">¶</a></h3>
 <p>The script executed with execscript() will read in a file with the same name
 as the script ending in '.set'.  This is a loader object that will set attributes
 and registers back into the mush that you wish to pass from the script. The
 fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 <div class="section" id="execscript-set-object-field-format">
-<h4><span class="section-number">15.3.2.1. </span>Execscript set object field format<a class="headerlink" href="#execscript-set-object-field-format" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">16.3.2.1. </span>Execscript set object field format<a class="headerlink" href="#execscript-set-object-field-format" title="Permalink to this headline">¶</a></h4>
 <div class="section" id="execscript-set-object-dynamic-variables">
-<h5><span class="section-number">15.3.2.1.1. </span>Execscript set object Dynamic variables<a class="headerlink" href="#execscript-set-object-dynamic-variables" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">16.3.2.1.1. </span>Execscript set object Dynamic variables<a class="headerlink" href="#execscript-set-object-dynamic-variables" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VARNAME</span>        <span class="n">OWNER</span>        <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="execscript-set-object-dynamic-variables-examples">
-<h6><span class="section-number">15.3.2.1.1.1. </span>Execscript set object Dynamic variables Examples<a class="headerlink" href="#execscript-set-object-dynamic-variables-examples" title="Permalink to this headline">¶</a></h6>
+<h6><span class="section-number">16.3.2.1.1.1. </span>Execscript set object Dynamic variables Examples<a class="headerlink" href="#execscript-set-object-dynamic-variables-examples" title="Permalink to this headline">¶</a></h6>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SEX</span> <span class="c1">#123 Male</span>
 <span class="n">DESC</span> <span class="c1">#123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.</span>
 <span class="n">RED</span> <span class="c1">#123 This is the color %ch%crred%cn.</span>
@@ -554,12 +554,12 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 </div>
 </div>
 <div class="section" id="execscript-set-object-register-variables">
-<h5><span class="section-number">15.3.2.1.2. </span>Execscript set object Register variables<a class="headerlink" href="#execscript-set-object-register-variables" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">16.3.2.1.2. </span>Execscript set object Register variables<a class="headerlink" href="#execscript-set-object-register-variables" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REGISTER</span>       <span class="n">Q</span>            <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="execscript-set-object-register-variables-examples">
-<h6><span class="section-number">15.3.2.1.2.1. </span>Execscript set object Register variables Examples<a class="headerlink" href="#execscript-set-object-register-variables-examples" title="Permalink to this headline">¶</a></h6>
+<h6><span class="section-number">16.3.2.1.2.1. </span>Execscript set object Register variables Examples<a class="headerlink" href="#execscript-set-object-register-variables-examples" title="Permalink to this headline">¶</a></h6>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The last exammple clears register 0</p>
@@ -575,7 +575,7 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 </div>
 </div>
 <div class="section" id="execscript-example-bash-script">
-<h3><span class="section-number">15.3.3. </span>Execscript Example bash script<a class="headerlink" href="#execscript-example-bash-script" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.3. </span>Execscript Example bash script<a class="headerlink" href="#execscript-example-bash-script" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s2">&quot;This was called by player </span><span class="si">${</span><span class="nv">MUSH_PLAYER</span><span class="si">}</span><span class="s2"> that is owned by </span><span class="si">${</span><span class="nv">MUSH_OWNER</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="nb">echo</span> <span class="s2">&quot;Displaying Registers:&quot;</span>
@@ -593,7 +593,7 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 </div>
 </div>
 <div class="section" id="exescript-notes-and-warnings">
-<h3><span class="section-number">15.3.4. </span>Exescript Notes and warnings<a class="headerlink" href="#exescript-notes-and-warnings" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.4. </span>Exescript Notes and warnings<a class="headerlink" href="#exescript-notes-and-warnings" title="Permalink to this headline">¶</a></h3>
 <p>While MUSHL_VARS are sanitized on what is allowable as a mush variable, this
 is not necessarilly sanitized on what the calling script can fetch as a valid
 variable.  Of note, you can not set environment variables that contain an
@@ -603,7 +603,7 @@ This is EXECSCRIPT_VARS on the mush itself, that is the attribute set
 on the target that contains the execscript() that is being executed.</p>
 </div>
 <div class="section" id="scripts-to-be-used-with-execscript">
-<h3><span class="section-number">15.3.5. </span>Scripts to be used with execscript<a class="headerlink" href="#scripts-to-be-used-with-execscript" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.5. </span>Scripts to be used with execscript<a class="headerlink" href="#scripts-to-be-used-with-execscript" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">account</span><span class="o">/</span>                       <span class="o">--</span> <span class="n">Directory</span> <span class="k">for</span> <span class="n">execscripts</span> <span class="n">relating</span> <span class="n">to</span> <span class="n">account</span> <span class="n">creation</span>
 <span class="n">compile39</span><span class="o">.</span><span class="n">sh</span>                   <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span> <span class="mf">3.9</span>
 <span class="nb">compile</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span>
@@ -639,11 +639,11 @@ on the target that contains the execscript() that is being executed.</p>
 </div>
 </div>
 <div class="section" id="using-printf-for-advanced-text-output">
-<h2><span class="section-number">15.4. </span>Using printf() for advanced text output<a class="headerlink" href="#using-printf-for-advanced-text-output" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.4. </span>Using printf() for advanced text output<a class="headerlink" href="#using-printf-for-advanced-text-output" title="Permalink to this headline">¶</a></h2>
 <p>The function printf() in Rhost can be used to greatly reduce coding in efforts for outputs,
 screens and data display.  It can automatically center, justify and wrap the text parameters given to it.</p>
 <div class="section" id="printf-example-one">
-<h3><span class="section-number">15.4.1. </span>Printf Example one<a class="headerlink" href="#printf-example-one" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.4.1. </span>Printf Example one<a class="headerlink" href="#printf-example-one" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf(|$-12s|$12s|$^12s$&amp;14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
 
 |a b c       |       d e f|   g h i    |0 1 2 3 4 5 |j     k    l|
@@ -655,7 +655,7 @@ screens and data display.  It can automatically center, justify and wrap the tex
 </div>
 </div>
 <div class="section" id="printf-example-two">
-<h3><span class="section-number">15.4.2. </span>Printf Example two<a class="headerlink" href="#printf-example-two" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.4.2. </span>Printf Example two<a class="headerlink" href="#printf-example-two" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
 iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
 iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
@@ -672,7 +672,7 @@ iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)
 </div>
 </div>
 <div class="section" id="printf-example-three">
-<h3><span class="section-number">15.4.3. </span>Printf Example three<a class="headerlink" href="#printf-example-three" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.4.3. </span>Printf Example three<a class="headerlink" href="#printf-example-three" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit [printf($-10|&quot;&#39;s$-60|&quot;s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
 this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!
 
@@ -691,7 +691,7 @@ blah blah blah blah blah blah blah                                    END!
 </div>
 </div>
 <div class="section" id="format-for-image-files">
-<h1><span class="section-number">16. </span>Format for image files<a class="headerlink" href="#format-for-image-files" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">17. </span>Format for image files<a class="headerlink" href="#format-for-image-files" title="Permalink to this headline">¶</a></h1>
 <p>The image format goes like this:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -871,7 +871,7 @@ $6$xy$xy
 </pre></div>
 </div>
 <div class="section" id="help-key-indexes-for-the-values">
-<h2><span class="section-number">16.1. </span>HELP key indexes for the values<a class="headerlink" href="#help-key-indexes-for-the-values" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.1. </span>HELP key indexes for the values<a class="headerlink" href="#help-key-indexes-for-the-values" title="Permalink to this headline">¶</a></h2>
 <p>FLAGS: The following flags are to be used.  They are BITWISE masks that you
 need to add together for the values that you apply</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* First word of flags */</span>
@@ -1240,67 +1240,67 @@ that there are no more zones to add.</p>
    </div>
   <h4>Previous topic</h4>
   <p class="topless"><a href="troubleshooting.html"
-                        title="previous chapter"><span class="section-number">14. </span>Troubleshooting</a></p>
+                        title="previous chapter"><span class="section-number">15. </span>Troubleshooting</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="install/windows.html"
-                        title="next chapter"><span class="section-number">17. </span>Requirements if Using Windows</a></p>
+                        title="next chapter"><span class="section-number">18. </span>Requirements if Using Windows</a></p>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">15. Advanced Features</a><ul>
-<li><a class="reference internal" href="#adding-hardcoded-modules">15.1. Adding hardcoded modules</a><ul>
-<li><a class="reference internal" href="#modifying-sourcode-to-add-a-module">15.1.1. Modifying sourcode to add a module</a></li>
-<li><a class="reference internal" href="#adding-an-startup-to-make-use-of-modules">15.1.2. Adding an &#64;startup to make use of modules</a></li>
-<li><a class="reference internal" href="#contributing-your-module-back-to-rhost">15.1.3. Contributing your module back to Rhost</a></li>
+<li><a class="reference internal" href="#">16. Advanced Features</a><ul>
+<li><a class="reference internal" href="#adding-hardcoded-modules">16.1. Adding hardcoded modules</a><ul>
+<li><a class="reference internal" href="#modifying-sourcode-to-add-a-module">16.1.1. Modifying sourcode to add a module</a></li>
+<li><a class="reference internal" href="#adding-an-startup-to-make-use-of-modules">16.1.2. Adding an &#64;startup to make use of modules</a></li>
+<li><a class="reference internal" href="#contributing-your-module-back-to-rhost">16.1.3. Contributing your module back to Rhost</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#reality-levels-setup">15.2. Reality Levels Setup</a><ul>
-<li><a class="reference internal" href="#reality-levels-visibility">15.2.1. Reality Levels Visibility</a></li>
-<li><a class="reference internal" href="#reality-levels-descriptions">15.2.2. Reality Levels Descriptions</a></li>
-<li><a class="reference internal" href="#reality-levels-configuration-parameters">15.2.3. Reality Levels Configuration parameters</a></li>
-<li><a class="reference internal" href="#reality-levels-example-mush-conf">15.2.4. Reality Levels Example mush.conf</a></li>
-<li><a class="reference internal" href="#reality-levels-commands">15.2.5. Reality Levels Commands</a></li>
-<li><a class="reference internal" href="#functions">15.2.6. Functions</a></li>
-<li><a class="reference internal" href="#example-1-a-simplified-witchcraft-setup">15.2.7. Example 1: A simplified Witchcraft setup</a></li>
-<li><a class="reference internal" href="#example-2-a-wod-setup">15.2.8. Example 2: A WoD setup</a></li>
-<li><a class="reference internal" href="#example-3-softcode">15.2.9. Example 3: Softcode</a></li>
+<li><a class="reference internal" href="#reality-levels-setup">16.2. Reality Levels Setup</a><ul>
+<li><a class="reference internal" href="#reality-levels-visibility">16.2.1. Reality Levels Visibility</a></li>
+<li><a class="reference internal" href="#reality-levels-descriptions">16.2.2. Reality Levels Descriptions</a></li>
+<li><a class="reference internal" href="#reality-levels-configuration-parameters">16.2.3. Reality Levels Configuration parameters</a></li>
+<li><a class="reference internal" href="#reality-levels-example-mush-conf">16.2.4. Reality Levels Example mush.conf</a></li>
+<li><a class="reference internal" href="#reality-levels-commands">16.2.5. Reality Levels Commands</a></li>
+<li><a class="reference internal" href="#functions">16.2.6. Functions</a></li>
+<li><a class="reference internal" href="#example-1-a-simplified-witchcraft-setup">16.2.7. Example 1: A simplified Witchcraft setup</a></li>
+<li><a class="reference internal" href="#example-2-a-wod-setup">16.2.8. Example 2: A WoD setup</a></li>
+<li><a class="reference internal" href="#example-3-softcode">16.2.9. Example 3: Softcode</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#execscript-and-external-programs-and-scripts">15.3. Execscript and external programs and scripts</a><ul>
-<li><a class="reference internal" href="#execscript-variables">15.3.1. Execscript variables</a><ul>
-<li><a class="reference internal" href="#execscript-built-in-variables">15.3.1.1. Execscript Built in variables</a></li>
-<li><a class="reference internal" href="#execscript-dynamic-variables">15.3.1.2. Execscript Dynamic variables</a></li>
-<li><a class="reference internal" href="#execscript-register-variables">15.3.1.3. Execscript Register variables</a></li>
+<li><a class="reference internal" href="#execscript-and-external-programs-and-scripts">16.3. Execscript and external programs and scripts</a><ul>
+<li><a class="reference internal" href="#execscript-variables">16.3.1. Execscript variables</a><ul>
+<li><a class="reference internal" href="#execscript-built-in-variables">16.3.1.1. Execscript Built in variables</a></li>
+<li><a class="reference internal" href="#execscript-dynamic-variables">16.3.1.2. Execscript Dynamic variables</a></li>
+<li><a class="reference internal" href="#execscript-register-variables">16.3.1.3. Execscript Register variables</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#execsript-set-object">15.3.2. Execsript set object</a><ul>
-<li><a class="reference internal" href="#execscript-set-object-field-format">15.3.2.1. Execscript set object field format</a><ul>
-<li><a class="reference internal" href="#execscript-set-object-dynamic-variables">15.3.2.1.1. Execscript set object Dynamic variables</a><ul>
-<li><a class="reference internal" href="#execscript-set-object-dynamic-variables-examples">15.3.2.1.1.1. Execscript set object Dynamic variables Examples</a></li>
+<li><a class="reference internal" href="#execsript-set-object">16.3.2. Execsript set object</a><ul>
+<li><a class="reference internal" href="#execscript-set-object-field-format">16.3.2.1. Execscript set object field format</a><ul>
+<li><a class="reference internal" href="#execscript-set-object-dynamic-variables">16.3.2.1.1. Execscript set object Dynamic variables</a><ul>
+<li><a class="reference internal" href="#execscript-set-object-dynamic-variables-examples">16.3.2.1.1.1. Execscript set object Dynamic variables Examples</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#execscript-set-object-register-variables">15.3.2.1.2. Execscript set object Register variables</a><ul>
-<li><a class="reference internal" href="#execscript-set-object-register-variables-examples">15.3.2.1.2.1. Execscript set object Register variables Examples</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a class="reference internal" href="#execscript-example-bash-script">15.3.3. Execscript Example bash script</a></li>
-<li><a class="reference internal" href="#exescript-notes-and-warnings">15.3.4. Exescript Notes and warnings</a></li>
-<li><a class="reference internal" href="#scripts-to-be-used-with-execscript">15.3.5. Scripts to be used with execscript</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#using-printf-for-advanced-text-output">15.4. Using printf() for advanced text output</a><ul>
-<li><a class="reference internal" href="#printf-example-one">15.4.1. Printf Example one</a></li>
-<li><a class="reference internal" href="#printf-example-two">15.4.2. Printf Example two</a></li>
-<li><a class="reference internal" href="#printf-example-three">15.4.3. Printf Example three</a></li>
+<li><a class="reference internal" href="#execscript-set-object-register-variables">16.3.2.1.2. Execscript set object Register variables</a><ul>
+<li><a class="reference internal" href="#execscript-set-object-register-variables-examples">16.3.2.1.2.1. Execscript set object Register variables Examples</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#format-for-image-files">16. Format for image files</a><ul>
-<li><a class="reference internal" href="#help-key-indexes-for-the-values">16.1. HELP key indexes for the values</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#execscript-example-bash-script">16.3.3. Execscript Example bash script</a></li>
+<li><a class="reference internal" href="#exescript-notes-and-warnings">16.3.4. Exescript Notes and warnings</a></li>
+<li><a class="reference internal" href="#scripts-to-be-used-with-execscript">16.3.5. Scripts to be used with execscript</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#using-printf-for-advanced-text-output">16.4. Using printf() for advanced text output</a><ul>
+<li><a class="reference internal" href="#printf-example-one">16.4.1. Printf Example one</a></li>
+<li><a class="reference internal" href="#printf-example-two">16.4.2. Printf Example two</a></li>
+<li><a class="reference internal" href="#printf-example-three">16.4.3. Printf Example three</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#format-for-image-files">17. Format for image files</a><ul>
+<li><a class="reference internal" href="#help-key-indexes-for-the-values">17.1. HELP key indexes for the values</a></li>
 </ul>
 </li>
 </ul>
@@ -1312,7 +1312,7 @@ that there are no more zones to add.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, wstarter.
-      Last updated on Apr 23, 2021.
+      Last updated on May 13, 2021.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
     </div>
   </body>

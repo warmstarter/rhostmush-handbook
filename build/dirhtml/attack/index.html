@@ -1,0 +1,341 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12. What to Do if your MUSH is Attacked &#8212; RhostMUSH Handbook</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="13. Setting up an SSL tunnel for secure connection options" href="../utilities/ssl/" />
+    <link rel="prev" title="11. Security" href="../security/" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul></pre>
+<ul>
+    <li><a href="index.html">Home</a> |</li>
+    <li><a href="help.html">RhostMUSH Help File</a> |</li>
+    <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
+    <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
+    <li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">12. </span>What to Do if your MUSH is Attacked</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="what-to-do-if-your-mush-is-attacked">
+<h1><span class="section-number">12. </span>What to Do if your MUSH is Attacked<a class="headerlink" href="#what-to-do-if-your-mush-is-attacked" title="Permalink to this headline">¶</a></h1>
+<p>RhostMUSH is an combination of, well, everything. And because of the flexibility and customizations, can be daunting, but here we go:</p>
+<p>Rhost allows two ways for site restrictions.
+### Site Restrictions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span> <span class="n">PARAM</span><span class="o">=</span><span class="n">SITE</span> <span class="n">IP</span>
+<span class="nd">@admin</span> <span class="n">PARAM2</span><span class="o">=</span><span class="n">WILDCARDHOST</span>
+</pre></div>
+</div>
+<p>NOTE: Since Rhost 3.2.4p13 Rhost allows CIDR notation (/24 instead of 255.255.255.0)</p>
+<p>#### The first method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">12.12</span><span class="o">.</span><span class="mf">20.0</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span>
+<span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">12.12</span><span class="o">.</span><span class="mf">20.0</span> <span class="mf">255.255</span><span class="o">.</span><span class="mf">255.0</span> <span class="mi">3</span>
+<span class="nd">@admin</span> <span class="n">forbid_site</span><span class="o">=</span><span class="mf">12.12</span><span class="o">.</span><span class="mf">20.0</span> <span class="o">/</span><span class="mi">24</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>The first example hardforbids the site from connecting.</p>
+<p>The second example forbids the site from connecting after 3 connects have already been allowed. This allows connections but stops spamming.</p>
+<p>Both options are available for all site parameters.</p>
+<p>&gt; Site related config parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">forbid_site</span> <span class="o">--</span> <span class="n">forbid</span> <span class="n">site</span> <span class="kn">from</span> <span class="nn">connecting</span>
+<span class="n">register_site</span> <span class="o">--</span> <span class="n">disallow</span> <span class="n">player</span> <span class="n">creation</span> <span class="kn">from</span> <span class="nn">site</span> <span class="p">(</span><span class="nb">set</span> <span class="n">to</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">player</span> <span class="n">creation</span> <span class="n">entirely</span><span class="p">)</span>
+<span class="n">suspect_site</span> <span class="o">--</span> <span class="nb">set</span> <span class="n">site</span> <span class="n">suspect</span>
+<span class="n">noguest_site</span> <span class="o">--</span> <span class="n">disallow</span> <span class="n">guest</span> <span class="kn">from</span> <span class="nn">connecting.</span>
+<span class="n">noauth_site</span> <span class="o">--</span> <span class="n">disallow</span> <span class="n">AUTH</span> <span class="n">IDENT</span> <span class="n">lookups</span>
+<span class="n">noautoreg_site</span> <span class="o">--</span> <span class="n">disallow</span> <span class="n">site</span> <span class="kn">from</span> <span class="nn">auto</span><span class="o">-</span><span class="n">registration</span> <span class="n">on</span> <span class="n">connect</span> <span class="n">screen</span>
+<span class="n">passproxy_site</span> <span class="o">--</span> <span class="n">allow</span> <span class="n">IP</span> <span class="n">to</span> <span class="n">bypass</span> <span class="n">auto</span><span class="o">-</span><span class="n">proxy</span> <span class="n">blocking</span>
+<span class="n">nodns_site</span> <span class="o">--</span> <span class="n">don</span><span class="s1">&#39;t do DNS/RDNS lookups</span>
+<span class="n">forbidapi_site</span> <span class="o">--</span> <span class="n">don</span><span class="s1">&#39;t allow API connections from site</span>
+</pre></div>
+</div>
+<p>### Second method we have: (wildcards optional):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@admin forbid_host=*.buttclown.com *.bob.com !*.foo.com
+@admin forbid_host=*.buttclown.com|3
+</pre></div>
+</div>
+<p>First example blocks wildcard buttclown.com, bob.com, and removes foo.com</p>
+<p>Second example adds buttclown.com and forbids after 3 connections.</p>
+<p>&gt; host related config parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tor_localhost</span> <span class="o">--</span> <span class="n">the</span> <span class="n">hosting</span> <span class="n">server</span> <span class="n">that</span> <span class="n">will</span> <span class="n">monitor</span> <span class="ow">and</span> <span class="n">block</span> <span class="n">TOR</span> <span class="n">connections</span>
+<span class="n">noautoreg_host</span> <span class="o">--</span> <span class="n">the</span> <span class="n">hostname</span> <span class="k">for</span> <span class="n">blocking</span> <span class="n">autoregistration</span>
+<span class="n">passproxy_host</span> <span class="o">--</span> <span class="n">the</span> <span class="n">hostname</span> <span class="n">to</span> <span class="n">bypass</span> <span class="n">proxy</span> <span class="n">blocking</span>
+<span class="n">validate_host</span> <span class="o">--</span> <span class="n">disallow</span> <span class="n">email</span> <span class="kn">from</span> <span class="nn">autoregistration</span>
+<span class="n">forbidapi_host</span> <span class="o">--</span> <span class="n">hostname</span> <span class="n">to</span> <span class="n">forbid</span> <span class="n">api</span>
+<span class="n">mysql_host</span> <span class="o">--</span> <span class="n">hostname</span> <span class="k">for</span> <span class="n">the</span> <span class="n">MySQL</span> <span class="n">server</span>
+<span class="n">register_host</span> <span class="o">--</span> <span class="n">hostname</span> <span class="n">to</span> <span class="n">stop</span> <span class="n">player</span> <span class="n">creation</span>
+<span class="n">forbid_host</span> <span class="o">--</span> <span class="n">hostname</span> <span class="n">to</span> <span class="n">stop</span> <span class="n">connections</span>
+<span class="n">suspect_host</span> <span class="o">--</span> <span class="n">hostname</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">suspect</span>
+<span class="n">noguest_host</span> <span class="o">--</span> <span class="n">stop</span> <span class="n">guests</span> <span class="kn">from</span> <span class="nn">connection</span>
+<span class="n">nobroadcast_host</span> <span class="o">--</span> <span class="n">stop</span> <span class="n">site</span> <span class="n">monitor</span> <span class="n">chatter</span> <span class="k">for</span> <span class="n">site</span> <span class="p">(</span><span class="n">still</span> <span class="n">logs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>### Special Site Restrictions</p>
+<p>&gt; The following specific other options are useful for site restrictions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@goodsite</span> <span class="o">--</span> <span class="n">attribute</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">on</span> <span class="n">target</span> <span class="n">player</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">what</span> <span class="n">wildcard</span> <span class="n">IP</span><span class="s1">&#39;s -are- allowed to connect from (IP only, no hostname)</span>
+<span class="nd">@badsite</span> <span class="o">--</span> <span class="n">attribute</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">on</span> <span class="n">target</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">what</span> <span class="n">wildcard</span> <span class="n">IP</span><span class="s1">&#39;s are not allowed to connect from (IP only, no hostname)</span>
+<span class="n">NOCONNECT</span> <span class="o">--</span> <span class="n">flag</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">on</span> <span class="n">player</span> <span class="n">to</span> <span class="n">stop</span> <span class="n">connections</span>
+</pre></div>
+</div>
+<p>&gt; Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@goodsite</span> <span class="c1">#1=127.0.0.1</span>
+<span class="nd">@badsite</span> <span class="o">*</span><span class="n">twink</span><span class="o">=</span><span class="mf">12.12</span><span class="o">.</span><span class="mf">20.</span><span class="o">*</span>
+</pre></div>
+</div>
+<p># Config Parameters</p>
+<p>&gt; Example of issuing ingame:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@admin</span> <span class="n">function_invocation_limit</span><span class="o">=</span><span class="mi">25000</span>
+</pre></div>
+</div>
+<p>&gt; Example in netrhost.conf file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function_invocation_limit</span> <span class="mi">2500</span>
+</pre></div>
+</div>
+<p>### Suggested config parameters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>authenticate -- toggle to specify authentication (AUTH) lookups
+max_players -- max players allowed to connect to the mush at any time. The default for this is 40 less than the current maximum allowed based on server specifications to avoid DoS/DDoS. This ceiling is impossible to go past.
+cpu_secure_lvl -- define how the mush will treat those who hit the CPU limit. 0 is just stop 1 is halt the owner, 2 sets FUBAR, 3 sets NOCONNECT and boots, 4 does all of 3 and sets register, 5 does all of 3 and sets forbid
+cpuintervalchk CPU load before engaging CPU protection (default 5% system load)
+cputimechk CPU time in seconds before CPU protection (default 5 seconds)
+heavy_cpu_max (default 50) heavy cpu intensive features are auto-tagged this for additional cpu protection. This is how many times it can be called per &#39;command&#39;
+max_cpu_cycles (default 3) number of times a target can hit the CPU alert before restrictive measures via cpu_secure_lvl is enacted
+max_lastsite_cnt (default 20) number of connections from a site allowed a minute
+min_con_attempt (default 60) seconds to check for max_lastsite_cnt
+lastsite_paranoia (0-3) sets restrictive level to use if max_lastsite_cnt is reached. 0 is take no action. 3 is forbid
+max_sitecons -- (default 50) absolute maximum number of connections a specific site can have online at any time.
+max_pcreate_lim -- number of connect creates allowed per minute
+max_pcreate_time -- time allotted between pcreate lim checks
+pcreate_paranoia -- (0-3) sets restrictive level to use if max_pcreate_lim is reached.
+spam_limit -- maximum number of commands allowed by a player per minute if set SPAMMONITOR (default 60)
+player_queue_limit -- maximum queues allowed per player at any time (default 100)
+wizard_queue_limit -- maximum queues allowed for a wizard at any time (default 1000)
+function_invocation_limit -- (default 2500) maximum functions allowed per command
+function_recursion_limit -- (default 50) maximum number of times a function can call itself.
+secure_functions -- switches internal permissions of old-processing functions to be more secure, but breaks backward compatibility
+fascist_teleport -- players can&#39;t teleport out of anything they don&#39;t control or isn&#39;t set JUMP_OK
+restrict_home -- lock down the &#39;home&#39; command to specific bitlevel
+restrict_home2 -- toggle enable/disable &#39;home&#39; from those set NO_CODE
+restrict_sidefx -- specify what bitlevel SIDEEFFECT functions will work
+sideeffects -- specify what sideeffects are allowed
+sidefx_maxcalls -- how many sideeffects are allowed per command
+max_vattr_limit -- maximum unique user-attributes a player can create for his lifetime
+wizmax_vattr_limit -- maximum unique user-attributes a wizard can create for his lifetime
+vlimit -- maximum attributes allowed per object
+wildmatch_limit -- maximum number of wildmatches allowed per command
+lock_recursion_limit -- maximum lock recursion per command
+notify_recursion_limit -- maximum notify&#39;s allowed (internal notify call)
+nonindxtxt_maxlines -- maximum number of lines allowed to be read from @log
+max_percentsubs -- maximum percent substitutions allowed per command
+max_dest_limit -- maximum number of items that can be @destroyed by a player for a lifetime
+wizmax_dest_limit -- maximum number of items that can be @destroyed by a wizard for a lifetime
+safer_passwords -- enforce strict @passwords
+newpass_god -- allow newpasswording #1
+nospam_connect -- consolidates logs on people who attempt to keep trying to connect while forbidden
+examine_restrictive -- lockdown who can examine/@decompile
+ahear_maxtime -- maximum ceiling in seconds an @ahear is allowed to process
+ahear_maxcnt -- maximum recursions @hears are allowed
+cluster_cap -- ceiling on the number of cluster members allowed
+cluster_func_cap -- recursion ceiling on the cluster function handler
+includecnt -- number of times @include is allowed per command set
+includenest -- number of recursions @include is allowed
+lfunction_max -- maximum number of @lfunctions allowed a player
+safer_ufun -- make u() become protected in evaluation
+max_name_protect -- maximum number of @protect alises a player can have
+float_precision -- floating point precision you want allowed. from 0 to 48
+functions_max -- maximum number of @functions allowed to be defined
+parent_nest_limit -- maximum parents allowed in a parent chain
+imm_nomod -- is the NOMODIFY flag only allowed to immortals?
+start_build -- specifies if new players will or will not start with the WANDERER flag -- This defaults to &#39;0&#39; meaning they have the WANDERER flag which restricts all building.
+admin_object -- the @admin object that you can use to set permanent config settings in-game
+file_object -- the master override for all .txt files. this allows you to either set softcode to all those .txt files (like connect.txt) or design custom commands at the connect screen.
+access -- change access of various commands
+func_access -- change access of various functions
+config_access -- change access of various config options
+flag_access_set -- set who can set flags
+flag_access_unset -- set who can unset flags
+flag_access_see -- set who can see flags
+flag_access_type -- typecast permissions on flags
+toggle_access_set -- set who can set toggles
+toggle_access_unset -- set who can unset toggles
+toggle_access_see -- set who can see toggles
+toggle_access_type -- typecast permission on toggles
+proxy_checker -- set permission restriction level on dynamic proxy detection. Please note, use this sparringly and only if you absolutely have to. The Good news: this will detect most proxies, most of the time. It does this by scanning and comparing the MTUand MSS values and scraping the TCP header for overhead. most proxies require this padding to actually, well, proxy the information out. This means that MSS and MTU values will almost always be a different size for anyone and anything that uses a proxy. Now, the Bad News. Anyone coming out from a business SOCKS server, Firewall, DMZ, or, well, just coming out of a business will likely be identified by a proxy. You use your android device to mush? That&#39;s a proxy as well since the android TCP layer is ontop of a java stack. IPhone? Same beast. Pretty much any mobile device will be seen as a proxy, which is accurate, but likely not the type of people you want to block. Sooo, again, use this sparringly. I suggest enabling it to a level to allow monitoring, and only crank it up to deny if you&#39;re being directly attacked.
+</pre></div>
+</div>
+<p># Commands</p>
+<p>### Special commands to monitor/set security:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@snoop</span> <span class="o">--</span> <span class="n">Yup</span><span class="p">,</span> <span class="n">it</span> <span class="n">exists</span><span class="o">.</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">optional</span> <span class="n">log</span> <span class="ow">or</span> <span class="n">real</span><span class="o">-</span><span class="n">time</span> <span class="n">monitor</span> <span class="n">of</span> <span class="n">a</span> <span class="n">player</span>
+<span class="nd">@newpassword</span> <span class="o">--</span> <span class="n">change</span> <span class="n">target</span><span class="s1">&#39;s password</span>
+<span class="nd">@aflags</span> <span class="o">--</span> <span class="nb">list</span> <span class="n">permissions</span> <span class="n">of</span> <span class="n">attributes</span> <span class="ow">or</span> <span class="nb">set</span> <span class="n">up</span> <span class="k">global</span> <span class="n">prefix</span> <span class="n">restrictions</span> <span class="n">based</span> <span class="n">globally</span><span class="p">,</span> <span class="n">by</span> <span class="n">target</span><span class="p">,</span> <span class="n">by</span> <span class="n">enactor</span><span class="p">,</span> <span class="ow">or</span> <span class="n">by</span> <span class="n">sub</span><span class="o">-</span><span class="n">group</span>
+<span class="nd">@log</span> <span class="o">--</span> <span class="n">control</span> <span class="n">system</span> <span class="n">logs</span>
+<span class="nd">@logrotate</span> <span class="o">--</span> <span class="n">rotate</span> <span class="n">logs</span> <span class="n">real</span><span class="o">-</span><span class="n">time</span> <span class="ow">or</span> <span class="n">verify</span> <span class="n">current</span> <span class="n">status</span> <span class="n">of</span> <span class="n">log</span> <span class="n">file</span>
+<span class="nd">@api</span> <span class="o">--</span> <span class="n">control</span> <span class="n">who</span> <span class="n">can</span> <span class="nb">set</span><span class="o">/</span><span class="n">unset</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">use</span> <span class="n">the</span> <span class="n">restful</span><span class="o">-</span><span class="n">like</span> <span class="n">API</span> <span class="n">interface</span>
+<span class="nd">@blacklist</span> <span class="o">--</span> <span class="n">load</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">blacklist</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">created</span> <span class="k">with</span> <span class="n">the</span> <span class="n">script</span> <span class="n">tor_pull</span><span class="o">.</span><span class="n">sh</span> <span class="n">that</span> <span class="n">queries</span> <span class="ow">and</span> <span class="n">pulls</span> <span class="n">down</span> <span class="n">the</span> <span class="n">majority</span> <span class="n">of</span> <span class="n">public</span> <span class="n">proxy</span> <span class="n">IP</span><span class="s1">&#39;s</span>
+<span class="nd">@tor</span> <span class="o">--</span> <span class="n">control</span> <span class="n">real</span> <span class="n">time</span> <span class="n">TOR</span> <span class="n">proxy</span> <span class="n">protection</span>
+<span class="nd">@freeze</span><span class="o">/</span><span class="nd">@thaw</span> <span class="o">--</span> <span class="n">real</span> <span class="n">time</span> <span class="n">queue</span> <span class="n">freezing</span> <span class="ow">and</span> <span class="n">thawing</span> <span class="k">for</span> <span class="n">sandboxing</span> <span class="n">queues</span> <span class="n">live</span>
+<span class="nd">@icmd</span> <span class="o">--</span> <span class="n">control</span> <span class="n">individual</span><span class="p">,</span> <span class="n">room</span><span class="p">,</span> <span class="ow">or</span> <span class="n">zone</span> <span class="n">based</span> <span class="n">access</span> <span class="n">control</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">commands</span> <span class="n">a</span> <span class="n">player</span> <span class="n">can</span> <span class="n">access</span>
+<span class="nd">@nuke</span><span class="o">/</span><span class="nd">@toad</span><span class="o">/</span><span class="nd">@turtle</span> <span class="o">--</span> <span class="n">destroy</span> <span class="ow">and</span><span class="o">/</span><span class="ow">or</span> <span class="n">convert</span> <span class="n">a</span> <span class="n">player</span> <span class="n">to</span> <span class="n">a</span> <span class="n">non</span><span class="o">-</span><span class="n">player</span><span class="o">.</span>
+<span class="nd">@recover</span> <span class="o">--</span> <span class="n">recover</span> <span class="n">a</span> <span class="nd">@nuked</span> <span class="ow">or</span> <span class="nd">@destroyed</span> <span class="n">item</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">database</span><span class="o">.</span> <span class="n">This</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="n">until</span> <span class="n">the</span> <span class="nb">object</span> <span class="ow">is</span> <span class="nd">@purged</span><span class="o">.</span> <span class="n">Works</span> <span class="n">like</span> <span class="n">a</span> <span class="n">recycle</span> <span class="nb">bin</span><span class="o">.</span>
+<span class="nd">@snapshot</span> <span class="o">--</span> <span class="n">make</span> <span class="n">a</span> <span class="n">live</span> <span class="n">snapshot</span> <span class="n">image</span> <span class="n">dump</span> <span class="n">of</span> <span class="n">the</span> <span class="n">targetted</span> <span class="n">dbref</span><span class="c1"># for safe keeping</span>
+<span class="nd">@boot</span> <span class="o">--</span> <span class="n">boot</span> <span class="n">the</span> <span class="n">player</span>
+<span class="nd">@disable</span> <span class="o">--</span> <span class="n">disable</span> <span class="n">logins</span> <span class="n">to</span> <span class="nb">all</span> <span class="n">but</span> <span class="n">staff</span>
+<span class="nd">@flagdef</span><span class="o">/</span><span class="nd">@toggledef</span> <span class="o">--</span> <span class="ow">in</span><span class="o">-</span><span class="n">game</span> <span class="n">alter</span> <span class="n">permissions</span> <span class="n">of</span> <span class="n">flags</span> <span class="ow">and</span> <span class="n">toggles</span>
+<span class="nd">@site</span> <span class="o">--</span> <span class="n">remove</span> <span class="n">site</span> <span class="n">permissions</span> <span class="nb">set</span> <span class="n">via</span> <span class="nd">@admin</span> <span class="n">foo_site</span> <span class="p">(</span><span class="n">like</span> <span class="n">forbid_site</span><span class="p">,</span> <span class="n">suspect_site</span><span class="p">,</span> <span class="n">etc</span><span class="p">)</span>
+<span class="nd">@limit</span> <span class="o">--</span> <span class="n">assign</span> <span class="n">limits</span> <span class="p">(</span><span class="nd">@destroy</span><span class="p">,</span> <span class="n">user</span><span class="o">-</span><span class="n">attribute</span><span class="p">,</span> <span class="ow">or</span> <span class="nd">@lfunction</span><span class="p">)</span> <span class="n">to</span> <span class="n">target</span> <span class="n">player</span><span class="o">.</span> <span class="n">This</span> <span class="n">has</span> <span class="n">the</span> <span class="n">effect</span> <span class="n">of</span> <span class="n">enabling</span><span class="p">,</span> <span class="n">disabling</span><span class="p">,</span> <span class="ow">or</span> <span class="n">overriding</span> <span class="n">the</span> <span class="k">global</span> <span class="n">values</span> <span class="k">for</span> <span class="nb">max</span> <span class="n">values</span><span class="o">.</span> <span class="n">so</span> <span class="n">you</span> <span class="n">can</span> <span class="n">use</span> <span class="n">this</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span><span class="p">,</span> <span class="n">to</span> <span class="n">disable</span> <span class="n">a</span> <span class="n">player</span><span class="s1">&#39;s ability to set any user-defined attributes requiring them to only use @va-vz, @desc, and so forth.</span>
+</pre></div>
+</div>
+<p># Toggles</p>
+<p>### Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@toggle</span> <span class="o">*</span><span class="n">player</span><span class="o">=</span><span class="n">forcehalted</span>
+</pre></div>
+</div>
+<p>&gt; Suggested Toggle List:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CPUTIME</span> <span class="o">--</span> <span class="n">returns</span> <span class="n">extremely</span> <span class="n">useful</span> <span class="n">data</span> <span class="n">on</span> <span class="n">runtime</span> <span class="n">values</span> <span class="n">of</span> <span class="n">a</span> <span class="n">command</span> <span class="n">that</span> <span class="n">executes</span>
+<span class="n">FORCEHALTED</span> <span class="o">--</span> <span class="n">allows</span> <span class="n">you</span> <span class="n">to</span> <span class="nd">@force</span> <span class="n">something</span> <span class="n">even</span> <span class="k">if</span> <span class="n">it</span><span class="s1">&#39;s halted</span>
+<span class="n">LOGROOM</span> <span class="o">--</span> <span class="n">log</span> <span class="n">everything</span> <span class="n">the</span> <span class="n">room</span> <span class="n">sees</span><span class="o">.</span> <span class="n">This</span> <span class="ow">is</span> <span class="n">intended</span> <span class="k">for</span> <span class="n">IC</span> <span class="n">purposes</span> <span class="ow">and</span> <span class="n">will</span> <span class="n">notify</span> <span class="n">the</span> <span class="n">player</span> <span class="n">that</span> <span class="n">logging</span> <span class="ow">is</span> <span class="n">going</span> <span class="n">into</span> <span class="n">the</span> <span class="n">room</span>
+<span class="n">MAIL_LOCKDOWN</span> <span class="o">--</span> <span class="n">stop</span> <span class="n">wizards</span> <span class="kn">from</span> <span class="nn">being</span> <span class="n">able</span> <span class="n">to</span> <span class="n">see</span> <span class="n">other</span> <span class="n">people</span><span class="s1">&#39;s mail.</span>
+<span class="n">MONITOR</span><span class="o">/</span><span class="n">MONITOR_AREG</span><span class="o">/</span><span class="n">MONITOR_SITE</span><span class="o">/</span><span class="n">MONITOR_CPU</span><span class="o">/</span><span class="n">MONITOR_VLIMIT</span><span class="o">/</span><span class="n">MONITOR_etcetc</span> <span class="o">--</span> <span class="n">drilldown</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">the</span> <span class="ow">in</span><span class="o">-</span><span class="n">game</span> <span class="n">broadcasts</span> <span class="k">for</span> <span class="n">most</span> <span class="n">of</span> <span class="n">the</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">game</span> <span class="n">RhostMUSH</span> <span class="n">monitoring</span><span class="o">.</span> <span class="n">CPU</span> <span class="n">overloads</span><span class="p">,</span> <span class="n">attribute</span> <span class="n">caps</span> <span class="n">being</span> <span class="n">reached</span><span class="p">,</span> <span class="n">success</span><span class="o">/</span><span class="n">failed</span> <span class="n">connect</span> <span class="n">attempts</span><span class="p">,</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">forth</span><span class="o">.</span> <span class="n">Ergo</span><span class="p">,</span> <span class="n">day</span> <span class="n">to</span> <span class="n">day</span> <span class="n">monitoring</span> <span class="n">needs</span><span class="o">.</span> <span class="n">The</span> <span class="n">MONITOR</span> <span class="n">foo</span> <span class="ow">in</span> <span class="n">Rhost</span> <span class="ow">is</span> <span class="n">very</span> <span class="n">beefy</span><span class="p">,</span> <span class="n">so</span> <span class="n">please</span> <span class="n">refer</span> <span class="n">to</span> <span class="n">the</span> <span class="n">wizhelp</span> <span class="n">on</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">MONITOR</span> <span class="nd">@toggles</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+</pre></div>
+</div>
+<p># Flags:</p>
+<p>### Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@set</span> <span class="o">*</span><span class="n">player</span><span class="o">=</span><span class="n">slave</span>
+</pre></div>
+</div>
+<p>### Suggested Flags:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WANDERER</span> <span class="o">--</span> <span class="n">restrictive</span> <span class="n">flag</span><span class="o">.</span> <span class="n">Set</span> <span class="n">on</span> <span class="nb">all</span> <span class="n">new</span> <span class="n">players</span> <span class="n">by</span> <span class="n">default</span> <span class="n">unless</span> <span class="n">configured</span> <span class="n">otherwise</span><span class="o">.</span> <span class="n">Stops</span> <span class="nb">all</span> <span class="n">building</span><span class="o">/</span><span class="n">creating</span> <span class="ow">and</span> <span class="n">requires</span> <span class="n">removal</span> <span class="n">before</span> <span class="n">building</span> <span class="n">allowed</span><span class="o">.</span>
+<span class="n">GUILDMASTER</span> <span class="o">--</span> <span class="n">first</span> <span class="n">tier</span> <span class="n">of</span> <span class="n">staff</span> <span class="n">bit</span>
+<span class="n">ARCHITECT</span> <span class="o">--</span> <span class="n">second</span> <span class="n">tier</span> <span class="n">of</span> <span class="n">staff</span> <span class="n">bit</span>
+<span class="n">COUNCILOR</span> <span class="o">--</span> <span class="n">third</span> <span class="n">tier</span> <span class="n">of</span> <span class="n">staff</span> <span class="n">bit</span>
+<span class="n">ROYALTY</span> <span class="o">--</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">your</span> <span class="n">vanilla</span> <span class="n">Wizard</span> <span class="n">on</span> <span class="n">other</span> <span class="n">mushes</span>
+<span class="n">IMMORTAL</span> <span class="o">--</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">essentially</span> <span class="c1">#1 and &#39;all powerful&#39;</span>
+<span class="n">BACKSTAGE</span><span class="o">/</span><span class="n">NOBACKSTAGE</span> <span class="n">control</span> <span class="n">flags</span> <span class="n">specifying</span> <span class="n">who</span> <span class="n">can</span> <span class="n">control</span> <span class="n">things</span> <span class="nb">set</span> <span class="n">BACKSTAGE</span>
+<span class="n">FUBAR</span> <span class="o">--</span> <span class="n">stop</span> <span class="kn">from</span> <span class="nn">doing</span> <span class="n">absolutely</span> <span class="n">everything</span> <span class="k">except</span> <span class="s1">&#39;:&#39;</span> <span class="ow">and</span> <span class="s1">&#39;&quot;&#39;</span><span class="o">.</span> <span class="n">Nothing</span> <span class="k">else</span><span class="o">.</span>
+<span class="n">SLAVE</span> <span class="o">--</span> <span class="n">this</span> <span class="n">also</span> <span class="n">stops</span> <span class="s1">&#39;:&#39;</span> <span class="ow">and</span> <span class="s1">&#39;&quot;&#39;</span><span class="o">.</span> <span class="n">Used</span> <span class="ow">in</span> <span class="n">combination</span> <span class="k">with</span> <span class="n">FUBAR</span> <span class="n">to</span> <span class="n">make</span> <span class="n">a</span> <span class="n">statue</span><span class="o">.</span>
+<span class="n">INDESTRUCTIBLE</span> <span class="o">--</span> <span class="n">nothing</span> <span class="n">can</span> <span class="n">destroy</span> <span class="n">the</span> <span class="n">target</span><span class="p">,</span> <span class="ow">not</span> <span class="n">even</span> <span class="c1">#1</span>
+<span class="n">NO_CODE</span> <span class="o">--</span> <span class="n">stops</span> <span class="n">target</span> <span class="kn">from</span> <span class="nn">doing</span> <span class="nb">all</span> <span class="n">but</span> <span class="n">the</span> <span class="n">most</span> <span class="n">basic</span> <span class="n">commands</span> <span class="ow">and</span> <span class="n">functions</span>
+<span class="n">NO_CONNECT</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">log</span> <span class="ow">in</span>
+<span class="n">NO_EXAMINE</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">examined</span><span class="o">/</span><span class="nd">@decompiled</span> <span class="k">except</span> <span class="n">by</span> <span class="n">wizards</span>
+<span class="n">NO_MODIFY</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">modified</span> <span class="k">except</span> <span class="n">by</span> <span class="n">wizards</span> <span class="p">(</span><span class="ow">or</span> <span class="n">optionally</span> <span class="n">just</span> <span class="n">immortals</span><span class="p">)</span>
+<span class="n">NO_MOVE</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">moved</span> <span class="n">by</span> <span class="nb">any</span> <span class="n">means</span>
+<span class="n">NO_TEL</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">teleported</span><span class="p">,</span> <span class="n">use</span> <span class="n">teleport</span><span class="p">,</span> <span class="ow">or</span> <span class="n">use</span> <span class="n">home</span>
+<span class="n">NO_PESTER</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">use</span> <span class="n">whisper</span> <span class="ow">or</span> <span class="nd">@pemit</span>
+<span class="n">NO_POSSESS</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">log</span> <span class="n">into</span> <span class="n">their</span> <span class="n">player</span> <span class="n">more</span> <span class="n">than</span> <span class="n">twice</span>
+<span class="n">SPAMMONITOR</span> <span class="o">--</span> <span class="n">target</span> <span class="n">can</span> <span class="ow">not</span> <span class="n">issue</span> <span class="n">more</span> <span class="n">than</span> <span class="mi">60</span> <span class="n">commands</span> <span class="n">a</span> <span class="n">minute</span>
+</pre></div>
+</div>
+<p># &#64;depowers</p>
+<p>&gt; These are tiered and inheritable from the player. Meaning permission levels can be decreased or removed entirely.</p>
+<p>### Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@depower</span><span class="o">/</span><span class="n">councilor</span> <span class="o">*</span><span class="n">player</span><span class="o">=</span><span class="n">wall</span>
+</pre></div>
+</div>
+<p>### Suggested Depowers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>WALL -- disable walling
+STEAL -- disable getting items/gold
+WIZ_WHO -- disable wiz who
+BOOT -- disable boot
+FORCE -- disable @force/@sudo
+MASTER -- disable access to the master room
+NUKE -- disable @nuke/@toad/@turtle
+OVERRIDE -- disable overiding locks (wizards do this by default)
+TEL_ANYTHING -- disable teleporting anything
+POWER -- disable access to @power
+MODIFY -- disable ability to modify things
+CHOWN_OTHER -- disable ability to chown things you don&#39;t own
+UNL_QUOTA -- disable unlimited quota (useful on staff)
+GIVE -- disable the ability to give... anything...
+NOGOLD -- disable the ability to give or take gold
+PASSWORD -- disable ability to change passwords
+PERSONAL_COMMAND -- disable the ability to use any $commands on anything you own
+LONG_FINGERS -- disable all remote access features
+CREATE -- disable the ability to create anything
+CLOAK -- disable the overpowered wizcloaking ability from wizards
+PAGE -- no page for you!!!
+LOCK -- you can&#39;t pass locks. Ever. At all. Sucks to be you.
+COMMAND -- you can&#39;t use any $command. Anywhere. Only hardcoded commands for you!
+EXAMINE -- you can&#39;t examine/decompile or use any method to list attribs
+FREE -- everything is going to cost you gold
+TEL_ANYWHERE -- you can&#39;t teleport anywhere
+PCREATE -- disable wizards ability to create players
+QUOTA -- more more quota control for you
+CHOWN_ME -- you can&#39;t chown anything to yourself
+ABUSE -- you can only use $commands on things you own. Nothing else, including master room.
+SEARCH_ANY -- disable all db searching tools
+RECEIVE -- you can&#39;t receive anything
+DARK -- you can&#39;t go dark, and even if you miraculously were set DARK it&#39;d not work for you.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Wizards in RhostMUSH by default override all locks and have a unique ability called 'wizcloaking'. If a wizard is set DARK and UNFINDABLE then they become cloaked (like a Romulan bird of pray) and will be undetectable by any means except by another wizard. Immortals have a super-cloak ability that makes them invisible to Wizards in addition. As shown above, there is a &#64;depower to disable cloaking if it's abused.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ABOUT IMMORTALS: Immortals treat as #1. Seriously. They can do anything and everything. They have commands at their fingertips to literally hack and edit the database live, and naturally if they don't know what they're doing, can crash the mush, because of all this raw editing capabilities. Only set Immortal those who absolutely need it or you absolutely trust. Head coders, for example, should likely have an Immortal bit. Also, Immortals by default override pretty much every restriction in the game. A player set NO_TEL? Um yea, immortal can still &#64;teleport them. This is intentional, because it's assumed Immortal's code should just work. So keep that in mind while coding. Cheers.</p>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../">
+              <img class="logo" src="../_static/logo.jpg" alt="Logo"/>
+            </a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search/" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/attack.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../security/"
+                        title="previous chapter"><span class="section-number">11. </span>Security</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../utilities/ssl/"
+                        title="next chapter"><span class="section-number">13. </span>Setting up an SSL tunnel for secure connection options</a></p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, wstarter.
+      Last updated on May 13, 2021.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
+    </div>
+  </body>
+</html>

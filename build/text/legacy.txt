@@ -1,8 +1,8 @@
-18. Upgrading a Legacy RhostMUSH Installation
+19. Upgrading a Legacy RhostMUSH Installation
 *********************************************
 
 
-18.1. Converting database betwen GDBM and QDBM
+19.1. Converting database betwen GDBM and QDBM
 ==============================================
 
 Ok, if you plan to recompile your game that is using GDBM to QDBM, or
@@ -12,7 +12,7 @@ The databases are NOT COMPATIBLE to each other, at least in the binary
 form.
 
 
-18.1.1. Downgrading QDBM to GDBM
+19.1.1. Downgrading QDBM to GDBM
 --------------------------------
 
 Warning:
@@ -38,7 +38,7 @@ Warning:
    converting (downgrading) QDBM back down to GDBM
 
 
-18.1.2. Upgradging GDBM to QDBM
+19.1.2. Upgradging GDBM to QDBM
 -------------------------------
 
 Now, if you've kept reading and plan to convert your GDBM database to
@@ -48,7 +48,7 @@ more flexibility.
 So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
 
 
-18.1.2.1. While logged in to your mush, issue the following commands
+19.1.2.1. While logged in to your mush, issue the following commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    1. @dump/flat    -- This will make a flatfile dump of your MUSH
@@ -64,7 +64,7 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
       dumps it
 
 
-18.1.2.2. Verify the files exist
+19.1.2.2. Verify the files exist
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    1. Server/game/data/netrhost.db.flat
@@ -78,13 +78,13 @@ So, BEFORE YOU RECOMPILE YOUR CODE.  This is what you have to do.
    5. (Optional) Server/game/data/RhostMUSH.news.flat
 
 
-18.1.2.3. Shutdown the MUSH
+19.1.2.3. Shutdown the MUSH
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 @shutdown your mush
 
 
-18.1.2.4. From the Server directory
+19.1.2.4. From the Server directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. make clean
@@ -128,7 +128,7 @@ Todo: Figure out why that asterisk is there.
       RhostMUSH.news.pag
 
 
-18.1.2.5. From the Server/game directory
+19.1.2.5. From the Server/game directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Load the database:
@@ -140,7 +140,7 @@ Todo: Figure out why that asterisk is there.
       ./Startmush
 
 
-18.1.2.6. While logged into the mush issue the following commands
+19.1.2.6. While logged into the mush issue the following commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Load in the mail database:
@@ -156,13 +156,13 @@ Todo: Figure out why that asterisk is there.
       newsdb/load
 
 
-18.1.2.7. Verify that you have QDBM running and your valid values
+19.1.2.7. Verify that you have QDBM running and your valid values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. @list options system#.  @list options (spammy)
 
 
-18.2. Updating RhostMUSH prior to 3.9.5p2
+19.2. Updating RhostMUSH prior to 3.9.5p2
 =========================================
 
 Ok.
@@ -286,7 +286,7 @@ Note:
    Rhost.  Enjoy!
 
 
-18.3. Adding MySQL to RhostMUSH older than 3.9.5p2
+19.3. Adding MySQL to RhostMUSH older than 3.9.5p2
 ==================================================
 
 MySQL is now native in RhostMUSH as of 3.9.5p2.

@@ -5,13 +5,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>15. Advanced Features</title>
+    <title>16. Advanced Features</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/style.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="17. Requirements if Using Windows" href="install/windows.html" />
-    <link rel="prev" title="14. Troubleshooting" href="troubleshooting.html" /> 
+    <link rel="next" title="18. Requirements if Using Windows" href="install/windows.html" />
+    <link rel="prev" title="15. Troubleshooting" href="troubleshooting.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -22,7 +22,7 @@
     <li><a href="wizhelp.html">RhostMUSH WizHelp File</a> |</li>
     <li><a href="https://github.com/RhostMUSH/trunk">RhostMUSH Source Code</a> |</li>
     <li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">15. </span>Advanced Features</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">16. </span>Advanced Features</a></li> 
       </ul>
     </div>  
 
@@ -31,18 +31,18 @@
           <div class="body" role="main">
             
   <div class="section" id="advanced-features">
-<h1><span class="section-number">15. </span>Advanced Features</h1>
+<h1><span class="section-number">16. </span>Advanced Features</h1>
 <div class="section" id="adding-hardcoded-modules">
-<h2><span class="section-number">15.1. </span>Adding hardcoded modules</h2>
+<h2><span class="section-number">16.1. </span>Adding hardcoded modules</h2>
 <p>RhostMUSH does support module writing.</p>
 <div class="section" id="modifying-sourcode-to-add-a-module">
-<h3><span class="section-number">15.1.1. </span>Modifying sourcode to add a module</h3>
+<h3><span class="section-number">16.1.1. </span>Modifying sourcode to add a module</h3>
 <p>This requires hooking your changes into local.c, then modifying the Makefile (in the src directory)
 for any new source files that you wish to add.</p>
 <p>Something to be aware of is that all localized data is ran after the system cache subroutine.</p>
 </div>
 <div class="section" id="adding-an-startup-to-make-use-of-modules">
-<h3><span class="section-number">15.1.2. </span>Adding an &#64;startup to make use of modules</h3>
+<h3><span class="section-number">16.1.2. </span>Adding an &#64;startup to make use of modules</h3>
 <p>This means that if your code is depending on &#64;startups, you need to put a delay in the &#64;startup
 so that your local code can be loaded in as modules prior to the &#64;startup execution.</p>
 <p>Something that will not work:</p>
@@ -56,7 +56,7 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 <p>That 1 second delay for the queue will give the game engine time to load in your module code.</p>
 </div>
 <div class="section" id="contributing-your-module-back-to-rhost">
-<h3><span class="section-number">15.1.3. </span>Contributing your module back to Rhost</h3>
+<h3><span class="section-number">16.1.3. </span>Contributing your module back to Rhost</h3>
 <p>If you wish your modules to be part of the main Rhost distribution you have two options:</p>
 <ol class="arabic simple">
 <li><p>Attempt to hack the bin/asksource.sh and bin/asksource.blank files.</p></li>
@@ -65,11 +65,11 @@ so that your local code can be loaded in as modules prior to the &#64;startup ex
 </div>
 </div>
 <div class="section" id="reality-levels-setup">
-<h2><span class="section-number">15.2. </span>Reality Levels Setup</h2>
+<h2><span class="section-number">16.2. </span>Reality Levels Setup</h2>
 <p>Reality levels are a means to forbid (or allow) interaction between objects
 in the same location.</p>
 <div class="section" id="reality-levels-visibility">
-<h3><span class="section-number">15.2.1. </span>Reality Levels Visibility</h3>
+<h3><span class="section-number">16.2.1. </span>Reality Levels Visibility</h3>
 <p>Each object (player, room, exit, thing) has two lists of reality levels.
 An Rx list, which describe what it can see and a Tx list, which describe
 where it can be seen. Those are bitfields. In order for X to see Y a bitwise
@@ -87,7 +87,7 @@ parameters.</p>
 match. (See examples below)</p>
 </div>
 <div class="section" id="reality-levels-descriptions">
-<h3><span class="section-number">15.2.2. </span>Reality Levels Descriptions</h3>
+<h3><span class="section-number">16.2.2. </span>Reality Levels Descriptions</h3>
 <p>For every reality level defined, you can define an attribute that serves as
 description. If you look at something and match more than one of its
 TxLevels, you'll see all the corresponding descriptions on the target
@@ -109,7 +109,7 @@ order to pass through the exit, the exit must see the enactor in turn. There
 are reasons for this, which will become evident in the examples below.</p>
 </div>
 <div class="section" id="reality-levels-configuration-parameters">
-<h3><span class="section-number">15.2.3. </span>Reality Levels Configuration parameters</h3>
+<h3><span class="section-number">16.2.3. </span>Reality Levels Configuration parameters</h3>
 <p>A few configuration parameters have been introduced to deal with the reality
 levels:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">desc</span> <span class="n">attribute</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">]</span>
@@ -148,7 +148,7 @@ This is an example file only to be added to the mush.conf file Format:</p>
 </div>
 </div>
 <div class="section" id="reality-levels-example-mush-conf">
-<h3><span class="section-number">15.2.4. </span>Reality Levels Example mush.conf</h3>
+<h3><span class="section-number">16.2.4. </span>Reality Levels Example mush.conf</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span> <span class="n">Real</span> <span class="mi">1</span>
 <span class="n">reality_level</span> <span class="n">Obf1</span> <span class="mi">2</span>
 <span class="n">reality_level</span> <span class="n">Obf2</span> <span class="mi">4</span>
@@ -170,7 +170,7 @@ This is an example file only to be added to the mush.conf file Format:</p>
 </div>
 </div>
 <div class="section" id="reality-levels-commands">
-<h3><span class="section-number">15.2.5. </span>Reality Levels Commands</h3>
+<h3><span class="section-number">16.2.5. </span>Reality Levels Commands</h3>
 <p>Two wiz-only commands are used to set the reality levels of an object:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@rxlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
 <span class="nd">@txlevel</span> <span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;=&lt;</span><span class="nb">list</span><span class="o">&gt;</span>
@@ -187,7 +187,7 @@ for players).</p>
 </div>
 </div>
 <div class="section" id="functions">
-<h3><span class="section-number">15.2.6. </span>Functions</h3>
+<h3><span class="section-number">16.2.6. </span>Functions</h3>
 <p>There are five functions that deal with reality levels:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hasrxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
 <span class="n">hastxlevel</span><span class="p">(</span><span class="o">&lt;</span><span class="nb">object</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">level</span><span class="o">&gt;</span><span class="p">)</span>
@@ -217,7 +217,7 @@ version checks against the DARK flag.</p>
 </div>
 </div>
 <div class="section" id="example-1-a-simplified-witchcraft-setup">
-<h3><span class="section-number">15.2.7. </span>Example 1: A simplified Witchcraft setup</h3>
+<h3><span class="section-number">16.2.7. </span>Example 1: A simplified Witchcraft setup</h3>
 <p>In Witchcraft, besides the various Gifted classes, characters can be spirits
 There are spirit realms to which the mundane can not travel. Therefore we
 will use 2 reality levels: Real and Ghost. Since some spirits can become
@@ -322,7 +322,7 @@ anyway, so a spirit character will have:</p>
 </div>
 </div>
 <div class="section" id="example-2-a-wod-setup">
-<h3><span class="section-number">15.2.8. </span>Example 2: A WoD setup</h3>
+<h3><span class="section-number">16.2.8. </span>Example 2: A WoD setup</h3>
 <p>The reality levels will be defined like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">reality_level</span>         <span class="n">Real</span> <span class="mi">1</span>
 <span class="n">reality_level</span>         <span class="n">Obf1</span> <span class="mi">2</span>
@@ -401,7 +401,7 @@ Marie the Mortal+ Medium: RxLevel: Real Shadow, TxLevel: Real</p>
 </div>
 </div>
 <div class="section" id="example-3-softcode">
-<h3><span class="section-number">15.2.9. </span>Example 3: Softcode</h3>
+<h3><span class="section-number">16.2.9. </span>Example 3: Softcode</h3>
 <p>Considering the config directives from example 2 and assuming a function
 getstat(&lt;dbref&gt;,&lt;stat&gt;) that will return the value of a player's stat from
 the sheet here are softcode examples that implement some of the WoD powers.
@@ -426,11 +426,11 @@ In a real game you would have to use some more checks, of course.</p>
 </div>
 </div>
 <div class="section" id="execscript-and-external-programs-and-scripts">
-<h2><span class="section-number">15.3. </span>Execscript and external programs and scripts</h2>
+<h2><span class="section-number">16.3. </span>Execscript and external programs and scripts</h2>
 <div class="section" id="execscript-variables">
-<h3><span class="section-number">15.3.1. </span>Execscript variables</h3>
+<h3><span class="section-number">16.3.1. </span>Execscript variables</h3>
 <div class="section" id="execscript-built-in-variables">
-<h4><span class="section-number">15.3.1.1. </span>Execscript Built in variables</h4>
+<h4><span class="section-number">16.3.1.1. </span>Execscript Built in variables</h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 34%" />
@@ -474,7 +474,7 @@ This is passed from the mush's EXECSCRIPT_VARS attr</p></td>
 </table>
 </div>
 <div class="section" id="execscript-dynamic-variables">
-<h4><span class="section-number">15.3.1.2. </span>Execscript Dynamic variables</h4>
+<h4><span class="section-number">16.3.1.2. </span>Execscript Dynamic variables</h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 37%" />
@@ -494,7 +494,7 @@ These are the attributes from EXECSCRIPT_VARS</p></td>
 </table>
 </div>
 <div class="section" id="execscript-register-variables">
-<h4><span class="section-number">15.3.1.3. </span>Execscript Register variables</h4>
+<h4><span class="section-number">16.3.1.3. </span>Execscript Register variables</h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 30%" />
@@ -521,20 +521,20 @@ Note: they must be ASCII-7 clean and contain no white spaces</p></td>
 </div>
 </div>
 <div class="section" id="execsript-set-object">
-<h3><span class="section-number">15.3.2. </span>Execsript set object</h3>
+<h3><span class="section-number">16.3.2. </span>Execsript set object</h3>
 <p>The script executed with execscript() will read in a file with the same name
 as the script ending in '.set'.  This is a loader object that will set attributes
 and registers back into the mush that you wish to pass from the script. The
 fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 <div class="section" id="execscript-set-object-field-format">
-<h4><span class="section-number">15.3.2.1. </span>Execscript set object field format</h4>
+<h4><span class="section-number">16.3.2.1. </span>Execscript set object field format</h4>
 <div class="section" id="execscript-set-object-dynamic-variables">
-<h5><span class="section-number">15.3.2.1.1. </span>Execscript set object Dynamic variables</h5>
+<h5><span class="section-number">16.3.2.1.1. </span>Execscript set object Dynamic variables</h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VARNAME</span>        <span class="n">OWNER</span>        <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="execscript-set-object-dynamic-variables-examples">
-<h6><span class="section-number">15.3.2.1.1.1. </span>Execscript set object Dynamic variables Examples</h6>
+<h6><span class="section-number">16.3.2.1.1.1. </span>Execscript set object Dynamic variables Examples</h6>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SEX</span> <span class="c1">#123 Male</span>
 <span class="n">DESC</span> <span class="c1">#123 %r%tThis is a willow tree of unique description%r%rIt sways in the wind.</span>
 <span class="n">RED</span> <span class="c1">#123 This is the color %ch%crred%cn.</span>
@@ -548,12 +548,12 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 </div>
 </div>
 <div class="section" id="execscript-set-object-register-variables">
-<h5><span class="section-number">15.3.2.1.2. </span>Execscript set object Register variables</h5>
+<h5><span class="section-number">16.3.2.1.2. </span>Execscript set object Register variables</h5>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">REGISTER</span>       <span class="n">Q</span>            <span class="n">CONTENTS</span> <span class="p">(</span><span class="ow">or</span> <span class="n">leave</span> <span class="n">null</span> <span class="n">to</span> <span class="n">clear</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="execscript-set-object-register-variables-examples">
-<h6><span class="section-number">15.3.2.1.2.1. </span>Execscript set object Register variables Examples</h6>
+<h6><span class="section-number">16.3.2.1.2.1. </span>Execscript set object Register variables Examples</h6>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The last exammple clears register 0</p>
@@ -569,7 +569,7 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 </div>
 </div>
 <div class="section" id="execscript-example-bash-script">
-<h3><span class="section-number">15.3.3. </span>Execscript Example bash script</h3>
+<h3><span class="section-number">16.3.3. </span>Execscript Example bash script</h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="nb">echo</span> <span class="s2">&quot;This was called by player </span><span class="si">${</span><span class="nv">MUSH_PLAYER</span><span class="si">}</span><span class="s2"> that is owned by </span><span class="si">${</span><span class="nv">MUSH_OWNER</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="nb">echo</span> <span class="s2">&quot;Displaying Registers:&quot;</span>
@@ -587,7 +587,7 @@ fields are SPACE SEPARATED.  The values are NOT evaluated.</p>
 </div>
 </div>
 <div class="section" id="exescript-notes-and-warnings">
-<h3><span class="section-number">15.3.4. </span>Exescript Notes and warnings</h3>
+<h3><span class="section-number">16.3.4. </span>Exescript Notes and warnings</h3>
 <p>While MUSHL_VARS are sanitized on what is allowable as a mush variable, this
 is not necessarilly sanitized on what the calling script can fetch as a valid
 variable.  Of note, you can not set environment variables that contain an
@@ -597,7 +597,7 @@ This is EXECSCRIPT_VARS on the mush itself, that is the attribute set
 on the target that contains the execscript() that is being executed.</p>
 </div>
 <div class="section" id="scripts-to-be-used-with-execscript">
-<h3><span class="section-number">15.3.5. </span>Scripts to be used with execscript</h3>
+<h3><span class="section-number">16.3.5. </span>Scripts to be used with execscript</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">account</span><span class="o">/</span>                       <span class="o">--</span> <span class="n">Directory</span> <span class="k">for</span> <span class="n">execscripts</span> <span class="n">relating</span> <span class="n">to</span> <span class="n">account</span> <span class="n">creation</span>
 <span class="n">compile39</span><span class="o">.</span><span class="n">sh</span>                   <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span> <span class="mf">3.9</span>
 <span class="nb">compile</span><span class="o">.</span><span class="n">sh</span>                     <span class="o">--</span> <span class="n">Script</span> <span class="k">for</span> <span class="n">patching</span> <span class="ow">and</span> <span class="n">compiling</span> <span class="n">RhostMUSH</span>
@@ -633,11 +633,11 @@ on the target that contains the execscript() that is being executed.</p>
 </div>
 </div>
 <div class="section" id="using-printf-for-advanced-text-output">
-<h2><span class="section-number">15.4. </span>Using printf() for advanced text output</h2>
+<h2><span class="section-number">16.4. </span>Using printf() for advanced text output</h2>
 <p>The function printf() in Rhost can be used to greatly reduce coding in efforts for outputs,
 screens and data display.  It can automatically center, justify and wrap the text parameters given to it.</p>
 <div class="section" id="printf-example-one">
-<h3><span class="section-number">15.4.1. </span>Printf Example one</h3>
+<h3><span class="section-number">16.4.1. </span>Printf Example one</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf(|$-12s|$12s|$^12s$&amp;14s$_12s|,a b c, d e f, g h i, wrap(lnum(20),12, l, |, |), j k l)
 
 |a b c       |       d e f|   g h i    |0 1 2 3 4 5 |j     k    l|
@@ -649,7 +649,7 @@ screens and data display.  It can automatically center, justify and wrap the tex
 </div>
 </div>
 <div class="section" id="printf-example-two">
-<h3><span class="section-number">15.4.2. </span>Printf Example two</h3>
+<h3><span class="section-number">16.4.2. </span>Printf Example two</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit printf($14&amp;s $^4&amp;s $-3&amp;s $15&amp;s,
 iter(Bruised|Hurt|Injured|Wounded|Mauled|Crippled|Incapacitated,##,|,%R),
 iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)]%],,%r),
@@ -666,7 +666,7 @@ iter(|-1|-1|-2|-2|-5|,##,|,%r),iter(lnum(1,7),%[[if(gte(get(%#/damage),##),X,%b)
 </div>
 </div>
 <div class="section" id="printf-example-three">
-<h3><span class="section-number">15.4.3. </span>Printf Example three</h3>
+<h3><span class="section-number">16.4.3. </span>Printf Example three</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@emit [printf($-10|&quot;&#39;s$-60|&quot;s,a b c d e f g h i j k l m n o p q r s t u v w x y z,
 this is a test a groovy test blah blah blah [repeat(blah%b,100)])]END!
 
@@ -685,7 +685,7 @@ blah blah blah blah blah blah blah                                    END!
 </div>
 </div>
 <div class="section" id="format-for-image-files">
-<h1><span class="section-number">16. </span>Format for image files</h1>
+<h1><span class="section-number">17. </span>Format for image files</h1>
 <p>The image format goes like this:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -865,7 +865,7 @@ $6$xy$xy
 </pre></div>
 </div>
 <div class="section" id="help-key-indexes-for-the-values">
-<h2><span class="section-number">16.1. </span>HELP key indexes for the values</h2>
+<h2><span class="section-number">17.1. </span>HELP key indexes for the values</h2>
 <p>FLAGS: The following flags are to be used.  They are BITWISE masks that you
 need to add together for the values that you apply</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* First word of flags */</span>
@@ -1214,7 +1214,7 @@ that there are no more zones to add.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2021, wstarter.
-      Last updated on Apr 23, 2021.
+      Last updated on May 13, 2021.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.1.
     </div>
   </body>
